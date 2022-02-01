@@ -1,97 +1,112 @@
 package com.tencent.token;
 
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Path;
-import android.graphics.PorterDuff.Mode;
-import android.graphics.PorterDuffXfermode;
-import android.graphics.RectF;
-import android.webkit.WebView;
+import android.app.PendingIntent;
+import android.location.Criteria;
+import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
+import android.location.LocationProvider;
+import android.os.Looper;
+import java.util.List;
 
-public final class ko
-  extends WebView
+public class ko
+  extends LocationManager
 {
-  float a;
-  int b;
-  int c;
-  private Paint d = new Paint();
-  private Paint e;
-  private int f;
-  private int g;
+  private LocationManager a;
   
-  public ko(Context paramContext)
+  public ko(LocationManager paramLocationManager)
   {
-    super(paramContext);
-    this.d.setColor(-1);
-    this.d.setAntiAlias(true);
-    this.d.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.DST_OUT));
-    this.e = new Paint();
-    this.e.setXfermode(null);
+    this.a = paramLocationManager;
   }
   
-  public final void draw(Canvas paramCanvas)
+  public List<String> getAllProviders()
   {
-    this.f = getScrollX();
-    this.g = getScrollY();
-    Bitmap localBitmap = Bitmap.createBitmap(this.f + this.b, this.g + this.c, Bitmap.Config.ARGB_8888);
-    Canvas localCanvas = new Canvas(localBitmap);
-    super.draw(localCanvas);
-    Path localPath = new Path();
-    localPath.moveTo(this.f, this.a);
-    localPath.lineTo(this.f, this.g);
-    localPath.lineTo(this.a, this.g);
-    int i = this.f;
-    float f1 = i;
-    int j = this.g;
-    float f2 = j;
-    float f3 = i;
-    float f4 = this.a;
-    localPath.arcTo(new RectF(f1, f2, f3 + f4 * 2.0F, j + f4 * 2.0F), -90.0F, -90.0F);
-    localPath.close();
-    localCanvas.drawPath(localPath, this.d);
-    localPath = new Path();
-    localPath.moveTo(this.f + this.b, this.g + this.a);
-    localPath.lineTo(this.f + this.b, this.g);
-    localPath.lineTo(this.f + this.b - this.a, this.g);
-    i = this.f;
-    j = this.b;
-    f1 = i + j;
-    f2 = this.a;
-    int k = this.g;
-    localPath.arcTo(new RectF(f1 - f2 * 2.0F, k, i + j, k + f2 * 2.0F), -90.0F, 90.0F);
-    localPath.close();
-    localCanvas.drawPath(localPath, this.d);
-    localPath = new Path();
-    localPath.moveTo(this.f, this.g + this.c - this.a);
-    localPath.lineTo(this.f, this.g + this.c);
-    localPath.lineTo(this.f + this.a, this.g + this.c);
-    i = this.f;
-    f1 = i;
-    j = this.g;
-    k = this.c;
-    f2 = j + k;
-    f3 = this.a;
-    localPath.arcTo(new RectF(f1, f2 - f3 * 2.0F, i + f3 * 2.0F, j + k), 90.0F, 90.0F);
-    localPath.close();
-    localCanvas.drawPath(localPath, this.d);
-    localPath = new Path();
-    localPath.moveTo(this.f + this.b - this.a, this.g + this.c);
-    localPath.lineTo(this.f + this.b, this.g + this.c);
-    localPath.lineTo(this.f + this.b, this.g + this.c - this.a);
-    i = this.f;
-    j = this.b;
-    f1 = i + j;
-    f2 = this.a;
-    k = this.g;
-    int m = this.c;
-    localPath.arcTo(new RectF(f1 - f2 * 2.0F, k + m - f2 * 2.0F, i + j, k + m), 0.0F, 90.0F);
-    localPath.close();
-    localCanvas.drawPath(localPath, this.d);
-    paramCanvas.drawBitmap(localBitmap, 0.0F, 0.0F, this.e);
-    localBitmap.recycle();
+    return this.a.getAllProviders();
+  }
+  
+  public String getBestProvider(Criteria paramCriteria, boolean paramBoolean)
+  {
+    return this.a.getBestProvider(paramCriteria, paramBoolean);
+  }
+  
+  public Location getLastKnownLocation(String paramString)
+  {
+    return this.a.getLastKnownLocation(paramString);
+  }
+  
+  public LocationProvider getProvider(String paramString)
+  {
+    return this.a.getProvider(paramString);
+  }
+  
+  public List<String> getProviders(Criteria paramCriteria, boolean paramBoolean)
+  {
+    return this.a.getProviders(paramCriteria, paramBoolean);
+  }
+  
+  public List<String> getProviders(boolean paramBoolean)
+  {
+    return this.a.getProviders(paramBoolean);
+  }
+  
+  public boolean isProviderEnabled(String paramString)
+  {
+    return this.a.isProviderEnabled(paramString);
+  }
+  
+  public void removeUpdates(PendingIntent paramPendingIntent)
+  {
+    this.a.removeUpdates(paramPendingIntent);
+  }
+  
+  public void removeUpdates(LocationListener paramLocationListener)
+  {
+    this.a.removeUpdates(paramLocationListener);
+  }
+  
+  public void requestLocationUpdates(long paramLong, float paramFloat, Criteria paramCriteria, PendingIntent paramPendingIntent)
+  {
+    this.a.requestLocationUpdates(paramLong, paramFloat, paramCriteria, paramPendingIntent);
+  }
+  
+  public void requestLocationUpdates(long paramLong, float paramFloat, Criteria paramCriteria, LocationListener paramLocationListener, Looper paramLooper)
+  {
+    this.a.requestLocationUpdates(paramLong, paramFloat, paramCriteria, paramLocationListener, paramLooper);
+  }
+  
+  public void requestLocationUpdates(String paramString, long paramLong, float paramFloat, PendingIntent paramPendingIntent)
+  {
+    this.a.requestLocationUpdates(paramString, paramLong, paramFloat, paramPendingIntent);
+  }
+  
+  public void requestLocationUpdates(String paramString, long paramLong, float paramFloat, LocationListener paramLocationListener)
+  {
+    this.a.requestLocationUpdates(paramString, paramLong, paramFloat, paramLocationListener);
+  }
+  
+  public void requestLocationUpdates(String paramString, long paramLong, float paramFloat, LocationListener paramLocationListener, Looper paramLooper)
+  {
+    this.a.requestLocationUpdates(paramString, paramLong, paramFloat, paramLocationListener, paramLooper);
+  }
+  
+  public void requestSingleUpdate(Criteria paramCriteria, PendingIntent paramPendingIntent)
+  {
+    this.a.requestSingleUpdate(paramCriteria, paramPendingIntent);
+  }
+  
+  public void requestSingleUpdate(Criteria paramCriteria, LocationListener paramLocationListener, Looper paramLooper)
+  {
+    this.a.requestSingleUpdate(paramCriteria, paramLocationListener, paramLooper);
+  }
+  
+  public void requestSingleUpdate(String paramString, PendingIntent paramPendingIntent)
+  {
+    this.a.requestSingleUpdate(paramString, paramPendingIntent);
+  }
+  
+  public void requestSingleUpdate(String paramString, LocationListener paramLocationListener, Looper paramLooper)
+  {
+    this.a.requestSingleUpdate(paramString, paramLocationListener, paramLooper);
   }
 }
 

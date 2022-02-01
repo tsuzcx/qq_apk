@@ -1,198 +1,142 @@
 package com.tencent.token;
 
-import com.tencent.token.core.bean.QQUser;
-import java.util.List;
-import java.util.concurrent.CountDownLatch;
-import java.util.concurrent.atomic.AtomicReference;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
 public final class ta
+  implements ajm
 {
-  static ta a;
-  private static boolean i = true;
-  public aae b = new aae();
-  public aai c = new aai();
-  public aaj d = new aaj();
-  public aap e = new aap();
-  public aak f = new aak();
-  public aao g = new aao();
-  public aan h = new aan();
+  ajk a = null;
+  private tb b = null;
+  private int c = 0;
+  private sv d = null;
   
-  private ta()
+  public ta(sv paramsv)
   {
-    aan localaan = this.h;
-    localaan.b = xb.a();
-    localaan.a();
+    this.d = paramsv;
+    this.b = new tb();
   }
   
-  public static ta a()
+  private static String a(sx paramsx)
   {
-    if (a == null)
+    if ((paramsx.c != null) && (paramsx.c.length() != 0)) {
+      return paramsx.c;
+    }
+    Object localObject = new StringBuilder("其它错误：");
+    ((StringBuilder)localObject).append(paramsx.b);
+    localObject = ((StringBuilder)localObject).toString();
+    int i = paramsx.b;
+    switch (i)
     {
-      ta localta = new ta();
-      a = localta;
-      return localta;
-    }
-    if (i) {
-      i = false;
-    }
-    return a;
-  }
-  
-  private wy b(sk paramsk, boolean paramBoolean, wy paramwy)
-  {
-    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.copyTypes(TypeTransformer.java:311)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.fixTypes(TypeTransformer.java:226)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:207)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
-  }
-  
-  public final int a(boolean paramBoolean)
-  {
-    return this.b.b(paramBoolean);
-  }
-  
-  public final sk a(int paramInt)
-  {
-    Object localObject = this.c;
-    if (paramInt >= 0)
-    {
-      if (paramInt >= ((aai)localObject).a()) {
-        return null;
-      }
-      localObject = ((aai)localObject).a;
-      if (localObject == null) {
-        return null;
-      }
-      return (sk)((List)localObject).get(paramInt);
-    }
-    return null;
-  }
-  
-  public final sk a(int paramInt, boolean paramBoolean)
-  {
-    Object localObject = this.b;
-    if (paramInt >= 0)
-    {
-      if (paramInt >= ((aae)localObject).b(paramBoolean)) {
-        return null;
-      }
-      localObject = ((aae)localObject).a(paramBoolean);
-      if (localObject == null) {
-        return null;
-      }
-      return (sk)((List)localObject).get(paramInt);
-    }
-    return null;
-  }
-  
-  public final wy a(sk paramsk, boolean paramBoolean, wy paramwy)
-  {
-    paramwy = b(paramsk, paramBoolean, paramwy);
-    if (paramwy.b()) {
-      paramsk.c = paramBoolean;
-    }
-    return paramwy;
-  }
-  
-  public final boolean a(JSONArray paramJSONArray)
-  {
-    return this.b.a(paramJSONArray);
-  }
-  
-  public final boolean a(JSONObject paramJSONObject)
-  {
-    return this.g.a(paramJSONObject);
-  }
-  
-  public final sk b(int paramInt)
-  {
-    Object localObject = this.d;
-    if (paramInt >= 0)
-    {
-      if (paramInt >= ((aaj)localObject).b()) {
-        return null;
-      }
-      localObject = ((aaj)localObject).a();
-      if (localObject == null) {
-        return null;
-      }
-      return (sk)((List)localObject).get(paramInt);
-    }
-    return null;
-  }
-  
-  public final boolean b()
-  {
-    aae localaae = this.b;
-    QQUser localQQUser = sz.a().k.b();
-    return (localQQUser != null) && (localaae.d == localQQUser.mUin) && (localaae.e);
-  }
-  
-  public final boolean b(JSONArray paramJSONArray)
-  {
-    return this.f.a(paramJSONArray);
-  }
-  
-  public final boolean c()
-  {
-    aai localaai = this.c;
-    return (sz.a().k.b() != null) && (localaai.c == sz.a().k.b().mUin) && (localaai.d);
-  }
-  
-  public final boolean c(JSONArray paramJSONArray)
-  {
-    return this.g.a(paramJSONArray);
-  }
-  
-  public final void d(JSONArray paramJSONArray)
-  {
-    Object localObject = null;
-    int j = 0;
-    int m = 0;
-    int k = 0;
-    while (j < paramJSONArray.length())
-    {
-      JSONObject localJSONObject = paramJSONArray.getJSONObject(j);
-      if (4 == localJSONObject.getInt("id"))
+    default: 
+      switch (i)
       {
-        sk localsk = new sk();
-        if (!localsk.a(localJSONObject)) {
-          xa.c("object item parse failed: ");
-        }
-        this.e.a(localsk);
-        m = 1;
+      default: 
+        localObject = new StringBuilder("其它错误：");
+        ((StringBuilder)localObject).append(paramsx.b);
+        xj.b(((StringBuilder)localObject).toString());
+        localObject = new StringBuilder("其它错误：");
+        ((StringBuilder)localObject).append(paramsx.b);
+        return ((StringBuilder)localObject).toString();
+      case 101: 
+        xj.b("如果客户端收到此错误，测等待一段时间重新尝试请求。");
+        return "如果客户端收到此错误，测等待一段时间重新尝试请求。";
       }
-      if (6 == localJSONObject.getInt("id"))
-      {
-        localObject = localJSONObject.getJSONArray("child");
-        if (this.d.a((JSONArray)localObject))
-        {
-          localObject = localJSONObject;
-          k = 1;
-        }
-        else
-        {
-          throw new JSONException("parse all services data failed");
-        }
-      }
-      j += 1;
+      xj.b("预留的错误码，如果客户端收到该错误码则无条件终止，并提示错误");
+      return "预留的错误码，如果客户端收到该错误码则无条件终止，并提示错误";
+    case 9: 
+      xj.b("已经到令牌的最大绑定个数");
+      return "已经到令牌的最大绑定个数";
+    case 8: 
+      xj.b("令牌序列号不存在");
+      return "令牌序列号不存在";
+    case 7: 
+      xj.b("客户端输入错误");
+      return "客户端输入错误";
+    case 6: 
+      xj.b("还没有密保手机");
+      return "还没有密保手机";
+    case 5: 
+      xj.b("密保手机不正确");
+      return "密保手机不正确";
+    case 4: 
+      xj.b("解除绑定时该号码还没有绑定qq");
+      return "解除绑定时该号码还没有绑定qq";
+    case 3: 
+      xj.b("该号码已经绑定令牌");
+      return "该号码已经绑定令牌";
+    case 2: 
+      xj.b("六位验证码验证错误");
+      return "六位验证码验证错误";
+    case 1: 
+      xj.b("短信没有到达");
+      return "短信没有到达";
     }
-    if ((m != 0) && (k != 0))
-    {
-      paramJSONArray = this.d;
-      paramJSONArray.d = true;
-      this.e.c = true;
-      paramJSONArray.e = false;
-      xb.a("game_protect", ((JSONObject)localObject).toString());
+    return localObject;
+  }
+  
+  public final void a()
+  {
+    this.d.c();
+  }
+  
+  public final void a(byte[] paramArrayOfByte)
+  {
+    int i;
+    if ((paramArrayOfByte != null) && (paramArrayOfByte.length >= 2) && (paramArrayOfByte[0] == 2) && (paramArrayOfByte[(paramArrayOfByte.length - 1)] == 3)) {
+      i = sz.a(paramArrayOfByte, 20);
+    } else {
+      i = -1;
+    }
+    if (i == -1) {
       return;
     }
-    throw new JSONException("parse all services data failed");
-  }
-  
-  public final boolean d()
-  {
-    aaj localaaj = this.d;
-    return (sz.a().k.b() != null) && (localaaj.c == sz.a().k.b().mUin) && (localaaj.d);
+    Object localObject = new sx();
+    switch (i)
+    {
+    case 103: 
+    case 104: 
+    default: 
+      return;
+    case 106: 
+      tb.a((sx)localObject, paramArrayOfByte);
+      if (((sx)localObject).b == 0)
+      {
+        th.a().h();
+        this.d.b();
+        return;
+      }
+      this.d.b(((sx)localObject).b, a((sx)localObject));
+      return;
+    case 105: 
+      tb.a((sx)localObject, paramArrayOfByte);
+      if (((sx)localObject).b == 0)
+      {
+        th.a().h();
+        this.d.a();
+        return;
+      }
+      this.d.a(((sx)localObject).b, a((sx)localObject));
+      return;
+    case 102: 
+      localObject = new sw();
+      tb.a((sx)localObject, paramArrayOfByte);
+      ((sw)localObject).a = sz.a(((sw)localObject).f, 0, 32);
+      if (((sw)localObject).b == 0)
+      {
+        this.d.b(((sw)localObject).a);
+        return;
+      }
+      this.d.c(a((sx)localObject));
+      return;
+    }
+    tb.a((sx)localObject, paramArrayOfByte);
+    if (((sx)localObject).b == 0)
+    {
+      paramArrayOfByte = new StringBuilder("服务器时间:");
+      paramArrayOfByte.append(((sx)localObject).d);
+      xj.b(paramArrayOfByte.toString());
+      this.d.a(((sx)localObject).d);
+      return;
+    }
+    this.d.a(a((sx)localObject));
   }
 }
 

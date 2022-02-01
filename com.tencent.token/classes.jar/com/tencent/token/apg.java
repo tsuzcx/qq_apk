@@ -1,22 +1,40 @@
 package com.tencent.token;
 
-final class apg
-  implements art
+import android.graphics.Canvas;
+import android.graphics.ColorFilter;
+import android.graphics.Matrix;
+import android.graphics.RectF;
+import java.util.Collections;
+
+public final class apg
+  extends apb
 {
-  apg(apf paramapf) {}
+  private final aqd g;
   
-  public final void a(boolean paramBoolean1, boolean paramBoolean2)
+  apg(auv paramauv, ape paramape)
   {
-    apf.a();
-    StringBuilder localStringBuilder = new StringBuilder("checkWifiApprovement() needWifiApprove: ");
-    localStringBuilder.append(paramBoolean1);
-    localStringBuilder.append(" receivedError");
-    localStringBuilder.append(paramBoolean2);
-    apf.a();
-    localStringBuilder = new StringBuilder("checkWifiApprovement() needWifiApprove: ");
-    localStringBuilder.append(paramBoolean1);
-    localStringBuilder.append(" receivedError");
-    localStringBuilder.append(paramBoolean2);
+    super(paramauv, paramape);
+    this.g = new aqd(paramauv, this, new aoz(paramape.c, paramape.a));
+    paramauv = this.g;
+    paramape = Collections.emptyList();
+    Collections.emptyList();
+    paramauv.a(paramape);
+  }
+  
+  public final void a(RectF paramRectF, Matrix paramMatrix)
+  {
+    super.a(paramRectF, paramMatrix);
+    this.g.a(paramRectF, this.a);
+  }
+  
+  public final void a(String paramString1, String paramString2, ColorFilter paramColorFilter)
+  {
+    this.g.a(paramString1, paramString2, paramColorFilter);
+  }
+  
+  final void b(Canvas paramCanvas, Matrix paramMatrix, int paramInt)
+  {
+    this.g.a(paramCanvas, paramMatrix, paramInt);
   }
 }
 

@@ -1,7 +1,7 @@
 package com.tencent.halley.scheduler.c;
 
-import com.tencent.token.li;
-import com.tencent.token.lj;
+import com.tencent.token.lp;
+import com.tencent.token.lq;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -21,10 +21,10 @@ public final class e
   private String f = "";
   private int g = 0;
   
-  public final void a(li paramli)
+  public final void a(lp paramlp)
   {
-    this.f = paramli.a(0, true);
-    this.g = paramli.a(this.g, 1, true);
+    this.f = paramlp.a(0, true);
+    this.g = paramlp.a(this.g, 1, true);
     Object localObject;
     if (h == null)
     {
@@ -32,21 +32,21 @@ public final class e
       localObject = new f();
       h.put("", localObject);
     }
-    this.a = ((Map)paramli.a(h, 2, true));
+    this.a = ((Map)paramlp.a(h, 2, true));
     if (i == null) {
       i = new g();
     }
-    this.b = ((g)paramli.a(i, 3, false));
+    this.b = ((g)paramlp.a(i, 3, false));
     if (j == null) {
       j = new c();
     }
-    this.c = ((c)paramli.a(j, 4, false));
+    this.c = ((c)paramlp.a(j, 4, false));
     if (k == null)
     {
       k = new HashMap();
       k.put("", "");
     }
-    this.d = ((Map)paramli.a(k, 5, false));
+    this.d = ((Map)paramlp.a(k, 5, false));
     if (l == null)
     {
       l = new HashMap();
@@ -54,29 +54,29 @@ public final class e
       ((byte[])localObject)[0] = 0;
       l.put("", localObject);
     }
-    this.e = ((Map)paramli.a(l, 6, false));
+    this.e = ((Map)paramlp.a(l, 6, false));
   }
   
-  public final void a(lj paramlj)
+  public final void a(lq paramlq)
   {
-    paramlj.a(this.f, 0);
-    paramlj.a(this.g, 1);
-    paramlj.a(this.a, 2);
+    paramlq.a(this.f, 0);
+    paramlq.a(this.g, 1);
+    paramlq.a(this.a, 2);
     Object localObject = this.b;
     if (localObject != null) {
-      paramlj.a((com.tencent.halley.common.b.c)localObject, 3);
+      paramlq.a((com.tencent.halley.common.b.c)localObject, 3);
     }
     localObject = this.c;
     if (localObject != null) {
-      paramlj.a((com.tencent.halley.common.b.c)localObject, 4);
+      paramlq.a((com.tencent.halley.common.b.c)localObject, 4);
     }
     localObject = this.d;
     if (localObject != null) {
-      paramlj.a((Map)localObject, 5);
+      paramlq.a((Map)localObject, 5);
     }
     localObject = this.e;
     if (localObject != null) {
-      paramlj.a((Map)localObject, 6);
+      paramlq.a((Map)localObject, 6);
     }
   }
 }

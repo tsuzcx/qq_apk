@@ -1,78 +1,94 @@
 package com.tencent.token;
 
-import java.lang.reflect.Field;
-import java.util.HashMap;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public final class tg
 {
-  private static tg b;
-  private HashMap<String, Class<? extends tj>> a = new HashMap();
+  private static tg a;
+  private String b = "/cn/mbtoken3/mbtoken3_asec_push_getconn";
   
-  private tg()
+  public static tg a()
   {
-    a(tf.class);
+    if (a == null) {
+      a = new tg();
+    }
+    return a;
   }
   
-  public static tj a(String paramString)
+  public final xh b()
   {
-    if (b == null) {
-      b = new tg();
-    }
-    return b.b(paramString);
-  }
-  
-  private void a(Class<?> paramClass)
-  {
-    paramClass = paramClass.getDeclaredFields();
-    if (paramClass == null) {
-      return;
-    }
-    int j = paramClass.length;
-    int i = 0;
-    while (i < j)
+    xh localxh = new xh();
+    Object localObject1 = new ajn();
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append(xf.e());
+    ((StringBuilder)localObject2).append(this.b);
+    localObject2 = ((StringBuilder)localObject2).toString();
+    Object localObject3 = ((ajn)localObject1).a((String)localObject2);
+    if (localObject3 == null)
     {
-      Object localObject2 = paramClass[i];
-      try
-      {
-        Object localObject1 = ((Field)localObject2).get(null);
-        if ((localObject1 instanceof String))
-        {
-          localObject1 = (String)localObject1;
-          localObject2 = (tl)((Field)localObject2).getAnnotation(tl.class);
-          if ((localObject1 != null) && (localObject2 != null))
-          {
-            localObject2 = ((tl)localObject2).a();
-            if (localObject2 == null) {
-              xa.c("protocol mapping definition in ProtocolConstant is error:".concat(String.valueOf(localObject1)));
-            } else {
-              this.a.put(localObject1, localObject2);
-            }
-          }
-        }
-      }
-      catch (Exception localException)
-      {
-        localException.printStackTrace();
-      }
-      i += 1;
+      localxh.a(((ajn)localObject1).a);
+      localObject1 = new StringBuilder("client request url: ");
+      ((StringBuilder)localObject1).append((String)localObject2);
+      ((StringBuilder)localObject1).append(" failed, reason: ");
+      ((StringBuilder)localObject1).append(localxh.a);
+      ((StringBuilder)localObject1).append(":");
+      ((StringBuilder)localObject1).append(localxh.b);
+      xj.c(((StringBuilder)localObject1).toString());
+      return localxh;
     }
-  }
-  
-  private tj b(String paramString)
-  {
-    paramString = (Class)this.a.get(paramString);
-    if (paramString != null) {
-      try
+    try
+    {
+      localObject1 = new JSONObject(new String((byte[])localObject3));
+      int i = ((JSONObject)localObject1).getInt("err");
+      if (i != 0)
       {
-        paramString = (tj)paramString.newInstance();
-        return paramString;
+        localObject2 = new StringBuilder("error");
+        ((StringBuilder)localObject2).append(((JSONObject)localObject1).toString());
+        xj.c(((StringBuilder)localObject2).toString());
+        localObject1 = ((JSONObject)localObject1).getString("info");
+        localxh.a(i, (String)localObject1, (String)localObject1);
+        return localxh;
       }
-      catch (Exception paramString)
+      int j = ((JSONObject)localObject1).getInt("retry_cnt");
+      int k = ((JSONObject)localObject1).getInt("retry_time");
+      int m = ((JSONObject)localObject1).getInt("hb_time");
+      localObject1 = ((JSONObject)localObject1).getJSONArray("conn");
+      localObject2 = new String[((JSONArray)localObject1).length()];
+      localObject3 = new int[((JSONArray)localObject1).length()];
+      i = 0;
+      while (i < ((JSONArray)localObject1).length())
       {
-        paramString.printStackTrace();
+        JSONObject localJSONObject = ((JSONArray)localObject1).getJSONObject(i);
+        localObject2[i] = localJSONObject.getString("ip");
+        localObject3[i] = localJSONObject.getInt("port");
+        i += 1;
       }
+      wv.a().a((String[])localObject2, (int[])localObject3, j, k * 1000, m * 1000);
+      localxh.a = 0;
+      return localxh;
     }
-    return null;
+    catch (Exception localException)
+    {
+      localObject2 = new StringBuilder("unknown err: ");
+      ((StringBuilder)localObject2).append(localException.toString());
+      xj.c(((StringBuilder)localObject2).toString());
+      localObject2 = new StringBuilder("JSONException:");
+      ((StringBuilder)localObject2).append(localException.toString());
+      localxh.a(10021, ((StringBuilder)localObject2).toString(), null);
+      return localxh;
+    }
+    catch (JSONException localJSONException)
+    {
+      localObject2 = new StringBuilder("parse json failed: ");
+      ((StringBuilder)localObject2).append(localJSONException.toString());
+      xj.c(((StringBuilder)localObject2).toString());
+      localObject2 = new StringBuilder("JSONException:");
+      ((StringBuilder)localObject2).append(localJSONException.toString());
+      localxh.a(10020, ((StringBuilder)localObject2).toString(), null);
+    }
+    return localxh;
   }
 }
 

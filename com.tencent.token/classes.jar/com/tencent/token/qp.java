@@ -1,32 +1,142 @@
 package com.tencent.token;
 
+import android.annotation.TargetApi;
+import android.app.Activity;
+import android.app.ActivityManager;
+import java.lang.ref.WeakReference;
+import java.util.Arrays;
+
 public final class qp
 {
-  public ase a;
+  private b a;
   
-  public final asg a(String paramString)
+  private void a()
   {
-    return this.a.a(paramString);
+    b localb = this.a;
+    if (localb != null) {
+      b.a(localb);
+    }
   }
   
-  public final ask a()
+  private static boolean a(int[] paramArrayOfInt)
   {
-    return this.a.c();
+    if (paramArrayOfInt != null)
+    {
+      if (paramArrayOfInt.length <= 0) {
+        return false;
+      }
+      int j = paramArrayOfInt.length;
+      int i = 0;
+      while (i < j)
+      {
+        int k = paramArrayOfInt[i];
+        if (qs.a.a().b(new int[] { k })[0] == 2) {
+          return false;
+        }
+        i += 1;
+      }
+      return true;
+    }
+    return false;
   }
   
-  public final ash b()
+  public final void a(int[] paramArrayOfInt, Activity paramActivity)
   {
-    return this.a.d();
-  }
-  
-  public final asj c()
-  {
-    return this.a.e();
+    if (!a(paramArrayOfInt)) {
+      return;
+    }
+    a();
+    this.a = new b(paramArrayOfInt, paramActivity, (byte)0);
+    qw.a.a().a().b(this.a, "manual-auto-back-thread");
   }
   
   public static final class a
   {
     private static final qp a = new qp((byte)0);
+  }
+  
+  static final class b
+    implements Runnable
+  {
+    private volatile boolean a = false;
+    private int[] b;
+    private WeakReference<Activity> c;
+    
+    private b(int[] paramArrayOfInt, Activity paramActivity)
+    {
+      this.b = paramArrayOfInt;
+      if (paramActivity != null) {
+        this.c = new WeakReference(paramActivity);
+      }
+    }
+    
+    @TargetApi(11)
+    public final void run()
+    {
+      new StringBuilder("manual-auto-back-thread start, thread id:").append(Thread.currentThread().getId());
+      apz.b();
+      long l = System.currentTimeMillis();
+      while ((!this.a) && (System.currentTimeMillis() - l < 60000L))
+      {
+        Object localObject = qs.a.a().a(this.b);
+        new StringBuilder("permissions:").append(Arrays.toString(this.b));
+        apz.c();
+        new StringBuilder("result:").append(Arrays.toString((int[])localObject));
+        apz.c();
+        int i;
+        if (localObject == null)
+        {
+          i = 0;
+        }
+        else
+        {
+          int j = localObject.length;
+          i = 0;
+          for (;;)
+          {
+            if (i >= j) {
+              break label139;
+            }
+            if (localObject[i] != 0) {
+              break;
+            }
+            i += 1;
+          }
+          label139:
+          i = 1;
+        }
+        if ((i != 0) && (!this.a))
+        {
+          apz.b();
+          localObject = this.c;
+          if (localObject != null)
+          {
+            localObject = (Activity)((WeakReference)localObject).get();
+            if (localObject != null)
+            {
+              ActivityManager localActivityManager = (ActivityManager)((Activity)localObject).getSystemService("activity");
+              if (localActivityManager != null) {
+                localActivityManager.moveTaskToFront(((Activity)localObject).getTaskId(), 0);
+              }
+              return;
+            }
+          }
+          apz.b();
+          break;
+        }
+        try
+        {
+          Thread.sleep(500L);
+        }
+        catch (Throwable localThrowable)
+        {
+          label225:
+          break label225;
+        }
+      }
+      new StringBuilder("manual-auto-back-thread stop, thread id:").append(Thread.currentThread().getId());
+      apz.b();
+    }
   }
 }
 

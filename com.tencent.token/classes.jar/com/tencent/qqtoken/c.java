@@ -1,5 +1,7 @@
 package com.tencent.qqtoken;
 
+import android.content.Context;
+
 public class c
 {
   public a r;
@@ -82,7 +84,7 @@ public class c
   
   public native String n();
   
-  public native void n(String paramString, long paramLong, int paramInt);
+  public native void n(Context paramContext, String paramString, long paramLong, int paramInt);
   
   long r()
   {

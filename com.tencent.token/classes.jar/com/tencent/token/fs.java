@@ -1,14 +1,23 @@
 package com.tencent.token;
 
+import android.content.res.ColorStateList;
+import android.graphics.PorterDuff.Mode;
+import android.graphics.drawable.Drawable;
 import android.os.Build.VERSION;
-import android.widget.EdgeEffect;
+import android.widget.CompoundButton;
+import java.lang.reflect.Field;
 
 public final class fs
 {
-  private static final b a = new b();
+  private static final c a = new c();
   
   static
   {
+    if (Build.VERSION.SDK_INT >= 23)
+    {
+      a = new b();
+      return;
+    }
     if (Build.VERSION.SDK_INT >= 21)
     {
       a = new a();
@@ -16,25 +25,92 @@ public final class fs
     }
   }
   
-  public static void a(EdgeEffect paramEdgeEffect, float paramFloat1, float paramFloat2)
+  public static Drawable a(CompoundButton paramCompoundButton)
   {
-    a.a(paramEdgeEffect, paramFloat1, paramFloat2);
+    return a.a(paramCompoundButton);
   }
   
-  static final class a
-    extends fs.b
+  public static void a(CompoundButton paramCompoundButton, ColorStateList paramColorStateList)
   {
-    public final void a(EdgeEffect paramEdgeEffect, float paramFloat1, float paramFloat2)
+    a.a(paramCompoundButton, paramColorStateList);
+  }
+  
+  public static void a(CompoundButton paramCompoundButton, PorterDuff.Mode paramMode)
+  {
+    a.a(paramCompoundButton, paramMode);
+  }
+  
+  static class a
+    extends fs.c
+  {
+    public final void a(CompoundButton paramCompoundButton, ColorStateList paramColorStateList)
     {
-      paramEdgeEffect.onPull(paramFloat1, paramFloat2);
+      paramCompoundButton.setButtonTintList(paramColorStateList);
+    }
+    
+    public final void a(CompoundButton paramCompoundButton, PorterDuff.Mode paramMode)
+    {
+      paramCompoundButton.setButtonTintMode(paramMode);
     }
   }
   
-  static class b
+  static final class b
+    extends fs.a
   {
-    public void a(EdgeEffect paramEdgeEffect, float paramFloat1, float paramFloat2)
+    public final Drawable a(CompoundButton paramCompoundButton)
     {
-      paramEdgeEffect.onPull(paramFloat1);
+      return paramCompoundButton.getButtonDrawable();
+    }
+  }
+  
+  static class c
+  {
+    private static Field a;
+    private static boolean b;
+    
+    public Drawable a(CompoundButton paramCompoundButton)
+    {
+      if (!b) {}
+      try
+      {
+        Field localField = CompoundButton.class.getDeclaredField("mButtonDrawable");
+        a = localField;
+        localField.setAccessible(true);
+        label23:
+        b = true;
+        localField = a;
+        if (localField != null) {}
+        try
+        {
+          paramCompoundButton = (Drawable)localField.get(paramCompoundButton);
+          return paramCompoundButton;
+        }
+        catch (IllegalAccessException paramCompoundButton)
+        {
+          label46:
+          break label46;
+        }
+        a = null;
+        return null;
+      }
+      catch (NoSuchFieldException localNoSuchFieldException)
+      {
+        break label23;
+      }
+    }
+    
+    public void a(CompoundButton paramCompoundButton, ColorStateList paramColorStateList)
+    {
+      if ((paramCompoundButton instanceof gc)) {
+        ((gc)paramCompoundButton).setSupportButtonTintList(paramColorStateList);
+      }
+    }
+    
+    public void a(CompoundButton paramCompoundButton, PorterDuff.Mode paramMode)
+    {
+      if ((paramCompoundButton instanceof gc)) {
+        ((gc)paramCompoundButton).setSupportButtonTintMode(paramMode);
+      }
     }
   }
 }

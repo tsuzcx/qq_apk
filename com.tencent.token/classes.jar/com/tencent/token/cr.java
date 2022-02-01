@@ -1,87 +1,33 @@
 package com.tencent.token;
 
-import android.content.Context;
-import android.content.Intent;
-import android.content.res.ColorStateList;
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.os.Build.VERSION;
-import android.os.Process;
-import android.util.TypedValue;
-import java.io.File;
+import android.app.RemoteInput;
+import android.app.RemoteInput.Builder;
+import android.os.Bundle;
+import java.util.Set;
 
-public class cr
+public final class cr
 {
-  private static final Object a = new Object();
-  private static TypedValue b;
+  final String a;
+  final CharSequence b;
+  final CharSequence[] c;
+  final boolean d;
+  final Bundle e;
+  final Set<String> f;
   
-  public static int a(Context paramContext, String paramString)
+  static RemoteInput[] a(cr[] paramArrayOfcr)
   {
-    if (paramString != null) {
-      return paramContext.checkPermission(paramString, Process.myPid(), Process.myUid());
+    if (paramArrayOfcr == null) {
+      return null;
     }
-    throw new IllegalArgumentException("permission is null");
-  }
-  
-  public static Drawable a(Context paramContext, int paramInt)
-  {
-    if (Build.VERSION.SDK_INT >= 21) {
-      return paramContext.getDrawable(paramInt);
-    }
-    if (Build.VERSION.SDK_INT >= 16) {
-      return paramContext.getResources().getDrawable(paramInt);
-    }
-    synchronized (a)
+    RemoteInput[] arrayOfRemoteInput = new RemoteInput[paramArrayOfcr.length];
+    int i = 0;
+    while (i < paramArrayOfcr.length)
     {
-      if (b == null) {
-        b = new TypedValue();
-      }
-      paramContext.getResources().getValue(paramInt, b, true);
-      paramInt = b.resourceId;
-      return paramContext.getResources().getDrawable(paramInt);
+      cr localcr = paramArrayOfcr[i];
+      arrayOfRemoteInput[i] = new RemoteInput.Builder(localcr.a).setLabel(localcr.b).setChoices(localcr.c).setAllowFreeFormInput(localcr.d).addExtras(localcr.e).build();
+      i += 1;
     }
-  }
-  
-  public static boolean a(Context paramContext, Intent[] paramArrayOfIntent)
-  {
-    if (Build.VERSION.SDK_INT >= 16) {
-      paramContext.startActivities(paramArrayOfIntent, null);
-    } else {
-      paramContext.startActivities(paramArrayOfIntent);
-    }
-    return true;
-  }
-  
-  public static File[] a(Context paramContext)
-  {
-    if (Build.VERSION.SDK_INT >= 19) {
-      return paramContext.getExternalFilesDirs(null);
-    }
-    return new File[] { paramContext.getExternalFilesDir(null) };
-  }
-  
-  public static ColorStateList b(Context paramContext, int paramInt)
-  {
-    if (Build.VERSION.SDK_INT >= 23) {
-      return paramContext.getColorStateList(paramInt);
-    }
-    return paramContext.getResources().getColorStateList(paramInt);
-  }
-  
-  public static File[] b(Context paramContext)
-  {
-    if (Build.VERSION.SDK_INT >= 19) {
-      return paramContext.getExternalCacheDirs();
-    }
-    return new File[] { paramContext.getExternalCacheDir() };
-  }
-  
-  public static int c(Context paramContext, int paramInt)
-  {
-    if (Build.VERSION.SDK_INT >= 23) {
-      return paramContext.getColor(paramInt);
-    }
-    return paramContext.getResources().getColor(paramInt);
+    return arrayOfRemoteInput;
   }
 }
 

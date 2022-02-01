@@ -1,38 +1,17 @@
 package com.tencent.token;
 
-import android.os.Bundle;
-
 public final class om
 {
-  public static final class a
-    extends og
+  public static byte[] a(String paramString1, String paramString2)
   {
-    public String c;
-    
-    public final int a()
-    {
-      return 21;
+    StringBuffer localStringBuffer = new StringBuffer();
+    if (paramString1 != null) {
+      localStringBuffer.append(paramString1);
     }
-    
-    public final void a(Bundle paramBundle)
-    {
-      super.b(paramBundle);
-      paramBundle.putString("_wxapi_nontax_pay_req_url", this.c);
-    }
-    
-    public final void b(Bundle paramBundle)
-    {
-      super.b(paramBundle);
-      this.c = paramBundle.getString("_wxapi_nontax_pay_req_url");
-    }
-    
-    public final boolean b()
-    {
-      if (pg.a(this.c)) {
-        return false;
-      }
-      return this.c.length() <= 10240;
-    }
+    localStringBuffer.append(621086720);
+    localStringBuffer.append(paramString2);
+    localStringBuffer.append("mMcShCsTr");
+    return pl.a(localStringBuffer.toString().substring(1, 9).getBytes()).getBytes();
   }
 }
 

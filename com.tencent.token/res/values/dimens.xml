@@ -122,6 +122,7 @@
     <dimen name="qqpim_text_size">16.0sp</dimen>
     <dimen name="realname_detail_margetop">80.0dip</dimen>
     <dimen name="scan_tip_margin_top">10.0dip</dimen>
+    <dimen name="text_size_10">10.0sp</dimen>
     <dimen name="text_size_11">11.0sp</dimen>
     <dimen name="text_size_12">12.0sp</dimen>
     <dimen name="text_size_13">13.0sp</dimen>

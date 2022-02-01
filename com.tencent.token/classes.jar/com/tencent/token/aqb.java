@@ -1,20 +1,23 @@
 package com.tencent.token;
 
-final class aqb
+public final class aqb
 {
-  public int a;
-  public ai b = null;
-  public int c = 0;
-  public boolean d = false;
-  public agy e = null;
-  public long f = -1L;
-  
-  public aqb(ai paramai, int paramInt, boolean paramBoolean, agy paramagy)
+  public static abstract class a
   {
-    this.c = paramInt;
-    this.b = paramai;
-    this.d = paramBoolean;
-    this.e = paramagy;
+    public abstract void a();
+    
+    public abstract void a(int paramInt1, int paramInt2);
+  }
+  
+  public static abstract class b {}
+  
+  public static final class c
+  {
+    public int a = -1;
+    public int b = 0;
+    public long c = -1L;
+    public String d = null;
+    public String e;
   }
 }
 

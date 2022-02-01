@@ -1,84 +1,114 @@
 package com.tencent.token;
 
 import android.content.Context;
+import android.os.Handler;
+import android.os.Message;
 import com.tencent.token.global.RqdApplication;
-import java.net.URLEncoder;
-import oicq.wlogin_sdk.request.WtloginHelper;
+import java.util.HashMap;
 import org.json.JSONObject;
 
 public final class uf
-  extends tj
+  extends tr
 {
+  private String d;
+  private String e;
+  private long f;
+  private int g;
+  private int h;
+  private sj i;
+  private int j;
+  
   public final String a()
   {
-    try
-    {
-      JSONObject localJSONObject = new JSONObject();
-      int i = sa.b + 1;
-      sa.b = i;
-      localJSONObject.put("seq_id", i);
-      localObject = sm.b();
-      localJSONObject.put("rmd_ver", ((sm)localObject).g);
-      localJSONObject.put("rmd_times", ((sm)localObject).h);
-      localJSONObject.put("rmd_last_time", ((sm)localObject).i);
-      localJSONObject.put("config_ver", ta.a().h.b);
-      localObject = RqdApplication.l();
-      if (localObject != null) {
-        localJSONObject.put("sec_sig", URLEncoder.encode((String)localObject));
-      }
-      localJSONObject.put("channel_id", aac.k());
-      localJSONObject.put("wtsdk_guid", aac.a(ry.a(RqdApplication.n()).a.GetGuid()));
-      localJSONObject.put("device_name", URLEncoder.encode(aad.x()));
-      localJSONObject.put("release_tag", ww.a);
-      aac.b(localJSONObject.toString().getBytes());
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-      Object localObject = new StringBuilder("JSONException:");
-      ((StringBuilder)localObject).append(localException.getMessage());
-      xa.c(((StringBuilder)localObject).toString());
-    }
-    rz.a();
+    sh.a();
     this.a.a(104, null, null);
     return null;
   }
   
-  public final void a(aaq paramaaq) {}
+  public final void a(abc paramabc)
+  {
+    this.f = ((Long)paramabc.c.get("param.realuin")).longValue();
+    this.g = ((Integer)paramabc.c.get("param.bind.type")).intValue();
+    this.d = ((String)paramabc.c.get("param.bind.mobile"));
+    this.e = ((String)paramabc.c.get("param.bind.areacode"));
+  }
   
   public final void a(JSONObject paramJSONObject)
   {
-    int i = paramJSONObject.getInt("err");
-    Object localObject;
-    if (i != 0)
+    int k = paramJSONObject.getInt("err");
+    if (k != 0)
     {
       paramJSONObject = paramJSONObject.getString("info");
       localObject = this.a;
       StringBuilder localStringBuilder = new StringBuilder("server errcode=");
-      localStringBuilder.append(i);
+      localStringBuilder.append(k);
       localStringBuilder.append(":");
       localStringBuilder.append(paramJSONObject);
-      ((wy)localObject).a(i, localStringBuilder.toString(), paramJSONObject);
+      ((xh)localObject).a(k, localStringBuilder.toString(), paramJSONObject);
       return;
     }
-    paramJSONObject = aac.d(paramJSONObject.getString("data"));
-    if (paramJSONObject != null)
+    Object localObject = aao.d(paramJSONObject.getString("data"));
+    if (localObject != null)
     {
-      paramJSONObject = new JSONObject(new String(paramJSONObject));
-      xa.c(paramJSONObject.toString());
-      if (paramJSONObject.has("new_config"))
+      localObject = new JSONObject(new String((byte[])localObject));
+      k = ((JSONObject)localObject).getInt("seq_id");
+      if (k != this.j)
       {
-        localObject = paramJSONObject.getJSONObject("new_config");
-        ta.a().h.a((JSONObject)localObject);
+        this.a.a(10030, null, null);
+        paramJSONObject = new StringBuilder("parseJSON error seq is wrong seq=");
+        paramJSONObject.append(k);
+        paramJSONObject.append(",right = ");
+        si.a();
+        paramJSONObject.append(si.b());
+        xj.c(paramJSONObject.toString());
+        return;
       }
-      if (paramJSONObject.has("update")) {
-        sm.b().a(paramJSONObject.optJSONObject("update"));
+      this.h = ((JSONObject)localObject).getInt("bind_mobile_succ");
+      if (1 != this.h) {
+        try
+        {
+          this.a.a(paramJSONObject.getString("info"));
+        }
+        catch (Exception paramJSONObject)
+        {
+          paramJSONObject.printStackTrace();
+        }
+      }
+      long l = ((JSONObject)localObject).getLong("server_time");
+      sj.b();
+      sj.a(l);
+      if (((JSONObject)localObject).getInt("seed_available") == 1)
+      {
+        paramJSONObject = aao.e(((JSONObject)localObject).getString("seed"));
+        if (paramJSONObject != null)
+        {
+          this.i.c();
+          this.i.a(paramJSONObject);
+          sj.b().a.a();
+        }
+      }
+      paramJSONObject = th.a().d(this.f);
+      if (paramJSONObject != null) {
+        th.a().a(paramJSONObject);
       }
       this.a.a = 0;
       return;
     }
-    xa.c("parseJSON error decodeData=".concat(String.valueOf(paramJSONObject)));
-    a(10022, RqdApplication.n().getString(2131493068));
+    xj.c("parseJSON error decodeData=".concat(String.valueOf(localObject)));
+    a(10022, RqdApplication.p().getString(2131493068));
+  }
+  
+  public final void b()
+  {
+    if ((!this.b.e) && (this.b.d != null))
+    {
+      Message localMessage = this.b.d.obtainMessage(this.b.f);
+      localMessage.arg1 = 0;
+      localMessage.obj = this.a;
+      localMessage.arg2 = this.h;
+      localMessage.sendToTarget();
+      this.b.e = true;
+    }
   }
 }
 

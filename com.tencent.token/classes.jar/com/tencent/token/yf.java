@@ -1,352 +1,243 @@
 package com.tencent.token;
 
-import android.content.Intent;
+import android.content.Context;
 import android.content.res.Resources;
-import android.text.Html;
-import android.view.LayoutInflater;
-import android.view.MotionEvent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.Paint.Align;
+import android.graphics.Paint.Style;
+import android.graphics.Rect;
+import android.graphics.RectF;
+import android.os.Handler;
+import android.os.Message;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.View.OnTouchListener;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.CheckBox;
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.view.animation.LinearInterpolator;
 import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.token.core.bean.SafeMsgItem;
-import com.tencent.token.ui.OpMsgDisplayActivity;
-import com.tencent.token.ui.OpreateMsgActivity;
-import java.util.Iterator;
-import java.util.List;
+import java.util.Random;
 
 public final class yf
-  extends BaseAdapter
+  extends View
 {
-  View.OnClickListener a = null;
-  aam b;
-  int c;
-  int d;
-  int e;
-  int f;
-  int g;
-  public View h = null;
-  public View i;
-  private OpreateMsgActivity j = null;
-  private LayoutInflater k = null;
-  private int l = 1;
-  private View.OnTouchListener m = new View.OnTouchListener()
+  public static int a = 40;
+  public static int b = 70;
+  public static int c = 86;
+  public static int d = 100;
+  private static float w = 15.0F;
+  private Paint A;
+  private Paint B;
+  private float C;
+  private Context D;
+  private float E;
+  private float F;
+  private float G = 0.0F;
+  private float H = 0.0F;
+  private Animation I;
+  private Animation J;
+  private LinearInterpolator K = new LinearInterpolator();
+  private RectF L = new RectF();
+  private Rect M = new Rect();
+  private Random N = new Random();
+  private Handler O = new Handler()
   {
-    public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
+    public final void handleMessage(Message paramAnonymousMessage)
     {
-      TextView localTextView1 = (TextView)paramAnonymousView.findViewById(2131166076);
-      TextView localTextView2 = (TextView)paramAnonymousView.findViewById(2131166075);
-      TextView localTextView3 = (TextView)paramAnonymousView.findViewById(2131165758);
-      SafeMsgItem localSafeMsgItem = (SafeMsgItem)paramAnonymousView.getTag();
-      int i;
-      if ((localSafeMsgItem.mFlag & 0x80) == 128) {
-        i = 1;
-      } else {
-        i = 0;
+      if (paramAnonymousMessage.what != 0) {
+        return;
       }
-      switch (paramAnonymousMotionEvent.getAction())
-      {
-      default: 
-        return false;
-      case 2: 
-        if (paramAnonymousView.isPressed())
-        {
-          localTextView1.setTextColor(yf.this.e);
-          localTextView2.setTextColor(yf.this.e);
-          localTextView3.setTextColor(yf.this.e);
-          return false;
-        }
-      case 1: 
-      case 3: 
-        if ((localSafeMsgItem != null) && (!localSafeMsgItem.mIsRead))
-        {
-          if (i != 0) {
-            localTextView1.setTextColor(yf.this.g);
-          } else {
-            localTextView1.setTextColor(yf.this.c);
-          }
-          localTextView3.setTextColor(yf.this.c);
-          localTextView2.setTextColor(yf.this.d);
-          return false;
-        }
-        localTextView1.setTextColor(yf.this.f);
-        localTextView3.setTextColor(yf.this.f);
-        localTextView2.setTextColor(yf.this.f);
-        return false;
-      }
-      localTextView1.setTextColor(yf.this.e);
-      localTextView2.setTextColor(yf.this.e);
-      localTextView3.setTextColor(yf.this.e);
-      return false;
+      postDelayed(yf.a(yf.this), 50L);
     }
   };
-  
-  public yf(OpreateMsgActivity paramOpreateMsgActivity)
+  public float e;
+  public float f;
+  public float g;
+  public float h;
+  public float i;
+  public float j;
+  public float k;
+  public float l;
+  public float m;
+  public float n;
+  public float o;
+  public int p = 0;
+  public ImageView q;
+  public ImageView r;
+  public boolean s = false;
+  public int t = 0;
+  public int u = 0;
+  public Runnable v = new Runnable()
   {
-    this.j = paramOpreateMsgActivity;
-    this.k = LayoutInflater.from(paramOpreateMsgActivity);
-    this.b = td.a().f;
-    this.c = this.j.getResources().getColor(2130968803);
-    this.d = this.j.getResources().getColor(2130968803);
-    this.e = this.j.getResources().getColor(2130968665);
-    this.f = this.j.getResources().getColor(2130968662);
-    this.g = this.j.getResources().getColor(2130968785);
-  }
-  
-  public final void a()
-  {
-    this.i.findViewById(2131165750).setVisibility(8);
-  }
-  
-  public final void a(String paramString)
-  {
-    TextView localTextView = (TextView)this.h.findViewById(2131166094);
-    if ((paramString != null) && (paramString.length() > 0)) {
-      localTextView.setText(paramString);
-    } else {
-      localTextView.setText(2131493415);
-    }
-    localTextView.setVisibility(0);
-    this.h.findViewById(2131165599).setVisibility(0);
-  }
-  
-  public final void a(boolean paramBoolean)
-  {
-    int i1 = this.b.a(this.l * 15);
-    int n = i1;
-    if (i1 <= 0) {
-      n = this.b.a(this.l * 15);
-    }
-    if (n <= 0)
+    public final void run()
     {
-      a(null);
+      yf.this.postInvalidate();
+      yf.b(yf.this).postDelayed(yf.a(yf.this), 50L);
+    }
+  };
+  private final float x = 15.0F;
+  private final int y = 0;
+  private Paint z;
+  
+  public yf(Context paramContext, ImageView paramImageView1, ImageView paramImageView2)
+  {
+    super(paramContext);
+    this.D = paramContext;
+    this.q = paramImageView1;
+    this.r = paramImageView2;
+    this.z = new Paint();
+    this.z.setColor(this.D.getResources().getColor(2130968658));
+    this.z.setAntiAlias(true);
+    this.z.setStrokeWidth(3.0F);
+    this.z.setStyle(Paint.Style.STROKE);
+    this.A = new Paint();
+    this.A.setColor(this.D.getResources().getColor(2130968658));
+    this.A.setAntiAlias(true);
+    this.A.setStrokeWidth(3.0F);
+    this.A.setStyle(Paint.Style.STROKE);
+    this.B = new Paint();
+    this.B.setColor(this.D.getResources().getColor(2130968658));
+    this.B.setAntiAlias(true);
+    this.B.setStrokeWidth(1.0F);
+    this.B.setStyle(Paint.Style.FILL);
+    this.C = (BitmapFactory.decodeResource(getResources(), 2131099792).getWidth() / 2);
+    this.I = AnimationUtils.loadAnimation(this.D, 2130771982);
+    this.J = AnimationUtils.loadAnimation(this.D, 2130771981);
+  }
+  
+  protected final void onDraw(Canvas paramCanvas)
+  {
+    super.onDraw(paramCanvas);
+    if (aao.a())
+    {
+      this.t += 3;
     }
     else
     {
-      this.h.findViewById(2131166094).setVisibility(8);
-      this.h.findViewById(2131165599).setVisibility(8);
-      if (n >= this.l * 15)
-      {
-        this.i.findViewById(2131165750).setVisibility(0);
-        break label107;
+      this.u += 1;
+      if (this.u % 4 == 0) {
+        this.t += 1;
       }
     }
-    a();
-    label107:
-    this.j.finishRefresh(paramBoolean);
-    notifyDataSetChanged();
-    this.j.checkTimeZoneFlag();
-  }
-  
-  public final boolean areAllItemsEnabled()
-  {
-    return true;
-  }
-  
-  public final int getCount()
-  {
-    int n = this.b.e();
-    int i1 = this.l;
-    if (n >= i1 * 15) {
-      return i1 * 15;
+    int i1 = this.t;
+    int i2 = c;
+    if (i1 > i2) {
+      this.t = i2;
     }
-    return this.b.e();
-  }
-  
-  public final Object getItem(int paramInt)
-  {
-    return this.b.b(paramInt);
-  }
-  
-  public final long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public final int getItemViewType(int paramInt)
-  {
-    return 1;
-  }
-  
-  public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    View localView = paramView;
-    if (paramView == null) {
-      localView = this.k.inflate(2131296379, paramViewGroup, false);
-    }
-    paramViewGroup = (SafeMsgItem)getItem(paramInt);
-    if (paramViewGroup != null)
+    i1 = this.t;
+    if (this.p < i1)
     {
-      localView.setOnClickListener(new c(paramViewGroup, paramInt));
-      localView.setOnTouchListener(this.m);
-      TextView localTextView1 = (TextView)localView.findViewById(2131166076);
-      TextView localTextView2 = (TextView)localView.findViewById(2131166075);
-      paramView = (TextView)localView.findViewById(2131165758);
-      CheckBox localCheckBox = (CheckBox)localView.findViewById(2131165365);
-      localCheckBox.setOnCheckedChangeListener(new a(paramViewGroup));
-      ImageView localImageView = (ImageView)localView.findViewById(2131165285);
-      Object localObject = (ImageView)localView.findViewById(2131165754);
-      localView.setTag(paramViewGroup);
-      if (paramViewGroup.mIsRead)
-      {
-        paramView.setTextColor(this.f);
-        localTextView1.setTextColor(this.f);
-        localTextView2.setTextColor(this.f);
-        localView.setBackgroundResource(2131099935);
-        ((ImageView)localObject).setVisibility(4);
+      i2 = this.N.nextInt(5);
+      this.p += i2 + 1;
+      if (this.p > i1) {
+        this.p = i1;
       }
-      else
-      {
-        paramView.setTextColor(this.c);
-        localTextView2.setTextColor(this.d);
-        ((ImageView)localObject).setVisibility(0);
-      }
-      boolean bool;
-      if ((paramViewGroup.mFlag & 0x80) == 128) {
-        bool = true;
-      } else {
-        bool = false;
-      }
-      if (bool)
-      {
-        ((ImageView)localObject).setImageResource(2131099889);
-        localView.setBackgroundResource(2131099978);
-        localTextView1.setTextColor(this.g);
-      }
-      else
-      {
-        ((ImageView)localObject).setImageResource(2131099892);
-        localView.setBackgroundResource(2131099977);
-        localTextView1.setTextColor(this.c);
-      }
-      localObject = new StringBuilder("opreate msg exp: ");
-      ((StringBuilder)localObject).append(bool);
-      ((StringBuilder)localObject).append(", flag=");
-      ((StringBuilder)localObject).append(paramViewGroup.mFlag);
-      xa.c(((StringBuilder)localObject).toString());
-      if (this.j.isListEdit())
-      {
-        localCheckBox.setVisibility(0);
-        localImageView.setVisibility(8);
-        paramView.setVisibility(8);
-      }
-      else
-      {
-        paramViewGroup.mIsChecked = false;
-        localCheckBox.setVisibility(8);
-        localImageView.setVisibility(0);
-        paramView.setVisibility(0);
-      }
-      localCheckBox.setChecked(paramViewGroup.mIsChecked);
-      if (paramViewGroup.mTitle != null) {
-        localTextView1.setText(Html.fromHtml(paramViewGroup.mTitle));
-      }
-      if (paramViewGroup.mContent != null) {
-        localTextView2.setText(Html.fromHtml(paramViewGroup.mContent));
-      }
-      long l1 = paramViewGroup.mTime * 1000L;
-      paramViewGroup = new StringBuilder();
-      paramViewGroup.append(aac.a(l1).replace("-", this.j.getString(2131493391)));
-      paramViewGroup.append(this.j.getString(2131493390));
-      paramViewGroup.append(" ");
-      paramViewGroup.append(aac.d(l1));
-      paramView.setText(paramViewGroup.toString());
     }
-    return localView;
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(this.p);
+    ((StringBuilder)localObject).append("%");
+    localObject = ((StringBuilder)localObject).toString();
+    this.B.setTextAlign(Paint.Align.CENTER);
+    this.B.setTextSize(45.0F);
+    this.B.getTextBounds((String)localObject, 0, ((String)localObject).length(), this.M);
+    i1 = this.M.bottom;
+    i2 = this.M.top;
+    paramCanvas.drawText((String)localObject, this.E, this.F + (i1 - i2) / 2, this.B);
+    float f1 = this.i;
+    float f2 = this.e;
+    float f4 = f2 / 2.0F;
+    float f3 = this.C;
+    if (f1 > f4 + f3)
+    {
+      f4 = w;
+      this.i = (f1 - f4);
+      this.j += f4;
+      if (this.i < f2 / 2.0F + f3) {
+        this.i = (f2 / 2.0F + f3);
+      }
+      f1 = this.j;
+      f2 = this.e;
+      f3 = f2 / 2.0F;
+      f4 = this.C;
+      if (f1 > f3 - f4) {
+        this.j = (f2 / 2.0F - f4);
+      }
+      f1 = this.e;
+      f2 = this.f;
+      paramCanvas.drawLine(f1, f2 / 2.0F, this.i, f2 / 2.0F, this.A);
+      f1 = this.f;
+      paramCanvas.drawLine(0.0F, f1 / 2.0F, this.j, f1 / 2.0F, this.z);
+      return;
+    }
+    f3 = this.f;
+    paramCanvas.drawLine(f2, f3 / 2.0F, f1, f3 / 2.0F, this.A);
+    f1 = this.f;
+    paramCanvas.drawLine(0.0F, f1 / 2.0F, this.j, f1 / 2.0F, this.z);
+    f1 = this.o;
+    if (f1 > -90.0F)
+    {
+      this.o = (f1 - 15.0F);
+      this.n -= 15.0F;
+      if (this.o < -90.0F)
+      {
+        this.o = -90.0F;
+        this.n = -90.0F;
+      }
+    }
+    else
+    {
+      this.q.setVisibility(0);
+      this.r.setVisibility(0);
+      this.o -= 15.0F;
+      this.n -= 15.0F;
+      if (this.o < -180.0F)
+      {
+        this.o = -180.0F;
+        this.n = -180.0F;
+      }
+      if (!this.s)
+      {
+        this.r.setVisibility(0);
+        this.q.setVisibility(0);
+        this.I.setInterpolator(this.K);
+        this.q.startAnimation(this.I);
+        this.J.setInterpolator(this.K);
+        this.r.startAnimation(this.J);
+        this.s = true;
+      }
+    }
+    paramCanvas.drawArc(this.L, this.m, this.o, false, this.A);
+    paramCanvas.drawArc(this.L, this.l, this.n, false, this.z);
   }
   
-  public final int getViewTypeCount()
+  protected final void onMeasure(int paramInt1, int paramInt2)
   {
-    return 1;
-  }
-  
-  final class a
-    implements CompoundButton.OnCheckedChangeListener
-  {
-    SafeMsgItem a;
-    
-    public a(SafeMsgItem paramSafeMsgItem)
-    {
-      this.a = paramSafeMsgItem;
-    }
-    
-    public final void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
-    {
-      int i = 0;
-      if (paramBoolean)
-      {
-        this.a.mIsChecked = true;
-        paramCompoundButton = yf.this.b.b.iterator();
-        while (paramCompoundButton.hasNext()) {
-          if (!((SafeMsgItem)paramCompoundButton.next()).mIsChecked) {
-            break label59;
-          }
-        }
-        i = 1;
-        label59:
-        if (i != 0) {
-          yf.b(yf.this).setSelectState(true);
-        }
-      }
-      else
-      {
-        this.a.mIsChecked = false;
-        yf.b(yf.this).setSelectState(false);
-      }
-    }
-  }
-  
-  final class b
-    implements Runnable
-  {
-    SafeMsgItem a = null;
-    
-    public b(SafeMsgItem paramSafeMsgItem)
-    {
-      this.a = paramSafeMsgItem;
-    }
-    
-    public final void run()
-    {
-      aam localaam = yf.this.b;
-      SafeMsgItem localSafeMsgItem = this.a;
-      localSafeMsgItem.mIsRead = true;
-      localaam.a.d(localSafeMsgItem.mId);
-    }
-  }
-  
-  final class c
-    implements View.OnClickListener
-  {
-    SafeMsgItem a = null;
-    int b;
-    
-    public c(SafeMsgItem paramSafeMsgItem, int paramInt)
-    {
-      this.a = paramSafeMsgItem;
-      this.b = paramInt;
-    }
-    
-    public final void onClick(View paramView)
-    {
-      if (yf.b(yf.this).isListEdit()) {
-        return;
-      }
-      Intent localIntent = new Intent(yf.b(yf.this), OpMsgDisplayActivity.class);
-      localIntent.putExtra("position", this.b);
-      localIntent.putExtra("type", 2);
-      localIntent.putExtra("abnormmsg", this.a.a());
-      yf.b(yf.this).startActivity(localIntent);
-      if (!this.a.mIsRead) {
-        paramView.postDelayed(new yf.b(yf.this, this.a), 5L);
-      }
-    }
+    super.onMeasure(paramInt1, paramInt2);
+    this.f = getMeasuredHeight();
+    this.e = getMeasuredWidth();
+    float f1 = this.e;
+    this.E = (f1 / 2.0F);
+    float f2 = this.f;
+    this.F = (f2 / 2.0F);
+    this.j = 0.0F;
+    this.g = f1;
+    this.i = f1;
+    this.h = (f2 / 2.0F);
+    this.k = (f2 / 2.0F);
+    this.m = 0.0F;
+    this.l = 180.0F;
+    this.n = 0.0F;
+    this.o = 0.0F;
+    RectF localRectF = this.L;
+    f1 = this.E;
+    f2 = this.C;
+    localRectF.left = (f1 - f2);
+    float f3 = this.F;
+    localRectF.top = (f3 - f2);
+    localRectF.right = (f1 + f2);
+    localRectF.bottom = (f3 + f2);
+    w = (f1 - f2) / 6.0F;
   }
 }
 

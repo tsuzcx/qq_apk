@@ -1,16 +1,31 @@
 package com.tencent.token;
 
-import android.widget.ListView;
+import android.content.Context;
 
 public abstract interface hw
 {
-  public abstract void b();
+  public abstract void a(Context paramContext, hp paramhp);
   
-  public abstract void c();
+  public abstract void a(hp paramhp, boolean paramBoolean);
   
-  public abstract boolean d();
+  public abstract void a(a parama);
   
-  public abstract ListView e();
+  public abstract boolean a();
+  
+  public abstract boolean a(ic paramic);
+  
+  public abstract void b(boolean paramBoolean);
+  
+  public abstract boolean b(hr paramhr);
+  
+  public abstract boolean c(hr paramhr);
+  
+  public static abstract interface a
+  {
+    public abstract void a(hp paramhp, boolean paramBoolean);
+    
+    public abstract boolean a(hp paramhp);
+  }
 }
 
 

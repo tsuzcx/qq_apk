@@ -1,11 +1,10 @@
 package com.tencent.token;
 
-import java.util.HashMap;
-import java.util.Map;
-
-public final class ba
+@Deprecated
+public abstract interface ba
+  extends ay
 {
-  private Map<String, Integer> a = new HashMap();
+  public abstract az a();
 }
 
 

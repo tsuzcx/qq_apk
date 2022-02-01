@@ -4,7 +4,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Handler;
-import com.tencent.token.aoy;
+import com.tencent.token.aqv;
 
 public final class b
   extends BroadcastReceiver
@@ -12,7 +12,7 @@ public final class b
   public String a = null;
   public Runnable b = null;
   
-  public b(aoy paramaoy) {}
+  public b(aqv paramaqv) {}
   
   public final void onReceive(Context paramContext, Intent paramIntent)
   {
@@ -25,7 +25,7 @@ public final class b
       if (this.b == null) {
         return;
       }
-      aoy.a(this.c).post(this.b);
+      aqv.a(this.c).post(this.b);
       this.c.a(paramContext);
       return;
     }

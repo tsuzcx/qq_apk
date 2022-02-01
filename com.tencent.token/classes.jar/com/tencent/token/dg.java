@@ -1,213 +1,130 @@
 package com.tencent.token;
 
-import android.content.res.ColorStateList;
+import android.content.Context;
 import android.content.res.Resources;
-import android.content.res.Resources.Theme;
-import android.graphics.PorterDuff.Mode;
-import android.graphics.drawable.Drawable;
-import android.os.Build.VERSION;
-import android.util.AttributeSet;
+import android.graphics.Typeface;
+import android.net.Uri;
+import java.lang.reflect.Array;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import org.xmlpull.v1.XmlPullParser;
+import java.nio.ByteBuffer;
+import java.util.List;
 
-public final class dg
+final class dg
+  extends di
 {
-  private static Method a;
-  private static boolean b;
-  private static Method c;
-  private static boolean d;
+  private static final Class a;
+  private static final Constructor b;
+  private static final Method c;
+  private static final Method d;
   
-  public static void a(Drawable paramDrawable, float paramFloat1, float paramFloat2)
+  static
   {
-    if (Build.VERSION.SDK_INT >= 21) {
-      paramDrawable.setHotspot(paramFloat1, paramFloat2);
-    }
-  }
-  
-  public static void a(Drawable paramDrawable, int paramInt)
-  {
-    if (Build.VERSION.SDK_INT >= 21)
-    {
-      paramDrawable.setTint(paramInt);
-      return;
-    }
-    if ((paramDrawable instanceof dh)) {
-      ((dh)paramDrawable).setTint(paramInt);
-    }
-  }
-  
-  public static void a(Drawable paramDrawable, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    if (Build.VERSION.SDK_INT >= 21) {
-      paramDrawable.setHotspotBounds(paramInt1, paramInt2, paramInt3, paramInt4);
-    }
-  }
-  
-  public static void a(Drawable paramDrawable, ColorStateList paramColorStateList)
-  {
-    if (Build.VERSION.SDK_INT >= 21)
-    {
-      paramDrawable.setTintList(paramColorStateList);
-      return;
-    }
-    if ((paramDrawable instanceof dh)) {
-      ((dh)paramDrawable).setTintList(paramColorStateList);
-    }
-  }
-  
-  public static void a(Drawable paramDrawable, Resources.Theme paramTheme)
-  {
-    if (Build.VERSION.SDK_INT >= 21) {
-      paramDrawable.applyTheme(paramTheme);
-    }
-  }
-  
-  public static void a(Drawable paramDrawable, Resources paramResources, XmlPullParser paramXmlPullParser, AttributeSet paramAttributeSet, Resources.Theme paramTheme)
-  {
-    if (Build.VERSION.SDK_INT >= 21)
-    {
-      paramDrawable.inflate(paramResources, paramXmlPullParser, paramAttributeSet, paramTheme);
-      return;
-    }
-    paramDrawable.inflate(paramResources, paramXmlPullParser, paramAttributeSet);
-  }
-  
-  public static void a(Drawable paramDrawable, PorterDuff.Mode paramMode)
-  {
-    if (Build.VERSION.SDK_INT >= 21)
-    {
-      paramDrawable.setTintMode(paramMode);
-      return;
-    }
-    if ((paramDrawable instanceof dh)) {
-      ((dh)paramDrawable).setTintMode(paramMode);
-    }
-  }
-  
-  public static void a(Drawable paramDrawable, boolean paramBoolean)
-  {
-    if (Build.VERSION.SDK_INT >= 19) {
-      paramDrawable.setAutoMirrored(paramBoolean);
-    }
-  }
-  
-  public static boolean a(Drawable paramDrawable)
-  {
-    if (Build.VERSION.SDK_INT >= 19) {
-      return paramDrawable.isAutoMirrored();
-    }
-    return false;
-  }
-  
-  public static int b(Drawable paramDrawable)
-  {
-    if (Build.VERSION.SDK_INT >= 19) {
-      return paramDrawable.getAlpha();
-    }
-    return 0;
-  }
-  
-  public static boolean b(Drawable paramDrawable, int paramInt)
-  {
-    if (Build.VERSION.SDK_INT >= 23) {
-      return paramDrawable.setLayoutDirection(paramInt);
-    }
-    if ((Build.VERSION.SDK_INT < 17) || (!b)) {}
+    Object localObject1 = null;
     try
     {
-      Method localMethod = Drawable.class.getDeclaredMethod("setLayoutDirection", new Class[] { Integer.TYPE });
-      a = localMethod;
-      localMethod.setAccessible(true);
-      label55:
-      b = true;
-      localMethod = a;
-      if (localMethod != null) {}
-      try
-      {
-        localMethod.invoke(paramDrawable, new Object[] { Integer.valueOf(paramInt) });
-        return true;
-      }
-      catch (Exception paramDrawable)
-      {
-        label86:
-        break label86;
-      }
-      a = null;
-      return false;
-      return false;
+      localClass2 = Class.forName("android.graphics.FontFamily");
+      Constructor localConstructor = localClass2.getConstructor(new Class[0]);
+      localObject2 = localClass2.getMethod("addFontWeightStyle", new Class[] { ByteBuffer.class, Integer.TYPE, List.class, Integer.TYPE, Boolean.TYPE });
+      Method localMethod = Typeface.class.getMethod("createFromFamiliesWithDefault", new Class[] { Array.newInstance(localClass2, 1).getClass() });
+      localObject1 = localConstructor;
     }
-    catch (NoSuchMethodException localNoSuchMethodException)
-    {
-      break label55;
-    }
+    catch (NoSuchMethodException localNoSuchMethodException) {}catch (ClassNotFoundException localClassNotFoundException) {}
+    localClassNotFoundException.getClass().getName();
+    Class localClass2 = null;
+    Class localClass1 = localClass2;
+    Object localObject2 = localClass1;
+    b = localObject1;
+    a = localClass2;
+    c = (Method)localObject2;
+    d = localClass1;
   }
   
-  public static boolean c(Drawable paramDrawable)
+  private static Typeface a(Object paramObject)
   {
-    if (Build.VERSION.SDK_INT >= 21) {
-      return paramDrawable.canApplyTheme();
-    }
-    return false;
-  }
-  
-  public static Drawable d(Drawable paramDrawable)
-  {
-    if (Build.VERSION.SDK_INT >= 23) {
-      return paramDrawable;
-    }
-    if (Build.VERSION.SDK_INT >= 21)
-    {
-      if (!(paramDrawable instanceof dh)) {
-        return new dl(paramDrawable);
-      }
-      return paramDrawable;
-    }
-    if (Build.VERSION.SDK_INT >= 19)
-    {
-      if (!(paramDrawable instanceof dh)) {
-        return new dk(paramDrawable);
-      }
-      return paramDrawable;
-    }
-    if (!(paramDrawable instanceof dh)) {
-      return new dj(paramDrawable);
-    }
-    return paramDrawable;
-  }
-  
-  public static int e(Drawable paramDrawable)
-  {
-    if (Build.VERSION.SDK_INT >= 23) {
-      return paramDrawable.getLayoutDirection();
-    }
-    if ((Build.VERSION.SDK_INT < 17) || (!d)) {}
     try
     {
-      Method localMethod = Drawable.class.getDeclaredMethod("getLayoutDirection", new Class[0]);
-      c = localMethod;
-      localMethod.setAccessible(true);
-      label48:
-      d = true;
-      localMethod = c;
-      if (localMethod != null) {}
-      try
-      {
-        int i = ((Integer)localMethod.invoke(paramDrawable, new Object[0])).intValue();
-        return i;
-      }
-      catch (Exception paramDrawable)
-      {
-        label78:
-        break label78;
-      }
-      c = null;
-      return 0;
-      return 0;
+      Object localObject = Array.newInstance(a, 1);
+      Array.set(localObject, 0, paramObject);
+      paramObject = (Typeface)d.invoke(null, new Object[] { localObject });
+      return paramObject;
     }
-    catch (NoSuchMethodException localNoSuchMethodException)
+    catch (InvocationTargetException paramObject) {}catch (IllegalAccessException paramObject) {}
+    throw new RuntimeException(paramObject);
+  }
+  
+  public static boolean a()
+  {
+    return c != null;
+  }
+  
+  private static boolean a(Object paramObject, ByteBuffer paramByteBuffer, int paramInt1, int paramInt2, boolean paramBoolean)
+  {
+    try
     {
-      break label48;
+      paramBoolean = ((Boolean)c.invoke(paramObject, new Object[] { paramByteBuffer, Integer.valueOf(paramInt1), null, Integer.valueOf(paramInt2), Boolean.valueOf(paramBoolean) })).booleanValue();
+      return paramBoolean;
     }
+    catch (InvocationTargetException paramObject) {}catch (IllegalAccessException paramObject) {}
+    throw new RuntimeException(paramObject);
+  }
+  
+  private static Object b()
+  {
+    try
+    {
+      Object localObject = b.newInstance(new Object[0]);
+      return localObject;
+    }
+    catch (InvocationTargetException localInvocationTargetException) {}catch (InstantiationException localInstantiationException) {}catch (IllegalAccessException localIllegalAccessException) {}
+    throw new RuntimeException(localIllegalAccessException);
+  }
+  
+  public final Typeface a(Context paramContext, cz.b paramb, Resources paramResources, int paramInt)
+  {
+    Object localObject1 = b();
+    paramb = paramb.a;
+    int i = paramb.length;
+    paramInt = 0;
+    while (paramInt < i)
+    {
+      Object localObject2 = paramb[paramInt];
+      ByteBuffer localByteBuffer = dj.a(paramContext, paramResources, localObject2.d);
+      if (localByteBuffer == null) {
+        return null;
+      }
+      if (!a(localObject1, localByteBuffer, 0, localObject2.b, localObject2.c)) {
+        return null;
+      }
+      paramInt += 1;
+    }
+    return a(localObject1);
+  }
+  
+  public final Typeface a(Context paramContext, dw.b[] paramArrayOfb, int paramInt)
+  {
+    Object localObject = b();
+    ej localej = new ej();
+    int j = paramArrayOfb.length;
+    int i = 0;
+    while (i < j)
+    {
+      dw.b localb = paramArrayOfb[i];
+      Uri localUri = localb.a;
+      ByteBuffer localByteBuffer2 = (ByteBuffer)localej.get(localUri);
+      ByteBuffer localByteBuffer1 = localByteBuffer2;
+      if (localByteBuffer2 == null)
+      {
+        localByteBuffer1 = dj.a(paramContext, localUri);
+        localej.put(localUri, localByteBuffer1);
+      }
+      if (!a(localObject, localByteBuffer1, localb.b, localb.c, localb.d)) {
+        return null;
+      }
+      i += 1;
+    }
+    return Typeface.create(a(localObject), paramInt);
   }
 }
 

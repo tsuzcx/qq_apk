@@ -1,20 +1,11 @@
 package com.tencent.token;
 
-public final class amq
-  extends amw<ann, ann>
+import java.security.cert.Certificate;
+import java.util.List;
+
+public abstract class amq
 {
-  private amq()
-  {
-    super(new ann());
-  }
-  
-  public final alz<ann> a()
-  {
-    if (!super.b()) {
-      return new amg(this.b);
-    }
-    return new amd(this.a);
-  }
+  public abstract List<Certificate> a(List<Certificate> paramList, String paramString);
 }
 
 

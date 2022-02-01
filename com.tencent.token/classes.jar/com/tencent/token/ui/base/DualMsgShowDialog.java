@@ -17,23 +17,23 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
 import android.widget.Toast;
-import com.tencent.token.aad;
-import com.tencent.token.ahb;
-import com.tencent.token.se;
-import com.tencent.token.sv;
-import com.tencent.token.sx;
+import com.tencent.token.aap;
+import com.tencent.token.ain;
+import com.tencent.token.sm;
+import com.tencent.token.td;
+import com.tencent.token.tf;
 import com.tencent.token.ui.IndexActivity;
 import com.tencent.token.ui.ModifyQQPwdActivity;
 import com.tencent.token.utils.UserTask;
-import com.tencent.token.wy;
-import com.tencent.token.xa;
-import com.tencent.token.yd;
+import com.tencent.token.xh;
+import com.tencent.token.xj;
+import com.tencent.token.yq;
 
 public class DualMsgShowDialog
   extends Dialog
 {
   public DualMsgView a;
-  public se b = null;
+  public sm b = null;
   private Activity c;
   private boolean d = false;
   private int e;
@@ -63,14 +63,14 @@ public class DualMsgShowDialog
   public final void a()
   {
     if (this.e == 0) {
-      this.b = sx.a().a(this.f);
+      this.b = tf.a().a(this.f);
     } else {
-      this.b = sv.a().a(this.f);
+      this.b = td.a().a(this.f);
     }
-    se localse = this.b;
-    if ((localse == null) || (localse.f == null) || (this.b.g == null) || (this.b.h == null) || (this.b.i == null))
+    sm localsm = this.b;
+    if ((localsm == null) || (localsm.f == null) || (this.b.g == null) || (this.b.h == null) || (this.b.i == null))
     {
-      xa.c("item content err");
+      xj.c("item content err");
       this.b = null;
     }
   }
@@ -94,13 +94,13 @@ public class DualMsgShowDialog
       
       public final void a(int paramAnonymousInt)
       {
-        se localse;
+        sm localsm;
         if (DualMsgShowDialog.d(DualMsgShowDialog.this) == 0) {
-          localse = sx.a().a(DualMsgShowDialog.e(DualMsgShowDialog.this));
+          localsm = tf.a().a(DualMsgShowDialog.e(DualMsgShowDialog.this));
         } else {
-          localse = sv.a().a(DualMsgShowDialog.e(DualMsgShowDialog.this));
+          localsm = td.a().a(DualMsgShowDialog.e(DualMsgShowDialog.this));
         }
-        DualMsgShowDialog.a(DualMsgShowDialog.this, localse, paramAnonymousInt);
+        DualMsgShowDialog.a(DualMsgShowDialog.this, localsm, paramAnonymousInt);
       }
     });
     paramBundle = this.a;
@@ -111,32 +111,32 @@ public class DualMsgShowDialog
       paramBundle.n = ((LayoutInflater)localActivity.getSystemService("layout_inflater"));
       paramBundle.o = paramBundle.n.inflate(2131296321, null);
       paramBundle.o.setVisibility(4);
-      paramBundle.p = paramBundle.o.findViewById(2131166273);
-      paramBundle.q = paramBundle.o.findViewById(2131166260);
-      paramBundle.r = paramBundle.o.findViewById(2131166274);
-      paramBundle.s = paramBundle.o.findViewById(2131166261);
-      paramBundle.t = aad.a(paramBundle.m.getResources(), 2131099828);
-      paramBundle.u = aad.a(paramBundle.m.getResources(), 2131099827);
+      paramBundle.p = paramBundle.o.findViewById(2131166275);
+      paramBundle.q = paramBundle.o.findViewById(2131166262);
+      paramBundle.r = paramBundle.o.findViewById(2131166276);
+      paramBundle.s = paramBundle.o.findViewById(2131166263);
+      paramBundle.t = aap.a(paramBundle.m.getResources(), 2131099828);
+      paramBundle.u = aap.a(paramBundle.m.getResources(), 2131099827);
       if (paramBundle.t != null) {
-        ((LinearLayout)paramBundle.o.findViewById(2131166254)).setBackgroundDrawable(new BitmapDrawable(paramBundle.t));
+        ((LinearLayout)paramBundle.o.findViewById(2131166256)).setBackgroundDrawable(new BitmapDrawable(paramBundle.t));
       }
       if (paramBundle.u != null)
       {
-        ((LinearLayout)paramBundle.o.findViewById(2131166255)).setBackgroundDrawable(new BitmapDrawable(paramBundle.u));
-        ((LinearLayout)paramBundle.o.findViewById(2131166256)).setBackgroundDrawable(new BitmapDrawable(paramBundle.u));
+        ((LinearLayout)paramBundle.o.findViewById(2131166257)).setBackgroundDrawable(new BitmapDrawable(paramBundle.u));
+        ((LinearLayout)paramBundle.o.findViewById(2131166258)).setBackgroundDrawable(new BitmapDrawable(paramBundle.u));
       }
-      paramBundle.a = paramBundle.o.findViewById(2131165764);
-      paramBundle.c = ((TextView)paramBundle.o.findViewById(2131165760));
-      paramBundle.d = ((TextView)paramBundle.o.findViewById(2131165748));
-      paramBundle.b = paramBundle.o.findViewById(2131165765);
-      paramBundle.e = ((TextView)paramBundle.o.findViewById(2131165761));
-      paramBundle.f = ((TextView)paramBundle.o.findViewById(2131165749));
-      paramBundle.j = ((ImageView)paramBundle.o.findViewById(2131165751));
-      paramBundle.k = ((ImageView)paramBundle.o.findViewById(2131165753));
-      paramBundle.l = ((ImageView)paramBundle.o.findViewById(2131165752));
-      paramBundle.h = ((Button)paramBundle.o.findViewById(2131165747));
-      paramBundle.i = ((Button)paramBundle.o.findViewById(2131165757));
-      paramBundle.g = ((TextView)paramBundle.o.findViewById(2131165763));
+      paramBundle.a = paramBundle.o.findViewById(2131165765);
+      paramBundle.c = ((TextView)paramBundle.o.findViewById(2131165761));
+      paramBundle.d = ((TextView)paramBundle.o.findViewById(2131165749));
+      paramBundle.b = paramBundle.o.findViewById(2131165766);
+      paramBundle.e = ((TextView)paramBundle.o.findViewById(2131165762));
+      paramBundle.f = ((TextView)paramBundle.o.findViewById(2131165750));
+      paramBundle.j = ((ImageView)paramBundle.o.findViewById(2131165752));
+      paramBundle.k = ((ImageView)paramBundle.o.findViewById(2131165754));
+      paramBundle.l = ((ImageView)paramBundle.o.findViewById(2131165753));
+      paramBundle.h = ((Button)paramBundle.o.findViewById(2131165748));
+      paramBundle.i = ((Button)paramBundle.o.findViewById(2131165758));
+      paramBundle.g = ((TextView)paramBundle.o.findViewById(2131165764));
       paramBundle.h.setOnClickListener(new DualMsgView.1(paramBundle));
       paramBundle.i.setOnClickListener(new DualMsgView.2(paramBundle));
       paramBundle.addView(paramBundle.o, new RelativeLayout.LayoutParams(-1, -1));
@@ -149,7 +149,7 @@ public class DualMsgShowDialog
     if (m == 0)
     {
       dismiss();
-      xa.a("Dual initView failed!");
+      xj.a("Dual initView failed!");
       return;
     }
     a();
@@ -163,12 +163,12 @@ public class DualMsgShowDialog
     setContentView(this.a);
     new UserTask()
     {
-      private static wy e()
+      private static xh e()
       {
         try
         {
-          ahb.a("tbl_dual_msg");
-          ahb.a("tbl_barcode_msg");
+          ain.a("tbl_dual_msg");
+          ain.a("tbl_barcode_msg");
           label10:
           return null;
         }
@@ -183,8 +183,8 @@ public class DualMsgShowDialog
     this.j.setView(paramBundle);
     this.j.setDuration(0);
     this.j.setGravity(55, 0, IndexActivity.S_TITLE_HEIGHT);
-    this.k = ((TextView)paramBundle.findViewById(2131166126));
-    ((ImageView)paramBundle.findViewById(2131166124)).setBackgroundResource(2131100170);
+    this.k = ((TextView)paramBundle.findViewById(2131166128));
+    ((ImageView)paramBundle.findViewById(2131166126)).setBackgroundResource(2131100171);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)

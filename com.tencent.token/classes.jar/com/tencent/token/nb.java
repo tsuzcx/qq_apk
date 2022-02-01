@@ -1,13 +1,10 @@
 package com.tencent.token;
 
-public final class nb
+import java.util.List;
+
+public abstract interface nb
 {
-  boolean a;
-  
-  public nb(boolean paramBoolean)
-  {
-    this.a = paramBoolean;
-  }
+  public abstract List a(String paramString, long paramLong);
 }
 
 

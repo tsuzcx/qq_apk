@@ -1,24 +1,42 @@
 package com.tencent.token;
 
-import java.util.concurrent.CountDownLatch;
+import android.os.Bundle;
 
-final class ox
-  implements Runnable
+public final class ox
 {
-  ox(ow paramow, CountDownLatch paramCountDownLatch) {}
-  
-  public final void run()
+  public static final class a
+    extends on
   {
-    try
+    public String c;
+    public String d = "";
+    public int e = 0;
+    public String f = "";
+    
+    public final int a()
     {
-      oz localoz = new oz(this.b.a);
-      ow.a(this.b, localoz.getInt("_build_info_sdk_int_", 0));
+      return 28;
     }
-    catch (Exception localException)
+    
+    public final void a(Bundle paramBundle)
     {
-      localException.getMessage();
+      super.a(paramBundle);
+      paramBundle.putString("_launch_wxminiprogram_username", this.c);
+      paramBundle.putString("_launch_wxminiprogram_path", this.d);
+      paramBundle.putString("_launch_wxminiprogram_extData", this.f);
+      paramBundle.putInt("_launch_wxminiprogram_type", this.e);
     }
-    this.a.countDown();
+    
+    public final boolean b()
+    {
+      if (pn.a(this.c)) {
+        return false;
+      }
+      int i = this.e;
+      if (i >= 0) {
+        return i <= 2;
+      }
+      return false;
+    }
   }
 }
 

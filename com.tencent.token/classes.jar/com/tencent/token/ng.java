@@ -1,10 +1,24 @@
 package com.tencent.token;
 
-public abstract interface ng
+import java.util.List;
+
+public final class ng
 {
-  public abstract void a(my parammy);
+  public nq a;
+  public nx b;
+  public nw c;
+  public List d;
   
-  public abstract void b(my parammy);
+  public final String a()
+  {
+    StringBuilder localStringBuilder = new StringBuilder("accessInfo:");
+    localStringBuilder.append(this.a);
+    localStringBuilder.append(", sdkCfgInfo:");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append(", sdkAccessInfo:");
+    localStringBuilder.append(this.c);
+    return localStringBuilder.toString();
+  }
 }
 
 

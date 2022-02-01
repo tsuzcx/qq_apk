@@ -1,14 +1,33 @@
 package com.tencent.token;
 
-public abstract interface yz
+import android.os.Handler;
+import android.os.Message;
+
+public final class yz
 {
-  public abstract void a();
+  private static final Handler a = new a((byte)0);
   
-  public abstract void a(float paramFloat);
+  public static void a(Runnable paramRunnable)
+  {
+    Message localMessage = new Message();
+    localMessage.what = 1000;
+    localMessage.obj = paramRunnable;
+    a.sendMessageDelayed(localMessage, 16L);
+  }
   
-  public abstract void b();
-  
-  public abstract void c();
+  static final class a
+    extends Handler
+  {
+    public final void handleMessage(Message paramMessage)
+    {
+      if (paramMessage.what != 1000) {
+        return;
+      }
+      if (paramMessage.obj != null) {
+        ((Runnable)paramMessage.obj).run();
+      }
+    }
+  }
 }
 
 

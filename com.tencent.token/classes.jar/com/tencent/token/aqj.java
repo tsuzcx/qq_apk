@@ -1,122 +1,59 @@
 package com.tencent.token;
 
-import android.content.Context;
-import android.os.Handler;
-import android.os.Looper;
-import android.util.Pair;
+import com.qq.taf.jce.JceInputStream;
+import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
-import java.util.TreeMap;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.atomic.AtomicInteger;
 
-public class aqj
-  extends aot
+public final class aqj
+  extends JceStruct
 {
-  public aqg a;
-  public ExecutorService b;
-  private final String c = "SharkProtocolQueue";
-  private final int d = 1073741824;
-  private final long e = -1L;
-  private Context f;
-  private TreeMap g = new TreeMap();
-  private ArrayList h = new ArrayList();
-  private Handler i = new aqk(this, Looper.getMainLooper());
+  static byte[] g;
+  public int a = 0;
+  public byte[] b = null;
+  public int c = 0;
+  public int d = 0;
+  public int e = 0;
+  public int f = 0;
   
-  public static void a(int paramInt)
+  static
   {
-    if (b(5, 1))
-    {
-      aqr.a().a.incrementAndGet();
-      if (b(5, 4)) {
-        aqr.a().b();
-      }
-    }
+    byte[] arrayOfByte = (byte[])new byte[1];
+    g = arrayOfByte;
+    ((byte[])arrayOfByte)[0] = 0;
   }
   
-  public static void b(int paramInt)
+  public final JceStruct newInit()
   {
-    if (b(1, 1))
-    {
-      aqr localaqr = aqr.a();
-      if (localaqr.a.decrementAndGet() <= 0)
-      {
-        localaqr.a.set(0);
-        localaqr.c();
-      }
-    }
+    return new aqj();
   }
   
-  private static boolean b(int paramInt1, int paramInt2)
+  public final void readFrom(JceInputStream paramJceInputStream)
   {
-    return (paramInt1 & paramInt2) != 0;
+    this.a = paramJceInputStream.read(this.a, 0, true);
+    this.b = ((byte[])paramJceInputStream.read(g, 1, true));
+    this.c = paramJceInputStream.read(this.c, 2, true);
+    this.d = paramJceInputStream.read(this.d, 3, false);
+    this.e = paramJceInputStream.read(this.e, 4, false);
+    this.f = paramJceInputStream.read(this.f, 5, false);
   }
   
-  public final agx a(int paramInt1, int paramInt2)
+  public final void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (b(paramInt2, 1)) {
-      return aqr.a().a(paramInt1);
+    paramJceOutputStream.write(this.a, 0);
+    paramJceOutputStream.write(this.b, 1);
+    paramJceOutputStream.write(this.c, 2);
+    int i = this.d;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 3);
     }
-    agx localagx = null;
-    synchronized (this.g)
-    {
-      if (this.g.containsKey(Integer.valueOf(paramInt1))) {
-        localagx = (agx)((Pair)this.g.remove(Integer.valueOf(paramInt1))).second;
-      }
-      return localagx;
+    i = this.e;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 4);
     }
-  }
-  
-  public final WeakReference a(long paramLong, int paramInt1, JceStruct paramJceStruct1, JceStruct paramJceStruct2, int paramInt2, agw paramagw)
-  {
-    return a(paramLong, paramInt1, paramJceStruct1, paramJceStruct2, paramInt2, paramagw, -1L);
-  }
-  
-  public final WeakReference a(long paramLong1, int paramInt1, JceStruct arg4, JceStruct paramJceStruct2, int paramInt2, agw paramagw, long paramLong2)
-  {
-    if (b(paramInt2, 1)) {
-      return aqr.a().a(this.a, paramInt1, paramInt2, 0, 0, ???, paramJceStruct2, paramagw, paramLong2);
+    i = this.f;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 5);
     }
-    paramJceStruct2 = new aql(this, paramLong1, paramInt1, ???, paramJceStruct2, paramInt2, paramagw);
-    paramJceStruct2.g = this.a.b.a();
-    paramJceStruct2.i = paramLong2;
-    synchronized (this.h)
-    {
-      this.h.add(paramJceStruct2);
-      this.i.sendEmptyMessage(1);
-      return new WeakReference(paramJceStruct2.h);
-    }
-  }
-  
-  public final void a(int paramInt1, JceStruct paramJceStruct, int paramInt2, agx paramagx)
-  {
-    if (paramagx != null)
-    {
-      if (b(paramInt2, 1))
-      {
-        aqr.a().a(paramInt2, paramInt1, paramJceStruct, paramagx);
-        return;
-      }
-      Object localObject = null;
-      synchronized (this.g)
-      {
-        if (!this.g.containsKey(Integer.valueOf(paramInt1)))
-        {
-          this.g.put(Integer.valueOf(paramInt1), new Pair(paramJceStruct, paramagx));
-          paramJceStruct = localObject;
-        }
-        else
-        {
-          paramJceStruct = new ClassCastException();
-        }
-        if (paramJceStruct == null) {
-          return;
-        }
-        throw paramJceStruct;
-      }
-    }
-    throw new NullPointerException();
   }
 }
 

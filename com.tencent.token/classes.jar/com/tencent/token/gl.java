@@ -1,62 +1,247 @@
 package com.tencent.token;
 
-final class gl
+import android.app.Activity;
+import android.content.BroadcastReceiver;
+import android.content.ComponentName;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
+import android.content.pm.ActivityInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.PackageManager.NameNotFoundException;
+import android.content.res.Configuration;
+import android.content.res.Resources;
+import android.os.Build.VERSION;
+import android.os.Bundle;
+import android.support.v7.app.AppCompatDelegateImplV9;
+import android.util.AttributeSet;
+import android.util.DisplayMetrics;
+import android.view.ActionMode;
+import android.view.ActionMode.Callback;
+import android.view.View;
+import android.view.Window;
+import android.view.Window.Callback;
+
+class gl
+  extends AppCompatDelegateImplV9
 {
-  private static gl d;
-  public long a;
-  public long b;
-  public int c;
+  boolean o = true;
+  private int w = -100;
+  private boolean x;
+  private b y;
   
-  static gl a()
+  gl(Context paramContext, Window paramWindow, gh paramgh)
   {
-    if (d == null) {
-      d = new gl();
-    }
-    return d;
+    super(paramContext, paramWindow, paramgh);
   }
   
-  public final void a(long paramLong, double paramDouble1, double paramDouble2)
+  private void t()
   {
-    float f1 = (float)(paramLong - 946728000000L) / 86400000.0F;
-    float f2 = 0.01720197F * f1 + 6.24006F;
-    double d1 = f2;
-    double d2 = Math.sin(d1);
-    Double.isNaN(d1);
-    d2 = d2 * 0.03341960161924362D + d1 + Math.sin(2.0F * f2) * 0.0003490659873933D + Math.sin(f2 * 3.0F) * 5.236000106378924E-006D + 1.796593063D + 3.141592653589793D;
-    paramDouble2 = -paramDouble2 / 360.0D;
-    double d3 = f1 - 0.0009F;
-    Double.isNaN(d3);
-    d3 = (float)Math.round(d3 - paramDouble2) + 0.0009F;
-    Double.isNaN(d3);
-    paramDouble2 = d3 + paramDouble2 + Math.sin(d1) * 0.0053D + Math.sin(2.0D * d2) * -0.0069D;
-    d1 = Math.asin(Math.sin(d2) * Math.sin(0.4092797040939331D));
-    paramDouble1 = 0.0174532923847437D * paramDouble1;
-    paramDouble1 = (Math.sin(-0.1047197580337524D) - Math.sin(paramDouble1) * Math.sin(d1)) / (Math.cos(paramDouble1) * Math.cos(d1));
-    if (paramDouble1 >= 1.0D)
-    {
-      this.c = 1;
-      this.a = -1L;
-      this.b = -1L;
-      return;
+    if (this.y == null) {
+      this.y = new b(gq.a(this.b));
     }
-    if (paramDouble1 <= -1.0D)
-    {
-      this.c = 0;
-      this.a = -1L;
-      this.b = -1L;
-      return;
+  }
+  
+  private boolean u()
+  {
+    PackageManager localPackageManager;
+    if ((this.x) && ((this.b instanceof Activity))) {
+      localPackageManager = this.b.getPackageManager();
     }
-    paramDouble1 = (float)(Math.acos(paramDouble1) / 6.283185307179586D);
-    Double.isNaN(paramDouble1);
-    this.a = (Math.round((paramDouble2 + paramDouble1) * 86400000.0D) + 946728000000L);
-    Double.isNaN(paramDouble1);
-    this.b = (Math.round((paramDouble2 - paramDouble1) * 86400000.0D) + 946728000000L);
-    if ((this.b < paramLong) && (this.a > paramLong))
+    try
     {
-      this.c = 0;
-      return;
+      int i = localPackageManager.getActivityInfo(new ComponentName(this.b, this.b.getClass()), 0).configChanges;
+      return (i & 0x200) == 0;
     }
-    this.c = 1;
+    catch (PackageManager.NameNotFoundException localNameNotFoundException) {}
+    return false;
+    return true;
+  }
+  
+  public final View a(String paramString, Context paramContext, AttributeSet paramAttributeSet)
+  {
+    return null;
+  }
+  
+  Window.Callback a(Window.Callback paramCallback)
+  {
+    return new a(paramCallback);
+  }
+  
+  public final void a(Bundle paramBundle)
+  {
+    super.a(paramBundle);
+    if ((paramBundle != null) && (this.w == -100)) {
+      this.w = paramBundle.getInt("appcompat:local_night_mode", -100);
+    }
+  }
+  
+  public final void b(Bundle paramBundle)
+  {
+    super.b(paramBundle);
+    int i = this.w;
+    if (i != -100) {
+      paramBundle.putInt("appcompat:local_night_mode", i);
+    }
+  }
+  
+  public final void d()
+  {
+    super.d();
+    k();
+  }
+  
+  public final void e()
+  {
+    super.e();
+    b localb = this.y;
+    if (localb != null) {
+      localb.a();
+    }
+  }
+  
+  int f(int paramInt)
+  {
+    if (paramInt != -100)
+    {
+      if (paramInt != 0) {
+        return paramInt;
+      }
+      t();
+      b localb = this.y;
+      localb.b = localb.a.a();
+      if (localb.b) {
+        return 2;
+      }
+      return 1;
+    }
+    return -1;
+  }
+  
+  public final void h()
+  {
+    super.h();
+    b localb = this.y;
+    if (localb != null) {
+      localb.a();
+    }
+  }
+  
+  public final boolean k()
+  {
+    int i = this.w;
+    if (i == -100) {
+      i = gi.a;
+    }
+    int j = f(i);
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    Object localObject;
+    if (j != -1)
+    {
+      localObject = this.b.getResources();
+      Configuration localConfiguration = ((Resources)localObject).getConfiguration();
+      int k = localConfiguration.uiMode;
+      if (j == 2) {
+        j = 32;
+      } else {
+        j = 16;
+      }
+      bool1 = bool2;
+      if ((k & 0x30) != j)
+      {
+        if (u())
+        {
+          ((Activity)this.b).recreate();
+        }
+        else
+        {
+          localConfiguration = new Configuration(localConfiguration);
+          DisplayMetrics localDisplayMetrics = ((Resources)localObject).getDisplayMetrics();
+          localConfiguration.uiMode = (j | localConfiguration.uiMode & 0xFFFFFFCF);
+          ((Resources)localObject).updateConfiguration(localConfiguration, localDisplayMetrics);
+          if (Build.VERSION.SDK_INT < 26) {
+            if (Build.VERSION.SDK_INT >= 24) {
+              gn.c((Resources)localObject);
+            } else if (Build.VERSION.SDK_INT >= 23) {
+              gn.b((Resources)localObject);
+            } else if (Build.VERSION.SDK_INT >= 21) {
+              gn.a((Resources)localObject);
+            }
+          }
+        }
+        bool1 = true;
+      }
+    }
+    if (i == 0)
+    {
+      t();
+      localObject = this.y;
+      ((b)localObject).a();
+      if (((b)localObject).c == null) {
+        ((b)localObject).c = new gl.b.1((b)localObject);
+      }
+      if (((b)localObject).d == null)
+      {
+        ((b)localObject).d = new IntentFilter();
+        ((b)localObject).d.addAction("android.intent.action.TIME_SET");
+        ((b)localObject).d.addAction("android.intent.action.TIMEZONE_CHANGED");
+        ((b)localObject).d.addAction("android.intent.action.TIME_TICK");
+      }
+      ((b)localObject).e.b.registerReceiver(((b)localObject).c, ((b)localObject).d);
+    }
+    this.x = true;
+    return bool1;
+  }
+  
+  class a
+    extends gj.b
+  {
+    a(Window.Callback paramCallback)
+    {
+      super(paramCallback);
+    }
+    
+    final ActionMode a(ActionMode.Callback paramCallback)
+    {
+      paramCallback = new he.a(gl.this.b, paramCallback);
+      ha localha = gl.this.a(paramCallback);
+      if (localha != null) {
+        return paramCallback.b(localha);
+      }
+      return null;
+    }
+    
+    public ActionMode onWindowStartingActionMode(ActionMode.Callback paramCallback)
+    {
+      if (gl.this.o) {
+        return a(paramCallback);
+      }
+      return super.onWindowStartingActionMode(paramCallback);
+    }
+  }
+  
+  final class b
+  {
+    gq a;
+    boolean b;
+    BroadcastReceiver c;
+    IntentFilter d;
+    
+    b(gq paramgq)
+    {
+      this.a = paramgq;
+      this.b = paramgq.a();
+    }
+    
+    final void a()
+    {
+      if (this.c != null)
+      {
+        gl.this.b.unregisterReceiver(this.c);
+        this.c = null;
+      }
+    }
   }
 }
 

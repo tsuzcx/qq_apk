@@ -1,38 +1,52 @@
 package com.tencent.token;
 
 import android.os.Bundle;
-import java.util.HashMap;
 
 public final class oo
 {
   public static final class a
-    extends og
+    extends on
   {
-    public HashMap<String, String> c;
-    public int d;
+    public int c;
+    public String d;
+    public String e;
     
     public final int a()
     {
-      return 25;
+      return 18;
     }
     
     public final void a(Bundle paramBundle)
     {
       super.a(paramBundle);
-      paramBundle.putSerializable("_wxapi_open_business_webview_query_info", this.c);
-      paramBundle.putInt("_wxapi_open_business_webview_query_type", this.d);
+      paramBundle.putInt("_wxapi_subscribemessage_req_scene", this.c);
+      paramBundle.putString("_wxapi_subscribemessage_req_templateid", this.d);
+      paramBundle.putString("_wxapi_subscribemessage_req_reserved", this.e);
     }
     
     public final void b(Bundle paramBundle)
     {
       super.b(paramBundle);
-      this.c = ((HashMap)paramBundle.getSerializable("_wxapi_open_business_webview_query_info"));
-      this.d = paramBundle.getInt("_wxapi_open_business_webview_query_type", 0);
+      this.c = paramBundle.getInt("_wxapi_subscribemessage_req_scene");
+      this.d = paramBundle.getString("_wxapi_subscribemessage_req_templateid");
+      this.e = paramBundle.getString("_wxapi_subscribemessage_req_reserved");
     }
     
     public final boolean b()
     {
-      return true;
+      String str = this.d;
+      if (str != null)
+      {
+        if (str.length() == 0) {
+          return false;
+        }
+        if (this.d.length() > 1024) {
+          return false;
+        }
+        str = this.e;
+        return (str == null) || (str.length() <= 1024);
+      }
+      return false;
     }
   }
 }

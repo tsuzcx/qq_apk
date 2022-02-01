@@ -1,173 +1,71 @@
 package com.tencent.token;
 
-import android.os.Handler;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import android.widget.ImageView;
-import android.widget.ListView;
-import android.widget.ProgressBar;
-import android.widget.TextView;
-import com.tencent.token.ui.UtilsGameLockActivity;
-import com.tencent.token.ui.base.SwitchButton;
+import com.tmsdk.TMSDKContext;
+import java.util.ArrayList;
+import tmsdk.common.tcc.TccCryptor;
 
 public final class xx
-  extends BaseAdapter
+  implements aub
 {
-  public static boolean h = false;
-  public UtilsGameLockActivity a;
-  public boolean b;
-  public sk c;
-  public yv d;
-  public Handler e;
-  public boolean f = true;
-  public View g;
-  a i = new a();
-  private LayoutInflater j;
-  private ListView k;
-  
-  public xx(UtilsGameLockActivity paramUtilsGameLockActivity, ListView paramListView, Handler paramHandler)
+  public final aud a(String paramString)
   {
-    this.a = paramUtilsGameLockActivity;
-    this.j = LayoutInflater.from(paramUtilsGameLockActivity);
-    this.k = paramListView;
-    this.e = paramHandler;
+    return new xz(paramString);
   }
   
-  public static void a()
+  public final auf a()
   {
-    int n = ta.a().c.a();
-    int m = 0;
-    while (m < n)
-    {
-      sk localsk = ta.a().a(m);
-      if (localsk != null) {
-        localsk.e = false;
-      }
-      m += 1;
-    }
+    return ya.a.a();
   }
   
-  public final void a(yv paramyv, boolean paramBoolean)
+  public final auc b()
   {
-    if ((paramyv != null) && (paramyv.h != null))
+    return xy.a.a();
+  }
+  
+  public final auh c()
+  {
+    return yb.a.a();
+  }
+  
+  public final aue d()
+  {
+    new aue()
     {
-      Object localObject = this.a;
-      if (localObject != null)
+      public final void a(int paramAnonymousInt, ArrayList<String> paramAnonymousArrayList)
       {
-        if (((UtilsGameLockActivity)localObject).isFinishing()) {
-          return;
-        }
-        localObject = paramyv.h;
-        TextView localTextView = paramyv.b;
-        SwitchButton localSwitchButton = paramyv.d;
-        ProgressBar localProgressBar = paramyv.c;
-        paramyv = paramyv.e;
-        if ((localTextView != null) && (localSwitchButton != null) && (localProgressBar != null) && (paramyv != null))
+        StringBuilder localStringBuilder = new StringBuilder();
+        if (paramAnonymousArrayList.size() > 0)
         {
-          if (localObject == null) {
-            return;
-          }
-          if ((paramBoolean) && (!((sk)localObject).b.equals(localTextView.getText()))) {
-            return;
-          }
-          if (((sk)localObject).f) {
-            paramyv.setVisibility(0);
-          } else {
-            paramyv.setVisibility(4);
-          }
-          if ((!((sk)localObject).e) && (ta.a().c()))
+          int j = paramAnonymousArrayList.size();
+          int i = 0;
+          while (i < j)
           {
-            localProgressBar.setVisibility(4);
-            localSwitchButton.setVisibility(0);
-            localSwitchButton.setEnabled(true);
-            localSwitchButton.a(true ^ ((sk)localObject).c, false);
+            localStringBuilder.append((String)paramAnonymousArrayList.get(i));
+            if (i != j - 1) {
+              localStringBuilder.append(",");
+            }
+            i += 1;
           }
-          else
-          {
-            localProgressBar.setVisibility(0);
-            localSwitchButton.setVisibility(0);
-            localSwitchButton.setEnabled(false);
-          }
-          if (!ta.a().c()) {
-            this.a.queryGameLockStatus();
-          }
-          localTextView.setText(((sk)localObject).b);
-          return;
         }
-        return;
+        TMSDKContext.SaveStringData(paramAnonymousInt, localStringBuilder.toString());
       }
-    }
+    };
   }
   
-  public final int getCount()
+  public final aug e()
   {
-    if (this.f) {
-      return ta.a().c.b();
-    }
-    return ta.a().c.a();
-  }
-  
-  public final Object getItem(int paramInt)
-  {
-    return Integer.valueOf(paramInt);
-  }
-  
-  public final long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    View localView = paramView;
-    if (paramView == null) {
-      localView = this.j.inflate(2131296472, paramViewGroup, false);
-    }
-    paramView = new yv(localView, ta.a().a(paramInt));
-    paramView.d.setTag(paramView);
-    paramView.d.setOnCheckedChangeListener(this.i);
-    a(paramView, false);
-    return localView;
-  }
-  
-  final class a
-    implements CompoundButton.OnCheckedChangeListener
-  {
-    a() {}
-    
-    public final void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+    new aug()
     {
-      paramCompoundButton = (yv)paramCompoundButton.getTag();
-      if (paramCompoundButton == null) {
-        return;
-      }
-      sk localsk = paramCompoundButton.h;
-      if ((localsk != null) && (paramCompoundButton.a != null) && (ta.a().c()))
+      public final byte[] a(byte[] paramAnonymousArrayOfByte1, byte[] paramAnonymousArrayOfByte2)
       {
-        if (paramBoolean != localsk.c) {
-          return;
-        }
-        if (!localsk.e)
-        {
-          if (xx.a(xx.this)) {
-            return;
-          }
-          xx.a(xx.this, localsk);
-          xx.a(xx.this, paramCompoundButton);
-          localsk.e = true;
-          xx.b(xx.this);
-          xx.this.a(paramCompoundButton, false);
-          te.a().a(3, xx.c(xx.this).getHandler());
-          return;
-        }
-        return;
+        return TccCryptor.encrypt(paramAnonymousArrayOfByte1, paramAnonymousArrayOfByte2);
       }
-    }
+      
+      public final byte[] b(byte[] paramAnonymousArrayOfByte1, byte[] paramAnonymousArrayOfByte2)
+      {
+        return TccCryptor.decrypt(paramAnonymousArrayOfByte1, paramAnonymousArrayOfByte2);
+      }
+    };
   }
 }
 

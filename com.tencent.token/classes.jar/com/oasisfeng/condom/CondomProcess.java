@@ -113,14 +113,19 @@ public class CondomProcess
   
   private static String getFullProcessName(Context paramContext, String paramString)
   {
-    if ((paramString.length() > 0) && (paramString.charAt(0) == ':'))
+    Object localObject = paramString;
+    if (paramString.length() > 0)
     {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(paramContext.getPackageName());
-      localStringBuilder.append(paramString);
-      return localStringBuilder.toString();
+      localObject = paramString;
+      if (paramString.charAt(0) == ':')
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(paramContext.getPackageName());
+        ((StringBuilder)localObject).append(paramString);
+        localObject = ((StringBuilder)localObject).toString();
+      }
     }
-    return paramString;
+    return localObject;
   }
   
   private static String getProcessName(Context paramContext)
@@ -212,14 +217,14 @@ public class CondomProcess
         if (Proxy.isProxyClass(localObject3.getClass()))
         {
           localObject4 = Proxy.getInvocationHandler(localObject3);
-          if ((localObject4 instanceof a))
+          if ((localObject4 instanceof b))
           {
-            a.a((a)localObject4, paramCondomCore);
+            b.a((b)localObject4, paramCondomCore);
             return;
           }
         }
         localObject4 = paramCondomCore.mBase.getClassLoader();
-        paramCondomCore = new a(paramCondomCore, localObject3);
+        paramCondomCore = new b(paramCondomCore, localObject3);
         ((Field)localObject1).set(localObject2, Proxy.newProxyInstance((ClassLoader)localObject4, new Class[] { localClass }, paramCondomCore));
         return;
       }
@@ -238,14 +243,14 @@ public class CondomProcess
     if (Proxy.isProxyClass(localObject1.getClass()))
     {
       localObject2 = Proxy.getInvocationHandler(localObject1);
-      if ((localObject2 instanceof b))
+      if ((localObject2 instanceof c))
       {
-        ((b)localObject2).b = paramCondomCore;
+        ((c)localObject2).b = paramCondomCore;
         return;
       }
     }
     Object localObject2 = paramCondomCore.mBase.getClassLoader();
-    paramCondomCore = new b(paramCondomCore, localObject1);
+    paramCondomCore = new c(paramCondomCore, localObject1);
     localField.set(null, Proxy.newProxyInstance((ClassLoader)localObject2, new Class[] { localClass }, paramCondomCore));
   }
   
@@ -301,9 +306,10 @@ public class CondomProcess
   
   private static void validateCondomOptions(CondomOptions paramCondomOptions)
   {
-    if (paramCondomOptions.mKits != null)
+    paramCondomOptions = paramCondomOptions.mKits;
+    if (paramCondomOptions != null)
     {
-      if (paramCondomOptions.mKits.isEmpty()) {
+      if (paramCondomOptions.isEmpty()) {
         return;
       }
       throw new IllegalArgumentException("CondomKit is not yet compatible with CondomProcess. If you really need this, please submit a feature request on GitHub issue tracker, with the use case.");
@@ -312,23 +318,28 @@ public class CondomProcess
   
   private static void validateProcessNames(Application paramApplication, final String[] paramArrayOfString)
   {
-    paramApplication = new Thread(new Runnable()
-    {
-      public final void run()
-      {
-        CondomProcess.doValidateProcessNames(this.a, paramArrayOfString);
-      }
-    });
+    paramApplication = new Thread(new a(paramApplication, paramArrayOfString));
     paramApplication.setPriority(1);
     paramApplication.start();
   }
   
   static final class a
-    extends CondomProcess.c
+    implements Runnable
+  {
+    a(Application paramApplication, String[] paramArrayOfString) {}
+    
+    public final void run()
+    {
+      CondomProcess.doValidateProcessNames(this.a, paramArrayOfString);
+    }
+  }
+  
+  static final class b
+    extends CondomProcess.d
   {
     private CondomCore a;
     
-    a(CondomCore paramCondomCore, Object paramObject)
+    b(CondomCore paramCondomCore, Object paramObject)
     {
       super("IActivityManager.", paramCondomCore.DEBUG);
       this.a = paramCondomCore;
@@ -336,32 +347,48 @@ public class CondomProcess
     
     public final Object invoke(final Object paramObject, final Method paramMethod, final Object[] paramArrayOfObject)
     {
-      Object localObject2;
       try
       {
         localObject1 = paramMethod.getName();
-        i = -1;
-        int j = ((String)localObject1).hashCode();
-        if (j != 972810068)
+        int j = -1;
+        int k = ((String)localObject1).hashCode();
+        if (k != 972810068)
         {
-          if (j != 1155315389)
+          if (k != 1155315389)
           {
-            if (j != 1418030008)
+            if (k != 1418030008)
             {
-              if ((j == 1849706483) && (((String)localObject1).equals("startService"))) {
-                i = 2;
+              i = j;
+              if (k == 1849706483)
+              {
+                i = j;
+                if (((String)localObject1).equals("startService")) {
+                  i = 2;
+                }
               }
             }
-            else if (((String)localObject1).equals("bindService")) {
-              i = 1;
+            else
+            {
+              i = j;
+              if (((String)localObject1).equals("bindService")) {
+                i = 1;
+              }
             }
           }
-          else if (((String)localObject1).equals("broadcastIntent")) {
-            i = 0;
+          else
+          {
+            i = j;
+            if (((String)localObject1).equals("broadcastIntent")) {
+              i = 0;
+            }
           }
         }
-        else if (((String)localObject1).equals("getContentProvider")) {
-          i = 3;
+        else
+        {
+          i = j;
+          if (((String)localObject1).equals("getContentProvider")) {
+            i = 3;
+          }
         }
       }
       catch (Exception localException)
@@ -371,6 +398,7 @@ public class CondomProcess
           Object localObject1;
           int i;
           Object localObject3;
+          Class localClass;
           continue;
           switch (i)
           {
@@ -378,22 +406,23 @@ public class CondomProcess
         }
       }
       localObject1 = (String)paramArrayOfObject[1];
-      if (!this.a.shouldAllowProvider(this.a.mBase, (String)localObject1, 131072))
+      Object localObject2 = this.a;
+      if (!((CondomCore)localObject2).shouldAllowProvider(((CondomCore)localObject2).mBase, (String)localObject1, 131072))
       {
         return null;
         localObject1 = (Intent)paramArrayOfObject[1];
-        localObject2 = (ComponentName)this.a.proceed(OutboundType.START_SERVICE, (Intent)localObject1, null, new CondomCore.g() {});
+        localObject2 = (ComponentName)this.a.proceed(OutboundType.START_SERVICE, (Intent)localObject1, null, new c(paramObject, paramMethod, paramArrayOfObject));
         if (localObject2 != null)
         {
-          this.a.logIfOutboundPass(CondomProcess.FULL_TAG, (Intent)localObject1, ((ComponentName)localObject2).getPackageName(), CondomCore.CondomEvent.START_PASS);
+          this.a.logIfOutboundPass(CondomProcess.FULL_TAG, (Intent)localObject1, ((ComponentName)localObject2).getPackageName(), CondomCore.h.c);
           return localObject2;
           localObject1 = (Intent)paramArrayOfObject[2];
-          i = ((Integer)this.a.proceed(OutboundType.BIND_SERVICE, (Intent)localObject1, Integer.valueOf(0), new CondomCore.g() {})).intValue();
+          i = ((Integer)this.a.proceed(OutboundType.BIND_SERVICE, (Intent)localObject1, Integer.valueOf(0), new b(paramObject, paramMethod, paramArrayOfObject))).intValue();
           if (i > 0) {
-            this.a.logIfOutboundPass(CondomProcess.FULL_TAG, (Intent)localObject1, CondomCore.getTargetPackage((Intent)localObject1), CondomCore.CondomEvent.BIND_PASS);
+            this.a.logIfOutboundPass(CondomProcess.FULL_TAG, (Intent)localObject1, CondomCore.getTargetPackage((Intent)localObject1), CondomCore.h.b);
           }
           return Integer.valueOf(i);
-          i = ((Integer)this.a.proceed(OutboundType.BROADCAST, (Intent)paramArrayOfObject[1], Integer.valueOf(-2147483648), new CondomCore.g() {})).intValue();
+          i = ((Integer)this.a.proceed(OutboundType.BROADCAST, (Intent)paramArrayOfObject[1], Integer.valueOf(-2147483648), new a(paramObject, paramMethod, paramArrayOfObject))).intValue();
           localObject2 = paramArrayOfObject[3];
           if (i != -2147483648) {
             return Integer.valueOf(i);
@@ -409,8 +438,9 @@ public class CondomProcess
             localObject1[1] = Integer.TYPE;
             localObject1[2] = String.class;
             localObject1[3] = Bundle.class;
-            localObject1[4] = Boolean.TYPE;
-            localObject1[5] = Boolean.TYPE;
+            localClass = Boolean.TYPE;
+            localObject1[4] = localClass;
+            localObject1[5] = localClass;
             localObject1[6] = Integer.TYPE;
           }
           else
@@ -420,8 +450,9 @@ public class CondomProcess
             localObject1[1] = Integer.TYPE;
             localObject1[2] = String.class;
             localObject1[3] = Bundle.class;
-            localObject1[4] = Boolean.TYPE;
-            localObject1[5] = Boolean.TYPE;
+            localClass = Boolean.TYPE;
+            localObject1[4] = localClass;
+            localObject1[5] = localClass;
           }
           localObject3 = ((Class)localObject3).getMethod("performReceive", (Class[])localObject1);
           if (Build.VERSION.SDK_INT >= 17)
@@ -462,17 +493,35 @@ public class CondomProcess
       }
       return localObject2;
     }
+    
+    final class a
+      implements CondomCore.n<Integer, Throwable>
+    {
+      a(Object paramObject, Method paramMethod, Object[] paramArrayOfObject) {}
+    }
+    
+    final class b
+      implements CondomCore.n<Integer, Throwable>
+    {
+      b(Object paramObject, Method paramMethod, Object[] paramArrayOfObject) {}
+    }
+    
+    final class c
+      implements CondomCore.n<ComponentName, Throwable>
+    {
+      c(Object paramObject, Method paramMethod, Object[] paramArrayOfObject) {}
+    }
   }
   
-  static final class b
-    extends CondomProcess.c
+  static final class c
+    extends CondomProcess.d
   {
     final Intent a = new Intent();
     CondomCore b;
     private Method d;
     private Method e;
     
-    b(CondomCore paramCondomCore, Object paramObject)
+    c(CondomCore paramCondomCore, Object paramObject)
     {
       super("IPackageManager.", paramCondomCore.DEBUG);
       this.b = paramCondomCore;
@@ -505,7 +554,7 @@ public class CondomProcess
         {
         case 1786110784: 
           if (!((String)localObject1).equals("queryIntentReceivers")) {
-            break label465;
+            break label464;
           }
           i = 1;
         }
@@ -521,40 +570,41 @@ public class CondomProcess
           {
           }
         }
+        return localException;
       }
       if (((String)localObject1).equals("getInstalledApplications"))
       {
         i = 4;
-        break label465;
+        break label464;
         if (((String)localObject1).equals("resolveContentProvider"))
         {
           i = 3;
-          break label465;
+          break label464;
           if (((String)localObject1).equals("queryIntentServices"))
           {
             i = 0;
-            break label465;
+            break label464;
             if (((String)localObject1).equals("getInstalledPackages"))
             {
               i = 5;
-              break label465;
+              break label464;
               if (((String)localObject1).equals("resolveService"))
               {
                 i = 2;
-                break label465;
+                break label464;
                 this.b.logConcern(CondomProcess.FULL_TAG, "IPackageManager.".concat(String.valueOf(localObject1)));
-                break label414;
+                break label413;
                 localObject1 = (ProviderInfo)super.invoke(paramObject, paramMethod, paramArrayOfObject);
                 if ((((Integer)paramArrayOfObject[1]).intValue() & 0x20000) != 0) {
                   return localObject1;
                 }
-                if (!this.b.shouldAllowProvider((ProviderInfo)localObject1)) {
+                if (this.b.shouldAllowProvider((ProviderInfo)localObject1)) {
                   break label507;
                 }
-                return localObject1;
+                return null;
                 localObject1 = (Intent)paramArrayOfObject[0];
                 i = ((Intent)localObject1).getFlags();
-                this.b.proceed(OutboundType.QUERY_SERVICES, (Intent)localObject1, null, new CondomCore.g() {});
+                return this.b.proceed(OutboundType.QUERY_SERVICES, (Intent)localObject1, null, new b(paramObject, paramMethod, paramArrayOfObject, (Intent)localObject1, i));
                 localObject1 = OutboundType.QUERY_SERVICES;
                 if (this.d == null) {
                   this.d = paramMethod;
@@ -576,18 +626,18 @@ public class CondomProcess
         localObject4 = super.invoke(paramObject, paramMethod, paramArrayOfObject);
         CondomCore localCondomCore = this.b;
         Intent localIntent = (Intent)paramArrayOfObject[0];
-        CondomCore.g local1 = new CondomCore.g() {};
+        a locala = new a(localObject4);
         if (localObject3 == OutboundType.QUERY_SERVICES) {
           localObject1 = CondomCore.SERVICE_PACKAGE_GETTER;
         } else {
           localObject1 = CondomCore.RECEIVER_PACKAGE_GETTER;
         }
-        if (!localCondomCore.proceedQuery((OutboundType)localObject3, localIntent, local1, (CondomCore.c)localObject1).isEmpty()) {
+        if (!localCondomCore.proceedQuery((OutboundType)localObject3, localIntent, locala, (CondomCore.j)localObject1).isEmpty()) {
           break;
         }
         a(localObject4).clear();
         return localObject4;
-        label414:
+        label413:
         localObject1 = super.invoke(paramObject, paramMethod, paramArrayOfObject);
         return localObject1;
         if (this.c)
@@ -596,23 +646,34 @@ public class CondomProcess
           new StringBuilder("Error proceeding ").append(paramMethod);
         }
         return super.invoke(paramObject, paramMethod, paramArrayOfObject);
-        label465:
+        label464:
         label507:
-        return null;
         Object localObject2 = null;
       }
       return localObject4;
     }
+    
+    final class a
+      implements CondomCore.n<List<ResolveInfo>, Exception>
+    {
+      a(Object paramObject) {}
+    }
+    
+    final class b
+      implements CondomCore.n<ResolveInfo, Throwable>
+    {
+      b(Object paramObject, Method paramMethod, Object[] paramArrayOfObject, Intent paramIntent, int paramInt) {}
+    }
   }
   
-  static class c
+  static class d
     implements InvocationHandler
   {
     private final Object a;
     private final String b;
     final boolean c;
     
-    c(Object paramObject, String paramString, boolean paramBoolean)
+    d(Object paramObject, String paramString, boolean paramBoolean)
     {
       this.a = paramObject;
       this.b = paramString;

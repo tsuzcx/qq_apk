@@ -1,64 +1,38 @@
 package com.tencent.token;
 
-import android.content.Context;
+import android.graphics.Bitmap;
 import android.os.Handler;
 import android.os.Message;
-import com.tencent.token.core.bean.LoginProtectResult;
-import com.tencent.token.global.RqdApplication;
+import com.tencent.token.core.bean.CommonImgResult;
 import java.util.HashMap;
 import org.json.JSONObject;
 
 public final class vd
-  extends tj
+  extends tr
 {
-  private long d;
-  private LoginProtectResult e;
-  private String f;
-  private int g;
+  private String d;
+  private CommonImgResult e;
   
   public final String a()
   {
-    rz.a();
-    this.a.a(104, null, null);
-    return null;
+    return this.d;
   }
   
-  public final void a(aaq paramaaq)
+  public final void a(abc paramabc)
   {
-    this.d = ((Long)paramaaq.c.get("param.uinhash")).longValue();
-    this.f = ((String)paramaaq.c.get("param.wtlogin.a2"));
-    this.g = ((Integer)paramaaq.c.get("param.common.seq")).intValue();
+    this.d = ((String)paramabc.c.get("param.common.img.url"));
   }
   
   public final void a(JSONObject paramJSONObject)
   {
-    int i = paramJSONObject.getInt("err");
-    if (i != 0)
+    paramJSONObject = (Bitmap)paramJSONObject.get("img");
+    if ((paramJSONObject != null) && (paramJSONObject.getWidth() != 0) && (paramJSONObject.getHeight() != 0))
     {
-      a(i, paramJSONObject.getString("info"));
-      return;
-    }
-    paramJSONObject = aac.d(paramJSONObject.getString("data"));
-    if (paramJSONObject != null)
-    {
-      paramJSONObject = new JSONObject(new String(paramJSONObject));
-      xa.a("login protect: ".concat(String.valueOf(paramJSONObject)));
-      if (paramJSONObject.getInt("seq_id") != this.g)
-      {
-        this.a.a(10030, null, null);
-        StringBuilder localStringBuilder = new StringBuilder("parseJSON error seq is wrong seq=");
-        localStringBuilder.append(paramJSONObject.getInt("seq_id"));
-        localStringBuilder.append(",right = ");
-        localStringBuilder.append(this.g);
-        xa.c(localStringBuilder.toString());
-        return;
-      }
-      this.e = new LoginProtectResult(paramJSONObject);
       this.a.a = 0;
+      this.e = new CommonImgResult(this.d, paramJSONObject);
       return;
     }
-    xa.c("parseJSON error decodeData=".concat(String.valueOf(paramJSONObject)));
-    a(10022, RqdApplication.n().getString(2131493068));
+    this.a.a(104, null, null);
   }
   
   public final void b()

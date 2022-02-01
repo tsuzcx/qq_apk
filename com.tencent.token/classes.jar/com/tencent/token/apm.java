@@ -1,24 +1,8 @@
 package com.tencent.token;
 
-import android.util.Pair;
-import com.qq.taf.jce.JceStruct;
-
-final class apm
-  implements agx
+public final class apm
 {
-  apm(aqr paramaqr) {}
-  
-  public final Pair a(int paramInt1, int paramInt2, JceStruct paramJceStruct)
-  {
-    if (paramJceStruct == null) {
-      return null;
-    }
-    if (paramInt2 != 10001) {
-      return null;
-    }
-    paramJceStruct = (aa)paramJceStruct;
-    return aqr.a(this.a, paramJceStruct);
-  }
+  public static ats a;
 }
 
 

@@ -1,328 +1,324 @@
 package com.tencent.token;
 
-import android.app.Notification;
-import android.app.Notification.Builder;
-import android.app.PendingIntent;
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.os.Build.VERSION;
-import android.os.Bundle;
-import android.util.SparseArray;
-import android.widget.RemoteViews;
+import android.graphics.Rect;
+import android.transition.Transition;
+import android.transition.Transition.EpicenterCallback;
+import android.transition.Transition.TransitionListener;
+import android.transition.TransitionManager;
+import android.transition.TransitionSet;
+import android.view.View;
+import android.view.ViewGroup;
 import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.Set;
+import java.util.List;
 
-public final class cj
+final class cj
+  extends ck
 {
-  public static Bundle a(Notification paramNotification)
+  private static boolean a(Transition paramTransition)
   {
-    if (Build.VERSION.SDK_INT >= 19) {
-      return paramNotification.extras;
+    return (!a(paramTransition.getTargetIds())) || (!a(paramTransition.getTargetNames())) || (!a(paramTransition.getTargetTypes()));
+  }
+  
+  public final Object a(Object paramObject1, Object paramObject2, Object paramObject3)
+  {
+    TransitionSet localTransitionSet = new TransitionSet();
+    if (paramObject1 != null) {
+      localTransitionSet.addTransition((Transition)paramObject1);
     }
-    if (Build.VERSION.SDK_INT >= 16) {
-      return cl.a(paramNotification);
+    if (paramObject2 != null) {
+      localTransitionSet.addTransition((Transition)paramObject2);
+    }
+    if (paramObject3 != null) {
+      localTransitionSet.addTransition((Transition)paramObject3);
+    }
+    return localTransitionSet;
+  }
+  
+  public final void a(ViewGroup paramViewGroup, Object paramObject)
+  {
+    TransitionManager.beginDelayedTransition(paramViewGroup, (Transition)paramObject);
+  }
+  
+  public final void a(Object paramObject, final Rect paramRect)
+  {
+    if (paramObject != null) {
+      ((Transition)paramObject).setEpicenterCallback(new Transition.EpicenterCallback()
+      {
+        public final Rect onGetEpicenter(Transition paramAnonymousTransition)
+        {
+          paramAnonymousTransition = paramRect;
+          if ((paramAnonymousTransition != null) && (!paramAnonymousTransition.isEmpty())) {
+            return paramRect;
+          }
+          return null;
+        }
+      });
+    }
+  }
+  
+  public final void a(Object paramObject, View paramView)
+  {
+    if (paramView != null)
+    {
+      paramObject = (Transition)paramObject;
+      final Rect localRect = new Rect();
+      a(paramView, localRect);
+      paramObject.setEpicenterCallback(new Transition.EpicenterCallback()
+      {
+        public final Rect onGetEpicenter(Transition paramAnonymousTransition)
+        {
+          return localRect;
+        }
+      });
+    }
+  }
+  
+  public final void a(Object paramObject, View paramView, ArrayList<View> paramArrayList)
+  {
+    paramObject = (TransitionSet)paramObject;
+    List localList = paramObject.getTargets();
+    localList.clear();
+    int n = paramArrayList.size();
+    int i = 0;
+    while (i < n)
+    {
+      Object localObject = (View)paramArrayList.get(i);
+      int m = localList.size();
+      if (!ck.a(localList, (View)localObject, m))
+      {
+        localList.add(localObject);
+        int j = m;
+        while (j < localList.size())
+        {
+          localObject = (View)localList.get(j);
+          if ((localObject instanceof ViewGroup))
+          {
+            localObject = (ViewGroup)localObject;
+            int i1 = ((ViewGroup)localObject).getChildCount();
+            int k = 0;
+            while (k < i1)
+            {
+              View localView = ((ViewGroup)localObject).getChildAt(k);
+              if (!ck.a(localList, localView, m)) {
+                localList.add(localView);
+              }
+              k += 1;
+            }
+          }
+          j += 1;
+        }
+      }
+      i += 1;
+    }
+    localList.add(paramView);
+    paramArrayList.add(paramView);
+    a(paramObject, paramArrayList);
+  }
+  
+  public final void a(Object paramObject1, final Object paramObject2, final ArrayList<View> paramArrayList1, final Object paramObject3, final ArrayList<View> paramArrayList2, final Object paramObject4, final ArrayList<View> paramArrayList3)
+  {
+    ((Transition)paramObject1).addListener(new Transition.TransitionListener()
+    {
+      public final void onTransitionCancel(Transition paramAnonymousTransition) {}
+      
+      public final void onTransitionEnd(Transition paramAnonymousTransition) {}
+      
+      public final void onTransitionPause(Transition paramAnonymousTransition) {}
+      
+      public final void onTransitionResume(Transition paramAnonymousTransition) {}
+      
+      public final void onTransitionStart(Transition paramAnonymousTransition)
+      {
+        paramAnonymousTransition = paramObject2;
+        if (paramAnonymousTransition != null) {
+          cj.this.b(paramAnonymousTransition, paramArrayList1, null);
+        }
+        paramAnonymousTransition = paramObject3;
+        if (paramAnonymousTransition != null) {
+          cj.this.b(paramAnonymousTransition, paramArrayList2, null);
+        }
+        paramAnonymousTransition = paramObject4;
+        if (paramAnonymousTransition != null) {
+          cj.this.b(paramAnonymousTransition, paramArrayList3, null);
+        }
+      }
+    });
+  }
+  
+  public final void a(Object paramObject, ArrayList<View> paramArrayList)
+  {
+    paramObject = (Transition)paramObject;
+    if (paramObject == null) {
+      return;
+    }
+    boolean bool = paramObject instanceof TransitionSet;
+    int j = 0;
+    int i = 0;
+    if (bool)
+    {
+      paramObject = (TransitionSet)paramObject;
+      j = paramObject.getTransitionCount();
+      while (i < j)
+      {
+        a(paramObject.getTransitionAt(i), paramArrayList);
+        i += 1;
+      }
+      return;
+    }
+    if ((!a(paramObject)) && (a(paramObject.getTargets())))
+    {
+      int k = paramArrayList.size();
+      i = j;
+      while (i < k)
+      {
+        paramObject.addTarget((View)paramArrayList.get(i));
+        i += 1;
+      }
+    }
+  }
+  
+  public final void a(Object paramObject, ArrayList<View> paramArrayList1, ArrayList<View> paramArrayList2)
+  {
+    paramObject = (TransitionSet)paramObject;
+    if (paramObject != null)
+    {
+      paramObject.getTargets().clear();
+      paramObject.getTargets().addAll(paramArrayList2);
+      b(paramObject, paramArrayList1, paramArrayList2);
+    }
+  }
+  
+  public final boolean a(Object paramObject)
+  {
+    return paramObject instanceof Transition;
+  }
+  
+  public final Object b(Object paramObject)
+  {
+    if (paramObject != null) {
+      return ((Transition)paramObject).clone();
     }
     return null;
   }
   
-  public static final class a
+  public final Object b(Object paramObject1, Object paramObject2, Object paramObject3)
   {
-    final Bundle a;
-    final cn[] b;
-    final cn[] c;
-    boolean d;
-    public int e = 2131099914;
-    public CharSequence f;
-    public PendingIntent g;
-    
-    public a(CharSequence paramCharSequence, PendingIntent paramPendingIntent)
-    {
-      this(paramCharSequence, paramPendingIntent, new Bundle());
+    paramObject1 = (Transition)paramObject1;
+    paramObject2 = (Transition)paramObject2;
+    paramObject3 = (Transition)paramObject3;
+    if ((paramObject1 != null) && (paramObject2 != null)) {
+      paramObject1 = new TransitionSet().addTransition(paramObject1).addTransition(paramObject2).setOrdering(1);
+    } else if (paramObject1 == null) {
+      if (paramObject2 != null) {
+        paramObject1 = paramObject2;
+      } else {
+        paramObject1 = null;
+      }
     }
-    
-    private a(CharSequence paramCharSequence, PendingIntent paramPendingIntent, Bundle paramBundle)
+    if (paramObject3 != null)
     {
-      this.f = cj.b.c(paramCharSequence);
-      this.g = paramPendingIntent;
-      this.a = paramBundle;
-      this.b = null;
-      this.c = null;
-      this.d = true;
+      paramObject2 = new TransitionSet();
+      if (paramObject1 != null) {
+        paramObject2.addTransition(paramObject1);
+      }
+      paramObject2.addTransition(paramObject3);
+      return paramObject2;
+    }
+    return paramObject1;
+  }
+  
+  public final void b(Object paramObject, View paramView)
+  {
+    if (paramObject != null) {
+      ((Transition)paramObject).addTarget(paramView);
     }
   }
   
-  public static final class b
+  public final void b(Object paramObject, final View paramView, final ArrayList<View> paramArrayList)
   {
-    Bundle A;
-    int B = 0;
-    int C = 0;
-    Notification D;
-    RemoteViews E;
-    RemoteViews F;
-    RemoteViews G;
-    String H;
-    int I = 0;
-    String J;
-    long K;
-    int L = 0;
-    Notification M = new Notification();
-    @Deprecated
-    public ArrayList<String> N;
-    public Context a;
-    public ArrayList<cj.a> b = new ArrayList();
-    CharSequence c;
-    CharSequence d;
-    public PendingIntent e;
-    PendingIntent f;
-    RemoteViews g;
-    Bitmap h;
-    CharSequence i;
-    int j;
-    int k;
-    boolean l = true;
-    boolean m;
-    cj.c n;
-    CharSequence o;
-    CharSequence[] p;
-    int q;
-    int r;
-    boolean s;
-    String t;
-    boolean u;
-    String v;
-    boolean w = false;
-    boolean x;
-    boolean y;
-    String z;
-    
-    private b(Context paramContext)
+    ((Transition)paramObject).addListener(new Transition.TransitionListener()
     {
-      this.a = paramContext;
-      this.H = null;
-      this.M.when = System.currentTimeMillis();
-      this.M.audioStreamType = -1;
-      this.k = 0;
-      this.N = new ArrayList();
-    }
-    
-    @Deprecated
-    public b(Context paramContext, byte paramByte)
-    {
-      this(paramContext);
-    }
-    
-    protected static CharSequence c(CharSequence paramCharSequence)
-    {
-      if (paramCharSequence == null) {
-        return paramCharSequence;
-      }
-      CharSequence localCharSequence = paramCharSequence;
-      if (paramCharSequence.length() > 5120) {
-        localCharSequence = paramCharSequence.subSequence(0, 5120);
-      }
-      return localCharSequence;
-    }
-    
-    public final b a()
-    {
-      this.M.icon = 2131099914;
-      return this;
-    }
-    
-    public final b a(CharSequence paramCharSequence)
-    {
-      this.c = c(paramCharSequence);
-      return this;
-    }
-    
-    public final b b()
-    {
-      Notification localNotification = this.M;
-      localNotification.flags |= 0x10;
-      return this;
-    }
-    
-    public final b b(CharSequence paramCharSequence)
-    {
-      this.d = c(paramCharSequence);
-      return this;
-    }
-    
-    public final b c()
-    {
-      this.M.defaults = 1;
-      return this;
-    }
-    
-    public final Notification d()
-    {
-      ck localck = new ck(this);
-      cj.c localc = localck.b.n;
-      Object localObject;
-      if (Build.VERSION.SDK_INT >= 26)
+      public final void onTransitionCancel(Transition paramAnonymousTransition) {}
+      
+      public final void onTransitionEnd(Transition paramAnonymousTransition)
       {
-        localObject = localck.a.build();
+        paramAnonymousTransition.removeListener(this);
+        paramView.setVisibility(8);
+        int j = paramArrayList.size();
+        int i = 0;
+        while (i < j)
+        {
+          ((View)paramArrayList.get(i)).setVisibility(0);
+          i += 1;
+        }
       }
-      else
+      
+      public final void onTransitionPause(Transition paramAnonymousTransition) {}
+      
+      public final void onTransitionResume(Transition paramAnonymousTransition) {}
+      
+      public final void onTransitionStart(Transition paramAnonymousTransition) {}
+    });
+  }
+  
+  public final void b(Object paramObject, ArrayList<View> paramArrayList1, ArrayList<View> paramArrayList2)
+  {
+    paramObject = (Transition)paramObject;
+    boolean bool = paramObject instanceof TransitionSet;
+    int j = 0;
+    int i = 0;
+    if (bool)
+    {
+      paramObject = (TransitionSet)paramObject;
+      j = paramObject.getTransitionCount();
+      while (i < j)
       {
-        Notification localNotification;
-        if (Build.VERSION.SDK_INT >= 24)
-        {
-          localNotification = localck.a.build();
-          localObject = localNotification;
-          if (localck.g != 0)
-          {
-            if ((localNotification.getGroup() != null) && ((localNotification.flags & 0x200) != 0) && (localck.g == 2)) {
-              ck.a(localNotification);
-            }
-            localObject = localNotification;
-            if (localNotification.getGroup() != null)
-            {
-              localObject = localNotification;
-              if ((localNotification.flags & 0x200) == 0)
-              {
-                localObject = localNotification;
-                if (localck.g == 1)
-                {
-                  ck.a(localNotification);
-                  localObject = localNotification;
-                }
-              }
-            }
-          }
+        b(paramObject.getTransitionAt(i), paramArrayList1, paramArrayList2);
+        i += 1;
+      }
+      return;
+    }
+    if (!a(paramObject))
+    {
+      List localList = paramObject.getTargets();
+      if ((localList != null) && (localList.size() == paramArrayList1.size()) && (localList.containsAll(paramArrayList1)))
+      {
+        if (paramArrayList2 == null) {
+          i = 0;
+        } else {
+          i = paramArrayList2.size();
         }
-        else if (Build.VERSION.SDK_INT >= 21)
+        while (j < i)
         {
-          localck.a.setExtras(localck.f);
-          localNotification = localck.a.build();
-          if (localck.c != null) {
-            localNotification.contentView = localck.c;
-          }
-          if (localck.d != null) {
-            localNotification.bigContentView = localck.d;
-          }
-          if (localck.h != null) {
-            localNotification.headsUpContentView = localck.h;
-          }
-          localObject = localNotification;
-          if (localck.g != 0)
-          {
-            if ((localNotification.getGroup() != null) && ((localNotification.flags & 0x200) != 0) && (localck.g == 2)) {
-              ck.a(localNotification);
-            }
-            localObject = localNotification;
-            if (localNotification.getGroup() != null)
-            {
-              localObject = localNotification;
-              if ((localNotification.flags & 0x200) == 0)
-              {
-                localObject = localNotification;
-                if (localck.g == 1)
-                {
-                  ck.a(localNotification);
-                  localObject = localNotification;
-                }
-              }
-            }
-          }
+          paramObject.addTarget((View)paramArrayList2.get(j));
+          j += 1;
         }
-        else if (Build.VERSION.SDK_INT >= 20)
+        i = paramArrayList1.size() - 1;
+        while (i >= 0)
         {
-          localck.a.setExtras(localck.f);
-          localNotification = localck.a.build();
-          if (localck.c != null) {
-            localNotification.contentView = localck.c;
-          }
-          if (localck.d != null) {
-            localNotification.bigContentView = localck.d;
-          }
-          localObject = localNotification;
-          if (localck.g != 0)
-          {
-            if ((localNotification.getGroup() != null) && ((localNotification.flags & 0x200) != 0) && (localck.g == 2)) {
-              ck.a(localNotification);
-            }
-            localObject = localNotification;
-            if (localNotification.getGroup() != null)
-            {
-              localObject = localNotification;
-              if ((localNotification.flags & 0x200) == 0)
-              {
-                localObject = localNotification;
-                if (localck.g == 1)
-                {
-                  ck.a(localNotification);
-                  localObject = localNotification;
-                }
-              }
-            }
-          }
-        }
-        else if (Build.VERSION.SDK_INT >= 19)
-        {
-          localObject = cl.a(localck.e);
-          if (localObject != null) {
-            localck.f.putSparseParcelableArray("android.support.actionExtras", (SparseArray)localObject);
-          }
-          localck.a.setExtras(localck.f);
-          localNotification = localck.a.build();
-          if (localck.c != null) {
-            localNotification.contentView = localck.c;
-          }
-          localObject = localNotification;
-          if (localck.d != null)
-          {
-            localNotification.bigContentView = localck.d;
-            localObject = localNotification;
-          }
-        }
-        else if (Build.VERSION.SDK_INT >= 16)
-        {
-          localNotification = localck.a.build();
-          localObject = cj.a(localNotification);
-          Bundle localBundle = new Bundle(localck.f);
-          Iterator localIterator = localck.f.keySet().iterator();
-          while (localIterator.hasNext())
-          {
-            String str = (String)localIterator.next();
-            if (((Bundle)localObject).containsKey(str)) {
-              localBundle.remove(str);
-            }
-          }
-          ((Bundle)localObject).putAll(localBundle);
-          localObject = cl.a(localck.e);
-          if (localObject != null) {
-            cj.a(localNotification).putSparseParcelableArray("android.support.actionExtras", (SparseArray)localObject);
-          }
-          if (localck.c != null) {
-            localNotification.contentView = localck.c;
-          }
-          localObject = localNotification;
-          if (localck.d != null)
-          {
-            localNotification.bigContentView = localck.d;
-            localObject = localNotification;
-          }
-        }
-        else
-        {
-          localObject = localck.a.getNotification();
+          paramObject.removeTarget((View)paramArrayList1.get(i));
+          i -= 1;
         }
       }
-      if (localck.b.E != null) {
-        ((Notification)localObject).contentView = localck.b.E;
-      }
-      int i1 = Build.VERSION.SDK_INT;
-      i1 = Build.VERSION.SDK_INT;
-      if ((Build.VERSION.SDK_INT >= 16) && (localc != null)) {
-        cj.a((Notification)localObject);
-      }
-      return localObject;
     }
   }
   
-  public static abstract class c {}
+  public final Object c(Object paramObject)
+  {
+    if (paramObject == null) {
+      return null;
+    }
+    TransitionSet localTransitionSet = new TransitionSet();
+    localTransitionSet.addTransition((Transition)paramObject);
+    return localTransitionSet;
+  }
+  
+  public final void c(Object paramObject, View paramView)
+  {
+    if (paramObject != null) {
+      ((Transition)paramObject).removeTarget(paramView);
+    }
+  }
 }
 
 

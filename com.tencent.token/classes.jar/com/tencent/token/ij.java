@@ -1,127 +1,110 @@
 package com.tencent.token;
 
+import android.content.Context;
+import android.content.res.ColorStateList;
 import android.content.res.TypedArray;
-import android.graphics.Bitmap;
-import android.graphics.BitmapShader;
-import android.graphics.Paint;
-import android.graphics.Shader;
-import android.graphics.Shader.TileMode;
-import android.graphics.drawable.AnimationDrawable;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.ClipDrawable;
+import android.graphics.PorterDuff.Mode;
 import android.graphics.drawable.Drawable;
-import android.graphics.drawable.LayerDrawable;
-import android.graphics.drawable.ShapeDrawable;
-import android.graphics.drawable.shapes.RoundRectShape;
+import android.os.Build.VERSION;
 import android.util.AttributeSet;
-import android.widget.ProgressBar;
+import android.widget.CompoundButton;
 
-public class ij
+public final class ij
 {
-  private static final int[] b = { 16843067, 16843068 };
-  public Bitmap a;
-  private final ProgressBar c;
+  public ColorStateList a = null;
+  public PorterDuff.Mode b = null;
+  private final CompoundButton c;
+  private boolean d = false;
+  private boolean e = false;
+  private boolean f;
   
-  public ij(ProgressBar paramProgressBar)
+  public ij(CompoundButton paramCompoundButton)
   {
-    this.c = paramProgressBar;
+    this.c = paramCompoundButton;
   }
   
-  private Drawable a(Drawable paramDrawable, boolean paramBoolean)
+  private void b()
   {
-    Object localObject1;
-    Object localObject2;
-    if ((paramDrawable instanceof di))
+    Drawable localDrawable = fs.a(this.c);
+    if ((localDrawable != null) && ((this.d) || (this.e)))
     {
-      localObject1 = (di)paramDrawable;
-      localObject2 = ((di)localObject1).a();
-      if (localObject2 != null)
-      {
-        ((di)localObject1).a(a((Drawable)localObject2, paramBoolean));
-        return paramDrawable;
+      localDrawable = dk.d(localDrawable).mutate();
+      if (this.d) {
+        dk.a(localDrawable, this.a);
       }
+      if (this.e) {
+        dk.a(localDrawable, this.b);
+      }
+      if (localDrawable.isStateful()) {
+        localDrawable.setState(this.c.getDrawableState());
+      }
+      this.c.setButtonDrawable(localDrawable);
     }
-    else
-    {
-      if ((paramDrawable instanceof LayerDrawable))
-      {
-        paramDrawable = (LayerDrawable)paramDrawable;
-        int k = paramDrawable.getNumberOfLayers();
-        localObject1 = new Drawable[k];
-        int j = 0;
-        int i = 0;
-        while (i < k)
-        {
-          int m = paramDrawable.getId(i);
-          localObject2 = paramDrawable.getDrawable(i);
-          if ((m != 16908301) && (m != 16908303)) {
-            paramBoolean = false;
-          } else {
-            paramBoolean = true;
-          }
-          localObject1[i] = a((Drawable)localObject2, paramBoolean);
-          i += 1;
-        }
-        localObject1 = new LayerDrawable((Drawable[])localObject1);
-        i = j;
-        while (i < k)
-        {
-          ((LayerDrawable)localObject1).setId(i, paramDrawable.getId(i));
-          i += 1;
-        }
-        return localObject1;
-      }
-      if ((paramDrawable instanceof BitmapDrawable))
-      {
-        paramDrawable = (BitmapDrawable)paramDrawable;
-        localObject2 = paramDrawable.getBitmap();
-        if (this.a == null) {
-          this.a = ((Bitmap)localObject2);
-        }
-        localObject1 = new ShapeDrawable(new RoundRectShape(new float[] { 5.0F, 5.0F, 5.0F, 5.0F, 5.0F, 5.0F, 5.0F, 5.0F }, null, null));
-        localObject2 = new BitmapShader((Bitmap)localObject2, Shader.TileMode.REPEAT, Shader.TileMode.CLAMP);
-        ((ShapeDrawable)localObject1).getPaint().setShader((Shader)localObject2);
-        ((ShapeDrawable)localObject1).getPaint().setColorFilter(paramDrawable.getPaint().getColorFilter());
-        if (paramBoolean) {
-          return new ClipDrawable((Drawable)localObject1, 3, 1);
-        }
-        return localObject1;
-      }
-    }
-    return paramDrawable;
   }
   
-  public void a(AttributeSet paramAttributeSet, int paramInt)
+  public final int a(int paramInt)
   {
-    je localje = je.a(this.c.getContext(), paramAttributeSet, b, paramInt, 0);
-    Object localObject = localje.b(0);
-    if (localObject != null)
+    int i = paramInt;
+    if (Build.VERSION.SDK_INT < 17)
     {
-      ProgressBar localProgressBar = this.c;
-      paramAttributeSet = (AttributeSet)localObject;
-      if ((localObject instanceof AnimationDrawable))
-      {
-        localObject = (AnimationDrawable)localObject;
-        int i = ((AnimationDrawable)localObject).getNumberOfFrames();
-        paramAttributeSet = new AnimationDrawable();
-        paramAttributeSet.setOneShot(((AnimationDrawable)localObject).isOneShot());
-        paramInt = 0;
-        while (paramInt < i)
-        {
-          Drawable localDrawable = a(((AnimationDrawable)localObject).getFrame(paramInt), true);
-          localDrawable.setLevel(10000);
-          paramAttributeSet.addFrame(localDrawable, ((AnimationDrawable)localObject).getDuration(paramInt));
-          paramInt += 1;
-        }
-        paramAttributeSet.setLevel(10000);
+      Drawable localDrawable = fs.a(this.c);
+      i = paramInt;
+      if (localDrawable != null) {
+        i = paramInt + localDrawable.getIntrinsicWidth();
       }
-      localProgressBar.setIndeterminateDrawable(paramAttributeSet);
     }
-    paramAttributeSet = localje.b(1);
-    if (paramAttributeSet != null) {
-      this.c.setProgressDrawable(a(paramAttributeSet, false));
+    return i;
+  }
+  
+  public final void a()
+  {
+    if (this.f)
+    {
+      this.f = false;
+      return;
     }
-    localje.a.recycle();
+    this.f = true;
+    b();
+  }
+  
+  public final void a(ColorStateList paramColorStateList)
+  {
+    this.a = paramColorStateList;
+    this.d = true;
+    b();
+  }
+  
+  public final void a(PorterDuff.Mode paramMode)
+  {
+    this.b = paramMode;
+    this.e = true;
+    b();
+  }
+  
+  public final void a(AttributeSet paramAttributeSet, int paramInt)
+  {
+    paramAttributeSet = this.c.getContext().obtainStyledAttributes(paramAttributeSet, gs.j.CompoundButton, paramInt, 0);
+    try
+    {
+      if (paramAttributeSet.hasValue(gs.j.CompoundButton_android_button))
+      {
+        paramInt = paramAttributeSet.getResourceId(gs.j.CompoundButton_android_button, 0);
+        if (paramInt != 0) {
+          this.c.setButtonDrawable(gu.b(this.c.getContext(), paramInt));
+        }
+      }
+      if (paramAttributeSet.hasValue(gs.j.CompoundButton_buttonTint)) {
+        fs.a(this.c, paramAttributeSet.getColorStateList(gs.j.CompoundButton_buttonTint));
+      }
+      if (paramAttributeSet.hasValue(gs.j.CompoundButton_buttonTintMode)) {
+        fs.a(this.c, iu.a(paramAttributeSet.getInt(gs.j.CompoundButton_buttonTintMode, -1), null));
+      }
+      return;
+    }
+    finally
+    {
+      paramAttributeSet.recycle();
+    }
   }
 }
 

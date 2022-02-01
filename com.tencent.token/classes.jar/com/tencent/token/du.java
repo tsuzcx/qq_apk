@@ -1,127 +1,104 @@
 package com.tencent.token;
 
-import java.util.Collection;
-import java.util.ConcurrentModificationException;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
+import android.os.Binder;
+import android.os.Bundle;
+import android.os.IBinder;
+import android.os.IInterface;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
 
-public class du<K, V>
-  extends ef<K, V>
-  implements Map<K, V>
+public abstract interface du
+  extends IInterface
 {
-  eb<K, V> a;
+  public abstract void a(int paramInt, Bundle paramBundle);
   
-  private eb<K, V> a()
+  public static abstract class a
+    extends Binder
+    implements du
   {
-    if (this.a == null) {
-      this.a = new eb()
-      {
-        protected final int a()
-        {
-          return du.this.h;
-        }
-        
-        protected final int a(Object paramAnonymousObject)
-        {
-          return du.this.a(paramAnonymousObject);
-        }
-        
-        protected final Object a(int paramAnonymousInt1, int paramAnonymousInt2)
-        {
-          return du.this.g[((paramAnonymousInt1 << 1) + paramAnonymousInt2)];
-        }
-        
-        protected final V a(int paramAnonymousInt, V paramAnonymousV)
-        {
-          du localdu = du.this;
-          paramAnonymousInt = (paramAnonymousInt << 1) + 1;
-          Object localObject = localdu.g[paramAnonymousInt];
-          localdu.g[paramAnonymousInt] = paramAnonymousV;
-          return localObject;
-        }
-        
-        protected final void a(int paramAnonymousInt)
-        {
-          du.this.d(paramAnonymousInt);
-        }
-        
-        protected final void a(K paramAnonymousK, V paramAnonymousV)
-        {
-          du.this.put(paramAnonymousK, paramAnonymousV);
-        }
-        
-        protected final int b(Object paramAnonymousObject)
-        {
-          return du.this.b(paramAnonymousObject);
-        }
-        
-        protected final Map<K, V> b()
-        {
-          return du.this;
-        }
-        
-        protected final void c()
-        {
-          du.this.clear();
-        }
-      };
-    }
-    return this.a;
-  }
-  
-  public Set<Map.Entry<K, V>> entrySet()
-  {
-    eb localeb = a();
-    if (localeb.b == null) {
-      localeb.b = new eb.b(localeb);
-    }
-    return localeb.b;
-  }
-  
-  public Set<K> keySet()
-  {
-    return a().d();
-  }
-  
-  public void putAll(Map<? extends K, ? extends V> paramMap)
-  {
-    int i = this.h + paramMap.size();
-    int j = this.h;
-    Object localObject;
-    if (this.f.length < i)
+    public a()
     {
-      localObject = this.f;
-      Object[] arrayOfObject = this.g;
-      super.a(i);
-      if (this.h > 0)
-      {
-        System.arraycopy(localObject, 0, this.f, 0, j);
-        System.arraycopy(arrayOfObject, 0, this.g, 0, j << 1);
-      }
-      ef.a((int[])localObject, arrayOfObject, j);
+      attachInterface(this, "android.support.v4.os.IResultReceiver");
     }
-    if (this.h == j)
+    
+    public static du a(IBinder paramIBinder)
     {
-      paramMap = paramMap.entrySet().iterator();
-      while (paramMap.hasNext())
-      {
-        localObject = (Map.Entry)paramMap.next();
-        put(((Map.Entry)localObject).getKey(), ((Map.Entry)localObject).getValue());
+      if (paramIBinder == null) {
+        return null;
       }
-      return;
+      IInterface localIInterface = paramIBinder.queryLocalInterface("android.support.v4.os.IResultReceiver");
+      if ((localIInterface != null) && ((localIInterface instanceof du))) {
+        return (du)localIInterface;
+      }
+      return new a(paramIBinder);
     }
-    throw new ConcurrentModificationException();
-  }
-  
-  public Collection<V> values()
-  {
-    eb localeb = a();
-    if (localeb.d == null) {
-      localeb.d = new eb.e(localeb);
+    
+    public IBinder asBinder()
+    {
+      return this;
     }
-    return localeb.d;
+    
+    public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
+    {
+      if (paramInt1 != 1)
+      {
+        if (paramInt1 != 1598968902) {
+          return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
+        }
+        paramParcel2.writeString("android.support.v4.os.IResultReceiver");
+        return true;
+      }
+      paramParcel1.enforceInterface("android.support.v4.os.IResultReceiver");
+      paramInt1 = paramParcel1.readInt();
+      if (paramParcel1.readInt() != 0) {
+        paramParcel1 = (Bundle)Bundle.CREATOR.createFromParcel(paramParcel1);
+      } else {
+        paramParcel1 = null;
+      }
+      a(paramInt1, paramParcel1);
+      return true;
+    }
+    
+    static final class a
+      implements du
+    {
+      private IBinder a;
+      
+      a(IBinder paramIBinder)
+      {
+        this.a = paramIBinder;
+      }
+      
+      public final void a(int paramInt, Bundle paramBundle)
+      {
+        Parcel localParcel = Parcel.obtain();
+        try
+        {
+          localParcel.writeInterfaceToken("android.support.v4.os.IResultReceiver");
+          localParcel.writeInt(paramInt);
+          if (paramBundle != null)
+          {
+            localParcel.writeInt(1);
+            paramBundle.writeToParcel(localParcel, 0);
+          }
+          else
+          {
+            localParcel.writeInt(0);
+          }
+          this.a.transact(1, localParcel, null, 1);
+          return;
+        }
+        finally
+        {
+          localParcel.recycle();
+        }
+      }
+      
+      public final IBinder asBinder()
+      {
+        return this.a;
+      }
+    }
   }
 }
 

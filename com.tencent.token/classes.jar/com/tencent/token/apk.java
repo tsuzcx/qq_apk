@@ -1,11 +1,29 @@
 package com.tencent.token;
 
-import java.util.Comparator;
-
-final class apk
-  implements Comparator
+public final class apk
 {
-  apk(aqr paramaqr) {}
+  final float a;
+  final float b;
+  
+  public apk()
+  {
+    this(1.0F, 1.0F);
+  }
+  
+  public apk(float paramFloat1, float paramFloat2)
+  {
+    this.a = paramFloat1;
+    this.b = paramFloat2;
+  }
+  
+  public final String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.a);
+    localStringBuilder.append("x");
+    localStringBuilder.append(this.b);
+    return localStringBuilder.toString();
+  }
 }
 
 

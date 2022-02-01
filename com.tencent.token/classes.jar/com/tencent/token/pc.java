@@ -1,13 +1,37 @@
 package com.tencent.token;
 
-import android.content.Context;
+import android.os.Bundle;
 
-final class pc
-  extends ow
+public final class pc
+  implements pa.b
 {
-  pc(Context paramContext, String paramString)
+  public String a;
+  public String b;
+  public String c;
+  
+  public final int a()
   {
-    super(paramContext, paramString);
+    return 5;
+  }
+  
+  public final void a(Bundle paramBundle)
+  {
+    paramBundle.putString("_wxwebpageobject_extInfo", this.b);
+    paramBundle.putString("_wxwebpageobject_webpageUrl", this.a);
+    paramBundle.putString("_wxwebpageobject_canvaspagexml", this.c);
+  }
+  
+  public final void b(Bundle paramBundle)
+  {
+    this.b = paramBundle.getString("_wxwebpageobject_extInfo");
+    this.a = paramBundle.getString("_wxwebpageobject_webpageUrl");
+    this.c = paramBundle.getString("_wxwebpageobject_canvaspagexml");
+  }
+  
+  public final boolean b()
+  {
+    String str = this.a;
+    return (str != null) && (str.length() != 0) && (this.a.length() <= 10240);
   }
 }
 

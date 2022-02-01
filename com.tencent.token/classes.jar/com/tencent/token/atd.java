@@ -1,35 +1,64 @@
 package com.tencent.token;
 
-import android.graphics.Path;
-import android.graphics.PointF;
-import java.util.List;
+import java.util.ArrayList;
 
 public final class atd
+  implements ast
 {
-  public static void a(anb paramanb, Path paramPath)
+  public ArrayList a = new ArrayList();
+  int b = 0;
+  private boolean c = false;
+  
+  public atd()
   {
-    paramPath.reset();
-    PointF localPointF1 = paramanb.b;
-    paramPath.moveTo(localPointF1.x, localPointF1.y);
-    localPointF1 = new PointF(localPointF1.x, localPointF1.y);
-    int i = 0;
-    while (i < paramanb.a.size())
+    this.c = false;
+    this.a.add(new asv("mazu.3g.qq.com", 443, 100));
+    this.a.add(new asv("mazu.3g.qq.com", 14000, 100));
+    this.a.add(new asv("mazu.3g.qq.com", 8080, 100));
+    this.b = 0;
+  }
+  
+  public atd(boolean paramBoolean)
+  {
+    this.c = paramBoolean;
+    if (paramBoolean)
     {
-      Object localObject = (aml)paramanb.a.get(i);
-      PointF localPointF2 = ((aml)localObject).a;
-      PointF localPointF3 = ((aml)localObject).b;
-      localObject = ((aml)localObject).c;
-      if ((localPointF2.equals(localPointF1)) && (localPointF3.equals(localObject))) {
-        paramPath.lineTo(((PointF)localObject).x, ((PointF)localObject).y);
-      } else {
-        paramPath.cubicTo(localPointF2.x, localPointF2.y, localPointF3.x, localPointF3.y, ((PointF)localObject).x, ((PointF)localObject).y);
-      }
-      localPointF1.set(((PointF)localObject).x, ((PointF)localObject).y);
-      i += 1;
+      this.a.add(new asv("mazutest.3g.qq.com", 8080, 100));
     }
-    if (paramanb.c) {
-      paramPath.close();
+    else
+    {
+      this.a.add(new asv("mazu.3g.qq.com", 14000, 100));
+      this.a.add(new asv("mazu.3g.qq.com", 443, 100));
+      this.a.add(new asv("mazu.3g.qq.com", 8080, 100));
     }
+    this.b = 0;
+  }
+  
+  public final asv a()
+  {
+    int i = this.b;
+    if ((i >= 0) && (i < this.a.size()))
+    {
+      StringBuilder localStringBuilder = new StringBuilder("ip ");
+      localStringBuilder.append(((asv)this.a.get(this.b)).b);
+      localStringBuilder.append(" port : ");
+      localStringBuilder.append(((asv)this.a.get(this.b)).a);
+      return (asv)this.a.get(this.b);
+    }
+    return (asv)this.a.get(0);
+  }
+  
+  public final void a(int paramInt)
+  {
+    if (paramInt <= 0) {
+      return;
+    }
+    if (this.c)
+    {
+      this.a.add(new asv("mazutest.3g.qq.com", paramInt, 100));
+      return;
+    }
+    this.a.add(new asv("mazu.3g.qq.com", paramInt, 100));
   }
 }
 

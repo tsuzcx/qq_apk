@@ -1,41 +1,75 @@
 package com.tencent.token;
 
 import android.content.Context;
-import java.lang.reflect.Method;
+import com.tencent.turingfd.sdk.qps.Ginkgo;
+import java.io.File;
+import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 public final class aek
 {
-  static
+  public static long a = TimeUnit.HOURS.toMillis(32L);
+  public static aek b = new aek();
+  
+  public static long a(Context paramContext, String paramString, long paramLong1, long paramLong2)
   {
-    new Object();
+    paramContext = b(paramContext);
+    if (paramContext == null) {
+      return paramLong1;
+    }
+    paramContext = paramContext.k;
+    if (paramContext == null) {
+      return paramLong1;
+    }
+    if (!paramContext.containsKey(paramString)) {
+      return paramLong1;
+    }
+    try
+    {
+      long l = Long.valueOf((String)paramContext.get(paramString)).longValue();
+      return l * paramLong2;
+    }
+    finally {}
+    return paramLong1;
   }
   
-  public static String a(String paramString)
+  public static String a(Context paramContext)
+  {
+    paramContext = paramContext.getDir("turingfd", 0);
+    if (paramContext == null) {
+      return "";
+    }
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(paramContext.getAbsolutePath());
+    paramContext = File.separator;
+    ((StringBuilder)localObject).append(paramContext);
+    ((StringBuilder)localObject).append("12");
+    localObject = new File(((StringBuilder)localObject).toString());
+    if ((!((File)localObject).exists()) && (!((File)localObject).mkdirs())) {
+      return "";
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(((File)localObject).getAbsolutePath());
+    localStringBuilder.append(paramContext);
+    localStringBuilder.append(agh.a);
+    localStringBuilder.append("_qps_1");
+    return localStringBuilder.toString();
+  }
+  
+  public static Ginkgo b(Context paramContext)
   {
     try
     {
-      localObject = aef.a.getClassLoader();
-      localObject = ((ClassLoader)localObject).loadClass("android.os.SystemProperties");
-      Method localMethod = ((Class)localObject).getMethod("get", new Class[] { String.class, String.class });
-      paramString = new String(paramString);
-      paramString = (String)localMethod.invoke(localObject, new Object[] { paramString, new String("") });
+      Ginkgo localGinkgo = new Ginkgo();
+      localGinkgo.a(new agd(adg.a(a(paramContext))));
+      return localGinkgo;
     }
-    catch (IllegalArgumentException paramString)
+    finally
     {
-      Object localObject;
-      throw paramString;
+      label28:
+      break label28;
     }
-    catch (Exception paramString)
-    {
-      label76:
-      break label76;
-    }
-    paramString = "";
-    localObject = paramString;
-    if (paramString == null) {
-      localObject = "";
-    }
-    return localObject;
+    return null;
   }
 }
 

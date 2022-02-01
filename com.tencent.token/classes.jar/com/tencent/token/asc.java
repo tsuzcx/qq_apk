@@ -1,64 +1,22 @@
 package com.tencent.token;
 
-import android.content.Context;
-import android.os.Handler;
-import android.os.HandlerThread;
-import com.meri.service.monitor.AccessibilityDispatcher;
-
-public final class asc
+final class asc
 {
-  public asd a;
+  int a;
+  int b;
+  int c;
+  int d;
+  byte[] e;
+  arx f;
   
-  private void b()
+  asc(int paramInt1, int paramInt2, byte[] paramArrayOfByte, int paramInt3, int paramInt4, arx paramarx)
   {
-    if (this.a == null) {
-      this.a = new a();
-    }
-  }
-  
-  public final asd a()
-  {
-    b();
-    return this.a;
-  }
-  
-  final class a
-    implements asd
-  {
-    a()
-    {
-      AccessibilityDispatcher.a = new kf()
-      {
-        public final HandlerThread a()
-        {
-          return new HandlerThread("AccessibilityDispatcher");
-        }
-        
-        public final Handler b()
-        {
-          HandlerThread localHandlerThread = new HandlerThread("MonitorCallbackHandler");
-          localHandlerThread.start();
-          return new Handler(localHandlerThread.getLooper());
-        }
-      };
-    }
-    
-    public final int a(Context paramContext)
-    {
-      return AccessibilityDispatcher.a(paramContext);
-    }
-    
-    public final void a() {}
-    
-    public final void a(Context paramContext, amf paramamf, aoe.a parama)
-    {
-      AccessibilityDispatcher.a(paramContext, paramamf, parama);
-    }
-  }
-  
-  public static final class b
-  {
-    private static final asc a = new asc((byte)0);
+    this.a = paramInt1;
+    this.b = paramInt3;
+    this.c = paramInt4;
+    this.d = paramInt2;
+    this.e = paramArrayOfByte;
+    this.f = paramarx;
   }
 }
 

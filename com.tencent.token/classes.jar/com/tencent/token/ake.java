@@ -1,581 +1,159 @@
 package com.tencent.token;
 
-import java.io.EOFException;
-import java.io.IOException;
-import java.io.InterruptedIOException;
-import java.net.SocketTimeoutException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
+import javax.annotation.Nullable;
 
 public final class ake
 {
-  long a = 0L;
-  long b;
-  final int c;
-  final akc d;
-  List<ajy> e;
-  boolean f;
-  final b g;
-  final a h;
-  final c i = new c();
-  final c j = new c();
-  ajx k = null;
-  private final List<ajy> m;
+  public final String[] a;
   
-  ake(int paramInt, akc paramakc, boolean paramBoolean1, boolean paramBoolean2, List<ajy> paramList)
+  ake(a parama)
   {
-    if (paramakc != null)
+    this.a = ((String[])parama.a.toArray(new String[parama.a.size()]));
+  }
+  
+  public final a a()
+  {
+    a locala = new a();
+    Collections.addAll(locala.a, this.a);
+    return locala;
+  }
+  
+  public final String a(int paramInt)
+  {
+    return this.a[(paramInt * 2)];
+  }
+  
+  @Nullable
+  public final String a(String paramString)
+  {
+    String[] arrayOfString = this.a;
+    int i = arrayOfString.length - 2;
+    while (i >= 0)
     {
-      if (paramList != null)
+      if (paramString.equalsIgnoreCase(arrayOfString[i])) {
+        return arrayOfString[(i + 1)];
+      }
+      i -= 2;
+    }
+    return null;
+  }
+  
+  public final String b(int paramInt)
+  {
+    return this.a[(paramInt * 2 + 1)];
+  }
+  
+  public final boolean equals(@Nullable Object paramObject)
+  {
+    return ((paramObject instanceof ake)) && (Arrays.equals(((ake)paramObject).a, this.a));
+  }
+  
+  public final int hashCode()
+  {
+    return Arrays.hashCode(this.a);
+  }
+  
+  public final String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    int j = this.a.length / 2;
+    int i = 0;
+    while (i < j)
+    {
+      localStringBuilder.append(a(i));
+      localStringBuilder.append(": ");
+      localStringBuilder.append(b(i));
+      localStringBuilder.append("\n");
+      i += 1;
+    }
+    return localStringBuilder.toString();
+  }
+  
+  public static final class a
+  {
+    final List<String> a = new ArrayList(20);
+    
+    static void c(String paramString1, String paramString2)
+    {
+      if (paramString1 != null)
       {
-        this.c = paramInt;
-        this.d = paramakc;
-        this.b = paramakc.m.b();
-        this.g = new b(paramakc.l.b());
-        this.h = new a();
-        this.g.b = paramBoolean2;
-        this.h.b = paramBoolean1;
-        this.m = paramList;
-        return;
-      }
-      throw new NullPointerException("requestHeaders == null");
-    }
-    throw new NullPointerException("connection == null");
-  }
-  
-  private boolean d(ajx paramajx)
-  {
-    if ((!l) && (Thread.holdsLock(this))) {
-      throw new AssertionError();
-    }
-    try
-    {
-      if (this.k != null) {
-        return false;
-      }
-      if ((this.g.b) && (this.h.b)) {
-        return false;
-      }
-      this.k = paramajx;
-      notifyAll();
-      this.d.b(this.c);
-      return true;
-    }
-    finally {}
-  }
-  
-  final void a(long paramLong)
-  {
-    this.b += paramLong;
-    if (paramLong > 0L) {
-      notifyAll();
-    }
-  }
-  
-  public final void a(ajx paramajx)
-  {
-    if (!d(paramajx)) {
-      return;
-    }
-    this.d.b(this.c, paramajx);
-  }
-  
-  public final boolean a()
-  {
-    try
-    {
-      ajx localajx = this.k;
-      if (localajx != null) {
-        return false;
-      }
-      if (((this.g.b) || (this.g.a)) && ((this.h.b) || (this.h.a)))
-      {
-        boolean bool = this.f;
-        if (bool) {
-          return false;
-        }
-      }
-      return true;
-    }
-    finally {}
-  }
-  
-  public final void b(ajx paramajx)
-  {
-    if (!d(paramajx)) {
-      return;
-    }
-    this.d.a(this.c, paramajx);
-  }
-  
-  public final boolean b()
-  {
-    int n;
-    if ((this.c & 0x1) == 1) {
-      n = 1;
-    } else {
-      n = 0;
-    }
-    return this.d.a == n;
-  }
-  
-  public final List<ajy> c()
-  {
-    try
-    {
-      if (b())
-      {
-        this.i.b_();
-        try
+        if (!paramString1.isEmpty())
         {
-          while ((this.e == null) && (this.k == null)) {
-            h();
-          }
-          this.i.b();
-          List localList = this.e;
-          if (localList != null)
+          int j = paramString1.length();
+          int i = 0;
+          int k;
+          while (i < j)
           {
-            this.e = null;
-            return localList;
+            k = paramString1.charAt(i);
+            if ((k > 32) && (k < 127)) {
+              i += 1;
+            } else {
+              throw new IllegalArgumentException(akt.a("Unexpected char %#04x at %d in header name: %s", new Object[] { Integer.valueOf(k), Integer.valueOf(i), paramString1 }));
+            }
           }
-          throw new akj(this.k);
-        }
-        finally
-        {
-          this.i.b();
-        }
-      }
-      throw new IllegalStateException("servers cannot read response headers");
-    }
-    finally {}
-  }
-  
-  final void c(ajx paramajx)
-  {
-    try
-    {
-      if (this.k == null)
-      {
-        this.k = paramajx;
-        notifyAll();
-      }
-      return;
-    }
-    finally
-    {
-      paramajx = finally;
-      throw paramajx;
-    }
-  }
-  
-  public final aln d()
-  {
-    try
-    {
-      if ((!this.f) && (!b())) {
-        throw new IllegalStateException("reply before requesting the sink");
-      }
-      return this.h;
-    }
-    finally {}
-  }
-  
-  final void e()
-  {
-    if ((!l) && (Thread.holdsLock(this))) {
-      throw new AssertionError();
-    }
-    try
-    {
-      this.g.b = true;
-      boolean bool = a();
-      notifyAll();
-      if (!bool) {
-        this.d.b(this.c);
-      }
-      return;
-    }
-    finally {}
-  }
-  
-  final void f()
-  {
-    if ((!l) && (Thread.holdsLock(this))) {
-      throw new AssertionError();
-    }
-    for (;;)
-    {
-      try
-      {
-        if ((this.g.b) || (!this.g.a)) {
-          break label115;
-        }
-        if (this.h.b) {
-          break label110;
-        }
-        if (!this.h.a) {
-          break label115;
-        }
-      }
-      finally {}
-      boolean bool = a();
-      if (n != 0)
-      {
-        a(ajx.f);
-        return;
-      }
-      if (!bool) {
-        this.d.b(this.c);
-      }
-      return;
-      label110:
-      int n = 1;
-      continue;
-      label115:
-      n = 0;
-    }
-  }
-  
-  final void g()
-  {
-    if (!this.h.a)
-    {
-      if (!this.h.b)
-      {
-        ajx localajx = this.k;
-        if (localajx == null) {
-          return;
-        }
-        throw new akj(localajx);
-      }
-      throw new IOException("stream finished");
-    }
-    throw new IOException("stream closed");
-  }
-  
-  final void h()
-  {
-    try
-    {
-      wait();
-      return;
-    }
-    catch (InterruptedException localInterruptedException)
-    {
-      label5:
-      break label5;
-    }
-    Thread.currentThread().interrupt();
-    throw new InterruptedIOException();
-  }
-  
-  final class a
-    implements aln
-  {
-    boolean a;
-    boolean b;
-    private final aky e = new aky();
-    
-    a() {}
-    
-    private void a(boolean paramBoolean)
-    {
-      for (;;)
-      {
-        synchronized (ake.this)
-        {
-          ake.this.j.b_();
-          try
+          if (paramString2 != null)
           {
-            if ((ake.this.b <= 0L) && (!this.b) && (!this.a) && (ake.this.k == null))
+            j = paramString2.length();
+            i = 0;
+            while (i < j)
             {
-              ake.this.h();
-              continue;
-            }
-            ake.this.j.b();
-            ake.this.g();
-            long l = Math.min(ake.this.b, this.e.b);
-            ake localake = ake.this;
-            localake.b -= l;
-            ake.this.j.b_();
-            try
-            {
-              ??? = ake.this.d;
-              int i = ake.this.c;
-              if ((!paramBoolean) || (l != this.e.b)) {
-                break label230;
-              }
-              paramBoolean = true;
-              ((akc)???).a(i, paramBoolean, this.e, l);
-              return;
-            }
-            finally
-            {
-              ake.this.j.b();
-            }
-            localObject4 = finally;
-          }
-          finally
-          {
-            ake.this.j.b();
-          }
-        }
-        label230:
-        paramBoolean = false;
-      }
-    }
-    
-    public final alp a()
-    {
-      return ake.this.j;
-    }
-    
-    public final void a_(aky paramaky, long paramLong)
-    {
-      if ((!c) && (Thread.holdsLock(ake.this))) {
-        throw new AssertionError();
-      }
-      this.e.a_(paramaky, paramLong);
-      while (this.e.b >= 16384L) {
-        a(false);
-      }
-    }
-    
-    public final void close()
-    {
-      if ((!c) && (Thread.holdsLock(ake.this))) {
-        throw new AssertionError();
-      }
-      synchronized (ake.this)
-      {
-        if (this.a) {
-          return;
-        }
-        if (!ake.this.h.b)
-        {
-          if (this.e.b > 0L) {
-            while (this.e.b > 0L) {
-              a(true);
-            }
-          }
-          ake.this.d.a(ake.this.c, true, null, 0L);
-        }
-        synchronized (ake.this)
-        {
-          this.a = true;
-          ake.this.d.p.b();
-          ake.this.f();
-          return;
-        }
-      }
-    }
-    
-    public final void flush()
-    {
-      if ((!c) && (Thread.holdsLock(ake.this))) {
-        throw new AssertionError();
-      }
-      synchronized (ake.this)
-      {
-        ake.this.g();
-        while (this.e.b > 0L)
-        {
-          a(false);
-          ake.this.d.p.b();
-        }
-        return;
-      }
-    }
-  }
-  
-  final class b
-    implements alo
-  {
-    boolean a;
-    boolean b;
-    private final aky e = new aky();
-    private final aky f = new aky();
-    private final long g;
-    
-    b(long paramLong)
-    {
-      this.g = paramLong;
-    }
-    
-    private void a(long paramLong)
-    {
-      if ((!c) && (Thread.holdsLock(ake.this))) {
-        throw new AssertionError();
-      }
-      ake.this.d.a(paramLong);
-    }
-    
-    private void b()
-    {
-      ake.this.i.b_();
-      try
-      {
-        while ((this.f.b == 0L) && (!this.b) && (!this.a) && (ake.this.k == null)) {
-          ake.this.h();
-        }
-        return;
-      }
-      finally
-      {
-        ake.this.i.b();
-      }
-    }
-    
-    public final long a(aky paramaky, long paramLong)
-    {
-      if (paramLong >= 0L) {}
-      for (;;)
-      {
-        synchronized (ake.this)
-        {
-          b();
-          if (!this.a)
-          {
-            ajx localajx = ake.this.k;
-            if (this.f.b <= 0L) {
-              break label219;
-            }
-            paramLong = this.f.a(paramaky, Math.min(paramLong, this.f.b));
-            paramaky = ake.this;
-            paramaky.a += paramLong;
-            if ((localajx == null) && (ake.this.a >= ake.this.d.l.b() / 2))
-            {
-              ake.this.d.a(ake.this.c, ake.this.a);
-              ake.this.a = 0L;
-            }
-            if (paramLong != -1L)
-            {
-              a(paramLong);
-              return paramLong;
-            }
-            if (localajx == null) {
-              return -1L;
-            }
-            throw new akj(localajx);
-          }
-          throw new IOException("stream closed");
-        }
-        throw new IllegalArgumentException("byteCount < 0: ".concat(String.valueOf(paramLong)));
-        label219:
-        paramLong = -1L;
-      }
-    }
-    
-    public final alp a()
-    {
-      return ake.this.i;
-    }
-    
-    final void a(ala paramala, long paramLong)
-    {
-      long l1 = paramLong;
-      if (!c) {
-        if (!Thread.holdsLock(ake.this)) {
-          l1 = paramLong;
-        } else {
-          throw new AssertionError();
-        }
-      }
-      if (l1 > 0L) {}
-      for (;;)
-      {
-        synchronized (ake.this)
-        {
-          for (;;)
-          {
-            boolean bool = this.b;
-            paramLong = this.f.b;
-            long l2 = this.g;
-            int j = 1;
-            if (paramLong + l1 <= l2) {
-              break label235;
-            }
-            i = 1;
-            if (i != 0)
-            {
-              paramala.g(l1);
-              ake.this.b(ajx.d);
-              return;
-            }
-            if (bool)
-            {
-              paramala.g(l1);
-              return;
-            }
-            paramLong = paramala.a(this.e, l1);
-            if (paramLong != -1L)
-            {
-              l1 -= paramLong;
-              synchronized (ake.this)
-              {
-                if (this.f.b != 0L) {
-                  break label241;
-                }
-                i = j;
-                this.f.a(this.e);
-                if (i != 0) {
-                  ake.this.notifyAll();
-                }
+              k = paramString2.charAt(i);
+              if (((k > 31) || (k == 9)) && (k < 127)) {
+                i += 1;
+              } else {
+                throw new IllegalArgumentException(akt.a("Unexpected char %#04x at %d in %s value: %s", new Object[] { Integer.valueOf(k), Integer.valueOf(i), paramString1, paramString2 }));
               }
             }
+            return;
           }
-          throw new EOFException();
+          paramString2 = new StringBuilder("value for name ");
+          paramString2.append(paramString1);
+          paramString2.append(" == null");
+          throw new NullPointerException(paramString2.toString());
         }
-        return;
-        label235:
-        int i = 0;
-        continue;
-        label241:
-        i = 0;
+        throw new IllegalArgumentException("name is empty");
       }
+      throw new NullPointerException("name == null");
     }
     
-    public final void close()
+    public final a a(String paramString)
     {
-      synchronized (ake.this)
+      int j;
+      for (int i = 0; i < this.a.size(); i = j + 2)
       {
-        this.a = true;
-        long l = this.f.b;
-        this.f.p();
-        ake.this.notifyAll();
-        if (l > 0L) {
-          a(l);
+        j = i;
+        if (paramString.equalsIgnoreCase((String)this.a.get(i)))
+        {
+          this.a.remove(i);
+          this.a.remove(i);
+          j = i - 2;
         }
-        ake.this.f();
-        return;
       }
-    }
-  }
-  
-  final class c
-    extends akw
-  {
-    c() {}
-    
-    public final IOException a(IOException paramIOException)
-    {
-      SocketTimeoutException localSocketTimeoutException = new SocketTimeoutException("timeout");
-      if (paramIOException != null) {
-        localSocketTimeoutException.initCause(paramIOException);
-      }
-      return localSocketTimeoutException;
+      return this;
     }
     
-    public final void a()
+    final a a(String paramString1, String paramString2)
     {
-      ake.this.b(ajx.f);
+      this.a.add(paramString1);
+      this.a.add(paramString2.trim());
+      return this;
     }
     
-    public final void b()
+    public final ake a()
     {
-      if (!c_()) {
-        return;
-      }
-      throw a(null);
+      return new ake(this);
+    }
+    
+    public final a b(String paramString1, String paramString2)
+    {
+      c(paramString1, paramString2);
+      a(paramString1);
+      a(paramString1, paramString2);
+      return this;
     }
   }
 }

@@ -1,7 +1,7 @@
 package btmsdkobf;
 
 import android.content.Context;
-import com.tencent.token.asr;
+import com.tencent.token.auo;
 import com.tmsdk.base.AbsTMSBaseConfig;
 import com.tmsdk.base.TMSDKBaseContext;
 
@@ -49,7 +49,7 @@ public class bc
           eg.g("TMSDKBaseContextInner", "checkNoProguard false");
           return false;
         }
-        if ((!fq.isJavaTCC()) && (!asr.a()))
+        if ((!fq.isJavaTCC()) && (!auo.a()))
         {
           eg.g("TMSDKBaseContextInner", "loadLibraryIfNot false");
           return false;

@@ -1,23 +1,93 @@
 package com.tencent.token;
 
-import java.util.List;
+import java.io.InterruptedIOException;
+import java.util.concurrent.TimeUnit;
 
-public final class anm
+public class anm
 {
-  final List<anc> a;
-  final double b;
-  private final char c;
-  private final String d;
-  private final String e;
-  
-  public static int a(char paramChar, String paramString1, String paramString2)
+  public static final anm c = new anm()
   {
-    return ((paramChar + '\000') * 31 + paramString1.hashCode()) * 31 + paramString2.hashCode();
+    public final anm a(long paramAnonymousLong)
+    {
+      return this;
+    }
+    
+    public final anm a(long paramAnonymousLong, TimeUnit paramAnonymousTimeUnit)
+    {
+      return this;
+    }
+    
+    public final void f() {}
+  };
+  private boolean a;
+  private long b;
+  private long d;
+  
+  public anm a(long paramLong)
+  {
+    this.a = true;
+    this.b = paramLong;
+    return this;
   }
   
-  public final int hashCode()
+  public anm a(long paramLong, TimeUnit paramTimeUnit)
   {
-    return a(this.c, this.e, this.d);
+    if (paramLong >= 0L)
+    {
+      if (paramTimeUnit != null)
+      {
+        this.d = paramTimeUnit.toNanos(paramLong);
+        return this;
+      }
+      throw new IllegalArgumentException("unit == null");
+    }
+    throw new IllegalArgumentException("timeout < 0: ".concat(String.valueOf(paramLong)));
+  }
+  
+  public long c()
+  {
+    if (this.a) {
+      return this.b;
+    }
+    throw new IllegalStateException("No deadline");
+  }
+  
+  public anm d()
+  {
+    this.d = 0L;
+    return this;
+  }
+  
+  public long e_()
+  {
+    return this.d;
+  }
+  
+  public void f()
+  {
+    if (!Thread.interrupted())
+    {
+      if (this.a)
+      {
+        if (this.b - System.nanoTime() > 0L) {
+          return;
+        }
+        throw new InterruptedIOException("deadline reached");
+      }
+      return;
+    }
+    throw new InterruptedIOException("thread interrupted");
+  }
+  
+  public boolean f_()
+  {
+    return this.a;
+  }
+  
+  public anm g_()
+  {
+    this.a = false;
+    return this;
   }
 }
 

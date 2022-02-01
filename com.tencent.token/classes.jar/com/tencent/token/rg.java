@@ -1,167 +1,121 @@
 package com.tencent.token;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
-import android.os.Handler;
-import android.os.HandlerThread;
-import android.os.Looper;
-import android.os.Message;
-import android.text.TextUtils;
-import com.tencent.token.core.bean.OnlineDeviceResult.a;
-import com.tencent.token.core.bean.QQUser;
-import com.tencent.token.core.bean.SafeMsgItem;
-import com.tencent.token.global.RqdApplication;
-import com.tmsdk.TMSDKContext;
-import com.tmsdk.common.util.TmsLog;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.Iterator;
-import java.util.List;
-import java.util.concurrent.CountDownLatch;
-import java.util.concurrent.TimeUnit;
-import java.util.concurrent.atomic.AtomicInteger;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Build.VERSION;
+import java.lang.reflect.Method;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 
 public final class rg
 {
-  public Handler a;
-  long b;
-  public volatile boolean c;
+  static String[] a = { "ro.vendor.build.fingerprint", "ro.vendor.build.display.full_id", "ro.serialno", "gsm.version.baseband" };
   
-  private rg()
+  private static String a(String paramString)
   {
-    HandlerThread localHandlerThread = new HandlerThread("LoginTraceManager", 5);
-    localHandlerThread.start();
-    this.a = new Handler(localHandlerThread.getLooper());
-  }
-  
-  final b a(long paramLong, final byte[] paramArrayOfByte)
-  {
-    Object localObject2 = new AtomicInteger(0);
-    Object localObject1 = new CountDownLatch(1);
-    localObject2 = new Handler(Looper.getMainLooper())
-    {
-      public final void handleMessage(Message paramAnonymousMessage)
-      {
-        StringBuilder localStringBuilder = new StringBuilder("handleMessage what:");
-        localStringBuilder.append(paramAnonymousMessage.what);
-        localStringBuilder.append(", ret:");
-        localStringBuilder.append(paramAnonymousMessage.arg1);
-        TmsLog.i("LoginTraceManager", localStringBuilder.toString());
-        if (paramAnonymousMessage.what == 3005)
-        {
-          if (paramAnonymousMessage.arg1 == 0)
-          {
-            this.a.countDown();
-            return;
-          }
-          if (((wy)paramAnonymousMessage.obj != null) && (this.b.get() < 2))
-          {
-            paramAnonymousMessage = this.b;
-            paramAnonymousMessage.set(paramAnonymousMessage.get() + 1);
-            paramAnonymousMessage = tb.a();
-            byte b1 = tc.c;
-            aac.a(paramArrayOfByte);
-            paramAnonymousMessage.a(b1, this);
-            TmsLog.i("LoginTraceManager", "K_MSG_GETSAFELGNMESSAGE retry");
-            return;
-          }
-          TmsLog.i("LoginTraceManager", "K_MSG_GETSAFELGNMESSAGE failed");
-          this.a.countDown();
-        }
-      }
-    };
-    tb localtb = tb.a();
-    byte b1 = tc.c;
-    aac.a(paramArrayOfByte);
-    localtb.a(b1, (Handler)localObject2);
     try
     {
-      ((CountDownLatch)localObject1).await(20L, TimeUnit.SECONDS);
-    }
-    catch (InterruptedException paramArrayOfByte)
-    {
-      paramArrayOfByte.printStackTrace();
-    }
-    paramArrayOfByte = rh.a.a().a(paramLong);
-    localObject2 = tb.a().f;
-    localObject1 = new ArrayList();
-    localObject2 = ((aam)localObject2).b();
-    if (localObject2 != null) {
-      ((List)localObject1).add(localObject2);
-    }
-    if (paramArrayOfByte == null)
-    {
-      TmsLog.i("LoginTraceManager", "@checkHasChanged, pull failed, return null this time.");
-      return null;
-    }
-    return new b(paramArrayOfByte, (List)localObject1);
-  }
-  
-  public static final class a
-  {
-    private static final rg a = new rg((byte)0);
-  }
-  
-  public final class b
-  {
-    public List<OnlineDeviceResult.a> a;
-    public List<SafeMsgItem> b;
-    
-    public b(List<SafeMsgItem> paramList)
-    {
-      this.a = paramList;
-      Object localObject;
-      this.b = localObject;
-    }
-    
-    public final void a()
-    {
+      Object localObject = MessageDigest.getInstance("MD5");
+      ((MessageDigest)localObject).update(paramString.getBytes());
+      localObject = ((MessageDigest)localObject).digest();
       StringBuilder localStringBuilder = new StringBuilder();
-      Object localObject1 = this.a;
-      Object localObject2;
-      if (localObject1 != null)
+      int j = localObject.length;
+      int i = 0;
+      while (i < j)
       {
-        localObject1 = ((List)localObject1).iterator();
-        while (((Iterator)localObject1).hasNext())
-        {
-          localObject2 = (OnlineDeviceResult.a)((Iterator)localObject1).next();
-          localStringBuilder.append(((OnlineDeviceResult.a)localObject2).e);
-          localStringBuilder.append("|");
-          localStringBuilder.append(((OnlineDeviceResult.a)localObject2).d);
-          localStringBuilder.append("|");
-          localStringBuilder.append(((OnlineDeviceResult.a)localObject2).a);
-          localStringBuilder.append("|");
-          localStringBuilder.append(((OnlineDeviceResult.a)localObject2).f);
-          localStringBuilder.append("|");
-          localStringBuilder.append(((OnlineDeviceResult.a)localObject2).g);
-          localStringBuilder.append("|");
-          localStringBuilder.append(((OnlineDeviceResult.a)localObject2).h);
-          localStringBuilder.append("|");
-          localStringBuilder.append(((OnlineDeviceResult.a)localObject2).c);
-          localStringBuilder.append("|");
-          localStringBuilder.append(((OnlineDeviceResult.a)localObject2).b);
+        for (paramString = Integer.toHexString(localObject[i] & 0xFF); paramString.length() < 2; paramString = "0".concat(String.valueOf(paramString))) {}
+        localStringBuilder.append(paramString);
+        i += 1;
+      }
+      paramString = localStringBuilder.toString();
+      return paramString;
+    }
+    catch (NoSuchAlgorithmException paramString)
+    {
+      paramString.printStackTrace();
+    }
+    return "";
+  }
+  
+  @SuppressLint({"PrivateApi"})
+  public static void a(Context paramContext)
+  {
+    SharedPreferences localSharedPreferences = paramContext.getSharedPreferences("qtk_rpc2", 0);
+    StringBuilder localStringBuilder = new StringBuilder();
+    int i = 0;
+    for (;;)
+    {
+      paramContext = a;
+      if (i >= paramContext.length) {
+        break;
+      }
+      String str = a(paramContext[i]);
+      paramContext = System.getProperty(a[i], null);
+      if (paramContext == null) {}
+      try
+      {
+        localObject = Class.forName("android.os.SystemProperties").getDeclaredMethod("get", new Class[] { String.class });
+        ((Method)localObject).setAccessible(true);
+        localObject = (String)((Method)localObject).invoke(null, new Object[] { a[i] });
+        paramContext = (Context)localObject;
+        if (localObject == null) {}
+      }
+      catch (Exception localException)
+      {
+        Object localObject;
+        label132:
+        break label137;
+      }
+      try
+      {
+        paramContext = new StringBuilder();
+        paramContext.append((String)localObject);
+        paramContext.append("$1");
+        paramContext = paramContext.toString();
+      }
+      catch (Exception paramContext)
+      {
+        break label132;
+      }
+      paramContext = (Context)localObject;
+      break label166;
+      label137:
+      break label166;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(paramContext);
+      ((StringBuilder)localObject).append("$0");
+      paramContext = ((StringBuilder)localObject).toString();
+      label166:
+      if (!localSharedPreferences.contains(str))
+      {
+        if (Build.VERSION.SDK_INT >= 9) {
+          localSharedPreferences.edit().putString(str, paramContext).apply();
         }
       }
-      localObject1 = this.b;
-      if (localObject1 != null)
+      else
       {
-        localObject1 = ((List)localObject1).iterator();
-        while (((Iterator)localObject1).hasNext())
+        localObject = localSharedPreferences.getString(str, null);
+        if (((localObject != null) && (!((String)localObject).equals(paramContext))) || ((localObject == null) && (paramContext != null)))
         {
-          localObject2 = (SafeMsgItem)((Iterator)localObject1).next();
-          localStringBuilder.append(((SafeMsgItem)localObject2).mTitle);
+          localStringBuilder.append(a[i]);
+          localStringBuilder.append("#");
+          localStringBuilder.append((String)localObject);
           localStringBuilder.append("|");
-          localStringBuilder.append(((SafeMsgItem)localObject2).mContent);
-          localStringBuilder.append("|");
-          localStringBuilder.append(((SafeMsgItem)localObject2).mTime);
-          localStringBuilder.append("|");
-          localStringBuilder.append(((SafeMsgItem)localObject2).mTextBeforeTable);
-          localStringBuilder.append("|");
-          localStringBuilder.append(((SafeMsgItem)localObject2).mTextAfterTable);
-          localStringBuilder.append("|");
+          localStringBuilder.append(paramContext);
+          localStringBuilder.append(";");
+          if (Build.VERSION.SDK_INT >= 9) {
+            localSharedPreferences.edit().putString(str, paramContext).apply();
+          }
         }
       }
-      TmsLog.i("trace_detail", localStringBuilder.toString());
+      i += 1;
+    }
+    if (localStringBuilder.length() > 0)
+    {
+      localStringBuilder.append(rf.a().b());
+      rf.a().a(localStringBuilder.toString());
     }
   }
 }

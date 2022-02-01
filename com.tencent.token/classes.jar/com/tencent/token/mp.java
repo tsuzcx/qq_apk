@@ -1,99 +1,346 @@
 package com.tencent.token;
 
-import com.tencent.halley.downloader.d.a.d;
-import java.util.concurrent.BlockingQueue;
-import java.util.concurrent.RejectedExecutionException;
-import java.util.concurrent.RejectedExecutionHandler;
-import java.util.concurrent.ThreadFactory;
-import java.util.concurrent.ThreadPoolExecutor;
-import java.util.concurrent.TimeUnit;
-import java.util.concurrent.atomic.AtomicInteger;
-import java.util.concurrent.atomic.AtomicLong;
+import android.text.TextUtils;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
 
 public final class mp
-  extends ThreadPoolExecutor
 {
-  public final AtomicInteger a = new AtomicInteger(0);
-  private final AtomicLong b = new AtomicLong(0L);
-  private final AtomicLong c = new AtomicLong(0L);
-  private long d = 1000L;
+  public long a = -1L;
+  public volatile long b = 0L;
+  volatile long c = 0L;
+  volatile long d = 0L;
+  String e = "";
+  public boolean f;
+  private long g = 0L;
+  private String h = "";
+  private List i;
   
-  public mp(int paramInt, TimeUnit paramTimeUnit, BlockingQueue paramBlockingQueue, ThreadFactory paramThreadFactory)
+  public mp(String paramString)
   {
-    super(1, paramInt, 60L, paramTimeUnit, paramBlockingQueue, paramThreadFactory, new a((byte)0));
-  }
-  
-  public final void a()
-  {
-    if (b())
-    {
-      long l = this.c.longValue();
-      if (this.d + l < System.currentTimeMillis())
-      {
-        if (!this.c.compareAndSet(l, System.currentTimeMillis() + 1L)) {
-          return;
-        }
-        Thread.currentThread().setUncaughtExceptionHandler(new mq());
-        throw new RuntimeException("Stopping thread to avoid potential memory leaks after a context was stopped.");
-      }
-    }
-  }
-  
-  protected final void afterExecute(Runnable paramRunnable, Throwable paramThrowable)
-  {
-    this.a.decrementAndGet();
-    if (paramThrowable == null) {
-      a();
-    }
-  }
-  
-  public final boolean b()
-  {
-    return (this.d >= 0L) && ((Thread.currentThread() instanceof mo)) && (((mo)Thread.currentThread()).a < this.b.longValue());
-  }
-  
-  public final void execute(Runnable paramRunnable)
-  {
-    TimeUnit localTimeUnit = TimeUnit.MILLISECONDS;
-    this.a.incrementAndGet();
+    int j = 0;
+    this.f = false;
+    this.i = new LinkedList();
+    this.f = false;
+    if (!TextUtils.isEmpty(paramString)) {}
+    label260:
     try
     {
-      super.execute(paramRunnable);
-      return;
-    }
-    catch (RejectedExecutionException localRejectedExecutionException)
-    {
-      d locald;
-      if ((super.getQueue() instanceof d))
+      paramString = paramString.split("\\|");
+      if (paramString != null)
       {
-        locald = (d)super.getQueue();
+        if (paramString.length == 0) {
+          return;
+        }
+        if (!paramString[0].equals("3.0")) {
+          return;
+        }
+        if (paramString.length < 7) {
+          return;
+        }
         try
         {
-          if (locald.a(paramRunnable, localTimeUnit)) {
-            return;
+          this.a = Long.parseLong(paramString[1]);
+          this.b = Long.parseLong(paramString[2]);
+          this.c = Long.parseLong(paramString[3]);
+          this.d = Long.parseLong(paramString[4]);
+          String[] arrayOfString = paramString[5].split(";");
+          int k = arrayOfString.length;
+          while (j < k)
+          {
+            mj localmj = new mj(this, arrayOfString[j]);
+            if (localmj.b)
+            {
+              this.i.add(localmj);
+              j += 1;
+            }
+            else
+            {
+              this.i.clear();
+              return;
+            }
           }
-          this.a.decrementAndGet();
-          throw new RejectedExecutionException("Queue capacity is full.");
+          if (paramString.length != 9) {
+            break label260;
+          }
+          a(paramString[7]);
+          b(paramString[8]);
         }
-        catch (InterruptedException paramRunnable)
+        catch (NumberFormatException paramString)
         {
-          this.a.decrementAndGet();
-          Thread.interrupted();
-          throw new RejectedExecutionException(paramRunnable);
+          paramString.printStackTrace();
+          lo.a("TaskDivider", "parseLong for totalLen fail.", paramString);
         }
       }
-      this.a.decrementAndGet();
-      throw locald;
+      else
+      {
+        return;
+      }
+    }
+    catch (Exception paramString) {}
+    this.g = c();
+    this.f = true;
+    return;
+  }
+  
+  public final mj a()
+  {
+    label238:
+    label244:
+    label250:
+    for (;;)
+    {
+      synchronized (this.i)
+      {
+        mj localmj1;
+        if (this.i.size() == 0)
+        {
+          localmj1 = new mj(this, 0L, 0L, 0L, -1L);
+        }
+        else
+        {
+          mj localmj2 = (mj)this.i.get(0);
+          Iterator localIterator = this.i.iterator();
+          if (!localIterator.hasNext()) {
+            break label238;
+          }
+          localmj1 = (mj)localIterator.next();
+          if ((localmj1.i) || (localmj1.a(this.a) <= 0L))
+          {
+            if (localmj1.a(this.a) <= localmj2.a(this.a)) {
+              continue;
+            }
+            localmj2 = localmj1;
+            continue;
+          }
+          if (localmj1 != null) {
+            break label250;
+          }
+          long l1 = localmj2.a(this.a);
+          long l2 = localmj2.g;
+          if (l1 <= le.e() << 1) {
+            break label244;
+          }
+          l1 = l2 + l1 / 2L;
+          localmj1 = new mj(this, l1, l1, l1, localmj2.h);
+          localmj1.d = localmj2.c;
+        }
+        if (localmj1 != null) {
+          localmj1.i = true;
+        }
+        return localmj1;
+      }
+      Object localObject2 = null;
+      continue;
+      localObject2 = null;
     }
   }
   
-  static final class a
-    implements RejectedExecutionHandler
+  public final mj a(int paramInt)
   {
-    public final void rejectedExecution(Runnable paramRunnable, ThreadPoolExecutor paramThreadPoolExecutor)
+    synchronized (this.i)
     {
-      throw new RejectedExecutionException();
+      try
+      {
+        mj localmj = (mj)this.i.get(paramInt);
+        if (localmj != null) {
+          return localmj;
+        }
+      }
+      catch (Exception localException)
+      {
+        lo.a("TaskDivider", localException);
+        ??? = new StringBuilder("getSection fail. sectionId:");
+        ((StringBuilder)???).append(paramInt);
+        ((StringBuilder)???).append(", divider:");
+        ((StringBuilder)???).append(b());
+        lo.d("TaskDivider", ((StringBuilder)???).toString());
+        return null;
+      }
+      throw localException;
     }
+  }
+  
+  public final void a(String paramString)
+  {
+    if ((!TextUtils.isEmpty(paramString)) && (!paramString.equals("null"))) {}
+    for (paramString = paramString.replace("|", "");; paramString = "")
+    {
+      this.h = paramString;
+      return;
+    }
+  }
+  
+  public final boolean a(mj parammj)
+  {
+    if (parammj.c == -1) {}
+    for (;;)
+    {
+      mj localmj;
+      synchronized (this.i)
+      {
+        if (parammj.d == -1)
+        {
+          if (this.i.size() != 0)
+          {
+            lo.c("TaskDivider", "first section, list size should be 0!!!");
+          }
+          else
+          {
+            parammj.c = 0;
+            parammj.h = this.a;
+            this.i.add(parammj);
+            return true;
+          }
+        }
+        else
+        {
+          if (parammj.d < this.i.size()) {
+            continue;
+          }
+          localObject = new StringBuilder("parent id:");
+          ((StringBuilder)localObject).append(parammj.d);
+          ((StringBuilder)localObject).append(" wrong!!!");
+          lo.d("TaskDivider", ((StringBuilder)localObject).toString());
+        }
+        return false;
+        localObject = null;
+        Iterator localIterator = this.i.iterator();
+        if (localIterator.hasNext())
+        {
+          localmj = (mj)localIterator.next();
+          if (localmj.c == parammj.d)
+          {
+            if (localmj.g >= localmj.h) {
+              return false;
+            }
+            if (localmj.g + le.e() <= parammj.e) {
+              break label334;
+            }
+            return false;
+          }
+          if ((localmj.h <= parammj.e) || (localmj.e >= parammj.h)) {
+            continue;
+          }
+          return false;
+        }
+        if (localObject == null) {
+          return false;
+        }
+        parammj.c = this.i.size();
+        ((mj)localObject).h = parammj.e;
+        this.i.add(parammj);
+        return true;
+      }
+      Object localObject = new StringBuilder("addRealSection of id ");
+      ((StringBuilder)localObject).append(parammj.c);
+      ((StringBuilder)localObject).append(" should not happen!!!");
+      lo.d("TaskDivider", ((StringBuilder)localObject).toString());
+      return false;
+      label334:
+      localObject = localmj;
+    }
+  }
+  
+  public final String b()
+  {
+    StringBuilder localStringBuilder1 = new StringBuilder("3.0");
+    localStringBuilder1.append("|");
+    localStringBuilder1.append(this.a);
+    localStringBuilder1.append("|");
+    localStringBuilder1.append(this.b);
+    localStringBuilder1.append("|");
+    localStringBuilder1.append(this.c);
+    localStringBuilder1.append("|");
+    localStringBuilder1.append(this.d);
+    localStringBuilder1.append("|");
+    synchronized (this.i)
+    {
+      Iterator localIterator = this.i.iterator();
+      while (localIterator.hasNext())
+      {
+        mj localmj = (mj)localIterator.next();
+        StringBuilder localStringBuilder2 = new StringBuilder();
+        localStringBuilder2.append(localmj.c);
+        localStringBuilder2.append(mj.a);
+        localStringBuilder2.append(localmj.d);
+        localStringBuilder2.append(mj.a);
+        localStringBuilder2.append(localmj.e);
+        localStringBuilder2.append(mj.a);
+        localStringBuilder2.append(localmj.f);
+        localStringBuilder2.append(mj.a);
+        localStringBuilder2.append(localmj.h);
+        localStringBuilder1.append(localStringBuilder2.toString());
+        localStringBuilder1.append(";");
+      }
+      if (this.i.size() > 0) {
+        localStringBuilder1.deleteCharAt(localStringBuilder1.length() - 1);
+      }
+      localStringBuilder1.append("|");
+      localStringBuilder1.append("null");
+      localStringBuilder1.append("|");
+      if (TextUtils.isEmpty(this.h)) {
+        ??? = "null";
+      } else {
+        ??? = this.h;
+      }
+      localStringBuilder1.append((String)???);
+      localStringBuilder1.append("|");
+      if (TextUtils.isEmpty(this.e)) {
+        ??? = "null";
+      } else {
+        ??? = this.e;
+      }
+      localStringBuilder1.append((String)???);
+      return localStringBuilder1.toString();
+    }
+  }
+  
+  public final void b(String paramString)
+  {
+    if ((!TextUtils.isEmpty(paramString)) && (!paramString.equals("null"))) {}
+    for (paramString = paramString.replace("|", "");; paramString = "")
+    {
+      this.e = paramString;
+      return;
+    }
+  }
+  
+  final long c()
+  {
+    synchronized (this.i)
+    {
+      Iterator localIterator = this.i.iterator();
+      mj localmj;
+      for (long l = 0L; localIterator.hasNext(); l += localmj.f - localmj.e) {
+        localmj = (mj)localIterator.next();
+      }
+      return l;
+    }
+  }
+  
+  public final long d()
+  {
+    synchronized (this.i)
+    {
+      Iterator localIterator = this.i.iterator();
+      mj localmj;
+      for (long l = 0L; localIterator.hasNext(); l += localmj.g - localmj.e) {
+        localmj = (mj)localIterator.next();
+      }
+      return l;
+    }
+  }
+  
+  public final long e()
+  {
+    return c() - this.g;
+  }
+  
+  public final String toString()
+  {
+    return b();
   }
 }
 

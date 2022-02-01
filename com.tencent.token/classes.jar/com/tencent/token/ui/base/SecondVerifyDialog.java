@@ -15,9 +15,9 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import com.tencent.token.te;
+import com.tencent.token.tm;
 import com.tencent.token.utils.UserTask;
-import com.tencent.token.wy;
+import com.tencent.token.xh;
 
 public class SecondVerifyDialog
   extends Dialog
@@ -50,21 +50,21 @@ public class SecondVerifyDialog
       setContentView(2131296432);
       paramBundle = getWindow();
       paramBundle.setBackgroundDrawableResource(2131099877);
-      ((ViewGroup.MarginLayoutParams)findViewById(2131165967).getLayoutParams()).width = paramBundle.getWindowManager().getDefaultDisplay().getWidth();
-      paramBundle = te.a();
-      this.b = ((TextView)findViewById(2131165971));
+      ((ViewGroup.MarginLayoutParams)findViewById(2131165969).getLayoutParams()).width = paramBundle.getWindowManager().getDefaultDisplay().getWidth();
+      paramBundle = tm.a();
+      this.b = ((TextView)findViewById(2131165973));
       if ((paramBundle.c != null) && (paramBundle.c.length() > 0)) {
         this.b.setText(paramBundle.c);
       } else {
         this.b.setText(this.d.getResources().getString(2131492986));
       }
-      this.c = ((TextView)findViewById(2131165969));
+      this.c = ((TextView)findViewById(2131165971));
       if ((paramBundle.b != null) && (paramBundle.b.length() > 0)) {
         this.c.setText(paramBundle.b);
       }
-      this.e = ((EditText)findViewById(2131165968));
+      this.e = ((EditText)findViewById(2131165970));
       this.e.clearFocus();
-      this.f = ((Button)findViewById(2131165966));
+      this.f = ((Button)findViewById(2131165968));
       this.f.setText(paramBundle.e);
       this.f.setOnClickListener(new View.OnClickListener()
       {
@@ -88,7 +88,7 @@ public class SecondVerifyDialog
           new UserTask() {}.a(new String[] { "" });
         }
       });
-      this.g = ((Button)findViewById(2131165965));
+      this.g = ((Button)findViewById(2131165967));
       this.g.setText(paramBundle.d);
       this.g.setOnClickListener(new View.OnClickListener()
       {

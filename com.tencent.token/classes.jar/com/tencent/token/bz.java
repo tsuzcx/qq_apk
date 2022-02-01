@@ -1,70 +1,51 @@
 package com.tencent.token;
 
-import android.app.Activity;
 import android.content.Context;
-import android.os.Handler;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
-import android.view.LayoutInflater;
+import android.content.Intent;
+import android.content.IntentSender;
+import android.support.v4.app.SupportActivity;
+import android.util.AttributeSet;
 import android.view.View;
-import java.io.PrintWriter;
 
-public abstract class bz<E>
-  extends bx
+public abstract class bz
+  extends SupportActivity
 {
-  public final Activity b;
-  public final Context c;
-  public final Handler d;
-  final int e;
-  public final cb f = new cb();
+  protected boolean mStartedIntentSenderFromFragment;
   
-  private bz(Activity paramActivity, Context paramContext, Handler paramHandler)
+  protected static void checkForValidRequestCode(int paramInt)
   {
-    this.b = paramActivity;
-    this.c = paramContext;
-    this.d = paramHandler;
-    this.e = 0;
+    if ((paramInt & 0xFFFF0000) == 0) {
+      return;
+    }
+    throw new IllegalArgumentException("Can only use lower 16 bits for requestCode");
   }
   
-  protected bz(FragmentActivity paramFragmentActivity)
+  protected abstract View dispatchFragmentsOnCreateView(View paramView, String paramString, Context paramContext, AttributeSet paramAttributeSet);
+  
+  public View onCreateView(View paramView, String paramString, Context paramContext, AttributeSet paramAttributeSet)
   {
-    this(paramFragmentActivity, paramFragmentActivity, paramFragmentActivity.mHandler);
+    View localView = dispatchFragmentsOnCreateView(paramView, paramString, paramContext, paramAttributeSet);
+    if (localView == null) {
+      return super.onCreateView(paramView, paramString, paramContext, paramAttributeSet);
+    }
+    return localView;
   }
   
-  public View a(int paramInt)
+  public View onCreateView(String paramString, Context paramContext, AttributeSet paramAttributeSet)
   {
-    return null;
+    View localView = dispatchFragmentsOnCreateView(null, paramString, paramContext, paramAttributeSet);
+    if (localView == null) {
+      return super.onCreateView(paramString, paramContext, paramAttributeSet);
+    }
+    return localView;
   }
   
-  protected void a(Fragment paramFragment) {}
-  
-  public void a(String paramString, PrintWriter paramPrintWriter, String[] paramArrayOfString) {}
-  
-  public boolean a()
+  public void startIntentSenderForResult(IntentSender paramIntentSender, int paramInt1, Intent paramIntent, int paramInt2, int paramInt3, int paramInt4)
   {
-    return true;
-  }
-  
-  public boolean b()
-  {
-    return true;
-  }
-  
-  public LayoutInflater c()
-  {
-    return LayoutInflater.from(this.c);
-  }
-  
-  public void d() {}
-  
-  public boolean e()
-  {
-    return true;
-  }
-  
-  public int f()
-  {
-    return this.e;
+    if ((!this.mStartedIntentSenderFromFragment) && (paramInt1 != -1)) {
+      checkForValidRequestCode(paramInt1);
+    }
+    super.startIntentSenderForResult(paramIntentSender, paramInt1, paramIntent, paramInt2, paramInt3, paramInt4);
   }
 }
 

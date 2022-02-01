@@ -1,115 +1,140 @@
 package com.tencent.token;
 
-import com.tencent.halley.downloader.c.b;
-import com.tencent.halley.downloader.c.b.a;
+import android.os.SystemClock;
 import java.util.Iterator;
-import java.util.Vector;
+import java.util.LinkedList;
+import java.util.List;
 
 public final class mf
-  implements Runnable
 {
-  public mf(b paramb, b.a parama) {}
+  long a = 0L;
+  long b = 0L;
+  long c = 0L;
+  int d = 0;
+  private mr e;
+  private a f = new a((byte)0);
   
-  public final void run()
+  public mf(mr parammr)
   {
-    lt locallt;
-    switch (com.tencent.halley.downloader.c.b.1.b[this.a.ordinal()])
+    this.e = parammr;
+  }
+  
+  public final long a()
+  {
+    return this.c - this.b;
+  }
+  
+  public final void a(int paramInt1, int paramInt2)
+  {
+    this.d += paramInt2;
+    long l1 = SystemClock.elapsedRealtime();
+    long l2 = this.a;
+    this.a = l1;
+    Object localObject1 = this.e;
+    ((mr)localObject1).m += l1 - l2;
+    localObject1 = this.f;
+    int j = 1;
+    if (paramInt1 <= 0) {
+      paramInt2 = 1;
+    } else {
+      paramInt2 = 0;
+    }
+    l1 = SystemClock.elapsedRealtime();
+    int i = (int)(l1 - ((a)localObject1).a);
+    ((a)localObject1).a = l1;
+    if (((a)localObject1).d.size() == 0)
     {
-    default: 
-      return;
-    case 7: 
-      lx.b().e(this.b.a);
-      synchronized (this.b.d)
+      i = j;
+      if (paramInt2 == 0)
       {
-        Iterator localIterator1 = this.b.d.iterator();
-        while (localIterator1.hasNext())
-        {
-          locallt = (lt)localIterator1.next();
-          if (locallt != null) {
-            locallt.e(this.b.a);
-          }
-        }
-        return;
-      }
-    case 6: 
-      lx.b().d(this.b.a);
-      synchronized (this.b.d)
-      {
-        Iterator localIterator2 = this.b.d.iterator();
-        while (localIterator2.hasNext())
-        {
-          locallt = (lt)localIterator2.next();
-          if (locallt != null) {
-            locallt.d(this.b.a);
-          }
-        }
-        return;
-      }
-    case 5: 
-      lx.b().c(this.b.a);
-      synchronized (this.b.d)
-      {
-        Iterator localIterator3 = this.b.d.iterator();
-        while (localIterator3.hasNext())
-        {
-          locallt = (lt)localIterator3.next();
-          if (locallt != null) {
-            locallt.c(this.b.a);
-          }
-        }
-        return;
-      }
-    case 4: 
-      lx.b().b(this.b.a);
-      synchronized (this.b.d)
-      {
-        Iterator localIterator4 = this.b.d.iterator();
-        while (localIterator4.hasNext())
-        {
-          locallt = (lt)localIterator4.next();
-          if (locallt != null) {
-            locallt.b(this.b.a);
-          }
-        }
-        return;
-      }
-    case 3: 
-      lx.b().a(this.b.a);
-      synchronized (this.b.d)
-      {
-        Iterator localIterator5 = this.b.d.iterator();
-        while (localIterator5.hasNext())
-        {
-          locallt = (lt)localIterator5.next();
-          if (locallt != null) {
-            locallt.a(this.b.a);
-          }
-        }
-        return;
-      }
-    case 2: 
-      lx.b().a();
-      synchronized (this.b.d)
-      {
-        Iterator localIterator6 = this.b.d.iterator();
-        while (localIterator6.hasNext())
-        {
-          locallt = (lt)localIterator6.next();
-          if (locallt != null) {
-            locallt.a();
-          }
-        }
-        return;
+        ((a)localObject1).d.add(new mf.a.a(paramInt1));
+        i = j;
       }
     }
-    lx.b();
-    synchronized (this.b.d)
+    else
     {
-      Iterator localIterator7 = this.b.d.iterator();
-      while (localIterator7.hasNext()) {
-        localIterator7.next();
+      Object localObject2 = ((a)localObject1).d.iterator();
+      while (((Iterator)localObject2).hasNext())
+      {
+        mf.a.a locala = (mf.a.a)((Iterator)localObject2).next();
+        locala.b += i;
+        if ((paramInt2 == 0) && (locala.b > 2000))
+        {
+          locala.b = 0;
+          locala.a = paramInt1;
+          paramInt2 = 1;
+        }
       }
-      return;
+      if (paramInt2 == 0) {
+        if (((a)localObject1).d.size() > 2000 / le.f + 1)
+        {
+          localObject2 = new StringBuilder("records.size():");
+          ((StringBuilder)localObject2).append(((a)localObject1).d.size());
+          lo.d("CostTimeCounter", ((StringBuilder)localObject2).toString());
+        }
+        else
+        {
+          ((a)localObject1).d.add(new mf.a.a(paramInt1));
+        }
+      }
+      if (l1 - ((a)localObject1).b > 200L) {
+        i = j;
+      } else {
+        i = 0;
+      }
+    }
+    if (i != 0)
+    {
+      ((a)localObject1).c = ((a)localObject1).a();
+      ((a)localObject1).b = l1;
+    }
+    this.e.t = this.f.c;
+  }
+  
+  static final class a
+  {
+    long a = 0L;
+    long b = 0L;
+    int c = 0;
+    List d = new LinkedList();
+    
+    final int a()
+    {
+      if (this.d.size() == 0) {
+        return 0;
+      }
+      Iterator localIterator = this.d.iterator();
+      long l1 = 0L;
+      while (localIterator.hasNext())
+      {
+        a locala = (a)localIterator.next();
+        if (locala.b <= 2000)
+        {
+          long l2 = l1 + locala.a;
+          l1 = l2;
+          if (l2 < 0L)
+          {
+            StringBuilder localStringBuilder = new StringBuilder("sum:");
+            localStringBuilder.append(l2);
+            localStringBuilder.append(",len:");
+            localStringBuilder.append(locala.a);
+            lo.c("CostTimeCounter", localStringBuilder.toString());
+            l1 = l2;
+          }
+        }
+      }
+      return (int)(l1 * 1000L / 2000L);
+    }
+    
+    static final class a
+    {
+      public int a = 0;
+      public int b = 0;
+      
+      public a(int paramInt)
+      {
+        this.a = paramInt;
+      }
     }
   }
 }

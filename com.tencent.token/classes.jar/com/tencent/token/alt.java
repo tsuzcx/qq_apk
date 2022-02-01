@@ -1,15 +1,10 @@
 package com.tencent.token;
 
-import java.util.List;
+import java.io.IOException;
 
 public final class alt
-  extends alz<Integer>
-{
-  public alt(List<aly<Integer>> paramList)
-  {
-    super(paramList);
-  }
-}
+  extends IOException
+{}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.token\classes.jar

@@ -1,34 +1,69 @@
 package com.tencent.token;
 
-import java.net.InetAddress;
-import java.net.UnknownHostException;
-import java.util.Arrays;
-import java.util.List;
+import com.tencent.wcdb.support.OperationCanceledException;
 
-public abstract interface aie
+public final class aie
 {
-  public static final aie a = new aie()
-  {
-    public final List<InetAddress> a(String paramAnonymousString)
-    {
-      if (paramAnonymousString != null) {
-        try
-        {
-          List localList = Arrays.asList(InetAddress.getAllByName(paramAnonymousString));
-          return localList;
-        }
-        catch (NullPointerException localNullPointerException)
-        {
-          paramAnonymousString = new UnknownHostException("Broken system behaviour for dns lookup of ".concat(String.valueOf(paramAnonymousString)));
-          paramAnonymousString.initCause(localNullPointerException);
-          throw paramAnonymousString;
-        }
-      }
-      throw new UnknownHostException("hostname == null");
-    }
-  };
+  private boolean a;
+  private a b;
+  private boolean c;
   
-  public abstract List<InetAddress> a(String paramString);
+  private boolean b()
+  {
+    try
+    {
+      boolean bool = this.a;
+      return bool;
+    }
+    finally {}
+  }
+  
+  private void c()
+  {
+    while (this.c) {
+      try
+      {
+        wait();
+      }
+      catch (InterruptedException localInterruptedException)
+      {
+        label14:
+        break label14;
+      }
+    }
+  }
+  
+  public final void a()
+  {
+    if (!b()) {
+      return;
+    }
+    throw new OperationCanceledException();
+  }
+  
+  public final void a(a parama)
+  {
+    try
+    {
+      c();
+      if (this.b == parama) {
+        return;
+      }
+      this.b = parama;
+      if ((this.a) && (parama != null))
+      {
+        parama.c();
+        return;
+      }
+      return;
+    }
+    finally {}
+  }
+  
+  public static abstract interface a
+  {
+    public abstract void c();
+  }
 }
 
 

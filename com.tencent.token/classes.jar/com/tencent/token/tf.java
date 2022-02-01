@@ -1,161 +1,276 @@
 package com.tencent.token;
 
-public abstract interface tf
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.token.core.bean.QQUser;
+import com.tencent.token.global.RqdApplication;
+import java.util.List;
+import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.atomic.AtomicReference;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+public final class tf
+  extends te
 {
-  @tl(a=tq.class)
-  public static final String CMD_CHECK_UP_SMS = "mbtoken3_check_up_sms";
-  @tl(a=ts.class)
-  public static final String CMD_DEL_DEVICE = "mbtoken3_device_lock_del_device_v2";
-  @tl(a=tt.class)
-  public static final String CMD_DEL_MB_INFO = "mbtoken3_del_mbitem";
-  @tl(a=tu.class)
-  public static final String CMD_DEL_UNVERIFYUIN = "mbtoken3_del_unvfy_uin";
-  @tl(a=tv.class)
-  public static final String CMD_DEVICE_INFO_REPORT = "mbtoken3_device_info_report_encrypt";
-  @tl(a=tw.class)
-  public static final String CMD_DO_ACTIVETOKEN = "mbtoken3_activate_token";
-  @tl(a=to.class)
-  public static final String CMD_DO_AUTO_IDCARD_DETECT = "mbtoken3_auto_idcard_detect";
-  @tl(a=tx.class)
-  public static final String CMD_DO_BINDTOKEN = "mbtoken3_bind_token_by_app_v3";
-  @tl(a=tp.class)
-  public static final String CMD_DO_BINDTOKENH5 = "mbtoken3_bind_token_h5";
-  @tl(a=ty.class)
-  public static final String CMD_DO_BINDTOKEN_BYREALNAME = "mbtoken3_bind_token_by_realname";
-  @tl(a=tz.class)
-  public static final String CMD_DO_BINDTOKEN_BYUNIVERIFY = "mbtoken3_bind_token_by_univerify";
-  @tl(a=tr.class)
-  public static final String CMD_DO_COPY_FACE = "mbtoken3_copy_face";
-  @tl(a=ua.class)
-  public static final String CMD_DO_EXCHANGEKEY = "mbtoken3_exchange_key_v3";
-  @tl(a=ud.class)
-  public static final String CMD_DO_FEEDBACK_COMMENT = "mbtoken3_feedback_v2";
-  @tl(a=ur.class)
-  public static final String CMD_DO_FREEZE_UIN = "mbtoken3_freeze_action";
-  @tl(a=ub.class)
-  public static final String CMD_DO_GENERAL_BINDTOKEN = "mbtoken3_general_bind";
-  @tl(a=uh.class)
-  public static final String CMD_DO_GENERAL_VERIFY_FACTOR = "mbtoken3_verify_original_mobile";
-  @tl(a=vs.class)
-  public static final String CMD_DO_LIVE_VIDEO_DETECT = "mbtoken3_live_video_detect";
-  @tl(a=uc.class)
-  public static final String CMD_DO_LOGIN_V2 = "mbtoken3_login_v2";
-  @tl(a=wc.class)
-  public static final String CMD_DO_REALNAME_CARD_CHECK = "mbtoken3_card_check";
-  @tl(a=wf.class)
-  public static final String CMD_DO_REPORT_LOCATION = "mbtoken3_report_location";
-  @tl(a=ue.class)
-  public static final String CMD_DO_SEND_SMSCODE = "mbtoken3_get_mobile_code_v2";
-  @tl(a=uf.class)
-  public static final String CMD_DO_SESSIONINFO = "mbtoken3_session_info";
-  @tl(a=ug.class)
-  public static final String CMD_DO_UNBINDTOKEN = "mbtoken3_unbind_token";
-  @tl(a=ui.class)
-  public static final String CMD_DO_VERIFYQQTOKEN = "mbtoken3_verify_qqtoken_v2";
-  @tl(a=uj.class)
-  public static final String CMD_DO_VERIFYQUESTION = "mbtoken3_vry_ques_v2";
-  @tl(a=uk.class)
-  public static final String CMD_DO_VERIFY_SMSCODE = "mbtoken3_verify_mobile_code_v2";
-  @tl(a=ul.class)
-  public static final String CMD_DO_WTLOGIN = "mbtoken3_vfy_wtlogin";
-  @tl(a=un.class)
-  public static final String CMD_FACEPK = "mbtoken3_face_pk";
-  @tl(a=um.class)
-  public static final String CMD_FACERECOGNITION = "mbtoken3_face_reg_v2";
-  @tl(a=up.class)
-  public static final String CMD_FEEDBACK_ABNORMAL_LOGIN = "mbtoken3_feedback_abnormal_login";
-  @tl(a=uq.class)
-  public static final String CMD_FEEDBACK_MOBILE_USING = "mbtoken3_feedback_mobile_using";
-  @tl(a=us.class)
-  public static final String CMD_GENERAL_GET_MOBILE_CODE = "mbtoken3_general_get_mobile_code";
-  @tl(a=ut.class)
-  public static final String CMD_GENERAL_VRY_MOBILE_CODE = "mbtoken3_general_verify_mobile_code";
-  @tl(a=uu.class)
-  public static final String CMD_GET_ACCOUNT_LOCK_STATUS = "mbtoken3_get_ac_lock_status_v2";
-  @tl(a=uv.class)
-  public static final String CMD_GET_COMMON_IMG = "token.getcommonimg";
-  @tl(a=uw.class)
-  public static final String CMD_GET_CONFIG = "mbtoken3_get_config_v2";
-  @tl(a=ux.class)
-  public static final String CMD_GET_DETERMIN_VERIFY_FACTORS = "mbtoken3_determine_verify_factors";
-  @tl(a=uy.class)
-  public static final String CMD_GET_DEVICE_LOCK = "mbtoken3_get_device_lock_status_v2";
-  @tl(a=uz.class)
-  public static final String CMD_GET_DOMAIN = "mbtoken3_get_domain";
-  @tl(a=va.class)
-  public static final String CMD_GET_DUAL_MSG_LIST = "mbtoken3_get_dual_msg_list_v2";
-  @tl(a=vb.class)
-  public static final String CMD_GET_EVAL_ACCOUNT_RESULT = "mbtoken3_eval_account_v3";
-  @tl(a=vc.class)
-  public static final String CMD_GET_GAME_LOCK_STATUS = "mbtoken3_get_game_lock_status_v2";
-  @tl(a=vd.class)
-  public static final String CMD_GET_LOGIN_PROTECT = "mbtoken3_get_login_prot";
-  @tl(a=ve.class)
-  public static final String CMD_GET_MB_INFO = "mbtoken3_get_mbinfo";
-  @tl(a=vf.class)
-  public static final String CMD_GET_MB_MOBILE_CODE = "mbtoken3_mbop_get_mobile_code";
-  @tl(a=vg.class)
-  public static final String CMD_GET_MESSAGE = "mbtoken3_get_message_v2";
-  @tl(a=vh.class)
-  public static final String CMD_GET_OPERATEMSG = "mbtoken3_get_ads_info";
-  @tl(a=vi.class)
-  public static final String CMD_GET_QQFACEURL = "mbtoken3_get_photo_v3";
-  @tl(a=vk.class)
-  public static final String CMD_GET_REALNAME_VERIFY = "mbtoken3_realname_lip";
-  @tl(a=vl.class)
-  public static final String CMD_GET_REALUIN = "mbtoken3_query_real_uin_v2";
-  @tl(a=vj.class)
-  public static final String CMD_GET_REAL_NAME_STATUS = "mbtoken3_realname_status_v2";
-  @tl(a=vn.class)
-  public static final String CMD_GET_SAFE_PROTECTION = "mbtoken3_get_safe_protection_v2";
-  @tl(a=vm.class)
-  public static final String CMD_GET_SMS_CHANNEL = "mbtoken3_get_sms_port_v2";
-  @tl(a=vo.class)
-  public static final String CMD_GET_STARTUP_IMG = "token.getstartupimg";
-  @tl(a=vp.class)
-  public static final String CMD_GET_STR_CONFIG = "mbtoken3_get_key_value_conf";
-  @tl(a=vq.class)
-  public static final String CMD_GET_UIN_LIST = "mbtoken3_get_uin_list_v2";
-  @tl(a=uo.class)
-  public static final String CMD_GET_VRY_ON_OFF = "mbtoken3_face_verify_on_off";
-  @tl(a=vr.class)
-  public static final String CMD_KICK_ONLINE_DEVICE_OFF = "mbtoken3_kickoff_v2";
-  @tl(a=vu.class)
-  public static final String CMD_MOD_QQ_PWD = "mbtoken3_modify_pwd";
-  @tl(a=vt.class)
-  public static final String CMD_MOD_SEED = "mbtoken3_mod_seed";
-  @tl(a=vv.class)
-  public static final String CMD_QRY_BIND_NOTIFY_MSG = "mbtoken3_qry_bind_notify_msg";
-  @tl(a=vw.class)
-  public static final String CMD_QUERY_CAPTCHA = "mbtoken3_query_captcha";
-  @tl(a=vx.class)
-  public static final String CMD_QUERY_FREEZE_STATUS = "mbtoken3_query_freeze_status";
-  @tl(a=vy.class)
-  public static final String CMD_QUERY_MALICIOUS_URL = "mbtoken3_query_malicious_url";
-  @tl(a=vz.class)
-  public static final String CMD_QUERY_REALNAME = "mbtoken3_realname_qry";
-  @tl(a=wa.class)
-  public static final String CMD_QUERY_SPE_VERIFY = "mbtoken3_qry_spec_verify";
-  @tl(a=wb.class)
-  public static final String CMD_QUERY_SUPER_CODE_INFO = "mbtoken3_qry_super_code_info";
-  @tl(a=wd.class)
-  public static final String CMD_REAL_NAME_REG = "mbtoken3_realname_reg_v2";
-  @tl(a=we.class)
-  public static final String CMD_REPORT_DNS_INFO = "mbtoken3_report_dns_v2";
-  @tl(a=wg.class)
-  public static final String CMD_SET_MB_MOBILE = "mbtoken3_set_mod_mobile";
-  @tl(a=ti.class)
-  public static final String CMD_SET_SERVICES_STATUS_V2 = "mbtoken3_set_service_status_v2";
-  @tl(a=wh.class)
-  public static final String CMD_SET_SUPER_CODE = "mbtoken3_set_super_code";
-  @tl(a=wi.class)
-  public static final String CMD_UPLOAD_LOGFILE = "mbtoken3_log_upload";
-  @tl(a=wj.class)
-  public static final String CMD_UPLOAD_REALNAME_FILE = "mbtoken3_realname_check";
-  @tl(a=wk.class)
-  public static final String CMD_VRY_CAPTCHA = "mbtoken3_verify_captcha_v3";
-  @tl(a=wl.class)
-  public static final String CMD_VRY_MB_MOBILE_CODE = "mbtoken3_mbop_verify_mobile_code";
+  public static byte a = 1;
+  public static byte d = 2;
+  public static byte e = 3;
+  public static byte f = 4;
+  static tf g;
+  private final String h = "/cn/mbtoken3/mbtoken3_get_dual_msg_list_v2";
+  
+  private tf()
+  {
+    super(1);
+  }
+  
+  public static tf a()
+  {
+    if (g == null) {
+      g = new tf();
+    }
+    return g;
+  }
+  
+  private xh b(byte paramByte, long paramLong)
+  {
+    this.b.clear();
+    Object localObject1 = new xh();
+    Object localObject3 = th.a();
+    Object localObject2;
+    if (!((th)localObject3).i())
+    {
+      localObject2 = ((th)localObject3).m();
+      localObject1 = localObject2;
+      if (!((xh)localObject2).b()) {
+        return localObject2;
+      }
+    }
+    int i;
+    if (paramLong > 0L)
+    {
+      i = 0;
+      while (i < ((th)localObject3).k.a())
+      {
+        localObject2 = ((th)localObject3).a(i);
+        StringBuilder localStringBuilder2 = new StringBuilder("other app: hash=");
+        localStringBuilder2.append(paramLong);
+        localStringBuilder2.append(", uin=");
+        localStringBuilder2.append(((QQUser)localObject2).mUin);
+        localStringBuilder2.append(", real=");
+        localStringBuilder2.append(((QQUser)localObject2).mRealUin);
+        localStringBuilder2.append(", bind=");
+        localStringBuilder2.append(((QQUser)localObject2).mIsBinded);
+        xj.c(localStringBuilder2.toString());
+        if ((((QQUser)localObject2).mIsBinded) && (((QQUser)localObject2).mUin == paramLong)) {
+          break;
+        }
+        if ((!((QQUser)localObject2).mIsBinded) && (aao.f(((QQUser)localObject2).mRealUin) == paramLong))
+        {
+          ((xh)localObject1).a(10029, null, null);
+          return localObject1;
+        }
+        i += 1;
+      }
+      if (i == ((th)localObject3).k.a())
+      {
+        ((xh)localObject1).a(110, null, null);
+        return localObject1;
+      }
+    }
+    long l = ((th)localObject3).c();
+    if ((((th)localObject3).k.b() != null) && (l != 0L))
+    {
+      if (((th)localObject3).k.b().mIsBinded) {
+        l = ((th)localObject3).k.b().mUin;
+      }
+      localObject3 = new CountDownLatch(1);
+      localObject2 = new AtomicReference(null);
+      rf.a().a(l, paramByte, new rf.a()
+      {
+        public final void a(ri paramAnonymousri)
+        {
+          this.a.set(paramAnonymousri);
+          this.b.countDown();
+        }
+      });
+      try
+      {
+        ((CountDownLatch)localObject3).await();
+      }
+      catch (InterruptedException localInterruptedException)
+      {
+        localInterruptedException.printStackTrace();
+      }
+      localObject2 = (ri)((AtomicReference)localObject2).get();
+      if (localObject2 == null)
+      {
+        ((xh)localObject1).a(-799, null, null);
+        return localObject1;
+      }
+      try
+      {
+        i = ((ri)localObject2).b;
+        if (i != 0)
+        {
+          localObject2 = ((ri)localObject2).d;
+          ((xh)localObject1).a(i, (String)localObject2, (String)localObject2);
+          return localObject1;
+        }
+        localObject2 = ((ri)localObject2).c;
+        if (localObject2 != null)
+        {
+          localObject2 = new JSONObject((String)localObject2).getJSONArray("msgs");
+          if (!a((JSONArray)localObject2, paramLong))
+          {
+            localStringBuilder1 = new StringBuilder("update conf list failed:");
+            localStringBuilder1.append(((JSONArray)localObject2).toString());
+            ((xh)localObject1).a(10000, localStringBuilder1.toString(), null);
+            return localObject1;
+          }
+          th.a().g();
+          ((xh)localObject1).a = 0;
+          return localObject1;
+        }
+        xj.c("parseJSON error decodeData");
+        ((xh)localObject1).a(10022, RqdApplication.p().getString(2131493068), null);
+        return localObject1;
+      }
+      catch (Exception localException)
+      {
+        localStringBuilder1 = new StringBuilder("unknown err: ");
+        localStringBuilder1.append(localException.toString());
+        xj.c(localStringBuilder1.toString());
+        localStringBuilder1 = new StringBuilder("JSONException:");
+        localStringBuilder1.append(localException.toString());
+        ((xh)localObject1).a(10021, localStringBuilder1.toString(), null);
+        return localObject1;
+      }
+      catch (JSONException localJSONException)
+      {
+        StringBuilder localStringBuilder1 = new StringBuilder("parse json failed: ");
+        localStringBuilder1.append(localJSONException.toString());
+        xj.c(localStringBuilder1.toString());
+        localStringBuilder1 = new StringBuilder("JSONException:");
+        localStringBuilder1.append(localJSONException.toString());
+        ((xh)localObject1).a(10020, localStringBuilder1.toString(), null);
+        return localObject1;
+      }
+    }
+    ((xh)localObject1).a(110, null, null);
+    return localObject1;
+  }
+  
+  private static long d()
+  {
+    Context localContext = RqdApplication.p();
+    long l1 = 0L;
+    try
+    {
+      long l2 = localContext.getSharedPreferences("dualmsgtime", 0).getLong("time", 0L);
+      l1 = l2;
+      xj.c("load mLastItemTime=".concat(String.valueOf(l2)));
+      return l2;
+    }
+    catch (Exception localException)
+    {
+      StringBuilder localStringBuilder = new StringBuilder("SharedPreferences msg ");
+      localStringBuilder.append(localException.getMessage());
+      xj.c(localStringBuilder.toString());
+    }
+    return l1;
+  }
+  
+  public final xh a(byte paramByte, long paramLong)
+  {
+    xh localxh2 = b(paramByte, paramLong);
+    if (localxh2.b()) {
+      return localxh2;
+    }
+    xh localxh1 = localxh2;
+    if (localxh2.a == 104)
+    {
+      th.a().h();
+      localxh1 = b(paramByte, paramLong);
+    }
+    return localxh1;
+  }
+  
+  public final boolean a(JSONArray paramJSONArray, long paramLong)
+  {
+    this.b.clear();
+    boolean bool;
+    if (paramJSONArray != null) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    xj.a(bool);
+    if (paramJSONArray != null) {
+      try
+      {
+        if (paramJSONArray.length() > 0)
+        {
+          int i = 0;
+          while (i < paramJSONArray.length())
+          {
+            Object localObject = paramJSONArray.getJSONObject(i);
+            sm localsm = new sm();
+            if (!localsm.a((JSONObject)localObject)) {
+              xj.c("object item parse failed: ".concat(String.valueOf(i)));
+            }
+            localObject = new StringBuilder("server item time=");
+            ((StringBuilder)localObject).append(localsm.e);
+            xj.c(((StringBuilder)localObject).toString());
+            if (this.c < localsm.e)
+            {
+              this.c = localsm.e;
+              localObject = new StringBuilder("get mLastItemTime=");
+              ((StringBuilder)localObject).append(this.c);
+              xj.c(((StringBuilder)localObject).toString());
+              localObject = RqdApplication.p();
+              try
+              {
+                localObject = ((Context)localObject).getSharedPreferences("dualmsgtime", 0).edit();
+                ((SharedPreferences.Editor)localObject).putLong("time", this.c);
+                ((SharedPreferences.Editor)localObject).commit();
+                localObject = new StringBuilder("save mLastItemTime=");
+                ((StringBuilder)localObject).append(this.c);
+                xj.c(((StringBuilder)localObject).toString());
+              }
+              catch (Exception localException)
+              {
+                StringBuilder localStringBuilder = new StringBuilder("SharedPreferences msg ");
+                localStringBuilder.append(localException.getMessage());
+                xj.c(localStringBuilder.toString());
+              }
+            }
+            if (paramLong == 0L) {
+              this.b.add(localsm);
+            } else if ((paramLong > 0L) && (paramLong == localsm.c)) {
+              this.b.add(localsm);
+            }
+            i += 1;
+          }
+        }
+        return true;
+      }
+      catch (JSONException paramJSONArray)
+      {
+        paramJSONArray.printStackTrace();
+        return false;
+      }
+    }
+  }
+  
+  public final long c()
+  {
+    this.c = d();
+    return this.c;
+  }
 }
 
 

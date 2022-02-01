@@ -1,102 +1,55 @@
 package com.tencent.token;
 
-import android.os.Environment;
-import android.text.TextUtils;
-import java.io.File;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.Canvas;
+import android.graphics.ColorFilter;
+import android.graphics.Paint;
+import android.graphics.Paint.Style;
+import android.graphics.drawable.Drawable;
+import android.widget.ImageView;
+import com.tencent.token.ui.IndexActivity;
 
-public class yx
+public final class yx
+  extends Drawable
 {
-  private static yx c;
-  public zb a;
-  private String b;
+  public boolean a = true;
+  public ImageView b;
+  public ImageView c;
+  private Paint d;
+  private float e;
+  private float f;
   
-  public static String b()
+  public yx(Context paramContext)
   {
-    return "gallerymanager_102322.apk";
+    int i = IndexActivity.S_RES_WIDTH;
+    paramContext.getResources().getDimension(2131034279);
+    this.e = paramContext.getResources().getDimension(2131034278);
+    this.f = (IndexActivity.S_DENSITY * 3.5F);
+    this.d = new Paint();
+    this.d.setStyle(Paint.Style.FILL);
+    this.d.setColor(-1);
   }
   
-  public static yx g()
+  public final void draw(Canvas paramCanvas)
   {
-    if (c == null) {
-      try
-      {
-        if (c == null) {
-          c = new yx();
-        }
-      }
-      finally {}
+    long l = System.currentTimeMillis() + rf.a().g();
+    float f1 = (int)(l / 1000L) % 30 * 1000 + (int)(l % 1000L);
+    float f2 = this.e;
+    paramCanvas.drawRect(f1 * f2 / 30000.0F, 0.0F, f2 + 3.0F, this.f, this.d);
+    if (this.a) {
+      invalidateSelf();
     }
-    return c;
   }
   
-  public final void a()
+  public final int getOpacity()
   {
-    zb localzb = this.a;
-    if (localzb == null) {
-      return;
-    }
-    localzb.a();
+    return -1;
   }
   
-  public final void c()
-  {
-    zb localzb = this.a;
-    if (localzb == null) {
-      return;
-    }
-    localzb.b();
-  }
+  public final void setAlpha(int paramInt) {}
   
-  public final boolean d()
-  {
-    try
-    {
-      boolean bool = new File(f(), "gallerymanager_102322.apk").exists();
-      return bool;
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-    }
-    return false;
-  }
-  
-  public final String e()
-  {
-    try
-    {
-      String str = new File(f(), "gallerymanager_102322.apk").getAbsolutePath();
-      return str;
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-    }
-    return "";
-  }
-  
-  public final String f()
-  {
-    if (TextUtils.isEmpty(this.b))
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(Environment.getExternalStorageDirectory().getAbsolutePath());
-      localStringBuilder.append(File.separator);
-      localStringBuilder.append("gallerymanager");
-      localStringBuilder.append(File.separator);
-      this.b = localStringBuilder.toString();
-    }
-    return this.b;
-  }
-  
-  public final boolean h()
-  {
-    zb localzb = this.a;
-    if (localzb == null) {
-      return false;
-    }
-    return localzb.a;
-  }
+  public final void setColorFilter(ColorFilter paramColorFilter) {}
 }
 
 

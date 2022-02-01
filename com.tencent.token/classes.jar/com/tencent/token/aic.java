@@ -1,20 +1,6 @@
 package com.tencent.token;
 
-import java.util.Collections;
-import java.util.List;
-
-public abstract interface aic
-{
-  public static final aic a = new aic()
-  {
-    public final List<aib> a()
-    {
-      return Collections.emptyList();
-    }
-  };
-  
-  public abstract List<aib> a();
-}
+public abstract interface aic {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.token\classes.jar

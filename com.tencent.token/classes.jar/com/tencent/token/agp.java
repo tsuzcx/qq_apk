@@ -1,10 +1,50 @@
 package com.tencent.token;
 
+import android.text.TextUtils;
+import javax.crypto.Cipher;
+import javax.crypto.spec.SecretKeySpec;
+
 public final class agp
 {
-  public int a;
-  public String[] b;
-  public boolean c;
+  public static final String a = agg.a(agg.aE);
+  
+  public static String a(String paramString)
+  {
+    try
+    {
+      Object localObject = agg.a(agg.aF);
+      localCipher = Cipher.getInstance((String)localObject);
+      localCipher.init(2, new SecretKeySpec(a.getBytes("UTF-8"), (String)localObject));
+      if (TextUtils.isEmpty(paramString))
+      {
+        paramString = null;
+      }
+      else
+      {
+        localObject = paramString.toCharArray();
+        int j = localObject.length / 2;
+        paramString = new byte[j];
+        int i = 0;
+        while (i < j)
+        {
+          int k = i * 2;
+          int m = Character.digit(localObject[k], 16);
+          paramString[i] = ((byte)((Character.digit(localObject[(k + 1)], 16) | m << 4) & 0xFF));
+          i += 1;
+        }
+      }
+    }
+    finally
+    {
+      for (;;)
+      {
+        Cipher localCipher;
+      }
+    }
+    paramString = new String(localCipher.doFinal(paramString), "UTF-8");
+    return paramString;
+    return "";
+  }
 }
 
 

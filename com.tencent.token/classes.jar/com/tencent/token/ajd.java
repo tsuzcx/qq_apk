@@ -1,64 +1,400 @@
 package com.tencent.token;
 
-import java.net.UnknownServiceException;
-import java.util.Arrays;
+import android.annotation.SuppressLint;
+import android.os.Build.VERSION;
+import android.telephony.CellInfo;
+import android.telephony.CellLocation;
+import android.telephony.PhoneStateListener;
+import android.telephony.ServiceState;
+import android.telephony.TelephonyManager;
+import java.util.HashMap;
 import java.util.List;
-import javax.net.ssl.SSLSocket;
 
 public final class ajd
 {
-  boolean a;
-  boolean b;
-  private final List<aia> c;
-  private int d = 0;
+  static TelephonyManager a;
+  static boolean b = false;
+  static String c;
+  static HashMap<Integer, String> d = new HashMap();
+  static boolean e = false;
+  static String f = null;
+  static HashMap<Integer, String> g = new HashMap();
+  static boolean h = false;
+  static String i = null;
+  static HashMap<Integer, String> j = new HashMap();
   
-  public ajd(List<aia> paramList)
+  @SuppressLint({"MissingPermission"})
+  public static CellLocation a()
   {
-    this.c = paramList;
-  }
-  
-  private boolean b(SSLSocket paramSSLSocket)
-  {
-    int i = this.d;
-    while (i < this.c.size())
-    {
-      if (((aia)this.c.get(i)).a(paramSSLSocket)) {
-        return true;
-      }
-      i += 1;
+    if (!kx.b()) {
+      return null;
     }
-    return false;
+    aji.a("[API]TelephonyManagerInvoke_");
+    return a.getCellLocation();
   }
   
-  public final aia a(SSLSocket paramSSLSocket)
+  @SuppressLint({"MissingPermission"})
+  public static String a(int paramInt)
   {
-    int i = this.d;
-    int j = this.c.size();
-    while (i < j)
+    boolean bool = kx.a();
+    StringBuilder localStringBuilder = new StringBuilder("getDeviceId, slot:[");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append("]isAllow:[");
+    localStringBuilder.append(bool);
+    localStringBuilder.append("]");
+    if (!bool) {
+      return "";
+    }
+    return d(paramInt);
+  }
+  
+  public static void a(PhoneStateListener paramPhoneStateListener, int paramInt)
+  {
+    StringBuilder localStringBuilder = new StringBuilder("listen, events:[");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append("]");
+    if (!kx.a()) {
+      return;
+    }
+    localStringBuilder = new StringBuilder("listen, events:[");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append("]");
+    aji.a("[API]TelephonyManagerInvoke_");
+    a.listen(paramPhoneStateListener, paramInt);
+  }
+  
+  @SuppressLint({"MissingPermission"})
+  public static String b(int paramInt)
+  {
+    boolean bool = kx.a();
+    StringBuilder localStringBuilder = new StringBuilder("getImei, slot:[");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append("]isAllow:[");
+    localStringBuilder.append(bool);
+    localStringBuilder.append("]");
+    if (!bool) {
+      return "";
+    }
+    return e(paramInt);
+  }
+  
+  @SuppressLint({"MissingPermission"})
+  public static List<CellInfo> b()
+  {
+    if (!kx.b()) {
+      return null;
+    }
+    if (Build.VERSION.SDK_INT >= 17)
     {
-      localObject = (aia)this.c.get(i);
-      if (((aia)localObject).a(paramSSLSocket))
+      aji.a("[API]TelephonyManagerInvoke_");
+      return a.getAllCellInfo();
+    }
+    return null;
+  }
+  
+  @SuppressLint({"MissingPermission"})
+  public static String c()
+  {
+    boolean bool = kx.a();
+    StringBuilder localStringBuilder = new StringBuilder("getDeviceId, isAllow:[");
+    localStringBuilder.append(bool);
+    localStringBuilder.append("]");
+    if (!bool) {
+      return "";
+    }
+    return j();
+  }
+  
+  @SuppressLint({"MissingPermission"})
+  public static String c(int paramInt)
+  {
+    boolean bool = kx.a();
+    StringBuilder localStringBuilder = new StringBuilder("getMeid, slot:[");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append("]isAllow:[");
+    localStringBuilder.append(bool);
+    localStringBuilder.append("]");
+    if (!bool) {
+      return "";
+    }
+    return f(paramInt);
+  }
+  
+  @SuppressLint({"MissingPermission"})
+  public static String d()
+  {
+    boolean bool = kx.a();
+    StringBuilder localStringBuilder = new StringBuilder("getImei, isAllow:[");
+    localStringBuilder.append(bool);
+    localStringBuilder.append("]");
+    if (!bool) {
+      return "";
+    }
+    return k();
+  }
+  
+  @SuppressLint({"MissingPermission"})
+  public static String d(int paramInt)
+  {
+    try
+    {
+      Object localObject1 = new StringBuilder("getDeviceId, slot:[");
+      ((StringBuilder)localObject1).append(paramInt);
+      ((StringBuilder)localObject1).append("]VERSION.SDK_INT:[");
+      ((StringBuilder)localObject1).append(Build.VERSION.SDK_INT);
+      ((StringBuilder)localObject1).append("]");
+      if (Build.VERSION.SDK_INT >= 23)
       {
-        this.d = (i + 1);
-        break label64;
+        localObject1 = (String)d.get(Integer.valueOf(paramInt));
+        if (localObject1 != null)
+        {
+          paramInt = ((String)localObject1).compareToIgnoreCase("nulnul");
+          if (paramInt == 0) {
+            return null;
+          }
+          return localObject1;
+        }
+        localObject1 = a.getDeviceId(paramInt);
+        StringBuilder localStringBuilder = new StringBuilder("getDeviceId, slot:[");
+        localStringBuilder.append(paramInt);
+        localStringBuilder.append("][");
+        localStringBuilder.append((String)localObject1);
+        localStringBuilder.append("]");
+        aji.a("[API]TelephonyManagerInvoke_");
+        if (localObject1 == null) {
+          d.put(Integer.valueOf(paramInt), "nulnul");
+        } else {
+          d.put(Integer.valueOf(paramInt), localObject1);
+        }
       }
-      i += 1;
+      return "";
     }
-    Object localObject = null;
-    label64:
-    if (localObject != null)
+    finally {}
+  }
+  
+  @SuppressLint({"MissingPermission"})
+  public static String e()
+  {
+    boolean bool = kx.a();
+    Object localObject = new StringBuilder("getSubscriberId, isAllow:[");
+    ((StringBuilder)localObject).append(bool);
+    ((StringBuilder)localObject).append("]");
+    if (!bool) {
+      return "";
+    }
+    localObject = a.getSubscriberId();
+    StringBuilder localStringBuilder = new StringBuilder("getSubscriberId:[");
+    localStringBuilder.append((String)localObject);
+    localStringBuilder.append("]");
+    aji.a("[API]TelephonyManagerInvoke_");
+    return localObject;
+  }
+  
+  @SuppressLint({"MissingPermission"})
+  public static String e(int paramInt)
+  {
+    try
     {
-      this.a = b(paramSSLSocket);
-      aiu.a.a((aia)localObject, paramSSLSocket, this.b);
-      return localObject;
+      Object localObject1 = new StringBuilder("getImei, slot:[");
+      ((StringBuilder)localObject1).append(paramInt);
+      ((StringBuilder)localObject1).append("]VERSION.SDK_INT:[");
+      ((StringBuilder)localObject1).append(Build.VERSION.SDK_INT);
+      ((StringBuilder)localObject1).append("]");
+      if (Build.VERSION.SDK_INT >= 26)
+      {
+        localObject1 = (String)g.get(Integer.valueOf(paramInt));
+        if (localObject1 != null)
+        {
+          paramInt = ((String)localObject1).compareToIgnoreCase("nulnul");
+          if (paramInt == 0) {
+            return null;
+          }
+          return localObject1;
+        }
+        localObject1 = a.getImei(paramInt);
+        StringBuilder localStringBuilder = new StringBuilder("getImei, slot:[");
+        localStringBuilder.append(paramInt);
+        localStringBuilder.append("][");
+        localStringBuilder.append((String)localObject1);
+        localStringBuilder.append("]");
+        aji.a("[API]TelephonyManagerInvoke_");
+        if (localObject1 == null) {
+          g.put(Integer.valueOf(paramInt), "nulnul");
+        } else {
+          g.put(Integer.valueOf(paramInt), localObject1);
+        }
+      }
+      return "";
     }
-    localObject = new StringBuilder("Unable to find acceptable protocols. isFallback=");
-    ((StringBuilder)localObject).append(this.b);
-    ((StringBuilder)localObject).append(", modes=");
-    ((StringBuilder)localObject).append(this.c);
-    ((StringBuilder)localObject).append(", supported protocols=");
-    ((StringBuilder)localObject).append(Arrays.toString(paramSSLSocket.getEnabledProtocols()));
-    throw new UnknownServiceException(((StringBuilder)localObject).toString());
+    finally {}
+  }
+  
+  @SuppressLint({"MissingPermission"})
+  public static String f()
+  {
+    boolean bool = kx.a();
+    StringBuilder localStringBuilder = new StringBuilder("getMeid, isAllow:[");
+    localStringBuilder.append(bool);
+    localStringBuilder.append("]");
+    if (!bool) {
+      return "";
+    }
+    return l();
+  }
+  
+  @SuppressLint({"MissingPermission"})
+  public static String f(int paramInt)
+  {
+    try
+    {
+      Object localObject1 = new StringBuilder("getMeid, slot:[");
+      ((StringBuilder)localObject1).append(paramInt);
+      ((StringBuilder)localObject1).append("]VERSION.SDK_INT:[");
+      ((StringBuilder)localObject1).append(Build.VERSION.SDK_INT);
+      ((StringBuilder)localObject1).append("]");
+      if (Build.VERSION.SDK_INT >= 26)
+      {
+        localObject1 = (String)j.get(Integer.valueOf(paramInt));
+        if (localObject1 != null)
+        {
+          paramInt = ((String)localObject1).compareToIgnoreCase("nulnul");
+          if (paramInt == 0) {
+            return null;
+          }
+          return localObject1;
+        }
+        localObject1 = a.getMeid(paramInt);
+        StringBuilder localStringBuilder = new StringBuilder("getMeid, slot:[");
+        localStringBuilder.append(paramInt);
+        localStringBuilder.append("][");
+        localStringBuilder.append((String)localObject1);
+        localStringBuilder.append("]");
+        aji.a("[API]TelephonyManagerInvoke_");
+        if (localObject1 == null) {
+          j.put(Integer.valueOf(paramInt), "nulnul");
+        } else {
+          j.put(Integer.valueOf(paramInt), localObject1);
+        }
+      }
+      return "";
+    }
+    finally {}
+  }
+  
+  @SuppressLint({"MissingPermission"})
+  public static String g()
+  {
+    if (!kx.a()) {
+      return "";
+    }
+    aji.a("[API]TelephonyManagerInvoke_");
+    return a.getSimSerialNumber();
+  }
+  
+  @SuppressLint({"MissingPermission"})
+  public static String h()
+  {
+    if (!kx.a()) {
+      return "";
+    }
+    aji.a("[API]TelephonyManagerInvoke_");
+    return a.getLine1Number();
+  }
+  
+  @SuppressLint({"MissingPermission"})
+  public static ServiceState i()
+  {
+    if (!kx.b()) {
+      return null;
+    }
+    aji.a("[API]TelephonyManagerInvoke_");
+    if (Build.VERSION.SDK_INT >= 26) {
+      return a.getServiceState();
+    }
+    return null;
+  }
+  
+  @SuppressLint({"MissingPermission"})
+  public static String j()
+  {
+    try
+    {
+      Object localObject1 = new StringBuilder("getDeviceId:[");
+      ((StringBuilder)localObject1).append(c);
+      ((StringBuilder)localObject1).append("]");
+      if (b)
+      {
+        localObject1 = c;
+        return localObject1;
+      }
+      c = a.getDeviceId();
+      b = true;
+      localObject1 = new StringBuilder("getDeviceId:[");
+      ((StringBuilder)localObject1).append(c);
+      ((StringBuilder)localObject1).append("]");
+      aji.a("[API]TelephonyManagerInvoke_");
+      localObject1 = c;
+      return localObject1;
+    }
+    finally {}
+  }
+  
+  @SuppressLint({"MissingPermission"})
+  public static String k()
+  {
+    try
+    {
+      Object localObject1 = new StringBuilder("getImei:[");
+      ((StringBuilder)localObject1).append(f);
+      ((StringBuilder)localObject1).append("]");
+      if (e)
+      {
+        localObject1 = f;
+        return localObject1;
+      }
+      if (Build.VERSION.SDK_INT >= 26)
+      {
+        f = a.getImei();
+        e = true;
+        localObject1 = new StringBuilder("getImei:[");
+        ((StringBuilder)localObject1).append(f);
+        ((StringBuilder)localObject1).append("]");
+        aji.a("[API]TelephonyManagerInvoke_");
+        localObject1 = f;
+        return localObject1;
+      }
+      return "";
+    }
+    finally {}
+  }
+  
+  @SuppressLint({"MissingPermission"})
+  public static String l()
+  {
+    try
+    {
+      Object localObject1 = new StringBuilder("getMeid:[");
+      ((StringBuilder)localObject1).append(i);
+      ((StringBuilder)localObject1).append("]");
+      if (h)
+      {
+        localObject1 = i;
+        return localObject1;
+      }
+      if (Build.VERSION.SDK_INT >= 26)
+      {
+        i = a.getMeid();
+        h = true;
+        localObject1 = new StringBuilder("getMeid:[");
+        ((StringBuilder)localObject1).append(i);
+        ((StringBuilder)localObject1).append("]");
+        aji.a("[API]TelephonyManagerInvoke_");
+        localObject1 = i;
+        return localObject1;
+      }
+      return "";
+    }
+    finally {}
   }
 }
 

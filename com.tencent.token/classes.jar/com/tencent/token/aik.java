@@ -1,27 +1,15 @@
 package com.tencent.token;
 
-import java.util.regex.Pattern;
-import javax.annotation.Nullable;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public final class aik
 {
-  private static final Pattern a = Pattern.compile("([a-zA-Z0-9-!#$%&'*+.^_`{|}~]+)/([a-zA-Z0-9-!#$%&'*+.^_`{|}~]+)");
-  private static final Pattern b = Pattern.compile(";\\s*(?:([a-zA-Z0-9-!#$%&'*+.^_`{|}~]+)=(?:([a-zA-Z0-9-!#$%&'*+.^_`{|}~]+)|\"([^\"]*)\"))?");
-  private final String c;
+  public boolean a = false;
+  AtomicInteger b = new AtomicInteger();
   
-  public final boolean equals(@Nullable Object paramObject)
+  public final void a(int paramInt)
   {
-    return ((paramObject instanceof aik)) && (((aik)paramObject).c.equals(this.c));
-  }
-  
-  public final int hashCode()
-  {
-    return this.c.hashCode();
-  }
-  
-  public final String toString()
-  {
-    return this.c;
+    this.b.set(paramInt);
   }
 }
 

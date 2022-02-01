@@ -1,23 +1,36 @@
 package com.tencent.token;
 
-import android.annotation.SuppressLint;
-import android.net.wifi.WifiInfo;
-import android.net.wifi.WifiManager;
+import android.content.ContentResolver;
+import android.content.Context;
+import android.content.IContentProvider;
+import com.oasisfeng.condom.CondomCore;
+import com.oasisfeng.condom.ContentResolverWrapper;
 
-public class kl
-  extends WifiManager
+public final class kl
+  extends ContentResolverWrapper
 {
-  private WifiManager a;
+  private final CondomCore a;
   
-  public kl(WifiManager paramWifiManager)
+  public kl(CondomCore paramCondomCore, Context paramContext, ContentResolver paramContentResolver)
   {
-    this.a = paramWifiManager;
+    super(paramContext, paramContentResolver);
+    this.a = paramCondomCore;
   }
   
-  @SuppressLint({"MissingPermission"})
-  public WifiInfo getConnectionInfo()
+  public final IContentProvider acquireProvider(Context paramContext, String paramString)
   {
-    return this.a.getConnectionInfo();
+    if (!this.a.shouldAllowProvider(paramContext, paramString, 131072)) {
+      return null;
+    }
+    return super.acquireProvider(paramContext, paramString);
+  }
+  
+  public final IContentProvider acquireUnstableProvider(Context paramContext, String paramString)
+  {
+    if (!this.a.shouldAllowProvider(paramContext, paramString, 131072)) {
+      return null;
+    }
+    return super.acquireUnstableProvider(paramContext, paramString);
   }
 }
 

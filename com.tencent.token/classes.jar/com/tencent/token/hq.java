@@ -1,131 +1,103 @@
 package com.tencent.token;
 
-import android.content.Context;
-import android.graphics.Rect;
-import android.view.MenuItem;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.DialogInterface.OnDismissListener;
+import android.content.DialogInterface.OnKeyListener;
+import android.support.v7.app.AlertDialog;
+import android.view.KeyEvent;
+import android.view.KeyEvent.DispatcherState;
 import android.view.View;
-import android.view.View.MeasureSpec;
-import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import android.widget.FrameLayout;
-import android.widget.HeaderViewListAdapter;
+import android.view.Window;
 import android.widget.ListAdapter;
-import android.widget.PopupWindow.OnDismissListener;
 
-abstract class hq
-  implements AdapterView.OnItemClickListener, hs, hw
+final class hq
+  implements DialogInterface.OnClickListener, DialogInterface.OnDismissListener, DialogInterface.OnKeyListener, hw.a
 {
-  Rect e;
+  hp a;
+  AlertDialog b;
+  hn c;
+  private hw.a d;
   
-  protected static int a(ListAdapter paramListAdapter, ViewGroup paramViewGroup, Context paramContext, int paramInt)
+  public hq(hp paramhp)
   {
-    int j = 0;
-    int i1 = View.MeasureSpec.makeMeasureSpec(0, 0);
-    int i2 = View.MeasureSpec.makeMeasureSpec(0, 0);
-    int i3 = paramListAdapter.getCount();
-    Object localObject1 = paramViewGroup;
-    paramViewGroup = null;
-    int i = 0;
-    int m = 0;
-    while (j < i3)
+    this.a = paramhp;
+  }
+  
+  public final void a(hp paramhp, boolean paramBoolean)
+  {
+    if ((paramBoolean) || (paramhp == this.a))
     {
-      int n = paramListAdapter.getItemViewType(j);
-      int k = m;
-      if (n != m)
+      localObject = this.b;
+      if (localObject != null) {
+        ((AlertDialog)localObject).dismiss();
+      }
+    }
+    Object localObject = this.d;
+    if (localObject != null) {
+      ((hw.a)localObject).a(paramhp, paramBoolean);
+    }
+  }
+  
+  public final boolean a(hp paramhp)
+  {
+    hw.a locala = this.d;
+    if (locala != null) {
+      return locala.a(paramhp);
+    }
+    return false;
+  }
+  
+  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    this.a.a((hr)this.c.b().getItem(paramInt), null, 0);
+  }
+  
+  public final void onDismiss(DialogInterface paramDialogInterface)
+  {
+    this.c.a(this.a, true);
+  }
+  
+  public final boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
+  {
+    if ((paramInt == 82) || (paramInt == 4)) {
+      if ((paramKeyEvent.getAction() == 0) && (paramKeyEvent.getRepeatCount() == 0))
       {
-        paramViewGroup = null;
-        k = n;
+        paramDialogInterface = this.b.getWindow();
+        if (paramDialogInterface != null)
+        {
+          paramDialogInterface = paramDialogInterface.getDecorView();
+          if (paramDialogInterface != null)
+          {
+            paramDialogInterface = paramDialogInterface.getKeyDispatcherState();
+            if (paramDialogInterface != null)
+            {
+              paramDialogInterface.startTracking(paramKeyEvent, this);
+              return true;
+            }
+          }
+        }
       }
-      Object localObject2 = localObject1;
-      if (localObject1 == null) {
-        localObject2 = new FrameLayout(paramContext);
+      else if ((paramKeyEvent.getAction() == 1) && (!paramKeyEvent.isCanceled()))
+      {
+        Object localObject = this.b.getWindow();
+        if (localObject != null)
+        {
+          localObject = ((Window)localObject).getDecorView();
+          if (localObject != null)
+          {
+            localObject = ((View)localObject).getKeyDispatcherState();
+            if ((localObject != null) && (((KeyEvent.DispatcherState)localObject).isTracking(paramKeyEvent)))
+            {
+              this.a.a(true);
+              paramDialogInterface.dismiss();
+              return true;
+            }
+          }
+        }
       }
-      paramViewGroup = paramListAdapter.getView(j, paramViewGroup, (ViewGroup)localObject2);
-      paramViewGroup.measure(i1, i2);
-      m = paramViewGroup.getMeasuredWidth();
-      if (m >= paramInt) {
-        return paramInt;
-      }
-      n = i;
-      if (m > i) {
-        n = m;
-      }
-      j += 1;
-      m = k;
-      localObject1 = localObject2;
-      i = n;
     }
-    return i;
-  }
-  
-  protected static hk a(ListAdapter paramListAdapter)
-  {
-    if ((paramListAdapter instanceof HeaderViewListAdapter)) {
-      return (hk)((HeaderViewListAdapter)paramListAdapter).getWrappedAdapter();
-    }
-    return (hk)paramListAdapter;
-  }
-  
-  protected static boolean b(hl paramhl)
-  {
-    int j = paramhl.size();
-    int i = 0;
-    while (i < j)
-    {
-      MenuItem localMenuItem = paramhl.getItem(i);
-      if ((localMenuItem.isVisible()) && (localMenuItem.getIcon() != null)) {
-        return true;
-      }
-      i += 1;
-    }
-    return false;
-  }
-  
-  public abstract void a(int paramInt);
-  
-  public final void a(Context paramContext, hl paramhl) {}
-  
-  public abstract void a(View paramView);
-  
-  public abstract void a(PopupWindow.OnDismissListener paramOnDismissListener);
-  
-  public abstract void a(hl paramhl);
-  
-  public abstract void a(boolean paramBoolean);
-  
-  public abstract void b(int paramInt);
-  
-  public final boolean b(hn paramhn)
-  {
-    return false;
-  }
-  
-  public abstract void c(int paramInt);
-  
-  public abstract void c(boolean paramBoolean);
-  
-  public final boolean c(hn paramhn)
-  {
-    return false;
-  }
-  
-  protected boolean f()
-  {
-    return true;
-  }
-  
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
-  {
-    paramView = (ListAdapter)paramAdapterView.getAdapter();
-    paramAdapterView = a(paramView).b;
-    paramView = (MenuItem)paramView.getItem(paramInt);
-    if (f()) {
-      paramInt = 0;
-    } else {
-      paramInt = 4;
-    }
-    paramAdapterView.a(paramView, this, paramInt);
+    return this.a.performShortcut(paramInt, paramKeyEvent, 0);
   }
 }
 

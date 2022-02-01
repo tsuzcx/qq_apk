@@ -1,45 +1,240 @@
 package com.tencent.token;
 
-public final class qk
+import android.app.PendingIntent;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Build.VERSION;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import android.view.View;
+import android.view.ViewManager;
+import android.view.WindowManager;
+import android.view.WindowManager.LayoutParams;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.FrameLayout;
+import android.widget.FrameLayout.LayoutParams;
+import com.tencent.push.PActivity;
+
+public abstract class qk
 {
-  public static int a()
+  protected Context A;
+  protected Handler B;
+  private View a;
+  private int b = 0;
+  long t = -1L;
+  Animation u;
+  public Animation v;
+  boolean w = true;
+  ViewManager x;
+  FrameLayout y;
+  public volatile int z = 0;
+  
+  private void a(int paramInt)
   {
-    return qp.a.a().a("pgd_sp").a("t_t_s", 2);
+    int i = this.b;
+    paramInt = 1 << paramInt | i;
+    if (paramInt != i)
+    {
+      this.b = paramInt;
+      if (this.b == 15) {
+        e();
+      }
+    }
   }
   
-  public static void a(int paramInt)
+  private void b()
   {
-    qp.a.a().a("pgd_sp").b("t_t_s", paramInt);
+    Object localObject = new Intent(this.A, PActivity.class);
+    ((Intent)localObject).setFlags(402653184);
+    localObject = PendingIntent.getActivity(this.A, 0, (Intent)localObject, 268435456);
+    try
+    {
+      this.B.removeMessages(65282);
+      this.B.sendEmptyMessageDelayed(65282, 6000L);
+      ((PendingIntent)localObject).send();
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      localThrowable.printStackTrace();
+      a(3);
+    }
   }
   
-  public static void a(long paramLong)
+  protected void a()
   {
-    qp.a.a().a("pgd_sp").b("f_w_m_t", paramLong);
+    final WindowManager localWindowManager = (WindowManager)this.A.getSystemService("window");
+    if (localWindowManager == null)
+    {
+      e();
+      return;
+    }
+    this.B.post(new Runnable()
+    {
+      public final void run()
+      {
+        qk.a(qk.this, 0);
+        qk.a(qk.this, 1);
+        if ((Build.VERSION.SDK_INT != 25) && (Build.VERSION.SDK_INT >= 19)) {
+          int i = Build.VERSION.SDK_INT;
+        }
+        qk.a(qk.this, 2);
+        qk.a(qk.this);
+      }
+    });
   }
   
-  public static void a(boolean paramBoolean)
+  public final void a(Context paramContext)
   {
-    qp.a.a().a("pgd_sp").b("fg_v", paramBoolean);
+    ql.d();
+    this.A = paramContext;
+    this.B = new Handler(Looper.getMainLooper())
+    {
+      public final void handleMessage(Message paramAnonymousMessage)
+      {
+        qk.this.a(paramAnonymousMessage);
+      }
+    };
+    a();
   }
   
-  public static int b()
+  protected final void a(Message paramMessage)
   {
-    return qp.a.a().a("pgd_sp").a("pg5s", 0);
+    switch (paramMessage.what)
+    {
+    default: 
+    case 65283: 
+      b();
+      return;
+    case 65282: 
+      a(3);
+      return;
+    case 65281: 
+      if ((paramMessage.obj instanceof a))
+      {
+        a.a((a)paramMessage.obj);
+        a(2);
+        return;
+      }
+      break;
+    case 65280: 
+      if ((this.y != null) && (this.a != null))
+      {
+        a(true);
+        return;
+      }
+      break;
+    }
   }
   
-  public static void b(int paramInt)
+  public final void a(ViewManager paramViewManager)
   {
-    qp.a.a().a("pgd_sp").b("f_w_c", paramInt);
+    this.B.removeMessages(65281);
+    this.B.removeMessages(65282);
+    this.B.removeMessages(65283);
+    if (this.z == 0)
+    {
+      this.x = paramViewManager;
+      this.a = g();
+      if (this.a != null)
+      {
+        paramViewManager = h();
+        this.y = new FrameLayout(this.A);
+        this.y.addView(this.a, new FrameLayout.LayoutParams(paramViewManager.width, paramViewManager.height));
+      }
+    }
+    try
+    {
+      this.x.addView(this.y, paramViewManager);
+      if ((this.w) && (this.u != null)) {
+        this.a.startAnimation(this.u);
+      }
+      if (this.t > 0L)
+      {
+        this.B.removeMessages(65280);
+        this.B.sendEmptyMessageDelayed(65280, this.t);
+      }
+      this.z = 4;
+      return;
+    }
+    catch (Throwable paramViewManager)
+    {
+      label177:
+      break label177;
+    }
+    e();
   }
   
-  public static void c(int paramInt)
+  public final void a(boolean paramBoolean)
   {
-    qp.a.a().a("pgd_sp").b("pg5s", paramInt);
+    this.B.removeMessages(65281);
+    this.B.removeMessages(65282);
+    if ((this.z != 0) && (this.z != 1) && (this.z != 2))
+    {
+      if (this.w)
+      {
+        Animation localAnimation = this.v;
+        if (localAnimation != null)
+        {
+          localAnimation.setAnimationListener(new Animation.AnimationListener()
+          {
+            public final void onAnimationEnd(Animation paramAnonymousAnimation)
+            {
+              qk.this.x.removeView(qk.this.y);
+              qk.this.y = null;
+            }
+            
+            public final void onAnimationRepeat(Animation paramAnonymousAnimation) {}
+            
+            public final void onAnimationStart(Animation paramAnonymousAnimation) {}
+          });
+          this.a.startAnimation(this.v);
+          break label101;
+        }
+      }
+      this.x.removeView(this.y);
+      this.y = null;
+      label101:
+      if ((this.z != 3) && (this.z != 8))
+      {
+        if (paramBoolean)
+        {
+          d();
+          return;
+        }
+        this.z = 2;
+      }
+    }
   }
   
-  public static boolean c()
+  protected void d()
   {
-    return qp.a.a().a("pgd_sp").a("fg_v", true);
+    this.z = 1;
+  }
+  
+  protected void e()
+  {
+    if (this.z != 7) {
+      this.z = 7;
+    }
+    this.B.removeCallbacksAndMessages(null);
+  }
+  
+  protected void f()
+  {
+    this.z = 3;
+  }
+  
+  protected abstract View g();
+  
+  public abstract WindowManager.LayoutParams h();
+  
+  final class a
+    extends FrameLayout
+  {
+    private boolean a;
   }
 }
 

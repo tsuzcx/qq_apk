@@ -1,271 +1,325 @@
 package com.tencent.token;
 
+import android.content.Context;
+import android.net.Uri;
+import android.os.Environment;
+import android.os.StatFs;
 import android.text.TextUtils;
-import com.tencent.halley.downloader.DownloaderTaskStatus;
-import com.tencent.halley.downloader.c.d.a;
-import com.tencent.halley.downloader.c.d.a.a;
-import com.tencent.halley.downloader.exceptions.DownloaderAddTaskException;
-import java.util.Vector;
-import java.util.concurrent.atomic.AtomicInteger;
+import java.io.File;
+import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
+import java.util.HashMap;
 
 public final class lu
-  implements lr
 {
-  public final ls a(String paramString1, String paramString2, String paramString3, String paramString4, lt paramlt)
+  public int a = 0;
+  public String b = "";
+  
+  public lu() {}
+  
+  public lu(int paramInt, String paramString)
   {
-    String str1 = "";
-    if (TextUtils.isEmpty(paramString2)) {
-      str1 = "url is empty.";
-    } else if (paramlt == null) {
-      str1 = "listener is null.";
-    }
-    String str2 = paramString3;
-    if (lq.a(paramString3)) {
-      str2 = kx.g();
-    }
-    if ("".equals(str1))
+    this.a = paramInt;
+    if (!TextUtils.isEmpty(paramString))
     {
-      paramString2 = new mj(paramString2);
-      if (!TextUtils.isEmpty(null))
-      {
-        paramString2.c = new a(null, a.a.g);
-        paramString2.c.c = paramString2.e.getAndIncrement();
-      }
-      return new mk(paramString1, paramString2, str2, paramString4, paramlt);
+      this.b = paramString;
+      return;
     }
-    throw new DownloaderAddTaskException(str1);
+    this.b = "";
   }
   
-  /* Error */
-  public final void a(ls paramls)
+  public static long a()
   {
-    // Byte code:
-    //   0: invokestatic 89	com/tencent/token/lx:b	()Lcom/tencent/token/lx;
-    //   3: astore 4
-    //   5: ldc 15
-    //   7: astore_3
-    //   8: aload_1
-    //   9: ifnull +290 -> 299
-    //   12: aload_1
-    //   13: instanceof 76
-    //   16: ifne +6 -> 22
-    //   19: goto +280 -> 299
-    //   22: aload_1
-    //   23: checkcast 76	com/tencent/token/mk
-    //   26: astore 5
-    //   28: aload 4
-    //   30: monitorenter
-    //   31: aload 5
-    //   33: getfield 93	com/tencent/token/mk:k	Ljava/lang/String;
-    //   36: invokestatic 30	com/tencent/token/lq:a	(Ljava/lang/String;)Z
-    //   39: ifeq +10 -> 49
-    //   42: aload 5
-    //   44: ldc 15
-    //   46: putfield 93	com/tencent/token/mk:k	Ljava/lang/String;
-    //   49: aload_3
-    //   50: astore_2
-    //   51: aload 5
-    //   53: getfield 93	com/tencent/token/mk:k	Ljava/lang/String;
-    //   56: invokestatic 95	com/tencent/token/kx:c	(Ljava/lang/String;)Z
-    //   59: ifeq +157 -> 216
-    //   62: aload 4
-    //   64: invokevirtual 99	com/tencent/token/lx:d	()Ljava/util/List;
-    //   67: invokeinterface 105 1 0
-    //   72: astore_2
-    //   73: aload_3
-    //   74: astore_1
-    //   75: aload_2
-    //   76: invokeinterface 111 1 0
-    //   81: ifeq +118 -> 199
-    //   84: aload_2
-    //   85: invokeinterface 115 1 0
-    //   90: checkcast 117	com/tencent/token/ls
-    //   93: astore_1
-    //   94: aload 5
-    //   96: getfield 120	com/tencent/token/mk:j	Ljava/lang/String;
-    //   99: aload_1
-    //   100: invokeinterface 123 1 0
-    //   105: invokevirtual 126	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
-    //   108: ifeq -35 -> 73
-    //   111: aload 5
-    //   113: getfield 93	com/tencent/token/mk:k	Ljava/lang/String;
-    //   116: astore 6
-    //   118: aload_1
-    //   119: checkcast 76	com/tencent/token/mk
-    //   122: getfield 93	com/tencent/token/mk:k	Ljava/lang/String;
-    //   125: invokestatic 95	com/tencent/token/kx:c	(Ljava/lang/String;)Z
-    //   128: ifeq +13 -> 141
-    //   131: aload_1
-    //   132: invokeinterface 129 1 0
-    //   137: astore_1
-    //   138: goto +10 -> 148
-    //   141: aload_1
-    //   142: invokeinterface 131 1 0
-    //   147: astore_1
-    //   148: aload 6
-    //   150: aload_1
-    //   151: invokevirtual 126	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
-    //   154: ifeq -81 -> 73
-    //   157: new 133	java/lang/StringBuilder
-    //   160: dup
-    //   161: ldc 135
-    //   163: invokespecial 136	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   166: astore_1
-    //   167: aload_1
-    //   168: aload 5
-    //   170: getfield 120	com/tencent/token/mk:j	Ljava/lang/String;
-    //   173: invokevirtual 140	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   176: pop
-    //   177: aload_1
-    //   178: ldc 142
-    //   180: invokevirtual 140	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   183: pop
-    //   184: aload_1
-    //   185: aload 5
-    //   187: getfield 93	com/tencent/token/mk:k	Ljava/lang/String;
-    //   190: invokevirtual 140	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   193: pop
-    //   194: aload_1
-    //   195: invokevirtual 145	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   198: astore_1
-    //   199: aload_1
-    //   200: astore_2
-    //   201: ldc 15
-    //   203: aload_1
-    //   204: invokevirtual 42	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   207: ifne +9 -> 216
-    //   210: aload 4
-    //   212: monitorexit
-    //   213: goto +89 -> 302
-    //   216: aload 4
-    //   218: getfield 148	com/tencent/token/lx:a	Ljava/util/Vector;
-    //   221: astore_1
-    //   222: aload_1
-    //   223: monitorenter
-    //   224: aload 4
-    //   226: getfield 148	com/tencent/token/lx:a	Ljava/util/Vector;
-    //   229: aload 5
-    //   231: invokevirtual 153	java/util/Vector:add	(Ljava/lang/Object;)Z
-    //   234: pop
-    //   235: aload_1
-    //   236: monitorexit
-    //   237: aload 5
-    //   239: invokevirtual 156	com/tencent/token/mk:r	()V
-    //   242: aload_2
-    //   243: astore_1
-    //   244: goto -34 -> 210
-    //   247: astore_1
-    //   248: goto +38 -> 286
-    //   251: astore_1
-    //   252: aload_1
-    //   253: invokevirtual 159	com/tencent/halley/downloader/exceptions/DownloaderAddTaskException:getLocalizedMessage	()Ljava/lang/String;
-    //   256: astore_1
-    //   257: aload 4
-    //   259: getfield 148	com/tencent/token/lx:a	Ljava/util/Vector;
-    //   262: astore_2
-    //   263: aload_2
-    //   264: monitorenter
-    //   265: aload 4
-    //   267: getfield 148	com/tencent/token/lx:a	Ljava/util/Vector;
-    //   270: aload 5
-    //   272: invokevirtual 162	java/util/Vector:remove	(Ljava/lang/Object;)Z
-    //   275: pop
-    //   276: aload_2
-    //   277: monitorexit
-    //   278: goto -68 -> 210
-    //   281: astore_1
-    //   282: aload_2
-    //   283: monitorexit
-    //   284: aload_1
-    //   285: athrow
-    //   286: aload_1
-    //   287: athrow
-    //   288: astore_2
-    //   289: aload_1
-    //   290: monitorexit
-    //   291: aload_2
-    //   292: athrow
-    //   293: astore_1
-    //   294: aload 4
-    //   296: monitorexit
-    //   297: aload_1
-    //   298: athrow
-    //   299: ldc 164
-    //   301: astore_1
-    //   302: ldc 15
-    //   304: aload_1
-    //   305: invokevirtual 42	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   308: ifeq +4 -> 312
-    //   311: return
-    //   312: new 81	com/tencent/halley/downloader/exceptions/DownloaderAddTaskException
-    //   315: dup
-    //   316: aload_1
-    //   317: invokespecial 82	com/tencent/halley/downloader/exceptions/DownloaderAddTaskException:<init>	(Ljava/lang/String;)V
-    //   320: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	321	0	this	lu
-    //   0	321	1	paramls	ls
-    //   288	4	2	localObject2	Object
-    //   7	67	3	str1	String
-    //   3	292	4	locallx	lx
-    //   26	245	5	localmk	mk
-    //   116	33	6	str2	String
-    // Exception table:
-    //   from	to	target	type
-    //   237	242	247	finally
-    //   252	265	247	finally
-    //   282	286	247	finally
-    //   237	242	251	com/tencent/halley/downloader/exceptions/DownloaderAddTaskException
-    //   265	278	281	finally
-    //   224	237	288	finally
-    //   31	49	293	finally
-    //   51	73	293	finally
-    //   75	138	293	finally
-    //   141	148	293	finally
-    //   148	199	293	finally
-    //   201	210	293	finally
-    //   210	213	293	finally
-    //   216	224	293	finally
-    //   286	288	293	finally
-    //   289	293	293	finally
+    try
+    {
+      StatFs localStatFs = new StatFs(Environment.getExternalStorageDirectory().getAbsolutePath());
+      long l = localStatFs.getBlockSize();
+      int i = localStatFs.getAvailableBlocks();
+      return l * i;
+    }
+    catch (Throwable localThrowable)
+    {
+      localThrowable.printStackTrace();
+    }
+    return -1L;
   }
   
-  public final void b(ls paramls)
+  public static nz a(lr paramlr)
   {
-    lx locallx = lx.b();
-    if (paramls != null)
+    paramlr = new of(paramlr);
+    try
     {
-      ??? = new StringBuilder("delete task:");
-      ((StringBuilder)???).append(paramls.c());
-      lh.b("TaskManager", ((StringBuilder)???).toString());
-      mk localmk = (mk)paramls;
-      if (!localmk.u())
+      paramlr.b = paramlr.a.a();
+      return paramlr;
+    }
+    catch (Exception localException)
+    {
+      paramlr.e = -2;
+      paramlr.f = oh.a(localException);
+    }
+    return paramlr;
+  }
+  
+  private static String a(String paramString)
+  {
+    String str = "";
+    if (!TextUtils.isEmpty(paramString)) {
+      str = paramString.replace('\n', ' ').replace('\r', ' ').replace("|", "%7C").replace("&", "%26").replace("=", "%3D");
+    }
+    return str;
+  }
+  
+  public static String a(String paramString1, String paramString2)
+  {
+    try
+    {
+      if (!TextUtils.isEmpty(paramString1))
       {
-        if (!localmk.t())
+        i = paramString1.indexOf("filename=");
+        if (-1 != i)
         {
-          localmk.q();
-          localmk.o();
-          if (localmk.e) {
-            localmk.p();
+          int k = i + 9;
+          int j = paramString1.indexOf(";", k);
+          i = j;
+          if (j == -1) {
+            i = paramString1.length();
           }
+          paramString1 = paramString1.substring(k, i);
         }
-        localmk.D = true;
-        localmk.a(true, 0, "", DownloaderTaskStatus.DELETED);
-      }
-      synchronized (locallx.a)
-      {
-        locallx.a.remove(paramls);
-        locallx.a(localmk, 3);
-        if (locallx.e())
-        {
-          locallx.b.a();
-          return;
-        }
-        locallx.b.b();
-        return;
       }
     }
+    catch (Exception paramString1)
+    {
+      int i;
+      String str1;
+      label68:
+      label79:
+      label109:
+      paramString1.printStackTrace();
+    }
+    try
+    {
+      str1 = URLDecoder.decode(paramString1, "utf-8");
+      paramString1 = str1;
+    }
+    catch (UnsupportedEncodingException localUnsupportedEncodingException1)
+    {
+      break label68;
+    }
+    try
+    {
+      str1 = URLDecoder.decode(paramString1, "gbk");
+      paramString1 = str1;
+    }
+    catch (UnsupportedEncodingException localUnsupportedEncodingException2)
+    {
+      break label79;
+      String str2 = paramString1;
+      break label109;
+    }
+    if (!TextUtils.isEmpty(paramString1))
+    {
+      i = paramString1.lastIndexOf("/") + 1;
+      if (i > 0)
+      {
+        str1 = paramString1.substring(i);
+        if (!TextUtils.isEmpty(str1))
+        {
+          paramString1 = c(paramString1, paramString2);
+          return paramString1;
+        }
+        return str1;
+      }
+    }
+    else
+    {
+      return null;
+    }
+  }
+  
+  public static HashMap a(ny paramny)
+  {
+    HashMap localHashMap = new HashMap();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramny.d);
+    localHashMap.put("B50", localStringBuilder.toString());
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(a(paramny.g));
+    localHashMap.put("B51", localStringBuilder.toString());
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(a(paramny.e));
+    localHashMap.put("B69", localStringBuilder.toString());
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramny.h);
+    localHashMap.put("B52", localStringBuilder.toString());
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(a(paramny.j));
+    localHashMap.put("B53", localStringBuilder.toString());
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramny.k);
+    localHashMap.put("B54", localStringBuilder.toString());
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramny.l);
+    localHashMap.put("B55", localStringBuilder.toString());
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramny.m);
+    localHashMap.put("B56", localStringBuilder.toString());
+    if (!TextUtils.isEmpty(paramny.n))
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(a(paramny.n));
+      localHashMap.put("B57", localStringBuilder.toString());
+    }
+    if ((!TextUtils.isEmpty(paramny.o)) && (!paramny.o.equals("null")))
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(a(paramny.o));
+      localHashMap.put("B58", localStringBuilder.toString());
+    }
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramny.p);
+    localHashMap.put("B59", localStringBuilder.toString());
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramny.u);
+    localHashMap.put("B63", localStringBuilder.toString());
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramny.q);
+    localHashMap.put("B60", localStringBuilder.toString());
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramny.r);
+    localHashMap.put("B61", localStringBuilder.toString());
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramny.s);
+    localHashMap.put("B62", localStringBuilder.toString());
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramny.t);
+    localHashMap.put("B71", localStringBuilder.toString());
+    localHashMap.put("B76", "0");
+    return localHashMap;
+  }
+  
+  public static void a(String paramString, HashMap paramHashMap)
+  {
+    try
+    {
+      lw.a(paramString, paramHashMap);
+      label6:
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramString);
+      localStringBuilder.append("--");
+      localStringBuilder.append(paramHashMap.toString());
+      lo.b("report:", localStringBuilder.toString());
+      return;
+    }
+    catch (Exception localException)
+    {
+      break label6;
+    }
+  }
+  
+  public static boolean a(Exception paramException)
+  {
+    if ((paramException instanceof IOException))
+    {
+      paramException = paramException.getMessage();
+      if ((paramException != null) && ((paramException.contains("ENOSPC")) || (paramException.contains("No space left on device")))) {
+        return true;
+      }
+    }
+    return false;
+  }
+  
+  public static long b()
+  {
+    try
+    {
+      String str = lv.a().getFilesDir().getAbsolutePath();
+      StatFs localStatFs = new StatFs(str);
+      localStatFs.restat(str);
+      long l = localStatFs.getAvailableBlocks();
+      int i = localStatFs.getBlockSize();
+      return l * i;
+    }
+    catch (Throwable localThrowable)
+    {
+      localThrowable.printStackTrace();
+    }
+    return -1L;
+  }
+  
+  public static String b(String paramString1, String paramString2)
+  {
+    for (;;)
+    {
+      try
+      {
+        String str = Uri.decode(paramString1);
+        if (str == null) {
+          break label82;
+        }
+        int i = str.indexOf('?');
+        paramString1 = str;
+        if (i > 0) {
+          paramString1 = str.substring(0, i);
+        }
+        if (paramString1.endsWith("/")) {
+          break label82;
+        }
+        i = paramString1.lastIndexOf('/') + 1;
+        if (i <= 0) {
+          break label82;
+        }
+        paramString1 = paramString1.substring(i);
+        if (!TextUtils.isEmpty(paramString1))
+        {
+          paramString1 = c(paramString1, paramString2);
+          return paramString1;
+        }
+      }
+      catch (Exception paramString1)
+      {
+        paramString1.printStackTrace();
+      }
+      return null;
+      label82:
+      paramString1 = null;
+    }
+  }
+  
+  public static boolean b(Exception paramException)
+  {
+    if ((paramException instanceof IOException))
+    {
+      paramException = paramException.getMessage();
+      if ((paramException != null) && (paramException.contains("Read-only file system"))) {
+        return true;
+      }
+    }
+    return false;
+  }
+  
+  private static String c(String paramString1, String paramString2)
+  {
+    int i = paramString1.lastIndexOf(".");
+    String str3 = "";
+    String str2 = str3;
+    String str1 = paramString1;
+    if (i > 0)
+    {
+      str2 = str3;
+      str1 = paramString1;
+      if (paramString1.length() > i + 1)
+      {
+        str1 = paramString1.substring(0, i);
+        str2 = paramString1.substring(i);
+      }
+    }
+    paramString1 = new StringBuilder();
+    paramString1.append(str1);
+    paramString1.append(paramString2);
+    paramString1.append(str2);
+    return paramString1.toString();
   }
 }
 

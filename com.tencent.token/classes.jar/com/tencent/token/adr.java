@@ -2,15 +2,14 @@ package com.tencent.token;
 
 public final class adr
 {
-  public static final afj<adr> a = new a();
+  public static final String a;
   
-  public static final class a
-    extends afj<adr>
+  static
   {
-    public final Object a()
-    {
-      return new adr();
-    }
+    StringBuilder localStringBuilder = new StringBuilder("turingfd_protect_");
+    localStringBuilder.append(agh.a);
+    localStringBuilder.append("_61_qps");
+    a = localStringBuilder.toString();
   }
 }
 

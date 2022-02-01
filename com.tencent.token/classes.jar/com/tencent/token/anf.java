@@ -1,181 +1,210 @@
 package com.tencent.token;
 
-import android.graphics.Canvas;
-import android.graphics.ColorFilter;
-import android.graphics.Matrix;
-import android.graphics.Rect;
-import android.graphics.RectF;
-import android.graphics.Region.Op;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.nio.ByteBuffer;
 
-public final class anf
-  extends ane
+final class anf
+  implements amw
 {
-  private final alz<Float> g;
-  private final List<ane> h = new ArrayList();
-  private final RectF i = new RectF();
-  private final Rect j = new Rect();
-  private final RectF k = new RectF();
+  public final amv a = new amv();
+  public final ank b;
+  boolean c;
   
-  public anf(asv paramasv, anh paramanh, List<anh> paramList, ass paramass)
+  anf(ank paramank)
   {
-    super(paramasv, paramanh);
-    paramanh = paramanh.s;
-    if (paramanh != null)
+    if (paramank != null)
     {
-      this.g = paramanh.a();
-      a(this.g);
-      this.g.a(this);
+      this.b = paramank;
+      return;
     }
-    else
+    throw new NullPointerException("sink == null");
+  }
+  
+  public final anm a()
+  {
+    return this.b.a();
+  }
+  
+  public final void a_(amv paramamv, long paramLong)
+  {
+    if (!this.c)
     {
-      this.g = null;
+      this.a.a_(paramamv, paramLong);
+      r();
+      return;
     }
-    HashMap localHashMap = new HashMap(paramass.e.size());
-    int m = paramList.size() - 1;
-    Object localObject1;
-    for (Object localObject2 = null; m >= 0; localObject2 = localObject1)
+    throw new IllegalStateException("closed");
+  }
+  
+  public final amv b()
+  {
+    return this.a;
+  }
+  
+  public final amw b(String paramString)
+  {
+    if (!this.c)
     {
-      anh localanh = (anh)paramList.get(m);
-      switch (ane.2.a[localanh.e.ordinal()])
+      this.a.a(paramString);
+      return r();
+    }
+    throw new IllegalStateException("closed");
+  }
+  
+  public final amw c(byte[] paramArrayOfByte)
+  {
+    if (!this.c)
+    {
+      this.a.b(paramArrayOfByte);
+      return r();
+    }
+    throw new IllegalStateException("closed");
+  }
+  
+  public final amw c(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  {
+    if (!this.c)
+    {
+      this.a.b(paramArrayOfByte, paramInt1, paramInt2);
+      return r();
+    }
+    throw new IllegalStateException("closed");
+  }
+  
+  public final void close()
+  {
+    if (this.c) {
+      return;
+    }
+    Object localObject2 = null;
+    Object localObject1 = localObject2;
+    try
+    {
+      if (this.a.b > 0L)
       {
-      default: 
-        new StringBuilder("Unknown layer type ").append(localanh.e);
-        paramanh = null;
-        break;
-      case 6: 
-        paramanh = new anl(paramasv, localanh);
-        break;
-      case 5: 
-        paramanh = new ani(paramasv, localanh);
-        break;
-      case 4: 
-        paramanh = new ang(paramasv, localanh, paramass.i);
-        break;
-      case 3: 
-        paramanh = new ank(paramasv, localanh);
-        break;
-      case 2: 
-        paramanh = localanh.g;
-        paramanh = new anf(paramasv, localanh, (List)paramass.a.get(paramanh), paramass);
-        break;
-      case 1: 
-        paramanh = new anj(paramasv, localanh);
+        this.b.a_(this.a, this.a.b);
+        localObject1 = localObject2;
       }
-      localObject1 = localObject2;
-      if (paramanh != null)
+    }
+    catch (Throwable localThrowable1) {}
+    try
+    {
+      this.b.close();
+      localObject2 = localThrowable1;
+    }
+    catch (Throwable localThrowable2)
+    {
+      localObject2 = localThrowable1;
+      if (localThrowable1 == null) {
+        localObject2 = localThrowable2;
+      }
+    }
+    this.c = true;
+    if (localObject2 != null) {
+      ann.a(localObject2);
+    }
+  }
+  
+  public final amw f(int paramInt)
+  {
+    if (!this.c)
+    {
+      this.a.d(paramInt);
+      return r();
+    }
+    throw new IllegalStateException("closed");
+  }
+  
+  public final void flush()
+  {
+    if (!this.c)
+    {
+      if (this.a.b > 0L)
       {
-        localHashMap.put(Long.valueOf(paramanh.c.d), paramanh);
-        if (localObject2 != null)
-        {
-          localObject2.d = paramanh;
-          localObject1 = null;
-        }
-        else
-        {
-          this.h.add(0, paramanh);
-          switch (1.a[(localanh.u - 1)])
-          {
-          default: 
-            localObject1 = localObject2;
-            break;
-          case 1: 
-          case 2: 
-            localObject1 = paramanh;
-          }
-        }
+        ank localank = this.b;
+        amv localamv = this.a;
+        localank.a_(localamv, localamv.b);
       }
-      m -= 1;
+      this.b.flush();
+      return;
     }
-    paramasv = localHashMap.keySet().iterator();
-    while (paramasv.hasNext())
-    {
-      paramanh = (ane)localHashMap.get(paramasv.next());
-      paramList = (ane)localHashMap.get(Long.valueOf(paramanh.c.f));
-      if (paramList != null) {
-        paramanh.e = paramList;
-      }
-    }
+    throw new IllegalStateException("closed");
   }
   
-  public final void a(float paramFloat)
+  public final amw g(int paramInt)
   {
-    super.a(paramFloat);
-    float f = paramFloat;
-    if (this.c.m != 0.0F) {
-      f = paramFloat / this.c.m;
-    }
-    paramFloat = this.c.n;
-    int m = this.h.size() - 1;
-    while (m >= 0)
+    if (!this.c)
     {
-      ((ane)this.h.get(m)).a(f - paramFloat);
-      m -= 1;
+      this.a.c(paramInt);
+      return r();
     }
+    throw new IllegalStateException("closed");
   }
   
-  public final void a(RectF paramRectF, Matrix paramMatrix)
+  public final amw h(int paramInt)
   {
-    super.a(paramRectF, paramMatrix);
-    this.i.set(0.0F, 0.0F, 0.0F, 0.0F);
-    int m = this.h.size() - 1;
-    while (m >= 0)
+    if (!this.c)
     {
-      ((ane)this.h.get(m)).a(this.i, this.a);
-      if (paramRectF.isEmpty()) {
-        paramRectF.set(this.i);
-      } else {
-        paramRectF.set(Math.min(paramRectF.left, this.i.left), Math.min(paramRectF.top, this.i.top), Math.max(paramRectF.right, this.i.right), Math.max(paramRectF.bottom, this.i.bottom));
-      }
-      m -= 1;
+      this.a.b(paramInt);
+      return r();
     }
+    throw new IllegalStateException("closed");
   }
   
-  public final void a(String paramString1, String paramString2, ColorFilter paramColorFilter)
+  public final boolean isOpen()
   {
-    int m = 0;
-    while (m < this.h.size())
-    {
-      ane localane = (ane)this.h.get(m);
-      String str = localane.c.c;
-      if (paramString1 == null) {
-        localane.a(null, null, paramColorFilter);
-      } else if (str.equals(paramString1)) {
-        localane.a(paramString1, paramString2, paramColorFilter);
-      }
-      m += 1;
-    }
+    return !this.c;
   }
   
-  final void b(Canvas paramCanvas, Matrix paramMatrix, int paramInt)
+  public final amw j(long paramLong)
   {
-    asx.a("CompositionLayer#draw");
-    paramCanvas.getClipBounds(this.j);
-    this.k.set(0.0F, 0.0F, this.c.o, this.c.p);
-    paramMatrix.mapRect(this.k);
-    int m = this.h.size() - 1;
-    while (m >= 0)
+    if (!this.c)
     {
-      boolean bool;
-      if (!this.k.isEmpty()) {
-        bool = paramCanvas.clipRect(this.k);
-      } else {
-        bool = true;
-      }
-      if (bool) {
-        ((ane)this.h.get(m)).a(paramCanvas, paramMatrix, paramInt);
-      }
-      m -= 1;
+      this.a.i(paramLong);
+      return r();
     }
-    if (!this.j.isEmpty()) {
-      paramCanvas.clipRect(this.j, Region.Op.REPLACE);
+    throw new IllegalStateException("closed");
+  }
+  
+  public final amw k(long paramLong)
+  {
+    if (!this.c)
+    {
+      this.a.h(paramLong);
+      return r();
     }
-    asx.b("CompositionLayer#draw");
+    throw new IllegalStateException("closed");
+  }
+  
+  public final amw r()
+  {
+    if (!this.c)
+    {
+      long l = this.a.e();
+      if (l > 0L) {
+        this.b.a_(this.a, l);
+      }
+      return this;
+    }
+    throw new IllegalStateException("closed");
+  }
+  
+  public final String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder("buffer(");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append(")");
+    return localStringBuilder.toString();
+  }
+  
+  public final int write(ByteBuffer paramByteBuffer)
+  {
+    if (!this.c)
+    {
+      int i = this.a.write(paramByteBuffer);
+      r();
+      return i;
+    }
+    throw new IllegalStateException("closed");
   }
 }
 

@@ -1,44 +1,61 @@
 package com.tencent.token;
 
-import android.content.Context;
-import android.support.v7.app.AppCompatDelegateImplV9.PanelFeatureState;
-import android.view.KeyboardShortcutGroup;
-import android.view.Menu;
-import android.view.Window;
-import android.view.Window.Callback;
-import java.util.List;
+import android.support.v4.widget.DrawerLayout.c;
 
-final class gg
-  extends gi
+public final class gg
+  implements DrawerLayout.c
 {
-  gg(Context paramContext, Window paramWindow, gd paramgd)
+  boolean a;
+  private final a b;
+  private gx c;
+  private boolean d;
+  private final int e;
+  private final int f;
+  
+  private void a(int paramInt)
   {
-    super(paramContext, paramWindow, paramgd);
+    this.b.a(paramInt);
   }
   
-  final Window.Callback a(Window.Callback paramCallback)
+  private void b(float paramFloat)
   {
-    return new a(paramCallback);
+    if (paramFloat == 1.0F) {
+      this.c.a(true);
+    } else if (paramFloat == 0.0F) {
+      this.c.a(false);
+    }
+    this.c.a(paramFloat);
   }
   
-  final class a
-    extends gi.a
+  public final void a()
   {
-    a(Window.Callback paramCallback)
-    {
-      super(paramCallback);
+    b(1.0F);
+    if (this.a) {
+      a(this.f);
     }
-    
-    public final void onProvideKeyboardShortcuts(List<KeyboardShortcutGroup> paramList, Menu paramMenu, int paramInt)
+  }
+  
+  public final void a(float paramFloat)
+  {
+    if (this.d)
     {
-      AppCompatDelegateImplV9.PanelFeatureState localPanelFeatureState = gg.this.g(0);
-      if ((localPanelFeatureState != null) && (localPanelFeatureState.j != null))
-      {
-        super.onProvideKeyboardShortcuts(paramList, localPanelFeatureState.j, paramInt);
-        return;
-      }
-      super.onProvideKeyboardShortcuts(paramList, paramMenu, paramInt);
+      b(Math.min(1.0F, Math.max(0.0F, paramFloat)));
+      return;
     }
+    b(0.0F);
+  }
+  
+  public final void b()
+  {
+    b(0.0F);
+    if (this.a) {
+      a(this.e);
+    }
+  }
+  
+  public static abstract interface a
+  {
+    public abstract void a(int paramInt);
   }
 }
 

@@ -1,12 +1,10 @@
 package com.tencent.token;
 
-public final class ams
-  extends amw<amx, amx>
+import java.security.cert.X509Certificate;
+
+public abstract interface ams
 {
-  public final amh a()
-  {
-    return new amh(this.a);
-  }
+  public abstract X509Certificate a(X509Certificate paramX509Certificate);
 }
 
 

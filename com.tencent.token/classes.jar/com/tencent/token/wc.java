@@ -6,26 +6,24 @@ import java.util.HashMap;
 import org.json.JSONObject;
 
 public final class wc
-  extends tj
+  extends tr
 {
-  private long d;
-  private int e;
-  private String f;
-  private long g;
+  public String d;
+  public long e;
+  public int f;
   
   public final String a()
   {
-    rz.a();
+    sh.a();
     this.a.a(104, null, null);
     return null;
   }
   
-  public final void a(aaq paramaaq)
+  public final void a(abc paramabc)
   {
-    this.g = ((Long)paramaaq.c.get("param.uinhash")).longValue();
-    this.d = ((Long)paramaaq.c.get("param.realuin")).longValue();
-    this.e = paramaaq.j;
-    this.f = ((String)paramaaq.c.get("param.idnumber"));
+    this.e = ((Long)paramabc.c.get("param.uinhash")).longValue();
+    this.d = ((String)paramabc.c.get("param.qqpwd"));
+    this.f = ((Integer)paramabc.c.get("param.scene.id")).intValue();
   }
   
   public final void a(JSONObject paramJSONObject)
@@ -36,25 +34,24 @@ public final class wc
       a(i, paramJSONObject.getString("info"));
       return;
     }
-    paramJSONObject = aac.d(paramJSONObject.getString("data"));
+    paramJSONObject = aao.d(paramJSONObject.getString("data"));
     if (paramJSONObject != null)
     {
       i = new JSONObject(new String(paramJSONObject)).getInt("seq_id");
-      if (i != this.e)
+      if (this.c != i)
       {
         this.a.a(10030, null, null);
         paramJSONObject = new StringBuilder("parseJSON error seq is wrong seq=");
         paramJSONObject.append(i);
         paramJSONObject.append(",right = ");
-        paramJSONObject.append(this.e);
-        xa.c(paramJSONObject.toString());
+        paramJSONObject.append(this.c);
+        xj.c(paramJSONObject.toString());
         return;
       }
       this.a.a = 0;
       return;
     }
-    xa.c("parseJSON error decodeData=".concat(String.valueOf(paramJSONObject)));
-    a(10022, RqdApplication.n().getString(2131493068));
+    a(10022, RqdApplication.p().getString(2131493068));
   }
 }
 

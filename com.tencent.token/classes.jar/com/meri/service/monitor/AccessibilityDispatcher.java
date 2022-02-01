@@ -21,14 +21,14 @@ import android.util.DisplayMetrics;
 import android.view.accessibility.AccessibilityEvent;
 import android.view.accessibility.AccessibilityManager;
 import android.view.accessibility.AccessibilityNodeInfo;
-import com.tencent.token.alr;
-import com.tencent.token.amf;
-import com.tencent.token.amz;
 import com.tencent.token.ano;
-import com.tencent.token.aoe.a;
-import com.tencent.token.aoe.b;
-import com.tencent.token.aoe.c;
-import com.tencent.token.kf;
+import com.tencent.token.aoc;
+import com.tencent.token.aow;
+import com.tencent.token.apl;
+import com.tencent.token.aqb.a;
+import com.tencent.token.aqb.b;
+import com.tencent.token.aqb.c;
+import com.tencent.token.kj;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -44,12 +44,12 @@ import java.util.Set;
 public class AccessibilityDispatcher
   extends AccessibilityService
 {
-  public static kf a;
+  public static kj a;
   private static AccessibilityDispatcher b;
   private static boolean d = false;
   private static boolean e = false;
   private static Set<String> f = new HashSet();
-  private static Map<aoe.b, List<alr>> g = new HashMap();
+  private static Map<aqb.b, List<ano>> g = new HashMap();
   private b c;
   
   public static int a(Context paramContext)
@@ -102,11 +102,11 @@ public class AccessibilityDispatcher
     }
   }
   
-  public static void a(Context paramContext, amf paramamf, aoe.a parama)
+  public static void a(Context paramContext, aoc paramaoc, aqb.a parama)
   {
-    if (paramamf != null)
+    if (paramaoc != null)
     {
-      if (paramamf.c == null) {
+      if (paramaoc.c == null) {
         return;
       }
       int i = a(paramContext);
@@ -120,10 +120,10 @@ public class AccessibilityDispatcher
       {
         b.c(paramContext);
         b.a(paramContext, System.currentTimeMillis());
-        b.a(paramContext, paramamf);
+        b.a(paramContext, paramaoc);
         b.a(paramContext, parama);
-        b.a(paramContext, new aoe.c());
-        b.d(paramContext).a = paramamf.b;
+        b.a(paramContext, new aqb.c());
+        b.d(paramContext).a = paramaoc.b;
         paramContext.sendEmptyMessage(1001);
       }
     }
@@ -267,23 +267,23 @@ public class AccessibilityDispatcher
   
   static final class a
   {
-    public alr a;
+    public ano a;
     public long b;
-    public aoe.b c;
-    public List<alr> d;
+    public aqb.b c;
+    public List<ano> d;
   }
   
   final class b
     extends Handler
   {
-    amf a = null;
+    aoc a = null;
     boolean b = false;
     int c = -1;
     final Object d = new Object();
     private int f = -1;
     private long g = 0L;
-    private aoe.a h = null;
-    private aoe.c i = null;
+    private aqb.a h = null;
+    private aqb.c i = null;
     private String j = "";
     private final int k;
     private final int l;
@@ -303,7 +303,7 @@ public class AccessibilityDispatcher
         this.m = paramLooper.flags;
         if (AccessibilityDispatcher.a != null)
         {
-          kf localkf = AccessibilityDispatcher.a;
+          kj localkj = AccessibilityDispatcher.a;
           paramLooper.packageNames = new String[] { paramContext.getPackageName(), "com.android.settings" };
           AccessibilityDispatcher.this.setServiceInfo(paramLooper);
         }
@@ -314,19 +314,19 @@ public class AccessibilityDispatcher
       }
     }
     
-    private int a(alr paramalr, boolean paramBoolean)
+    private int a(ano paramano, boolean paramBoolean)
     {
       "scrollList, isForward=".concat(String.valueOf(paramBoolean));
-      if (paramalr != null)
+      if (paramano != null)
       {
-        if (paramalr.k == null) {
+        if (paramano.k == null) {
           return 3;
         }
         AccessibilityNodeInfo localAccessibilityNodeInfo = AccessibilityDispatcher.this.getRootInActiveWindow();
         if (localAccessibilityNodeInfo == null) {
           return 3;
         }
-        Object localObject3 = paramalr.k.iterator();
+        Object localObject3 = paramano.k.iterator();
         Object localObject1;
         do
         {
@@ -336,29 +336,29 @@ public class AccessibilityDispatcher
           if (!bool)
           {
             localObject2 = new ArrayList();
-            if (!TextUtils.isEmpty(paramalr.m))
+            if (!TextUtils.isEmpty(paramano.m))
             {
-              localObject3 = new ano();
-              ((ano)localObject3).a = paramalr.m;
-              ((ano)localObject3).e = paramalr.n;
+              localObject3 = new apl();
+              ((apl)localObject3).a = paramano.m;
+              ((apl)localObject3).e = paramano.n;
               ((ArrayList)localObject2).add(localObject3);
             }
-            if (paramalr.w != null) {
-              ((ArrayList)localObject2).addAll(paramalr.w);
+            if (paramano.w != null) {
+              ((ArrayList)localObject2).addAll(paramano.w);
             }
             localObject2 = ((ArrayList)localObject2).iterator();
-            paramalr = (alr)localObject1;
+            paramano = (ano)localObject1;
             do
             {
               if (!((Iterator)localObject2).hasNext())
               {
-                localObject1 = paramalr;
+                localObject1 = paramano;
                 break;
               }
-              paramalr = (ano)((Iterator)localObject2).next();
-              paramalr = a(localAccessibilityNodeInfo, paramalr.a, paramalr.e);
-              localObject1 = paramalr;
-            } while (paramalr == null);
+              paramano = (apl)((Iterator)localObject2).next();
+              paramano = a(localAccessibilityNodeInfo, paramano.a, paramano.e);
+              localObject1 = paramano;
+            } while (paramano == null);
             if (localObject1 == null)
             {
               localAccessibilityNodeInfo.recycle();
@@ -379,19 +379,19 @@ public class AccessibilityDispatcher
             return 2;
           }
           localObject1 = (String)((Iterator)localObject3).next();
-          switch (paramalr.j)
+          switch (paramano.j)
           {
           default: 
             localObject1 = localObject2;
             break;
           case 2: 
-            localObject1 = b(localAccessibilityNodeInfo, paramalr.b, (String)localObject1);
+            localObject1 = b(localAccessibilityNodeInfo, paramano.b, (String)localObject1);
             break;
           case 1: 
           case 3: 
           case 4: 
           case 5: 
-            localObject1 = a(localAccessibilityNodeInfo, paramalr.b, null, (String)localObject1, paramalr.j);
+            localObject1 = a(localAccessibilityNodeInfo, paramano.b, null, (String)localObject1, paramano.j);
           }
         } while (localObject1 == null);
         ((AccessibilityNodeInfo)localObject1).recycle();
@@ -401,7 +401,7 @@ public class AccessibilityDispatcher
       return 3;
     }
     
-    private static Bundle a(ArrayList<amz> paramArrayList)
+    private static Bundle a(ArrayList<aow> paramArrayList)
     {
       Bundle localBundle = new Bundle();
       paramArrayList = paramArrayList.iterator();
@@ -410,14 +410,14 @@ public class AccessibilityDispatcher
         if (!paramArrayList.hasNext()) {
           return localBundle;
         }
-        amz localamz = (amz)paramArrayList.next();
+        aow localaow = (aow)paramArrayList.next();
         try
         {
-          switch (localamz.b)
+          switch (localaow.b)
           {
           case 6: 
-            short s = Short.parseShort(localamz.c);
-            localBundle.putShort(localamz.a, s);
+            short s = Short.parseShort(localaow.c);
+            localBundle.putShort(localaow.a, s);
           }
         }
         catch (Throwable paramArrayList)
@@ -428,16 +428,16 @@ public class AccessibilityDispatcher
           paramArrayList.getMessage();
           return null;
         }
-        bool = Boolean.parseBoolean(localamz.c);
-        localBundle.putBoolean(localamz.a, bool);
+        bool = Boolean.parseBoolean(localaow.c);
+        localBundle.putBoolean(localaow.a, bool);
         continue;
-        localBundle.putString(localamz.a, localamz.c);
+        localBundle.putString(localaow.a, localaow.c);
         continue;
-        l1 = Long.parseLong(localamz.c);
-        localBundle.putLong(localamz.a, l1);
+        l1 = Long.parseLong(localaow.c);
+        localBundle.putLong(localaow.a, l1);
         continue;
-        i1 = Integer.parseInt(localamz.c);
-        localBundle.putInt(localamz.a, i1);
+        i1 = Integer.parseInt(localaow.c);
+        localBundle.putInt(localaow.a, i1);
       }
     }
     
@@ -755,7 +755,7 @@ public class AccessibilityDispatcher
       this.f = -1;
       this.g = 0L;
       this.b = false;
-      aoe.a locala = this.h;
+      aqb.a locala = this.h;
       if (locala != null)
       {
         this.h = null;
@@ -790,13 +790,13 @@ public class AccessibilityDispatcher
           Iterator localIterator2 = ((List)localObject2).iterator();
           while (localIterator2.hasNext())
           {
-            Object localObject3 = (alr)localIterator2.next();
-            if ((((alr)localObject3).q & paramAccessibilityEvent.getEventType()) != 0)
+            Object localObject3 = (ano)localIterator2.next();
+            if ((((ano)localObject3).q & paramAccessibilityEvent.getEventType()) != 0)
             {
               int i1;
-              if ((((alr)localObject3).r != null) && (((alr)localObject3).r.size() > 0))
+              if ((((ano)localObject3).r != null) && (((ano)localObject3).r.size() > 0))
               {
-                localObject2 = ((alr)localObject3).r.iterator();
+                localObject2 = ((ano)localObject3).r.iterator();
                 do
                 {
                   if (!((Iterator)localObject2).hasNext())
@@ -810,13 +810,13 @@ public class AccessibilityDispatcher
               }
               else
               {
-                if ((((alr)localObject3).k != null) && (((alr)localObject3).k.size() > 0))
+                if ((((ano)localObject3).k != null) && (((ano)localObject3).k.size() > 0))
                 {
                   localObject2 = localObject1;
                   if (localObject1 == null) {
                     localObject2 = AccessibilityDispatcher.this.getRootInActiveWindow();
                   }
-                  localObject1 = ((alr)localObject3).k.iterator();
+                  localObject1 = ((ano)localObject3).k.iterator();
                   i1 = 0;
                 }
                 while (((Iterator)localObject1).hasNext())
@@ -834,7 +834,7 @@ public class AccessibilityDispatcher
                 localObject1 = localObject2;
                 if (i1 != 0)
                 {
-                  localObject3 = (aoe.b)localEntry.getKey();
+                  localObject3 = (aqb.b)localEntry.getKey();
                   localObject1 = localObject2;
                   if (AccessibilityDispatcher.a != null)
                   {
@@ -857,10 +857,10 @@ public class AccessibilityDispatcher
       Object localObject = parama.a;
       long l1 = parama.b;
       StringBuilder localStringBuilder = new StringBuilder("performAction: ");
-      localStringBuilder.append(((alr)localObject).a);
+      localStringBuilder.append(((ano)localObject).a);
       localStringBuilder.append(" mWaitEventType=");
       localStringBuilder.append(this.c);
-      int i2 = ((alr)localObject).a;
+      int i2 = ((ano)localObject).a;
       int i1 = 1500;
       boolean bool1;
       switch (i2)
@@ -870,15 +870,15 @@ public class AccessibilityDispatcher
       case 4: 
         try
         {
-          bool1 = c((alr)localObject);
+          bool1 = c((ano)localObject);
           "globalAction result: ".concat(String.valueOf(bool1));
           if (bool1)
           {
             b();
             return;
           }
-          if (((alr)localObject).s != 0) {
-            i1 = ((alr)localObject).s;
+          if (((ano)localObject).s != 0) {
+            i1 = ((ano)localObject).s;
           }
           if (System.currentTimeMillis() <= l1 + i1)
           {
@@ -888,7 +888,7 @@ public class AccessibilityDispatcher
             sendMessageDelayed((Message)localObject, 10L);
             return;
           }
-          a(((alr)localObject).c);
+          a(((ano)localObject).c);
           return;
         }
         catch (Throwable parama)
@@ -905,7 +905,7 @@ public class AccessibilityDispatcher
           if (i1 < 0)
           {
             this.c = 4096;
-            i1 = a((alr)localObject, true);
+            i1 = a((ano)localObject, true);
             if (i1 == 1)
             {
               bool1 = true;
@@ -931,8 +931,8 @@ public class AccessibilityDispatcher
             sendMessageDelayed((Message)localObject, 100L);
             return;
           }
-          if (((alr)localObject).s != 0) {
-            i1 = ((alr)localObject).s;
+          if (((ano)localObject).s != 0) {
+            i1 = ((ano)localObject).s;
           } else {
             i1 = 3000;
           }
@@ -944,7 +944,7 @@ public class AccessibilityDispatcher
             sendMessageDelayed((Message)localObject, 20L);
             return;
           }
-          a(((alr)localObject).c);
+          a(((ano)localObject).c);
           return;
         }
         catch (Throwable parama)
@@ -955,15 +955,15 @@ public class AccessibilityDispatcher
       case 2: 
         try
         {
-          bool1 = b((alr)localObject);
+          bool1 = b((ano)localObject);
           "clickWidget result: ".concat(String.valueOf(bool1));
           if (bool1)
           {
             b();
             return;
           }
-          if (((alr)localObject).s != 0) {
-            i1 = ((alr)localObject).s;
+          if (((ano)localObject).s != 0) {
+            i1 = ((ano)localObject).s;
           }
           long l2 = System.currentTimeMillis();
           if (l2 <= i1 + l1)
@@ -982,7 +982,7 @@ public class AccessibilityDispatcher
             sendMessageDelayed((Message)localObject, l1);
             return;
           }
-          a(((alr)localObject).c);
+          a(((ano)localObject).c);
           return;
         }
         catch (Throwable parama)
@@ -994,7 +994,7 @@ public class AccessibilityDispatcher
       try
       {
         this.c = 32;
-        a((alr)localObject);
+        a((ano)localObject);
         localObject = Message.obtain();
         ((Message)localObject).what = 1003;
         ((Message)localObject).obj = parama;
@@ -1007,96 +1007,96 @@ public class AccessibilityDispatcher
       }
     }
     
-    private void a(alr paramalr)
+    private void a(ano paramano)
     {
-      if (paramalr == null) {
+      if (paramano == null) {
         return;
       }
       AccessibilityDispatcher.b().clear();
-      if (!TextUtils.isEmpty(paramalr.f)) {
-        AccessibilityDispatcher.b().add(paramalr.f);
+      if (!TextUtils.isEmpty(paramano.f)) {
+        AccessibilityDispatcher.b().add(paramano.f);
       }
-      if (paramalr.w != null)
+      if (paramano.w != null)
       {
-        localObject1 = paramalr.w.iterator();
+        localObject1 = paramano.w.iterator();
         while (((Iterator)localObject1).hasNext())
         {
-          localObject2 = (ano)((Iterator)localObject1).next();
-          if (!TextUtils.isEmpty(((ano)localObject2).g)) {
-            AccessibilityDispatcher.b().add(((ano)localObject2).g);
+          localObject2 = (apl)((Iterator)localObject1).next();
+          if (!TextUtils.isEmpty(((apl)localObject2).g)) {
+            AccessibilityDispatcher.b().add(((apl)localObject2).g);
           }
         }
       }
-      if ((paramalr.r != null) && (paramalr.r.size() > 0)) {
-        AccessibilityDispatcher.b().addAll(paramalr.r);
+      if ((paramano.r != null) && (paramano.r.size() > 0)) {
+        AccessibilityDispatcher.b().addAll(paramano.r);
       }
       c();
       Object localObject1 = new ArrayList();
-      Object localObject2 = new ano();
-      ((ano)localObject2).a = paramalr.b;
-      ((ano)localObject2).b = paramalr.j;
-      if (paramalr.k != null)
+      Object localObject2 = new apl();
+      ((apl)localObject2).a = paramano.b;
+      ((apl)localObject2).b = paramano.j;
+      if (paramano.k != null)
       {
-        ((ano)localObject2).c = new ArrayList();
-        ((ano)localObject2).c.addAll(paramalr.k);
+        ((apl)localObject2).c = new ArrayList();
+        ((apl)localObject2).c.addAll(paramano.k);
       }
-      ((ano)localObject2).e = paramalr.n;
-      ((ano)localObject2).f = paramalr.e;
-      ((ano)localObject2).g = paramalr.f;
-      ((ano)localObject2).h = paramalr.g;
-      ((ano)localObject2).i = paramalr.p;
-      if (paramalr.h != null)
+      ((apl)localObject2).e = paramano.n;
+      ((apl)localObject2).f = paramano.e;
+      ((apl)localObject2).g = paramano.f;
+      ((apl)localObject2).h = paramano.g;
+      ((apl)localObject2).i = paramano.p;
+      if (paramano.h != null)
       {
-        ((ano)localObject2).j = new ArrayList();
-        ((ano)localObject2).j.addAll(paramalr.h);
+        ((apl)localObject2).j = new ArrayList();
+        ((apl)localObject2).j.addAll(paramano.h);
       }
-      ((ano)localObject2).k = paramalr.i;
+      ((apl)localObject2).k = paramano.i;
       ((ArrayList)localObject1).add(localObject2);
-      if (paramalr.w != null) {
-        ((ArrayList)localObject1).addAll(paramalr.w);
+      if (paramano.w != null) {
+        ((ArrayList)localObject1).addAll(paramano.w);
       }
-      paramalr = null;
+      paramano = null;
       localObject1 = ((ArrayList)localObject1).iterator();
       for (;;)
       {
         if (!((Iterator)localObject1).hasNext())
         {
-          if (paramalr == null) {
+          if (paramano == null) {
             return;
           }
-          throw paramalr;
+          throw paramano;
         }
-        paramalr = (ano)((Iterator)localObject1).next();
+        paramano = (apl)((Iterator)localObject1).next();
         localObject2 = new Intent();
-        if (!TextUtils.isEmpty(paramalr.f)) {
-          ((Intent)localObject2).setAction(paramalr.f);
+        if (!TextUtils.isEmpty(paramano.f)) {
+          ((Intent)localObject2).setAction(paramano.f);
         }
-        if (!TextUtils.isEmpty(paramalr.g)) {
-          if (!TextUtils.isEmpty(paramalr.a)) {
-            ((Intent)localObject2).setClassName(paramalr.g, paramalr.a);
+        if (!TextUtils.isEmpty(paramano.g)) {
+          if (!TextUtils.isEmpty(paramano.a)) {
+            ((Intent)localObject2).setClassName(paramano.g, paramano.a);
           } else {
-            ((Intent)localObject2).setPackage(paramalr.g);
+            ((Intent)localObject2).setPackage(paramano.g);
           }
         }
-        boolean bool1 = TextUtils.isEmpty(paramalr.h) ^ true;
-        boolean bool2 = TextUtils.isEmpty(paramalr.i) ^ true;
+        boolean bool1 = TextUtils.isEmpty(paramano.h) ^ true;
+        boolean bool2 = TextUtils.isEmpty(paramano.i) ^ true;
         if ((bool1) && (bool2)) {
-          ((Intent)localObject2).setDataAndType(Uri.parse(paramalr.h), paramalr.i);
+          ((Intent)localObject2).setDataAndType(Uri.parse(paramano.h), paramano.i);
         } else if ((bool1) && (!bool2)) {
-          ((Intent)localObject2).setData(Uri.parse(paramalr.h));
+          ((Intent)localObject2).setData(Uri.parse(paramano.h));
         } else if ((!bool1) && (bool2)) {
-          ((Intent)localObject2).setType(paramalr.i);
+          ((Intent)localObject2).setType(paramano.i);
         }
-        if (paramalr.j != null)
+        if (paramano.j != null)
         {
-          Bundle localBundle = a(paramalr.j);
+          Bundle localBundle = a(paramano.j);
           if (localBundle != null) {
             ((Intent)localObject2).putExtras(localBundle);
           }
         }
         int i1;
-        if (paramalr.k != 0) {
-          i1 = paramalr.k;
+        if (paramano.k != 0) {
+          i1 = paramano.k;
         } else {
           i1 = 1350926336;
         }
@@ -1105,12 +1105,12 @@ public class AccessibilityDispatcher
         {
           AccessibilityDispatcher.this.startActivity((Intent)localObject2);
           localObject2 = new StringBuilder("open suc. pkg=");
-          ((StringBuilder)localObject2).append(paramalr.g);
+          ((StringBuilder)localObject2).append(paramano.g);
           ((StringBuilder)localObject2).append(" cls=");
-          ((StringBuilder)localObject2).append(paramalr.a);
+          ((StringBuilder)localObject2).append(paramano.a);
           return;
         }
-        catch (Exception paramalr) {}
+        catch (Exception paramano) {}
       }
     }
     
@@ -1139,13 +1139,13 @@ public class AccessibilityDispatcher
       {
         localObject = this.h;
         if (localObject != null) {
-          ((aoe.a)localObject).a(this.f, 2);
+          ((aqb.a)localObject).a(this.f, 2);
         }
         localObject = this.i;
         if (localObject != null)
         {
-          ((aoe.c)localObject).b = 2;
-          ((aoe.c)localObject).c = this.f;
+          ((aqb.c)localObject).b = 2;
+          ((aqb.c)localObject).c = this.f;
           localObject = AccessibilityDispatcher.this.getRootInActiveWindow();
           if (localObject != null) {
             this.i.e = b((AccessibilityNodeInfo)localObject);
@@ -1156,14 +1156,14 @@ public class AccessibilityDispatcher
       }
       Object localObject = this.h;
       if (localObject != null) {
-        ((aoe.a)localObject).a(this.f, 1);
+        ((aqb.a)localObject).a(this.f, 1);
       }
       localObject = this.i;
       if (localObject != null)
       {
-        ((aoe.c)localObject).b = 1;
-        aoe.c localc;
-        if (TextUtils.isEmpty(((aoe.c)localObject).d))
+        ((aqb.c)localObject).b = 1;
+        aqb.c localc;
+        if (TextUtils.isEmpty(((aqb.c)localObject).d))
         {
           localc = this.i;
           localObject = new StringBuilder();
@@ -1206,12 +1206,12 @@ public class AccessibilityDispatcher
       return bool2;
     }
     
-    private boolean a(AccessibilityNodeInfo paramAccessibilityNodeInfo, int paramInt, ano paramano)
+    private boolean a(AccessibilityNodeInfo paramAccessibilityNodeInfo, int paramInt, apl paramapl)
     {
       "needIgnoreClick ignoreState=".concat(String.valueOf(paramInt));
       boolean bool2 = false;
       int i1;
-      if ((paramano != null) && (((paramano.c != null) && (paramano.c.size() > 0)) || (!TextUtils.isEmpty(paramano.a)))) {
+      if ((paramapl != null) && (((paramapl.c != null) && (paramapl.c.size() > 0)) || (!TextUtils.isEmpty(paramapl.a)))) {
         i1 = 1;
       } else {
         i1 = 0;
@@ -1220,10 +1220,10 @@ public class AccessibilityDispatcher
       Object localObject1 = null;
       if (i1 != 0)
       {
-        if ((paramano.c == null) && (TextUtils.isEmpty(paramano.a))) {
+        if ((paramapl.c == null) && (TextUtils.isEmpty(paramapl.a))) {
           return false;
         }
-        i1 = paramano.d;
+        i1 = paramapl.d;
         Object localObject4;
         for (Object localObject3 = paramAccessibilityNodeInfo; (i1 > 0) && (localObject3 != null); localObject3 = localObject4)
         {
@@ -1235,29 +1235,29 @@ public class AccessibilityDispatcher
         }
         if (localObject3 != null)
         {
-          if (paramano.c == null)
+          if (paramapl.c == null)
           {
-            localObject1 = a((AccessibilityNodeInfo)localObject3, paramano.a, null);
+            localObject1 = a((AccessibilityNodeInfo)localObject3, paramapl.a, null);
           }
           else
           {
-            localObject4 = paramano.c.iterator();
+            localObject4 = paramapl.c.iterator();
             while (((Iterator)localObject4).hasNext())
             {
               localObject2 = (String)((Iterator)localObject4).next();
-              switch (paramano.b)
+              switch (paramapl.b)
               {
               default: 
                 localObject2 = localObject1;
                 break;
               case 2: 
-                localObject2 = b((AccessibilityNodeInfo)localObject3, paramano.a, (String)localObject2);
+                localObject2 = b((AccessibilityNodeInfo)localObject3, paramapl.a, (String)localObject2);
                 break;
               case 1: 
               case 3: 
               case 4: 
               case 5: 
-                localObject2 = a((AccessibilityNodeInfo)localObject3, paramano.a, null, (String)localObject2, paramano.b);
+                localObject2 = a((AccessibilityNodeInfo)localObject3, paramapl.a, null, (String)localObject2, paramapl.b);
               }
               localObject1 = localObject2;
               if (localObject2 != null) {
@@ -1285,11 +1285,11 @@ public class AccessibilityDispatcher
       {
       default: 
         bool1 = bool2;
-        if (paramano == null) {
+        if (paramapl == null) {
           break label428;
         }
-        if (paramano.c != null) {
-          if (paramano.c.size() > 0) {
+        if (paramapl.c != null) {
+          if (paramapl.c.size() > 0) {
             break label416;
           }
         }
@@ -1302,7 +1302,7 @@ public class AccessibilityDispatcher
         break;
       }
       boolean bool1 = bool2;
-      if (!TextUtils.isEmpty(paramano.a))
+      if (!TextUtils.isEmpty(paramapl.a))
       {
         label416:
         bool1 = bool2;
@@ -1446,29 +1446,29 @@ public class AccessibilityDispatcher
     
     private void b()
     {
-      aoe.a locala = this.h;
+      aqb.a locala = this.h;
       if (locala != null) {
         locala.a(this.f, 0);
       }
       sendEmptyMessageDelayed(1001, 100L);
     }
     
-    private boolean b(alr paramalr)
+    private boolean b(ano paramano)
     {
-      if (paramalr != null)
+      if (paramano != null)
       {
-        if (paramalr.k == null) {
+        if (paramano.k == null) {
           return false;
         }
         AccessibilityNodeInfo localAccessibilityNodeInfo = AccessibilityDispatcher.this.getRootInActiveWindow();
         if (localAccessibilityNodeInfo == null) {
           return false;
         }
-        Object localObject1 = paramalr.t;
+        Object localObject1 = paramano.t;
         boolean bool = true;
-        if ((localObject1 != null) && (paramalr.t.size() > 0))
+        if ((localObject1 != null) && (paramano.t.size() > 0))
         {
-          localObject1 = paramalr.t.iterator();
+          localObject1 = paramano.t.iterator();
           do
           {
             if (!((Iterator)localObject1).hasNext())
@@ -1483,24 +1483,24 @@ public class AccessibilityDispatcher
         }
         int i1 = 0;
         localObject1 = new ArrayList();
-        if ((paramalr.k != null) && (paramalr.k.size() > 0))
+        if ((paramano.k != null) && (paramano.k.size() > 0))
         {
-          localObject2 = new ano();
-          ((ano)localObject2).b = paramalr.j;
-          ((ano)localObject2).c = new ArrayList();
-          ((ano)localObject2).c.addAll(paramalr.k);
-          ((ano)localObject2).a = paramalr.b;
-          ((ano)localObject2).e = paramalr.n;
+          localObject2 = new apl();
+          ((apl)localObject2).b = paramano.j;
+          ((apl)localObject2).c = new ArrayList();
+          ((apl)localObject2).c.addAll(paramano.k);
+          ((apl)localObject2).a = paramano.b;
+          ((apl)localObject2).e = paramano.n;
           ((ArrayList)localObject1).add(localObject2);
         }
-        if (paramalr.w != null) {
-          ((ArrayList)localObject1).addAll(paramalr.w);
+        if (paramano.w != null) {
+          ((ArrayList)localObject1).addAll(paramano.w);
         }
         Object localObject2 = null;
         Iterator localIterator1 = ((ArrayList)localObject1).iterator();
         do
         {
-          ano localano;
+          apl localapl;
           Iterator localIterator2;
           while (!localIterator2.hasNext())
           {
@@ -1509,27 +1509,27 @@ public class AccessibilityDispatcher
               localAccessibilityNodeInfo.recycle();
               return false;
             }
-            localano = (ano)localIterator1.next();
-            localIterator2 = localano.c.iterator();
+            localapl = (apl)localIterator1.next();
+            localIterator2 = localapl.c.iterator();
           }
           localObject1 = (String)localIterator2.next();
-          switch (localano.b)
+          switch (localapl.b)
           {
           default: 
             localObject1 = localObject2;
             break;
           case 2: 
-            localObject1 = b(localAccessibilityNodeInfo, localano.a, (String)localObject1);
+            localObject1 = b(localAccessibilityNodeInfo, localapl.a, (String)localObject1);
             break;
           case 1: 
           case 3: 
           case 4: 
           case 5: 
-            localObject1 = a(localAccessibilityNodeInfo, localano.a, localano.e, (String)localObject1, localano.b);
+            localObject1 = a(localAccessibilityNodeInfo, localapl.a, localapl.e, (String)localObject1, localapl.b);
           }
           localObject2 = localObject1;
         } while (localObject1 == null);
-        if (!a((AccessibilityNodeInfo)localObject1, paramalr.l, paramalr.v)) {
+        if (!a((AccessibilityNodeInfo)localObject1, paramano.l, paramano.v)) {
           bool = a((AccessibilityNodeInfo)localObject1);
         }
         ((AccessibilityNodeInfo)localObject1).recycle();
@@ -1599,7 +1599,7 @@ public class AccessibilityDispatcher
             localObject2 = this.a;
             i2 = i4;
             if (localObject2 != null) {
-              i2 = i4 | ((amf)localObject2).e;
+              i2 = i4 | ((aoc)localObject2).e;
             }
             localAccessibilityServiceInfo.packageNames = ((String[])localObject1);
             localAccessibilityServiceInfo.eventTypes = i1;
@@ -1637,31 +1637,31 @@ public class AccessibilityDispatcher
         localIterator = ((List)arrayOfString.next()).iterator();
         while (localIterator.hasNext())
         {
-          alr localalr = (alr)localIterator.next();
-          if (localalr.r != null) {
-            ((Set)localObject2).addAll(localalr.r);
+          ano localano = (ano)localIterator.next();
+          if (localano.r != null) {
+            ((Set)localObject2).addAll(localano.r);
           }
-          i1 |= localalr.q;
+          i1 |= localano.q;
         }
       }
     }
     
-    private boolean c(alr paramalr)
+    private boolean c(ano paramano)
     {
-      if (paramalr == null) {
+      if (paramano == null) {
         return false;
       }
       Object localObject = null;
       AccessibilityNodeInfo localAccessibilityNodeInfo1 = null;
       int i1;
-      if ((paramalr.k != null) && (paramalr.k.size() > 0))
+      if ((paramano.k != null) && (paramano.k.size() > 0))
       {
         int i2 = 1;
         AccessibilityNodeInfo localAccessibilityNodeInfo2 = AccessibilityDispatcher.this.getRootInActiveWindow();
         i1 = i2;
         if (localAccessibilityNodeInfo2 != null)
         {
-          Iterator localIterator = paramalr.k.iterator();
+          Iterator localIterator = paramano.k.iterator();
           do
           {
             if (!localIterator.hasNext())
@@ -1670,18 +1670,18 @@ public class AccessibilityDispatcher
               break;
             }
             localObject = (String)localIterator.next();
-            switch (paramalr.j)
+            switch (paramano.j)
             {
             default: 
               break;
             case 2: 
-              localAccessibilityNodeInfo1 = b(localAccessibilityNodeInfo2, paramalr.b, (String)localObject);
+              localAccessibilityNodeInfo1 = b(localAccessibilityNodeInfo2, paramano.b, (String)localObject);
               break;
             case 1: 
             case 3: 
             case 4: 
             case 5: 
-              localAccessibilityNodeInfo1 = a(localAccessibilityNodeInfo2, paramalr.b, paramalr.n, (String)localObject, paramalr.j);
+              localAccessibilityNodeInfo1 = a(localAccessibilityNodeInfo2, paramano.b, paramano.n, (String)localObject, paramano.j);
             }
             localObject = localAccessibilityNodeInfo1;
           } while (localAccessibilityNodeInfo1 == null);
@@ -1697,7 +1697,7 @@ public class AccessibilityDispatcher
         ((AccessibilityNodeInfo)localObject).recycle();
       }
       while (i1 == 0) {
-        return AccessibilityDispatcher.this.performGlobalAction(paramalr.o);
+        return AccessibilityDispatcher.this.performGlobalAction(paramano.o);
       }
       return false;
     }
@@ -1735,17 +1735,17 @@ public class AccessibilityDispatcher
           c();
           return;
         }
-        localObject3 = new alr();
-        ((alr)localObject3).a = 2;
-        ((alr)localObject3).j = 2;
-        ((alr)localObject3).k = new ArrayList();
+        localObject3 = new ano();
+        ((ano)localObject3).a = 2;
+        ((ano)localObject3).j = 2;
+        ((ano)localObject3).k = new ArrayList();
         paramMessage = this.o;
         i2 = paramMessage.length;
         for (;;)
         {
           if (i1 >= i2)
           {
-            if (!b((alr)localObject3))
+            if (!b((ano)localObject3))
             {
               try
               {
@@ -1785,16 +1785,16 @@ public class AccessibilityDispatcher
               {
                 paramMessage = null;
               }
-              localObject2 = new alr();
-              ((alr)localObject2).a = 4;
-              ((alr)localObject2).o = 1;
+              localObject2 = new ano();
+              ((ano)localObject2).a = 4;
+              ((ano)localObject2).o = 1;
               if (!TextUtils.isEmpty(paramMessage))
               {
-                ((alr)localObject2).j = 1;
-                ((alr)localObject2).k = new ArrayList();
-                ((alr)localObject2).k.add(paramMessage);
+                ((ano)localObject2).j = 1;
+                ((ano)localObject2).k = new ArrayList();
+                ((ano)localObject2).k.add(paramMessage);
               }
-              "globalRes1=".concat(String.valueOf(c((alr)localObject2)));
+              "globalRes1=".concat(String.valueOf(c((ano)localObject2)));
             }
             try
             {
@@ -1804,9 +1804,9 @@ public class AccessibilityDispatcher
             {
               paramMessage.getMessage();
             }
-            if ((!b((alr)localObject3)) && ("com.android.settings".equals(this.j)))
+            if ((!b((ano)localObject3)) && ("com.android.settings".equals(this.j)))
             {
-              paramMessage = new alr();
+              paramMessage = new ano();
               paramMessage.a = 4;
               paramMessage.o = 1;
               "globalRes2=".concat(String.valueOf(c(paramMessage)));
@@ -1820,7 +1820,7 @@ public class AccessibilityDispatcher
             return;
           }
           localObject2 = paramMessage[i1];
-          ((alr)localObject3).k.add(localObject2);
+          ((ano)localObject3).k.add(localObject2);
           i1 += 1;
         }
       case 1003: 
@@ -1941,7 +1941,7 @@ public class AccessibilityDispatcher
           if (i1 < this.a.c.size())
           {
             "get action, index ".concat(String.valueOf(i1));
-            paramMessage = (alr)this.a.c.get(i1);
+            paramMessage = (ano)this.a.c.get(i1);
           }
           if ((paramMessage != null) && (!this.b))
           {

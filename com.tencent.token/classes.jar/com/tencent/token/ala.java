@@ -1,44 +1,65 @@
 package com.tencent.token;
 
-import java.io.InputStream;
-import java.nio.channels.ReadableByteChannel;
+import java.net.UnknownServiceException;
+import java.util.Arrays;
+import java.util.List;
+import javax.net.ssl.SSLSocket;
 
-public abstract interface ala
-  extends alo, ReadableByteChannel
+public final class ala
 {
-  public abstract void a(long paramLong);
+  boolean a;
+  boolean b;
+  private final List<ajx> c;
+  private int d = 0;
   
-  public abstract void a(byte[] paramArrayOfByte);
+  public ala(List<ajx> paramList)
+  {
+    this.c = paramList;
+  }
   
-  public abstract aky b();
+  private boolean b(SSLSocket paramSSLSocket)
+  {
+    int i = this.d;
+    while (i < this.c.size())
+    {
+      if (((ajx)this.c.get(i)).a(paramSSLSocket)) {
+        return true;
+      }
+      i += 1;
+    }
+    return false;
+  }
   
-  public abstract alb c(long paramLong);
-  
-  public abstract boolean c();
-  
-  public abstract InputStream d();
-  
-  public abstract String d(long paramLong);
-  
-  public abstract byte f();
-  
-  public abstract byte[] f(long paramLong);
-  
-  public abstract short g();
-  
-  public abstract void g(long paramLong);
-  
-  public abstract int h();
-  
-  public abstract short i();
-  
-  public abstract int j();
-  
-  public abstract long k();
-  
-  public abstract String n();
-  
-  public abstract long q();
+  public final ajx a(SSLSocket paramSSLSocket)
+  {
+    int i = this.d;
+    int j = this.c.size();
+    while (i < j)
+    {
+      localObject = (ajx)this.c.get(i);
+      if (((ajx)localObject).a(paramSSLSocket))
+      {
+        this.d = (i + 1);
+        break label64;
+      }
+      i += 1;
+    }
+    Object localObject = null;
+    label64:
+    if (localObject != null)
+    {
+      this.a = b(paramSSLSocket);
+      akr.a.a((ajx)localObject, paramSSLSocket, this.b);
+      return localObject;
+    }
+    localObject = new StringBuilder("Unable to find acceptable protocols. isFallback=");
+    ((StringBuilder)localObject).append(this.b);
+    ((StringBuilder)localObject).append(", modes=");
+    ((StringBuilder)localObject).append(this.c);
+    ((StringBuilder)localObject).append(", supported protocols=");
+    ((StringBuilder)localObject).append(Arrays.toString(paramSSLSocket.getEnabledProtocols()));
+    throw new UnknownServiceException(((StringBuilder)localObject).toString());
+  }
 }
 
 

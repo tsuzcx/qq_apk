@@ -1,113 +1,41 @@
 package com.tencent.token;
 
+import android.content.ContentValues;
+import android.os.Handler;
+import java.io.File;
+import java.util.HashMap;
+
 public final class abc
-  implements abf
 {
-  private static long a = 10L;
-  private long b;
-  private long c;
-  private abb d;
-  private byte[] e;
-  private byte[] f;
+  public String a;
+  public int b;
+  public HashMap<String, Object> c = new HashMap();
+  public Handler d;
+  public boolean e = false;
+  public int f;
+  public boolean g = false;
+  public int h = 90000;
+  public String i;
+  public int j;
+  public boolean k;
+  public ts.a l;
+  public int m = 0;
+  public ContentValues n;
+  public File o;
+  public String p;
+  public byte[] q;
   
-  public abc(abb paramabb)
-  {
-    this.d = paramabb;
-    this.f = new byte[20];
-    this.c = 1L;
-    this.e = new byte[20];
-    this.b = 1L;
-  }
+  public abc() {}
   
-  private void a()
+  public abc(String paramString, Handler paramHandler)
   {
-    c(this.f);
-    long l = this.c;
-    this.c = (1L + l);
-    b(l);
-    d(this.f);
-  }
-  
-  private void b()
-  {
-    long l = this.b;
-    this.b = (1L + l);
-    b(l);
-    c(this.e);
-    c(this.f);
-    d(this.e);
-    if (this.b % a == 0L) {
-      a();
+    this.a = paramString;
+    this.b = 1;
+    this.d = paramHandler;
+    this.f = 3042;
+    if (paramHandler != null) {
+      this.i = paramHandler.getClass().getName();
     }
-  }
-  
-  private void b(long paramLong)
-  {
-    int i = 0;
-    while (i != 8)
-    {
-      this.d.a((byte)(int)paramLong);
-      paramLong >>>= 8;
-      i += 1;
-    }
-  }
-  
-  private void c(byte[] paramArrayOfByte)
-  {
-    this.d.a(paramArrayOfByte, 0, paramArrayOfByte.length);
-  }
-  
-  private void d(byte[] paramArrayOfByte)
-  {
-    this.d.a(paramArrayOfByte);
-  }
-  
-  public final void a(long paramLong)
-  {
-    try
-    {
-      b(paramLong);
-      c(this.f);
-      d(this.f);
-      return;
-    }
-    finally {}
-  }
-  
-  public final void a(byte[] paramArrayOfByte)
-  {
-    try
-    {
-      c(paramArrayOfByte);
-      c(this.f);
-      d(this.f);
-      return;
-    }
-    finally {}
-  }
-  
-  public final void b(byte[] paramArrayOfByte)
-  {
-    int m = paramArrayOfByte.length;
-    try
-    {
-      b();
-      int j = 0;
-      int k;
-      for (int i = 0; j != m + 0; i = k + 1)
-      {
-        k = i;
-        if (i == this.e.length)
-        {
-          b();
-          k = 0;
-        }
-        paramArrayOfByte[j] = this.e[k];
-        j += 1;
-      }
-      return;
-    }
-    finally {}
   }
 }
 

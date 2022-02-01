@@ -1,15 +1,18 @@
 package com.tencent.token;
 
-import android.content.Context;
-
 public final class adx
   extends Thread
 {
-  public adx(ady.a parama, Context paramContext) {}
+  public adx(aec paramaec) {}
   
   public final void run()
   {
-    this.a.a.b(this.b);
+    try
+    {
+      aec.a(this.a);
+      return;
+    }
+    finally {}
   }
 }
 

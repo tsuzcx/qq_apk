@@ -5,8 +5,8 @@ import android.net.Uri;
 import android.os.Environment;
 import android.text.TextUtils;
 import com.qq.taf.jce.JceStruct;
-import com.tencent.token.aon;
-import com.tencent.token.aoo;
+import com.tencent.token.aqk;
+import com.tencent.token.aql;
 import com.tmsdk.base.ISharkCallBackOut;
 import com.tmsdk.base.TMSDKBaseContext;
 import com.tmsdk.base.utils.FileOP.CheckResult;
@@ -555,13 +555,13 @@ public class dz
     //   18: dup
     //   19: invokespecial 207	java/util/ArrayList:<init>	()V
     //   22: astore 7
-    //   24: new 209	com/tencent/token/aom
+    //   24: new 209	com/tencent/token/aqj
     //   27: dup
-    //   28: invokespecial 210	com/tencent/token/aom:<init>	()V
+    //   28: invokespecial 210	com/tencent/token/aqj:<init>	()V
     //   31: astore 8
     //   33: aload 8
     //   35: iload_0
-    //   36: putfield 213	com/tencent/token/aom:a	I
+    //   36: putfield 213	com/tencent/token/aqj:a	I
     //   39: aload 7
     //   41: aload 8
     //   43: invokevirtual 216	java/util/ArrayList:add	(Ljava/lang/Object;)Z
@@ -570,13 +570,13 @@ public class dz
     //   48: ifle +25 -> 73
     //   51: aload 8
     //   53: iload_2
-    //   54: putfield 219	com/tencent/token/aom:f	I
+    //   54: putfield 219	com/tencent/token/aqj:f	I
     //   57: aload 8
     //   59: iload_3
-    //   60: putfield 222	com/tencent/token/aom:c	I
+    //   60: putfield 222	com/tencent/token/aqj:c	I
     //   63: aload 8
     //   65: aload 4
-    //   67: putfield 225	com/tencent/token/aom:b	[B
+    //   67: putfield 225	com/tencent/token/aqj:b	[B
     //   70: goto +155 -> 225
     //   73: new 54	java/io/File
     //   76: dup
@@ -605,7 +605,7 @@ public class dz
     //   117: aload 8
     //   119: aload 4
     //   121: invokestatic 236	com/tmsdk/base/utils/ConvertUtil:bytesToInt	([B)I
-    //   124: putfield 219	com/tencent/token/aom:f	I
+    //   124: putfield 219	com/tencent/token/aqj:f	I
     //   127: aload_1
     //   128: aload 4
     //   130: invokevirtual 29	java/io/FileInputStream:read	([B)I
@@ -613,7 +613,7 @@ public class dz
     //   134: aload 8
     //   136: aload 4
     //   138: invokestatic 236	com/tmsdk/base/utils/ConvertUtil:bytesToInt	([B)I
-    //   141: putfield 222	com/tencent/token/aom:c	I
+    //   141: putfield 222	com/tencent/token/aqj:c	I
     //   144: bipush 16
     //   146: newarray byte
     //   148: astore 4
@@ -623,7 +623,7 @@ public class dz
     //   156: pop
     //   157: aload 8
     //   159: aload 4
-    //   161: putfield 225	com/tencent/token/aom:b	[B
+    //   161: putfield 225	com/tencent/token/aqj:b	[B
     //   164: aload_1
     //   165: invokevirtual 42	java/io/FileInputStream:close	()V
     //   168: goto +57 -> 225
@@ -646,24 +646,24 @@ public class dz
     //   202: goto +23 -> 225
     //   205: aload 8
     //   207: iconst_0
-    //   208: putfield 219	com/tencent/token/aom:f	I
+    //   208: putfield 219	com/tencent/token/aqj:f	I
     //   211: aload 8
     //   213: iconst_0
-    //   214: putfield 222	com/tencent/token/aom:c	I
+    //   214: putfield 222	com/tencent/token/aqj:c	I
     //   217: aload 8
     //   219: iconst_0
     //   220: newarray byte
-    //   222: putfield 225	com/tencent/token/aom:b	[B
-    //   225: new 238	com/tencent/token/aol
+    //   222: putfield 225	com/tencent/token/aqj:b	[B
+    //   225: new 238	com/tencent/token/aqi
     //   228: dup
-    //   229: invokespecial 239	com/tencent/token/aol:<init>	()V
+    //   229: invokespecial 239	com/tencent/token/aqi:<init>	()V
     //   232: astore 4
     //   234: aload 4
     //   236: aload 7
-    //   238: putfield 242	com/tencent/token/aol:a	Ljava/util/ArrayList;
+    //   238: putfield 242	com/tencent/token/aqi:a	Ljava/util/ArrayList;
     //   241: aload 4
     //   243: iconst_1
-    //   244: putfield 244	com/tencent/token/aol:b	I
+    //   244: putfield 244	com/tencent/token/aqi:b	I
     //   247: new 4	java/lang/Object
     //   250: dup
     //   251: invokespecial 245	java/lang/Object:<init>	()V
@@ -672,9 +672,9 @@ public class dz
     //   258: pop2
     //   259: bipush 108
     //   261: aload 4
-    //   263: new 253	com/tencent/token/aon
+    //   263: new 253	com/tencent/token/aqk
     //   266: dup
-    //   267: invokespecial 254	com/tencent/token/aon:<init>	()V
+    //   267: invokespecial 254	com/tencent/token/aqk:<init>	()V
     //   270: iconst_0
     //   271: new 6	btmsdkobf/dz$1
     //   274: dup
@@ -721,7 +721,7 @@ public class dz
     //   0	336	5	paramInt4	int
     //   7	297	6	localCheckResult	FileOP.CheckResult
     //   22	215	7	localArrayList	ArrayList
-    //   31	187	8	localaom	com.tencent.token.aom
+    //   31	187	8	localaqj	com.tencent.token.aqj
     // Exception table:
     //   from	to	target	type
     //   105	164	171	finally
@@ -1492,7 +1492,7 @@ public class dz
   }
   
   /* Error */
-  public static com.tencent.token.aoq loadWupObjectFromFile(String paramString1, String paramString2)
+  public static com.tencent.token.aqn loadWupObjectFromFile(String paramString1, String paramString2)
   {
     // Byte code:
     //   0: aload_0
@@ -1504,9 +1504,9 @@ public class dz
     //   9: ifeq +5 -> 14
     //   12: aconst_null
     //   13: areturn
-    //   14: new 396	com/tencent/token/aoq
+    //   14: new 396	com/tencent/token/aqn
     //   17: dup
-    //   18: invokespecial 397	com/tencent/token/aoq:<init>	()V
+    //   18: invokespecial 397	com/tencent/token/aqn:<init>	()V
     //   21: astore 6
     //   23: new 54	java/io/File
     //   26: dup
@@ -1570,7 +1570,7 @@ public class dz
     //   144: areturn
     //   145: aload 8
     //   147: aconst_null
-    //   148: invokestatic 414	com/tencent/token/asr:b	([B[B)[B
+    //   148: invokestatic 414	com/tencent/token/auo:b	([B[B)[B
     //   151: astore 5
     //   153: aload_1
     //   154: ifnull +16 -> 170
@@ -1603,7 +1603,7 @@ public class dz
     //   205: aload_0
     //   206: aload 6
     //   208: invokevirtual 431	com/qq/jce/wup/UniAttribute:getByClass	(Ljava/lang/String;Ljava/lang/Object;)Ljava/lang/Object;
-    //   211: checkcast 396	com/tencent/token/aoq
+    //   211: checkcast 396	com/tencent/token/aqn
     //   214: astore_0
     //   215: aload_0
     //   216: areturn
@@ -1631,7 +1631,7 @@ public class dz
     //   4	5	3	bool	boolean
     //   58	160	4	localFileInputStream	FileInputStream
     //   6	227	5	arrayOfByte1	byte[]
-    //   21	208	6	localaoq	com.tencent.token.aoq
+    //   21	208	6	localaqn	com.tencent.token.aqn
     //   48	156	7	localUniAttribute	com.qq.jce.wup.UniAttribute
     //   114	32	8	arrayOfByte2	byte[]
     // Exception table:

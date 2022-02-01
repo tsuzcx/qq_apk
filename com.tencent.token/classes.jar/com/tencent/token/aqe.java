@@ -1,23 +1,18 @@
 package com.tencent.token;
 
-final class aqe
+import android.graphics.Canvas;
+import android.graphics.ColorFilter;
+import android.graphics.Matrix;
+import android.graphics.RectF;
+
+public abstract interface aqe
+  extends aqc
 {
-  int a;
-  int b;
-  int c;
-  int d;
-  byte[] e;
-  aps f;
+  public abstract void a(Canvas paramCanvas, Matrix paramMatrix, int paramInt);
   
-  aqe(int paramInt1, int paramInt2, int paramInt3, int paramInt4, byte[] paramArrayOfByte, aps paramaps)
-  {
-    this.a = paramInt1;
-    this.b = paramInt2;
-    this.c = paramInt3;
-    this.d = paramInt4;
-    this.e = paramArrayOfByte;
-    this.f = paramaps;
-  }
+  public abstract void a(RectF paramRectF, Matrix paramMatrix);
+  
+  public abstract void a(String paramString1, String paramString2, ColorFilter paramColorFilter);
 }
 
 

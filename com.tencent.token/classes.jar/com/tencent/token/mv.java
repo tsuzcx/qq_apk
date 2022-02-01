@@ -1,11 +1,9 @@
 package com.tencent.token;
 
-import java.util.ArrayList;
-import java.util.List;
-
-public final class mv
+final class mv
+  extends Thread
 {
-  public List a = new ArrayList();
+  final long a;
 }
 
 

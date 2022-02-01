@@ -6,7 +6,7 @@ import android.view.Window;
 import android.widget.ListView;
 import com.tencent.token.core.bean.QQUser;
 import com.tencent.token.ui.FacePwdIndexActivity;
-import com.tencent.token.yl;
+import com.tencent.token.yy;
 import java.util.List;
 
 public class FacePwdVerifySelDialog
@@ -14,7 +14,7 @@ public class FacePwdVerifySelDialog
 {
   private FacePwdIndexActivity a;
   private ListView b;
-  private yl c;
+  private yy c;
   private List<QQUser> d;
   
   public FacePwdVerifySelDialog(FacePwdIndexActivity paramFacePwdIndexActivity, List<QQUser> paramList)
@@ -32,8 +32,8 @@ public class FacePwdVerifySelDialog
       super.onCreate(paramBundle);
       setContentView(2131296332);
       getWindow().setBackgroundDrawableResource(2131099877);
-      this.b = ((ListView)findViewById(2131166266));
-      this.c = new yl(this.a, this, this.d);
+      this.b = ((ListView)findViewById(2131166268));
+      this.c = new yy(this.a, this, this.d);
       this.b.setAdapter(this.c);
       return;
     }

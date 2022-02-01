@@ -1,134 +1,199 @@
 package com.tencent.token;
 
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
-import android.content.pm.PackageManager.NameNotFoundException;
-import android.text.TextUtils;
-import com.tencent.token.global.RqdApplication;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
-public final class afq
+public class afq
 {
-  public static String a = "sp_record";
-  public static String b = "last_req_premiss_time";
-  
-  public static long a(String paramString)
+  static
   {
-    SharedPreferences localSharedPreferences = d();
-    if (localSharedPreferences != null) {
-      return localSharedPreferences.getLong(paramString, 0L);
-    }
-    return -1L;
+    afq.class.desiredAssertionStatus();
   }
   
-  public static rb.a a(String paramString1, String paramString2)
+  public static byte[] a(String paramString)
   {
-    rb.a locala = new rb.a();
-    locala.a = "com.tencent.qqpimsecure";
-    locala.c = paramString2;
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(paramString2.hashCode());
-    localStringBuilder.append(paramString1);
-    localStringBuilder.append(".apk");
-    locala.d = localStringBuilder.toString();
-    return locala;
-  }
-  
-  public static void a(String paramString, int paramInt)
-  {
-    Object localObject = d();
-    if (localObject != null)
+    byte[] arrayOfByte = paramString.getBytes();
+    int i = arrayOfByte.length;
+    int i3 = i * 3 / 4;
+    paramString = new byte[i3];
+    int[] arrayOfInt = b.a;
+    int i4 = i + 0;
+    int m = 0;
+    int n = 0;
+    i = 0;
+    int i1;
+    for (int j = 0;; j = k)
     {
-      localObject = ((SharedPreferences)localObject).edit();
-      ((SharedPreferences.Editor)localObject).putInt(paramString, paramInt);
-      ((SharedPreferences.Editor)localObject).commit();
+      i1 = i;
+      k = j;
+      if (m >= i4) {
+        break;
+      }
+      int i2 = m;
+      i1 = i;
+      k = j;
+      if (n == 0)
+      {
+        for (;;)
+        {
+          i1 = m + 4;
+          if (i1 > i4) {
+            break;
+          }
+          k = arrayOfInt[(arrayOfByte[m] & 0xFF)] << 18 | arrayOfInt[(arrayOfByte[(m + 1)] & 0xFF)] << 12 | arrayOfInt[(arrayOfByte[(m + 2)] & 0xFF)] << 6 | arrayOfInt[(arrayOfByte[(m + 3)] & 0xFF)];
+          i = k;
+          if (k < 0) {
+            break;
+          }
+          paramString[(j + 2)] = ((byte)k);
+          paramString[(j + 1)] = ((byte)(k >> 8));
+          paramString[j] = ((byte)(k >> 16));
+          j += 3;
+          m = i1;
+          i = k;
+        }
+        i1 = i;
+        k = j;
+        if (m >= i4) {
+          break;
+        }
+        k = j;
+        i1 = i;
+        i2 = m;
+      }
+      i = arrayOfInt[(arrayOfByte[i2] & 0xFF)];
+      switch (n)
+      {
+      default: 
+        break;
+      case 5: 
+        if (i == -1) {
+          break label470;
+        }
+        break;
+      case 4: 
+        if (i == -2)
+        {
+          i = n + 1;
+          break label473;
+        }
+        if (i == -1) {
+          break label470;
+        }
+        break;
+      case 3: 
+        if (i >= 0)
+        {
+          j = i | i1 << 6;
+          paramString[(k + 2)] = ((byte)j);
+          paramString[(k + 1)] = ((byte)(j >> 8));
+          paramString[k] = ((byte)(j >> 16));
+          k += 3;
+          i = 0;
+          break label476;
+        }
+        if (i == -2)
+        {
+          paramString[(k + 1)] = ((byte)(i1 >> 2));
+          paramString[k] = ((byte)(i1 >> 10));
+          k += 2;
+          i = 5;
+          break label473;
+        }
+        if (i == -1) {
+          break label470;
+        }
+        break;
+      case 2: 
+        if (i < 0)
+        {
+          if (i == -2)
+          {
+            paramString[k] = ((byte)(i1 >> 4));
+            k += 1;
+            i = 4;
+            break label473;
+          }
+          if (i == -1) {
+            break label470;
+          }
+        }
+        break;
+      case 1: 
+        if (i >= 0)
+        {
+          i |= i1 << 6;
+          break label451;
+        }
+        if (i == -1) {
+          break label470;
+        }
+        break;
+      }
+      if (i >= 0)
+      {
+        label451:
+        m = n + 1;
+        j = i;
+        i = m;
+      }
+      else
+      {
+        if (i != -1) {
+          break label572;
+        }
+        label470:
+        i = n;
+        label473:
+        j = i1;
+      }
+      label476:
+      m = i2 + 1;
+      n = i;
+      i = j;
     }
-  }
-  
-  public static void a(String paramString, long paramLong)
-  {
-    Object localObject = d();
-    if (localObject != null)
+    switch (n)
     {
-      localObject = ((SharedPreferences)localObject).edit();
-      ((SharedPreferences.Editor)localObject).putLong(paramString, paramLong);
-      ((SharedPreferences.Editor)localObject).commit();
+    default: 
+      i = k;
+      break;
+    case 3: 
+      i = k + 1;
+      paramString[k] = ((byte)(i1 >> 10));
+      paramString[i] = ((byte)(i1 >> 2));
+      i += 1;
+      break;
+    case 2: 
+      i = k + 1;
+      paramString[k] = ((byte)(i1 >> 4));
+      break;
+    case 1: 
+    case 4: 
+      label572:
+      j = 0;
+      i = 0;
+      break;
     }
-  }
-  
-  public static boolean a()
-  {
-    boolean bool = false;
-    Object localObject;
-    try
+    int k = 1;
+    j = i;
+    i = k;
+    if (i != 0)
     {
-      PackageInfo localPackageInfo = RqdApplication.n().getPackageManager().getPackageInfo("com.tencent.qqpimsecure", 0);
+      if (j != i3)
+      {
+        arrayOfByte = new byte[j];
+        System.arraycopy(paramString, 0, arrayOfByte, 0, j);
+        return arrayOfByte;
+      }
+      return paramString;
     }
-    catch (PackageManager.NameNotFoundException localNameNotFoundException)
-    {
-      localNameNotFoundException.printStackTrace();
-      localObject = null;
-    }
-    if (localObject == null) {
-      return false;
-    }
-    if (localObject.versionCode >= 1352) {
-      bool = true;
-    }
-    return bool;
+    throw new IllegalArgumentException("bad base-64");
   }
   
-  public static void b()
-  {
-    b("user_launch_date", new SimpleDateFormat("yyyy-MM-dd").format(new Date()));
-  }
+  public static abstract class a {}
   
-  public static void b(String paramString1, String paramString2)
+  public static final class b
+    extends afq.a
   {
-    Object localObject = d();
-    if (localObject != null)
-    {
-      localObject = ((SharedPreferences)localObject).edit();
-      ((SharedPreferences.Editor)localObject).putString(paramString1, paramString2);
-      ((SharedPreferences.Editor)localObject).commit();
-    }
-  }
-  
-  public static String c(String paramString1, String paramString2)
-  {
-    SharedPreferences localSharedPreferences = d();
-    if (localSharedPreferences != null) {
-      return localSharedPreferences.getString(paramString1, paramString2);
-    }
-    return null;
-  }
-  
-  public static boolean c()
-  {
-    String str = c("user_launch_date", "");
-    if (TextUtils.isEmpty(str)) {
-      return false;
-    }
-    return str.equals(new SimpleDateFormat("yyyy-MM-dd").format(new Date()));
-  }
-  
-  private static SharedPreferences d()
-  {
-    try
-    {
-      SharedPreferences localSharedPreferences = RqdApplication.n().getSharedPreferences("com.tencent.token.com", 0);
-      return localSharedPreferences;
-    }
-    catch (Exception localException)
-    {
-      label12:
-      break label12;
-    }
-    return null;
+    public static final int[] a = { -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 62, -1, -1, -1, 63, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, -1, -1, -1, -2, -1, -1, -1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, -1, -1, -1, -1, -1, -1, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1 };
+    public static final int[] b = { -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 62, -1, -1, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, -1, -1, -1, -2, -1, -1, -1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, -1, -1, -1, -1, 63, -1, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1 };
   }
 }
 

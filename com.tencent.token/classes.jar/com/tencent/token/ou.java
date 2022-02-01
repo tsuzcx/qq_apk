@@ -3,53 +3,39 @@ package com.tencent.token;
 import android.os.Bundle;
 
 public final class ou
-  implements ot.b
 {
-  public String a;
-  public String b;
-  public String c;
-  public boolean d;
-  public int e = 0;
-  public int f = 0;
-  
-  public final int a()
+  public static final class a
+    extends on
   {
-    return 36;
-  }
-  
-  public final void a(Bundle paramBundle)
-  {
-    paramBundle.putString("_wxminiprogram_webpageurl", this.a);
-    paramBundle.putString("_wxminiprogram_username", this.b);
-    paramBundle.putString("_wxminiprogram_path", this.c);
-    paramBundle.putBoolean("_wxminiprogram_withsharetiket", this.d);
-    paramBundle.putInt("_wxminiprogram_type", this.e);
-    paramBundle.putInt("_wxminiprogram_disableforward", this.f);
-  }
-  
-  public final void b(Bundle paramBundle)
-  {
-    this.a = paramBundle.getString("_wxminiprogram_webpageurl");
-    this.b = paramBundle.getString("_wxminiprogram_username");
-    this.c = paramBundle.getString("_wxminiprogram_path");
-    this.d = paramBundle.getBoolean("_wxminiprogram_withsharetiket");
-    this.e = paramBundle.getInt("_wxminiprogram_type");
-    this.f = paramBundle.getInt("_wxminiprogram_disableforward");
-  }
-  
-  public final boolean b()
-  {
-    if (pg.a(this.a)) {
-      return false;
+    public String c;
+    public String d;
+    public String e;
+    
+    public final int a()
+    {
+      return 26;
     }
-    if (pg.a(this.b)) {
-      return false;
+    
+    public final void a(Bundle paramBundle)
+    {
+      super.a(paramBundle);
+      paramBundle.putString("_openbusinessview_businessType", this.c);
+      paramBundle.putString("_openbusinessview__query_info", this.d);
+      paramBundle.putString("_openbusinessview_extInfo", this.e);
     }
-    int i = this.e;
-    if (i >= 0) {
-      return i <= 2;
+    
+    public final void b(Bundle paramBundle)
+    {
+      super.b(paramBundle);
+      this.c = paramBundle.getString("_openbusinessview_businessType");
+      this.d = paramBundle.getString("_openbusinessview__query_info");
+      this.e = paramBundle.getString("_openbusinessview_extInfo");
     }
-    return false;
+    
+    public final boolean b()
+    {
+      return !pn.a(this.c);
+    }
   }
 }
 

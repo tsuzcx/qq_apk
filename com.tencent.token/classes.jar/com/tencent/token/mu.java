@@ -1,10 +1,12 @@
 package com.tencent.token;
 
-import java.util.List;
-
-public abstract interface mu
+final class mu
+  implements Thread.UncaughtExceptionHandler
 {
-  public abstract List a(String paramString, long paramLong);
+  public final void uncaughtException(Thread paramThread, Throwable paramThrowable)
+  {
+    paramThrowable.printStackTrace();
+  }
 }
 
 

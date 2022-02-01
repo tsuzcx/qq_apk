@@ -1,31 +1,19 @@
 package com.tencent.token;
 
-public abstract class aiv
-  implements Runnable
+import android.content.ContentValues;
+import com.tencent.wcdb.database.SQLiteDatabase;
+
+public abstract interface aiv
 {
-  protected final String b;
+  public abstract aiv a(ahi paramahi);
   
-  public aiv(String paramString, Object... paramVarArgs)
-  {
-    this.b = aiw.a(paramString, paramVarArgs);
-  }
+  public abstract String a();
   
-  protected abstract void b();
+  public abstract void a(SQLiteDatabase paramSQLiteDatabase);
   
-  public final void run()
-  {
-    String str = Thread.currentThread().getName();
-    Thread.currentThread().setName(this.b);
-    try
-    {
-      b();
-      return;
-    }
-    finally
-    {
-      Thread.currentThread().setName(str);
-    }
-  }
+  public abstract long b(SQLiteDatabase paramSQLiteDatabase);
+  
+  public abstract ContentValues b();
 }
 
 

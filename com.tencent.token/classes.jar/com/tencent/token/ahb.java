@@ -1,20 +1,44 @@
 package com.tencent.token;
 
+import java.util.ArrayList;
+
 public final class ahb
 {
-  public static void a(String paramString)
+  private static byte[] a(int paramInt)
   {
-    try
+    return new byte[] { (byte)(paramInt >> 24 & 0xFF), (byte)(paramInt >> 16 & 0xFF), (byte)(paramInt >> 8 & 0xFF), (byte)(paramInt & 0xFF) };
+  }
+  
+  public static byte[] a(ArrayList<byte[]> paramArrayList)
+  {
+    int m = paramArrayList.size();
+    int i = m * 4 + 4;
+    int k = i;
+    int j = 0;
+    while (j < m)
     {
-      ahh.a(paramString);
-      return;
+      k += ((byte[])paramArrayList.get(j)).length;
+      j += 1;
     }
-    catch (Exception paramString)
+    byte[] arrayOfByte = new byte[k];
+    System.arraycopy(a(m), 0, arrayOfByte, 0, 4);
+    j = 0;
+    while (j < m)
     {
-      StringBuilder localStringBuilder = new StringBuilder("delete database table failed: ");
-      localStringBuilder.append(paramString.toString());
-      xa.c(localStringBuilder.toString());
+      System.arraycopy(a(((byte[])paramArrayList.get(j)).length), 0, arrayOfByte, j * 4 + 4, 4);
+      j += 1;
     }
+    k = 0;
+    j = i;
+    i = k;
+    while (i < m)
+    {
+      k = ((byte[])paramArrayList.get(i)).length;
+      System.arraycopy(paramArrayList.get(i), 0, arrayOfByte, j, k);
+      j += k;
+      i += 1;
+    }
+    return arrayOfByte;
   }
 }
 

@@ -9,9 +9,9 @@ import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import com.tencent.token.ks;
-import com.tencent.token.ks.a;
-import com.tencent.token.zs;
+import com.tencent.token.aae;
+import com.tencent.token.kz;
+import com.tencent.token.kz.a;
 import com.tmsdk.TMSDKContext;
 import java.util.ArrayList;
 
@@ -27,8 +27,8 @@ public class GuideQQPimSecureTipsView
   {
     super(paramContext, paramAttributeSet);
     ((LayoutInflater)paramContext.getSystemService("layout_inflater")).inflate(2131296358, this, true);
-    this.b = ((TextView)findViewById(2131166108));
-    this.c = ((TextView)findViewById(2131166107));
+    this.b = ((TextView)findViewById(2131166110));
+    this.c = ((TextView)findViewById(2131166109));
     this.d = ((ImageView)findViewById(2131165657));
   }
   
@@ -37,14 +37,14 @@ public class GuideQQPimSecureTipsView
     this.b.setText(paramString2);
     this.c.setText(paramString3);
     if (!TextUtils.isEmpty(paramString4)) {
-      new zs(this.d).execute(new String[] { paramString4 });
+      new aae(this.d).execute(new String[] { paramString4 });
     }
     setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
-        paramAnonymousView = ks.a.a;
-        ks.a(GuideQQPimSecureTipsView.this.getContext(), paramString1, paramArrayList);
+        paramAnonymousView = kz.a.a;
+        kz.a(GuideQQPimSecureTipsView.this.getContext(), paramString1, paramArrayList);
         GuideQQPimSecureTipsView.this.setVisibility(8);
         GuideQQPimSecureTipsView.a = true;
         if (paramBoolean)

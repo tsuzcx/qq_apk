@@ -1,85 +1,113 @@
 package com.tencent.token;
 
-import android.view.View;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 public final class abo
+  implements abr
 {
-  public static final afj<abo> a = new a();
-  public Map<String, d> b = new HashMap();
-  public Map<String, b> c = new HashMap();
-  public abr d;
+  private static long a = 10L;
+  private long b;
+  private long c;
+  private abn d;
+  private byte[] e;
+  private byte[] f;
   
-  public static final class a
-    extends afj<abo>
+  public abo(abn paramabn)
   {
-    public final Object a()
-    {
-      return new abo((byte)0);
+    this.d = paramabn;
+    this.f = new byte[20];
+    this.c = 1L;
+    this.e = new byte[20];
+    this.b = 1L;
+  }
+  
+  private void a()
+  {
+    c(this.f);
+    long l = this.c;
+    this.c = (1L + l);
+    b(l);
+    d(this.f);
+  }
+  
+  private void b()
+  {
+    long l = this.b;
+    this.b = (1L + l);
+    b(l);
+    c(this.e);
+    c(this.f);
+    d(this.e);
+    if (this.b % a == 0L) {
+      a();
     }
   }
   
-  public final class b
-    implements abs
+  private void b(long paramLong)
   {
-    public int a;
-    
-    public b(int paramInt)
+    int i = 0;
+    while (i != 8)
     {
-      this.a = paramInt;
-    }
-    
-    public final void a(String paramString, View paramView)
-    {
-      abo.a(abo.this).a(paramString, this.a, 3, null);
+      this.d.a((byte)(int)paramLong);
+      paramLong >>>= 8;
+      i += 1;
     }
   }
   
-  public final class c
+  private void c(byte[] paramArrayOfByte)
   {
-    public final int a;
-    public final float b;
-    public final float c;
-    public final float d;
-    public final float e;
-    
-    public c(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
-    {
-      this.a = this$1;
-      this.b = paramFloat1;
-      this.c = paramFloat2;
-      this.d = paramFloat3;
-      this.e = paramFloat4;
-    }
+    this.d.a(paramArrayOfByte, 0, paramArrayOfByte.length);
   }
   
-  public final class d
+  private void d(byte[] paramArrayOfByte)
   {
-    public int a;
-    public long b = -1L;
-    public long c;
-    public List<abo.c> d = new ArrayList();
-    public String e;
-    public boolean f = false;
-    public boolean g = false;
-    
-    public d(String paramString, int paramInt)
+    this.d.a(paramArrayOfByte);
+  }
+  
+  public final void a(long paramLong)
+  {
+    try
     {
-      this.a = paramInt;
-      this.e = paramString;
+      b(paramLong);
+      c(this.f);
+      d(this.f);
+      return;
     }
-    
-    public final void a()
+    finally {}
+  }
+  
+  public final void a(byte[] paramArrayOfByte)
+  {
+    try
     {
-      this.b = -1L;
-      this.c = 0L;
-      this.d.clear();
-      this.f = false;
-      this.g = false;
+      c(paramArrayOfByte);
+      c(this.f);
+      d(this.f);
+      return;
     }
+    finally {}
+  }
+  
+  public final void b(byte[] paramArrayOfByte)
+  {
+    int m = paramArrayOfByte.length;
+    try
+    {
+      b();
+      int j = 0;
+      int k;
+      for (int i = 0; j != m + 0; i = k + 1)
+      {
+        k = i;
+        if (i == this.e.length)
+        {
+          b();
+          k = 0;
+        }
+        paramArrayOfByte[j] = this.e[k];
+        j += 1;
+      }
+      return;
+    }
+    finally {}
   }
 }
 

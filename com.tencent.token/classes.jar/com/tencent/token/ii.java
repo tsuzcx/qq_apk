@@ -4,180 +4,182 @@ import android.content.res.ColorStateList;
 import android.content.res.TypedArray;
 import android.graphics.PorterDuff.Mode;
 import android.graphics.drawable.Drawable;
-import android.graphics.drawable.RippleDrawable;
 import android.os.Build.VERSION;
 import android.util.AttributeSet;
-import android.widget.ImageView;
+import android.view.View;
 
 public final class ii
 {
-  private final ImageView a;
-  private jc b;
-  private jc c;
-  private jc d;
+  private final View a;
+  private final ik b;
+  private int c = -1;
+  private jg d;
+  private jg e;
+  private jg f;
   
-  public ii(ImageView paramImageView)
+  public ii(View paramView)
   {
-    this.a = paramImageView;
+    this.a = paramView;
+    this.b = ik.a();
   }
   
   private boolean a(Drawable paramDrawable)
   {
-    if (this.d == null) {
-      this.d = new jc();
+    if (this.f == null) {
+      this.f = new jg();
     }
-    jc localjc = this.d;
-    localjc.a();
-    Object localObject = ft.a(this.a);
+    jg localjg = this.f;
+    localjg.a();
+    Object localObject = fa.m(this.a);
     if (localObject != null)
     {
-      localjc.d = true;
-      localjc.a = ((ColorStateList)localObject);
+      localjg.d = true;
+      localjg.a = ((ColorStateList)localObject);
     }
-    localObject = ft.b(this.a);
+    localObject = fa.n(this.a);
     if (localObject != null)
     {
-      localjc.c = true;
-      localjc.b = ((PorterDuff.Mode)localObject);
+      localjg.c = true;
+      localjg.b = ((PorterDuff.Mode)localObject);
     }
-    if ((!localjc.d) && (!localjc.c)) {
+    if ((!localjg.d) && (!localjg.c)) {
       return false;
     }
-    ig.a(paramDrawable, localjc, this.a.getDrawableState());
+    ik.a(paramDrawable, localjg, this.a.getDrawableState());
     return true;
+  }
+  
+  private void b(ColorStateList paramColorStateList)
+  {
+    if (paramColorStateList != null)
+    {
+      if (this.d == null) {
+        this.d = new jg();
+      }
+      jg localjg = this.d;
+      localjg.a = paramColorStateList;
+      localjg.d = true;
+    }
+    else
+    {
+      this.d = null;
+    }
+    d();
   }
   
   private boolean e()
   {
     int i = Build.VERSION.SDK_INT;
     if (i > 21) {
-      return this.b != null;
+      return this.d != null;
     }
     return i == 21;
   }
   
+  public final void a()
+  {
+    this.c = -1;
+    b(null);
+    d();
+  }
+  
   public final void a(int paramInt)
   {
-    if (paramInt != 0)
-    {
-      Drawable localDrawable = gq.b(this.a.getContext(), paramInt);
-      if (localDrawable != null) {
-        iq.b(localDrawable);
-      }
-      this.a.setImageDrawable(localDrawable);
+    this.c = paramInt;
+    Object localObject = this.b;
+    if (localObject != null) {
+      localObject = ((ik)localObject).b(this.a.getContext(), paramInt);
+    } else {
+      localObject = null;
     }
-    else
-    {
-      this.a.setImageDrawable(null);
-    }
+    b((ColorStateList)localObject);
     d();
   }
   
   public final void a(ColorStateList paramColorStateList)
   {
-    if (this.c == null) {
-      this.c = new jc();
+    if (this.e == null) {
+      this.e = new jg();
     }
-    jc localjc = this.c;
-    localjc.a = paramColorStateList;
-    localjc.d = true;
+    jg localjg = this.e;
+    localjg.a = paramColorStateList;
+    localjg.d = true;
     d();
   }
   
   public final void a(PorterDuff.Mode paramMode)
   {
-    if (this.c == null) {
-      this.c = new jc();
+    if (this.e == null) {
+      this.e = new jg();
     }
-    jc localjc = this.c;
-    localjc.b = paramMode;
-    localjc.c = true;
+    jg localjg = this.e;
+    localjg.b = paramMode;
+    localjg.c = true;
     d();
   }
   
   public final void a(AttributeSet paramAttributeSet, int paramInt)
   {
-    je localje = je.a(this.a.getContext(), paramAttributeSet, go.j.AppCompatImageView, paramInt, 0);
+    paramAttributeSet = ji.a(this.a.getContext(), paramAttributeSet, gs.j.ViewBackgroundHelper, paramInt, 0);
     try
     {
-      Drawable localDrawable = this.a.getDrawable();
-      paramAttributeSet = localDrawable;
-      if (localDrawable == null)
+      if (paramAttributeSet.f(gs.j.ViewBackgroundHelper_android_background))
       {
-        paramInt = localje.g(go.j.AppCompatImageView_srcCompat, -1);
-        paramAttributeSet = localDrawable;
-        if (paramInt != -1)
-        {
-          localDrawable = gq.b(this.a.getContext(), paramInt);
-          paramAttributeSet = localDrawable;
-          if (localDrawable != null)
-          {
-            this.a.setImageDrawable(localDrawable);
-            paramAttributeSet = localDrawable;
-          }
+        this.c = paramAttributeSet.g(gs.j.ViewBackgroundHelper_android_background, -1);
+        ColorStateList localColorStateList = this.b.b(this.a.getContext(), this.c);
+        if (localColorStateList != null) {
+          b(localColorStateList);
         }
       }
-      if (paramAttributeSet != null) {
-        iq.b(paramAttributeSet);
+      if (paramAttributeSet.f(gs.j.ViewBackgroundHelper_backgroundTint)) {
+        fa.a(this.a, paramAttributeSet.e(gs.j.ViewBackgroundHelper_backgroundTint));
       }
-      if (localje.f(go.j.AppCompatImageView_tint)) {
-        ft.a(this.a, localje.e(go.j.AppCompatImageView_tint));
-      }
-      if (localje.f(go.j.AppCompatImageView_tintMode)) {
-        ft.a(this.a, iq.a(localje.a(go.j.AppCompatImageView_tintMode, -1), null));
+      if (paramAttributeSet.f(gs.j.ViewBackgroundHelper_backgroundTintMode)) {
+        fa.a(this.a, iu.a(paramAttributeSet.a(gs.j.ViewBackgroundHelper_backgroundTintMode, -1), null));
       }
       return;
     }
     finally
     {
-      localje.a.recycle();
+      paramAttributeSet.a.recycle();
     }
-  }
-  
-  public final boolean a()
-  {
-    Drawable localDrawable = this.a.getBackground();
-    return (Build.VERSION.SDK_INT < 21) || (!(localDrawable instanceof RippleDrawable));
   }
   
   public final ColorStateList b()
   {
-    jc localjc = this.c;
-    if (localjc != null) {
-      return localjc.a;
+    jg localjg = this.e;
+    if (localjg != null) {
+      return localjg.a;
     }
     return null;
   }
   
   public final PorterDuff.Mode c()
   {
-    jc localjc = this.c;
-    if (localjc != null) {
-      return localjc.b;
+    jg localjg = this.e;
+    if (localjg != null) {
+      return localjg.b;
     }
     return null;
   }
   
   public final void d()
   {
-    Drawable localDrawable = this.a.getDrawable();
-    if (localDrawable != null) {
-      iq.b(localDrawable);
-    }
+    Drawable localDrawable = this.a.getBackground();
     if (localDrawable != null)
     {
       if ((e()) && (a(localDrawable))) {
         return;
       }
-      jc localjc = this.c;
-      if (localjc != null)
+      jg localjg = this.e;
+      if (localjg != null)
       {
-        ig.a(localDrawable, localjc, this.a.getDrawableState());
+        ik.a(localDrawable, localjg, this.a.getDrawableState());
         return;
       }
-      localjc = this.b;
-      if (localjc != null) {
-        ig.a(localDrawable, localjc, this.a.getDrawableState());
+      localjg = this.d;
+      if (localjg != null) {
+        ik.a(localDrawable, localjg, this.a.getDrawableState());
       }
     }
   }

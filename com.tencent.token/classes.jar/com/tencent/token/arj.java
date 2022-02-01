@@ -1,25 +1,23 @@
 package com.tencent.token;
 
-import android.content.Context;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
+import android.util.Pair;
+import com.qq.taf.jce.JceStruct;
 
-public class arj
-  extends aot
-  implements ark
+final class arj
+  implements aij
 {
-  public final NetworkInfo a()
+  arj(aso paramaso) {}
+  
+  public final Pair a(int paramInt1, int paramInt2, JceStruct paramJceStruct)
   {
-    try
-    {
-      NetworkInfo localNetworkInfo = ((ConnectivityManager)aos.a().getSystemService("connectivity")).getActiveNetworkInfo();
-      return localNetworkInfo;
+    if (paramJceStruct == null) {
+      return null;
     }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
+    if (paramInt2 != 10001) {
+      return null;
     }
-    return null;
+    paramJceStruct = (aa)paramJceStruct;
+    return aso.a(this.a, paramJceStruct);
   }
 }
 

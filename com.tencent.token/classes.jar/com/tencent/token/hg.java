@@ -1,61 +1,124 @@
 package com.tencent.token;
 
-import android.content.Context;
-import android.view.MenuItem;
-import android.view.SubMenu;
-import java.util.Map;
+import android.view.View;
+import android.view.animation.Interpolator;
+import java.util.ArrayList;
+import java.util.Iterator;
 
-abstract class hg<T>
-  extends hh<T>
+public final class hg
 {
-  final Context a;
-  Map<dn, MenuItem> b;
-  Map<do, SubMenu> c;
-  
-  hg(Context paramContext, T paramT)
+  final ArrayList<fd> a = new ArrayList();
+  fe b;
+  boolean c;
+  private long d = -1L;
+  private Interpolator e;
+  private final ff f = new ff()
   {
-    super(paramT);
-    this.a = paramContext;
+    private boolean b = false;
+    private int c = 0;
+    
+    public final void a(View paramAnonymousView)
+    {
+      if (this.b) {
+        return;
+      }
+      this.b = true;
+      if (hg.this.b != null) {
+        hg.this.b.a(null);
+      }
+    }
+    
+    public final void b(View paramAnonymousView)
+    {
+      int i = this.c + 1;
+      this.c = i;
+      if (i == hg.this.a.size())
+      {
+        if (hg.this.b != null) {
+          hg.this.b.b(null);
+        }
+        this.c = 0;
+        this.b = false;
+        hg.this.c = false;
+      }
+    }
+  };
+  
+  public final hg a(Interpolator paramInterpolator)
+  {
+    if (!this.c) {
+      this.e = paramInterpolator;
+    }
+    return this;
   }
   
-  final MenuItem a(MenuItem paramMenuItem)
+  public final hg a(fd paramfd)
   {
-    if ((paramMenuItem instanceof dn))
-    {
-      dn localdn = (dn)paramMenuItem;
-      if (this.b == null) {
-        this.b = new du();
-      }
-      MenuItem localMenuItem = (MenuItem)this.b.get(paramMenuItem);
-      paramMenuItem = localMenuItem;
-      if (localMenuItem == null)
-      {
-        paramMenuItem = hu.a(this.a, localdn);
-        this.b.put(localdn, paramMenuItem);
-      }
-      return paramMenuItem;
+    if (!this.c) {
+      this.a.add(paramfd);
     }
-    return paramMenuItem;
+    return this;
   }
   
-  final SubMenu a(SubMenu paramSubMenu)
+  public final hg a(fd paramfd1, fd paramfd2)
   {
-    if ((paramSubMenu instanceof do))
-    {
-      do localdo = (do)paramSubMenu;
-      if (this.c == null) {
-        this.c = new du();
-      }
-      SubMenu localSubMenu = (SubMenu)this.c.get(localdo);
-      paramSubMenu = localSubMenu;
-      if (localSubMenu == null)
-      {
-        paramSubMenu = new hz(this.a, localdo);
-        this.c.put(localdo, paramSubMenu);
-      }
-      return paramSubMenu;
+    this.a.add(paramfd1);
+    paramfd2.b(paramfd1.a());
+    this.a.add(paramfd2);
+    return this;
+  }
+  
+  public final hg a(fe paramfe)
+  {
+    if (!this.c) {
+      this.b = paramfe;
     }
-    return paramSubMenu;
+    return this;
+  }
+  
+  public final void a()
+  {
+    if (this.c) {
+      return;
+    }
+    Iterator localIterator = this.a.iterator();
+    while (localIterator.hasNext())
+    {
+      fd localfd = (fd)localIterator.next();
+      long l = this.d;
+      if (l >= 0L) {
+        localfd.a(l);
+      }
+      Interpolator localInterpolator = this.e;
+      if (localInterpolator != null) {
+        localfd.a(localInterpolator);
+      }
+      if (this.b != null) {
+        localfd.a(this.f);
+      }
+      localfd.c();
+    }
+    this.c = true;
+  }
+  
+  public final void b()
+  {
+    if (!this.c) {
+      return;
+    }
+    Iterator localIterator = this.a.iterator();
+    while (localIterator.hasNext()) {
+      ((fd)localIterator.next()).b();
+    }
+    this.c = false;
+  }
+  
+  public final hg c()
+  {
+    if (!this.c) {
+      this.d = 250L;
+    }
+    return this;
   }
 }
 

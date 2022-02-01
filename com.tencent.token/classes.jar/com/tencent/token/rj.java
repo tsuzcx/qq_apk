@@ -1,204 +1,357 @@
 package com.tencent.token;
 
 import android.content.Context;
-import android.hardware.Sensor;
-import android.hardware.SensorEvent;
-import android.hardware.SensorEventListener;
-import android.hardware.SensorManager;
+import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
+import android.net.Uri;
+import android.os.Build.VERSION;
+import android.os.Environment;
+import android.support.v4.content.FileProvider;
+import android.widget.Toast;
+import com.tencent.halley.downloader.DownloaderFactory;
+import com.tencent.halley.downloader.DownloaderTaskStatus;
+import com.tencent.halley.downloader.exceptions.DownloaderAddTaskException;
+import com.tencent.token.global.RqdApplication;
+import com.tmsdk.base.TMSDKBaseContext;
+import java.io.File;
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 public final class rj
-  implements SensorEventListener
 {
-  boolean a = false;
-  protected SensorManager b;
-  private long c = 0L;
-  private double[] d = new double[3];
-  private float[] e = new float[3];
-  private float[] f = new float[3];
-  private double g;
-  private ArrayList<Sensor> h = new ArrayList();
-  private Context i;
-  private boolean j = false;
-  private boolean k = false;
-  private boolean l = false;
-  private int m = 0;
-  private int n = 0;
-  
-  rj(Context paramContext)
+  Map<String, a> a = new ConcurrentHashMap();
+  ma b = new ma()
   {
-    this.i = paramContext;
+    public final void a() {}
+    
+    public final void a(lz paramAnonymouslz) {}
+    
+    public final void b(lz paramAnonymouslz) {}
+    
+    public final void c(lz paramAnonymouslz) {}
+    
+    public final void d(lz paramAnonymouslz) {}
+    
+    public final void e(lz paramAnonymouslz) {}
+    
+    public final void f(lz paramAnonymouslz)
+    {
+      if (paramAnonymouslz != null)
+      {
+        rj localrj = rj.this;
+        rj.a locala = (rj.a)localrj.a.get(paramAnonymouslz.c());
+        if (locala != null)
+        {
+          rj.a(paramAnonymouslz, locala);
+          StringBuilder localStringBuilder = new StringBuilder("progressChangedCallback: [");
+          localStringBuilder.append(rj.b(paramAnonymouslz));
+          localStringBuilder.append("]");
+          paramAnonymouslz = localrj.b().iterator();
+          while (paramAnonymouslz.hasNext()) {
+            ((rj.c)paramAnonymouslz.next()).a(locala);
+          }
+        }
+      }
+    }
+    
+    public final void g(lz paramAnonymouslz)
+    {
+      if (paramAnonymouslz != null) {
+        rj.this.a(paramAnonymouslz);
+      }
+    }
+    
+    public final void h(lz paramAnonymouslz)
+    {
+      if (paramAnonymouslz != null) {
+        rj.this.a(paramAnonymouslz);
+      }
+    }
+    
+    public final void i(lz paramAnonymouslz)
+    {
+      if (paramAnonymouslz != null) {
+        rj.this.a(paramAnonymouslz);
+      }
+    }
+  };
+  private ly c = null;
+  private Map<String, lz> d = new ConcurrentHashMap();
+  private List<c> e = new ArrayList();
+  
+  public static String a()
+  {
+    if ("mounted".equals(Environment.getExternalStorageState()))
+    {
+      Object localObject = zk.a("token_download");
+      if (localObject != null) {
+        return ((File)localObject).getAbsolutePath();
+      }
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(Environment.getExternalStorageDirectory());
+      ((StringBuilder)localObject).append(File.separator);
+      ((StringBuilder)localObject).append("token_download");
+      return ((StringBuilder)localObject).toString();
+    }
+    return RqdApplication.p().getFilesDir().getAbsolutePath();
   }
   
-  public final void a()
+  private static String a(DownloaderTaskStatus paramDownloaderTaskStatus)
   {
-    if (this.j) {
-      return;
-    }
-    this.b = ((SensorManager)this.i.getSystemService("sensor"));
-    Sensor localSensor = this.b.getDefaultSensor(4);
-    if (localSensor == null)
+    switch (2.a[paramDownloaderTaskStatus.ordinal()])
     {
-      this.l = false;
+    default: 
+      return "";
+    case 7: 
+      return "DELETED";
+    case 6: 
+      return "PAUSED";
+    case 5: 
+      return "FAILED";
+    case 4: 
+      return "COMPLETE";
+    case 3: 
+      return "DOWNLOADING";
+    case 2: 
+      return "STARTED";
+    }
+    return "PENDING";
+  }
+  
+  public static void a(Context paramContext, File paramFile)
+  {
+    Intent localIntent = new Intent();
+    localIntent.setAction("android.intent.action.VIEW");
+    localIntent.setFlags(1);
+    localIntent.addFlags(268435456);
+    StringBuilder localStringBuilder;
+    if (Build.VERSION.SDK_INT >= 24)
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramContext.getPackageName());
+      localStringBuilder.append(".FileProvider");
+      localIntent.setDataAndType(FileProvider.a(paramContext, localStringBuilder.toString(), paramFile), "application/vnd.android.package-archive");
     }
     else
     {
-      this.b.registerListener(this, localSensor, 0);
-      this.h.add(localSensor);
+      localStringBuilder = new StringBuilder("file://");
+      localStringBuilder.append(paramFile.toString());
+      localIntent.setDataAndType(Uri.parse(localStringBuilder.toString()), "application/vnd.android.package-archive");
     }
-    localSensor = this.b.getDefaultSensor(1);
-    if (localSensor == null)
-    {
-      this.k = false;
-    }
-    else
-    {
-      this.h.add(localSensor);
-      this.b.registerListener(this, localSensor, 0);
-    }
-    this.j = true;
+    paramContext.startActivity(localIntent);
   }
   
-  public final void b()
+  static void a(lz paramlz, a parama)
   {
-    int i1 = 0;
-    while (i1 < this.h.size())
+    if (paramlz != null)
     {
-      this.b.unregisterListener(this, (Sensor)this.h.get(i1));
-      i1 += 1;
-    }
-    this.a = false;
-    this.j = false;
-  }
-  
-  public final void onAccuracyChanged(Sensor paramSensor, int paramInt) {}
-  
-  public final void onSensorChanged(SensorEvent paramSensorEvent)
-  {
-    int i1 = paramSensorEvent.sensor.getType();
-    double d1;
-    Object localObject;
-    double d2;
-    if (i1 != 1)
-    {
-      if (i1 != 4) {
+      if (parama == null) {
         return;
       }
-      if (this.c != 0L)
-      {
-        d1 = paramSensorEvent.timestamp - this.c;
-        Double.isNaN(d1);
-        d1 *= 9.999999717180685E-010D;
-        localObject = this.d;
-        d2 = localObject[0];
-        double d3 = paramSensorEvent.values[0];
-        Double.isNaN(d3);
-        localObject[0] = (d2 + d3 * d1);
-        localObject = this.d;
-        d2 = localObject[1];
-        d3 = paramSensorEvent.values[1];
-        Double.isNaN(d3);
-        localObject[1] = (d2 + d3 * d1);
-        localObject = this.d;
-        d2 = localObject[2];
-        d3 = paramSensorEvent.values[2];
-        Double.isNaN(d3);
-        localObject[2] = (d2 + d3 * d1);
-        i1 = 0;
-        while (i1 < 3) {
-          if ((paramSensorEvent.values[i1] <= 1.0D) && (paramSensorEvent.values[i1] >= -1.0D))
-          {
-            i1 += 1;
-          }
-          else
-          {
-            i1 = 1;
-            break label225;
-          }
-        }
-        i1 = 0;
-        label225:
-        if (i1 != 0)
-        {
-          this.l = true;
-          this.n = 0;
-        }
-        else
-        {
-          i1 = this.n + 1;
-          this.n = i1;
-          if (i1 == 1)
-          {
-            this.n = 0;
-            this.l = false;
-          }
-        }
-        if ((!this.k) && (!this.l)) {
-          bool = false;
-        } else {
-          bool = true;
-        }
-        this.a = bool;
-      }
-      this.c = paramSensorEvent.timestamp;
+      parama.e = paramlz.g();
+      parama.f = paramlz.d();
+      parama.b = paramlz.b();
       return;
     }
-    i1 = 0;
-    while (i1 < 3)
+  }
+  
+  static String b(lz paramlz)
+  {
+    int i = paramlz.m();
+    String str = paramlz.n();
+    return String.format("status=%s per=%d saveName=%s uniquekey=%s errorcode=%d error=%s", new Object[] { a(paramlz.d()), Integer.valueOf(paramlz.g()), paramlz.j(), paramlz.b(), Integer.valueOf(i), str });
+  }
+  
+  private static boolean c()
+  {
+    NetworkInfo localNetworkInfo = ((ConnectivityManager)RqdApplication.p().getSystemService("connectivity")).getActiveNetworkInfo();
+    return (localNetworkInfo != null) && (localNetworkInfo.isConnectedOrConnecting());
+  }
+  
+  private void e(a parama)
+  {
+    this.a.remove(parama.c);
+    this.d.remove(parama.c);
+  }
+  
+  public final a a(String paramString)
+  {
+    if (paramString == null) {
+      return null;
+    }
+    return (a)this.a.get(paramString);
+  }
+  
+  public final void a(Context paramContext)
+  {
+    try
     {
-      localObject = this.e;
-      d1 = paramSensorEvent.values[i1];
-      Double.isNaN(d1);
-      d2 = this.e[i1];
-      Double.isNaN(d2);
-      localObject[i1] = ((float)(d1 * 0.1D + d2 * 0.9D));
-      this.f[i1] = (paramSensorEvent.values[i1] - this.e[i1]);
-      i1 += 1;
+      lb.a(paramContext, "0M100WJ33N1CQ08O", "999001", TMSDKBaseContext.getGuid());
+      this.c = DownloaderFactory.getDownloader();
+      return;
     }
-    this.g = (this.e[1] / 9.80665F);
-    if (this.g > 1.0D) {
-      this.g = 1.0D;
-    }
-    if (this.g < -1.0D) {
-      this.g = -1.0D;
-    }
-    Math.toDegrees(Math.acos(this.g));
-    i1 = 0;
-    while (i1 < 3)
+    catch (Exception paramContext)
     {
-      paramSensorEvent = this.f;
-      if ((paramSensorEvent[i1] <= 1.0D) && (paramSensorEvent[i1] >= -1.0D))
-      {
-        i1 += 1;
+      paramContext.printStackTrace();
+    }
+  }
+  
+  final void a(lz paramlz)
+  {
+    a locala = (a)this.a.get(paramlz.c());
+    if (locala == null) {
+      return;
+    }
+    a(paramlz, locala);
+    Object localObject = new StringBuilder("stateChangedCallback: [");
+    ((StringBuilder)localObject).append(b(paramlz));
+    ((StringBuilder)localObject).append("]");
+    localObject = b();
+    switch (2.a[paramlz.d().ordinal()])
+    {
+    default: 
+    case 6: 
+      paramlz = ((List)localObject).iterator();
+      while (paramlz.hasNext()) {
+        ((c)paramlz.next()).b(locala);
       }
-      else
+      return;
+    case 5: 
+      localObject = ((List)localObject).iterator();
+      while (((Iterator)localObject).hasNext()) {
+        ((c)((Iterator)localObject).next()).c(locala);
+      }
+      this.c.b(paramlz);
+    case 7: 
+      e(locala);
+      return;
+    case 4: 
+      paramlz = ((List)localObject).iterator();
+      while (paramlz.hasNext()) {
+        ((c)paramlz.next()).d(locala);
+      }
+      e(locala);
+      return;
+    }
+  }
+  
+  public final void a(c paramc)
+  {
+    synchronized (this.e)
+    {
+      this.e.add(0, paramc);
+      return;
+    }
+  }
+  
+  public final boolean a(a parama)
+  {
+    if (a(parama.c) != null) {
+      return false;
+    }
+    return new File(a(), parama.d).exists();
+  }
+  
+  final List<c> b()
+  {
+    synchronized (this.e)
+    {
+      ArrayList localArrayList = new ArrayList(this.e);
+      return localArrayList;
+    }
+  }
+  
+  public final void b(a parama)
+  {
+    parama = (lz)this.d.get(parama.c);
+    if (parama != null) {
+      parama.k();
+    }
+  }
+  
+  public final void b(c paramc)
+  {
+    synchronized (this.e)
+    {
+      this.e.remove(paramc);
+      return;
+    }
+  }
+  
+  public final void c(a parama)
+  {
+    if (this.c == null) {
+      return;
+    }
+    if (!c())
+    {
+      Toast.makeText(RqdApplication.p(), "请开启网络再试", 0).show();
+      return;
+    }
+    e(parama);
+    try
+    {
+      lz locallz = this.c.a(parama.a, parama.c, a(), parama.d, this.b);
+      this.c.a(locallz);
+      this.a.put(parama.c, parama);
+      this.d.put(parama.c, locallz);
+      return;
+    }
+    catch (Exception parama)
+    {
+      parama.printStackTrace();
+    }
+  }
+  
+  public final void d(a parama)
+  {
+    if (!c())
+    {
+      Toast.makeText(RqdApplication.p(), "请开启网络再试", 0).show();
+      return;
+    }
+    parama = (lz)this.d.get(parama.c);
+    if (parama != null) {
+      try
       {
-        i1 = 1;
-        break label522;
+        parama.l();
+        return;
+      }
+      catch (DownloaderAddTaskException parama)
+      {
+        parama.printStackTrace();
       }
     }
-    i1 = 0;
-    label522:
-    if (i1 != 0)
-    {
-      this.m = 0;
-      this.k = true;
-    }
-    else
-    {
-      i1 = this.m + 1;
-      this.m = i1;
-      if (i1 == 1)
-      {
-        this.m = 0;
-        this.k = false;
-      }
-    }
-    boolean bool = false;
-    if ((this.k) || (this.l)) {
-      bool = true;
-    }
-    this.a = bool;
+  }
+  
+  public static final class a
+  {
+    public String a;
+    public String b;
+    public String c;
+    public String d;
+    public int e;
+    public DownloaderTaskStatus f = DownloaderTaskStatus.PENDING;
+  }
+  
+  public static final class b
+  {
+    private static rj a = new rj();
+  }
+  
+  public static abstract interface c
+  {
+    public abstract void a(rj.a parama);
+    
+    public abstract void b(rj.a parama);
+    
+    public abstract void c(rj.a parama);
+    
+    public abstract void d(rj.a parama);
   }
 }
 

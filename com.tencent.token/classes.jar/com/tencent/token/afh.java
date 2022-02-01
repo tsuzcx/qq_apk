@@ -1,8 +1,21 @@
 package com.tencent.token;
 
+import com.tencent.turingfd.sdk.qps.Codlin;
+import java.util.ArrayList;
+import java.util.List;
+
 public final class afh
 {
-  public static int a;
+  public Codlin a;
+  public List<String> b;
+  
+  public afh(Codlin paramCodlin, List<String> paramList)
+  {
+    ArrayList localArrayList = new ArrayList();
+    this.b = localArrayList;
+    this.a = paramCodlin;
+    localArrayList.addAll(paramList);
+  }
 }
 
 

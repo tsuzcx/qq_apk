@@ -1,46 +1,121 @@
 package com.tencent.token;
 
-import android.graphics.Canvas;
-import android.graphics.ColorFilter;
-import android.graphics.Paint;
-import android.graphics.Paint.Style;
-import android.graphics.drawable.Drawable;
+import android.view.InflateException;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.token.core.bean.QQUser;
+import com.tencent.token.ui.ScanLoginAccountListActivity;
 
 public final class yt
-  extends Drawable
+  extends BaseAdapter
 {
-  private int a;
-  private Paint b;
-  private float c;
-  private float d;
-  private float e;
-  
-  public yt(int paramInt, float paramFloat1, float paramFloat2, float paramFloat3)
+  public boolean a;
+  ScanLoginAccountListActivity b;
+  private LayoutInflater c;
+  private View.OnClickListener d = new View.OnClickListener()
   {
-    this.a = paramInt;
-    this.b = new Paint();
-    this.b.setColor(this.a);
-    this.b.setAlpha(154);
-    this.b.setAntiAlias(true);
-    this.b.setStyle(Paint.Style.FILL);
-    this.c = paramFloat1;
-    this.d = paramFloat2;
-    this.e = paramFloat3;
+    public final void onClick(View paramAnonymousView)
+    {
+      yt.this.b.addUser();
+    }
+  };
+  
+  public yt(ScanLoginAccountListActivity paramScanLoginAccountListActivity)
+  {
+    this.b = paramScanLoginAccountListActivity;
+    this.c = LayoutInflater.from(this.b);
   }
   
-  public final void draw(Canvas paramCanvas)
+  public final int getCount()
   {
-    paramCanvas.drawCircle(this.c, this.d, this.e, this.b);
+    int i = th.a().k.a();
+    if (i >= 3) {
+      return 3;
+    }
+    return i + 1;
   }
   
-  public final int getOpacity()
+  public final Object getItem(int paramInt)
   {
-    return 0;
+    return Integer.valueOf(paramInt);
   }
   
-  public final void setAlpha(int paramInt) {}
+  public final long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
   
-  public final void setColorFilter(ColorFilter paramColorFilter) {}
+  public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    int i = th.a().k.a();
+    if ((paramInt != 0) || (i == 0)) {}
+    try
+    {
+      paramViewGroup = this.c.inflate(2131296425, paramViewGroup, false);
+      paramViewGroup.findViewById(2131165448).setVisibility(0);
+      paramViewGroup.setOnClickListener(this.d);
+      return paramViewGroup;
+    }
+    catch (InflateException paramViewGroup)
+    {
+      ImageView localImageView1;
+      Object localObject1;
+      Object localObject2;
+      ImageView localImageView2;
+      ImageView localImageView3;
+      paramViewGroup.printStackTrace();
+    }
+    paramViewGroup = this.c.inflate(2131296427, paramViewGroup, false);
+    paramView = paramViewGroup;
+    if (paramInt < i)
+    {
+      paramViewGroup = this.c.inflate(2131296426, paramViewGroup, false);
+      paramView = paramViewGroup;
+      paramViewGroup = th.a().a(paramInt);
+      if (paramViewGroup == null) {
+        return paramView;
+      }
+      localImageView1 = (ImageView)paramView.findViewById(2131165856);
+      localObject1 = (TextView)paramView.findViewById(2131165857);
+      localObject2 = (TextView)paramView.findViewById(2131165867);
+      localImageView2 = (ImageView)paramView.findViewById(2131165801);
+      localImageView3 = (ImageView)paramView.findViewById(2131165433);
+      ((TextView)localObject1).setText(paramViewGroup.mNickName);
+      if ((paramViewGroup.mUinMask != null) && (paramViewGroup.mUinMask.length() > 0)) {
+        ((TextView)localObject2).setText(paramViewGroup.mUinMask);
+      } else {
+        ((TextView)localObject2).setText(aao.e(paramViewGroup.mRealUin));
+      }
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append(paramViewGroup.mRealUin);
+      localObject1 = ((StringBuilder)localObject1).toString();
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append(paramViewGroup.mUin);
+      localImageView1.setImageDrawable(aak.a((String)localObject1, ((StringBuilder)localObject2).toString()));
+      if (this.a)
+      {
+        localImageView3.setVisibility(0);
+        localImageView2.setVisibility(4);
+        localImageView3.setTag(paramViewGroup);
+        localImageView3.setOnClickListener(this.b.mDeleteListener);
+        return paramView;
+      }
+      localImageView2.setVisibility(0);
+      localImageView3.setVisibility(4);
+      paramView.setTag(paramViewGroup);
+      paramView.setOnClickListener(this.b.mLoginListener);
+      return paramView;
+    }
+    paramViewGroup = this.c.inflate(2131296425, paramViewGroup, false);
+    paramViewGroup.setOnClickListener(this.d);
+    return paramViewGroup;
+    return paramView;
+  }
 }
 
 

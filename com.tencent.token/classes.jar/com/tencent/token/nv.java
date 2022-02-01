@@ -1,33 +1,27 @@
 package com.tencent.token;
 
-import java.net.Socket;
-import java.util.ArrayList;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 
-public abstract interface nv
+public final class nv
 {
-  public abstract void a();
+  public String a;
+  public String b;
   
-  public abstract void a(int paramInt);
+  public static void a(String paramString1, String paramString2)
+  {
+    lv.a().getSharedPreferences("Access_Preferences", 0).edit().putString(paramString1, paramString2).commit();
+  }
   
-  public abstract void a(String paramString);
-  
-  public abstract void a(ArrayList paramArrayList);
-  
-  public abstract void a(int[] paramArrayOfInt);
-  
-  public abstract int b();
-  
-  public abstract void b(int paramInt);
-  
-  public abstract void b(ArrayList paramArrayList);
-  
-  public abstract Socket c();
-  
-  public abstract int d();
-  
-  public abstract int e();
-  
-  public abstract ni f();
+  public final String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder("detectTaskCode:");
+    localStringBuilder.append(this.a);
+    localStringBuilder.append("ipInfo:");
+    localStringBuilder.append(this.b);
+    return localStringBuilder.toString();
+  }
 }
 
 

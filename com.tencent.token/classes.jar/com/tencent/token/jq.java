@@ -1,33 +1,30 @@
 package com.tencent.token;
 
-import com.qq.taf.jce.JceInputStream;
-import com.qq.taf.jce.JceOutputStream;
-import com.qq.taf.jce.JceStruct;
+import java.io.Serializable;
 
 public final class jq
-  extends JceStruct
+  implements Serializable
 {
-  public long a = 0L;
-  public long b = 0L;
+  public static final jq a = new jq(0, 0, "CT_NONE");
+  public static final jq b = new jq(1, 1, "CT_GPRS");
+  public static final jq c = new jq(2, 2, "CT_WIFI");
+  public static final jq d = new jq(3, 3, "CT_GPRS_WAP");
+  public static final jq e = new jq(4, 4, "CT_GPRS_NET");
+  public static final jq f = new jq(5, 5, "CT_3G_NET");
+  private static jq[] h = new jq[6];
+  private int i;
+  private String j = new String();
   
-  public jq() {}
-  
-  public jq(long paramLong1, long paramLong2)
+  private jq(int paramInt1, int paramInt2, String paramString)
   {
-    this.a = paramLong1;
-    this.b = paramLong2;
+    this.j = paramString;
+    this.i = paramInt2;
+    h[paramInt1] = this;
   }
   
-  public final void readFrom(JceInputStream paramJceInputStream)
+  public final String toString()
   {
-    this.a = paramJceInputStream.read(this.a, 0, true);
-    this.b = paramJceInputStream.read(this.b, 1, true);
-  }
-  
-  public final void writeTo(JceOutputStream paramJceOutputStream)
-  {
-    paramJceOutputStream.write(this.a, 0);
-    paramJceOutputStream.write(this.b, 1);
+    return this.j;
   }
 }
 

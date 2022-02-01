@@ -1,102 +1,181 @@
 package com.tencent.token;
 
-public final class ed
+public final class ed<E>
+  implements Cloneable
 {
-  public static abstract interface a<T>
+  public static final Object a = new Object();
+  public boolean b = false;
+  public long[] c;
+  public Object[] d;
+  public int e;
+  
+  public ed()
   {
-    public abstract T a();
-    
-    public abstract boolean a(T paramT);
+    this((byte)0);
   }
   
-  public static class b<T>
-    implements ed.a<T>
+  private ed(byte paramByte)
   {
-    private final Object[] a;
-    private int b;
-    
-    public b(int paramInt)
+    paramByte = ea.b(10);
+    this.c = new long[paramByte];
+    this.d = new Object[paramByte];
+    this.e = 0;
+  }
+  
+  private long a(int paramInt)
+  {
+    if (this.b) {
+      b();
+    }
+    return this.c[paramInt];
+  }
+  
+  private ed<E> a()
+  {
+    for (;;)
     {
-      if (paramInt > 0)
+      try
       {
-        this.a = new Object[paramInt];
+        localed = (ed)super.clone();
+      }
+      catch (CloneNotSupportedException localCloneNotSupportedException1)
+      {
+        ed localed;
+        continue;
+        return localCloneNotSupportedException1;
+      }
+      try
+      {
+        localed.c = ((long[])this.c.clone());
+        localed.d = ((Object[])this.d.clone());
+        return localed;
+      }
+      catch (CloneNotSupportedException localCloneNotSupportedException2) {}
+    }
+    return null;
+  }
+  
+  private E b(int paramInt)
+  {
+    if (this.b) {
+      b();
+    }
+    return this.d[paramInt];
+  }
+  
+  private void b()
+  {
+    int m = this.e;
+    long[] arrayOfLong = this.c;
+    Object[] arrayOfObject = this.d;
+    int i = 0;
+    int k;
+    for (int j = 0; i < m; j = k)
+    {
+      Object localObject = arrayOfObject[i];
+      k = j;
+      if (localObject != a)
+      {
+        if (i != j)
+        {
+          arrayOfLong[j] = arrayOfLong[i];
+          arrayOfObject[j] = localObject;
+          arrayOfObject[i] = null;
+        }
+        k = j + 1;
+      }
+      i += 1;
+    }
+    this.b = false;
+    this.e = j;
+  }
+  
+  public final void a(long paramLong, E paramE)
+  {
+    int i = ea.a(this.c, this.e, paramLong);
+    if (i >= 0)
+    {
+      this.d[i] = paramE;
+      return;
+    }
+    int j = i ^ 0xFFFFFFFF;
+    Object localObject1;
+    if (j < this.e)
+    {
+      localObject1 = this.d;
+      if (localObject1[j] == a)
+      {
+        this.c[j] = paramLong;
+        localObject1[j] = paramE;
         return;
       }
-      throw new IllegalArgumentException("The max pool size must be > 0");
     }
-    
-    public T a()
+    i = j;
+    if (this.b)
     {
-      int i = this.b;
-      if (i > 0)
+      i = j;
+      if (this.e >= this.c.length)
       {
-        int j = i - 1;
-        Object[] arrayOfObject = this.a;
-        Object localObject = arrayOfObject[j];
-        arrayOfObject[j] = null;
-        this.b = (i - 1);
-        return localObject;
+        b();
+        i = ea.a(this.c, this.e, paramLong) ^ 0xFFFFFFFF;
       }
-      return null;
     }
-    
-    public boolean a(T paramT)
+    j = this.e;
+    if (j >= this.c.length)
     {
-      int i = 0;
-      while (i < this.b)
-      {
-        if (this.a[i] == paramT)
-        {
-          i = 1;
-          break label34;
-        }
-        i += 1;
-      }
-      i = 0;
-      label34:
-      if (i == 0)
-      {
-        i = this.b;
-        Object[] arrayOfObject = this.a;
-        if (i < arrayOfObject.length)
-        {
-          arrayOfObject[i] = paramT;
-          this.b = (i + 1);
-          return true;
-        }
-        return false;
-      }
-      throw new IllegalStateException("Already in the pool!");
+      j = ea.b(j + 1);
+      localObject1 = new long[j];
+      Object[] arrayOfObject = new Object[j];
+      Object localObject2 = this.c;
+      System.arraycopy(localObject2, 0, localObject1, 0, localObject2.length);
+      localObject2 = this.d;
+      System.arraycopy(localObject2, 0, arrayOfObject, 0, localObject2.length);
+      this.c = ((long[])localObject1);
+      this.d = arrayOfObject;
     }
+    j = this.e;
+    if (j - i != 0)
+    {
+      localObject1 = this.c;
+      int k = i + 1;
+      System.arraycopy(localObject1, i, localObject1, k, j - i);
+      localObject1 = this.d;
+      System.arraycopy(localObject1, i, localObject1, k, this.e - i);
+    }
+    this.c[i] = paramLong;
+    this.d[i] = paramE;
+    this.e += 1;
   }
   
-  public static final class c<T>
-    extends ed.b<T>
+  public final String toString()
   {
-    private final Object a = new Object();
-    
-    public c()
-    {
-      super();
+    if (this.b) {
+      b();
     }
-    
-    public final T a()
+    int i = this.e;
+    if (i <= 0) {
+      return "{}";
+    }
+    StringBuilder localStringBuilder = new StringBuilder(i * 28);
+    localStringBuilder.append('{');
+    i = 0;
+    while (i < this.e)
     {
-      synchronized (this.a)
-      {
-        Object localObject2 = super.a();
-        return localObject2;
+      if (i > 0) {
+        localStringBuilder.append(", ");
       }
-    }
-    
-    public final boolean a(T paramT)
-    {
-      synchronized (this.a)
-      {
-        boolean bool = super.a(paramT);
-        return bool;
+      localStringBuilder.append(a(i));
+      localStringBuilder.append('=');
+      Object localObject = b(i);
+      if (localObject != this) {
+        localStringBuilder.append(localObject);
+      } else {
+        localStringBuilder.append("(this Map)");
       }
+      i += 1;
     }
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 

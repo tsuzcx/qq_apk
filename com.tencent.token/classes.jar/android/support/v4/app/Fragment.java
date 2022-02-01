@@ -20,27 +20,28 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnCreateContextMenuListener;
 import android.view.ViewGroup;
-import com.tencent.token.au;
-import com.tencent.token.au.a;
-import com.tencent.token.aw;
-import com.tencent.token.ax;
-import com.tencent.token.bh;
-import com.tencent.token.bx;
-import com.tencent.token.bz;
+import com.tencent.token.av;
+import com.tencent.token.av.a;
+import com.tencent.token.ay;
+import com.tencent.token.az;
+import com.tencent.token.bl;
 import com.tencent.token.cb;
-import com.tencent.token.cc;
-import com.tencent.token.co;
-import com.tencent.token.cp;
-import com.tencent.token.dx;
-import com.tencent.token.ef;
-import com.tencent.token.ek;
+import com.tencent.token.cd;
+import com.tencent.token.ce;
+import com.tencent.token.cf;
+import com.tencent.token.cg;
+import com.tencent.token.cs;
+import com.tencent.token.ct;
+import com.tencent.token.eb;
+import com.tencent.token.ej;
+import com.tencent.token.eo;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 
 public class Fragment
-  implements ComponentCallbacks, View.OnCreateContextMenuListener, aw
+  implements ComponentCallbacks, View.OnCreateContextMenuListener, ay
 {
-  private static final ef<String, Class<?>> V = new ef();
+  private static final ej<String, Class<?>> V = new ej();
   static final Object a = new Object();
   public String A;
   public boolean B;
@@ -62,7 +63,7 @@ public class Fragment
   public float R;
   public LayoutInflater S;
   public boolean T;
-  public ax U = new ax(this);
+  public az U = new az(this);
   public int b = 0;
   public Bundle c;
   public SparseArray<Parcelable> d;
@@ -80,16 +81,16 @@ public class Fragment
   public boolean p;
   public boolean q;
   public int r;
-  public cb s;
-  public bz t;
-  public cb u;
-  public cc v;
-  public bh w;
+  public cf s;
+  public cd t;
+  public cf u;
+  public cg v;
+  public bl w;
   public Fragment x;
   public int y;
   public int z;
   
-  private void C()
+  private void G()
   {
     Object localObject = this.O;
     if (localObject == null)
@@ -107,12 +108,12 @@ public class Fragment
     }
   }
   
-  private void D()
+  private void H()
   {
     if (this.t != null)
     {
-      this.u = new cb();
-      this.u.a(this.t, new bx()
+      this.u = new cf();
+      this.u.a(this.t, new cb()
       {
         public final Fragment a(Context paramAnonymousContext, String paramAnonymousString, Bundle paramAnonymousBundle)
         {
@@ -137,7 +138,7 @@ public class Fragment
     throw new IllegalStateException("Fragment has not been attached yet.");
   }
   
-  private a E()
+  private a I()
   {
     if (this.O == null) {
       this.O = new a();
@@ -244,7 +245,43 @@ public class Fragment
     return false;
   }
   
-  public final boolean A()
+  public final cs A()
+  {
+    a locala = this.O;
+    if (locala == null) {
+      return null;
+    }
+    return locala.p;
+  }
+  
+  public final View B()
+  {
+    a locala = this.O;
+    if (locala == null) {
+      return null;
+    }
+    return locala.a;
+  }
+  
+  public final Animator C()
+  {
+    a locala = this.O;
+    if (locala == null) {
+      return null;
+    }
+    return locala.b;
+  }
+  
+  public final int D()
+  {
+    a locala = this.O;
+    if (locala == null) {
+      return 0;
+    }
+    return locala.c;
+  }
+  
+  public final boolean E()
   {
     a locala = this.O;
     if (locala == null) {
@@ -253,7 +290,7 @@ public class Fragment
     return locala.q;
   }
   
-  public final boolean B()
+  public final boolean F()
   {
     a locala = this.O;
     if (locala == null) {
@@ -267,11 +304,16 @@ public class Fragment
     if (paramString.equals(this.g)) {
       return this;
     }
-    cb localcb = this.u;
-    if (localcb != null) {
-      return localcb.b(paramString);
+    cf localcf = this.u;
+    if (localcf != null) {
+      return localcf.b(paramString);
     }
     return null;
+  }
+  
+  public void a()
+  {
+    this.H = true;
   }
   
   public final void a(int paramInt)
@@ -279,7 +321,7 @@ public class Fragment
     if ((this.O == null) && (paramInt == 0)) {
       return;
     }
-    E().d = paramInt;
+    I().d = paramInt;
   }
   
   public final void a(int paramInt1, int paramInt2)
@@ -287,7 +329,7 @@ public class Fragment
     if ((this.O == null) && (paramInt1 == 0) && (paramInt2 == 0)) {
       return;
     }
-    E();
+    I();
     a locala = this.O;
     locala.e = paramInt1;
     locala.f = paramInt2;
@@ -312,15 +354,15 @@ public class Fragment
   
   public final void a(Animator paramAnimator)
   {
-    E().b = paramAnimator;
+    I().b = paramAnimator;
   }
   
   public final void a(Configuration paramConfiguration)
   {
     onConfigurationChanged(paramConfiguration);
-    cb localcb = this.u;
-    if (localcb != null) {
-      localcb.a(paramConfiguration);
+    cf localcf = this.u;
+    if (localcf != null) {
+      localcf.a(paramConfiguration);
     }
   }
   
@@ -332,7 +374,7 @@ public class Fragment
       if (paramBundle != null)
       {
         if (this.u == null) {
-          D();
+          H();
         }
         this.u.a(paramBundle, this.v);
         this.v = null;
@@ -343,7 +385,7 @@ public class Fragment
   
   public final void a(c paramc)
   {
-    E();
+    I();
     if (paramc == this.O.r) {
       return;
     }
@@ -360,20 +402,15 @@ public class Fragment
   
   public final void a(View paramView)
   {
-    E().a = paramView;
+    I().a = paramView;
   }
   
   public final void a(boolean paramBoolean)
   {
-    cb localcb = this.u;
-    if (localcb != null) {
-      localcb.a(paramBoolean);
+    cf localcf = this.u;
+    if (localcf != null) {
+      localcf.a(paramBoolean);
     }
-  }
-  
-  public final boolean a()
-  {
-    return this.r > 0;
   }
   
   public final boolean a(Menu paramMenu)
@@ -391,10 +428,10 @@ public class Fragment
           bool2 = true;
         }
       }
-      cb localcb = this.u;
+      cf localcf = this.u;
       bool1 = bool2;
-      if (localcb != null) {
-        bool1 = bool2 | localcb.a(paramMenu);
+      if (localcf != null) {
+        bool1 = bool2 | localcf.a(paramMenu);
       }
     }
     return bool1;
@@ -415,10 +452,10 @@ public class Fragment
           bool2 = true;
         }
       }
-      cb localcb = this.u;
+      cf localcf = this.u;
       bool1 = bool2;
-      if (localcb != null) {
-        bool1 = bool2 | localcb.a(paramMenu, paramMenuInflater);
+      if (localcf != null) {
+        bool1 = bool2 | localcf.a(paramMenu, paramMenuInflater);
       }
     }
     return bool1;
@@ -428,51 +465,29 @@ public class Fragment
   {
     if (!this.B)
     {
-      cb localcb = this.u;
-      if ((localcb != null) && (localcb.a(paramMenuItem))) {
+      cf localcf = this.u;
+      if ((localcf != null) && (localcf.a(paramMenuItem))) {
         return true;
       }
     }
     return false;
   }
   
-  public final LayoutInflater b()
+  public void b()
   {
-    Object localObject = this.t;
-    if (localObject != null)
-    {
-      localObject = ((bz)localObject).c();
-      if (this.u == null)
-      {
-        D();
-        int i1 = this.b;
-        if (i1 >= 5) {
-          this.u.n();
-        } else if (i1 >= 4) {
-          this.u.m();
-        } else if (i1 >= 2) {
-          this.u.l();
-        } else if (i1 > 0) {
-          this.u.k();
-        }
-      }
-      ek.b((LayoutInflater)localObject, this.u);
-      this.S = ((LayoutInflater)localObject);
-      return this.S;
-    }
-    throw new IllegalStateException("onGetLayoutInflater() cannot be executed until the Fragment is attached to the FragmentManager.");
+    this.H = true;
   }
   
   public final void b(int paramInt)
   {
-    E().c = paramInt;
+    I().c = paramInt;
   }
   
   public final void b(Bundle paramBundle)
   {
-    cb localcb = this.u;
-    if (localcb != null) {
-      localcb.j();
+    cf localcf = this.u;
+    if (localcf != null) {
+      localcf.j();
     }
     this.b = 1;
     int i1 = 0;
@@ -492,31 +507,31 @@ public class Fragment
     this.T = true;
     if (this.H)
     {
-      this.U.a(au.a.ON_CREATE);
+      this.U.a(av.a.ON_CREATE);
       return;
     }
     paramBundle = new StringBuilder("Fragment ");
     paramBundle.append(this);
     paramBundle.append(" did not call through to super.onCreate()");
-    throw new cp(paramBundle.toString());
+    throw new ct(paramBundle.toString());
   }
   
   public final void b(Menu paramMenu)
   {
     if (!this.B)
     {
-      cb localcb = this.u;
-      if (localcb != null) {
-        localcb.b(paramMenu);
+      cf localcf = this.u;
+      if (localcf != null) {
+        localcf.b(paramMenu);
       }
     }
   }
   
   public final void b(boolean paramBoolean)
   {
-    cb localcb = this.u;
-    if (localcb != null) {
-      localcb.b(paramBoolean);
+    cf localcf = this.u;
+    if (localcf != null) {
+      localcf.b(paramBoolean);
     }
   }
   
@@ -524,27 +539,19 @@ public class Fragment
   {
     if (!this.B)
     {
-      cb localcb = this.u;
-      if ((localcb != null) && (localcb.b(paramMenuItem))) {
+      cf localcf = this.u;
+      if ((localcf != null) && (localcf.b(paramMenuItem))) {
         return true;
       }
     }
     return false;
   }
   
-  public final void c()
+  public void c()
   {
     this.H = true;
-    Object localObject = this.t;
-    if (localObject == null) {
-      localObject = null;
-    } else {
-      localObject = ((bz)localObject).b;
-    }
-    if (localObject != null)
-    {
-      this.H = false;
-      this.H = true;
+    if ((this.w != null) && (!this.t.f.s)) {
+      this.w.a();
     }
   }
   
@@ -553,7 +560,7 @@ public class Fragment
     Object localObject = this.u;
     if (localObject != null)
     {
-      localObject = ((cb)localObject).i();
+      localObject = ((cf)localObject).i();
       if (localObject != null) {
         paramBundle.putParcelable("android:support:fragments", (Parcelable)localObject);
       }
@@ -562,28 +569,31 @@ public class Fragment
   
   public final void c(boolean paramBoolean)
   {
-    E().s = paramBoolean;
+    I().s = paramBoolean;
   }
   
-  public final Object d()
+  public final boolean d()
   {
-    a locala = this.O;
-    if (locala == null) {
-      return null;
-    }
-    return locala.g;
+    return this.r > 0;
   }
   
-  public final Object e()
+  public final ce e()
   {
-    a locala = this.O;
-    if (locala == null) {
-      return null;
+    if (this.u == null)
+    {
+      H();
+      int i1 = this.b;
+      if (i1 >= 5) {
+        this.u.n();
+      } else if (i1 >= 4) {
+        this.u.m();
+      } else if (i1 >= 2) {
+        this.u.l();
+      } else if (i1 > 0) {
+        this.u.k();
+      }
     }
-    if (locala.h == a) {
-      return d();
-    }
-    return this.O.h;
+    return this.u;
   }
   
   public final boolean equals(Object paramObject)
@@ -591,28 +601,37 @@ public class Fragment
     return super.equals(paramObject);
   }
   
-  public final Object f()
+  public final LayoutInflater f()
   {
-    a locala = this.O;
-    if (locala == null) {
-      return null;
+    Object localObject = this.t;
+    if (localObject != null)
+    {
+      localObject = ((cd)localObject).c();
+      e();
+      eo.b((LayoutInflater)localObject, this.u);
+      this.S = ((LayoutInflater)localObject);
+      return this.S;
     }
-    return locala.i;
+    throw new IllegalStateException("onGetLayoutInflater() cannot be executed until the Fragment is attached to the FragmentManager.");
   }
   
-  public final Object g()
+  public final void g()
   {
-    a locala = this.O;
-    if (locala == null) {
-      return null;
+    this.H = true;
+    Object localObject = this.t;
+    if (localObject == null) {
+      localObject = null;
+    } else {
+      localObject = ((cd)localObject).b;
     }
-    if (locala.j == a) {
-      return f();
+    if (localObject != null)
+    {
+      this.H = false;
+      this.H = true;
     }
-    return this.O.j;
   }
   
-  public au getLifecycle()
+  public av getLifecycle()
   {
     return this.U;
   }
@@ -623,7 +642,7 @@ public class Fragment
     if (locala == null) {
       return null;
     }
-    return locala.k;
+    return locala.g;
   }
   
   public final int hashCode()
@@ -637,13 +656,55 @@ public class Fragment
     if (locala == null) {
       return null;
     }
-    if (locala.l == a) {
+    if (locala.h == a) {
       return h();
+    }
+    return this.O.h;
+  }
+  
+  public final Object j()
+  {
+    a locala = this.O;
+    if (locala == null) {
+      return null;
+    }
+    return locala.i;
+  }
+  
+  public final Object k()
+  {
+    a locala = this.O;
+    if (locala == null) {
+      return null;
+    }
+    if (locala.j == a) {
+      return j();
+    }
+    return this.O.j;
+  }
+  
+  public final Object l()
+  {
+    a locala = this.O;
+    if (locala == null) {
+      return null;
+    }
+    return locala.k;
+  }
+  
+  public final Object m()
+  {
+    a locala = this.O;
+    if (locala == null) {
+      return null;
+    }
+    if (locala.l == a) {
+      return l();
     }
     return this.O.l;
   }
   
-  public final boolean j()
+  public final boolean n()
   {
     a locala = this.O;
     if ((locala != null) && (locala.n != null)) {
@@ -652,94 +713,13 @@ public class Fragment
     return true;
   }
   
-  public final boolean k()
+  public final boolean o()
   {
     a locala = this.O;
     if ((locala != null) && (locala.m != null)) {
       return this.O.m.booleanValue();
     }
     return true;
-  }
-  
-  public final void l()
-  {
-    cb localcb = this.s;
-    if ((localcb != null) && (localcb.m != null))
-    {
-      if (Looper.myLooper() != this.s.m.d.getLooper())
-      {
-        this.s.m.d.postAtFrontOfQueue(new Runnable()
-        {
-          public final void run()
-          {
-            Fragment.a(Fragment.this);
-          }
-        });
-        return;
-      }
-      C();
-      return;
-    }
-    E().q = false;
-  }
-  
-  public final View m()
-  {
-    cb localcb = this.u;
-    if (localcb != null) {
-      localcb.j();
-    }
-    this.q = true;
-    return null;
-  }
-  
-  public final void n()
-  {
-    Object localObject = this.u;
-    if (localObject != null) {
-      ((cb)localObject).j();
-    }
-    this.b = 2;
-    this.H = false;
-    this.H = true;
-    if (this.H)
-    {
-      localObject = this.u;
-      if (localObject != null) {
-        ((cb)localObject).l();
-      }
-      return;
-    }
-    localObject = new StringBuilder("Fragment ");
-    ((StringBuilder)localObject).append(this);
-    ((StringBuilder)localObject).append(" did not call through to super.onActivityCreated()");
-    throw new cp(((StringBuilder)localObject).toString());
-  }
-  
-  public final void o()
-  {
-    Object localObject = this.u;
-    if (localObject != null)
-    {
-      ((cb)localObject).j();
-      this.u.h();
-    }
-    this.b = 4;
-    this.H = false;
-    this.H = true;
-    if (this.H)
-    {
-      localObject = this.u;
-      if (localObject != null) {
-        ((cb)localObject).m();
-      }
-      this.U.a(au.a.ON_START);
-      return;
-    }
-    localObject = new StringBuilder("Fragment ");
-    ((StringBuilder)localObject).append(this);
-    ((StringBuilder)localObject).append(" did not call through to super.onStart()");
-    throw new cp(((StringBuilder)localObject).toString());
   }
   
   public void onConfigurationChanged(Configuration paramConfiguration)
@@ -753,7 +733,7 @@ public class Fragment
     if (localObject == null) {
       localObject = null;
     } else {
-      localObject = (FragmentActivity)((bz)localObject).b;
+      localObject = (FragmentActivity)((cd)localObject).b;
     }
     ((FragmentActivity)localObject).onCreateContextMenu(paramContextMenu, paramView, paramContextMenuInfo);
   }
@@ -765,10 +745,91 @@ public class Fragment
   
   public final void p()
   {
+    cf localcf = this.s;
+    if ((localcf != null) && (localcf.m != null))
+    {
+      if (Looper.myLooper() != this.s.m.d.getLooper())
+      {
+        this.s.m.d.postAtFrontOfQueue(new Runnable()
+        {
+          public final void run()
+          {
+            Fragment.a(Fragment.this);
+          }
+        });
+        return;
+      }
+      G();
+      return;
+    }
+    I().q = false;
+  }
+  
+  public final View q()
+  {
+    cf localcf = this.u;
+    if (localcf != null) {
+      localcf.j();
+    }
+    this.q = true;
+    return null;
+  }
+  
+  public final void r()
+  {
+    Object localObject = this.u;
+    if (localObject != null) {
+      ((cf)localObject).j();
+    }
+    this.b = 2;
+    this.H = false;
+    this.H = true;
+    if (this.H)
+    {
+      localObject = this.u;
+      if (localObject != null) {
+        ((cf)localObject).l();
+      }
+      return;
+    }
+    localObject = new StringBuilder("Fragment ");
+    ((StringBuilder)localObject).append(this);
+    ((StringBuilder)localObject).append(" did not call through to super.onActivityCreated()");
+    throw new ct(((StringBuilder)localObject).toString());
+  }
+  
+  public final void s()
+  {
     Object localObject = this.u;
     if (localObject != null)
     {
-      ((cb)localObject).j();
+      ((cf)localObject).j();
+      this.u.h();
+    }
+    this.b = 4;
+    this.H = false;
+    this.H = true;
+    if (this.H)
+    {
+      localObject = this.u;
+      if (localObject != null) {
+        ((cf)localObject).m();
+      }
+      this.U.a(av.a.ON_START);
+      return;
+    }
+    localObject = new StringBuilder("Fragment ");
+    ((StringBuilder)localObject).append(this);
+    ((StringBuilder)localObject).append(" did not call through to super.onStart()");
+    throw new ct(((StringBuilder)localObject).toString());
+  }
+  
+  public final void t()
+  {
+    Object localObject = this.u;
+    if (localObject != null)
+    {
+      ((cf)localObject).j();
       this.u.h();
     }
     this.b = 5;
@@ -779,57 +840,22 @@ public class Fragment
       localObject = this.u;
       if (localObject != null)
       {
-        ((cb)localObject).n();
+        ((cf)localObject).n();
         this.u.h();
       }
-      this.U.a(au.a.ON_RESUME);
+      this.U.a(av.a.ON_RESUME);
       return;
     }
     localObject = new StringBuilder("Fragment ");
     ((StringBuilder)localObject).append(this);
     ((StringBuilder)localObject).append(" did not call through to super.onResume()");
-    throw new cp(((StringBuilder)localObject).toString());
-  }
-  
-  public final void q()
-  {
-    cb localcb = this.u;
-    if (localcb != null) {
-      localcb.j();
-    }
-  }
-  
-  public final void r()
-  {
-    onLowMemory();
-    cb localcb = this.u;
-    if (localcb != null) {
-      localcb.q();
-    }
-  }
-  
-  public final int s()
-  {
-    a locala = this.O;
-    if (locala == null) {
-      return 0;
-    }
-    return locala.d;
-  }
-  
-  public final int t()
-  {
-    a locala = this.O;
-    if (locala == null) {
-      return 0;
-    }
-    return locala.e;
+    throw new ct(((StringBuilder)localObject).toString());
   }
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder(128);
-    dx.a(this, localStringBuilder);
+    eb.a(this, localStringBuilder);
     if (this.f >= 0)
     {
       localStringBuilder.append(" #");
@@ -849,7 +875,42 @@ public class Fragment
     return localStringBuilder.toString();
   }
   
-  public final int u()
+  public final void u()
+  {
+    cf localcf = this.u;
+    if (localcf != null) {
+      localcf.j();
+    }
+  }
+  
+  public final void v()
+  {
+    onLowMemory();
+    cf localcf = this.u;
+    if (localcf != null) {
+      localcf.q();
+    }
+  }
+  
+  public final int w()
+  {
+    a locala = this.O;
+    if (locala == null) {
+      return 0;
+    }
+    return locala.d;
+  }
+  
+  public final int x()
+  {
+    a locala = this.O;
+    if (locala == null) {
+      return 0;
+    }
+    return locala.e;
+  }
+  
+  public final int y()
   {
     a locala = this.O;
     if (locala == null) {
@@ -858,49 +919,13 @@ public class Fragment
     return locala.f;
   }
   
-  public final co v()
+  public final cs z()
   {
     a locala = this.O;
     if (locala == null) {
       return null;
     }
     return locala.o;
-  }
-  
-  public final co w()
-  {
-    a locala = this.O;
-    if (locala == null) {
-      return null;
-    }
-    return locala.p;
-  }
-  
-  public final View x()
-  {
-    a locala = this.O;
-    if (locala == null) {
-      return null;
-    }
-    return locala.a;
-  }
-  
-  public final Animator y()
-  {
-    a locala = this.O;
-    if (locala == null) {
-      return null;
-    }
-    return locala.b;
-  }
-  
-  public final int z()
-  {
-    a locala = this.O;
-    if (locala == null) {
-      return 0;
-    }
-    return locala.c;
   }
   
   public static class SavedState
@@ -941,8 +966,8 @@ public class Fragment
     Object l = Fragment.a;
     Boolean m;
     Boolean n;
-    co o = null;
-    co p = null;
+    cs o = null;
+    cs p = null;
     boolean q;
     Fragment.c r;
     boolean s;

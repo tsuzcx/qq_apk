@@ -1,12 +1,18 @@
 package com.tencent.token;
 
-import java.io.PrintWriter;
+import android.support.v4.app.Fragment;
 
 public abstract class ch
 {
-  public abstract void a(String paramString, PrintWriter paramPrintWriter);
+  public abstract ch a(int paramInt, Fragment paramFragment, String paramString);
   
-  public static abstract interface a<D> {}
+  public abstract ch a(Fragment paramFragment);
+  
+  public abstract ch a(Fragment paramFragment, String paramString);
+  
+  public abstract int b();
+  
+  public abstract ch b(Fragment paramFragment);
 }
 
 

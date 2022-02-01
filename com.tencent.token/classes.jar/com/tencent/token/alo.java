@@ -1,15 +1,21 @@
 package com.tencent.token;
 
-import java.io.Closeable;
-
-public abstract interface alo
-  extends Closeable
+public final class alo
 {
-  public abstract long a(aky paramaky, long paramLong);
-  
-  public abstract alp a();
-  
-  public abstract void close();
+  public static String a(akf paramakf)
+  {
+    String str = paramakf.e();
+    paramakf = paramakf.g();
+    if (paramakf != null)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(str);
+      localStringBuilder.append('?');
+      localStringBuilder.append(paramakf);
+      return localStringBuilder.toString();
+    }
+    return str;
+  }
 }
 
 

@@ -2,41 +2,27 @@ package com.tencent.token;
 
 import android.os.Bundle;
 
-public final class on
+public abstract class on
 {
-  public static final class a
-    extends og
+  public String a;
+  public String b;
+  
+  public abstract int a();
+  
+  public void a(Bundle paramBundle)
   {
-    public String c;
-    public String d;
-    public String e;
-    
-    public final int a()
-    {
-      return 26;
-    }
-    
-    public final void a(Bundle paramBundle)
-    {
-      super.a(paramBundle);
-      paramBundle.putString("_openbusinessview_businessType", this.c);
-      paramBundle.putString("_openbusinessview__query_info", this.d);
-      paramBundle.putString("_openbusinessview_extInfo", this.e);
-    }
-    
-    public final void b(Bundle paramBundle)
-    {
-      super.b(paramBundle);
-      this.c = paramBundle.getString("_openbusinessview_businessType");
-      this.d = paramBundle.getString("_openbusinessview__query_info");
-      this.e = paramBundle.getString("_openbusinessview_extInfo");
-    }
-    
-    public final boolean b()
-    {
-      return !pg.a(this.c);
-    }
+    paramBundle.putInt("_wxapi_command_type", a());
+    paramBundle.putString("_wxapi_basereq_transaction", this.a);
+    paramBundle.putString("_wxapi_basereq_openid", this.b);
   }
+  
+  public void b(Bundle paramBundle)
+  {
+    this.a = pk.a(paramBundle, "_wxapi_basereq_transaction");
+    this.b = pk.a(paramBundle, "_wxapi_basereq_openid");
+  }
+  
+  public abstract boolean b();
 }
 
 

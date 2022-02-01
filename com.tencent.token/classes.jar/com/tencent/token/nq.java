@@ -1,123 +1,98 @@
 package com.tencent.token;
 
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.halley.scheduler.c.c;
-import com.tencent.halley.scheduler.c.i;
+import android.text.TextUtils;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
 
 public final class nq
 {
-  public int a;
-  public int b;
-  public int c;
-  public int d;
-  public int e;
-  public i f;
+  String a;
+  Map b;
   
-  public nq() {}
-  
-  public nq(c paramc)
+  public nq(String paramString)
   {
-    this.a = paramc.a;
-    this.b = paramc.b;
-    this.c = paramc.c;
-    this.d = paramc.d;
-    this.e = paramc.e;
-    this.f = paramc.f;
+    this.a = paramString;
+    this.b = new HashMap();
   }
   
-  private void c()
+  public final void a(a parama)
   {
-    int i = this.a;
-    if ((i < 10000) || (i > 60000)) {
-      this.a = 20000;
-    }
-    i = this.b;
-    if ((i < 10000) || (i > 60000)) {
-      this.b = 20000;
-    }
-    i = this.c;
-    if ((i < 3) || (i > 15)) {
-      this.c = 8;
-    }
-    i = this.d;
-    if ((i <= 0) || (i > 5)) {
-      this.d = 2;
-    }
-    i = this.e;
-    if ((i < 5) || (i > 2160)) {
-      this.e = 120;
-    }
+    this.b.put(parama.a, parama);
   }
   
-  public final void a()
+  public static final class a
   {
-    Object localObject = lo.a().getSharedPreferences("Access_Preferences", 0);
-    this.a = ((SharedPreferences)localObject).getInt("connectTimeout", 15000);
-    this.b = ((SharedPreferences)localObject).getInt("readTimeout", 15000);
-    this.c = ((SharedPreferences)localObject).getInt("apnCachedNum", 8);
-    this.d = ((SharedPreferences)localObject).getInt("parallelNum", 2);
-    this.e = ((SharedPreferences)localObject).getInt("expireTime", 120);
-    i locali = null;
-    localObject = ((SharedPreferences)localObject).getString("samplingInfo", null);
-    if (localObject != null)
+    String a;
+    String b;
+    public List c;
+    long d;
+    
+    public a(String paramString1, long paramLong, String paramString2)
     {
-      localObject = ((String)localObject).split(";");
-      locali = new i();
-      HashMap localHashMap = new HashMap();
-      int i = 0;
-      while (i < localObject.length - 1)
+      this.a = paramString1;
+      this.d = paramLong;
+      this.b = paramString2;
+      this.c = new ArrayList();
+    }
+    
+    public a(String paramString1, long paramLong, String paramString2, String paramString3, String paramString4)
+    {
+      this.a = paramString1;
+      this.d = paramLong;
+      this.b = paramString3;
+      this.c = a(paramString2);
+      if (!TextUtils.isEmpty(paramString4))
       {
-        String[] arrayOfString = localObject[i].split(",");
-        localHashMap.put(Integer.valueOf(Integer.parseInt(arrayOfString[0])), Byte.valueOf(Byte.parseByte(arrayOfString[1])));
-        i += 1;
+        paramString1 = paramString4.split(":");
+        if ((paramString1 != null) && (paramString1.length > 0)) {
+          new np(paramString1[0], Integer.parseInt(paramString1[1]));
+        }
       }
-      locali.a = localHashMap;
-      locali.b = Byte.parseByte(localObject[(localObject.length - 1)]);
     }
-    this.f = locali;
-    c();
-  }
-  
-  public final void b()
-  {
-    Object localObject = lo.a().getSharedPreferences("Access_Preferences", 0);
-    c();
-    ((SharedPreferences)localObject).edit().putInt("connectTimeout", this.a).commit();
-    ((SharedPreferences)localObject).edit().putInt("readTimeout", this.b).commit();
-    ((SharedPreferences)localObject).edit().putInt("apnCachedNum", this.c).commit();
-    ((SharedPreferences)localObject).edit().putInt("parallelNum", this.d).commit();
-    ((SharedPreferences)localObject).edit().putInt("expireTime", this.e).commit();
-    SharedPreferences.Editor localEditor = ((SharedPreferences)localObject).edit();
-    localObject = this.f;
-    StringBuilder localStringBuilder1 = new StringBuilder();
-    if (((i)localObject).a != null)
+    
+    private static ArrayList a(String paramString)
     {
-      Iterator localIterator = ((i)localObject).a.entrySet().iterator();
-      while (localIterator.hasNext())
+      ArrayList localArrayList = new ArrayList();
+      if (!TextUtils.isEmpty(paramString))
       {
-        Map.Entry localEntry = (Map.Entry)localIterator.next();
-        StringBuilder localStringBuilder2 = new StringBuilder();
-        localStringBuilder2.append(localEntry.getKey());
-        localStringBuilder2.append(",");
-        localStringBuilder2.append(localEntry.getValue());
-        localStringBuilder2.append(";");
-        localStringBuilder1.append(localStringBuilder2.toString());
+        paramString = paramString.split(",");
+        if ((paramString != null) && (paramString.length > 0))
+        {
+          int j = paramString.length;
+          int i = 0;
+          while (i < j)
+          {
+            String[] arrayOfString = paramString[i].split(":");
+            if ((arrayOfString != null) && (arrayOfString.length > 0)) {
+              localArrayList.add(new np(arrayOfString[0], Integer.parseInt(arrayOfString[1])));
+            }
+            i += 1;
+          }
+        }
       }
-      localStringBuilder1.append(((i)localObject).b);
-      localObject = localStringBuilder1.toString();
+      return localArrayList;
     }
-    else
+    
+    public final String a()
     {
-      localObject = null;
+      Object localObject = this.c;
+      if ((localObject != null) && (((List)localObject).size() != 0))
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localObject = ((List)localObject).iterator();
+        while (((Iterator)localObject).hasNext())
+        {
+          localStringBuilder.append(((np)((Iterator)localObject).next()).a());
+          localStringBuilder.append(",");
+        }
+        localStringBuilder.deleteCharAt(localStringBuilder.length() - 1);
+        return localStringBuilder.toString();
+      }
+      return "";
     }
-    localEditor.putString("samplingInfo", (String)localObject).commit();
   }
 }
 

@@ -1,173 +1,488 @@
 package com.tencent.token;
 
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.animation.AnimatorInflater;
+import android.animation.AnimatorSet;
+import android.animation.ArgbEvaluator;
+import android.animation.ObjectAnimator;
 import android.content.Context;
+import android.content.res.ColorStateList;
 import android.content.res.Resources;
 import android.content.res.Resources.Theme;
 import android.content.res.TypedArray;
-import android.graphics.Path;
-import android.graphics.PathMeasure;
+import android.graphics.Canvas;
+import android.graphics.ColorFilter;
+import android.graphics.PorterDuff.Mode;
+import android.graphics.Rect;
+import android.graphics.drawable.AnimatedVectorDrawable;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.Drawable.Callback;
+import android.graphics.drawable.Drawable.ConstantState;
+import android.os.Build.VERSION;
 import android.util.AttributeSet;
-import android.view.InflateException;
-import android.view.animation.Interpolator;
+import java.util.ArrayList;
+import java.util.List;
 import org.xmlpull.v1.XmlPullParser;
 
 public final class bq
-  implements Interpolator
+  extends bv
+  implements bp
 {
-  private float[] a;
-  private float[] b;
-  
-  public bq(Context paramContext, AttributeSet paramAttributeSet, XmlPullParser paramXmlPullParser)
+  final Drawable.Callback a = new Drawable.Callback()
   {
-    this(paramContext.getResources(), paramContext.getTheme(), paramAttributeSet, paramXmlPullParser);
+    public final void invalidateDrawable(Drawable paramAnonymousDrawable)
+    {
+      bq.this.invalidateSelf();
+    }
+    
+    public final void scheduleDrawable(Drawable paramAnonymousDrawable, Runnable paramAnonymousRunnable, long paramAnonymousLong)
+    {
+      bq.this.scheduleSelf(paramAnonymousRunnable, paramAnonymousLong);
+    }
+    
+    public final void unscheduleDrawable(Drawable paramAnonymousDrawable, Runnable paramAnonymousRunnable)
+    {
+      bq.this.unscheduleSelf(paramAnonymousRunnable);
+    }
+  };
+  private a c;
+  private Context d;
+  private ArgbEvaluator e = null;
+  private Animator.AnimatorListener f = null;
+  private ArrayList<Object> g = null;
+  
+  bq()
+  {
+    this(null, (byte)0);
   }
   
-  private bq(Resources paramResources, Resources.Theme paramTheme, AttributeSet paramAttributeSet, XmlPullParser paramXmlPullParser)
+  private bq(Context paramContext)
   {
-    paramResources = cx.a(paramResources, paramTheme, paramAttributeSet, bk.l);
-    if (cx.a(paramXmlPullParser, "pathData"))
-    {
-      paramTheme = cx.b(paramResources, paramXmlPullParser, "pathData", 4);
-      paramAttributeSet = cz.a(paramTheme);
-      if (paramAttributeSet != null) {
-        a(paramAttributeSet);
-      } else {
-        throw new InflateException("The path is null, which is created from ".concat(String.valueOf(paramTheme)));
-      }
-    }
-    else
-    {
-      if (!cx.a(paramXmlPullParser, "controlX1")) {
-        break label252;
-      }
-      if (!cx.a(paramXmlPullParser, "controlY1")) {
-        break label242;
-      }
-      float f1 = cx.a(paramResources, paramXmlPullParser, "controlX1", 0, 0.0F);
-      float f2 = cx.a(paramResources, paramXmlPullParser, "controlY1", 1, 0.0F);
-      boolean bool = cx.a(paramXmlPullParser, "controlX2");
-      if (bool != cx.a(paramXmlPullParser, "controlY2")) {
-        break label232;
-      }
-      if (!bool)
-      {
-        paramTheme = new Path();
-        paramTheme.moveTo(0.0F, 0.0F);
-        paramTheme.quadTo(f1, f2, 1.0F, 1.0F);
-        a(paramTheme);
-      }
-      else
-      {
-        float f3 = cx.a(paramResources, paramXmlPullParser, "controlX2", 2, 0.0F);
-        float f4 = cx.a(paramResources, paramXmlPullParser, "controlY2", 3, 0.0F);
-        paramTheme = new Path();
-        paramTheme.moveTo(0.0F, 0.0F);
-        paramTheme.cubicTo(f1, f2, f3, f4, 1.0F, 1.0F);
-        a(paramTheme);
-      }
-    }
-    paramResources.recycle();
-    return;
-    label232:
-    throw new InflateException("pathInterpolator requires both controlX2 and controlY2 for cubic Beziers.");
-    label242:
-    throw new InflateException("pathInterpolator requires the controlY1 attribute");
-    label252:
-    throw new InflateException("pathInterpolator requires the controlX1 attribute");
+    this(paramContext, (byte)0);
   }
   
-  private void a(Path paramPath)
+  private bq(Context paramContext, byte paramByte)
   {
-    int j = 0;
-    paramPath = new PathMeasure(paramPath, false);
-    float f1 = paramPath.getLength();
-    int k = Math.min(3000, (int)(f1 / 0.002F) + 1);
-    if (k > 0)
+    this.d = paramContext;
+    this.c = new a();
+  }
+  
+  public static bq a(Context paramContext, Resources paramResources, XmlPullParser paramXmlPullParser, AttributeSet paramAttributeSet, Resources.Theme paramTheme)
+  {
+    paramContext = new bq(paramContext);
+    paramContext.inflate(paramResources, paramXmlPullParser, paramAttributeSet, paramTheme);
+    return paramContext;
+  }
+  
+  private void a(Animator paramAnimator)
+  {
+    Object localObject;
+    if ((paramAnimator instanceof AnimatorSet))
     {
-      this.a = new float[k];
-      this.b = new float[k];
-      float[] arrayOfFloat = new float[2];
-      int i = 0;
-      while (i < k)
+      localObject = ((AnimatorSet)paramAnimator).getChildAnimations();
+      if (localObject != null)
       {
-        paramPath.getPosTan(i * f1 / (k - 1), arrayOfFloat, null);
-        this.a[i] = arrayOfFloat[0];
-        this.b[i] = arrayOfFloat[1];
-        i += 1;
-      }
-      if ((Math.abs(this.a[0]) <= 1.E-005D) && (Math.abs(this.b[0]) <= 1.E-005D))
-      {
-        arrayOfFloat = this.a;
-        i = k - 1;
-        if ((Math.abs(arrayOfFloat[i] - 1.0F) <= 1.E-005D) && (Math.abs(this.b[i] - 1.0F) <= 1.E-005D))
+        int i = 0;
+        while (i < ((List)localObject).size())
         {
-          i = 0;
-          f1 = 0.0F;
-          while (j < k)
+          a((Animator)((List)localObject).get(i));
+          i += 1;
+        }
+      }
+    }
+    if ((paramAnimator instanceof ObjectAnimator))
+    {
+      paramAnimator = (ObjectAnimator)paramAnimator;
+      localObject = paramAnimator.getPropertyName();
+      if (("fillColor".equals(localObject)) || ("strokeColor".equals(localObject)))
+      {
+        if (this.e == null) {
+          this.e = new ArgbEvaluator();
+        }
+        paramAnimator.setEvaluator(this.e);
+      }
+    }
+  }
+  
+  public final void applyTheme(Resources.Theme paramTheme)
+  {
+    if (this.b != null)
+    {
+      dk.a(this.b, paramTheme);
+      return;
+    }
+  }
+  
+  public final boolean canApplyTheme()
+  {
+    if (this.b != null) {
+      return dk.c(this.b);
+    }
+    return false;
+  }
+  
+  public final void draw(Canvas paramCanvas)
+  {
+    if (this.b != null)
+    {
+      this.b.draw(paramCanvas);
+      return;
+    }
+    this.c.b.draw(paramCanvas);
+    if (this.c.c.isStarted()) {
+      invalidateSelf();
+    }
+  }
+  
+  public final int getAlpha()
+  {
+    if (this.b != null) {
+      return dk.b(this.b);
+    }
+    return this.c.b.getAlpha();
+  }
+  
+  public final int getChangingConfigurations()
+  {
+    if (this.b != null) {
+      return this.b.getChangingConfigurations();
+    }
+    return super.getChangingConfigurations() | this.c.a;
+  }
+  
+  public final Drawable.ConstantState getConstantState()
+  {
+    if ((this.b != null) && (Build.VERSION.SDK_INT >= 24)) {
+      return new b(this.b.getConstantState());
+    }
+    return null;
+  }
+  
+  public final int getIntrinsicHeight()
+  {
+    if (this.b != null) {
+      return this.b.getIntrinsicHeight();
+    }
+    return this.c.b.getIntrinsicHeight();
+  }
+  
+  public final int getIntrinsicWidth()
+  {
+    if (this.b != null) {
+      return this.b.getIntrinsicWidth();
+    }
+    return this.c.b.getIntrinsicWidth();
+  }
+  
+  public final int getOpacity()
+  {
+    if (this.b != null) {
+      return this.b.getOpacity();
+    }
+    return this.c.b.getOpacity();
+  }
+  
+  public final void inflate(Resources paramResources, XmlPullParser paramXmlPullParser, AttributeSet paramAttributeSet)
+  {
+    inflate(paramResources, paramXmlPullParser, paramAttributeSet, null);
+  }
+  
+  public final void inflate(Resources paramResources, XmlPullParser paramXmlPullParser, AttributeSet paramAttributeSet, Resources.Theme paramTheme)
+  {
+    if (this.b != null)
+    {
+      dk.a(this.b, paramResources, paramXmlPullParser, paramAttributeSet, paramTheme);
+      return;
+    }
+    int i = paramXmlPullParser.getEventType();
+    int j = paramXmlPullParser.getDepth();
+    while ((i != 1) && ((paramXmlPullParser.getDepth() >= j + 1) || (i != 3)))
+    {
+      if (i == 2)
+      {
+        Object localObject1 = paramXmlPullParser.getName();
+        Object localObject2;
+        if ("animated-vector".equals(localObject1))
+        {
+          localObject1 = db.a(paramResources, paramTheme, paramAttributeSet, bo.e);
+          i = ((TypedArray)localObject1).getResourceId(0, 0);
+          if (i != 0)
           {
-            arrayOfFloat = this.a;
-            float f2 = arrayOfFloat[i];
-            if (f2 >= f1)
+            localObject2 = bw.a(paramResources, i, paramTheme);
+            ((bw)localObject2).d = false;
+            ((bw)localObject2).setCallback(this.a);
+            if (this.c.b != null) {
+              this.c.b.setCallback(null);
+            }
+            this.c.b = ((bw)localObject2);
+          }
+          ((TypedArray)localObject1).recycle();
+        }
+        else if ("target".equals(localObject1))
+        {
+          localObject2 = paramResources.obtainAttributes(paramAttributeSet, bo.f);
+          String str = ((TypedArray)localObject2).getString(0);
+          i = ((TypedArray)localObject2).getResourceId(1, 0);
+          if (i != 0)
+          {
+            localObject1 = this.d;
+            if (localObject1 != null)
             {
-              arrayOfFloat[j] = f2;
-              j += 1;
-              f1 = f2;
-              i += 1;
+              if (Build.VERSION.SDK_INT >= 24) {
+                localObject1 = AnimatorInflater.loadAnimator((Context)localObject1, i);
+              } else {
+                localObject1 = bs.a((Context)localObject1, ((Context)localObject1).getResources(), ((Context)localObject1).getTheme(), i);
+              }
+              ((Animator)localObject1).setTarget(this.c.b.c.b.h.get(str));
+              if (Build.VERSION.SDK_INT < 21) {
+                a((Animator)localObject1);
+              }
+              if (a.a(this.c) == null)
+              {
+                a.a(this.c, new ArrayList());
+                this.c.e = new dy();
+              }
+              a.a(this.c).add(localObject1);
+              this.c.e.put(localObject1, str);
             }
             else
             {
-              throw new IllegalArgumentException("The Path cannot loop back on itself, x :".concat(String.valueOf(f2)));
+              ((TypedArray)localObject2).recycle();
+              throw new IllegalStateException("Context can't be null when inflating animators");
             }
           }
-          if (!paramPath.nextContour()) {
-            return;
-          }
-          throw new IllegalArgumentException("The Path should be continuous, can't have 2+ contours");
+          ((TypedArray)localObject2).recycle();
         }
       }
-      paramPath = new StringBuilder("The Path must start at (0,0) and end at (1,1) start: ");
-      paramPath.append(this.a[0]);
-      paramPath.append(",");
-      paramPath.append(this.b[0]);
-      paramPath.append(" end:");
-      arrayOfFloat = this.a;
-      i = k - 1;
-      paramPath.append(arrayOfFloat[i]);
-      paramPath.append(",");
-      paramPath.append(this.b[i]);
-      throw new IllegalArgumentException(paramPath.toString());
+      i = paramXmlPullParser.next();
     }
-    throw new IllegalArgumentException("The Path has a invalid length ".concat(String.valueOf(f1)));
+    paramResources = this.c;
+    if (paramResources.c == null) {
+      paramResources.c = new AnimatorSet();
+    }
+    paramResources.c.playTogether(paramResources.d);
   }
   
-  public final float getInterpolation(float paramFloat)
+  public final boolean isAutoMirrored()
   {
-    if (paramFloat <= 0.0F) {
-      return 0.0F;
+    if (this.b != null) {
+      return dk.a(this.b);
     }
-    if (paramFloat >= 1.0F) {
-      return 1.0F;
+    return this.c.b.isAutoMirrored();
+  }
+  
+  public final boolean isRunning()
+  {
+    if (this.b != null) {
+      return ((AnimatedVectorDrawable)this.b).isRunning();
     }
-    int j = 0;
-    int i = this.a.length - 1;
-    while (i - j > 1)
+    return this.c.c.isRunning();
+  }
+  
+  public final boolean isStateful()
+  {
+    if (this.b != null) {
+      return this.b.isStateful();
+    }
+    return this.c.b.isStateful();
+  }
+  
+  public final Drawable mutate()
+  {
+    if (this.b != null) {
+      this.b.mutate();
+    }
+    return this;
+  }
+  
+  protected final void onBoundsChange(Rect paramRect)
+  {
+    if (this.b != null)
     {
-      int k = (j + i) / 2;
-      if (paramFloat < this.a[k]) {
-        i = k;
-      } else {
-        j = k;
-      }
+      this.b.setBounds(paramRect);
+      return;
     }
-    float[] arrayOfFloat = this.a;
-    float f = arrayOfFloat[i] - arrayOfFloat[j];
-    if (f == 0.0F) {
-      return this.b[j];
+    this.c.b.setBounds(paramRect);
+  }
+  
+  protected final boolean onLevelChange(int paramInt)
+  {
+    if (this.b != null) {
+      return this.b.setLevel(paramInt);
     }
-    paramFloat = (paramFloat - arrayOfFloat[j]) / f;
-    arrayOfFloat = this.b;
-    f = arrayOfFloat[j];
-    return f + paramFloat * (arrayOfFloat[i] - f);
+    return this.c.b.setLevel(paramInt);
+  }
+  
+  protected final boolean onStateChange(int[] paramArrayOfInt)
+  {
+    if (this.b != null) {
+      return this.b.setState(paramArrayOfInt);
+    }
+    return this.c.b.setState(paramArrayOfInt);
+  }
+  
+  public final void setAlpha(int paramInt)
+  {
+    if (this.b != null)
+    {
+      this.b.setAlpha(paramInt);
+      return;
+    }
+    this.c.b.setAlpha(paramInt);
+  }
+  
+  public final void setAutoMirrored(boolean paramBoolean)
+  {
+    if (this.b != null)
+    {
+      dk.a(this.b, paramBoolean);
+      return;
+    }
+    this.c.b.setAutoMirrored(paramBoolean);
+  }
+  
+  public final void setColorFilter(ColorFilter paramColorFilter)
+  {
+    if (this.b != null)
+    {
+      this.b.setColorFilter(paramColorFilter);
+      return;
+    }
+    this.c.b.setColorFilter(paramColorFilter);
+  }
+  
+  public final void setTint(int paramInt)
+  {
+    if (this.b != null)
+    {
+      dk.a(this.b, paramInt);
+      return;
+    }
+    this.c.b.setTint(paramInt);
+  }
+  
+  public final void setTintList(ColorStateList paramColorStateList)
+  {
+    if (this.b != null)
+    {
+      dk.a(this.b, paramColorStateList);
+      return;
+    }
+    this.c.b.setTintList(paramColorStateList);
+  }
+  
+  public final void setTintMode(PorterDuff.Mode paramMode)
+  {
+    if (this.b != null)
+    {
+      dk.a(this.b, paramMode);
+      return;
+    }
+    this.c.b.setTintMode(paramMode);
+  }
+  
+  public final boolean setVisible(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if (this.b != null) {
+      return this.b.setVisible(paramBoolean1, paramBoolean2);
+    }
+    this.c.b.setVisible(paramBoolean1, paramBoolean2);
+    return super.setVisible(paramBoolean1, paramBoolean2);
+  }
+  
+  public final void start()
+  {
+    if (this.b != null)
+    {
+      ((AnimatedVectorDrawable)this.b).start();
+      return;
+    }
+    if (this.c.c.isStarted()) {
+      return;
+    }
+    this.c.c.start();
+    invalidateSelf();
+  }
+  
+  public final void stop()
+  {
+    if (this.b != null)
+    {
+      ((AnimatedVectorDrawable)this.b).stop();
+      return;
+    }
+    this.c.c.end();
+  }
+  
+  static final class a
+    extends Drawable.ConstantState
+  {
+    int a;
+    bw b;
+    AnimatorSet c;
+    ArrayList<Animator> d;
+    dy<Animator, String> e;
+    
+    public final int getChangingConfigurations()
+    {
+      return this.a;
+    }
+    
+    public final Drawable newDrawable()
+    {
+      throw new IllegalStateException("No constant state support for SDK < 24.");
+    }
+    
+    public final Drawable newDrawable(Resources paramResources)
+    {
+      throw new IllegalStateException("No constant state support for SDK < 24.");
+    }
+  }
+  
+  static final class b
+    extends Drawable.ConstantState
+  {
+    private final Drawable.ConstantState a;
+    
+    public b(Drawable.ConstantState paramConstantState)
+    {
+      this.a = paramConstantState;
+    }
+    
+    public final boolean canApplyTheme()
+    {
+      return this.a.canApplyTheme();
+    }
+    
+    public final int getChangingConfigurations()
+    {
+      return this.a.getChangingConfigurations();
+    }
+    
+    public final Drawable newDrawable()
+    {
+      bq localbq = new bq();
+      localbq.b = this.a.newDrawable();
+      localbq.b.setCallback(localbq.a);
+      return localbq;
+    }
+    
+    public final Drawable newDrawable(Resources paramResources)
+    {
+      bq localbq = new bq();
+      localbq.b = this.a.newDrawable(paramResources);
+      localbq.b.setCallback(localbq.a);
+      return localbq;
+    }
+    
+    public final Drawable newDrawable(Resources paramResources, Resources.Theme paramTheme)
+    {
+      bq localbq = new bq();
+      localbq.b = this.a.newDrawable(paramResources, paramTheme);
+      localbq.b.setCallback(localbq.a);
+      return localbq;
+    }
   }
 }
 

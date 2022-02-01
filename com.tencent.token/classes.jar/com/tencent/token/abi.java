@@ -1,103 +1,107 @@
 package com.tencent.token;
 
-import java.io.Writer;
-import java.util.Iterator;
-import java.util.concurrent.ConcurrentLinkedQueue;
-import java.util.concurrent.atomic.AtomicInteger;
+import com.tencent.token.utils.encrypt.random.PRNGFixes;
+import com.tencent.token.utils.encrypt.random.SecureRandom;
+import oicq.wlogin_sdk.tools.MD5;
 
 public final class abi
-  implements Iterable<String>
 {
-  public ConcurrentLinkedQueue<String> a = null;
-  public AtomicInteger b = null;
-  
-  public final void a()
+  public static abe a()
   {
-    this.a.clear();
-    this.b.set(0);
+    byte[] arrayOfByte = new byte[14];
+    String str2 = System.getProperty("microedition.platform");
+    String str1 = str2;
+    if (str2 == null) {
+      str1 = "";
+    }
+    int j = Runtime.getRuntime().hashCode();
+    try
+    {
+      PRNGFixes.a();
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+    }
+    SecureRandom localSecureRandom1 = new SecureRandom();
+    SecureRandom localSecureRandom2 = new SecureRandom();
+    StringBuffer localStringBuffer = new StringBuffer();
+    localStringBuffer.append(str1);
+    localStringBuffer.append(localSecureRandom2.nextInt());
+    localStringBuffer.append(System.currentTimeMillis());
+    localStringBuffer.append(j);
+    localStringBuffer.append(new Object().hashCode());
+    localSecureRandom1.a(localStringBuffer.toString().getBytes());
+    int i = 1;
+    while (i < 14)
+    {
+      arrayOfByte[i] = ((byte)(Math.abs(localSecureRandom1.nextInt()) % 256));
+      localSecureRandom2.a(localSecureRandom2.a(i));
+      localStringBuffer = new StringBuffer();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(System.currentTimeMillis());
+      localStringBuffer.append(localStringBuilder.toString());
+      localStringBuffer.append(localSecureRandom2.nextInt());
+      localStringBuffer.append(j);
+      localStringBuffer.append(new Object().hashCode());
+      localStringBuffer.insert(Math.abs(localSecureRandom2.nextInt()) % localStringBuffer.length(), str1);
+      localSecureRandom1.a(localStringBuffer.toString().getBytes());
+      i += 1;
+    }
+    arrayOfByte[0] = ((byte)(Math.abs(localSecureRandom1.nextInt()) % 64));
+    return new abe(arrayOfByte);
   }
   
-  public final void a(Writer paramWriter, char[] paramArrayOfChar)
+  public static String a(abe paramabe1, abe paramabe2)
   {
-    int i1;
-    int i2;
-    int k;
-    int m;
-    int j;
-    int i;
-    if (paramArrayOfChar != null)
+    if (paramabe1 != null)
     {
-      if (paramArrayOfChar.length == 0) {
-        return;
+      if (paramabe2 == null) {
+        return null;
       }
-      int n = paramArrayOfChar.length;
+      abe localabe = new abe("2");
       try
       {
-        Iterator localIterator = iterator();
-        i1 = n;
-        i2 = 0;
-        if (localIterator.hasNext())
-        {
-          String str = (String)localIterator.next();
-          k = str.length();
-          m = 0;
-          j = i2;
-          i = i1;
-          break label157;
-          label69:
-          i1 = m + i2;
-          str.getChars(m, i1, paramArrayOfChar, j);
-          i -= i2;
-          j += i2;
-          k -= i2;
-          if (i != 0) {
-            break label188;
-          }
-          paramWriter.write(paramArrayOfChar, 0, n);
-          i = n;
-          m = i1;
-          j = 0;
-          break label157;
-        }
-        if (i2 > 0) {
-          paramWriter.write(paramArrayOfChar, 0, i2);
-        }
-        paramWriter.flush();
-        return;
+        paramabe1 = localabe.a(paramabe1, paramabe2);
+        return paramabe1.a().toUpperCase();
       }
-      catch (Exception paramWriter)
+      catch (Exception paramabe1)
       {
-        paramWriter.printStackTrace();
-        return;
+        paramabe1.printStackTrace();
+        return null;
       }
     }
-    else
-    {
-      return;
-    }
-    for (;;)
-    {
-      label157:
-      i2 = j;
-      i1 = i;
-      if (k <= 0) {
-        break;
-      }
-      if (i > k)
-      {
-        i2 = k;
-        break label69;
-      }
-      i2 = i;
-      break label69;
-      label188:
-      m = i1;
-    }
+    return null;
   }
   
-  public final Iterator<String> iterator()
+  public static byte[] a(abe paramabe1, abe paramabe2, abe paramabe3)
   {
-    return this.a.iterator();
+    paramabe1 = b(paramabe1, paramabe2, paramabe3);
+    if (paramabe1 == null) {
+      return null;
+    }
+    return MD5.toMD5Byte(sz.a(paramabe1.a()));
+  }
+  
+  public static abe b(abe paramabe1, abe paramabe2, abe paramabe3)
+  {
+    if ((paramabe1 != null) && (paramabe2 != null))
+    {
+      if (paramabe3 == null) {
+        return null;
+      }
+      try
+      {
+        paramabe1 = paramabe2.a(paramabe1, paramabe3);
+        return paramabe1;
+      }
+      catch (Exception paramabe1)
+      {
+        paramabe1.printStackTrace();
+        return null;
+      }
+    }
+    return null;
   }
 }
 

@@ -1,194 +1,71 @@
 package com.tencent.token;
 
-import android.os.Handler;
-import android.os.Message;
-import java.io.Closeable;
-import java.io.File;
-import java.io.InputStream;
-import java.io.RandomAccessFile;
-import java.util.concurrent.atomic.AtomicInteger;
+import android.app.Activity;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
+import android.graphics.ColorFilter;
+import android.graphics.Paint;
+import android.graphics.drawable.Drawable;
+import android.util.DisplayMetrics;
+import android.view.Display;
+import android.view.WindowManager;
 
 public final class zb
-  extends Handler
+  extends Drawable
 {
-  public volatile boolean a = false;
-  private final int b = 4;
-  private zc c;
-  private long d;
-  private AtomicInteger e = new AtomicInteger(0);
-  private AtomicInteger f = new AtomicInteger(0);
-  private AtomicInteger g = new AtomicInteger(0);
-  private zd h;
-  private long[] i;
-  private File[] j;
-  private File k;
-  private volatile boolean l;
-  private volatile boolean m;
-  private yz n;
+  private Paint a = new Paint();
+  private Bitmap b;
+  private final int c = 100;
+  private float d;
+  private int e = 0;
+  private float f;
+  private float g;
+  private float h;
   
-  public zb(zc paramzc, yz paramyz)
+  public zb(Activity paramActivity)
   {
-    this.c = paramzc;
-    this.n = paramyz;
-    this.i = new long[4];
-    this.j = new File[4];
-    this.h = zd.a();
+    this.b = BitmapFactory.decodeResource(paramActivity.getResources(), 2131100064);
+    DisplayMetrics localDisplayMetrics = new DisplayMetrics();
+    paramActivity.getWindowManager().getDefaultDisplay().getMetrics(localDisplayMetrics);
+    this.d = localDisplayMetrics.density;
+    float f1 = this.d;
+    this.f = (286.0F * f1);
+    this.g = (f1 * 442.0F);
+    this.h = (this.f / 100.0F);
+    this.a.setColor(paramActivity.getResources().getColor(2130968740));
+    this.a.setAntiAlias(true);
+    this.a.setFilterBitmap(true);
   }
   
-  private static boolean a(AtomicInteger paramAtomicInteger)
+  public final void draw(Canvas paramCanvas)
   {
-    return paramAtomicInteger.incrementAndGet() % 4 != 0;
-  }
-  
-  private void c()
-  {
-    this.l = false;
-    this.m = false;
-    this.a = false;
-  }
-  
-  /* Error */
-  public final void a()
-  {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: new 89	java/lang/StringBuilder
-    //   5: dup
-    //   6: ldc 205
-    //   8: invokespecial 94	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   11: astore_2
-    //   12: aload_2
-    //   13: aload_0
-    //   14: getfield 41	com/tencent/token/zb:a	Z
-    //   17: invokevirtual 208	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   20: pop
-    //   21: aload_2
-    //   22: ldc 210
-    //   24: invokevirtual 103	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   27: pop
-    //   28: aload_2
-    //   29: aload_0
-    //   30: getfield 54	com/tencent/token/zb:c	Lcom/tencent/token/zc;
-    //   33: getfield 149	com/tencent/token/zc:b	Ljava/lang/String;
-    //   36: invokevirtual 103	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   39: pop
-    //   40: aload_0
-    //   41: getfield 41	com/tencent/token/zb:a	Z
-    //   44: istore_1
-    //   45: iload_1
-    //   46: ifeq +6 -> 52
-    //   49: aload_0
-    //   50: monitorexit
-    //   51: return
-    //   52: aload_0
-    //   53: iconst_1
-    //   54: putfield 41	com/tencent/token/zb:a	Z
-    //   57: aload_0
-    //   58: getfield 69	com/tencent/token/zb:h	Lcom/tencent/token/zd;
-    //   61: astore_2
-    //   62: aload_0
-    //   63: getfield 54	com/tencent/token/zb:c	Lcom/tencent/token/zc;
-    //   66: getfield 149	com/tencent/token/zc:b	Ljava/lang/String;
-    //   69: astore_3
-    //   70: new 6	com/tencent/token/zb$1
-    //   73: dup
-    //   74: aload_0
-    //   75: invokespecial 212	com/tencent/token/zb$1:<init>	(Lcom/tencent/token/zb;)V
-    //   78: astore 4
-    //   80: aload_2
-    //   81: new 154	com/tencent/token/aio$a
-    //   84: dup
-    //   85: invokespecial 155	com/tencent/token/aio$a:<init>	()V
-    //   88: aload_3
-    //   89: invokevirtual 170	com/tencent/token/aio$a:a	(Ljava/lang/String;)Lcom/tencent/token/aio$a;
-    //   92: invokevirtual 173	com/tencent/token/aio$a:a	()Lcom/tencent/token/aio;
-    //   95: aload 4
-    //   97: invokevirtual 176	com/tencent/token/zd:a	(Lcom/tencent/token/aio;Lcom/tencent/token/ahw;)V
-    //   100: aload_0
-    //   101: monitorexit
-    //   102: return
-    //   103: astore_2
-    //   104: goto +15 -> 119
-    //   107: astore_2
-    //   108: aload_2
-    //   109: invokevirtual 185	java/io/IOException:printStackTrace	()V
-    //   112: aload_0
-    //   113: invokespecial 79	com/tencent/token/zb:c	()V
-    //   116: aload_0
-    //   117: monitorexit
-    //   118: return
-    //   119: aload_0
-    //   120: monitorexit
-    //   121: aload_2
-    //   122: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	123	0	this	zb
-    //   44	2	1	bool	boolean
-    //   11	70	2	localObject1	Object
-    //   103	1	2	localObject2	Object
-    //   107	15	2	localIOException	java.io.IOException
-    //   69	20	3	str	String
-    //   78	18	4	local1	1
-    // Exception table:
-    //   from	to	target	type
-    //   2	45	103	finally
-    //   52	100	103	finally
-    //   108	116	103	finally
-    //   2	45	107	java/io/IOException
-    //   52	100	107	java/io/IOException
-  }
-  
-  public final void b()
-  {
-    this.l = true;
-    this.a = false;
-  }
-  
-  public final void handleMessage(Message paramMessage)
-  {
-    if (this.n == null) {
-      return;
-    }
-    switch (paramMessage.what)
+    this.e %= 100;
+    int i = this.e;
+    if (i != 99)
     {
-    default: 
-      return;
-    case 4: 
-      if (a(this.e)) {
-        return;
-      }
-      c();
-      this.i = new long[4];
-      this.n.c();
-      return;
-    case 3: 
-      this.n.b();
-      if (a(this.f)) {
-        return;
-      }
-      c();
-      return;
-    case 2: 
-      if (a(this.g)) {
-        return;
-      }
-      this.k.renameTo(new File(this.c.c, this.c.a));
-      c();
-      this.n.a();
-      return;
+      float f1 = this.h;
+      float f2 = i;
+      paramCanvas.drawBitmap(this.b, 0.0F, f1 * f2, this.a);
     }
-    long l1 = 0L;
-    int i1 = 0;
-    int i2 = this.i.length;
-    while (i1 < i2)
+    else
     {
-      l1 += this.i[i1];
-      i1 += 1;
+      Bitmap localBitmap = this.b;
+      paramCanvas.drawBitmap(localBitmap, 0.0F, this.f - localBitmap.getHeight(), this.a);
     }
-    this.n.a((float)l1 * 1.0F / (float)this.d);
+    this.e += 1;
+    invalidateSelf();
   }
+  
+  public final int getOpacity()
+  {
+    return 0;
+  }
+  
+  public final void setAlpha(int paramInt) {}
+  
+  public final void setColorFilter(ColorFilter paramColorFilter) {}
 }
 
 

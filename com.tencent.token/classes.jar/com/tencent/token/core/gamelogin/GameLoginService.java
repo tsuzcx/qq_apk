@@ -8,7 +8,7 @@ import android.app.Service;
 import android.content.Intent;
 import android.os.Build.VERSION;
 import android.os.IBinder;
-import com.tencent.token.cj.b;
+import com.tencent.token.cn.b;
 import com.tencent.token.ui.IndexActivity;
 
 public class GameLoginService
@@ -36,7 +36,7 @@ public class GameLoginService
     {
       this.e = ((int)System.currentTimeMillis());
       localObject = PendingIntent.getActivity(this, 0, this.c, 134217728);
-      cj.b localb = new cj.b(this, (byte)0);
+      cn.b localb = new cn.b(this, (byte)0);
       localb.e = ((PendingIntent)localObject);
       localObject = localb.c().b().d();
       startForeground(this.e, (Notification)localObject);

@@ -8,8 +8,8 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.token.aad;
-import com.tencent.token.xa;
+import com.tencent.token.aap;
+import com.tencent.token.xj;
 
 public class TakeIDPhotoComfirmActivity
   extends BaseActivity
@@ -21,11 +21,11 @@ public class TakeIDPhotoComfirmActivity
     final String str = getIntent().getStringExtra("data");
     if (TextUtils.isEmpty(str))
     {
-      xa.a("data is null");
+      xj.a("data is null");
       finish();
       return;
     }
-    Object localObject = (TextView)findViewById(2131166110);
+    Object localObject = (TextView)findViewById(2131166112);
     if (this.mFlag == 2) {
       ((TextView)localObject).setText(2131493485);
     }
@@ -34,11 +34,11 @@ public class TakeIDPhotoComfirmActivity
     {
       public final void run()
       {
-        Bitmap localBitmap = aad.b(str, Math.max(this.b.getWidth(), this.b.getHeight()));
+        Bitmap localBitmap = aap.b(str, Math.max(this.b.getWidth(), this.b.getHeight()));
         this.b.setImageBitmap(localBitmap);
       }
     }, 100L);
-    ((TextView)findViewById(2131166058)).setOnClickListener(new View.OnClickListener()
+    ((TextView)findViewById(2131166060)).setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
@@ -60,7 +60,7 @@ public class TakeIDPhotoComfirmActivity
   {
     super.onCreate(paramBundle);
     setNeverShowLockVerifyView();
-    xa.a("TakeIDPhotoComfirmActivity");
+    xj.a("TakeIDPhotoComfirmActivity");
     this.mFlag = getIntent().getIntExtra("flag", -1);
     setContentView(2131296329);
     init();

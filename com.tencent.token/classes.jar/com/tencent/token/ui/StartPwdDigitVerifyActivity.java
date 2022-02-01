@@ -10,8 +10,8 @@ import android.view.Window;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
-import com.tencent.token.sc;
-import com.tencent.token.xa;
+import com.tencent.token.sk;
+import com.tencent.token.xj;
 
 public class StartPwdDigitVerifyActivity
   extends BaseActivity
@@ -45,12 +45,12 @@ public class StartPwdDigitVerifyActivity
     if (paramView != null) {
       paramView.clearFocus();
     }
-    if (sc.a().a(this.mTokenPwdInpuText.getText().toString()))
+    if (sk.a().a(this.mTokenPwdInpuText.getText().toString()))
     {
       hideKeyBoard();
       paramView = new StringBuilder("verify_token_pwd: ");
       paramView.append(this.mEnterType);
-      xa.a(paramView.toString());
+      xj.a(paramView.toString());
       setResult(257);
       finish();
       return;
@@ -72,7 +72,7 @@ public class StartPwdDigitVerifyActivity
     paramBundle.setOnClickListener(this);
     ((Button)paramBundle).setText(getBtnStringId());
     setBtnWidth(paramBundle.getLayoutParams());
-    this.mTokenPwdInpuText = ((EditText)findViewById(2131166077));
+    this.mTokenPwdInpuText = ((EditText)findViewById(2131166079));
     paramBundle = this.mTokenPwdInpuText;
     if (paramBundle != null) {
       paramBundle.clearFocus();
@@ -81,7 +81,7 @@ public class StartPwdDigitVerifyActivity
     paramBundle.append(this.mEnterType);
     paramBundle.append(", uin: ");
     paramBundle.append(this.mUin);
-    xa.a(paramBundle.toString());
+    xj.a(paramBundle.toString());
   }
   
   protected void setBtnWidth(ViewGroup.LayoutParams paramLayoutParams)

@@ -1,17 +1,13 @@
 package com.tencent.token;
 
-public final class pj
+import android.content.Context;
+
+final class pj
+  extends pd
 {
-  public static byte[] a(String paramString1, String paramString2)
+  pj(Context paramContext, String paramString)
   {
-    StringBuffer localStringBuffer = new StringBuffer();
-    if (paramString1 != null) {
-      localStringBuffer.append(paramString1);
-    }
-    localStringBuffer.append(553910273);
-    localStringBuffer.append(paramString2);
-    localStringBuffer.append("mMcShCsTr");
-    return ob.a(localStringBuffer.toString().substring(1, 9).getBytes()).getBytes();
+    super(paramContext, paramString);
   }
 }
 

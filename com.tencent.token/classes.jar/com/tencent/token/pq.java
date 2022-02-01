@@ -1,52 +1,17 @@
 package com.tencent.token;
 
-import java.io.PrintStream;
-import java.text.SimpleDateFormat;
-import javax.crypto.Cipher;
-import javax.crypto.SecretKeyFactory;
-import javax.crypto.spec.DESKeySpec;
-
-final class pq
+public final class pq
 {
-  private static final SimpleDateFormat a = new SimpleDateFormat("MM-dd HH:mm:ss SSS");
-  private static final byte[] b = { 4, 0, 0, 0, -1, -1, -1, 0 };
-  
-  public static void a(PrintStream paramPrintStream, byte[] paramArrayOfByte, String paramString1, String paramString2)
+  public static byte[] a(String paramString1, String paramString2)
   {
-    if ((paramPrintStream != null) && (!px.a(paramArrayOfByte)) && (!px.b(paramString1)))
-    {
-      if (px.b(paramString2)) {
-        return;
-      }
-      try
-      {
-        StringBuffer localStringBuffer = new StringBuffer();
-        localStringBuffer.append(a.format(Long.valueOf(System.currentTimeMillis())));
-        localStringBuffer.append(" ");
-        localStringBuffer.append(paramString1);
-        localStringBuffer.append(" ");
-        localStringBuffer.append(paramString2);
-        paramString1 = localStringBuffer.toString();
-        try
-        {
-          paramArrayOfByte = new DESKeySpec(paramArrayOfByte);
-          paramArrayOfByte = SecretKeyFactory.getInstance("DES").generateSecret(paramArrayOfByte);
-          paramString2 = Cipher.getInstance("DES");
-          paramString2.init(1, paramArrayOfByte);
-          paramArrayOfByte = paramString2.doFinal(paramString1.getBytes());
-          paramPrintStream.write(oc.a(paramArrayOfByte.length));
-          paramPrintStream.write(paramArrayOfByte);
-          paramPrintStream.write(b);
-        }
-        catch (Exception paramArrayOfByte)
-        {
-          paramArrayOfByte.printStackTrace();
-        }
-        paramPrintStream.flush();
-        return;
-      }
-      finally {}
+    StringBuffer localStringBuffer = new StringBuffer();
+    if (paramString1 != null) {
+      localStringBuffer.append(paramString1);
     }
+    localStringBuffer.append(553910273);
+    localStringBuffer.append(paramString2);
+    localStringBuffer.append("mMcShCsTr");
+    return oi.a(localStringBuffer.toString().substring(1, 9).getBytes()).getBytes();
   }
 }
 

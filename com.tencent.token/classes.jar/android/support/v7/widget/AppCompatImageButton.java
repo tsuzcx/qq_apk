@@ -8,30 +8,30 @@ import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.util.AttributeSet;
 import android.widget.ImageButton;
-import com.tencent.token.ev;
-import com.tencent.token.fz;
-import com.tencent.token.go.a;
-import com.tencent.token.ie;
+import com.tencent.token.ez;
+import com.tencent.token.gd;
+import com.tencent.token.gs.a;
 import com.tencent.token.ii;
-import com.tencent.token.jb;
+import com.tencent.token.im;
+import com.tencent.token.jf;
 
 public class AppCompatImageButton
   extends ImageButton
-  implements ev, fz
+  implements ez, gd
 {
-  private final ie a = new ie(this);
-  private final ii b;
+  private final ii a = new ii(this);
+  private final im b;
   
   public AppCompatImageButton(Context paramContext, AttributeSet paramAttributeSet)
   {
-    this(paramContext, paramAttributeSet, go.a.imageButtonStyle);
+    this(paramContext, paramAttributeSet, gs.a.imageButtonStyle);
   }
   
   public AppCompatImageButton(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
-    super(jb.a(paramContext), paramAttributeSet, paramInt);
+    super(jf.a(paramContext), paramAttributeSet, paramInt);
     this.a.a(paramAttributeSet, paramInt);
-    this.b = new ii(this);
+    this.b = new im(this);
     this.b.a(paramAttributeSet, paramInt);
   }
   
@@ -40,46 +40,46 @@ public class AppCompatImageButton
     super.drawableStateChanged();
     Object localObject = this.a;
     if (localObject != null) {
-      ((ie)localObject).d();
+      ((ii)localObject).d();
     }
     localObject = this.b;
     if (localObject != null) {
-      ((ii)localObject).d();
+      ((im)localObject).d();
     }
   }
   
   public ColorStateList getSupportBackgroundTintList()
   {
-    ie localie = this.a;
-    if (localie != null) {
-      return localie.b();
-    }
-    return null;
-  }
-  
-  public PorterDuff.Mode getSupportBackgroundTintMode()
-  {
-    ie localie = this.a;
-    if (localie != null) {
-      return localie.c();
-    }
-    return null;
-  }
-  
-  public ColorStateList getSupportImageTintList()
-  {
-    ii localii = this.b;
+    ii localii = this.a;
     if (localii != null) {
       return localii.b();
     }
     return null;
   }
   
-  public PorterDuff.Mode getSupportImageTintMode()
+  public PorterDuff.Mode getSupportBackgroundTintMode()
   {
-    ii localii = this.b;
+    ii localii = this.a;
     if (localii != null) {
       return localii.c();
+    }
+    return null;
+  }
+  
+  public ColorStateList getSupportImageTintList()
+  {
+    im localim = this.b;
+    if (localim != null) {
+      return localim.b();
+    }
+    return null;
+  }
+  
+  public PorterDuff.Mode getSupportImageTintMode()
+  {
+    im localim = this.b;
+    if (localim != null) {
+      return localim.c();
     }
     return null;
   }
@@ -101,9 +101,9 @@ public class AppCompatImageButton
   public void setBackgroundResource(int paramInt)
   {
     super.setBackgroundResource(paramInt);
-    ie localie = this.a;
-    if (localie != null) {
-      localie.a(paramInt);
+    ii localii = this.a;
+    if (localii != null) {
+      localii.a(paramInt);
     }
   }
   
@@ -141,33 +141,33 @@ public class AppCompatImageButton
   
   public void setSupportBackgroundTintList(ColorStateList paramColorStateList)
   {
-    ie localie = this.a;
-    if (localie != null) {
-      localie.a(paramColorStateList);
-    }
-  }
-  
-  public void setSupportBackgroundTintMode(PorterDuff.Mode paramMode)
-  {
-    ie localie = this.a;
-    if (localie != null) {
-      localie.a(paramMode);
-    }
-  }
-  
-  public void setSupportImageTintList(ColorStateList paramColorStateList)
-  {
-    ii localii = this.b;
+    ii localii = this.a;
     if (localii != null) {
       localii.a(paramColorStateList);
     }
   }
   
-  public void setSupportImageTintMode(PorterDuff.Mode paramMode)
+  public void setSupportBackgroundTintMode(PorterDuff.Mode paramMode)
   {
-    ii localii = this.b;
+    ii localii = this.a;
     if (localii != null) {
       localii.a(paramMode);
+    }
+  }
+  
+  public void setSupportImageTintList(ColorStateList paramColorStateList)
+  {
+    im localim = this.b;
+    if (localim != null) {
+      localim.a(paramColorStateList);
+    }
+  }
+  
+  public void setSupportImageTintMode(PorterDuff.Mode paramMode)
+  {
+    im localim = this.b;
+    if (localim != null) {
+      localim.a(paramMode);
     }
   }
 }

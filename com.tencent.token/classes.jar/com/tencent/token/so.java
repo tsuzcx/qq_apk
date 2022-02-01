@@ -1,9 +1,14 @@
 package com.tencent.token;
 
 public final class so
-  extends sp
 {
-  public String a = "";
+  public int a;
+  public int b = 0;
+  
+  public final boolean a()
+  {
+    return this.b == 1;
+  }
 }
 
 

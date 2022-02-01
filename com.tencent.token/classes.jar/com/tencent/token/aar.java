@@ -1,8 +1,19 @@
 package com.tencent.token;
 
-public final class aar
+import java.io.Serializable;
+
+public abstract interface aar
 {
-  public Object a;
+  public abstract a a(aat paramaat);
+  
+  public abstract void a(aat paramaat, abd paramabd);
+  
+  public static final class a
+  {
+    public boolean a;
+    public abd b;
+    public Serializable c;
+  }
 }
 
 

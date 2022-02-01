@@ -1,8 +1,15 @@
 package com.tencent.token;
 
-public abstract class bf
+import java.lang.annotation.Annotation;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
+
+@Retention(RetentionPolicy.RUNTIME)
+@Target({java.lang.annotation.ElementType.METHOD})
+public @interface bf
 {
-  protected void a() {}
+  av.a a();
 }
 
 

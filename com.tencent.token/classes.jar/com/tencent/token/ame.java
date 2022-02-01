@@ -1,18 +1,17 @@
 package com.tencent.token;
 
-import android.graphics.Path;
-import java.util.List;
-
-public final class ame
-  extends alv<anb, Path>
+public abstract interface ame
 {
-  private final anb c = new anb();
-  private final Path d = new Path();
-  
-  public ame(List<aly<anb>> paramList)
+  public static final ame a = new ame()
   {
-    super(paramList);
-  }
+    public final boolean a(amx paramAnonymousamx, int paramAnonymousInt)
+    {
+      paramAnonymousamx.g(paramAnonymousInt);
+      return true;
+    }
+  };
+  
+  public abstract boolean a(amx paramamx, int paramInt);
 }
 
 

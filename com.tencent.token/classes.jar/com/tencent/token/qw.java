@@ -1,22 +1,32 @@
 package com.tencent.token;
 
-final class qw
+public final class qw
 {
-  public String a;
-  public long b;
-  public long c;
-  public String d;
-  public String e;
-  public int f;
+  public aub a;
   
-  public qw(String paramString1, String paramString2, String paramString3)
+  public final aud a(String paramString)
   {
-    this.a = paramString1;
-    this.b = 523005419L;
-    this.c = 1L;
-    this.d = paramString2;
-    this.f = 1;
-    this.e = paramString3;
+    return this.a.a(paramString);
+  }
+  
+  public final auh a()
+  {
+    return this.a.c();
+  }
+  
+  public final aue b()
+  {
+    return this.a.d();
+  }
+  
+  public final aug c()
+  {
+    return this.a.e();
+  }
+  
+  public static final class a
+  {
+    private static final qw a = new qw((byte)0);
   }
 }
 

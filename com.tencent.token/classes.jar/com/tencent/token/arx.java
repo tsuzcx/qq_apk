@@ -1,8 +1,19 @@
 package com.tencent.token;
 
-public abstract interface arx
+import com.qq.taf.jce.JceStruct;
+
+final class arx
 {
-  public abstract void a();
+  public aij a = null;
+  public JceStruct b;
+  public int c = 0;
+  
+  public arx(int paramInt, aij paramaij, JceStruct paramJceStruct)
+  {
+    this.a = paramaij;
+    this.b = paramJceStruct;
+    this.c = paramInt;
+  }
 }
 
 

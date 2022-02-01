@@ -1,6 +1,9 @@
 package com.tencent.token;
 
-public abstract interface aru {}
+public abstract interface aru
+{
+  public abstract int a();
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.token\classes.jar

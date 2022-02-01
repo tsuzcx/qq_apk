@@ -6,61 +6,61 @@ import android.graphics.PorterDuff.Mode;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.widget.CheckBox;
-import com.tencent.token.fy;
-import com.tencent.token.go.a;
-import com.tencent.token.gq;
-import com.tencent.token.if;
-import com.tencent.token.jb;
+import com.tencent.token.gc;
+import com.tencent.token.gs.a;
+import com.tencent.token.gu;
+import com.tencent.token.ij;
+import com.tencent.token.jf;
 
 public class AppCompatCheckBox
   extends CheckBox
-  implements fy
+  implements gc
 {
-  private final if a = new if(this);
+  private final ij a = new ij(this);
   
   public AppCompatCheckBox(Context paramContext, AttributeSet paramAttributeSet)
   {
-    this(paramContext, paramAttributeSet, go.a.checkboxStyle);
+    this(paramContext, paramAttributeSet, gs.a.checkboxStyle);
   }
   
   public AppCompatCheckBox(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
-    super(jb.a(paramContext), paramAttributeSet, paramInt);
+    super(jf.a(paramContext), paramAttributeSet, paramInt);
     this.a.a(paramAttributeSet, paramInt);
   }
   
   public int getCompoundPaddingLeft()
   {
     int j = super.getCompoundPaddingLeft();
-    if localif = this.a;
+    ij localij = this.a;
     int i = j;
-    if (localif != null) {
-      i = localif.a(j);
+    if (localij != null) {
+      i = localij.a(j);
     }
     return i;
   }
   
   public ColorStateList getSupportButtonTintList()
   {
-    if localif = this.a;
-    if (localif != null) {
-      return localif.a;
+    ij localij = this.a;
+    if (localij != null) {
+      return localij.a;
     }
     return null;
   }
   
   public PorterDuff.Mode getSupportButtonTintMode()
   {
-    if localif = this.a;
-    if (localif != null) {
-      return localif.b;
+    ij localij = this.a;
+    if (localij != null) {
+      return localij.b;
     }
     return null;
   }
   
   public void setButtonDrawable(int paramInt)
   {
-    setButtonDrawable(gq.b(getContext(), paramInt));
+    setButtonDrawable(gu.b(getContext(), paramInt));
   }
   
   public void setButtonDrawable(Drawable paramDrawable)
@@ -74,17 +74,17 @@ public class AppCompatCheckBox
   
   public void setSupportButtonTintList(ColorStateList paramColorStateList)
   {
-    if localif = this.a;
-    if (localif != null) {
-      localif.a(paramColorStateList);
+    ij localij = this.a;
+    if (localij != null) {
+      localij.a(paramColorStateList);
     }
   }
   
   public void setSupportButtonTintMode(PorterDuff.Mode paramMode)
   {
-    if localif = this.a;
-    if (localif != null) {
-      localif.a(paramMode);
+    ij localij = this.a;
+    if (localij != null) {
+      localij.a(paramMode);
     }
   }
 }

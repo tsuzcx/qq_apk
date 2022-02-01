@@ -1,6 +1,6 @@
 package com.tencent.token.core.bean;
 
-import com.tencent.token.xa;
+import com.tencent.token.xj;
 import java.io.Serializable;
 import java.util.ArrayList;
 import org.json.JSONArray;
@@ -49,7 +49,7 @@ public class EvalAccountResult
     JSONObject localJSONObject = paramJSONObject1.getJSONObject("check_result");
     StringBuilder localStringBuilder = new StringBuilder("check_result:");
     localStringBuilder.append(localJSONObject.toString());
-    xa.b(localStringBuilder.toString());
+    xj.b(localStringBuilder.toString());
     this.mStatus = localJSONObject.getInt("status");
     this.mSubStatus = localJSONObject.getInt("sub_status");
     this.mTitle = localJSONObject.getString("title");
@@ -86,7 +86,7 @@ public class EvalAccountResult
     {
       paramJSONObject2 = new StringBuilder("一级推荐列表");
       paramJSONObject2.append(paramJSONObject1.getJSONObject(i).toString());
-      xa.b(paramJSONObject2.toString());
+      xj.b(paramJSONObject2.toString());
       paramJSONObject2 = new RecommendItem(paramJSONObject1.getJSONObject(i));
       this.mRecommends.add(paramJSONObject2);
       i += 1;
@@ -106,7 +106,7 @@ public class EvalAccountResult
     {
       StringBuilder localStringBuilder = new StringBuilder("DetailItem:");
       localStringBuilder.append(paramJSONObject.toString());
-      xa.b(localStringBuilder.toString());
+      xj.b(localStringBuilder.toString());
       this.mRecommendId = paramJSONObject.getInt("recommend_id");
       this.mDegree = paramJSONObject.getInt("degree");
       this.mTitle = paramJSONObject.getString("title");
@@ -138,7 +138,7 @@ public class EvalAccountResult
       {
         Object localObject = new StringBuilder("二级推荐列表");
         ((StringBuilder)localObject).append(paramJSONObject.getJSONObject(i).toString());
-        xa.b(((StringBuilder)localObject).toString());
+        xj.b(((StringBuilder)localObject).toString());
         localObject = new EvalAccountResult.DetailItem(paramJSONObject.getJSONObject(i));
         this.mDetails.add(localObject);
         i += 1;

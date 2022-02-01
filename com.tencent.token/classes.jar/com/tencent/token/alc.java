@@ -1,48 +1,52 @@
 package com.tencent.token;
 
-public abstract class alc
-  implements aln
+import java.util.LinkedHashSet;
+import java.util.Set;
+
+public final class alc
 {
-  private final aln a;
+  private final Set<akp> a = new LinkedHashSet();
   
-  public alc(aln paramaln)
+  public final void a(akp paramakp)
   {
-    if (paramaln != null)
+    try
     {
-      this.a = paramaln;
+      this.a.add(paramakp);
       return;
     }
-    throw new IllegalArgumentException("delegate == null");
+    finally
+    {
+      paramakp = finally;
+      throw paramakp;
+    }
   }
   
-  public final alp a()
+  public final void b(akp paramakp)
   {
-    return this.a.a();
+    try
+    {
+      this.a.remove(paramakp);
+      return;
+    }
+    finally
+    {
+      paramakp = finally;
+      throw paramakp;
+    }
   }
   
-  public void a_(aky paramaky, long paramLong)
+  public final boolean c(akp paramakp)
   {
-    this.a.a_(paramaky, paramLong);
-  }
-  
-  public void close()
-  {
-    this.a.close();
-  }
-  
-  public void flush()
-  {
-    this.a.flush();
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(getClass().getSimpleName());
-    localStringBuilder.append("(");
-    localStringBuilder.append(this.a.toString());
-    localStringBuilder.append(")");
-    return localStringBuilder.toString();
+    try
+    {
+      boolean bool = this.a.contains(paramakp);
+      return bool;
+    }
+    finally
+    {
+      paramakp = finally;
+      throw paramakp;
+    }
   }
 }
 

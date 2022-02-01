@@ -1,64 +1,34 @@
 package com.tencent.token;
 
-import java.util.ArrayList;
+import com.qq.taf.jce.JceStruct;
 
-public final class arg
-  implements aqw
+final class arg
+  implements aii
 {
-  public ArrayList a = new ArrayList();
-  int b = 0;
-  private boolean c = false;
+  int a = 0;
+  final int b = 3;
   
-  public arg()
-  {
-    this.c = false;
-    this.a.add(new aqy("mazu.3g.qq.com", 443, 100));
-    this.a.add(new aqy("mazu.3g.qq.com", 14000, 100));
-    this.a.add(new aqy("mazu.3g.qq.com", 8080, 100));
-    this.b = 0;
-  }
+  arg(aso paramaso) {}
   
-  public arg(boolean paramBoolean)
+  public final void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, JceStruct paramJceStruct)
   {
-    this.c = paramBoolean;
-    if (paramBoolean)
+    paramJceStruct = new StringBuilder("_Cmd_SCReconnect : ");
+    paramJceStruct.append(paramInt2);
+    paramJceStruct.append("  retCode : ");
+    paramJceStruct.append(paramInt3);
+    if (paramInt3 == 0)
     {
-      this.a.add(new aqy("mazutest.3g.qq.com", 8080, 100));
-    }
-    else
-    {
-      this.a.add(new aqy("mazu.3g.qq.com", 14000, 100));
-      this.a.add(new aqy("mazu.3g.qq.com", 443, 100));
-      this.a.add(new aqy("mazu.3g.qq.com", 8080, 100));
-    }
-    this.b = 0;
-  }
-  
-  public final aqy a()
-  {
-    int i = this.b;
-    if ((i >= 0) && (i < this.a.size()))
-    {
-      StringBuilder localStringBuilder = new StringBuilder("ip ");
-      localStringBuilder.append(((aqy)this.a.get(this.b)).b);
-      localStringBuilder.append(" port : ");
-      localStringBuilder.append(((aqy)this.a.get(this.b)).a);
-      return (aqy)this.a.get(this.b);
-    }
-    return (aqy)this.a.get(0);
-  }
-  
-  public final void a(int paramInt)
-  {
-    if (paramInt <= 0) {
+      this.c.c = 0;
+      this.a = 0;
       return;
     }
-    if (this.c)
+    this.a += 1;
+    if ((this.a < 3) && (this.c.d()))
     {
-      this.a.add(new aqy("mazutest.3g.qq.com", paramInt, 100));
-      return;
+      this.a = 0;
+      paramJceStruct = this.c;
+      paramJceStruct.a(aso.a(paramJceStruct), 998, aso.b(this.c), 10000L);
     }
-    this.a.add(new aqy("mazu.3g.qq.com", paramInt, 100));
   }
 }
 

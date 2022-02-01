@@ -1,153 +1,57 @@
 package com.tencent.token;
 
-import android.annotation.SuppressLint;
-import java.util.Iterator;
-import java.util.LinkedHashMap;
-import java.util.Map.Entry;
-import java.util.Set;
-
-public class agu<K, V>
+public final class agu
 {
-  private final LinkedHashMap<K, V> a;
-  public int b;
-  private int c;
-  private int d;
-  private int e;
-  private int f;
-  private int g;
-  
-  public agu(int paramInt)
+  static
   {
-    if (paramInt > 0)
+    byte[] arrayOfByte1 = new byte[16];
+    byte[] tmp6_5 = arrayOfByte1;
+    tmp6_5[0] = 48;
+    byte[] tmp11_6 = tmp6_5;
+    tmp11_6[1] = 49;
+    byte[] tmp16_11 = tmp11_6;
+    tmp16_11[2] = 50;
+    byte[] tmp21_16 = tmp16_11;
+    tmp21_16[3] = 51;
+    byte[] tmp26_21 = tmp21_16;
+    tmp26_21[4] = 52;
+    byte[] tmp31_26 = tmp26_21;
+    tmp31_26[5] = 53;
+    byte[] tmp36_31 = tmp31_26;
+    tmp36_31[6] = 54;
+    byte[] tmp42_36 = tmp36_31;
+    tmp42_36[7] = 55;
+    byte[] tmp48_42 = tmp42_36;
+    tmp48_42[8] = 56;
+    byte[] tmp54_48 = tmp48_42;
+    tmp54_48[9] = 57;
+    byte[] tmp60_54 = tmp54_48;
+    tmp60_54[10] = 65;
+    byte[] tmp66_60 = tmp60_54;
+    tmp66_60[11] = 66;
+    byte[] tmp72_66 = tmp66_60;
+    tmp72_66[12] = 67;
+    byte[] tmp78_72 = tmp72_66;
+    tmp78_72[13] = 68;
+    byte[] tmp84_78 = tmp78_72;
+    tmp84_78[14] = 69;
+    byte[] tmp90_84 = tmp84_78;
+    tmp90_84[15] = 70;
+    tmp90_84;
+    byte[] arrayOfByte2 = new byte[256];
+    byte[] arrayOfByte3 = new byte[256];
+    int i = 0;
+    while (i < 256)
     {
-      this.b = paramInt;
-      this.a = new LinkedHashMap(0, 0.75F, true);
-      return;
-    }
-    throw new IllegalArgumentException("maxSize <= 0");
-  }
-  
-  public final V a(K paramK, V paramV)
-  {
-    if ((paramK != null) && (paramV != null)) {
-      try
-      {
-        this.d += 1;
-        this.c += 1;
-        paramK = this.a.put(paramK, paramV);
-        if (paramK != null) {
-          this.c -= 1;
-        }
-        if (paramK != null) {
-          a(paramK);
-        }
-        a(this.b);
-        return paramK;
-      }
-      finally {}
-    }
-    throw new NullPointerException("key == null || value == null");
-  }
-  
-  public final void a()
-  {
-    a(-1);
-  }
-  
-  public final void a(int paramInt)
-  {
-    for (;;)
-    {
-      try
-      {
-        if ((this.c >= 0) && ((!this.a.isEmpty()) || (this.c == 0)))
-        {
-          if ((this.c > paramInt) && (!this.a.isEmpty()))
-          {
-            localObject1 = null;
-            if (this.a.entrySet().iterator().hasNext()) {
-              localObject1 = (Map.Entry)this.a.entrySet().iterator().next();
-            }
-            if (localObject1 == null) {
-              return;
-            }
-            Object localObject3 = ((Map.Entry)localObject1).getKey();
-            localObject1 = ((Map.Entry)localObject1).getValue();
-            this.a.remove(localObject3);
-            this.c -= 1;
-            this.e += 1;
-            a(localObject1);
-            continue;
-          }
-          return;
-        }
-        Object localObject1 = new StringBuilder();
-        ((StringBuilder)localObject1).append(getClass().getName());
-        ((StringBuilder)localObject1).append(".sizeOf() is reporting inconsistent results!");
-        throw new IllegalStateException(((StringBuilder)localObject1).toString());
-      }
-      finally {}
+      arrayOfByte2[i] = arrayOfByte1[(i >>> 4)];
+      arrayOfByte3[i] = arrayOfByte1[(i & 0xF)];
+      i += 1;
     }
   }
   
-  protected void a(V paramV) {}
-  
-  public final V b(K paramK)
+  public static boolean a(long paramLong1, long paramLong2)
   {
-    if (paramK != null) {
-      try
-      {
-        paramK = this.a.get(paramK);
-        if (paramK != null)
-        {
-          this.f += 1;
-          return paramK;
-        }
-        this.g += 1;
-        return null;
-      }
-      finally {}
-    }
-    throw new NullPointerException("key == null");
-  }
-  
-  public final V c(K paramK)
-  {
-    if (paramK != null) {
-      try
-      {
-        paramK = this.a.remove(paramK);
-        if (paramK != null) {
-          this.c -= 1;
-        }
-        if (paramK != null) {
-          a(paramK);
-        }
-        return paramK;
-      }
-      finally {}
-    }
-    throw new NullPointerException("key == null");
-  }
-  
-  @SuppressLint({"DefaultLocale"})
-  public final String toString()
-  {
-    for (;;)
-    {
-      try
-      {
-        i = this.f + this.g;
-        if (i != 0)
-        {
-          i = this.f * 100 / i;
-          String str = String.format("LruCache[maxSize=%d,hits=%d,misses=%d,hitRate=%d%%]", new Object[] { Integer.valueOf(this.b), Integer.valueOf(this.f), Integer.valueOf(this.g), Integer.valueOf(i) });
-          return str;
-        }
-      }
-      finally {}
-      int i = 0;
-    }
+    return paramLong1 == paramLong2;
   }
 }
 

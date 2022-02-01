@@ -1,9 +1,9 @@
 package com.tencent.wcdb.repair;
 
-import com.tencent.token.ags.a;
+import com.tencent.token.aie.a;
 
 public class BackupKit
-  implements ags.a
+  implements aie.a
 {
   private long a;
   

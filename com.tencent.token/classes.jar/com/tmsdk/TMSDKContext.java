@@ -2,19 +2,24 @@ package com.tmsdk;
 
 import android.content.Context;
 import android.text.TextUtils;
+import android.util.Pair;
 import com.qq.taf.jce.JceStruct;
-import com.tencent.token.aaa;
-import com.tencent.token.aac;
-import com.tencent.token.aem;
-import com.tencent.token.aem.a;
-import com.tencent.token.afl;
+import com.tencent.token.aam;
+import com.tencent.token.aao;
+import com.tencent.token.ado;
+import com.tencent.token.afw;
 import com.tencent.token.global.RqdApplication;
-import com.tencent.token.xe;
+import com.tencent.token.xf;
+import com.tencent.token.xq;
 import com.tmsdk.base.AbsTMSBaseConfig;
 import com.tmsdk.base.ISharkCallBackOut;
 import com.tmsdk.base.TMSDKBaseContext;
 import com.tmsdk.common.util.ReleaseSetting;
 import com.tmsdk.common.util.TmsLog;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.List;
 
 public class TMSDKContext
 {
@@ -24,7 +29,7 @@ public class TMSDKContext
   public static final int ELANG_NONE = 0;
   private static final int EP_QQMobileToken = 115;
   private static final boolean IS_IPLIST = true;
-  private static final String LC = "C1D4CD9B6187E99C";
+  public static final String LC = "C1D4CD9B6187E99C";
   private static final String LIB_TMS_COMMON = "Tcc-1.0.1";
   private static final int PRODUCT_ID = 115;
   private static final String SDK_VERSION = "2.0.0";
@@ -39,7 +44,8 @@ public class TMSDKContext
   static final String TAG_LOG = "TMSDKContext";
   private static final String TCP_SERVER = "mazu.3g.qq.com";
   private static final String TCP_SERVER_TEST = "mazutest.3g.qq.com";
-  static AbsTMSConfig sAbsTMSConfig;
+  static AbsTMSConfig sAbsTMSConfig = null;
+  static final List<Pair<Integer, String>> waitingList = Collections.synchronizedList(new ArrayList());
   
   public static void SaveStringData(int paramInt, String paramString)
   {
@@ -58,7 +64,13 @@ public class TMSDKContext
     {
       localObject = " ";
     }
+    if (!isInitialized())
+    {
+      waitingList.add(new Pair(Integer.valueOf(paramInt), localObject));
+      return;
+    }
     TMSDKBaseContext.SaveStringData(paramInt, (String)localObject);
+    checkFlushWaitingList();
   }
   
   public static void c_c(int paramInt)
@@ -67,6 +79,26 @@ public class TMSDKContext
     localStringBuilder.append(paramInt);
     localStringBuilder.append("]");
     TmsLog.d("TMSDKContext", localStringBuilder.toString());
+  }
+  
+  static void checkFlushWaitingList()
+  {
+    if (waitingList.size() > 0) {
+      synchronized (waitingList)
+      {
+        Iterator localIterator = waitingList.iterator();
+        while (localIterator.hasNext())
+        {
+          Pair localPair = (Pair)localIterator.next();
+          if (localPair.second == null) {
+            TMSDKBaseContext.saveActionData(((Integer)localPair.first).intValue());
+          } else {
+            TMSDKBaseContext.SaveStringData(((Integer)localPair.first).intValue(), (String)localPair.second);
+          }
+        }
+        return;
+      }
+    }
   }
   
   public static boolean checkLicence()
@@ -113,12 +145,12 @@ public class TMSDKContext
       {
         public final int getBuildNo()
         {
-          return aaa.a;
+          return xf.d();
         }
         
         public final String getChannel()
         {
-          String str = aac.k();
+          String str = aao.k();
           if ("0000".equals(str)) {
             return "999001";
           }
@@ -127,12 +159,12 @@ public class TMSDKContext
         
         public final String getDeviceId1()
         {
-          return aac.b(this.val$aContext);
+          return aao.b(this.val$aContext);
         }
         
         public final String getDeviceId2()
         {
-          return aac.c(this.val$aContext);
+          return aao.c(this.val$aContext);
         }
         
         public final String getDeviceId3()
@@ -143,15 +175,15 @@ public class TMSDKContext
         public final String getDeviceId4()
         {
           
-          if (!xe.a) {
+          if (!xq.a) {
             return "";
           }
           long l = System.currentTimeMillis();
-          Object localObject2 = aem.a(afl.a(RqdApplication.n()));
+          Object localObject2 = afw.a(RqdApplication.p());
           Object localObject1 = "";
-          if (((aem.a)localObject2).b() == 0)
+          if (((ado)localObject2).a() == 0)
           {
-            localObject2 = ((aem.a)localObject2).c();
+            localObject2 = ((ado)localObject2).c();
             localObject1 = localObject2;
             if (TextUtils.isEmpty((CharSequence)localObject2)) {
               localObject1 = "";
@@ -171,7 +203,7 @@ public class TMSDKContext
         
         public final String getOpenIdTicket()
         {
-          return xe.b();
+          return xq.b();
         }
         
         public final int getProductId()
@@ -196,7 +228,7 @@ public class TMSDKContext
         
         public final String getVersion()
         {
-          return aaa.b;
+          return aam.b;
         }
         
         public final boolean isAllowAndroidID()
@@ -258,7 +290,13 @@ public class TMSDKContext
     localStringBuilder.append(paramInt);
     localStringBuilder.append("])");
     TmsLog.d("TMSDKContext", localStringBuilder.toString());
+    if (!isInitialized())
+    {
+      waitingList.add(new Pair(Integer.valueOf(paramInt), null));
+      return;
+    }
     TMSDKBaseContext.saveActionData(paramInt);
+    checkFlushWaitingList();
   }
   
   public static void sendShark(int paramInt, JceStruct paramJceStruct1, JceStruct paramJceStruct2, ISharkCallBackOut paramISharkCallBackOut)

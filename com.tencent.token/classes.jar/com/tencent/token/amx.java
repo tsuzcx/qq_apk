@@ -1,28 +1,44 @@
 package com.tencent.token;
 
-public final class amx
+import java.io.InputStream;
+import java.nio.channels.ReadableByteChannel;
+
+public abstract interface amx
+  extends anl, ReadableByteChannel
 {
-  public String a;
-  public String b;
-  public int c;
-  public int d;
-  public int e;
-  double f;
-  public int g;
-  public int h;
-  public int i;
-  public boolean j;
+  public abstract void a(long paramLong);
   
-  public final int hashCode()
-  {
-    int k = this.a.hashCode();
-    int m = this.b.hashCode();
-    int n = this.c;
-    int i1 = this.d;
-    int i2 = this.e;
-    long l = Double.doubleToLongBits(this.f);
-    return (((((k * 31 + m) * 31 + n) * 31 + i1) * 31 + i2) * 31 + (int)(l ^ l >>> 32)) * 31 + this.g;
-  }
+  public abstract void a(byte[] paramArrayOfByte);
+  
+  public abstract amv b();
+  
+  public abstract amy c(long paramLong);
+  
+  public abstract boolean c();
+  
+  public abstract InputStream d();
+  
+  public abstract String d(long paramLong);
+  
+  public abstract byte f();
+  
+  public abstract byte[] f(long paramLong);
+  
+  public abstract short g();
+  
+  public abstract void g(long paramLong);
+  
+  public abstract int h();
+  
+  public abstract short i();
+  
+  public abstract int j();
+  
+  public abstract long k();
+  
+  public abstract String n();
+  
+  public abstract long q();
 }
 
 

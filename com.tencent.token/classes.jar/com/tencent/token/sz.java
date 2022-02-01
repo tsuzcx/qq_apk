@@ -1,828 +1,351 @@
 package com.tencent.token;
 
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.os.Build;
-import android.os.Build.VERSION;
-import android.os.Handler;
-import android.text.TextUtils;
-import com.tencent.token.core.bean.QQUser;
-import com.tencent.token.global.RqdApplication;
-import com.tencent.token.utils.UserTask;
-import java.net.URLEncoder;
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.concurrent.CountDownLatch;
-import java.util.concurrent.atomic.AtomicReference;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
 public final class sz
 {
-  public static final aas b = new aas("D87898D3A8B8FBB37DD9885F87E8817449FA1EBDBFCF7BDA2FA6DF721E7B99D2AF7A7368637009A6C6675A9180FB0F635400FEF6A64754186CDB72BF0A60B53257336A248A7F7AAF72F160894A60C68528E5FBCDF29D675F262400A656E34FA28C6D3D77357B4BA0B1CD928BFFAB90AA7948B862B167594027AF6DC0B4A16E53", 16);
-  public static String c = null;
-  public static String d = null;
-  public static String e = null;
-  public static String f = null;
-  private static sz q = null;
-  public byte[] a = null;
-  public long g = 0L;
-  public long h = 0L;
-  public boolean i = true;
-  public boolean j = false;
-  public ahg k = null;
-  public QQUser l = null;
-  public long m = 0L;
-  public long n = 0L;
-  public long o = 0L;
-  private aas p = new aas("-1");
-  private HashMap<String, a> r = new HashMap();
-  
-  public static QQUser a(wy paramwy)
+  public static String a(byte[] paramArrayOfByte)
   {
-    paramwy.a();
-    sz localsz = a();
-    if (localsz.k.b() == null)
-    {
-      xa.c("there is no user bind");
-      paramwy.a(110, "there is no user bind", null);
+    if (paramArrayOfByte == null) {
       return null;
     }
-    Object localObject2 = localsz.f();
-    boolean bool = false;
-    if (localObject2 != null)
+    StringBuffer localStringBuffer = new StringBuffer();
+    int i = 0;
+    while (i < paramArrayOfByte.length)
     {
-      paramwy.a = 0;
-      return localObject2;
+      int k = paramArrayOfByte[i];
+      int j = (k & 0xF0) >>> 4;
+      k &= 0xF;
+      char c1;
+      if (j > 9) {
+        c1 = (char)(j - 10 + 65);
+      } else {
+        c1 = (char)(j + 48);
+      }
+      char c2;
+      if (k > 9) {
+        c2 = (char)(k - 10 + 65);
+      } else {
+        c2 = (char)(k + 48);
+      }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(String.valueOf(c1));
+      localStringBuilder.append(String.valueOf(c2));
+      localStringBuffer.append(localStringBuilder.toString());
+      i += 1;
     }
-    Object localObject1 = localObject2;
-    if (localObject2 == null)
+    return localStringBuffer.toString();
+  }
+  
+  public static String a(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  {
+    int k = 0;
+    int i = 0;
+    int j;
+    for (;;)
     {
-      localObject1 = localsz.k();
-      if (!((wy)localObject1).b())
+      j = k;
+      if (i >= paramInt2) {
+        break;
+      }
+      if (paramArrayOfByte[(paramInt1 + i)] == 0)
       {
-        localObject2 = new StringBuilder("user login failed:");
-        ((StringBuilder)localObject2).append(((wy)localObject1).a);
-        ((StringBuilder)localObject2).append(((wy)localObject1).b);
-        xa.c(((StringBuilder)localObject2).toString());
-        paramwy.a((wy)localObject1);
+        j = 1;
+        break;
+      }
+      i += 1;
+    }
+    if ((j != 0) && (i > 0)) {
+      return b(paramArrayOfByte, paramInt1, i);
+    }
+    return "";
+  }
+  
+  public static short a(byte[] paramArrayOfByte, int paramInt)
+  {
+    return (short)(((paramArrayOfByte[paramInt] & 0xFF) << 8) + ((paramArrayOfByte[(paramInt + 1)] & 0xFF) << 0));
+  }
+  
+  public static void a(byte[] paramArrayOfByte, int paramInt, long paramLong)
+  {
+    paramArrayOfByte[paramInt] = ((byte)(int)(paramLong >> 24));
+    paramArrayOfByte[(paramInt + 1)] = ((byte)(int)(paramLong >> 16));
+    paramArrayOfByte[(paramInt + 2)] = ((byte)(int)(paramLong >> 8));
+    paramArrayOfByte[(paramInt + 3)] = ((byte)(int)paramLong);
+  }
+  
+  public static void a(byte[] paramArrayOfByte, int paramInt, short paramShort)
+  {
+    paramArrayOfByte[paramInt] = ((byte)(paramShort >> 8));
+    paramArrayOfByte[(paramInt + 1)] = ((byte)paramShort);
+  }
+  
+  public static void a(byte[] paramArrayOfByte1, int paramInt1, byte[] paramArrayOfByte2, int paramInt2)
+  {
+    a(paramArrayOfByte1, paramInt1, paramArrayOfByte2, 0, paramInt2);
+  }
+  
+  public static void a(byte[] paramArrayOfByte1, int paramInt1, byte[] paramArrayOfByte2, int paramInt2, int paramInt3)
+  {
+    System.arraycopy(paramArrayOfByte2, paramInt2, paramArrayOfByte1, paramInt1, paramInt3);
+  }
+  
+  public static byte[] a(String paramString)
+  {
+    int i = paramString.length();
+    Object localObject = paramString.toUpperCase();
+    if (i % 2 == 0)
+    {
+      if (i == 0) {
         return null;
       }
-      localObject1 = localsz.f();
-      if (localObject1 != null) {
-        bool = true;
-      }
-      xa.a(bool);
-    }
-    return localObject1;
-  }
-  
-  public static sz a()
-  {
-    if (q == null) {
-      q = new sz();
-    }
-    return q;
-  }
-  
-  public static String a(long paramLong, String paramString)
-  {
-    try
-    {
-      localObject = new JSONObject();
-      ((JSONObject)localObject).put("tkn_seq", String.valueOf(paramLong));
-      ((JSONObject)localObject).put("code", paramString);
-      ((JSONObject)localObject).put("pm", URLEncoder.encode(Build.MODEL));
-      ((JSONObject)localObject).put("pb", URLEncoder.encode(Build.BRAND));
-      ((JSONObject)localObject).put("ps", Build.VERSION.SDK);
-      ((JSONObject)localObject).put("pr", URLEncoder.encode(Build.VERSION.RELEASE));
-      ((JSONObject)localObject).put("net_type", aac.i());
-      paramString = aac.d(RqdApplication.n());
-      if (!TextUtils.isEmpty(paramString)) {
-        ((JSONObject)localObject).put("router_id", paramString);
-      }
-      paramString = aac.c(RqdApplication.n());
-      if (!TextUtils.isEmpty(paramString)) {
-        ((JSONObject)localObject).put("mac", paramString);
-      }
-      paramString = aac.a(RqdApplication.n());
-      if (!TextUtils.isEmpty(paramString)) {
-        ((JSONObject)localObject).put("android_id", paramString);
-      }
-      paramString = aac.b(RqdApplication.n());
-      if (!TextUtils.isEmpty(paramString)) {
-        ((JSONObject)localObject).put("device_id", paramString);
-      }
-      int i1 = sa.b + 1;
-      sa.b = i1;
-      ((JSONObject)localObject).put("seq_id", i1);
-      ((JSONObject)localObject).put("turingd_ticket_id", xe.b());
-      paramString = ((JSONObject)localObject).toString();
-      xa.a("plain:".concat(String.valueOf(paramString)));
-      paramString = aac.b(paramString.getBytes());
-      return paramString;
-    }
-    catch (JSONException paramString)
-    {
-      Object localObject = new StringBuilder("JSONException:");
-      ((StringBuilder)localObject).append(paramString.getMessage());
-      xa.c(((StringBuilder)localObject).toString());
-    }
-    return null;
-  }
-  
-  public static void a(JSONObject paramJSONObject)
-  {
-    try
-    {
-      long l1 = paramJSONObject.getLong("server_time");
-      sb.b();
-      sb.a(l1);
-      return;
-    }
-    catch (Exception paramJSONObject)
-    {
-      label17:
-      break label17;
-    }
-    xa.c("correct time error");
-  }
-  
-  public static Bitmap b(String paramString)
-  {
-    if (paramString == null) {
-      return null;
-    }
-    paramString = new ahq().a(paramString);
-    if (paramString == null) {
-      return null;
-    }
-    return aad.a(paramString);
-  }
-  
-  private wy b(wy paramwy)
-  {
-    Object localObject1 = new wy();
-    paramwy.a();
-    Object localObject3 = a();
-    if (!((sz)localObject3).i())
-    {
-      localObject2 = ((sz)localObject3).m();
-      localObject1 = localObject2;
-      if (!((wy)localObject2).b()) {
-        return localObject2;
-      }
-    }
-    Object localObject2 = ((sz)localObject3).k.b();
-    if (localObject2 == null)
-    {
-      ((wy)localObject1).a(110, null, null);
-      return localObject1;
-    }
-    try
-    {
-      final CountDownLatch localCountDownLatch = new CountDownLatch(1);
-      localObject3 = new AtomicReference(null);
-      qy.a().a(0, aac.k(), new qy.a()
+      int k = i / 2;
+      paramString = new byte[k];
+      localObject = ((String)localObject).toCharArray();
+      i = 0;
+      while (i < k)
       {
-        public final void a(ra paramAnonymousra)
+        int m = i * 2;
+        int j = localObject[m];
+        m = localObject[(m + 1)];
+        if ((j >= 48) && (j <= 57))
         {
-          this.a.set(paramAnonymousra);
-          localCountDownLatch.countDown();
-        }
-      });
-      try
-      {
-        localCountDownLatch.await();
-      }
-      catch (InterruptedException localInterruptedException)
-      {
-        localInterruptedException.printStackTrace();
-      }
-      localObject3 = (ra)((AtomicReference)localObject3).get();
-      if (localObject3 == null)
-      {
-        ((wy)localObject1).a(-798, null, null);
-        return localObject1;
-      }
-      try
-      {
-        int i1 = ((ra)localObject3).b;
-        if (i1 != 0)
-        {
-          localObject2 = ((ra)localObject3).d;
-          ((wy)localObject1).a(i1, (String)localObject2, (String)localObject2);
-          paramwy.a(i1, null, null);
-          xa.c("server errcode=".concat(String.valueOf(i1)));
+          j = (j - 48 << 4) + 0;
         }
         else
         {
-          paramwy = ((ra)localObject3).c;
-          if (paramwy != null)
-          {
-            paramwy = new JSONObject(paramwy);
-            long l1 = paramwy.getLong("uin");
-            if (l1 != ((QQUser)localObject2).mUin)
-            {
-              paramwy = new StringBuilder("uin not match=");
-              paramwy.append(l1);
-              paramwy.append(":");
-              paramwy.append(((QQUser)localObject2).mUin);
-              ((wy)localObject1).a(10000, paramwy.toString(), null);
-              return localObject1;
-            }
-            a().g();
-            if (!this.k.a(l1))
-            {
-              ((wy)localObject1).a(10000, "mUserStorage.setCurrentUserByUin failed", null);
-              return localObject1;
-            }
-            this.l = ((QQUser)localObject2);
-            this.m = (System.currentTimeMillis() / 1000L);
-            this.n = paramwy.getInt("valid_time");
-            ((wy)localObject1).a = 0;
+          if ((j < 65) || (j > 70)) {
+            break label177;
           }
-          else
-          {
-            xa.c("parseJSON error decodeData");
-            ((wy)localObject1).a(10022, RqdApplication.n().getString(2131493068), RqdApplication.n().getString(2131493068));
-          }
+          j = (j - 65 + 10 << 4) + 0;
         }
-      }
-      catch (JSONException paramwy)
-      {
-        localObject2 = new StringBuilder("parse json failed: ");
-        ((StringBuilder)localObject2).append(paramwy.toString());
-        xa.c(((StringBuilder)localObject2).toString());
-        localObject2 = new StringBuilder("JSONException:");
-        ((StringBuilder)localObject2).append(paramwy.toString());
-        ((wy)localObject1).a(10020, ((StringBuilder)localObject2).toString(), null);
-      }
-      return localObject1;
-    }
-    finally {}
-  }
-  
-  public static void b()
-  {
-    q = null;
-  }
-  
-  private void n()
-  {
-    if (RqdApplication.h) {
-      switch (ww.a())
-      {
-      default: 
-        d = null;
-        break;
-      case 3: 
-        f = null;
-        break;
-      case 2: 
-        e = null;
-        break;
-      case 1: 
-        d = null;
-        break;
-      case 0: 
-        c = null;
-      }
-    }
-    this.j = false;
-    this.g = 0L;
-    this.h = 0L;
-    this.l = null;
-    this.m = 0L;
-    this.n = 0L;
-  }
-  
-  public final int a(final Handler paramHandler)
-  {
-    new UserTask() {}.a(new String[] { "" });
-    return 0;
-  }
-  
-  public final QQUser a(int paramInt)
-  {
-    return this.k.a(paramInt);
-  }
-  
-  public final wy a(String paramString, long paramLong)
-  {
-    wy localwy = new wy();
-    Object localObject1 = a();
-    ((sz)localObject1).h();
-    localObject1 = ((sz)localObject1).l();
-    if (!((wy)localObject1).b()) {
-      return localObject1;
-    }
-    boolean bool2 = true;
-    final CountDownLatch localCountDownLatch = new CountDownLatch(1);
-    localObject1 = new AtomicReference(null);
-    qy.a().b(Long.parseLong(paramString), paramLong, new qy.a()
-    {
-      public final void a(ra paramAnonymousra)
-      {
-        this.a.set(paramAnonymousra);
-        localCountDownLatch.countDown();
-      }
-    });
-    try
-    {
-      localCountDownLatch.await();
-    }
-    catch (InterruptedException localInterruptedException)
-    {
-      localInterruptedException.printStackTrace();
-    }
-    localObject1 = (ra)((AtomicReference)localObject1).get();
-    if (localObject1 == null)
-    {
-      localwy.a(-367, null, null);
-      return localwy;
-    }
-    for (;;)
-    {
-      try
-      {
-        int i1 = ((ra)localObject1).b;
-        if (i1 != 0)
+        if ((m >= 48) && (m <= 57))
         {
-          if (102 == i1)
-          {
-            long l1 = System.currentTimeMillis() + qy.a().g();
-            long l2 = 30 - (int)(l1 / 1000L % 30L) + 2L;
-            localObject1 = new StringBuilder("sleep ");
-            ((StringBuilder)localObject1).append(l2);
-            ((StringBuilder)localObject1).append("s for dyncode refresh:");
-            ((StringBuilder)localObject1).append(l1);
-            xa.a(((StringBuilder)localObject1).toString());
-            try
-            {
-              Thread.sleep(l2 * 1000L);
-            }
-            catch (Exception localException)
-            {
-              xa.c(localException.getMessage());
-            }
-            sb.b().d();
-            return a(paramString, paramLong);
-          }
-          paramString = localException.d;
-          localwy.a(i1, paramString, paramString);
-          return localwy;
+          j += m - 48;
         }
-        paramString = new JSONObject(localException.c);
-        xa.a(true);
-        xa.a("data hex: ".concat(String.valueOf(paramString)));
-        localObject2 = new a();
-        StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append(paramString.getLong("uin"));
-        ((a)localObject2).a = localStringBuilder.toString();
-        ((a)localObject2).b = paramString.getString("sig");
-        if (paramString.getInt("is_login_prot_set") == 0)
+        else
         {
-          bool1 = false;
-          ((a)localObject2).c = bool1;
-          bool1 = bool2;
-          if (paramString.getInt("is_game_prot_set") == 0) {
-            bool1 = false;
+          if ((m < 65) || (m > 70)) {
+            break label175;
           }
-          ((a)localObject2).d = bool1;
-          ((a)localObject2).e = paramString.getInt("is_tkn_set");
-          if (((a)localObject2).e == 2) {
-            ((a)localObject2).f = paramString.getString("other_tkn_seq");
-          }
-          this.r.put(((a)localObject2).a, localObject2);
-          localwy.a = 0;
-          return localwy;
+          j += m - 65 + 10;
         }
-      }
-      catch (Exception paramString)
-      {
-        localObject2 = new StringBuilder("unknown err: ");
-        ((StringBuilder)localObject2).append(paramString.toString());
-        xa.c(((StringBuilder)localObject2).toString());
-        localObject2 = new StringBuilder("JSONException:");
-        ((StringBuilder)localObject2).append(paramString.toString());
-        localwy.a(10021, ((StringBuilder)localObject2).toString(), null);
-        return localwy;
-      }
-      catch (JSONException paramString)
-      {
-        Object localObject2 = new StringBuilder("parse json failed: ");
-        ((StringBuilder)localObject2).append(paramString.toString());
-        xa.c(((StringBuilder)localObject2).toString());
-        localObject2 = new StringBuilder("JSONException:");
-        ((StringBuilder)localObject2).append(paramString.toString());
-        localwy.a(10020, ((StringBuilder)localObject2).toString(), null);
-        return localwy;
-      }
-      boolean bool1 = true;
-    }
-  }
-  
-  public final wy a(JSONArray paramJSONArray)
-  {
-    wy localwy = new wy();
-    Object localObject1 = new LinkedList();
-    int i1 = 0;
-    for (;;)
-    {
-      try
-      {
-        if (i1 < paramJSONArray.length())
-        {
-          localJSONObject = paramJSONArray.getJSONObject(i1);
-          localObject2 = new StringBuilder("user json: ");
-          ((StringBuilder)localObject2).append(localJSONObject.toString());
-          xa.a(((StringBuilder)localObject2).toString());
-          localObject2 = new QQUser();
-          ((QQUser)localObject2).mUin = localJSONObject.getLong("uin");
-          ((QQUser)localObject2).mUinMask = localJSONObject.getString("uin_mask");
-          ((QQUser)localObject2).mNickName = localJSONObject.getString("nick");
-          ((QQUser)localObject2).mRealUin = localJSONObject.getLong("real_uin");
-          int i2 = localJSONObject.getInt("is_supper_qq");
-          bool2 = true;
-          if (i2 != 1) {
-            break label315;
-          }
-          bool1 = true;
-          ((QQUser)localObject2).mIsSupperQQ = bool1;
-          ((QQUser)localObject2).mIsBinded = true;
-        }
-      }
-      catch (JSONException paramJSONArray)
-      {
-        JSONObject localJSONObject;
-        Object localObject2;
-        boolean bool2;
-        localObject1 = new StringBuilder("updateQueryUinList JSONException:");
-        ((StringBuilder)localObject1).append(paramJSONArray.toString());
-        localwy.a(10020, ((StringBuilder)localObject1).toString(), null);
-        return localwy;
-      }
-      try
-      {
-        if (localJSONObject.getInt("have_face_auth") != 1) {
-          break label321;
-        }
-        bool1 = true;
-        ((QQUser)localObject2).mIsRegisterFacePwd = bool1;
-        if (localJSONObject.getInt("is_zzb") != 1) {
-          break label327;
-        }
-        bool1 = bool2;
-        ((QQUser)localObject2).mIsZzb = bool1;
-      }
-      catch (Exception localException)
-      {
+        paramString[i] = ((byte)j);
+        i += 1;
         continue;
+        label175:
+        return null;
+        label177:
+        return null;
       }
-      ((List)localObject1).add(localObject2);
-      i1 += 1;
-      continue;
-      new StringBuilder("updateUinList, size:").append(((List)localObject1).size());
-      this.k.a((List)localObject1);
-      localwy.a = 0;
-      return localwy;
-      label315:
-      boolean bool1 = false;
-      continue;
-      label321:
-      bool1 = false;
-      continue;
-      label327:
-      bool1 = false;
+      return paramString;
     }
-  }
-  
-  public final String a(String paramString)
-  {
-    final CountDownLatch localCountDownLatch = new CountDownLatch(1);
-    final AtomicReference localAtomicReference = new AtomicReference();
-    qy.a().c(Long.parseLong(paramString), new qy.a()
-    {
-      public final void a(ra paramAnonymousra)
-      {
-        wy localwy = new wy();
-        localwy.a = paramAnonymousra.b;
-        localwy.c = paramAnonymousra.d;
-        localwy.b = paramAnonymousra.d;
-        if (paramAnonymousra.b == 0) {
-          try
-          {
-            paramAnonymousra = new JSONObject(paramAnonymousra.c).getString("photo_url");
-            localAtomicReference.set(paramAnonymousra);
-          }
-          catch (JSONException paramAnonymousra)
-          {
-            paramAnonymousra.printStackTrace();
-            localwy.a = 10020;
-          }
-        }
-        localCountDownLatch.countDown();
-      }
-    });
-    try
-    {
-      localCountDownLatch.await();
-    }
-    catch (Throwable paramString)
-    {
-      paramString.printStackTrace();
-    }
-    return (String)localAtomicReference.get();
-  }
-  
-  public final void a(long paramLong1, long paramLong2)
-  {
-    QQUser localQQUser = c(paramLong1);
-    if (localQQUser != null)
-    {
-      this.l = localQQUser;
-      this.m = (System.currentTimeMillis() / 1000L);
-      this.n = paramLong2;
-    }
-  }
-  
-  public final boolean a(long paramLong)
-  {
-    return this.k.a(paramLong);
-  }
-  
-  public final boolean a(QQUser paramQQUser)
-  {
-    if ((paramQQUser != null) && (paramQQUser.mRealUin != 0L)) {
-      return this.k.b(paramQQUser);
-    }
-    return false;
-  }
-  
-  public final QQUser b(int paramInt)
-  {
-    return this.k.b(paramInt);
-  }
-  
-  public final boolean b(long paramLong)
-  {
-    return this.k.b(paramLong);
-  }
-  
-  public final long c()
-  {
-    return this.k.d();
-  }
-  
-  public final QQUser c(long paramLong)
-  {
-    return this.k.c(paramLong);
-  }
-  
-  public final a c(String paramString)
-  {
-    return (a)this.r.get(paramString);
-  }
-  
-  public final boolean c(int paramInt)
-  {
-    if (104 == paramInt)
-    {
-      if (!j().b()) {
-        return false;
-      }
-      return k().b();
-    }
-    if (109 == paramInt) {
-      return k().b();
-    }
-    return false;
-  }
-  
-  public final QQUser d(long paramLong)
-  {
-    return this.k.d(paramLong);
-  }
-  
-  public final boolean d()
-  {
-    ahg localahg = this.k;
-    if (localahg.a != null)
-    {
-      int i1 = 0;
-      while (i1 < localahg.a.size())
-      {
-        if (((QQUser)localahg.a.get(i1)).mIsRegisterFacePwd) {
-          return true;
-        }
-        i1 += 1;
-      }
-    }
-    return false;
-  }
-  
-  public final void e(long paramLong)
-  {
-    QQUser localQQUser = d(paramLong);
-    if (localQQUser != null)
-    {
-      this.l = localQQUser;
-      this.m = this.g;
-      this.n = this.h;
-    }
-  }
-  
-  public final boolean e()
-  {
-    ahg localahg = this.k;
-    QQUser localQQUser1 = localahg.b();
-    if (localQQUser1 != null)
-    {
-      if (localahg.a == null) {
-        return false;
-      }
-      int i1 = 0;
-      while (i1 < localahg.a.size())
-      {
-        QQUser localQQUser2 = (QQUser)localahg.a.get(i1);
-        if ((localQQUser2.mIsRegisterFacePwd) && (localQQUser2.mUin == localQQUser1.mUin)) {
-          return true;
-        }
-        i1 += 1;
-      }
-      return false;
-    }
-    return false;
-  }
-  
-  public final QQUser f()
-  {
-    if (!i())
-    {
-      xa.a("not prepare");
-      return null;
-    }
-    QQUser localQQUser = this.k.b();
-    if ((localQQUser != null) && (this.l == localQQUser))
-    {
-      long l1 = System.currentTimeMillis() / 1000L;
-      localStringBuilder = new StringBuilder("mLoginTime =");
-      localStringBuilder.append(this.m);
-      localStringBuilder.append(",mLoginValidInterval= ");
-      localStringBuilder.append(this.n);
-      localStringBuilder.append(",nowTime=");
-      localStringBuilder.append(l1);
-      xa.a(localStringBuilder.toString());
-      if (this.m + this.n > l1) {
-        return this.l;
-      }
-    }
-    StringBuilder localStringBuilder = new StringBuilder("user not login, login_user=");
-    localStringBuilder.append(this.l);
-    localStringBuilder.append(",current_user=");
-    localStringBuilder.append(localQQUser);
-    xa.a(localStringBuilder.toString());
-    this.l = null;
-    this.m = 0L;
-    this.n = 0L;
     return null;
   }
   
-  public final void f(long paramLong)
+  public static long b(byte[] paramArrayOfByte, int paramInt)
   {
-    this.j = false;
-    com.tencent.token.ui.AccountPageActivity.mNeedRefreshEval = true;
-    this.o = paramLong;
+    return ((paramArrayOfByte[paramInt] & 0xFF) << 24) + ((paramArrayOfByte[(paramInt + 1)] & 0xFF) << 16) + ((paramArrayOfByte[(paramInt + 2)] & 0xFF) << 8) + ((paramArrayOfByte[(paramInt + 3)] & 0xFF) << 0);
   }
   
-  public final void g()
+  /* Error */
+  private static String b(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
-    this.g = (System.currentTimeMillis() / 1000L);
+    // Byte code:
+    //   0: ldc 40
+    //   2: astore 4
+    //   4: aconst_null
+    //   5: astore 6
+    //   7: aconst_null
+    //   8: astore 7
+    //   10: aconst_null
+    //   11: astore 5
+    //   13: iload_2
+    //   14: iconst_2
+    //   15: iadd
+    //   16: newarray byte
+    //   18: astore_3
+    //   19: aload_3
+    //   20: iconst_0
+    //   21: iload_2
+    //   22: bipush 8
+    //   24: ishr
+    //   25: i2b
+    //   26: bastore
+    //   27: aload_3
+    //   28: iconst_1
+    //   29: iload_2
+    //   30: i2b
+    //   31: bastore
+    //   32: aload_0
+    //   33: iload_1
+    //   34: aload_3
+    //   35: iconst_2
+    //   36: iload_2
+    //   37: invokestatic 53	java/lang/System:arraycopy	(Ljava/lang/Object;ILjava/lang/Object;II)V
+    //   40: new 74	java/io/ByteArrayInputStream
+    //   43: dup
+    //   44: aload_3
+    //   45: invokespecial 77	java/io/ByteArrayInputStream:<init>	([B)V
+    //   48: astore_0
+    //   49: new 79	java/io/DataInputStream
+    //   52: dup
+    //   53: aload_0
+    //   54: invokespecial 82	java/io/DataInputStream:<init>	(Ljava/io/InputStream;)V
+    //   57: astore_3
+    //   58: aload_3
+    //   59: invokevirtual 85	java/io/DataInputStream:readUTF	()Ljava/lang/String;
+    //   62: astore 5
+    //   64: aload_3
+    //   65: invokevirtual 88	java/io/DataInputStream:close	()V
+    //   68: aload 5
+    //   70: astore_3
+    //   71: aload_0
+    //   72: invokevirtual 89	java/io/ByteArrayInputStream:close	()V
+    //   75: aload_3
+    //   76: areturn
+    //   77: astore 5
+    //   79: aload_3
+    //   80: astore 4
+    //   82: aload_0
+    //   83: astore_3
+    //   84: aload 5
+    //   86: astore_0
+    //   87: goto +42 -> 129
+    //   90: goto +67 -> 157
+    //   93: goto +90 -> 183
+    //   96: astore 6
+    //   98: aload 5
+    //   100: astore 4
+    //   102: aload_0
+    //   103: astore_3
+    //   104: aload 6
+    //   106: astore_0
+    //   107: goto +22 -> 129
+    //   110: aload 6
+    //   112: astore_3
+    //   113: goto +44 -> 157
+    //   116: aload 7
+    //   118: astore_3
+    //   119: goto +64 -> 183
+    //   122: astore_0
+    //   123: aconst_null
+    //   124: astore_3
+    //   125: aload 5
+    //   127: astore 4
+    //   129: aload 4
+    //   131: ifnull +11 -> 142
+    //   134: aload 4
+    //   136: invokevirtual 88	java/io/DataInputStream:close	()V
+    //   139: goto +3 -> 142
+    //   142: aload_3
+    //   143: ifnull +7 -> 150
+    //   146: aload_3
+    //   147: invokevirtual 89	java/io/ByteArrayInputStream:close	()V
+    //   150: aload_0
+    //   151: athrow
+    //   152: aconst_null
+    //   153: astore_0
+    //   154: aload 6
+    //   156: astore_3
+    //   157: aload_3
+    //   158: ifnull +10 -> 168
+    //   161: aload_3
+    //   162: invokevirtual 88	java/io/DataInputStream:close	()V
+    //   165: goto +3 -> 168
+    //   168: aload_0
+    //   169: ifnull +35 -> 204
+    //   172: aload 4
+    //   174: astore_3
+    //   175: goto -104 -> 71
+    //   178: aconst_null
+    //   179: astore_0
+    //   180: aload 7
+    //   182: astore_3
+    //   183: aload_3
+    //   184: ifnull +10 -> 194
+    //   187: aload_3
+    //   188: invokevirtual 88	java/io/DataInputStream:close	()V
+    //   191: goto +3 -> 194
+    //   194: aload_0
+    //   195: ifnull +9 -> 204
+    //   198: aload 4
+    //   200: astore_3
+    //   201: goto -130 -> 71
+    //   204: ldc 40
+    //   206: areturn
+    //   207: astore_0
+    //   208: goto -30 -> 178
+    //   211: astore_0
+    //   212: goto -60 -> 152
+    //   215: astore_3
+    //   216: goto -100 -> 116
+    //   219: astore_3
+    //   220: goto -110 -> 110
+    //   223: astore 5
+    //   225: goto -132 -> 93
+    //   228: astore 5
+    //   230: goto -140 -> 90
+    //   233: astore_3
+    //   234: aload 5
+    //   236: astore_3
+    //   237: goto -166 -> 71
+    //   240: astore_0
+    //   241: aload_3
+    //   242: areturn
+    //   243: astore 4
+    //   245: goto -103 -> 142
+    //   248: astore_3
+    //   249: goto -99 -> 150
+    //   252: astore_3
+    //   253: goto -85 -> 168
+    //   256: astore_3
+    //   257: goto -63 -> 194
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	260	0	paramArrayOfByte	byte[]
+    //   0	260	1	paramInt1	int
+    //   0	260	2	paramInt2	int
+    //   18	183	3	localObject1	Object
+    //   215	1	3	localIOException1	java.io.IOException
+    //   219	1	3	localException1	java.lang.Exception
+    //   233	1	3	localIOException2	java.io.IOException
+    //   236	6	3	localException2	java.lang.Exception
+    //   248	1	3	localIOException3	java.io.IOException
+    //   252	1	3	localIOException4	java.io.IOException
+    //   256	1	3	localIOException5	java.io.IOException
+    //   2	197	4	localObject2	Object
+    //   243	1	4	localIOException6	java.io.IOException
+    //   11	58	5	str	String
+    //   77	49	5	localObject3	Object
+    //   223	1	5	localIOException7	java.io.IOException
+    //   228	7	5	localException3	java.lang.Exception
+    //   5	1	6	localObject4	Object
+    //   96	59	6	localObject5	Object
+    //   8	173	7	localObject6	Object
+    // Exception table:
+    //   from	to	target	type
+    //   58	64	77	finally
+    //   49	58	96	finally
+    //   13	19	122	finally
+    //   32	49	122	finally
+    //   13	19	207	java/io/IOException
+    //   32	49	207	java/io/IOException
+    //   13	19	211	java/lang/Exception
+    //   32	49	211	java/lang/Exception
+    //   49	58	215	java/io/IOException
+    //   49	58	219	java/lang/Exception
+    //   58	64	223	java/io/IOException
+    //   58	64	228	java/lang/Exception
+    //   64	68	233	java/io/IOException
+    //   71	75	240	java/io/IOException
+    //   134	139	243	java/io/IOException
+    //   146	150	248	java/io/IOException
+    //   161	165	252	java/io/IOException
+    //   187	191	256	java/io/IOException
   }
   
-  public final void h()
+  public static void b(byte[] paramArrayOfByte1, int paramInt1, byte[] paramArrayOfByte2, int paramInt2)
   {
-    n();
-    this.i = true;
-  }
-  
-  public final boolean i()
-  {
-    if (!this.j)
-    {
-      xa.a("uinlist not queryed");
-      return false;
-    }
-    return true;
-  }
-  
-  public final wy j()
-  {
-    try
-    {
-      xa.a("start syncPrepare process");
-      n();
-      wy localwy = m();
-      boolean bool = localwy.b();
-      if (!bool) {
-        return localwy;
-      }
-      xa.a(i());
-      localwy = new wy((byte)0);
-      return localwy;
-    }
-    finally {}
-  }
-  
-  public final wy k()
-  {
-    try
-    {
-      xa.a("start syncLogin process");
-      wy localwy2 = new wy();
-      Object localObject1 = b(localwy2);
-      boolean bool = ((wy)localObject1).b();
-      if (bool) {
-        return localObject1;
-      }
-      wy localwy1;
-      if (localwy2.a == 102)
-      {
-        long l1 = System.currentTimeMillis() + qy.a().g();
-        long l2 = 30 - (int)(l1 / 1000L % 30L) + 2L;
-        localObject1 = new StringBuilder("sleep ");
-        ((StringBuilder)localObject1).append(l2);
-        ((StringBuilder)localObject1).append("s for dyncode refresh:");
-        ((StringBuilder)localObject1).append(l1);
-        xa.a(((StringBuilder)localObject1).toString());
-        try
-        {
-          Thread.sleep(l2 * 1000L);
-        }
-        catch (Exception localException)
-        {
-          xa.c(localException.getMessage());
-        }
-        localwy1 = b(localwy2);
-      }
-      else if (localwy2.a == 104)
-      {
-        h();
-        localwy1 = b(localwy2);
-      }
-      else if (localwy2.a == 112)
-      {
-        localwy1 = b(localwy2);
-      }
-      return localwy1;
-    }
-    finally {}
-  }
-  
-  public final wy l()
-  {
-    try
-    {
-      ru.a.a();
-      wy localwy = ru.a();
-      return localwy;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  public final wy m()
-  {
-    try
-    {
-      xa.a("start syncQueryUinList process");
-      new wy();
-      wy localwy = ru.a.a().c();
-      return localwy;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  public final class a
-  {
-    public String a;
-    public String b;
-    public boolean c;
-    public boolean d;
-    public int e;
-    public String f;
-    
-    public a() {}
+    a(paramArrayOfByte2, 0, paramArrayOfByte1, paramInt1, paramInt2);
   }
 }
 

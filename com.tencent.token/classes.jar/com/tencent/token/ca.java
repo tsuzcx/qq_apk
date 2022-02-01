@@ -1,25 +1,29 @@
 package com.tencent.token;
 
-import android.support.v4.app.Fragment;
-import java.io.FileDescriptor;
-import java.io.PrintWriter;
-import java.util.List;
+import android.content.Intent;
+import android.content.IntentSender;
+import android.os.Bundle;
 
 public abstract class ca
+  extends bz
 {
-  public abstract Fragment a(String paramString);
+  protected boolean mStartedActivityFromFragment;
   
-  public abstract cd a();
+  public void startActivityForResult(Intent paramIntent, int paramInt, Bundle paramBundle)
+  {
+    if ((!this.mStartedActivityFromFragment) && (paramInt != -1)) {
+      checkForValidRequestCode(paramInt);
+    }
+    super.startActivityForResult(paramIntent, paramInt, paramBundle);
+  }
   
-  public abstract void a(String paramString, FileDescriptor paramFileDescriptor, PrintWriter paramPrintWriter, String[] paramArrayOfString);
-  
-  public abstract boolean b();
-  
-  public abstract boolean c();
-  
-  public abstract List<Fragment> d();
-  
-  public abstract boolean e();
+  public void startIntentSenderForResult(IntentSender paramIntentSender, int paramInt1, Intent paramIntent, int paramInt2, int paramInt3, int paramInt4, Bundle paramBundle)
+  {
+    if ((!this.mStartedIntentSenderFromFragment) && (paramInt1 != -1)) {
+      checkForValidRequestCode(paramInt1);
+    }
+    super.startIntentSenderForResult(paramIntentSender, paramInt1, paramIntent, paramInt2, paramInt3, paramInt4, paramBundle);
+  }
 }
 
 

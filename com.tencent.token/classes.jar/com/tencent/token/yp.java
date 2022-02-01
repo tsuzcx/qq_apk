@@ -1,127 +1,106 @@
 package com.tencent.token;
 
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.Canvas;
-import android.graphics.ColorFilter;
-import android.graphics.Paint;
-import android.graphics.PaintFlagsDrawFilter;
-import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
+import android.content.Intent;
+import android.content.res.Resources;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.TextView;
+import com.tencent.token.core.bean.MbInfoResult;
+import com.tencent.token.core.bean.MbInfoResult.MbInfoItem;
+import com.tencent.token.core.bean.MbInfoResult.MbInfoItemDetail;
+import com.tencent.token.ui.UtilsMbInfoActivity;
+import com.tencent.token.ui.UtilsMbInfoItemActivity;
+import com.tencent.token.ui.UtilsModSetMobileStep1Activity;
+import java.util.ArrayList;
 
 public final class yp
-  extends Drawable
+  extends BaseAdapter
 {
-  private static int g = 50;
-  private Paint a = new Paint();
-  private Bitmap b;
-  private Bitmap c;
-  private Bitmap d;
-  private int e;
-  private int f;
-  private int h;
-  private Rect i;
-  private Rect j;
-  private Rect k;
-  private Rect l;
-  private int m;
-  private int n;
-  private int o;
-  private PaintFlagsDrawFilter p;
-  private boolean q = false;
+  private UtilsMbInfoActivity a;
+  private LayoutInflater b;
   
-  public yp(Context paramContext, boolean paramBoolean)
+  public yp(UtilsMbInfoActivity paramUtilsMbInfoActivity)
   {
-    this.q = paramBoolean;
-    if (paramBoolean)
-    {
-      this.b = BitmapFactory.decodeResource(paramContext.getResources(), 2131100039);
-      this.c = BitmapFactory.decodeResource(paramContext.getResources(), 2131100030);
-      this.d = BitmapFactory.decodeResource(paramContext.getResources(), 2131099940);
-    }
-    else
-    {
-      this.b = BitmapFactory.decodeResource(paramContext.getResources(), 2131100033);
-      this.c = BitmapFactory.decodeResource(paramContext.getResources(), 2131100029);
-      this.d = BitmapFactory.decodeResource(paramContext.getResources(), 2131099939);
-      this.m = aac.a(paramContext, 0.0F);
-      this.n = aac.a(paramContext, 4.0F);
-      this.o = aac.a(paramContext, 30.0F);
-    }
-    this.p = new PaintFlagsDrawFilter(0, 3);
+    this.a = paramUtilsMbInfoActivity;
+    this.b = LayoutInflater.from(paramUtilsMbInfoActivity);
   }
   
-  public final void draw(Canvas paramCanvas)
+  public final int getCount()
   {
-    try
-    {
-      int i1 = this.h % g * this.e;
-      if (this.h % g == g - 1) {
-        i1 = this.l.height();
-      }
-      this.a.setAntiAlias(true);
-      paramCanvas.setDrawFilter(this.p);
-      paramCanvas.drawBitmap(this.c, null, this.l, this.a);
-      paramCanvas.save();
-      Rect localRect = this.j;
-      int i3 = this.k.width();
-      int i4 = this.l.top;
-      int i2 = 0;
-      localRect.set(0, 0, i3, i4 + i1);
-      paramCanvas.clipRect(this.j);
-      this.a.setAlpha(255);
-      paramCanvas.drawBitmap(this.b, null, this.l, this.a);
-      if (i1 - this.d.getHeight() > 0) {
-        i2 = i1 - this.d.getHeight() + this.n;
-      }
-      this.i.set(this.l.left, this.l.top + i2, this.l.right, this.l.top + i1 + this.n);
-      if (this.h % g > g / 2)
-      {
-        i1 = this.h;
-        i2 = g;
-        i3 = this.f;
-        this.a.setAlpha(255 - (i1 % i2 * i3 & 0xFF));
-      }
-      else
-      {
-        this.a.setAlpha(255);
-      }
-      paramCanvas.drawBitmap(this.d, null, this.i, this.a);
-      paramCanvas.restore();
-      this.h += 1;
+    MbInfoResult localMbInfoResult = aax.a().c();
+    if ((localMbInfoResult != null) && (localMbInfoResult.mMbInfoItems != null)) {
+      return localMbInfoResult.mMbInfoItems.size();
     }
-    catch (Exception paramCanvas)
-    {
-      label321:
-      break label321;
-    }
-    invalidateSelf();
-  }
-  
-  public final int getOpacity()
-  {
     return 0;
   }
   
-  public final void setAlpha(int paramInt) {}
-  
-  public final void setBounds(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public final Object getItem(int paramInt)
   {
-    super.setBounds(paramInt1, paramInt2, paramInt3, paramInt4);
-    this.k = new Rect(paramInt1, paramInt2, paramInt3, paramInt4);
-    this.i = new Rect(0, 0, this.k.width(), this.d.getHeight());
-    this.j = new Rect(0, 0, this.k.width(), this.k.height());
-    paramInt1 = this.k.width() - this.m;
-    paramInt2 = this.k.height() - this.m;
-    this.l = new Rect((this.k.width() - paramInt1) / 2, (this.k.height() - paramInt2) / 2, (this.k.width() - paramInt1) / 2 + paramInt1, (this.k.height() - paramInt2) / 2 + paramInt2);
-    paramInt1 = this.l.height();
-    paramInt2 = g;
-    this.e = (paramInt1 / paramInt2);
-    this.f = (255 / (paramInt2 / 2));
+    return Integer.valueOf(paramInt);
   }
   
-  public final void setColorFilter(ColorFilter paramColorFilter) {}
+  public final long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public final View getView(final int paramInt, final View paramView, ViewGroup paramViewGroup)
+  {
+    View localView = paramView;
+    if (paramView == null) {
+      localView = this.b.inflate(2131296488, paramViewGroup, false);
+    }
+    paramView = aax.a().c();
+    if ((paramView == null) && (!this.a.mIsIniting))
+    {
+      this.a.getMbInfo();
+      return localView;
+    }
+    if ((paramView != null) && (paramView.mMbInfoItems != null))
+    {
+      if (paramView.mMbInfoItems.size() <= paramInt) {
+        return localView;
+      }
+      paramView = (MbInfoResult.MbInfoItem)paramView.mMbInfoItems.get(paramInt);
+      paramViewGroup = (TextView)localView.findViewById(2131166239);
+      TextView localTextView1 = (TextView)localView.findViewById(2131166238);
+      TextView localTextView2 = (TextView)localView.findViewById(2131166240);
+      if (paramView.mName != null) {
+        paramViewGroup.setText(paramView.mName);
+      }
+      if (paramView.mDesc != null) {
+        localTextView1.setText(paramView.mDesc);
+      }
+      if (paramView.mOpName != null) {
+        localTextView2.setText(paramView.mOpName);
+      }
+      localView.setOnClickListener(new View.OnClickListener()
+      {
+        public final void onClick(View paramAnonymousView)
+        {
+          if ((paramView.mId == 51) && (paramView.mDetail.mBtnType == 1))
+          {
+            paramAnonymousView = new Intent(yp.a(yp.this), UtilsModSetMobileStep1Activity.class);
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append(yp.a(yp.this).getResources().getString(2131493573));
+            localStringBuilder.append(paramView.mName);
+            paramAnonymousView.putExtra("title", localStringBuilder.toString());
+            paramAnonymousView.putExtra("op_type", 1);
+            paramAnonymousView.putExtra("position", paramInt);
+            yp.a(yp.this).startActivity(paramAnonymousView);
+            return;
+          }
+          paramAnonymousView = new Intent(yp.a(yp.this), UtilsMbInfoItemActivity.class);
+          paramAnonymousView.putExtra("position", paramInt);
+          yp.a(yp.this).startActivity(paramAnonymousView);
+        }
+      });
+    }
+    return localView;
+  }
 }
 
 

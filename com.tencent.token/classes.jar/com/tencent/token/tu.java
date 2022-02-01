@@ -1,38 +1,46 @@
 package com.tencent.token;
 
-import java.util.HashMap;
-import org.json.JSONObject;
+import java.util.concurrent.Callable;
 
-public final class tu
-  extends tj
+public class tu
 {
-  private String d;
-  
-  public final String a()
+  public static xh a(abc paramabc, String paramString)
   {
-    rz.a();
-    aac.a(new Object[] { "uin", this.d });
-    this.a.a(104, null, null);
-    return null;
-  }
-  
-  public final void a(aaq paramaaq)
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(paramaaq.c.get("param.realuin"));
-    this.d = localStringBuilder.toString();
-  }
-  
-  public final void a(JSONObject paramJSONObject)
-  {
-    int i = paramJSONObject.getInt("err");
-    xa.a("ProtoDelUnverifyUin:errCode".concat(String.valueOf(i)));
-    if (i != 0)
+    new xh();
+    try
     {
-      a(i, paramJSONObject.getString("info"));
-      return;
+      sh.a();
+      sc.a.a();
+      xh localxh = sc.a();
+      Object localObject = localxh;
+      if (localxh.b())
+      {
+        paramString = to.a(paramString);
+        if (paramString != null)
+        {
+          paramabc = paramString.c(paramabc);
+          localObject = paramabc;
+          if (paramabc.b())
+          {
+            sh.a();
+            th.a().g();
+            localObject = paramabc;
+          }
+        }
+        else
+        {
+          localxh.a(10000, null, null);
+          localObject = localxh;
+        }
+      }
+      return localObject;
     }
-    this.a.a = 0;
+    finally {}
+  }
+  
+  public static Callable<xh> a(abc paramabc)
+  {
+    new Callable() {};
   }
 }
 

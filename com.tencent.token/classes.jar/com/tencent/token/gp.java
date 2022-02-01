@@ -1,116 +1,62 @@
 package com.tencent.token;
 
-import android.content.res.ColorStateList;
-import android.content.res.Resources;
-import android.content.res.Resources.Theme;
-import android.content.res.TypedArray;
-import android.graphics.Color;
-import android.util.AttributeSet;
-import android.util.StateSet;
-import android.util.Xml;
-import org.xmlpull.v1.XmlPullParser;
-import org.xmlpull.v1.XmlPullParserException;
-
 final class gp
 {
-  public static ColorStateList a(Resources paramResources, XmlPullParser paramXmlPullParser, Resources.Theme paramTheme)
+  private static gp d;
+  public long a;
+  public long b;
+  public int c;
+  
+  static gp a()
   {
-    AttributeSet localAttributeSet = Xml.asAttributeSet(paramXmlPullParser);
-    int i;
-    do
-    {
-      i = paramXmlPullParser.next();
-    } while ((i != 2) && (i != 1));
-    if (i == 2)
-    {
-      String str = paramXmlPullParser.getName();
-      if (str.equals("selector")) {
-        return a(paramResources, paramXmlPullParser, localAttributeSet, paramTheme);
-      }
-      paramResources = new StringBuilder();
-      paramResources.append(paramXmlPullParser.getPositionDescription());
-      paramResources.append(": invalid color state list tag ");
-      paramResources.append(str);
-      throw new XmlPullParserException(paramResources.toString());
+    if (d == null) {
+      d = new gp();
     }
-    throw new XmlPullParserException("No start tag found");
+    return d;
   }
   
-  private static ColorStateList a(Resources paramResources, XmlPullParser paramXmlPullParser, AttributeSet paramAttributeSet, Resources.Theme paramTheme)
+  public final void a(long paramLong, double paramDouble1, double paramDouble2)
   {
-    int i1 = paramXmlPullParser.getDepth() + 1;
-    Object localObject1 = new int[20][];
-    int[] arrayOfInt = new int[20];
-    int i = 0;
-    for (;;)
+    float f1 = (float)(paramLong - 946728000000L) / 86400000.0F;
+    float f2 = 0.01720197F * f1 + 6.24006F;
+    double d1 = f2;
+    double d2 = Math.sin(d1);
+    Double.isNaN(d1);
+    d2 = d2 * 0.03341960161924362D + d1 + Math.sin(2.0F * f2) * 0.0003490659873933D + Math.sin(f2 * 3.0F) * 5.236000106378924E-006D + 1.796593063D + 3.141592653589793D;
+    paramDouble2 = -paramDouble2 / 360.0D;
+    double d3 = f1 - 0.0009F;
+    Double.isNaN(d3);
+    d3 = (float)Math.round(d3 - paramDouble2) + 0.0009F;
+    Double.isNaN(d3);
+    paramDouble2 = d3 + paramDouble2 + Math.sin(d1) * 0.0053D + Math.sin(2.0D * d2) * -0.0069D;
+    d1 = Math.asin(Math.sin(d2) * Math.sin(0.4092797040939331D));
+    paramDouble1 = 0.0174532923847437D * paramDouble1;
+    paramDouble1 = (Math.sin(-0.1047197580337524D) - Math.sin(paramDouble1) * Math.sin(d1)) / (Math.cos(paramDouble1) * Math.cos(d1));
+    if (paramDouble1 >= 1.0D)
     {
-      int j = paramXmlPullParser.next();
-      if (j == 1) {
-        break;
-      }
-      int k = paramXmlPullParser.getDepth();
-      if ((k < i1) && (j == 3)) {
-        break;
-      }
-      if ((j == 2) && (k <= i1)) {
-        if (paramXmlPullParser.getName().equals("item"))
-        {
-          Object localObject2 = go.j.ColorStateListItem;
-          if (paramTheme == null) {
-            localObject2 = paramResources.obtainAttributes(paramAttributeSet, (int[])localObject2);
-          } else {
-            localObject2 = paramTheme.obtainStyledAttributes(paramAttributeSet, (int[])localObject2, 0, 0);
-          }
-          int i2 = ((TypedArray)localObject2).getColor(go.j.ColorStateListItem_android_color, -65281);
-          boolean bool = ((TypedArray)localObject2).hasValue(go.j.ColorStateListItem_android_alpha);
-          float f = 1.0F;
-          if (bool) {
-            f = ((TypedArray)localObject2).getFloat(go.j.ColorStateListItem_android_alpha, 1.0F);
-          } else if (((TypedArray)localObject2).hasValue(go.j.ColorStateListItem_alpha)) {
-            f = ((TypedArray)localObject2).getFloat(go.j.ColorStateListItem_alpha, 1.0F);
-          }
-          ((TypedArray)localObject2).recycle();
-          int i3 = paramAttributeSet.getAttributeCount();
-          localObject2 = new int[i3];
-          j = 0;
-          int m;
-          for (k = 0; j < i3; k = m)
-          {
-            int n = paramAttributeSet.getAttributeNameResource(j);
-            m = k;
-            if (n != 16843173)
-            {
-              m = k;
-              if (n != 16843551)
-              {
-                m = k;
-                if (n != go.a.alpha)
-                {
-                  if (paramAttributeSet.getAttributeBooleanValue(j, false)) {
-                    m = n;
-                  } else {
-                    m = -n;
-                  }
-                  localObject2[k] = m;
-                  m = k + 1;
-                }
-              }
-            }
-            j += 1;
-          }
-          localObject2 = StateSet.trimStateSet((int[])localObject2, k);
-          arrayOfInt = gr.a(arrayOfInt, i, cy.b(i2, Math.round(Color.alpha(i2) * f)));
-          localObject1 = (int[][])gr.a((Object[])localObject1, i, localObject2);
-          i += 1;
-        }
-        else {}
-      }
+      this.c = 1;
+      this.a = -1L;
+      this.b = -1L;
+      return;
     }
-    paramResources = new int[i];
-    paramXmlPullParser = new int[i][];
-    System.arraycopy(arrayOfInt, 0, paramResources, 0, i);
-    System.arraycopy(localObject1, 0, paramXmlPullParser, 0, i);
-    return new ColorStateList(paramXmlPullParser, paramResources);
+    if (paramDouble1 <= -1.0D)
+    {
+      this.c = 0;
+      this.a = -1L;
+      this.b = -1L;
+      return;
+    }
+    paramDouble1 = (float)(Math.acos(paramDouble1) / 6.283185307179586D);
+    Double.isNaN(paramDouble1);
+    this.a = (Math.round((paramDouble2 + paramDouble1) * 86400000.0D) + 946728000000L);
+    Double.isNaN(paramDouble1);
+    this.b = (Math.round((paramDouble2 - paramDouble1) * 86400000.0D) + 946728000000L);
+    if ((this.b < paramLong) && (this.a > paramLong))
+    {
+      this.c = 0;
+      return;
+    }
+    this.c = 1;
   }
 }
 

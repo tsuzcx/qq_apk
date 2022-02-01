@@ -8,7 +8,7 @@ import android.app.Service;
 import android.content.Intent;
 import android.os.Build.VERSION;
 import android.os.IBinder;
-import com.tencent.token.aac;
+import com.tencent.token.aao;
 import com.tmsdk.common.util.TmsLog;
 
 public class ActivateService
@@ -75,7 +75,7 @@ public class ActivateService
   public int onStartCommand(Intent paramIntent, int paramInt1, int paramInt2)
   {
     TmsLog.i("ActivateService", "onStartCommand.");
-    aac.g();
+    aao.g();
     return super.onStartCommand(paramIntent, paramInt1, paramInt2);
   }
 }

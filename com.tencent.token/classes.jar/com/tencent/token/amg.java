@@ -1,31 +1,17 @@
 package com.tencent.token;
 
-import java.util.Collections;
+import java.io.IOException;
 
-public final class amg<T>
-  extends alz<T>
+public final class amg
+  extends IOException
 {
-  private final T c;
+  public final alu a;
   
-  public amg(T paramT)
+  public amg(alu paramalu)
   {
-    super(Collections.emptyList());
-    this.c = paramT;
+    super("stream was reset: ".concat(String.valueOf(paramalu)));
+    this.a = paramalu;
   }
-  
-  public final T a()
-  {
-    return this.c;
-  }
-  
-  public final T a(aly<T> paramaly, float paramFloat)
-  {
-    return this.c;
-  }
-  
-  public final void a(float paramFloat) {}
-  
-  public final void a(alv.a parama) {}
 }
 
 

@@ -1,55 +1,71 @@
 package com.tencent.token;
 
-import android.app.AppOpsManager;
+import android.content.ComponentName;
 import android.content.Context;
-import android.content.pm.PackageManager;
+import android.content.Intent;
+import android.content.pm.PackageManager.NameNotFoundException;
 import android.os.Build.VERSION;
-import android.os.Process;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public final class cu
+  implements Iterable<Intent>
 {
-  public static int a(Context paramContext, String paramString)
+  private static final c c = new c();
+  public final ArrayList<Intent> a = new ArrayList();
+  public final Context b;
+  
+  static
   {
-    int i = Process.myPid();
-    int j = Process.myUid();
-    String str = paramContext.getPackageName();
-    if (paramContext.checkPermission(paramString, i, j) == -1) {
-      return -1;
-    }
-    if (Build.VERSION.SDK_INT >= 23) {
-      paramString = AppOpsManager.permissionToOp(paramString);
-    } else {
-      paramString = null;
-    }
-    if (paramString != null)
+    if (Build.VERSION.SDK_INT >= 16)
     {
-      Object localObject = str;
-      if (str == null)
-      {
-        localObject = paramContext.getPackageManager().getPackagesForUid(j);
-        if (localObject != null)
-        {
-          if (localObject.length <= 0) {
-            return -1;
-          }
-          localObject = localObject[0];
-        }
-        else
-        {
-          return -1;
-        }
-      }
-      if (Build.VERSION.SDK_INT >= 23) {
-        i = ((AppOpsManager)paramContext.getSystemService(AppOpsManager.class)).noteProxyOpNoThrow(paramString, (String)localObject);
-      } else {
-        i = 1;
-      }
-      if (i != 0) {
-        return -2;
-      }
+      c = new b();
+      return;
     }
-    return 0;
   }
+  
+  private cu(Context paramContext)
+  {
+    this.b = paramContext;
+  }
+  
+  public static cu a(Context paramContext)
+  {
+    return new cu(paramContext);
+  }
+  
+  public final cu a(ComponentName paramComponentName)
+  {
+    int i = this.a.size();
+    try
+    {
+      for (paramComponentName = cm.a(this.b, paramComponentName); paramComponentName != null; paramComponentName = cm.a(this.b, paramComponentName.getComponent())) {
+        this.a.add(i, paramComponentName);
+      }
+      return this;
+    }
+    catch (PackageManager.NameNotFoundException paramComponentName)
+    {
+      throw new IllegalArgumentException(paramComponentName);
+    }
+  }
+  
+  @Deprecated
+  public final Iterator<Intent> iterator()
+  {
+    return this.a.iterator();
+  }
+  
+  public static abstract interface a
+  {
+    public abstract Intent getSupportParentActivityIntent();
+  }
+  
+  static final class b
+    extends cu.c
+  {}
+  
+  static class c {}
 }
 
 

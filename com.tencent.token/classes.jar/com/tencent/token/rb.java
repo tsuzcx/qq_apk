@@ -1,353 +1,219 @@
 package com.tencent.token;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
-import android.content.Intent;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
-import android.net.Uri;
-import android.os.Build.VERSION;
-import android.os.Environment;
-import android.support.v4.content.FileProvider;
-import android.widget.Toast;
-import com.tencent.halley.downloader.DownloaderFactory;
-import com.tencent.halley.downloader.DownloaderTaskStatus;
-import com.tencent.halley.downloader.exceptions.DownloaderAddTaskException;
-import com.tencent.token.global.RqdApplication;
-import com.tmsdk.base.TMSDKBaseContext;
-import java.io.File;
+import android.os.Handler;
+import android.os.HandlerThread;
+import android.os.Looper;
+import android.os.Message;
+import android.os.Process;
+import android.text.TextUtils;
+import android.util.Base64;
+import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
 
 public final class rb
 {
-  Map<String, a> a = new ConcurrentHashMap();
-  lt b = new lt()
+  private static final Long d = Long.valueOf(604800000L);
+  @SuppressLint({"StaticFieldLeak"})
+  private static rb e;
+  public auf a;
+  public a b;
+  public long c = 0L;
+  private String f;
+  private Context g;
+  private boolean h = false;
+  private int i = 0;
+  private qx j;
+  private auj k = new auj()
   {
-    public final void a() {}
-    
-    public final void a(ls paramAnonymousls) {}
-    
-    public final void b(ls paramAnonymousls) {}
-    
-    public final void c(ls paramAnonymousls) {}
-    
-    public final void d(ls paramAnonymousls) {}
-    
-    public final void e(ls paramAnonymousls) {}
-    
-    public final void f(ls paramAnonymousls)
+    public final auk<Long, Integer, JceStruct> a(long paramAnonymousLong, int paramAnonymousInt, JceStruct paramAnonymousJceStruct)
     {
-      if (paramAnonymousls != null)
-      {
-        rb localrb = rb.this;
-        rb.a locala = (rb.a)localrb.a.get(paramAnonymousls.c());
-        if (locala != null)
-        {
-          rb.a(paramAnonymousls, locala);
-          StringBuilder localStringBuilder = new StringBuilder("progressChangedCallback: [");
-          localStringBuilder.append(rb.b(paramAnonymousls));
-          localStringBuilder.append("]");
-          paramAnonymousls = localrb.b().iterator();
-          while (paramAnonymousls.hasNext()) {
-            ((rb.c)paramAnonymousls.next()).a(locala);
-          }
-        }
-      }
-    }
-    
-    public final void g(ls paramAnonymousls)
-    {
-      if (paramAnonymousls != null) {
-        rb.this.a(paramAnonymousls);
-      }
-    }
-    
-    public final void h(ls paramAnonymousls)
-    {
-      if (paramAnonymousls != null) {
-        rb.this.a(paramAnonymousls);
-      }
-    }
-    
-    public final void i(ls paramAnonymousls)
-    {
-      if (paramAnonymousls != null) {
-        rb.this.a(paramAnonymousls);
-      }
+      StringBuilder localStringBuilder = new StringBuilder("onRecvPush:");
+      localStringBuilder.append(paramAnonymousLong);
+      localStringBuilder.append("|");
+      localStringBuilder.append(paramAnonymousInt);
+      apz.b();
+      rb.a(rb.this, paramAnonymousJceStruct, false, 0);
+      return null;
     }
   };
-  private lr c = null;
-  private Map<String, ls> d = new ConcurrentHashMap();
-  private List<c> e = new ArrayList();
   
-  public static String a()
+  private rb(Context paramContext)
   {
-    if ("mounted".equals(Environment.getExternalStorageState()))
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(Environment.getExternalStorageDirectory());
-      localStringBuilder.append(File.separator);
-      localStringBuilder.append("token_download");
-      return localStringBuilder.toString();
+    this.g = paramContext;
+    this.a = qw.a.a().a.a();
+    rc.a(paramContext);
+    if ((rc.b()) && (rc.d())) {
+      paramContext = new qx(paramContext, "taiji", 43200000L);
+    } else {
+      paramContext = new qx(paramContext, "taiji", 14400000L);
     }
-    return RqdApplication.n().getFilesDir().getAbsolutePath();
+    this.j = paramContext;
+    paramContext = new HandlerThread("taiji");
+    paramContext.start();
+    this.b = new a(paramContext.getLooper());
+    if (this.a != null)
+    {
+      apz.b();
+      this.a.a(new j(), this.k);
+    }
+    this.b.sendEmptyMessage(3);
+    this.b.sendEmptyMessage(0);
   }
   
-  private static String a(DownloaderTaskStatus paramDownloaderTaskStatus)
+  private g a(JceStruct paramJceStruct, boolean paramBoolean, int paramInt)
   {
-    switch (2.a[paramDownloaderTaskStatus.ordinal()])
-    {
-    default: 
-      return "";
-    case 7: 
-      return "DELETED";
-    case 6: 
-      return "PAUSED";
-    case 5: 
-      return "FAILED";
-    case 4: 
-      return "COMPLETE";
-    case 3: 
-      return "DOWNLOADING";
-    case 2: 
-      return "STARTED";
-    }
-    return "PENDING";
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.copyTypes(TypeTransformer.java:311)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.fixTypes(TypeTransformer.java:226)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:207)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
   
-  public static void a(Context paramContext, File paramFile)
+  public static rb a(Context paramContext)
   {
-    Intent localIntent = new Intent();
-    localIntent.setAction("android.intent.action.VIEW");
-    localIntent.setFlags(1);
-    localIntent.addFlags(268435456);
-    StringBuilder localStringBuilder;
-    if (Build.VERSION.SDK_INT >= 24)
+    try
     {
-      localStringBuilder = new StringBuilder();
-      localStringBuilder.append(paramContext.getPackageName());
-      localStringBuilder.append(".FileProvider");
-      localIntent.setDataAndType(FileProvider.a(paramContext, localStringBuilder.toString(), paramFile), "application/vnd.android.package-archive");
+      if (e == null) {
+        e = new rb(paramContext);
+      }
+      paramContext = e;
+      return paramContext;
+    }
+    finally {}
+  }
+  
+  public final k a(int paramInt)
+  {
+    String str = qu.a(this.g).a(paramInt);
+    if (TextUtils.isEmpty(str)) {
+      return null;
+    }
+    return (k)apv.a(qv.a.a().a(this.g, Base64.decode(str, 2), false), new k());
+  }
+  
+  public final List<k> a(List<Integer> paramList)
+  {
+    qu localqu = qu.a(this.g);
+    Object localObject1;
+    Object localObject2;
+    int m;
+    if (paramList.size() == 0)
+    {
+      localObject1 = null;
     }
     else
     {
-      localStringBuilder = new StringBuilder("file://");
-      localStringBuilder.append(paramFile.toString());
-      localIntent.setDataAndType(Uri.parse(localStringBuilder.toString()), "application/vnd.android.package-archive");
+      localObject2 = new ArrayList(paramList.size());
+      Iterator localIterator = paramList.iterator();
+      for (;;)
+      {
+        localObject1 = localObject2;
+        if (!localIterator.hasNext()) {
+          break;
+        }
+        m = ((Integer)localIterator.next()).intValue();
+        localObject1 = localqu.a.a("ad_".concat(String.valueOf(m)));
+        if (!TextUtils.isEmpty((CharSequence)localObject1)) {
+          ((List)localObject2).add(localObject1);
+        }
+      }
     }
-    paramContext.startActivity(localIntent);
+    if ((localObject1 != null) && (((List)localObject1).size() != 0))
+    {
+      paramList = new ArrayList(paramList.size());
+      localObject1 = ((List)localObject1).iterator();
+      while (((Iterator)localObject1).hasNext())
+      {
+        localObject2 = (String)((Iterator)localObject1).next();
+        if (!TextUtils.isEmpty((CharSequence)localObject2))
+        {
+          localObject2 = (k)apv.a(qv.a.a().a(this.g, Base64.decode((String)localObject2, 2), false), new k());
+          if (localObject2 != null) {
+            paramList.add(localObject2);
+          }
+        }
+      }
+      localObject1 = paramList.iterator();
+      while (((Iterator)localObject1).hasNext())
+      {
+        m = ((k)((Iterator)localObject1).next()).d;
+        apz.b();
+      }
+      return paramList;
+    }
+    apz.b();
+    return null;
   }
   
-  static void a(ls paramls, a parama)
+  public final class a
+    extends Handler
   {
-    if (paramls != null)
+    a(Looper paramLooper)
     {
-      if (parama == null) {
+      super();
+    }
+    
+    public final void handleMessage(Message paramMessage)
+    {
+      new StringBuilder("handleMessage :msg:").append(paramMessage.what);
+      apz.b();
+      switch (paramMessage.what)
+      {
+      default: 
+      case 3: 
+        qy.a.a();
+        paramMessage = rb.a(rb.this);
+        rc.a(paramMessage);
+        int i = qw.a.a().a("tjs").a("k_t_a_v", 0);
+        int j = apy.c(paramMessage, paramMessage.getPackageName());
+        if ((i == 0) || (i != j))
+        {
+          rc.b(true);
+          qw.a.a().a("tjs").b("k_t_a_v", j);
+        }
+        if (qw.a.a().a("tjs").a("k_l_l_s_s", true))
+        {
+          rc.b(false);
+          Object localObject = new StringBuilder("startAndLoadScheme, process id:");
+          ((StringBuilder)localObject).append(Process.myPid());
+          ((StringBuilder)localObject).append(", thread id:");
+          ((StringBuilder)localObject).append(Thread.currentThread().getId());
+          apz.b();
+          localObject = qy.a(paramMessage);
+          if (TextUtils.isEmpty((CharSequence)localObject))
+          {
+            apz.b();
+            return;
+          }
+          "loadAssetLocalSchemeFile json:".concat(String.valueOf(localObject));
+          apz.b();
+          localObject = qy.a(paramMessage, (String)localObject);
+          if ((localObject != null) && (((List)localObject).size() > 0))
+          {
+            new StringBuilder("getSolutionListForPhone result list size:").append(((List)localObject).size());
+            apz.b();
+            qy.a(paramMessage, (List)localObject);
+            return;
+          }
+          apz.b();
+          return;
+        }
+        break;
+      case 2: 
+        rb.c(rb.this, paramMessage);
+        return;
+      case 1: 
+        apz.b();
+        rb.b(rb.this, paramMessage);
+        return;
+      case 0: 
+        new StringBuilder("MSG_UPLOAD_PROFILE:").append(paramMessage.arg1);
+        apz.b();
+        rb.a(rb.this, paramMessage);
         return;
       }
-      parama.e = paramls.g();
-      parama.f = paramls.d();
-      parama.b = paramls.b();
-      return;
     }
-  }
-  
-  static String b(ls paramls)
-  {
-    int i = paramls.m();
-    String str = paramls.n();
-    return String.format("status=%s per=%d saveName=%s uniquekey=%s errorcode=%d error=%s", new Object[] { a(paramls.d()), Integer.valueOf(paramls.g()), paramls.j(), paramls.b(), Integer.valueOf(i), str });
-  }
-  
-  private static boolean c()
-  {
-    NetworkInfo localNetworkInfo = ((ConnectivityManager)RqdApplication.n().getSystemService("connectivity")).getActiveNetworkInfo();
-    return (localNetworkInfo != null) && (localNetworkInfo.isConnectedOrConnecting());
-  }
-  
-  private void e(a parama)
-  {
-    this.a.remove(parama.c);
-    this.d.remove(parama.c);
-  }
-  
-  public final a a(String paramString)
-  {
-    if (paramString == null) {
-      return null;
-    }
-    return (a)this.a.get(paramString);
-  }
-  
-  public final void a(Context paramContext)
-  {
-    try
-    {
-      ku.a(paramContext, "0M100WJ33N1CQ08O", "999001", TMSDKBaseContext.getGuid());
-      this.c = DownloaderFactory.getDownloader();
-      return;
-    }
-    catch (Exception paramContext)
-    {
-      paramContext.printStackTrace();
-    }
-  }
-  
-  final void a(ls paramls)
-  {
-    a locala = (a)this.a.get(paramls.c());
-    if (locala == null) {
-      return;
-    }
-    a(paramls, locala);
-    Object localObject = new StringBuilder("stateChangedCallback: [");
-    ((StringBuilder)localObject).append(b(paramls));
-    ((StringBuilder)localObject).append("]");
-    localObject = b();
-    switch (2.a[paramls.d().ordinal()])
-    {
-    default: 
-    case 6: 
-      paramls = ((List)localObject).iterator();
-      while (paramls.hasNext()) {
-        ((c)paramls.next()).b(locala);
-      }
-      return;
-    case 5: 
-      localObject = ((List)localObject).iterator();
-      while (((Iterator)localObject).hasNext()) {
-        ((c)((Iterator)localObject).next()).c(locala);
-      }
-      this.c.b(paramls);
-    case 7: 
-      e(locala);
-      return;
-    case 4: 
-      paramls = ((List)localObject).iterator();
-      while (paramls.hasNext()) {
-        ((c)paramls.next()).d(locala);
-      }
-      e(locala);
-      return;
-    }
-  }
-  
-  public final void a(c paramc)
-  {
-    synchronized (this.e)
-    {
-      this.e.add(0, paramc);
-      return;
-    }
-  }
-  
-  public final boolean a(a parama)
-  {
-    if (a(parama.c) != null) {
-      return false;
-    }
-    return new File(a(), parama.d).exists();
-  }
-  
-  final List<c> b()
-  {
-    synchronized (this.e)
-    {
-      ArrayList localArrayList = new ArrayList(this.e);
-      return localArrayList;
-    }
-  }
-  
-  public final void b(a parama)
-  {
-    parama = (ls)this.d.get(parama.c);
-    if (parama != null) {
-      parama.k();
-    }
-  }
-  
-  public final void b(c paramc)
-  {
-    synchronized (this.e)
-    {
-      this.e.remove(paramc);
-      return;
-    }
-  }
-  
-  public final void c(a parama)
-  {
-    if (this.c == null) {
-      return;
-    }
-    if (!c())
-    {
-      Toast.makeText(RqdApplication.n(), "请开启网络再试", 0).show();
-      return;
-    }
-    e(parama);
-    try
-    {
-      ls localls = this.c.a(parama.a, parama.c, a(), parama.d, this.b);
-      this.c.a(localls);
-      this.a.put(parama.c, parama);
-      this.d.put(parama.c, localls);
-      return;
-    }
-    catch (Exception parama)
-    {
-      parama.printStackTrace();
-    }
-  }
-  
-  public final void d(a parama)
-  {
-    if (!c())
-    {
-      Toast.makeText(RqdApplication.n(), "请开启网络再试", 0).show();
-      return;
-    }
-    parama = (ls)this.d.get(parama.c);
-    if (parama != null) {
-      try
-      {
-        parama.l();
-        return;
-      }
-      catch (DownloaderAddTaskException parama)
-      {
-        parama.printStackTrace();
-      }
-    }
-  }
-  
-  public static final class a
-  {
-    public String a;
-    public String b;
-    public String c;
-    public String d;
-    public int e;
-    public DownloaderTaskStatus f = DownloaderTaskStatus.PENDING;
-  }
-  
-  public static final class b
-  {
-    private static rb a = new rb();
-  }
-  
-  public static abstract interface c
-  {
-    public abstract void a(rb.a parama);
-    
-    public abstract void b(rb.a parama);
-    
-    public abstract void c(rb.a parama);
-    
-    public abstract void d(rb.a parama);
   }
 }
 

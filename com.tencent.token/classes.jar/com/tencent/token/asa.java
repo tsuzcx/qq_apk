@@ -1,8 +1,19 @@
 package com.tencent.token;
 
-public abstract interface asa
+public final class asa
 {
-  public abstract void a(int[] paramArrayOfInt);
+  public volatile String a = "";
+  public volatile String b = "";
+  
+  public final String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("mSessionId: ");
+    localStringBuilder.append(this.a);
+    localStringBuilder.append(" mEncodeKey: ");
+    localStringBuilder.append(this.b);
+    return localStringBuilder.toString();
+  }
 }
 
 

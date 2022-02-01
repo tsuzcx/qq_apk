@@ -1,41 +1,22 @@
 package com.tencent.token;
 
-import android.database.DataSetObservable;
-import android.database.DataSetObserver;
+import android.view.View;
 
-public abstract class eu
+public abstract interface eu
 {
-  private final DataSetObservable a = new DataSetObservable();
-  private DataSetObserver b;
+  public abstract boolean onNestedFling(View paramView, float paramFloat1, float paramFloat2, boolean paramBoolean);
   
-  public static void b()
-  {
-    throw new UnsupportedOperationException("Required method destroyItem was not overridden");
-  }
+  public abstract boolean onNestedPreFling(View paramView, float paramFloat1, float paramFloat2);
   
-  public abstract int a();
+  public abstract void onNestedPreScroll(View paramView, int paramInt1, int paramInt2, int[] paramArrayOfInt);
   
-  public final void a(DataSetObserver paramDataSetObserver)
-  {
-    this.a.registerObserver(paramDataSetObserver);
-  }
+  public abstract void onNestedScroll(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4);
   
-  public final void b(DataSetObserver paramDataSetObserver)
-  {
-    this.a.unregisterObserver(paramDataSetObserver);
-  }
+  public abstract void onNestedScrollAccepted(View paramView1, View paramView2, int paramInt);
   
-  public final void c(DataSetObserver paramDataSetObserver)
-  {
-    try
-    {
-      this.b = paramDataSetObserver;
-      return;
-    }
-    finally {}
-  }
+  public abstract boolean onStartNestedScroll(View paramView1, View paramView2, int paramInt);
   
-  public abstract boolean c();
+  public abstract void onStopNestedScroll(View paramView);
 }
 
 

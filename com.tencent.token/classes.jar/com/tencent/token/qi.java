@@ -1,142 +1,155 @@
 package com.tencent.token;
 
-import android.annotation.TargetApi;
-import android.app.Activity;
-import android.app.ActivityManager;
-import java.lang.ref.WeakReference;
-import java.util.Arrays;
+import android.content.Context;
+import android.content.res.Resources;
+import android.os.Build.VERSION;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.view.WindowManager.LayoutParams;
+import android.view.animation.AccelerateInterpolator;
+import android.view.animation.Animation;
+import android.view.animation.Interpolator;
+import android.view.animation.TranslateAnimation;
+import android.widget.FrameLayout;
 
-public final class qi
+public abstract class qi
+  extends qk
 {
-  private b a;
+  float o = -1.0F;
+  float p = -1.0F;
+  int q;
+  int r;
+  int s = 0;
   
-  private void a()
+  static TranslateAnimation a(int paramInt)
   {
-    b localb = this.a;
-    if (localb != null) {
-      b.a(localb);
+    TranslateAnimation localTranslateAnimation;
+    switch (paramInt)
+    {
+    default: 
+      localTranslateAnimation = new TranslateAnimation(1, 0.0F, 1, 0.0F, 1, 0.0F, 1, -1.0F);
+      break;
+    case 3: 
+      localTranslateAnimation = new TranslateAnimation(1, 0.0F, 1, 1.0F, 1, 0.0F, 1, 0.0F);
+      break;
+    case 2: 
+      localTranslateAnimation = new TranslateAnimation(1, 0.0F, 1, -1.0F, 1, 0.0F, 1, 0.0F);
     }
+    localTranslateAnimation.setInterpolator(new AccelerateInterpolator());
+    localTranslateAnimation.setDuration(500L);
+    localTranslateAnimation.setFillAfter(true);
+    return localTranslateAnimation;
   }
   
-  private static boolean a(int[] paramArrayOfInt)
+  protected void a()
   {
-    if (paramArrayOfInt != null)
+    this.q = ql.a(this.A, 40.0F);
+    this.r = (ql.b() / 4);
+    TranslateAnimation localTranslateAnimation = new TranslateAnimation(0.0F, 0.0F, -this.A.getResources().getDimensionPixelOffset(2131034209), 0.0F);
+    localTranslateAnimation.setDuration(500L);
+    localTranslateAnimation.setInterpolator(new Interpolator()
     {
-      if (paramArrayOfInt.length <= 0) {
-        return false;
-      }
-      int j = paramArrayOfInt.length;
-      int i = 0;
-      while (i < j)
+      public final float getInterpolation(float paramAnonymousFloat)
       {
-        int k = paramArrayOfInt[i];
-        if (ql.a.a().b(new int[] { k })[0] == 2) {
+        double d1 = Math.pow(2.0D, -10.0F * paramAnonymousFloat);
+        double d2 = paramAnonymousFloat - 0.1F;
+        Double.isNaN(d2);
+        return (float)(d1 * Math.sin(d2 * 6.283185307179586D / 0.4000000059604645D) + 1.0D);
+      }
+    });
+    this.u = localTranslateAnimation;
+    this.v = a(1);
+    super.a();
+  }
+  
+  protected abstract View b();
+  
+  protected abstract int c();
+  
+  protected final View g()
+  {
+    View localView = b();
+    Object localObject = localView;
+    if (localView != null)
+    {
+      if (!localView.isClickable()) {
+        localView.setClickable(true);
+      }
+      localView.setOnTouchListener(new View.OnTouchListener()
+      {
+        public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
+        {
+          if (paramAnonymousMotionEvent != null) {
+            switch (paramAnonymousMotionEvent.getAction())
+            {
+            default: 
+              return false;
+            case 2: 
+              float f = Math.abs(paramAnonymousMotionEvent.getX() - qi.this.o);
+              if (f >= Math.abs(paramAnonymousMotionEvent.getY() - qi.this.p))
+              {
+                if (f > qi.this.r)
+                {
+                  if (paramAnonymousMotionEvent.getX() > qi.this.o)
+                  {
+                    j = 1;
+                    i = 3;
+                    break label159;
+                  }
+                  j = 1;
+                  i = 2;
+                  break label159;
+                }
+              }
+              else if (qi.this.p - paramAnonymousMotionEvent.getY() > qi.this.q)
+              {
+                j = 1;
+                i = 1;
+                break label159;
+              }
+              int j = 0;
+              int i = 0;
+              if (j != 0)
+              {
+                paramAnonymousView = qi.this;
+                paramAnonymousView.s = i;
+                paramAnonymousView.v = qi.a(paramAnonymousView.s);
+                qi.this.a(false);
+                return true;
+              }
+              break;
+            case 1: 
+              return qi.this.s != 0;
+            case 0: 
+              label159:
+              qi.this.o = paramAnonymousMotionEvent.getX();
+              qi.this.p = paramAnonymousMotionEvent.getY();
+            }
+          }
           return false;
         }
-        i += 1;
-      }
-      return true;
+      });
+      localObject = new FrameLayout(this.A);
+      ((FrameLayout)localObject).addView(localView);
+      ((FrameLayout)localObject).setBackgroundResource(2131100072);
     }
-    return false;
+    return localObject;
   }
   
-  public final void a(int[] paramArrayOfInt, Activity paramActivity)
+  protected final WindowManager.LayoutParams h()
   {
-    if (!a(paramArrayOfInt)) {
-      return;
+    WindowManager.LayoutParams localLayoutParams = new WindowManager.LayoutParams();
+    if (Build.VERSION.SDK_INT >= 26) {
+      localLayoutParams.type = 2038;
+    } else {
+      localLayoutParams.type = 2003;
     }
-    a();
-    this.a = new b(paramArrayOfInt, paramActivity, (byte)0);
-    qp.a.a().a().b(this.a, "manual-auto-back-thread");
-  }
-  
-  public static final class a
-  {
-    private static final qi a = new qi((byte)0);
-  }
-  
-  static final class b
-    implements Runnable
-  {
-    private volatile boolean a = false;
-    private int[] b;
-    private WeakReference<Activity> c;
-    
-    private b(int[] paramArrayOfInt, Activity paramActivity)
-    {
-      this.b = paramArrayOfInt;
-      if (paramActivity != null) {
-        this.c = new WeakReference(paramActivity);
-      }
-    }
-    
-    @TargetApi(11)
-    public final void run()
-    {
-      new StringBuilder("manual-auto-back-thread start, thread id:").append(Thread.currentThread().getId());
-      aoc.b();
-      long l = System.currentTimeMillis();
-      while ((!this.a) && (System.currentTimeMillis() - l < 60000L))
-      {
-        Object localObject = ql.a.a().a(this.b);
-        new StringBuilder("permissions:").append(Arrays.toString(this.b));
-        aoc.c();
-        new StringBuilder("result:").append(Arrays.toString((int[])localObject));
-        aoc.c();
-        int i;
-        if (localObject == null)
-        {
-          i = 0;
-        }
-        else
-        {
-          int j = localObject.length;
-          i = 0;
-          for (;;)
-          {
-            if (i >= j) {
-              break label139;
-            }
-            if (localObject[i] != 0) {
-              break;
-            }
-            i += 1;
-          }
-          label139:
-          i = 1;
-        }
-        if ((i != 0) && (!this.a))
-        {
-          aoc.b();
-          localObject = this.c;
-          if (localObject != null)
-          {
-            localObject = (Activity)((WeakReference)localObject).get();
-            if (localObject != null)
-            {
-              ActivityManager localActivityManager = (ActivityManager)((Activity)localObject).getSystemService("activity");
-              if (localActivityManager != null) {
-                localActivityManager.moveTaskToFront(((Activity)localObject).getTaskId(), 0);
-              }
-              return;
-            }
-          }
-          aoc.b();
-          break;
-        }
-        try
-        {
-          Thread.sleep(500L);
-        }
-        catch (Throwable localThrowable)
-        {
-          label225:
-          break label225;
-        }
-      }
-      new StringBuilder("manual-auto-back-thread stop, thread id:").append(Thread.currentThread().getId());
-      aoc.b();
-    }
+    localLayoutParams.format = 1;
+    localLayoutParams.flags = 40;
+    localLayoutParams.gravity = 48;
+    localLayoutParams.height = c();
+    return localLayoutParams;
   }
 }
 

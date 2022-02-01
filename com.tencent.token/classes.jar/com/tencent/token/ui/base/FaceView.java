@@ -17,8 +17,8 @@ import android.util.DisplayMetrics;
 import android.view.View;
 import com.tencent.jni.LiveRectInfo;
 import com.tencent.token.ui.IndexActivity;
-import com.tencent.token.xa;
-import com.tencent.token.xw;
+import com.tencent.token.xj;
+import com.tencent.token.yj;
 
 public class FaceView
   extends View
@@ -88,8 +88,8 @@ public class FaceView
     this.o = BitmapFactory.decodeResource(paramContext.getResources(), 2131099840, paramAttributeSet);
     this.N = BitmapFactory.decodeResource(paramContext.getResources(), 2131099933, null);
     this.P = BitmapFactory.decodeResource(paramContext.getResources(), 2131099932, null);
-    this.O = BitmapFactory.decodeResource(paramContext.getResources(), 2131100093, null);
-    this.Q = BitmapFactory.decodeResource(paramContext.getResources(), 2131100092, null);
+    this.O = BitmapFactory.decodeResource(paramContext.getResources(), 2131100094, null);
+    this.Q = BitmapFactory.decodeResource(paramContext.getResources(), 2131100093, null);
     this.L = this.N.getWidth();
     this.M = this.N.getHeight();
     this.a = paramContext.getResources().getDisplayMetrics().density;
@@ -102,7 +102,7 @@ public class FaceView
     paramContext.append(this.c);
     paramContext.append(",scale=");
     paramContext.append(this.a);
-    xa.c(paramContext.toString());
+    xj.c(paramContext.toString());
     this.d = new Rect(0, 0, this.b, this.c);
     int i1 = this.b;
     this.f = (i1 / 2);
@@ -160,8 +160,8 @@ public class FaceView
       this.E = this.F;
       if (paramBoolean2)
       {
-        this.R = BitmapFactory.decodeResource(this.q.getResources(), 2131100146, null);
-        this.S = BitmapFactory.decodeResource(this.q.getResources(), 2131100147, null);
+        this.R = BitmapFactory.decodeResource(this.q.getResources(), 2131100147, null);
+        this.S = BitmapFactory.decodeResource(this.q.getResources(), 2131100148, null);
       }
       else
       {
@@ -175,8 +175,8 @@ public class FaceView
       this.E = this.F;
       if (paramBoolean2)
       {
-        this.R = BitmapFactory.decodeResource(this.q.getResources(), 2131100146, null);
-        this.S = BitmapFactory.decodeResource(this.q.getResources(), 2131100147, null);
+        this.R = BitmapFactory.decodeResource(this.q.getResources(), 2131100147, null);
+        this.S = BitmapFactory.decodeResource(this.q.getResources(), 2131100148, null);
       }
       else
       {
@@ -220,7 +220,7 @@ public class FaceView
     super.onDraw(paramCanvas);
     if (this.d == null)
     {
-      xa.a("rect=null");
+      xj.a("rect=null");
       return;
     }
     this.x.setAlpha(255);
@@ -502,16 +502,16 @@ public class FaceView
       default: 
         break;
       case 4: 
-        this.h = (this.f + this.e * this.U / xw.k);
+        this.h = (this.f + this.e * this.U / yj.k);
         break;
       case 3: 
-        this.h = (this.f - this.e * this.U / xw.k);
+        this.h = (this.f - this.e * this.U / yj.k);
         break;
       case 2: 
-        this.i = (this.g + this.e * this.U / xw.k);
+        this.i = (this.g + this.e * this.U / yj.k);
         break;
       case 1: 
-        this.i = (this.g - this.e * this.U / xw.k);
+        this.i = (this.g - this.e * this.U / yj.k);
       }
       this.n = 8;
       invalidate();

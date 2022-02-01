@@ -1,9 +1,9 @@
 package android.arch.lifecycle;
 
-import com.tencent.token.av;
+import com.tencent.token.ax;
 
 public abstract interface FullLifecycleObserver
-  extends av
+  extends ax
 {}
 
 

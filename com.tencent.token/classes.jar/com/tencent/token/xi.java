@@ -1,11 +1,10 @@
 package com.tencent.token;
 
-import java.util.concurrent.atomic.AtomicInteger;
+import java.util.Comparator;
 
-public abstract interface xi
-{
-  public static final AtomicInteger a = new AtomicInteger(1);
-}
+public final class xi
+  implements Comparator<xo>
+{}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.token\classes.jar

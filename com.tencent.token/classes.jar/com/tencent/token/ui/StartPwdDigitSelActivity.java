@@ -3,7 +3,7 @@ package com.tencent.token.ui;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.widget.ListView;
-import com.tencent.token.yh;
+import com.tencent.token.yu;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -31,9 +31,9 @@ public class StartPwdDigitSelActivity
   {
     super.onCreate(paramBundle);
     setContentView(2131296465);
-    this.mListView = ((ListView)findViewById(2131166127));
+    this.mListView = ((ListView)findViewById(2131166129));
     this.mData = getData();
-    paramBundle = new yh(this, this.mData);
+    paramBundle = new yu(this, this.mData);
     this.mListView.setAdapter(paramBundle);
   }
 }

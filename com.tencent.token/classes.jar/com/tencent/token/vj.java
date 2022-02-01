@@ -3,31 +3,37 @@ package com.tencent.token;
 import android.content.Context;
 import android.os.Handler;
 import android.os.Message;
-import com.tencent.token.core.bean.RealNameStatusResult;
+import com.tencent.token.core.bean.EvalAccountResult;
 import com.tencent.token.global.RqdApplication;
 import java.util.HashMap;
 import org.json.JSONObject;
 
 public final class vj
-  extends tj
+  extends tr
 {
-  RealNameStatusResult d;
+  EvalAccountResult d;
   private long e;
-  private long f;
-  private int g;
+  private int f;
   
   public final String a()
   {
-    rz.a();
+    sh.a();
+    StringBuilder localStringBuilder = new StringBuilder("account page generateUrl sessId =");
+    localStringBuilder.append(null);
+    xj.c(localStringBuilder.toString());
     this.a.a(104, null, null);
+    localStringBuilder = new StringBuilder("account page generateUrl sessId =");
+    localStringBuilder.append(null);
+    xj.c(localStringBuilder.toString());
     return null;
   }
   
-  public final void a(aaq paramaaq)
+  public final void a(abc paramabc)
   {
-    this.e = ((Long)paramaaq.c.get("param.uinhash")).longValue();
-    this.f = ((Long)paramaaq.c.get("param.realuin")).longValue();
-    this.g = paramaaq.j;
+    this.e = ((Long)paramabc.c.get("param.uinhash")).longValue();
+    paramabc = new StringBuilder("account page ProtoGetEvalAccountResult unpacketParams: user =");
+    paramabc.append(this.e);
+    xj.c(paramabc.toString());
   }
   
   public final void a(JSONObject paramJSONObject)
@@ -38,27 +44,28 @@ public final class vj
       a(i, paramJSONObject.getString("info"));
       return;
     }
-    paramJSONObject = aac.d(paramJSONObject.getString("data"));
+    paramJSONObject = aao.d(paramJSONObject.getString("data"));
     if (paramJSONObject != null)
     {
       paramJSONObject = new JSONObject(new String(paramJSONObject));
       i = paramJSONObject.getInt("seq_id");
-      if (i != this.g)
+      if (i != this.f)
       {
         this.a.a(10030, null, null);
         paramJSONObject = new StringBuilder("parseJSON error seq is wrong seq=");
         paramJSONObject.append(i);
         paramJSONObject.append(",right = ");
-        paramJSONObject.append(this.g);
-        xa.c(paramJSONObject.toString());
+        si.a();
+        paramJSONObject.append(si.b());
+        xj.c(paramJSONObject.toString());
         return;
       }
-      this.d = new RealNameStatusResult(paramJSONObject);
+      this.d = new EvalAccountResult(paramJSONObject.getJSONObject("result"), paramJSONObject);
       this.a.a = 0;
       return;
     }
-    xa.c("parseJSON error decodeData=".concat(String.valueOf(paramJSONObject)));
-    a(10022, RqdApplication.n().getString(2131493068));
+    xj.c("parseJSON error decodeData=".concat(String.valueOf(paramJSONObject)));
+    a(10022, RqdApplication.p().getString(2131493068));
   }
   
   public final void b()

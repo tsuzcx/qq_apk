@@ -1,15 +1,23 @@
 package com.tencent.token;
 
-public final class adh
+import java.util.LinkedList;
+
+public final class adh<E>
 {
-  public static final byte[] a = new byte[0];
-  public int b;
-  public byte[] c;
+  public int a;
+  public LinkedList<E> b = new LinkedList();
   
-  public adh(int paramInt, byte[] paramArrayOfByte)
+  public adh(int paramInt)
   {
-    this.b = paramInt;
-    this.c = paramArrayOfByte;
+    this.a = paramInt;
+  }
+  
+  public final void a(E paramE)
+  {
+    if (this.b.size() >= this.a) {
+      this.b.poll();
+    }
+    this.b.offer(paramE);
   }
 }
 

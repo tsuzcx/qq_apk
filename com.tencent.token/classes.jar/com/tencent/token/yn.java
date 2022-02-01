@@ -1,101 +1,113 @@
 package com.tencent.token;
 
-import android.graphics.Canvas;
-import android.graphics.drawable.GradientDrawable;
-import android.graphics.drawable.GradientDrawable.Orientation;
-import java.lang.reflect.Method;
+import android.content.res.Resources;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.token.ui.LoginMsgReportLocationActivity;
 
 public final class yn
-  extends GradientDrawable
+  extends BaseAdapter
 {
-  private int a;
-  private int b;
-  private boolean c;
-  private int d;
-  private int e;
-  private int f;
-  private int g;
+  public int a = -1;
+  private LayoutInflater b;
+  private int c;
+  private String[] d;
+  private LoginMsgReportLocationActivity e;
   
-  public yn(GradientDrawable.Orientation paramOrientation, int paramInt1, int paramInt2)
+  public yn(LoginMsgReportLocationActivity paramLoginMsgReportLocationActivity)
   {
-    setDither(true);
-    setShape(0);
-    mutate();
-    if (aac.l() >= 16) {
-      try
-      {
-        getClass().getMethod("setOrientation", new Class[] { GradientDrawable.Orientation.class }).invoke(this, new Object[] { paramOrientation });
-        getClass().getMethod("setColors", new Class[] { [I.class }).invoke(this, new Object[] { { paramInt1, paramInt2 } });
-      }
-      catch (Exception paramOrientation)
-      {
-        paramOrientation.printStackTrace();
-      }
-    } else {
-      setColor(paramInt1);
-    }
-    this.d = paramInt1;
-    this.e = paramInt2;
+    this.e = paramLoginMsgReportLocationActivity;
+    this.b = LayoutInflater.from(paramLoginMsgReportLocationActivity);
+    this.c = sa.a().d.length;
+    this.d = sa.a().c;
+    this.e.checkMenuBtnEnable(this.a);
   }
   
-  private static int a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public final int getCount()
   {
-    if (paramInt3 == paramInt4 - 1) {
-      return paramInt2 | 0xFF000000;
-    }
-    int i = paramInt1 >> 16 & 0xFF;
-    int j = paramInt1 >> 8 & 0xFF;
-    paramInt1 &= 0xFF;
-    return (((paramInt2 >> 16 & 0xFF) - i) / paramInt4 * paramInt3 + i << 16 | ((paramInt2 >> 8 & 0xFF) - j) / paramInt4 * paramInt3 + j << 8 | ((paramInt2 & 0xFF) - paramInt1) / paramInt4 * paramInt3 + paramInt1) & 0xFFFFFF | 0xFF000000;
+    return this.c;
   }
   
-  public final void a(int paramInt1, int paramInt2)
+  public final Object getItem(int paramInt)
   {
-    this.c = true;
-    this.b = 20;
-    this.f = paramInt1;
-    this.g = paramInt2;
+    return Integer.valueOf(paramInt);
   }
   
-  public final void b(int paramInt1, int paramInt2)
+  public final long getItemId(int paramInt)
   {
-    this.f = paramInt1;
-    this.d = paramInt1;
-    this.g = paramInt2;
-    this.e = paramInt2;
-    this.c = true;
-    invalidateSelf();
+    return paramInt;
   }
   
-  public final void draw(Canvas paramCanvas)
+  public final View getView(final int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    super.draw(paramCanvas);
-    if (this.c)
+    if (paramView == null)
     {
-      mutate();
-      this.a += 1;
-      if (this.a <= this.b)
-      {
-        try
-        {
-          if (aac.l() >= 16) {
-            getClass().getMethod("setColors", new Class[] { [I.class }).invoke(this, new Object[] { { a(this.d, this.f, this.a, this.b), a(this.e, this.g, this.a, this.b) } });
-          } else {
-            setColor(a(this.d, this.f, this.a, this.b));
-          }
-        }
-        catch (Exception paramCanvas)
-        {
-          paramCanvas.printStackTrace();
-        }
-        invalidateSelf();
-        return;
-      }
-      this.d = this.f;
-      this.e = this.g;
-      this.c = false;
-      this.a = 0;
+      paramViewGroup = this.b.inflate(2131296370, null);
+      paramView = new a((byte)0);
+      paramView.a = ((TextView)paramViewGroup.findViewById(2131165276));
+      paramView.b = ((TextView)paramViewGroup.findViewById(2131165768));
+      paramView.c = ((RelativeLayout)paramViewGroup.findViewById(2131165769));
+      paramView.d = ((ImageView)paramViewGroup.findViewById(2131165974));
+      paramViewGroup.setTag(paramView);
     }
+    else
+    {
+      localObject = (a)paramView.getTag();
+      paramViewGroup = paramView;
+      paramView = (View)localObject;
+    }
+    if (paramInt >= this.d.length) {
+      return paramViewGroup;
+    }
+    paramView.b.setText(this.d[paramInt]);
+    paramView.a.setVisibility(8);
+    Object localObject = sa.a().f;
+    int[] arrayOfInt = sa.a().g;
+    int i = 0;
+    while (i < arrayOfInt.length)
+    {
+      if (paramInt == arrayOfInt[i])
+      {
+        paramView.a.setVisibility(0);
+        paramView.a.setText(localObject[i]);
+        break;
+      }
+      i += 1;
+    }
+    paramView.c.setOnClickListener(new View.OnClickListener()
+    {
+      public final void onClick(View paramAnonymousView)
+      {
+        yn.a(yn.this, paramInt);
+        yn.b(yn.this).checkMenuBtnEnable(yn.a(yn.this));
+        yn.this.notifyDataSetChanged();
+      }
+    });
+    if (this.a == paramInt)
+    {
+      paramView.d.setVisibility(0);
+      paramView.c.setBackgroundColor(this.e.getResources().getColor(2130968691));
+      return paramViewGroup;
+    }
+    paramView.d.setVisibility(8);
+    paramView.c.setBackgroundColor(this.e.getResources().getColor(2130968686));
+    return paramViewGroup;
+  }
+  
+  final class a
+  {
+    TextView a;
+    TextView b;
+    RelativeLayout c;
+    ImageView d;
+    
+    private a() {}
   }
 }
 

@@ -1,6 +1,6 @@
 package com.tencent.token.core.bean;
 
-import com.tencent.token.xa;
+import com.tencent.token.xj;
 import java.io.Serializable;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -123,7 +123,7 @@ public class SafeMsgItem
     {
       Object localObject = new StringBuilder("JSONException: ");
       ((StringBuilder)localObject).append(paramJSONObject.getMessage());
-      xa.c(((StringBuilder)localObject).toString());
+      xj.c(((StringBuilder)localObject).toString());
     }
     return false;
   }

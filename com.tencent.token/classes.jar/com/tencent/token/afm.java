@@ -1,48 +1,26 @@
 package com.tencent.token;
 
+import android.content.Context;
+import java.util.concurrent.atomic.AtomicBoolean;
+
 public final class afm
+  extends adk
 {
-  public static final String a = aff.a(aff.Y);
-  public static final String b = aff.a(aff.Z);
-  public static final String c;
-  public static final String d;
-  public static final String e;
-  public static final String f;
-  public static final String g;
-  public static final String h;
-  public static final String i;
-  public static final String j;
-  public static final String k;
-  public static final String l;
-  public static final String m;
+  public afm(afk paramafk) {}
   
-  static
+  public final void a()
   {
-    aff.a(aff.aa);
-    aff.a(aff.ab);
-    c = aff.a(aff.b);
-    aff.a(aff.c);
-    aff.a(aff.d);
-    aff.a(aff.e);
-    aff.a(aff.f);
-    d = aff.a(aff.ac);
-    e = aff.a(aff.ad);
-    f = aff.a(aff.ae);
-    g = aff.a(aff.af);
-    h = aff.a(aff.ak);
-    i = aff.a(aff.ag);
-    j = aff.a(aff.al);
-    k = aff.a(aff.am);
-    aff.a(aff.ao);
-    aff.a(aff.ah);
-    l = aff.a(aff.ai);
-    aff.a(aff.aj);
-    aff.a(aff.ap);
-    aff.a(aff.aq);
-    aff.a(aff.ar);
-    aff.a(aff.as);
-    m = aff.a(aff.at);
-    aff.a(aff.au);
+    this.a.g.set(true);
+    if (agm.c == null) {
+      agm.c = agm.b();
+    }
+    Context localContext = this.a.e;
+    if (agj.a == null) {
+      agj.a = agj.a(localContext);
+    }
+    adv.a(this.a.e);
+    agm.a();
+    this.a.g.set(false);
   }
 }
 

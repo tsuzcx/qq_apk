@@ -2,9 +2,7 @@ package com.tencent.token;
 
 public final class xd
 {
-  public String a;
-  public String b;
-  public String c;
+  public static final byte[] a = { 114, 101, 97, 108 };
 }
 
 

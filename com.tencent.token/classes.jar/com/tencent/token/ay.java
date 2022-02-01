@@ -1,10 +1,8 @@
 package com.tencent.token;
 
-@Deprecated
 public abstract interface ay
-  extends aw
 {
-  public abstract ax a();
+  public abstract av getLifecycle();
 }
 
 

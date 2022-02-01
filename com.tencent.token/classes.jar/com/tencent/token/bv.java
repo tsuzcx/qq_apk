@@ -1,51 +1,194 @@
 package com.tencent.token;
 
-import android.content.Context;
-import android.content.Intent;
-import android.content.IntentSender;
-import android.support.v4.app.SupportActivity;
-import android.util.AttributeSet;
-import android.view.View;
+import android.content.res.Resources.Theme;
+import android.graphics.ColorFilter;
+import android.graphics.PorterDuff.Mode;
+import android.graphics.Rect;
+import android.graphics.Region;
+import android.graphics.drawable.Drawable;
+import android.os.Build.VERSION;
 
-public abstract class bv
-  extends SupportActivity
+abstract class bv
+  extends Drawable
+  implements dl
 {
-  protected boolean mStartedIntentSenderFromFragment;
+  Drawable b;
   
-  protected static void checkForValidRequestCode(int paramInt)
+  public void applyTheme(Resources.Theme paramTheme)
   {
-    if ((paramInt & 0xFFFF0000) == 0) {
+    Drawable localDrawable = this.b;
+    if (localDrawable != null)
+    {
+      dk.a(localDrawable, paramTheme);
       return;
     }
-    throw new IllegalArgumentException("Can only use lower 16 bits for requestCode");
   }
   
-  protected abstract View dispatchFragmentsOnCreateView(View paramView, String paramString, Context paramContext, AttributeSet paramAttributeSet);
-  
-  public View onCreateView(View paramView, String paramString, Context paramContext, AttributeSet paramAttributeSet)
+  public void clearColorFilter()
   {
-    View localView = dispatchFragmentsOnCreateView(paramView, paramString, paramContext, paramAttributeSet);
-    if (localView == null) {
-      return super.onCreateView(paramView, paramString, paramContext, paramAttributeSet);
+    Drawable localDrawable = this.b;
+    if (localDrawable != null)
+    {
+      localDrawable.clearColorFilter();
+      return;
     }
-    return localView;
+    super.clearColorFilter();
   }
   
-  public View onCreateView(String paramString, Context paramContext, AttributeSet paramAttributeSet)
+  public ColorFilter getColorFilter()
   {
-    View localView = dispatchFragmentsOnCreateView(null, paramString, paramContext, paramAttributeSet);
-    if (localView == null) {
-      return super.onCreateView(paramString, paramContext, paramAttributeSet);
+    Drawable localDrawable = this.b;
+    if (localDrawable != null)
+    {
+      if (Build.VERSION.SDK_INT >= 21) {
+        return localDrawable.getColorFilter();
+      }
+      return null;
     }
-    return localView;
+    return null;
   }
   
-  public void startIntentSenderForResult(IntentSender paramIntentSender, int paramInt1, Intent paramIntent, int paramInt2, int paramInt3, int paramInt4)
+  public Drawable getCurrent()
   {
-    if ((!this.mStartedIntentSenderFromFragment) && (paramInt1 != -1)) {
-      checkForValidRequestCode(paramInt1);
+    Drawable localDrawable = this.b;
+    if (localDrawable != null) {
+      return localDrawable.getCurrent();
     }
-    super.startIntentSenderForResult(paramIntentSender, paramInt1, paramIntent, paramInt2, paramInt3, paramInt4);
+    return super.getCurrent();
+  }
+  
+  public int getMinimumHeight()
+  {
+    Drawable localDrawable = this.b;
+    if (localDrawable != null) {
+      return localDrawable.getMinimumHeight();
+    }
+    return super.getMinimumHeight();
+  }
+  
+  public int getMinimumWidth()
+  {
+    Drawable localDrawable = this.b;
+    if (localDrawable != null) {
+      return localDrawable.getMinimumWidth();
+    }
+    return super.getMinimumWidth();
+  }
+  
+  public boolean getPadding(Rect paramRect)
+  {
+    Drawable localDrawable = this.b;
+    if (localDrawable != null) {
+      return localDrawable.getPadding(paramRect);
+    }
+    return super.getPadding(paramRect);
+  }
+  
+  public int[] getState()
+  {
+    Drawable localDrawable = this.b;
+    if (localDrawable != null) {
+      return localDrawable.getState();
+    }
+    return super.getState();
+  }
+  
+  public Region getTransparentRegion()
+  {
+    Drawable localDrawable = this.b;
+    if (localDrawable != null) {
+      return localDrawable.getTransparentRegion();
+    }
+    return super.getTransparentRegion();
+  }
+  
+  public void jumpToCurrentState()
+  {
+    Drawable localDrawable = this.b;
+    if (localDrawable != null)
+    {
+      localDrawable.jumpToCurrentState();
+      return;
+    }
+  }
+  
+  protected void onBoundsChange(Rect paramRect)
+  {
+    Drawable localDrawable = this.b;
+    if (localDrawable != null)
+    {
+      localDrawable.setBounds(paramRect);
+      return;
+    }
+    super.onBoundsChange(paramRect);
+  }
+  
+  protected boolean onLevelChange(int paramInt)
+  {
+    Drawable localDrawable = this.b;
+    if (localDrawable != null) {
+      return localDrawable.setLevel(paramInt);
+    }
+    return super.onLevelChange(paramInt);
+  }
+  
+  public void setChangingConfigurations(int paramInt)
+  {
+    Drawable localDrawable = this.b;
+    if (localDrawable != null)
+    {
+      localDrawable.setChangingConfigurations(paramInt);
+      return;
+    }
+    super.setChangingConfigurations(paramInt);
+  }
+  
+  public void setColorFilter(int paramInt, PorterDuff.Mode paramMode)
+  {
+    Drawable localDrawable = this.b;
+    if (localDrawable != null)
+    {
+      localDrawable.setColorFilter(paramInt, paramMode);
+      return;
+    }
+    super.setColorFilter(paramInt, paramMode);
+  }
+  
+  public void setFilterBitmap(boolean paramBoolean)
+  {
+    Drawable localDrawable = this.b;
+    if (localDrawable != null)
+    {
+      localDrawable.setFilterBitmap(paramBoolean);
+      return;
+    }
+  }
+  
+  public void setHotspot(float paramFloat1, float paramFloat2)
+  {
+    Drawable localDrawable = this.b;
+    if (localDrawable != null) {
+      dk.a(localDrawable, paramFloat1, paramFloat2);
+    }
+  }
+  
+  public void setHotspotBounds(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    Drawable localDrawable = this.b;
+    if (localDrawable != null)
+    {
+      dk.a(localDrawable, paramInt1, paramInt2, paramInt3, paramInt4);
+      return;
+    }
+  }
+  
+  public boolean setState(int[] paramArrayOfInt)
+  {
+    Drawable localDrawable = this.b;
+    if (localDrawable != null) {
+      return localDrawable.setState(paramArrayOfInt);
+    }
+    return super.setState(paramArrayOfInt);
   }
 }
 

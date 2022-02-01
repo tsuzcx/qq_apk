@@ -1,144 +1,60 @@
 package com.tencent.token;
 
-import android.os.Build.VERSION;
-import android.view.View;
-import android.widget.PopupWindow;
-import java.lang.reflect.Field;
-import java.lang.reflect.Method;
+import java.util.ArrayList;
+import java.util.HashSet;
 
-public final class fv
+public final class fv<T>
 {
-  static final d a = new d();
+  public final eh.a<ArrayList<T>> a = new eh.b(10);
+  public final ej<T, ArrayList<T>> b = new ej();
+  private final ArrayList<T> c = new ArrayList();
+  private final HashSet<T> d = new HashSet();
   
-  static
+  private void a(T paramT, ArrayList<T> paramArrayList, HashSet<T> paramHashSet)
   {
-    if (Build.VERSION.SDK_INT >= 23)
-    {
-      a = new c();
+    if (paramArrayList.contains(paramT)) {
       return;
     }
-    if (Build.VERSION.SDK_INT >= 21)
+    if (!paramHashSet.contains(paramT))
     {
-      a = new b();
-      return;
-    }
-    if (Build.VERSION.SDK_INT >= 19)
-    {
-      a = new a();
-      return;
-    }
-  }
-  
-  public static void a(PopupWindow paramPopupWindow, int paramInt)
-  {
-    a.a(paramPopupWindow, paramInt);
-  }
-  
-  public static void a(PopupWindow paramPopupWindow, View paramView, int paramInt1, int paramInt2, int paramInt3)
-  {
-    a.a(paramPopupWindow, paramView, paramInt1, paramInt2, paramInt3);
-  }
-  
-  public static void a(PopupWindow paramPopupWindow, boolean paramBoolean)
-  {
-    a.a(paramPopupWindow, paramBoolean);
-  }
-  
-  static class a
-    extends fv.d
-  {
-    public final void a(PopupWindow paramPopupWindow, View paramView, int paramInt1, int paramInt2, int paramInt3)
-    {
-      paramPopupWindow.showAsDropDown(paramView, paramInt1, paramInt2, paramInt3);
-    }
-  }
-  
-  static class b
-    extends fv.a
-  {
-    private static Field a;
-    
-    static
-    {
-      try
+      paramHashSet.add(paramT);
+      ArrayList localArrayList = (ArrayList)this.b.get(paramT);
+      if (localArrayList != null)
       {
-        Field localField = PopupWindow.class.getDeclaredField("mOverlapAnchor");
-        a = localField;
-        localField.setAccessible(true);
-        return;
-      }
-      catch (NoSuchFieldException localNoSuchFieldException) {}
-    }
-    
-    public void a(PopupWindow paramPopupWindow, boolean paramBoolean)
-    {
-      Field localField = a;
-      if (localField != null) {}
-      try
-      {
-        localField.set(paramPopupWindow, Boolean.valueOf(paramBoolean));
-        return;
-      }
-      catch (IllegalAccessException paramPopupWindow) {}
-      return;
-    }
-  }
-  
-  static final class c
-    extends fv.b
-  {
-    public final void a(PopupWindow paramPopupWindow, int paramInt)
-    {
-      paramPopupWindow.setWindowLayoutType(paramInt);
-    }
-    
-    public final void a(PopupWindow paramPopupWindow, boolean paramBoolean)
-    {
-      paramPopupWindow.setOverlapAnchor(paramBoolean);
-    }
-  }
-  
-  static class d
-  {
-    private static Method a;
-    private static boolean b;
-    
-    public void a(PopupWindow paramPopupWindow, int paramInt)
-    {
-      if (!b) {}
-      try
-      {
-        Method localMethod = PopupWindow.class.getDeclaredMethod("setWindowLayoutType", new Class[] { Integer.TYPE });
-        a = localMethod;
-        localMethod.setAccessible(true);
-        label33:
-        b = true;
-        localMethod = a;
-        if (localMethod != null) {}
-        try
+        int i = 0;
+        int j = localArrayList.size();
+        while (i < j)
         {
-          localMethod.invoke(paramPopupWindow, new Object[] { Integer.valueOf(paramInt) });
-          return;
+          a(localArrayList.get(i), paramArrayList, paramHashSet);
+          i += 1;
         }
-        catch (Exception paramPopupWindow) {}
-        return;
       }
-      catch (Exception localException)
-      {
-        break label33;
-      }
+      paramHashSet.remove(paramT);
+      paramArrayList.add(paramT);
+      return;
     }
-    
-    public void a(PopupWindow paramPopupWindow, View paramView, int paramInt1, int paramInt2, int paramInt3)
+    throw new RuntimeException("This graph contains cyclic dependencies");
+  }
+  
+  public final ArrayList<T> a()
+  {
+    this.c.clear();
+    this.d.clear();
+    int j = this.b.size();
+    int i = 0;
+    while (i < j)
     {
-      int i = paramInt1;
-      if ((ej.a(paramInt3, ew.c(paramView)) & 0x7) == 5) {
-        i = paramInt1 - (paramPopupWindow.getWidth() - paramView.getWidth());
-      }
-      paramPopupWindow.showAsDropDown(paramView, i, paramInt2);
+      a(this.b.b(i), this.c, this.d);
+      i += 1;
     }
-    
-    public void a(PopupWindow paramPopupWindow, boolean paramBoolean) {}
+    return this.c;
+  }
+  
+  public final void a(T paramT)
+  {
+    if (!this.b.containsKey(paramT)) {
+      this.b.put(paramT, null);
+    }
   }
 }
 

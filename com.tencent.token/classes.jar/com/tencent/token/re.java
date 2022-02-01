@@ -1,8 +1,10 @@
 package com.tencent.token;
 
-public abstract interface re
+public final class re
 {
-  public abstract void a(rc paramrc);
+  public long a = 0L;
+  public long b = 0L;
+  public String c;
 }
 
 

@@ -1,16 +1,47 @@
 package com.tencent.token;
 
+import com.tencent.turingfd.sdk.qps.final;
+
 public final class acz
 {
-  public static final String a;
+  public final int a;
+  public final int b;
+  public final int c;
+  public final b d;
+  public final final e;
+  public final byte[] f;
+  public final final g;
   
-  static
+  public acz(a parama)
   {
-    StringBuilder localStringBuilder = aeu.a("turingfd_protect_");
-    localStringBuilder.append(afh.a);
-    localStringBuilder.append("_49_baseFull");
-    a = localStringBuilder.toString();
+    this.a = parama.b;
+    this.b = parama.c;
+    this.c = parama.g;
+    this.d = parama.a;
+    this.e = parama.d;
+    this.f = parama.e;
+    this.g = parama.f;
   }
+  
+  public static final class a
+  {
+    public acz.b a;
+    public final int b;
+    public final int c;
+    public final d = null;
+    public byte[] e = null;
+    public final f = null;
+    public final int g;
+    
+    public a(int paramInt1, int paramInt2, int paramInt3)
+    {
+      this.b = paramInt1;
+      this.c = paramInt2;
+      this.g = paramInt3;
+    }
+  }
+  
+  public static abstract interface b {}
 }
 
 

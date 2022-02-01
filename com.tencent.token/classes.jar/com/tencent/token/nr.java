@@ -1,90 +1,155 @@
 package com.tencent.token;
 
+import android.text.TextUtils;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
+
 public final class nr
 {
-  public String a;
-  public String b;
-  public int c;
-  public String d;
-  public String e;
-  public String f;
-  public String g;
-  public int h;
-  public int i;
-  public String j;
-  public String k;
-  public int l;
-  public int m;
-  public String n;
-  public String o;
-  public int p;
-  public int q;
-  public int r;
-  public int s;
-  public int t;
-  public String u;
-  private String v = "";
+  private static nr a;
+  private nq b;
+  private ns c = nt.a();
   
-  public final String toString()
+  private nr()
   {
-    StringBuilder localStringBuilder = new StringBuilder("ReportStruct [appId=");
-    localStringBuilder.append(this.a);
-    localStringBuilder.append(", appVerName=");
-    localStringBuilder.append(this.b);
-    localStringBuilder.append(", appVerCode=");
-    localStringBuilder.append(this.c);
-    localStringBuilder.append(", sdkVersion=");
-    localStringBuilder.append(this.d);
-    localStringBuilder.append(", uuid=");
-    localStringBuilder.append(this.e);
-    localStringBuilder.append(", apn=");
-    localStringBuilder.append(this.f);
-    localStringBuilder.append(", ssid=");
-    localStringBuilder.append(this.g);
-    localStringBuilder.append(", netType=");
-    localStringBuilder.append(this.h);
-    localStringBuilder.append(", opType=");
-    localStringBuilder.append(this.i);
-    localStringBuilder.append(", domain=");
-    localStringBuilder.append(this.j);
-    localStringBuilder.append(", accessIp=");
-    localStringBuilder.append(this.k);
-    localStringBuilder.append(", lastAccessIp=");
-    localStringBuilder.append(null);
-    localStringBuilder.append(", isNetConnected=");
-    localStringBuilder.append(this.l);
-    localStringBuilder.append(", retCode=");
-    localStringBuilder.append(this.m);
-    localStringBuilder.append(", failInfo=");
-    localStringBuilder.append(this.n);
-    localStringBuilder.append(", exceptionInfo=");
-    localStringBuilder.append(this.o);
-    localStringBuilder.append(", dnsTime=");
-    localStringBuilder.append(this.p);
-    localStringBuilder.append(", connectTime=");
-    localStringBuilder.append(this.q);
-    localStringBuilder.append(", waitTime=");
-    localStringBuilder.append(this.r);
-    localStringBuilder.append(", readTime=");
-    localStringBuilder.append(this.s);
-    localStringBuilder.append(", dataLength=0, rspLen=0, totalTime=");
-    localStringBuilder.append(this.t);
-    localStringBuilder.append(", totalTimeReq=0, retryTime=0, uniqueRequestKey=");
-    localStringBuilder.append(this.u);
-    localStringBuilder.append(", url=");
-    localStringBuilder.append(null);
-    localStringBuilder.append(", isUseSchedulerIp=0, isLast=0, isSchedulerOn=0, probability=");
-    localStringBuilder.append(null);
-    localStringBuilder.append(", rule=");
-    localStringBuilder.append(null);
-    localStringBuilder.append(", jumpUrl=");
-    localStringBuilder.append(null);
-    localStringBuilder.append(", isHijack=0, maxRetryTime=0, domainDns=");
-    localStringBuilder.append(null);
-    localStringBuilder.append(", reqResult=0, contentType=");
-    localStringBuilder.append(this.v);
-    localStringBuilder.append(", isHtttps=0, isTimeout=0]");
-    return localStringBuilder.toString();
+    b();
+  }
+  
+  public static nr a()
+  {
+    try
+    {
+      if (a == null) {
+        a = new nr();
+      }
+      nr localnr = a;
+      return localnr;
+    }
+    finally {}
+  }
+  
+  private void b()
+  {
+    try
+    {
+      String str = og.a();
+      lo.a("AccessSchedulerStorageManager", "try updateCacheInfo...currentApn:".concat(String.valueOf(str)));
+      if ((!TextUtils.isEmpty(str)) && (!str.equals("unknown")))
+      {
+        if ((this.b != null) && (this.b.a.equals(str)))
+        {
+          lo.b("AccessSchedulerStorageManager", "same apn. no need update.");
+          return;
+        }
+        this.b = this.c.a(str);
+        if (this.b != null)
+        {
+          lo.a("AccessSchedulerStorageManager", "cache succ for current apn:".concat(String.valueOf(str)));
+          return;
+        }
+        lo.c("AccessSchedulerStorageManager", "cache failed for apn:".concat(String.valueOf(str)));
+        return;
+      }
+      lo.c("AccessSchedulerStorageManager", "updateCacheInfo failed... get current apn from ApnInfo:".concat(String.valueOf(str)));
+      return;
+    }
+    finally {}
+  }
+  
+  public final nq.a a(String paramString)
+  {
+    try
+    {
+      b();
+      if ((this.b != null) && (this.b.a.equals(og.a())))
+      {
+        paramString = (nq.a)this.b.b.get(paramString);
+        return paramString;
+      }
+      return null;
+    }
+    finally
+    {
+      paramString = finally;
+      throw paramString;
+    }
+  }
+  
+  public final void a(nq paramnq)
+  {
+    try
+    {
+      lo.b("AccessSchedulerStorageManager", "try updateAccessInfo...");
+      if (paramnq == null)
+      {
+        lo.c("AccessSchedulerStorageManager", "updateAccessInfo info==null");
+        return;
+      }
+      this.b = paramnq;
+      this.c.a(paramnq);
+      return;
+    }
+    finally {}
+  }
+  
+  public final boolean a(Set paramSet)
+  {
+    for (;;)
+    {
+      int i;
+      try
+      {
+        lo.b("AccessSchedulerStorageManager", "isNeedScheduler... ");
+        b();
+        if (this.b == null)
+        {
+          lo.b("AccessSchedulerStorageManager", "no cache, need schedule...");
+          return true;
+        }
+        Object localObject = this.b.b;
+        if (localObject == null)
+        {
+          lo.b("AccessSchedulerStorageManager", "DomainAccessInfo is null, need schedule...");
+          return true;
+        }
+        if (((Map)localObject).size() < paramSet.size())
+        {
+          paramSet = new StringBuilder("DomainAccessInfo map not enough, need schedule...map.size:");
+          paramSet.append(((Map)localObject).size());
+          lo.b("AccessSchedulerStorageManager", paramSet.toString());
+          return true;
+        }
+        Iterator localIterator = paramSet.iterator();
+        boolean bool = localIterator.hasNext();
+        i = 0;
+        if (bool)
+        {
+          paramSet = (String)localIterator.next();
+          nq.a locala = (nq.a)((Map)localObject).get(paramSet);
+          if (locala != null)
+          {
+            if (System.currentTimeMillis() - locala.d > nu.a().b.e * 60 * 1000) {
+              i = 1;
+            }
+          }
+          else
+          {
+            localObject = new StringBuilder("domainInfo for domain:");
+            ((StringBuilder)localObject).append(paramSet);
+            ((StringBuilder)localObject).append(" is null or expired. need schedule...");
+            lo.b("AccessSchedulerStorageManager", ((StringBuilder)localObject).toString());
+            return true;
+          }
+        }
+        else
+        {
+          return false;
+        }
+      }
+      finally {}
+      if (i == 0) {}
+    }
   }
 }
 

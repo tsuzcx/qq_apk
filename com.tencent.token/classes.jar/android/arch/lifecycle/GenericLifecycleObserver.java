@@ -1,13 +1,13 @@
 package android.arch.lifecycle;
 
-import com.tencent.token.au.a;
-import com.tencent.token.av;
-import com.tencent.token.aw;
+import com.tencent.token.av.a;
+import com.tencent.token.ax;
+import com.tencent.token.ay;
 
 public abstract interface GenericLifecycleObserver
-  extends av
+  extends ax
 {
-  public abstract void a(aw paramaw, au.a parama);
+  public abstract void a(ay paramay, av.a parama);
 }
 
 

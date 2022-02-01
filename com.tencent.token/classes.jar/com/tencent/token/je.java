@@ -2,144 +2,73 @@ package com.tencent.token;
 
 import android.content.Context;
 import android.content.res.ColorStateList;
+import android.content.res.Resources.Theme;
 import android.content.res.TypedArray;
-import android.graphics.Typeface;
-import android.graphics.drawable.Drawable;
-import android.util.AttributeSet;
+import android.graphics.Color;
 import android.util.TypedValue;
 
-public final class je
+final class je
 {
-  public final TypedArray a;
-  private final Context b;
-  private TypedValue c;
+  static final int[] a = { -16842910 };
+  static final int[] b = { 16842908 };
+  static final int[] c = { 16843518 };
+  static final int[] d = { 16842919 };
+  static final int[] e = { 16842912 };
+  static final int[] f = { 16842913 };
+  static final int[] g = { -16842919, -16842908 };
+  static final int[] h = new int[0];
+  private static final ThreadLocal<TypedValue> i = new ThreadLocal();
+  private static final int[] j = new int[1];
   
-  private je(Context paramContext, TypedArray paramTypedArray)
+  public static int a(Context paramContext, int paramInt)
   {
-    this.b = paramContext;
-    this.a = paramTypedArray;
-  }
-  
-  public static je a(Context paramContext, int paramInt, int[] paramArrayOfInt)
-  {
-    return new je(paramContext, paramContext.obtainStyledAttributes(paramInt, paramArrayOfInt));
-  }
-  
-  public static je a(Context paramContext, AttributeSet paramAttributeSet, int[] paramArrayOfInt)
-  {
-    return new je(paramContext, paramContext.obtainStyledAttributes(paramAttributeSet, paramArrayOfInt));
-  }
-  
-  public static je a(Context paramContext, AttributeSet paramAttributeSet, int[] paramArrayOfInt, int paramInt1, int paramInt2)
-  {
-    return new je(paramContext, paramContext.obtainStyledAttributes(paramAttributeSet, paramArrayOfInt, paramInt1, paramInt2));
-  }
-  
-  public final int a(int paramInt1, int paramInt2)
-  {
-    return this.a.getInt(paramInt1, paramInt2);
-  }
-  
-  public final Typeface a(int paramInt1, int paramInt2, cw.a parama)
-  {
-    paramInt1 = this.a.getResourceId(paramInt1, 0);
-    if (paramInt1 == 0) {
-      return null;
-    }
-    if (this.c == null) {
-      this.c = new TypedValue();
-    }
-    return cw.a(this.b, paramInt1, this.c, paramInt2, parama);
-  }
-  
-  public final Drawable a(int paramInt)
-  {
-    if (this.a.hasValue(paramInt))
+    int[] arrayOfInt = j;
+    arrayOfInt[0] = paramInt;
+    paramContext = ji.a(paramContext, null, arrayOfInt);
+    try
     {
-      int i = this.a.getResourceId(paramInt, 0);
-      if (i != 0) {
-        return gq.b(this.b, i);
-      }
+      paramInt = paramContext.b(0, 0);
+      return paramInt;
     }
-    return this.a.getDrawable(paramInt);
-  }
-  
-  public final boolean a(int paramInt, boolean paramBoolean)
-  {
-    return this.a.getBoolean(paramInt, paramBoolean);
-  }
-  
-  public final int b(int paramInt1, int paramInt2)
-  {
-    return this.a.getColor(paramInt1, paramInt2);
-  }
-  
-  public final Drawable b(int paramInt)
-  {
-    if (this.a.hasValue(paramInt))
+    finally
     {
-      paramInt = this.a.getResourceId(paramInt, 0);
-      if (paramInt != 0) {
-        return ig.a().a(this.b, paramInt, true);
-      }
+      paramContext.a.recycle();
     }
-    return null;
   }
   
-  public final int c(int paramInt1, int paramInt2)
+  public static ColorStateList b(Context paramContext, int paramInt)
   {
-    return this.a.getInteger(paramInt1, paramInt2);
-  }
-  
-  public final CharSequence c(int paramInt)
-  {
-    return this.a.getText(paramInt);
-  }
-  
-  public final int d(int paramInt1, int paramInt2)
-  {
-    return this.a.getDimensionPixelOffset(paramInt1, paramInt2);
-  }
-  
-  public final String d(int paramInt)
-  {
-    return this.a.getString(paramInt);
-  }
-  
-  public final int e(int paramInt1, int paramInt2)
-  {
-    return this.a.getDimensionPixelSize(paramInt1, paramInt2);
-  }
-  
-  public final ColorStateList e(int paramInt)
-  {
-    if (this.a.hasValue(paramInt))
+    Object localObject1 = j;
+    localObject1[0] = paramInt;
+    paramContext = ji.a(paramContext, null, (int[])localObject1);
+    try
     {
-      int i = this.a.getResourceId(paramInt, 0);
-      if (i != 0)
-      {
-        ColorStateList localColorStateList = gq.a(this.b, i);
-        if (localColorStateList != null) {
-          return localColorStateList;
-        }
-      }
+      localObject1 = paramContext.e(0);
+      return localObject1;
     }
-    return this.a.getColorStateList(paramInt);
+    finally
+    {
+      paramContext.a.recycle();
+    }
   }
   
-  public final int f(int paramInt1, int paramInt2)
+  public static int c(Context paramContext, int paramInt)
   {
-    return this.a.getLayoutDimension(paramInt1, paramInt2);
-  }
-  
-  public final boolean f(int paramInt)
-  {
-    return this.a.hasValue(paramInt);
-  }
-  
-  public final int g(int paramInt1, int paramInt2)
-  {
-    return this.a.getResourceId(paramInt1, paramInt2);
+    Object localObject = b(paramContext, paramInt);
+    if ((localObject != null) && (((ColorStateList)localObject).isStateful())) {
+      return ((ColorStateList)localObject).getColorForState(a, ((ColorStateList)localObject).getDefaultColor());
+    }
+    TypedValue localTypedValue = (TypedValue)i.get();
+    localObject = localTypedValue;
+    if (localTypedValue == null)
+    {
+      localObject = new TypedValue();
+      i.set(localObject);
+    }
+    paramContext.getTheme().resolveAttribute(16842803, (TypedValue)localObject, true);
+    float f1 = ((TypedValue)localObject).getFloat();
+    paramInt = a(paramContext, paramInt);
+    return dc.b(paramInt, Math.round(Color.alpha(paramInt) * f1));
   }
 }
 

@@ -1,55 +1,174 @@
 package com.tencent.token;
 
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.Canvas;
-import android.graphics.ColorFilter;
-import android.graphics.Paint;
-import android.graphics.Paint.Style;
-import android.graphics.drawable.Drawable;
+import android.os.Handler;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.ImageView;
-import com.tencent.token.ui.IndexActivity;
+import android.widget.ListView;
+import android.widget.ProgressBar;
+import android.widget.TextView;
+import com.tencent.token.ui.UtilsGameLockActivity;
+import com.tencent.token.ui.base.SwitchButton;
 
 public final class yk
-  extends Drawable
+  extends BaseAdapter
 {
-  public boolean a = true;
-  public ImageView b;
-  public ImageView c;
-  private Paint d;
-  private float e;
-  private float f;
+  public static boolean h = false;
+  public UtilsGameLockActivity a;
+  public boolean b;
+  public ss c;
+  public zi d;
+  public Handler e;
+  public boolean f = true;
+  public View g;
+  a i = new a();
+  private LayoutInflater j;
+  private ListView k;
   
-  public yk(Context paramContext)
+  public yk(UtilsGameLockActivity paramUtilsGameLockActivity, ListView paramListView, Handler paramHandler)
   {
-    int i = IndexActivity.S_RES_WIDTH;
-    paramContext.getResources().getDimension(2131034278);
-    this.e = paramContext.getResources().getDimension(2131034277);
-    this.f = (IndexActivity.S_DENSITY * 3.5F);
-    this.d = new Paint();
-    this.d.setStyle(Paint.Style.FILL);
-    this.d.setColor(-1);
+    this.a = paramUtilsGameLockActivity;
+    this.j = LayoutInflater.from(paramUtilsGameLockActivity);
+    this.k = paramListView;
+    this.e = paramHandler;
   }
   
-  public final void draw(Canvas paramCanvas)
+  public static void a()
   {
-    long l = System.currentTimeMillis() + qy.a().g();
-    float f1 = (int)(l / 1000L) % 30 * 1000 + (int)(l % 1000L);
-    float f2 = this.e;
-    paramCanvas.drawRect(f1 * f2 / 30000.0F, 0.0F, f2 + 3.0F, this.f, this.d);
-    if (this.a) {
-      invalidateSelf();
+    int n = ti.a().c.a();
+    int m = 0;
+    while (m < n)
+    {
+      ss localss = ti.a().a(m);
+      if (localss != null) {
+        localss.e = false;
+      }
+      m += 1;
     }
   }
   
-  public final int getOpacity()
+  public final void a(zi paramzi, boolean paramBoolean)
   {
-    return -1;
+    if ((paramzi != null) && (paramzi.h != null))
+    {
+      Object localObject = this.a;
+      if (localObject != null)
+      {
+        if (((UtilsGameLockActivity)localObject).isFinishing()) {
+          return;
+        }
+        localObject = paramzi.h;
+        TextView localTextView = paramzi.b;
+        SwitchButton localSwitchButton = paramzi.d;
+        ProgressBar localProgressBar = paramzi.c;
+        paramzi = paramzi.e;
+        if ((localTextView != null) && (localSwitchButton != null) && (localProgressBar != null) && (paramzi != null))
+        {
+          if (localObject == null) {
+            return;
+          }
+          if ((paramBoolean) && (!((ss)localObject).b.equals(localTextView.getText()))) {
+            return;
+          }
+          if (((ss)localObject).f) {
+            paramzi.setVisibility(0);
+          } else {
+            paramzi.setVisibility(4);
+          }
+          if ((!((ss)localObject).e) && (ti.a().c()))
+          {
+            localProgressBar.setVisibility(4);
+            localSwitchButton.setVisibility(0);
+            localSwitchButton.setEnabled(true);
+            localSwitchButton.a(true ^ ((ss)localObject).c, false);
+          }
+          else
+          {
+            localProgressBar.setVisibility(0);
+            localSwitchButton.setVisibility(0);
+            localSwitchButton.setEnabled(false);
+          }
+          if (!ti.a().c()) {
+            this.a.queryGameLockStatus();
+          }
+          localTextView.setText(((ss)localObject).b);
+          return;
+        }
+        return;
+      }
+    }
   }
   
-  public final void setAlpha(int paramInt) {}
+  public final int getCount()
+  {
+    if (this.f) {
+      return ti.a().c.b();
+    }
+    return ti.a().c.a();
+  }
   
-  public final void setColorFilter(ColorFilter paramColorFilter) {}
+  public final Object getItem(int paramInt)
+  {
+    return Integer.valueOf(paramInt);
+  }
+  
+  public final long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    View localView = paramView;
+    if (paramView == null) {
+      localView = this.j.inflate(2131296472, paramViewGroup, false);
+    }
+    paramView = new zi(localView, ti.a().a(paramInt));
+    paramView.d.setTag(paramView);
+    paramView.d.setOnCheckedChangeListener(this.i);
+    a(paramView, false);
+    return localView;
+  }
+  
+  final class a
+    implements CompoundButton.OnCheckedChangeListener
+  {
+    a() {}
+    
+    public final void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+    {
+      paramCompoundButton = (zi)paramCompoundButton.getTag();
+      if (paramCompoundButton == null) {
+        return;
+      }
+      ss localss = paramCompoundButton.h;
+      if ((localss != null) && (paramCompoundButton.a != null) && (ti.a().c()))
+      {
+        if (paramBoolean != localss.c) {
+          return;
+        }
+        if (!localss.e)
+        {
+          if (yk.a(yk.this)) {
+            return;
+          }
+          yk.a(yk.this, localss);
+          yk.a(yk.this, paramCompoundButton);
+          localss.e = true;
+          yk.b(yk.this);
+          yk.this.a(paramCompoundButton, false);
+          tm.a().a(3, yk.c(yk.this).getHandler());
+          return;
+        }
+        return;
+      }
+    }
+  }
 }
 
 

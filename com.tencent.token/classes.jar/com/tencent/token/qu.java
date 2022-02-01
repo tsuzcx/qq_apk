@@ -1,218 +1,86 @@
 package com.tencent.token;
 
-import android.annotation.SuppressLint;
+import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.os.Handler;
-import android.os.HandlerThread;
-import android.os.Looper;
-import android.os.Message;
-import android.os.Process;
+import android.content.Intent;
+import android.content.IntentFilter;
+import android.os.Build.VERSION;
 import android.text.TextUtils;
-import android.util.Base64;
-import com.qq.taf.jce.JceStruct;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.List;
+import java.util.Set;
 
-public final class qu
+public class qu
 {
-  private static final Long d = Long.valueOf(604800000L);
-  @SuppressLint({"StaticFieldLeak"})
-  private static qu e;
-  public asi a;
-  public a b;
-  public long c = 0L;
-  private String f;
-  private Context g;
-  private boolean h = false;
-  private int i = 0;
-  private qq j;
-  private asm k = new asm()
-  {
-    public final asn<Long, Integer, JceStruct> a(long paramAnonymousLong, int paramAnonymousInt, JceStruct paramAnonymousJceStruct)
-    {
-      StringBuilder localStringBuilder = new StringBuilder("onRecvPush:");
-      localStringBuilder.append(paramAnonymousLong);
-      localStringBuilder.append("|");
-      localStringBuilder.append(paramAnonymousInt);
-      aoc.b();
-      qu.a(qu.this, paramAnonymousJceStruct, false, 0);
-      return null;
-    }
-  };
+  private static qu b;
+  aud a;
+  private Context c;
+  private int d = 0;
   
   private qu(Context paramContext)
   {
-    this.g = paramContext;
-    this.a = qp.a.a().a.a();
-    qv.a(paramContext);
-    if ((qv.b()) && (qv.d())) {
-      paramContext = new qq(paramContext, "taiji", 43200000L);
-    } else {
-      paramContext = new qq(paramContext, "taiji", 14400000L);
+    this.c = paramContext;
+    if (Build.VERSION.SDK_INT >= 11) {
+      this.d = 4;
     }
-    this.j = paramContext;
-    paramContext = new HandlerThread("taiji");
-    paramContext.start();
-    this.b = new a(paramContext.getLooper());
-    if (this.a != null)
+    this.a = qw.a.a().a("tj");
+    IntentFilter localIntentFilter = new IntentFilter();
+    localIntentFilter.addAction("act_got_ads");
+    paramContext.registerReceiver(new BroadcastReceiver()
     {
-      aoc.b();
-      this.a.a(new j(), this.k);
-    }
-    this.b.sendEmptyMessage(3);
-    this.b.sendEmptyMessage(0);
-  }
-  
-  private g a(JceStruct paramJceStruct, boolean paramBoolean, int paramInt)
-  {
-    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.copyTypes(TypeTransformer.java:311)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.fixTypes(TypeTransformer.java:226)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:207)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
+      public final void onReceive(Context paramAnonymousContext, Intent paramAnonymousIntent)
+      {
+        
+        if ("act_got_ads".equals(paramAnonymousIntent.getAction()))
+        {
+          paramAnonymousContext = qu.this;
+          paramAnonymousIntent = qw.a.a();
+          qu.a(qu.this);
+          qu.b(qu.this);
+          qu.a(paramAnonymousContext, paramAnonymousIntent.a("tj"));
+        }
+      }
+    }, localIntentFilter);
   }
   
   public static qu a(Context paramContext)
   {
-    try
-    {
-      if (e == null) {
-        e = new qu(paramContext);
+    if (b == null) {
+      try
+      {
+        if (b == null) {
+          b = new qu(paramContext);
+        }
       }
-      paramContext = e;
-      return paramContext;
+      finally {}
     }
-    finally {}
+    return b;
   }
   
-  public final k a(int paramInt)
+  public final String a(int paramInt)
   {
-    String str = qn.a(this.g).a(paramInt);
-    if (TextUtils.isEmpty(str)) {
-      return null;
-    }
-    return (k)any.a(qo.a.a().a(this.g, Base64.decode(str, 2), false), new k());
+    return this.a.a("ad_".concat(String.valueOf(paramInt)), "");
   }
   
-  public final List<k> a(List<Integer> paramList)
+  public final void a(HashMap<Integer, String> paramHashMap)
   {
-    qn localqn = qn.a(this.g);
-    Object localObject1;
-    Object localObject2;
-    int m;
-    if (paramList.size() == 0)
-    {
-      localObject1 = null;
-    }
-    else
-    {
-      localObject2 = new ArrayList(paramList.size());
-      Iterator localIterator = paramList.iterator();
-      for (;;)
-      {
-        localObject1 = localObject2;
-        if (!localIterator.hasNext()) {
-          break;
-        }
-        m = ((Integer)localIterator.next()).intValue();
-        localObject1 = localqn.a.a("ad_".concat(String.valueOf(m)));
-        if (!TextUtils.isEmpty((CharSequence)localObject1)) {
-          ((List)localObject2).add(localObject1);
-        }
-      }
-    }
-    if ((localObject1 != null) && (((List)localObject1).size() != 0))
-    {
-      paramList = new ArrayList(paramList.size());
-      localObject1 = ((List)localObject1).iterator();
-      while (((Iterator)localObject1).hasNext())
-      {
-        localObject2 = (String)((Iterator)localObject1).next();
-        if (!TextUtils.isEmpty((CharSequence)localObject2))
-        {
-          localObject2 = (k)any.a(qo.a.a().a(this.g, Base64.decode((String)localObject2, 2), false), new k());
-          if (localObject2 != null) {
-            paramList.add(localObject2);
-          }
-        }
-      }
-      localObject1 = paramList.iterator();
-      while (((Iterator)localObject1).hasNext())
-      {
-        m = ((k)((Iterator)localObject1).next()).d;
-        aoc.b();
-      }
-      return paramList;
-    }
-    aoc.b();
-    return null;
+    a(paramHashMap, true);
   }
   
-  public final class a
-    extends Handler
+  public final void a(HashMap<Integer, String> paramHashMap, boolean paramBoolean)
   {
-    a(Looper paramLooper)
+    if ((paramHashMap != null) && (paramHashMap.size() > 0))
     {
-      super();
-    }
-    
-    public final void handleMessage(Message paramMessage)
-    {
-      new StringBuilder("handleMessage :msg:").append(paramMessage.what);
-      aoc.b();
-      switch (paramMessage.what)
+      this.a.b();
+      Iterator localIterator = paramHashMap.keySet().iterator();
+      while (localIterator.hasNext())
       {
-      default: 
-      case 3: 
-        qr.a.a();
-        paramMessage = qu.a(qu.this);
-        qv.a(paramMessage);
-        int i = qp.a.a().a("tjs").a("k_t_a_v", 0);
-        int j = aob.c(paramMessage, paramMessage.getPackageName());
-        if ((i == 0) || (i != j))
-        {
-          qv.b(true);
-          qp.a.a().a("tjs").b("k_t_a_v", j);
+        int i = ((Integer)localIterator.next()).intValue();
+        if ((paramBoolean) || (TextUtils.isEmpty(this.a.a("ad_".concat(String.valueOf(i)), "")))) {
+          this.a.b("ad_".concat(String.valueOf(i)), (String)paramHashMap.get(Integer.valueOf(i)));
         }
-        if (qp.a.a().a("tjs").a("k_l_l_s_s", true))
-        {
-          qv.b(false);
-          Object localObject = new StringBuilder("startAndLoadScheme, process id:");
-          ((StringBuilder)localObject).append(Process.myPid());
-          ((StringBuilder)localObject).append(", thread id:");
-          ((StringBuilder)localObject).append(Thread.currentThread().getId());
-          aoc.b();
-          localObject = qr.a(paramMessage);
-          if (TextUtils.isEmpty((CharSequence)localObject))
-          {
-            aoc.b();
-            return;
-          }
-          "loadAssetLocalSchemeFile json:".concat(String.valueOf(localObject));
-          aoc.b();
-          localObject = qr.a(paramMessage, (String)localObject);
-          if ((localObject != null) && (((List)localObject).size() > 0))
-          {
-            new StringBuilder("getSolutionListForPhone result list size:").append(((List)localObject).size());
-            aoc.b();
-            qr.a(paramMessage, (List)localObject);
-            return;
-          }
-          aoc.b();
-          return;
-        }
-        break;
-      case 2: 
-        qu.c(qu.this, paramMessage);
-        return;
-      case 1: 
-        aoc.b();
-        qu.b(qu.this, paramMessage);
-        return;
-      case 0: 
-        new StringBuilder("MSG_UPLOAD_PROFILE:").append(paramMessage.arg1);
-        aoc.b();
-        qu.a(qu.this, paramMessage);
-        return;
       }
+      this.a.c();
     }
   }
 }

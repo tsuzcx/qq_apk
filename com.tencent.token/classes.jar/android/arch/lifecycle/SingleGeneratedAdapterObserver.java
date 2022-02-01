@@ -1,20 +1,20 @@
 package android.arch.lifecycle;
 
-import com.tencent.token.at;
-import com.tencent.token.au.a;
-import com.tencent.token.aw;
+import com.tencent.token.au;
+import com.tencent.token.av.a;
+import com.tencent.token.ay;
 
 public class SingleGeneratedAdapterObserver
   implements GenericLifecycleObserver
 {
-  private final at a;
+  private final au a;
   
-  public SingleGeneratedAdapterObserver(at paramat)
+  public SingleGeneratedAdapterObserver(au paramau)
   {
-    this.a = paramat;
+    this.a = paramau;
   }
   
-  public final void a(aw paramaw, au.a parama) {}
+  public final void a(ay paramay, av.a parama) {}
 }
 
 

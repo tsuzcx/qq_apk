@@ -1,30 +1,22 @@
 package com.tencent.token;
 
-import javax.annotation.Nullable;
+import java.io.Closeable;
+import java.io.Flushable;
 
 public final class ajq
-  extends air
+  implements Closeable, Flushable
 {
-  @Nullable
-  private final String a;
-  private final long b;
-  private final ala c;
+  final aky a;
+  final akx b;
   
-  public ajq(@Nullable String paramString, long paramLong, ala paramala)
+  public final void close()
   {
-    this.a = paramString;
-    this.b = paramLong;
-    this.c = paramala;
+    this.b.close();
   }
   
-  public final long a()
+  public final void flush()
   {
-    return this.b;
-  }
-  
-  public final ala b()
-  {
-    return this.c;
+    this.b.flush();
   }
 }
 

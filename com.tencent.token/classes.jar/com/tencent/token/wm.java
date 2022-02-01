@@ -1,54 +1,36 @@
 package com.tencent.token;
 
-import android.app.Notification.Builder;
-import android.app.NotificationChannel;
-import android.app.NotificationManager;
-import android.app.PendingIntent;
-import android.content.Context;
-import android.content.ContextWrapper;
-import android.os.Build.VERSION;
-import com.tencent.token.global.RqdApplication;
+import java.util.HashMap;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public final class wm
-  extends ContextWrapper
+  extends tr
 {
-  private NotificationManager a;
+  private JSONArray d;
   
-  public wm(Context paramContext)
+  public final String a()
   {
-    super(paramContext);
+    sh.a();
+    this.a.a(104, null, null);
+    return null;
   }
   
-  private NotificationManager a()
+  public final void a(abc paramabc)
   {
-    if (this.a == null) {
-      this.a = ((NotificationManager)getSystemService("notification"));
-    }
-    return this.a;
+    this.d = ((JSONArray)paramabc.c.get("param.reportdns.domain"));
   }
   
-  public final void a(int paramInt, String paramString1, String paramString2, PendingIntent paramPendingIntent)
+  public final void a(JSONObject paramJSONObject)
   {
-    if (Build.VERSION.SDK_INT >= 26)
+    int i = paramJSONObject.getInt("err");
+    if (i != 0)
     {
-      if (Build.VERSION.SDK_INT >= 26)
-      {
-        NotificationChannel localNotificationChannel = new NotificationChannel("channel_qqsafe", "channel_name_qqsafe", 4);
-        a().createNotificationChannel(localNotificationChannel);
-      }
-      if (Build.VERSION.SDK_INT >= 26) {
-        paramString1 = new Notification.Builder(RqdApplication.n(), "channel_qqsafe").setDefaults(1).setContentTitle(paramString1).setContentText(paramString2).setContentIntent(paramPendingIntent).setSmallIcon(2131099914).setAutoCancel(true);
-      } else {
-        paramString1 = null;
-      }
-      paramString1 = paramString1.build();
-      a().notify(paramInt, paramString1);
+      a(i, paramJSONObject.getString("info"));
       return;
     }
-    paramString1 = new cj.b(RqdApplication.n(), (byte)0).c().a(paramString1).b(paramString2);
-    paramString1.e = paramPendingIntent;
-    paramString1 = paramString1.a().b().d();
-    a().notify(paramInt, paramString1);
+    aap.a(System.currentTimeMillis() / 1000L);
+    this.a.a = 0;
   }
 }
 

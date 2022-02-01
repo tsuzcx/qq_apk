@@ -1,61 +1,88 @@
 package com.tencent.token;
 
-import android.content.Context;
-import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.content.pm.PackageManager.NameNotFoundException;
-import android.net.Uri;
-import android.os.Build.VERSION;
-import android.support.v4.content.FileProvider;
-import java.io.File;
+import android.app.Dialog;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.TextView;
+import com.tencent.token.core.bean.QQUser;
+import com.tencent.token.ui.FacePwdIndexActivity;
+import java.util.List;
 
 public final class yy
+  extends BaseAdapter
 {
-  public static boolean a(Context paramContext, String paramString)
+  private List<QQUser> a;
+  private Dialog b;
+  private LayoutInflater c;
+  private FacePwdIndexActivity d;
+  
+  public yy(FacePwdIndexActivity paramFacePwdIndexActivity, Dialog paramDialog, List<QQUser> paramList)
   {
-    paramString = new File(paramString);
-    if ((paramString.exists()) && (paramString.isFile()))
-    {
-      Intent localIntent = new Intent("android.intent.action.VIEW");
-      localIntent.addFlags(268435456);
-      if (Build.VERSION.SDK_INT >= 24)
-      {
-        paramString = FileProvider.a(paramContext, "com.tencent.token.FileProvider", paramString);
-        localIntent.addFlags(1);
-      }
-      else
-      {
-        paramString = Uri.fromFile(paramString);
-      }
-      localIntent.setDataAndType(paramString, "application/vnd.android.package-archive");
-      paramContext.startActivity(localIntent);
-      return true;
-    }
-    return false;
+    this.c = LayoutInflater.from(paramFacePwdIndexActivity);
+    this.b = paramDialog;
+    this.a = paramList;
+    this.d = paramFacePwdIndexActivity;
   }
   
-  public static boolean b(Context paramContext, String paramString)
+  public final int getCount()
   {
-    try
-    {
-      paramContext = paramContext.getPackageManager().getPackageInfo(paramString, 0);
-      return paramContext != null;
+    List localList = this.a;
+    if (localList == null) {
+      return 0;
     }
-    catch (PackageManager.NameNotFoundException paramContext) {}
-    return false;
+    return localList.size();
   }
   
-  public static void c(Context paramContext, String paramString)
+  public final Object getItem(int paramInt)
   {
-    try
-    {
-      paramContext.startActivity(paramContext.getPackageManager().getLaunchIntentForPackage(paramString));
-      return;
+    return null;
+  }
+  
+  public final long getItemId(int paramInt)
+  {
+    return 0L;
+  }
+  
+  public final View getView(int paramInt, View paramView, final ViewGroup paramViewGroup)
+  {
+    View localView = paramView;
+    if (paramView == null) {
+      localView = this.c.inflate(2131296333, paramViewGroup, false);
     }
-    catch (Exception paramContext)
-    {
-      paramContext.printStackTrace();
+    paramView = localView.findViewById(2131165447);
+    if (paramInt == getCount() - 1) {
+      paramView.setVisibility(4);
+    } else {
+      paramView.setVisibility(0);
     }
+    paramView = (TextView)localView.findViewById(2131166075);
+    paramViewGroup = this.a;
+    if (paramViewGroup != null)
+    {
+      paramViewGroup = (QQUser)paramViewGroup.get(paramInt);
+      if (paramViewGroup != null)
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(paramViewGroup.mNickName);
+        localStringBuilder.append("(");
+        localStringBuilder.append(aao.e(paramViewGroup.mRealUin));
+        localStringBuilder.append(")");
+        paramView.setText(localStringBuilder.toString());
+        localView.setOnClickListener(new View.OnClickListener()
+        {
+          public final void onClick(View paramAnonymousView)
+          {
+            aap.b(paramViewGroup.mRealUin);
+            yy.a(yy.this).dismiss();
+            yy.b(yy.this).refreshList();
+          }
+        });
+      }
+    }
+    return localView;
   }
 }
 

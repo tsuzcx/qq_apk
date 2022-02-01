@@ -1,87 +1,87 @@
 package com.tencent.token;
 
-import btmsdkobf.bx;
-import com.qq.taf.jce.JceStruct;
-import com.tmsdk.TMSDKContext;
-import com.tmsdk.base.ISharkCallBackOut;
-import java.util.ArrayList;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.Canvas;
+import android.graphics.ColorFilter;
+import android.graphics.Paint;
+import android.graphics.Paint.Style;
+import android.graphics.RectF;
+import android.graphics.drawable.Drawable;
 
 public final class ze
+  extends Drawable
 {
-  public static void a(final String paramString, final a parama)
+  public boolean a;
+  public float b;
+  private int c;
+  private int d;
+  private Paint e = new Paint();
+  private RectF f;
+  private RectF g;
+  private float h;
+  
+  public ze(Context paramContext)
   {
-    l locall = new l();
-    locall.a = new ArrayList();
-    t localt = new t();
-    localt.a = paramString;
-    localt.h = 2110015L;
-    locall.a.add(localt);
-    bx.ar().getGuid();
-    xo.a.a().a(new Runnable()
-    {
-      public final void run()
-      {
-        TMSDKContext.sendShark(2237, this.a, new o(), new ISharkCallBackOut()
-        {
-          public final void onFinish(int paramAnonymous2Int1, int paramAnonymous2Int2, int paramAnonymous2Int3, int paramAnonymous2Int4, JceStruct paramAnonymous2JceStruct)
-          {
-            if (paramAnonymous2Int3 != 0) {
-              return;
-            }
-            if (!(paramAnonymous2JceStruct instanceof o)) {
-              return;
-            }
-            paramAnonymous2JceStruct = (o)paramAnonymous2JceStruct;
-            if (paramAnonymous2JceStruct.a != 0) {
-              return;
-            }
-            paramAnonymous2JceStruct = paramAnonymous2JceStruct.b;
-            if (paramAnonymous2JceStruct != null)
-            {
-              if (paramAnonymous2JceStruct.size() <= 0) {
-                return;
-              }
-              if (ze.1.this.b != null)
-              {
-                ze.a locala = ze.1.this.b;
-                r localr = (r)paramAnonymous2JceStruct.get(0);
-                String str = ze.1.this.c;
-                if (localr == null)
-                {
-                  paramAnonymous2JceStruct = null;
-                }
-                else
-                {
-                  paramAnonymous2JceStruct = localr;
-                  if (str.equals("com.tencent.qqpimsecure"))
-                  {
-                    str = localr.r.toLowerCase();
-                    if ((!str.endsWith("png")) && (!str.endsWith("jpg")))
-                    {
-                      paramAnonymous2JceStruct = localr;
-                      if (!str.endsWith("jpeg")) {}
-                    }
-                    else
-                    {
-                      localr.r = "https://privacy.qq.com/document/priview/c4c2fc8a9e8c47d19577907a72e62f11";
-                      paramAnonymous2JceStruct = localr;
-                    }
-                  }
-                }
-                locala.a(paramAnonymous2JceStruct);
-              }
-              return;
-            }
-          }
-        });
-      }
-    }, "fetchSoftwareDetail");
+    this.c = paramContext.getResources().getColor(2130968665);
+    this.d = paramContext.getResources().getColor(2130968669);
+    this.f = new RectF();
+    this.g = new RectF();
   }
   
-  public static abstract interface a
+  public final void a()
   {
-    public abstract void a(r paramr);
+    this.b = 0.0F;
+    this.a = false;
   }
+  
+  public final void draw(Canvas paramCanvas)
+  {
+    this.e.setColor(this.c);
+    this.e.setStyle(Paint.Style.FILL);
+    paramCanvas.drawRoundRect(this.f, 5.0F, 5.0F, this.e);
+    if (!this.a)
+    {
+      double d1 = this.b;
+      Double.isNaN(d1);
+      this.b = ((float)(d1 + 0.15D));
+      if (this.b > 80.0F) {
+        this.b = 80.0F;
+      }
+    }
+    else
+    {
+      this.b += 5.0F;
+    }
+    if (this.b >= 100.0F) {
+      this.b = 100.0F;
+    }
+    this.g.set(this.f.left, this.f.top, this.f.left + this.h * this.b, this.f.bottom);
+    this.e.setColor(this.d);
+    paramCanvas.drawRoundRect(this.g, 5.0F, 5.0F, this.e);
+    invalidateSelf();
+  }
+  
+  public final int getOpacity()
+  {
+    return 0;
+  }
+  
+  public final void setAlpha(int paramInt) {}
+  
+  public final void setBounds(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    super.setBounds(paramInt1, paramInt2, paramInt3, paramInt4);
+    this.f.set(paramInt1, paramInt2, paramInt3, paramInt4);
+    this.h = (this.f.width() / 100.0F);
+    StringBuilder localStringBuilder = new StringBuilder("setBounds rect=");
+    localStringBuilder.append(this.f);
+    localStringBuilder.append(",clipRect=");
+    localStringBuilder.append(this.g);
+    xj.c(localStringBuilder.toString());
+  }
+  
+  public final void setColorFilter(ColorFilter paramColorFilter) {}
 }
 
 

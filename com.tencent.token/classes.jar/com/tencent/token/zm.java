@@ -1,118 +1,14 @@
 package com.tencent.token;
 
-import android.app.ActivityManager;
-import android.app.ActivityManager.MemoryInfo;
-import android.content.Context;
-import android.os.Environment;
-import android.os.StatFs;
-import java.io.File;
-import java.text.DecimalFormat;
-
-public final class zm
+public abstract interface zm
 {
-  private static DecimalFormat a = new DecimalFormat("#0");
-  private static DecimalFormat b = new DecimalFormat("#0.#");
+  public abstract void a();
   
-  public static long a()
-  {
-    try
-    {
-      StatFs localStatFs = new StatFs(Environment.getDataDirectory().getPath());
-      long l = localStatFs.getBlockSize();
-      int i = localStatFs.getAvailableBlocks();
-      return i * l;
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-    }
-    return zk.b;
-  }
+  public abstract void a(float paramFloat);
   
-  public static long a(Context paramContext)
-  {
-    try
-    {
-      paramContext = (ActivityManager)paramContext.getSystemService("activity");
-      ActivityManager.MemoryInfo localMemoryInfo = new ActivityManager.MemoryInfo();
-      paramContext.getMemoryInfo(localMemoryInfo);
-      long l = localMemoryInfo.availMem;
-      return l;
-    }
-    catch (Exception paramContext)
-    {
-      paramContext.printStackTrace();
-    }
-    return zk.b;
-  }
+  public abstract void b();
   
-  public static long b()
-  {
-    try
-    {
-      StatFs localStatFs = new StatFs(Environment.getDataDirectory().getPath());
-      long l = localStatFs.getBlockSize();
-      int i = localStatFs.getBlockCount();
-      return i * l;
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-    }
-    return zk.b;
-  }
-  
-  public static long c()
-  {
-    try
-    {
-      if (e())
-      {
-        StatFs localStatFs = new StatFs(Environment.getExternalStorageDirectory().getPath());
-        long l = localStatFs.getBlockSize();
-        int i = localStatFs.getAvailableBlocks();
-        return i * l;
-      }
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-    }
-    return zk.b;
-  }
-  
-  public static long d()
-  {
-    try
-    {
-      if (e())
-      {
-        StatFs localStatFs = new StatFs(Environment.getExternalStorageDirectory().getPath());
-        long l = localStatFs.getBlockSize();
-        int i = localStatFs.getBlockCount();
-        return i * l;
-      }
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-    }
-    return zk.b;
-  }
-  
-  private static boolean e()
-  {
-    try
-    {
-      boolean bool = Environment.getExternalStorageState().equals("mounted");
-      return bool;
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-    }
-    return false;
-  }
+  public abstract void c();
 }
 
 

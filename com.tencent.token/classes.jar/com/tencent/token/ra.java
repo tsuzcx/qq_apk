@@ -1,15 +1,34 @@
 package com.tencent.token;
 
-public final class ra
+import android.content.Context;
+
+public class ra
 {
-  protected long a;
-  public int b;
-  public String c;
-  public String d;
+  private static ra b;
+  public rb a;
   
-  public final String toString()
+  private ra(Context paramContext)
   {
-    return super.toString();
+    this.a = rb.a(paramContext);
+  }
+  
+  public static ra a(Context paramContext)
+  {
+    if (b == null) {
+      try
+      {
+        if (b == null) {
+          b = new ra(paramContext);
+        }
+      }
+      finally {}
+    }
+    return b;
+  }
+  
+  public final k a(int paramInt)
+  {
+    return this.a.a(paramInt);
   }
 }
 

@@ -1,33 +1,164 @@
 package com.tencent.token;
 
-import java.util.Arrays;
-import java.util.List;
+import java.io.EOFException;
+import java.io.IOException;
+import java.util.zip.CRC32;
+import java.util.zip.Inflater;
 
 public final class anc
-  implements amy
+  implements anl
 {
-  final String a;
-  final List<amy> b;
+  private int a = 0;
+  private final amx b;
+  private final Inflater c;
+  private final and d;
+  private final CRC32 e = new CRC32();
   
-  public anc(String paramString, List<amy> paramList)
+  public anc(anl paramanl)
   {
-    this.a = paramString;
-    this.b = paramList;
+    if (paramanl != null)
+    {
+      this.c = new Inflater(true);
+      this.b = ane.a(paramanl);
+      this.d = new and(this.b, this.c);
+      return;
+    }
+    throw new IllegalArgumentException("source == null");
   }
   
-  public final aof a(asv paramasv, ane paramane)
+  private void a(amv paramamv, long paramLong1, long paramLong2)
   {
-    return new aog(paramasv, paramane, this);
+    for (paramamv = paramamv.a; paramLong1 >= paramamv.c - paramamv.b; paramamv = paramamv.f) {
+      paramLong1 -= paramamv.c - paramamv.b;
+    }
+    while (paramLong2 > 0L)
+    {
+      int i = (int)(paramamv.b + paramLong1);
+      int j = (int)Math.min(paramamv.c - i, paramLong2);
+      this.e.update(paramamv.a, i, j);
+      paramLong2 -= j;
+      paramamv = paramamv.f;
+      paramLong1 = 0L;
+    }
   }
   
-  public final String toString()
+  private static void a(String paramString, int paramInt1, int paramInt2)
   {
-    StringBuilder localStringBuilder = new StringBuilder("ShapeGroup{name='");
-    localStringBuilder.append(this.a);
-    localStringBuilder.append("' Shapes: ");
-    localStringBuilder.append(Arrays.toString(this.b.toArray()));
-    localStringBuilder.append('}');
-    return localStringBuilder.toString();
+    if (paramInt2 == paramInt1) {
+      return;
+    }
+    throw new IOException(String.format("%s: actual 0x%08x != expected 0x%08x", new Object[] { paramString, Integer.valueOf(paramInt2), Integer.valueOf(paramInt1) }));
+  }
+  
+  public final long a(amv paramamv, long paramLong)
+  {
+    if (paramLong >= 0L)
+    {
+      if (paramLong == 0L) {
+        return 0L;
+      }
+      long l;
+      if (this.a == 0)
+      {
+        this.b.a(10L);
+        int j = this.b.b().b(3L);
+        int i;
+        if ((j >> 1 & 0x1) == 1) {
+          i = 1;
+        } else {
+          i = 0;
+        }
+        if (i != 0) {
+          a(this.b.b(), 0L, 10L);
+        }
+        a("ID1ID2", 8075, this.b.g());
+        this.b.g(8L);
+        if ((j >> 2 & 0x1) == 1)
+        {
+          this.b.a(2L);
+          if (i != 0) {
+            a(this.b.b(), 0L, 2L);
+          }
+          int k = this.b.b().i();
+          amx localamx = this.b;
+          l = k;
+          localamx.a(l);
+          if (i != 0) {
+            a(this.b.b(), 0L, l);
+          }
+          this.b.g(l);
+        }
+        if ((j >> 3 & 0x1) == 1)
+        {
+          l = this.b.q();
+          if (l != -1L)
+          {
+            if (i != 0) {
+              a(this.b.b(), 0L, l + 1L);
+            }
+            this.b.g(l + 1L);
+          }
+          else
+          {
+            throw new EOFException();
+          }
+        }
+        if ((j >> 4 & 0x1) == 1)
+        {
+          l = this.b.q();
+          if (l != -1L)
+          {
+            if (i != 0) {
+              a(this.b.b(), 0L, l + 1L);
+            }
+            this.b.g(l + 1L);
+          }
+          else
+          {
+            throw new EOFException();
+          }
+        }
+        if (i != 0)
+        {
+          a("FHCRC", this.b.i(), (short)(int)this.e.getValue());
+          this.e.reset();
+        }
+        this.a = 1;
+      }
+      if (this.a == 1)
+      {
+        l = paramamv.b;
+        paramLong = this.d.a(paramamv, paramLong);
+        if (paramLong != -1L)
+        {
+          a(paramamv, l, paramLong);
+          return paramLong;
+        }
+        this.a = 2;
+      }
+      if (this.a == 2)
+      {
+        a("CRC", this.b.j(), (int)this.e.getValue());
+        a("ISIZE", this.b.j(), (int)this.c.getBytesWritten());
+        this.a = 3;
+        if (this.b.c()) {
+          return -1L;
+        }
+        throw new IOException("gzip finished without exhausting source");
+      }
+      return -1L;
+    }
+    throw new IllegalArgumentException("byteCount < 0: ".concat(String.valueOf(paramLong)));
+  }
+  
+  public final anm a()
+  {
+    return this.b.a();
+  }
+  
+  public final void close()
+  {
+    this.d.close();
   }
 }
 

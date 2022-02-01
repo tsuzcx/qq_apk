@@ -1,32 +1,33 @@
 package com.tencent.token;
 
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
+import android.content.Context;
 
 public final class adu
+  extends Thread
 {
-  public static Map<Integer, Long> a = new HashMap();
+  public adu(agr paramagr) {}
   
-  public static String a()
+  public final void run()
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    Iterator localIterator = a.keySet().iterator();
-    while (localIterator.hasNext())
-    {
-      int i = ((Integer)localIterator.next()).intValue();
-      localStringBuilder.append(",");
-      localStringBuilder.append(i);
-      localStringBuilder.append("_");
-      localStringBuilder.append(a.get(Integer.valueOf(i)));
+    Object localObject = this.a;
+    abz.a();
+    localObject = ((agr)localObject).c;
+    aeq localaeq = abz.a((Context)localObject, 100, 0, 0);
+    adz.c = localaeq;
+    if (localaeq == null) {
+      adz.c = new aeq((Context)localObject, 0, 0, 0, 0, 100);
     }
-    return localStringBuilder.toString();
-  }
-  
-  public static void a(int paramInt, long paramLong)
-  {
-    a.put(Integer.valueOf(paramInt), Long.valueOf(paramLong));
+    aek.b.getClass();
+    localaeq = abz.a((Context)localObject, 999, (int)aek.a((Context)localObject, "mm_max_day_cnt", 20L, 1L), (int)aek.a((Context)localObject, "mm_max_hour_cnt", 3L, 1L));
+    adz.a = localaeq;
+    if (localaeq == null) {
+      adz.a = new aeq((Context)localObject, (int)aek.a((Context)localObject, "mm_max_day_cnt", 20L, 1L), (int)aek.a((Context)localObject, "mm_max_hour_cnt", 3L, 1L), 30, 3, 999);
+    }
+    localaeq = abz.a((Context)localObject, 998, 3, 1);
+    adz.b = localaeq;
+    if (localaeq == null) {
+      adz.b = new aeq((Context)localObject, 3, 1, 3600, 3, 998);
+    }
   }
 }
 

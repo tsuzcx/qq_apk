@@ -1,83 +1,66 @@
 package com.tencent.token;
 
 import android.content.Context;
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.token.core.bean.EvalAccountResult;
 import com.tencent.token.global.RqdApplication;
 import java.util.HashMap;
 import org.json.JSONObject;
 
 public final class vb
-  extends tj
+  extends tr
 {
-  EvalAccountResult d;
+  private long d;
   private long e;
   private int f;
+  private int g;
+  private String h;
+  private int i;
   
   public final String a()
   {
-    rz.a();
-    StringBuilder localStringBuilder = new StringBuilder("account page generateUrl sessId =");
-    localStringBuilder.append(null);
-    xa.c(localStringBuilder.toString());
+    sh.a();
     this.a.a(104, null, null);
-    localStringBuilder = new StringBuilder("account page generateUrl sessId =");
-    localStringBuilder.append(null);
-    xa.c(localStringBuilder.toString());
     return null;
   }
   
-  public final void a(aaq paramaaq)
+  public final void a(abc paramabc)
   {
-    this.e = ((Long)paramaaq.c.get("param.uinhash")).longValue();
-    paramaaq = new StringBuilder("account page ProtoGetEvalAccountResult unpacketParams: user =");
-    paramaaq.append(this.e);
-    xa.c(paramaaq.toString());
+    this.d = ((Long)paramabc.c.get("param.uinhash")).longValue();
+    this.e = ((Long)paramabc.c.get("param.realuin")).longValue();
+    this.g = ((Integer)paramabc.c.get("param.general.mobilecode.sceneid")).intValue();
+    this.h = ((String)paramabc.c.get("param.mbmobile.vrycode"));
+    this.i = ((Integer)paramabc.c.get("param.type")).intValue();
+    this.f = paramabc.j;
   }
   
   public final void a(JSONObject paramJSONObject)
   {
-    int i = paramJSONObject.getInt("err");
-    if (i != 0)
+    int j = paramJSONObject.getInt("err");
+    if (j != 0)
     {
-      a(i, paramJSONObject.getString("info"));
+      a(j, paramJSONObject.getString("info"));
       return;
     }
-    paramJSONObject = aac.d(paramJSONObject.getString("data"));
+    paramJSONObject = aao.d(paramJSONObject.getString("data"));
     if (paramJSONObject != null)
     {
       paramJSONObject = new JSONObject(new String(paramJSONObject));
-      i = paramJSONObject.getInt("seq_id");
-      if (i != this.f)
+      xj.a("mbtoken3_general_verify_mobile_code ret: ".concat(String.valueOf(paramJSONObject)));
+      j = paramJSONObject.getInt("seq_id");
+      if (j != this.f)
       {
-        this.a.a(10030, null, null);
         paramJSONObject = new StringBuilder("parseJSON error seq is wrong seq=");
-        paramJSONObject.append(i);
+        paramJSONObject.append(j);
         paramJSONObject.append(",right = ");
-        sa.a();
-        paramJSONObject.append(sa.b());
-        xa.c(paramJSONObject.toString());
+        paramJSONObject.append(this.f);
+        xj.c(paramJSONObject.toString());
+        this.a.a(10030, null, null);
         return;
       }
-      this.d = new EvalAccountResult(paramJSONObject.getJSONObject("result"), paramJSONObject);
       this.a.a = 0;
       return;
     }
-    xa.c("parseJSON error decodeData=".concat(String.valueOf(paramJSONObject)));
-    a(10022, RqdApplication.n().getString(2131493068));
-  }
-  
-  public final void b()
-  {
-    if ((!this.b.e) && (this.b.d != null))
-    {
-      Message localMessage = this.b.d.obtainMessage(this.b.f);
-      localMessage.arg1 = 0;
-      localMessage.obj = this.d;
-      localMessage.sendToTarget();
-      this.b.e = true;
-    }
+    xj.c("parseJSON error decodeData=".concat(String.valueOf(paramJSONObject)));
+    a(10022, RqdApplication.p().getString(2131493068));
   }
 }
 

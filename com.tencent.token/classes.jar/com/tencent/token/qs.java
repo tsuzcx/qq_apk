@@ -1,157 +1,519 @@
 package com.tencent.token;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
+import android.app.Application;
+import android.app.Application.ActivityLifecycleCallbacks;
+import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Build;
 import android.os.Build.VERSION;
-import android.text.TextUtils;
-import java.util.HashMap;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.HandlerThread;
+import android.os.Looper;
+import android.util.Pair;
+import android.util.SparseIntArray;
+import android.view.WindowManager;
+import android.view.WindowManager.LayoutParams;
+import com.tencent.qqpimsecure.pg.PermissionGuideActivity;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Locale;
-import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
 
-@SuppressLint({"UseSparseArrays"})
-final class qs
+public final class qs
 {
-  private static final String[] a = { "com.coloros.safecenter", "com.coloros.oppoguardelf", "com.oppo.safe" };
-  private static final String[] b = { "com.iqoo.secure", "com.vivo.abe" };
-  private static final String[] c = { "com.huawei.systemmanager" };
-  private static final String[] d = { "com.samsung.android.sm_cn", "com.samsung.android.sm" };
-  private static final String[] e = { "com.gionee.softmanager" };
-  private static final String[] f = { "com.meizu.safe" };
-  private static final String[] g = { "com.miui.securitycenter" };
-  private static String h = "";
+  Context a;
+  ArrayList<Object> b;
+  public ats c;
+  public atr d;
+  public atw e;
+  public att f;
+  public aty g;
+  public ConcurrentHashMap<Integer, atx> h;
+  private Handler i;
   
-  private static String a(Context paramContext, String paramString)
+  private void a(int[] paramArrayOfInt, boolean paramBoolean1, boolean paramBoolean2, int paramInt1, int paramInt2, boolean paramBoolean3, atx paramatx)
   {
-    if (!TextUtils.isEmpty(h)) {
-      return h;
-    }
-    if (TextUtils.isEmpty(paramString)) {
-      return "";
-    }
-    String str = paramString.toLowerCase(Locale.ENGLISH);
-    paramString = null;
-    if (str.contains("oppo")) {
-      paramString = a;
-    } else if (str.contains("vivo")) {
-      paramString = b;
-    } else if (str.contains("huawei")) {
-      paramString = c;
-    } else if (str.contains("gionee")) {
-      paramString = e;
-    } else if (str.contains("meizu")) {
-      paramString = f;
-    } else if (str.contains("samsung")) {
-      paramString = d;
-    } else if (str.contains("xiaomi")) {
-      paramString = g;
-    }
-    if (paramString != null)
+    Intent localIntent = new Intent(this.a, PermissionGuideActivity.class);
+    int j = paramatx.hashCode();
+    localIntent.setFlags(268500992);
+    localIntent.putExtra("e_pms", paramArrayOfInt);
+    localIntent.putExtra("e_src", paramInt2);
+    localIntent.putExtra("e_uid", j);
+    localIntent.putExtra("e_u_h", paramBoolean3);
+    localIntent.putExtra("e_s_c", paramBoolean1);
+    localIntent.putExtra("e_m", paramBoolean2);
+    localIntent.putExtra("e_md", paramInt1);
+    this.a.startActivity(localIntent);
+    this.h.put(Integer.valueOf(paramatx.hashCode()), paramatx);
+  }
+  
+  public final int a(int paramInt)
+  {
+    Context localContext = this.a;
+    int k = Build.VERSION.SDK_INT;
+    int j = 1;
+    Object localObject2 = null;
+    Object localObject1;
+    if (k < 8)
     {
-      int j = paramString.length;
-      int i = 0;
-      while (i < j)
-      {
-        str = paramString[i];
-        try
+      localObject1 = localObject2;
+    }
+    else
+    {
+      k = aps.a(paramInt);
+      Object localObject3 = ra.a(localContext).a(k);
+      localObject1 = localObject2;
+      if (localObject3 != null) {
+        if (((k)localObject3).e == null)
         {
-          paramContext.getPackageManager().getPackageInfo(str, 0);
-          h = str;
-          return str;
+          localObject1 = localObject2;
         }
-        catch (Throwable localThrowable)
+        else
         {
-          localThrowable.printStackTrace();
-          i += 1;
+          localObject3 = (aoc)apv.a(((k)localObject3).e, new aoc());
+          localObject1 = localObject2;
+          if (localObject3 != null) {
+            if (((aoc)localObject3).c == null)
+            {
+              localObject1 = localObject2;
+            }
+            else if (!qn.a(localContext, (aoc)localObject3))
+            {
+              qm.a(localContext, k, 1, 0);
+              localObject1 = localObject2;
+            }
+            else
+            {
+              localObject1 = qn.b(localContext, (aoc)localObject3);
+              if (!((Boolean)((Pair)localObject1).first).booleanValue())
+              {
+                qm.a(localContext, k, 1, ((Integer)((Pair)localObject1).second).intValue());
+                localObject1 = localObject2;
+              }
+              else
+              {
+                qm.a(localContext, k, 0, ((Integer)((Pair)localObject1).second).intValue());
+                localObject1 = localObject3;
+              }
+            }
+          }
         }
       }
     }
-    return h;
+    if (localObject1 == null) {
+      j = 0;
+    }
+    k = j;
+    if (qq.a(this.a, paramInt) != null) {
+      k = j | 0x2;
+    }
+    return k;
   }
   
-  private static String a(String paramString)
+  public final void a()
   {
-    String str = paramString;
-    if (paramString == null) {
-      str = "";
+    rb localrb = ra.a(this.a).a;
+    apz.b();
+    if (localrb.a != null)
+    {
+      localrb.b.sendMessage(localrb.b.obtainMessage(0, 1, 0, null));
+      localrb.c = System.currentTimeMillis();
+      new StringBuilder("pullTime:").append(localrb.c);
+      apz.b();
+      return;
     }
-    return str;
+    throw new RuntimeException("host was not set shark before pull solutions!");
   }
   
-  static HashMap<Integer, String> a(Context paramContext)
+  public final void a(Application paramApplication)
   {
-    HashMap localHashMap = new HashMap(7);
-    Object localObject = aoa.a();
-    localHashMap.put(Integer.valueOf(9800), localObject);
-    localHashMap.put(Integer.valueOf(9801), a(Build.MODEL));
-    localHashMap.put(Integer.valueOf(9803), a(aoa.b()));
-    localHashMap.put(Integer.valueOf(9804), aoa.a("ro.build.fingerprint"));
-    try
+    final Context localContext = paramApplication.getApplicationContext();
+    apm.a = new ats()
     {
-      localHashMap.put(Integer.valueOf(9806), paramContext.getPackageManager().getPackageInfo(paramContext.getPackageName(), 0).versionName);
-    }
-    catch (Throwable localThrowable)
-    {
-      localThrowable.printStackTrace();
-      localHashMap.put(Integer.valueOf(9806), "");
-    }
-    localHashMap.put(Integer.valueOf(9807), a("107022"));
-    localHashMap.put(Integer.valueOf(9808), a("2.0.0"));
-    if (!TextUtils.isEmpty(a(paramContext, (String)localObject))) {
-      localHashMap.put(Integer.valueOf(9810), a(h));
-    }
-    paramContext = localHashMap.keySet().iterator();
-    while (paramContext.hasNext())
-    {
-      int i = ((Integer)paramContext.next()).intValue();
-      localObject = new StringBuilder("profile:");
-      ((StringBuilder)localObject).append(i);
-      ((StringBuilder)localObject).append("|");
-      ((StringBuilder)localObject).append((String)localHashMap.get(Integer.valueOf(i)));
-      aoc.b();
-    }
-    return localHashMap;
-  }
-  
-  static HashMap<Integer, Integer> b(Context paramContext)
-  {
-    HashMap localHashMap = new HashMap(3);
-    localHashMap.put(Integer.valueOf(9802), Integer.valueOf(Build.VERSION.SDK_INT));
-    try
-    {
-      localHashMap.put(Integer.valueOf(9805), Integer.valueOf(paramContext.getPackageManager().getPackageInfo(paramContext.getPackageName(), 0).versionCode));
-    }
-    catch (Throwable localThrowable)
-    {
-      localThrowable.printStackTrace();
-      localHashMap.put(Integer.valueOf(9805), Integer.valueOf(0));
-    }
-    localHashMap.put(Integer.valueOf(9809), Integer.valueOf(70));
-    localHashMap.put(Integer.valueOf(9812), Integer.valueOf(2));
-    if (!TextUtils.isEmpty(a(paramContext, aoa.a()))) {
-      try
+      public final int a(int paramAnonymousInt)
       {
-        localHashMap.put(Integer.valueOf(9811), Integer.valueOf(paramContext.getPackageManager().getPackageInfo(h, 0).versionCode));
+        if (paramAnonymousInt == 37) {
+          return qr.a();
+        }
+        if (paramAnonymousInt == 5) {
+          return qw.a.a().a("pgd_sp").a("f_w_c", 2);
+        }
+        return 2;
       }
-      catch (Throwable paramContext)
-      {
-        paramContext.printStackTrace();
-      }
+    };
+    Object localObject = Build.MANUFACTURER.toLowerCase(Locale.getDefault());
+    if (((String)localObject).contains("huawei")) {
+      localObject = new apo(localContext);
+    } else if (((String)localObject).contains("oppo")) {
+      localObject = new apq(localContext);
+    } else if (((String)localObject).contains("vivo")) {
+      localObject = new apr(localContext);
+    } else if (((String)localObject).contains("xiaomi")) {
+      localObject = new app(localContext);
+    } else {
+      localObject = new apn(localContext);
     }
-    paramContext = localHashMap.keySet().iterator();
-    while (paramContext.hasNext())
+    this.c = ((ats)localObject);
+    this.a = localContext;
+    this.b = new ArrayList();
+    this.h = new ConcurrentHashMap();
+    localObject = new HandlerThread("ForegroundVisibleCheck");
+    ((HandlerThread)localObject).start();
+    paramApplication.registerActivityLifecycleCallbacks(new Application.ActivityLifecycleCallbacks()
     {
-      int i = ((Integer)paramContext.next()).intValue();
-      StringBuilder localStringBuilder = new StringBuilder("profile:");
-      localStringBuilder.append(i);
-      localStringBuilder.append("|");
-      localStringBuilder.append(localHashMap.get(Integer.valueOf(i)));
-      aoc.b();
+      public final void onActivityCreated(Activity paramAnonymousActivity, Bundle paramAnonymousBundle) {}
+      
+      public final void onActivityDestroyed(Activity paramAnonymousActivity) {}
+      
+      public final void onActivityPaused(Activity paramAnonymousActivity)
+      {
+        qr.a(false);
+        this.a.removeCallbacksAndMessages(null);
+        this.a.postDelayed(new Runnable()
+        {
+          public final void run()
+          {
+            if (!qr.c())
+            {
+              Context localContext = qs.this.a;
+              long l = qw.a.a().a("pgd_sp").a("f_w_m_t", 0L);
+              int i = qs.a.a().c.a(5);
+              Object localObject;
+              if (System.currentTimeMillis() - l > 5000L)
+              {
+                qr.b(i);
+                if (l > 0L)
+                {
+                  qr.a(0L);
+                  localObject = qq.a(localContext, 5);
+                  int j;
+                  if (i == 0)
+                  {
+                    if ((localObject == null) || (((e)localObject).a == null)) {
+                      break label147;
+                    }
+                    j = 30109;
+                    i = 1;
+                  }
+                  else
+                  {
+                    if ((localObject == null) || (((e)localObject).a == null)) {
+                      break label147;
+                    }
+                    j = aps.b(5);
+                    i = 0;
+                  }
+                  qm.a(localContext, j, i, qr.b(), 0, ((e)localObject).a.d);
+                }
+              }
+              label147:
+              localContext = qs.this.a;
+              if (Build.VERSION.SDK_INT > 24)
+              {
+                qr.a(-1);
+                return;
+              }
+              if ((!qr.c()) && (qr.a() == 2))
+              {
+                localObject = (WindowManager)localContext.getSystemService("window");
+                WindowManager.LayoutParams localLayoutParams = new WindowManager.LayoutParams();
+                localLayoutParams.width = 0;
+                localLayoutParams.height = 0;
+                localLayoutParams.type = 2005;
+                qt.1 local1 = new qt.1(localContext, localContext);
+                Handler localHandler = new Handler(Looper.getMainLooper());
+                localHandler.post(new qt.2(local1, (WindowManager)localObject, localLayoutParams, localContext));
+                localHandler.postDelayed(new qt.3(local1, (WindowManager)localObject), 1000L);
+              }
+            }
+          }
+        }, 2000L);
+      }
+      
+      public final void onActivityResumed(Activity paramAnonymousActivity)
+      {
+        qr.a(true);
+      }
+      
+      public final void onActivitySaveInstanceState(Activity paramAnonymousActivity, Bundle paramAnonymousBundle) {}
+      
+      public final void onActivityStarted(Activity paramAnonymousActivity) {}
+      
+      public final void onActivityStopped(Activity paramAnonymousActivity) {}
+    });
+    paramApplication = new HandlerThread("AdapterSolutionCheck");
+    paramApplication.start();
+    this.i = new Handler(paramApplication.getLooper());
+    paramApplication = new IntentFilter();
+    paramApplication.addAction("act_got_ads");
+    localContext.registerReceiver(new BroadcastReceiver()
+    {
+      public final void onReceive(Context paramAnonymousContext, Intent paramAnonymousIntent)
+      {
+        qs localqs = qs.this;
+        paramAnonymousContext = paramAnonymousIntent.getIntegerArrayListExtra("up");
+        if (paramAnonymousContext != null)
+        {
+          if (paramAnonymousContext.isEmpty()) {
+            return;
+          }
+          paramAnonymousIntent = new SparseIntArray();
+          Object localObject = paramAnonymousContext.iterator();
+          int j;
+          int i;
+          int k;
+          while (((Iterator)localObject).hasNext())
+          {
+            int m = ((Integer)((Iterator)localObject).next()).intValue();
+            j = 6;
+            i = j;
+            if (m != 30007)
+            {
+              if (m != 30107)
+              {
+                k = 3;
+                switch (m)
+                {
+                default: 
+                  j = 5;
+                  i = j;
+                  switch (m)
+                  {
+                  default: 
+                    switch (m)
+                    {
+                    default: 
+                      switch (m)
+                      {
+                      default: 
+                        break;
+                      case 30120: 
+                        paramAnonymousIntent.append(38, paramAnonymousIntent.get(38) | 0x2);
+                        paramAnonymousContext = localqs.a;
+                        i = 38;
+                        break;
+                      case 30119: 
+                        paramAnonymousIntent.append(30, paramAnonymousIntent.get(30) | 0x2);
+                        paramAnonymousContext = localqs.a;
+                        i = 30;
+                        break;
+                      case 30118: 
+                        paramAnonymousIntent.append(36, paramAnonymousIntent.get(36) | 0x2);
+                        qq.a(localqs.a, 36);
+                        break;
+                      case 30117: 
+                        paramAnonymousIntent.append(4, paramAnonymousIntent.get(4) | 0x2);
+                        qq.a(localqs.a, 4);
+                        break;
+                      case 30116: 
+                        paramAnonymousIntent.append(29, paramAnonymousIntent.get(29) | 0x2);
+                        qq.a(localqs.a, 29);
+                        break;
+                      case 30115: 
+                        paramAnonymousIntent.append(27, paramAnonymousIntent.get(27) | 0x2);
+                        qq.a(localqs.a, 27);
+                        break;
+                      case 30114: 
+                        paramAnonymousIntent.append(24, paramAnonymousIntent.get(24) | 0x2);
+                        qq.a(localqs.a, 24);
+                        break;
+                      case 30113: 
+                        paramAnonymousIntent.append(21, paramAnonymousIntent.get(21) | 0x2);
+                        qq.a(localqs.a, 21);
+                        break;
+                      case 30112: 
+                        paramAnonymousIntent.append(14, paramAnonymousIntent.get(14) | 0x2);
+                        qq.a(localqs.a, 14);
+                        break;
+                      case 30111: 
+                        paramAnonymousIntent.append(11, paramAnonymousIntent.get(11) | 0x2);
+                        qq.a(localqs.a, 11);
+                        break;
+                      case 30110: 
+                        paramAnonymousIntent.append(2, paramAnonymousIntent.get(2) | 0x2);
+                        qq.a(localqs.a, 2);
+                      }
+                      break;
+                    case 30104: 
+                      paramAnonymousIntent.append(3, paramAnonymousIntent.get(3) | 0x2);
+                      paramAnonymousContext = localqs.a;
+                      i = k;
+                      qq.a(paramAnonymousContext, i);
+                      break;
+                    case 30103: 
+                      i = 25;
+                      break;
+                    case 30102: 
+                      i = 8;
+                      paramAnonymousIntent.append(i, paramAnonymousIntent.get(i) | 0x2);
+                      qq.a(localqs.a, i);
+                    }
+                    break;
+                  case 30020: 
+                    i = 38;
+                    j = 38;
+                    break;
+                  case 30019: 
+                    i = 30;
+                    j = 30;
+                    j = paramAnonymousIntent.get(j);
+                    break;
+                  case 30018: 
+                    paramAnonymousIntent.append(36, paramAnonymousIntent.get(36) | 0x1);
+                    break;
+                  case 30017: 
+                    paramAnonymousIntent.append(4, paramAnonymousIntent.get(4) | 0x1);
+                    break;
+                  case 30016: 
+                    paramAnonymousIntent.append(29, paramAnonymousIntent.get(29) | 0x1);
+                    break;
+                  case 30015: 
+                    paramAnonymousIntent.append(27, paramAnonymousIntent.get(27) | 0x1);
+                    break;
+                  case 30014: 
+                    paramAnonymousIntent.append(24, paramAnonymousIntent.get(24) | 0x1);
+                    break;
+                  case 30013: 
+                    paramAnonymousIntent.append(21, paramAnonymousIntent.get(21) | 0x1);
+                    break;
+                  case 30012: 
+                    paramAnonymousIntent.append(14, paramAnonymousIntent.get(14) | 0x1);
+                    break;
+                  case 30011: 
+                    paramAnonymousIntent.append(11, paramAnonymousIntent.get(11) | 0x1);
+                    break;
+                  case 30010: 
+                    paramAnonymousIntent.append(2, paramAnonymousIntent.get(2) | 0x1);
+                  }
+                  break;
+                case 30004: 
+                  paramAnonymousIntent.append(3, paramAnonymousIntent.get(3) | 0x1);
+                  break;
+                case 30003: 
+                  i = 25;
+                  break;
+                case 30002: 
+                  i = 8;
+                  j = paramAnonymousIntent.get(i);
+                  paramAnonymousIntent.append(i, j | 0x1);
+                  break;
+                }
+              }
+              else
+              {
+                paramAnonymousIntent.append(j, paramAnonymousIntent.get(j) | 0x2);
+                qq.a(localqs.a, j);
+              }
+            }
+            else {
+              paramAnonymousIntent.append(i, paramAnonymousIntent.get(i) | 0x1);
+            }
+          }
+          try
+          {
+            if ((localqs.b != null) && (!localqs.b.isEmpty()))
+            {
+              j = paramAnonymousIntent.size();
+              paramAnonymousContext = new int[j];
+              localObject = new int[j];
+              i = 0;
+              while (i < j)
+              {
+                k = paramAnonymousIntent.keyAt(i);
+                paramAnonymousContext[i] = k;
+                localObject[i] = paramAnonymousIntent.get(k);
+                i += 1;
+              }
+              paramAnonymousContext = localqs.b.iterator();
+              while (paramAnonymousContext.hasNext()) {
+                paramAnonymousContext.next();
+              }
+            }
+            return;
+          }
+          finally {}
+        }
+      }
+    }, paramApplication);
+  }
+  
+  public final void a(int[] paramArrayOfInt, boolean paramBoolean1, boolean paramBoolean2, int paramInt, atx paramatx)
+  {
+    a(paramArrayOfInt, paramBoolean1, paramBoolean2, 1, paramInt, true, paramatx);
+  }
+  
+  public final int[] a(int... paramVarArgs)
+  {
+    if ((paramVarArgs != null) && (paramVarArgs.length != 0))
+    {
+      int[] arrayOfInt = new int[paramVarArgs.length];
+      int j = 0;
+      while (j < paramVarArgs.length)
+      {
+        arrayOfInt[j] = this.c.a(paramVarArgs[j]);
+        StringBuilder localStringBuilder = new StringBuilder("permission ");
+        localStringBuilder.append(paramVarArgs[j]);
+        localStringBuilder.append(" result ");
+        localStringBuilder.append(arrayOfInt[j]);
+        apz.b();
+        if (arrayOfInt[j] != 0)
+        {
+          final int k = paramVarArgs[j];
+          this.i.post(new Runnable()
+          {
+            public final void run()
+            {
+              qs.this.a(k);
+            }
+          });
+        }
+        j += 1;
+      }
+      return arrayOfInt;
     }
-    return localHashMap;
+    return null;
+  }
+  
+  public final void b(int[] paramArrayOfInt, boolean paramBoolean1, boolean paramBoolean2, int paramInt, atx paramatx)
+  {
+    a(paramArrayOfInt, paramBoolean1, paramBoolean2, 3, paramInt, false, paramatx);
+  }
+  
+  public final int[] b(int... paramVarArgs)
+  {
+    if ((paramVarArgs != null) && (paramVarArgs.length != 0))
+    {
+      int[] arrayOfInt = new int[paramVarArgs.length];
+      int j = 0;
+      while (j < paramVarArgs.length)
+      {
+        arrayOfInt[j] = this.c.a(paramVarArgs[j]);
+        StringBuilder localStringBuilder = new StringBuilder("permission ");
+        localStringBuilder.append(paramVarArgs[j]);
+        localStringBuilder.append(" result ");
+        localStringBuilder.append(arrayOfInt[j]);
+        apz.b();
+        j += 1;
+      }
+      return arrayOfInt;
+    }
+    return null;
+  }
+  
+  public final void c(int[] paramArrayOfInt, boolean paramBoolean1, boolean paramBoolean2, int paramInt, atx paramatx)
+  {
+    a(paramArrayOfInt, paramBoolean1, paramBoolean2, 2, paramInt, false, paramatx);
+  }
+  
+  public static final class a
+  {
+    @SuppressLint({"StaticFieldLeak"})
+    private static qs a = new qs((byte)0);
   }
 }
 

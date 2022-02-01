@@ -2,21 +2,11 @@ package com.tencent.token;
 
 public final class kb
 {
-  private static Object a = new Object();
-  private static kb b;
-  private jy c = new jy();
+  public int a;
   
-  public static kb a()
+  public kb(int paramInt)
   {
-    if (b == null) {
-      synchronized (a)
-      {
-        if (b == null) {
-          b = new kb();
-        }
-      }
-    }
-    return b;
+    this.a = paramInt;
   }
 }
 

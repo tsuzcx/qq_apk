@@ -1,10 +1,8 @@
 package com.tencent.token;
 
-import java.security.cert.X509Certificate;
-
 public abstract interface akv
 {
-  public abstract X509Certificate a(X509Certificate paramX509Certificate);
+  public abstract ank a();
 }
 
 

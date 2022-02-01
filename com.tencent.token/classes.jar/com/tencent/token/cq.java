@@ -1,71 +1,58 @@
 package com.tencent.token;
 
-import android.content.ComponentName;
-import android.content.Context;
-import android.content.Intent;
-import android.content.pm.PackageManager.NameNotFoundException;
-import android.os.Build.VERSION;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.view.View;
+import android.view.View.OnAttachStateChangeListener;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnPreDrawListener;
 
-public final class cq
-  implements Iterable<Intent>
+final class cq
+  implements View.OnAttachStateChangeListener, ViewTreeObserver.OnPreDrawListener
 {
-  private static final c c = new c();
-  public final ArrayList<Intent> a = new ArrayList();
-  public final Context b;
+  private final View a;
+  private ViewTreeObserver b;
+  private final Runnable c;
   
-  static
+  private cq(View paramView, Runnable paramRunnable)
   {
-    if (Build.VERSION.SDK_INT >= 16)
-    {
-      c = new b();
-      return;
+    this.a = paramView;
+    this.b = paramView.getViewTreeObserver();
+    this.c = paramRunnable;
+  }
+  
+  public static cq a(View paramView, Runnable paramRunnable)
+  {
+    paramRunnable = new cq(paramView, paramRunnable);
+    paramView.getViewTreeObserver().addOnPreDrawListener(paramRunnable);
+    paramView.addOnAttachStateChangeListener(paramRunnable);
+    return paramRunnable;
+  }
+  
+  private void a()
+  {
+    if (this.b.isAlive()) {
+      this.b.removeOnPreDrawListener(this);
+    } else {
+      this.a.getViewTreeObserver().removeOnPreDrawListener(this);
     }
+    this.a.removeOnAttachStateChangeListener(this);
   }
   
-  private cq(Context paramContext)
+  public final boolean onPreDraw()
   {
-    this.b = paramContext;
+    a();
+    this.c.run();
+    return true;
   }
   
-  public static cq a(Context paramContext)
+  public final void onViewAttachedToWindow(View paramView)
   {
-    return new cq(paramContext);
+    this.b = paramView.getViewTreeObserver();
   }
   
-  public final cq a(ComponentName paramComponentName)
+  public final void onViewDetachedFromWindow(View paramView)
   {
-    int i = this.a.size();
-    try
-    {
-      for (paramComponentName = ci.a(this.b, paramComponentName); paramComponentName != null; paramComponentName = ci.a(this.b, paramComponentName.getComponent())) {
-        this.a.add(i, paramComponentName);
-      }
-      return this;
-    }
-    catch (PackageManager.NameNotFoundException paramComponentName)
-    {
-      throw new IllegalArgumentException(paramComponentName);
-    }
+    a();
   }
-  
-  @Deprecated
-  public final Iterator<Intent> iterator()
-  {
-    return this.a.iterator();
-  }
-  
-  public static abstract interface a
-  {
-    public abstract Intent getSupportParentActivityIntent();
-  }
-  
-  static final class b
-    extends cq.c
-  {}
-  
-  static class c {}
 }
 
 

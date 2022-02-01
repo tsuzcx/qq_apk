@@ -1,18 +1,31 @@
 package com.tencent.token;
 
-import java.io.Closeable;
-import java.io.Flushable;
+import javax.annotation.Nullable;
 
-public abstract interface aln
-  extends Closeable, Flushable
+public final class aln
+  extends ako
 {
-  public abstract alp a();
+  @Nullable
+  private final String a;
+  private final long b;
+  private final amx c;
   
-  public abstract void a_(aky paramaky, long paramLong);
+  public aln(@Nullable String paramString, long paramLong, amx paramamx)
+  {
+    this.a = paramString;
+    this.b = paramLong;
+    this.c = paramamx;
+  }
   
-  public abstract void close();
+  public final long a()
+  {
+    return this.b;
+  }
   
-  public abstract void flush();
+  public final amx b()
+  {
+    return this.c;
+  }
 }
 
 

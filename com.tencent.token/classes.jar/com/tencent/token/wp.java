@@ -1,45 +1,97 @@
 package com.tencent.token;
 
+import android.content.Context;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.token.global.RqdApplication;
+import java.util.HashMap;
+import org.json.JSONObject;
+
 public final class wp
+  extends tr
 {
-  public static int a(byte[] paramArrayOfByte, int paramInt, wo paramwo)
+  public long d;
+  private int e;
+  private int f;
+  private int g;
+  
+  public final String a()
   {
-    if (paramInt <= 42) {
-      return -1;
-    }
-    if ((paramArrayOfByte[0] == 2) && (paramArrayOfByte[(paramInt - 1)] == 3))
+    sh.a();
+    this.a.a(104, null, null);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this);
+    localStringBuilder.append("sessId null ");
+    xj.c(localStringBuilder.toString());
+    return null;
+  }
+  
+  public final void a(abc paramabc)
+  {
+    this.d = ((Long)paramabc.c.get("param.uinhash")).longValue();
+    this.e = ((Integer)paramabc.c.get("param.common.seq")).intValue();
+    this.f = ((Integer)paramabc.c.get("param.set_supercode")).intValue();
+  }
+  
+  public final void a(JSONObject paramJSONObject)
+  {
+    int i = paramJSONObject.getInt("err");
+    Object localObject;
+    if (i != 0)
     {
-      paramwo.a = sr.a(paramArrayOfByte, 1);
-      if (paramwo.a != paramInt) {
-        return -3;
-      }
-      paramwo.b = sr.a(paramArrayOfByte, 3);
-      paramwo.c = sr.b(paramArrayOfByte, 5);
-      wo.d = sr.b(paramArrayOfByte, 9);
-      paramwo.e = sr.a(paramArrayOfByte, 13);
-      paramwo.f = sr.a(paramArrayOfByte, 15);
-      paramwo.g = sr.a(paramArrayOfByte, 17);
-      paramwo.h = sr.b(paramArrayOfByte, 19);
-      paramwo.i = paramArrayOfByte[23];
-      paramwo.j = paramArrayOfByte[24];
-      sr.b(paramArrayOfByte, 25, wo.k, 16);
-      paramArrayOfByte = new StringBuilder("socket parse msg head: totallen[");
-      paramArrayOfByte.append(paramwo.a);
-      paramArrayOfByte.append("] msgtype[");
-      paramArrayOfByte.append(paramwo.b);
-      paramArrayOfByte.append("] seq[");
-      paramArrayOfByte.append(paramwo.c);
-      paramArrayOfByte.append("] traceID[");
-      paramArrayOfByte.append(wo.d);
-      paramArrayOfByte.append("] version[");
-      paramArrayOfByte.append(paramwo.g);
-      paramArrayOfByte.append("] echo[");
-      paramArrayOfByte.append(wo.k);
-      paramArrayOfByte.append("]");
-      xa.a(paramArrayOfByte.toString());
-      return 0;
+      paramJSONObject = paramJSONObject.getString("info");
+      localObject = new StringBuilder("error");
+      ((StringBuilder)localObject).append(paramJSONObject);
+      ((StringBuilder)localObject).append(",error code =");
+      ((StringBuilder)localObject).append(i);
+      xj.a(((StringBuilder)localObject).toString());
+      localObject = this.a;
+      StringBuilder localStringBuilder = new StringBuilder("server errcode=");
+      localStringBuilder.append(i);
+      localStringBuilder.append(":");
+      localStringBuilder.append(paramJSONObject);
+      ((xh)localObject).a(i, localStringBuilder.toString(), paramJSONObject);
+      return;
     }
-    return -2;
+    paramJSONObject = aao.d(paramJSONObject.getString("data"));
+    if (paramJSONObject != null)
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(this);
+      ((StringBuilder)localObject).append("--data:");
+      ((StringBuilder)localObject).append(new String(paramJSONObject));
+      xj.a(((StringBuilder)localObject).toString());
+      paramJSONObject = new JSONObject(new String(paramJSONObject));
+      if (paramJSONObject.getInt("seq_id") != this.e)
+      {
+        this.a.a(10030, null, null);
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(this);
+        ((StringBuilder)localObject).append("parseJSON error seq is wrong seq=");
+        ((StringBuilder)localObject).append(paramJSONObject.getInt("seq_id"));
+        ((StringBuilder)localObject).append(",right = ");
+        ((StringBuilder)localObject).append(this.e);
+        xj.c(((StringBuilder)localObject).toString());
+        return;
+      }
+      this.g = paramJSONObject.optInt("config_val_ret");
+      this.a.a = 0;
+      return;
+    }
+    xj.c("parseJSON error decodeData=".concat(String.valueOf(paramJSONObject)));
+    a(10022, RqdApplication.p().getString(2131493068));
+  }
+  
+  public final void b()
+  {
+    if ((!this.b.e) && (this.b.d != null))
+    {
+      Message localMessage = this.b.d.obtainMessage(this.b.f);
+      localMessage.arg1 = 0;
+      localMessage.arg2 = this.g;
+      localMessage.sendToTarget();
+      this.b.e = true;
+    }
   }
 }
 

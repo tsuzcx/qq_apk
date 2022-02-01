@@ -1,63 +1,38 @@
 package com.tencent.token;
 
-import android.content.Context;
-import android.media.AudioManager;
-import android.telephony.TelephonyManager;
+import java.util.concurrent.TimeUnit;
 
-public final class zq
+public class zq
 {
-  public static int a(Context paramContext)
+  private static zq b;
+  private aki a;
+  
+  public zq()
   {
-    try
-    {
-      paramContext = (AudioManager)paramContext.getSystemService("audio");
-      if (paramContext != null) {
-        return paramContext.getStreamVolume(1);
-      }
-      int i = zk.b;
-      return i;
-    }
-    catch (Exception paramContext)
-    {
-      paramContext.printStackTrace();
-    }
-    return zk.b;
+    aki.a locala = new aki.a();
+    locala.x = akt.a("timeout", TimeUnit.SECONDS);
+    locala.z = akt.a("timeout", TimeUnit.SECONDS);
+    locala.y = akt.a("timeout", TimeUnit.SECONDS);
+    this.a = new aki(locala);
   }
   
-  public static String b(Context paramContext)
+  public static zq a()
   {
-    try
-    {
-      paramContext = (TelephonyManager)paramContext.getSystemService("phone");
-      if (paramContext != null) {
-        return paramContext.getVoiceMailNumber();
+    if (b == null) {
+      try
+      {
+        if (b == null) {
+          b = new zq();
+        }
       }
-      paramContext = zk.a;
-      return paramContext;
+      finally {}
     }
-    catch (Exception paramContext)
-    {
-      paramContext.printStackTrace();
-    }
-    return zk.a;
+    return b;
   }
   
-  public static String c(Context paramContext)
+  final void a(akl paramakl, ajt paramajt)
   {
-    try
-    {
-      paramContext = (TelephonyManager)paramContext.getSystemService("phone");
-      if (paramContext != null) {
-        return paramContext.getVoiceMailAlphaTag();
-      }
-      paramContext = zk.a;
-      return paramContext;
-    }
-    catch (Exception paramContext)
-    {
-      paramContext.printStackTrace();
-    }
-    return zk.a;
+    akk.a(this.a, paramakl, false).a(paramajt);
   }
 }
 

@@ -2,17 +2,24 @@ package com.tencent.token;
 
 import android.os.Bundle;
 
-public abstract class pk
+public final class pk
 {
-  public String a;
-  
-  public void a(Bundle paramBundle)
+  public static String a(Bundle paramBundle, String paramString)
   {
-    paramBundle.putInt("_wxapi_command_type", 2);
-    paramBundle.putString("_wxapi_basereq_transaction", this.a);
+    if (paramBundle == null) {
+      return null;
+    }
+    try
+    {
+      paramBundle = paramBundle.getString(paramString);
+      return paramBundle;
+    }
+    catch (Exception paramBundle)
+    {
+      new StringBuilder("getStringExtra exception:").append(paramBundle.getMessage());
+    }
+    return null;
   }
-  
-  abstract boolean a();
 }
 
 

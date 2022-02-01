@@ -1,214 +1,151 @@
 package com.tencent.token;
 
 import android.content.Context;
-import android.telephony.NeighboringCellInfo;
-import android.telephony.PhoneStateListener;
-import android.telephony.TelephonyManager;
-import android.telephony.cdma.CdmaCellLocation;
-import android.telephony.gsm.GsmCellLocation;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
+import android.content.Intent;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.PackageManager.NameNotFoundException;
+import android.content.pm.Signature;
+import android.os.Bundle;
 
 final class pv
+  implements ps
 {
-  private static int a = 10000;
-  private static int b = 10000;
-  private TelephonyManager c;
-  private int d;
-  private PhoneStateListener e = new pw(this);
+  private Context a;
+  private String b;
+  private boolean c = false;
   
-  public static List<ps.a> a(Context paramContext)
+  protected pv(Context paramContext, String paramString)
   {
-    Object localObject7 = (TelephonyManager)paramContext.getSystemService("phone");
-    localLinkedList = new LinkedList();
-    Object localObject2 = "460";
-    Object localObject5 = "";
-    try
+    this.a = paramContext;
+    this.b = paramString;
+    this.c = false;
+  }
+  
+  private boolean a(Signature[] paramArrayOfSignature)
+  {
+    if (!this.c)
     {
-      paramContext = ((TelephonyManager)localObject7).getNetworkOperator();
-      if ((paramContext != null) && (!paramContext.equals("")))
-      {
-        localObject1 = paramContext.substring(0, 3);
-      }
-      else
-      {
-        localObject6 = ((TelephonyManager)localObject7).getSimOperator();
-        localObject1 = localObject2;
-        paramContext = (Context)localObject5;
-        if (localObject6 == null) {
-          break label109;
-        }
-        localObject1 = localObject2;
-        paramContext = (Context)localObject5;
-        if (((String)localObject6).equals("")) {
-          break label109;
-        }
-        localObject1 = ((String)localObject6).substring(0, 3);
-        paramContext = (Context)localObject6;
-      }
-      paramContext = paramContext.substring(3, 5);
-      label109:
-      if (((TelephonyManager)localObject7).getPhoneType() != 2) {}
+      paramArrayOfSignature = "ignore wechat app signature validation";
+      pw.c("MicroMsg.SDK.WXApiImplV10", paramArrayOfSignature);
+      return true;
     }
-    catch (Exception paramContext)
+    int j = paramArrayOfSignature.length;
+    int i = 0;
+    for (;;)
     {
-      Object localObject1;
-      Object localObject6;
-      label177:
-      Object localObject8;
-      StringBuilder localStringBuilder;
-      label319:
-      label736:
-      paramContext.printStackTrace();
-      label691:
-      label991:
-      return localLinkedList;
+      if (i >= j) {
+        break label74;
+      }
+      String str = paramArrayOfSignature[i].toCharsString();
+      pw.c("MicroMsg.SDK.WXApiImplV10", "check signature:".concat(String.valueOf(str)));
+      if (str.equals("308202eb30820254a00302010202044d36f7a4300d06092a864886f70d01010505003081b9310b300906035504061302383631123010060355040813094775616e67646f6e673111300f060355040713085368656e7a68656e31353033060355040a132c54656e63656e7420546563686e6f6c6f6779285368656e7a68656e2920436f6d70616e79204c696d69746564313a3038060355040b133154656e63656e74204775616e677a686f7520526573656172636820616e6420446576656c6f706d656e742043656e7465723110300e0603550403130754656e63656e74301e170d3131303131393134333933325a170d3431303131313134333933325a3081b9310b300906035504061302383631123010060355040813094775616e67646f6e673111300f060355040713085368656e7a68656e31353033060355040a132c54656e63656e7420546563686e6f6c6f6779285368656e7a68656e2920436f6d70616e79204c696d69746564313a3038060355040b133154656e63656e74204775616e677a686f7520526573656172636820616e6420446576656c6f706d656e742043656e7465723110300e0603550403130754656e63656e7430819f300d06092a864886f70d010101050003818d0030818902818100c05f34b231b083fb1323670bfbe7bdab40c0c0a6efc87ef2072a1ff0d60cc67c8edb0d0847f210bea6cbfaa241be70c86daf56be08b723c859e52428a064555d80db448cdcacc1aea2501eba06f8bad12a4fa49d85cacd7abeb68945a5cb5e061629b52e3254c373550ee4e40cb7c8ae6f7a8151ccd8df582d446f39ae0c5e930203010001300d06092a864886f70d0101050500038181009c8d9d7f2f908c42081b4c764c377109a8b2c70582422125ce545842d5f520aea69550b6bd8bfd94e987b75a3077eb04ad341f481aac266e89d3864456e69fba13df018acdc168b9a19dfd7ad9d9cc6f6ace57c746515f71234df3a053e33ba93ece5cd0fc15f3e389a3f365588a9fcb439e069d3629cd7732a13fff7b891499"))
+      {
+        paramArrayOfSignature = "pass";
+        break;
+      }
+      i += 1;
+    }
+    label74:
+    return false;
+  }
+  
+  private boolean b(String paramString)
+  {
+    if (!this.c)
+    {
+      pw.c("MicroMsg.SDK.WXApiImplV10", "ignore wechat app signature validation");
+      return true;
     }
     try
     {
-      localObject5 = (CdmaCellLocation)((TelephonyManager)localObject7).getCellLocation();
-      if (localObject5 == null) {
-        break label991;
-      }
-      if (b == a)
-      {
-        localObject2 = "";
-      }
-      else
-      {
-        localObject2 = new StringBuilder();
-        ((StringBuilder)localObject2).append(b);
-        localObject2 = ((StringBuilder)localObject2).toString();
-      }
+      paramString = this.a.getPackageManager().getPackageInfo(paramString, 64);
+      return a(paramString.signatures);
     }
-    catch (Exception localException3)
+    catch (PackageManager.NameNotFoundException paramString)
     {
-      break label319;
-      break label177;
-      break label691;
+      label39:
+      break label39;
     }
-    if ((((CdmaCellLocation)localObject5).getBaseStationId() != -1) && (((CdmaCellLocation)localObject5).getNetworkId() != -1) && (((CdmaCellLocation)localObject5).getSystemId() != -1))
+    return false;
+  }
+  
+  public final boolean a()
+  {
+    try
     {
-      localObject6 = new StringBuilder();
-      ((StringBuilder)localObject6).append(((CdmaCellLocation)localObject5).getBaseStationId());
-      localObject6 = ((StringBuilder)localObject6).toString();
-      localObject8 = new StringBuilder();
-      ((StringBuilder)localObject8).append(((CdmaCellLocation)localObject5).getNetworkId());
-      localObject8 = ((StringBuilder)localObject8).toString();
-      localStringBuilder = new StringBuilder();
-      localStringBuilder.append(((CdmaCellLocation)localObject5).getSystemId());
-      localObject5 = localStringBuilder.toString();
-      for (;;)
-      {
-        try
-        {
-          localLinkedList.add(new ps.a((String)localObject1, paramContext, "", "", (String)localObject2, "cdma", (String)localObject6, (String)localObject8, (String)localObject5));
-          return localLinkedList;
-        }
-        catch (Exception localException4)
-        {
-          int i;
-          int j;
-          Object localObject3;
-          continue;
-        }
-        try
-        {
-          localObject2 = (GsmCellLocation)((TelephonyManager)localObject7).getCellLocation();
-          if (localObject2 != null)
-          {
-            i = ((GsmCellLocation)localObject2).getCid();
-            j = ((GsmCellLocation)localObject2).getLac();
-            if ((j < 65535) && (j != -1) && (i != -1)) {
-              localLinkedList.add(new ps.a((String)localObject1, paramContext, String.valueOf(j), String.valueOf(i), "", "gsm", "", "", ""));
-            }
-          }
-        }
-        catch (Exception localException1)
-        {
-          localException1.printStackTrace();
-        }
+      PackageInfo localPackageInfo = this.a.getPackageManager().getPackageInfo("com.tencent.mm", 64);
+      if (localPackageInfo == null) {
+        return false;
       }
-      localObject3 = ((TelephonyManager)localObject7).getNeighboringCellInfo();
-      if ((localObject3 != null) && (((List)localObject3).size() > 0))
-      {
-        localObject3 = ((List)localObject3).iterator();
-        while (((Iterator)localObject3).hasNext())
-        {
-          localObject5 = (NeighboringCellInfo)((Iterator)localObject3).next();
-          if ((((NeighboringCellInfo)localObject5).getCid() != -1) && (((NeighboringCellInfo)localObject5).getLac() <= 65535) && (((NeighboringCellInfo)localObject5).getLac() != -1))
-          {
-            localObject6 = new StringBuilder();
-            ((StringBuilder)localObject6).append(((NeighboringCellInfo)localObject5).getRssi() * 2 - 113);
-            localObject6 = ((StringBuilder)localObject6).toString();
-            localObject7 = new StringBuilder();
-            ((StringBuilder)localObject7).append(((NeighboringCellInfo)localObject5).getLac());
-            localObject7 = ((StringBuilder)localObject7).toString();
-            localObject8 = new StringBuilder();
-            ((StringBuilder)localObject8).append(((NeighboringCellInfo)localObject5).getCid());
-            localLinkedList.add(new ps.a((String)localObject1, paramContext, (String)localObject7, ((StringBuilder)localObject8).toString(), (String)localObject6, "gsm", "", "", ""));
-            continue;
-            try
-            {
-              localObject3 = (GsmCellLocation)((TelephonyManager)localObject7).getCellLocation();
-              if (localObject3 == null) {
-                break label736;
-              }
-              i = ((GsmCellLocation)localObject3).getCid();
-              j = ((GsmCellLocation)localObject3).getLac();
-              if ((j >= 65535) || (j == -1) || (i == -1)) {
-                break label736;
-              }
-              if (b == a)
-              {
-                localObject3 = "";
-              }
-              else
-              {
-                localObject3 = new StringBuilder();
-                ((StringBuilder)localObject3).append(b);
-                localObject3 = ((StringBuilder)localObject3).toString();
-              }
-            }
-            catch (Exception localException2)
-            {
-              localException2.printStackTrace();
-            }
-            localLinkedList.add(new ps.a((String)localObject1, paramContext, String.valueOf(j), String.valueOf(i), (String)localObject3, "gsm", "", "", ""));
-            Object localObject4 = ((TelephonyManager)localObject7).getNeighboringCellInfo();
-            if ((localObject4 != null) && (((List)localObject4).size() > 0))
-            {
-              localObject4 = ((List)localObject4).iterator();
-              while (((Iterator)localObject4).hasNext())
-              {
-                localObject5 = (NeighboringCellInfo)((Iterator)localObject4).next();
-                if ((((NeighboringCellInfo)localObject5).getCid() != -1) && (((NeighboringCellInfo)localObject5).getLac() <= 65535))
-                {
-                  localObject6 = new StringBuilder();
-                  ((StringBuilder)localObject6).append(((NeighboringCellInfo)localObject5).getRssi() * 2 - 113);
-                  localObject6 = ((StringBuilder)localObject6).toString();
-                  localObject7 = new StringBuilder("lac:");
-                  ((StringBuilder)localObject7).append(((NeighboringCellInfo)localObject5).getLac());
-                  ((StringBuilder)localObject7).append("  cid:");
-                  ((StringBuilder)localObject7).append(((NeighboringCellInfo)localObject5).getCid());
-                  ((StringBuilder)localObject7).append(" dbm:");
-                  ((StringBuilder)localObject7).append((String)localObject6);
-                  pp.d("checked", ((StringBuilder)localObject7).toString());
-                  localObject7 = new StringBuilder();
-                  ((StringBuilder)localObject7).append(((NeighboringCellInfo)localObject5).getLac());
-                  localObject7 = ((StringBuilder)localObject7).toString();
-                  localObject8 = new StringBuilder();
-                  ((StringBuilder)localObject8).append(((NeighboringCellInfo)localObject5).getCid());
-                  localLinkedList.add(new ps.a((String)localObject1, paramContext, (String)localObject7, ((StringBuilder)localObject8).toString(), (String)localObject6, "gsm", "", "", ""));
-                }
-              }
-            }
-          }
-        }
+      boolean bool = a(localPackageInfo.signatures);
+      return bool;
+    }
+    catch (PackageManager.NameNotFoundException localNameNotFoundException) {}
+    return false;
+  }
+  
+  public final boolean a(pr parampr)
+  {
+    if (!b("com.tencent.mm")) {}
+    for (parampr = "sendReq failed for wechat app signature check failed";; parampr = "sendReq checkArgs fail")
+    {
+      pw.a("MicroMsg.SDK.WXApiImplV10", parampr);
+      return false;
+      if (parampr.a()) {
+        break;
       }
     }
-    return localLinkedList;
+    Bundle localBundle = new Bundle();
+    parampr.a(localBundle);
+    parampr = this.a;
+    StringBuilder localStringBuilder = new StringBuilder("weixin://sendreq?appid=");
+    localStringBuilder.append(this.b);
+    return pp.a(parampr, "com.tencent.mm", "com.tencent.mm.plugin.base.stub.WXEntryActivity", localStringBuilder.toString(), localBundle);
+  }
+  
+  public final boolean a(String paramString)
+  {
+    if (!b("com.tencent.mm"))
+    {
+      pw.a("MicroMsg.SDK.WXApiImplV10", "register app failed for wechat app signature check failed");
+      return false;
+    }
+    this.b = paramString;
+    paramString = new StringBuilder("register app ");
+    paramString.append(this.a.getPackageName());
+    pw.c("MicroMsg.SDK.WXApiImplV10", paramString.toString());
+    paramString = this.a;
+    Object localObject1 = new StringBuilder("weixin://registerapp?appid=");
+    ((StringBuilder)localObject1).append(this.b);
+    localObject1 = ((StringBuilder)localObject1).toString();
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("com.tencent.mm");
+    ((StringBuilder)localObject2).append(".permission.MM_MESSAGE");
+    localObject2 = ((StringBuilder)localObject2).toString();
+    Intent localIntent = new Intent("com.tencent.mm.plugin.openapi.Intent.ACTION_HANDLE_APP_REGISTER");
+    String str = paramString.getPackageName();
+    localIntent.putExtra("_mmessage_sdkVersion", 553910273);
+    localIntent.putExtra("_mmessage_appPackage", str);
+    localIntent.putExtra("_mmessage_content", (String)localObject1);
+    localIntent.putExtra("_mmessage_checksum", pq.a((String)localObject1, str));
+    paramString.sendBroadcast(localIntent, (String)localObject2);
+    paramString = new StringBuilder("send mm message, intent=");
+    paramString.append(localIntent);
+    paramString.append(", perm=");
+    paramString.append((String)localObject2);
+    pw.c("MicroMsg.SDK.MMessage", paramString.toString());
+    return true;
+  }
+  
+  public final int b()
+  {
+    if (!a())
+    {
+      pw.a("MicroMsg.SDK.WXApiImplV10", "open wx app failed, not installed or signature check failed");
+      return 0;
+    }
+    return new po(this.a).getInt("_build_info_sdk_int_", 0);
   }
 }
 

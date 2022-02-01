@@ -1,38 +1,132 @@
 package com.tencent.token;
 
+import android.content.Context;
+import android.os.PowerManager;
+import android.util.DisplayMetrics;
+import android.view.Display;
+import android.view.WindowManager;
+
 public final class aaa
 {
-  public static int a = 109;
-  public static String b = "6.9.22";
-  public static int c = 1;
-  public static boolean d = true;
-  public static boolean e = true;
-  public static boolean f = true;
-  public static boolean g = false;
-  public static int h = 63;
-  public static boolean i = true;
-  public static boolean j = true;
-  public static boolean k = false;
-  public static boolean l = true;
-  public static boolean m = true;
-  public static boolean n = true;
-  public static boolean o = true;
-  public static boolean p = true;
-  public static boolean q = true;
-  
-  static
+  public static int a(Context paramContext)
   {
-    if (c != 0)
+    try
     {
-      d = false;
-      e = false;
-      i = false;
-      l = false;
-      m = false;
-      n = false;
-      q = false;
-      return;
+      paramContext = (WindowManager)paramContext.getSystemService("window");
+      DisplayMetrics localDisplayMetrics = new DisplayMetrics();
+      if (paramContext != null)
+      {
+        paramContext.getDefaultDisplay().getMetrics(localDisplayMetrics);
+        int i = localDisplayMetrics.heightPixels;
+        return i;
+      }
     }
+    catch (Exception paramContext)
+    {
+      paramContext.printStackTrace();
+    }
+    return zx.b;
+  }
+  
+  public static int b(Context paramContext)
+  {
+    try
+    {
+      paramContext = (WindowManager)paramContext.getSystemService("window");
+      DisplayMetrics localDisplayMetrics = new DisplayMetrics();
+      if (paramContext != null)
+      {
+        paramContext.getDefaultDisplay().getMetrics(localDisplayMetrics);
+        int i = localDisplayMetrics.widthPixels;
+        return i;
+      }
+    }
+    catch (Exception paramContext)
+    {
+      paramContext.printStackTrace();
+    }
+    return zx.b;
+  }
+  
+  public static int c(Context paramContext)
+  {
+    try
+    {
+      paramContext = (WindowManager)paramContext.getSystemService("window");
+      DisplayMetrics localDisplayMetrics = new DisplayMetrics();
+      if (paramContext != null)
+      {
+        paramContext.getDefaultDisplay().getMetrics(localDisplayMetrics);
+        int i = localDisplayMetrics.densityDpi;
+        return i;
+      }
+    }
+    catch (Exception paramContext)
+    {
+      paramContext.printStackTrace();
+    }
+    return zx.b;
+  }
+  
+  public static String d(Context paramContext)
+  {
+    StringBuffer localStringBuffer = new StringBuffer();
+    localStringBuffer.append(f(paramContext));
+    localStringBuffer.append(" * ");
+    localStringBuffer.append(g(paramContext));
+    return localStringBuffer.toString();
+  }
+  
+  public static boolean e(Context paramContext)
+  {
+    try
+    {
+      boolean bool = ((PowerManager)paramContext.getSystemService("power")).isScreenOn();
+      return bool;
+    }
+    catch (Exception paramContext)
+    {
+      paramContext.printStackTrace();
+    }
+    return false;
+  }
+  
+  private static int f(Context paramContext)
+  {
+    try
+    {
+      paramContext = ((WindowManager)paramContext.getSystemService("window")).getDefaultDisplay();
+      if (paramContext != null)
+      {
+        int i = paramContext.getWidth();
+        return i;
+      }
+      return 0;
+    }
+    catch (Exception paramContext)
+    {
+      paramContext.printStackTrace();
+    }
+    return zx.b;
+  }
+  
+  private static int g(Context paramContext)
+  {
+    try
+    {
+      paramContext = ((WindowManager)paramContext.getSystemService("window")).getDefaultDisplay();
+      if (paramContext != null)
+      {
+        int i = paramContext.getHeight();
+        return i;
+      }
+      return 0;
+    }
+    catch (Exception paramContext)
+    {
+      paramContext.printStackTrace();
+    }
+    return zx.b;
   }
 }
 

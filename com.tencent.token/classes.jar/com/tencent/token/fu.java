@@ -1,65 +1,56 @@
 package com.tencent.token;
 
-import android.os.Build.VERSION;
-import android.view.View;
-import android.widget.ListView;
+import android.database.Cursor;
+import android.widget.Filter;
+import android.widget.Filter.FilterResults;
 
-public final class fu
-  extends fk
+final class fu
+  extends Filter
 {
-  private final ListView f;
+  a a;
   
-  public fu(ListView paramListView)
+  fu(a parama)
   {
-    super(paramListView);
-    this.f = paramListView;
+    this.a = parama;
   }
   
-  public final void a(int paramInt)
+  public final CharSequence convertResultToString(Object paramObject)
   {
-    ListView localListView = this.f;
-    if (Build.VERSION.SDK_INT >= 19)
+    return this.a.b((Cursor)paramObject);
+  }
+  
+  protected final Filter.FilterResults performFiltering(CharSequence paramCharSequence)
+  {
+    paramCharSequence = this.a.a(paramCharSequence);
+    Filter.FilterResults localFilterResults = new Filter.FilterResults();
+    if (paramCharSequence != null)
     {
-      localListView.scrollListBy(paramInt);
-      return;
+      localFilterResults.count = paramCharSequence.getCount();
+      localFilterResults.values = paramCharSequence;
+      return localFilterResults;
     }
-    int i = localListView.getFirstVisiblePosition();
-    if (i != -1)
-    {
-      View localView = localListView.getChildAt(0);
-      if (localView != null) {
-        localListView.setSelectionFromTop(i, localView.getTop() - paramInt);
-      }
+    localFilterResults.count = 0;
+    localFilterResults.values = null;
+    return localFilterResults;
+  }
+  
+  protected final void publishResults(CharSequence paramCharSequence, Filter.FilterResults paramFilterResults)
+  {
+    paramCharSequence = this.a.a();
+    if ((paramFilterResults.values != null) && (paramFilterResults.values != paramCharSequence)) {
+      this.a.a((Cursor)paramFilterResults.values);
     }
   }
   
-  public final boolean b(int paramInt)
+  static abstract interface a
   {
-    ListView localListView = this.f;
-    int i = localListView.getCount();
-    if (i == 0) {
-      return false;
-    }
-    int j = localListView.getChildCount();
-    int k = localListView.getFirstVisiblePosition();
-    if (paramInt > 0)
-    {
-      if ((k + j >= i) && (localListView.getChildAt(j - 1).getBottom() <= localListView.getHeight())) {
-        return false;
-      }
-    }
-    else
-    {
-      if (paramInt >= 0) {
-        break label89;
-      }
-      if ((k <= 0) && (localListView.getChildAt(0).getTop() >= 0)) {
-        return false;
-      }
-    }
-    return true;
-    label89:
-    return false;
+    public abstract Cursor a();
+    
+    public abstract Cursor a(CharSequence paramCharSequence);
+    
+    public abstract void a(Cursor paramCursor);
+    
+    public abstract CharSequence b(Cursor paramCursor);
   }
 }
 

@@ -1,113 +1,126 @@
 package com.tencent.token;
 
-import android.os.Handler;
-import com.tencent.token.core.bean.QQUser;
-import com.tencent.token.utils.UserTask;
+import android.content.Context;
+import com.tencent.token.global.RqdApplication;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.atomic.AtomicReference;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public final class te
-  extends rr
+public class te
 {
-  static te f;
-  int a;
-  public String b;
-  public String c;
-  public String d;
-  public String e;
-  private final String g = "/cn/mbtoken3/mbtoken3_query_for_2nd_verify_v2";
-  private final String h = "/cn/mbtoken3/mbtoken3_perform_2nd_verify_encrypt";
-  private int i;
+  private final String a = "/cn/mbtoken3/mbtoken3_update_dual_msg_status_encrypt";
+  protected List<sm> b = new ArrayList();
+  protected long c;
+  private int d;
   
-  public static te a()
+  protected te(int paramInt)
   {
-    if (f == null) {
-      f = new te();
+    this.d = paramInt;
+  }
+  
+  public final sm a(int paramInt)
+  {
+    if (this.b == null) {
+      return null;
     }
-    return f;
-  }
-  
-  public final wy a(int paramInt)
-  {
-    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.copyTypes(TypeTransformer.java:311)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.fixTypes(TypeTransformer.java:226)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:207)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
-  }
-  
-  public final wy a(String paramString, int paramInt)
-  {
-    wy localwy = new wy();
-    sz localsz = sz.a();
-    if ((localsz != null) && (localsz.k.b() != null))
+    int i = b();
+    if (paramInt >= 0)
     {
-      final CountDownLatch localCountDownLatch = new CountDownLatch(1);
-      Object localObject = new AtomicReference(null);
-      qy.a().a(localsz.k.b().mUin, this.i, paramInt, paramString, new qy.a()
-      {
-        public final void a(ra paramAnonymousra)
-        {
-          this.a.set(paramAnonymousra);
-          localCountDownLatch.countDown();
-        }
-      });
-      try
-      {
-        localCountDownLatch.await();
+      if (paramInt >= i) {
+        return null;
       }
-      catch (InterruptedException paramString)
-      {
-        paramString.printStackTrace();
-      }
-      paramString = (ra)((AtomicReference)localObject).get();
-      if (paramString == null)
-      {
-        localwy.a(-349, null, null);
-        return localwy;
-      }
-      try
-      {
-        paramInt = paramString.b;
-        if (paramInt != 0)
-        {
-          paramString = paramString.d;
-          localwy.a(paramInt, paramString, paramString);
-          return localwy;
-        }
-        new JSONObject(paramString.c);
-        localwy.a = 0;
-        return localwy;
-      }
-      catch (Exception paramString)
-      {
-        localObject = new StringBuilder("unknown err: ");
-        ((StringBuilder)localObject).append(paramString.toString());
-        xa.c(((StringBuilder)localObject).toString());
-        localObject = new StringBuilder("JSONException:");
-        ((StringBuilder)localObject).append(paramString.toString());
-        localwy.a(10021, ((StringBuilder)localObject).toString(), null);
-        return localwy;
-      }
-      catch (JSONException paramString)
-      {
-        localObject = new StringBuilder("parse json failed: ");
-        ((StringBuilder)localObject).append(paramString.toString());
-        xa.c(((StringBuilder)localObject).toString());
-        localObject = new StringBuilder("JSONException:");
-        ((StringBuilder)localObject).append(paramString.toString());
-        localwy.a(10020, ((StringBuilder)localObject).toString(), null);
-        return localwy;
-      }
+      return (sm)this.b.get(paramInt);
     }
-    localwy.a(110, null, null);
-    return localwy;
+    return null;
   }
   
-  public final void a(final int paramInt, final Handler paramHandler)
+  public final xh a(sm paramsm, int paramInt)
   {
-    if (paramHandler == null) {
-      return;
+    xh localxh = new xh();
+    new ajn();
+    th.a();
+    if (paramsm == null)
+    {
+      localxh.a(10023, null, null);
+      return localxh;
     }
-    new UserTask() {}.a(new String[] { "" });
+    final CountDownLatch localCountDownLatch = new CountDownLatch(1);
+    Object localObject = new AtomicReference(null);
+    rf.a().a(paramsm.c, paramsm.b, paramsm.a, paramsm.d, paramInt, paramsm.c, this.d, new rf.a()
+    {
+      public final void a(ri paramAnonymousri)
+      {
+        this.a.set(paramAnonymousri);
+        localCountDownLatch.countDown();
+      }
+    });
+    try
+    {
+      localCountDownLatch.await();
+    }
+    catch (InterruptedException paramsm)
+    {
+      paramsm.printStackTrace();
+    }
+    paramsm = (ri)((AtomicReference)localObject).get();
+    if (paramsm == null)
+    {
+      localxh.a(-789, null, null);
+      return localxh;
+    }
+    try
+    {
+      paramInt = paramsm.b;
+      if (paramInt != 0)
+      {
+        paramsm = paramsm.d;
+        localxh.a(paramInt, paramsm, paramsm);
+        return localxh;
+      }
+      paramsm = paramsm.c;
+      if (paramsm != null)
+      {
+        new JSONObject(paramsm);
+        th.a().g();
+        localxh.a = 0;
+        return localxh;
+      }
+      xj.c("parseJSON error decodeData");
+      localxh.a(10022, RqdApplication.p().getString(2131493068), null);
+      return localxh;
+    }
+    catch (Exception paramsm)
+    {
+      localObject = new StringBuilder("unknown err: ");
+      ((StringBuilder)localObject).append(paramsm.toString());
+      xj.c(((StringBuilder)localObject).toString());
+      localObject = new StringBuilder("JSONException:");
+      ((StringBuilder)localObject).append(paramsm.toString());
+      localxh.a(10021, ((StringBuilder)localObject).toString(), null);
+      return localxh;
+    }
+    catch (JSONException paramsm)
+    {
+      localObject = new StringBuilder("parse json failed: ");
+      ((StringBuilder)localObject).append(paramsm.toString());
+      xj.c(((StringBuilder)localObject).toString());
+      localObject = new StringBuilder("JSONException:");
+      ((StringBuilder)localObject).append(paramsm.toString());
+      localxh.a(10020, ((StringBuilder)localObject).toString(), null);
+    }
+    return localxh;
+  }
+  
+  public final int b()
+  {
+    List localList = this.b;
+    if (localList == null) {
+      return 0;
+    }
+    return localList.size();
   }
 }
 

@@ -5,17 +5,17 @@ import android.graphics.Canvas;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.widget.SeekBar;
-import com.tencent.token.go.a;
-import com.tencent.token.ik;
+import com.tencent.token.gs.a;
+import com.tencent.token.io;
 
 public class AppCompatSeekBar
   extends SeekBar
 {
-  private final ik a = new ik(this);
+  private final io a = new io(this);
   
   public AppCompatSeekBar(Context paramContext, AttributeSet paramAttributeSet)
   {
-    this(paramContext, paramAttributeSet, go.a.seekBarStyle);
+    this(paramContext, paramAttributeSet, gs.a.seekBarStyle);
   }
   
   public AppCompatSeekBar(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
@@ -27,19 +27,19 @@ public class AppCompatSeekBar
   protected void drawableStateChanged()
   {
     super.drawableStateChanged();
-    ik localik = this.a;
-    Drawable localDrawable = localik.c;
-    if ((localDrawable != null) && (localDrawable.isStateful()) && (localDrawable.setState(localik.b.getDrawableState()))) {
-      localik.b.invalidateDrawable(localDrawable);
+    io localio = this.a;
+    Drawable localDrawable = localio.c;
+    if ((localDrawable != null) && (localDrawable.isStateful()) && (localDrawable.setState(localio.b.getDrawableState()))) {
+      localio.b.invalidateDrawable(localDrawable);
     }
   }
   
   public void jumpDrawablesToCurrentState()
   {
     super.jumpDrawablesToCurrentState();
-    ik localik = this.a;
-    if (localik.c != null) {
-      localik.c.jumpToCurrentState();
+    io localio = this.a;
+    if (localio.c != null) {
+      localio.c.jumpToCurrentState();
     }
   }
   
@@ -50,15 +50,15 @@ public class AppCompatSeekBar
       try
       {
         super.onDraw(paramCanvas);
-        ik localik = this.a;
-        if (localik.c != null)
+        io localio = this.a;
+        if (localio.c != null)
         {
-          int k = localik.b.getMax();
+          int k = localio.b.getMax();
           int j = 1;
           if (k > 1)
           {
-            i = localik.c.getIntrinsicWidth();
-            int m = localik.c.getIntrinsicHeight();
+            i = localio.c.getIntrinsicWidth();
+            int m = localio.c.getIntrinsicHeight();
             if (i < 0) {
               break label203;
             }
@@ -66,14 +66,14 @@ public class AppCompatSeekBar
             if (m >= 0) {
               j = m / 2;
             }
-            localik.c.setBounds(-i, -j, i, j);
-            float f = (localik.b.getWidth() - localik.b.getPaddingLeft() - localik.b.getPaddingRight()) / k;
+            localio.c.setBounds(-i, -j, i, j);
+            float f = (localio.b.getWidth() - localio.b.getPaddingLeft() - localio.b.getPaddingRight()) / k;
             j = paramCanvas.save();
-            paramCanvas.translate(localik.b.getPaddingLeft(), localik.b.getHeight() / 2);
+            paramCanvas.translate(localio.b.getPaddingLeft(), localio.b.getHeight() / 2);
             i = 0;
             if (i <= k)
             {
-              localik.c.draw(paramCanvas);
+              localio.c.draw(paramCanvas);
               paramCanvas.translate(f, 0.0F);
               i += 1;
               continue;

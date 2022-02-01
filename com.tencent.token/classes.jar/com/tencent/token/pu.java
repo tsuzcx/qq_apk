@@ -1,20 +1,17 @@
 package com.tencent.token;
 
-import android.telephony.PhoneStateListener;
-import android.telephony.TelephonyManager;
+import android.content.Context;
 
-final class pu
-  extends PhoneStateListener
+public final class pu
 {
-  pu(pt parampt) {}
+  private static pu a;
   
-  public final void onSignalStrengthChanged(int paramInt)
+  public static ps a(Context paramContext, String paramString)
   {
-    super.onSignalStrengthChanged(paramInt);
-    pt.a(paramInt * 2 - 113);
-    if (pt.a(this.a) != null) {
-      pt.a(this.a).listen(pt.b(this.a), 0);
+    if (a == null) {
+      a = new pu();
     }
+    return new pv(paramContext, paramString);
   }
 }
 

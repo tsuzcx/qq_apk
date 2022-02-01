@@ -1,32 +1,30 @@
 package com.tencent.token;
 
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 
-public class ari
-  implements arf
+final class ari
+  extends Handler
 {
-  public aqg k = null;
-  
-  public void a(int paramInt, al paramal) {}
-  
-  public final void a(byte[] paramArrayOfByte)
+  ari(aso paramaso, Looper paramLooper)
   {
-    am localam = apz.a(paramArrayOfByte);
-    Object localObject = this.k;
-    paramArrayOfByte = null;
-    if ((localObject != null) && (localam != null)) {
-      paramArrayOfByte = localam.c;
-    }
-    if (paramArrayOfByte == null) {
+    super(paramLooper);
+  }
+  
+  public final void handleMessage(Message paramMessage)
+  {
+    super.handleMessage(paramMessage);
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    case 2: 
+      paramMessage = (asc)paramMessage.obj;
+      aso.a(this.a, paramMessage);
       return;
     }
-    paramArrayOfByte = paramArrayOfByte.iterator();
-    while (paramArrayOfByte.hasNext())
-    {
-      localObject = (al)paramArrayOfByte.next();
-      a(localam.a, (al)localObject);
-    }
+    aso.a((asb)paramMessage.obj);
   }
 }
 

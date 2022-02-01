@@ -524,6 +524,7 @@
     <item type="id" name="menu_get_verify_msg" />
     <item type="id" name="menu_help" />
     <item type="id" name="message" />
+    <item type="id" name="min_box" />
     <item type="id" name="mini" />
     <item type="id" name="mobile_info" />
     <item type="id" name="mobile_num" />
@@ -700,6 +701,7 @@
     <item type="id" name="right_icon" />
     <item type="id" name="right_list_view" />
     <item type="id" name="right_side" />
+    <item type="id" name="riskquery_layout" />
     <item type="id" name="rl_account_eval" />
     <item type="id" name="rl_account_eval_head" />
     <item type="id" name="rl_account_eval_zzb" />

@@ -1,24 +1,53 @@
 package com.tencent.token;
 
-import android.graphics.Canvas;
-import android.graphics.Matrix;
-import android.graphics.RectF;
+import javax.annotation.Nullable;
 
 final class ani
-  extends ane
 {
-  ani(asv paramasv, anh paramanh)
+  @Nullable
+  static anh a;
+  static long b;
+  
+  static anh a()
   {
-    super(paramasv, paramanh);
+    try
+    {
+      if (a != null)
+      {
+        anh localanh = a;
+        a = localanh.f;
+        localanh.f = null;
+        b -= 8192L;
+        return localanh;
+      }
+      return new anh();
+    }
+    finally {}
   }
   
-  public final void a(RectF paramRectF, Matrix paramMatrix)
+  static void a(anh paramanh)
   {
-    super.a(paramRectF, paramMatrix);
-    paramRectF.set(0.0F, 0.0F, 0.0F, 0.0F);
+    if ((paramanh.f == null) && (paramanh.g == null))
+    {
+      if (paramanh.d) {
+        return;
+      }
+      try
+      {
+        if (b + 8192L > 65536L) {
+          return;
+        }
+        b += 8192L;
+        paramanh.f = a;
+        paramanh.c = 0;
+        paramanh.b = 0;
+        a = paramanh;
+        return;
+      }
+      finally {}
+    }
+    throw new IllegalArgumentException();
   }
-  
-  final void b(Canvas paramCanvas, Matrix paramMatrix, int paramInt) {}
 }
 
 

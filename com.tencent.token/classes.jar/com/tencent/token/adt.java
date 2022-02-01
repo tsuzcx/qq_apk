@@ -1,86 +1,62 @@
 package com.tencent.token;
 
-import android.content.Context;
-import android.text.TextUtils;
-
 public final class adt
+  implements aha
 {
-  public static final long a = ;
+  public static final byte[] a = new byte[0];
+  public final String b;
+  public final long c;
+  public final int d;
+  public final String e;
+  public final String f;
+  public final String g;
+  public final String h;
+  public aeg i;
+  public int j = 0;
+  public int k = 0;
   
-  public static String a(Context paramContext, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
+  public adt(int paramInt)
   {
-    StringBuilder localStringBuilder = new StringBuilder("T:");
-    localStringBuilder.append(a);
-    localStringBuilder.append(",");
-    localStringBuilder.append("LT:");
-    Object localObject1 = new StringBuilder();
-    ((StringBuilder)localObject1).append(System.currentTimeMillis() - a);
-    localStringBuilder.append(((StringBuilder)localObject1).toString());
-    localStringBuilder.append(",");
-    localStringBuilder.append("F:");
-    if (paramBoolean1) {
-      localObject1 = "1";
-    } else {
-      localObject1 = "0";
-    }
-    localStringBuilder.append((String)localObject1);
-    localStringBuilder.append(",");
-    localStringBuilder.append("PT:");
-    localStringBuilder.append("0");
-    localStringBuilder.append(",");
-    localStringBuilder.append("PKG:");
-    if (paramBoolean2) {
-      localObject1 = "1";
-    } else {
-      localObject1 = "0";
-    }
-    localStringBuilder.append((String)localObject1);
-    localStringBuilder.append(",");
-    localStringBuilder.append("SC:");
-    if (paramBoolean3) {
-      localObject1 = "1";
-    } else {
-      localObject1 = "0";
-    }
-    localStringBuilder.append((String)localObject1);
-    localObject1 = adp.a;
-    localObject1 = adp.b(paramContext);
-    if (!TextUtils.isEmpty((CharSequence)localObject1))
-    {
-      localStringBuilder.append(",");
-      localStringBuilder.append("CL:");
-      localStringBuilder.append((String)localObject1);
-    }
-    Object localObject2 = adi.a(paramContext, "204");
-    localObject1 = localObject2;
-    if (TextUtils.isEmpty((CharSequence)localObject2))
-    {
-      localObject2 = aeu.a("0_");
-      if (paramBoolean1) {
-        localObject1 = "1";
-      } else {
-        localObject1 = "0";
-      }
-      ((StringBuilder)localObject2).append((String)localObject1);
-      localObject1 = ((StringBuilder)localObject2).toString();
-    }
-    if (!TextUtils.isEmpty((CharSequence)localObject1))
-    {
-      localStringBuilder.append(",");
-      localStringBuilder.append("R:");
-      localStringBuilder.append((String)localObject1);
-    }
-    localStringBuilder.append(",");
-    localStringBuilder.append("US:");
-    localStringBuilder.append(adi.a(paramContext));
-    paramContext = adi.a(paramContext, "111");
-    if (!TextUtils.isEmpty(paramContext))
-    {
-      localStringBuilder.append(",");
-      localStringBuilder.append("ND:");
-      localStringBuilder.append(paramContext);
-    }
-    return localStringBuilder.toString();
+    this.b = "";
+    this.c = 0L;
+    this.d = paramInt;
+    this.e = "";
+    this.f = "";
+    this.g = "";
+    this.h = "";
+    this.i = new aeg("");
+    this.j = 0;
+    this.k = 0;
+  }
+  
+  public adt(a parama)
+  {
+    this.b = parama.a;
+    this.c = parama.b;
+    this.d = parama.c;
+    parama.getClass();
+    this.e = parama.d;
+    this.f = parama.e;
+    this.g = parama.f;
+    this.h = parama.g;
+    this.i = parama.h;
+  }
+  
+  public static adt a(int paramInt)
+  {
+    return new adt(paramInt);
+  }
+  
+  public static final class a
+  {
+    public String a;
+    public long b;
+    public int c = 0;
+    public String d;
+    public String e;
+    public String f;
+    public String g;
+    public aeg h;
   }
 }
 

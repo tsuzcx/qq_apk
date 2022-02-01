@@ -1,132 +1,91 @@
 package com.tencent.token;
 
-import java.io.EOFException;
-import java.io.IOException;
-import java.util.zip.DataFormatException;
-import java.util.zip.Inflater;
+import java.util.List;
 
 public final class alg
-  implements alo
+  implements akg
 {
-  private final ala a;
-  private final Inflater b;
-  private int c;
-  private boolean d;
+  private final ajz a;
   
-  alg(ala paramala, Inflater paramInflater)
+  public alg(ajz paramajz)
   {
-    if (paramala != null)
+    this.a = paramajz;
+  }
+  
+  public final akn a(akg.a parama)
+  {
+    Object localObject1 = parama.a();
+    Object localObject2 = ((akl)localObject1).a();
+    Object localObject3 = ((akl)localObject1).d;
+    Object localObject4;
+    if (localObject3 != null)
     {
-      if (paramInflater != null)
+      localObject4 = ((akm)localObject3).a();
+      if (localObject4 != null) {
+        ((akl.a)localObject2).a("Content-Type", ((akh)localObject4).toString());
+      }
+      long l = ((akm)localObject3).b();
+      if (l != -1L)
       {
-        this.a = paramala;
-        this.b = paramInflater;
-        return;
+        ((akl.a)localObject2).a("Content-Length", Long.toString(l));
+        ((akl.a)localObject2).b("Transfer-Encoding");
       }
-      throw new IllegalArgumentException("inflater == null");
-    }
-    throw new IllegalArgumentException("source == null");
-  }
-  
-  private void b()
-  {
-    int i = this.c;
-    if (i == 0) {
-      return;
-    }
-    i -= this.b.getRemaining();
-    this.c -= i;
-    this.a.g(i);
-  }
-  
-  public final long a(aky paramaky, long paramLong)
-  {
-    if (paramLong >= 0L) {
-      if (!this.d) {
-        if (paramLong == 0L) {
-          return 0L;
-        }
+      else
+      {
+        ((akl.a)localObject2).a("Transfer-Encoding", "chunked");
+        ((akl.a)localObject2).b("Content-Length");
       }
     }
-    label285:
-    for (;;)
+    localObject3 = ((akl)localObject1).a("Host");
+    int j = 0;
+    if (localObject3 == null) {
+      ((akl.a)localObject2).a("Host", akt.a(((akl)localObject1).a, false));
+    }
+    if (((akl)localObject1).a("Connection") == null) {
+      ((akl.a)localObject2).a("Connection", "Keep-Alive");
+    }
+    int i;
+    if ((((akl)localObject1).a("Accept-Encoding") == null) && (((akl)localObject1).a("Range") == null))
     {
-      boolean bool = this.b.needsInput();
-      int i = 0;
-      alk localalk;
-      if (bool)
+      ((akl.a)localObject2).a("Accept-Encoding", "gzip");
+      i = 1;
+    }
+    else
+    {
+      i = 0;
+    }
+    localObject3 = this.a.a();
+    if (!((List)localObject3).isEmpty())
+    {
+      localObject4 = new StringBuilder();
+      int k = ((List)localObject3).size();
+      while (j < k)
       {
-        b();
-        if (this.b.getRemaining() != 0) {
-          break label285;
+        if (j > 0) {
+          ((StringBuilder)localObject4).append("; ");
         }
-        if (this.a.c())
-        {
-          i = 1;
-        }
-        else
-        {
-          localalk = this.a.b().a;
-          this.c = (localalk.c - localalk.b);
-          this.b.setInput(localalk.a, localalk.b, this.c);
-        }
+        ajy localajy = (ajy)((List)localObject3).get(j);
+        ((StringBuilder)localObject4).append(localajy.a);
+        ((StringBuilder)localObject4).append('=');
+        ((StringBuilder)localObject4).append(localajy.b);
+        j += 1;
       }
-      label240:
-      do
-      {
-        try
-        {
-          localalk = paramaky.e(1);
-          int j = (int)Math.min(paramLong, 8192 - localalk.c);
-          j = this.b.inflate(localalk.a, localalk.c, j);
-          if (j > 0)
-          {
-            localalk.c += j;
-            paramLong = paramaky.b;
-            long l = j;
-            paramaky.b = (paramLong + l);
-            return l;
-          }
-          if (!this.b.finished())
-          {
-            if (!this.b.needsDictionary()) {
-              continue;
-            }
-            break label240;
-            throw new EOFException("source exhausted prematurely");
-          }
-          b();
-          if (localalk.b == localalk.c)
-          {
-            paramaky.a = localalk.b();
-            all.a(localalk);
-          }
-          return -1L;
-        }
-        catch (DataFormatException paramaky)
-        {
-          throw new IOException(paramaky);
-        }
-        throw new IllegalStateException("?");
-        throw new IllegalStateException("closed");
-        throw new IllegalArgumentException("byteCount < 0: ".concat(String.valueOf(paramLong)));
-      } while (i != 0);
+      ((akl.a)localObject2).a("Cookie", ((StringBuilder)localObject4).toString());
     }
-  }
-  
-  public final alp a()
-  {
-    return this.a.a();
-  }
-  
-  public final void close()
-  {
-    if (this.d) {
-      return;
+    if (((akl)localObject1).a("User-Agent") == null) {
+      ((akl.a)localObject2).a("User-Agent", "okhttp/3.11.0");
     }
-    this.b.end();
-    this.d = true;
-    this.a.close();
+    parama = parama.a(((akl.a)localObject2).a());
+    alk.a(this.a, ((akl)localObject1).a, parama.f);
+    localObject2 = parama.a();
+    ((akn.a)localObject2).a = ((akl)localObject1);
+    if ((i != 0) && ("gzip".equalsIgnoreCase(parama.a("Content-Encoding"))) && (alk.b(parama)))
+    {
+      localObject1 = new anc(parama.g.b());
+      ((akn.a)localObject2).a(parama.f.a().a("Content-Encoding").a("Content-Length").a());
+      ((akn.a)localObject2).g = new aln(parama.a("Content-Type"), -1L, ane.a((anl)localObject1));
+    }
+    return ((akn.a)localObject2).a();
   }
 }
 

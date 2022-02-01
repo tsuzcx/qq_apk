@@ -2,15 +2,41 @@ package com.tencent.token;
 
 import java.io.IOException;
 
-public final class akj
-  extends IOException
+public enum akj
 {
-  public final ajx a;
+  private final String g;
   
-  public akj(ajx paramajx)
+  private akj(String paramString)
   {
-    super("stream was reset: ".concat(String.valueOf(paramajx)));
-    this.a = paramajx;
+    this.g = paramString;
+  }
+  
+  public static akj a(String paramString)
+  {
+    if (paramString.equals(a.g)) {
+      return a;
+    }
+    if (paramString.equals(b.g)) {
+      return b;
+    }
+    if (paramString.equals(e.g)) {
+      return e;
+    }
+    if (paramString.equals(d.g)) {
+      return d;
+    }
+    if (paramString.equals(c.g)) {
+      return c;
+    }
+    if (paramString.equals(f.g)) {
+      return f;
+    }
+    throw new IOException("Unexpected protocol: ".concat(String.valueOf(paramString)));
+  }
+  
+  public final String toString()
+  {
+    return this.g;
   }
 }
 

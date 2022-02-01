@@ -1,74 +1,53 @@
 package com.tencent.token;
 
-import com.tencent.halley.downloader.DownloaderTaskStatus;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.jni.FaceDetector;
+import com.tencent.jni.FaceInfo;
+import com.tencent.service.DetectType;
 
 public final class rl
+  implements Runnable
 {
-  protected static boolean a = true;
-  protected List<String> b = new ArrayList();
-  rb.a c;
+  public long a = 0L;
+  private FaceDetector b;
+  private rq c;
+  private rk d;
+  private rm e;
+  private DetectType f;
+  private long g = 0L;
   
-  rl(String paramString)
+  public rl(rm paramrm, FaceDetector paramFaceDetector, rq paramrq, DetectType paramDetectType)
   {
-    this.b.add(paramString);
+    this.b = paramFaceDetector;
+    this.e = paramrm;
+    this.c = paramrq;
+    this.f = paramDetectType;
+    this.g = System.currentTimeMillis();
   }
   
-  public final rb.a a()
+  public final void run()
   {
-    if (this.c == null)
+    System.gc();
+    this.d = new rk();
+    this.d.d = new FaceInfo();
+    int i;
+    switch (1.a[this.f.ordinal()])
     {
-      Object localObject1 = rp.a();
-      Object localObject2 = new StringBuilder();
-      ((StringBuilder)localObject2).append(((rp)localObject1).c.d());
-      ((StringBuilder)localObject2).append(".");
-      ((StringBuilder)localObject2).append(((rp)localObject1).c.e());
-      ((StringBuilder)localObject2).append(".");
-      ((StringBuilder)localObject2).append(((rp)localObject1).c.f());
-      String str = ((StringBuilder)localObject2).toString();
-      int i = -((rp)localObject1).c.g();
-      localObject2 = ((rp)localObject1).c.a;
-      boolean bool = false;
-      if (((rm)localObject2).a("meri_update_url_type", 0) == 0) {
-        bool = ((rp)localObject1).e();
-      }
-      localObject2 = null;
-      if (bool) {
-        localObject1 = ((rp)localObject1).c.a.a("meri_lastest_url", "");
-      } else {
-        localObject1 = null;
-      }
-      if (localObject1 != null)
-      {
-        localObject2 = new StringBuilder("com.tencent.token_");
-        ((StringBuilder)localObject2).append(i);
-        ((StringBuilder)localObject2).append("_");
-        ((StringBuilder)localObject2).append(str);
-        str = ((StringBuilder)localObject2).toString();
-        localObject2 = rb.b.a().a((String)localObject1);
-        if (localObject2 != null)
-        {
-          localObject1 = localObject2;
-        }
-        else
-        {
-          localObject2 = new rb.a();
-          ((rb.a)localObject2).a = "com.tencent.token";
-          ((rb.a)localObject2).c = ((String)localObject1);
-          ((rb.a)localObject2).d = str;
-          localObject1 = localObject2;
-        }
-        localObject2 = localObject1;
-        if (rb.b.a().a((rb.a)localObject1))
-        {
-          ((rb.a)localObject1).f = DownloaderTaskStatus.COMPLETE;
-          localObject2 = localObject1;
-        }
-      }
-      this.c = ((rb.a)localObject2);
+    default: 
+      return;
+    case 2: 
+      i = this.b.FaceValidate(this.d.d, this.c.a, this.c.b, this.c.c, this.c.d, this.c.e);
+      break;
+    case 1: 
+      i = this.b.FaceRegister(this.d.d, this.c.a, this.c.b, this.c.c, this.c.d, this.c.e);
     }
-    return this.c;
+    Object localObject = this.d;
+    ((rk)localObject).a = this.b;
+    ((rk)localObject).b = this.c;
+    ((rk)localObject).c = i;
+    localObject = new StringBuilder("任务构建到结束时间: ");
+    ((StringBuilder)localObject).append(System.currentTimeMillis() - this.g);
+    xj.b(((StringBuilder)localObject).toString());
+    this.e.a(this.d);
   }
 }
 

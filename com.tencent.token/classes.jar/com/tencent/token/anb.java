@@ -1,23 +1,60 @@
 package com.tencent.token;
 
-import android.graphics.PointF;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 public final class anb
+  extends anm
 {
-  public final List<aml> a = new ArrayList();
-  public PointF b;
-  public boolean c;
+  public anm a;
   
-  public final String toString()
+  public anb(anm paramanm)
   {
-    StringBuilder localStringBuilder = new StringBuilder("ShapeData{numCurves=");
-    localStringBuilder.append(this.a.size());
-    localStringBuilder.append("closed=");
-    localStringBuilder.append(this.c);
-    localStringBuilder.append('}');
-    return localStringBuilder.toString();
+    if (paramanm != null)
+    {
+      this.a = paramanm;
+      return;
+    }
+    throw new IllegalArgumentException("delegate == null");
+  }
+  
+  public final anm a(long paramLong)
+  {
+    return this.a.a(paramLong);
+  }
+  
+  public final anm a(long paramLong, TimeUnit paramTimeUnit)
+  {
+    return this.a.a(paramLong, paramTimeUnit);
+  }
+  
+  public final long c()
+  {
+    return this.a.c();
+  }
+  
+  public final anm d()
+  {
+    return this.a.d();
+  }
+  
+  public final long e_()
+  {
+    return this.a.e_();
+  }
+  
+  public final void f()
+  {
+    this.a.f();
+  }
+  
+  public final boolean f_()
+  {
+    return this.a.f_();
+  }
+  
+  public final anm g_()
+  {
+    return this.a.g_();
   }
 }
 

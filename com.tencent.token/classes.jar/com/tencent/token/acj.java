@@ -1,19 +1,38 @@
 package com.tencent.token;
 
-public abstract class acj
-  implements Runnable
+public final class acj
 {
-  public abstract void a();
+  public static acj a;
+  public static int b;
+  public static Object c = new Object();
+  public acj d;
+  public boolean e;
+  public int f;
+  public int g;
+  public int h;
+  public float i;
+  public float j;
+  public float k;
+  public float l;
+  public String m = "";
   
-  public void run()
+  public final String toString()
   {
-    try
-    {
-      System.currentTimeMillis();
-      a();
-      return;
-    }
-    catch (Throwable localThrowable) {}
+    StringBuilder localStringBuilder = new StringBuilder("action : ");
+    localStringBuilder.append(this.f);
+    localStringBuilder.append(",deviceId : ");
+    localStringBuilder.append(this.g);
+    localStringBuilder.append(",toolType : ");
+    localStringBuilder.append(this.h);
+    localStringBuilder.append(",rawX : ");
+    localStringBuilder.append(this.i);
+    localStringBuilder.append(",rawY : ");
+    localStringBuilder.append(this.j);
+    localStringBuilder.append(",pressure : ");
+    localStringBuilder.append(this.k);
+    localStringBuilder.append(",size : ");
+    localStringBuilder.append(this.l);
+    return localStringBuilder.toString();
   }
 }
 

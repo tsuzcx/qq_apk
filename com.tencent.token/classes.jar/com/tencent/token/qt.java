@@ -1,36 +1,11 @@
 package com.tencent.token;
 
 import android.content.Context;
+import android.view.View;
+import android.view.WindowManager;
+import android.view.WindowManager.LayoutParams;
 
-public class qt
-{
-  private static qt b;
-  public qu a;
-  
-  private qt(Context paramContext)
-  {
-    this.a = qu.a(paramContext);
-  }
-  
-  public static qt a(Context paramContext)
-  {
-    if (b == null) {
-      try
-      {
-        if (b == null) {
-          b = new qt(paramContext);
-        }
-      }
-      finally {}
-    }
-    return b;
-  }
-  
-  public final k a(int paramInt)
-  {
-    return this.a.a(paramInt);
-  }
-}
+public final class qt {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.token\classes.jar

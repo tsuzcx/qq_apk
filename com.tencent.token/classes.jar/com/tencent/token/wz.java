@@ -1,10 +1,16 @@
 package com.tencent.token;
 
-import java.util.Comparator;
-
 public final class wz
-  implements Comparator<xd>
-{}
+{
+  long a;
+  public byte[] b;
+  long c;
+  public byte d;
+  public byte e;
+  public long f;
+  byte[] g;
+  public byte[] h;
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.token\classes.jar

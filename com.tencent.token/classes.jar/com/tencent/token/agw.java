@@ -1,10 +1,16 @@
 package com.tencent.token;
 
-import com.qq.taf.jce.JceStruct;
+import java.util.Stack;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import org.w3c.dom.Document;
+import org.w3c.dom.Node;
 
-public abstract interface agw
+public final class agw
 {
-  public abstract void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, JceStruct paramJceStruct);
+  public Stack<Node> a = new Stack();
+  public Document b;
+  public final DocumentBuilder c = DocumentBuilderFactory.newInstance().newDocumentBuilder();
 }
 
 

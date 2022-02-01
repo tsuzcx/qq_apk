@@ -1,19 +1,17 @@
 package com.tencent.token;
 
 public final class aea
+  extends agv
 {
-  public String a;
-  public int b;
+  public aea(aeq paramaeq) {}
   
-  public aea(String paramString, int paramInt)
+  public final void a()
   {
-    this.a = paramString;
-    this.b = paramInt;
-  }
-  
-  public static aea a(int paramInt)
-  {
-    return new aea("", paramInt);
+    aeq localaeq = this.a;
+    localaeq.getClass();
+    localaeq.j = System.currentTimeMillis();
+    abz.a();
+    abz.a(localaeq.d, localaeq.g, localaeq);
   }
 }
 

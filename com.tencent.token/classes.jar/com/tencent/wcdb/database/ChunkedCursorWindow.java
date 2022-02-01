@@ -1,9 +1,9 @@
 package com.tencent.wcdb.database;
 
-import com.tencent.token.age;
+import com.tencent.token.ahq;
 
 public class ChunkedCursorWindow
-  extends age
+  extends ahq
 {
   long a;
   

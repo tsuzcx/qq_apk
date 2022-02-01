@@ -1,10 +1,8 @@
 package com.tencent.token;
 
-import android.graphics.Bitmap;
-
 public abstract interface ast
 {
-  public abstract Bitmap a();
+  public abstract asv a();
 }
 
 

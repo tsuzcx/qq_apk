@@ -1,19 +1,15 @@
 package com.tencent.token;
 
-import android.content.Context;
-
-public abstract interface ki
+public final class ki
 {
-  public abstract void a(a parama);
-  
-  public static abstract interface a
+  public static void a(Runnable paramRunnable, String paramString)
   {
-    public abstract void a(String paramString, ki.b paramb);
+    new Thread(paramRunnable, paramString).start();
   }
   
-  public static abstract interface b
+  public static void b(Runnable paramRunnable, String paramString)
   {
-    public abstract Object a(Context paramContext);
+    new Thread(paramRunnable, paramString).start();
   }
 }
 

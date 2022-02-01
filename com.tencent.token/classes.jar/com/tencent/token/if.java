@@ -1,111 +1,47 @@
 package com.tencent.token;
 
-import android.content.Context;
-import android.content.res.ColorStateList;
-import android.content.res.TypedArray;
-import android.graphics.PorterDuff.Mode;
+import android.graphics.Canvas;
+import android.graphics.ColorFilter;
 import android.graphics.drawable.Drawable;
-import android.os.Build.VERSION;
-import android.util.AttributeSet;
-import android.widget.CompoundButton;
+import android.support.v7.widget.ActionBarContainer;
 
-public final class if
+public class if
+  extends Drawable
 {
-  public ColorStateList a = null;
-  public PorterDuff.Mode b = null;
-  private final CompoundButton c;
-  private boolean d = false;
-  private boolean e = false;
-  private boolean f;
+  final ActionBarContainer a;
   
-  public if(CompoundButton paramCompoundButton)
+  public if(ActionBarContainer paramActionBarContainer)
   {
-    this.c = paramCompoundButton;
+    this.a = paramActionBarContainer;
   }
   
-  private void b()
+  public void draw(Canvas paramCanvas)
   {
-    Drawable localDrawable = fo.a(this.c);
-    if ((localDrawable != null) && ((this.d) || (this.e)))
+    if (this.a.d)
     {
-      localDrawable = dg.d(localDrawable).mutate();
-      if (this.d) {
-        dg.a(localDrawable, this.a);
+      if (this.a.c != null) {
+        this.a.c.draw(paramCanvas);
       }
-      if (this.e) {
-        dg.a(localDrawable, this.b);
+    }
+    else
+    {
+      if (this.a.a != null) {
+        this.a.a.draw(paramCanvas);
       }
-      if (localDrawable.isStateful()) {
-        localDrawable.setState(this.c.getDrawableState());
+      if ((this.a.b != null) && (this.a.e)) {
+        this.a.b.draw(paramCanvas);
       }
-      this.c.setButtonDrawable(localDrawable);
     }
   }
   
-  public final int a(int paramInt)
+  public int getOpacity()
   {
-    int i = paramInt;
-    if (Build.VERSION.SDK_INT < 17)
-    {
-      Drawable localDrawable = fo.a(this.c);
-      i = paramInt;
-      if (localDrawable != null) {
-        i = paramInt + localDrawable.getIntrinsicWidth();
-      }
-    }
-    return i;
+    return 0;
   }
   
-  public final void a()
-  {
-    if (this.f)
-    {
-      this.f = false;
-      return;
-    }
-    this.f = true;
-    b();
-  }
+  public void setAlpha(int paramInt) {}
   
-  public final void a(ColorStateList paramColorStateList)
-  {
-    this.a = paramColorStateList;
-    this.d = true;
-    b();
-  }
-  
-  public final void a(PorterDuff.Mode paramMode)
-  {
-    this.b = paramMode;
-    this.e = true;
-    b();
-  }
-  
-  public final void a(AttributeSet paramAttributeSet, int paramInt)
-  {
-    paramAttributeSet = this.c.getContext().obtainStyledAttributes(paramAttributeSet, go.j.CompoundButton, paramInt, 0);
-    try
-    {
-      if (paramAttributeSet.hasValue(go.j.CompoundButton_android_button))
-      {
-        paramInt = paramAttributeSet.getResourceId(go.j.CompoundButton_android_button, 0);
-        if (paramInt != 0) {
-          this.c.setButtonDrawable(gq.b(this.c.getContext(), paramInt));
-        }
-      }
-      if (paramAttributeSet.hasValue(go.j.CompoundButton_buttonTint)) {
-        fo.a(this.c, paramAttributeSet.getColorStateList(go.j.CompoundButton_buttonTint));
-      }
-      if (paramAttributeSet.hasValue(go.j.CompoundButton_buttonTintMode)) {
-        fo.a(this.c, iq.a(paramAttributeSet.getInt(go.j.CompoundButton_buttonTintMode, -1), null));
-      }
-      return;
-    }
-    finally
-    {
-      paramAttributeSet.recycle();
-    }
-  }
+  public void setColorFilter(ColorFilter paramColorFilter) {}
 }
 
 

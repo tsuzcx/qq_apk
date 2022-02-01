@@ -6,7 +6,7 @@ import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.view.View;
-import com.tencent.token.aad;
+import com.tencent.token.aap;
 import com.tencent.token.ui.IndexActivity;
 
 public class RectView
@@ -67,11 +67,11 @@ public class RectView
     paramCanvas.drawRect(this.right + 1, this.top, f2, this.bottom + 1, this.pen);
     paramCanvas.drawRect(0.0F, this.bottom + 1, f2, j, this.pen);
     if (this.mScanLine == null) {
-      this.mScanLine = aad.a(getResources(), 2131100097, this.width);
+      this.mScanLine = aap.a(getResources(), 2131100098, this.width);
     }
     Object localObject = getResources().getString(2131493002);
     this.pen.setColor(getResources().getColor(2130968665));
-    this.pen.setTextSize(getResources().getDimension(2131034250));
+    this.pen.setTextSize(getResources().getDimension(2131034251));
     paramCanvas.drawText((String)localObject, (f2 - this.pen.measureText((String)localObject)) / 2.0F, this.bottom + IndexActivity.S_DENSITY * 30.0F, this.pen);
     j = this.CORNER_HEIGHT / 2;
     this.pen.setColor(this.mCornerColor);

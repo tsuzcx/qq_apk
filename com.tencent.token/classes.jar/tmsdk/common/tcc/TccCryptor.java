@@ -2,6 +2,11 @@ package tmsdk.common.tcc;
 
 public class TccCryptor
 {
+  public static int EndianSwap(int paramInt)
+  {
+    return paramInt >>> 24 | paramInt << 24 | (0xFF00 & paramInt) << 8 | (0xFF0000 & paramInt) >>> 8;
+  }
+  
   public static native void cC(int paramInt);
   
   public static native byte[] decrypt(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2);

@@ -11,7 +11,7 @@ import android.view.ViewConfiguration;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.Scroller;
-import com.tencent.token.rq.a;
+import com.tencent.token.ry.a;
 
 public class ScrollLayout
   extends ViewGroup
@@ -38,7 +38,7 @@ public class ScrollLayout
   {
     super(paramContext, paramAttributeSet, paramInt);
     this.a = new Scroller(paramContext);
-    this.l = paramContext.obtainStyledAttributes(paramAttributeSet, rq.a.scrolllayout).getBoolean(0, false);
+    this.l = paramContext.obtainStyledAttributes(paramAttributeSet, ry.a.scrolllayout).getBoolean(0, false);
     this.c = this.d;
     this.f = ViewConfiguration.get(getContext()).getScaledTouchSlop();
   }

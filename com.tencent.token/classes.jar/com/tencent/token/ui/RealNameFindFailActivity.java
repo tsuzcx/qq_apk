@@ -18,9 +18,9 @@ public class RealNameFindFailActivity
   private void initView()
   {
     this.mBackArrow.setVisibility(4);
-    TextView localTextView = (TextView)findViewById(2131165911);
-    Object localObject = (TextView)findViewById(2131165906);
-    Button localButton = (Button)findViewById(2131165905);
+    TextView localTextView = (TextView)findViewById(2131165912);
+    Object localObject = (TextView)findViewById(2131165907);
+    Button localButton = (Button)findViewById(2131165906);
     if (this.mSourceId == 1) {
       ((TextView)localObject).setText(2131493508);
     } else {

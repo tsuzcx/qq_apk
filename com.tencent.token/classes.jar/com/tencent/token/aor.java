@@ -1,30 +1,37 @@
 package com.tencent.token;
 
-import java.io.Serializable;
+import android.graphics.PointF;
 
 public final class aor
-  implements Serializable
+  implements aov
 {
-  public static final aor b = new aor(0, 0, "CT_NONE");
-  public static final aor c = new aor(1, 1, "CT_GPRS");
-  public static final aor d = new aor(2, 2, "CT_WIFI");
-  public static final aor e = new aor(3, 3, "CT_GPRS_WAP");
-  public static final aor f = new aor(4, 4, "CT_GPRS_NET");
-  public static final aor g = new aor(5, 5, "CT_3G_NET");
-  private static aor[] i = new aor[6];
-  public int a;
-  private String j = new String();
+  final aom a;
+  final aos<PointF> b;
+  final aon c;
+  final aok d;
+  final aol e;
+  final aok f;
+  final aok g;
   
-  private aor(int paramInt1, int paramInt2, String paramString)
+  private aor(aom paramaom, aos<PointF> paramaos, aon paramaon, aok paramaok1, aol paramaol, aok paramaok2, aok paramaok3)
   {
-    this.j = paramString;
-    this.a = paramInt2;
-    i[paramInt1] = this;
+    this.a = paramaom;
+    this.b = paramaos;
+    this.c = paramaon;
+    this.d = paramaok1;
+    this.e = paramaol;
+    this.f = paramaok2;
+    this.g = paramaok3;
   }
   
-  public final String toString()
+  public final aof a()
   {
-    return this.j;
+    return new aof(this);
+  }
+  
+  public final aqc a(auv paramauv, apb paramapb)
+  {
+    return null;
   }
 }
 

@@ -7,22 +7,22 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 public final class vc
-  extends tj
+  extends tr
 {
   private long d;
   private int e;
-  private ta f;
+  private ti f;
   
   public final String a()
   {
-    rz.a();
+    sh.a();
     this.a.a(104, null, null);
     return null;
   }
   
-  public final void a(aaq paramaaq)
+  public final void a(abc paramabc)
   {
-    this.d = ((Long)paramaaq.c.get("param.uinhash")).longValue();
+    this.d = ((Long)paramabc.c.get("param.uinhash")).longValue();
   }
   
   public final void a(JSONObject paramJSONObject)
@@ -33,7 +33,7 @@ public final class vc
       a(i, null);
       return;
     }
-    Object localObject = aac.d(paramJSONObject.getString("data"));
+    Object localObject = aao.d(paramJSONObject.getString("data"));
     if (localObject != null)
     {
       localObject = new JSONObject(new String((byte[])localObject));
@@ -44,9 +44,9 @@ public final class vc
         paramJSONObject = new StringBuilder("parseJSON error seq is wrong seq=");
         paramJSONObject.append(i);
         paramJSONObject.append(",right = ");
-        sa.a();
-        paramJSONObject.append(sa.b());
-        xa.c(paramJSONObject.toString());
+        si.a();
+        paramJSONObject.append(si.b());
+        xj.c(paramJSONObject.toString());
         return;
       }
       long l = ((JSONObject)localObject).getLong("uin");
@@ -61,7 +61,7 @@ public final class vc
         return;
       }
       localObject = ((JSONObject)localObject).getJSONArray("result");
-      if (!this.f.c.a((JSONArray)localObject))
+      if (!this.f.a((JSONArray)localObject))
       {
         paramJSONObject = this.a;
         StringBuilder localStringBuilder = new StringBuilder("update conf list failed:");
@@ -69,14 +69,14 @@ public final class vc
         paramJSONObject.a(10000, localStringBuilder.toString(), null);
         return;
       }
-      xb.a("game_lock", new String(paramJSONObject.toString()));
-      this.f.c.d = true;
-      this.f.c.e = false;
+      xm.a("account_lock", new String(paramJSONObject.toString()));
+      this.f.b.e = true;
+      this.f.b.f = false;
       this.a.a = 0;
       return;
     }
-    xa.c("parseJSON error decodeData=".concat(String.valueOf(localObject)));
-    a(10022, RqdApplication.n().getString(2131493068));
+    xj.c("parseJSON error decodeData=".concat(String.valueOf(localObject)));
+    a(10022, RqdApplication.p().getString(2131493068));
   }
 }
 

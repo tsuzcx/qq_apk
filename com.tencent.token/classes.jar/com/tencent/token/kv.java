@@ -3,6 +3,8 @@ package com.tencent.token;
 public abstract interface kv
 {
   public abstract boolean a();
+  
+  public abstract boolean b();
 }
 
 

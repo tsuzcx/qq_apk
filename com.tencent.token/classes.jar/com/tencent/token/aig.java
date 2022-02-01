@@ -1,85 +1,153 @@
 package com.tencent.token;
 
-import java.io.IOException;
-import java.security.cert.Certificate;
-import java.util.Collections;
-import java.util.List;
-import javax.annotation.Nullable;
-import javax.net.ssl.SSLPeerUnverifiedException;
-import javax.net.ssl.SSLSession;
+import android.annotation.SuppressLint;
+import java.util.Iterator;
+import java.util.LinkedHashMap;
+import java.util.Map.Entry;
+import java.util.Set;
 
-public final class aig
+public class aig<K, V>
 {
-  public final ahy a;
-  public final List<Certificate> b;
-  private final ait c;
-  private final List<Certificate> d;
+  private final LinkedHashMap<K, V> a;
+  public int b;
+  private int c;
+  private int d;
+  private int e;
+  private int f;
+  private int g;
   
-  private aig(ait paramait, ahy paramahy, List<Certificate> paramList1, List<Certificate> paramList2)
+  public aig(int paramInt)
   {
-    this.c = paramait;
-    this.a = paramahy;
-    this.b = paramList1;
-    this.d = paramList2;
+    if (paramInt > 0)
+    {
+      this.b = paramInt;
+      this.a = new LinkedHashMap(0, 0.75F, true);
+      return;
+    }
+    throw new IllegalArgumentException("maxSize <= 0");
   }
   
-  public static aig a(SSLSession paramSSLSession)
+  public final V a(K paramK, V paramV)
   {
-    Object localObject = paramSSLSession.getCipherSuite();
-    ahy localahy;
-    ait localait;
-    if (localObject != null) {
-      if (!"SSL_NULL_WITH_NULL_NULL".equals(localObject))
+    if ((paramK != null) && (paramV != null)) {
+      try
       {
-        localahy = ahy.a((String)localObject);
-        localObject = paramSSLSession.getProtocol();
-        if (localObject != null) {
-          if (!"NONE".equals(localObject)) {
-            localait = ait.a((String)localObject);
+        this.d += 1;
+        this.c += 1;
+        paramK = this.a.put(paramK, paramV);
+        if (paramK != null) {
+          this.c -= 1;
+        }
+        if (paramK != null) {
+          a(paramK);
+        }
+        a(this.b);
+        return paramK;
+      }
+      finally {}
+    }
+    throw new NullPointerException("key == null || value == null");
+  }
+  
+  public final void a()
+  {
+    a(-1);
+  }
+  
+  public final void a(int paramInt)
+  {
+    for (;;)
+    {
+      try
+      {
+        if ((this.c >= 0) && ((!this.a.isEmpty()) || (this.c == 0)))
+        {
+          if ((this.c > paramInt) && (!this.a.isEmpty()))
+          {
+            localObject1 = null;
+            if (this.a.entrySet().iterator().hasNext()) {
+              localObject1 = (Map.Entry)this.a.entrySet().iterator().next();
+            }
+            if (localObject1 == null) {
+              return;
+            }
+            Object localObject3 = ((Map.Entry)localObject1).getKey();
+            localObject1 = ((Map.Entry)localObject1).getValue();
+            this.a.remove(localObject3);
+            this.c -= 1;
+            this.e += 1;
+            a(localObject1);
+            continue;
           }
+          return;
+        }
+        Object localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append(getClass().getName());
+        ((StringBuilder)localObject1).append(".sizeOf() is reporting inconsistent results!");
+        throw new IllegalStateException(((StringBuilder)localObject1).toString());
+      }
+      finally {}
+    }
+  }
+  
+  protected void a(V paramV) {}
+  
+  public final V b(K paramK)
+  {
+    if (paramK != null) {
+      try
+      {
+        paramK = this.a.get(paramK);
+        if (paramK != null)
+        {
+          this.f += 1;
+          return paramK;
+        }
+        this.g += 1;
+        return null;
+      }
+      finally {}
+    }
+    throw new NullPointerException("key == null");
+  }
+  
+  public final V c(K paramK)
+  {
+    if (paramK != null) {
+      try
+      {
+        paramK = this.a.remove(paramK);
+        if (paramK != null) {
+          this.c -= 1;
+        }
+        if (paramK != null) {
+          a(paramK);
+        }
+        return paramK;
+      }
+      finally {}
+    }
+    throw new NullPointerException("key == null");
+  }
+  
+  @SuppressLint({"DefaultLocale"})
+  public final String toString()
+  {
+    for (;;)
+    {
+      try
+      {
+        i = this.f + this.g;
+        if (i != 0)
+        {
+          i = this.f * 100 / i;
+          String str = String.format("LruCache[maxSize=%d,hits=%d,misses=%d,hitRate=%d%%]", new Object[] { Integer.valueOf(this.b), Integer.valueOf(this.f), Integer.valueOf(this.g), Integer.valueOf(i) });
+          return str;
         }
       }
+      finally {}
+      int i = 0;
     }
-    try
-    {
-      localObject = paramSSLSession.getPeerCertificates();
-    }
-    catch (SSLPeerUnverifiedException localSSLPeerUnverifiedException)
-    {
-      label60:
-      break label60;
-    }
-    localObject = null;
-    if (localObject != null) {
-      localObject = aiw.a((Object[])localObject);
-    } else {
-      localObject = Collections.emptyList();
-    }
-    paramSSLSession = paramSSLSession.getLocalCertificates();
-    if (paramSSLSession != null) {
-      paramSSLSession = aiw.a(paramSSLSession);
-    } else {
-      paramSSLSession = Collections.emptyList();
-    }
-    return new aig(localait, localahy, (List)localObject, paramSSLSession);
-    throw new IOException("tlsVersion == NONE");
-    throw new IllegalStateException("tlsVersion == null");
-    throw new IOException("cipherSuite == SSL_NULL_WITH_NULL_NULL");
-    throw new IllegalStateException("cipherSuite == null");
-  }
-  
-  public final boolean equals(@Nullable Object paramObject)
-  {
-    if (!(paramObject instanceof aig)) {
-      return false;
-    }
-    paramObject = (aig)paramObject;
-    return (this.c.equals(paramObject.c)) && (this.a.equals(paramObject.a)) && (this.b.equals(paramObject.b)) && (this.d.equals(paramObject.d));
-  }
-  
-  public final int hashCode()
-  {
-    return (((this.c.hashCode() + 527) * 31 + this.a.hashCode()) * 31 + this.b.hashCode()) * 31 + this.d.hashCode();
   }
 }
 

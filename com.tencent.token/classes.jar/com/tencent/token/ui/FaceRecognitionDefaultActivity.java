@@ -9,19 +9,19 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.token.aac;
-import com.tencent.token.aad;
-import com.tencent.token.ahg;
+import com.tencent.token.aao;
+import com.tencent.token.aap;
+import com.tencent.token.ais;
 import com.tencent.token.core.bean.QQUser;
-import com.tencent.token.ru;
-import com.tencent.token.ru.a;
-import com.tencent.token.sa;
-import com.tencent.token.sz;
-import com.tencent.token.xa;
-import com.tencent.token.yd;
-import com.tencent.token.yd.1;
-import com.tencent.token.yd.2;
-import com.tencent.token.yd.b;
+import com.tencent.token.sc;
+import com.tencent.token.sc.a;
+import com.tencent.token.si;
+import com.tencent.token.th;
+import com.tencent.token.xj;
+import com.tencent.token.yq;
+import com.tencent.token.yq.1;
+import com.tencent.token.yq.2;
+import com.tencent.token.yq.b;
 
 public class FaceRecognitionDefaultActivity
   extends BaseActivity
@@ -64,12 +64,12 @@ public class FaceRecognitionDefaultActivity
     this.fromspalsh = getIntent().getBooleanExtra("fromsplash", false);
     if (i == 1)
     {
-      showOrangeToast(2131493160, 2131100170);
+      showOrangeToast(2131493160, 2131100171);
       AccountPageActivity.mNeedRefreshEval = true;
     }
     else if (i == 2)
     {
-      showOrangeToast(2131493182, 2131100170);
+      showOrangeToast(2131493182, 2131100171);
     }
     this.tv_status = ((TextView)findViewById(2131165519));
     this.tv_iv_facepsw_status = ((TextView)findViewById(2131165480));
@@ -88,7 +88,7 @@ public class FaceRecognitionDefaultActivity
     });
     this.iv_facemobileredicon = ((ImageView)findViewById(2131165477));
     this.face_chanege_pwd = findViewById(2131165478);
-    if (aad.i() == 0) {
+    if (aap.i() == 0) {
       this.face_chanege_pwd.setVisibility(8);
     }
     this.face_chanege_pwd.setOnClickListener(new View.OnClickListener()
@@ -108,10 +108,10 @@ public class FaceRecognitionDefaultActivity
         paramAnonymousView = new Intent(FaceRecognitionDefaultActivity.this, FaceChangeMobileActivity.class);
         paramAnonymousView.putExtra("open_switch", FaceRecognitionDefaultActivity.this.mobile_open_switch);
         FaceRecognitionDefaultActivity.this.startActivity(paramAnonymousView);
-        aac.h("face_changemobile_redtip");
+        aao.h("face_changemobile_redtip");
       }
     });
-    if (aad.n())
+    if (aap.n())
     {
       this.rl_pwd.setVisibility(0);
       this.mFaceStartPswDivider.setVisibility(0);
@@ -121,7 +121,7 @@ public class FaceRecognitionDefaultActivity
       this.rl_pwd.setVisibility(8);
       this.mFaceStartPswDivider.setVisibility(8);
     }
-    if (aad.o())
+    if (aap.o())
     {
       this.face_chanege_pwd.setVisibility(0);
       this.mFaceChPswDivider.setVisibility(0);
@@ -131,7 +131,7 @@ public class FaceRecognitionDefaultActivity
       this.face_chanege_pwd.setVisibility(8);
       this.mFaceChPswDivider.setVisibility(8);
     }
-    if (aad.p())
+    if (aap.p())
     {
       paramBundle.setVisibility(0);
       this.mFaceChmobileDivider.setVisibility(0);
@@ -141,9 +141,9 @@ public class FaceRecognitionDefaultActivity
       paramBundle.setVisibility(8);
       this.mFaceChmobileDivider.setVisibility(8);
     }
-    this.mOrangeView = findViewById(2131166339);
-    this.mOrangeText = ((TextView)findViewById(2131166126));
-    this.mOrangeClose = ((ImageView)findViewById(2131166123));
+    this.mOrangeView = findViewById(2131166341);
+    this.mOrangeText = ((TextView)findViewById(2131166128));
+    this.mOrangeClose = ((ImageView)findViewById(2131166125));
     this.mOrangeText.setText(getResources().getString(2131493130));
     this.mOrangeClose.setImageResource(2131099764);
     this.mOrangeView.setOnClickListener(new View.OnClickListener()
@@ -152,12 +152,12 @@ public class FaceRecognitionDefaultActivity
       {
         paramAnonymousView = new Intent(FaceRecognitionDefaultActivity.this, DownLineNoticeActivity.class);
         FaceRecognitionDefaultActivity.this.startActivity(paramAnonymousView);
-        aad.a("face_downline_notice_clicked");
+        aap.a("face_downline_notice_clicked");
         FaceRecognitionDefaultActivity.this.mOrangeView.setVisibility(8);
       }
     });
-    if ((!aad.n()) && (!aad.o()) && (!aad.p())) {
-      if (aad.b("face_downline_notice_clicked")) {
+    if ((!aap.n()) && (!aap.o()) && (!aap.p())) {
+      if (aap.b("face_downline_notice_clicked")) {
         this.mOrangeView.setVisibility(8);
       } else {
         this.mOrangeView.setVisibility(0);
@@ -189,7 +189,7 @@ public class FaceRecognitionDefaultActivity
   protected void onResume()
   {
     super.onResume();
-    if (aad.e() != 0L)
+    if (aap.e() != 0L)
     {
       this.tv_status.setText(2131493588);
       this.tv_status.setTextAppearance(this, 2131558805);
@@ -199,18 +199,18 @@ public class FaceRecognitionDefaultActivity
       this.tv_status.setText(2131493587);
       this.tv_status.setTextAppearance(this, 2131558806);
     }
-    if (sz.a().k.b() == null)
+    if (th.a().k.b() == null)
     {
       showNoAccountTipDialog(this, 3, 0);
       return;
     }
-    if (!sz.a().k.b().mIsBinded)
+    if (!th.a().k.b().mIsBinded)
     {
       showNoAccountTipDialog(this, 3, 1);
       return;
     }
-    yd localyd = yd.a();
-    Object localObject = new yd.b()
+    yq localyq = yq.a();
+    Object localObject = new yq.b()
     {
       public final void a(int paramAnonymousInt)
       {
@@ -236,7 +236,7 @@ public class FaceRecognitionDefaultActivity
         FaceRecognitionDefaultActivity.access$102((FaceRecognitionDefaultActivity)localObject, bool1);
         localObject = new StringBuilder("psw_open_switch");
         ((StringBuilder)localObject).append(FaceRecognitionDefaultActivity.this.psw_open_switch);
-        xa.a(((StringBuilder)localObject).toString());
+        xj.a(((StringBuilder)localObject).toString());
         if (FaceRecognitionDefaultActivity.this.psw_open_switch)
         {
           FaceRecognitionDefaultActivity.this.tv_iv_facepsw_status.setText(2131493588);
@@ -259,29 +259,29 @@ public class FaceRecognitionDefaultActivity
     };
     if (!isFinishing())
     {
-      QQUser localQQUser = sz.a().k.b();
+      QQUser localQQUser = th.a().k.b();
       if (localQQUser == null)
       {
         localObject = getResources().getString(2131492913);
-        ((BaseActivity)this).showUserDialog(2131492986, (String)localObject, 2131493040, new yd.1(localyd, this), new yd.2(localyd, this));
+        ((BaseActivity)this).showUserDialog(2131492986, (String)localObject, 2131493040, new yq.1(localyq, this), new yq.2(localyq, this));
       }
-      else if (sz.a().e())
+      else if (th.a().e())
       {
-        localyd.c = this;
-        localyd.a = ((yd.b)localObject);
+        localyq.c = this;
+        localyq.a = ((yq.b)localObject);
         if (localQQUser.mRealUin == 0L)
         {
-          ru.a.a().c(localyd.f);
+          sc.a.a().c(localyq.f);
         }
         else
         {
-          localyd.d = 3;
-          sa.a().a(localQQUser.mUin, localQQUser.mRealUin, 3, localyd.f);
+          localyq.d = 3;
+          si.a().a(localQQUser.mUin, localQQUser.mRealUin, 3, localyq.f);
         }
-        ((BaseActivity)this).showProDialog(this, 2131492986, 2131493173, localyd.e);
+        ((BaseActivity)this).showProDialog(this, 2131492986, 2131493173, localyq.e);
       }
     }
-    if ((!aac.i("face_changemobile_redtip")) && (aad.e() == 0L))
+    if ((!aao.i("face_changemobile_redtip")) && (aap.e() == 0L))
     {
       this.iv_facemobileredicon.setVisibility(0);
       return;

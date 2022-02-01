@@ -1,338 +1,928 @@
 package com.tencent.token;
 
-import java.io.Closeable;
-import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import javax.annotation.Nullable;
 
-final class akf
-  implements Closeable
+public final class akf
 {
-  private static final Logger c = Logger.getLogger(aka.class.getName());
-  int a;
-  final ajz.b b;
-  private final akz d;
-  private final boolean e;
-  private final aky f;
-  private boolean g;
+  private static final char[] e = { 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 65, 66, 67, 68, 69, 70 };
+  public final String a;
+  public final String b;
+  public final int c;
+  @Nullable
+  public final List<String> d;
+  private final String f;
+  private final String g;
+  private final List<String> h;
+  @Nullable
+  private final String i;
+  private final String j;
   
-  akf(akz paramakz, boolean paramBoolean)
+  akf(a parama)
   {
-    this.d = paramakz;
-    this.e = paramBoolean;
-    this.f = new aky();
-    this.b = new ajz.b(this.f);
-    this.a = 16384;
+    this.a = parama.a;
+    this.f = a(parama.b, false);
+    this.g = a(parama.c, false);
+    this.b = parama.d;
+    this.c = parama.a();
+    this.h = a(parama.f, false);
+    Object localObject1 = parama.g;
+    Object localObject2 = null;
+    if (localObject1 != null) {
+      localObject1 = a(parama.g, true);
+    } else {
+      localObject1 = null;
+    }
+    this.d = ((List)localObject1);
+    localObject1 = localObject2;
+    if (parama.h != null) {
+      localObject1 = a(parama.h, false);
+    }
+    this.i = ((String)localObject1);
+    this.j = parama.toString();
   }
   
-  private void a(int paramInt1, int paramInt2, byte paramByte1, byte paramByte2)
+  public static int a(String paramString)
   {
-    if (c.isLoggable(Level.FINE)) {
-      c.fine(aka.a(false, paramInt1, paramInt2, paramByte1, paramByte2));
+    if (paramString.equals("http")) {
+      return 80;
     }
-    int i = this.a;
-    if (paramInt2 <= i)
+    if (paramString.equals("https")) {
+      return 443;
+    }
+    return -1;
+  }
+  
+  static String a(String paramString1, int paramInt1, int paramInt2, String paramString2, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4)
+  {
+    int k = paramInt1;
+    while (k < paramInt2)
     {
-      if ((0x80000000 & paramInt1) == 0)
+      int m = paramString1.codePointAt(k);
+      if ((m >= 32) && (m != 127) && ((m < 128) || (!paramBoolean4)) && (paramString2.indexOf(m) == -1) && ((m != 37) || ((paramBoolean1) && ((!paramBoolean2) || (a(paramString1, k, paramInt2))))) && ((m != 43) || (!paramBoolean3)))
       {
-        a(this.d, paramInt2);
-        this.d.h(paramByte1 & 0xFF);
-        this.d.h(paramByte2 & 0xFF);
-        this.d.f(paramInt1 & 0x7FFFFFFF);
-        return;
+        k += Character.charCount(m);
       }
-      throw aka.a("reserved bit set: %s", new Object[] { Integer.valueOf(paramInt1) });
-    }
-    throw aka.a("FRAME_SIZE_ERROR length > %d: %d", new Object[] { Integer.valueOf(i), Integer.valueOf(paramInt2) });
-  }
-  
-  private static void a(akz paramakz, int paramInt)
-  {
-    paramakz.h(paramInt >>> 16 & 0xFF);
-    paramakz.h(paramInt >>> 8 & 0xFF);
-    paramakz.h(paramInt & 0xFF);
-  }
-  
-  private void b(int paramInt, long paramLong)
-  {
-    while (paramLong > 0L)
-    {
-      int i = (int)Math.min(this.a, paramLong);
-      long l = i;
-      paramLong -= l;
-      byte b1;
-      if (paramLong == 0L) {
-        b1 = 4;
-      } else {
-        b1 = 0;
-      }
-      a(paramInt, i, (byte)9, b1);
-      this.d.a_(this.f, l);
-    }
-  }
-  
-  public final void a()
-  {
-    try
-    {
-      if (!this.g)
+      else
       {
-        boolean bool = this.e;
-        if (!bool) {
-          return;
-        }
-        if (c.isLoggable(Level.FINE)) {
-          c.fine(aiw.a(">> CONNECTION %s", new Object[] { aka.a.e() }));
-        }
-        this.d.c(aka.a.h());
-        this.d.flush();
-        return;
-      }
-      throw new IOException("closed");
-    }
-    finally {}
-  }
-  
-  public final void a(int paramInt, long paramLong)
-  {
-    try
-    {
-      if (!this.g)
-      {
-        if ((paramLong != 0L) && (paramLong <= 2147483647L))
+        amv localamv = new amv();
+        localamv.a(paramString1, paramInt1, k);
+        Object localObject3;
+        for (Object localObject1 = null; k < paramInt2; localObject1 = localObject3)
         {
-          a(paramInt, 4, (byte)8, (byte)0);
-          this.d.f((int)paramLong);
-          this.d.flush();
-          return;
-        }
-        throw aka.a("windowSizeIncrement == 0 || windowSizeIncrement > 0x7fffffffL: %s", new Object[] { Long.valueOf(paramLong) });
-      }
-      throw new IOException("closed");
-    }
-    finally {}
-  }
-  
-  public final void a(int paramInt, ajx paramajx)
-  {
-    try
-    {
-      if (!this.g)
-      {
-        if (paramajx.l != -1)
-        {
-          a(paramInt, 4, (byte)3, (byte)0);
-          this.d.f(paramajx.l);
-          this.d.flush();
-          return;
-        }
-        throw new IllegalArgumentException();
-      }
-      throw new IOException("closed");
-    }
-    finally {}
-  }
-  
-  public final void a(int paramInt, ajx paramajx, byte[] paramArrayOfByte)
-  {
-    try
-    {
-      if (!this.g)
-      {
-        if (paramajx.l != -1)
-        {
-          a(0, paramArrayOfByte.length + 8, (byte)7, (byte)0);
-          this.d.f(paramInt);
-          this.d.f(paramajx.l);
-          if (paramArrayOfByte.length > 0) {
-            this.d.c(paramArrayOfByte);
-          }
-          this.d.flush();
-          return;
-        }
-        throw aka.a("errorCode.httpCode == -1", new Object[0]);
-      }
-      throw new IOException("closed");
-    }
-    finally {}
-  }
-  
-  public final void a(aki paramaki)
-  {
-    try
-    {
-      if (!this.g)
-      {
-        int i = this.a;
-        if ((paramaki.a & 0x20) != 0) {
-          i = paramaki.b[5];
-        }
-        this.a = i;
-        if (paramaki.a() != -1) {
-          this.b.a(paramaki.a());
-        }
-        a(0, 0, (byte)4, (byte)1);
-        this.d.flush();
-        return;
-      }
-      throw new IOException("closed");
-    }
-    finally {}
-  }
-  
-  public final void a(boolean paramBoolean, int paramInt1, int paramInt2)
-  {
-    for (;;)
-    {
-      try
-      {
-        if (!this.g)
-        {
-          if (paramBoolean)
+          paramInt1 = paramString1.codePointAt(k);
+          if (paramBoolean1)
           {
-            b1 = 1;
-            a(0, 8, (byte)6, b1);
-            this.d.f(paramInt1);
-            this.d.f(paramInt2);
-            this.d.flush();
-          }
-        }
-        else {
-          throw new IOException("closed");
-        }
-      }
-      finally {}
-      byte b1 = 0;
-    }
-  }
-  
-  public final void a(boolean paramBoolean, int paramInt1, aky paramaky, int paramInt2)
-  {
-    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.copyTypes(TypeTransformer.java:311)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.fixTypes(TypeTransformer.java:226)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:207)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
-  }
-  
-  public final void a(boolean paramBoolean, int paramInt, List<ajy> paramList)
-  {
-    for (;;)
-    {
-      try
-      {
-        if (!this.g)
-        {
-          if (!this.g)
-          {
-            this.b.a(paramList);
-            long l1 = this.f.b;
-            int i = (int)Math.min(this.a, l1);
-            long l2 = i;
-            if (l1 == l2)
+            localObject3 = localObject1;
+            if (paramInt1 != 9)
             {
-              b1 = 4;
-              break label139;
-              a(paramInt, i, (byte)1, b2);
-              this.d.a_(this.f, l2);
-              if (l1 > l2) {
-                b(paramInt, l1 - l2);
+              localObject3 = localObject1;
+              if (paramInt1 != 10)
+              {
+                localObject3 = localObject1;
+                if (paramInt1 != 12)
+                {
+                  localObject3 = localObject1;
+                  if (paramInt1 == 13) {}
+                }
               }
             }
           }
           else
           {
-            throw new IOException("closed");
+            Object localObject2;
+            if ((paramInt1 == 43) && (paramBoolean3))
+            {
+              if (paramBoolean1) {
+                localObject2 = "+";
+              } else {
+                localObject2 = "%2B";
+              }
+              localamv.a((String)localObject2);
+              localObject3 = localObject1;
+            }
+            else if ((paramInt1 >= 32) && (paramInt1 != 127) && ((paramInt1 < 128) || (!paramBoolean4)) && (paramString2.indexOf(paramInt1) == -1) && ((paramInt1 != 37) || ((paramBoolean1) && ((!paramBoolean2) || (a(paramString1, k, paramInt2))))))
+            {
+              localamv.a(paramInt1);
+              localObject3 = localObject1;
+            }
+            else
+            {
+              localObject2 = localObject1;
+              if (localObject1 == null) {
+                localObject2 = new amv();
+              }
+              ((amv)localObject2).a(paramInt1);
+              for (;;)
+              {
+                localObject3 = localObject2;
+                if (((amv)localObject2).c()) {
+                  break;
+                }
+                m = ((amv)localObject2).f() & 0xFF;
+                localamv.b(37);
+                localamv.b(e[(m >> 4 & 0xF)]);
+                localamv.b(e[(m & 0xF)]);
+              }
+            }
           }
+          k += Character.charCount(paramInt1);
         }
-        else {
-          throw new IOException("closed");
+        return localamv.m();
+      }
+    }
+    return paramString1.substring(paramInt1, paramInt2);
+  }
+  
+  static String a(String paramString, int paramInt1, int paramInt2, boolean paramBoolean)
+  {
+    int k = paramInt1;
+    while (k < paramInt2)
+    {
+      int m = paramString.charAt(k);
+      if ((m != 37) && ((m != 43) || (!paramBoolean)))
+      {
+        k += 1;
+      }
+      else
+      {
+        amv localamv = new amv();
+        localamv.a(paramString, paramInt1, k);
+        a(localamv, paramString, k, paramInt2, paramBoolean);
+        return localamv.m();
+      }
+    }
+    return paramString.substring(paramInt1, paramInt2);
+  }
+  
+  static String a(String paramString1, String paramString2, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4)
+  {
+    return a(paramString1, 0, paramString1.length(), paramString2, paramBoolean1, paramBoolean2, paramBoolean3, paramBoolean4);
+  }
+  
+  private static String a(String paramString, boolean paramBoolean)
+  {
+    return a(paramString, 0, paramString.length(), paramBoolean);
+  }
+  
+  private static List<String> a(List<String> paramList, boolean paramBoolean)
+  {
+    int m = paramList.size();
+    ArrayList localArrayList = new ArrayList(m);
+    int k = 0;
+    while (k < m)
+    {
+      String str = (String)paramList.get(k);
+      if (str != null) {
+        str = a(str, paramBoolean);
+      } else {
+        str = null;
+      }
+      localArrayList.add(str);
+      k += 1;
+    }
+    return Collections.unmodifiableList(localArrayList);
+  }
+  
+  private static void a(amv paramamv, String paramString, int paramInt1, int paramInt2, boolean paramBoolean)
+  {
+    while (paramInt1 < paramInt2)
+    {
+      int m = paramString.codePointAt(paramInt1);
+      if (m == 37)
+      {
+        int k = paramInt1 + 2;
+        if (k < paramInt2)
+        {
+          int n = akt.a(paramString.charAt(paramInt1 + 1));
+          int i1 = akt.a(paramString.charAt(k));
+          if ((n == -1) || (i1 == -1)) {
+            break label105;
+          }
+          paramamv.b((n << 4) + i1);
+          paramInt1 = k;
+          break label112;
         }
       }
-      finally {}
-      byte b1 = 0;
-      label139:
-      byte b2 = b1;
-      if (paramBoolean) {
-        b2 = (byte)(b1 | 0x1);
+      if ((m == 43) && (paramBoolean)) {
+        paramamv.b(32);
+      } else {
+        label105:
+        paramamv.a(m);
       }
+      label112:
+      paramInt1 += Character.charCount(m);
     }
   }
   
-  public final void b()
+  static void a(StringBuilder paramStringBuilder, List<String> paramList)
+  {
+    int m = paramList.size();
+    int k = 0;
+    while (k < m)
+    {
+      paramStringBuilder.append('/');
+      paramStringBuilder.append((String)paramList.get(k));
+      k += 1;
+    }
+  }
+  
+  private static boolean a(String paramString, int paramInt1, int paramInt2)
+  {
+    int k = paramInt1 + 2;
+    return (k < paramInt2) && (paramString.charAt(paramInt1) == '%') && (akt.a(paramString.charAt(paramInt1 + 1)) != -1) && (akt.a(paramString.charAt(k)) != -1);
+  }
+  
+  static List<String> b(String paramString)
+  {
+    ArrayList localArrayList = new ArrayList();
+    int m;
+    for (int k = 0; k <= paramString.length(); k = m + 1)
+    {
+      int n = paramString.indexOf('&', k);
+      m = n;
+      if (n == -1) {
+        m = paramString.length();
+      }
+      n = paramString.indexOf('=', k);
+      if ((n != -1) && (n <= m))
+      {
+        localArrayList.add(paramString.substring(k, n));
+        localArrayList.add(paramString.substring(n + 1, m));
+      }
+      else
+      {
+        localArrayList.add(paramString.substring(k, m));
+        localArrayList.add(null);
+      }
+    }
+    return localArrayList;
+  }
+  
+  public static void b(StringBuilder paramStringBuilder, List<String> paramList)
+  {
+    int m = paramList.size();
+    int k = 0;
+    while (k < m)
+    {
+      String str1 = (String)paramList.get(k);
+      String str2 = (String)paramList.get(k + 1);
+      if (k > 0) {
+        paramStringBuilder.append('&');
+      }
+      paramStringBuilder.append(str1);
+      if (str2 != null)
+      {
+        paramStringBuilder.append('=');
+        paramStringBuilder.append(str2);
+      }
+      k += 2;
+    }
+  }
+  
+  public static akf d(String paramString)
+  {
+    return new a().a(null, paramString).b();
+  }
+  
+  public final URI a()
+  {
+    Object localObject2 = new a();
+    ((a)localObject2).a = this.a;
+    ((a)localObject2).b = c();
+    ((a)localObject2).c = d();
+    ((a)localObject2).d = this.b;
+    if (this.c != a(this.a)) {
+      k = this.c;
+    } else {
+      k = -1;
+    }
+    ((a)localObject2).e = k;
+    ((a)localObject2).f.clear();
+    ((a)localObject2).f.addAll(f());
+    ((a)localObject2).a(g());
+    Object localObject1;
+    if (this.i == null)
+    {
+      localObject1 = null;
+    }
+    else
+    {
+      k = this.j.indexOf('#');
+      localObject1 = this.j.substring(k + 1);
+    }
+    ((a)localObject2).h = ((String)localObject1);
+    int n = ((a)localObject2).f.size();
+    int m = 0;
+    int k = 0;
+    while (k < n)
+    {
+      localObject1 = (String)((a)localObject2).f.get(k);
+      ((a)localObject2).f.set(k, a((String)localObject1, "[]", true, true, false, true));
+      k += 1;
+    }
+    if (((a)localObject2).g != null)
+    {
+      n = ((a)localObject2).g.size();
+      k = m;
+      while (k < n)
+      {
+        localObject1 = (String)((a)localObject2).g.get(k);
+        if (localObject1 != null) {
+          ((a)localObject2).g.set(k, a((String)localObject1, "\\^`{|}", true, true, true, true));
+        }
+        k += 1;
+      }
+    }
+    if (((a)localObject2).h != null) {
+      ((a)localObject2).h = a(((a)localObject2).h, " \"#<>\\^`{|}", true, true, false, false);
+    }
+    localObject2 = ((a)localObject2).toString();
+    try
+    {
+      localObject1 = new URI((String)localObject2);
+      return localObject1;
+    }
+    catch (URISyntaxException localURISyntaxException) {}
+    try
+    {
+      localObject2 = URI.create(((String)localObject2).replaceAll("[\\u0000-\\u001F\\u007F-\\u009F\\p{javaWhitespace}]", ""));
+      return localObject2;
+    }
+    catch (Exception localException)
+    {
+      label366:
+      break label366;
+    }
+    throw new RuntimeException(localURISyntaxException);
+  }
+  
+  public final boolean b()
+  {
+    return this.a.equals("https");
+  }
+  
+  @Nullable
+  public final a c(String paramString)
   {
     try
     {
-      if (!this.g)
-      {
-        this.d.flush();
-        return;
-      }
-      throw new IOException("closed");
+      paramString = new a().a(this, paramString);
+      return paramString;
     }
-    finally {}
+    catch (IllegalArgumentException paramString)
+    {
+      label15:
+      break label15;
+    }
+    return null;
   }
   
-  public final void b(aki paramaki)
+  public final String c()
   {
-    for (;;)
+    if (this.f.isEmpty()) {
+      return "";
+    }
+    int k = this.a.length() + 3;
+    String str = this.j;
+    int m = akt.a(str, k, str.length(), ":@");
+    return this.j.substring(k, m);
+  }
+  
+  public final String d()
+  {
+    if (this.g.isEmpty()) {
+      return "";
+    }
+    int k = this.j.indexOf(':', this.a.length() + 3);
+    int m = this.j.indexOf('@');
+    return this.j.substring(k + 1, m);
+  }
+  
+  public final String e()
+  {
+    int k = this.j.indexOf('/', this.a.length() + 3);
+    String str = this.j;
+    int m = akt.a(str, k, str.length(), "?#");
+    return this.j.substring(k, m);
+  }
+  
+  public final boolean equals(@Nullable Object paramObject)
+  {
+    return ((paramObject instanceof akf)) && (((akf)paramObject).j.equals(this.j));
+  }
+  
+  public final List<String> f()
+  {
+    int k = this.j.indexOf('/', this.a.length() + 3);
+    Object localObject = this.j;
+    int m = akt.a((String)localObject, k, ((String)localObject).length(), "?#");
+    localObject = new ArrayList();
+    while (k < m)
     {
-      int j;
-      int i;
-      try
+      int n = k + 1;
+      k = akt.a(this.j, n, m, '/');
+      ((List)localObject).add(this.j.substring(n, k));
+    }
+    return localObject;
+  }
+  
+  @Nullable
+  public final String g()
+  {
+    if (this.d == null) {
+      return null;
+    }
+    int k = this.j.indexOf('?') + 1;
+    String str = this.j;
+    int m = akt.a(str, k, str.length(), '#');
+    return this.j.substring(k, m);
+  }
+  
+  public final int hashCode()
+  {
+    return this.j.hashCode();
+  }
+  
+  public final String toString()
+  {
+    return this.j;
+  }
+  
+  public static final class a
+  {
+    @Nullable
+    String a;
+    String b = "";
+    String c = "";
+    @Nullable
+    String d;
+    int e = -1;
+    final List<String> f = new ArrayList();
+    @Nullable
+    List<String> g;
+    @Nullable
+    String h;
+    
+    public a()
+    {
+      this.f.add("");
+    }
+    
+    static String a(String paramString, int paramInt1, int paramInt2)
+    {
+      return akt.a(akf.a(paramString, paramInt1, paramInt2, false));
+    }
+    
+    private void b(String paramString, int paramInt1, int paramInt2)
+    {
+      if (paramInt1 == paramInt2) {
+        return;
+      }
+      int i = paramString.charAt(paramInt1);
+      Object localObject;
+      if ((i != 47) && (i != 92))
       {
-        if (!this.g)
-        {
-          j = Integer.bitCount(paramaki.a);
+        localObject = this.f;
+        ((List)localObject).set(((List)localObject).size() - 1, "");
+      }
+      else
+      {
+        this.f.clear();
+        this.f.add("");
+        paramInt1 += 1;
+      }
+      while (paramInt1 < paramInt2)
+      {
+        int j = akt.a(paramString, paramInt1, paramInt2, "/\\");
+        int k = 0;
+        if (j < paramInt2) {
+          i = 1;
+        } else {
           i = 0;
-          a(0, j * 6, (byte)4, (byte)0);
-          if (i < 10)
+        }
+        localObject = akf.a(paramString, paramInt1, j, " \"<>^`{}|/\\?#", true, false, false, true);
+        if ((!((String)localObject).equals(".")) && (!((String)localObject).equalsIgnoreCase("%2e"))) {
+          paramInt1 = 0;
+        } else {
+          paramInt1 = 1;
+        }
+        if (paramInt1 == 0)
+        {
+          if ((!((String)localObject).equals("..")) && (!((String)localObject).equalsIgnoreCase("%2e.")) && (!((String)localObject).equalsIgnoreCase(".%2e")))
           {
-            if (!paramaki.a(i)) {
-              break label127;
-            }
-            if (i == 4)
+            paramInt1 = k;
+            if (!((String)localObject).equalsIgnoreCase("%2e%2e")) {}
+          }
+          else
+          {
+            paramInt1 = 1;
+          }
+          if (paramInt1 != 0)
+          {
+            localObject = this.f;
+            if ((((String)((List)localObject).remove(((List)localObject).size() - 1)).isEmpty()) && (!this.f.isEmpty()))
             {
-              j = 3;
-              this.d.g(j);
-              this.d.f(paramaki.b[i]);
-              break label127;
+              localObject = this.f;
+              ((List)localObject).set(((List)localObject).size() - 1, "");
+            }
+            else
+            {
+              this.f.add("");
             }
           }
           else
           {
-            this.d.flush();
+            List localList = this.f;
+            if (((String)localList.get(localList.size() - 1)).isEmpty())
+            {
+              localList = this.f;
+              localList.set(localList.size() - 1, localObject);
+            }
+            else
+            {
+              this.f.add(localObject);
+            }
+            if (i != 0) {
+              this.f.add("");
+            }
+          }
+        }
+        paramInt1 = j;
+        if (i != 0) {
+          paramInt1 = j + 1;
+        }
+      }
+    }
+    
+    private static int c(String paramString, int paramInt1, int paramInt2)
+    {
+      if (paramInt2 - paramInt1 < 2) {
+        return -1;
+      }
+      int j = paramString.charAt(paramInt1);
+      int i;
+      if (j >= 97)
+      {
+        i = paramInt1;
+        if (j <= 122) {}
+      }
+      else
+      {
+        if (j < 65) {
+          break label154;
+        }
+        i = paramInt1;
+        if (j > 90) {
+          return -1;
+        }
+      }
+      do
+      {
+        do
+        {
+          do
+          {
+            do
+            {
+              do
+              {
+                do
+                {
+                  paramInt1 = i + 1;
+                  if (paramInt1 >= paramInt2) {
+                    break label152;
+                  }
+                  j = paramString.charAt(paramInt1);
+                  if (j < 97) {
+                    break;
+                  }
+                  i = paramInt1;
+                } while (j <= 122);
+                if (j < 65) {
+                  break;
+                }
+                i = paramInt1;
+              } while (j <= 90);
+              if (j < 48) {
+                break;
+              }
+              i = paramInt1;
+            } while (j <= 57);
+            i = paramInt1;
+          } while (j == 43);
+          i = paramInt1;
+        } while (j == 45);
+        i = paramInt1;
+      } while (j == 46);
+      if (j == 58) {
+        return paramInt1;
+      }
+      return -1;
+      label152:
+      return -1;
+      label154:
+      return -1;
+    }
+    
+    private static int d(String paramString, int paramInt1, int paramInt2)
+    {
+      int i = 0;
+      while (paramInt1 < paramInt2)
+      {
+        int j = paramString.charAt(paramInt1);
+        if ((j != 92) && (j != 47)) {
+          break;
+        }
+        i += 1;
+        paramInt1 += 1;
+      }
+      return i;
+    }
+    
+    private static int e(String paramString, int paramInt1, int paramInt2)
+    {
+      while (paramInt1 < paramInt2)
+      {
+        int j = paramString.charAt(paramInt1);
+        if (j != 58)
+        {
+          int i = paramInt1;
+          if (j != 91)
+          {
+            i = paramInt1;
+          }
+          else
+          {
+            do
+            {
+              paramInt1 = i + 1;
+              i = paramInt1;
+              if (paramInt1 >= paramInt2) {
+                break;
+              }
+              i = paramInt1;
+            } while (paramString.charAt(paramInt1) != ']');
+            i = paramInt1;
+          }
+          paramInt1 = i + 1;
+        }
+        else
+        {
+          return paramInt1;
+        }
+      }
+      return paramInt2;
+    }
+    
+    private static int f(String paramString, int paramInt1, int paramInt2)
+    {
+      try
+      {
+        paramInt1 = Integer.parseInt(akf.a(paramString, paramInt1, paramInt2, "", false, false, false, true));
+        if ((paramInt1 > 0) && (paramInt1 <= 65535)) {
+          return paramInt1;
+        }
+        return -1;
+      }
+      catch (NumberFormatException paramString) {}
+      return -1;
+    }
+    
+    final int a()
+    {
+      int i = this.e;
+      if (i != -1) {
+        return i;
+      }
+      return akf.a(this.a);
+    }
+    
+    final a a(@Nullable akf paramakf, String paramString)
+    {
+      int i = akt.a(paramString, 0, paramString.length());
+      int i1 = akt.b(paramString, i, paramString.length());
+      int j = c(paramString, i, i1);
+      if (j != -1)
+      {
+        if (paramString.regionMatches(true, i, "https:", 0, 6))
+        {
+          this.a = "https";
+          i += 6;
+        }
+        else if (paramString.regionMatches(true, i, "http:", 0, 5))
+        {
+          this.a = "http";
+          i += 5;
+        }
+        else
+        {
+          paramakf = new StringBuilder("Expected URL scheme 'http' or 'https' but was '");
+          paramakf.append(paramString.substring(0, j));
+          paramakf.append("'");
+          throw new IllegalArgumentException(paramakf.toString());
+        }
+      }
+      else
+      {
+        if (paramakf == null) {
+          break label829;
+        }
+        this.a = paramakf.a;
+      }
+      j = d(paramString, i, i1);
+      if ((j < 2) && (paramakf != null) && (paramakf.a.equals(this.a)))
+      {
+        this.b = paramakf.c();
+        this.c = paramakf.d();
+        this.d = paramakf.b;
+        this.e = paramakf.c;
+        this.f.clear();
+        this.f.addAll(paramakf.f());
+        if (i != i1)
+        {
+          j = i;
+          if (paramString.charAt(i) != '#') {}
+        }
+        else
+        {
+          a(paramakf.g());
+          j = i;
+        }
+      }
+      else
+      {
+        k = i + j;
+        i = 0;
+        int m = 0;
+        for (;;)
+        {
+          j = akt.a(paramString, k, i1, "@/\\?#");
+          int n;
+          if (j != i1) {
+            n = paramString.charAt(j);
+          } else {
+            n = -1;
+          }
+          if ((n == -1) || (n == 35) || (n == 47) || (n == 92)) {
+            break;
+          }
+          switch (n)
+          {
+          default: 
+            break;
+          case 64: 
+            if (i == 0)
+            {
+              int i2 = akt.a(paramString, k, j, ':');
+              n = j;
+              String str = akf.a(paramString, k, i2, " \"':;<=>@[]^`{}|/\\?#", true, false, false, true);
+              paramakf = str;
+              if (m != 0)
+              {
+                paramakf = new StringBuilder();
+                paramakf.append(this.b);
+                paramakf.append("%40");
+                paramakf.append(str);
+                paramakf = paramakf.toString();
+              }
+              this.b = paramakf;
+              if (i2 != n)
+              {
+                this.c = akf.a(paramString, i2 + 1, n, " \"':;<=>@[]^`{}|/\\?#", true, false, false, true);
+                i = 1;
+              }
+              m = 1;
+            }
+            else
+            {
+              paramakf = new StringBuilder();
+              paramakf.append(this.c);
+              paramakf.append("%40");
+              paramakf.append(akf.a(paramString, k, j, " \"':;<=>@[]^`{}|/\\?#", true, false, false, true));
+              this.c = paramakf.toString();
+            }
+            k = j + 1;
+          }
+        }
+        i = e(paramString, k, j);
+        m = i + 1;
+        if (m < j)
+        {
+          this.d = a(paramString, k, i);
+          this.e = f(paramString, m, j);
+          if (this.e == -1)
+          {
+            paramakf = new StringBuilder("Invalid URL port: \"");
+            paramakf.append(paramString.substring(m, j));
+            paramakf.append('"');
+            throw new IllegalArgumentException(paramakf.toString());
           }
         }
         else
         {
-          throw new IOException("closed");
+          this.d = a(paramString, k, i);
+          this.e = akf.a(this.a);
+        }
+        if (this.d == null) {
+          break label788;
         }
       }
-      finally {}
-      if (i == 7)
+      int k = akt.a(paramString, j, i1, "?#");
+      b(paramString, j, k);
+      i = k;
+      if (k < i1)
       {
-        j = 4;
+        i = k;
+        if (paramString.charAt(k) == '?')
+        {
+          i = akt.a(paramString, k, i1, '#');
+          this.g = akf.b(akf.a(paramString, k + 1, i, " \"'<>#", true, false, true, true));
+        }
+      }
+      if ((i < i1) && (paramString.charAt(i) == '#')) {
+        this.h = akf.a(paramString, 1 + i, i1, "", true, false, false, false);
+      }
+      return this;
+      label788:
+      paramakf = new StringBuilder("Invalid URL host: \"");
+      paramakf.append(paramString.substring(k, i));
+      paramakf.append('"');
+      throw new IllegalArgumentException(paramakf.toString());
+      label829:
+      throw new IllegalArgumentException("Expected URL scheme 'http' or 'https' but no colon was found");
+    }
+    
+    public final a a(@Nullable String paramString)
+    {
+      if (paramString != null) {
+        paramString = akf.b(akf.a(paramString, " \"'<>#", true, false, true, true));
+      } else {
+        paramString = null;
+      }
+      this.g = paramString;
+      return this;
+    }
+    
+    public final akf b()
+    {
+      if (this.a != null)
+      {
+        if (this.d != null) {
+          return new akf(this);
+        }
+        throw new IllegalStateException("host == null");
+      }
+      throw new IllegalStateException("scheme == null");
+    }
+    
+    public final String toString()
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(this.a);
+      localStringBuilder.append("://");
+      if ((!this.b.isEmpty()) || (!this.c.isEmpty()))
+      {
+        localStringBuilder.append(this.b);
+        if (!this.c.isEmpty())
+        {
+          localStringBuilder.append(':');
+          localStringBuilder.append(this.c);
+        }
+        localStringBuilder.append('@');
+      }
+      if (this.d.indexOf(':') != -1)
+      {
+        localStringBuilder.append('[');
+        localStringBuilder.append(this.d);
+        localStringBuilder.append(']');
       }
       else
       {
-        j = i;
-        continue;
-        label127:
-        i += 1;
+        localStringBuilder.append(this.d);
       }
-    }
-  }
-  
-  public final void close()
-  {
-    try
-    {
-      this.g = true;
-      this.d.close();
-      return;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
+      int i = a();
+      if (i != akf.a(this.a))
+      {
+        localStringBuilder.append(':');
+        localStringBuilder.append(i);
+      }
+      akf.a(localStringBuilder, this.f);
+      if (this.g != null)
+      {
+        localStringBuilder.append('?');
+        akf.b(localStringBuilder, this.g);
+      }
+      if (this.h != null)
+      {
+        localStringBuilder.append('#');
+        localStringBuilder.append(this.h);
+      }
+      return localStringBuilder.toString();
     }
   }
 }

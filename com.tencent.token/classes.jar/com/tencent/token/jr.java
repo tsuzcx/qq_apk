@@ -7,21 +7,36 @@ import com.qq.taf.jce.JceStruct;
 public final class jr
   extends JceStruct
 {
+  static byte[] g;
+  static byte[] h;
   public long a = 0L;
   public long b = 0L;
   public String c = "";
-  public int d = 0;
-  public int e = 0;
-  public String f = "";
+  public byte[] d = null;
+  public byte[] e = null;
+  public int f = 0;
   
   public final void readFrom(JceInputStream paramJceInputStream)
   {
     this.a = paramJceInputStream.read(this.a, 0, true);
     this.b = paramJceInputStream.read(this.b, 1, true);
     this.c = paramJceInputStream.readString(2, true);
-    this.d = paramJceInputStream.read(this.d, 3, true);
-    this.e = paramJceInputStream.read(this.e, 4, true);
-    this.f = paramJceInputStream.readString(5, true);
+    byte[] arrayOfByte;
+    if (g == null)
+    {
+      arrayOfByte = (byte[])new byte[1];
+      g = arrayOfByte;
+      ((byte[])arrayOfByte)[0] = 0;
+    }
+    this.d = ((byte[])paramJceInputStream.read(g, 3, true));
+    if (h == null)
+    {
+      arrayOfByte = (byte[])new byte[1];
+      h = arrayOfByte;
+      ((byte[])arrayOfByte)[0] = 0;
+    }
+    this.e = ((byte[])paramJceInputStream.read(h, 4, true));
+    this.f = paramJceInputStream.read(this.f, 5, true);
   }
   
   public final void writeTo(JceOutputStream paramJceOutputStream)

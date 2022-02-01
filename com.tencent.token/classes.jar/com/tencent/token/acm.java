@@ -1,28 +1,26 @@
 package com.tencent.token;
 
-import android.os.Handler;
-import android.os.HandlerThread;
+import android.app.Activity;
+import android.app.Application.ActivityLifecycleCallbacks;
+import android.os.Bundle;
 
-public final class acm
+public abstract class acm
+  implements Application.ActivityLifecycleCallbacks
 {
-  public static final afj<acm> a = new a();
-  public Handler b;
+  public abstract void a(Activity paramActivity);
   
-  public acm()
+  public void onActivityCreated(Activity paramActivity, Bundle paramBundle) {}
+  
+  public void onActivityDestroyed(Activity paramActivity) {}
+  
+  public void onActivitySaveInstanceState(Activity paramActivity, Bundle paramBundle) {}
+  
+  public void onActivityStarted(Activity paramActivity)
   {
-    HandlerThread localHandlerThread = new HandlerThread("TuringMMWorker");
-    localHandlerThread.start();
-    this.b = new Handler(localHandlerThread.getLooper());
+    a(paramActivity);
   }
   
-  public static final class a
-    extends afj<acm>
-  {
-    public final Object a()
-    {
-      return new acm((byte)0);
-    }
-  }
+  public void onActivityStopped(Activity paramActivity) {}
 }
 
 

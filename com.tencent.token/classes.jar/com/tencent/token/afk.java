@@ -1,1007 +1,185 @@
 package com.tencent.token;
 
-import TT;;
-import com.tencent.turingfd.sdk.base.break;
-import com.tencent.turingfd.sdk.base.goto;
-import java.io.UnsupportedEncodingException;
-import java.lang.reflect.Array;
-import java.nio.BufferUnderflowException;
-import java.nio.ByteBuffer;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
+import android.content.Context;
+import android.os.Handler;
+import android.os.HandlerThread;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public final class afk
 {
-  public ByteBuffer a;
-  public String b = "GBK";
+  public static final agi<afk> a = new a();
+  public static agr b;
+  public static int c = -1;
+  public static final int[] d = { 1, 5, 4, 8, 9, 2 };
+  public Context e;
+  public final Handler f;
+  public AtomicBoolean g = new AtomicBoolean(false);
+  public afe h;
   
-  public afk(byte[] paramArrayOfByte)
+  public afk()
   {
-    this.a = ByteBuffer.wrap(paramArrayOfByte);
+    HandlerThread localHandlerThread = new HandlerThread("TuringMMCore");
+    localHandlerThread.start();
+    this.f = new Handler(localHandlerThread.getLooper());
   }
   
-  private byte a(byte paramByte, int paramInt, boolean paramBoolean)
+  /* Error */
+  public static boolean a(aet paramaet, com.tencent.turingfd.sdk.qps.Codlin paramCodlin)
   {
-    if (a(paramInt))
-    {
-      ByteBuffer localByteBuffer = this.a;
-      paramInt = localByteBuffer.get();
-      int i = (byte)(paramInt & 0xF);
-      if ((paramInt & 0xF0) >> 4 == 15) {
-        localByteBuffer.get();
-      }
-      if (i != 0)
-      {
-        if (i != 11)
-        {
-          if (i == 12) {
-            return 0;
-          }
-          throw new goto("type mismatch.");
-        }
-      }
-      else {
-        return this.a.get();
-      }
-    }
-    else
-    {
-      if (paramBoolean) {
-        break label90;
-      }
-    }
-    return paramByte;
-    label90:
-    throw new goto("require field not exist.");
+    // Byte code:
+    //   0: getstatic 71	com/tencent/token/ago:a	Ljava/lang/String;
+    //   3: astore_3
+    //   4: getstatic 73	com/tencent/token/ago:b	Ljava/lang/String;
+    //   7: astore_3
+    //   8: aload_0
+    //   9: checkcast 75	com/tencent/token/aej
+    //   12: astore_3
+    //   13: aload_3
+    //   14: invokevirtual 79	java/lang/Object:getClass	()Ljava/lang/Class;
+    //   17: pop
+    //   18: ldc 81
+    //   20: monitorenter
+    //   21: getstatic 83	com/tencent/token/agn:a	Landroid/content/Context;
+    //   24: astore_0
+    //   25: ldc 81
+    //   27: monitorexit
+    //   28: invokestatic 88	com/tencent/token/ags:a	()I
+    //   31: istore_2
+    //   32: iload_2
+    //   33: ifeq +11 -> 44
+    //   36: iload_2
+    //   37: invokestatic 93	com/tencent/token/adt:a	(I)Lcom/tencent/token/adt;
+    //   40: astore_0
+    //   41: goto +13 -> 54
+    //   44: getstatic 98	com/tencent/token/aec:a	Lcom/tencent/token/aec;
+    //   47: aload_0
+    //   48: iconst_1
+    //   49: iconst_1
+    //   50: invokevirtual 101	com/tencent/token/aec:a	(Landroid/content/Context;ZI)Lcom/tencent/token/adt;
+    //   53: astore_0
+    //   54: aload_1
+    //   55: aload_0
+    //   56: getfield 102	com/tencent/token/adt:b	Ljava/lang/String;
+    //   59: putfield 107	com/tencent/turingfd/sdk/qps/Codlin:y	Ljava/lang/String;
+    //   62: new 109	com/tencent/turingfd/sdk/qps/Fig
+    //   65: dup
+    //   66: invokespecial 110	com/tencent/turingfd/sdk/qps/Fig:<init>	()V
+    //   69: astore 5
+    //   71: aload 5
+    //   73: sipush -999
+    //   76: putfield 112	com/tencent/turingfd/sdk/qps/Fig:b	I
+    //   79: aload_1
+    //   80: getstatic 117	com/tencent/token/adz:f	Lcom/tencent/turingfd/sdk/qps/Cumquat;
+    //   83: putfield 120	com/tencent/turingfd/sdk/qps/Codlin:D	Lcom/tencent/turingfd/sdk/qps/Cumquat;
+    //   86: aconst_null
+    //   87: astore_0
+    //   88: invokestatic 125	com/tencent/token/acy:a	()Lcom/tencent/token/acy;
+    //   91: astore 4
+    //   93: aload 4
+    //   95: monitorenter
+    //   96: aload 4
+    //   98: sipush 4103
+    //   101: sipush 14103
+    //   104: iconst_2
+    //   105: aload_1
+    //   106: aload 5
+    //   108: aconst_null
+    //   109: ldc2_w 126
+    //   112: invokevirtual 130	com/tencent/token/acy:a	(IIILcom/tencent/turingfd/sdk/qps/final;Lcom/tencent/turingfd/sdk/qps/final;[BJ)Lcom/tencent/token/ada;
+    //   115: astore_1
+    //   116: aload 4
+    //   118: monitorexit
+    //   119: aload_1
+    //   120: getfield 135	com/tencent/token/ada:b	[B
+    //   123: aload_1
+    //   124: getfield 138	com/tencent/token/ada:c	Lcom/tencent/turingfd/sdk/qps/final;
+    //   127: invokestatic 141	com/tencent/token/agn:a	([BLcom/tencent/turingfd/sdk/qps/final;)Lcom/tencent/turingfd/sdk/qps/final;
+    //   130: ifnull +18 -> 148
+    //   133: aload_1
+    //   134: getfield 135	com/tencent/token/ada:b	[B
+    //   137: aload_1
+    //   138: getfield 138	com/tencent/token/ada:c	Lcom/tencent/turingfd/sdk/qps/final;
+    //   141: invokestatic 141	com/tencent/token/agn:a	([BLcom/tencent/turingfd/sdk/qps/final;)Lcom/tencent/turingfd/sdk/qps/final;
+    //   144: checkcast 109	com/tencent/turingfd/sdk/qps/Fig
+    //   147: astore_0
+    //   148: getstatic 143	com/tencent/token/adz:e	Lcom/tencent/token/agr;
+    //   151: invokevirtual 79	java/lang/Object:getClass	()Ljava/lang/Class;
+    //   154: pop
+    //   155: aload_0
+    //   156: ifnull +63 -> 219
+    //   159: aload_0
+    //   160: getfield 112	com/tencent/turingfd/sdk/qps/Fig:b	I
+    //   163: ifne +56 -> 219
+    //   166: getstatic 146	com/tencent/token/adz:g	Z
+    //   169: ifeq +7 -> 176
+    //   172: invokestatic 149	com/tencent/token/adz:a	()Z
+    //   175: pop
+    //   176: aload_3
+    //   177: getfield 152	com/tencent/token/aej:a	Lcom/tencent/token/aeq;
+    //   180: astore_1
+    //   181: aload_1
+    //   182: invokevirtual 79	java/lang/Object:getClass	()Ljava/lang/Class;
+    //   185: pop
+    //   186: invokestatic 158	java/lang/System:currentTimeMillis	()J
+    //   189: pop2
+    //   190: aload_1
+    //   191: getfield 163	com/tencent/token/aeq:c	Lcom/tencent/token/adh;
+    //   194: invokestatic 158	java/lang/System:currentTimeMillis	()J
+    //   197: invokestatic 169	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   200: invokevirtual 174	com/tencent/token/adh:a	(Ljava/lang/Object;)V
+    //   203: invokestatic 179	com/tencent/token/abz:a	()Lcom/tencent/token/abz;
+    //   206: pop
+    //   207: aload_1
+    //   208: getfield 181	com/tencent/token/aeq:d	Landroid/content/Context;
+    //   211: aload_1
+    //   212: getfield 183	com/tencent/token/aeq:g	I
+    //   215: aload_1
+    //   216: invokestatic 186	com/tencent/token/abz:a	(Landroid/content/Context;ILcom/tencent/token/aeq;)V
+    //   219: aload_0
+    //   220: ifnull +12 -> 232
+    //   223: aload_0
+    //   224: getfield 112	com/tencent/turingfd/sdk/qps/Fig:b	I
+    //   227: ifne +5 -> 232
+    //   230: iconst_1
+    //   231: ireturn
+    //   232: iconst_0
+    //   233: ireturn
+    //   234: astore_0
+    //   235: aload 4
+    //   237: monitorexit
+    //   238: aload_0
+    //   239: athrow
+    //   240: astore_0
+    //   241: ldc 81
+    //   243: monitorexit
+    //   244: aload_0
+    //   245: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	246	0	paramaet	aet
+    //   0	246	1	paramCodlin	com.tencent.turingfd.sdk.qps.Codlin
+    //   31	6	2	i	int
+    //   3	174	3	localObject	Object
+    //   69	38	5	localFig	com.tencent.turingfd.sdk.qps.Fig
+    // Exception table:
+    //   from	to	target	type
+    //   96	116	234	finally
+    //   21	25	240	finally
   }
   
-  private void a()
+  public final class a
+    extends agi<afk>
   {
-    byte b1;
-    do
+    public final Object a()
     {
-      if (this.a.remaining() == 0) {
-        break;
-      }
-      ByteBuffer localByteBuffer = this.a;
-      int i = localByteBuffer.get();
-      b1 = (byte)(i & 0xF);
-      if ((i & 0xF0) >> 4 == 15) {
-        localByteBuffer.get();
-      }
-      a(b1);
-    } while (b1 != 11);
-  }
-  
-  private void a(byte paramByte)
-  {
-    byte b2 = 0;
-    byte b1 = 0;
-    switch (paramByte)
-    {
-    default: 
-      throw new goto("invalid type.");
-    case 13: 
-      Object localObject = this.a;
-      b1 = ((ByteBuffer)localObject).get();
-      b2 = (byte)(b1 & 0xF);
-      if ((b1 & 0xF0) >> 4 == 15) {
-        ((ByteBuffer)localObject).get();
-      }
-      if (b2 == 0)
-      {
-        b(a(0, 0, true));
-        return;
-      }
-      localObject = new StringBuilder("skipField with invalid type, type value: ");
-      ((StringBuilder)localObject).append(paramByte);
-      ((StringBuilder)localObject).append(", ");
-      ((StringBuilder)localObject).append(b2);
-      throw new goto(((StringBuilder)localObject).toString());
-    case 10: 
-      a();
-      return;
-    case 9: 
-      b2 = a(0, 0, true);
-      paramByte = b1;
-    case 8: 
-    case 7: 
-    case 6: 
-    case 5: 
-    case 4: 
-    case 3: 
-    case 2: 
-    case 1: 
-    case 0: 
-      while (paramByte < b2)
-      {
-        b();
-        paramByte += 1;
-        continue;
-        b1 = a(0, 0, true);
-        paramByte = b2;
-        while (paramByte < b1 * 2)
-        {
-          b();
-          paramByte += 1;
-          continue;
-          b(this.a.getInt());
-          return;
-          b1 = this.a.get();
-          paramByte = b1;
-          if (b1 < 0) {
-            paramByte = b1 + 256;
-          }
-          b(paramByte);
-          return;
-          b(8);
-          return;
-          b(4);
-          return;
-          b(8);
-          return;
-          b(4);
-          return;
-          b(2);
-          return;
-          b(1);
-        }
-      }
-    }
-  }
-  
-  private boolean a(int paramInt)
-  {
-    for (;;)
-    {
-      try
-      {
-        ByteBuffer localByteBuffer = this.a.duplicate();
-        i = localByteBuffer.get();
-        byte b1 = (byte)(i & 0xF);
-        int j = (i & 0xF0) >> 4;
-        if (j == 15)
-        {
-          j = localByteBuffer.get() & 0xFF;
-          i = 2;
-          if ((paramInt > j) && (b1 != 11))
-          {
-            b(i);
-            a(b1);
-            continue;
-          }
-          return paramInt == j;
-        }
-      }
-      catch (goto|BufferUnderflowException localgoto)
-      {
-        return false;
-      }
-      int i = 1;
+      return new afk();
     }
   }
   
-  private void b()
+  public final class b
+    implements acq
   {
-    ByteBuffer localByteBuffer = this.a;
-    int i = localByteBuffer.get();
-    byte b1 = (byte)(i & 0xF);
-    if ((i & 0xF0) >> 4 == 15) {
-      localByteBuffer.get();
-    }
-    a(b1);
-  }
-  
-  private void b(int paramInt)
-  {
-    ByteBuffer localByteBuffer = this.a;
-    localByteBuffer.position(localByteBuffer.position() + paramInt);
-  }
-  
-  private <T> T[] b(T paramT, int paramInt, boolean paramBoolean)
-  {
-    if (a(paramInt))
-    {
-      Object localObject = this.a;
-      paramInt = ((ByteBuffer)localObject).get();
-      int i = (byte)(paramInt & 0xF);
-      if ((paramInt & 0xF0) >> 4 == 15) {
-        ((ByteBuffer)localObject).get();
-      }
-      if (i != 9)
-      {
-        if (i != 11) {
-          throw new goto("type mismatch.");
-        }
-      }
-      else
-      {
-        i = a(0, 0, true);
-        if (i >= 0)
-        {
-          localObject = (Object[])Array.newInstance(paramT.getClass(), i);
-          paramInt = 0;
-          while (paramInt < i)
-          {
-            localObject[paramInt] = a(paramT, 0, true);
-            paramInt += 1;
-          }
-          return localObject;
-        }
-        throw new goto(aeu.a("size invalid: ", i));
-      }
-    }
-    else
-    {
-      if (paramBoolean) {
-        break label150;
-      }
-    }
-    return null;
-    label150:
-    throw new goto("require field not exist.");
-  }
-  
-  public final double a(double paramDouble, int paramInt, boolean paramBoolean)
-  {
-    if (a(paramInt))
-    {
-      ByteBuffer localByteBuffer = this.a;
-      paramInt = localByteBuffer.get();
-      int i = (byte)(paramInt & 0xF);
-      if ((paramInt & 0xF0) >> 4 == 15) {
-        localByteBuffer.get();
-      }
-      if (i != 4)
-      {
-        if (i != 5)
-        {
-          if (i != 11)
-          {
-            if (i == 12) {
-              return 0.0D;
-            }
-            throw new goto("type mismatch.");
-          }
-        }
-        else {
-          return this.a.getDouble();
-        }
-      }
-      else {
-        return this.a.getFloat();
-      }
-    }
-    else
-    {
-      if (paramBoolean) {
-        break label107;
-      }
-    }
-    return paramDouble;
-    label107:
-    throw new goto("require field not exist.");
-  }
-  
-  public final float a(float paramFloat, int paramInt, boolean paramBoolean)
-  {
-    if (a(paramInt))
-    {
-      ByteBuffer localByteBuffer = this.a;
-      paramInt = localByteBuffer.get();
-      int i = (byte)(paramInt & 0xF);
-      if ((paramInt & 0xF0) >> 4 == 15) {
-        localByteBuffer.get();
-      }
-      if (i != 4)
-      {
-        if (i != 11)
-        {
-          if (i == 12) {
-            return 0.0F;
-          }
-          throw new goto("type mismatch.");
-        }
-      }
-      else {
-        return this.a.getFloat();
-      }
-    }
-    else
-    {
-      if (paramBoolean) {
-        break label91;
-      }
-    }
-    return paramFloat;
-    label91:
-    throw new goto("require field not exist.");
-  }
-  
-  public final int a(int paramInt1, int paramInt2, boolean paramBoolean)
-  {
-    if (a(paramInt2))
-    {
-      ByteBuffer localByteBuffer = this.a;
-      paramInt2 = localByteBuffer.get();
-      int i = (byte)(paramInt2 & 0xF);
-      if ((paramInt2 & 0xF0) >> 4 == 15) {
-        localByteBuffer.get();
-      }
-      if (i != 0)
-      {
-        if (i != 1)
-        {
-          if (i != 2)
-          {
-            if (i != 11)
-            {
-              if (i == 12) {
-                return 0;
-              }
-              throw new goto("type mismatch.");
-            }
-          }
-          else {
-            return this.a.getInt();
-          }
-        }
-        else {
-          return this.a.getShort();
-        }
-      }
-      else {
-        return this.a.get();
-      }
-    }
-    else
-    {
-      if (paramBoolean) {
-        break label118;
-      }
-    }
-    return paramInt1;
-    label118:
-    throw new goto("require field not exist.");
-  }
-  
-  public final long a(long paramLong, int paramInt, boolean paramBoolean)
-  {
-    if (a(paramInt))
-    {
-      ByteBuffer localByteBuffer = this.a;
-      paramInt = localByteBuffer.get();
-      int i = (byte)(paramInt & 0xF);
-      if ((paramInt & 0xF0) >> 4 == 15) {
-        localByteBuffer.get();
-      }
-      if (i != 11)
-      {
-        if (i != 12)
-        {
-          switch (i)
-          {
-          default: 
-            throw new goto("type mismatch.");
-          case 3: 
-            return this.a.getLong();
-          case 2: 
-            return this.a.getInt();
-          case 1: 
-            return this.a.getShort();
-          }
-          return this.a.get();
-        }
-        return 0L;
-      }
-    }
-    else
-    {
-      if (paramBoolean) {
-        break label146;
-      }
-    }
-    return paramLong;
-    label146:
-    throw new goto("require field not exist.");
-  }
-  
-  public final break a(break parambreak, int paramInt, boolean paramBoolean)
-  {
-    if (a(paramInt)) {
-      try
-      {
-        parambreak = (break)parambreak.getClass().newInstance();
-        ByteBuffer localByteBuffer = this.a;
-        paramInt = localByteBuffer.get();
-        int i = (byte)(paramInt & 0xF);
-        if ((paramInt & 0xF0) >> 4 == 15) {
-          localByteBuffer.get();
-        }
-        if (i == 10)
-        {
-          parambreak.a(this);
-          a();
-          return parambreak;
-        }
-        throw new goto("type mismatch.");
-      }
-      catch (Exception parambreak)
-      {
-        throw new goto(parambreak.getMessage());
-      }
-    }
-    if (!paramBoolean) {
-      return null;
-    }
-    throw new goto("require field not exist.");
-  }
-  
-  public final <T> Object a(T paramT, int paramInt, boolean paramBoolean)
-  {
-    boolean bool = paramT instanceof Byte;
-    int i = 0;
-    if (bool) {
-      return Byte.valueOf(a((byte)0, paramInt, paramBoolean));
-    }
-    if ((paramT instanceof Boolean)) {
-      return Boolean.valueOf(a(false, paramInt, paramBoolean));
-    }
-    if ((paramT instanceof Short)) {
-      return Short.valueOf(a((short)0, paramInt, paramBoolean));
-    }
-    if ((paramT instanceof Integer)) {
-      return Integer.valueOf(a(0, paramInt, paramBoolean));
-    }
-    if ((paramT instanceof Long)) {
-      return Long.valueOf(a(0L, paramInt, paramBoolean));
-    }
-    if ((paramT instanceof Float)) {
-      return Float.valueOf(a(0.0F, paramInt, paramBoolean));
-    }
-    if ((paramT instanceof Double)) {
-      return Double.valueOf(a(0.0D, paramInt, paramBoolean));
-    }
-    if ((paramT instanceof String)) {
-      return a(paramInt, paramBoolean);
-    }
-    if ((paramT instanceof Map))
-    {
-      paramT = (Map)paramT;
-      localObject1 = new HashMap();
-      if ((paramT != null) && (!paramT.isEmpty()))
-      {
-        paramT = (Map.Entry)paramT.entrySet().iterator().next();
-        localObject2 = paramT.getKey();
-        localObject3 = paramT.getValue();
-        if (a(paramInt))
-        {
-          paramT = this.a;
-          paramInt = paramT.get();
-          i = (byte)(paramInt & 0xF);
-          if ((paramInt & 0xF0) >> 4 == 15) {
-            paramT.get();
-          }
-          if (i != 8)
-          {
-            if (i == 11) {
-              return localObject1;
-            }
-            throw new goto("type mismatch.");
-          }
-          i = a(0, 0, true);
-          if (i >= 0)
-          {
-            paramInt = 0;
-            for (;;)
-            {
-              paramT = (TT)localObject1;
-              if (paramInt >= i) {
-                break;
-              }
-              ((Map)localObject1).put(a(localObject2, 0, true), a(localObject3, 1, true));
-              paramInt += 1;
-            }
-          }
-          throw new goto(aeu.a("size invalid: ", i));
-        }
-        if (!paramBoolean) {
-          return localObject1;
-        }
-        throw new goto("require field not exist.");
-      }
-      paramT = new HashMap();
-      return paramT;
-    }
-    bool = paramT instanceof List;
-    Object localObject2 = null;
-    Object localObject3 = null;
-    Object localObject4 = null;
-    Object localObject5 = null;
-    Object localObject6 = null;
-    Object localObject1 = null;
-    if (bool)
-    {
-      paramT = (List)paramT;
-      if ((paramT != null) && (!paramT.isEmpty()))
-      {
-        localObject2 = b(paramT.get(0), paramInt, paramBoolean);
-        if (localObject2 == null) {
-          return null;
-        }
-        localObject1 = new ArrayList();
-        paramInt = i;
-        for (;;)
-        {
-          paramT = (TT)localObject1;
-          if (paramInt >= localObject2.length) {
-            break;
-          }
-          ((ArrayList)localObject1).add(localObject2[paramInt]);
-          paramInt += 1;
-        }
-      }
-      paramT = new ArrayList();
-      return paramT;
-    }
-    if ((paramT instanceof break)) {
-      return a((break)paramT, paramInt, paramBoolean);
-    }
-    if (paramT.getClass().isArray())
-    {
-      if ((!(paramT instanceof byte[])) && (!(paramT instanceof Byte[])))
-      {
-        if ((paramT instanceof boolean[]))
-        {
-          if (a(paramInt))
-          {
-            paramT = this.a;
-            paramInt = paramT.get();
-            i = (byte)(paramInt & 0xF);
-            if ((paramInt & 0xF0) >> 4 == 15) {
-              paramT.get();
-            }
-            if (i != 9)
-            {
-              if (i == 11) {
-                return null;
-              }
-              throw new goto("type mismatch.");
-            }
-            i = a(0, 0, true);
-            if (i >= 0)
-            {
-              localObject1 = new boolean[i];
-              paramInt = 0;
-              for (;;)
-              {
-                paramT = (TT)localObject1;
-                if (paramInt >= i) {
-                  break;
-                }
-                localObject1[paramInt] = a(localObject1[0], 0, true);
-                paramInt += 1;
-              }
-            }
-            throw new goto(aeu.a("size invalid: ", i));
-          }
-          if (!paramBoolean)
-          {
-            paramT = (TT)localObject1;
-            return paramT;
-          }
-          throw new goto("require field not exist.");
-        }
-        if ((paramT instanceof short[]))
-        {
-          if (a(paramInt))
-          {
-            paramT = this.a;
-            paramInt = paramT.get();
-            i = (byte)(paramInt & 0xF);
-            if ((paramInt & 0xF0) >> 4 == 15) {
-              paramT.get();
-            }
-            if (i != 9)
-            {
-              if (i == 11) {
-                return null;
-              }
-              throw new goto("type mismatch.");
-            }
-            i = a(0, 0, true);
-            if (i >= 0)
-            {
-              localObject1 = new short[i];
-              paramInt = 0;
-              for (;;)
-              {
-                paramT = (TT)localObject1;
-                if (paramInt >= i) {
-                  break;
-                }
-                localObject1[paramInt] = a(localObject1[0], 0, true);
-                paramInt += 1;
-              }
-            }
-            throw new goto(aeu.a("size invalid: ", i));
-          }
-          if (!paramBoolean)
-          {
-            paramT = (TT)localObject2;
-            return paramT;
-          }
-          throw new goto("require field not exist.");
-        }
-        if ((paramT instanceof int[]))
-        {
-          if (a(paramInt))
-          {
-            paramT = this.a;
-            paramInt = paramT.get();
-            i = (byte)(paramInt & 0xF);
-            if ((paramInt & 0xF0) >> 4 == 15) {
-              paramT.get();
-            }
-            if (i != 9)
-            {
-              if (i == 11) {
-                return null;
-              }
-              throw new goto("type mismatch.");
-            }
-            i = a(0, 0, true);
-            if (i >= 0)
-            {
-              localObject1 = new int[i];
-              paramInt = 0;
-              for (;;)
-              {
-                paramT = (TT)localObject1;
-                if (paramInt >= i) {
-                  break;
-                }
-                localObject1[paramInt] = a(localObject1[0], 0, true);
-                paramInt += 1;
-              }
-            }
-            throw new goto(aeu.a("size invalid: ", i));
-          }
-          if (!paramBoolean)
-          {
-            paramT = localObject3;
-            return paramT;
-          }
-          throw new goto("require field not exist.");
-        }
-        if ((paramT instanceof long[]))
-        {
-          if (a(paramInt))
-          {
-            paramT = this.a;
-            paramInt = paramT.get();
-            i = (byte)(paramInt & 0xF);
-            if ((paramInt & 0xF0) >> 4 == 15) {
-              paramT.get();
-            }
-            if (i != 9)
-            {
-              if (i == 11) {
-                return null;
-              }
-              throw new goto("type mismatch.");
-            }
-            i = a(0, 0, true);
-            if (i >= 0)
-            {
-              localObject1 = new long[i];
-              paramInt = 0;
-              for (;;)
-              {
-                paramT = (TT)localObject1;
-                if (paramInt >= i) {
-                  break;
-                }
-                localObject1[paramInt] = a(localObject1[0], 0, true);
-                paramInt += 1;
-              }
-            }
-            throw new goto(aeu.a("size invalid: ", i));
-          }
-          if (!paramBoolean)
-          {
-            paramT = localObject4;
-            return paramT;
-          }
-          throw new goto("require field not exist.");
-        }
-        if ((paramT instanceof float[]))
-        {
-          if (a(paramInt))
-          {
-            paramT = this.a;
-            paramInt = paramT.get();
-            i = (byte)(paramInt & 0xF);
-            if ((paramInt & 0xF0) >> 4 == 15) {
-              paramT.get();
-            }
-            if (i != 9)
-            {
-              if (i == 11) {
-                return null;
-              }
-              throw new goto("type mismatch.");
-            }
-            i = a(0, 0, true);
-            if (i >= 0)
-            {
-              localObject1 = new float[i];
-              paramInt = 0;
-              for (;;)
-              {
-                paramT = (TT)localObject1;
-                if (paramInt >= i) {
-                  break;
-                }
-                localObject1[paramInt] = a(localObject1[0], 0, true);
-                paramInt += 1;
-              }
-            }
-            throw new goto(aeu.a("size invalid: ", i));
-          }
-          if (!paramBoolean)
-          {
-            paramT = localObject5;
-            return paramT;
-          }
-          throw new goto("require field not exist.");
-        }
-        if ((paramT instanceof double[]))
-        {
-          if (a(paramInt))
-          {
-            paramT = this.a;
-            paramInt = paramT.get();
-            i = (byte)(paramInt & 0xF);
-            if ((paramInt & 0xF0) >> 4 == 15) {
-              paramT.get();
-            }
-            if (i != 9)
-            {
-              if (i == 11) {
-                return null;
-              }
-              throw new goto("type mismatch.");
-            }
-            i = a(0, 0, true);
-            if (i >= 0)
-            {
-              localObject1 = new double[i];
-              paramInt = 0;
-              for (;;)
-              {
-                paramT = (TT)localObject1;
-                if (paramInt >= i) {
-                  break;
-                }
-                localObject1[paramInt] = a(localObject1[0], 0, true);
-                paramInt += 1;
-              }
-            }
-            throw new goto(aeu.a("size invalid: ", i));
-          }
-          if (!paramBoolean)
-          {
-            paramT = localObject6;
-            return paramT;
-          }
-          throw new goto("require field not exist.");
-        }
-        paramT = (Object[])paramT;
-        if (paramT.length != 0) {
-          return b(paramT[0], paramInt, paramBoolean);
-        }
-        throw new goto("unable to get type of key and value.");
-      }
-      return b(paramInt, paramBoolean);
-    }
-    throw new goto("read object error: unsupport type.");
-  }
-  
-  public final String a(int paramInt, boolean paramBoolean)
-  {
-    if (a(paramInt))
-    {
-      localObject = this.a;
-      paramInt = ((ByteBuffer)localObject).get();
-      i = (byte)(paramInt & 0xF);
-      if ((paramInt & 0xF0) >> 4 == 15) {
-        ((ByteBuffer)localObject).get();
-      }
-      if (i != 6)
-      {
-        if (i != 7)
-        {
-          if (i == 11) {
-            break label219;
-          }
-          throw new goto("type mismatch.");
-        }
-        paramInt = this.a.getInt();
-        if ((paramInt <= 104857600) && (paramInt >= 0))
-        {
-          localObject = new byte[paramInt];
-          this.a.get((byte[])localObject);
-        }
-      }
-    }
-    try
-    {
-      str = new String((byte[])localObject, this.b);
-      return str;
-    }
-    catch (UnsupportedEncodingException localUnsupportedEncodingException1)
-    {
-      String str;
-      label127:
-      break label127;
-    }
-    return new String((byte[])localObject);
-    throw new goto(aeu.a("String too long: ", paramInt));
-    int i = this.a.get();
-    paramInt = i;
-    if (i < 0) {
-      paramInt = i + 256;
-    }
-    Object localObject = new byte[paramInt];
-    this.a.get((byte[])localObject);
-    try
-    {
-      str = new String((byte[])localObject, this.b);
-      return str;
-    }
-    catch (UnsupportedEncodingException localUnsupportedEncodingException2)
-    {
-      label205:
-      label219:
-      break label205;
-    }
-    return new String((byte[])localObject);
-    if (!paramBoolean) {
-      return null;
-    }
-    throw new goto("require field not exist.");
-  }
-  
-  public final short a(short paramShort, int paramInt, boolean paramBoolean)
-  {
-    if (a(paramInt))
-    {
-      ByteBuffer localByteBuffer = this.a;
-      paramInt = localByteBuffer.get();
-      int i = (byte)(paramInt & 0xF);
-      if ((paramInt & 0xF0) >> 4 == 15) {
-        localByteBuffer.get();
-      }
-      if (i != 0)
-      {
-        if (i != 1)
-        {
-          if (i != 11)
-          {
-            if (i == 12) {
-              return 0;
-            }
-            throw new goto("type mismatch.");
-          }
-        }
-        else {
-          return this.a.getShort();
-        }
-      }
-      else {
-        return (short)this.a.get();
-      }
-    }
-    else
-    {
-      if (paramBoolean) {
-        break label105;
-      }
-    }
-    return paramShort;
-    label105:
-    throw new goto("require field not exist.");
-  }
-  
-  public final boolean a(boolean paramBoolean1, int paramInt, boolean paramBoolean2)
-  {
-    return a((byte)paramBoolean1, paramInt, paramBoolean2) != 0;
-  }
-  
-  public final byte[] b(int paramInt, boolean paramBoolean)
-  {
-    if (a(paramInt))
-    {
-      Object localObject = this.a;
-      int j = ((ByteBuffer)localObject).get();
-      int i = (byte)(j & 0xF);
-      if ((j & 0xF0) >> 4 == 15) {
-        ((ByteBuffer)localObject).get();
-      }
-      if (i != 9)
-      {
-        if (i != 11)
-        {
-          if (i == 13)
-          {
-            localObject = this.a;
-            int k = ((ByteBuffer)localObject).get();
-            j = (byte)(k & 0xF);
-            if ((k & 0xF0) >> 4 == 15) {
-              ((ByteBuffer)localObject).get();
-            }
-            if (j == 0)
-            {
-              k = a(0, 0, true);
-              if (k >= 0)
-              {
-                localObject = new byte[k];
-                this.a.get((byte[])localObject);
-                return localObject;
-              }
-              localObject = new StringBuilder("invalid size, tag: ");
-              ((StringBuilder)localObject).append(paramInt);
-              ((StringBuilder)localObject).append(", type: ");
-              ((StringBuilder)localObject).append(i);
-              ((StringBuilder)localObject).append(", ");
-              ((StringBuilder)localObject).append(j);
-              ((StringBuilder)localObject).append(", size: ");
-              ((StringBuilder)localObject).append(k);
-              throw new goto(((StringBuilder)localObject).toString());
-            }
-            localObject = new StringBuilder("type mismatch, tag: ");
-            ((StringBuilder)localObject).append(paramInt);
-            ((StringBuilder)localObject).append(", type: ");
-            ((StringBuilder)localObject).append(i);
-            ((StringBuilder)localObject).append(", ");
-            ((StringBuilder)localObject).append(j);
-            throw new goto(((StringBuilder)localObject).toString());
-          }
-          throw new goto("type mismatch.");
-        }
-      }
-      else
-      {
-        i = a(0, 0, true);
-        if (i >= 0)
-        {
-          localObject = new byte[i];
-          paramInt = 0;
-          while (paramInt < i)
-          {
-            localObject[paramInt] = a(localObject[0], 0, true);
-            paramInt += 1;
-          }
-          return localObject;
-        }
-        throw new goto(aeu.a("size invalid: ", i));
-      }
-    }
-    else
-    {
-      if (paramBoolean) {
-        break label366;
-      }
-    }
-    return null;
-    label366:
-    throw new goto("require field not exist.");
+    public b() {}
   }
 }
 

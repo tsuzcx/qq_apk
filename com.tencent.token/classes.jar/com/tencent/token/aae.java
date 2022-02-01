@@ -1,181 +1,72 @@
 package com.tencent.token;
 
-import com.tencent.token.core.bean.NewConfigureCacheItem;
-import com.tencent.token.core.bean.QQUser;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Set;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.content.Context;
+import android.net.Uri;
+import android.os.AsyncTask;
+import android.os.Environment;
+import android.widget.ImageView;
+import com.tencent.token.global.RqdApplication;
+import java.io.File;
+import java.io.FileOutputStream;
 
 public final class aae
+  extends AsyncTask<String, Integer, Uri>
 {
-  public List<sk> a = Collections.synchronizedList(new ArrayList());
-  public List<sk> b = Collections.synchronizedList(new ArrayList());
-  NewConfigureCacheItem c;
-  public long d;
-  public boolean e;
-  public boolean f = false;
+  private ImageView a;
   
-  private void a(List<sk> paramList, boolean paramBoolean)
+  public aae(ImageView paramImageView)
   {
+    this.a = paramImageView;
+  }
+  
+  private static Uri a(String... paramVarArgs)
+  {
+    paramVarArgs = paramVarArgs[0];
     try
     {
-      if (this.c == null) {
-        this.c = ta.a().h.a("account_lock");
+      xj.b("path".concat(String.valueOf(paramVarArgs)));
+      Object localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append(abj.b(paramVarArgs));
+      ((StringBuilder)localObject1).append(paramVarArgs.substring(paramVarArgs.lastIndexOf(".")));
+      Object localObject2 = ((StringBuilder)localObject1).toString();
+      localObject1 = RqdApplication.b().getExternalCacheDir();
+      aaj.a = (File)localObject1;
+      if (localObject1 == null) {
+        aaj.a = new File(Environment.getExternalStorageDirectory(), "cache");
       }
-      if (this.c.mClientVersion > this.c.mClickVersion)
+      if (!aaj.a.exists()) {
+        aaj.a.mkdirs();
+      }
+      if (!aaj.a.exists()) {
+        return null;
+      }
+      localObject1 = new File(aaj.a, (String)localObject2);
+      if (((File)localObject1).exists())
       {
-        Object localObject;
-        Iterator localIterator;
-        sk localsk;
-        if (this.c.mClickVersion == -1)
-        {
-          if (this.c.mConfIDs != null)
-          {
-            localObject = this.c.mConfIDs.iterator();
-            while (((Iterator)localObject).hasNext())
-            {
-              int i = ((Integer)((Iterator)localObject).next()).intValue();
-              localIterator = paramList.iterator();
-              while (localIterator.hasNext())
-              {
-                localsk = (sk)localIterator.next();
-                if (i == localsk.a) {
-                  localsk.f = true;
-                }
-              }
-            }
-          }
-        }
-        else
-        {
-          localObject = new HashSet();
-          if (paramBoolean)
-          {
-            localIterator = this.a.iterator();
-            while (localIterator.hasNext()) {
-              ((Set)localObject).add(Integer.valueOf(((sk)localIterator.next()).a));
-            }
-          }
-          localIterator = this.b.iterator();
-          while (localIterator.hasNext()) {
-            ((Set)localObject).add(Integer.valueOf(((sk)localIterator.next()).a));
-          }
-          localIterator = paramList.iterator();
-          while (localIterator.hasNext())
-          {
-            localsk = (sk)localIterator.next();
-            if (!((Set)localObject).contains(Integer.valueOf(localsk.a))) {
-              localsk.f = true;
-            }
-          }
-        }
+        StringBuilder localStringBuilder = new StringBuilder("exists");
+        localStringBuilder.append(paramVarArgs);
+        localStringBuilder.append("name");
+        localStringBuilder.append((String)localObject2);
+        xj.b(localStringBuilder.toString());
+        return Uri.fromFile((File)localObject1);
       }
-      if (paramBoolean)
+      xj.b("fromnet".concat(String.valueOf(paramVarArgs)));
+      paramVarArgs = new ajn().a(paramVarArgs);
+      if (paramVarArgs != null)
       {
-        this.a.clear();
-        this.a.addAll(paramList);
+        localObject2 = new FileOutputStream((File)localObject1);
+        ((FileOutputStream)localObject2).write(paramVarArgs, 0, paramVarArgs.length);
+        ((FileOutputStream)localObject2).close();
+        paramVarArgs = Uri.fromFile((File)localObject1);
+        return paramVarArgs;
       }
-      else
-      {
-        this.b.clear();
-        this.b.addAll(paramList);
-      }
-      if (sz.a().k.b() != null) {
-        this.d = sz.a().k.b().mUin;
-      }
-      return;
+      return null;
     }
-    finally {}
-  }
-  
-  private boolean a(JSONArray paramJSONArray, boolean paramBoolean)
-  {
-    ArrayList localArrayList = new ArrayList();
-    if (paramJSONArray != null) {}
-    for (;;)
+    catch (Exception paramVarArgs)
     {
-      try
-      {
-        if (paramJSONArray.length() > 0)
-        {
-          int i = 0;
-          if (i < paramJSONArray.length())
-          {
-            JSONObject localJSONObject = paramJSONArray.getJSONObject(i);
-            if (localJSONObject == null) {
-              break label113;
-            }
-            bool = true;
-            xa.a(bool);
-            sk localsk = new sk();
-            if (!localsk.b(localJSONObject)) {
-              xa.c("object item parse failed: ".concat(String.valueOf(i)));
-            }
-            localArrayList.add(localsk);
-            i += 1;
-            continue;
-          }
-        }
-        a(localArrayList, paramBoolean);
-        return true;
-      }
-      catch (JSONException paramJSONArray)
-      {
-        return false;
-      }
-      label113:
-      boolean bool = false;
+      paramVarArgs.printStackTrace();
     }
-  }
-  
-  public final List<sk> a(boolean paramBoolean)
-  {
-    if (paramBoolean) {
-      return this.a;
-    }
-    return this.b;
-  }
-  
-  public final boolean a(JSONArray paramJSONArray)
-  {
-    if (paramJSONArray.length() < 2) {
-      return false;
-    }
-    boolean bool;
-    if (paramJSONArray != null) {
-      bool = true;
-    } else {
-      bool = false;
-    }
-    xa.a(bool);
-    try
-    {
-      if (!a(paramJSONArray.getJSONArray(0), true)) {
-        return false;
-      }
-      bool = a(paramJSONArray.getJSONArray(1), false);
-      return bool;
-    }
-    catch (JSONException paramJSONArray)
-    {
-      paramJSONArray.printStackTrace();
-    }
-    return false;
-  }
-  
-  public final int b(boolean paramBoolean)
-  {
-    List localList = a(paramBoolean);
-    if (localList == null) {
-      return 0;
-    }
-    return localList.size();
+    return null;
   }
 }
 

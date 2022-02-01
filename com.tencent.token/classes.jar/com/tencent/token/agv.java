@@ -1,8 +1,21 @@
 package com.tencent.token;
 
-public final class agv
+public abstract class agv
+  implements Runnable
 {
-  public static int a;
+  public abstract void a();
+  
+  public void run()
+  {
+    try
+    {
+      System.currentTimeMillis();
+      a();
+      return;
+    }
+    finally {}
+    return;
+  }
 }
 
 

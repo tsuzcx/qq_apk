@@ -1,353 +1,62 @@
 package com.tencent.token;
 
-import java.io.EOFException;
-import java.io.IOException;
-import java.io.InputStream;
-import java.nio.ByteBuffer;
+import java.text.DateFormat;
+import java.text.ParsePosition;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
 
-final class alj
-  implements ala
+public final class alj
 {
-  public final aky a = new aky();
-  public final alo b;
-  boolean c;
+  private static final ThreadLocal<DateFormat> a = new ThreadLocal() {};
+  private static final String[] b = { "EEE, dd MMM yyyy HH:mm:ss zzz", "EEEE, dd-MMM-yy HH:mm:ss zzz", "EEE MMM d HH:mm:ss yyyy", "EEE, dd-MMM-yyyy HH:mm:ss z", "EEE, dd-MMM-yyyy HH-mm-ss z", "EEE, dd MMM yy HH:mm:ss z", "EEE dd-MMM-yyyy HH:mm:ss z", "EEE dd MMM yyyy HH:mm:ss z", "EEE dd-MMM-yyyy HH-mm-ss z", "EEE dd-MMM-yy HH:mm:ss z", "EEE dd MMM yy HH:mm:ss z", "EEE,dd-MMM-yy HH:mm:ss z", "EEE,dd-MMM-yyyy HH:mm:ss z", "EEE, dd-MM-yyyy HH:mm:ss z", "EEE MMM d yyyy HH:mm:ss z" };
+  private static final DateFormat[] c = new DateFormat[15];
   
-  alj(alo paramalo)
+  public static String a(Date paramDate)
   {
-    if (paramalo != null)
-    {
-      this.b = paramalo;
-      return;
-    }
-    throw new NullPointerException("source == null");
+    return ((DateFormat)a.get()).format(paramDate);
   }
   
-  private long a(byte paramByte, long paramLong1, long paramLong2)
+  public static Date a(String paramString)
   {
-    if (!this.c)
+    if (paramString.length() == 0) {
+      return null;
+    }
+    ParsePosition localParsePosition = new ParsePosition(0);
+    Object localObject = ((DateFormat)a.get()).parse(paramString, localParsePosition);
+    if (localParsePosition.getIndex() == paramString.length()) {
+      return localObject;
+    }
+    for (;;)
     {
-      if (paramLong2 >= 0L)
+      int i;
+      synchronized (b)
       {
-        while (paramLong1 < paramLong2)
+        int j = b.length;
+        i = 0;
+        if (i < j)
         {
-          long l = this.a.a(paramByte, paramLong1, paramLong2);
-          if (l != -1L) {
-            return l;
-          }
-          l = this.a.b;
-          if (l < paramLong2)
+          DateFormat localDateFormat = c[i];
+          localObject = localDateFormat;
+          if (localDateFormat == null)
           {
-            if (this.b.a(this.a, 8192L) == -1L) {
-              return -1L;
-            }
-            paramLong1 = Math.max(paramLong1, l);
+            localObject = new SimpleDateFormat(b[i], Locale.US);
+            ((DateFormat)localObject).setTimeZone(akt.g);
+            c[i] = localObject;
           }
-          else
-          {
-            return -1L;
-          }
-        }
-        return -1L;
-      }
-      throw new IllegalArgumentException(String.format("fromIndex=%s toIndex=%s", new Object[] { Long.valueOf(0L), Long.valueOf(paramLong2) }));
-    }
-    throw new IllegalStateException("closed");
-  }
-  
-  private boolean b(long paramLong)
-  {
-    if (paramLong >= 0L)
-    {
-      if (!this.c)
-      {
-        while (this.a.b < paramLong) {
-          if (this.b.a(this.a, 8192L) == -1L) {
-            return false;
+          localParsePosition.setIndex(0);
+          localObject = ((DateFormat)localObject).parse(paramString, localParsePosition);
+          if (localParsePosition.getIndex() != 0) {
+            return localObject;
           }
         }
-        return true;
-      }
-      throw new IllegalStateException("closed");
-    }
-    throw new IllegalArgumentException("byteCount < 0: ".concat(String.valueOf(paramLong)));
-  }
-  
-  public final long a(aky paramaky, long paramLong)
-  {
-    if (paramaky != null)
-    {
-      if (paramLong >= 0L)
-      {
-        if (!this.c)
+        else
         {
-          if ((this.a.b == 0L) && (this.b.a(this.a, 8192L) == -1L)) {
-            return -1L;
-          }
-          paramLong = Math.min(paramLong, this.a.b);
-          return this.a.a(paramaky, paramLong);
-        }
-        throw new IllegalStateException("closed");
-      }
-      throw new IllegalArgumentException("byteCount < 0: ".concat(String.valueOf(paramLong)));
-    }
-    throw new IllegalArgumentException("sink == null");
-  }
-  
-  public final alp a()
-  {
-    return this.b.a();
-  }
-  
-  public final void a(long paramLong)
-  {
-    if (b(paramLong)) {
-      return;
-    }
-    throw new EOFException();
-  }
-  
-  public final void a(byte[] paramArrayOfByte)
-  {
-    try
-    {
-      a(paramArrayOfByte.length);
-      this.a.a(paramArrayOfByte);
-      return;
-    }
-    catch (EOFException localEOFException)
-    {
-      int i = 0;
-      while (this.a.b > 0L)
-      {
-        aky localaky = this.a;
-        int j = localaky.a(paramArrayOfByte, i, (int)localaky.b);
-        if (j != -1) {
-          i += j;
-        } else {
-          throw new AssertionError();
+          return null;
         }
       }
-      throw localEOFException;
+      i += 1;
     }
-  }
-  
-  public final aky b()
-  {
-    return this.a;
-  }
-  
-  public final alb c(long paramLong)
-  {
-    a(paramLong);
-    return this.a.c(paramLong);
-  }
-  
-  public final boolean c()
-  {
-    if (!this.c) {
-      return (this.a.c()) && (this.b.a(this.a, 8192L) == -1L);
-    }
-    throw new IllegalStateException("closed");
-  }
-  
-  public final void close()
-  {
-    if (this.c) {
-      return;
-    }
-    this.c = true;
-    this.b.close();
-    this.a.p();
-  }
-  
-  public final InputStream d()
-  {
-    new InputStream()
-    {
-      public final int available()
-      {
-        if (!alj.this.c) {
-          return (int)Math.min(alj.this.a.b, 2147483647L);
-        }
-        throw new IOException("closed");
-      }
-      
-      public final void close()
-      {
-        alj.this.close();
-      }
-      
-      public final int read()
-      {
-        if (!alj.this.c)
-        {
-          if ((alj.this.a.b == 0L) && (alj.this.b.a(alj.this.a, 8192L) == -1L)) {
-            return -1;
-          }
-          return alj.this.a.f() & 0xFF;
-        }
-        throw new IOException("closed");
-      }
-      
-      public final int read(byte[] paramAnonymousArrayOfByte, int paramAnonymousInt1, int paramAnonymousInt2)
-      {
-        if (!alj.this.c)
-        {
-          alq.a(paramAnonymousArrayOfByte.length, paramAnonymousInt1, paramAnonymousInt2);
-          if ((alj.this.a.b == 0L) && (alj.this.b.a(alj.this.a, 8192L) == -1L)) {
-            return -1;
-          }
-          return alj.this.a.a(paramAnonymousArrayOfByte, paramAnonymousInt1, paramAnonymousInt2);
-        }
-        throw new IOException("closed");
-      }
-      
-      public final String toString()
-      {
-        StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append(alj.this);
-        localStringBuilder.append(".inputStream()");
-        return localStringBuilder.toString();
-      }
-    };
-  }
-  
-  public final String d(long paramLong)
-  {
-    if (paramLong >= 0L)
-    {
-      long l1;
-      if (paramLong == 9223372036854775807L) {
-        l1 = 9223372036854775807L;
-      } else {
-        l1 = paramLong + 1L;
-      }
-      long l2 = a((byte)10, 0L, l1);
-      if (l2 != -1L) {
-        return this.a.e(l2);
-      }
-      if ((l1 < 9223372036854775807L) && (b(l1)) && (this.a.b(l1 - 1L) == 13) && (b(1L + l1)) && (this.a.b(l1) == 10)) {
-        return this.a.e(l1);
-      }
-      aky localaky = new aky();
-      Object localObject = this.a;
-      ((aky)localObject).a(localaky, 0L, Math.min(32L, ((aky)localObject).b));
-      localObject = new StringBuilder("\\n not found: limit=");
-      ((StringBuilder)localObject).append(Math.min(this.a.b, paramLong));
-      ((StringBuilder)localObject).append(" content=");
-      ((StringBuilder)localObject).append(localaky.l().e());
-      ((StringBuilder)localObject).append('…');
-      throw new EOFException(((StringBuilder)localObject).toString());
-    }
-    throw new IllegalArgumentException("limit < 0: ".concat(String.valueOf(paramLong)));
-  }
-  
-  public final byte f()
-  {
-    a(1L);
-    return this.a.f();
-  }
-  
-  public final byte[] f(long paramLong)
-  {
-    a(paramLong);
-    return this.a.f(paramLong);
-  }
-  
-  public final short g()
-  {
-    a(2L);
-    return this.a.g();
-  }
-  
-  public final void g(long paramLong)
-  {
-    if (!this.c)
-    {
-      while (paramLong > 0L)
-      {
-        if ((this.a.b == 0L) && (this.b.a(this.a, 8192L) == -1L)) {
-          throw new EOFException();
-        }
-        long l = Math.min(paramLong, this.a.b);
-        this.a.g(l);
-        paramLong -= l;
-      }
-      return;
-    }
-    throw new IllegalStateException("closed");
-  }
-  
-  public final int h()
-  {
-    a(4L);
-    return this.a.h();
-  }
-  
-  public final short i()
-  {
-    a(2L);
-    return alq.a(this.a.g());
-  }
-  
-  public final boolean isOpen()
-  {
-    return !this.c;
-  }
-  
-  public final int j()
-  {
-    a(4L);
-    return alq.a(this.a.h());
-  }
-  
-  public final long k()
-  {
-    a(1L);
-    int j;
-    byte b1;
-    for (int i = 0;; i = j)
-    {
-      j = i + 1;
-      if (!b(j)) {
-        break label105;
-      }
-      b1 = this.a.b(i);
-      if (((b1 < 48) || (b1 > 57)) && ((b1 < 97) || (b1 > 102)) && ((b1 < 65) || (b1 > 70))) {
-        break;
-      }
-    }
-    if (i == 0) {
-      throw new NumberFormatException(String.format("Expected leading [0-9a-fA-F] character but was %#x", new Object[] { Byte.valueOf(b1) }));
-    }
-    label105:
-    return this.a.k();
-  }
-  
-  public final String n()
-  {
-    return d(9223372036854775807L);
-  }
-  
-  public final long q()
-  {
-    return a((byte)0, 0L, 9223372036854775807L);
-  }
-  
-  public final int read(ByteBuffer paramByteBuffer)
-  {
-    if ((this.a.b == 0L) && (this.b.a(this.a, 8192L) == -1L)) {
-      return -1;
-    }
-    return this.a.read(paramByteBuffer);
-  }
-  
-  public final String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder("buffer(");
-    localStringBuilder.append(this.b);
-    localStringBuilder.append(")");
-    return localStringBuilder.toString();
   }
 }
 

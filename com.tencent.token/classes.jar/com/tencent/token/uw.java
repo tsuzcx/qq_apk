@@ -1,35 +1,33 @@
 package com.tencent.token;
 
 import android.content.Context;
-import android.os.Handler;
-import android.os.Message;
-import android.text.TextUtils;
-import com.tencent.token.core.bean.ConfigResult;
 import com.tencent.token.global.RqdApplication;
 import java.util.HashMap;
 import org.json.JSONObject;
 
 public final class uw
-  extends tj
+  extends tr
 {
-  private int d;
+  private long d;
   private int e;
   private int f;
-  private ConfigResult g;
-  private int h;
+  private boolean g;
+  private String h;
   
   public final String a()
   {
-    rz.a();
+    sh.a();
     this.a.a(104, null, null);
     return null;
   }
   
-  public final void a(aaq paramaaq)
+  public final void a(abc paramabc)
   {
-    this.d = ((Integer)paramaaq.c.get("param.config.width")).intValue();
-    this.e = ((Integer)paramaaq.c.get("param.config.height")).intValue();
-    this.f = ((Integer)paramaaq.c.get("param.config.dpi")).intValue();
+    this.d = ((Long)paramabc.c.get("param.uinhash")).longValue();
+    this.f = ((Integer)paramabc.c.get("param.scene_id")).intValue();
+    this.g = ((Boolean)paramabc.c.get("param.verifyonoff")).booleanValue();
+    this.h = ((String)paramabc.c.get("param.wtlogin.a2"));
+    this.e = paramabc.j;
   }
   
   public final void a(JSONObject paramJSONObject)
@@ -40,68 +38,27 @@ public final class uw
       a(i, paramJSONObject.getString("info"));
       return;
     }
-    paramJSONObject = aac.d(paramJSONObject.getString("data"));
-    StringBuilder localStringBuilder;
+    paramJSONObject = aao.d(paramJSONObject.getString("data"));
     if (paramJSONObject != null)
     {
       paramJSONObject = new JSONObject(new String(paramJSONObject));
-      localStringBuilder = new StringBuilder("parseJSON  decodeData=");
-      localStringBuilder.append(paramJSONObject.toString());
-      xa.a(localStringBuilder.toString());
+      xj.a("mbtoken3_general_verify_mobile_code ret: ".concat(String.valueOf(paramJSONObject)));
       i = paramJSONObject.getInt("seq_id");
-      if (i != this.h)
+      if (i != this.e)
       {
-        this.a.a(10030, null, null);
         paramJSONObject = new StringBuilder("parseJSON error seq is wrong seq=");
         paramJSONObject.append(i);
         paramJSONObject.append(",right = ");
-        sa.a();
-        paramJSONObject.append(sa.b());
-        xa.c(paramJSONObject.toString());
+        paramJSONObject.append(this.e);
+        xj.c(paramJSONObject.toString());
+        this.a.a(10030, null, null);
         return;
       }
-      this.g = new ConfigResult(paramJSONObject);
       this.a.a = 0;
-      aad.c(this.g);
-      aad.b(this.g);
-      if (TextUtils.isEmpty(this.g.schemaKey)) {}
-    }
-    try
-    {
-      paramJSONObject = new String(aac.d(this.g.schemaKey));
-      localStringBuilder = new StringBuilder("schemaKey=");
-      localStringBuilder.append(this.g.schemaKey);
-      localStringBuilder.append(" save as=");
-      localStringBuilder.append(paramJSONObject);
-      xa.b(localStringBuilder.toString());
-      aad.a(paramJSONObject, this.g.schemaTimeout);
       return;
     }
-    catch (Exception paramJSONObject)
-    {
-      label268:
-      break label268;
-    }
-    paramJSONObject = new StringBuilder("decode schemakey failed! schemaKey=");
-    paramJSONObject.append(this.g.schemaKey);
-    paramJSONObject.append(" key=");
-    paramJSONObject.append(sr.a(sz.a().a));
-    xa.b(paramJSONObject.toString());
-    return;
-    xa.c("parseJSON error decodeData=".concat(String.valueOf(paramJSONObject)));
-    a(10022, RqdApplication.n().getString(2131493068));
-  }
-  
-  public final void b()
-  {
-    if ((!this.b.e) && (this.b.d != null))
-    {
-      Message localMessage = this.b.d.obtainMessage(this.b.f);
-      localMessage.arg1 = 0;
-      localMessage.obj = this.g;
-      localMessage.sendToTarget();
-      this.b.e = true;
-    }
+    xj.c("parseJSON error decodeData=".concat(String.valueOf(paramJSONObject)));
+    a(10022, RqdApplication.p().getString(2131493068));
   }
 }
 

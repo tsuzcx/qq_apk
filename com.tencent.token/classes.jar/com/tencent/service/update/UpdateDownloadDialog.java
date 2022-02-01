@@ -15,12 +15,12 @@ import android.view.WindowManager;
 import android.view.WindowManager.LayoutParams;
 import android.widget.Button;
 import android.widget.TextView;
-import com.tencent.token.rb;
-import com.tencent.token.rb.a;
-import com.tencent.token.rb.b;
-import com.tencent.token.rb.c;
-import com.tencent.token.rm;
-import com.tencent.token.ro;
+import com.tencent.token.rj;
+import com.tencent.token.rj.a;
+import com.tencent.token.rj.b;
+import com.tencent.token.rj.c;
+import com.tencent.token.ru;
+import com.tencent.token.rw;
 import com.tencent.token.ui.IndexActivity;
 import com.tmsdk.TMSDKContext;
 import com.tmsdk.Unit;
@@ -30,7 +30,7 @@ public class UpdateDownloadDialog
   extends Dialog
 {
   Context a;
-  rb.a b;
+  rj.a b;
   Button c;
   TextView d;
   TextView e;
@@ -43,30 +43,30 @@ public class UpdateDownloadDialog
       }
     }
   };
-  rb.c g = new rb.c()
+  rj.c g = new rj.c()
   {
-    public final void a(rb.a paramAnonymousa)
+    public final void a(rj.a paramAnonymousa)
     {
       UpdateDownloadDialog.this.a(paramAnonymousa);
     }
     
-    public final void b(rb.a paramAnonymousa)
+    public final void b(rj.a paramAnonymousa)
     {
       UpdateDownloadDialog.this.a(paramAnonymousa);
     }
     
-    public final void c(rb.a paramAnonymousa)
+    public final void c(rj.a paramAnonymousa)
     {
       UpdateDownloadDialog.this.a(paramAnonymousa);
     }
     
-    public final void d(rb.a paramAnonymousa)
+    public final void d(rj.a paramAnonymousa)
     {
       UpdateDownloadDialog.this.a(paramAnonymousa);
     }
   };
   
-  public UpdateDownloadDialog(Context paramContext, rb.a parama)
+  public UpdateDownloadDialog(Context paramContext, rj.a parama)
   {
     super(paramContext, 2131558791);
     this.a = paramContext;
@@ -104,7 +104,7 @@ public class UpdateDownloadDialog
     this.c.setText("重试");
   }
   
-  final void a(rb.a parama)
+  final void a(rj.a parama)
   {
     if (parama == this.b)
     {
@@ -126,9 +126,9 @@ public class UpdateDownloadDialog
     Object localObject = paramBundle.getAttributes();
     ((WindowManager.LayoutParams)localObject).width = ((int)(((Activity)this.a).getWindowManager().getDefaultDisplay().getWidth() - IndexActivity.S_DENSITY * 46.0F));
     paramBundle.setAttributes((WindowManager.LayoutParams)localObject);
-    this.c = ((Button)findViewById(2131165826));
-    this.d = ((TextView)findViewById(2131166112));
-    this.e = ((TextView)findViewById(2131165746));
+    this.c = ((Button)findViewById(2131165827));
+    this.d = ((TextView)findViewById(2131166114));
+    this.e = ((TextView)findViewById(2131165747));
     findViewById(2131165382).setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
@@ -157,53 +157,53 @@ public class UpdateDownloadDialog
           default: 
             return;
           case 7: 
-            rb.b.a().d(paramAnonymousView.b);
+            rj.b.a().d(paramAnonymousView.b);
             return;
           case 6: 
-            rb.a(paramAnonymousView.a, new File(rb.a(), paramAnonymousView.b.d));
+            rj.a(paramAnonymousView.a, new File(rj.a(), paramAnonymousView.b.d));
             return;
           case 4: 
           case 5: 
-            rb.b.a().b(paramAnonymousView.b);
+            rj.b.a().b(paramAnonymousView.b);
             return;
           }
-          ro localro = ro.a();
-          localro.k(2);
-          localro.c(true);
-          rb.b.a().c(paramAnonymousView.b);
+          rw localrw = rw.a();
+          localrw.k(2);
+          localrw.c(true);
+          rj.b.a().c(paramAnonymousView.b);
           TMSDKContext.saveActionData(1150107);
           return;
         }
       }
     });
     a();
-    localObject = ro.a();
-    paramBundle = String.format("新版本V%1$d.%2$d.%3$d", new Object[] { Integer.valueOf(((ro)localObject).d()), Integer.valueOf(((ro)localObject).e()), Integer.valueOf(((ro)localObject).f()) });
-    if (!TextUtils.isEmpty(((ro)localObject).j())) {
-      paramBundle = ((ro)localObject).j();
+    localObject = rw.a();
+    paramBundle = String.format("新版本V%1$d.%2$d.%3$d", new Object[] { Integer.valueOf(((rw)localObject).d()), Integer.valueOf(((rw)localObject).e()), Integer.valueOf(((rw)localObject).f()) });
+    if (!TextUtils.isEmpty(((rw)localObject).j())) {
+      paramBundle = ((rw)localObject).j();
     }
     this.d.setText(paramBundle);
     paramBundle = new StringBuffer();
-    paramBundle.append(((ro)localObject).a.a("meri_lastest_featrue", ""));
-    if (((ro)localObject).h() > 0)
+    paramBundle.append(((rw)localObject).a.a("meri_lastest_featrue", ""));
+    if (((rw)localObject).h() > 0)
     {
       paramBundle.append('\n');
       paramBundle.append("更新包：");
-      paramBundle.append(Unit.transformShortType(((ro)localObject).h(), true));
+      paramBundle.append(Unit.transformShortType(((rw)localObject).h(), true));
     }
     this.e.setText(paramBundle.toString());
   }
   
   protected void onStart()
   {
-    rb.b.a().a(this.g);
+    rj.b.a().a(this.g);
     super.onStart();
   }
   
   protected void onStop()
   {
     super.onStop();
-    rb.b.a().b(this.g);
+    rj.b.a().b(this.g);
   }
 }
 

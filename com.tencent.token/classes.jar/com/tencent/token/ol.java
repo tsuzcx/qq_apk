@@ -5,25 +5,12 @@ import android.os.Bundle;
 public final class ol
 {
   public static final class a
-    extends og
   {
+    public String a;
+    public String b;
     public String c;
-    
-    public final int a()
-    {
-      return 29;
-    }
-    
-    public final void a(Bundle paramBundle)
-    {
-      super.a(paramBundle);
-      paramBundle.putString("_launch_wxminiprogram_token", this.c);
-    }
-    
-    public final boolean b()
-    {
-      return !pg.a(this.c);
-    }
+    public long d;
+    public Bundle e;
   }
 }
 

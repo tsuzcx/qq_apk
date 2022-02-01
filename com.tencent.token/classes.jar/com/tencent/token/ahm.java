@@ -1,31 +1,25 @@
 package com.tencent.token;
 
-public final class ahm
+import android.os.Bundle;
+import android.os.IInterface;
+import com.tencent.wcdb.CursorWindow;
+
+public abstract interface ahm
+  extends IInterface
 {
-  private static ahn a;
+  public abstract int a(ahn paramahn);
   
-  public static ahn a()
-  {
-    if (a == null)
-    {
-      ahn localahn = new ahn();
-      a = localahn;
-      int i;
-      if ((!localahn.d) && (!localahn.c))
-      {
-        localahn.c = true;
-        i = 0;
-      }
-      while (i < localahn.b)
-      {
-        localahn.a[i].start();
-        i += 1;
-        continue;
-        throw new IllegalStateException("HttpCommunicator already in using or disposed!");
-      }
-    }
-    return a;
-  }
+  public abstract Bundle a(Bundle paramBundle);
+  
+  public abstract CursorWindow a(int paramInt);
+  
+  public abstract void a();
+  
+  public abstract void b();
+  
+  public abstract void b(int paramInt);
+  
+  public abstract Bundle c();
 }
 
 

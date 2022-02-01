@@ -1,593 +1,254 @@
 package com.tencent.token;
 
-import java.io.EOFException;
-import java.io.IOException;
-import java.net.ProtocolException;
-import java.net.Proxy;
-import java.net.Proxy.Type;
-import java.util.concurrent.TimeUnit;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
 
 public final class ajv
-  implements ajl
 {
-  final ail a;
-  final aji b;
-  final ala c;
-  final akz d;
-  int e = 0;
-  private long f = 262144L;
+  public static final ajv A;
+  public static final ajv B;
+  public static final ajv C;
+  public static final ajv D;
+  public static final ajv E;
+  public static final ajv F;
+  public static final ajv G;
+  public static final ajv H;
+  public static final ajv I;
+  public static final ajv J;
+  public static final ajv K;
+  public static final ajv L;
+  public static final ajv M;
+  public static final ajv N;
+  public static final ajv O;
+  public static final ajv P;
+  public static final ajv Q;
+  public static final ajv R;
+  public static final ajv S;
+  public static final ajv T;
+  public static final ajv U;
+  public static final ajv V;
+  public static final ajv W;
+  public static final ajv X;
+  public static final ajv Y;
+  public static final ajv Z;
+  static final Comparator<String> a = new Comparator() {};
+  public static final ajv aA = a("TLS_ECDH_RSA_WITH_NULL_SHA");
+  public static final ajv aB = a("TLS_ECDH_RSA_WITH_RC4_128_SHA");
+  public static final ajv aC = a("TLS_ECDH_RSA_WITH_3DES_EDE_CBC_SHA");
+  public static final ajv aD = a("TLS_ECDH_RSA_WITH_AES_128_CBC_SHA");
+  public static final ajv aE = a("TLS_ECDH_RSA_WITH_AES_256_CBC_SHA");
+  public static final ajv aF = a("TLS_ECDHE_RSA_WITH_NULL_SHA");
+  public static final ajv aG = a("TLS_ECDHE_RSA_WITH_RC4_128_SHA");
+  public static final ajv aH = a("TLS_ECDHE_RSA_WITH_3DES_EDE_CBC_SHA");
+  public static final ajv aI = a("TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA");
+  public static final ajv aJ = a("TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA");
+  public static final ajv aK = a("TLS_ECDH_anon_WITH_NULL_SHA");
+  public static final ajv aL = a("TLS_ECDH_anon_WITH_RC4_128_SHA");
+  public static final ajv aM = a("TLS_ECDH_anon_WITH_3DES_EDE_CBC_SHA");
+  public static final ajv aN = a("TLS_ECDH_anon_WITH_AES_128_CBC_SHA");
+  public static final ajv aO = a("TLS_ECDH_anon_WITH_AES_256_CBC_SHA");
+  public static final ajv aP = a("TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256");
+  public static final ajv aQ = a("TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384");
+  public static final ajv aR = a("TLS_ECDH_ECDSA_WITH_AES_128_CBC_SHA256");
+  public static final ajv aS = a("TLS_ECDH_ECDSA_WITH_AES_256_CBC_SHA384");
+  public static final ajv aT = a("TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256");
+  public static final ajv aU = a("TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384");
+  public static final ajv aV = a("TLS_ECDH_RSA_WITH_AES_128_CBC_SHA256");
+  public static final ajv aW = a("TLS_ECDH_RSA_WITH_AES_256_CBC_SHA384");
+  public static final ajv aX = a("TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256");
+  public static final ajv aY = a("TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384");
+  public static final ajv aZ = a("TLS_ECDH_ECDSA_WITH_AES_128_GCM_SHA256");
+  public static final ajv aa;
+  public static final ajv ab;
+  public static final ajv ac;
+  public static final ajv ad;
+  public static final ajv ae;
+  public static final ajv af;
+  public static final ajv ag;
+  public static final ajv ah;
+  public static final ajv ai;
+  public static final ajv aj;
+  public static final ajv ak;
+  public static final ajv al;
+  public static final ajv am;
+  public static final ajv an;
+  public static final ajv ao;
+  public static final ajv ap;
+  public static final ajv aq;
+  public static final ajv ar;
+  public static final ajv as;
+  public static final ajv at;
+  public static final ajv au;
+  public static final ajv av;
+  public static final ajv aw;
+  public static final ajv ax;
+  public static final ajv ay;
+  public static final ajv az;
+  public static final ajv b;
+  public static final ajv ba = a("TLS_ECDH_ECDSA_WITH_AES_256_GCM_SHA384");
+  public static final ajv bb = a("TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256");
+  public static final ajv bc = a("TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384");
+  public static final ajv bd = a("TLS_ECDH_RSA_WITH_AES_128_GCM_SHA256");
+  public static final ajv be = a("TLS_ECDH_RSA_WITH_AES_256_GCM_SHA384");
+  public static final ajv bf = a("TLS_ECDHE_PSK_WITH_AES_128_CBC_SHA");
+  public static final ajv bg = a("TLS_ECDHE_PSK_WITH_AES_256_CBC_SHA");
+  public static final ajv bh = a("TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256");
+  public static final ajv bi = a("TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256");
+  public static final ajv bj = a("TLS_ECDHE_PSK_WITH_CHACHA20_POLY1305_SHA256");
+  private static final Map<String, ajv> bl = new TreeMap(a);
+  public static final ajv c;
+  public static final ajv d;
+  public static final ajv e;
+  public static final ajv f;
+  public static final ajv g;
+  public static final ajv h;
+  public static final ajv i;
+  public static final ajv j;
+  public static final ajv k;
+  public static final ajv l;
+  public static final ajv m;
+  public static final ajv n;
+  public static final ajv o;
+  public static final ajv p;
+  public static final ajv q;
+  public static final ajv r;
+  public static final ajv s;
+  public static final ajv t;
+  public static final ajv u;
+  public static final ajv v;
+  public static final ajv w;
+  public static final ajv x;
+  public static final ajv y;
+  public static final ajv z;
+  final String bk;
   
-  public ajv(ail paramail, aji paramaji, ala paramala, akz paramakz)
+  static
   {
-    this.a = paramail;
-    this.b = paramaji;
-    this.c = paramala;
-    this.d = paramakz;
+    b = a("SSL_RSA_WITH_NULL_MD5");
+    c = a("SSL_RSA_WITH_NULL_SHA");
+    d = a("SSL_RSA_EXPORT_WITH_RC4_40_MD5");
+    e = a("SSL_RSA_WITH_RC4_128_MD5");
+    f = a("SSL_RSA_WITH_RC4_128_SHA");
+    g = a("SSL_RSA_EXPORT_WITH_DES40_CBC_SHA");
+    h = a("SSL_RSA_WITH_DES_CBC_SHA");
+    i = a("SSL_RSA_WITH_3DES_EDE_CBC_SHA");
+    j = a("SSL_DHE_DSS_EXPORT_WITH_DES40_CBC_SHA");
+    k = a("SSL_DHE_DSS_WITH_DES_CBC_SHA");
+    l = a("SSL_DHE_DSS_WITH_3DES_EDE_CBC_SHA");
+    m = a("SSL_DHE_RSA_EXPORT_WITH_DES40_CBC_SHA");
+    n = a("SSL_DHE_RSA_WITH_DES_CBC_SHA");
+    o = a("SSL_DHE_RSA_WITH_3DES_EDE_CBC_SHA");
+    p = a("SSL_DH_anon_EXPORT_WITH_RC4_40_MD5");
+    q = a("SSL_DH_anon_WITH_RC4_128_MD5");
+    r = a("SSL_DH_anon_EXPORT_WITH_DES40_CBC_SHA");
+    s = a("SSL_DH_anon_WITH_DES_CBC_SHA");
+    t = a("SSL_DH_anon_WITH_3DES_EDE_CBC_SHA");
+    u = a("TLS_KRB5_WITH_DES_CBC_SHA");
+    v = a("TLS_KRB5_WITH_3DES_EDE_CBC_SHA");
+    w = a("TLS_KRB5_WITH_RC4_128_SHA");
+    x = a("TLS_KRB5_WITH_DES_CBC_MD5");
+    y = a("TLS_KRB5_WITH_3DES_EDE_CBC_MD5");
+    z = a("TLS_KRB5_WITH_RC4_128_MD5");
+    A = a("TLS_KRB5_EXPORT_WITH_DES_CBC_40_SHA");
+    B = a("TLS_KRB5_EXPORT_WITH_RC4_40_SHA");
+    C = a("TLS_KRB5_EXPORT_WITH_DES_CBC_40_MD5");
+    D = a("TLS_KRB5_EXPORT_WITH_RC4_40_MD5");
+    E = a("TLS_RSA_WITH_AES_128_CBC_SHA");
+    F = a("TLS_DHE_DSS_WITH_AES_128_CBC_SHA");
+    G = a("TLS_DHE_RSA_WITH_AES_128_CBC_SHA");
+    H = a("TLS_DH_anon_WITH_AES_128_CBC_SHA");
+    I = a("TLS_RSA_WITH_AES_256_CBC_SHA");
+    J = a("TLS_DHE_DSS_WITH_AES_256_CBC_SHA");
+    K = a("TLS_DHE_RSA_WITH_AES_256_CBC_SHA");
+    L = a("TLS_DH_anon_WITH_AES_256_CBC_SHA");
+    M = a("TLS_RSA_WITH_NULL_SHA256");
+    N = a("TLS_RSA_WITH_AES_128_CBC_SHA256");
+    O = a("TLS_RSA_WITH_AES_256_CBC_SHA256");
+    P = a("TLS_DHE_DSS_WITH_AES_128_CBC_SHA256");
+    Q = a("TLS_RSA_WITH_CAMELLIA_128_CBC_SHA");
+    R = a("TLS_DHE_DSS_WITH_CAMELLIA_128_CBC_SHA");
+    S = a("TLS_DHE_RSA_WITH_CAMELLIA_128_CBC_SHA");
+    T = a("TLS_DHE_RSA_WITH_AES_128_CBC_SHA256");
+    U = a("TLS_DHE_DSS_WITH_AES_256_CBC_SHA256");
+    V = a("TLS_DHE_RSA_WITH_AES_256_CBC_SHA256");
+    W = a("TLS_DH_anon_WITH_AES_128_CBC_SHA256");
+    X = a("TLS_DH_anon_WITH_AES_256_CBC_SHA256");
+    Y = a("TLS_RSA_WITH_CAMELLIA_256_CBC_SHA");
+    Z = a("TLS_DHE_DSS_WITH_CAMELLIA_256_CBC_SHA");
+    aa = a("TLS_DHE_RSA_WITH_CAMELLIA_256_CBC_SHA");
+    ab = a("TLS_PSK_WITH_RC4_128_SHA");
+    ac = a("TLS_PSK_WITH_3DES_EDE_CBC_SHA");
+    ad = a("TLS_PSK_WITH_AES_128_CBC_SHA");
+    ae = a("TLS_PSK_WITH_AES_256_CBC_SHA");
+    af = a("TLS_RSA_WITH_SEED_CBC_SHA");
+    ag = a("TLS_RSA_WITH_AES_128_GCM_SHA256");
+    ah = a("TLS_RSA_WITH_AES_256_GCM_SHA384");
+    ai = a("TLS_DHE_RSA_WITH_AES_128_GCM_SHA256");
+    aj = a("TLS_DHE_RSA_WITH_AES_256_GCM_SHA384");
+    ak = a("TLS_DHE_DSS_WITH_AES_128_GCM_SHA256");
+    al = a("TLS_DHE_DSS_WITH_AES_256_GCM_SHA384");
+    am = a("TLS_DH_anon_WITH_AES_128_GCM_SHA256");
+    an = a("TLS_DH_anon_WITH_AES_256_GCM_SHA384");
+    ao = a("TLS_EMPTY_RENEGOTIATION_INFO_SCSV");
+    ap = a("TLS_FALLBACK_SCSV");
+    aq = a("TLS_ECDH_ECDSA_WITH_NULL_SHA");
+    ar = a("TLS_ECDH_ECDSA_WITH_RC4_128_SHA");
+    as = a("TLS_ECDH_ECDSA_WITH_3DES_EDE_CBC_SHA");
+    at = a("TLS_ECDH_ECDSA_WITH_AES_128_CBC_SHA");
+    au = a("TLS_ECDH_ECDSA_WITH_AES_256_CBC_SHA");
+    av = a("TLS_ECDHE_ECDSA_WITH_NULL_SHA");
+    aw = a("TLS_ECDHE_ECDSA_WITH_RC4_128_SHA");
+    ax = a("TLS_ECDHE_ECDSA_WITH_3DES_EDE_CBC_SHA");
+    ay = a("TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA");
+    az = a("TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA");
   }
   
-  static void a(ale paramale)
+  private ajv(String paramString)
   {
-    alp localalp1 = paramale.a;
-    alp localalp2 = alp.c;
-    if (localalp2 != null)
+    if (paramString != null)
     {
-      paramale.a = localalp2;
-      localalp1.f_();
-      localalp1.d();
+      this.bk = paramString;
       return;
     }
-    throw new IllegalArgumentException("delegate == null");
+    throw new NullPointerException();
   }
   
-  private String d()
+  public static ajv a(String paramString)
   {
-    String str = this.c.d(this.f);
-    this.f -= str.length();
-    return str;
-  }
-  
-  public final aiq.a a(boolean paramBoolean)
-  {
-    int i = this.e;
-    Object localObject1;
-    if ((i != 1) && (i != 3))
-    {
-      localObject1 = new StringBuilder("state: ");
-      ((StringBuilder)localObject1).append(this.e);
-      throw new IllegalStateException(((StringBuilder)localObject1).toString());
-    }
     try
     {
-      localObject1 = ajt.a(d());
-      localObject2 = new aiq.a();
-      ((aiq.a)localObject2).b = ((ajt)localObject1).a;
-      ((aiq.a)localObject2).c = ((ajt)localObject1).b;
-      ((aiq.a)localObject2).d = ((ajt)localObject1).c;
-      localObject2 = ((aiq.a)localObject2).a(c());
-      if ((paramBoolean) && (((ajt)localObject1).b == 100)) {
-        return null;
-      }
-      if (((ajt)localObject1).b == 100)
+      ajv localajv2 = (ajv)bl.get(paramString);
+      ajv localajv1 = localajv2;
+      if (localajv2 == null)
       {
-        this.e = 3;
-        return localObject2;
+        localajv1 = new ajv(paramString);
+        bl.put(paramString, localajv1);
       }
-      this.e = 4;
-      return localObject2;
+      return localajv1;
     }
-    catch (EOFException localEOFException)
-    {
-      Object localObject2 = new StringBuilder("unexpected end of stream on ");
-      ((StringBuilder)localObject2).append(this.b);
-      localObject2 = new IOException(((StringBuilder)localObject2).toString());
-      ((IOException)localObject2).initCause(localEOFException);
-      throw ((Throwable)localObject2);
-    }
+    finally {}
   }
   
-  public final air a(aiq paramaiq)
+  static List<ajv> a(String... paramVarArgs)
   {
-    String str = paramaiq.a("Content-Type");
-    if (!ajn.b(paramaiq)) {
-      return new ajq(str, 0L, alh.a(a(0L)));
-    }
-    if ("chunked".equalsIgnoreCase(paramaiq.a("Transfer-Encoding")))
+    ArrayList localArrayList = new ArrayList(paramVarArgs.length);
+    int i2 = paramVarArgs.length;
+    int i1 = 0;
+    while (i1 < i2)
     {
-      paramaiq = paramaiq.a.a;
-      if (this.e == 4)
-      {
-        this.e = 5;
-        return new ajq(str, -1L, alh.a(new c(paramaiq)));
-      }
-      paramaiq = new StringBuilder("state: ");
-      paramaiq.append(this.e);
-      throw new IllegalStateException(paramaiq.toString());
+      localArrayList.add(a(paramVarArgs[i1]));
+      i1 += 1;
     }
-    long l = ajn.a(paramaiq);
-    if (l != -1L) {
-      return new ajq(str, l, alh.a(a(l)));
-    }
-    if (this.e == 4)
-    {
-      paramaiq = this.b;
-      if (paramaiq != null)
-      {
-        this.e = 5;
-        paramaiq.d();
-        return new ajq(str, -1L, alh.a(new f()));
-      }
-      throw new IllegalStateException("streamAllocation == null");
-    }
-    paramaiq = new StringBuilder("state: ");
-    paramaiq.append(this.e);
-    throw new IllegalStateException(paramaiq.toString());
+    return Collections.unmodifiableList(localArrayList);
   }
   
-  public final aln a(aio paramaio, long paramLong)
+  public final String toString()
   {
-    if ("chunked".equalsIgnoreCase(paramaio.a("Transfer-Encoding")))
-    {
-      if (this.e == 1)
-      {
-        this.e = 2;
-        return new b();
-      }
-      paramaio = new StringBuilder("state: ");
-      paramaio.append(this.e);
-      throw new IllegalStateException(paramaio.toString());
-    }
-    if (paramLong != -1L)
-    {
-      if (this.e == 1)
-      {
-        this.e = 2;
-        return new d(paramLong);
-      }
-      paramaio = new StringBuilder("state: ");
-      paramaio.append(this.e);
-      throw new IllegalStateException(paramaio.toString());
-    }
-    throw new IllegalStateException("Cannot stream a request body without chunked encoding or a known content length!");
-  }
-  
-  public final alo a(long paramLong)
-  {
-    if (this.e == 4)
-    {
-      this.e = 5;
-      return new e(paramLong);
-    }
-    StringBuilder localStringBuilder = new StringBuilder("state: ");
-    localStringBuilder.append(this.e);
-    throw new IllegalStateException(localStringBuilder.toString());
-  }
-  
-  public final void a()
-  {
-    this.d.flush();
-  }
-  
-  public final void a(aih paramaih, String paramString)
-  {
-    if (this.e == 0)
-    {
-      this.d.b(paramString).b("\r\n");
-      int i = 0;
-      int j = paramaih.a.length / 2;
-      while (i < j)
-      {
-        this.d.b(paramaih.a(i)).b(": ").b(paramaih.b(i)).b("\r\n");
-        i += 1;
-      }
-      this.d.b("\r\n");
-      this.e = 1;
-      return;
-    }
-    paramaih = new StringBuilder("state: ");
-    paramaih.append(this.e);
-    throw new IllegalStateException(paramaih.toString());
-  }
-  
-  public final void a(aio paramaio)
-  {
-    Object localObject = this.b.b().a.b.type();
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(paramaio.b);
-    localStringBuilder.append(' ');
-    int i;
-    if ((!paramaio.a.b()) && (localObject == Proxy.Type.HTTP)) {
-      i = 1;
-    } else {
-      i = 0;
-    }
-    if (i != 0) {
-      localStringBuilder.append(paramaio.a);
-    } else {
-      localStringBuilder.append(ajr.a(paramaio.a));
-    }
-    localStringBuilder.append(" HTTP/1.1");
-    localObject = localStringBuilder.toString();
-    a(paramaio.c, (String)localObject);
-  }
-  
-  public final void b()
-  {
-    this.d.flush();
-  }
-  
-  public final aih c()
-  {
-    aih.a locala = new aih.a();
-    for (;;)
-    {
-      String str = d();
-      if (str.length() == 0) {
-        break;
-      }
-      aiu.a.a(locala, str);
-    }
-    return locala.a();
-  }
-  
-  abstract class a
-    implements alo
-  {
-    protected final ale a = new ale(ajv.this.c.a());
-    protected boolean b;
-    protected long c = 0L;
-    
-    private a() {}
-    
-    public long a(aky paramaky, long paramLong)
-    {
-      try
-      {
-        paramLong = ajv.this.c.a(paramaky, paramLong);
-        if (paramLong > 0L) {
-          this.c += paramLong;
-        }
-        return paramLong;
-      }
-      catch (IOException paramaky)
-      {
-        a(false);
-        throw paramaky;
-      }
-    }
-    
-    public final alp a()
-    {
-      return this.a;
-    }
-    
-    protected final void a(boolean paramBoolean)
-    {
-      if (ajv.this.e == 6) {
-        return;
-      }
-      if (ajv.this.e == 5)
-      {
-        ajv.a(this.a);
-        localObject = ajv.this;
-        ((ajv)localObject).e = 6;
-        if (((ajv)localObject).b != null) {
-          ajv.this.b.a(paramBoolean ^ true, ajv.this);
-        }
-        return;
-      }
-      Object localObject = new StringBuilder("state: ");
-      ((StringBuilder)localObject).append(ajv.this.e);
-      throw new IllegalStateException(((StringBuilder)localObject).toString());
-    }
-  }
-  
-  final class b
-    implements aln
-  {
-    private final ale b = new ale(ajv.this.d.a());
-    private boolean c;
-    
-    b() {}
-    
-    public final alp a()
-    {
-      return this.b;
-    }
-    
-    public final void a_(aky paramaky, long paramLong)
-    {
-      if (!this.c)
-      {
-        if (paramLong == 0L) {
-          return;
-        }
-        ajv.this.d.j(paramLong);
-        ajv.this.d.b("\r\n");
-        ajv.this.d.a_(paramaky, paramLong);
-        ajv.this.d.b("\r\n");
-        return;
-      }
-      throw new IllegalStateException("closed");
-    }
-    
-    public final void close()
-    {
-      try
-      {
-        boolean bool = this.c;
-        if (bool) {
-          return;
-        }
-        this.c = true;
-        ajv.this.d.b("0\r\n\r\n");
-        ajv.a(this.b);
-        ajv.this.e = 3;
-        return;
-      }
-      finally {}
-    }
-    
-    public final void flush()
-    {
-      try
-      {
-        boolean bool = this.c;
-        if (bool) {
-          return;
-        }
-        ajv.this.d.flush();
-        return;
-      }
-      finally {}
-    }
-  }
-  
-  final class c
-    extends ajv.a
-  {
-    private final aii f;
-    private long g = -1L;
-    private boolean h = true;
-    
-    c(aii paramaii)
-    {
-      super((byte)0);
-      this.f = paramaii;
-    }
-    
-    public final long a(aky paramaky, long paramLong)
-    {
-      if (paramLong >= 0L)
-      {
-        if (!this.b)
-        {
-          if (!this.h) {
-            return -1L;
-          }
-          long l = this.g;
-          if ((l == 0L) || (l == -1L)) {
-            if (this.g != -1L) {
-              ajv.this.c.n();
-            }
-          }
-          try
-          {
-            this.g = ajv.this.c.k();
-            String str = ajv.this.c.n().trim();
-            if (this.g >= 0L) {
-              if (!str.isEmpty())
-              {
-                boolean bool = str.startsWith(";");
-                if (!bool) {}
-              }
-              else
-              {
-                if (this.g == 0L)
-                {
-                  this.h = false;
-                  ajn.a(ajv.this.a.k, this.f, ajv.this.c());
-                  a(true);
-                }
-                if (!this.h) {
-                  return -1L;
-                }
-                paramLong = super.a(paramaky, Math.min(paramLong, this.g));
-                if (paramLong != -1L)
-                {
-                  this.g -= paramLong;
-                  return paramLong;
-                }
-                paramaky = new ProtocolException("unexpected end of stream");
-                a(false);
-                throw paramaky;
-              }
-            }
-            paramaky = new StringBuilder("expected chunk size and optional extensions but was \"");
-            paramaky.append(this.g);
-            paramaky.append(str);
-            paramaky.append("\"");
-            throw new ProtocolException(paramaky.toString());
-          }
-          catch (NumberFormatException paramaky)
-          {
-            throw new ProtocolException(paramaky.getMessage());
-          }
-        }
-        throw new IllegalStateException("closed");
-      }
-      throw new IllegalArgumentException("byteCount < 0: ".concat(String.valueOf(paramLong)));
-    }
-    
-    public final void close()
-    {
-      if (this.b) {
-        return;
-      }
-      if ((this.h) && (!aiw.a(this, TimeUnit.MILLISECONDS))) {
-        a(false);
-      }
-      this.b = true;
-    }
-  }
-  
-  final class d
-    implements aln
-  {
-    private final ale b = new ale(ajv.this.d.a());
-    private boolean c;
-    private long d;
-    
-    d(long paramLong)
-    {
-      this.d = paramLong;
-    }
-    
-    public final alp a()
-    {
-      return this.b;
-    }
-    
-    public final void a_(aky paramaky, long paramLong)
-    {
-      if (!this.c)
-      {
-        aiw.a(paramaky.b, paramLong);
-        if (paramLong <= this.d)
-        {
-          ajv.this.d.a_(paramaky, paramLong);
-          this.d -= paramLong;
-          return;
-        }
-        paramaky = new StringBuilder("expected ");
-        paramaky.append(this.d);
-        paramaky.append(" bytes but received ");
-        paramaky.append(paramLong);
-        throw new ProtocolException(paramaky.toString());
-      }
-      throw new IllegalStateException("closed");
-    }
-    
-    public final void close()
-    {
-      if (this.c) {
-        return;
-      }
-      this.c = true;
-      if (this.d <= 0L)
-      {
-        ajv.a(this.b);
-        ajv.this.e = 3;
-        return;
-      }
-      throw new ProtocolException("unexpected end of stream");
-    }
-    
-    public final void flush()
-    {
-      if (this.c) {
-        return;
-      }
-      ajv.this.d.flush();
-    }
-  }
-  
-  final class e
-    extends ajv.a
-  {
-    private long f;
-    
-    e(long paramLong)
-    {
-      super((byte)0);
-      this.f = paramLong;
-      if (this.f == 0L) {
-        a(true);
-      }
-    }
-    
-    public final long a(aky paramaky, long paramLong)
-    {
-      if (paramLong >= 0L)
-      {
-        if (!this.b)
-        {
-          long l = this.f;
-          if (l == 0L) {
-            return -1L;
-          }
-          paramLong = super.a(paramaky, Math.min(l, paramLong));
-          if (paramLong != -1L)
-          {
-            this.f -= paramLong;
-            if (this.f == 0L) {
-              a(true);
-            }
-            return paramLong;
-          }
-          paramaky = new ProtocolException("unexpected end of stream");
-          a(false);
-          throw paramaky;
-        }
-        throw new IllegalStateException("closed");
-      }
-      throw new IllegalArgumentException("byteCount < 0: ".concat(String.valueOf(paramLong)));
-    }
-    
-    public final void close()
-    {
-      if (this.b) {
-        return;
-      }
-      if ((this.f != 0L) && (!aiw.a(this, TimeUnit.MILLISECONDS))) {
-        a(false);
-      }
-      this.b = true;
-    }
-  }
-  
-  final class f
-    extends ajv.a
-  {
-    private boolean f;
-    
-    f()
-    {
-      super((byte)0);
-    }
-    
-    public final long a(aky paramaky, long paramLong)
-    {
-      if (paramLong >= 0L)
-      {
-        if (!this.b)
-        {
-          if (this.f) {
-            return -1L;
-          }
-          paramLong = super.a(paramaky, paramLong);
-          if (paramLong == -1L)
-          {
-            this.f = true;
-            a(true);
-            return -1L;
-          }
-          return paramLong;
-        }
-        throw new IllegalStateException("closed");
-      }
-      throw new IllegalArgumentException("byteCount < 0: ".concat(String.valueOf(paramLong)));
-    }
-    
-    public final void close()
-    {
-      if (this.b) {
-        return;
-      }
-      if (!this.f) {
-        a(false);
-      }
-      this.b = true;
-    }
+    return this.bk;
   }
 }
 

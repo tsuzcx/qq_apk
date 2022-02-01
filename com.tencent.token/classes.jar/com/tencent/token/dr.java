@@ -1,65 +1,58 @@
 package com.tencent.token;
 
-import android.util.Base64;
-import java.util.List;
+import android.content.res.ColorStateList;
+import android.graphics.PorterDuff.Mode;
+import android.view.MenuItem;
+import android.view.View;
 
-public final class dr
+public abstract interface dr
+  extends MenuItem
 {
-  final String a;
-  final String b;
-  final String c;
-  final List<List<byte[]>> d;
-  final int e;
-  final String f;
+  public abstract dr a(em paramem);
   
-  public dr(String paramString1, String paramString2, String paramString3, List<List<byte[]>> paramList)
-  {
-    this.a = ((String)ee.a(paramString1));
-    this.b = ((String)ee.a(paramString2));
-    this.c = ((String)ee.a(paramString3));
-    this.d = ((List)ee.a(paramList));
-    this.e = 0;
-    paramString1 = new StringBuilder(this.a);
-    paramString1.append("-");
-    paramString1.append(this.b);
-    paramString1.append("-");
-    paramString1.append(this.c);
-    this.f = paramString1.toString();
-  }
+  public abstract dr a(CharSequence paramCharSequence);
   
-  public final String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    Object localObject = new StringBuilder("FontRequest {mProviderAuthority: ");
-    ((StringBuilder)localObject).append(this.a);
-    ((StringBuilder)localObject).append(", mProviderPackage: ");
-    ((StringBuilder)localObject).append(this.b);
-    ((StringBuilder)localObject).append(", mQuery: ");
-    ((StringBuilder)localObject).append(this.c);
-    ((StringBuilder)localObject).append(", mCertificates:");
-    localStringBuilder.append(((StringBuilder)localObject).toString());
-    int i = 0;
-    while (i < this.d.size())
-    {
-      localStringBuilder.append(" [");
-      localObject = (List)this.d.get(i);
-      int j = 0;
-      while (j < ((List)localObject).size())
-      {
-        localStringBuilder.append(" \"");
-        localStringBuilder.append(Base64.encodeToString((byte[])((List)localObject).get(j), 0));
-        localStringBuilder.append("\"");
-        j += 1;
-      }
-      localStringBuilder.append(" ]");
-      i += 1;
-    }
-    localStringBuilder.append("}");
-    localObject = new StringBuilder("mCertificatesArray: ");
-    ((StringBuilder)localObject).append(this.e);
-    localStringBuilder.append(((StringBuilder)localObject).toString());
-    return localStringBuilder.toString();
-  }
+  public abstract em a();
+  
+  public abstract dr b(CharSequence paramCharSequence);
+  
+  public abstract boolean collapseActionView();
+  
+  public abstract boolean expandActionView();
+  
+  public abstract View getActionView();
+  
+  public abstract int getAlphabeticModifiers();
+  
+  public abstract CharSequence getContentDescription();
+  
+  public abstract ColorStateList getIconTintList();
+  
+  public abstract PorterDuff.Mode getIconTintMode();
+  
+  public abstract int getNumericModifiers();
+  
+  public abstract CharSequence getTooltipText();
+  
+  public abstract boolean isActionViewExpanded();
+  
+  public abstract MenuItem setActionView(int paramInt);
+  
+  public abstract MenuItem setActionView(View paramView);
+  
+  public abstract MenuItem setAlphabeticShortcut(char paramChar, int paramInt);
+  
+  public abstract MenuItem setIconTintList(ColorStateList paramColorStateList);
+  
+  public abstract MenuItem setIconTintMode(PorterDuff.Mode paramMode);
+  
+  public abstract MenuItem setNumericShortcut(char paramChar, int paramInt);
+  
+  public abstract MenuItem setShortcut(char paramChar1, char paramChar2, int paramInt1, int paramInt2);
+  
+  public abstract void setShowAsAction(int paramInt);
+  
+  public abstract MenuItem setShowAsActionFlags(int paramInt);
 }
 
 

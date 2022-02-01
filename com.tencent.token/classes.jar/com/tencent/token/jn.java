@@ -1,52 +1,44 @@
 package com.tencent.token;
 
-import com.qq.taf.jce.JceInputStream;
-import com.qq.taf.jce.JceOutputStream;
-import com.qq.taf.jce.JceStruct;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.os.Build.VERSION;
+import java.lang.ref.WeakReference;
 
 public final class jn
-  extends JceStruct
+  extends Resources
 {
-  static byte[] g;
-  static byte[] h;
-  public long a = 0L;
-  public long b = 0L;
-  public String c = "";
-  public byte[] d = null;
-  public byte[] e = null;
-  public int f = 0;
+  private final WeakReference<Context> a;
   
-  public final void readFrom(JceInputStream paramJceInputStream)
+  public jn(Context paramContext, Resources paramResources)
   {
-    this.a = paramJceInputStream.read(this.a, 0, true);
-    this.b = paramJceInputStream.read(this.b, 1, true);
-    this.c = paramJceInputStream.readString(2, true);
-    byte[] arrayOfByte;
-    if (g == null)
-    {
-      arrayOfByte = (byte[])new byte[1];
-      g = arrayOfByte;
-      ((byte[])arrayOfByte)[0] = 0;
-    }
-    this.d = ((byte[])paramJceInputStream.read(g, 3, true));
-    if (h == null)
-    {
-      arrayOfByte = (byte[])new byte[1];
-      h = arrayOfByte;
-      ((byte[])arrayOfByte)[0] = 0;
-    }
-    this.e = ((byte[])paramJceInputStream.read(h, 4, true));
-    this.f = paramJceInputStream.read(this.f, 5, true);
+    super(paramResources.getAssets(), paramResources.getDisplayMetrics(), paramResources.getConfiguration());
+    this.a = new WeakReference(paramContext);
   }
   
-  public final void writeTo(JceOutputStream paramJceOutputStream)
+  public static boolean a()
   {
-    paramJceOutputStream.write(this.a, 0);
-    paramJceOutputStream.write(this.b, 1);
-    paramJceOutputStream.write(this.c, 2);
-    paramJceOutputStream.write(this.d, 3);
-    paramJceOutputStream.write(this.e, 4);
-    paramJceOutputStream.write(this.f, 5);
+    return (gi.l()) && (Build.VERSION.SDK_INT <= 20);
+  }
+  
+  public final Drawable getDrawable(int paramInt)
+  {
+    Context localContext = (Context)this.a.get();
+    if (localContext != null)
+    {
+      ik localik = ik.a();
+      Drawable localDrawable2 = localik.a(localContext, paramInt);
+      Drawable localDrawable1 = localDrawable2;
+      if (localDrawable2 == null) {
+        localDrawable1 = super.getDrawable(paramInt);
+      }
+      if (localDrawable1 != null) {
+        return localik.a(localContext, paramInt, false, localDrawable1);
+      }
+      return null;
+    }
+    return super.getDrawable(paramInt);
   }
 }
 

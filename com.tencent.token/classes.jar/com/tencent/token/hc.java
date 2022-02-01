@@ -1,124 +1,107 @@
 package com.tencent.token;
 
-import android.view.View;
-import android.view.animation.Interpolator;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.content.Context;
+import android.content.ContextWrapper;
+import android.content.res.AssetManager;
+import android.content.res.Configuration;
+import android.content.res.Resources;
+import android.content.res.Resources.Theme;
+import android.os.Build.VERSION;
+import android.view.LayoutInflater;
 
 public final class hc
+  extends ContextWrapper
 {
-  final ArrayList<ez> a = new ArrayList();
-  fa b;
-  boolean c;
-  private long d = -1L;
-  private Interpolator e;
-  private final fb f = new fb()
+  public int a;
+  private Resources.Theme b;
+  private LayoutInflater c;
+  private Configuration d;
+  private Resources e;
+  
+  public hc()
   {
-    private boolean b = false;
-    private int c = 0;
-    
-    public final void a(View paramAnonymousView)
+    super(null);
+  }
+  
+  public hc(Context paramContext, int paramInt)
+  {
+    super(paramContext);
+    this.a = paramInt;
+  }
+  
+  private void a()
+  {
+    int i;
+    if (this.b == null) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0)
     {
-      if (this.b) {
-        return;
-      }
-      this.b = true;
-      if (hc.this.b != null) {
-        hc.this.b.a(null);
+      this.b = getResources().newTheme();
+      Resources.Theme localTheme = getBaseContext().getTheme();
+      if (localTheme != null) {
+        this.b.setTo(localTheme);
       }
     }
-    
-    public final void b(View paramAnonymousView)
+    this.b.applyStyle(this.a, true);
+  }
+  
+  protected final void attachBaseContext(Context paramContext)
+  {
+    super.attachBaseContext(paramContext);
+  }
+  
+  public final AssetManager getAssets()
+  {
+    return getResources().getAssets();
+  }
+  
+  public final Resources getResources()
+  {
+    if (this.e == null) {
+      if (this.d == null) {
+        this.e = super.getResources();
+      } else if (Build.VERSION.SDK_INT >= 17) {
+        this.e = createConfigurationContext(this.d).getResources();
+      }
+    }
+    return this.e;
+  }
+  
+  public final Object getSystemService(String paramString)
+  {
+    if ("layout_inflater".equals(paramString))
     {
-      int i = this.c + 1;
-      this.c = i;
-      if (i == hc.this.a.size())
-      {
-        if (hc.this.b != null) {
-          hc.this.b.b(null);
-        }
-        this.c = 0;
-        this.b = false;
-        hc.this.c = false;
+      if (this.c == null) {
+        this.c = LayoutInflater.from(getBaseContext()).cloneInContext(this);
       }
+      return this.c;
     }
-  };
-  
-  public final hc a(Interpolator paramInterpolator)
-  {
-    if (!this.c) {
-      this.e = paramInterpolator;
-    }
-    return this;
+    return getBaseContext().getSystemService(paramString);
   }
   
-  public final hc a(ez paramez)
+  public final Resources.Theme getTheme()
   {
-    if (!this.c) {
-      this.a.add(paramez);
+    Resources.Theme localTheme = this.b;
+    if (localTheme != null) {
+      return localTheme;
     }
-    return this;
+    if (this.a == 0) {
+      this.a = gs.i.Theme_AppCompat_Light;
+    }
+    a();
+    return this.b;
   }
   
-  public final hc a(ez paramez1, ez paramez2)
+  public final void setTheme(int paramInt)
   {
-    this.a.add(paramez1);
-    paramez2.b(paramez1.a());
-    this.a.add(paramez2);
-    return this;
-  }
-  
-  public final hc a(fa paramfa)
-  {
-    if (!this.c) {
-      this.b = paramfa;
-    }
-    return this;
-  }
-  
-  public final void a()
-  {
-    if (this.c) {
-      return;
-    }
-    Iterator localIterator = this.a.iterator();
-    while (localIterator.hasNext())
+    if (this.a != paramInt)
     {
-      ez localez = (ez)localIterator.next();
-      long l = this.d;
-      if (l >= 0L) {
-        localez.a(l);
-      }
-      Interpolator localInterpolator = this.e;
-      if (localInterpolator != null) {
-        localez.a(localInterpolator);
-      }
-      if (this.b != null) {
-        localez.a(this.f);
-      }
-      localez.c();
+      this.a = paramInt;
+      a();
     }
-    this.c = true;
-  }
-  
-  public final void b()
-  {
-    if (!this.c) {
-      return;
-    }
-    Iterator localIterator = this.a.iterator();
-    while (localIterator.hasNext()) {
-      ((ez)localIterator.next()).b();
-    }
-    this.c = false;
-  }
-  
-  public final hc c()
-  {
-    if (!this.c) {
-      this.d = 250L;
-    }
-    return this;
   }
 }
 

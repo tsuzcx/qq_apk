@@ -1,56 +1,31 @@
 package com.tencent.token;
 
-import android.text.TextUtils;
+import com.tencent.turingfd.sdk.qps.Grape;
+import java.util.ArrayList;
 
 public final class aem
+  extends Thread
 {
-  public static a a(aer paramaer)
+  public final void run()
   {
-    return new b(paramaer);
-  }
-  
-  public static abstract interface a
-  {
-    public abstract String a();
-    
-    public abstract int b();
-    
-    public abstract String c();
-  }
-  
-  public static final class b
-    implements aem.a
-  {
-    public b(aer paramaer) {}
-    
-    public final String a()
+    Object localObject1 = adz.b;
+    localObject1.getClass();
+    ((aeq)localObject1).j = System.currentTimeMillis();
+    abz.a();
+    abz.a(((aeq)localObject1).d, ((aeq)localObject1).g, (aeq)localObject1);
+    try
     {
-      return ((ada)this.a).b;
+      localObject1 = new Grape();
+      ((Grape)localObject1).b = System.currentTimeMillis();
+      ((Grape)localObject1).c = 0;
+      ((Grape)localObject1).d = new ArrayList();
+      adz.a(998, 0, adz.b, (Grape)localObject1);
+      return;
     }
-    
-    public final int b()
+    finally
     {
-      return ((ada)this.a).d;
-    }
-    
-    public final String c()
-    {
-      String str3 = ((ada)this.a).g;
-      String str1 = "";
-      if (TextUtils.isEmpty(str3)) {
-        return "";
-      }
-      try
-      {
-        String str2 = str3.substring(0, 2);
-        str3 = str3.substring(2);
-        if (Integer.parseInt(str2, 16) == 1) {
-          str1 = aey.a(str3);
-        }
-        return str1;
-      }
-      catch (Throwable localThrowable) {}
-      return "";
+      localObject2 = finally;
+      throw localObject2;
     }
   }
 }

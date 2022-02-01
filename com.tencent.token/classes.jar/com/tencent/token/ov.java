@@ -1,37 +1,39 @@
 package com.tencent.token;
 
 import android.os.Bundle;
+import java.util.HashMap;
 
 public final class ov
-  implements ot.b
 {
-  public String a;
-  public String b;
-  public String c;
-  
-  public final int a()
+  public static final class a
+    extends on
   {
-    return 5;
-  }
-  
-  public final void a(Bundle paramBundle)
-  {
-    paramBundle.putString("_wxwebpageobject_extInfo", this.b);
-    paramBundle.putString("_wxwebpageobject_webpageUrl", this.a);
-    paramBundle.putString("_wxwebpageobject_canvaspagexml", this.c);
-  }
-  
-  public final void b(Bundle paramBundle)
-  {
-    this.b = paramBundle.getString("_wxwebpageobject_extInfo");
-    this.a = paramBundle.getString("_wxwebpageobject_webpageUrl");
-    this.c = paramBundle.getString("_wxwebpageobject_canvaspagexml");
-  }
-  
-  public final boolean b()
-  {
-    String str = this.a;
-    return (str != null) && (str.length() != 0) && (this.a.length() <= 10240);
+    public HashMap<String, String> c;
+    public int d;
+    
+    public final int a()
+    {
+      return 25;
+    }
+    
+    public final void a(Bundle paramBundle)
+    {
+      super.a(paramBundle);
+      paramBundle.putSerializable("_wxapi_open_business_webview_query_info", this.c);
+      paramBundle.putInt("_wxapi_open_business_webview_query_type", this.d);
+    }
+    
+    public final void b(Bundle paramBundle)
+    {
+      super.b(paramBundle);
+      this.c = ((HashMap)paramBundle.getSerializable("_wxapi_open_business_webview_query_info"));
+      this.d = paramBundle.getInt("_wxapi_open_business_webview_query_type", 0);
+    }
+    
+    public final boolean b()
+    {
+      return true;
+    }
   }
 }
 

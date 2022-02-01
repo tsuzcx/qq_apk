@@ -1,38 +1,17 @@
 package com.tencent.token;
 
-import android.os.Bundle;
-
 public final class oj
 {
-  public static final class a
-    extends og
+  public static byte[] a(int paramInt)
   {
-    public String c;
-    
-    public final int a()
+    byte[] arrayOfByte = new byte[4];
+    int i = 0;
+    while (i < 4)
     {
-      return 20;
+      arrayOfByte[i] = ((byte)(paramInt >> i * 8 & 0xFF));
+      i += 1;
     }
-    
-    public final void a(Bundle paramBundle)
-    {
-      super.b(paramBundle);
-      paramBundle.putString("_wxapi_invoice_auth_insert_req_url", this.c);
-    }
-    
-    public final void b(Bundle paramBundle)
-    {
-      super.b(paramBundle);
-      this.c = paramBundle.getString("_wxapi_invoice_auth_insert_req_url");
-    }
-    
-    public final boolean b()
-    {
-      if (pg.a(this.c)) {
-        return false;
-      }
-      return this.c.length() <= 10240;
-    }
+    return arrayOfByte;
   }
 }
 

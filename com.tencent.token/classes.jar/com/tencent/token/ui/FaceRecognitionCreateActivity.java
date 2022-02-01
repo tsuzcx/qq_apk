@@ -14,12 +14,12 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.TextView;
-import com.tencent.token.aac;
-import com.tencent.token.ahg;
+import com.tencent.token.aao;
+import com.tencent.token.ais;
 import com.tencent.token.core.bean.QQUser;
 import com.tencent.token.global.RqdApplication;
-import com.tencent.token.sz;
-import com.tencent.token.xa;
+import com.tencent.token.th;
+import com.tencent.token.xj;
 
 public class FaceRecognitionCreateActivity
   extends BaseActivity
@@ -35,14 +35,14 @@ public class FaceRecognitionCreateActivity
   {
     try
     {
-      boolean bool = RqdApplication.n().getSharedPreferences("create_notice_flag", 0).getBoolean("notice_flag", false);
+      boolean bool = RqdApplication.p().getSharedPreferences("create_notice_flag", 0).getBoolean("notice_flag", false);
       return bool;
     }
     catch (Exception localException)
     {
       StringBuilder localStringBuilder = new StringBuilder("SharedPreferences msg ");
       localStringBuilder.append(localException.getMessage());
-      xa.c(localStringBuilder.toString());
+      xj.c(localStringBuilder.toString());
     }
     return false;
   }
@@ -90,7 +90,7 @@ public class FaceRecognitionCreateActivity
       public final void onClick(View paramAnonymousView)
       {
         paramAnonymousView = FaceRecognitionCreateActivity.this;
-        aac.a(paramAnonymousView, paramAnonymousView.getResources().getString(2131493439), FaceRecognitionCreateActivity.this.getResources().getString(2131493440));
+        aao.a(paramAnonymousView, paramAnonymousView.getResources().getString(2131493439), FaceRecognitionCreateActivity.this.getResources().getString(2131493440));
       }
     });
     this.btn_reg = ((Button)findViewById(2131165509));
@@ -100,13 +100,13 @@ public class FaceRecognitionCreateActivity
       {
         if (FaceRecognitionCreateActivity.this.chk.isChecked())
         {
-          if (sz.a().k.b() == null)
+          if (th.a().k.b() == null)
           {
             paramAnonymousView = FaceRecognitionCreateActivity.this;
             paramAnonymousView.showNoAccountTipDialog(paramAnonymousView, 3, 0);
             return;
           }
-          if (!sz.a().k.b().mIsBinded)
+          if (!th.a().k.b().mIsBinded)
           {
             paramAnonymousView = FaceRecognitionCreateActivity.this;
             paramAnonymousView.showNoAccountTipDialog(paramAnonymousView, 3, 1);
@@ -132,7 +132,7 @@ public class FaceRecognitionCreateActivity
   {
     try
     {
-      SharedPreferences.Editor localEditor = RqdApplication.n().getSharedPreferences("create_notice_flag", 0).edit();
+      SharedPreferences.Editor localEditor = RqdApplication.p().getSharedPreferences("create_notice_flag", 0).edit();
       localEditor.putBoolean("notice_flag", true);
       localEditor.commit();
       return;
@@ -141,7 +141,7 @@ public class FaceRecognitionCreateActivity
     {
       StringBuilder localStringBuilder = new StringBuilder("SharedPreferences msg ");
       localStringBuilder.append(localException.getMessage());
-      xa.c(localStringBuilder.toString());
+      xj.c(localStringBuilder.toString());
     }
   }
   

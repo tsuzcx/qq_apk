@@ -1,14 +1,14 @@
 package com.tencent.wcdb.database;
 
-import com.tencent.token.agk;
-import com.tencent.token.ags;
+import com.tencent.token.ahw;
+import com.tencent.token.aie;
 import java.lang.ref.WeakReference;
 
 public class SQLiteDirectQuery
-  extends agk
+  extends ahw
 {
   private static final int[] h = { 3, 1, 2, 3, 4, 0 };
-  private final ags g;
+  private final aie g;
   
   private static native byte[] nativeGetBlob(long paramLong, int paramInt);
   
@@ -32,7 +32,7 @@ public class SQLiteDirectQuery
         Object localObject1 = this.g;
         localObject3 = (SQLiteConnection)((SQLiteConnection.c)localObject3).a.get();
         if (localObject3 != null) {
-          SQLiteConnection.a((SQLiteConnection)localObject3, (ags)localObject1);
+          SQLiteConnection.a((SQLiteConnection)localObject3, (aie)localObject1);
         }
         localObject1 = this.f;
         if (((SQLiteConnection.c)localObject1).j != null)

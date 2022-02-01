@@ -1,46 +1,96 @@
 package com.tencent.token;
 
-import java.nio.charset.Charset;
+import java.net.ProtocolException;
 
 public final class alq
 {
-  public static final Charset a = Charset.forName("UTF-8");
+  public final akj a;
+  public final int b;
+  public final String c;
   
-  public static int a(int paramInt)
+  private alq(akj paramakj, int paramInt, String paramString)
   {
-    return (paramInt & 0xFF) << 24 | (0xFF000000 & paramInt) >>> 24 | (0xFF0000 & paramInt) >>> 8 | (0xFF00 & paramInt) << 8;
+    this.a = paramakj;
+    this.b = paramInt;
+    this.c = paramString;
   }
   
-  public static short a(short paramShort)
+  public static alq a(String paramString)
   {
-    paramShort &= 0xFFFF;
-    return (short)((paramShort & 0xFF) << 8 | (0xFF00 & paramShort) >>> 8);
-  }
-  
-  public static void a(long paramLong1, long paramLong2, long paramLong3)
-  {
-    if (((paramLong2 | paramLong3) >= 0L) && (paramLong2 <= paramLong1) && (paramLong1 - paramLong2 >= paramLong3)) {
-      return;
-    }
-    throw new ArrayIndexOutOfBoundsException(String.format("size=%s offset=%s byteCount=%s", new Object[] { Long.valueOf(paramLong1), Long.valueOf(paramLong2), Long.valueOf(paramLong3) }));
-  }
-  
-  public static void a(Throwable paramThrowable)
-  {
-    throw paramThrowable;
-  }
-  
-  public static boolean a(byte[] paramArrayOfByte1, int paramInt1, byte[] paramArrayOfByte2, int paramInt2, int paramInt3)
-  {
-    int i = 0;
-    while (i < paramInt3)
+    boolean bool = paramString.startsWith("HTTP/1.");
+    int i = 9;
+    akj localakj;
+    if (bool)
     {
-      if (paramArrayOfByte1[(i + paramInt1)] != paramArrayOfByte2[(i + paramInt2)]) {
-        return false;
+      if ((paramString.length() >= 9) && (paramString.charAt(8) == ' '))
+      {
+        j = paramString.charAt(7) - '0';
+        if (j == 0) {
+          localakj = akj.a;
+        } else if (j == 1) {
+          localakj = akj.b;
+        } else {
+          throw new ProtocolException("Unexpected status line: ".concat(String.valueOf(paramString)));
+        }
       }
-      i += 1;
+      else
+      {
+        throw new ProtocolException("Unexpected status line: ".concat(String.valueOf(paramString)));
+      }
     }
-    return true;
+    else
+    {
+      if (!paramString.startsWith("ICY ")) {
+        break label243;
+      }
+      localakj = akj.a;
+      i = 4;
+    }
+    int k = paramString.length();
+    int j = i + 3;
+    if (k >= j) {}
+    try
+    {
+      k = Integer.parseInt(paramString.substring(i, j));
+      String str = "";
+      if (paramString.length() > j) {
+        if (paramString.charAt(j) == ' ') {
+          str = paramString.substring(i + 4);
+        } else {
+          throw new ProtocolException("Unexpected status line: ".concat(String.valueOf(paramString)));
+        }
+      }
+      return new alq(localakj, k, str);
+    }
+    catch (NumberFormatException localNumberFormatException)
+    {
+      label209:
+      break label209;
+    }
+    throw new ProtocolException("Unexpected status line: ".concat(String.valueOf(paramString)));
+    throw new ProtocolException("Unexpected status line: ".concat(String.valueOf(paramString)));
+    label243:
+    throw new ProtocolException("Unexpected status line: ".concat(String.valueOf(paramString)));
+  }
+  
+  public final String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    String str;
+    if (this.a == akj.a) {
+      str = "HTTP/1.0";
+    } else {
+      str = "HTTP/1.1";
+    }
+    localStringBuilder.append(str);
+    localStringBuilder.append(' ');
+    localStringBuilder.append(this.b);
+    if (this.c != null)
+    {
+      localStringBuilder.append(' ');
+      localStringBuilder.append(this.c);
+    }
+    return localStringBuilder.toString();
   }
 }
 

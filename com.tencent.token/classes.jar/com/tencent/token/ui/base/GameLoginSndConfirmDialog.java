@@ -25,21 +25,21 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
 import android.widget.Toast;
-import com.tencent.token.aac;
-import com.tencent.token.aad;
+import com.tencent.token.aak;
+import com.tencent.token.aao;
+import com.tencent.token.aap;
 import com.tencent.token.core.bean.QQUser;
 import com.tencent.token.global.RqdApplication;
-import com.tencent.token.qy;
-import com.tencent.token.rv;
-import com.tencent.token.ry;
+import com.tencent.token.rf;
 import com.tencent.token.sd;
-import com.tencent.token.sz;
+import com.tencent.token.sg;
+import com.tencent.token.sl;
+import com.tencent.token.th;
 import com.tencent.token.ui.IndexActivity;
 import com.tencent.token.ui.ModifyQQPwdActivity;
 import com.tencent.token.ui.VerifyStartScanActivity;
-import com.tencent.token.xa;
-import com.tencent.token.yd;
-import com.tencent.token.zy;
+import com.tencent.token.xj;
+import com.tencent.token.yq;
 import gameloginsdk.CallbackGameConfirmStruct;
 import gameloginsdk.CallbackPushStruct;
 import gameloginsdk.GameLogin;
@@ -56,7 +56,7 @@ public class GameLoginSndConfirmDialog
   {
     public final void handleMessage(Message paramAnonymousMessage)
     {
-      Object localObject2 = rv.a(RqdApplication.n()).d;
+      Object localObject2 = sd.a(RqdApplication.p()).d;
       if ((paramAnonymousMessage.what == 3040) && (localObject2 != null))
       {
         if (GameLoginSndConfirmDialog.a(GameLoginSndConfirmDialog.this) != null) {
@@ -74,7 +74,7 @@ public class GameLoginSndConfirmDialog
         else
         {
           ((GameLoginSndConfirmView)localObject3).t.post(new GameLoginSndConfirmView.b((GameLoginSndConfirmView)localObject3, ((GameLoginSndConfirmView)localObject3).j, ((GameLoginSndConfirmView)localObject3).k, ((GameLoginSndConfirmView)localObject3).l, ((GameLoginSndConfirmView)localObject3).m));
-          sd.a(RqdApplication.n()).a();
+          sl.a(RqdApplication.p()).a();
         }
         if (j != 0)
         {
@@ -122,8 +122,8 @@ public class GameLoginSndConfirmDialog
           ((Toast)localObject2).setView((View)localObject1);
           ((Toast)localObject2).setDuration(0);
           ((Toast)localObject2).setGravity(55, 0, IndexActivity.S_TITLE_HEIGHT);
-          localObject3 = (TextView)((View)localObject1).findViewById(2131166126);
-          ((ImageView)((View)localObject1).findViewById(2131166124)).setBackgroundResource(2131100170);
+          localObject3 = (TextView)((View)localObject1).findViewById(2131166128);
+          ((ImageView)((View)localObject1).findViewById(2131166126)).setBackgroundResource(2131100171);
           ((TextView)localObject3).setText(paramAnonymousMessage);
           ((Toast)localObject2).show();
           return;
@@ -141,7 +141,7 @@ public class GameLoginSndConfirmDialog
               paramAnonymous2DialogInterface.dismiss();
               GameLoginSndConfirmDialog.this.dismiss();
               paramAnonymous2DialogInterface = new Intent(GameLoginSndConfirmDialog.c(GameLoginSndConfirmDialog.this), ModifyQQPwdActivity.class);
-              yd.a().a(GameLoginSndConfirmDialog.c(GameLoginSndConfirmDialog.this), paramAnonymous2DialogInterface, yd.b);
+              yq.a().a(GameLoginSndConfirmDialog.c(GameLoginSndConfirmDialog.this), paramAnonymous2DialogInterface, yq.b);
             }
           }).setNegativeButton(2131493029, new DialogInterface.OnClickListener()
           {
@@ -175,25 +175,25 @@ public class GameLoginSndConfirmDialog
       
       public final void a(int paramAnonymousInt)
       {
-        Object localObject1 = rv.a(RqdApplication.n());
-        Object localObject2 = ((rv)localObject1).d;
+        Object localObject1 = sd.a(RqdApplication.p());
+        Object localObject2 = ((sd)localObject1).d;
         if (localObject2 != null)
         {
           localObject2 = ((CallbackPushStruct)localObject2).uin;
-          byte[] arrayOfByte = ry.a(RqdApplication.n()).a.GetGuid();
+          byte[] arrayOfByte = sg.a(RqdApplication.p()).a.GetGuid();
           Object localObject3 = GameLoginSndConfirmDialog.d(GameLoginSndConfirmDialog.this);
-          if (rv.h)
+          if (sd.h)
           {
-            ((rv)localObject1).e = paramAnonymousInt;
-            ((rv)localObject1).f = ((Handler)localObject3);
+            ((sd)localObject1).e = paramAnonymousInt;
+            ((sd)localObject1).f = ((Handler)localObject3);
             localObject3 = new StringBuilder("game login confirm send: ");
             ((StringBuilder)localObject3).append((String)localObject2);
             ((StringBuilder)localObject3).append("|");
             ((StringBuilder)localObject3).append(arrayOfByte);
             ((StringBuilder)localObject3).append("|");
             ((StringBuilder)localObject3).append(paramAnonymousInt);
-            xa.b(((StringBuilder)localObject3).toString());
-            ((rv)localObject1).a.sendGameConfirm((String)localObject2, arrayOfByte, paramAnonymousInt);
+            xj.b(((StringBuilder)localObject3).toString());
+            ((sd)localObject1).a.sendGameConfirm((String)localObject2, arrayOfByte, paramAnonymousInt);
           }
           if (GameLoginSndConfirmDialog.a(GameLoginSndConfirmDialog.this) == null)
           {
@@ -206,7 +206,7 @@ public class GameLoginSndConfirmDialog
       
       public final void b()
       {
-        CallbackPushStruct localCallbackPushStruct = rv.a(RqdApplication.n()).d;
+        CallbackPushStruct localCallbackPushStruct = sd.a(RqdApplication.p()).d;
         if (localCallbackPushStruct != null) {
           if (localCallbackPushStruct.schemeFlag == 2)
           {
@@ -254,26 +254,26 @@ public class GameLoginSndConfirmDialog
       paramBundle.h = ((LayoutInflater)((Context)localObject1).getSystemService("layout_inflater"));
       paramBundle.i = paramBundle.h.inflate(2131296321, null);
       paramBundle.i.setVisibility(4);
-      paramBundle.j = paramBundle.i.findViewById(2131166273);
-      paramBundle.k = paramBundle.i.findViewById(2131166260);
-      paramBundle.l = paramBundle.i.findViewById(2131166274);
-      paramBundle.m = paramBundle.i.findViewById(2131166261);
-      paramBundle.n = aad.a(paramBundle.g.getResources(), 2131099828);
-      paramBundle.o = aad.a(paramBundle.g.getResources(), 2131099827);
+      paramBundle.j = paramBundle.i.findViewById(2131166275);
+      paramBundle.k = paramBundle.i.findViewById(2131166262);
+      paramBundle.l = paramBundle.i.findViewById(2131166276);
+      paramBundle.m = paramBundle.i.findViewById(2131166263);
+      paramBundle.n = aap.a(paramBundle.g.getResources(), 2131099828);
+      paramBundle.o = aap.a(paramBundle.g.getResources(), 2131099827);
       if (paramBundle.n != null) {
-        ((LinearLayout)paramBundle.i.findViewById(2131166254)).setBackgroundDrawable(new BitmapDrawable(paramBundle.n));
+        ((LinearLayout)paramBundle.i.findViewById(2131166256)).setBackgroundDrawable(new BitmapDrawable(paramBundle.n));
       }
       if (paramBundle.o != null)
       {
-        ((LinearLayout)paramBundle.i.findViewById(2131166255)).setBackgroundDrawable(new BitmapDrawable(paramBundle.o));
-        ((LinearLayout)paramBundle.i.findViewById(2131166256)).setBackgroundDrawable(new BitmapDrawable(paramBundle.o));
+        ((LinearLayout)paramBundle.i.findViewById(2131166257)).setBackgroundDrawable(new BitmapDrawable(paramBundle.o));
+        ((LinearLayout)paramBundle.i.findViewById(2131166258)).setBackgroundDrawable(new BitmapDrawable(paramBundle.o));
       }
-      paramBundle.a = ((TextView)paramBundle.i.findViewById(2131165760));
-      paramBundle.b = ((TextView)paramBundle.i.findViewById(2131165748));
-      paramBundle.f = ((ImageView)paramBundle.i.findViewById(2131165751));
-      paramBundle.d = ((Button)paramBundle.i.findViewById(2131165747));
-      paramBundle.e = ((Button)paramBundle.i.findViewById(2131165757));
-      paramBundle.c = ((TextView)paramBundle.i.findViewById(2131165763));
+      paramBundle.a = ((TextView)paramBundle.i.findViewById(2131165761));
+      paramBundle.b = ((TextView)paramBundle.i.findViewById(2131165749));
+      paramBundle.f = ((ImageView)paramBundle.i.findViewById(2131165752));
+      paramBundle.d = ((Button)paramBundle.i.findViewById(2131165748));
+      paramBundle.e = ((Button)paramBundle.i.findViewById(2131165758));
+      paramBundle.c = ((TextView)paramBundle.i.findViewById(2131165764));
       paramBundle.d.setOnClickListener(new GameLoginSndConfirmView.2(paramBundle));
       paramBundle.e.setOnClickListener(new GameLoginSndConfirmView.3(paramBundle));
       paramBundle.addView(paramBundle.i, new RelativeLayout.LayoutParams(-1, -1));
@@ -286,11 +286,11 @@ public class GameLoginSndConfirmDialog
     if (i == 0)
     {
       dismiss();
-      xa.a("Dual initView failed!");
+      xj.a("Dual initView failed!");
       return;
     }
     GameLoginSndConfirmView localGameLoginSndConfirmView = this.b;
-    Object localObject2 = rv.a(RqdApplication.n()).d;
+    Object localObject2 = sd.a(RqdApplication.p()).d;
     if (localObject2 != null)
     {
       if (localGameLoginSndConfirmView.p == null)
@@ -303,9 +303,9 @@ public class GameLoginSndConfirmDialog
         localGameLoginSndConfirmView.q = PendingIntent.getBroadcast(localGameLoginSndConfirmView.g, 0, paramBundle, 0);
       }
       int j = ((CallbackPushStruct)localObject2).expirtTime;
-      paramBundle = rv.a(RqdApplication.n());
+      paramBundle = sd.a(RqdApplication.p());
       if ((paramBundle.d != null) && (paramBundle.g > 0L)) {
-        i = (int)((qy.a().h() * 1000L - paramBundle.g) / 1000L);
+        i = (int)((rf.a().h() * 1000L - paramBundle.g) / 1000L);
       } else {
         i = 0;
       }
@@ -331,7 +331,7 @@ public class GameLoginSndConfirmDialog
         localObject1 = ((StringBuilder)localObject1).toString();
       }
       paramBundle = new StringBuilder();
-      paramBundle.append(aac.b(((CallbackPushStruct)localObject2).uin));
+      paramBundle.append(aao.b(((CallbackPushStruct)localObject2).uin));
       paramBundle.append((String)localObject1);
       paramBundle.append(localGameLoginSndConfirmView.g.getResources().getString(2131493220));
       paramBundle.append("<font color=#df642c>");
@@ -355,7 +355,7 @@ public class GameLoginSndConfirmDialog
       ((StringBuilder)localObject1).append(")");
       paramBundle.setText(((StringBuilder)localObject1).toString());
       localGameLoginSndConfirmView.e.setText(localGameLoginSndConfirmView.getResources().getString(2131493229));
-      paramBundle = sz.a().d(Long.parseLong(((CallbackPushStruct)localObject2).uin));
+      paramBundle = th.a().d(Long.parseLong(((CallbackPushStruct)localObject2).uin));
       if (paramBundle != null)
       {
         localObject1 = localGameLoginSndConfirmView.f;
@@ -364,7 +364,7 @@ public class GameLoginSndConfirmDialog
         localObject2 = ((StringBuilder)localObject2).toString();
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append(paramBundle.mUin);
-        ((ImageView)localObject1).setImageDrawable(zy.a((String)localObject2, localStringBuilder.toString()));
+        ((ImageView)localObject1).setImageDrawable(aak.a((String)localObject2, localStringBuilder.toString()));
         localGameLoginSndConfirmView.c.setText(paramBundle.mNickName);
       }
       else
@@ -379,7 +379,7 @@ public class GameLoginSndConfirmDialog
       public final void onDismiss(DialogInterface paramAnonymousDialogInterface)
       {
         GameLoginSndConfirmDialog.b(GameLoginSndConfirmDialog.this).a();
-        paramAnonymousDialogInterface = rv.a(RqdApplication.n());
+        paramAnonymousDialogInterface = sd.a(RqdApplication.p());
         paramAnonymousDialogInterface.d = null;
         paramAnonymousDialogInterface.g = 0L;
         if (GameLoginSndConfirmDialog.a(GameLoginSndConfirmDialog.this) != null) {

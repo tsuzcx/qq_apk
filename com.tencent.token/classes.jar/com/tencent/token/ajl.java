@@ -1,18 +1,19 @@
 package com.tencent.token;
 
-public abstract interface ajl
+import java.util.Hashtable;
+
+public final class ajl
 {
-  public abstract aiq.a a(boolean paramBoolean);
-  
-  public abstract air a(aiq paramaiq);
-  
-  public abstract aln a(aio paramaio, long paramLong);
-  
-  public abstract void a();
-  
-  public abstract void a(aio paramaio);
-  
-  public abstract void b();
+  final String a;
+  String b;
+  int c;
+  final ajm d;
+  final byte[] e;
+  Hashtable f;
+  public String g;
+  long h;
+  long i;
+  final boolean j;
 }
 
 

@@ -5,17 +5,17 @@ import android.graphics.Bitmap;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.RatingBar;
-import com.tencent.token.go.a;
-import com.tencent.token.ij;
+import com.tencent.token.gs.a;
+import com.tencent.token.in;
 
 public class AppCompatRatingBar
   extends RatingBar
 {
-  private final ij a = new ij(this);
+  private final in a = new in(this);
   
   public AppCompatRatingBar(Context paramContext, AttributeSet paramAttributeSet)
   {
-    this(paramContext, paramAttributeSet, go.a.ratingBarStyle);
+    this(paramContext, paramAttributeSet, gs.a.ratingBarStyle);
   }
   
   public AppCompatRatingBar(Context paramContext, AttributeSet paramAttributeSet, int paramInt)

@@ -1,55 +1,29 @@
 package com.tencent.token;
 
-import com.tencent.wcdb.database.SQLiteDatabase;
-import com.tencent.wcdb.database.SQLiteDatabase.a;
-
-public final class agi
-  implements agg
+public abstract class agi<T>
 {
-  private static SQLiteDatabase.a f = agf.j;
-  private final SQLiteDatabase a;
-  private final String b;
-  private final String c;
-  private final ags d;
-  private agk e;
+  public volatile T a;
   
-  public agi(SQLiteDatabase paramSQLiteDatabase, String paramString1, String paramString2)
-  {
-    this.a = paramSQLiteDatabase;
-    this.b = paramString2;
-    this.c = paramString1;
-    this.d = null;
-  }
+  public abstract T a();
   
-  public final afw a(SQLiteDatabase.a parama, String[] paramArrayOfString)
+  public final T b()
   {
-    Object localObject = parama;
-    if (parama == null) {
-      localObject = f;
-    }
-    parama = null;
-    try
-    {
-      paramArrayOfString = ((SQLiteDatabase.a)localObject).a(this.a, this.c, paramArrayOfString, this.d);
-      parama = paramArrayOfString;
-      localObject = ((SQLiteDatabase.a)localObject).a(this, this.b, paramArrayOfString);
-      this.e = paramArrayOfString;
-      return localObject;
-    }
-    catch (RuntimeException paramArrayOfString)
-    {
-      if (parama != null) {
-        parama.close();
+    Object localObject1 = this.a;
+    if (localObject1 == null) {
+      try
+      {
+        Object localObject2 = this.a;
+        localObject1 = localObject2;
+        if (localObject2 == null)
+        {
+          localObject1 = a();
+          this.a = localObject1;
+        }
+        return localObject1;
       }
-      throw paramArrayOfString;
+      finally {}
     }
-  }
-  
-  public final String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder("SQLiteDirectCursorDriver: ");
-    localStringBuilder.append(this.c);
-    return localStringBuilder.toString();
+    return ?;
   }
 }
 

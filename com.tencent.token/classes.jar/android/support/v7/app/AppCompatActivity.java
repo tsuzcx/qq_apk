@@ -18,24 +18,24 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import android.view.Window;
-import com.tencent.token.bt;
-import com.tencent.token.ci;
-import com.tencent.token.cq;
-import com.tencent.token.cq.a;
-import com.tencent.token.cr;
-import com.tencent.token.gc.a;
-import com.tencent.token.gd;
-import com.tencent.token.ge;
-import com.tencent.token.gw;
-import com.tencent.token.gw.a;
-import com.tencent.token.jj;
+import com.tencent.token.bx;
+import com.tencent.token.cm;
+import com.tencent.token.cu;
+import com.tencent.token.cu.a;
+import com.tencent.token.cv;
+import com.tencent.token.gg.a;
+import com.tencent.token.gh;
+import com.tencent.token.gi;
+import com.tencent.token.ha;
+import com.tencent.token.ha.a;
+import com.tencent.token.jn;
 import java.util.ArrayList;
 
 public class AppCompatActivity
   extends FragmentActivity
-  implements cq.a, gd
+  implements cu.a, gh
 {
-  private ge mDelegate;
+  private gi mDelegate;
   private Resources mResources;
   private int mThemeId = 0;
   
@@ -79,15 +79,15 @@ public class AppCompatActivity
     return getDelegate().a(paramInt);
   }
   
-  public ge getDelegate()
+  public gi getDelegate()
   {
     if (this.mDelegate == null) {
-      this.mDelegate = ge.a(this, this);
+      this.mDelegate = gi.a(this, this);
     }
     return this.mDelegate;
   }
   
-  public gc.a getDrawerToggleDelegate()
+  public gg.a getDrawerToggleDelegate()
   {
     return getDelegate().i();
   }
@@ -99,8 +99,8 @@ public class AppCompatActivity
   
   public Resources getResources()
   {
-    if ((this.mResources == null) && (jj.a())) {
-      this.mResources = new jj(this, super.getResources());
+    if ((this.mResources == null) && (jn.a())) {
+      this.mResources = new jn(this, super.getResources());
     }
     Resources localResources2 = this.mResources;
     Resources localResources1 = localResources2;
@@ -117,7 +117,7 @@ public class AppCompatActivity
   
   public Intent getSupportParentActivityIntent()
   {
-    return ci.a(this);
+    return cm.a(this);
   }
   
   public void invalidateOptionsMenu()
@@ -143,10 +143,10 @@ public class AppCompatActivity
   
   public void onCreate(Bundle paramBundle)
   {
-    ge localge = getDelegate();
-    localge.j();
-    localge.a(paramBundle);
-    if ((localge.k()) && (this.mThemeId != 0)) {
+    gi localgi = getDelegate();
+    localgi.j();
+    localgi.a(paramBundle);
+    if ((localgi.k()) && (this.mThemeId != 0)) {
       if (Build.VERSION.SDK_INT >= 23) {
         onApplyThemeResource(getTheme(), this.mThemeId, false);
       } else {
@@ -156,22 +156,22 @@ public class AppCompatActivity
     super.onCreate(paramBundle);
   }
   
-  public void onCreateSupportNavigateUpTaskStack(cq paramcq)
+  public void onCreateSupportNavigateUpTaskStack(cu paramcu)
   {
-    Object localObject2 = ((cq.a)this).getSupportParentActivityIntent();
+    Object localObject2 = ((cu.a)this).getSupportParentActivityIntent();
     Object localObject1 = localObject2;
     if (localObject2 == null) {
-      localObject1 = ci.a(this);
+      localObject1 = cm.a(this);
     }
     if (localObject1 != null)
     {
       ComponentName localComponentName = ((Intent)localObject1).getComponent();
       localObject2 = localComponentName;
       if (localComponentName == null) {
-        localObject2 = ((Intent)localObject1).resolveActivity(paramcq.b.getPackageManager());
+        localObject2 = ((Intent)localObject1).resolveActivity(paramcu.b.getPackageManager());
       }
-      paramcq.a((ComponentName)localObject2);
-      paramcq.a.add(localObject1);
+      paramcu.a((ComponentName)localObject2);
+      paramcu.a.add(localObject1);
     }
   }
   
@@ -223,7 +223,7 @@ public class AppCompatActivity
     getDelegate().f();
   }
   
-  public void onPrepareSupportNavigateUpTaskStack(cq paramcq) {}
+  public void onPrepareSupportNavigateUpTaskStack(cu paramcu) {}
   
   public void onSaveInstanceState(Bundle paramBundle)
   {
@@ -243,9 +243,9 @@ public class AppCompatActivity
     getDelegate().e();
   }
   
-  public void onSupportActionModeFinished(gw paramgw) {}
+  public void onSupportActionModeFinished(ha paramha) {}
   
-  public void onSupportActionModeStarted(gw paramgw) {}
+  public void onSupportActionModeStarted(ha paramha) {}
   
   @Deprecated
   public void onSupportContentChanged() {}
@@ -256,20 +256,20 @@ public class AppCompatActivity
     if (localObject != null) {
       if (supportShouldUpRecreateTask((Intent)localObject))
       {
-        localObject = cq.a(this);
-        onCreateSupportNavigateUpTaskStack((cq)localObject);
-        onPrepareSupportNavigateUpTaskStack((cq)localObject);
-        if (!((cq)localObject).a.isEmpty())
+        localObject = cu.a(this);
+        onCreateSupportNavigateUpTaskStack((cu)localObject);
+        onPrepareSupportNavigateUpTaskStack((cu)localObject);
+        if (!((cu)localObject).a.isEmpty())
         {
-          Intent[] arrayOfIntent = (Intent[])((cq)localObject).a.toArray(new Intent[((cq)localObject).a.size()]);
+          Intent[] arrayOfIntent = (Intent[])((cu)localObject).a.toArray(new Intent[((cu)localObject).a.size()]);
           arrayOfIntent[0] = new Intent(arrayOfIntent[0]).addFlags(268484608);
-          cr.a(((cq)localObject).b, arrayOfIntent);
+          cv.a(((cu)localObject).b, arrayOfIntent);
         }
       }
     }
     try
     {
-      bt.a(this);
+      bx.a(this);
     }
     catch (IllegalStateException localIllegalStateException)
     {
@@ -291,7 +291,7 @@ public class AppCompatActivity
     getDelegate().a(paramCharSequence);
   }
   
-  public gw onWindowStartingSupportActionMode(gw.a parama)
+  public ha onWindowStartingSupportActionMode(ha.a parama)
   {
     return null;
   }
@@ -342,7 +342,7 @@ public class AppCompatActivity
     this.mThemeId = paramInt;
   }
   
-  public gw startSupportActionMode(gw.a parama)
+  public ha startSupportActionMode(ha.a parama)
   {
     return getDelegate().a(parama);
   }

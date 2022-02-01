@@ -1,15 +1,45 @@
 package com.tencent.token;
 
-import java.lang.annotation.Annotation;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
+import android.os.Handler;
+import com.tencent.token.utils.UserTask;
 
-@Retention(RetentionPolicy.RUNTIME)
-@Target({java.lang.annotation.ElementType.FIELD})
-public @interface tl
+public final class tl
+  extends tk
 {
-  Class<? extends tj> a();
+  static tl a;
+  
+  private tl()
+  {
+    super("tbl_safe_msg");
+  }
+  
+  public static tl a()
+  {
+    if (a == null) {
+      a = new tl();
+    }
+    return a;
+  }
+  
+  public final void a(final byte paramByte, final Handler paramHandler)
+  {
+    new UserTask() {}.a(new String[] { "" });
+  }
+  
+  public final xh b(byte paramByte)
+  {
+    xh localxh3 = new xh();
+    xh localxh2 = super.a(paramByte);
+    xh localxh1 = localxh2;
+    if (!localxh2.b())
+    {
+      localxh1 = localxh2;
+      if (th.a().c(localxh3.a)) {
+        localxh1 = super.a(paramByte);
+      }
+    }
+    return localxh1;
+  }
 }
 
 

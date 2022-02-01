@@ -1,52 +1,94 @@
 package com.tencent.token;
 
-import java.util.LinkedHashSet;
-import java.util.Set;
+import android.annotation.SuppressLint;
+import android.net.wifi.ScanResult;
+import android.net.wifi.WifiConfiguration;
+import android.net.wifi.WifiInfo;
+import android.net.wifi.WifiManager;
+import android.net.wifi.WifiManager.LocalOnlyHotspotCallback;
+import android.os.Build.VERSION;
+import android.os.Handler;
+import java.util.List;
 
 public final class ajf
 {
-  private final Set<ais> a = new LinkedHashSet();
+  static WifiManager a;
   
-  public final void a(ais paramais)
+  @SuppressLint({"MissingPermission"})
+  public static WifiInfo a()
   {
-    try
+    boolean bool = kx.a();
+    Object localObject = new StringBuilder("getConnectionInfo, isAllow:[");
+    ((StringBuilder)localObject).append(bool);
+    ((StringBuilder)localObject).append("]");
+    if (!bool) {
+      return null;
+    }
+    aji.a("[API]WifiManagerInvoke_");
+    localObject = a.getConnectionInfo();
+    if (localObject != null)
     {
-      this.a.add(paramais);
+      StringBuilder localStringBuilder = new StringBuilder("getConnectionInfo,WifiInfo-getMacAddress:[");
+      localStringBuilder.append(((WifiInfo)localObject).getMacAddress());
+      localStringBuilder.append("]");
+      aji.a("[API]WifiManagerInvoke_");
+    }
+    return localObject;
+  }
+  
+  @SuppressLint({"MissingPermission"})
+  public static void a(WifiManager.LocalOnlyHotspotCallback paramLocalOnlyHotspotCallback, Handler paramHandler)
+  {
+    if (!kx.b()) {
       return;
     }
-    finally
+    if (Build.VERSION.SDK_INT >= 26)
     {
-      paramais = finally;
-      throw paramais;
+      aji.a("[API]WifiManagerInvoke_");
+      a.startLocalOnlyHotspot(paramLocalOnlyHotspotCallback, paramHandler);
     }
   }
   
-  public final void b(ais paramais)
+  @SuppressLint({"MissingPermission"})
+  public static List<ScanResult> b()
   {
-    try
-    {
-      this.a.remove(paramais);
-      return;
+    boolean bool = kx.a();
+    StringBuilder localStringBuilder = new StringBuilder("getScanResults, isAllow:[");
+    localStringBuilder.append(bool);
+    localStringBuilder.append("]");
+    if (!bool) {
+      return null;
     }
-    finally
-    {
-      paramais = finally;
-      throw paramais;
-    }
+    aji.a("[API]WifiManagerInvoke_");
+    return a.getScanResults();
   }
   
-  public final boolean c(ais paramais)
+  @SuppressLint({"MissingPermission"})
+  public static List<WifiConfiguration> c()
   {
-    try
-    {
-      boolean bool = this.a.contains(paramais);
-      return bool;
+    boolean bool = kx.a();
+    StringBuilder localStringBuilder = new StringBuilder("getConfiguredNetworks, isAllow:[");
+    localStringBuilder.append(bool);
+    localStringBuilder.append("]");
+    if (!bool) {
+      return null;
     }
-    finally
-    {
-      paramais = finally;
-      throw paramais;
+    aji.a("[API]WifiManagerInvoke_");
+    return a.getConfiguredNetworks();
+  }
+  
+  @SuppressLint({"MissingPermission"})
+  public static boolean d()
+  {
+    boolean bool = kx.a();
+    StringBuilder localStringBuilder = new StringBuilder("startScan, isAllow:[");
+    localStringBuilder.append(bool);
+    localStringBuilder.append("]");
+    if (!bool) {
+      return false;
     }
+    aji.a("[API]WifiManagerInvoke_");
+    return a.startScan();
   }
 }
 

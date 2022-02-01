@@ -1,37 +1,23 @@
 package com.tencent.token;
 
-import android.content.Context;
-import android.os.Handler;
-import java.util.concurrent.ConcurrentHashMap;
-import tmsdk.common.c.a.b;
+import android.graphics.PointF;
+import java.util.ArrayList;
+import java.util.List;
 
 public final class aoy
 {
-  private static aoy d;
-  private static Object e = new Object();
-  public Context a = aos.a();
-  public ConcurrentHashMap b = new ConcurrentHashMap();
-  private Handler c = null;
+  public final List<aoi> a = new ArrayList();
+  public PointF b;
+  public boolean c;
   
-  public static aoy a()
+  public final String toString()
   {
-    if (d == null) {
-      synchronized (e)
-      {
-        if (d == null) {
-          d = new aoy();
-        }
-      }
-    }
-    return d;
-  }
-  
-  public final void a(String paramString)
-  {
-    paramString = (b)this.b.remove(paramString);
-    if (paramString != null) {
-      this.a.unregisterReceiver(paramString);
-    }
+    StringBuilder localStringBuilder = new StringBuilder("ShapeData{numCurves=");
+    localStringBuilder.append(this.a.size());
+    localStringBuilder.append("closed=");
+    localStringBuilder.append(this.c);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 

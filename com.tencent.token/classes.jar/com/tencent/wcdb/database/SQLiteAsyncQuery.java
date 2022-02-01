@@ -1,9 +1,9 @@
 package com.tencent.wcdb.database;
 
-import com.tencent.token.agk;
+import com.tencent.token.ahw;
 
 public class SQLiteAsyncQuery
-  extends agk
+  extends ahw
 {
   private static native int nativeCount(long paramLong);
   

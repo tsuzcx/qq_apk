@@ -1,6 +1,6 @@
 package com.tencent.token.core.bean;
 
-import com.tencent.token.xa;
+import com.tencent.token.xj;
 import java.io.Serializable;
 import org.json.JSONObject;
 
@@ -42,7 +42,7 @@ public class RealNameStatusResult
   public RealNameStatusResult(JSONObject paramJSONObject)
   {
     this.mRealStatus = paramJSONObject.getInt("realname_status");
-    xa.a("real_name_status_result: ".concat(String.valueOf(paramJSONObject)));
+    xj.a("real_name_status_result: ".concat(String.valueOf(paramJSONObject)));
     label137:
     try
     {
@@ -54,7 +54,7 @@ public class RealNameStatusResult
       label49:
       break label49;
     }
-    xa.c("json parse error: mToastText,mToastUrl");
+    xj.c("json parse error: mToastText,mToastUrl");
     switch (this.mRealStatus)
     {
     default: 
@@ -74,7 +74,7 @@ public class RealNameStatusResult
     {
       break label137;
     }
-    xa.c("json parse error: apply_refused_time");
+    xj.c("json parse error: apply_refused_time");
     this.mDispatchTime = paramJSONObject.getInt("dispatch_time");
     this.mVerify_sms = paramJSONObject.optInt("verify_sms", 1);
     break label372;
@@ -109,7 +109,7 @@ public class RealNameStatusResult
     paramJSONObject.append(this.mRealStatus);
     paramJSONObject.append(", mobile=");
     paramJSONObject.append(this.mMaskMobile);
-    xa.b(paramJSONObject.toString());
+    xj.b(paramJSONObject.toString());
   }
 }
 

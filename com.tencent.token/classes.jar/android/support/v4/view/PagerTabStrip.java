@@ -13,7 +13,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewConfiguration;
 import android.widget.TextView;
-import com.tencent.token.cr;
+import com.tencent.token.cv;
 
 public class PagerTabStrip
   extends PagerTitleStrip
@@ -234,7 +234,7 @@ public class PagerTabStrip
   
   public void setTabIndicatorColorResource(int paramInt)
   {
-    setTabIndicatorColor(cr.c(getContext(), paramInt));
+    setTabIndicatorColor(cv.c(getContext(), paramInt));
   }
   
   public void setTextSpacing(int paramInt)

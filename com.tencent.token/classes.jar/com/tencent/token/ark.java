@@ -1,10 +1,22 @@
 package com.tencent.token;
 
-import android.net.NetworkInfo;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 
-public abstract interface ark
+final class ark
+  extends Handler
 {
-  public abstract NetworkInfo a();
+  ark(aso paramaso, Looper paramLooper)
+  {
+    super(paramLooper);
+  }
+  
+  public final void handleMessage(Message paramMessage)
+  {
+    super.handleMessage(paramMessage);
+    aso.a(this.a, paramMessage.what);
+  }
 }
 
 

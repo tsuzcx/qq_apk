@@ -6,7 +6,7 @@ import android.content.res.Resources;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.token.du;
+import com.tencent.token.dy;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -17,7 +17,7 @@ public class AppCompatViewInflater
   static final int[] a = { 16843375 };
   private static final Class<?>[] b = { Context.class, AttributeSet.class };
   private static final String[] c = { "android.widget.", "android.view.", "android.webkit." };
-  private static final Map<String, Constructor<? extends View>> d = new du();
+  private static final Map<String, Constructor<? extends View>> d = new dy();
   private final Object[] e = new Object[2];
   
   private View a(Context paramContext, String paramString1, String paramString2)

@@ -1,9 +1,14 @@
 package com.tencent.token;
 
-abstract class arm
+final class arm
+  implements Runnable
 {
-  public byte[] a;
-  public int b;
+  arm(aso paramaso, asb paramasb) {}
+  
+  public final void run()
+  {
+    aso.a(this.a);
+  }
 }
 
 

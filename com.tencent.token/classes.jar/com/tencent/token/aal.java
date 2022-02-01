@@ -1,102 +1,50 @@
 package com.tencent.token;
 
-import com.tencent.token.core.bean.MbInfoResult;
-import com.tencent.token.core.bean.MbInfoResult.MbInfoItem;
-import com.tencent.token.core.bean.QQUser;
-import java.util.ArrayList;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
+import com.tencent.token.global.RqdApplication;
 
 public final class aal
 {
-  static aal c;
-  public MbInfoResult a;
-  long b;
+  private static final String a;
+  private static SharedPreferences b;
+  private static SharedPreferences.Editor c;
   
-  public static aal a()
+  static
   {
-    aal localaal = c;
-    if (localaal == null)
-    {
-      localaal = new aal();
-      c = localaal;
-      return localaal;
-    }
-    return localaal;
+    Object localObject = new StringBuilder("SharedPreferencesHelper.for.");
+    ((StringBuilder)localObject).append(RqdApplication.p().getPackageName());
+    a = ((StringBuilder)localObject).toString();
+    localObject = RqdApplication.p().getSharedPreferences(a, 0);
+    b = (SharedPreferences)localObject;
+    c = ((SharedPreferences)localObject).edit();
   }
   
-  public final int a(int paramInt)
+  public static int a(String paramString, int paramInt)
   {
-    try
-    {
-      Object localObject1 = c();
-      if (localObject1 == null) {
-        return -1;
-      }
-      localObject1 = this.a.mMbInfoItems;
-      if (localObject1 == null) {
-        return -1;
-      }
-      int i = 0;
-      while (i < this.a.mMbInfoItems.size())
-      {
-        int j = ((MbInfoResult.MbInfoItem)this.a.mMbInfoItems.get(i)).mId;
-        if (j == paramInt) {
-          return i;
-        }
-        i += 1;
-      }
-      return -1;
-    }
-    finally {}
+    return b.getInt(paramString, paramInt);
   }
   
-  public final void a(MbInfoResult paramMbInfoResult)
+  public static long a(String paramString)
   {
-    try
-    {
-      this.a = paramMbInfoResult;
-      if (sz.a().k.b() != null) {
-        this.b = sz.a().k.b().mUin;
-      }
-      return;
-    }
-    finally
-    {
-      paramMbInfoResult = finally;
-      throw paramMbInfoResult;
-    }
+    return b.getLong(paramString, 604800000L);
   }
   
-  public final void b()
+  public static void a(SharedPreferences.OnSharedPreferenceChangeListener paramOnSharedPreferenceChangeListener)
   {
-    try
-    {
-      this.a = null;
-      return;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
+    b.registerOnSharedPreferenceChangeListener(paramOnSharedPreferenceChangeListener);
   }
   
-  public final MbInfoResult c()
+  public static SharedPreferences.Editor b(String paramString)
   {
-    try
-    {
-      Object localObject1 = sz.a().k.b();
-      if ((localObject1 != null) && (this.a != null))
-      {
-        if (this.b == ((QQUser)localObject1).mUin)
-        {
-          localObject1 = this.a;
-          return localObject1;
-        }
-        return null;
-      }
-      return null;
-    }
-    finally {}
+    return c.remove(paramString);
+  }
+  
+  public static SharedPreferences.Editor b(String paramString, int paramInt)
+  {
+    return c.putInt(paramString, paramInt);
   }
 }
 

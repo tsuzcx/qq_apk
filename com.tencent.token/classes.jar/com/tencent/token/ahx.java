@@ -1,234 +1,120 @@
 package com.tencent.token;
 
-import java.security.Principal;
-import java.security.PublicKey;
-import java.security.cert.Certificate;
-import java.security.cert.X509Certificate;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.LinkedHashSet;
-import java.util.List;
-import java.util.List<Ljava.security.cert.Certificate;>;
-import java.util.Set;
-import javax.annotation.Nullable;
-import javax.net.ssl.SSLPeerUnverifiedException;
+import com.tencent.wcdb.database.SQLiteDatabase;
 
 public final class ahx
+  extends ahw
 {
-  public static final ahx a = new ahx(new LinkedHashSet(new a().a), null);
-  final Set<b> b;
-  @Nullable
-  final akt c;
+  private final aie g;
   
-  ahx(Set<b> paramSet, @Nullable akt paramakt)
+  ahx(SQLiteDatabase paramSQLiteDatabase, String paramString, Object[] paramArrayOfObject, aie paramaie)
   {
-    this.b = paramSet;
-    this.c = paramakt;
+    super(paramSQLiteDatabase, paramString, paramArrayOfObject, paramaie);
+    this.g = paramaie;
   }
   
-  private static alb a(X509Certificate paramX509Certificate)
+  /* Error */
+  final int a(com.tencent.wcdb.CursorWindow paramCursorWindow, int paramInt1, int paramInt2, boolean paramBoolean)
   {
-    return alb.a(paramX509Certificate.getPublicKey().getEncoded()).d();
+    // Byte code:
+    //   0: aload_0
+    //   1: invokevirtual 23	com/tencent/token/ahx:d	()V
+    //   4: aload_1
+    //   5: invokevirtual 26	com/tencent/wcdb/CursorWindow:d	()V
+    //   8: aload_0
+    //   9: getfield 29	com/tencent/token/ahw:a	Lcom/tencent/wcdb/database/SQLiteDatabase;
+    //   12: invokevirtual 35	com/tencent/wcdb/database/SQLiteDatabase:b	()Lcom/tencent/token/ahz;
+    //   15: aload_0
+    //   16: getfield 38	com/tencent/token/ahw:b	Ljava/lang/String;
+    //   19: aload_0
+    //   20: getfield 42	com/tencent/token/ahw:e	[Ljava/lang/Object;
+    //   23: aload_1
+    //   24: iload_2
+    //   25: iload_3
+    //   26: iload 4
+    //   28: aload_0
+    //   29: getfield 46	com/tencent/token/ahw:c	Z
+    //   32: invokestatic 49	com/tencent/wcdb/database/SQLiteDatabase:a	(Z)I
+    //   35: aload_0
+    //   36: getfield 12	com/tencent/token/ahx:g	Lcom/tencent/token/aie;
+    //   39: invokevirtual 54	com/tencent/token/ahz:a	(Ljava/lang/String;[Ljava/lang/Object;Lcom/tencent/wcdb/CursorWindow;IIZILcom/tencent/token/aie;)I
+    //   42: istore_2
+    //   43: aload_1
+    //   44: invokevirtual 56	com/tencent/wcdb/CursorWindow:e	()V
+    //   47: aload_0
+    //   48: invokevirtual 57	com/tencent/token/ahx:e	()V
+    //   51: iload_2
+    //   52: ireturn
+    //   53: astore 5
+    //   55: goto +67 -> 122
+    //   58: astore 5
+    //   60: new 59	java/lang/StringBuilder
+    //   63: dup
+    //   64: ldc 61
+    //   66: invokespecial 64	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   69: astore 6
+    //   71: aload 6
+    //   73: aload 5
+    //   75: invokevirtual 68	com/tencent/wcdb/database/SQLiteException:getMessage	()Ljava/lang/String;
+    //   78: invokevirtual 72	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   81: pop
+    //   82: aload 6
+    //   84: ldc 74
+    //   86: invokevirtual 72	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   89: pop
+    //   90: aload 6
+    //   92: aload_0
+    //   93: getfield 38	com/tencent/token/ahw:b	Ljava/lang/String;
+    //   96: invokevirtual 72	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   99: pop
+    //   100: ldc 76
+    //   102: aload 6
+    //   104: invokevirtual 79	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   107: invokestatic 84	com/tencent/wcdb/support/Log:a	(Ljava/lang/String;Ljava/lang/String;)V
+    //   110: aload 5
+    //   112: athrow
+    //   113: astore 5
+    //   115: aload_0
+    //   116: invokevirtual 86	com/tencent/token/ahx:a	()V
+    //   119: aload 5
+    //   121: athrow
+    //   122: aload_1
+    //   123: invokevirtual 56	com/tencent/wcdb/CursorWindow:e	()V
+    //   126: aload 5
+    //   128: athrow
+    //   129: astore_1
+    //   130: aload_0
+    //   131: invokevirtual 57	com/tencent/token/ahx:e	()V
+    //   134: aload_1
+    //   135: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	136	0	this	ahx
+    //   0	136	1	paramCursorWindow	com.tencent.wcdb.CursorWindow
+    //   0	136	2	paramInt1	int
+    //   0	136	3	paramInt2	int
+    //   0	136	4	paramBoolean	boolean
+    //   53	1	5	localObject	Object
+    //   58	53	5	localSQLiteException	com.tencent.wcdb.database.SQLiteException
+    //   113	14	5	localSQLiteDatabaseCorruptException	com.tencent.wcdb.database.SQLiteDatabaseCorruptException
+    //   69	34	6	localStringBuilder	StringBuilder
+    // Exception table:
+    //   from	to	target	type
+    //   8	43	53	finally
+    //   60	113	53	finally
+    //   115	122	53	finally
+    //   8	43	58	com/tencent/wcdb/database/SQLiteException
+    //   8	43	113	com/tencent/wcdb/database/SQLiteDatabaseCorruptException
+    //   4	8	129	finally
+    //   43	47	129	finally
+    //   122	129	129	finally
   }
   
-  public static String a(Certificate paramCertificate)
+  public final String toString()
   {
-    if ((paramCertificate instanceof X509Certificate))
-    {
-      StringBuilder localStringBuilder = new StringBuilder("sha256/");
-      localStringBuilder.append(a((X509Certificate)paramCertificate).b());
-      return localStringBuilder.toString();
-    }
-    throw new IllegalArgumentException("Certificate pinning requires X509 certificates");
-  }
-  
-  public final void a(String paramString, List<Certificate> paramList)
-  {
-    Object localObject3 = Collections.emptyList();
-    Object localObject2 = this.b.iterator();
-    int k;
-    Object localObject4;
-    for (;;)
-    {
-      boolean bool1 = ((Iterator)localObject2).hasNext();
-      k = 0;
-      boolean bool2 = false;
-      if (!bool1) {
-        break;
-      }
-      localObject4 = (b)((Iterator)localObject2).next();
-      if (((b)localObject4).a.startsWith("*."))
-      {
-        i = paramString.indexOf('.');
-        bool1 = bool2;
-        if (paramString.length() - i - 1 == ((b)localObject4).b.length())
-        {
-          bool1 = bool2;
-          if (paramString.regionMatches(false, i + 1, ((b)localObject4).b, 0, ((b)localObject4).b.length())) {
-            bool1 = true;
-          }
-        }
-      }
-      else
-      {
-        bool1 = paramString.equals(((b)localObject4).b);
-      }
-      if (bool1)
-      {
-        localObject1 = localObject3;
-        if (((List)localObject3).isEmpty()) {
-          localObject1 = new ArrayList();
-        }
-        ((List)localObject1).add(localObject4);
-        localObject3 = localObject1;
-      }
-    }
-    if (((List)localObject3).isEmpty()) {
-      return;
-    }
-    Object localObject1 = this.c;
-    if (localObject1 != null) {
-      localObject4 = ((akt)localObject1).a(paramList, paramString);
-    } else {
-      localObject4 = paramList;
-    }
-    int m = ((List)localObject4).size();
-    int i = 0;
-    while (i < m)
-    {
-      X509Certificate localX509Certificate = (X509Certificate)((List)localObject4).get(i);
-      int n = ((List)localObject3).size();
-      localObject1 = null;
-      paramList = (List<Certificate>)localObject1;
-      j = 0;
-      while (j < n)
-      {
-        b localb = (b)((List)localObject3).get(j);
-        if (localb.c.equals("sha256/"))
-        {
-          localObject2 = localObject1;
-          if (localObject1 == null) {
-            localObject2 = a(localX509Certificate);
-          }
-          localObject1 = localObject2;
-          if (!localb.d.equals(localObject2)) {}
-        }
-        else
-        {
-          if (!localb.c.equals("sha1/")) {
-            break label399;
-          }
-          localObject2 = paramList;
-          if (paramList == null) {
-            localObject2 = alb.a(localX509Certificate.getPublicKey().getEncoded()).c();
-          }
-          paramList = (List<Certificate>)localObject2;
-          if (localb.d.equals(localObject2)) {
-            return;
-          }
-        }
-        j += 1;
-        continue;
-        label399:
-        paramString = new StringBuilder("unsupported hashAlgorithm: ");
-        paramString.append(localb.c);
-        throw new AssertionError(paramString.toString());
-      }
-      i += 1;
-    }
-    paramList = new StringBuilder("Certificate pinning failure!\n  Peer certificate chain:");
-    int j = ((List)localObject4).size();
-    i = 0;
-    while (i < j)
-    {
-      localObject1 = (X509Certificate)((List)localObject4).get(i);
-      paramList.append("\n    ");
-      paramList.append(a((Certificate)localObject1));
-      paramList.append(": ");
-      paramList.append(((X509Certificate)localObject1).getSubjectDN().getName());
-      i += 1;
-    }
-    paramList.append("\n  Pinned certificates for ");
-    paramList.append(paramString);
-    paramList.append(":");
-    j = ((List)localObject3).size();
-    i = k;
-    while (i < j)
-    {
-      paramString = (b)((List)localObject3).get(i);
-      paramList.append("\n    ");
-      paramList.append(paramString);
-      i += 1;
-    }
-    throw new SSLPeerUnverifiedException(paramList.toString());
-  }
-  
-  public final boolean equals(@Nullable Object paramObject)
-  {
-    if (paramObject == this) {
-      return true;
-    }
-    if ((paramObject instanceof ahx))
-    {
-      akt localakt = this.c;
-      paramObject = (ahx)paramObject;
-      if ((aiw.a(localakt, paramObject.c)) && (this.b.equals(paramObject.b))) {
-        return true;
-      }
-    }
-    return false;
-  }
-  
-  public final int hashCode()
-  {
-    akt localakt = this.c;
-    int i;
-    if (localakt != null) {
-      i = localakt.hashCode();
-    } else {
-      i = 0;
-    }
-    return i * 31 + this.b.hashCode();
-  }
-  
-  public static final class a
-  {
-    final List<ahx.b> a = new ArrayList();
-  }
-  
-  static final class b
-  {
-    final String a;
-    final String b;
-    final String c;
-    final alb d;
-    
-    public final boolean equals(Object paramObject)
-    {
-      if ((paramObject instanceof b))
-      {
-        String str = this.a;
-        paramObject = (b)paramObject;
-        if ((str.equals(paramObject.a)) && (this.c.equals(paramObject.c)) && (this.d.equals(paramObject.d))) {
-          return true;
-        }
-      }
-      return false;
-    }
-    
-    public final int hashCode()
-    {
-      return ((this.a.hashCode() + 527) * 31 + this.c.hashCode()) * 31 + this.d.hashCode();
-    }
-    
-    public final String toString()
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(this.c);
-      localStringBuilder.append(this.d.b());
-      return localStringBuilder.toString();
-    }
+    StringBuilder localStringBuilder = new StringBuilder("SQLiteQuery: ");
+    localStringBuilder.append(this.b);
+    return localStringBuilder.toString();
   }
 }
 

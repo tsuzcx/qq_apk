@@ -5,64 +5,102 @@ import android.os.Handler;
 import android.os.Message;
 import com.tencent.token.global.RqdApplication;
 import java.util.HashMap;
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 public final class wa
-  extends tj
+  extends tr
 {
-  private long d;
-  private long e;
-  private int f;
-  private int g;
-  private long h;
-  private Integer i;
+  public static int d;
+  public static int e;
+  public static int f;
+  private long g;
+  private int h;
+  private int i;
+  private int[] j;
   
   public final String a()
   {
-    rz.a();
+    sh.a();
     this.a.a(104, null, null);
     return null;
   }
   
-  public final void a(aaq paramaaq)
+  public final void a(abc paramabc)
   {
-    this.e = ((Long)paramaaq.c.get("param.realuin")).longValue();
-    this.g = ((Integer)paramaaq.c.get("param.scene_id")).intValue();
-    this.h = ((Long)paramaaq.c.get("param.op_time")).longValue();
-    this.f = paramaaq.j;
-    this.d = ((Long)paramaaq.c.get("param.uinhash")).longValue();
+    this.g = ((Long)paramabc.c.get("param.realuin")).longValue();
+    this.h = ((Integer)paramabc.c.get("param.scene.id")).intValue();
   }
   
   public final void a(JSONObject paramJSONObject)
   {
-    int j = paramJSONObject.getInt("err");
-    if (j != 0)
+    int k = paramJSONObject.getInt("err");
+    if (k != 0)
     {
-      a(j, paramJSONObject.getString("info"));
+      a(k, paramJSONObject.getString("info"));
       return;
     }
-    paramJSONObject = aac.d(paramJSONObject.getString("data"));
+    paramJSONObject = aao.d(paramJSONObject.getString("data"));
     if (paramJSONObject != null)
     {
       paramJSONObject = new JSONObject(new String(paramJSONObject));
-      xa.a("mbtoken3_qry_face_verify_on_off ret: ".concat(String.valueOf(paramJSONObject)));
-      j = paramJSONObject.getInt("seq_id");
-      if (j != this.f)
+      this.i = paramJSONObject.getInt("need_live_detect");
+      Object localObject;
+      if ((this.i == 1) && (paramJSONObject.getJSONArray("actions") != null) && (paramJSONObject.getJSONArray("actions").length() > 0))
       {
-        paramJSONObject = new StringBuilder("parseJSON error seq is wrong seq=");
-        paramJSONObject.append(j);
-        paramJSONObject.append(",right = ");
-        paramJSONObject.append(this.f);
-        xa.c(paramJSONObject.toString());
-        this.a.a(10030, null, null);
-        return;
+        int m = paramJSONObject.getJSONArray("actions").length();
+        this.j = new int[m];
+        k = 0;
+        while (k < m)
+        {
+          this.j[k] = paramJSONObject.getJSONArray("actions").getInt(k);
+          localObject = new StringBuilder("mLiveDetectActions");
+          ((StringBuilder)localObject).append(this.j[k]);
+          xj.a(((StringBuilder)localObject).toString());
+          k += 1;
+        }
+        k = this.h;
+        if ((k != 2) && (k != 1))
+        {
+          localObject = this.j;
+          if (localObject.length > 0)
+          {
+            f = localObject[0];
+            localObject = new StringBuilder("sVryAction");
+            ((StringBuilder)localObject).append(f);
+            xj.a(((StringBuilder)localObject).toString());
+          }
+        }
+        else
+        {
+          localObject = this.j;
+          if (localObject.length >= 2)
+          {
+            d = localObject[0];
+            e = localObject[1];
+          }
+        }
       }
-      this.i = Integer.valueOf(paramJSONObject.getInt("verify_type"));
+      try
+      {
+        yj.n = paramJSONObject.getInt("displayangle");
+        yj.o = paramJSONObject.getInt("imageangle");
+        localObject = new StringBuilder("display angle=");
+        ((StringBuilder)localObject).append(yj.n);
+        ((StringBuilder)localObject).append(",angel2=");
+        ((StringBuilder)localObject).append(yj.o);
+        xj.a(((StringBuilder)localObject).toString());
+        aap.a(paramJSONObject);
+      }
+      catch (Exception paramJSONObject)
+      {
+        paramJSONObject.printStackTrace();
+      }
       this.a.a = 0;
       return;
     }
-    xa.c("parseJSON error decodeData=".concat(String.valueOf(paramJSONObject)));
-    a(10022, RqdApplication.n().getString(2131493068));
+    xj.c("parseJSON error decodeData=".concat(String.valueOf(paramJSONObject)));
+    a(10022, RqdApplication.p().getString(2131493068));
   }
   
   public final void b()
@@ -71,7 +109,8 @@ public final class wa
     {
       Message localMessage = this.b.d.obtainMessage(this.b.f);
       localMessage.arg1 = 0;
-      localMessage.obj = this.i;
+      localMessage.arg2 = this.i;
+      localMessage.obj = this.j;
       localMessage.sendToTarget();
       this.b.e = true;
     }

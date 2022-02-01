@@ -1,155 +1,196 @@
 package com.tencent.token;
 
+import android.content.Intent;
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageInstaller;
+import android.content.pm.PackageManager;
+import android.content.pm.PackageManager.NameNotFoundException;
+import android.content.pm.ProviderInfo;
+import android.content.pm.ResolveInfo;
+import android.os.Build.VERSION;
+import com.oasisfeng.condom.CondomCore;
+import com.oasisfeng.condom.CondomCore.j;
+import com.oasisfeng.condom.CondomCore.m;
+import com.oasisfeng.condom.CondomCore.n;
+import com.oasisfeng.condom.OutboundType;
+import com.oasisfeng.condom.PackageManagerWrapper;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.List;
+import java.util.Set;
+
 public final class kn
+  extends PackageManagerWrapper
 {
-  public static final class a
+  private static final CondomCore.j<String, String> a = new h();
+  private final CondomCore b;
+  private final String c;
+  
+  public kn(CondomCore paramCondomCore, PackageManager paramPackageManager, String paramString)
   {
-    public static final int action_bar = 2131165235;
-    public static final int action_bar_activity_content = 2131165236;
-    public static final int action_bar_container = 2131165237;
-    public static final int action_bar_root = 2131165238;
-    public static final int action_bar_spinner = 2131165239;
-    public static final int action_bar_subtitle = 2131165240;
-    public static final int action_bar_title = 2131165241;
-    public static final int action_container = 2131165242;
-    public static final int action_context_bar = 2131165243;
-    public static final int action_divider = 2131165244;
-    public static final int action_image = 2131165245;
-    public static final int action_menu_divider = 2131165246;
-    public static final int action_menu_presenter = 2131165247;
-    public static final int action_mode_bar = 2131165248;
-    public static final int action_mode_bar_stub = 2131165249;
-    public static final int action_mode_close_button = 2131165250;
-    public static final int action_text = 2131165251;
-    public static final int actions = 2131165252;
-    public static final int activity_chooser_view_content = 2131165257;
-    public static final int add = 2131165263;
-    public static final int alertTitle = 2131165274;
-    public static final int async = 2131165287;
-    public static final int blocking = 2131165314;
-    public static final int bottom = 2131165318;
-    public static final int buttonPanel = 2131165347;
-    public static final int checkbox = 2131165378;
-    public static final int chronometer = 2131165379;
-    public static final int contentPanel = 2131165411;
-    public static final int custom = 2131165419;
-    public static final int customPanel = 2131165420;
-    public static final int decor_content_parent = 2131165426;
-    public static final int default_activity_button = 2131165427;
-    public static final int edit_query = 2131165456;
-    public static final int end = 2131165458;
-    public static final int expand_activities_button = 2131165467;
-    public static final int expanded_menu = 2131165468;
-    public static final int forever = 2131165507;
-    public static final int home = 2131165580;
-    public static final int icon = 2131165583;
-    public static final int icon_group = 2131165584;
-    public static final int image = 2131165587;
-    public static final int info = 2131165602;
-    public static final int italic = 2131165612;
-    public static final int left = 2131165656;
-    public static final int line1 = 2131165661;
-    public static final int line3 = 2131165663;
-    public static final int listMode = 2131165665;
-    public static final int list_item = 2131165667;
-    public static final int message = 2131165737;
-    public static final int multiply = 2131165766;
-    public static final int none = 2131165777;
-    public static final int normal = 2131165778;
-    public static final int notification_background = 2131165779;
-    public static final int notification_main_column = 2131165780;
-    public static final int notification_main_column_container = 2131165781;
-    public static final int parentPanel = 2131165808;
-    public static final int progress_circular = 2131165828;
-    public static final int progress_horizontal = 2131165829;
-    public static final int radio = 2131165875;
-    public static final int right = 2131165916;
-    public static final int right_icon = 2131165917;
-    public static final int right_side = 2131165919;
-    public static final int screen = 2131165948;
-    public static final int scrollIndicatorDown = 2131165950;
-    public static final int scrollIndicatorUp = 2131165951;
-    public static final int scrollView = 2131165952;
-    public static final int search_badge = 2131165954;
-    public static final int search_bar = 2131165955;
-    public static final int search_button = 2131165956;
-    public static final int search_close_btn = 2131165957;
-    public static final int search_edit_frame = 2131165958;
-    public static final int search_go_btn = 2131165959;
-    public static final int search_mag_icon = 2131165960;
-    public static final int search_plate = 2131165961;
-    public static final int search_src_text = 2131165962;
-    public static final int search_voice_btn = 2131165963;
-    public static final int select_dialog_listview = 2131165973;
-    public static final int shortcut = 2131165995;
-    public static final int spacer = 2131166008;
-    public static final int split_action_bar = 2131166009;
-    public static final int src_atop = 2131166028;
-    public static final int src_in = 2131166029;
-    public static final int src_over = 2131166030;
-    public static final int start = 2131166031;
-    public static final int submenuarrow = 2131166046;
-    public static final int submit_area = 2131166047;
-    public static final int tabMode = 2131166052;
-    public static final int tag_transition_group = 2131166057;
-    public static final int tcaptcha_container = 2131166059;
-    public static final int tcaptcha_indicator_layout = 2131166060;
-    public static final int text = 2131166061;
-    public static final int text2 = 2131166063;
-    public static final int textSpacerNoButtons = 2131166064;
-    public static final int textSpacerNoTitle = 2131166065;
-    public static final int time = 2131166084;
-    public static final int title = 2131166112;
-    public static final int titleDividerNoCustom = 2131166113;
-    public static final int title_template = 2131166122;
-    public static final int top = 2131166148;
-    public static final int topPanel = 2131166149;
-    public static final int uniform = 2131166204;
-    public static final int up = 2131166206;
-    public static final int wrap_content = 2131166334;
+    super(paramPackageManager);
+    this.b = paramCondomCore;
+    this.c = paramString;
   }
   
-  public static final class b
+  public final int checkPermission(final String paramString1, final String paramString2)
   {
-    public static final int abc_action_bar_title_item = 2131296256;
-    public static final int abc_action_bar_up_container = 2131296257;
-    public static final int abc_action_menu_item_layout = 2131296258;
-    public static final int abc_action_menu_layout = 2131296259;
-    public static final int abc_action_mode_bar = 2131296260;
-    public static final int abc_action_mode_close_item_material = 2131296261;
-    public static final int abc_activity_chooser_view = 2131296262;
-    public static final int abc_activity_chooser_view_list_item = 2131296263;
-    public static final int abc_alert_dialog_button_bar_material = 2131296264;
-    public static final int abc_alert_dialog_material = 2131296265;
-    public static final int abc_alert_dialog_title_material = 2131296266;
-    public static final int abc_dialog_title_material = 2131296267;
-    public static final int abc_expanded_menu_layout = 2131296268;
-    public static final int abc_list_menu_item_checkbox = 2131296269;
-    public static final int abc_list_menu_item_icon = 2131296270;
-    public static final int abc_list_menu_item_layout = 2131296271;
-    public static final int abc_list_menu_item_radio = 2131296272;
-    public static final int abc_popup_menu_header_item_layout = 2131296273;
-    public static final int abc_popup_menu_item_layout = 2131296274;
-    public static final int abc_screen_content_include = 2131296275;
-    public static final int abc_screen_simple = 2131296276;
-    public static final int abc_screen_simple_overlay_action_mode = 2131296277;
-    public static final int abc_screen_toolbar = 2131296278;
-    public static final int abc_search_dropdown_item_icons_2line = 2131296279;
-    public static final int abc_search_view = 2131296280;
-    public static final int abc_select_dialog_material = 2131296281;
-    public static final int abc_tooltip = 2131296282;
-    public static final int notification_action = 2131296389;
-    public static final int notification_action_tombstone = 2131296390;
-    public static final int notification_template_custom_big = 2131296391;
-    public static final int notification_template_icon_group = 2131296392;
-    public static final int notification_template_part_chronometer = 2131296393;
-    public static final int notification_template_part_time = 2131296394;
-    public static final int select_dialog_item_material = 2131296434;
-    public static final int select_dialog_multichoice_material = 2131296435;
-    public static final int select_dialog_singlechoice_material = 2131296436;
-    public static final int support_simple_spinner_dropdown_item = 2131296455;
-    public static final int tcaptcha_popup = 2131296456;
+    return ((Integer)this.b.proceed(OutboundType.CHECK_PERMISSION, paramString2, Integer.valueOf(-1), new g(paramString1, paramString2))).intValue();
   }
+  
+  public final ApplicationInfo getApplicationInfo(final String paramString, final int paramInt)
+  {
+    return (ApplicationInfo)this.b.proceed(OutboundType.GET_APPLICATION_INFO, paramString, null, new d(paramString, paramInt));
+  }
+  
+  public final List<ApplicationInfo> getInstalledApplications(int paramInt)
+  {
+    this.b.logConcern(this.c, "PackageManager.getInstalledApplications");
+    return super.getInstalledApplications(paramInt);
+  }
+  
+  public final List<PackageInfo> getInstalledPackages(int paramInt)
+  {
+    this.b.logConcern(this.c, "PackageManager.getInstalledPackages");
+    return super.getInstalledPackages(paramInt);
+  }
+  
+  public final PackageInfo getPackageInfo(final String paramString, final int paramInt)
+  {
+    PackageInfo localPackageInfo = (PackageInfo)this.b.proceed(OutboundType.GET_PACKAGE_INFO, paramString, null, new e(paramString, paramInt));
+    if (localPackageInfo != null)
+    {
+      if (((paramInt & 0x1000) != 0) && (!this.b.getSpoofPermissions().isEmpty()) && (this.b.getPackageName().equals(paramString)))
+      {
+        paramString = localPackageInfo.requestedPermissions;
+        if (paramString == null) {
+          paramString = new ArrayList();
+        } else {
+          paramString = new ArrayList(Arrays.asList(paramString));
+        }
+        Object localObject = new ArrayList(this.b.getSpoofPermissions());
+        ((List)localObject).removeAll(paramString);
+        if (!((List)localObject).isEmpty())
+        {
+          paramString.addAll((Collection)localObject);
+          localPackageInfo.requestedPermissions = ((String[])paramString.toArray(new String[paramString.size()]));
+        }
+        if (Build.VERSION.SDK_INT >= 16)
+        {
+          localObject = localPackageInfo.requestedPermissionsFlags;
+          if (localObject == null) {
+            paramString = new int[paramString.size()];
+          } else {
+            paramString = Arrays.copyOf((int[])localObject, paramString.size());
+          }
+          paramInt = 0;
+          for (;;)
+          {
+            localObject = localPackageInfo.requestedPermissions;
+            if (paramInt >= localObject.length) {
+              break;
+            }
+            if (this.b.shouldSpoofPermission(localObject[paramInt])) {
+              paramString[paramInt] = 2;
+            }
+            paramInt += 1;
+          }
+          localPackageInfo.requestedPermissionsFlags = paramString;
+        }
+      }
+      return localPackageInfo;
+    }
+    throw new PackageManager.NameNotFoundException(paramString);
+  }
+  
+  public final PackageInstaller getPackageInstaller()
+  {
+    throw new UnsupportedOperationException("PackageManager.getPackageInstaller() is not yet supported by Project Condom. If it causes trouble, please file an issue on GitHub.");
+  }
+  
+  public final String[] getPackagesForUid(final int paramInt)
+  {
+    List localList = this.b.proceedQuery(OutboundType.QUERY_PACKAGES, null, new f(paramInt), a);
+    if ((localList != null) && (!localList.isEmpty())) {
+      return (String[])localList.toArray(new String[0]);
+    }
+    return null;
+  }
+  
+  public final List<ResolveInfo> queryBroadcastReceivers(final Intent paramIntent, final int paramInt)
+  {
+    return this.b.proceedQuery(OutboundType.QUERY_RECEIVERS, paramIntent, new a(paramIntent, paramInt), CondomCore.RECEIVER_PACKAGE_GETTER);
+  }
+  
+  public final List<ResolveInfo> queryIntentServices(final Intent paramIntent, final int paramInt)
+  {
+    final int i = paramIntent.getFlags();
+    return this.b.proceedQuery(OutboundType.QUERY_SERVICES, paramIntent, new b(paramIntent, paramInt, i), CondomCore.SERVICE_PACKAGE_GETTER);
+  }
+  
+  public final ProviderInfo resolveContentProvider(String paramString, int paramInt)
+  {
+    ProviderInfo localProviderInfo = super.resolveContentProvider(paramString, paramInt);
+    paramString = localProviderInfo;
+    if (!this.b.shouldAllowProvider(localProviderInfo)) {
+      paramString = null;
+    }
+    return paramString;
+  }
+  
+  public final ResolveInfo resolveService(final Intent paramIntent, final int paramInt)
+  {
+    final int i = paramIntent.getFlags();
+    return (ResolveInfo)this.b.proceed(OutboundType.QUERY_SERVICES, paramIntent, null, new c(paramIntent, paramInt, i));
+  }
+  
+  final class a
+    implements CondomCore.m<List<ResolveInfo>>
+  {
+    a(Intent paramIntent, int paramInt) {}
+  }
+  
+  final class b
+    implements CondomCore.m<List<ResolveInfo>>
+  {
+    b(Intent paramIntent, int paramInt1, int paramInt2) {}
+  }
+  
+  final class c
+    implements CondomCore.m<ResolveInfo>
+  {
+    c(Intent paramIntent, int paramInt1, int paramInt2) {}
+  }
+  
+  final class d
+    implements CondomCore.n<ApplicationInfo, PackageManager.NameNotFoundException>
+  {
+    d(String paramString, int paramInt) {}
+  }
+  
+  final class e
+    implements CondomCore.n<PackageInfo, PackageManager.NameNotFoundException>
+  {
+    e(String paramString, int paramInt) {}
+  }
+  
+  final class f
+    implements CondomCore.m<List<String>>
+  {
+    f(int paramInt) {}
+  }
+  
+  final class g
+    implements CondomCore.m<Integer>
+  {
+    g(String paramString1, String paramString2) {}
+  }
+  
+  static final class h
+    implements CondomCore.j<String, String>
+  {}
 }
 
 

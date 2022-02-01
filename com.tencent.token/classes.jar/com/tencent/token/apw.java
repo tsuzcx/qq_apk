@@ -1,20 +1,43 @@
 package com.tencent.token;
 
-import java.util.ArrayList;
-import java.util.concurrent.atomic.AtomicLong;
-import java.util.concurrent.atomic.AtomicReference;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 
-public abstract interface apw
+public final class apw
 {
-  public abstract int a();
+  private static final char[] a = "0123456789abcdef".toCharArray();
   
-  public abstract void a(int paramInt1, int paramInt2);
+  public static String a(byte[] paramArrayOfByte)
+  {
+    paramArrayOfByte = b(paramArrayOfByte);
+    StringBuilder localStringBuilder = new StringBuilder(paramArrayOfByte.length * 3);
+    int j = paramArrayOfByte.length;
+    int i = 0;
+    while (i < j)
+    {
+      int k = paramArrayOfByte[i] & 0xFF;
+      localStringBuilder.append(a[(k >> 4)]);
+      localStringBuilder.append(a[(k & 0xF)]);
+      i += 1;
+    }
+    return localStringBuilder.toString().toUpperCase();
+  }
   
-  public abstract void a(long paramLong, ArrayList paramArrayList1, ArrayList paramArrayList2, ArrayList paramArrayList3);
-  
-  public abstract void a(AtomicLong paramAtomicLong, AtomicReference paramAtomicReference1, AtomicReference paramAtomicReference2, AtomicReference paramAtomicReference3);
-  
-  public abstract int b();
+  private static byte[] b(byte[] paramArrayOfByte)
+  {
+    try
+    {
+      MessageDigest localMessageDigest = MessageDigest.getInstance("MD5");
+      localMessageDigest.update(paramArrayOfByte);
+      paramArrayOfByte = localMessageDigest.digest();
+      return paramArrayOfByte;
+    }
+    catch (NoSuchAlgorithmException paramArrayOfByte)
+    {
+      paramArrayOfByte.printStackTrace();
+    }
+    return null;
+  }
 }
 
 

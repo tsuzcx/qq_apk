@@ -1,39 +1,55 @@
 package com.tencent.token;
 
-import android.os.Build;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
+import android.content.Context;
+import android.text.TextUtils;
+import java.util.concurrent.atomic.AtomicReference;
 
 public final class ady
+  implements Runnable
 {
-  public static Map<String, a> a;
-  public static aea b;
-  public static String c;
+  public ady(aec paramaec, Context paramContext, int paramInt) {}
   
-  static
+  public final void run()
   {
-    ConcurrentHashMap localConcurrentHashMap = new ConcurrentHashMap();
-    a = localConcurrentHashMap;
-    localConcurrentHashMap.put("C892BA2", new a(new aee()));
-    a.put("43780D5", new a(new aee()));
-    a.put("22792AF", new a(new aed()));
-    c = "";
+    aec localaec = this.d;
+    ??? = this.a;
+    boolean bool2 = this.b;
+    int j = this.c;
+    localaec.g.getClass();
+    Object localObject3 = aef.a((Context)???, "403");
     try
     {
-      c = aey.c(Build.MANUFACTURER.toLowerCase().getBytes()).substring(0, 7);
-      return;
+      if (!TextUtils.isEmpty((CharSequence)localObject3))
+      {
+        bool1 = Boolean.valueOf((String)localObject3).booleanValue();
+        break label65;
+      }
     }
-    catch (Throwable localThrowable) {}
-  }
-  
-  public static final class a
-  {
-    public adw a;
-    public int b = 0;
-    
-    public a(adw paramadw)
+    finally {}
+    boolean bool1 = true;
+    label65:
+    int i = 0;
+    while (i < localaec.d.s)
     {
-      this.a = paramadw;
+      localObject3 = localaec.a((Context)???, bool2, bool1, j);
+      localaec.a((adt)localObject3, true);
+      int k = ((adt)localObject3).d;
+      if ((k == 0) || (k == -30014)) {
+        break;
+      }
+      i += 1;
+    }
+    if (bool1)
+    {
+      localObject3 = localaec.g;
+      localObject3.getClass();
+      ((aef)localObject3).a((Context)???, "403", "false", true);
+    }
+    synchronized (localaec.j)
+    {
+      localaec.j.set(Boolean.FALSE);
+      localaec.j.notifyAll();
+      return;
     }
   }
 }

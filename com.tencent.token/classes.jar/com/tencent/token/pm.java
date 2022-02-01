@@ -1,45 +1,46 @@
 package com.tencent.token;
 
-import android.os.Bundle;
-import com.tencent.mm.sdk.openapi.WXMediaMessage;
-import com.tencent.mm.sdk.openapi.WXMediaMessage.a;
+import android.net.Uri;
+import android.provider.BaseColumns;
 
 public final class pm
 {
   public static final class a
-    extends pk
   {
-    public WXMediaMessage b;
-    public int c;
-    
-    public final void a(Bundle paramBundle)
+    public static Object a(int paramInt, String paramString)
     {
-      super.a(paramBundle);
-      WXMediaMessage localWXMediaMessage = this.b;
-      Bundle localBundle = new Bundle();
-      localBundle.putInt("_wxobject_sdkVer", localWXMediaMessage.sdkVer);
-      localBundle.putString("_wxobject_title", localWXMediaMessage.title);
-      localBundle.putString("_wxobject_description", localWXMediaMessage.description);
-      localBundle.putByteArray("_wxobject_thumbdata", localWXMediaMessage.thumbData);
-      if (localWXMediaMessage.mediaObject != null)
+      switch (paramInt)
       {
-        localBundle.putString("_wxobject_identifier_", localWXMediaMessage.mediaObject.getClass().getName());
-        localWXMediaMessage.mediaObject.serialize(localBundle);
+      default: 
+        break;
+      case 6: 
+      case 5: 
+      case 4: 
+      case 2: 
+      case 1: 
+        try
+        {
+          return Double.valueOf(paramString);
+        }
+        catch (Exception paramString)
+        {
+          new StringBuilder("resolveObj exception:").append(paramString.getMessage());
+        }
+        return Float.valueOf(paramString);
+        return Boolean.valueOf(paramString);
+        return Long.valueOf(paramString);
+        paramString = Integer.valueOf(paramString);
+        return paramString;
+        return null;
       }
-      paramBundle.putAll(localBundle);
-      paramBundle.putInt("_wxapi_sendmessagetowx_req_scene", this.c);
+      return paramString;
     }
-    
-    final boolean a()
-    {
-      WXMediaMessage localWXMediaMessage = this.b;
-      if (localWXMediaMessage == null)
-      {
-        pp.a("MicroMsg.SDK.SendMessageToWX.Req", "checkArgs fail ,message is null");
-        return false;
-      }
-      return localWXMediaMessage.checkArgs();
-    }
+  }
+  
+  public static final class b
+    implements BaseColumns
+  {
+    public static final Uri a = Uri.parse("content://com.tencent.mm.sdk.plugin.provider/sharedpref");
   }
 }
 

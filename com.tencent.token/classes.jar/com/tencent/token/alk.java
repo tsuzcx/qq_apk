@@ -1,95 +1,90 @@
 package com.tencent.token;
 
-import javax.annotation.Nullable;
+import java.util.List;
+import java.util.regex.Pattern;
 
-final class alk
+public final class alk
 {
-  final byte[] a;
-  int b;
-  int c;
-  boolean d;
-  boolean e;
-  alk f;
-  alk g;
+  private static final Pattern a = Pattern.compile(" +([^ \"=]*)=(:?\"([^\"]*)\"|([^ \"=]*)) *(:?,|$)");
   
-  alk()
+  public static int a(String paramString, int paramInt)
   {
-    this.a = new byte[8192];
-    this.e = true;
-    this.d = false;
-  }
-  
-  alk(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
-  {
-    this.a = paramArrayOfByte;
-    this.b = paramInt1;
-    this.c = paramInt2;
-    this.d = true;
-    this.e = false;
-  }
-  
-  final alk a()
-  {
-    this.d = true;
-    return new alk(this.a, this.b, this.c);
-  }
-  
-  public final alk a(alk paramalk)
-  {
-    paramalk.g = this;
-    paramalk.f = this.f;
-    this.f.g = paramalk;
-    this.f = paramalk;
-    return paramalk;
-  }
-  
-  public final void a(alk paramalk, int paramInt)
-  {
-    if (paramalk.e)
+    while (paramInt < paramString.length())
     {
-      int i = paramalk.c;
-      if (i + paramInt > 8192) {
-        if (!paramalk.d)
-        {
-          int j = paramalk.b;
-          if (i + paramInt - j <= 8192)
-          {
-            byte[] arrayOfByte = paramalk.a;
-            System.arraycopy(arrayOfByte, j, arrayOfByte, 0, i - j);
-            paramalk.c -= paramalk.b;
-            paramalk.b = 0;
-          }
-          else
-          {
-            throw new IllegalArgumentException();
-          }
-        }
-        else
-        {
-          throw new IllegalArgumentException();
-        }
+      int i = paramString.charAt(paramInt);
+      if ((i != 32) && (i != 9)) {
+        break;
       }
-      System.arraycopy(this.a, this.b, paramalk.a, paramalk.c, paramInt);
-      paramalk.c += paramInt;
-      this.b += paramInt;
+      paramInt += 1;
+    }
+    return paramInt;
+  }
+  
+  public static int a(String paramString1, int paramInt, String paramString2)
+  {
+    while ((paramInt < paramString1.length()) && (paramString2.indexOf(paramString1.charAt(paramInt)) == -1)) {
+      paramInt += 1;
+    }
+    return paramInt;
+  }
+  
+  public static long a(akn paramakn)
+  {
+    return a(paramakn.f.a("Content-Length"));
+  }
+  
+  private static long a(String paramString)
+  {
+    if (paramString == null) {
+      return -1L;
+    }
+    try
+    {
+      long l = Long.parseLong(paramString);
+      return l;
+    }
+    catch (NumberFormatException paramString) {}
+    return -1L;
+  }
+  
+  public static void a(ajz paramajz, akf paramakf, ake paramake)
+  {
+    if (paramajz == ajz.a) {
       return;
     }
-    throw new IllegalArgumentException();
+    if (ajy.a(paramakf, paramake).isEmpty()) {}
   }
   
-  @Nullable
-  public final alk b()
+  public static int b(String paramString, int paramInt)
   {
-    alk localalk1 = this.f;
-    if (localalk1 == this) {
-      localalk1 = null;
+    try
+    {
+      long l = Long.parseLong(paramString);
+      if (l > 2147483647L) {
+        return 2147483647;
+      }
+      if (l < 0L) {
+        return 0;
+      }
+      return (int)l;
     }
-    alk localalk2 = this.g;
-    localalk2.f = this.f;
-    this.f.g = localalk2;
-    this.f = null;
-    this.g = null;
-    return localalk1;
+    catch (NumberFormatException paramString) {}
+    return paramInt;
+  }
+  
+  public static boolean b(akn paramakn)
+  {
+    if (paramakn.a.b.equals("HEAD")) {
+      return false;
+    }
+    int i = paramakn.c;
+    if (((i < 100) || (i >= 200)) && (i != 204) && (i != 304)) {
+      return true;
+    }
+    if (a(paramakn) == -1L) {
+      return "chunked".equalsIgnoreCase(paramakn.a("Transfer-Encoding"));
+    }
+    return true;
   }
 }
 

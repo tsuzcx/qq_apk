@@ -2,10 +2,10 @@ package com.tencent.token.core.bean;
 
 import android.content.SharedPreferences.Editor;
 import android.graphics.Bitmap;
-import com.tencent.token.abj;
-import com.tencent.token.xa;
-import com.tencent.token.zw;
-import com.tencent.token.zz;
+import com.tencent.token.aai;
+import com.tencent.token.aal;
+import com.tencent.token.abu;
+import com.tencent.token.xj;
 import java.io.File;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -29,6 +29,7 @@ public class ConfigResult
   public JSONArray mToolsList;
   public JSONArray mToolsTitleList;
   public String schemaKey;
+  public String schemaKey2;
   public int schemaTimeout;
   public String so_param_ids;
   public String so_param_values;
@@ -64,6 +65,7 @@ public class ConfigResult
     this.mStartUpImgStartTime = paramJSONObject.getLong("startup_img_start_time");
     this.mStartUpImgEndTime = paramJSONObject.getLong("startup_img_end_time");
     this.schemaKey = paramJSONObject.getString("schema_key");
+    this.schemaKey2 = paramJSONObject.getString("schema_key2");
     this.schemaTimeout = paramJSONObject.getInt("schema_timeout");
     this.utilsShowFlag = paramJSONObject.getInt("icon_show_flag");
     Object localObject = new StringBuilder("ConfigResult mStartUpImgUrl=");
@@ -74,7 +76,7 @@ public class ConfigResult
     ((StringBuilder)localObject).append(this.schemaKey);
     ((StringBuilder)localObject).append("schemaTimeout=");
     ((StringBuilder)localObject).append(this.schemaTimeout);
-    xa.b(((StringBuilder)localObject).toString());
+    xj.b(((StringBuilder)localObject).toString());
     this.so_param_ids = paramJSONObject.optString("so_param_ids");
     this.so_param_values = paramJSONObject.optString("so_param_values");
     this.mFaceRecognitionParamResult = new FaceRecognitionParamResult(paramJSONObject);
@@ -120,15 +122,15 @@ public class ConfigResult
               switch (this.logLevel)
               {
               case 2: 
-                abj.a(48);
+                abu.a(48);
                 break;
-                abj.a(48);
+                abu.a(48);
                 break;
               case 1: 
-                abj.a(60);
+                abu.a(60);
                 break;
               case 0: 
-                abj.a(63);
+                abu.a(63);
                 try
                 {
                   if (paramJSONObject.has("upload_date")) {
@@ -136,13 +138,13 @@ public class ConfigResult
                   }
                   if (this.uploadDate >= 0)
                   {
-                    zz.b("debug.file.uploadfiledate", this.uploadDate).commit();
+                    aal.b("debug.file.uploadfiledate", this.uploadDate).commit();
                     paramJSONObject = new StringBuilder("log file upload date=");
                     paramJSONObject.append(this.uploadDate);
-                    xa.a(paramJSONObject.toString());
-                    paramJSONObject = new File(abj.b(), "upload.file");
+                    xj.a(paramJSONObject.toString());
+                    paramJSONObject = new File(abu.b(), "upload.file");
                     if (paramJSONObject.exists()) {
-                      zw.a(paramJSONObject);
+                      aai.a(paramJSONObject);
                     }
                   }
                   return;

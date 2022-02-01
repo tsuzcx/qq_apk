@@ -1,598 +1,605 @@
 package com.tencent.token;
 
-import java.util.ConcurrentModificationException;
+import java.lang.reflect.Array;
+import java.util.Collection;
+import java.util.Iterator;
 import java.util.Map;
+import java.util.Map.Entry;
+import java.util.NoSuchElementException;
+import java.util.Set;
 
-public class ef<K, V>
+public abstract class ef<K, V>
 {
-  static Object[] b;
-  static int c;
-  static Object[] d;
-  static int e;
-  int[] f = dw.a;
-  Object[] g = dw.c;
-  int h = 0;
+  ef<K, V>.b b;
+  ef<K, V>.c c;
+  ef<K, V>.e d;
   
-  private int a()
+  public static <K, V> boolean a(Map<K, V> paramMap, Collection<?> paramCollection)
   {
-    int j = this.h;
-    if (j == 0) {
-      return -1;
-    }
-    int k = a(this.f, j, 0);
-    if (k < 0) {
-      return k;
-    }
-    if (this.g[(k << 1)] == null) {
-      return k;
-    }
-    int i = k + 1;
-    while ((i < j) && (this.f[i] == 0))
-    {
-      if (this.g[(i << 1)] == null) {
-        return i;
+    int i = paramMap.size();
+    Iterator localIterator = paramMap.keySet().iterator();
+    while (localIterator.hasNext()) {
+      if (!paramCollection.contains(localIterator.next())) {
+        localIterator.remove();
       }
-      i += 1;
     }
-    j = k - 1;
-    while ((j >= 0) && (this.f[j] == 0))
-    {
-      if (this.g[(j << 1)] == null) {
-        return j;
-      }
-      j -= 1;
-    }
-    return i ^ 0xFFFFFFFF;
+    return i != paramMap.size();
   }
   
-  private int a(Object paramObject, int paramInt)
+  public static <T> boolean a(Set<T> paramSet, Object paramObject)
   {
-    int j = this.h;
-    if (j == 0) {
-      return -1;
+    if (paramSet == paramObject) {
+      return true;
     }
-    int k = a(this.f, j, paramInt);
-    if (k < 0) {
-      return k;
+    if ((paramObject instanceof Set)) {
+      paramObject = (Set)paramObject;
     }
-    if (paramObject.equals(this.g[(k << 1)])) {
-      return k;
-    }
-    int i = k + 1;
-    while ((i < j) && (this.f[i] == paramInt))
-    {
-      if (paramObject.equals(this.g[(i << 1)])) {
-        return i;
-      }
-      i += 1;
-    }
-    j = k - 1;
-    while ((j >= 0) && (this.f[j] == paramInt))
-    {
-      if (paramObject.equals(this.g[(j << 1)])) {
-        return j;
-      }
-      j -= 1;
-    }
-    return i ^ 0xFFFFFFFF;
-  }
-  
-  private static int a(int[] paramArrayOfInt, int paramInt1, int paramInt2)
-  {
     try
     {
-      paramInt1 = dw.a(paramArrayOfInt, paramInt1, paramInt2);
-      return paramInt1;
+      if (paramSet.size() == paramObject.size())
+      {
+        boolean bool = paramSet.containsAll(paramObject);
+        if (bool) {
+          return true;
+        }
+      }
+      return false;
     }
-    catch (ArrayIndexOutOfBoundsException paramArrayOfInt)
+    catch (NullPointerException paramSet)
     {
-      label9:
-      break label9;
+      return false;
     }
-    throw new ConcurrentModificationException();
+    catch (ClassCastException paramSet) {}
+    return false;
+    return false;
   }
   
-  static void a(int[] paramArrayOfInt, Object[] paramArrayOfObject, int paramInt)
-  {
-    if (paramArrayOfInt.length == 8) {
-      try
-      {
-        if (e < 10)
-        {
-          paramArrayOfObject[0] = d;
-          paramArrayOfObject[1] = paramArrayOfInt;
-          paramInt = (paramInt << 1) - 1;
-          break label118;
-          d = paramArrayOfObject;
-          e += 1;
-        }
-        return;
-      }
-      finally {}
-    } else if (paramArrayOfInt.length != 4) {}
-    for (;;)
-    {
-      try
-      {
-        if (c < 10)
-        {
-          paramArrayOfObject[0] = b;
-          paramArrayOfObject[1] = paramArrayOfInt;
-          paramInt = (paramInt << 1) - 1;
-          break label134;
-          b = paramArrayOfObject;
-          c += 1;
-        }
-        return;
-      }
-      finally {}
-      return;
-      label118:
-      while (paramInt >= 2)
-      {
-        paramArrayOfObject[paramInt] = null;
-        paramInt -= 1;
-      }
-      break;
-      label134:
-      while (paramInt >= 2)
-      {
-        paramArrayOfObject[paramInt] = null;
-        paramInt -= 1;
-      }
-    }
-  }
+  protected abstract int a();
   
-  public final int a(Object paramObject)
-  {
-    if (paramObject == null) {
-      return a();
-    }
-    return a(paramObject, paramObject.hashCode());
-  }
+  protected abstract int a(Object paramObject);
   
-  final void a(int paramInt)
-  {
-    if (paramInt == 8) {
-      try
-      {
-        if (d != null)
-        {
-          Object[] arrayOfObject1 = d;
-          this.g = arrayOfObject1;
-          d = (Object[])arrayOfObject1[0];
-          this.f = ((int[])arrayOfObject1[1]);
-          arrayOfObject1[1] = null;
-          arrayOfObject1[0] = null;
-          e -= 1;
-          return;
-        }
-      }
-      finally {}
-    } else if (paramInt == 4) {
-      try
-      {
-        if (b != null)
-        {
-          Object[] arrayOfObject2 = b;
-          this.g = arrayOfObject2;
-          b = (Object[])arrayOfObject2[0];
-          this.f = ((int[])arrayOfObject2[1]);
-          arrayOfObject2[1] = null;
-          arrayOfObject2[0] = null;
-          c -= 1;
-          return;
-        }
-      }
-      finally {}
-    }
-    this.f = new int[paramInt];
-    this.g = new Object[paramInt << 1];
-  }
+  protected abstract Object a(int paramInt1, int paramInt2);
   
-  final int b(Object paramObject)
+  protected abstract V a(int paramInt, V paramV);
+  
+  protected abstract void a(int paramInt);
+  
+  protected abstract void a(K paramK, V paramV);
+  
+  public final <T> T[] a(T[] paramArrayOfT, int paramInt)
   {
-    int j = this.h * 2;
-    Object[] arrayOfObject = this.g;
-    if (paramObject == null)
-    {
-      i = 1;
-      while (i < j)
-      {
-        if (arrayOfObject[i] == null) {
-          return i >> 1;
-        }
-        i += 2;
-      }
+    int j = a();
+    Object localObject = paramArrayOfT;
+    if (paramArrayOfT.length < j) {
+      localObject = (Object[])Array.newInstance(paramArrayOfT.getClass().getComponentType(), j);
     }
-    int i = 1;
+    int i = 0;
     while (i < j)
     {
-      if (paramObject.equals(arrayOfObject[i])) {
-        return i >> 1;
-      }
-      i += 2;
-    }
-    return -1;
-  }
-  
-  public final K b(int paramInt)
-  {
-    return this.g[(paramInt << 1)];
-  }
-  
-  public final V c(int paramInt)
-  {
-    return this.g[((paramInt << 1) + 1)];
-  }
-  
-  public void clear()
-  {
-    int i = this.h;
-    if (i > 0)
-    {
-      int[] arrayOfInt = this.f;
-      Object[] arrayOfObject = this.g;
-      this.f = dw.a;
-      this.g = dw.c;
-      this.h = 0;
-      a(arrayOfInt, arrayOfObject, i);
-    }
-    if (this.h <= 0) {
-      return;
-    }
-    throw new ConcurrentModificationException();
-  }
-  
-  public boolean containsKey(Object paramObject)
-  {
-    return a(paramObject) >= 0;
-  }
-  
-  public boolean containsValue(Object paramObject)
-  {
-    return b(paramObject) >= 0;
-  }
-  
-  public final V d(int paramInt)
-  {
-    Object localObject = this.g;
-    int m = paramInt << 1;
-    V ? = localObject[(m + 1)];
-    int k = this.h;
-    int i;
-    if (k <= 1)
-    {
-      a(this.f, (Object[])localObject, k);
-      this.f = dw.a;
-      this.g = dw.c;
-      i = 0;
-    }
-    else
-    {
-      int j = k - 1;
-      localObject = this.f;
-      int n = localObject.length;
-      i = 8;
-      if ((n > 8) && (k < localObject.length / 3))
-      {
-        if (k > 8) {
-          i = k + (k >> 1);
-        }
-        localObject = this.f;
-        Object[] arrayOfObject = this.g;
-        a(i);
-        if (k == this.h)
-        {
-          if (paramInt > 0)
-          {
-            System.arraycopy(localObject, 0, this.f, 0, paramInt);
-            System.arraycopy(arrayOfObject, 0, this.g, 0, m);
-          }
-          i = j;
-          if (paramInt < j)
-          {
-            i = paramInt + 1;
-            int[] arrayOfInt = this.f;
-            n = j - paramInt;
-            System.arraycopy(localObject, i, arrayOfInt, paramInt, n);
-            System.arraycopy(arrayOfObject, i << 1, this.g, m, n << 1);
-            i = j;
-          }
-        }
-        else
-        {
-          throw new ConcurrentModificationException();
-        }
-      }
-      else
-      {
-        if (paramInt < j)
-        {
-          localObject = this.f;
-          i = paramInt + 1;
-          n = j - paramInt;
-          System.arraycopy(localObject, i, localObject, paramInt, n);
-          localObject = this.g;
-          System.arraycopy(localObject, i << 1, localObject, m, n << 1);
-        }
-        localObject = this.g;
-        paramInt = j << 1;
-        localObject[paramInt] = null;
-        localObject[(paramInt + 1)] = null;
-        i = j;
-      }
-    }
-    if (k == this.h)
-    {
-      this.h = i;
-      return ?;
-    }
-    throw new ConcurrentModificationException();
-  }
-  
-  public boolean equals(Object paramObject)
-  {
-    if (this == paramObject) {
-      return true;
-    }
-    int i;
-    if ((paramObject instanceof ef))
-    {
-      paramObject = (ef)paramObject;
-      if (size() != paramObject.size()) {
-        return false;
-      }
-      i = 0;
-    }
-    try
-    {
-      while (i < this.h)
-      {
-        localObject1 = b(i);
-        localObject2 = c(i);
-        localObject3 = paramObject.get(localObject1);
-        if (localObject2 == null)
-        {
-          if (localObject3 != null) {
-            break label229;
-          }
-          if (!paramObject.containsKey(localObject1)) {
-            return false;
-          }
-        }
-        else
-        {
-          bool = localObject2.equals(localObject3);
-          if (!bool) {
-            return false;
-          }
-        }
-        i += 1;
-      }
-      return true;
-    }
-    catch (NullPointerException paramObject)
-    {
-      Object localObject1;
-      Object localObject2;
-      Object localObject3;
-      boolean bool;
-      return false;
-    }
-    catch (ClassCastException paramObject)
-    {
-      return false;
-    }
-    if ((paramObject instanceof Map))
-    {
-      paramObject = (Map)paramObject;
-      if (size() != paramObject.size()) {
-        return false;
-      }
-      i = 0;
-    }
-    try
-    {
-      while (i < this.h)
-      {
-        localObject1 = b(i);
-        localObject2 = c(i);
-        localObject3 = paramObject.get(localObject1);
-        if (localObject2 == null)
-        {
-          if (localObject3 != null) {
-            break label231;
-          }
-          if (!paramObject.containsKey(localObject1)) {
-            return false;
-          }
-        }
-        else
-        {
-          bool = localObject2.equals(localObject3);
-          if (!bool) {
-            return false;
-          }
-        }
-        i += 1;
-      }
-      return true;
-    }
-    catch (NullPointerException paramObject)
-    {
-      return false;
-    }
-    catch (ClassCastException paramObject)
-    {
-      return false;
-    }
-    return false;
-    label229:
-    return false;
-    label231:
-    return false;
-  }
-  
-  public V get(Object paramObject)
-  {
-    int i = a(paramObject);
-    if (i >= 0) {
-      return this.g[((i << 1) + 1)];
-    }
-    return null;
-  }
-  
-  public int hashCode()
-  {
-    int[] arrayOfInt = this.f;
-    Object[] arrayOfObject = this.g;
-    int n = this.h;
-    int j = 0;
-    int k = 0;
-    int i = 1;
-    while (j < n)
-    {
-      Object localObject = arrayOfObject[i];
-      int i1 = arrayOfInt[j];
-      int m;
-      if (localObject == null) {
-        m = 0;
-      } else {
-        m = localObject.hashCode();
-      }
-      k += (m ^ i1);
-      j += 1;
-      i += 2;
-    }
-    return k;
-  }
-  
-  public boolean isEmpty()
-  {
-    return this.h <= 0;
-  }
-  
-  public V put(K paramK, V paramV)
-  {
-    int k = this.h;
-    int j;
-    if (paramK == null)
-    {
-      i = a();
-      j = 0;
-    }
-    else
-    {
-      j = paramK.hashCode();
-      i = a(paramK, j);
-    }
-    Object localObject;
-    if (i >= 0)
-    {
-      i = (i << 1) + 1;
-      paramK = this.g;
-      localObject = paramK[i];
-      paramK[i] = paramV;
-      return localObject;
-    }
-    int m = i ^ 0xFFFFFFFF;
-    if (k >= this.f.length)
-    {
-      i = 4;
-      if (k >= 8) {
-        i = (k >> 1) + k;
-      } else if (k >= 4) {
-        i = 8;
-      }
-      localObject = this.f;
-      Object[] arrayOfObject = this.g;
-      a(i);
-      if (k == this.h)
-      {
-        int[] arrayOfInt = this.f;
-        if (arrayOfInt.length > 0)
-        {
-          System.arraycopy(localObject, 0, arrayOfInt, 0, localObject.length);
-          System.arraycopy(arrayOfObject, 0, this.g, 0, arrayOfObject.length);
-        }
-        a((int[])localObject, arrayOfObject, k);
-      }
-      else
-      {
-        throw new ConcurrentModificationException();
-      }
-    }
-    if (m < k)
-    {
-      localObject = this.f;
-      i = m + 1;
-      System.arraycopy(localObject, m, localObject, i, k - m);
-      localObject = this.g;
-      System.arraycopy(localObject, m << 1, localObject, i << 1, this.h - m << 1);
-    }
-    int i = this.h;
-    if (k == i)
-    {
-      localObject = this.f;
-      if (m < localObject.length)
-      {
-        localObject[m] = j;
-        localObject = this.g;
-        j = m << 1;
-        localObject[j] = paramK;
-        localObject[(j + 1)] = paramV;
-        this.h = (i + 1);
-        return null;
-      }
-    }
-    throw new ConcurrentModificationException();
-  }
-  
-  public V remove(Object paramObject)
-  {
-    int i = a(paramObject);
-    if (i >= 0) {
-      return d(i);
-    }
-    return null;
-  }
-  
-  public int size()
-  {
-    return this.h;
-  }
-  
-  public String toString()
-  {
-    if (isEmpty()) {
-      return "{}";
-    }
-    StringBuilder localStringBuilder = new StringBuilder(this.h * 28);
-    localStringBuilder.append('{');
-    int i = 0;
-    while (i < this.h)
-    {
-      if (i > 0) {
-        localStringBuilder.append(", ");
-      }
-      Object localObject = b(i);
-      if (localObject != this) {
-        localStringBuilder.append(localObject);
-      } else {
-        localStringBuilder.append("(this Map)");
-      }
-      localStringBuilder.append('=');
-      localObject = c(i);
-      if (localObject != this) {
-        localStringBuilder.append(localObject);
-      } else {
-        localStringBuilder.append("(this Map)");
-      }
+      localObject[i] = a(i, paramInt);
       i += 1;
     }
-    localStringBuilder.append('}');
-    return localStringBuilder.toString();
+    if (localObject.length > j) {
+      localObject[j] = null;
+    }
+    return localObject;
+  }
+  
+  protected abstract int b(Object paramObject);
+  
+  protected abstract Map<K, V> b();
+  
+  public final Object[] b(int paramInt)
+  {
+    int j = a();
+    Object[] arrayOfObject = new Object[j];
+    int i = 0;
+    while (i < j)
+    {
+      arrayOfObject[i] = a(i, paramInt);
+      i += 1;
+    }
+    return arrayOfObject;
+  }
+  
+  protected abstract void c();
+  
+  public final Set<K> d()
+  {
+    if (this.c == null) {
+      this.c = new c();
+    }
+    return this.c;
+  }
+  
+  final class a<T>
+    implements Iterator<T>
+  {
+    final int a;
+    int b;
+    int c;
+    boolean d = false;
+    
+    a(int paramInt)
+    {
+      this.a = paramInt;
+      this.b = ef.this.a();
+    }
+    
+    public final boolean hasNext()
+    {
+      return this.c < this.b;
+    }
+    
+    public final T next()
+    {
+      if (hasNext())
+      {
+        Object localObject = ef.this.a(this.c, this.a);
+        this.c += 1;
+        this.d = true;
+        return localObject;
+      }
+      throw new NoSuchElementException();
+    }
+    
+    public final void remove()
+    {
+      if (this.d)
+      {
+        this.c -= 1;
+        this.b -= 1;
+        this.d = false;
+        ef.this.a(this.c);
+        return;
+      }
+      throw new IllegalStateException();
+    }
+  }
+  
+  final class b
+    implements Set<Map.Entry<K, V>>
+  {
+    b() {}
+    
+    public final boolean addAll(Collection<? extends Map.Entry<K, V>> paramCollection)
+    {
+      int i = ef.this.a();
+      paramCollection = paramCollection.iterator();
+      while (paramCollection.hasNext())
+      {
+        Map.Entry localEntry = (Map.Entry)paramCollection.next();
+        ef.this.a(localEntry.getKey(), localEntry.getValue());
+      }
+      return i != ef.this.a();
+    }
+    
+    public final void clear()
+    {
+      ef.this.c();
+    }
+    
+    public final boolean contains(Object paramObject)
+    {
+      if (!(paramObject instanceof Map.Entry)) {
+        return false;
+      }
+      paramObject = (Map.Entry)paramObject;
+      int i = ef.this.a(paramObject.getKey());
+      if (i < 0) {
+        return false;
+      }
+      return ea.a(ef.this.a(i, 1), paramObject.getValue());
+    }
+    
+    public final boolean containsAll(Collection<?> paramCollection)
+    {
+      paramCollection = paramCollection.iterator();
+      while (paramCollection.hasNext()) {
+        if (!contains(paramCollection.next())) {
+          return false;
+        }
+      }
+      return true;
+    }
+    
+    public final boolean equals(Object paramObject)
+    {
+      return ef.a(this, paramObject);
+    }
+    
+    public final int hashCode()
+    {
+      int i = ef.this.a() - 1;
+      int j = 0;
+      while (i >= 0)
+      {
+        Object localObject1 = ef.this.a(i, 0);
+        Object localObject2 = ef.this.a(i, 1);
+        int k;
+        if (localObject1 == null) {
+          k = 0;
+        } else {
+          k = localObject1.hashCode();
+        }
+        int m;
+        if (localObject2 == null) {
+          m = 0;
+        } else {
+          m = localObject2.hashCode();
+        }
+        j += (k ^ m);
+        i -= 1;
+      }
+      return j;
+    }
+    
+    public final boolean isEmpty()
+    {
+      return ef.this.a() == 0;
+    }
+    
+    public final Iterator<Map.Entry<K, V>> iterator()
+    {
+      return new ef.d(ef.this);
+    }
+    
+    public final boolean remove(Object paramObject)
+    {
+      throw new UnsupportedOperationException();
+    }
+    
+    public final boolean removeAll(Collection<?> paramCollection)
+    {
+      throw new UnsupportedOperationException();
+    }
+    
+    public final boolean retainAll(Collection<?> paramCollection)
+    {
+      throw new UnsupportedOperationException();
+    }
+    
+    public final int size()
+    {
+      return ef.this.a();
+    }
+    
+    public final Object[] toArray()
+    {
+      throw new UnsupportedOperationException();
+    }
+    
+    public final <T> T[] toArray(T[] paramArrayOfT)
+    {
+      throw new UnsupportedOperationException();
+    }
+  }
+  
+  final class c
+    implements Set<K>
+  {
+    c() {}
+    
+    public final boolean add(K paramK)
+    {
+      throw new UnsupportedOperationException();
+    }
+    
+    public final boolean addAll(Collection<? extends K> paramCollection)
+    {
+      throw new UnsupportedOperationException();
+    }
+    
+    public final void clear()
+    {
+      ef.this.c();
+    }
+    
+    public final boolean contains(Object paramObject)
+    {
+      return ef.this.a(paramObject) >= 0;
+    }
+    
+    public final boolean containsAll(Collection<?> paramCollection)
+    {
+      Map localMap = ef.this.b();
+      paramCollection = paramCollection.iterator();
+      while (paramCollection.hasNext()) {
+        if (!localMap.containsKey(paramCollection.next())) {
+          return false;
+        }
+      }
+      return true;
+    }
+    
+    public final boolean equals(Object paramObject)
+    {
+      return ef.a(this, paramObject);
+    }
+    
+    public final int hashCode()
+    {
+      int i = ef.this.a() - 1;
+      int j = 0;
+      while (i >= 0)
+      {
+        Object localObject = ef.this.a(i, 0);
+        int k;
+        if (localObject == null) {
+          k = 0;
+        } else {
+          k = localObject.hashCode();
+        }
+        j += k;
+        i -= 1;
+      }
+      return j;
+    }
+    
+    public final boolean isEmpty()
+    {
+      return ef.this.a() == 0;
+    }
+    
+    public final Iterator<K> iterator()
+    {
+      return new ef.a(ef.this, 0);
+    }
+    
+    public final boolean remove(Object paramObject)
+    {
+      int i = ef.this.a(paramObject);
+      if (i >= 0)
+      {
+        ef.this.a(i);
+        return true;
+      }
+      return false;
+    }
+    
+    public final boolean removeAll(Collection<?> paramCollection)
+    {
+      Map localMap = ef.this.b();
+      int i = localMap.size();
+      paramCollection = paramCollection.iterator();
+      while (paramCollection.hasNext()) {
+        localMap.remove(paramCollection.next());
+      }
+      return i != localMap.size();
+    }
+    
+    public final boolean retainAll(Collection<?> paramCollection)
+    {
+      return ef.a(ef.this.b(), paramCollection);
+    }
+    
+    public final int size()
+    {
+      return ef.this.a();
+    }
+    
+    public final Object[] toArray()
+    {
+      return ef.this.b(0);
+    }
+    
+    public final <T> T[] toArray(T[] paramArrayOfT)
+    {
+      return ef.this.a(paramArrayOfT, 0);
+    }
+  }
+  
+  final class d
+    implements Iterator<Map.Entry<K, V>>, Map.Entry<K, V>
+  {
+    int a = ef.this.a() - 1;
+    int b = -1;
+    boolean c = false;
+    
+    d() {}
+    
+    public final boolean equals(Object paramObject)
+    {
+      if (this.c)
+      {
+        if (!(paramObject instanceof Map.Entry)) {
+          return false;
+        }
+        paramObject = (Map.Entry)paramObject;
+        return (ea.a(paramObject.getKey(), ef.this.a(this.b, 0))) && (ea.a(paramObject.getValue(), ef.this.a(this.b, 1)));
+      }
+      throw new IllegalStateException("This container does not support retaining Map.Entry objects");
+    }
+    
+    public final K getKey()
+    {
+      if (this.c) {
+        return ef.this.a(this.b, 0);
+      }
+      throw new IllegalStateException("This container does not support retaining Map.Entry objects");
+    }
+    
+    public final V getValue()
+    {
+      if (this.c) {
+        return ef.this.a(this.b, 1);
+      }
+      throw new IllegalStateException("This container does not support retaining Map.Entry objects");
+    }
+    
+    public final boolean hasNext()
+    {
+      return this.b < this.a;
+    }
+    
+    public final int hashCode()
+    {
+      if (this.c)
+      {
+        Object localObject1 = ef.this;
+        int i = this.b;
+        int j = 0;
+        localObject1 = ((ef)localObject1).a(i, 0);
+        Object localObject2 = ef.this.a(this.b, 1);
+        if (localObject1 == null) {
+          i = 0;
+        } else {
+          i = localObject1.hashCode();
+        }
+        if (localObject2 != null) {
+          j = localObject2.hashCode();
+        }
+        return i ^ j;
+      }
+      throw new IllegalStateException("This container does not support retaining Map.Entry objects");
+    }
+    
+    public final void remove()
+    {
+      if (this.c)
+      {
+        ef.this.a(this.b);
+        this.b -= 1;
+        this.a -= 1;
+        this.c = false;
+        return;
+      }
+      throw new IllegalStateException();
+    }
+    
+    public final V setValue(V paramV)
+    {
+      if (this.c) {
+        return ef.this.a(this.b, paramV);
+      }
+      throw new IllegalStateException("This container does not support retaining Map.Entry objects");
+    }
+    
+    public final String toString()
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(getKey());
+      localStringBuilder.append("=");
+      localStringBuilder.append(getValue());
+      return localStringBuilder.toString();
+    }
+  }
+  
+  final class e
+    implements Collection<V>
+  {
+    e() {}
+    
+    public final boolean add(V paramV)
+    {
+      throw new UnsupportedOperationException();
+    }
+    
+    public final boolean addAll(Collection<? extends V> paramCollection)
+    {
+      throw new UnsupportedOperationException();
+    }
+    
+    public final void clear()
+    {
+      ef.this.c();
+    }
+    
+    public final boolean contains(Object paramObject)
+    {
+      return ef.this.b(paramObject) >= 0;
+    }
+    
+    public final boolean containsAll(Collection<?> paramCollection)
+    {
+      paramCollection = paramCollection.iterator();
+      while (paramCollection.hasNext()) {
+        if (!contains(paramCollection.next())) {
+          return false;
+        }
+      }
+      return true;
+    }
+    
+    public final boolean isEmpty()
+    {
+      return ef.this.a() == 0;
+    }
+    
+    public final Iterator<V> iterator()
+    {
+      return new ef.a(ef.this, 1);
+    }
+    
+    public final boolean remove(Object paramObject)
+    {
+      int i = ef.this.b(paramObject);
+      if (i >= 0)
+      {
+        ef.this.a(i);
+        return true;
+      }
+      return false;
+    }
+    
+    public final boolean removeAll(Collection<?> paramCollection)
+    {
+      int j = ef.this.a();
+      int i = 0;
+      boolean bool = false;
+      while (i < j)
+      {
+        int k = j;
+        int m = i;
+        if (paramCollection.contains(ef.this.a(i, 1)))
+        {
+          ef.this.a(i);
+          m = i - 1;
+          k = j - 1;
+          bool = true;
+        }
+        i = m + 1;
+        j = k;
+      }
+      return bool;
+    }
+    
+    public final boolean retainAll(Collection<?> paramCollection)
+    {
+      int j = ef.this.a();
+      int i = 0;
+      boolean bool = false;
+      while (i < j)
+      {
+        int k = j;
+        int m = i;
+        if (!paramCollection.contains(ef.this.a(i, 1)))
+        {
+          ef.this.a(i);
+          m = i - 1;
+          k = j - 1;
+          bool = true;
+        }
+        i = m + 1;
+        j = k;
+      }
+      return bool;
+    }
+    
+    public final int size()
+    {
+      return ef.this.a();
+    }
+    
+    public final Object[] toArray()
+    {
+      return ef.this.b(1);
+    }
+    
+    public final <T> T[] toArray(T[] paramArrayOfT)
+    {
+      return ef.this.a(paramArrayOfT, 1);
+    }
   }
 }
 

@@ -1,6 +1,18 @@
 package com.tencent.token;
 
-public abstract interface acc {}
+import com.tencent.turingfd.sdk.qps.Guava;
+import java.util.concurrent.atomic.AtomicBoolean;
+
+public final class acc
+{
+  public static final Object a = new Object();
+  public static Guava b = new Guava();
+  
+  static
+  {
+    new AtomicBoolean(false);
+  }
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.token\classes.jar

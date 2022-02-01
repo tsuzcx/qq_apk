@@ -1,301 +1,285 @@
 package com.tencent.token;
 
+import android.content.ComponentName;
 import android.content.Context;
-import com.tencent.qqpimsecure.taiji.KeyCreator;
+import android.content.Intent;
+import android.content.pm.ActivityInfo;
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.ResolveInfo;
+import android.net.VpnService;
+import android.os.Build;
+import android.os.Build.VERSION;
+import android.text.TextUtils;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Locale;
 
 public final class qo
 {
-  private byte[] a;
-  private byte[] b;
-  
-  private void a(Context paramContext)
+  private static e a(Context paramContext)
   {
-    if (this.a == null) {
-      b(paramContext);
-    }
-    if (this.b == null) {
-      c(paramContext);
-    }
-  }
-  
-  /* Error */
-  private void b(Context paramContext)
-  {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_1
-    //   3: invokestatic 33	com/tencent/token/qv:a	(Landroid/content/Context;)Lcom/tencent/token/qv;
-    //   6: pop
-    //   7: aload_0
-    //   8: getfield 19	com/tencent/token/qo:a	[B
-    //   11: ifnonnull +323 -> 334
-    //   14: invokestatic 38	com/tencent/token/qp$a:a	()Lcom/tencent/token/qp;
-    //   17: ldc 40
-    //   19: invokevirtual 45	com/tencent/token/qp:a	(Ljava/lang/String;)Lcom/tencent/token/asg;
-    //   22: ldc 47
-    //   24: ldc 49
-    //   26: invokeinterface 54 3 0
-    //   31: astore_3
-    //   32: invokestatic 38	com/tencent/token/qp$a:a	()Lcom/tencent/token/qp;
-    //   35: ldc 40
-    //   37: invokevirtual 45	com/tencent/token/qp:a	(Ljava/lang/String;)Lcom/tencent/token/asg;
-    //   40: ldc 56
-    //   42: ldc 49
-    //   44: invokeinterface 54 3 0
-    //   49: astore 5
-    //   51: aload_3
-    //   52: invokestatic 62	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   55: ifne +15 -> 70
-    //   58: aload 5
-    //   60: astore 4
-    //   62: aload 5
-    //   64: invokestatic 62	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   67: ifeq +171 -> 238
-    //   70: aload_1
-    //   71: invokestatic 67	com/tencent/token/aoa:a	(Landroid/content/Context;)Ljava/lang/String;
-    //   74: astore_3
-    //   75: aload_3
-    //   76: invokestatic 62	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   79: ifne +17 -> 96
-    //   82: aload_3
-    //   83: ldc 69
-    //   85: invokevirtual 75	java/lang/String:startsWith	(Ljava/lang/String;)Z
-    //   88: istore_2
-    //   89: aload_3
-    //   90: astore 4
-    //   92: iload_2
-    //   93: ifeq +28 -> 121
-    //   96: aload_1
-    //   97: invokevirtual 81	android/content/Context:getContentResolver	()Landroid/content/ContentResolver;
-    //   100: ldc 83
-    //   102: invokestatic 89	android/provider/Settings$System:getString	(Landroid/content/ContentResolver;Ljava/lang/String;)Ljava/lang/String;
-    //   105: astore 4
-    //   107: ldc 91
-    //   109: aload 4
-    //   111: invokestatic 95	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
-    //   114: invokevirtual 99	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
-    //   117: pop
-    //   118: invokestatic 103	com/tencent/token/aoc:b	()V
-    //   121: aload 4
-    //   123: astore_3
-    //   124: aload 4
-    //   126: invokestatic 62	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   129: ifeq +6 -> 135
-    //   132: ldc 105
-    //   134: astore_3
-    //   135: aload_1
-    //   136: invokevirtual 81	android/content/Context:getContentResolver	()Landroid/content/ContentResolver;
-    //   139: ldc 83
-    //   141: invokestatic 89	android/provider/Settings$System:getString	(Landroid/content/ContentResolver;Ljava/lang/String;)Ljava/lang/String;
-    //   144: astore 4
-    //   146: aload 4
-    //   148: astore 5
-    //   150: aload 5
-    //   152: astore 4
-    //   154: aload 5
-    //   156: invokestatic 62	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   159: ifeq +7 -> 166
-    //   162: ldc 105
-    //   164: astore 4
-    //   166: new 107	java/lang/StringBuilder
-    //   169: dup
-    //   170: ldc 109
-    //   172: invokespecial 112	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   175: astore 5
-    //   177: aload 5
-    //   179: aload_3
-    //   180: invokevirtual 116	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   183: pop
-    //   184: aload 5
-    //   186: ldc 118
-    //   188: invokevirtual 116	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   191: pop
-    //   192: aload 5
-    //   194: aload 4
-    //   196: invokevirtual 116	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   199: pop
-    //   200: invokestatic 103	com/tencent/token/aoc:b	()V
-    //   203: invokestatic 38	com/tencent/token/qp$a:a	()Lcom/tencent/token/qp;
-    //   206: ldc 40
-    //   208: invokevirtual 45	com/tencent/token/qp:a	(Ljava/lang/String;)Lcom/tencent/token/asg;
-    //   211: ldc 47
-    //   213: aload_3
-    //   214: invokeinterface 121 3 0
-    //   219: pop
-    //   220: invokestatic 38	com/tencent/token/qp$a:a	()Lcom/tencent/token/qp;
-    //   223: ldc 40
-    //   225: invokevirtual 45	com/tencent/token/qp:a	(Ljava/lang/String;)Lcom/tencent/token/asg;
-    //   228: ldc 56
-    //   230: aload 4
-    //   232: invokeinterface 121 3 0
-    //   237: pop
-    //   238: aload_0
-    //   239: aload_1
-    //   240: aload_3
-    //   241: invokevirtual 125	java/lang/String:getBytes	()[B
-    //   244: aload 4
-    //   246: invokevirtual 125	java/lang/String:getBytes	()[B
-    //   249: invokestatic 131	com/tencent/qqpimsecure/taiji/KeyCreator:create	(Landroid/content/Context;[B[B)[B
-    //   252: putfield 19	com/tencent/token/qo:a	[B
-    //   255: new 107	java/lang/StringBuilder
-    //   258: dup
-    //   259: ldc 133
-    //   261: invokespecial 112	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   264: aload_0
-    //   265: getfield 19	com/tencent/token/qo:a	[B
-    //   268: invokevirtual 136	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   271: pop
-    //   272: invokestatic 103	com/tencent/token/aoc:b	()V
-    //   275: aload_0
-    //   276: getfield 19	com/tencent/token/qo:a	[B
-    //   279: ifnull +11 -> 290
-    //   282: aload_0
-    //   283: getfield 19	com/tencent/token/qo:a	[B
-    //   286: arraylength
-    //   287: ifne +47 -> 334
-    //   290: invokestatic 103	com/tencent/token/aoc:b	()V
-    //   293: aload_0
-    //   294: invokestatic 38	com/tencent/token/qp$a:a	()Lcom/tencent/token/qp;
-    //   297: invokevirtual 139	com/tencent/token/qp:c	()Lcom/tencent/token/asj;
-    //   300: ldc 141
-    //   302: invokevirtual 125	java/lang/String:getBytes	()[B
-    //   305: aconst_null
-    //   306: invokeinterface 146 3 0
-    //   311: putfield 19	com/tencent/token/qo:a	[B
-    //   314: new 107	java/lang/StringBuilder
-    //   317: dup
-    //   318: ldc 148
-    //   320: invokespecial 112	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   323: aload_0
-    //   324: getfield 19	com/tencent/token/qo:a	[B
-    //   327: invokevirtual 136	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   330: pop
-    //   331: invokestatic 103	com/tencent/token/aoc:b	()V
-    //   334: aload_0
-    //   335: monitorexit
-    //   336: return
-    //   337: astore_1
-    //   338: aload_0
-    //   339: monitorexit
-    //   340: aload_1
-    //   341: athrow
-    //   342: astore 4
-    //   344: aload_3
-    //   345: astore 4
-    //   347: goto -240 -> 107
-    //   350: astore 4
-    //   352: goto -202 -> 150
-    //   355: astore_1
-    //   356: goto -81 -> 275
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	359	0	this	qo
-    //   0	359	1	paramContext	Context
-    //   88	5	2	bool	boolean
-    //   31	314	3	localObject1	Object
-    //   60	185	4	localObject2	Object
-    //   342	1	4	localThrowable1	Throwable
-    //   345	1	4	localObject3	Object
-    //   350	1	4	localThrowable2	Throwable
-    //   49	144	5	localObject4	Object
-    // Exception table:
-    //   from	to	target	type
-    //   2	58	337	finally
-    //   62	70	337	finally
-    //   70	89	337	finally
-    //   96	107	337	finally
-    //   107	121	337	finally
-    //   124	132	337	finally
-    //   135	146	337	finally
-    //   154	162	337	finally
-    //   166	238	337	finally
-    //   238	275	337	finally
-    //   275	290	337	finally
-    //   290	334	337	finally
-    //   96	107	342	java/lang/Throwable
-    //   135	146	350	java/lang/Throwable
-    //   238	275	355	java/lang/Throwable
-  }
-  
-  private void c(Context paramContext)
-  {
+    d locald = new d();
+    e locale = new e();
+    Intent localIntent = new Intent();
+    localIntent.setComponent(new ComponentName("com.android.settings", "com.android.settings.ChooseLockGeneric"));
+    paramContext = paramContext.getPackageManager();
+    if (paramContext != null) {}
     try
     {
-      try
-      {
-        this.b = KeyCreator.create(paramContext, null, null);
-        new StringBuilder("mDefaultKey:").append(this.b);
-        aoc.b();
-      }
-      finally
-      {
-        break label101;
-      }
+      paramContext = paramContext.queryIntentActivities(localIntent, 65536);
     }
     catch (Throwable paramContext)
     {
-      label39:
-      label101:
-      break label39;
+      label60:
+      break label60;
     }
-    if ((this.b == null) || (this.b.length == 0))
+    paramContext = null;
+    if ((paramContext != null) && (paramContext.size() != 0) && (((ResolveInfo)paramContext.get(0)).activityInfo.exported))
     {
-      aoc.b();
-      this.b = qp.a.a().c().a("*M<>DFG##%$R(&$G%^HR<".getBytes(), null);
-      new StringBuilder("initDefaultKey exception key:").append(this.b);
-      aoc.b();
+      locald.d = "com.android.settings";
+      locald.e = "com.android.settings.ChooseLockGeneric";
+      locale.h = 8;
     }
-    return;
-    throw paramContext;
+    else
+    {
+      locald.a = "android.settings.SETTINGS";
+      locale.h = 1;
+    }
+    locald.f = 276856832;
+    locale.a = locald;
+    locale.b = "取消系统锁屏获得更好体验\n关闭后可设置新锁屏的密码";
+    locale.e = 2;
+    locale.i = 1;
+    return locale;
   }
   
-  public final byte[] a(Context paramContext, byte[] paramArrayOfByte)
+  public static e a(Context paramContext, int paramInt)
   {
-    if (paramArrayOfByte == null) {
-      return null;
-    }
-    a(paramContext);
-    try
+    Object localObject1;
+    if (paramInt != 30104)
     {
-      paramContext = this.a;
-      paramContext = qp.a.a().c().a(paramArrayOfByte, paramContext);
-      return paramContext;
+      if (paramInt != 30118)
+      {
+        if (paramInt != 30123)
+        {
+          if (paramInt != 30125) {
+            return null;
+          }
+          return b(paramContext);
+        }
+        paramContext = new d();
+        paramContext.a = "android.settings.APPLICATION_DEVELOPMENT_SETTINGS";
+        paramContext.f = 276856832;
+        localObject1 = new e();
+        ((e)localObject1).a = paramContext;
+        ((e)localObject1).b = "开启“直接进入系统”获得更好体验，关闭后即可防止出现双锁屏";
+        ((e)localObject1).e = 2;
+        ((e)localObject1).h = 1;
+        ((e)localObject1).i = 1;
+        return localObject1;
+      }
+      return a(paramContext);
     }
-    catch (Throwable paramContext)
+    if (a(new String[] { "xiaomi" }))
     {
-      paramContext.getMessage();
-      aoc.a();
+      if (Build.VERSION.SDK_INT >= 23) {
+        return null;
+      }
+      Object localObject2 = new Intent();
+      localObject1 = paramContext.getPackageManager();
+      ((Intent)localObject2).setComponent(new ComponentName("com.miui.powerkeeper", "com.miui.powerkeeper.ui.HiddenAppsContainerManagementActivity"));
+      localObject1 = ((PackageManager)localObject1).resolveActivity((Intent)localObject2, 0);
+      Object localObject3;
+      if ((localObject1 != null) && (((ResolveInfo)localObject1).activityInfo != null) && (((ResolveInfo)localObject1).activityInfo.exported))
+      {
+        localObject1 = new e();
+        localObject3 = new d();
+        ((d)localObject3).e = ((Intent)localObject2).getComponent().getClassName();
+        ((d)localObject3).d = ((Intent)localObject2).getComponent().getPackageName();
+        ((d)localObject3).f = 276856832;
+        ((e)localObject1).a = ((d)localObject3);
+        ((e)localObject1).h = 8;
+        ((e)localObject1).i = 1;
+        ((e)localObject1).e = 1;
+        ((e)localObject1).g = true;
+        ((e)localObject1).f = new ArrayList();
+        ((e)localObject1).f.add("xiaomi_ps_1_1_72.png");
+        ((e)localObject1).f.add("xiaomi_ps_1_2_72.png");
+      }
+      else
+      {
+        localObject1 = null;
+      }
+      if (localObject1 != null) {
+        paramContext = (Context)localObject1;
+      }
+      do
+      {
+        return paramContext;
+        localObject3 = new Intent();
+        localObject1 = paramContext.getPackageManager();
+        ((Intent)localObject3).setComponent(new ComponentName("com.miui.powerkeeper", "com.miui.powerkeeper.ui.appscontainer.HiddenAppsContainerManagementActivity"));
+        localObject1 = ((PackageManager)localObject1).resolveActivity((Intent)localObject3, 0);
+        Object localObject4;
+        if ((localObject1 != null) && (((ResolveInfo)localObject1).activityInfo != null) && (((ResolveInfo)localObject1).activityInfo.exported))
+        {
+          localObject2 = c(paramContext);
+          localObject1 = new e();
+          localObject4 = new d();
+          ((d)localObject4).f = 276856832;
+          ((d)localObject4).e = ((Intent)localObject3).getComponent().getClassName();
+          ((d)localObject4).d = ((Intent)localObject3).getComponent().getPackageName();
+          localObject3 = new ArrayList();
+          a locala = new a();
+          locala.c = 1;
+          locala.a = "group_id";
+          locala.b = "5";
+          ((ArrayList)localObject3).add(locala);
+          ((d)localObject4).h = ((ArrayList)localObject3);
+          ((e)localObject1).a = ((d)localObject4);
+          ((e)localObject1).h = 8;
+          ((e)localObject1).i = 1;
+          ((e)localObject1).e = 2;
+          localObject3 = new StringBuilder("1、找到“");
+          ((StringBuilder)localObject3).append((String)localObject2);
+          ((StringBuilder)localObject3).append("”，点击进入\r\n2、然后点击“自定义配置”，选择“保持联网”");
+          ((e)localObject1).b = ((StringBuilder)localObject3).toString();
+        }
+        else
+        {
+          localObject1 = null;
+        }
+        if (localObject1 != null) {
+          return localObject1;
+        }
+        localObject1 = new Intent();
+        localObject2 = paramContext.getPackageManager();
+        ((Intent)localObject1).setComponent(new ComponentName("com.miui.powerkeeper", "com.miui.powerkeeper.ui.appscontainer.AppsContainerManagementActivity"));
+        localObject2 = ((PackageManager)localObject2).resolveActivity((Intent)localObject1, 0);
+        if ((localObject2 != null) && (((ResolveInfo)localObject2).activityInfo != null) && (((ResolveInfo)localObject2).activityInfo.exported))
+        {
+          localObject2 = c(paramContext);
+          paramContext = new e();
+          localObject3 = new d();
+          ((d)localObject3).f = 276856832;
+          ((d)localObject3).e = ((Intent)localObject1).getComponent().getClassName();
+          ((d)localObject3).d = ((Intent)localObject1).getComponent().getPackageName();
+          localObject1 = new ArrayList();
+          localObject4 = new a();
+          ((a)localObject4).c = 1;
+          ((a)localObject4).a = "group_id";
+          ((a)localObject4).b = "5";
+          ((ArrayList)localObject1).add(localObject4);
+          ((d)localObject3).h = ((ArrayList)localObject1);
+          paramContext.a = ((d)localObject3);
+          paramContext.h = 8;
+          paramContext.i = 1;
+          paramContext.e = 2;
+          localObject1 = new StringBuilder("1、找到“");
+          ((StringBuilder)localObject1).append((String)localObject2);
+          ((StringBuilder)localObject1).append("”，取消右边的“√”\r\n2、点击右上角“确定”");
+          paramContext.b = ((StringBuilder)localObject1).toString();
+        }
+        else
+        {
+          paramContext = null;
+        }
+      } while (paramContext != null);
     }
     return null;
   }
   
-  public final byte[] a(Context paramContext, byte[] paramArrayOfByte, boolean paramBoolean)
+  private static boolean a(String[] paramArrayOfString)
   {
-    if (paramArrayOfByte == null) {
-      return null;
-    }
-    a(paramContext);
+    Object localObject1 = null;
     try
     {
-      paramContext = this.b;
-      if (!paramBoolean) {
-        paramContext = this.a;
+      localObject2 = Build.MANUFACTURER.toLowerCase(Locale.getDefault());
+    }
+    catch (Throwable localThrowable1)
+    {
+      Object localObject2;
+      Object localObject3;
+      label29:
+      label31:
+      int i;
+      break label29;
+    }
+    try
+    {
+      localObject3 = Build.BRAND.toLowerCase(Locale.getDefault());
+      localObject1 = localObject3;
+    }
+    catch (Throwable localThrowable2)
+    {
+      break label31;
+    }
+    localObject2 = null;
+    localObject3 = localObject2;
+    if (localObject2 == null) {
+      localObject3 = "";
+    }
+    localObject2 = localObject1;
+    if (localObject1 == null) {
+      localObject2 = "";
+    }
+    i = 0;
+    while (i <= 0)
+    {
+      localObject1 = paramArrayOfString[i];
+      if (!TextUtils.isEmpty((CharSequence)localObject1))
+      {
+        localObject1 = ((String)localObject1).toLowerCase(Locale.getDefault());
+        if ((((String)localObject3).contains((CharSequence)localObject1)) || (((String)localObject2).contains((CharSequence)localObject1))) {
+          return true;
+        }
       }
-      paramContext = qp.a.a().c().b(paramArrayOfByte, paramContext);
-      return paramContext;
+      i += 1;
+    }
+    return false;
+  }
+  
+  private static e b(Context paramContext)
+  {
+    if (paramContext != null) {
+      if (Build.VERSION.SDK_INT < 14) {
+        return null;
+      }
+    }
+    try
+    {
+      paramContext = VpnService.prepare(paramContext);
     }
     catch (Throwable paramContext)
     {
-      paramContext.getMessage();
-      aoc.a();
+      label22:
+      d locald;
+      break label22;
     }
+    paramContext = null;
+    if (paramContext == null) {
+      return null;
+    }
+    locald = new d();
+    locald.a = paramContext.getAction();
+    locald.b = paramContext.getDataString();
+    locald.c = paramContext.getType();
+    locald.d = paramContext.getComponent().getPackageName();
+    locald.e = paramContext.getComponent().getClassName();
+    locald.f = paramContext.getFlags();
+    paramContext = new e();
+    paramContext.a = locald;
+    paramContext.e = 0;
+    paramContext.h = 0;
+    paramContext.i = 1;
+    return paramContext;
     return null;
   }
   
-  static final class a
+  private static String c(Context paramContext)
   {
-    private static final qo a = new qo((byte)0);
+    return paramContext.getApplicationInfo().loadLabel(paramContext.getPackageManager()).toString();
   }
 }
 

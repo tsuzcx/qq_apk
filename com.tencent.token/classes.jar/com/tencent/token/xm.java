@@ -3,181 +3,142 @@ package com.tencent.token;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import android.os.Looper;
 import com.tencent.token.global.RqdApplication;
-import com.tmsdk.base.utils.SDKUtil;
-import java.lang.reflect.Method;
 
 public final class xm
-  implements asg
 {
-  private SharedPreferences a;
-  private SharedPreferences.Editor b;
-  private boolean c;
-  
-  public xm(String paramString)
+  public static int a()
   {
     try
     {
-      this.a = RqdApplication.n().getSharedPreferences(paramString, 0);
-      return;
+      int i = RqdApplication.p().getSharedPreferences("sp_name_global", 0).getInt("exchangeky_conf_ver", 0);
+      return i;
     }
-    catch (Exception paramString)
+    catch (Exception localException)
     {
-      paramString.printStackTrace();
-    }
-  }
-  
-  private static boolean a(SharedPreferences.Editor paramEditor)
-  {
-    if ((Thread.currentThread().getId() == Looper.getMainLooper().getThread().getId()) && (SDKUtil.getSDKVersion() >= 9)) {}
-    try
-    {
-      paramEditor.getClass().getMethod("apply", new Class[0]).invoke(paramEditor, new Object[0]);
-      return true;
-    }
-    catch (Throwable localThrowable)
-    {
-      label51:
-      break label51;
-    }
-    return paramEditor.commit();
-    return paramEditor.commit();
-  }
-  
-  private SharedPreferences.Editor d()
-  {
-    if (this.b == null) {
-      this.b = this.a.edit();
-    }
-    return this.b;
-  }
-  
-  public final int a(String paramString, int paramInt)
-  {
-    SharedPreferences localSharedPreferences = this.a;
-    if (localSharedPreferences != null) {
-      return localSharedPreferences.getInt(paramString, paramInt);
+      StringBuilder localStringBuilder = new StringBuilder("SharedPreferences msg ");
+      localStringBuilder.append(localException.getMessage());
+      xj.c(localStringBuilder.toString());
     }
     return 0;
   }
   
-  public final long a(String paramString, long paramLong)
+  public static void a(int paramInt, boolean paramBoolean)
   {
-    SharedPreferences localSharedPreferences = this.a;
-    if (localSharedPreferences != null) {
-      return localSharedPreferences.getLong(paramString, paramLong);
-    }
-    return 0L;
-  }
-  
-  public final String a(String paramString)
-  {
-    SharedPreferences localSharedPreferences = this.a;
-    if (localSharedPreferences != null) {
-      return localSharedPreferences.getString(paramString, null);
-    }
-    return null;
-  }
-  
-  public final String a(String paramString1, String paramString2)
-  {
-    SharedPreferences localSharedPreferences = this.a;
-    if (localSharedPreferences != null) {
-      return localSharedPreferences.getString(paramString1, paramString2);
-    }
-    return null;
-  }
-  
-  public final void a()
-  {
-    if (this.a != null) {
-      a(d().clear());
-    }
-  }
-  
-  public final boolean a(String paramString, boolean paramBoolean)
-  {
-    SharedPreferences localSharedPreferences = this.a;
-    if (localSharedPreferences != null) {
-      return localSharedPreferences.getBoolean(paramString, paramBoolean);
-    }
-    return false;
-  }
-  
-  public final void b()
-  {
-    this.c = true;
-  }
-  
-  public final boolean b(String paramString)
-  {
-    if (this.a != null) {
-      return a(d().remove(paramString));
-    }
-    return false;
-  }
-  
-  public final boolean b(String paramString, int paramInt)
-  {
-    if (this.a != null)
+    try
     {
-      SharedPreferences.Editor localEditor = d();
-      localEditor.putInt(paramString, paramInt);
-      if (!this.c) {
-        return a(localEditor);
+      SharedPreferences.Editor localEditor = RqdApplication.p().getSharedPreferences("sp_name_global", 0).edit();
+      if (paramInt == 0) {
+        localEditor.putBoolean("scan_tip_next_show", paramBoolean);
+      } else {
+        localEditor.putBoolean("scan_tip_next_show_2", paramBoolean);
       }
+      localEditor.commit();
+      return;
     }
-    return false;
-  }
-  
-  public final boolean b(String paramString, long paramLong)
-  {
-    if (this.a != null)
+    catch (Exception localException)
     {
-      SharedPreferences.Editor localEditor = d();
-      localEditor.putLong(paramString, paramLong);
-      if (!this.c) {
-        return a(localEditor);
-      }
+      StringBuilder localStringBuilder = new StringBuilder("SharedPreferences msg ");
+      localStringBuilder.append(localException.getMessage());
+      xj.c(localStringBuilder.toString());
     }
-    return false;
   }
   
-  public final boolean b(String paramString1, String paramString2)
+  public static void a(String paramString1, String paramString2)
   {
-    if (this.a != null)
+    try
     {
-      SharedPreferences.Editor localEditor = d();
-      localEditor.putString(paramString1, paramString2);
-      if (!this.c) {
-        return a(localEditor);
+      Object localObject = RqdApplication.p();
+      boolean bool = false;
+      localObject = ((Context)localObject).getSharedPreferences("safe_conf_list", 0);
+      if (localObject != null) {
+        bool = true;
       }
+      xj.a(bool);
+      localObject = ((SharedPreferences)localObject).edit();
+      ((SharedPreferences.Editor)localObject).remove("JSON_LIST");
+      if (paramString2 != null) {
+        ((SharedPreferences.Editor)localObject).putString(paramString1, paramString2);
+      }
+      ((SharedPreferences.Editor)localObject).putInt("conf_type", 2);
+      ((SharedPreferences.Editor)localObject).commit();
+      return;
     }
-    return false;
-  }
-  
-  public final boolean b(String paramString, boolean paramBoolean)
-  {
-    if (this.a != null)
+    catch (Exception paramString1)
     {
-      SharedPreferences.Editor localEditor = d();
-      localEditor.putBoolean(paramString, paramBoolean);
-      if (!this.c) {
-        return a(localEditor);
-      }
+      paramString2 = new StringBuilder("getSharedPreferences error=");
+      paramString2.append(paramString1.toString());
+      xj.c(paramString2.toString());
     }
-    return false;
   }
   
-  public final boolean c()
+  public static void a(boolean paramBoolean)
   {
-    this.c = false;
-    SharedPreferences.Editor localEditor = this.b;
-    if (localEditor != null) {
-      return a(localEditor);
+    try
+    {
+      SharedPreferences.Editor localEditor = RqdApplication.p().getSharedPreferences("sp_name_global", 0).edit();
+      localEditor.putBoolean("utils_red_dot_show", paramBoolean);
+      localEditor.commit();
+      return;
+    }
+    catch (Exception localException)
+    {
+      StringBuilder localStringBuilder = new StringBuilder("SharedPreferences msg ");
+      localStringBuilder.append(localException.getMessage());
+      xj.c(localStringBuilder.toString());
+    }
+  }
+  
+  public static boolean a(int paramInt)
+  {
+    try
+    {
+      SharedPreferences localSharedPreferences = RqdApplication.p().getSharedPreferences("sp_name_global", 0);
+      if (paramInt == 0) {
+        return localSharedPreferences.getBoolean("scan_tip_next_show", true);
+      }
+      boolean bool = localSharedPreferences.getBoolean("scan_tip_next_show_2", true);
+      return bool;
+    }
+    catch (Exception localException)
+    {
+      StringBuilder localStringBuilder = new StringBuilder("SharedPreferences msg ");
+      localStringBuilder.append(localException.getMessage());
+      xj.c(localStringBuilder.toString());
     }
     return true;
+  }
+  
+  public static boolean b()
+  {
+    try
+    {
+      boolean bool = RqdApplication.p().getSharedPreferences("sp_name_global", 0).getBoolean("utils_red_dot_show", false);
+      return bool;
+    }
+    catch (Exception localException)
+    {
+      StringBuilder localStringBuilder = new StringBuilder("SharedPreferences msg ");
+      localStringBuilder.append(localException.getMessage());
+      xj.c(localStringBuilder.toString());
+    }
+    return false;
+  }
+  
+  public static boolean c()
+  {
+    try
+    {
+      boolean bool = RqdApplication.p().getSharedPreferences("sp_name_global", 0).getBoolean("utils_account_lock_tip", false);
+      return bool;
+    }
+    catch (Exception localException)
+    {
+      StringBuilder localStringBuilder = new StringBuilder("SharedPreferences msg ");
+      localStringBuilder.append(localException.getMessage());
+      xj.c(localStringBuilder.toString());
+    }
+    return false;
   }
 }
 

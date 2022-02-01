@@ -2,9 +2,8 @@ package com.tencent.token.utils;
 
 import android.content.Context;
 import android.graphics.Bitmap;
-import android.os.Environment;
-import com.tencent.token.aax;
-import com.tencent.token.xa;
+import com.tencent.token.abj;
+import com.tencent.token.xj;
 import java.io.File;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
@@ -14,40 +13,17 @@ import java.util.Set;
 public class ImageCache
   extends LinkedHashMap<String, Bitmap>
 {
-  public static final String CACHE_DIR_PATH;
   private static final float DEFAULT_LOAD_FACTOR = 0.75F;
-  public static final String FILE_CACHE_PATH;
-  public static final String SDCARD_PATH;
   private static final long serialVersionUID = 2533500844821654646L;
   private String mDiskCacheDirectory;
   protected Object mLock = new Object();
   private int mMaxEntries = 0;
   private boolean mNeedRecycle = true;
   
-  static
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(Environment.getExternalStorageDirectory());
-    localStringBuilder.append(File.separator);
-    localStringBuilder.append("Tencent");
-    localStringBuilder.append(File.separator);
-    SDCARD_PATH = localStringBuilder.toString();
-    localStringBuilder = new StringBuilder("QQSec");
-    localStringBuilder.append(File.separator);
-    FILE_CACHE_PATH = localStringBuilder.toString();
-    localStringBuilder = new StringBuilder();
-    localStringBuilder.append(SDCARD_PATH);
-    localStringBuilder.append(FILE_CACHE_PATH);
-    CACHE_DIR_PATH = localStringBuilder.toString();
-  }
-  
   public ImageCache(int paramInt, Context paramContext)
   {
     super(paramInt, 0.75F, true);
     this.mMaxEntries = paramInt;
-    if (!"mounted".equals(Environment.getExternalStorageState())) {
-      paramContext.getCacheDir().getAbsolutePath();
-    }
     this.mDiskCacheDirectory = paramContext.getCacheDir().getAbsolutePath();
     paramContext = new File(this.mDiskCacheDirectory);
     if (!paramContext.exists()) {
@@ -66,7 +42,7 @@ public class ImageCache
   
   public static String d(String paramString)
   {
-    return aax.b(paramString);
+    return abj.b(paramString);
   }
   
   public final Bitmap a(Object paramObject)
@@ -92,20 +68,20 @@ public class ImageCache
     //   4: iconst_0
     //   5: ireturn
     //   6: aload_0
-    //   7: getfield 79	com/tencent/token/utils/ImageCache:mLock	Ljava/lang/Object;
+    //   7: getfield 36	com/tencent/token/utils/ImageCache:mLock	Ljava/lang/Object;
     //   10: astore_3
     //   11: aload_3
     //   12: monitorenter
-    //   13: new 42	java/io/File
+    //   13: new 44	java/io/File
     //   16: dup
     //   17: aload_1
-    //   18: invokespecial 101	java/io/File:<init>	(Ljava/lang/String;)V
+    //   18: invokespecial 53	java/io/File:<init>	(Ljava/lang/String;)V
     //   21: astore_1
     //   22: aload_1
-    //   23: invokevirtual 105	java/io/File:exists	()Z
+    //   23: invokevirtual 57	java/io/File:exists	()Z
     //   26: ifeq +16 -> 42
     //   29: aload_1
-    //   30: invokevirtual 141	java/io/File:length	()J
+    //   30: invokevirtual 94	java/io/File:length	()J
     //   33: lconst_0
     //   34: lcmp
     //   35: ifle +7 -> 42
@@ -114,34 +90,34 @@ public class ImageCache
     //   40: iconst_1
     //   41: ireturn
     //   42: aload_1
-    //   43: invokevirtual 144	java/io/File:createNewFile	()Z
+    //   43: invokevirtual 97	java/io/File:createNewFile	()Z
     //   46: pop
-    //   47: new 146	java/io/FileOutputStream
+    //   47: new 99	java/io/FileOutputStream
     //   50: dup
     //   51: aload_1
-    //   52: invokespecial 149	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   52: invokespecial 102	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
     //   55: astore_1
-    //   56: new 151	java/io/ByteArrayOutputStream
+    //   56: new 104	java/io/ByteArrayOutputStream
     //   59: dup
-    //   60: invokespecial 152	java/io/ByteArrayOutputStream:<init>	()V
+    //   60: invokespecial 105	java/io/ByteArrayOutputStream:<init>	()V
     //   63: astore 4
     //   65: aload_2
-    //   66: getstatic 158	android/graphics/Bitmap$CompressFormat:PNG	Landroid/graphics/Bitmap$CompressFormat;
+    //   66: getstatic 111	android/graphics/Bitmap$CompressFormat:PNG	Landroid/graphics/Bitmap$CompressFormat;
     //   69: bipush 100
     //   71: aload 4
-    //   73: invokevirtual 162	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
+    //   73: invokevirtual 115	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
     //   76: pop
     //   77: aload 4
     //   79: aload_1
-    //   80: invokevirtual 166	java/io/ByteArrayOutputStream:writeTo	(Ljava/io/OutputStream;)V
+    //   80: invokevirtual 119	java/io/ByteArrayOutputStream:writeTo	(Ljava/io/OutputStream;)V
     //   83: aload 4
-    //   85: invokevirtual 169	java/io/ByteArrayOutputStream:close	()V
+    //   85: invokevirtual 122	java/io/ByteArrayOutputStream:close	()V
     //   88: aload_1
-    //   89: invokevirtual 170	java/io/FileOutputStream:close	()V
+    //   89: invokevirtual 123	java/io/FileOutputStream:close	()V
     //   92: goto +8 -> 100
     //   95: astore_1
     //   96: aload_1
-    //   97: invokevirtual 132	java/lang/Exception:printStackTrace	()V
+    //   97: invokevirtual 85	java/lang/Exception:printStackTrace	()V
     //   100: aload_3
     //   101: monitorexit
     //   102: iconst_1
@@ -150,11 +126,11 @@ public class ImageCache
     //   105: goto +20 -> 125
     //   108: astore_1
     //   109: aload_1
-    //   110: invokevirtual 171	java/io/IOException:printStackTrace	()V
+    //   110: invokevirtual 124	java/io/IOException:printStackTrace	()V
     //   113: goto +8 -> 121
     //   116: astore_1
     //   117: aload_1
-    //   118: invokevirtual 172	java/io/FileNotFoundException:printStackTrace	()V
+    //   118: invokevirtual 125	java/io/FileNotFoundException:printStackTrace	()V
     //   121: aload_3
     //   122: monitorexit
     //   123: iconst_0
@@ -199,7 +175,7 @@ public class ImageCache
   {
     // Byte code:
     //   0: aload_0
-    //   1: getfield 79	com/tencent/token/utils/ImageCache:mLock	Ljava/lang/Object;
+    //   1: getfield 36	com/tencent/token/utils/ImageCache:mLock	Ljava/lang/Object;
     //   4: astore 11
     //   6: aload 11
     //   8: monitorenter
@@ -215,13 +191,13 @@ public class ImageCache
     //   22: astore 9
     //   24: aconst_null
     //   25: astore 5
-    //   27: new 42	java/io/File
+    //   27: new 44	java/io/File
     //   30: dup
     //   31: aload_1
-    //   32: invokespecial 101	java/io/File:<init>	(Ljava/lang/String;)V
+    //   32: invokespecial 53	java/io/File:<init>	(Ljava/lang/String;)V
     //   35: astore 12
     //   37: aload 12
-    //   39: invokevirtual 105	java/io/File:exists	()Z
+    //   39: invokevirtual 57	java/io/File:exists	()Z
     //   42: istore_3
     //   43: iload_3
     //   44: ifne +8 -> 52
@@ -229,14 +205,14 @@ public class ImageCache
     //   49: monitorexit
     //   50: aconst_null
     //   51: areturn
-    //   52: new 151	java/io/ByteArrayOutputStream
+    //   52: new 104	java/io/ByteArrayOutputStream
     //   55: dup
-    //   56: invokespecial 152	java/io/ByteArrayOutputStream:<init>	()V
+    //   56: invokespecial 105	java/io/ByteArrayOutputStream:<init>	()V
     //   59: astore_1
-    //   60: new 177	java/io/FileInputStream
+    //   60: new 130	java/io/FileInputStream
     //   63: dup
     //   64: aload 12
-    //   66: invokespecial 178	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   66: invokespecial 131	java/io/FileInputStream:<init>	(Ljava/io/File;)V
     //   69: astore 4
     //   71: aload 5
     //   73: astore 9
@@ -255,7 +231,7 @@ public class ImageCache
     //   100: astore 8
     //   102: aload 4
     //   104: aload 13
-    //   106: invokevirtual 182	java/io/FileInputStream:read	([B)I
+    //   106: invokevirtual 135	java/io/FileInputStream:read	([B)I
     //   109: istore_2
     //   110: iload_2
     //   111: iconst_m1
@@ -270,7 +246,7 @@ public class ImageCache
     //   128: aload 13
     //   130: iconst_0
     //   131: iload_2
-    //   132: invokevirtual 186	java/io/ByteArrayOutputStream:write	([BII)V
+    //   132: invokevirtual 139	java/io/ByteArrayOutputStream:write	([BII)V
     //   135: goto -45 -> 90
     //   138: aload 5
     //   140: astore 9
@@ -279,7 +255,7 @@ public class ImageCache
     //   146: aload 10
     //   148: astore 8
     //   150: aload_1
-    //   151: invokevirtual 190	java/io/ByteArrayOutputStream:toByteArray	()[B
+    //   151: invokevirtual 143	java/io/ByteArrayOutputStream:toByteArray	()[B
     //   154: astore 13
     //   156: aload 5
     //   158: astore 9
@@ -288,7 +264,7 @@ public class ImageCache
     //   164: aload 10
     //   166: astore 8
     //   168: aload_1
-    //   169: invokevirtual 169	java/io/ByteArrayOutputStream:close	()V
+    //   169: invokevirtual 122	java/io/ByteArrayOutputStream:close	()V
     //   172: aload 5
     //   174: astore 9
     //   176: aload 6
@@ -296,7 +272,7 @@ public class ImageCache
     //   180: aload 10
     //   182: astore 8
     //   184: aload 4
-    //   186: invokevirtual 191	java/io/FileInputStream:close	()V
+    //   186: invokevirtual 144	java/io/FileInputStream:close	()V
     //   189: goto +22 -> 211
     //   192: astore 14
     //   194: aload 5
@@ -306,7 +282,7 @@ public class ImageCache
     //   202: aload 10
     //   204: astore 8
     //   206: aload 14
-    //   208: invokevirtual 132	java/lang/Exception:printStackTrace	()V
+    //   208: invokevirtual 85	java/lang/Exception:printStackTrace	()V
     //   211: aload 5
     //   213: astore 9
     //   215: aload 6
@@ -314,32 +290,32 @@ public class ImageCache
     //   219: aload 10
     //   221: astore 8
     //   223: aload 13
-    //   225: invokestatic 196	com/tencent/token/aad:a	([B)Landroid/graphics/Bitmap;
+    //   225: invokestatic 149	com/tencent/token/aap:a	([B)Landroid/graphics/Bitmap;
     //   228: astore 5
     //   230: aload 5
     //   232: ifnonnull +173 -> 405
-    //   235: new 198	java/io/ObjectInputStream
+    //   235: new 151	java/io/ObjectInputStream
     //   238: dup
-    //   239: new 177	java/io/FileInputStream
+    //   239: new 130	java/io/FileInputStream
     //   242: dup
     //   243: aload 12
-    //   245: invokespecial 178	java/io/FileInputStream:<init>	(Ljava/io/File;)V
-    //   248: invokespecial 201	java/io/ObjectInputStream:<init>	(Ljava/io/InputStream;)V
+    //   245: invokespecial 131	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   248: invokespecial 154	java/io/ObjectInputStream:<init>	(Ljava/io/InputStream;)V
     //   251: astore 9
     //   253: aload 9
     //   255: astore 7
     //   257: aload 9
-    //   259: invokevirtual 205	java/io/ObjectInputStream:readObject	()Ljava/lang/Object;
-    //   262: checkcast 207	[B
-    //   265: checkcast 207	[B
-    //   268: invokestatic 196	com/tencent/token/aad:a	([B)Landroid/graphics/Bitmap;
+    //   259: invokevirtual 158	java/io/ObjectInputStream:readObject	()Ljava/lang/Object;
+    //   262: checkcast 160	[B
+    //   265: checkcast 160	[B
+    //   268: invokestatic 149	com/tencent/token/aap:a	([B)Landroid/graphics/Bitmap;
     //   271: astore 6
     //   273: aload 6
     //   275: astore 7
     //   277: aload 6
     //   279: astore 8
     //   281: aload 9
-    //   283: invokevirtual 208	java/io/ObjectInputStream:close	()V
+    //   283: invokevirtual 161	java/io/ObjectInputStream:close	()V
     //   286: goto +123 -> 409
     //   289: astore 5
     //   291: aload 6
@@ -349,7 +325,7 @@ public class ImageCache
     //   299: aload 6
     //   301: astore 8
     //   303: aload 5
-    //   305: invokevirtual 171	java/io/IOException:printStackTrace	()V
+    //   305: invokevirtual 124	java/io/IOException:printStackTrace	()V
     //   308: goto +101 -> 409
     //   311: astore 8
     //   313: aload 9
@@ -365,25 +341,25 @@ public class ImageCache
     //   333: aload 6
     //   335: astore 7
     //   337: aload 8
-    //   339: invokevirtual 132	java/lang/Exception:printStackTrace	()V
+    //   339: invokevirtual 85	java/lang/Exception:printStackTrace	()V
     //   342: aload 6
     //   344: ifnull +61 -> 405
     //   347: aload 6
-    //   349: invokevirtual 208	java/io/ObjectInputStream:close	()V
+    //   349: invokevirtual 161	java/io/ObjectInputStream:close	()V
     //   352: goto +53 -> 405
     //   355: astore 6
     //   357: aload 6
-    //   359: invokevirtual 171	java/io/IOException:printStackTrace	()V
+    //   359: invokevirtual 124	java/io/IOException:printStackTrace	()V
     //   362: goto +43 -> 405
     //   365: astore 6
     //   367: aload 7
     //   369: ifnull +18 -> 387
     //   372: aload 7
-    //   374: invokevirtual 208	java/io/ObjectInputStream:close	()V
+    //   374: invokevirtual 161	java/io/ObjectInputStream:close	()V
     //   377: goto +10 -> 387
     //   380: astore 7
     //   382: aload 7
-    //   384: invokevirtual 171	java/io/IOException:printStackTrace	()V
+    //   384: invokevirtual 124	java/io/IOException:printStackTrace	()V
     //   387: aload 6
     //   389: athrow
     //   390: astore 6
@@ -395,13 +371,13 @@ public class ImageCache
     //   405: aload 5
     //   407: astore 6
     //   409: aload_1
-    //   410: invokevirtual 169	java/io/ByteArrayOutputStream:close	()V
+    //   410: invokevirtual 122	java/io/ByteArrayOutputStream:close	()V
     //   413: aload 4
-    //   415: invokevirtual 191	java/io/FileInputStream:close	()V
+    //   415: invokevirtual 144	java/io/FileInputStream:close	()V
     //   418: goto +8 -> 426
     //   421: astore_1
     //   422: aload_1
-    //   423: invokevirtual 171	java/io/IOException:printStackTrace	()V
+    //   423: invokevirtual 124	java/io/IOException:printStackTrace	()V
     //   426: aload 6
     //   428: astore_1
     //   429: goto +302 -> 731
@@ -479,23 +455,23 @@ public class ImageCache
     //   572: aload 6
     //   574: astore_1
     //   575: aload 8
-    //   577: invokevirtual 171	java/io/IOException:printStackTrace	()V
+    //   577: invokevirtual 124	java/io/IOException:printStackTrace	()V
     //   580: aload 7
     //   582: ifnull +11 -> 593
     //   585: aload 7
-    //   587: invokevirtual 169	java/io/ByteArrayOutputStream:close	()V
+    //   587: invokevirtual 122	java/io/ByteArrayOutputStream:close	()V
     //   590: goto +3 -> 593
     //   593: aload 5
     //   595: astore_1
     //   596: aload 6
     //   598: ifnull +133 -> 731
     //   601: aload 6
-    //   603: invokevirtual 191	java/io/FileInputStream:close	()V
+    //   603: invokevirtual 144	java/io/FileInputStream:close	()V
     //   606: aload 5
     //   608: astore_1
     //   609: goto +122 -> 731
     //   612: aload 4
-    //   614: invokevirtual 171	java/io/IOException:printStackTrace	()V
+    //   614: invokevirtual 124	java/io/IOException:printStackTrace	()V
     //   617: goto +114 -> 731
     //   620: astore 8
     //   622: aconst_null
@@ -509,18 +485,18 @@ public class ImageCache
     //   637: aload 6
     //   639: astore_1
     //   640: aload 8
-    //   642: invokevirtual 172	java/io/FileNotFoundException:printStackTrace	()V
+    //   642: invokevirtual 125	java/io/FileNotFoundException:printStackTrace	()V
     //   645: aload 7
     //   647: ifnull +11 -> 658
     //   650: aload 7
-    //   652: invokevirtual 169	java/io/ByteArrayOutputStream:close	()V
+    //   652: invokevirtual 122	java/io/ByteArrayOutputStream:close	()V
     //   655: goto +3 -> 658
     //   658: aload 5
     //   660: astore_1
     //   661: aload 6
     //   663: ifnull +68 -> 731
     //   666: aload 6
-    //   668: invokevirtual 191	java/io/FileInputStream:close	()V
+    //   668: invokevirtual 144	java/io/FileInputStream:close	()V
     //   671: aload 5
     //   673: astore_1
     //   674: goto +57 -> 731
@@ -536,18 +512,18 @@ public class ImageCache
     //   694: aload 6
     //   696: astore_1
     //   697: aload 8
-    //   699: invokevirtual 209	java/io/StreamCorruptedException:printStackTrace	()V
+    //   699: invokevirtual 162	java/io/StreamCorruptedException:printStackTrace	()V
     //   702: aload 7
     //   704: ifnull +11 -> 715
     //   707: aload 7
-    //   709: invokevirtual 169	java/io/ByteArrayOutputStream:close	()V
+    //   709: invokevirtual 122	java/io/ByteArrayOutputStream:close	()V
     //   712: goto +3 -> 715
     //   715: aload 5
     //   717: astore_1
     //   718: aload 6
     //   720: ifnull +11 -> 731
     //   723: aload 6
-    //   725: invokevirtual 191	java/io/FileInputStream:close	()V
+    //   725: invokevirtual 144	java/io/FileInputStream:close	()V
     //   728: aload 5
     //   730: astore_1
     //   731: aload 11
@@ -562,15 +538,15 @@ public class ImageCache
     //   745: aload 6
     //   747: ifnull +11 -> 758
     //   750: aload 6
-    //   752: invokevirtual 169	java/io/ByteArrayOutputStream:close	()V
+    //   752: invokevirtual 122	java/io/ByteArrayOutputStream:close	()V
     //   755: goto +3 -> 758
     //   758: aload 4
     //   760: ifnull +15 -> 775
     //   763: aload 4
-    //   765: invokevirtual 191	java/io/FileInputStream:close	()V
+    //   765: invokevirtual 144	java/io/FileInputStream:close	()V
     //   768: goto +7 -> 775
     //   771: aload_1
-    //   772: invokevirtual 171	java/io/IOException:printStackTrace	()V
+    //   772: invokevirtual 124	java/io/IOException:printStackTrace	()V
     //   775: aload 5
     //   777: athrow
     //   778: aload 11
@@ -780,7 +756,7 @@ public class ImageCache
   {
     synchronized (this.mLock)
     {
-      xa.b("clear cache");
+      xj.b("clear cache");
       if (this.mNeedRecycle)
       {
         Iterator localIterator = entrySet().iterator();
@@ -790,7 +766,7 @@ public class ImageCache
           if ((localBitmap != null) && (!localBitmap.isRecycled())) {
             localBitmap.recycle();
           } else {
-            xa.c("ImageCache is broken");
+            xj.c("ImageCache is broken");
           }
         }
       }
@@ -812,12 +788,12 @@ public class ImageCache
       }
       Object localObject = new StringBuilder("recycle bitmap:");
       ((StringBuilder)localObject).append((String)paramEntry.getKey());
-      xa.b(((StringBuilder)localObject).toString());
+      xj.b(((StringBuilder)localObject).toString());
       return true;
     }
     paramEntry = new StringBuilder("size=");
     paramEntry.append(size());
-    xa.b(paramEntry.toString());
+    xj.b(paramEntry.toString());
     return false;
   }
 }

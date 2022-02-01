@@ -1,188 +1,177 @@
 package com.tencent.token;
 
-import android.app.Notification;
-import android.app.Notification.Action.Builder;
-import android.app.Notification.Builder;
-import android.app.PendingIntent;
-import android.os.Build.VERSION;
-import android.os.Bundle;
-import android.text.TextUtils;
-import android.widget.RemoteViews;
+import android.graphics.Rect;
+import android.view.View;
+import android.view.ViewGroup;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
 
-final class ck
+public abstract class ck
 {
-  final Notification.Builder a;
-  final cj.b b;
-  RemoteViews c;
-  RemoteViews d;
-  final List<Bundle> e = new ArrayList();
-  final Bundle f = new Bundle();
-  int g;
-  RemoteViews h;
-  
-  ck(cj.b paramb)
+  static ArrayList<String> a(ArrayList<View> paramArrayList)
   {
-    this.b = paramb;
-    if (Build.VERSION.SDK_INT >= 26) {
-      this.a = new Notification.Builder(paramb.a, paramb.H);
-    } else {
-      this.a = new Notification.Builder(paramb.a);
-    }
-    Object localObject1 = paramb.M;
-    Object localObject2 = this.a.setWhen(((Notification)localObject1).when).setSmallIcon(((Notification)localObject1).icon, ((Notification)localObject1).iconLevel).setContent(((Notification)localObject1).contentView).setTicker(((Notification)localObject1).tickerText, paramb.g).setVibrate(((Notification)localObject1).vibrate).setLights(((Notification)localObject1).ledARGB, ((Notification)localObject1).ledOnMS, ((Notification)localObject1).ledOffMS);
-    boolean bool;
-    if ((((Notification)localObject1).flags & 0x2) != 0) {
-      bool = true;
-    } else {
-      bool = false;
-    }
-    localObject2 = ((Notification.Builder)localObject2).setOngoing(bool);
-    if ((((Notification)localObject1).flags & 0x8) != 0) {
-      bool = true;
-    } else {
-      bool = false;
-    }
-    localObject2 = ((Notification.Builder)localObject2).setOnlyAlertOnce(bool);
-    if ((((Notification)localObject1).flags & 0x10) != 0) {
-      bool = true;
-    } else {
-      bool = false;
-    }
-    localObject2 = ((Notification.Builder)localObject2).setAutoCancel(bool).setDefaults(((Notification)localObject1).defaults).setContentTitle(paramb.c).setContentText(paramb.d).setContentInfo(paramb.i).setContentIntent(paramb.e).setDeleteIntent(((Notification)localObject1).deleteIntent);
-    PendingIntent localPendingIntent = paramb.f;
-    if ((((Notification)localObject1).flags & 0x80) != 0) {
-      bool = true;
-    } else {
-      bool = false;
-    }
-    ((Notification.Builder)localObject2).setFullScreenIntent(localPendingIntent, bool).setLargeIcon(paramb.h).setNumber(paramb.j).setProgress(paramb.q, paramb.r, paramb.s);
-    if (Build.VERSION.SDK_INT < 21) {
-      this.a.setSound(((Notification)localObject1).sound, ((Notification)localObject1).audioStreamType);
-    }
-    if (Build.VERSION.SDK_INT >= 16)
+    ArrayList localArrayList = new ArrayList();
+    int j = paramArrayList.size();
+    int i = 0;
+    while (i < j)
     {
-      this.a.setSubText(paramb.o).setUsesChronometer(paramb.m).setPriority(paramb.k);
-      localObject2 = paramb.b.iterator();
-      while (((Iterator)localObject2).hasNext()) {
-        a((cj.a)((Iterator)localObject2).next());
+      View localView = (View)paramArrayList.get(i);
+      localArrayList.add(fa.h(localView));
+      fa.a(localView, null);
+      i += 1;
+    }
+    return localArrayList;
+  }
+  
+  protected static void a(View paramView, Rect paramRect)
+  {
+    int[] arrayOfInt = new int[2];
+    paramView.getLocationOnScreen(arrayOfInt);
+    paramRect.set(arrayOfInt[0], arrayOfInt[1], arrayOfInt[0] + paramView.getWidth(), arrayOfInt[1] + paramView.getHeight());
+  }
+  
+  protected static boolean a(List paramList)
+  {
+    return (paramList == null) || (paramList.isEmpty());
+  }
+  
+  static boolean a(List<View> paramList, View paramView, int paramInt)
+  {
+    int i = 0;
+    while (i < paramInt)
+    {
+      if (paramList.get(i) == paramView) {
+        return true;
       }
-      if (paramb.A != null) {
-        this.f.putAll(paramb.A);
-      }
-      if (Build.VERSION.SDK_INT < 20)
+      i += 1;
+    }
+    return false;
+  }
+  
+  public abstract Object a(Object paramObject1, Object paramObject2, Object paramObject3);
+  
+  final void a(View paramView, final ArrayList<View> paramArrayList1, final ArrayList<View> paramArrayList2, final ArrayList<String> paramArrayList, Map<String, String> paramMap)
+  {
+    final int k = paramArrayList2.size();
+    final ArrayList localArrayList = new ArrayList();
+    int i = 0;
+    while (i < k)
+    {
+      Object localObject = (View)paramArrayList1.get(i);
+      String str = fa.h((View)localObject);
+      localArrayList.add(str);
+      if (str != null)
       {
-        if (paramb.w) {
-          this.f.putBoolean("android.support.localOnly", true);
-        }
-        if (paramb.t != null)
+        fa.a((View)localObject, null);
+        localObject = (String)paramMap.get(str);
+        int j = 0;
+        while (j < k)
         {
-          this.f.putString("android.support.groupKey", paramb.t);
-          if (paramb.u) {
-            this.f.putBoolean("android.support.isGroupSummary", true);
-          } else {
-            this.f.putBoolean("android.support.useSideChannel", true);
+          if (((String)localObject).equals(paramArrayList.get(j)))
+          {
+            fa.a((View)paramArrayList2.get(j), str);
+            break;
           }
-        }
-        if (paramb.v != null) {
-          this.f.putString("android.support.sortKey", paramb.v);
+          j += 1;
         }
       }
-      this.c = paramb.E;
-      this.d = paramb.F;
+      i += 1;
     }
-    if (Build.VERSION.SDK_INT >= 19)
+    cq.a(paramView, new Runnable()
     {
-      this.a.setShowWhen(paramb.l);
-      if ((Build.VERSION.SDK_INT < 21) && (paramb.N != null) && (!paramb.N.isEmpty())) {
-        this.f.putStringArray("android.people", (String[])paramb.N.toArray(new String[paramb.N.size()]));
-      }
-    }
-    if (Build.VERSION.SDK_INT >= 20)
-    {
-      this.a.setLocalOnly(paramb.w).setGroup(paramb.t).setGroupSummary(paramb.u).setSortKey(paramb.v);
-      this.g = paramb.L;
-    }
-    if (Build.VERSION.SDK_INT >= 21)
-    {
-      this.a.setCategory(paramb.z).setColor(paramb.B).setVisibility(paramb.C).setPublicVersion(paramb.D).setSound(((Notification)localObject1).sound, ((Notification)localObject1).audioAttributes);
-      localObject1 = paramb.N.iterator();
-      while (((Iterator)localObject1).hasNext())
+      public final void run()
       {
-        localObject2 = (String)((Iterator)localObject1).next();
-        this.a.addPerson((String)localObject2);
-      }
-      this.h = paramb.G;
-    }
-    if (Build.VERSION.SDK_INT >= 24)
-    {
-      this.a.setExtras(paramb.A).setRemoteInputHistory(paramb.p);
-      if (paramb.E != null) {
-        this.a.setCustomContentView(paramb.E);
-      }
-      if (paramb.F != null) {
-        this.a.setCustomBigContentView(paramb.F);
-      }
-      if (paramb.G != null) {
-        this.a.setCustomHeadsUpContentView(paramb.G);
-      }
-    }
-    if (Build.VERSION.SDK_INT >= 26)
-    {
-      this.a.setBadgeIconType(paramb.I).setShortcutId(paramb.J).setTimeoutAfter(paramb.K).setGroupAlertBehavior(paramb.L);
-      if (paramb.y) {
-        this.a.setColorized(paramb.x);
-      }
-      if (!TextUtils.isEmpty(paramb.H)) {
-        this.a.setSound(null).setDefaults(0).setLights(0, 0, 0).setVibrate(null);
-      }
-    }
-  }
-  
-  static void a(Notification paramNotification)
-  {
-    paramNotification.sound = null;
-    paramNotification.vibrate = null;
-    paramNotification.defaults &= 0xFFFFFFFE;
-    paramNotification.defaults &= 0xFFFFFFFD;
-  }
-  
-  private void a(cj.a parama)
-  {
-    if (Build.VERSION.SDK_INT >= 20)
-    {
-      Notification.Action.Builder localBuilder = new Notification.Action.Builder(parama.e, parama.f, parama.g);
-      Object localObject;
-      if (parama.b != null)
-      {
-        localObject = cn.a(parama.b);
-        int j = localObject.length;
         int i = 0;
-        while (i < j)
+        while (i < k)
         {
-          localBuilder.addRemoteInput(localObject[i]);
+          fa.a((View)paramArrayList2.get(i), (String)paramArrayList.get(i));
+          fa.a((View)paramArrayList1.get(i), (String)localArrayList.get(i));
           i += 1;
         }
       }
-      if (parama.a != null) {
-        localObject = new Bundle(parama.a);
-      } else {
-        localObject = new Bundle();
+    });
+  }
+  
+  public abstract void a(ViewGroup paramViewGroup, Object paramObject);
+  
+  public abstract void a(Object paramObject, Rect paramRect);
+  
+  public abstract void a(Object paramObject, View paramView);
+  
+  public abstract void a(Object paramObject, View paramView, ArrayList<View> paramArrayList);
+  
+  public abstract void a(Object paramObject1, Object paramObject2, ArrayList<View> paramArrayList1, Object paramObject3, ArrayList<View> paramArrayList2, Object paramObject4, ArrayList<View> paramArrayList3);
+  
+  public abstract void a(Object paramObject, ArrayList<View> paramArrayList);
+  
+  public abstract void a(Object paramObject, ArrayList<View> paramArrayList1, ArrayList<View> paramArrayList2);
+  
+  final void a(ArrayList<View> paramArrayList, View paramView)
+  {
+    if (paramView.getVisibility() == 0)
+    {
+      if ((paramView instanceof ViewGroup))
+      {
+        paramView = (ViewGroup)paramView;
+        if (fb.a(paramView))
+        {
+          paramArrayList.add(paramView);
+          return;
+        }
+        int j = paramView.getChildCount();
+        int i = 0;
+        while (i < j)
+        {
+          a(paramArrayList, paramView.getChildAt(i));
+          i += 1;
+        }
+        return;
       }
-      ((Bundle)localObject).putBoolean("android.support.allowGeneratedReplies", parama.d);
-      if (Build.VERSION.SDK_INT >= 24) {
-        localBuilder.setAllowGeneratedReplies(parama.d);
-      }
-      localBuilder.addExtras((Bundle)localObject);
-      this.a.addAction(localBuilder.build());
-      return;
-    }
-    if (Build.VERSION.SDK_INT >= 16) {
-      this.e.add(cl.a(this.a, parama));
+      paramArrayList.add(paramView);
     }
   }
+  
+  final void a(Map<String, View> paramMap, View paramView)
+  {
+    if (paramView.getVisibility() == 0)
+    {
+      String str = fa.h(paramView);
+      if (str != null) {
+        paramMap.put(str, paramView);
+      }
+      if ((paramView instanceof ViewGroup))
+      {
+        paramView = (ViewGroup)paramView;
+        int j = paramView.getChildCount();
+        int i = 0;
+        while (i < j)
+        {
+          a(paramMap, paramView.getChildAt(i));
+          i += 1;
+        }
+      }
+    }
+  }
+  
+  public abstract boolean a(Object paramObject);
+  
+  public abstract Object b(Object paramObject);
+  
+  public abstract Object b(Object paramObject1, Object paramObject2, Object paramObject3);
+  
+  public abstract void b(Object paramObject, View paramView);
+  
+  public abstract void b(Object paramObject, View paramView, ArrayList<View> paramArrayList);
+  
+  public abstract void b(Object paramObject, ArrayList<View> paramArrayList1, ArrayList<View> paramArrayList2);
+  
+  public abstract Object c(Object paramObject);
+  
+  public abstract void c(Object paramObject, View paramView);
 }
 
 

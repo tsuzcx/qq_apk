@@ -1,280 +1,108 @@
 package com.tencent.token;
 
-import java.util.Arrays;
+import java.util.List;
 
-final class alm
-  extends alb
+public final class alm
+  implements akg.a
 {
-  final transient byte[][] f;
-  final transient int[] g;
+  public final alf a;
+  final ali b;
+  final alb c;
+  public final akl d;
+  final ajs e;
+  final akc f;
+  private final List<akg> g;
+  private final int h;
+  private final int i;
+  private final int j;
+  private final int k;
+  private int l;
   
-  alm(aky paramaky, int paramInt)
+  public alm(List<akg> paramList, alf paramalf, ali paramali, alb paramalb, int paramInt1, akl paramakl, ajs paramajs, akc paramakc, int paramInt2, int paramInt3, int paramInt4)
   {
-    super(null);
-    alq.a(paramaky.b, 0L, paramInt);
-    Object localObject = paramaky.a;
-    int k = 0;
-    int j = 0;
-    int i = 0;
-    while (j < paramInt) {
-      if (((alk)localObject).c != ((alk)localObject).b)
-      {
-        j += ((alk)localObject).c - ((alk)localObject).b;
-        i += 1;
-        localObject = ((alk)localObject).f;
-      }
-      else
-      {
-        throw new AssertionError("s.limit == s.pos");
-      }
-    }
-    this.f = new byte[i][];
-    this.g = new int[i * 2];
-    paramaky = paramaky.a;
-    j = 0;
-    i = k;
-    while (i < paramInt)
+    this.g = paramList;
+    this.c = paramalb;
+    this.a = paramalf;
+    this.b = paramali;
+    this.h = paramInt1;
+    this.d = paramakl;
+    this.e = paramajs;
+    this.f = paramakc;
+    this.i = paramInt2;
+    this.j = paramInt3;
+    this.k = paramInt4;
+  }
+  
+  public final akl a()
+  {
+    return this.d;
+  }
+  
+  public final akn a(akl paramakl)
+  {
+    return a(paramakl, this.a, this.b, this.c);
+  }
+  
+  public final akn a(akl paramakl, alf paramalf, ali paramali, alb paramalb)
+  {
+    if (this.h < this.g.size())
     {
-      this.f[j] = paramaky.a;
-      k = i + (paramaky.c - paramaky.b);
-      i = k;
-      if (k > paramInt) {
-        i = paramInt;
-      }
-      localObject = this.g;
-      localObject[j] = i;
-      localObject[(this.f.length + j)] = paramaky.b;
-      paramaky.d = true;
-      j += 1;
-      paramaky = paramaky.f;
-    }
-  }
-  
-  private int b(int paramInt)
-  {
-    paramInt = Arrays.binarySearch(this.g, 0, this.f.length, paramInt + 1);
-    if (paramInt >= 0) {
-      return paramInt;
-    }
-    return paramInt ^ 0xFFFFFFFF;
-  }
-  
-  private alb i()
-  {
-    return new alb(h());
-  }
-  
-  public final byte a(int paramInt)
-  {
-    alq.a(this.g[(this.f.length - 1)], paramInt, 1L);
-    int j = b(paramInt);
-    int i;
-    if (j == 0) {
-      i = 0;
-    } else {
-      i = this.g[(j - 1)];
-    }
-    int[] arrayOfInt = this.g;
-    byte[][] arrayOfByte = this.f;
-    int k = arrayOfInt[(arrayOfByte.length + j)];
-    return arrayOfByte[j][(paramInt - i + k)];
-  }
-  
-  public final alb a(int paramInt1, int paramInt2)
-  {
-    return i().a(paramInt1, paramInt2);
-  }
-  
-  public final String a()
-  {
-    return i().a();
-  }
-  
-  final void a(aky paramaky)
-  {
-    int m = this.f.length;
-    int i = 0;
-    int k;
-    for (int j = 0; i < m; j = k)
-    {
-      Object localObject = this.g;
-      int n = localObject[(m + i)];
-      k = localObject[i];
-      localObject = new alk(this.f[i], n, n + k - j);
-      if (paramaky.a == null)
+      this.l += 1;
+      if ((this.b != null) && (!this.c.a(paramakl.a)))
       {
-        ((alk)localObject).g = ((alk)localObject);
-        ((alk)localObject).f = ((alk)localObject);
-        paramaky.a = ((alk)localObject);
+        paramakl = new StringBuilder("network interceptor ");
+        paramakl.append(this.g.get(this.h - 1));
+        paramakl.append(" must retain the same host and port");
+        throw new IllegalStateException(paramakl.toString());
       }
-      else
+      if ((this.b != null) && (this.l > 1))
       {
-        paramaky.a.g.a((alk)localObject);
+        paramakl = new StringBuilder("network interceptor ");
+        paramakl.append(this.g.get(this.h - 1));
+        paramakl.append(" must call proceed() exactly once");
+        throw new IllegalStateException(paramakl.toString());
       }
-      i += 1;
-    }
-    paramaky.b += j;
-  }
-  
-  public final boolean a(int paramInt1, alb paramalb, int paramInt2, int paramInt3)
-  {
-    if (g() - paramInt3 < 0) {
-      return false;
-    }
-    int j = b(0);
-    int i = paramInt1;
-    paramInt1 = j;
-    while (paramInt3 > 0)
-    {
-      if (paramInt1 == 0) {
-        j = 0;
-      } else {
-        j = this.g[(paramInt1 - 1)];
-      }
-      int k = Math.min(paramInt3, this.g[paramInt1] - j + j - i);
-      int[] arrayOfInt = this.g;
-      byte[][] arrayOfByte = this.f;
-      int m = arrayOfInt[(arrayOfByte.length + paramInt1)];
-      if (!paramalb.a(paramInt2, arrayOfByte[paramInt1], i - j + m, k)) {
-        return false;
-      }
-      i += k;
-      paramInt2 += k;
-      paramInt3 -= k;
-      paramInt1 += 1;
-    }
-    return true;
-  }
-  
-  public final boolean a(int paramInt1, byte[] paramArrayOfByte, int paramInt2, int paramInt3)
-  {
-    if ((paramInt1 >= 0) && (paramInt1 <= g() - paramInt3) && (paramInt2 >= 0))
-    {
-      if (paramInt2 > paramArrayOfByte.length - paramInt3) {
-        return false;
-      }
-      int j = b(paramInt1);
-      int i = paramInt1;
-      paramInt1 = j;
-      while (paramInt3 > 0)
+      paramalf = new alm(this.g, paramalf, paramali, paramalb, this.h + 1, paramakl, this.e, this.f, this.i, this.j, this.k);
+      paramakl = (akg)this.g.get(this.h);
+      paramalb = paramakl.a(paramalf);
+      if ((paramali != null) && (this.h + 1 < this.g.size()) && (paramalf.l != 1))
       {
-        if (paramInt1 == 0) {
-          j = 0;
-        } else {
-          j = this.g[(paramInt1 - 1)];
+        paramalf = new StringBuilder("network interceptor ");
+        paramalf.append(paramakl);
+        paramalf.append(" must call proceed() exactly once");
+        throw new IllegalStateException(paramalf.toString());
+      }
+      if (paramalb != null)
+      {
+        if (paramalb.g != null) {
+          return paramalb;
         }
-        int k = Math.min(paramInt3, this.g[paramInt1] - j + j - i);
-        int[] arrayOfInt = this.g;
-        byte[][] arrayOfByte = this.f;
-        int m = arrayOfInt[(arrayOfByte.length + paramInt1)];
-        if (!alq.a(arrayOfByte[paramInt1], i - j + m, paramArrayOfByte, paramInt2, k)) {
-          return false;
-        }
-        i += k;
-        paramInt2 += k;
-        paramInt3 -= k;
-        paramInt1 += 1;
+        paramalf = new StringBuilder("interceptor ");
+        paramalf.append(paramakl);
+        paramalf.append(" returned a response with no body");
+        throw new IllegalStateException(paramalf.toString());
       }
-      return true;
+      paramalf = new StringBuilder("interceptor ");
+      paramalf.append(paramakl);
+      paramalf.append(" returned null");
+      throw new NullPointerException(paramalf.toString());
     }
-    return false;
+    throw new AssertionError();
   }
   
-  public final String b()
+  public final int b()
   {
-    return i().b();
+    return this.i;
   }
   
-  public final alb c()
+  public final int c()
   {
-    return i().c();
+    return this.j;
   }
   
-  public final alb d()
+  public final int d()
   {
-    return i().d();
-  }
-  
-  public final String e()
-  {
-    return i().e();
-  }
-  
-  public final boolean equals(Object paramObject)
-  {
-    if (paramObject == this) {
-      return true;
-    }
-    if ((paramObject instanceof alb))
-    {
-      paramObject = (alb)paramObject;
-      if ((paramObject.g() == g()) && (a(0, paramObject, 0, g()))) {
-        return true;
-      }
-    }
-    return false;
-  }
-  
-  public final alb f()
-  {
-    return i().f();
-  }
-  
-  public final int g()
-  {
-    return this.g[(this.f.length - 1)];
-  }
-  
-  public final byte[] h()
-  {
-    Object localObject2 = this.g;
-    Object localObject1 = this.f;
-    localObject2 = new byte[localObject2[(localObject1.length - 1)]];
-    int m = localObject1.length;
-    int i = 0;
-    int k;
-    for (int j = 0; i < m; j = k)
-    {
-      localObject1 = this.g;
-      int n = localObject1[(m + i)];
-      k = localObject1[i];
-      System.arraycopy(this.f[i], n, localObject2, j, k - j);
-      i += 1;
-    }
-    return localObject2;
-  }
-  
-  public final int hashCode()
-  {
-    int i = this.d;
-    if (i != 0) {
-      return i;
-    }
-    int i2 = this.f.length;
-    int k = 0;
-    int m = 1;
-    int n;
-    for (int j = 0; k < i2; j = n)
-    {
-      byte[] arrayOfByte = this.f[k];
-      int[] arrayOfInt = this.g;
-      int i1 = arrayOfInt[(i2 + k)];
-      n = arrayOfInt[k];
-      i = i1;
-      while (i < n - j + i1)
-      {
-        m = m * 31 + arrayOfByte[i];
-        i += 1;
-      }
-      k += 1;
-    }
-    this.d = m;
-    return m;
-  }
-  
-  public final String toString()
-  {
-    return i().toString();
+    return this.k;
   }
 }
 

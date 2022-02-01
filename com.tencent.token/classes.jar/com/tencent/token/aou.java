@@ -1,46 +1,27 @@
 package com.tencent.token;
 
-import java.util.HashMap;
-
 public final class aou
 {
-  public static String a = "ManagerCreatorC";
-  private static Object b = new Object();
-  private static HashMap c = new HashMap();
+  public String a;
+  public String b;
+  public int c;
+  public int d;
+  public int e;
+  double f;
+  public int g;
+  public int h;
+  public int i;
+  public boolean j;
   
-  public static Object a(Class paramClass)
+  public final int hashCode()
   {
-    Object localObject1 = c.get(paramClass);
-    if (localObject1 != null) {
-      return localObject1;
-    }
-    localObject2 = localObject1;
-    try
-    {
-      Object localObject4 = b;
-      localObject2 = localObject1;
-      try
-      {
-        Object localObject3 = c.get(paramClass);
-        localObject2 = localObject3;
-        if (localObject3 == null)
-        {
-          localObject1 = localObject3;
-          localObject2 = paramClass.newInstance();
-          localObject1 = localObject2;
-          c.put(paramClass, localObject2);
-        }
-        localObject1 = localObject2;
-        return localObject2;
-      }
-      finally
-      {
-        localObject2 = localObject1;
-        localObject2 = localObject1;
-      }
-      return localObject2;
-    }
-    catch (Exception paramClass) {}
+    int k = this.a.hashCode();
+    int m = this.b.hashCode();
+    int n = this.c;
+    int i1 = this.d;
+    int i2 = this.e;
+    long l = Double.doubleToLongBits(this.f);
+    return (((((k * 31 + m) * 31 + n) * 31 + i1) * 31 + i2) * 31 + (int)(l ^ l >>> 32)) * 31 + this.g;
   }
 }
 

@@ -1,21 +1,11 @@
 package com.tencent.token;
 
+import android.util.Pair;
+import com.qq.taf.jce.JceStruct;
+
 public abstract interface aij
 {
-  public abstract aiq a(a parama);
-  
-  public static abstract interface a
-  {
-    public abstract aio a();
-    
-    public abstract aiq a(aio paramaio);
-    
-    public abstract int b();
-    
-    public abstract int c();
-    
-    public abstract int d();
-  }
+  public abstract Pair a(int paramInt1, int paramInt2, JceStruct paramJceStruct);
 }
 
 

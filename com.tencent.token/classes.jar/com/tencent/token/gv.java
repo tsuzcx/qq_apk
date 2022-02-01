@@ -1,51 +1,45 @@
 package com.tencent.token;
 
-import android.content.Context;
-import android.content.pm.ApplicationInfo;
-import android.content.res.Configuration;
-import android.content.res.Resources;
+import java.lang.reflect.Array;
 
-public final class gv
+final class gv
 {
-  public Context a;
-  
-  private gv(Context paramContext)
+  private static int a(int paramInt)
   {
-    this.a = paramContext;
-  }
-  
-  public static gv a(Context paramContext)
-  {
-    return new gv(paramContext);
-  }
-  
-  public final int a()
-  {
-    Configuration localConfiguration = this.a.getResources().getConfiguration();
-    int i = localConfiguration.screenWidthDp;
-    int j = localConfiguration.screenHeightDp;
-    if ((localConfiguration.smallestScreenWidthDp <= 600) && (i <= 600) && ((i <= 960) || (j <= 720)) && ((i <= 720) || (j <= 960)))
-    {
-      if ((i < 500) && ((i <= 640) || (j <= 480)) && ((i <= 480) || (j <= 640)))
-      {
-        if (i >= 360) {
-          return 3;
-        }
-        return 2;
-      }
-      return 4;
+    if (paramInt <= 4) {
+      return 8;
     }
-    return 5;
+    return paramInt * 2;
   }
   
-  public final boolean b()
+  public static int[] a(int[] paramArrayOfInt, int paramInt1, int paramInt2)
   {
-    return this.a.getResources().getBoolean(go.b.abc_action_bar_embed_tabs);
+    if ((!a) && (paramInt1 > paramArrayOfInt.length)) {
+      throw new AssertionError();
+    }
+    int[] arrayOfInt = paramArrayOfInt;
+    if (paramInt1 + 1 > paramArrayOfInt.length)
+    {
+      arrayOfInt = new int[a(paramInt1)];
+      System.arraycopy(paramArrayOfInt, 0, arrayOfInt, 0, paramInt1);
+    }
+    arrayOfInt[paramInt1] = paramInt2;
+    return arrayOfInt;
   }
   
-  public final boolean c()
+  public static <T> T[] a(T[] paramArrayOfT, int paramInt, T paramT)
   {
-    return this.a.getApplicationInfo().targetSdkVersion < 14;
+    if ((!a) && (paramInt > paramArrayOfT.length)) {
+      throw new AssertionError();
+    }
+    Object localObject = paramArrayOfT;
+    if (paramInt + 1 > paramArrayOfT.length)
+    {
+      localObject = (Object[])Array.newInstance(paramArrayOfT.getClass().getComponentType(), a(paramInt));
+      System.arraycopy(paramArrayOfT, 0, localObject, 0, paramInt);
+    }
+    localObject[paramInt] = paramT;
+    return localObject;
   }
 }
 

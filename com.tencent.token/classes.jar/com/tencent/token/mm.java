@@ -1,96 +1,115 @@
 package com.tencent.token;
 
-import java.util.concurrent.BlockingQueue;
-import java.util.concurrent.Callable;
-import java.util.concurrent.Future;
-import java.util.concurrent.FutureTask;
-import java.util.concurrent.RejectedExecutionException;
-import java.util.concurrent.RejectedExecutionHandler;
-import java.util.concurrent.RunnableFuture;
-import java.util.concurrent.ThreadFactory;
-import java.util.concurrent.ThreadPoolExecutor;
-import java.util.concurrent.TimeUnit;
-import java.util.concurrent.atomic.AtomicInteger;
-import java.util.concurrent.atomic.AtomicLong;
+import com.tencent.halley.downloader.c.b;
+import com.tencent.halley.downloader.c.b.a;
+import java.util.Iterator;
+import java.util.Vector;
 
 public final class mm
-  extends ThreadPoolExecutor
+  implements Runnable
 {
-  public final AtomicInteger a = new AtomicInteger(0);
-  private final AtomicLong b = new AtomicLong(0L);
-  private final AtomicLong c = new AtomicLong(0L);
-  private long d = 1000L;
+  public mm(b paramb, b.a parama) {}
   
-  public mm(int paramInt1, int paramInt2, TimeUnit paramTimeUnit, BlockingQueue paramBlockingQueue, ThreadFactory paramThreadFactory)
+  public final void run()
   {
-    super(paramInt1, paramInt2, 60L, paramTimeUnit, paramBlockingQueue, paramThreadFactory, new b((byte)0));
-  }
-  
-  public final void a()
-  {
-    if (b())
+    ma localma;
+    switch (com.tencent.halley.downloader.c.b.1.b[this.a.ordinal()])
     {
-      long l = this.c.longValue();
-      if (this.d + l < System.currentTimeMillis())
+    default: 
+      return;
+    case 7: 
+      me.b().e(this.b.a);
+      synchronized (this.b.d)
       {
-        if (!this.c.compareAndSet(l, System.currentTimeMillis() + 1L)) {
-          return;
+        Iterator localIterator1 = this.b.d.iterator();
+        while (localIterator1.hasNext())
+        {
+          localma = (ma)localIterator1.next();
+          if (localma != null) {
+            localma.e(this.b.a);
+          }
         }
-        Thread.currentThread().setUncaughtExceptionHandler(new mn());
-        throw new RuntimeException("Stopping thread to avoid potential memory leaks after a context was stopped.");
+        return;
+      }
+    case 6: 
+      me.b().d(this.b.a);
+      synchronized (this.b.d)
+      {
+        Iterator localIterator2 = this.b.d.iterator();
+        while (localIterator2.hasNext())
+        {
+          localma = (ma)localIterator2.next();
+          if (localma != null) {
+            localma.d(this.b.a);
+          }
+        }
+        return;
+      }
+    case 5: 
+      me.b().c(this.b.a);
+      synchronized (this.b.d)
+      {
+        Iterator localIterator3 = this.b.d.iterator();
+        while (localIterator3.hasNext())
+        {
+          localma = (ma)localIterator3.next();
+          if (localma != null) {
+            localma.c(this.b.a);
+          }
+        }
+        return;
+      }
+    case 4: 
+      me.b().b(this.b.a);
+      synchronized (this.b.d)
+      {
+        Iterator localIterator4 = this.b.d.iterator();
+        while (localIterator4.hasNext())
+        {
+          localma = (ma)localIterator4.next();
+          if (localma != null) {
+            localma.b(this.b.a);
+          }
+        }
+        return;
+      }
+    case 3: 
+      me.b().a(this.b.a);
+      synchronized (this.b.d)
+      {
+        Iterator localIterator5 = this.b.d.iterator();
+        while (localIterator5.hasNext())
+        {
+          localma = (ma)localIterator5.next();
+          if (localma != null) {
+            localma.a(this.b.a);
+          }
+        }
+        return;
+      }
+    case 2: 
+      me.b().a();
+      synchronized (this.b.d)
+      {
+        Iterator localIterator6 = this.b.d.iterator();
+        while (localIterator6.hasNext())
+        {
+          localma = (ma)localIterator6.next();
+          if (localma != null) {
+            localma.a();
+          }
+        }
+        return;
       }
     }
-  }
-  
-  protected final void afterExecute(Runnable paramRunnable, Throwable paramThrowable)
-  {
-    this.a.decrementAndGet();
-    if (paramThrowable == null) {
-      a();
-    }
-  }
-  
-  public final boolean b()
-  {
-    return (this.d >= 0L) && ((Thread.currentThread() instanceof mo)) && (((mo)Thread.currentThread()).a < this.b.longValue());
-  }
-  
-  public final void execute(Runnable paramRunnable)
-  {
-    super.execute(new a(paramRunnable));
-  }
-  
-  protected final RunnableFuture newTaskFor(Runnable paramRunnable, Object paramObject)
-  {
-    return (RunnableFuture)paramRunnable;
-  }
-  
-  protected final RunnableFuture newTaskFor(Callable paramCallable)
-  {
-    return (RunnableFuture)paramCallable;
-  }
-  
-  public final Future submit(Runnable paramRunnable)
-  {
-    return super.submit(new a(paramRunnable));
-  }
-  
-  public final class a
-    extends FutureTask
-    implements Comparable
-  {
-    public a()
+    me.b();
+    synchronized (this.b.d)
     {
-      super(null);
-    }
-  }
-  
-  static final class b
-    implements RejectedExecutionHandler
-  {
-    public final void rejectedExecution(Runnable paramRunnable, ThreadPoolExecutor paramThreadPoolExecutor)
-    {
-      throw new RejectedExecutionException();
+      Iterator localIterator7 = this.b.d.iterator();
+      while (localIterator7.hasNext()) {
+        localIterator7.next();
+      }
+      return;
     }
   }
 }

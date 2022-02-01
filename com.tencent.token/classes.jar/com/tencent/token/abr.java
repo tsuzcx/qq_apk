@@ -1,10 +1,12 @@
 package com.tencent.token;
 
-import com.tencent.turingfd.sdk.base.Lemon;
-
 public abstract interface abr
 {
-  public abstract void a(String paramString, int paramInt1, int paramInt2, Lemon paramLemon);
+  public abstract void a(long paramLong);
+  
+  public abstract void a(byte[] paramArrayOfByte);
+  
+  public abstract void b(byte[] paramArrayOfByte);
 }
 
 

@@ -4,22 +4,24 @@ import java.util.HashMap;
 import org.json.JSONObject;
 
 public final class up
-  extends tj
+  extends tr
 {
-  private long d;
-  private long e;
+  public String d;
+  public long e;
+  private int f;
   
   public final String a()
   {
-    rz.a();
+    sh.a();
     this.a.a(104, null, null);
     return null;
   }
   
-  public final void a(aaq paramaaq)
+  public final void a(abc paramabc)
   {
-    this.d = ((Long)paramaaq.c.get("param.uinhash")).longValue();
-    this.e = ((Long)paramaaq.c.get("param.feedback.msgid")).longValue();
+    this.e = ((Long)paramabc.c.get("param.realuin")).longValue();
+    this.d = ((String)paramabc.c.get("param.mbmobile.mobile"));
+    this.f = ((Integer)paramabc.c.get("param.type")).intValue();
   }
   
   public final void a(JSONObject paramJSONObject)
@@ -27,7 +29,8 @@ public final class up
     int i = paramJSONObject.getInt("err");
     if (i != 0)
     {
-      a(i, paramJSONObject.getString("info"));
+      paramJSONObject = paramJSONObject.getString("info");
+      this.a.a(i, paramJSONObject, paramJSONObject);
       return;
     }
     this.a.a = 0;

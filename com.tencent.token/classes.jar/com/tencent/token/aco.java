@@ -1,10 +1,6 @@
 package com.tencent.token;
 
-public final class aco
-{
-  public int a = 0;
-  public int b = 0;
-}
+public abstract interface aco {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.token\classes.jar

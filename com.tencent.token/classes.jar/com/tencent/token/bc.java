@@ -1,8 +1,11 @@
 package com.tencent.token;
 
-public abstract interface bc<T>
+import java.util.HashMap;
+import java.util.Map;
+
+public final class bc
 {
-  public abstract void a(T paramT);
+  private Map<String, Integer> a = new HashMap();
 }
 
 

@@ -1,52 +1,10 @@
 package com.tencent.token;
 
-import javax.annotation.Nullable;
-
-final class all
+public final class all
 {
-  @Nullable
-  static alk a;
-  static long b;
-  
-  static alk a()
+  public static boolean a(String paramString)
   {
-    try
-    {
-      if (a != null)
-      {
-        alk localalk = a;
-        a = localalk.f;
-        localalk.f = null;
-        b -= 8192L;
-        return localalk;
-      }
-      return new alk();
-    }
-    finally {}
-  }
-  
-  static void a(alk paramalk)
-  {
-    if ((paramalk.f == null) && (paramalk.g == null))
-    {
-      if (paramalk.d) {
-        return;
-      }
-      try
-      {
-        if (b + 8192L > 65536L) {
-          return;
-        }
-        b += 8192L;
-        paramalk.f = a;
-        paramalk.c = 0;
-        paramalk.b = 0;
-        a = paramalk;
-        return;
-      }
-      finally {}
-    }
-    throw new IllegalArgumentException();
+    return (!paramString.equals("GET")) && (!paramString.equals("HEAD"));
   }
 }
 

@@ -36,7 +36,7 @@ public class QQPim4GNotifyDialog
       WindowManager.LayoutParams localLayoutParams = paramBundle.getAttributes();
       localLayoutParams.width = ((int)(((Activity)this.a).getWindowManager().getDefaultDisplay().getWidth() - IndexActivity.S_DENSITY * 84.0F));
       paramBundle.setAttributes(localLayoutParams);
-      ((TextView)findViewById(2131166181)).setOnClickListener(new View.OnClickListener()
+      ((TextView)findViewById(2131166183)).setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
@@ -46,7 +46,7 @@ public class QQPim4GNotifyDialog
           QQPim4GNotifyDialog.this.dismiss();
         }
       });
-      ((TextView)findViewById(2131166180)).setOnClickListener(new View.OnClickListener()
+      ((TextView)findViewById(2131166182)).setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {

@@ -25,16 +25,16 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.PopupWindow;
 import android.widget.PopupWindow.OnDismissListener;
-import com.tencent.token.ew;
-import com.tencent.token.fv;
-import com.tencent.token.go.a;
-import com.tencent.token.go.j;
-import com.tencent.token.hw;
-import com.tencent.token.ir;
+import com.tencent.token.fa;
+import com.tencent.token.fz;
+import com.tencent.token.gs.a;
+import com.tencent.token.gs.j;
+import com.tencent.token.ia;
+import com.tencent.token.iv;
 import java.lang.reflect.Method;
 
 public class ListPopupWindow
-  implements hw
+  implements ia
 {
   private static Method a;
   private static Method b;
@@ -50,7 +50,7 @@ public class ListPopupWindow
   private Runnable I;
   private final Rect J = new Rect();
   private Context d;
-  public ir e;
+  public iv e;
   int f = -2;
   public int g;
   public int h = 0;
@@ -105,12 +105,12 @@ public class ListPopupWindow
   
   public ListPopupWindow(Context paramContext)
   {
-    this(paramContext, null, go.a.listPopupWindowStyle);
+    this(paramContext, null, gs.a.listPopupWindowStyle);
   }
   
   public ListPopupWindow(Context paramContext, AttributeSet paramAttributeSet)
   {
-    this(paramContext, paramAttributeSet, go.a.listPopupWindowStyle);
+    this(paramContext, paramAttributeSet, gs.a.listPopupWindowStyle);
   }
   
   public ListPopupWindow(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
@@ -122,9 +122,9 @@ public class ListPopupWindow
   {
     this.d = paramContext;
     this.n = new Handler(paramContext.getMainLooper());
-    TypedArray localTypedArray = paramContext.obtainStyledAttributes(paramAttributeSet, go.j.ListPopupWindow, paramInt1, paramInt2);
-    this.g = localTypedArray.getDimensionPixelOffset(go.j.ListPopupWindow_android_dropDownHorizontalOffset, 0);
-    this.t = localTypedArray.getDimensionPixelOffset(go.j.ListPopupWindow_android_dropDownVerticalOffset, 0);
+    TypedArray localTypedArray = paramContext.obtainStyledAttributes(paramAttributeSet, gs.j.ListPopupWindow, paramInt1, paramInt2);
+    this.g = localTypedArray.getDimensionPixelOffset(gs.j.ListPopupWindow_android_dropDownHorizontalOffset, 0);
+    this.t = localTypedArray.getDimensionPixelOffset(gs.j.ListPopupWindow_android_dropDownVerticalOffset, 0);
     if (this.t != 0) {
       this.v = true;
     }
@@ -162,9 +162,9 @@ public class ListPopupWindow
     }
   }
   
-  protected ir a(Context paramContext, boolean paramBoolean)
+  protected iv a(Context paramContext, boolean paramBoolean)
   {
-    return new ir(paramContext, paramBoolean);
+    return new iv(paramContext, paramBoolean);
   }
   
   public final void a(int paramInt)
@@ -360,10 +360,10 @@ public class ListPopupWindow
       i1 = i4 + i3;
     }
     boolean bool1 = j();
-    fv.a(this.q, this.u);
+    fz.a(this.q, this.u);
     if (this.q.isShowing())
     {
-      if (!ew.s(this.k)) {
+      if (!fa.s(this.k)) {
         return;
       }
       i3 = this.f;
@@ -471,7 +471,7 @@ public class ListPopupWindow
     ((PopupWindow)localObject1).setOutsideTouchable(bool1);
     this.q.setTouchInterceptor(this.F);
     if (this.y) {
-      fv.a(this.q, this.x);
+      fz.a(this.q, this.x);
     }
     localObject1 = c;
     if (localObject1 != null) {}
@@ -484,7 +484,7 @@ public class ListPopupWindow
       label1182:
       break label1182;
     }
-    fv.a(this.q, this.k, this.g, this.t, this.h);
+    fz.a(this.q, this.k, this.g, this.t, this.h);
     this.e.setSelection(-1);
     if ((!this.p) || (this.e.isInTouchMode())) {
       i();
@@ -546,11 +546,11 @@ public class ListPopupWindow
   
   public final void i()
   {
-    ir localir = this.e;
-    if (localir != null)
+    iv localiv = this.e;
+    if (localiv != null)
     {
-      localir.setListSelectionHidden(true);
-      localir.requestLayout();
+      localiv.setListSelectionHidden(true);
+      localiv.requestLayout();
     }
   }
   
@@ -637,7 +637,7 @@ public class ListPopupWindow
     
     public final void run()
     {
-      if ((ListPopupWindow.this.e != null) && (ew.s(ListPopupWindow.this.e)) && (ListPopupWindow.this.e.getCount() > ListPopupWindow.this.e.getChildCount()) && (ListPopupWindow.this.e.getChildCount() <= ListPopupWindow.this.i))
+      if ((ListPopupWindow.this.e != null) && (fa.s(ListPopupWindow.this.e)) && (ListPopupWindow.this.e.getCount() > ListPopupWindow.this.e.getChildCount()) && (ListPopupWindow.this.e.getChildCount() <= ListPopupWindow.this.i))
       {
         ListPopupWindow.this.q.setInputMethodMode(2);
         ListPopupWindow.this.b();

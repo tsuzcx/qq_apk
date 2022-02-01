@@ -1,191 +1,93 @@
 package com.tencent.token;
 
-import java.io.IOException;
-import java.io.InterruptedIOException;
-import java.util.concurrent.TimeUnit;
+import java.util.Date;
 import javax.annotation.Nullable;
 
-public class akw
-  extends alp
+public final class akw
 {
-  private static final long a = TimeUnit.SECONDS.toMillis(60L);
   @Nullable
-  static akw b;
-  private static final long d = TimeUnit.MILLISECONDS.toNanos(a);
-  private boolean e;
+  public final akl a;
   @Nullable
-  private akw f;
-  private long g;
+  public final akn b;
   
-  private static void a(akw paramakw, long paramLong, boolean paramBoolean)
+  akw(akl paramakl, akn paramakn)
   {
-    try
+    this.a = paramakl;
+    this.b = paramakn;
+  }
+  
+  public static boolean a(akn paramakn, akl paramakl)
+  {
+    switch (paramakn.c)
     {
-      if (b == null)
-      {
-        b = new akw();
-        new a().start();
-      }
-      long l = System.nanoTime();
-      if ((paramLong != 0L) && (paramBoolean))
-      {
-        paramakw.g = (Math.min(paramLong, paramakw.c() - l) + l);
-      }
-      else if (paramLong != 0L)
-      {
-        paramakw.g = (paramLong + l);
-      }
-      else
-      {
-        if (!paramBoolean) {
-          break label180;
-        }
-        paramakw.g = paramakw.c();
-      }
-      paramLong = paramakw.g;
-      for (akw localakw = b; (localakw.f != null) && (paramLong - l >= localakw.f.g - l); localakw = localakw.f) {}
-      paramakw.f = localakw.f;
-      localakw.f = paramakw;
-      if (localakw == b)
-      {
-        akw.class.notify();
-        return;
-      }
-      return;
-      label180:
-      throw new AssertionError();
-    }
-    finally {}
-  }
-  
-  private static boolean a(akw paramakw)
-  {
-    try
-    {
-      for (akw localakw = b; localakw != null; localakw = localakw.f) {
-        if (localakw.f == paramakw)
-        {
-          localakw.f = paramakw.f;
-          paramakw.f = null;
-          return false;
-        }
-      }
-      return true;
-    }
-    finally {}
-  }
-  
-  @Nullable
-  static akw e()
-  {
-    akw localakw = b.f;
-    if (localakw == null)
-    {
-      l1 = System.nanoTime();
-      akw.class.wait(a);
-      if ((b.f == null) && (System.nanoTime() - l1 >= d)) {
-        return b;
-      }
-      return null;
-    }
-    long l1 = System.nanoTime();
-    l1 = localakw.g - l1;
-    if (l1 > 0L)
-    {
-      long l2 = l1 / 1000000L;
-      akw.class.wait(l2, (int)(l1 - 1000000L * l2));
-      return null;
-    }
-    b.f = localakw.f;
-    localakw.f = null;
-    return localakw;
-  }
-  
-  protected IOException a(@Nullable IOException paramIOException)
-  {
-    InterruptedIOException localInterruptedIOException = new InterruptedIOException("timeout");
-    if (paramIOException != null) {
-      localInterruptedIOException.initCause(paramIOException);
-    }
-    return localInterruptedIOException;
-  }
-  
-  protected void a() {}
-  
-  final void a(boolean paramBoolean)
-  {
-    if (c_())
-    {
-      if (!paramBoolean) {
-        return;
-      }
-      throw a(null);
-    }
-  }
-  
-  final IOException b(IOException paramIOException)
-  {
-    if (!c_()) {
-      return paramIOException;
-    }
-    return a(paramIOException);
-  }
-  
-  public final void b_()
-  {
-    if (!this.e)
-    {
-      long l = d_();
-      boolean bool = e_();
-      if ((l == 0L) && (!bool)) {
-        return;
-      }
-      this.e = true;
-      a(this, l, bool);
-      return;
-    }
-    throw new IllegalStateException("Unbalanced enter/exit");
-  }
-  
-  public final boolean c_()
-  {
-    if (!this.e) {
+    default: 
       return false;
+    case 302: 
+    case 307: 
+      if ((paramakn.a("Expires") == null) && (paramakn.b().e == -1) && (!paramakn.b().g) && (!paramakn.b().f)) {
+        return false;
+      }
+      break;
     }
-    this.e = false;
-    return a(this);
+    return (!paramakn.b().d) && (!paramakl.b().d);
   }
   
-  static final class a
-    extends Thread
+  public static final class a
   {
-    a()
-    {
-      super();
-      setDaemon(true);
-    }
+    final long a;
+    final akl b;
+    final akn c;
+    Date d;
+    String e;
+    Date f;
+    String g;
+    Date h;
+    long i;
+    long j;
+    String k;
+    int l = -1;
     
-    public final void run()
+    public a(long paramLong, akl paramakl, akn paramakn)
     {
-      try
+      this.a = paramLong;
+      this.b = paramakl;
+      this.c = paramakn;
+      if (paramakn != null)
       {
-        for (;;)
+        this.i = paramakn.k;
+        this.j = paramakn.l;
+        paramakl = paramakn.f;
+        int m = 0;
+        int n = paramakl.a.length / 2;
+        while (m < n)
         {
-          try
+          paramakn = paramakl.a(m);
+          String str = paramakl.b(m);
+          if ("Date".equalsIgnoreCase(paramakn))
           {
-            akw localakw = akw.e();
-            if (localakw == null) {}
-            if (localakw == akw.b)
-            {
-              akw.b = null;
-              return;
-            }
-            localakw.a();
+            this.d = alj.a(str);
+            this.e = str;
           }
-          finally {}
+          else if ("Expires".equalsIgnoreCase(paramakn))
+          {
+            this.h = alj.a(str);
+          }
+          else if ("Last-Modified".equalsIgnoreCase(paramakn))
+          {
+            this.f = alj.a(str);
+            this.g = str;
+          }
+          else if ("ETag".equalsIgnoreCase(paramakn))
+          {
+            this.k = str;
+          }
+          else if ("Age".equalsIgnoreCase(paramakn))
+          {
+            this.l = alk.b(str, -1);
+          }
+          m += 1;
         }
       }
-      catch (InterruptedException localInterruptedException) {}
     }
   }
 }

@@ -1,9 +1,6 @@
 package com.tencent.token;
 
-public final class anp
-{
-  public static arv a;
-}
+abstract interface anp {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.token\classes.jar

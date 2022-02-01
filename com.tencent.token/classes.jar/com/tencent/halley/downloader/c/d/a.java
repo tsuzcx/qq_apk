@@ -1,6 +1,6 @@
 package com.tencent.halley.downloader.c.d;
 
-import com.tencent.token.lq;
+import com.tencent.token.lx;
 
 public final class a
 {
@@ -64,7 +64,7 @@ public final class a
     localStringBuilder.append(":");
     localStringBuilder.append(this.b.ordinal());
     localStringBuilder.append(":");
-    localStringBuilder.append(lq.a(this.a, bool));
+    localStringBuilder.append(lx.a(this.a, bool));
     return localStringBuilder.toString();
   }
   

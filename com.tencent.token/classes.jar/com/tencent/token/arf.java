@@ -1,8 +1,33 @@
 package com.tencent.token;
 
-public abstract interface arf
+import com.qq.taf.jce.JceStruct;
+
+final class arf
+  implements aii
 {
-  public abstract void a(byte[] paramArrayOfByte);
+  int a = 0;
+  final int b = 3;
+  
+  arf(aso paramaso) {}
+  
+  public final void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, JceStruct paramJceStruct)
+  {
+    paramJceStruct = new StringBuilder("_Cmd_SCHeartBeat : ");
+    paramJceStruct.append(paramInt2);
+    paramJceStruct.append("  retCode : ");
+    paramJceStruct.append(paramInt3);
+    if (paramInt3 == 0)
+    {
+      this.c.c = 0;
+      this.a = 0;
+      return;
+    }
+    this.a += 1;
+    new StringBuilder("心跳包失败 ： ").append(this.a);
+    if (this.a < 3) {
+      this.c.d();
+    }
+  }
 }
 
 

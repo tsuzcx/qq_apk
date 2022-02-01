@@ -1,97 +1,44 @@
 package com.tencent.token;
 
-import android.content.Context;
-import android.telephony.NeighboringCellInfo;
-import android.telephony.PhoneStateListener;
-import android.telephony.TelephonyManager;
-import android.telephony.gsm.GsmCellLocation;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
+import android.os.Bundle;
+import com.tencent.mm.sdk.openapi.WXMediaMessage;
+import com.tencent.mm.sdk.openapi.WXMediaMessage.a;
 
-final class pt
+public final class pt
 {
-  private static int a = 10000;
-  private static int b = 10000;
-  private TelephonyManager c;
-  private PhoneStateListener d = new pu(this);
-  
-  public static List<ps.a> a(Context paramContext)
+  public static final class a
+    extends pr
   {
-    LinkedList localLinkedList = new LinkedList();
-    Object localObject6 = (TelephonyManager)paramContext.getSystemService("phone");
-    Object localObject5 = ((TelephonyManager)localObject6).getNetworkOperator();
-    Object localObject3;
-    Object localObject2;
-    if (localObject5 != null)
+    public WXMediaMessage b;
+    public int c;
+    
+    public final void a(Bundle paramBundle)
     {
-      if (((String)localObject5).equals("")) {
-        return localLinkedList;
-      }
-      paramContext = "460";
-      localObject3 = "";
-      try
+      super.a(paramBundle);
+      WXMediaMessage localWXMediaMessage = this.b;
+      Bundle localBundle = new Bundle();
+      localBundle.putInt("_wxobject_sdkVer", localWXMediaMessage.sdkVer);
+      localBundle.putString("_wxobject_title", localWXMediaMessage.title);
+      localBundle.putString("_wxobject_description", localWXMediaMessage.description);
+      localBundle.putByteArray("_wxobject_thumbdata", localWXMediaMessage.thumbData);
+      if (localWXMediaMessage.mediaObject != null)
       {
-        Object localObject1 = ((String)localObject5).substring(0, 3);
-        paramContext = (Context)localObject1;
-        localObject5 = ((String)localObject5).substring(3);
-        paramContext = (Context)localObject1;
-        localObject1 = localObject5;
+        localBundle.putString("_wxobject_identifier_", localWXMediaMessage.mediaObject.getClass().getName());
+        localWXMediaMessage.mediaObject.serialize(localBundle);
       }
-      catch (Exception localException1)
-      {
-        localException1.printStackTrace();
-        localObject2 = localObject3;
-      }
+      paramBundle.putAll(localBundle);
+      paramBundle.putInt("_wxapi_sendmessagetowx_req_scene", this.c);
     }
-    for (;;)
+    
+    final boolean a()
     {
-      try
+      WXMediaMessage localWXMediaMessage = this.b;
+      if (localWXMediaMessage == null)
       {
-        localObject3 = (GsmCellLocation)((TelephonyManager)localObject6).getCellLocation();
-        if (localObject3 == null) {
-          break label218;
-        }
-        i = ((GsmCellLocation)localObject3).getCid();
-        j = ((GsmCellLocation)localObject3).getLac();
-        if ((j >= 65535) || (j == -1) || (i == -1)) {
-          break label218;
-        }
-        if (b == a)
-        {
-          localObject3 = "";
-        }
-        else
-        {
-          localObject3 = new StringBuilder();
-          ((StringBuilder)localObject3).append(b);
-          localObject3 = ((StringBuilder)localObject3).toString();
-        }
+        pw.a("MicroMsg.SDK.SendMessageToWX.Req", "checkArgs fail ,message is null");
+        return false;
       }
-      catch (Exception localException2)
-      {
-        int i;
-        int j;
-        localException2.printStackTrace();
-      }
-      localLinkedList.add(new ps.a(paramContext, localObject2, String.valueOf(j), String.valueOf(i), (String)localObject3, "gsm", "", "", ""));
-      label218:
-      Object localObject4 = ((TelephonyManager)localObject6).getNeighboringCellInfo();
-      if ((localObject4 != null) && (((List)localObject4).size() > 0))
-      {
-        localObject4 = ((List)localObject4).iterator();
-        while (((Iterator)localObject4).hasNext())
-        {
-          localObject5 = (NeighboringCellInfo)((Iterator)localObject4).next();
-          if (((NeighboringCellInfo)localObject5).getCid() != -1)
-          {
-            localObject6 = new StringBuilder();
-            ((StringBuilder)localObject6).append(((NeighboringCellInfo)localObject5).getCid());
-            localLinkedList.add(new ps.a(paramContext, localObject2, "", ((StringBuilder)localObject6).toString(), "", "gsm", "", "", ""));
-          }
-        }
-      }
-      return localLinkedList;
+      return localWXMediaMessage.checkArgs();
     }
   }
 }

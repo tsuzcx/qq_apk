@@ -12,10 +12,10 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.view.WindowManager.LayoutParams;
 import android.widget.FrameLayout;
-import com.tencent.token.qc;
-import com.tencent.token.qc.a;
-import com.tencent.token.qd;
-import com.tencent.token.qe;
+import com.tencent.token.qj;
+import com.tencent.token.qj.a;
+import com.tencent.token.qk;
+import com.tencent.token.ql;
 import com.tmsdk.base.utils.SDKUtil;
 
 public class PActivity
@@ -23,7 +23,7 @@ public class PActivity
 {
   private a mContainerLayout;
   private boolean mMonitorBottom = true;
-  private qd mPush;
+  private qk mPush;
   private WindowManager.LayoutParams mSavePushLp;
   
   private void shrinkArea()
@@ -62,7 +62,7 @@ public class PActivity
   {
     super.onCreate(paramBundle);
     overridePendingTransition(0, 0);
-    this.mPush = qc.a.a().a;
+    this.mPush = qj.a.a().a;
     if (this.mPush == null)
     {
       finish();
@@ -79,12 +79,12 @@ public class PActivity
     WindowManager.LayoutParams localLayoutParams = localWindow.getAttributes();
     paramBundle.token = localLayoutParams.token;
     paramBundle.type = localLayoutParams.type;
-    if (qe.a) {
-      paramBundle.y += qe.a();
+    if (ql.a) {
+      paramBundle.y += ql.a();
     }
     if (this.mMonitorBottom)
     {
-      paramBundle.height = (qe.c() - paramBundle.y);
+      paramBundle.height = (ql.c() - paramBundle.y);
       paramBundle.x = 0;
       paramBundle.width = -1;
       a.a(this.mContainerLayout, true);
@@ -118,12 +118,12 @@ public class PActivity
   protected void onStop()
   {
     super.onStop();
-    qd localqd = this.mPush;
-    if ((localqd != null) && (localqd.z == 4))
+    qk localqk = this.mPush;
+    if ((localqk != null) && (localqk.z == 4))
     {
-      localqd = this.mPush;
-      localqd.v = null;
-      localqd.a(true);
+      localqk = this.mPush;
+      localqk.v = null;
+      localqk.a(true);
     }
     finish();
   }
@@ -149,7 +149,7 @@ public class PActivity
       if ((this.b) && (paramMotionEvent.getActionMasked() == 0))
       {
         float f = paramMotionEvent.getRawY();
-        if (qe.c() - f <= qe.a(getContext(), 60.0F))
+        if (ql.c() - f <= ql.a(getContext(), 60.0F))
         {
           if ((PActivity.this.mPush != null) && (PActivity.this.mPush.z == 4))
           {

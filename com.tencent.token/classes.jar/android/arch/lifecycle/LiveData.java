@@ -3,16 +3,16 @@ package android.arch.lifecycle;
 import com.tencent.token.an;
 import com.tencent.token.ap;
 import com.tencent.token.ar;
-import com.tencent.token.au;
-import com.tencent.token.au.a;
-import com.tencent.token.au.b;
-import com.tencent.token.aw;
-import com.tencent.token.bc;
+import com.tencent.token.av;
+import com.tencent.token.av.a;
+import com.tencent.token.av.b;
+import com.tencent.token.ay;
+import com.tencent.token.be;
 
 public abstract class LiveData<T>
 {
   protected static final Object a = new Object();
-  protected ar<bc<T>, LiveData<T>.a> b;
+  protected ar<be<T>, LiveData<T>.a> b;
   protected int c;
   protected volatile Object d;
   private int e;
@@ -40,22 +40,22 @@ public abstract class LiveData<T>
   
   protected void a() {}
   
-  public void a(bc<T> parambc)
+  public void a(be<T> parambe)
   {
     if (an.a().a.b())
     {
-      parambc = (a)this.b.b(parambc);
-      if (parambc == null) {
+      parambe = (a)this.b.b(parambe);
+      if (parambe == null) {
         return;
       }
-      parambc.b();
-      parambc.a(false);
+      parambe.b();
+      parambe.a(false);
       return;
     }
-    parambc = new StringBuilder("Cannot invoke ");
-    parambc.append("removeObserver");
-    parambc.append(" on a background thread");
-    throw new IllegalStateException(parambc.toString());
+    parambe = new StringBuilder("Cannot invoke ");
+    parambe.append("removeObserver");
+    parambe.append(" on a background thread");
+    throw new IllegalStateException(parambe.toString());
   }
   
   protected void b() {}
@@ -64,17 +64,17 @@ public abstract class LiveData<T>
     extends LiveData<T>.a
     implements GenericLifecycleObserver
   {
-    final aw a;
+    final ay a;
     
-    public LifecycleBoundObserver(bc<T> parambc)
+    public LifecycleBoundObserver(be<T> parambe)
     {
-      super(localbc);
-      this.a = parambc;
+      super(localbe);
+      this.a = parambe;
     }
     
-    public final void a(aw paramaw, au.a parama)
+    public final void a(ay paramay, av.a parama)
     {
-      if (this.a.getLifecycle().a() == au.b.a)
+      if (this.a.getLifecycle().a() == av.b.a)
       {
         LiveData.this.a(this.c);
         return;
@@ -84,12 +84,12 @@ public abstract class LiveData<T>
     
     final boolean a()
     {
-      return this.a.getLifecycle().a().a(au.b.d);
+      return this.a.getLifecycle().a().a(av.b.d);
     }
     
-    final boolean a(aw paramaw)
+    final boolean a(ay paramay)
     {
-      return this.a == paramaw;
+      return this.a == paramay;
     }
     
     final void b()
@@ -100,7 +100,7 @@ public abstract class LiveData<T>
   
   public abstract class a
   {
-    final bc<T> c;
+    final be<T> c;
     boolean d;
     int e = -1;
     
@@ -142,7 +142,7 @@ public abstract class LiveData<T>
     
     abstract boolean a();
     
-    public boolean a(aw paramaw)
+    public boolean a(ay paramay)
     {
       return false;
     }

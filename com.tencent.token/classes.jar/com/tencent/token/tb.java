@@ -1,40 +1,43 @@
 package com.tencent.token;
 
-import android.os.Handler;
-import com.tencent.token.core.bean.OnlineDeviceResult;
-import com.tencent.token.global.RqdApplication;
-import oicq.wlogin_sdk.request.WtloginHelper;
-
 public final class tb
-  extends tc
 {
-  static tb a;
-  public OnlineDeviceResult b;
-  
-  private tb()
+  public static void a(sx paramsx, byte[] paramArrayOfByte)
   {
-    super("tbl_login_log");
-  }
-  
-  public static tb a()
-  {
-    if (a == null) {
-      a = new tb();
+    if ((paramArrayOfByte != null) && (paramArrayOfByte.length >= 2) && (paramArrayOfByte[0] == 2))
+    {
+      if (paramArrayOfByte[(paramArrayOfByte.length - 1)] != 3) {
+        return;
+      }
+      paramsx.g = sz.b(paramArrayOfByte, 1);
+      paramsx.h = sz.a(paramArrayOfByte, 5);
+      paramsx.i = paramArrayOfByte[7];
+      paramsx.j = sz.a(paramArrayOfByte, 8);
+      paramsx.k = sz.a(paramArrayOfByte, 10);
+      paramsx.l = ((int)sz.b(paramArrayOfByte, 12));
+      paramsx.m = ((int)sz.b(paramArrayOfByte, 16));
+      paramsx.n = sz.a(paramArrayOfByte, 20);
+      paramsx.o = sz.a(paramArrayOfByte, 22);
+      paramsx.p = sz.a(paramArrayOfByte, 24);
+      paramsx.q = sz.a(paramArrayOfByte, 26);
+      paramsx.r = sz.a(paramArrayOfByte, 28, 64);
+      paramsx.b = ((int)sz.b(paramArrayOfByte, 92));
+      paramsx.c = sz.a(paramArrayOfByte, 96, 256);
+      paramsx.d = ((int)sz.b(paramArrayOfByte, 352));
+      paramsx.e = sz.a(paramArrayOfByte, 356);
+      sz.a(paramsx.t, 0, paramArrayOfByte, 358, paramsx.t.length);
+      int j = paramsx.t.length + 358;
+      int k = paramArrayOfByte.length - 1 - paramsx.s.length - j;
+      int i = j;
+      if (k > 0)
+      {
+        paramsx.f = new byte[k];
+        sz.a(paramsx.f, 0, paramArrayOfByte, j, paramsx.f.length);
+        i = j + paramsx.f.length;
+      }
+      sz.a(paramsx.s, 0, paramArrayOfByte, i, paramsx.s.length);
+      return;
     }
-    return a;
-  }
-  
-  public static void b()
-  {
-    a = null;
-  }
-  
-  public final void a(byte paramByte, Handler paramHandler)
-  {
-    d();
-    sa localsa = sa.a();
-    aac.a(ry.a(RqdApplication.n()).a.GetGuid());
-    localsa.a(paramByte, paramHandler);
   }
 }
 

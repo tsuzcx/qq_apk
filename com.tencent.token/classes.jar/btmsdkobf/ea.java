@@ -4,53 +4,73 @@ import android.content.Context;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 import android.text.TextUtils;
-import com.tencent.token.ro;
+import com.tencent.token.rw;
 import java.net.NetworkInterface;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Map;
 
 public class ea
 {
   private static final String DEFAULT_MAC = "02:00:00:00:00:00";
   private static final String TAG = "ea";
+  static Map<String, String> cache_getMacByAPI = Collections.synchronizedMap(new HashMap());
   
   private static String getMacByAPI(String paramString)
   {
-    for (;;)
-    {
-      try
-      {
-        paramString = NetworkInterface.getByName(paramString);
-        if (paramString != null)
-        {
-          paramString = paramString.getHardwareAddress();
-          if (paramString != null)
-          {
-            if (paramString.length == 0) {
-              return null;
-            }
-            StringBuilder localStringBuilder = new StringBuilder();
-            int j = paramString.length;
-            int i = 0;
-            if (i < j)
-            {
-              localStringBuilder.append(String.format("%02x:", new Object[] { Byte.valueOf(paramString[i]) }));
-              i += 1;
-              continue;
-            }
-            if (localStringBuilder.length() > 0) {
-              localStringBuilder.deleteCharAt(localStringBuilder.length() - 1);
-            }
-            paramString = localStringBuilder.toString();
-            return paramString;
-          }
-          return null;
-        }
-      }
-      catch (Throwable paramString)
-      {
-        return null;
-      }
-      paramString = null;
+    if (cache_getMacByAPI.containsKey(paramString)) {
+      return (String)cache_getMacByAPI.get(paramString);
     }
+    try
+    {
+      localObject1 = NetworkInterface.getByName(paramString);
+      if (localObject1 == null) {
+        break label181;
+      }
+      localObject1 = ((NetworkInterface)localObject1).getHardwareAddress();
+    }
+    catch (Throwable localThrowable1)
+    {
+      for (;;)
+      {
+        Object localObject1;
+        StringBuilder localStringBuilder;
+        int j;
+        int i;
+        continue;
+        Object localObject2 = null;
+      }
+    }
+    if ((localObject1 != null) && (localObject1.length != 0))
+    {
+      localStringBuilder = new StringBuilder();
+      j = localObject1.length;
+      i = 0;
+      while (i < j)
+      {
+        localStringBuilder.append(String.format("%02x:", new Object[] { Byte.valueOf(localObject1[i]) }));
+        i += 1;
+      }
+      if (localStringBuilder.length() > 0) {
+        localStringBuilder.deleteCharAt(localStringBuilder.length() - 1);
+      }
+      localObject1 = localStringBuilder.toString();
+    }
+    try
+    {
+      cache_getMacByAPI.put(paramString, localObject1);
+      return localObject1;
+    }
+    catch (Throwable localThrowable2)
+    {
+      break label159;
+    }
+    cache_getMacByAPI.put(paramString, null);
+    return null;
+    localObject1 = null;
+    label159:
+    cache_getMacByAPI.put(paramString, null);
+    return localObject1;
   }
   
   private static String getMacFromFile(String paramString)
@@ -75,7 +95,7 @@ public class ea
   
   public static String j(Context paramContext)
   {
-    if (!ro.a().b()) {
+    if (!rw.a().b()) {
       return "02:00:00:00:00:00";
     }
     localObject2 = null;
@@ -121,23 +141,23 @@ public class ea
     //   1: astore 4
     //   3: aconst_null
     //   4: astore_3
-    //   5: new 125	java/io/FileInputStream
+    //   5: new 153	java/io/FileInputStream
     //   8: dup
     //   9: aload_0
-    //   10: invokespecial 128	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
+    //   10: invokespecial 156	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
     //   13: astore_0
-    //   14: new 130	java/io/ByteArrayOutputStream
+    //   14: new 158	java/io/ByteArrayOutputStream
     //   17: dup
     //   18: aload_0
-    //   19: invokevirtual 133	java/io/FileInputStream:available	()I
-    //   22: invokespecial 136	java/io/ByteArrayOutputStream:<init>	(I)V
+    //   19: invokevirtual 161	java/io/FileInputStream:available	()I
+    //   22: invokespecial 164	java/io/ByteArrayOutputStream:<init>	(I)V
     //   25: astore_2
     //   26: sipush 1024
     //   29: newarray byte
     //   31: astore 4
     //   33: aload_0
     //   34: aload 4
-    //   36: invokevirtual 140	java/io/FileInputStream:read	([B)I
+    //   36: invokevirtual 168	java/io/FileInputStream:read	([B)I
     //   39: istore_1
     //   40: iload_1
     //   41: ifle +14 -> 55
@@ -145,17 +165,17 @@ public class ea
     //   45: aload 4
     //   47: iconst_0
     //   48: iload_1
-    //   49: invokevirtual 144	java/io/ByteArrayOutputStream:write	([BII)V
+    //   49: invokevirtual 172	java/io/ByteArrayOutputStream:write	([BII)V
     //   52: goto -19 -> 33
     //   55: aload_2
-    //   56: invokevirtual 147	java/io/ByteArrayOutputStream:toByteArray	()[B
+    //   56: invokevirtual 175	java/io/ByteArrayOutputStream:toByteArray	()[B
     //   59: astore 4
     //   61: aload_2
-    //   62: invokevirtual 150	java/io/ByteArrayOutputStream:close	()V
+    //   62: invokevirtual 178	java/io/ByteArrayOutputStream:close	()V
     //   65: aload 4
     //   67: astore_2
     //   68: aload_0
-    //   69: invokevirtual 151	java/io/FileInputStream:close	()V
+    //   69: invokevirtual 179	java/io/FileInputStream:close	()V
     //   72: aload_2
     //   73: areturn
     //   74: astore 4
@@ -186,12 +206,12 @@ public class ea
     //   113: aload_3
     //   114: ifnull +10 -> 124
     //   117: aload_3
-    //   118: invokevirtual 150	java/io/ByteArrayOutputStream:close	()V
+    //   118: invokevirtual 178	java/io/ByteArrayOutputStream:close	()V
     //   121: goto +3 -> 124
     //   124: aload_2
     //   125: ifnull +7 -> 132
     //   128: aload_2
-    //   129: invokevirtual 151	java/io/FileInputStream:close	()V
+    //   129: invokevirtual 179	java/io/FileInputStream:close	()V
     //   132: aload_0
     //   133: athrow
     //   134: aconst_null
@@ -201,7 +221,7 @@ public class ea
     //   138: aload_2
     //   139: ifnull +10 -> 149
     //   142: aload_2
-    //   143: invokevirtual 150	java/io/ByteArrayOutputStream:close	()V
+    //   143: invokevirtual 178	java/io/ByteArrayOutputStream:close	()V
     //   146: goto +3 -> 149
     //   149: aload_0
     //   150: ifnull +8 -> 158

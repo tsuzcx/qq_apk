@@ -1,101 +1,90 @@
 package com.tencent.token;
 
-import java.util.concurrent.CountDownLatch;
-import java.util.concurrent.atomic.AtomicInteger;
-
 public final class ny
-  implements ns
 {
-  private static AtomicInteger n = new AtomicInteger(0);
-  public lk a;
-  public byte[] b;
-  public lk c;
-  int d = 0;
-  public int e = 0;
+  public String a;
+  public String b;
+  public int c;
+  public String d;
+  public String e;
   public String f;
-  public int g;
+  public String g;
   public int h;
   public int i;
-  public int j;
-  public ni k;
-  public long l;
+  public String j;
+  public String k;
+  public int l;
   public int m;
+  public String n;
+  public String o;
+  public int p;
+  public int q;
+  public int r;
+  public int s;
+  public int t;
+  public String u;
+  private String v = "";
   
-  public ny(lk paramlk)
+  public final String toString()
   {
-    new CountDownLatch(1);
-    this.g = 0;
-    this.h = 0;
-    this.i = 0;
-    this.j = 0;
-    this.k = null;
-    this.l = 0L;
-    this.m = 20;
-    this.a = paramlk;
-    this.d = n.getAndIncrement();
-    paramlk = this.a;
-    int i1 = this.d;
-    paramlk.c.b = i1;
-  }
-  
-  public final lk a()
-  {
-    return this.c;
-  }
-  
-  public final void a(int paramInt)
-  {
-    nx localnx = nx.a();
-    try
-    {
-      localnx.a = this;
-      localnx.a.l = System.currentTimeMillis();
-      localnx.a.m = (paramInt * 1000);
-      localnx.e();
-      if (localnx.c())
-      {
-        localnx.a(this);
-        localnx.b();
-        localnx.d();
-      }
-      return;
-    }
-    catch (Exception localException) {}
-  }
-  
-  public final int b()
-  {
-    return this.e;
-  }
-  
-  public final String c()
-  {
-    return this.f;
-  }
-  
-  public final ni d()
-  {
-    return this.k;
-  }
-  
-  public final int e()
-  {
-    return this.g;
-  }
-  
-  public final int f()
-  {
-    return this.j;
-  }
-  
-  public final int g()
-  {
-    return this.h;
-  }
-  
-  public final int h()
-  {
-    return this.i;
+    StringBuilder localStringBuilder = new StringBuilder("ReportStruct [appId=");
+    localStringBuilder.append(this.a);
+    localStringBuilder.append(", appVerName=");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append(", appVerCode=");
+    localStringBuilder.append(this.c);
+    localStringBuilder.append(", sdkVersion=");
+    localStringBuilder.append(this.d);
+    localStringBuilder.append(", uuid=");
+    localStringBuilder.append(this.e);
+    localStringBuilder.append(", apn=");
+    localStringBuilder.append(this.f);
+    localStringBuilder.append(", ssid=");
+    localStringBuilder.append(this.g);
+    localStringBuilder.append(", netType=");
+    localStringBuilder.append(this.h);
+    localStringBuilder.append(", opType=");
+    localStringBuilder.append(this.i);
+    localStringBuilder.append(", domain=");
+    localStringBuilder.append(this.j);
+    localStringBuilder.append(", accessIp=");
+    localStringBuilder.append(this.k);
+    localStringBuilder.append(", lastAccessIp=");
+    localStringBuilder.append(null);
+    localStringBuilder.append(", isNetConnected=");
+    localStringBuilder.append(this.l);
+    localStringBuilder.append(", retCode=");
+    localStringBuilder.append(this.m);
+    localStringBuilder.append(", failInfo=");
+    localStringBuilder.append(this.n);
+    localStringBuilder.append(", exceptionInfo=");
+    localStringBuilder.append(this.o);
+    localStringBuilder.append(", dnsTime=");
+    localStringBuilder.append(this.p);
+    localStringBuilder.append(", connectTime=");
+    localStringBuilder.append(this.q);
+    localStringBuilder.append(", waitTime=");
+    localStringBuilder.append(this.r);
+    localStringBuilder.append(", readTime=");
+    localStringBuilder.append(this.s);
+    localStringBuilder.append(", dataLength=0, rspLen=0, totalTime=");
+    localStringBuilder.append(this.t);
+    localStringBuilder.append(", totalTimeReq=0, retryTime=0, uniqueRequestKey=");
+    localStringBuilder.append(this.u);
+    localStringBuilder.append(", url=");
+    localStringBuilder.append(null);
+    localStringBuilder.append(", isUseSchedulerIp=0, isLast=0, isSchedulerOn=0, probability=");
+    localStringBuilder.append(null);
+    localStringBuilder.append(", rule=");
+    localStringBuilder.append(null);
+    localStringBuilder.append(", jumpUrl=");
+    localStringBuilder.append(null);
+    localStringBuilder.append(", isHijack=0, maxRetryTime=0, domainDns=");
+    localStringBuilder.append(null);
+    localStringBuilder.append(", reqResult=0, contentType=");
+    localStringBuilder.append(this.v);
+    localStringBuilder.append(", isHtttps=0, isTimeout=0]");
+    return localStringBuilder.toString();
   }
 }
 

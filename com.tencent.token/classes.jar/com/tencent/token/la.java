@@ -1,8 +1,17 @@
 package com.tencent.token;
 
-public abstract interface la
+import java.util.ArrayList;
+
+public final class la
 {
-  public abstract void f();
+  public String a;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
+  public String f;
+  public String g;
+  public ArrayList<String> h;
 }
 
 

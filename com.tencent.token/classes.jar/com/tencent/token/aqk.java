@@ -1,56 +1,62 @@
 package com.tencent.token;
 
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
+import com.qq.taf.jce.JceInputStream;
+import com.qq.taf.jce.JceOutputStream;
+import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.TreeMap;
-import java.util.concurrent.ExecutorService;
+import java.util.Collection;
 
-final class aqk
-  extends Handler
+public final class aqk
+  extends JceStruct
 {
-  aqk(aqj paramaqj, Looper paramLooper)
+  static aqg f = new aqg();
+  static aqh g = new aqh();
+  static aqh h = new aqh();
+  static ArrayList<aql> i = new ArrayList();
+  public String a = "";
+  public aqg b = null;
+  public aqh c = null;
+  public aqh d = null;
+  public ArrayList<aql> e = null;
+  
+  static
   {
-    super(paramLooper);
+    aql localaql = new aql();
+    i.add(localaql);
   }
   
-  public final void handleMessage(Message arg1)
+  public final JceStruct newInit()
   {
-    switch (???.what)
-    {
-    default: 
-      return;
-    case 2: 
-      ??? = (Object[])???.obj;
-      localObject1 = (aql)???[0];
-      ((aql)localObject1).f.a(((aql)localObject1).g, ((aql)localObject1).b, ((Integer)???[1]).intValue(), ((Integer)???[2]).intValue(), ((aql)localObject1).d);
-      return;
+    return new aqk();
+  }
+  
+  public final void readFrom(JceInputStream paramJceInputStream)
+  {
+    this.a = paramJceInputStream.readString(0, true);
+    this.b = ((aqg)paramJceInputStream.read(f, 1, false));
+    this.c = ((aqh)paramJceInputStream.read(g, 2, false));
+    this.d = ((aqh)paramJceInputStream.read(h, 3, false));
+    this.e = ((ArrayList)paramJceInputStream.read(i, 4, false));
+  }
+  
+  public final void writeTo(JceOutputStream paramJceOutputStream)
+  {
+    paramJceOutputStream.write(this.a, 0);
+    Object localObject = this.b;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 1);
     }
-    aqj.a(this.a).removeMessages(1);
-    Object localObject1 = new aqm(this.a, (byte)0);
-    synchronized (aqj.b(this.a))
-    {
-      Iterator localIterator = aqj.b(this.a).iterator();
-      while (localIterator.hasNext())
-      {
-        aql localaql = (aql)localIterator.next();
-        if ((localaql.e & 0x40000000) == 0)
-        {
-          if (!localaql.h.a)
-          {
-            int i = localaql.g;
-            ((aqm)localObject1).a.put(Integer.valueOf(i), localaql);
-          }
-        }
-        else {
-          ((aqm)localObject1).b.add(localaql);
-        }
-      }
-      aqj.b(this.a).clear();
-      aqj.c(this.a).submit((Runnable)localObject1);
-      return;
+    localObject = this.c;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 2);
+    }
+    localObject = this.d;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 3);
+    }
+    localObject = this.e;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 4);
     }
   }
 }

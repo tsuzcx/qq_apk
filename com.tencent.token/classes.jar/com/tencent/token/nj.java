@@ -1,97 +1,96 @@
 package com.tencent.token;
 
-import android.text.TextUtils;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
+import android.content.BroadcastReceiver;
+import android.content.Intent;
+import android.net.NetworkInfo;
 
-public final class nj
+final class nj
 {
-  String a;
-  Map b;
+  private static nj d;
+  nm a;
+  final BroadcastReceiver b = new nk(this);
+  final BroadcastReceiver c = new nl(this);
   
-  public nj(String paramString)
+  public static nj a()
   {
-    this.a = paramString;
-    this.b = new HashMap();
-  }
-  
-  public final void a(a parama)
-  {
-    this.b.put(parama.a, parama);
-  }
-  
-  public static final class a
-  {
-    String a;
-    String b;
-    public List c;
-    long d;
-    
-    public a(String paramString1, long paramLong, String paramString2)
+    try
     {
-      this.a = paramString1;
-      this.d = paramLong;
-      this.b = paramString2;
-      this.c = new ArrayList();
+      if (d == null) {
+        d = new nj();
+      }
+      nj localnj = d;
+      return localnj;
     }
+    finally {}
+  }
+  
+  final class a
+    implements Runnable
+  {
+    private a() {}
     
-    public a(String paramString1, long paramLong, String paramString2, String paramString3, String paramString4)
+    public final void run()
     {
-      this.a = paramString1;
-      this.d = paramLong;
-      this.b = paramString3;
-      this.c = a(paramString2);
-      if (!TextUtils.isEmpty(paramString4))
+      try
       {
-        paramString1 = paramString4.split(":");
-        if ((paramString1 != null) && (paramString1.length > 0)) {
-          new ni(paramString1[0], Integer.parseInt(paramString1[1]));
+        nj localnj = nj.this;
+        if (localnj.a != null)
+        {
+          localnj.a.a();
+          return;
         }
+        lo.c("AccessSchedulerTrigger", "onAccessSchedulerTriggered not call for triggerlistener is null");
+        return;
+      }
+      catch (Exception localException)
+      {
+        localException.printStackTrace();
       }
     }
+  }
+  
+  final class b
+    implements Runnable
+  {
+    private Intent a;
     
-    private static ArrayList a(String paramString)
+    b(Intent paramIntent)
     {
-      ArrayList localArrayList = new ArrayList();
-      if (!TextUtils.isEmpty(paramString))
+      this.a = paramIntent;
+    }
+    
+    public final void run()
+    {
+      Object localObject = (NetworkInfo)this.a.getParcelableExtra("networkInfo");
+      nj localnj = nj.this;
+      if (localObject != null)
       {
-        paramString = paramString.split(",");
-        if ((paramString != null) && (paramString.length > 0))
+        localObject = og.b;
+        og.b();
+        String str = og.b;
+        if (!((String)localObject).equals(str))
         {
-          int j = paramString.length;
-          int i = 0;
-          while (i < j)
+          if ((((String)localObject).equals(og.a)) && (og.f()))
           {
-            String[] arrayOfString = paramString[i].split(":");
-            if ((arrayOfString != null) && (arrayOfString.length > 0)) {
-              localArrayList.add(new ni(arrayOfString[0], Integer.parseInt(arrayOfString[1])));
+            if (localnj.a != null)
+            {
+              localnj.a.a();
+              return;
             }
-            i += 1;
+            lo.c("AccessSchedulerTrigger", "onAccessSchedulerTriggered not call for triggerlistener is null");
+            return;
+          }
+          if ((!str.equals(og.a)) && (og.f()))
+          {
+            if (localnj.a != null)
+            {
+              localnj.a.a();
+              return;
+            }
+            lo.c("AccessSchedulerTrigger", "onAccessSchedulerTriggered not call for triggerlistener is null");
           }
         }
       }
-      return localArrayList;
-    }
-    
-    public final String a()
-    {
-      Object localObject = this.c;
-      if ((localObject != null) && (((List)localObject).size() != 0))
-      {
-        StringBuilder localStringBuilder = new StringBuilder();
-        localObject = ((List)localObject).iterator();
-        while (((Iterator)localObject).hasNext())
-        {
-          localStringBuilder.append(((ni)((Iterator)localObject).next()).a());
-          localStringBuilder.append(",");
-        }
-        localStringBuilder.deleteCharAt(localStringBuilder.length() - 1);
-        return localStringBuilder.toString();
-      }
-      return "";
     }
   }
 }

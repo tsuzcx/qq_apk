@@ -38,7 +38,7 @@ public final class as
       while (((Iterator)localObject2).hasNext())
       {
         localObject3 = (Map.Entry)((Iterator)localObject2).next();
-        a(localHashMap, (b)((Map.Entry)localObject3).getKey(), (au.a)((Map.Entry)localObject3).getValue(), paramClass);
+        a(localHashMap, (b)((Map.Entry)localObject3).getKey(), (av.a)((Map.Entry)localObject3).getValue(), paramClass);
       }
       i += 1;
     }
@@ -51,13 +51,13 @@ public final class as
     while (j < k)
     {
       localObject1 = paramArrayOfMethod[j];
-      localObject3 = (bd)((Method)localObject1).getAnnotation(bd.class);
+      localObject3 = (bf)((Method)localObject1).getAnnotation(bf.class);
       if (localObject3 != null)
       {
         localObject2 = ((Method)localObject1).getParameterTypes();
         if (localObject2.length > 0)
         {
-          if (localObject2[0].isAssignableFrom(aw.class)) {
+          if (localObject2[0].isAssignableFrom(ay.class)) {
             i = 1;
           } else {
             throw new IllegalArgumentException("invalid parameter type. Must be one and instanceof LifecycleOwner");
@@ -66,11 +66,11 @@ public final class as
         else {
           i = 0;
         }
-        localObject3 = ((bd)localObject3).a();
+        localObject3 = ((bf)localObject3).a();
         if (localObject2.length > 1) {
-          if (localObject2[1].isAssignableFrom(au.a.class))
+          if (localObject2[1].isAssignableFrom(av.a.class))
           {
-            if (localObject3 == au.a.ON_ANY) {
+            if (localObject3 == av.a.ON_ANY) {
               i = 2;
             } else {
               throw new IllegalArgumentException("Second arg is supported only for ON_ANY value");
@@ -82,7 +82,7 @@ public final class as
         }
         if (localObject2.length <= 2)
         {
-          a(localHashMap, new b(i, (Method)localObject1), (au.a)localObject3, paramClass);
+          a(localHashMap, new b(i, (Method)localObject1), (av.a)localObject3, paramClass);
           bool = true;
         }
         else
@@ -98,9 +98,9 @@ public final class as
     return paramArrayOfMethod;
   }
   
-  private static void a(Map<b, au.a> paramMap, b paramb, au.a parama, Class paramClass)
+  private static void a(Map<b, av.a> paramMap, b paramb, av.a parama, Class paramClass)
   {
-    au.a locala = (au.a)paramMap.get(paramb);
+    av.a locala = (av.a)paramMap.get(paramb);
     if ((locala != null) && (parama != locala))
     {
       paramMap = paramb.b;
@@ -142,7 +142,7 @@ public final class as
     int i = 0;
     while (i < j)
     {
-      if ((bd)arrayOfMethod[i].getAnnotation(bd.class) != null)
+      if ((bf)arrayOfMethod[i].getAnnotation(bf.class) != null)
       {
         a(paramClass, arrayOfMethod);
         return true;
@@ -164,10 +164,10 @@ public final class as
   
   public static final class a
   {
-    public final Map<au.a, List<as.b>> a;
-    final Map<as.b, au.a> b;
+    public final Map<av.a, List<as.b>> a;
+    final Map<as.b, av.a> b;
     
-    a(Map<as.b, au.a> paramMap)
+    a(Map<as.b, av.a> paramMap)
     {
       this.b = paramMap;
       this.a = new HashMap();
@@ -175,7 +175,7 @@ public final class as
       while (localIterator.hasNext())
       {
         Map.Entry localEntry = (Map.Entry)localIterator.next();
-        au.a locala = (au.a)localEntry.getValue();
+        av.a locala = (av.a)localEntry.getValue();
         List localList = (List)this.a.get(locala);
         paramMap = localList;
         if (localList == null)
@@ -187,7 +187,7 @@ public final class as
       }
     }
     
-    public static void a(List<as.b> paramList, aw paramaw, au.a parama, Object paramObject)
+    public static void a(List<as.b> paramList, ay paramay, av.a parama, Object paramObject)
     {
       int i;
       as.b localb;
@@ -205,10 +205,10 @@ public final class as
           switch (localb.a)
           {
           case 2: 
-            localb.b.invoke(paramObject, new Object[] { paramaw, parama });
+            localb.b.invoke(paramObject, new Object[] { paramay, parama });
             break;
           case 1: 
-            localb.b.invoke(paramObject, new Object[] { paramaw });
+            localb.b.invoke(paramObject, new Object[] { paramay });
             break;
           case 0: 
             localb.b.invoke(paramObject, new Object[0]);

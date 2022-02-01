@@ -1,11 +1,8 @@
 package com.tencent.token;
 
-public final class aov
+public abstract interface aov
 {
-  public static ark a()
-  {
-    return (ark)aou.a(arj.class);
-  }
+  public abstract aqc a(auv paramauv, apb paramapb);
 }
 
 

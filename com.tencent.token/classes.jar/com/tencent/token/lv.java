@@ -1,37 +1,77 @@
 package com.tencent.token;
 
+import android.content.Context;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.os.Handler;
-import com.tencent.halley.DownloaderConfig;
 
 public final class lv
 {
-  private static boolean a = false;
+  private static Context a;
+  private static String b = "";
+  private static String c = "null";
+  private static int d = 0;
+  private static String e = "";
+  private static String f = "";
+  private static String g = "2.3.06";
+  private static Handler h;
   
-  public static void a(DownloaderConfig paramDownloaderConfig)
+  public static Context a()
   {
+    return a;
+  }
+  
+  public static void a(Context paramContext, String paramString1, String paramString2, String paramString3)
+  {
+    a = paramContext.getApplicationContext();
+    b = paramString1;
+    e = paramString3;
+    f = paramString2;
+    g = "2.3.06";
+    h = new Handler(a.getMainLooper());
     try
     {
-      boolean bool = a;
-      if (bool) {
-        return;
-      }
-      Object localObject = lo.a();
-      if (localObject == null) {
-        return;
-      }
-      localObject = new StringBuilder("downloader init. config:");
-      ((StringBuilder)localObject).append(paramDownloaderConfig.getMassTaskNum());
-      ((StringBuilder)localObject).append(",");
-      ((StringBuilder)localObject).append(paramDownloaderConfig.getEaseTaskNum());
-      lh.b("DownloaderBaseInfo", ((StringBuilder)localObject).toString());
-      kx.a(paramDownloaderConfig.getMassTaskNum());
-      kx.b(paramDownloaderConfig.getEaseTaskNum());
-      lx.b();
-      lo.h().post(new lw());
-      a = true;
+      paramContext = paramContext.getPackageManager().getPackageInfo(paramContext.getPackageName(), 0);
+      c = paramContext.versionName;
+      d = paramContext.versionCode;
       return;
     }
-    finally {}
+    catch (Throwable paramContext) {}
+  }
+  
+  public static String b()
+  {
+    return b;
+  }
+  
+  public static String c()
+  {
+    return c;
+  }
+  
+  public static int d()
+  {
+    return d;
+  }
+  
+  public static String e()
+  {
+    return e;
+  }
+  
+  public static String f()
+  {
+    return g;
+  }
+  
+  public static String g()
+  {
+    return f;
+  }
+  
+  public static Handler h()
+  {
+    return h;
   }
 }
 

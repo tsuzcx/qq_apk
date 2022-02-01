@@ -1,35 +1,15 @@
 package com.tencent.token;
 
 import java.util.HashMap;
+import java.util.Map;
 
 public final class aeu
 {
-  public static String a(String paramString, int paramInt)
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(paramString);
-    localStringBuilder.append(paramInt);
-    return localStringBuilder.toString();
-  }
+  public static Map<Integer, Long> a = new HashMap();
   
-  public static String a(StringBuilder paramStringBuilder, String paramString1, String paramString2)
+  public static void a(int paramInt, long paramLong)
   {
-    paramStringBuilder.append(paramString1);
-    paramStringBuilder.append(paramString2);
-    return paramStringBuilder.toString();
-  }
-  
-  public static StringBuilder a(String paramString)
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(paramString);
-    return localStringBuilder;
-  }
-  
-  public static void a(HashMap paramHashMap, Object paramObject1, Object paramObject2, long paramLong, int paramInt)
-  {
-    paramHashMap.put(paramObject1, paramObject2);
-    adu.a(paramInt, System.currentTimeMillis() - paramLong);
+    a.put(Integer.valueOf(paramInt), Long.valueOf(paramLong));
   }
 }
 

@@ -1,59 +1,70 @@
 package com.tencent.token;
 
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.drawable.Drawable.Callback;
-import android.text.TextUtils;
-import android.view.View;
-import java.util.HashMap;
-import java.util.Map;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+import java.util.List;
+import javax.annotation.Nullable;
+import javax.net.ssl.SSLParameters;
+import javax.net.ssl.SSLSocket;
 
-public final class amk
+final class amk
+  extends amn
 {
-  public ast a;
-  private final Context b;
-  private String c;
-  private final Map<String, Object> d;
+  final Method a;
+  final Method b;
   
-  public amk(Drawable.Callback paramCallback, String paramString, ast paramast, Map<String, Object> paramMap)
+  private amk(Method paramMethod1, Method paramMethod2)
   {
-    this.c = paramString;
-    if (!TextUtils.isEmpty(paramString))
-    {
-      paramString = this.c;
-      if (paramString.charAt(paramString.length() - 1) != '/')
-      {
-        paramString = new StringBuilder();
-        paramString.append(this.c);
-        paramString.append('/');
-        this.c = paramString.toString();
-      }
-    }
-    if (!(paramCallback instanceof View))
-    {
-      this.d = new HashMap();
-      this.b = null;
-      return;
-    }
-    this.b = ((View)paramCallback).getContext();
-    this.d = paramMap;
-    this.a = paramast;
+    this.a = paramMethod1;
+    this.b = paramMethod2;
   }
   
-  public final Bitmap a(String paramString)
+  public static amk a()
   {
-    if ((this.a != null) && (this.d.get(paramString) != null))
+    try
     {
-      ast localast = this.a;
-      this.d.get(paramString);
-      return localast.a();
+      amk localamk = new amk(SSLParameters.class.getMethod("setApplicationProtocols", new Class[] { [Ljava.lang.String.class }), SSLSocket.class.getMethod("getApplicationProtocol", new Class[0]));
+      return localamk;
+    }
+    catch (NoSuchMethodException localNoSuchMethodException)
+    {
+      label37:
+      break label37;
     }
     return null;
   }
   
-  public final boolean a(Context paramContext)
+  @Nullable
+  public final String a(SSLSocket paramSSLSocket)
   {
-    return ((paramContext == null) && (this.b == null)) || ((paramContext != null) && (this.b.equals(paramContext)));
+    try
+    {
+      paramSSLSocket = (String)this.b.invoke(paramSSLSocket, new Object[0]);
+      if (paramSSLSocket != null)
+      {
+        boolean bool = paramSSLSocket.equals("");
+        if (!bool) {
+          return paramSSLSocket;
+        }
+      }
+      return null;
+    }
+    catch (InvocationTargetException paramSSLSocket) {}catch (IllegalAccessException paramSSLSocket) {}
+    throw akt.a("unable to get selected protocols", paramSSLSocket);
+  }
+  
+  public final void a(SSLSocket paramSSLSocket, String paramString, List<akj> paramList)
+  {
+    try
+    {
+      paramString = paramSSLSocket.getSSLParameters();
+      paramList = a(paramList);
+      this.a.invoke(paramString, new Object[] { paramList.toArray(new String[paramList.size()]) });
+      paramSSLSocket.setSSLParameters(paramString);
+      return;
+    }
+    catch (InvocationTargetException paramSSLSocket) {}catch (IllegalAccessException paramSSLSocket) {}
+    throw akt.a("unable to set ssl parameters", paramSSLSocket);
   }
 }
 

@@ -1,62 +1,353 @@
 package com.tencent.token;
 
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.graphics.ColorFilter;
-import android.graphics.Matrix;
-import android.graphics.Paint;
-import android.graphics.Rect;
-import android.graphics.RectF;
+import java.io.EOFException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.ByteBuffer;
 
 final class ang
-  extends ane
+  implements amx
 {
-  private final Paint g = new Paint(3);
-  private final Rect h = new Rect();
-  private final Rect i = new Rect();
-  private final float j;
+  public final amv a = new amv();
+  public final anl b;
+  boolean c;
   
-  ang(asv paramasv, anh paramanh, float paramFloat)
+  ang(anl paramanl)
   {
-    super(paramasv, paramanh);
-    this.j = paramFloat;
-  }
-  
-  private Bitmap c()
-  {
-    String str = this.c.g;
-    return this.b.a(str);
-  }
-  
-  public final void a(RectF paramRectF, Matrix paramMatrix)
-  {
-    super.a(paramRectF, paramMatrix);
-    paramMatrix = c();
-    if (paramMatrix != null)
+    if (paramanl != null)
     {
-      paramRectF.set(paramRectF.left, paramRectF.top, Math.min(paramRectF.right, paramMatrix.getWidth()), Math.min(paramRectF.bottom, paramMatrix.getHeight()));
-      this.a.mapRect(paramRectF);
-    }
-  }
-  
-  public final void a(String paramString1, String paramString2, ColorFilter paramColorFilter)
-  {
-    this.g.setColorFilter(paramColorFilter);
-  }
-  
-  public final void b(Canvas paramCanvas, Matrix paramMatrix, int paramInt)
-  {
-    Bitmap localBitmap = c();
-    if (localBitmap == null) {
+      this.b = paramanl;
       return;
     }
-    this.g.setAlpha(paramInt);
-    paramCanvas.save();
-    paramCanvas.concat(paramMatrix);
-    this.h.set(0, 0, localBitmap.getWidth(), localBitmap.getHeight());
-    this.i.set(0, 0, (int)(localBitmap.getWidth() * this.j), (int)(localBitmap.getHeight() * this.j));
-    paramCanvas.drawBitmap(localBitmap, this.h, this.i, this.g);
-    paramCanvas.restore();
+    throw new NullPointerException("source == null");
+  }
+  
+  private long a(byte paramByte, long paramLong1, long paramLong2)
+  {
+    if (!this.c)
+    {
+      if (paramLong2 >= 0L)
+      {
+        while (paramLong1 < paramLong2)
+        {
+          long l = this.a.a(paramByte, paramLong1, paramLong2);
+          if (l != -1L) {
+            return l;
+          }
+          l = this.a.b;
+          if (l < paramLong2)
+          {
+            if (this.b.a(this.a, 8192L) == -1L) {
+              return -1L;
+            }
+            paramLong1 = Math.max(paramLong1, l);
+          }
+          else
+          {
+            return -1L;
+          }
+        }
+        return -1L;
+      }
+      throw new IllegalArgumentException(String.format("fromIndex=%s toIndex=%s", new Object[] { Long.valueOf(0L), Long.valueOf(paramLong2) }));
+    }
+    throw new IllegalStateException("closed");
+  }
+  
+  private boolean b(long paramLong)
+  {
+    if (paramLong >= 0L)
+    {
+      if (!this.c)
+      {
+        while (this.a.b < paramLong) {
+          if (this.b.a(this.a, 8192L) == -1L) {
+            return false;
+          }
+        }
+        return true;
+      }
+      throw new IllegalStateException("closed");
+    }
+    throw new IllegalArgumentException("byteCount < 0: ".concat(String.valueOf(paramLong)));
+  }
+  
+  public final long a(amv paramamv, long paramLong)
+  {
+    if (paramamv != null)
+    {
+      if (paramLong >= 0L)
+      {
+        if (!this.c)
+        {
+          if ((this.a.b == 0L) && (this.b.a(this.a, 8192L) == -1L)) {
+            return -1L;
+          }
+          paramLong = Math.min(paramLong, this.a.b);
+          return this.a.a(paramamv, paramLong);
+        }
+        throw new IllegalStateException("closed");
+      }
+      throw new IllegalArgumentException("byteCount < 0: ".concat(String.valueOf(paramLong)));
+    }
+    throw new IllegalArgumentException("sink == null");
+  }
+  
+  public final anm a()
+  {
+    return this.b.a();
+  }
+  
+  public final void a(long paramLong)
+  {
+    if (b(paramLong)) {
+      return;
+    }
+    throw new EOFException();
+  }
+  
+  public final void a(byte[] paramArrayOfByte)
+  {
+    try
+    {
+      a(paramArrayOfByte.length);
+      this.a.a(paramArrayOfByte);
+      return;
+    }
+    catch (EOFException localEOFException)
+    {
+      int i = 0;
+      while (this.a.b > 0L)
+      {
+        amv localamv = this.a;
+        int j = localamv.a(paramArrayOfByte, i, (int)localamv.b);
+        if (j != -1) {
+          i += j;
+        } else {
+          throw new AssertionError();
+        }
+      }
+      throw localEOFException;
+    }
+  }
+  
+  public final amv b()
+  {
+    return this.a;
+  }
+  
+  public final amy c(long paramLong)
+  {
+    a(paramLong);
+    return this.a.c(paramLong);
+  }
+  
+  public final boolean c()
+  {
+    if (!this.c) {
+      return (this.a.c()) && (this.b.a(this.a, 8192L) == -1L);
+    }
+    throw new IllegalStateException("closed");
+  }
+  
+  public final void close()
+  {
+    if (this.c) {
+      return;
+    }
+    this.c = true;
+    this.b.close();
+    this.a.p();
+  }
+  
+  public final InputStream d()
+  {
+    new InputStream()
+    {
+      public final int available()
+      {
+        if (!ang.this.c) {
+          return (int)Math.min(ang.this.a.b, 2147483647L);
+        }
+        throw new IOException("closed");
+      }
+      
+      public final void close()
+      {
+        ang.this.close();
+      }
+      
+      public final int read()
+      {
+        if (!ang.this.c)
+        {
+          if ((ang.this.a.b == 0L) && (ang.this.b.a(ang.this.a, 8192L) == -1L)) {
+            return -1;
+          }
+          return ang.this.a.f() & 0xFF;
+        }
+        throw new IOException("closed");
+      }
+      
+      public final int read(byte[] paramAnonymousArrayOfByte, int paramAnonymousInt1, int paramAnonymousInt2)
+      {
+        if (!ang.this.c)
+        {
+          ann.a(paramAnonymousArrayOfByte.length, paramAnonymousInt1, paramAnonymousInt2);
+          if ((ang.this.a.b == 0L) && (ang.this.b.a(ang.this.a, 8192L) == -1L)) {
+            return -1;
+          }
+          return ang.this.a.a(paramAnonymousArrayOfByte, paramAnonymousInt1, paramAnonymousInt2);
+        }
+        throw new IOException("closed");
+      }
+      
+      public final String toString()
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(ang.this);
+        localStringBuilder.append(".inputStream()");
+        return localStringBuilder.toString();
+      }
+    };
+  }
+  
+  public final String d(long paramLong)
+  {
+    if (paramLong >= 0L)
+    {
+      long l1;
+      if (paramLong == 9223372036854775807L) {
+        l1 = 9223372036854775807L;
+      } else {
+        l1 = paramLong + 1L;
+      }
+      long l2 = a((byte)10, 0L, l1);
+      if (l2 != -1L) {
+        return this.a.e(l2);
+      }
+      if ((l1 < 9223372036854775807L) && (b(l1)) && (this.a.b(l1 - 1L) == 13) && (b(1L + l1)) && (this.a.b(l1) == 10)) {
+        return this.a.e(l1);
+      }
+      amv localamv = new amv();
+      Object localObject = this.a;
+      ((amv)localObject).a(localamv, 0L, Math.min(32L, ((amv)localObject).b));
+      localObject = new StringBuilder("\\n not found: limit=");
+      ((StringBuilder)localObject).append(Math.min(this.a.b, paramLong));
+      ((StringBuilder)localObject).append(" content=");
+      ((StringBuilder)localObject).append(localamv.l().e());
+      ((StringBuilder)localObject).append('…');
+      throw new EOFException(((StringBuilder)localObject).toString());
+    }
+    throw new IllegalArgumentException("limit < 0: ".concat(String.valueOf(paramLong)));
+  }
+  
+  public final byte f()
+  {
+    a(1L);
+    return this.a.f();
+  }
+  
+  public final byte[] f(long paramLong)
+  {
+    a(paramLong);
+    return this.a.f(paramLong);
+  }
+  
+  public final short g()
+  {
+    a(2L);
+    return this.a.g();
+  }
+  
+  public final void g(long paramLong)
+  {
+    if (!this.c)
+    {
+      while (paramLong > 0L)
+      {
+        if ((this.a.b == 0L) && (this.b.a(this.a, 8192L) == -1L)) {
+          throw new EOFException();
+        }
+        long l = Math.min(paramLong, this.a.b);
+        this.a.g(l);
+        paramLong -= l;
+      }
+      return;
+    }
+    throw new IllegalStateException("closed");
+  }
+  
+  public final int h()
+  {
+    a(4L);
+    return this.a.h();
+  }
+  
+  public final short i()
+  {
+    a(2L);
+    return ann.a(this.a.g());
+  }
+  
+  public final boolean isOpen()
+  {
+    return !this.c;
+  }
+  
+  public final int j()
+  {
+    a(4L);
+    return ann.a(this.a.h());
+  }
+  
+  public final long k()
+  {
+    a(1L);
+    int j;
+    byte b1;
+    for (int i = 0;; i = j)
+    {
+      j = i + 1;
+      if (!b(j)) {
+        break label105;
+      }
+      b1 = this.a.b(i);
+      if (((b1 < 48) || (b1 > 57)) && ((b1 < 97) || (b1 > 102)) && ((b1 < 65) || (b1 > 70))) {
+        break;
+      }
+    }
+    if (i == 0) {
+      throw new NumberFormatException(String.format("Expected leading [0-9a-fA-F] character but was %#x", new Object[] { Byte.valueOf(b1) }));
+    }
+    label105:
+    return this.a.k();
+  }
+  
+  public final String n()
+  {
+    return d(9223372036854775807L);
+  }
+  
+  public final long q()
+  {
+    return a((byte)0, 0L, 9223372036854775807L);
+  }
+  
+  public final int read(ByteBuffer paramByteBuffer)
+  {
+    if ((this.a.b == 0L) && (this.b.a(this.a, 8192L) == -1L)) {
+      return -1;
+    }
+    return this.a.read(paramByteBuffer);
+  }
+  
+  public final String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder("buffer(");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append(")");
+    return localStringBuilder.toString();
   }
 }
 

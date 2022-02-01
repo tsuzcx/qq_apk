@@ -1,202 +1,46 @@
 package com.tencent.token;
 
-import android.graphics.PorterDuff.Mode;
-import android.graphics.Rect;
+import android.content.Context;
+import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
-import android.graphics.drawable.DrawableContainer;
-import android.graphics.drawable.DrawableContainer.DrawableContainerState;
-import android.graphics.drawable.GradientDrawable;
-import android.graphics.drawable.InsetDrawable;
-import android.graphics.drawable.LayerDrawable;
-import android.graphics.drawable.ScaleDrawable;
-import android.os.Build.VERSION;
-import java.lang.reflect.Field;
-import java.lang.reflect.Method;
+import android.util.AttributeSet;
+import android.widget.TextView;
 
-public final class iq
+final class iq
+  extends ip
 {
-  public static final Rect a = new Rect();
-  private static Class<?> b;
+  private jg f;
+  private jg g;
   
-  static
+  iq(TextView paramTextView)
   {
-    if (Build.VERSION.SDK_INT >= 18) {}
-    try
-    {
-      b = Class.forName("android.graphics.Insets");
-      return;
-    }
-    catch (ClassNotFoundException localClassNotFoundException) {}
-    return;
+    super(paramTextView);
   }
   
-  public static PorterDuff.Mode a(int paramInt, PorterDuff.Mode paramMode)
+  final void a()
   {
-    if (paramInt != 3)
+    super.a();
+    if ((this.f != null) || (this.g != null))
     {
-      if (paramInt != 5)
-      {
-        if (paramInt != 9)
-        {
-          switch (paramInt)
-          {
-          default: 
-            return paramMode;
-          case 16: 
-            return PorterDuff.Mode.ADD;
-          case 15: 
-            return PorterDuff.Mode.SCREEN;
-          }
-          return PorterDuff.Mode.MULTIPLY;
-        }
-        return PorterDuff.Mode.SRC_ATOP;
-      }
-      return PorterDuff.Mode.SRC_IN;
-    }
-    return PorterDuff.Mode.SRC_OVER;
-  }
-  
-  public static Rect a(Drawable paramDrawable)
-  {
-    if (b != null)
-    {
-      Object localObject = paramDrawable;
-      for (;;)
-      {
-        try
-        {
-          if ((paramDrawable instanceof di)) {
-            localObject = ((di)paramDrawable).a();
-          }
-          paramDrawable = localObject.getClass().getMethod("getOpticalInsets", new Class[0]).invoke(localObject, new Object[0]);
-          if (paramDrawable == null) {
-            continue;
-          }
-          localObject = new Rect();
-          Field[] arrayOfField = b.getFields();
-          int k = arrayOfField.length;
-          j = 0;
-          if (j >= k) {
-            continue;
-          }
-          localField = arrayOfField[j];
-          String str = localField.getName();
-          i = str.hashCode();
-          if (i != -1383228885)
-          {
-            if (i != 115029)
-            {
-              if (i != 3317767)
-              {
-                if ((i != 108511772) || (!str.equals("right"))) {
-                  continue;
-                }
-                i = 2;
-                continue;
-              }
-              if (!str.equals("left")) {
-                continue;
-              }
-              i = 0;
-              continue;
-            }
-            if (!str.equals("top")) {
-              continue;
-            }
-            i = 1;
-            continue;
-          }
-          if (!str.equals("bottom")) {
-            continue;
-          }
-          i = 3;
-        }
-        catch (Exception paramDrawable)
-        {
-          int j;
-          Field localField;
-          continue;
-          int i = -1;
-          switch (i)
-          {
-          }
-          continue;
-        }
-        ((Rect)localObject).bottom = localField.getInt(paramDrawable);
-        continue;
-        ((Rect)localObject).right = localField.getInt(paramDrawable);
-        continue;
-        ((Rect)localObject).top = localField.getInt(paramDrawable);
-        continue;
-        ((Rect)localObject).left = localField.getInt(paramDrawable);
-        j += 1;
-      }
-      return localObject;
-    }
-    return a;
-  }
-  
-  static void b(Drawable paramDrawable)
-  {
-    if ((Build.VERSION.SDK_INT == 21) && ("android.graphics.drawable.VectorDrawable".equals(paramDrawable.getClass().getName())))
-    {
-      int[] arrayOfInt = paramDrawable.getState();
-      if ((arrayOfInt != null) && (arrayOfInt.length != 0)) {
-        paramDrawable.setState(ja.h);
-      } else {
-        paramDrawable.setState(ja.e);
-      }
-      paramDrawable.setState(arrayOfInt);
+      Drawable[] arrayOfDrawable = this.a.getCompoundDrawablesRelative();
+      a(arrayOfDrawable[0], this.f);
+      a(arrayOfDrawable[2], this.g);
     }
   }
   
-  public static boolean c(Drawable paramDrawable)
+  final void a(AttributeSet paramAttributeSet, int paramInt)
   {
-    for (;;)
-    {
-      if ((Build.VERSION.SDK_INT < 15) && ((paramDrawable instanceof InsetDrawable))) {
-        return false;
-      }
-      if ((Build.VERSION.SDK_INT < 15) && ((paramDrawable instanceof GradientDrawable))) {
-        return false;
-      }
-      if ((Build.VERSION.SDK_INT < 17) && ((paramDrawable instanceof LayerDrawable))) {
-        return false;
-      }
-      if ((paramDrawable instanceof DrawableContainer))
-      {
-        paramDrawable = paramDrawable.getConstantState();
-        if (!(paramDrawable instanceof DrawableContainer.DrawableContainerState)) {
-          break;
-        }
-        paramDrawable = ((DrawableContainer.DrawableContainerState)paramDrawable).getChildren();
-        int j = paramDrawable.length;
-        int i = 0;
-        while (i < j)
-        {
-          if (!c(paramDrawable[i])) {
-            return false;
-          }
-          i += 1;
-        }
-      }
-      if ((paramDrawable instanceof di))
-      {
-        paramDrawable = ((di)paramDrawable).a();
-      }
-      else if ((paramDrawable instanceof gs))
-      {
-        paramDrawable = ((gs)paramDrawable).a;
-      }
-      else
-      {
-        if (!(paramDrawable instanceof ScaleDrawable)) {
-          break;
-        }
-        paramDrawable = ((ScaleDrawable)paramDrawable).getDrawable();
-      }
+    super.a(paramAttributeSet, paramInt);
+    Context localContext = this.a.getContext();
+    ik localik = ik.a();
+    paramAttributeSet = localContext.obtainStyledAttributes(paramAttributeSet, gs.j.AppCompatTextHelper, paramInt, 0);
+    if (paramAttributeSet.hasValue(gs.j.AppCompatTextHelper_android_drawableStart)) {
+      this.f = a(localContext, localik, paramAttributeSet.getResourceId(gs.j.AppCompatTextHelper_android_drawableStart, 0));
     }
-    return true;
+    if (paramAttributeSet.hasValue(gs.j.AppCompatTextHelper_android_drawableEnd)) {
+      this.g = a(localContext, localik, paramAttributeSet.getResourceId(gs.j.AppCompatTextHelper_android_drawableEnd, 0));
+    }
+    paramAttributeSet.recycle();
   }
 }
 

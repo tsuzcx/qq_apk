@@ -13,12 +13,12 @@ import android.view.View.MeasureSpec;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
-import com.tencent.token.ew;
-import com.tencent.token.go.f;
-import com.tencent.token.go.j;
-import com.tencent.token.ib;
-import com.tencent.token.ic;
-import com.tencent.token.iy;
+import com.tencent.token.fa;
+import com.tencent.token.gs.f;
+import com.tencent.token.gs.j;
+import com.tencent.token.if;
+import com.tencent.token.ig;
+import com.tencent.token.jc;
 
 public class ActionBarContainer
   extends FrameLayout
@@ -39,19 +39,19 @@ public class ActionBarContainer
     super(paramContext, paramAttributeSet);
     Object localObject;
     if (Build.VERSION.SDK_INT >= 21) {
-      localObject = new ic(this);
+      localObject = new ig(this);
     } else {
-      localObject = new ib(this);
+      localObject = new if(this);
     }
-    ew.a(this, (Drawable)localObject);
-    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, go.j.ActionBar);
-    this.a = paramContext.getDrawable(go.j.ActionBar_background);
-    this.b = paramContext.getDrawable(go.j.ActionBar_backgroundStacked);
-    this.j = paramContext.getDimensionPixelSize(go.j.ActionBar_height, -1);
-    if (getId() == go.f.split_action_bar)
+    fa.a(this, (Drawable)localObject);
+    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, gs.j.ActionBar);
+    this.a = paramContext.getDrawable(gs.j.ActionBar_background);
+    this.b = paramContext.getDrawable(gs.j.ActionBar_backgroundStacked);
+    this.j = paramContext.getDimensionPixelSize(gs.j.ActionBar_height, -1);
+    if (getId() == gs.f.split_action_bar)
     {
       this.d = true;
-      this.c = paramContext.getDrawable(go.j.ActionBar_backgroundSplit);
+      this.c = paramContext.getDrawable(gs.j.ActionBar_backgroundSplit);
     }
     paramContext.recycle();
     boolean bool1 = this.d;
@@ -130,8 +130,8 @@ public class ActionBarContainer
   public void onFinishInflate()
   {
     super.onFinishInflate();
-    this.h = findViewById(go.f.action_bar);
-    this.i = findViewById(go.f.action_context_bar);
+    this.h = findViewById(gs.f.action_bar);
+    this.i = findViewById(gs.f.action_context_bar);
   }
   
   public boolean onHoverEvent(MotionEvent paramMotionEvent)
@@ -356,20 +356,20 @@ public class ActionBarContainer
     invalidate();
   }
   
-  public void setTabContainer(iy paramiy)
+  public void setTabContainer(jc paramjc)
   {
     Object localObject = this.g;
     if (localObject != null) {
       removeView((View)localObject);
     }
-    this.g = paramiy;
-    if (paramiy != null)
+    this.g = paramjc;
+    if (paramjc != null)
     {
-      addView(paramiy);
-      localObject = paramiy.getLayoutParams();
+      addView(paramjc);
+      localObject = paramjc.getLayoutParams();
       ((ViewGroup.LayoutParams)localObject).width = -1;
       ((ViewGroup.LayoutParams)localObject).height = -2;
-      paramiy.setAllowCollapse(false);
+      paramjc.setAllowCollapse(false);
     }
   }
   

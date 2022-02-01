@@ -1,6 +1,6 @@
 package com.tencent.halley.downloader.d.a;
 
-import com.tencent.token.mp;
+import com.tencent.token.mw;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.RejectedExecutionException;
 import java.util.concurrent.TimeUnit;
@@ -8,7 +8,7 @@ import java.util.concurrent.TimeUnit;
 public final class d
   extends LinkedBlockingQueue
 {
-  public mp a = null;
+  public mw a = null;
   private Integer b = null;
   
   public d() {}
@@ -23,9 +23,9 @@ public final class d
     paramTimeUnit = (Runnable)super.poll(paramLong, paramTimeUnit);
     if (paramTimeUnit == null)
     {
-      mp localmp = this.a;
-      if (localmp != null) {
-        localmp.a();
+      mw localmw = this.a;
+      if (localmw != null) {
+        localmw.a();
       }
     }
     return paramTimeUnit;

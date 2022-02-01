@@ -1,25 +1,90 @@
 package com.tencent.token;
 
-import android.telephony.PhoneStateListener;
-import android.telephony.SignalStrength;
-import android.telephony.TelephonyManager;
+import android.os.Build;
+import android.os.Build.VERSION;
+import java.io.PrintStream;
 
-final class pw
-  extends PhoneStateListener
+public final class pw
 {
-  pw(pv parampv) {}
+  private static int a = 6;
+  private static PrintStream b;
+  private static byte[] c;
+  private static final String d;
   
-  public final void onSignalStrengthsChanged(SignalStrength paramSignalStrength)
+  static
   {
-    super.onSignalStrengthsChanged(paramSignalStrength);
-    if (pv.a(this.a) == 2) {
-      pv.a(paramSignalStrength.getCdmaDbm());
+    StringBuilder localStringBuilder1 = new StringBuilder();
+    StringBuilder localStringBuilder2 = new StringBuilder("VERSION.RELEASE:[");
+    localStringBuilder2.append(Build.VERSION.RELEASE);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder("] VERSION.CODENAME:[");
+    localStringBuilder2.append(Build.VERSION.CODENAME);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder("] VERSION.INCREMENTAL:[");
+    localStringBuilder2.append(Build.VERSION.INCREMENTAL);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder("] BOARD:[");
+    localStringBuilder2.append(Build.BOARD);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder("] DEVICE:[");
+    localStringBuilder2.append(Build.DEVICE);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder("] DISPLAY:[");
+    localStringBuilder2.append(Build.DISPLAY);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder("] FINGERPRINT:[");
+    localStringBuilder2.append(Build.FINGERPRINT);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder("] HOST:[");
+    localStringBuilder2.append(Build.HOST);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder("] MANUFACTURER:[");
+    localStringBuilder2.append(Build.MANUFACTURER);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder("] MODEL:[");
+    localStringBuilder2.append(xr.a);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder("] PRODUCT:[");
+    localStringBuilder2.append(Build.PRODUCT);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder("] TAGS:[");
+    localStringBuilder2.append(Build.TAGS);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder("] TYPE:[");
+    localStringBuilder2.append(Build.TYPE);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder("] USER:[");
+    localStringBuilder2.append(Build.USER);
+    localStringBuilder2.append("]");
+    localStringBuilder1.append(localStringBuilder2.toString());
+    d = localStringBuilder1.toString();
+  }
+  
+  public static void a(String paramString1, String paramString2)
+  {
+    if (a <= 4) {
+      px.a(b, c, "E/".concat(String.valueOf(paramString1)), paramString2);
     }
-    if (pv.a(this.a) == 1) {
-      pv.a(paramSignalStrength.getGsmSignalStrength() * 2 - 113);
+  }
+  
+  public static void b(String paramString1, String paramString2)
+  {
+    if (a <= 2) {
+      px.a(b, c, "I/".concat(String.valueOf(paramString1)), paramString2);
     }
-    if (pv.b(this.a) != null) {
-      pv.b(this.a).listen(pv.c(this.a), 0);
+  }
+  
+  public static void c(String paramString1, String paramString2)
+  {
+    if (a <= 1) {
+      px.a(b, c, "D/".concat(String.valueOf(paramString1)), paramString2);
+    }
+  }
+  
+  public static void d(String paramString1, String paramString2)
+  {
+    if (a <= 0) {
+      px.a(b, c, "V/".concat(String.valueOf(paramString1)), paramString2);
     }
   }
 }

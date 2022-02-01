@@ -1,57 +1,102 @@
 package com.tencent.token;
 
-import android.view.View;
-import android.view.View.OnAttachStateChangeListener;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnPreDrawListener;
+import android.app.Activity;
+import android.content.ComponentName;
+import android.content.Context;
+import android.content.Intent;
+import android.content.pm.ActivityInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.PackageManager.NameNotFoundException;
+import android.os.Build.VERSION;
+import android.os.Bundle;
 
-final class cm
-  implements View.OnAttachStateChangeListener, ViewTreeObserver.OnPreDrawListener
+public final class cm
 {
-  private final View a;
-  private ViewTreeObserver b;
-  private final Runnable c;
-  
-  private cm(View paramView, Runnable paramRunnable)
+  public static Intent a(Activity paramActivity)
   {
-    this.a = paramView;
-    this.b = paramView.getViewTreeObserver();
-    this.c = paramRunnable;
-  }
-  
-  public static cm a(View paramView, Runnable paramRunnable)
-  {
-    paramRunnable = new cm(paramView, paramRunnable);
-    paramView.getViewTreeObserver().addOnPreDrawListener(paramRunnable);
-    paramView.addOnAttachStateChangeListener(paramRunnable);
-    return paramRunnable;
-  }
-  
-  private void a()
-  {
-    if (this.b.isAlive()) {
-      this.b.removeOnPreDrawListener(this);
-    } else {
-      this.a.getViewTreeObserver().removeOnPreDrawListener(this);
+    if (Build.VERSION.SDK_INT >= 16)
+    {
+      localObject = paramActivity.getParentActivityIntent();
+      if (localObject != null) {
+        return localObject;
+      }
     }
-    this.a.removeOnAttachStateChangeListener(this);
+    Object localObject = b(paramActivity);
+    if (localObject == null) {
+      return null;
+    }
+    ComponentName localComponentName = new ComponentName(paramActivity, (String)localObject);
+    try
+    {
+      if (b(paramActivity, localComponentName) == null) {
+        return Intent.makeMainActivity(localComponentName);
+      }
+      paramActivity = new Intent().setComponent(localComponentName);
+      return paramActivity;
+    }
+    catch (PackageManager.NameNotFoundException paramActivity)
+    {
+      label67:
+      break label67;
+    }
+    paramActivity = new StringBuilder("getParentActivityIntent: bad parentActivityName '");
+    paramActivity.append((String)localObject);
+    paramActivity.append("' in manifest");
+    return null;
   }
   
-  public final boolean onPreDraw()
+  public static Intent a(Context paramContext, ComponentName paramComponentName)
   {
-    a();
-    this.c.run();
-    return true;
+    String str = b(paramContext, paramComponentName);
+    if (str == null) {
+      return null;
+    }
+    paramComponentName = new ComponentName(paramComponentName.getPackageName(), str);
+    if (b(paramContext, paramComponentName) == null) {
+      return Intent.makeMainActivity(paramComponentName);
+    }
+    return new Intent().setComponent(paramComponentName);
   }
   
-  public final void onViewAttachedToWindow(View paramView)
+  public static String b(Activity paramActivity)
   {
-    this.b = paramView.getViewTreeObserver();
+    try
+    {
+      paramActivity = b(paramActivity, paramActivity.getComponentName());
+      return paramActivity;
+    }
+    catch (PackageManager.NameNotFoundException paramActivity)
+    {
+      throw new IllegalArgumentException(paramActivity);
+    }
   }
   
-  public final void onViewDetachedFromWindow(View paramView)
+  private static String b(Context paramContext, ComponentName paramComponentName)
   {
-    a();
+    paramComponentName = paramContext.getPackageManager().getActivityInfo(paramComponentName, 128);
+    if (Build.VERSION.SDK_INT >= 16)
+    {
+      str = paramComponentName.parentActivityName;
+      if (str != null) {
+        return str;
+      }
+    }
+    if (paramComponentName.metaData == null) {
+      return null;
+    }
+    String str = paramComponentName.metaData.getString("android.support.PARENT_ACTIVITY");
+    if (str == null) {
+      return null;
+    }
+    paramComponentName = str;
+    if (str.charAt(0) == '.')
+    {
+      paramComponentName = new StringBuilder();
+      paramComponentName.append(paramContext.getPackageName());
+      paramComponentName.append(str);
+      paramComponentName = paramComponentName.toString();
+    }
+    return paramComponentName;
   }
 }
 

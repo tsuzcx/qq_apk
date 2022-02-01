@@ -1,10 +1,21 @@
 package com.tencent.token;
 
-public abstract interface nl
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+
+final class nl
+  extends BroadcastReceiver
 {
-  public abstract nj a(String paramString);
+  nl(nj paramnj) {}
   
-  public abstract void a(nj paramnj);
+  public final void onReceive(Context paramContext, Intent paramIntent)
+  {
+    paramContext = new StringBuilder("onAccessSchedulerTriggered by timer, curTime:");
+    paramContext.append(System.currentTimeMillis());
+    lo.a("AccessSchedulerTrigger", paramContext.toString());
+    ld.a().a(new nj.a(this.a, (byte)0));
+  }
 }
 
 

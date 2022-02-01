@@ -1,14 +1,25 @@
 package com.tencent.token;
 
-import java.util.List;
+import java.io.File;
+import java.io.IOException;
 
-public final class amh
-  extends alz<amx>
+public abstract interface amh
 {
-  public amh(List<? extends aly<amx>> paramList)
+  public static final amh a = new amh()
   {
-    super(paramList);
-  }
+    public final void a(File paramAnonymousFile)
+    {
+      if (!paramAnonymousFile.delete())
+      {
+        if (!paramAnonymousFile.exists()) {
+          return;
+        }
+        throw new IOException("failed to delete ".concat(String.valueOf(paramAnonymousFile)));
+      }
+    }
+  };
+  
+  public abstract void a(File paramFile);
 }
 
 

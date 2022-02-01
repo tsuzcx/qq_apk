@@ -1,113 +1,42 @@
 package com.tencent.token;
 
-import android.content.res.Resources;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.token.ui.LoginMsgReportLocationActivity;
+import btmsdkobf.bx;
+import btmsdkobf.cj;
+import btmsdkobf.cm;
+import btmsdkobf.dj;
+import com.qq.taf.jce.JceStruct;
+import java.lang.ref.WeakReference;
 
 public final class ya
-  extends BaseAdapter
+  implements auf
 {
-  public int a = -1;
-  private LayoutInflater b;
-  private int c;
-  private String[] d;
-  private LoginMsgReportLocationActivity e;
-  
-  public ya(LoginMsgReportLocationActivity paramLoginMsgReportLocationActivity)
+  public final WeakReference<Object> a(int paramInt1, JceStruct paramJceStruct1, JceStruct paramJceStruct2, int paramInt2, final aui paramaui)
   {
-    this.e = paramLoginMsgReportLocationActivity;
-    this.b = LayoutInflater.from(paramLoginMsgReportLocationActivity);
-    this.c = rs.a().d.length;
-    this.d = rs.a().c;
-    this.e.checkMenuBtnEnable(this.a);
-  }
-  
-  public final int getCount()
-  {
-    return this.c;
-  }
-  
-  public final Object getItem(int paramInt)
-  {
-    return Integer.valueOf(paramInt);
-  }
-  
-  public final long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public final View getView(final int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    if (paramView == null)
+    bx.ar().a(paramInt1, paramJceStruct1, paramJceStruct2, paramInt2, new cj()
     {
-      paramViewGroup = this.b.inflate(2131296370, null);
-      paramView = new a((byte)0);
-      paramView.a = ((TextView)paramViewGroup.findViewById(2131165276));
-      paramView.b = ((TextView)paramViewGroup.findViewById(2131165767));
-      paramView.c = ((RelativeLayout)paramViewGroup.findViewById(2131165768));
-      paramView.d = ((ImageView)paramViewGroup.findViewById(2131165972));
-      paramViewGroup.setTag(paramView);
-    }
-    else
-    {
-      localObject = (a)paramView.getTag();
-      paramViewGroup = paramView;
-      paramView = (View)localObject;
-    }
-    if (paramInt >= this.d.length) {
-      return paramViewGroup;
-    }
-    paramView.b.setText(this.d[paramInt]);
-    paramView.a.setVisibility(8);
-    Object localObject = rs.a().f;
-    int[] arrayOfInt = rs.a().g;
-    int i = 0;
-    while (i < arrayOfInt.length)
-    {
-      if (paramInt == arrayOfInt[i])
+      public final void onFinish(int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3, int paramAnonymousInt4, JceStruct paramAnonymousJceStruct)
       {
-        paramView.a.setVisibility(0);
-        paramView.a.setText(localObject[i]);
-        break;
+        paramaui.a(paramAnonymousInt2, paramAnonymousInt3, paramAnonymousInt4, paramAnonymousJceStruct);
       }
-      i += 1;
-    }
-    paramView.c.setOnClickListener(new View.OnClickListener()
+    }, 0L);
+    return null;
+  }
+  
+  public final void a(JceStruct paramJceStruct, final auj paramauj)
+  {
+    bx.ar().a(13560, paramJceStruct, 2, new cm()
     {
-      public final void onClick(View paramAnonymousView)
+      public final dj<Long, Integer, JceStruct> a(int paramAnonymousInt1, long paramAnonymousLong, int paramAnonymousInt2, JceStruct paramAnonymousJceStruct)
       {
-        ya.a(ya.this, paramInt);
-        ya.b(ya.this).checkMenuBtnEnable(ya.a(ya.this));
-        ya.this.notifyDataSetChanged();
+        paramauj.a(paramAnonymousLong, paramAnonymousInt2, paramAnonymousJceStruct);
+        throw new NullPointerException();
       }
     });
-    if (this.a == paramInt)
-    {
-      paramView.d.setVisibility(0);
-      paramView.c.setBackgroundColor(this.e.getResources().getColor(2130968691));
-      return paramViewGroup;
-    }
-    paramView.d.setVisibility(8);
-    paramView.c.setBackgroundColor(this.e.getResources().getColor(2130968686));
-    return paramViewGroup;
   }
   
-  final class a
+  static final class a
   {
-    TextView a;
-    TextView b;
-    RelativeLayout c;
-    ImageView d;
-    
-    private a() {}
+    private static final ya a = new ya();
   }
 }
 

@@ -1,142 +1,331 @@
 package com.tencent.token;
 
+import java.util.ArrayList;
+import java.util.List;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 public final class ss
-  implements ahp
 {
-  ahn a = null;
-  private st b = null;
-  private int c = 0;
-  private sn d = null;
+  public int a;
+  public String b;
+  public boolean c;
+  public int d;
+  public boolean e = false;
+  public boolean f = false;
+  public boolean g = false;
+  public Object h = null;
+  protected List<ss> i = null;
   
-  public ss(sn paramsn)
+  private void a(ss paramss)
   {
-    this.d = paramsn;
-    this.b = new st();
+    if (this.i == null) {
+      this.i = new ArrayList();
+    }
+    this.i.add(paramss);
   }
   
-  private static String a(sp paramsp)
+  public final boolean a(JSONObject paramJSONObject)
   {
-    if ((paramsp.c != null) && (paramsp.c.length() != 0)) {
-      return paramsp.c;
-    }
-    Object localObject = new StringBuilder("其它错误：");
-    ((StringBuilder)localObject).append(paramsp.b);
-    localObject = ((StringBuilder)localObject).toString();
-    int i = paramsp.b;
-    switch (i)
+    for (;;)
     {
-    default: 
-      switch (i)
+      try
       {
-      default: 
-        localObject = new StringBuilder("其它错误：");
-        ((StringBuilder)localObject).append(paramsp.b);
-        xa.b(((StringBuilder)localObject).toString());
-        localObject = new StringBuilder("其它错误：");
-        ((StringBuilder)localObject).append(paramsp.b);
-        return ((StringBuilder)localObject).toString();
-      case 101: 
-        xa.b("如果客户端收到此错误，测等待一段时间重新尝试请求。");
-        return "如果客户端收到此错误，测等待一段时间重新尝试请求。";
+        this.a = paramJSONObject.getInt("id");
+        this.b = paramJSONObject.getString("name");
+        if (paramJSONObject.getInt("value") != 0)
+        {
+          bool = true;
+          this.c = bool;
+          this.d = paramJSONObject.getInt("type");
+          try
+          {
+            if (paramJSONObject.getInt("is_more") != 0) {
+              break label253;
+            }
+            bool = false;
+            this.g = bool;
+          }
+          catch (JSONException localJSONException)
+          {
+            localJSONException.printStackTrace();
+          }
+        }
+        int j;
+        Object localObject2;
+        Object localObject1;
+        bool = false;
       }
-      xa.b("预留的错误码，如果客户端收到该错误码则无条件终止，并提示错误");
-      return "预留的错误码，如果客户端收到该错误码则无条件终止，并提示错误";
-    case 9: 
-      xa.b("已经到令牌的最大绑定个数");
-      return "已经到令牌的最大绑定个数";
-    case 8: 
-      xa.b("令牌序列号不存在");
-      return "令牌序列号不存在";
-    case 7: 
-      xa.b("客户端输入错误");
-      return "客户端输入错误";
-    case 6: 
-      xa.b("还没有密保手机");
-      return "还没有密保手机";
-    case 5: 
-      xa.b("密保手机不正确");
-      return "密保手机不正确";
-    case 4: 
-      xa.b("解除绑定时该号码还没有绑定qq");
-      return "解除绑定时该号码还没有绑定qq";
-    case 3: 
-      xa.b("该号码已经绑定令牌");
-      return "该号码已经绑定令牌";
-    case 2: 
-      xa.b("六位验证码验证错误");
-      return "六位验证码验证错误";
-    case 1: 
-      xa.b("短信没有到达");
-      return "短信没有到达";
+      catch (JSONException paramJSONObject)
+      {
+        try
+        {
+          paramJSONObject = paramJSONObject.getJSONArray("child");
+          if (paramJSONObject != null)
+          {
+            j = 0;
+            if (j < paramJSONObject.length())
+            {
+              localObject2 = paramJSONObject.getJSONObject(j);
+              if (localObject2 == null) {
+                break label258;
+              }
+              bool = true;
+              xj.a(bool);
+              localObject1 = new ss();
+              if (!((ss)localObject1).a((JSONObject)localObject2))
+              {
+                xj.c("child json parse error: ".concat(String.valueOf(j)));
+                return false;
+              }
+              a((ss)localObject1);
+              localObject2 = new StringBuilder("add child: ");
+              ((StringBuilder)localObject2).append(j);
+              ((StringBuilder)localObject2).append(":");
+              ((StringBuilder)localObject2).append(((ss)localObject1).b);
+              xj.b(((StringBuilder)localObject2).toString());
+              j += 1;
+              continue;
+            }
+          }
+          return true;
+        }
+        catch (JSONException paramJSONObject)
+        {
+          return true;
+        }
+        paramJSONObject = paramJSONObject;
+        localObject1 = new StringBuilder("JSONException: ");
+        ((StringBuilder)localObject1).append(paramJSONObject.getMessage());
+        xj.c(((StringBuilder)localObject1).toString());
+        return false;
+      }
+      continue;
+      label253:
+      boolean bool = true;
+      continue;
+      label258:
+      bool = false;
     }
-    return localObject;
   }
   
-  public final void a()
+  public final boolean b(JSONObject paramJSONObject)
   {
-    this.d.c();
+    for (;;)
+    {
+      try
+      {
+        this.a = paramJSONObject.getInt("id");
+        this.b = paramJSONObject.getString("name");
+        if (paramJSONObject.getInt("value") != 0)
+        {
+          bool = true;
+          this.c = bool;
+        }
+        int j;
+        Object localObject2;
+        Object localObject1;
+        bool = false;
+      }
+      catch (JSONException paramJSONObject)
+      {
+        try
+        {
+          paramJSONObject = paramJSONObject.getJSONArray("child");
+          if (paramJSONObject != null)
+          {
+            j = 0;
+            if (j < paramJSONObject.length())
+            {
+              localObject2 = paramJSONObject.getJSONObject(j);
+              if (localObject2 == null) {
+                break label214;
+              }
+              bool = true;
+              xj.a(bool);
+              localObject1 = new ss();
+              if (!((ss)localObject1).b((JSONObject)localObject2))
+              {
+                xj.c("child json parse error: ".concat(String.valueOf(j)));
+                return false;
+              }
+              a((ss)localObject1);
+              localObject2 = new StringBuilder("add child: ");
+              ((StringBuilder)localObject2).append(j);
+              ((StringBuilder)localObject2).append(":");
+              ((StringBuilder)localObject2).append(((ss)localObject1).b);
+              xj.b(((StringBuilder)localObject2).toString());
+              j += 1;
+              continue;
+            }
+          }
+          return true;
+        }
+        catch (JSONException paramJSONObject)
+        {
+          return true;
+        }
+        paramJSONObject = paramJSONObject;
+        localObject1 = new StringBuilder("JSONException: ");
+        ((StringBuilder)localObject1).append(paramJSONObject.getMessage());
+        xj.c(((StringBuilder)localObject1).toString());
+        return false;
+      }
+      continue;
+      label214:
+      boolean bool = false;
+    }
   }
   
-  public final void a(byte[] paramArrayOfByte)
+  /* Error */
+  public final boolean c(JSONObject paramJSONObject)
   {
-    int i;
-    if ((paramArrayOfByte != null) && (paramArrayOfByte.length >= 2) && (paramArrayOfByte[0] == 2) && (paramArrayOfByte[(paramArrayOfByte.length - 1)] == 3)) {
-      i = sr.a(paramArrayOfByte, 20);
-    } else {
-      i = -1;
-    }
-    if (i == -1) {
-      return;
-    }
-    Object localObject = new sp();
-    switch (i)
-    {
-    case 103: 
-    case 104: 
-    default: 
-      return;
-    case 106: 
-      st.a((sp)localObject, paramArrayOfByte);
-      if (((sp)localObject).b == 0)
-      {
-        sz.a().h();
-        this.d.b();
-        return;
-      }
-      this.d.b(((sp)localObject).b, a((sp)localObject));
-      return;
-    case 105: 
-      st.a((sp)localObject, paramArrayOfByte);
-      if (((sp)localObject).b == 0)
-      {
-        sz.a().h();
-        this.d.a();
-        return;
-      }
-      this.d.a(((sp)localObject).b, a((sp)localObject));
-      return;
-    case 102: 
-      localObject = new so();
-      st.a((sp)localObject, paramArrayOfByte);
-      ((so)localObject).a = sr.a(((so)localObject).f, 0, 32);
-      if (((so)localObject).b == 0)
-      {
-        this.d.b(((so)localObject).a);
-        return;
-      }
-      this.d.c(a((sp)localObject));
-      return;
-    }
-    st.a((sp)localObject, paramArrayOfByte);
-    if (((sp)localObject).b == 0)
-    {
-      paramArrayOfByte = new StringBuilder("服务器时间:");
-      paramArrayOfByte.append(((sp)localObject).d);
-      xa.b(paramArrayOfByte.toString());
-      this.d.a(((sp)localObject).d);
-      return;
-    }
-    this.d.a(a((sp)localObject));
+    // Byte code:
+    //   0: aload_0
+    //   1: aload_1
+    //   2: ldc 49
+    //   4: invokevirtual 55	org/json/JSONObject:getInt	(Ljava/lang/String;)I
+    //   7: putfield 57	com/tencent/token/ss:a	I
+    //   10: aload_0
+    //   11: aload_1
+    //   12: ldc 59
+    //   14: invokevirtual 63	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
+    //   17: putfield 65	com/tencent/token/ss:b	Ljava/lang/String;
+    //   20: aload_1
+    //   21: ldc 67
+    //   23: invokevirtual 55	org/json/JSONObject:getInt	(Ljava/lang/String;)I
+    //   26: ifeq +202 -> 228
+    //   29: iconst_1
+    //   30: istore_3
+    //   31: goto +3 -> 34
+    //   34: aload_0
+    //   35: iload_3
+    //   36: putfield 69	com/tencent/token/ss:c	Z
+    //   39: aload_1
+    //   40: ldc 75
+    //   42: invokevirtual 55	org/json/JSONObject:getInt	(Ljava/lang/String;)I
+    //   45: ifne +188 -> 233
+    //   48: iconst_0
+    //   49: istore_3
+    //   50: goto +3 -> 53
+    //   53: aload_0
+    //   54: iload_3
+    //   55: putfield 29	com/tencent/token/ss:g	Z
+    //   58: aload_1
+    //   59: ldc 80
+    //   61: invokevirtual 84	org/json/JSONObject:getJSONArray	(Ljava/lang/String;)Lorg/json/JSONArray;
+    //   64: astore_1
+    //   65: aload_1
+    //   66: ifnull +125 -> 191
+    //   69: iconst_0
+    //   70: istore_2
+    //   71: iload_2
+    //   72: aload_1
+    //   73: invokevirtual 90	org/json/JSONArray:length	()I
+    //   76: if_icmpge +115 -> 191
+    //   79: aload_1
+    //   80: iload_2
+    //   81: invokevirtual 94	org/json/JSONArray:getJSONObject	(I)Lorg/json/JSONObject;
+    //   84: astore 5
+    //   86: aload 5
+    //   88: ifnull +150 -> 238
+    //   91: iconst_1
+    //   92: istore_3
+    //   93: goto +3 -> 96
+    //   96: iload_3
+    //   97: invokestatic 99	com/tencent/token/xj:a	(Z)V
+    //   100: new 2	com/tencent/token/ss
+    //   103: dup
+    //   104: invokespecial 100	com/tencent/token/ss:<init>	()V
+    //   107: astore 4
+    //   109: aload 4
+    //   111: aload 5
+    //   113: invokevirtual 148	com/tencent/token/ss:c	(Lorg/json/JSONObject;)Z
+    //   116: ifne +17 -> 133
+    //   119: ldc 104
+    //   121: iload_2
+    //   122: invokestatic 110	java/lang/String:valueOf	(I)Ljava/lang/String;
+    //   125: invokevirtual 113	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
+    //   128: invokestatic 116	com/tencent/token/xj:c	(Ljava/lang/String;)V
+    //   131: iconst_0
+    //   132: ireturn
+    //   133: aload_0
+    //   134: aload 4
+    //   136: invokespecial 118	com/tencent/token/ss:a	(Lcom/tencent/token/ss;)V
+    //   139: new 120	java/lang/StringBuilder
+    //   142: dup
+    //   143: ldc 122
+    //   145: invokespecial 124	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   148: astore 5
+    //   150: aload 5
+    //   152: iload_2
+    //   153: invokevirtual 128	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   156: pop
+    //   157: aload 5
+    //   159: ldc 130
+    //   161: invokevirtual 133	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   164: pop
+    //   165: aload 5
+    //   167: aload 4
+    //   169: getfield 65	com/tencent/token/ss:b	Ljava/lang/String;
+    //   172: invokevirtual 133	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   175: pop
+    //   176: aload 5
+    //   178: invokevirtual 137	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   181: invokestatic 139	com/tencent/token/xj:b	(Ljava/lang/String;)V
+    //   184: iload_2
+    //   185: iconst_1
+    //   186: iadd
+    //   187: istore_2
+    //   188: goto -117 -> 71
+    //   191: iconst_1
+    //   192: ireturn
+    //   193: astore_1
+    //   194: new 120	java/lang/StringBuilder
+    //   197: dup
+    //   198: ldc 141
+    //   200: invokespecial 124	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   203: astore 4
+    //   205: aload 4
+    //   207: aload_1
+    //   208: invokevirtual 144	org/json/JSONException:getMessage	()Ljava/lang/String;
+    //   211: invokevirtual 133	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   214: pop
+    //   215: aload 4
+    //   217: invokevirtual 137	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   220: invokestatic 116	com/tencent/token/xj:c	(Ljava/lang/String;)V
+    //   223: iconst_0
+    //   224: ireturn
+    //   225: astore_1
+    //   226: iconst_1
+    //   227: ireturn
+    //   228: iconst_0
+    //   229: istore_3
+    //   230: goto -196 -> 34
+    //   233: iconst_1
+    //   234: istore_3
+    //   235: goto -182 -> 53
+    //   238: iconst_0
+    //   239: istore_3
+    //   240: goto -144 -> 96
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	243	0	this	ss
+    //   0	243	1	paramJSONObject	JSONObject
+    //   70	118	2	j	int
+    //   30	210	3	bool	boolean
+    //   107	109	4	localObject1	Object
+    //   84	93	5	localObject2	Object
+    // Exception table:
+    //   from	to	target	type
+    //   0	29	193	org/json/JSONException
+    //   34	48	193	org/json/JSONException
+    //   53	58	193	org/json/JSONException
+    //   58	65	225	org/json/JSONException
+    //   71	86	225	org/json/JSONException
+    //   96	131	225	org/json/JSONException
+    //   133	184	225	org/json/JSONException
   }
 }
 

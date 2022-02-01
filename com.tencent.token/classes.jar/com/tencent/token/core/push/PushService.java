@@ -1,5 +1,6 @@
 package com.tencent.token.core.push;
 
+import android.annotation.SuppressLint;
 import android.app.AlarmManager;
 import android.app.Notification;
 import android.app.NotificationManager;
@@ -16,27 +17,28 @@ import android.os.Handler;
 import android.os.IBinder;
 import android.os.Message;
 import android.os.SystemClock;
-import com.tencent.token.afq;
-import com.tencent.token.cj.b;
+import com.tencent.token.ahc;
+import com.tencent.token.cn.b;
 import com.tencent.token.global.RqdApplication;
-import com.tencent.token.rg;
-import com.tencent.token.rg.1;
-import com.tencent.token.rg.a;
-import com.tencent.token.sx;
+import com.tencent.token.ro;
+import com.tencent.token.ro.1;
+import com.tencent.token.ro.a;
+import com.tencent.token.tf;
 import com.tencent.token.ui.BaseActivity;
 import com.tencent.token.ui.IndexActivity;
 import com.tencent.token.ui.LoginMsgActivity;
 import com.tencent.token.ui.OpreateMsgActivity;
 import com.tencent.token.ui.PushTransitionActivity;
 import com.tencent.token.ui.base.DualMsgShowDialog;
-import com.tencent.token.wn;
-import com.tencent.token.wr;
-import com.tencent.token.xa;
+import com.tencent.token.wv;
+import com.tencent.token.wz;
+import com.tencent.token.xj;
 import com.tmsdk.common.util.TmsLog;
 
 public class PushService
   extends Service
 {
+  @SuppressLint({"HandlerLeak"})
   public Handler a = new Handler()
   {
     public final void handleMessage(Message paramAnonymousMessage)
@@ -47,20 +49,20 @@ public class PushService
         if (i != 4014) {
           return;
         }
-        paramAnonymousMessage = (wr)paramAnonymousMessage.obj;
+        paramAnonymousMessage = (wz)paramAnonymousMessage.obj;
         PushService.a(PushService.this, paramAnonymousMessage);
         return;
       }
-      if ((paramAnonymousMessage.arg1 == 0) && (sx.a().b() > 0))
+      if ((paramAnonymousMessage.arg1 == 0) && (tf.a().b() > 0))
       {
         paramAnonymousMessage = new StringBuilder("push:getIsAppForeground");
         paramAnonymousMessage.append(BaseActivity.getIsAppForeground());
-        xa.b(paramAnonymousMessage.toString());
+        xj.b(paramAnonymousMessage.toString());
         if (BaseActivity.getIsAppForeground())
         {
           paramAnonymousMessage = new StringBuilder("isshowingverify");
           paramAnonymousMessage.append(RqdApplication.b);
-          xa.c(paramAnonymousMessage.toString());
+          xj.c(paramAnonymousMessage.toString());
           if (RqdApplication.b) {
             break label137;
           }
@@ -106,7 +108,7 @@ public class PushService
           paramAnonymousContext = paramAnonymousContext.getActiveNetworkInfo();
           if ((paramAnonymousContext != null) && (paramAnonymousContext.isConnected()))
           {
-            wn.a().a(1);
+            wv.a().a(1);
             boolean bool = this.b;
             if (bool)
             {
@@ -116,7 +118,7 @@ public class PushService
               }
               catch (Exception paramAnonymousContext)
               {
-                xa.c(paramAnonymousContext.getMessage());
+                xj.c(paramAnonymousContext.getMessage());
               }
               this.b = false;
             }
@@ -124,7 +126,7 @@ public class PushService
           else
           {
             this.b = true;
-            wn.a().a(7);
+            wv.a().a(7);
             PushService.c(PushService.this).cancel(PushService.b(PushService.this));
           }
         }
@@ -135,7 +137,7 @@ public class PushService
         paramAnonymousContext.printStackTrace();
         paramAnonymousIntent = new StringBuilder("Push Service");
         paramAnonymousIntent.append(paramAnonymousContext.toString());
-        xa.c(paramAnonymousIntent.toString());
+        xj.c(paramAnonymousIntent.toString());
       }
     }
   };
@@ -149,7 +151,7 @@ public class PushService
         this.l = 0L;
         ((NotificationManager)getSystemService("notification")).cancel(2);
       }
-      wn.a().a(this.a);
+      wv.a().a(this.a);
       long l1 = System.currentTimeMillis();
       this.b.set(1, l1 + 4000L, this.c);
       return;
@@ -192,7 +194,7 @@ public class PushService
       {
         this.j = ((int)System.currentTimeMillis());
         Object localObject2 = PendingIntent.getActivity(this, 0, this.e, 134217728);
-        cj.b localb = new cj.b(this, (byte)0);
+        cn.b localb = new cn.b(this, (byte)0);
         localb.e = ((PendingIntent)localObject2);
         localObject2 = localb.b().d();
         startForeground(this.j, (Notification)localObject2);
@@ -218,7 +220,7 @@ public class PushService
     {
       localException.printStackTrace();
     }
-    wn.a().d();
+    wv.a().d();
     if (Build.VERSION.SDK_INT < 18) {
       ((NotificationManager)getSystemService("notification")).cancel(this.j);
     }
@@ -231,28 +233,28 @@ public class PushService
       try
       {
         a();
-        rg localrg = rg.a.a();
-        if (localrg.c) {
+        ro localro = ro.a.a();
+        if (localro.c) {
           TmsLog.i("LoginTraceManager", "@checkHasChanged, has job doing, cancel this time.");
-        } else if (System.currentTimeMillis() - afq.a("login_trace_push_timestamp") < 432000000L) {
+        } else if (System.currentTimeMillis() - ahc.a("login_trace_push_timestamp") < 432000000L) {
           TmsLog.i("LoginTraceManager", "@checkHasChanged, time since last push is less than 5 day, cancel this time.");
-        } else if (afq.c()) {
+        } else if (ahc.c()) {
           TmsLog.i("LoginTraceManager", "@checkHasChanged, user has launch today, cancel this time.");
-        } else if (afq.a()) {
+        } else if (ahc.a()) {
           TmsLog.i("LoginTraceManager", "@checkHasChanged, qqpimsecure is installed, cancel this time.");
         } else {
-          localrg.a.post(new rg.1(localrg, this));
+          localro.a.post(new ro.1(localro, this));
         }
       }
       catch (Exception localException)
       {
-        xa.c(localException.getMessage());
+        xj.c(localException.getMessage());
       }
     }
     if (Build.VERSION.SDK_INT < 18) {
       return super.onStartCommand(paramIntent, paramInt1, paramInt2);
     }
-    return 3;
+    return 2;
   }
 }
 

@@ -15,7 +15,7 @@ import android.os.Environment;
 import android.os.ParcelFileDescriptor;
 import android.text.TextUtils;
 import android.webkit.MimeTypeMap;
-import com.tencent.token.cr;
+import com.tencent.token.cv;
 import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
@@ -80,7 +80,7 @@ public class FileProvider
                 }
                 else if ("external-files-path".equals(localObject3))
                 {
-                  localObject3 = cr.a(paramContext);
+                  localObject3 = cv.a(paramContext);
                   localObject1 = localFile;
                   if (localObject3.length > 0) {
                     localObject1 = localObject3[0];
@@ -88,7 +88,7 @@ public class FileProvider
                 }
                 else if ("external-cache-path".equals(localObject3))
                 {
-                  localObject3 = cr.b(paramContext);
+                  localObject3 = cv.b(paramContext);
                   localObject1 = localFile;
                   if (localObject3.length > 0) {
                     localObject1 = localObject3[0];

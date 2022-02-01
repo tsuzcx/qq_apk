@@ -1,63 +1,44 @@
 package com.tencent.token;
 
-import com.qq.taf.jce.JceInputStream;
-import com.qq.taf.jce.JceOutputStream;
-import com.qq.taf.jce.JceStruct;
-import java.util.ArrayList;
-import java.util.Collection;
-
 public final class amf
-  extends JceStruct
 {
-  static ArrayList<alr> f = new ArrayList();
-  public int a = 0;
-  public int b = 0;
-  public ArrayList<alr> c = null;
-  public String d = "";
-  public int e = 0;
+  int a;
+  final int[] b = new int[10];
   
-  static
+  final int a()
   {
-    alr localalr = new alr();
-    f.add(localalr);
+    if ((this.a & 0x2) != 0) {
+      return this.b[1];
+    }
+    return -1;
   }
   
-  public final JceStruct newInit()
+  final amf a(int paramInt1, int paramInt2)
   {
-    return new amf();
+    if (paramInt1 >= 0)
+    {
+      int[] arrayOfInt = this.b;
+      if (paramInt1 >= arrayOfInt.length) {
+        return this;
+      }
+      this.a = (1 << paramInt1 | this.a);
+      arrayOfInt[paramInt1] = paramInt2;
+      return this;
+    }
+    return this;
   }
   
-  public final void readFrom(JceInputStream paramJceInputStream)
+  final boolean a(int paramInt)
   {
-    this.a = paramJceInputStream.read(this.a, 0, false);
-    this.b = paramJceInputStream.read(this.b, 1, false);
-    this.c = ((ArrayList)paramJceInputStream.read(f, 2, false));
-    this.d = paramJceInputStream.readString(3, false);
-    this.e = paramJceInputStream.read(this.e, 4, false);
+    return (1 << paramInt & this.a) != 0;
   }
   
-  public final void writeTo(JceOutputStream paramJceOutputStream)
+  final int b()
   {
-    int i = this.a;
-    if (i != 0) {
-      paramJceOutputStream.write(i, 0);
+    if ((this.a & 0x80) != 0) {
+      return this.b[7];
     }
-    i = this.b;
-    if (i != 0) {
-      paramJceOutputStream.write(i, 1);
-    }
-    Object localObject = this.c;
-    if (localObject != null) {
-      paramJceOutputStream.write((Collection)localObject, 2);
-    }
-    localObject = this.d;
-    if (localObject != null) {
-      paramJceOutputStream.write((String)localObject, 3);
-    }
-    i = this.e;
-    if (i != 0) {
-      paramJceOutputStream.write(i, 4);
-    }
+    return 65535;
   }
 }
 

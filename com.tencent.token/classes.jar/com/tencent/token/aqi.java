@@ -1,36 +1,35 @@
 package com.tencent.token;
 
+import com.qq.taf.jce.JceInputStream;
+import com.qq.taf.jce.JceOutputStream;
+import com.qq.taf.jce.JceStruct;
+import java.util.ArrayList;
+
 public final class aqi
-  implements apx
+  extends JceStruct
 {
-  private Object a = new Object();
-  private int b = 1;
+  static ArrayList<aqj> c = new ArrayList();
+  public ArrayList<aqj> a = null;
+  public int b = 0;
   
-  public final int a()
+  static
   {
-    synchronized (this.a)
-    {
-      int i = this.b;
-      this.b += 1;
-      return i;
-    }
+    aqj localaqj = new aqj();
+    c.add(localaqj);
   }
   
-  public final int b()
+  public final void readFrom(JceInputStream paramJceInputStream)
   {
-    synchronized (this.a)
-    {
-      int i = this.b;
-      return i;
-    }
+    this.a = ((ArrayList)paramJceInputStream.read(c, 0, true));
+    this.b = paramJceInputStream.read(this.b, 1, false);
   }
   
-  public final void c()
+  public final void writeTo(JceOutputStream paramJceOutputStream)
   {
-    synchronized (this.a)
-    {
-      this.b += 1;
-      return;
+    paramJceOutputStream.write(this.a, 0);
+    int i = this.b;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 1);
     }
   }
 }

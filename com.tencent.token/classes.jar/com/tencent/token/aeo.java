@@ -2,10 +2,16 @@ package com.tencent.token;
 
 public final class aeo
 {
-  public String a;
-  public String b;
-  public String c;
-  public String d;
+  public static final agi<aeo> a = new a();
+  
+  public final class a
+    extends agi<aeo>
+  {
+    public final Object a()
+    {
+      return new aeo();
+    }
+  }
 }
 
 

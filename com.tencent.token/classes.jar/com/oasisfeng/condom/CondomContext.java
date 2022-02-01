@@ -17,7 +17,7 @@ import android.os.Process;
 import android.os.UserHandle;
 import android.support.annotation.Keep;
 import com.oasisfeng.condom.util.Lazy;
-import com.tencent.token.kg;
+import com.tencent.token.kk;
 
 @Keep
 public class CondomContext
@@ -32,13 +32,12 @@ public class CondomContext
   {
     super(paramCondomCore.mBase);
     this.mCondom = paramCondomCore;
-    if (paramContext != null) {
-      paramCondomCore = paramContext;
-    } else {
+    paramCondomCore = paramContext;
+    if (paramContext == null) {
       paramCondomCore = this;
     }
     this.mApplicationContext = paramCondomCore;
-    this.mBaseContext = new Lazy() {};
+    this.mBaseContext = new e();
     this.TAG = CondomCore.buildLogTag("Condom", "Condom.", paramString);
   }
   
@@ -62,14 +61,14 @@ public class CondomContext
     if ((localContext instanceof Application))
     {
       Application localApplication = (Application)localContext;
-      kg localkg = new kg(localCondomCore, localApplication, paramString);
-      paramCondomOptions = new CondomContext(localCondomCore, localkg, paramString);
+      kk localkk = new kk(localCondomCore, localApplication, paramString);
+      paramCondomOptions = new CondomContext(localCondomCore, localkk, paramString);
       if (paramContext == localContext) {
         paramContext = paramCondomOptions;
       } else {
         paramContext = new CondomContext(localCondomCore, localApplication, paramString);
       }
-      localkg.attachBaseContext(paramContext);
+      localkk.attachBaseContext(paramContext);
       return paramCondomOptions;
     }
     if (paramContext == localContext) {
@@ -82,9 +81,9 @@ public class CondomContext
   
   public boolean bindService(final Intent paramIntent, final ServiceConnection paramServiceConnection, final int paramInt)
   {
-    boolean bool = ((Boolean)this.mCondom.proceed(OutboundType.BIND_SERVICE, paramIntent, Boolean.FALSE, new CondomCore.f() {})).booleanValue();
+    boolean bool = ((Boolean)this.mCondom.proceed(OutboundType.BIND_SERVICE, paramIntent, Boolean.FALSE, new f(paramIntent, paramServiceConnection, paramInt))).booleanValue();
     if (bool) {
-      this.mCondom.logIfOutboundPass(this.TAG, paramIntent, CondomCore.getTargetPackage(paramIntent), CondomCore.CondomEvent.BIND_PASS);
+      this.mCondom.logIfOutboundPass(this.TAG, paramIntent, CondomCore.getTargetPackage(paramIntent), CondomCore.h.b);
     }
     return bool;
   }
@@ -128,11 +127,12 @@ public class CondomContext
   
   public Object getSystemService(String paramString)
   {
-    Object localObject = this.mCondom.getSystemService(paramString);
-    if (localObject != null) {
-      return localObject;
+    Object localObject2 = this.mCondom.getSystemService(paramString);
+    Object localObject1 = localObject2;
+    if (localObject2 == null) {
+      localObject1 = super.getSystemService(paramString);
     }
-    return super.getSystemService(paramString);
+    return localObject1;
   }
   
   @Deprecated
@@ -160,154 +160,228 @@ public class CondomContext
   
   public void sendBroadcast(final Intent paramIntent)
   {
-    this.mCondom.proceedBroadcast(this, paramIntent, new CondomCore.e()
-    {
-      public final void b()
-      {
-        CondomContext.this.sendBroadcast(paramIntent);
-      }
-    }, null);
+    this.mCondom.proceedBroadcast(this, paramIntent, new h(paramIntent), null);
   }
   
   public void sendBroadcast(final Intent paramIntent, final String paramString)
   {
-    this.mCondom.proceedBroadcast(this, paramIntent, new CondomCore.e()
-    {
-      public final void b()
-      {
-        CondomContext.this.sendBroadcast(paramIntent, paramString);
-      }
-    }, null);
+    this.mCondom.proceedBroadcast(this, paramIntent, new i(paramIntent, paramString), null);
   }
   
   @SuppressLint({"MissingPermission"})
   public void sendBroadcastAsUser(final Intent paramIntent, final UserHandle paramUserHandle)
   {
-    this.mCondom.proceedBroadcast(this, paramIntent, new CondomCore.e()
-    {
-      public final void b()
-      {
-        CondomContext.this.sendBroadcastAsUser(paramIntent, paramUserHandle);
-      }
-    }, null);
+    this.mCondom.proceedBroadcast(this, paramIntent, new j(paramIntent, paramUserHandle), null);
   }
   
   @SuppressLint({"MissingPermission"})
   public void sendBroadcastAsUser(final Intent paramIntent, final UserHandle paramUserHandle, final String paramString)
   {
-    this.mCondom.proceedBroadcast(this, paramIntent, new CondomCore.e()
-    {
-      public final void b()
-      {
-        CondomContext.this.sendBroadcastAsUser(paramIntent, paramUserHandle, paramString);
-      }
-    }, null);
+    this.mCondom.proceedBroadcast(this, paramIntent, new k(paramIntent, paramUserHandle, paramString), null);
   }
   
   public void sendOrderedBroadcast(final Intent paramIntent, final String paramString)
   {
-    this.mCondom.proceedBroadcast(this, paramIntent, new CondomCore.e()
-    {
-      public final void b()
-      {
-        CondomContext.this.sendOrderedBroadcast(paramIntent, paramString);
-      }
-    }, null);
+    this.mCondom.proceedBroadcast(this, paramIntent, new l(paramIntent, paramString), null);
   }
   
   public void sendOrderedBroadcast(final Intent paramIntent, final String paramString1, final BroadcastReceiver paramBroadcastReceiver, final Handler paramHandler, final int paramInt, final String paramString2, final Bundle paramBundle)
   {
-    this.mCondom.proceedBroadcast(this, paramIntent, new CondomCore.e()
-    {
-      public final void b()
-      {
-        CondomContext.this.sendOrderedBroadcast(paramIntent, paramString1, paramBroadcastReceiver, paramHandler, paramInt, paramString2, paramBundle);
-      }
-    }, paramBroadcastReceiver);
+    this.mCondom.proceedBroadcast(this, paramIntent, new m(paramIntent, paramString1, paramBroadcastReceiver, paramHandler, paramInt, paramString2, paramBundle), paramBroadcastReceiver);
   }
   
   @SuppressLint({"MissingPermission"})
   public void sendOrderedBroadcastAsUser(final Intent paramIntent, final UserHandle paramUserHandle, final String paramString1, final BroadcastReceiver paramBroadcastReceiver, final Handler paramHandler, final int paramInt, final String paramString2, final Bundle paramBundle)
   {
-    this.mCondom.proceedBroadcast(this, paramIntent, new CondomCore.e()
-    {
-      public final void b()
-      {
-        CondomContext.this.sendOrderedBroadcastAsUser(paramIntent, paramUserHandle, paramString1, paramBroadcastReceiver, paramHandler, paramInt, paramString2, paramBundle);
-      }
-    }, paramBroadcastReceiver);
+    this.mCondom.proceedBroadcast(this, paramIntent, new n(paramIntent, paramUserHandle, paramString1, paramBroadcastReceiver, paramHandler, paramInt, paramString2, paramBundle), paramBroadcastReceiver);
   }
   
   @SuppressLint({"MissingPermission"})
   public void sendStickyBroadcast(final Intent paramIntent)
   {
-    this.mCondom.proceedBroadcast(this, paramIntent, new CondomCore.e()
-    {
-      public final void b()
-      {
-        CondomContext.this.sendStickyBroadcast(paramIntent);
-      }
-    }, null);
+    this.mCondom.proceedBroadcast(this, paramIntent, new a(paramIntent), null);
   }
   
   @SuppressLint({"MissingPermission"})
   public void sendStickyBroadcastAsUser(final Intent paramIntent, final UserHandle paramUserHandle)
   {
-    this.mCondom.proceedBroadcast(this, paramIntent, new CondomCore.e()
-    {
-      public final void b()
-      {
-        CondomContext.this.sendStickyBroadcastAsUser(paramIntent, paramUserHandle);
-      }
-    }, null);
+    this.mCondom.proceedBroadcast(this, paramIntent, new b(paramIntent, paramUserHandle), null);
   }
   
   @SuppressLint({"MissingPermission"})
   public void sendStickyOrderedBroadcast(final Intent paramIntent, final BroadcastReceiver paramBroadcastReceiver, final Handler paramHandler, final int paramInt, final String paramString, final Bundle paramBundle)
   {
-    this.mCondom.proceedBroadcast(this, paramIntent, new CondomCore.e()
-    {
-      public final void b()
-      {
-        CondomContext.this.sendStickyOrderedBroadcast(paramIntent, paramBroadcastReceiver, paramHandler, paramInt, paramString, paramBundle);
-      }
-    }, paramBroadcastReceiver);
+    this.mCondom.proceedBroadcast(this, paramIntent, new c(paramIntent, paramBroadcastReceiver, paramHandler, paramInt, paramString, paramBundle), paramBroadcastReceiver);
   }
   
   @SuppressLint({"MissingPermission"})
   public void sendStickyOrderedBroadcastAsUser(final Intent paramIntent, final UserHandle paramUserHandle, final BroadcastReceiver paramBroadcastReceiver, final Handler paramHandler, final int paramInt, final String paramString, final Bundle paramBundle)
   {
-    this.mCondom.proceedBroadcast(this, paramIntent, new CondomCore.e()
-    {
-      public final void b()
-      {
-        CondomContext.this.sendStickyOrderedBroadcastAsUser(paramIntent, paramUserHandle, paramBroadcastReceiver, paramHandler, paramInt, paramString, paramBundle);
-      }
-    }, paramBroadcastReceiver);
+    this.mCondom.proceedBroadcast(this, paramIntent, new d(paramIntent, paramUserHandle, paramBroadcastReceiver, paramHandler, paramInt, paramString, paramBundle), paramBroadcastReceiver);
   }
   
   public CondomContext setDryRun(boolean paramBoolean)
   {
-    if (paramBoolean == this.mCondom.mDryRun) {
+    CondomCore localCondomCore = this.mCondom;
+    if (paramBoolean == localCondomCore.mDryRun) {
       return this;
     }
-    this.mCondom.mDryRun = paramBoolean;
+    localCondomCore.mDryRun = paramBoolean;
     return this;
   }
   
   public ComponentName startService(final Intent paramIntent)
   {
-    ComponentName localComponentName = (ComponentName)this.mCondom.proceed(OutboundType.START_SERVICE, paramIntent, null, new CondomCore.f() {});
+    ComponentName localComponentName = (ComponentName)this.mCondom.proceed(OutboundType.START_SERVICE, paramIntent, null, new g(paramIntent));
     if (localComponentName != null) {
-      this.mCondom.logIfOutboundPass(this.TAG, paramIntent, localComponentName.getPackageName(), CondomCore.CondomEvent.START_PASS);
+      this.mCondom.logIfOutboundPass(this.TAG, paramIntent, localComponentName.getPackageName(), CondomCore.h.c);
     }
     return localComponentName;
   }
   
-  static final class a
+  final class a
+    extends CondomCore.l
+  {
+    a(Intent paramIntent) {}
+    
+    public final void a_()
+    {
+      CondomContext.this.sendStickyBroadcast(paramIntent);
+    }
+  }
+  
+  final class b
+    extends CondomCore.l
+  {
+    b(Intent paramIntent, UserHandle paramUserHandle) {}
+    
+    public final void a_()
+    {
+      CondomContext.this.sendStickyBroadcastAsUser(paramIntent, paramUserHandle);
+    }
+  }
+  
+  final class c
+    extends CondomCore.l
+  {
+    c(Intent paramIntent, BroadcastReceiver paramBroadcastReceiver, Handler paramHandler, int paramInt, String paramString, Bundle paramBundle) {}
+    
+    public final void a_()
+    {
+      CondomContext.this.sendStickyOrderedBroadcast(paramIntent, paramBroadcastReceiver, paramHandler, paramInt, paramString, paramBundle);
+    }
+  }
+  
+  final class d
+    extends CondomCore.l
+  {
+    d(Intent paramIntent, UserHandle paramUserHandle, BroadcastReceiver paramBroadcastReceiver, Handler paramHandler, int paramInt, String paramString, Bundle paramBundle) {}
+    
+    public final void a_()
+    {
+      CondomContext.this.sendStickyOrderedBroadcastAsUser(paramIntent, paramUserHandle, paramBroadcastReceiver, paramHandler, paramInt, paramString, paramBundle);
+    }
+  }
+  
+  final class e
+    extends Lazy<Context>
+  {
+    e() {}
+  }
+  
+  final class f
+    implements CondomCore.m<Boolean>
+  {
+    f(Intent paramIntent, ServiceConnection paramServiceConnection, int paramInt) {}
+  }
+  
+  final class g
+    implements CondomCore.m<ComponentName>
+  {
+    g(Intent paramIntent) {}
+  }
+  
+  final class h
+    extends CondomCore.l
+  {
+    h(Intent paramIntent) {}
+    
+    public final void a_()
+    {
+      CondomContext.this.sendBroadcast(paramIntent);
+    }
+  }
+  
+  final class i
+    extends CondomCore.l
+  {
+    i(Intent paramIntent, String paramString) {}
+    
+    public final void a_()
+    {
+      CondomContext.this.sendBroadcast(paramIntent, paramString);
+    }
+  }
+  
+  final class j
+    extends CondomCore.l
+  {
+    j(Intent paramIntent, UserHandle paramUserHandle) {}
+    
+    public final void a_()
+    {
+      CondomContext.this.sendBroadcastAsUser(paramIntent, paramUserHandle);
+    }
+  }
+  
+  final class k
+    extends CondomCore.l
+  {
+    k(Intent paramIntent, UserHandle paramUserHandle, String paramString) {}
+    
+    public final void a_()
+    {
+      CondomContext.this.sendBroadcastAsUser(paramIntent, paramUserHandle, paramString);
+    }
+  }
+  
+  final class l
+    extends CondomCore.l
+  {
+    l(Intent paramIntent, String paramString) {}
+    
+    public final void a_()
+    {
+      CondomContext.this.sendOrderedBroadcast(paramIntent, paramString);
+    }
+  }
+  
+  final class m
+    extends CondomCore.l
+  {
+    m(Intent paramIntent, String paramString1, BroadcastReceiver paramBroadcastReceiver, Handler paramHandler, int paramInt, String paramString2, Bundle paramBundle) {}
+    
+    public final void a_()
+    {
+      CondomContext.this.sendOrderedBroadcast(paramIntent, paramString1, paramBroadcastReceiver, paramHandler, paramInt, paramString2, paramBundle);
+    }
+  }
+  
+  final class n
+    extends CondomCore.l
+  {
+    n(Intent paramIntent, UserHandle paramUserHandle, String paramString1, BroadcastReceiver paramBroadcastReceiver, Handler paramHandler, int paramInt, String paramString2, Bundle paramBundle) {}
+    
+    public final void a_()
+    {
+      CondomContext.this.sendOrderedBroadcastAsUser(paramIntent, paramUserHandle, paramString1, paramBroadcastReceiver, paramHandler, paramInt, paramString2, paramBundle);
+    }
+  }
+  
+  static final class o
     extends PseudoContextWrapper
   {
-    public a(CondomContext paramCondomContext)
+    public o(CondomContext paramCondomContext)
     {
       super();
     }

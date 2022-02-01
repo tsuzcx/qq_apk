@@ -2,8 +2,8 @@ package android.arch.lifecycle;
 
 import com.tencent.token.as;
 import com.tencent.token.as.a;
-import com.tencent.token.au.a;
-import com.tencent.token.aw;
+import com.tencent.token.av.a;
+import com.tencent.token.ay;
 import java.util.List;
 import java.util.Map;
 
@@ -19,12 +19,12 @@ public class ReflectiveGenericLifecycleObserver
     this.b = as.a.b(this.a.getClass());
   }
   
-  public final void a(aw paramaw, au.a parama)
+  public final void a(ay paramay, av.a parama)
   {
     as.a locala = this.b;
     Object localObject = this.a;
-    as.a.a((List)locala.a.get(parama), paramaw, parama, localObject);
-    as.a.a((List)locala.a.get(au.a.ON_ANY), paramaw, parama, localObject);
+    as.a.a((List)locala.a.get(parama), paramay, parama, localObject);
+    as.a.a((List)locala.a.get(av.a.ON_ANY), paramay, parama, localObject);
   }
 }
 

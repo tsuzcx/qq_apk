@@ -1,37 +1,8 @@
 package com.tencent.token;
 
-public final class aci
+public abstract interface aci
 {
-  public int a;
-  public int b;
-  public int c;
-  public String d = "";
-  public int e;
-  
-  public aci(int paramInt1, int paramInt2, String paramString, int paramInt3, int paramInt4)
-  {
-    this.a = paramInt1;
-    this.b = paramInt2;
-    this.d = paramString;
-    this.c = paramInt3;
-    this.e = paramInt4;
-  }
-  
-  public final String toString()
-  {
-    String str1 = String.format("% 6d", new Object[] { Integer.valueOf(this.a) });
-    String str2 = String.format("% 6d", new Object[] { Integer.valueOf(this.b) });
-    String str3 = String.format("% 6d", new Object[] { Integer.valueOf(this.c) });
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(str1);
-    localStringBuilder.append("    ");
-    localStringBuilder.append(str2);
-    localStringBuilder.append("    ");
-    localStringBuilder.append(str3);
-    localStringBuilder.append("    ");
-    localStringBuilder.append(this.d);
-    return localStringBuilder.toString();
-  }
+  public abstract void a(acj paramacj);
 }
 
 

@@ -1,28 +1,25 @@
 package com.tencent.token;
 
-import java.util.Iterator;
-import java.util.LinkedList;
-import tmsdk.common.d.a.c.j;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 
 public final class ara
-  implements Runnable
 {
-  public ara(j paramj) {}
+  public SharedPreferences a;
+  private SharedPreferences.Editor b;
   
-  public final void run()
+  public ara(String paramString)
   {
-    synchronized (j.a(this.a))
-    {
-      LinkedList localLinkedList = (LinkedList)j.a(this.a).clone();
-      if (localLinkedList != null)
-      {
-        ??? = localLinkedList.iterator();
-        while (((Iterator)???).hasNext()) {
-          ((Iterator)???).next();
-        }
-      }
-      return;
+    this.a = aqp.a().getSharedPreferences(paramString, 0);
+  }
+  
+  public final SharedPreferences.Editor a()
+  {
+    if (this.b == null) {
+      this.b = this.a.edit();
     }
+    return this.b;
   }
 }
 

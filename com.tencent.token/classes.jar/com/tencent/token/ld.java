@@ -1,16 +1,51 @@
 package com.tencent.token;
 
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
+import android.util.SparseArray;
+import java.util.concurrent.ScheduledExecutorService;
 
-final class ld
-  extends BroadcastReceiver
+public abstract class ld
 {
-  public final void onReceive(Context paramContext, Intent paramIntent)
+  private static ld a;
+  
+  public static ld a()
   {
-    lc.b();
-    lc.g();
+    try
+    {
+      if (a == null) {
+        a = new a();
+      }
+      ld localld = a;
+      return localld;
+    }
+    finally {}
+  }
+  
+  public abstract void a(Runnable paramRunnable);
+  
+  static final class a
+    extends ld
+  {
+    private ScheduledExecutorService a = null;
+    private boolean b = false;
+    
+    public a()
+    {
+      new SparseArray();
+    }
+    
+    public final void a(Runnable paramRunnable)
+    {
+      try
+      {
+        this.a.execute(paramRunnable);
+        return;
+      }
+      finally
+      {
+        paramRunnable = finally;
+        throw paramRunnable;
+      }
+    }
   }
 }
 

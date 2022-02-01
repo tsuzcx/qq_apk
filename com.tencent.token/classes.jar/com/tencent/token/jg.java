@@ -1,18 +1,21 @@
 package com.tencent.token;
 
-import android.os.Build.VERSION;
-import android.view.View;
+import android.content.res.ColorStateList;
+import android.graphics.PorterDuff.Mode;
 
-public final class jg
+final class jg
 {
-  public static void a(View paramView, CharSequence paramCharSequence)
+  public ColorStateList a;
+  public PorterDuff.Mode b;
+  public boolean c;
+  public boolean d;
+  
+  final void a()
   {
-    if (Build.VERSION.SDK_INT >= 26)
-    {
-      paramView.setTooltipText(paramCharSequence);
-      return;
-    }
-    jh.a(paramView, paramCharSequence);
+    this.a = null;
+    this.d = false;
+    this.b = null;
+    this.c = false;
   }
 }
 

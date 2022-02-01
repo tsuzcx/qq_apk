@@ -1,140 +1,39 @@
 package com.tencent.token;
 
 import android.content.Context;
-import android.os.Environment;
-import android.text.TextUtils;
-import java.io.File;
 
 public final class kx
 {
-  public static String a = "";
-  public static String b = "";
-  public static String c = "";
-  public static int d = 5;
-  public static boolean e = true;
-  public static int f = 50;
-  private static int g = 2;
-  private static int h = 3;
-  private static String i = ".temp";
-  private static volatile int j = 500;
-  private static int k = 20000;
+  public static kv a;
+  public static Context b;
   
-  public static int a()
+  public static void a(Context paramContext, long paramLong)
   {
-    return g;
+    b = ajh.f.a.a(paramContext, paramLong);
   }
   
-  public static String a(String paramString)
+  public static boolean a()
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(paramString);
-    localStringBuilder.append(".bdcfg");
-    return localStringBuilder.toString();
-  }
-  
-  public static void a(int paramInt)
-  {
-    g = Math.min(Math.max(paramInt, 1), 4);
-  }
-  
-  public static int b()
-  {
-    return h;
-  }
-  
-  public static String b(String paramString)
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(paramString);
-    localStringBuilder.append(i);
-    return localStringBuilder.toString();
-  }
-  
-  public static void b(int paramInt)
-  {
-    h = Math.min(Math.max(paramInt, 1), 6);
-  }
-  
-  public static int c()
-  {
-    lc.e();
-    return 20000;
-  }
-  
-  public static boolean c(String paramString)
-  {
-    return !lq.a(paramString);
-  }
-  
-  public static int d()
-  {
-    lc.e();
-    return 20000;
-  }
-  
-  public static int e()
-  {
-    int n = lc.e();
-    int m = 1048576;
-    switch (n)
-    {
-    default: 
-      return 1048576;
-    case 3: 
-      m = 524288;
+    kv localkv = a;
+    if (localkv != null) {
+      return localkv.a();
     }
-    return m;
+    return true;
   }
   
-  public static int f()
+  public static boolean b()
   {
-    return 524288;
-  }
-  
-  public static String g()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    String str;
-    if ("mounted".equals(Environment.getExternalStorageState()))
-    {
-      str = lq.e();
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append(Environment.getExternalStorageDirectory().getAbsolutePath());
-      ((StringBuilder)localObject).append("/");
-      ((StringBuilder)localObject).append(str);
-      ((StringBuilder)localObject).append("/HalleyDownload");
-      str = ((StringBuilder)localObject).toString();
+    kv localkv = a;
+    if (localkv != null) {
+      return localkv.b();
     }
-    else
-    {
-      str = "";
-    }
-    Object localObject = str;
-    if (TextUtils.isEmpty(str)) {
-      localObject = lo.a().getFilesDir().toString();
-    }
-    localStringBuilder.append((String)localObject);
-    return localStringBuilder.toString();
+    return false;
   }
   
-  public static int h()
+  public static final class a
   {
-    return j;
-  }
-  
-  public static int i()
-  {
-    return 60000;
-  }
-  
-  public static int j()
-  {
-    return 20000;
-  }
-  
-  public static int k()
-  {
-    return k;
+    public Object a = null;
+    public boolean b = false;
   }
 }
 

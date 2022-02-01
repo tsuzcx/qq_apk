@@ -15,11 +15,11 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
-import com.tencent.token.ahg;
+import com.tencent.token.ais;
 import com.tencent.token.core.bean.QQUser;
-import com.tencent.token.sa;
-import com.tencent.token.sz;
-import com.tencent.token.xa;
+import com.tencent.token.si;
+import com.tencent.token.th;
+import com.tencent.token.xj;
 
 public class UtilsModSetMobileStep2SmsActivity
   extends BaseActivity
@@ -67,7 +67,7 @@ public class UtilsModSetMobileStep2SmsActivity
       //   129: aload_0
       //   130: getfield 12	com/tencent/token/ui/UtilsModSetMobileStep2SmsActivity$3:a	Lcom/tencent/token/ui/UtilsModSetMobileStep2SmsActivity;
       //   133: aload_3
-      //   134: invokestatic 47	com/tencent/token/aac:a	([B)Ljava/lang/String;
+      //   134: invokestatic 47	com/tencent/token/aao:a	([B)Ljava/lang/String;
       //   137: invokestatic 51	com/tencent/token/ui/UtilsModSetMobileStep2SmsActivity:access$302	(Lcom/tencent/token/ui/UtilsModSetMobileStep2SmsActivity;Ljava/lang/String;)Ljava/lang/String;
       //   140: pop
       //   141: aload_0
@@ -79,7 +79,7 @@ public class UtilsModSetMobileStep2SmsActivity
       //   153: ifne +324 -> 477
       //   156: aload_0
       //   157: getfield 12	com/tencent/token/ui/UtilsModSetMobileStep2SmsActivity$3:a	Lcom/tencent/token/ui/UtilsModSetMobileStep2SmsActivity;
-      //   160: getstatic 57	com/tencent/token/vm:d	Ljava/lang/String;
+      //   160: getstatic 57	com/tencent/token/vu:d	Ljava/lang/String;
       //   163: invokestatic 60	com/tencent/token/ui/UtilsModSetMobileStep2SmsActivity:access$602	(Lcom/tencent/token/ui/UtilsModSetMobileStep2SmsActivity;Ljava/lang/String;)Ljava/lang/String;
       //   166: pop
       //   167: aload_0
@@ -92,9 +92,9 @@ public class UtilsModSetMobileStep2SmsActivity
       //   184: invokevirtual 70	java/lang/String:length	()I
       //   187: ifgt +6 -> 193
       //   190: goto +263 -> 453
-      //   193: getstatic 73	com/tencent/token/vm:e	Ljava/lang/String;
+      //   193: getstatic 73	com/tencent/token/vu:e	Ljava/lang/String;
       //   196: ifnull +233 -> 429
-      //   199: getstatic 73	com/tencent/token/vm:e	Ljava/lang/String;
+      //   199: getstatic 73	com/tencent/token/vu:e	Ljava/lang/String;
       //   202: invokevirtual 70	java/lang/String:length	()I
       //   205: ifgt +6 -> 211
       //   208: goto +221 -> 429
@@ -111,7 +111,7 @@ public class UtilsModSetMobileStep2SmsActivity
       //   232: pop
       //   233: aload_1
       //   234: invokevirtual 88	java/lang/StringBuilder:toString	()Ljava/lang/String;
-      //   237: invokestatic 93	com/tencent/token/xa:c	(Ljava/lang/String;)V
+      //   237: invokestatic 93	com/tencent/token/xj:c	(Ljava/lang/String;)V
       //   240: aload_0
       //   241: getfield 12	com/tencent/token/ui/UtilsModSetMobileStep2SmsActivity$3:a	Lcom/tencent/token/ui/UtilsModSetMobileStep2SmsActivity;
       //   244: invokestatic 97	com/tencent/token/ui/UtilsModSetMobileStep2SmsActivity:access$700	(Lcom/tencent/token/ui/UtilsModSetMobileStep2SmsActivity;)Z
@@ -122,7 +122,7 @@ public class UtilsModSetMobileStep2SmsActivity
       //   255: aload_1
       //   256: aload_1
       //   257: invokestatic 64	com/tencent/token/ui/UtilsModSetMobileStep2SmsActivity:access$600	(Lcom/tencent/token/ui/UtilsModSetMobileStep2SmsActivity;)Ljava/lang/String;
-      //   260: getstatic 73	com/tencent/token/vm:e	Ljava/lang/String;
+      //   260: getstatic 73	com/tencent/token/vu:e	Ljava/lang/String;
       //   263: invokevirtual 101	com/tencent/token/ui/UtilsModSetMobileStep2SmsActivity:sendUpSmsBySMSAPP	(Ljava/lang/String;Ljava/lang/String;)V
       //   266: aload_0
       //   267: getfield 12	com/tencent/token/ui/UtilsModSetMobileStep2SmsActivity$3:a	Lcom/tencent/token/ui/UtilsModSetMobileStep2SmsActivity;
@@ -234,25 +234,25 @@ public class UtilsModSetMobileStep2SmsActivity
       //   476: return
       //   477: aload_1
       //   478: getfield 37	android/os/Message:obj	Ljava/lang/Object;
-      //   481: checkcast 175	com/tencent/token/wy
+      //   481: checkcast 175	com/tencent/token/xh
       //   484: astore_1
       //   485: aload_1
-      //   486: getfield 177	com/tencent/token/wy:c	Ljava/lang/String;
+      //   486: getfield 177	com/tencent/token/xh:c	Ljava/lang/String;
       //   489: ifnull +13 -> 502
       //   492: aload_1
-      //   493: getfield 177	com/tencent/token/wy:c	Ljava/lang/String;
+      //   493: getfield 177	com/tencent/token/xh:c	Ljava/lang/String;
       //   496: invokevirtual 70	java/lang/String:length	()I
       //   499: ifne +14 -> 513
       //   502: aload_0
       //   503: getfield 12	com/tencent/token/ui/UtilsModSetMobileStep2SmsActivity$3:a	Lcom/tencent/token/ui/UtilsModSetMobileStep2SmsActivity;
       //   506: invokevirtual 160	com/tencent/token/ui/UtilsModSetMobileStep2SmsActivity:getResources	()Landroid/content/res/Resources;
       //   509: aload_1
-      //   510: invokestatic 180	com/tencent/token/wy:a	(Landroid/content/res/Resources;Lcom/tencent/token/wy;)V
+      //   510: invokestatic 180	com/tencent/token/xh:a	(Landroid/content/res/Resources;Lcom/tencent/token/xh;)V
       //   513: aload_0
       //   514: getfield 12	com/tencent/token/ui/UtilsModSetMobileStep2SmsActivity$3:a	Lcom/tencent/token/ui/UtilsModSetMobileStep2SmsActivity;
       //   517: ldc 156
       //   519: aload_1
-      //   520: getfield 177	com/tencent/token/wy:c	Ljava/lang/String;
+      //   520: getfield 177	com/tencent/token/xh:c	Ljava/lang/String;
       //   523: ldc 168
       //   525: aconst_null
       //   526: invokevirtual 172	com/tencent/token/ui/UtilsModSetMobileStep2SmsActivity:showUserDialog	(ILjava/lang/String;ILandroid/content/DialogInterface$OnClickListener;)V
@@ -409,29 +409,29 @@ public class UtilsModSetMobileStep2SmsActivity
       //   852: aload_3
       //   853: bipush 8
       //   855: invokevirtual 194	android/view/View:setVisibility	(I)V
-      //   858: invokestatic 245	com/tencent/token/aal:a	()Lcom/tencent/token/aal;
-      //   861: invokevirtual 248	com/tencent/token/aal:b	()V
+      //   858: invokestatic 245	com/tencent/token/aax:a	()Lcom/tencent/token/aax;
+      //   861: invokevirtual 248	com/tencent/token/aax:b	()V
       //   864: iconst_1
       //   865: putstatic 254	com/tencent/token/ui/AccountPageActivity:mNeedRefreshEval	Z
       //   868: return
       //   869: aload_1
       //   870: getfield 37	android/os/Message:obj	Ljava/lang/Object;
-      //   873: checkcast 175	com/tencent/token/wy
+      //   873: checkcast 175	com/tencent/token/xh
       //   876: astore_1
       //   877: aload_1
-      //   878: getfield 177	com/tencent/token/wy:c	Ljava/lang/String;
+      //   878: getfield 177	com/tencent/token/xh:c	Ljava/lang/String;
       //   881: ifnull +13 -> 894
       //   884: aload_1
-      //   885: getfield 177	com/tencent/token/wy:c	Ljava/lang/String;
+      //   885: getfield 177	com/tencent/token/xh:c	Ljava/lang/String;
       //   888: invokevirtual 70	java/lang/String:length	()I
       //   891: ifne +14 -> 905
       //   894: aload_0
       //   895: getfield 12	com/tencent/token/ui/UtilsModSetMobileStep2SmsActivity$3:a	Lcom/tencent/token/ui/UtilsModSetMobileStep2SmsActivity;
       //   898: invokevirtual 160	com/tencent/token/ui/UtilsModSetMobileStep2SmsActivity:getResources	()Landroid/content/res/Resources;
       //   901: aload_1
-      //   902: invokestatic 180	com/tencent/token/wy:a	(Landroid/content/res/Resources;Lcom/tencent/token/wy;)V
+      //   902: invokestatic 180	com/tencent/token/xh:a	(Landroid/content/res/Resources;Lcom/tencent/token/xh;)V
       //   905: aload_1
-      //   906: getfield 256	com/tencent/token/wy:a	I
+      //   906: getfield 256	com/tencent/token/xh:a	I
       //   909: sipush 146
       //   912: if_icmpne +30 -> 942
       //   915: aload_0
@@ -454,7 +454,7 @@ public class UtilsModSetMobileStep2SmsActivity
       //   950: getfield 12	com/tencent/token/ui/UtilsModSetMobileStep2SmsActivity$3:a	Lcom/tencent/token/ui/UtilsModSetMobileStep2SmsActivity;
       //   953: ldc 156
       //   955: aload_1
-      //   956: getfield 177	com/tencent/token/wy:c	Ljava/lang/String;
+      //   956: getfield 177	com/tencent/token/xh:c	Ljava/lang/String;
       //   959: ldc 168
       //   961: aconst_null
       //   962: invokevirtual 172	com/tencent/token/ui/UtilsModSetMobileStep2SmsActivity:showUserDialog	(ILjava/lang/String;ILandroid/content/DialogInterface$OnClickListener;)V
@@ -488,20 +488,20 @@ public class UtilsModSetMobileStep2SmsActivity
       //   1020: aconst_null
       //   1021: invokevirtual 172	com/tencent/token/ui/UtilsModSetMobileStep2SmsActivity:showUserDialog	(ILjava/lang/String;ILandroid/content/DialogInterface$OnClickListener;)V
       //   1024: return
-      //   1025: invokestatic 285	com/tencent/token/global/RqdApplication:n	()Landroid/content/Context;
-      //   1028: invokestatic 290	com/tencent/token/ry:a	(Landroid/content/Context;)Lcom/tencent/token/ry;
+      //   1025: invokestatic 285	com/tencent/token/global/RqdApplication:p	()Landroid/content/Context;
+      //   1028: invokestatic 290	com/tencent/token/sg:a	(Landroid/content/Context;)Lcom/tencent/token/sg;
       //   1031: astore_1
       //   1032: aload_1
       //   1033: aload_0
       //   1034: getfield 12	com/tencent/token/ui/UtilsModSetMobileStep2SmsActivity$3:a	Lcom/tencent/token/ui/UtilsModSetMobileStep2SmsActivity;
       //   1037: invokestatic 294	com/tencent/token/ui/UtilsModSetMobileStep2SmsActivity:access$1000	(Lcom/tencent/token/ui/UtilsModSetMobileStep2SmsActivity;)J
-      //   1040: invokevirtual 297	com/tencent/token/ry:a	(J)[B
+      //   1040: invokevirtual 297	com/tencent/token/sg:a	(J)[B
       //   1043: astore_3
       //   1044: ldc_w 299
       //   1047: aload_3
       //   1048: invokestatic 303	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
       //   1051: invokevirtual 306	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
-      //   1054: invokestatic 308	com/tencent/token/xa:a	(Ljava/lang/String;)V
+      //   1054: invokestatic 308	com/tencent/token/xj:a	(Ljava/lang/String;)V
       //   1057: aload_3
       //   1058: ifnull +65 -> 1123
       //   1061: aload_3
@@ -521,20 +521,20 @@ public class UtilsModSetMobileStep2SmsActivity
       //   1089: aload 4
       //   1091: invokevirtual 88	java/lang/StringBuilder:toString	()Ljava/lang/String;
       //   1094: ldc2_w 313
-      //   1097: invokevirtual 317	com/tencent/token/ry:a	(Ljava/lang/String;J)Z
+      //   1097: invokevirtual 317	com/tencent/token/sg:a	(Ljava/lang/String;J)Z
       //   1100: ifne +23 -> 1123
       //   1103: aload_0
       //   1104: getfield 12	com/tencent/token/ui/UtilsModSetMobileStep2SmsActivity$3:a	Lcom/tencent/token/ui/UtilsModSetMobileStep2SmsActivity;
       //   1107: aload_3
-      //   1108: invokestatic 47	com/tencent/token/aac:a	([B)Ljava/lang/String;
+      //   1108: invokestatic 47	com/tencent/token/aao:a	([B)Ljava/lang/String;
       //   1111: invokestatic 51	com/tencent/token/ui/UtilsModSetMobileStep2SmsActivity:access$302	(Lcom/tencent/token/ui/UtilsModSetMobileStep2SmsActivity;Ljava/lang/String;)Ljava/lang/String;
       //   1114: pop
       //   1115: aload_0
       //   1116: getfield 12	com/tencent/token/ui/UtilsModSetMobileStep2SmsActivity$3:a	Lcom/tencent/token/ui/UtilsModSetMobileStep2SmsActivity;
       //   1119: invokestatic 33	com/tencent/token/ui/UtilsModSetMobileStep2SmsActivity:access$1100	(Lcom/tencent/token/ui/UtilsModSetMobileStep2SmsActivity;)V
       //   1122: return
-      //   1123: invokestatic 285	com/tencent/token/global/RqdApplication:n	()Landroid/content/Context;
-      //   1126: invokestatic 290	com/tencent/token/ry:a	(Landroid/content/Context;)Lcom/tencent/token/ry;
+      //   1123: invokestatic 285	com/tencent/token/global/RqdApplication:p	()Landroid/content/Context;
+      //   1126: invokestatic 290	com/tencent/token/sg:a	(Landroid/content/Context;)Lcom/tencent/token/sg;
       //   1129: astore_1
       //   1130: new 75	java/lang/StringBuilder
       //   1133: dup
@@ -554,7 +554,7 @@ public class UtilsModSetMobileStep2SmsActivity
       //   1159: invokestatic 321	com/tencent/token/ui/UtilsModSetMobileStep2SmsActivity:access$400	(Lcom/tencent/token/ui/UtilsModSetMobileStep2SmsActivity;)Landroid/os/Handler;
       //   1162: ldc2_w 313
       //   1165: bipush 64
-      //   1167: invokevirtual 324	com/tencent/token/ry:a	(Ljava/lang/String;Landroid/os/Handler;JI)I
+      //   1167: invokevirtual 324	com/tencent/token/sg:a	(Ljava/lang/String;Landroid/os/Handler;JI)I
       //   1170: pop
       //   1171: return
       // Local variable table:
@@ -588,8 +588,8 @@ public class UtilsModSetMobileStep2SmsActivity
   {
     public final void run()
     {
-      xa.c("send mod set mbmobile");
-      sa.a().a(0L, UtilsModSetMobileStep2SmsActivity.this.mOpType, UtilsModSetMobileStep2SmsActivity.this.mMobile, UtilsModSetMobileStep2SmsActivity.this.mCountryCode, UtilsModSetMobileStep2SmsActivity.this.mA2, UtilsModSetMobileStep2SmsActivity.this.mHandler);
+      xj.c("send mod set mbmobile");
+      si.a().a(0L, UtilsModSetMobileStep2SmsActivity.this.mOpType, UtilsModSetMobileStep2SmsActivity.this.mMobile, UtilsModSetMobileStep2SmsActivity.this.mCountryCode, UtilsModSetMobileStep2SmsActivity.this.mA2, UtilsModSetMobileStep2SmsActivity.this.mHandler);
       UtilsModSetMobileStep2SmsActivity.access$508(UtilsModSetMobileStep2SmsActivity.this);
     }
   };
@@ -633,11 +633,11 @@ public class UtilsModSetMobileStep2SmsActivity
       ((StringBuilder)localObject).append(this.mCountryCode);
       ((StringBuilder)localObject).append(",title=");
       ((StringBuilder)localObject).append(this.mTitle);
-      xa.c(((StringBuilder)localObject).toString());
-      this.mStep2BindBtn = ((Button)findViewById(2131165773));
+      xj.c(((StringBuilder)localObject).toString());
+      this.mStep2BindBtn = ((Button)findViewById(2131165774));
       this.mStep2BindBtn.setOnClickListener(this);
       findViewById(2131165355).setOnClickListener(this);
-      ((TextView)findViewById(2131165740)).setText(this.mMobile);
+      ((TextView)findViewById(2131165741)).setText(this.mMobile);
       return;
     }
     finish();
@@ -672,7 +672,7 @@ public class UtilsModSetMobileStep2SmsActivity
       StringBuilder localStringBuilder = new StringBuilder("dispatchKeyEvent exception ");
       localStringBuilder.append(this);
       localStringBuilder.append(paramKeyEvent.toString());
-      xa.c(localStringBuilder.toString());
+      xj.c(localStringBuilder.toString());
       return true;
     }
     label73:
@@ -683,7 +683,7 @@ public class UtilsModSetMobileStep2SmsActivity
   {
     this.mHandler.sendEmptyMessage(3);
     startTimeTask();
-    xa.b("startTimeTask onActivityResult");
+    xj.b("startTimeTask onActivityResult");
   }
   
   public void onClick(View paramView)
@@ -691,9 +691,9 @@ public class UtilsModSetMobileStep2SmsActivity
     int i = paramView.getId();
     if (i != 2131165355)
     {
-      if (i != 2131165773)
+      if (i != 2131165774)
       {
-        if (i != 2131166040) {
+        if (i != 2131166042) {
           return;
         }
         if (this.mOpType == 3)
@@ -734,7 +734,7 @@ public class UtilsModSetMobileStep2SmsActivity
         return;
       }
       this.isCurrentMobile = true;
-      sa.a().a(this.mMobile, 0L, 0, 2, this.mCountryCode, this.mHandler);
+      si.a().a(this.mMobile, 0L, 0, 2, this.mCountryCode, this.mHandler);
       paramView = new StringBuilder();
       paramView.append(getResources().getString(2131493732));
       paramView.append(this.mTitle);
@@ -743,7 +743,7 @@ public class UtilsModSetMobileStep2SmsActivity
       return;
     }
     this.isCurrentMobile = false;
-    sa.a().a(this.mMobile, 0L, 0, 2, this.mCountryCode, this.mHandler);
+    si.a().a(this.mMobile, 0L, 0, 2, this.mCountryCode, this.mHandler);
     paramView = new StringBuilder();
     paramView.append(getResources().getString(2131493732));
     paramView.append(this.mTitle);
@@ -755,7 +755,7 @@ public class UtilsModSetMobileStep2SmsActivity
   {
     super.onCreate(paramBundle);
     setContentView(2131296490);
-    this.mUser = sz.a().k.b();
+    this.mUser = th.a().k.b();
     init();
     new Thread(this).start();
   }
@@ -787,7 +787,7 @@ public class UtilsModSetMobileStep2SmsActivity
       if ((this.mIsTimeTask) && (System.currentTimeMillis() - this.mTimeConter > 60000L)) {
         try
         {
-          xa.c("removeTimeTask removeTimeTask");
+          xj.c("removeTimeTask removeTimeTask");
           removeTimeTask();
           Message localMessage = new Message();
           localMessage.what = 15;
@@ -813,7 +813,7 @@ public class UtilsModSetMobileStep2SmsActivity
     catch (Exception paramString1)
     {
       paramString1.printStackTrace();
-      xa.b(paramString1.toString());
+      xj.b(paramString1.toString());
     }
   }
   
@@ -823,7 +823,7 @@ public class UtilsModSetMobileStep2SmsActivity
     {
       public final void onClick(View paramAnonymousView)
       {
-        xa.c("removeTimeTask showProgressDialog");
+        xj.c("removeTimeTask showProgressDialog");
         UtilsModSetMobileStep2SmsActivity.this.removeTimeTask();
       }
     });

@@ -1,31 +1,33 @@
 package com.tencent.token;
 
 import android.content.Context;
-import android.os.Handler;
-import android.os.Message;
 import com.tencent.token.global.RqdApplication;
 import java.util.HashMap;
 import org.json.JSONObject;
 
 public final class ty
-  extends tj
+  extends tr
 {
   private long d;
-  private int e;
+  private long e;
   private int f;
+  private int g;
+  private int h;
   
   public final String a()
   {
-    rz.a();
+    sh.a();
     this.a.a(104, null, null);
     return null;
   }
   
-  public final void a(aaq paramaaq)
+  public final void a(abc paramabc)
   {
-    this.d = ((Long)paramaaq.c.get("param.realuin")).longValue();
-    this.f = ((Integer)paramaaq.c.get("param.type")).intValue();
-    this.e = paramaaq.j;
+    this.d = ((Long)paramabc.c.get("param.uinhash")).longValue();
+    this.e = ((Long)paramabc.c.get("param.realuin")).longValue();
+    this.g = ((Integer)paramabc.c.get("param.general.mobilecode.sceneid")).intValue();
+    this.h = ((Integer)paramabc.c.get("param.type")).intValue();
+    this.f = paramabc.j;
   }
   
   public final void a(JSONObject paramJSONObject)
@@ -36,57 +38,25 @@ public final class ty
       a(i, paramJSONObject.getString("info"));
       return;
     }
-    paramJSONObject = aac.d(paramJSONObject.getString("data"));
+    paramJSONObject = aao.d(paramJSONObject.getString("data"));
     if (paramJSONObject != null)
     {
-      paramJSONObject = new JSONObject(new String(paramJSONObject));
-      i = paramJSONObject.getInt("seq_id");
-      if (i != this.e)
+      i = new JSONObject(new String(paramJSONObject)).getInt("seq_id");
+      if (i != this.f)
       {
         this.a.a(10030, null, null);
         paramJSONObject = new StringBuilder("parseJSON error seq is wrong seq=");
         paramJSONObject.append(i);
         paramJSONObject.append(",right = ");
-        paramJSONObject.append(this.e);
-        xa.c(paramJSONObject.toString());
+        paramJSONObject.append(this.f);
+        xj.c(paramJSONObject.toString());
         return;
-      }
-      long l = paramJSONObject.getLong("server_time");
-      sb.b();
-      sb.a(l);
-      if (paramJSONObject.getInt("seed_available") == 1)
-      {
-        paramJSONObject = aac.e(paramJSONObject.getString("seed"));
-        if (paramJSONObject != null)
-        {
-          sb.b().c();
-          sb.b().a(paramJSONObject);
-          sb.b().a.a();
-        }
-      }
-      paramJSONObject = sz.a().d(this.d);
-      if (paramJSONObject != null) {
-        sz.a().a(paramJSONObject);
       }
       this.a.a = 0;
       return;
     }
-    xa.c("parseJSON error decodeData=".concat(String.valueOf(paramJSONObject)));
-    a(10022, RqdApplication.n().getString(2131493068));
-  }
-  
-  public final void b()
-  {
-    if ((!this.b.e) && (this.b.d != null))
-    {
-      Object localObject = new StringBuilder("handleSuccess");
-      ((StringBuilder)localObject).append(this.b.f);
-      xa.c(((StringBuilder)localObject).toString());
-      localObject = this.b.d.obtainMessage(this.b.f);
-      ((Message)localObject).arg1 = 0;
-      ((Message)localObject).sendToTarget();
-      this.b.e = true;
-    }
+    xj.c("parseJSON error decodeData=".concat(String.valueOf(paramJSONObject)));
+    a(10022, RqdApplication.p().getString(2131493068));
   }
 }
 

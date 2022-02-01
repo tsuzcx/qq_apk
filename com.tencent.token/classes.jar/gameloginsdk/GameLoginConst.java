@@ -1,9 +1,9 @@
 package gameloginsdk;
 
-import com.tencent.token.ape;
+import com.tencent.token.arb;
 
 public class GameLoginConst
-  extends ape
+  extends arb
 {
   public static final int APPID_TYPE_DOUBLE_CONFIRM = 1;
   public static final int APPID_TYPE_NONE = 0;

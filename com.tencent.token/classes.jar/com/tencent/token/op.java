@@ -5,33 +5,31 @@ import android.os.Bundle;
 public final class op
 {
   public static final class a
-    extends og
+    extends on
   {
     public String c;
     
     public final int a()
     {
-      return 22;
+      return 23;
     }
     
     public final void a(Bundle paramBundle)
     {
-      super.b(paramBundle);
-      paramBundle.putString("_wxapi_pay_insourance_req_url", this.c);
+      super.a(paramBundle);
+      paramBundle.putString("_wxapi_subscribeminiprogram_req_miniprogramappid", this.c);
     }
     
     public final void b(Bundle paramBundle)
     {
       super.b(paramBundle);
-      this.c = paramBundle.getString("_wxapi_pay_insourance_req_url");
+      this.c = paramBundle.getString("_wxapi_subscribeminiprogram_req_miniprogramappid");
     }
     
     public final boolean b()
     {
-      if (pg.a(this.c)) {
-        return false;
-      }
-      return this.c.length() <= 10240;
+      String str = this.c;
+      return (str != null) && (str.length() != 0);
     }
   }
 }

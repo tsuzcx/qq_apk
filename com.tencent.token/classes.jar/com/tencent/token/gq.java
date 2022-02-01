@@ -1,115 +1,149 @@
 package com.tencent.token;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
-import android.content.res.ColorStateList;
-import android.content.res.Configuration;
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.os.Build.VERSION;
-import android.util.SparseArray;
-import android.util.TypedValue;
-import java.util.WeakHashMap;
-import org.xmlpull.v1.XmlPullParser;
+import android.location.Location;
+import android.location.LocationManager;
+import java.util.Calendar;
 
-public final class gq
+final class gq
 {
-  private static final ThreadLocal<TypedValue> a = new ThreadLocal();
-  private static final WeakHashMap<Context, SparseArray<a>> b = new WeakHashMap(0);
-  private static final Object c = new Object();
+  private static gq a;
+  private final Context b;
+  private final LocationManager c;
+  private final a d = new a();
   
-  public static ColorStateList a(Context paramContext, int paramInt)
+  private gq(Context paramContext, LocationManager paramLocationManager)
   {
-    if (Build.VERSION.SDK_INT >= 23) {
-      return paramContext.getColorStateList(paramInt);
-    }
-    Object localObject1 = d(paramContext, paramInt);
-    if (localObject1 != null) {
-      return localObject1;
-    }
-    ColorStateList localColorStateList = c(paramContext, paramInt);
-    if (localColorStateList != null) {
-      synchronized (c)
-      {
-        SparseArray localSparseArray = (SparseArray)b.get(paramContext);
-        localObject1 = localSparseArray;
-        if (localSparseArray == null)
-        {
-          localObject1 = new SparseArray();
-          b.put(paramContext, localObject1);
-        }
-        ((SparseArray)localObject1).append(paramInt, new a(localColorStateList, paramContext.getResources().getConfiguration()));
-        return localColorStateList;
-      }
-    }
-    return cr.b(paramContext, paramInt);
+    this.b = paramContext;
+    this.c = paramLocationManager;
   }
   
-  public static Drawable b(Context paramContext, int paramInt)
+  private Location a(String paramString)
   {
-    return ig.a().a(paramContext, paramInt, false);
-  }
-  
-  private static ColorStateList c(Context paramContext, int paramInt)
-  {
-    Resources localResources = paramContext.getResources();
-    Object localObject2 = (TypedValue)a.get();
-    Object localObject1 = localObject2;
-    if (localObject2 == null)
-    {
-      localObject1 = new TypedValue();
-      a.set(localObject1);
-    }
-    int i = 1;
-    localResources.getValue(paramInt, (TypedValue)localObject1, true);
-    if ((((TypedValue)localObject1).type < 28) || (((TypedValue)localObject1).type > 31)) {
-      i = 0;
-    }
-    if (i != 0) {
-      return null;
-    }
-    localObject1 = paramContext.getResources();
-    localObject2 = ((Resources)localObject1).getXml(paramInt);
     try
     {
-      paramContext = gp.a((Resources)localObject1, (XmlPullParser)localObject2, paramContext.getTheme());
-      return paramContext;
+      if (this.c.isProviderEnabled(paramString))
+      {
+        paramString = this.c.getLastKnownLocation(paramString);
+        return paramString;
+      }
     }
-    catch (Exception paramContext) {}
+    catch (Exception paramString)
+    {
+      label22:
+      break label22;
+    }
     return null;
   }
   
-  private static ColorStateList d(Context paramContext, int paramInt)
+  static gq a(Context paramContext)
   {
-    synchronized (c)
+    if (a == null)
     {
-      SparseArray localSparseArray = (SparseArray)b.get(paramContext);
-      if ((localSparseArray != null) && (localSparseArray.size() > 0))
-      {
-        a locala = (a)localSparseArray.get(paramInt);
-        if (locala != null)
-        {
-          if (locala.b.equals(paramContext.getResources().getConfiguration()))
-          {
-            paramContext = locala.a;
-            return paramContext;
-          }
-          localSparseArray.remove(paramInt);
-        }
-      }
-      return null;
+      paramContext = paramContext.getApplicationContext();
+      a = new gq(paramContext, (LocationManager)paramContext.getSystemService("location"));
     }
+    return a;
+  }
+  
+  private void a(Location paramLocation)
+  {
+    a locala = this.d;
+    long l1 = System.currentTimeMillis();
+    gp localgp = gp.a();
+    localgp.a(l1 - 86400000L, paramLocation.getLatitude(), paramLocation.getLongitude());
+    long l2 = localgp.a;
+    localgp.a(l1, paramLocation.getLatitude(), paramLocation.getLongitude());
+    boolean bool;
+    if (localgp.c == 1) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    long l3 = localgp.b;
+    long l4 = localgp.a;
+    localgp.a(86400000L + l1, paramLocation.getLatitude(), paramLocation.getLongitude());
+    long l5 = localgp.b;
+    if ((l3 != -1L) && (l4 != -1L))
+    {
+      if (l1 > l4) {
+        l1 = 0L + l5;
+      } else if (l1 > l3) {
+        l1 = 0L + l4;
+      } else {
+        l1 = 0L + l3;
+      }
+      l1 += 60000L;
+    }
+    else
+    {
+      l1 = 43200000L + l1;
+    }
+    locala.a = bool;
+    locala.b = l2;
+    locala.c = l3;
+    locala.d = l4;
+    locala.e = l5;
+    locala.f = l1;
+  }
+  
+  @SuppressLint({"MissingPermission"})
+  private Location b()
+  {
+    int i = cy.a(this.b, "android.permission.ACCESS_COARSE_LOCATION");
+    Location localLocation2 = null;
+    Location localLocation1;
+    if (i == 0) {
+      localLocation1 = a("network");
+    } else {
+      localLocation1 = null;
+    }
+    if (cy.a(this.b, "android.permission.ACCESS_FINE_LOCATION") == 0) {
+      localLocation2 = a("gps");
+    }
+    if ((localLocation2 != null) && (localLocation1 != null))
+    {
+      if (localLocation2.getTime() > localLocation1.getTime()) {
+        return localLocation2;
+      }
+      return localLocation1;
+    }
+    if (localLocation2 != null) {
+      return localLocation2;
+    }
+    return localLocation1;
+  }
+  
+  private boolean c()
+  {
+    return this.d.f > System.currentTimeMillis();
+  }
+  
+  final boolean a()
+  {
+    a locala = this.d;
+    if (c()) {
+      return locala.a;
+    }
+    Location localLocation = b();
+    if (localLocation != null)
+    {
+      a(localLocation);
+      return locala.a;
+    }
+    int i = Calendar.getInstance().get(11);
+    return (i < 6) || (i >= 22);
   }
   
   static final class a
   {
-    final ColorStateList a;
-    final Configuration b;
-    
-    a(ColorStateList paramColorStateList, Configuration paramConfiguration)
-    {
-      this.a = paramColorStateList;
-      this.b = paramConfiguration;
-    }
+    boolean a;
+    long b;
+    long c;
+    long d;
+    long e;
+    long f;
   }
 }
 

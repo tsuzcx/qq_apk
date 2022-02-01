@@ -1,35 +1,41 @@
 package com.tencent.token;
 
-import android.content.Context;
-import android.database.Cursor;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
+import android.os.Build.VERSION;
+import android.widget.EdgeEffect;
 
-public abstract class fw
-  extends fp
+public final class fw
 {
-  private int j;
-  private int k;
-  private LayoutInflater l;
+  private static final b a = new b();
   
-  @Deprecated
-  public fw(Context paramContext, int paramInt)
+  static
   {
-    super(paramContext);
-    this.k = paramInt;
-    this.j = paramInt;
-    this.l = ((LayoutInflater)paramContext.getSystemService("layout_inflater"));
+    if (Build.VERSION.SDK_INT >= 21)
+    {
+      a = new a();
+      return;
+    }
   }
   
-  public View a(Context paramContext, Cursor paramCursor, ViewGroup paramViewGroup)
+  public static void a(EdgeEffect paramEdgeEffect, float paramFloat1, float paramFloat2)
   {
-    return this.l.inflate(this.j, paramViewGroup, false);
+    a.a(paramEdgeEffect, paramFloat1, paramFloat2);
   }
   
-  public final View b(Context paramContext, Cursor paramCursor, ViewGroup paramViewGroup)
+  static final class a
+    extends fw.b
   {
-    return this.l.inflate(this.k, paramViewGroup, false);
+    public final void a(EdgeEffect paramEdgeEffect, float paramFloat1, float paramFloat2)
+    {
+      paramEdgeEffect.onPull(paramFloat1, paramFloat2);
+    }
+  }
+  
+  static class b
+  {
+    public void a(EdgeEffect paramEdgeEffect, float paramFloat1, float paramFloat2)
+    {
+      paramEdgeEffect.onPull(paramFloat1);
+    }
   }
 }
 

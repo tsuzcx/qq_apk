@@ -1,9 +1,9 @@
 package com.tencent.token;
 
 public final class adb
-  implements adm
 {
-  public adb(ade paramade) {}
+  public int a = 0;
+  public int b = 0;
 }
 
 

@@ -1,8 +1,10 @@
 package com.tencent.token;
 
+import com.tencent.wcdb.database.SQLiteDatabase.a;
+
 public abstract interface ahs
 {
-  public static final ahs a = new ahs() {};
+  public abstract ahi a(SQLiteDatabase.a parama, String[] paramArrayOfString);
 }
 
 

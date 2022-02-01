@@ -1,17 +1,19 @@
 package com.tencent.token;
 
-import android.content.res.ColorStateList;
-import android.graphics.PorterDuff.Mode;
+import android.view.View;
 
 public abstract interface ev
+  extends eu
 {
-  public abstract ColorStateList getSupportBackgroundTintList();
+  public abstract void a(int paramInt1, int paramInt2, int[] paramArrayOfInt, int paramInt3);
   
-  public abstract PorterDuff.Mode getSupportBackgroundTintMode();
+  public abstract void a(View paramView, int paramInt);
   
-  public abstract void setSupportBackgroundTintList(ColorStateList paramColorStateList);
+  public abstract boolean b(int paramInt);
   
-  public abstract void setSupportBackgroundTintMode(PorterDuff.Mode paramMode);
+  public abstract void c(int paramInt);
+  
+  public abstract void d(int paramInt);
 }
 
 

@@ -1,24 +1,14 @@
 package com.tencent.token;
 
-import java.util.List;
-
-public final class mz
+public abstract interface mz
 {
-  public nj a;
-  public nq b;
-  public np c;
-  public List d;
+  public abstract my a(Runnable paramRunnable);
   
-  public final String a()
-  {
-    StringBuilder localStringBuilder = new StringBuilder("accessInfo:");
-    localStringBuilder.append(this.a);
-    localStringBuilder.append(", sdkCfgInfo:");
-    localStringBuilder.append(this.b);
-    localStringBuilder.append(", sdkAccessInfo:");
-    localStringBuilder.append(this.c);
-    return localStringBuilder.toString();
-  }
+  public abstract my b(Runnable paramRunnable);
+  
+  public abstract my c(Runnable paramRunnable);
+  
+  public abstract my d(Runnable paramRunnable);
 }
 
 

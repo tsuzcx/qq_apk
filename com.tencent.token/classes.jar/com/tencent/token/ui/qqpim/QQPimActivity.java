@@ -15,18 +15,18 @@ import android.widget.FrameLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
-import com.tencent.token.aad;
+import com.tencent.token.aap;
 import com.tencent.token.global.RqdApplication;
 import com.tencent.token.r;
 import com.tencent.token.t;
 import com.tencent.token.ui.BaseActivity;
 import com.tencent.token.ui.qqpim.okdownload.LayoutAppKeyInfo;
-import com.tencent.token.yy;
-import com.tencent.token.yz;
-import com.tencent.token.za;
-import com.tencent.token.ze;
-import com.tencent.token.ze.a;
+import com.tencent.token.zl;
+import com.tencent.token.zm;
 import com.tencent.token.zn;
+import com.tencent.token.zr;
+import com.tencent.token.zr.a;
+import com.tencent.token.zz;
 import com.tmsdk.TMSDKContext;
 
 public class QQPimActivity
@@ -50,15 +50,15 @@ public class QQPimActivity
       if (paramAnonymousContext != null) {
         if (paramAnonymousContext.equals("android.net.conn.CONNECTIVITY_CHANGE"))
         {
-          if (zn.a())
+          if (zz.a())
           {
-            if (!za.e().f()) {
-              za.e().a();
+            if (!zn.e().f()) {
+              zn.e().a();
             }
           }
-          else if (za.e().f())
+          else if (zn.e().f())
           {
-            za.e().b();
+            zn.e().b();
             QQPimActivity.this.tvDownload.setVisibility(0);
             QQPimActivity.this.flProgress.setVisibility(8);
             QQPimActivity.this.tvDownload.setText(QQPimActivity.this.getResources().getText(2131493454));
@@ -79,7 +79,7 @@ public class QQPimActivity
   private void downloadApk()
   {
     TMSDKContext.saveActionData(170010);
-    za.e().a("http://qqwx.qq.com/s?aid=index&p=11&c=106613&vt=1&pf=0", null, null, new yz()
+    zn.e().a("http://qqwx.qq.com/s?aid=index&p=11&c=106613&vt=1&pf=0", null, null, new zm()
     {
       public final void a()
       {
@@ -90,7 +90,7 @@ public class QQPimActivity
           {
             QQPimActivity.this.tvDownload.setText(QQPimActivity.this.getResources().getText(2131493446));
             Toast.makeText(QQPimActivity.this, QQPimActivity.this.getResources().getText(2131493450), 0).show();
-            yy.a(QQPimActivity.this, QQPimActivity.this.filePath);
+            zl.a(QQPimActivity.this, QQPimActivity.this.filePath);
             QQPimActivity.access$602(QQPimActivity.this, true);
             QQPimActivity.this.tvDownload.setVisibility(0);
             QQPimActivity.this.flProgress.setVisibility(8);
@@ -150,23 +150,23 @@ public class QQPimActivity
         QQPimActivity.access$702(QQPimActivity.this, 0.0F);
       }
     });
-    za.e().a();
+    zn.e().a();
   }
   
   private void initStatus()
   {
-    this.isApkDownload = za.e().c();
-    this.isInstall = yy.b(this, "com.tencent.qqpim");
-    this.filePath = za.e().d();
+    this.isApkDownload = zn.e().c();
+    this.isInstall = zl.b(this, "com.tencent.qqpim");
+    this.filePath = zn.e().d();
   }
   
   private void initView()
   {
-    this.pbProgress = ((ProgressBar)findViewById(2131165861));
-    this.flProgress = ((FrameLayout)findViewById(2131165859));
-    this.tvProgress = ((ProgressTextView)findViewById(2131165863));
-    this.ivBack = ((FrameLayout)findViewById(2131165857));
-    this.tvDownload = ((TextView)findViewById(2131166183));
+    this.pbProgress = ((ProgressBar)findViewById(2131165862));
+    this.flProgress = ((FrameLayout)findViewById(2131165860));
+    this.tvProgress = ((ProgressTextView)findViewById(2131165864));
+    this.ivBack = ((FrameLayout)findViewById(2131165858));
+    this.tvDownload = ((TextView)findViewById(2131166185));
     this.tvDownload.setOnClickListener(this);
     this.flProgress.setOnClickListener(this);
     this.ivBack.setOnClickListener(new View.OnClickListener()
@@ -176,7 +176,7 @@ public class QQPimActivity
         QQPimActivity.this.finish();
       }
     });
-    this.mAppLayout = ((LayoutAppKeyInfo)findViewById(2131166007));
+    this.mAppLayout = ((LayoutAppKeyInfo)findViewById(2131166009));
     this.mAppLayout.a("深圳市腾讯计算机系统有限公司", "7.16", "QQ同步助手-微信文件备份", "http://ntool.3g.qq.com/permissionInfo?pkgName=com.tencent.qqpim", "https://cftweb.3g.qq.com/privacy/privacyPolicy?content_id=26e57ba2bb972d84e9a8c45ed6f7ad801617788449", this);
   }
   
@@ -186,7 +186,7 @@ public class QQPimActivity
     localIntentFilter.addAction("android.net.conn.CONNECTIVITY_CHANGE");
     localIntentFilter.addAction("android.net.wifi.WIFI_STATE_CHANGED");
     localIntentFilter.addAction("android.net.wifi.STATE_CHANGE");
-    RqdApplication.n().registerReceiver(this.mNetworkMsgReceiver, localIntentFilter);
+    RqdApplication.p().registerReceiver(this.mNetworkMsgReceiver, localIntentFilter);
   }
   
   private void registerInstallReceiver()
@@ -243,7 +243,7 @@ public class QQPimActivity
   
   private void unregistReceiver()
   {
-    RqdApplication.n().unregisterReceiver(this.mNetworkMsgReceiver);
+    RqdApplication.p().unregisterReceiver(this.mNetworkMsgReceiver);
   }
   
   private void updateBtnState()
@@ -254,23 +254,23 @@ public class QQPimActivity
   public void onClick(View paramView)
   {
     int i = paramView.getId();
-    if ((i == 2131166183) || (i == 2131165859))
+    if ((i == 2131166185) || (i == 2131165860))
     {
       if (this.isInstall)
       {
-        yy.c(this, "com.tencent.qqpim");
+        zl.c(this, "com.tencent.qqpim");
         return;
       }
       if (this.isApkDownload)
       {
-        yy.a(this, this.filePath);
+        zl.a(this, this.filePath);
         return;
       }
-      if (zn.a())
+      if (zz.a())
       {
-        if (za.e().f())
+        if (zn.e().f())
         {
-          za.e().b();
+          zn.e().b();
           return;
         }
         startDownload();
@@ -284,12 +284,12 @@ public class QQPimActivity
   {
     super.onCreate(paramBundle);
     setContentView(2131296298);
-    aad.a(this, this.mTitleBar, 2130968771);
+    aap.a(this, this.mTitleBar, 2130968771);
     initView();
     registReceiver();
     registerInstallReceiver();
     TMSDKContext.saveActionData(170009);
-    ze.a("com.tencent.qqpim", new ze.a()
+    zr.a("com.tencent.qqpim", new zr.a()
     {
       public final void a(final r paramAnonymousr)
       {

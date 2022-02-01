@@ -18,12 +18,12 @@ import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
 import android.widget.Toast;
-import com.tencent.token.aad;
-import com.tencent.token.ary;
-import com.tencent.token.ary.a;
-import com.tencent.token.asa;
+import com.tencent.token.aap;
+import com.tencent.token.atv;
+import com.tencent.token.atv.a;
+import com.tencent.token.atx;
 import com.tencent.token.global.RqdApplication;
-import com.tencent.token.xa;
+import com.tencent.token.xj;
 import com.tmsdk.TMSDKContext;
 
 public class PermissionGuideSubActivity
@@ -48,9 +48,9 @@ public class PermissionGuideSubActivity
   
   private void initControllers()
   {
-    this.mTitleBar = findViewById(2131166117);
+    this.mTitleBar = findViewById(2131166119);
     this.mTitleText = ((TextView)findViewById(2131165298));
-    this.mTitleDivider = findViewById(2131166118);
+    this.mTitleDivider = findViewById(2131166120);
     ViewGroup.MarginLayoutParams localMarginLayoutParams = (ViewGroup.MarginLayoutParams)this.mTitleBar.getLayoutParams();
     if (IndexActivity.S_RES_HEIGHT > 0) {
       localMarginLayoutParams.height = IndexActivity.S_TITLE_HEIGHT;
@@ -79,8 +79,8 @@ public class PermissionGuideSubActivity
     int j = 0;
     boolean bool1 = paramBundle.getBooleanExtra("app_whitelist", false);
     boolean bool2 = getIntent().getBooleanExtra("auto_start", false);
-    this.mPer1Layout = ((RelativeLayout)findViewById(2131165810));
-    this.mPer2Layout = ((RelativeLayout)findViewById(2131165811));
+    this.mPer1Layout = ((RelativeLayout)findViewById(2131165811));
+    this.mPer2Layout = ((RelativeLayout)findViewById(2131165812));
     paramBundle = this.mPer1Layout;
     int i;
     if (bool1) {
@@ -102,7 +102,7 @@ public class PermissionGuideSubActivity
       {
         public final void onClick(View paramAnonymousView)
         {
-          ary.a(new int[] { 3 }).a(new asa()
+          atv.a(new int[] { 3 }).a(new atx()
           {
             public final void a(int[] paramAnonymous2ArrayOfInt)
             {
@@ -114,7 +114,7 @@ public class PermissionGuideSubActivity
               }
               if (i == 0)
               {
-                Toast.makeText(RqdApplication.n(), "授权失败", 0).show();
+                Toast.makeText(RqdApplication.p(), "授权失败", 0).show();
                 return;
               }
               TMSDKContext.saveActionData(1150121);
@@ -131,7 +131,7 @@ public class PermissionGuideSubActivity
       {
         public final void onClick(View paramAnonymousView)
         {
-          ary.a(new int[] { 4 }).a(new asa()
+          atv.a(new int[] { 4 }).a(new atx()
           {
             public final void a(int[] paramAnonymous2ArrayOfInt)
             {
@@ -143,7 +143,7 @@ public class PermissionGuideSubActivity
               }
               if (i == 0)
               {
-                Toast.makeText(RqdApplication.n(), "授权失败", 0).show();
+                Toast.makeText(RqdApplication.p(), "授权失败", 0).show();
                 return;
               }
               TMSDKContext.saveActionData(1150118);
@@ -173,10 +173,10 @@ public class PermissionGuideSubActivity
     initControllers();
     if ((getClass().toString().contains("StartPwd")) && (!getClass().toString().contains("StartPwdGestureIndex")))
     {
-      aad.a(this, this.mTitleBar, 2130968773);
+      aap.a(this, this.mTitleBar, 2130968773);
       return;
     }
-    aad.a(this, this.mTitleBar, 2130968641);
+    aap.a(this, this.mTitleBar, 2130968641);
   }
   
   protected void setDefaultBackArrow()
@@ -208,7 +208,7 @@ public class PermissionGuideSubActivity
     catch (PackageManager.NameNotFoundException localNameNotFoundException)
     {
       localNameNotFoundException.printStackTrace();
-      xa.c(localNameNotFoundException.toString());
+      xj.c(localNameNotFoundException.toString());
       localObject = null;
     }
     if ((localObject != null) && (localObject.labelRes != 0))

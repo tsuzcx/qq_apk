@@ -1,78 +1,78 @@
 package com.tencent.token;
 
-import android.content.Context;
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.token.global.RqdApplication;
+import java.lang.reflect.Field;
 import java.util.HashMap;
-import org.json.JSONObject;
 
 public final class to
-  extends tj
 {
-  public static int d = -1;
-  public static int e = -1;
-  private long f;
-  private int g;
+  private static to b;
+  private HashMap<String, Class<? extends tr>> a = new HashMap();
   
-  public final String a()
+  private to()
   {
-    rz.a();
-    this.a.a(104, null, null);
-    return null;
+    a(tn.class);
   }
   
-  public final void a(aaq paramaaq)
+  public static tr a(String paramString)
   {
-    this.f = ((Long)paramaaq.c.get("param.realuin")).longValue();
+    if (b == null) {
+      b = new to();
+    }
+    return b.b(paramString);
   }
   
-  public final void a(JSONObject paramJSONObject)
+  private void a(Class<?> paramClass)
   {
-    int i = paramJSONObject.getInt("err");
-    if (i != 0)
-    {
-      a(i, paramJSONObject.getString("info"));
+    paramClass = paramClass.getDeclaredFields();
+    if (paramClass == null) {
       return;
     }
-    paramJSONObject = aac.d(paramJSONObject.getString("data"));
-    if (paramJSONObject != null)
+    int j = paramClass.length;
+    int i = 0;
+    while (i < j)
     {
-      paramJSONObject = new JSONObject(new String(paramJSONObject));
-      this.g = paramJSONObject.getInt("need_idcard_detect");
-      if (this.g == 1) {
-        try
+      Object localObject2 = paramClass[i];
+      try
+      {
+        Object localObject1 = ((Field)localObject2).get(null);
+        if ((localObject1 instanceof String))
         {
-          d = paramJSONObject.getInt("displayangle");
-          e = paramJSONObject.getInt("imageangle");
-          paramJSONObject = new StringBuilder("plain angle=");
-          paramJSONObject.append(d);
-          paramJSONObject.append(",angel2=");
-          paramJSONObject.append(e);
-          xa.a(paramJSONObject.toString());
-        }
-        catch (Exception paramJSONObject)
-        {
-          paramJSONObject.printStackTrace();
+          localObject1 = (String)localObject1;
+          localObject2 = (tt)((Field)localObject2).getAnnotation(tt.class);
+          if ((localObject1 != null) && (localObject2 != null))
+          {
+            localObject2 = ((tt)localObject2).a();
+            if (localObject2 == null) {
+              xj.c("protocol mapping definition in ProtocolConstant is error:".concat(String.valueOf(localObject1)));
+            } else {
+              this.a.put(localObject1, localObject2);
+            }
+          }
         }
       }
-      this.a.a = 0;
-      return;
+      catch (Exception localException)
+      {
+        localException.printStackTrace();
+      }
+      i += 1;
     }
-    xa.c("parseJSON error decodeData=".concat(String.valueOf(paramJSONObject)));
-    a(10022, RqdApplication.n().getString(2131493068));
   }
   
-  public final void b()
+  private tr b(String paramString)
   {
-    if ((!this.b.e) && (this.b.d != null))
-    {
-      Message localMessage = this.b.d.obtainMessage(this.b.f);
-      localMessage.arg1 = 0;
-      localMessage.arg2 = this.g;
-      localMessage.sendToTarget();
-      this.b.e = true;
+    paramString = (Class)this.a.get(paramString);
+    if (paramString != null) {
+      try
+      {
+        paramString = (tr)paramString.newInstance();
+        return paramString;
+      }
+      catch (Exception paramString)
+      {
+        paramString.printStackTrace();
+      }
     }
+    return null;
   }
 }
 

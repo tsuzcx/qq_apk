@@ -1,212 +1,176 @@
 package com.tencent.token;
 
-import android.app.Activity;
-import android.app.Application;
-import android.os.Build.VERSION;
-import android.os.Handler;
-import android.os.HandlerThread;
-import android.os.Looper;
-import android.os.Message;
-import android.view.View;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Set;
-import java.util.concurrent.CopyOnWriteArraySet;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
+import android.os.Environment;
+import com.tencent.token.global.RqdApplication;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 
-public final class abu
+public class abu
+  implements SharedPreferences.OnSharedPreferenceChangeListener
 {
-  public static boolean a = false;
-  public static Handler b;
-  public static Set<Object> c = new CopyOnWriteArraySet();
-  public static Set<abs> d = new CopyOnWriteArraySet();
-  public static abt e;
-  public static boolean f = false;
-  public static Set<String> g = new HashSet();
-  public static final aby h = new a();
-  public static final acc i = new b();
-  public static final abs j = new c();
+  public static aah a;
+  private static abu e;
+  protected aag b;
+  public volatile boolean c = xf.a.d;
+  public volatile boolean d = xf.a.e;
+  private volatile boolean f = xf.a.a;
+  private volatile boolean g = xf.a.b;
   
-  public static void a()
+  static
   {
-    try
-    {
-      HandlerThread localHandlerThread = new HandlerThread("TuringDispatch");
-      localHandlerThread.start();
-      b = new d(localHandlerThread.getLooper());
-      return;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
+    int i = aal.a("debug.file.blockcount", 24);
+    long l = aal.a("debug.file.keepperiod");
+    a = new aah(b(), i, "Sec.File.Tracer", ".sec.log", l);
   }
   
-  public static void a(Application paramApplication)
+  public abu()
   {
-    try
-    {
-      paramApplication.unregisterActivityLifecycleCallbacks(h);
-      paramApplication.registerActivityLifecycleCallbacks(h);
-      return;
-    }
-    finally
-    {
-      paramApplication = finally;
-      throw paramApplication;
-    }
+    aal.a(this);
+    this.b = new aag(a);
   }
   
-  public static final class a
-    extends aby
+  public static abu a()
   {
-    public final void a(Activity paramActivity)
-    {
-      if ((abu.g.contains(paramActivity.getClass().getName())) || (abu.f)) {
-        abu.a(paramActivity);
-      }
-    }
-    
-    public final void onActivityPaused(Activity paramActivity)
-    {
-      abu.e.b(paramActivity);
-    }
-    
-    public final void onActivityResumed(Activity paramActivity)
-    {
-      a(paramActivity);
-      abu.e.a(paramActivity);
-    }
-  }
-  
-  public static final class b
-    implements acc
-  {}
-  
-  public static final class c
-    implements abs
-  {
-    public final void a(String paramString, View paramView)
-    {
-      Iterator localIterator = abu.d.iterator();
-      while (localIterator.hasNext()) {
-        ((abs)localIterator.next()).a(paramString, paramView);
-      }
-    }
-  }
-  
-  public static final class d
-    extends Handler
-  {
-    public d(Looper paramLooper)
-    {
-      super();
-    }
-    
-    public final void handleMessage(Message arg1)
-    {
-      if (???.what == 1)
+    if (e == null) {
+      try
       {
-        ??? = ???.obj;
-        if ((??? != null) && ((??? instanceof abv)))
-        {
-          abv localabv = (abv)???;
-          Iterator localIterator = abu.c.iterator();
-          for (;;)
-          {
-            boolean bool = localIterator.hasNext();
-            int i = 0;
-            if (!bool) {
-              break;
-            }
-            abo.d locald = (abo.d)localIterator.next();
-            if (locald.e.equals(localabv.m))
-            {
-              if (localabv.g <= 0) {
-                bool = true;
-              } else {
-                bool = false;
-              }
-              locald.f = bool;
-              if (Build.VERSION.SDK_INT >= 14)
-              {
-                if (localabv.h == 0) {
-                  bool = true;
-                } else {
-                  bool = false;
-                }
-                locald.g = bool;
-              }
-              switch (localabv.f)
-              {
-              default: 
-                break;
-              case 3: 
-                locald.a();
-                break;
-              case 2: 
-                if (locald.b != -1L) {
-                  i = 1;
-                }
-                if (i != 0)
-                {
-                  ??? = new abo.c(2, localabv.i, localabv.j, localabv.k, localabv.l);
-                }
-                else
-                {
-                  locald.a();
-                  ??? = new abo.c(0, localabv.i, localabv.j, localabv.k, localabv.l);
-                  locald.b = System.currentTimeMillis();
-                }
-                locald.d.add(???);
-                break;
-              case 1: 
-                long l = locald.b;
-                locald.c = (System.currentTimeMillis() - l);
-                ??? = new abo.c(1, localabv.i, localabv.j, localabv.k, localabv.l);
-                locald.d.add(???);
-                ??? = abo.a(locald.d);
-                ??? = abo.a(locald.b, locald.c, ???);
-                if ((!locald.f) && (!locald.g)) {
-                  abo.a(locald.h, locald.e, locald.a, 1, ???);
-                } else {
-                  abo.a(locald.h, locald.e, locald.a, 2, ???);
-                }
-                locald.a();
-                break;
-              case 0: 
-                locald.a();
-                locald.b = System.currentTimeMillis();
-                ??? = new abo.c(0, localabv.i, localabv.j, localabv.k, localabv.l);
-                locald.d.add(???);
-              }
-            }
-          }
-          if (!localabv.e) {
-            synchronized (abv.c)
-            {
-              localabv.f = 0;
-              localabv.g = 0;
-              localabv.h = 0;
-              localabv.i = 0.0F;
-              localabv.j = 0.0F;
-              localabv.k = 0.0F;
-              localabv.l = 0.0F;
-              localabv.m = "";
-              if (abv.b < 20)
-              {
-                localabv.d = abv.a;
-                localabv.e = true;
-                abv.a = localabv;
-                abv.b += 1;
-              }
-              return;
-            }
-          }
-          throw new IllegalStateException("Already recycled.");
+        if (e == null) {
+          e = new abu();
         }
       }
+      finally {}
+    }
+    return e;
+  }
+  
+  public static void a(int paramInt)
+  {
+    int i;
+    if (paramInt <= 63)
+    {
+      i = paramInt;
+      if (paramInt >= 0) {}
+    }
+    else
+    {
+      i = xf.a.h;
+    }
+    aal.b("debug.file.tracelevel", i).commit();
+  }
+  
+  private static void a(File paramFile)
+  {
+    if (paramFile != null)
+    {
+      if (!paramFile.exists()) {
+        return;
+      }
+      if (paramFile.isFile())
+      {
+        paramFile.delete();
+        return;
+      }
+      paramFile = paramFile.listFiles();
+      int j = paramFile.length;
+      int i = 0;
+      while (i < j)
+      {
+        a(paramFile[i]);
+        i += 1;
+      }
+      return;
+    }
+  }
+  
+  public static BufferedReader b(int paramInt)
+  {
+    Object localObject = a.b(System.currentTimeMillis());
+    if (!((File)localObject).isDirectory()) {
+      return null;
+    }
+    localObject = a.b((File)localObject);
+    localObject = a.a((File[])localObject);
+    if ((paramInt >= 0) && (paramInt < localObject.length)) {
+      localObject = localObject[(localObject.length - paramInt - 1)];
+    }
+    try
+    {
+      localObject = new BufferedReader(new FileReader((File)localObject));
+      return localObject;
+    }
+    catch (FileNotFoundException localFileNotFoundException)
+    {
+      label72:
+      break label72;
+    }
+    return null;
+  }
+  
+  public static File b()
+  {
+    String str1 = xf.a.g;
+    String str2 = Environment.getExternalStorageState();
+    int i;
+    if ((!"mounted".equals(str2)) && (!"mounted_ro".equals(str2))) {
+      i = 0;
+    } else {
+      i = 1;
+    }
+    if (i != 0) {
+      return new File(Environment.getExternalStorageDirectory(), str1);
+    }
+    return new File(RqdApplication.p().getFilesDir(), str1);
+  }
+  
+  public static void c()
+  {
+    Object localObject = a.b(System.currentTimeMillis());
+    localObject = a.b((File)localObject);
+    if (localObject != null)
+    {
+      int i = 0;
+      while (i < localObject.length)
+      {
+        a(localObject[i]);
+        i += 1;
+      }
+    }
+  }
+  
+  public static boolean d()
+  {
+    return aal.a("debug.file.uploadfiledate", -1) >= 0;
+  }
+  
+  public static int e()
+  {
+    return aal.a("debug.file.uploadfiledate", -1);
+  }
+  
+  public final void a(int paramInt, String paramString1, String paramString2)
+  {
+    if ((this.f) && (this.g))
+    {
+      aag localaag = this.b;
+      if (localaag != null) {
+        localaag.b(paramInt, Thread.currentThread(), rf.a().h() * 1000L, paramString1, paramString2);
+      }
+    }
+  }
+  
+  public void onSharedPreferenceChanged(SharedPreferences paramSharedPreferences, String paramString)
+  {
+    if (("debug.file.tracelevel".equals(paramString)) || (paramString == null))
+    {
+      int i = aal.a("debug.file.tracelevel", xf.a.h);
+      a(16, "SecTracer", "File Trace Level Changed = ".concat(String.valueOf(i)));
+      this.b.b = i;
     }
   }
 }

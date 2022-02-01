@@ -1,57 +1,94 @@
 package com.tencent.token;
 
-import android.app.UiModeManager;
+import android.app.Activity;
+import android.app.Dialog;
 import android.content.Context;
-import android.view.ActionMode;
-import android.view.ActionMode.Callback;
+import android.content.res.Configuration;
+import android.os.Build.VERSION;
+import android.os.Bundle;
+import android.support.v7.app.ActionBar;
+import android.support.v7.widget.Toolbar;
+import android.view.MenuInflater;
+import android.view.View;
+import android.view.ViewGroup.LayoutParams;
 import android.view.Window;
-import android.view.Window.Callback;
 
-class gi
-  extends gh
+public abstract class gi
 {
-  private final UiModeManager w;
+  static int a = -1;
+  private static boolean b = false;
   
-  gi(Context paramContext, Window paramWindow, gd paramgd)
+  public static gi a(Activity paramActivity, gh paramgh)
   {
-    super(paramContext, paramWindow, paramgd);
-    this.w = ((UiModeManager)paramContext.getSystemService("uimode"));
+    return a(paramActivity, paramActivity.getWindow(), paramgh);
   }
   
-  Window.Callback a(Window.Callback paramCallback)
+  public static gi a(Dialog paramDialog, gh paramgh)
   {
-    return new a(paramCallback);
+    return a(paramDialog.getContext(), paramDialog.getWindow(), paramgh);
   }
   
-  final int f(int paramInt)
+  private static gi a(Context paramContext, Window paramWindow, gh paramgh)
   {
-    if ((paramInt == 0) && (this.w.getNightMode() == 0)) {
-      return -1;
+    if (Build.VERSION.SDK_INT >= 24) {
+      return new gk(paramContext, paramWindow, paramgh);
     }
-    return super.f(paramInt);
+    if (Build.VERSION.SDK_INT >= 23) {
+      return new gm(paramContext, paramWindow, paramgh);
+    }
+    return new gl(paramContext, paramWindow, paramgh);
   }
   
-  class a
-    extends gh.a
+  public static boolean l()
   {
-    a(Window.Callback paramCallback)
-    {
-      super(paramCallback);
-    }
-    
-    public ActionMode onWindowStartingActionMode(ActionMode.Callback paramCallback)
-    {
-      return null;
-    }
-    
-    public ActionMode onWindowStartingActionMode(ActionMode.Callback paramCallback, int paramInt)
-    {
-      if ((gi.this.o) && (paramInt == 0)) {
-        return a(paramCallback);
-      }
-      return super.onWindowStartingActionMode(paramCallback, paramInt);
-    }
+    return b;
   }
+  
+  public abstract ActionBar a();
+  
+  public abstract <T extends View> T a(int paramInt);
+  
+  public abstract ha a(ha.a parama);
+  
+  public abstract void a(Configuration paramConfiguration);
+  
+  public abstract void a(Bundle paramBundle);
+  
+  public abstract void a(Toolbar paramToolbar);
+  
+  public abstract void a(View paramView);
+  
+  public abstract void a(View paramView, ViewGroup.LayoutParams paramLayoutParams);
+  
+  public abstract void a(CharSequence paramCharSequence);
+  
+  public abstract MenuInflater b();
+  
+  public abstract void b(int paramInt);
+  
+  public abstract void b(Bundle paramBundle);
+  
+  public abstract void b(View paramView, ViewGroup.LayoutParams paramLayoutParams);
+  
+  public abstract void c();
+  
+  public abstract boolean c(int paramInt);
+  
+  public abstract void d();
+  
+  public abstract void e();
+  
+  public abstract void f();
+  
+  public abstract void g();
+  
+  public abstract void h();
+  
+  public abstract gg.a i();
+  
+  public abstract void j();
+  
+  public abstract boolean k();
 }
 
 

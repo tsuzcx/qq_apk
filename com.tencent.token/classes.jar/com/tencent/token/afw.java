@@ -1,41 +1,19 @@
 package com.tencent.token;
 
-import android.database.Cursor;
+import android.content.Context;
 
-public abstract interface afw
-  extends Cursor
+public final class afw
 {
-  public abstract void close();
-  
-  public abstract byte[] getBlob(int paramInt);
-  
-  public abstract int getColumnCount();
-  
-  public abstract int getColumnIndex(String paramString);
-  
-  public abstract String[] getColumnNames();
-  
-  public abstract int getCount();
-  
-  public abstract double getDouble(int paramInt);
-  
-  public abstract int getInt(int paramInt);
-  
-  public abstract long getLong(int paramInt);
-  
-  public abstract String getString(int paramInt);
-  
-  public abstract int getType(int paramInt);
-  
-  public abstract boolean isAfterLast();
-  
-  public abstract boolean isLast();
-  
-  public abstract boolean moveToFirst();
-  
-  public abstract boolean moveToLast();
-  
-  public abstract boolean moveToNext();
+  public static ado a(Context paramContext)
+  {
+    int i = ags.a();
+    if (i != 0) {
+      paramContext = adt.a(i);
+    } else {
+      paramContext = aec.a.a(paramContext, true, 1);
+    }
+    return new adm(paramContext);
+  }
 }
 
 

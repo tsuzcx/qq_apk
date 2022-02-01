@@ -1,55 +1,85 @@
 package com.tencent.token;
 
-import android.graphics.Matrix;
-import android.graphics.Rect;
-import android.graphics.RectF;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewParent;
+import android.os.Build.VERSION;
+import android.widget.TextView;
 
 public final class gb
 {
-  private static final ThreadLocal<Matrix> a = new ThreadLocal();
-  private static final ThreadLocal<RectF> b = new ThreadLocal();
+  static final g a = new g();
   
-  public static void a(ViewGroup paramViewGroup, View paramView, Rect paramRect)
+  static
   {
-    paramRect.set(0, 0, paramView.getWidth(), paramView.getHeight());
-    Matrix localMatrix = (Matrix)a.get();
-    if (localMatrix == null)
+    if (dt.a())
     {
-      localMatrix = new Matrix();
-      a.set(localMatrix);
+      a = new f();
+      return;
     }
-    else
+    if (Build.VERSION.SDK_INT >= 26)
     {
-      localMatrix.reset();
+      a = new e();
+      return;
     }
-    a(paramViewGroup, paramView, localMatrix);
-    paramView = (RectF)b.get();
-    paramViewGroup = paramView;
-    if (paramView == null)
+    if (Build.VERSION.SDK_INT >= 23)
     {
-      paramViewGroup = new RectF();
-      b.set(paramViewGroup);
+      a = new d();
+      return;
     }
-    paramViewGroup.set(paramRect);
-    localMatrix.mapRect(paramViewGroup);
-    paramRect.set((int)(paramViewGroup.left + 0.5F), (int)(paramViewGroup.top + 0.5F), (int)(paramViewGroup.right + 0.5F), (int)(paramViewGroup.bottom + 0.5F));
+    if (Build.VERSION.SDK_INT >= 18)
+    {
+      a = new c();
+      return;
+    }
+    if (Build.VERSION.SDK_INT >= 17)
+    {
+      a = new b();
+      return;
+    }
+    if (Build.VERSION.SDK_INT >= 16)
+    {
+      a = new a();
+      return;
+    }
   }
   
-  private static void a(ViewParent paramViewParent, View paramView, Matrix paramMatrix)
+  public static void a(TextView paramTextView, int paramInt)
   {
-    Object localObject = paramView.getParent();
-    if (((localObject instanceof View)) && (localObject != paramViewParent))
+    a.a(paramTextView, paramInt);
+  }
+  
+  static class a
+    extends gb.g
+  {}
+  
+  static class b
+    extends gb.a
+  {}
+  
+  static class c
+    extends gb.b
+  {}
+  
+  static class d
+    extends gb.c
+  {
+    public final void a(TextView paramTextView, int paramInt)
     {
-      localObject = (View)localObject;
-      a(paramViewParent, (View)localObject, paramMatrix);
-      paramMatrix.preTranslate(-((View)localObject).getScrollX(), -((View)localObject).getScrollY());
+      paramTextView.setTextAppearance(paramInt);
     }
-    paramMatrix.preTranslate(paramView.getLeft(), paramView.getTop());
-    if (!paramView.getMatrix().isIdentity()) {
-      paramMatrix.preConcat(paramView.getMatrix());
+  }
+  
+  static class e
+    extends gb.d
+  {}
+  
+  static final class f
+    extends gb.e
+  {}
+  
+  static class g
+  {
+    public void a(TextView paramTextView, int paramInt)
+    {
+      paramTextView.setTextAppearance(paramTextView.getContext(), paramInt);
     }
   }
 }

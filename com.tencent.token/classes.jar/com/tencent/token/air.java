@@ -1,38 +1,47 @@
 package com.tencent.token;
 
-import java.io.Closeable;
+import android.content.ContentValues;
+import com.tencent.wcdb.database.SQLiteDatabase;
 
-public abstract class air
-  implements Closeable
+public class air
+  implements aiv
 {
-  public static air a(byte[] paramArrayOfByte)
+  public String a;
+  public String b;
+  
+  public final aiv a(ahi paramahi)
   {
-    aky localaky = new aky().b(paramArrayOfByte);
-    long l = paramArrayOfByte.length;
-    if (localaky != null) {
-      new air()
-      {
-        public final long a()
-        {
-          return this.b;
-        }
-        
-        public final ala b()
-        {
-          return this.c;
-        }
-      };
-    }
-    throw new NullPointerException("source == null");
+    air localair = new air();
+    localair.a = paramahi.getString(paramahi.getColumnIndex("uinhash"));
+    localair.b = paramahi.getString(paramahi.getColumnIndex("filename"));
+    return localair;
   }
   
-  public abstract long a();
-  
-  public abstract ala b();
-  
-  public void close()
+  public final String a()
   {
-    aiw.a(b());
+    return "qqface";
+  }
+  
+  public final void a(SQLiteDatabase paramSQLiteDatabase)
+  {
+    paramSQLiteDatabase.b("CREATE TABLE IF NOT EXISTS qqface(uinhash TEXT PRIMARY KEY,filename TEXT);");
+  }
+  
+  public final long b(SQLiteDatabase paramSQLiteDatabase)
+  {
+    paramSQLiteDatabase.b("CREATE TABLE IF NOT EXISTS qqface(uinhash TEXT PRIMARY KEY,filename TEXT);");
+    ContentValues localContentValues = new ContentValues();
+    localContentValues.put("uinhash", this.a);
+    localContentValues.put("filename", this.b);
+    return paramSQLiteDatabase.a("qqface", localContentValues);
+  }
+  
+  public final ContentValues b()
+  {
+    ContentValues localContentValues = new ContentValues();
+    localContentValues.put("uinhash", this.a);
+    localContentValues.put("filename", this.b);
+    return localContentValues;
   }
 }
 

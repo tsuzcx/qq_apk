@@ -1,10 +1,11 @@
 package com.tencent.token;
 
-import java.io.File;
-
 public final class zx
 {
-  static File a;
+  public static String a = "N/A";
+  public static int b = -1;
+  public static int c = 0;
+  public static int d = 1;
 }
 
 

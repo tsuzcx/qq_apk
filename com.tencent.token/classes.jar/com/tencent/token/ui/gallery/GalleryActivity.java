@@ -16,21 +16,21 @@ import android.widget.FrameLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
-import com.tencent.token.aad;
+import com.tencent.token.aap;
 import com.tencent.token.global.RqdApplication;
 import com.tencent.token.r;
 import com.tencent.token.t;
 import com.tencent.token.ui.BaseActivity;
 import com.tencent.token.ui.qqpim.ProgressTextView;
 import com.tencent.token.ui.qqpim.okdownload.LayoutAppKeyInfo;
-import com.tencent.token.yx;
-import com.tencent.token.yy;
-import com.tencent.token.yz;
-import com.tencent.token.zb;
-import com.tencent.token.zc;
-import com.tencent.token.ze;
-import com.tencent.token.ze.a;
-import com.tencent.token.zn;
+import com.tencent.token.zk;
+import com.tencent.token.zl;
+import com.tencent.token.zm;
+import com.tencent.token.zo;
+import com.tencent.token.zp;
+import com.tencent.token.zr;
+import com.tencent.token.zr.a;
+import com.tencent.token.zz;
 import com.tmsdk.TMSDKContext;
 import java.io.File;
 
@@ -56,15 +56,15 @@ public class GalleryActivity
       if (paramAnonymousContext != null) {
         if (paramAnonymousContext.equals("android.net.conn.CONNECTIVITY_CHANGE"))
         {
-          if (zn.a())
+          if (zz.a())
           {
-            if (!yx.g().h()) {
-              yx.g().a();
+            if (!zk.g().h()) {
+              zk.g().a();
             }
           }
-          else if (yx.g().h())
+          else if (zk.g().h())
           {
-            yx.g().c();
+            zk.g().c();
             GalleryActivity.this.tvDownload.setVisibility(0);
             GalleryActivity.this.flProgress.setVisibility(8);
             GalleryActivity.this.tvDownload.setText(GalleryActivity.this.getResources().getText(2131493214));
@@ -85,8 +85,8 @@ public class GalleryActivity
   private void downloadApk()
   {
     TMSDKContext.saveActionData(170016);
-    yx localyx = yx.g();
-    yz local4 = new yz()
+    zk localzk = zk.g();
+    zm local4 = new zm()
     {
       public final void a()
       {
@@ -97,7 +97,7 @@ public class GalleryActivity
           {
             GalleryActivity.this.tvDownload.setText(GalleryActivity.this.getResources().getText(2131493203));
             Toast.makeText(GalleryActivity.this, GalleryActivity.this.getResources().getText(2131493211), 0).show();
-            yy.a(GalleryActivity.this, GalleryActivity.this.filePath);
+            zl.a(GalleryActivity.this, GalleryActivity.this.filePath);
             GalleryActivity.access$602(GalleryActivity.this, true);
             GalleryActivity.this.tvDownload.setVisibility(0);
             GalleryActivity.this.flProgress.setVisibility(8);
@@ -160,22 +160,22 @@ public class GalleryActivity
     String str2 = null;
     String str1;
     if (TextUtils.isEmpty(null)) {
-      str1 = localyx.f();
+      str1 = localzk.f();
     } else {
       str1 = null;
     }
     if (TextUtils.isEmpty(null)) {
-      str2 = yx.b();
+      str2 = zk.b();
     }
-    localyx.a = new zb(new zc("http://qqwx.qq.com/s?aid=index&p=14&c=102322&vt=1&pf=0", str1, str2), local4);
-    yx.g().a();
+    localzk.a = new zo(new zp("http://qqwx.qq.com/s?aid=index&p=14&c=102322&vt=1&pf=0", str1, str2), local4);
+    zk.g().a();
   }
   
   private void initStatus()
   {
-    this.isApkDownload = yx.g().d();
-    this.isInstall = yy.b(this, "com.tencent.gallerymanager");
-    this.filePath = yx.g().e();
+    this.isApkDownload = zk.g().d();
+    this.isInstall = zl.b(this, "com.tencent.gallerymanager");
+    this.filePath = zk.g().e();
   }
   
   private void initView()
@@ -184,7 +184,7 @@ public class GalleryActivity
     this.flProgress = ((FrameLayout)findViewById(2131165548));
     this.tvProgress = ((ProgressTextView)findViewById(2131165550));
     this.ivBack = ((FrameLayout)findViewById(2131165547));
-    this.tvDownload = ((TextView)findViewById(2131166164));
+    this.tvDownload = ((TextView)findViewById(2131166166));
     this.tvDownload.setOnClickListener(this);
     this.flProgress.setOnClickListener(this);
     this.ivBack.setOnClickListener(new View.OnClickListener()
@@ -194,7 +194,7 @@ public class GalleryActivity
         GalleryActivity.this.finish();
       }
     });
-    this.mAppLayout = ((LayoutAppKeyInfo)findViewById(2131166007));
+    this.mAppLayout = ((LayoutAppKeyInfo)findViewById(2131166009));
     this.mAppLayout.a("深圳市腾讯计算机系统有限公司", "4.2.6", "腾讯相册管家", "http://ntool.3g.qq.com/permissionInfo?pkgName=com.tencent.gallerymanager", "https://cftweb.3g.qq.com/privacy/privacyPolicy?content_id=95fb3a1fc2e0d6bda65de66c15606b2b1617954054", this);
   }
   
@@ -220,7 +220,7 @@ public class GalleryActivity
     localIntentFilter.addAction("android.net.conn.CONNECTIVITY_CHANGE");
     localIntentFilter.addAction("android.net.wifi.WIFI_STATE_CHANGED");
     localIntentFilter.addAction("android.net.wifi.STATE_CHANGE");
-    RqdApplication.n().registerReceiver(this.mNetworkMsgReceiver, localIntentFilter);
+    RqdApplication.p().registerReceiver(this.mNetworkMsgReceiver, localIntentFilter);
   }
   
   private void registerInstallReceiver()
@@ -277,7 +277,7 @@ public class GalleryActivity
   
   private void unregistReceiver()
   {
-    RqdApplication.n().unregisterReceiver(this.mNetworkMsgReceiver);
+    RqdApplication.p().unregisterReceiver(this.mNetworkMsgReceiver);
   }
   
   private void updateBtnState()
@@ -288,7 +288,7 @@ public class GalleryActivity
   public void onClick(View paramView)
   {
     int i = paramView.getId();
-    if ((i == 2131166164) || (i == 2131165548))
+    if ((i == 2131166166) || (i == 2131165548))
     {
       if (this.isInstall)
       {
@@ -297,14 +297,14 @@ public class GalleryActivity
       }
       if (this.isApkDownload)
       {
-        yy.a(this, this.filePath);
+        zl.a(this, this.filePath);
         return;
       }
-      if (zn.a())
+      if (zz.a())
       {
-        if (yx.g().h())
+        if (zk.g().h())
         {
-          yx.g().c();
+          zk.g().c();
           return;
         }
         startDownload();
@@ -318,12 +318,12 @@ public class GalleryActivity
   {
     super.onCreate(paramBundle);
     setContentView(2131296296);
-    aad.a(this, this.mTitleBar, 2130968771);
+    aap.a(this, this.mTitleBar, 2130968771);
     initView();
     registReceiver();
     registerInstallReceiver();
     TMSDKContext.saveActionData(170015);
-    ze.a("com.tencent.gallerymanager", new ze.a()
+    zr.a("com.tencent.gallerymanager", new zr.a()
     {
       public final void a(final r paramAnonymousr)
       {

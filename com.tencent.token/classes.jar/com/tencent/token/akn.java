@@ -1,70 +1,219 @@
 package com.tencent.token;
 
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-import java.util.List;
+import java.io.Closeable;
 import javax.annotation.Nullable;
-import javax.net.ssl.SSLParameters;
-import javax.net.ssl.SSLSocket;
 
-final class akn
-  extends akq
+public final class akn
+  implements Closeable
 {
-  final Method a;
-  final Method b;
+  public final akl a;
+  final akj b;
+  public final int c;
+  final String d;
+  @Nullable
+  public final akd e;
+  public final ake f;
+  @Nullable
+  public final ako g;
+  @Nullable
+  final akn h;
+  @Nullable
+  final akn i;
+  @Nullable
+  public final akn j;
+  public final long k;
+  public final long l;
+  private volatile ajr m;
   
-  private akn(Method paramMethod1, Method paramMethod2)
+  akn(a parama)
   {
-    this.a = paramMethod1;
-    this.b = paramMethod2;
+    this.a = parama.a;
+    this.b = parama.b;
+    this.c = parama.c;
+    this.d = parama.d;
+    this.e = parama.e;
+    this.f = parama.f.a();
+    this.g = parama.g;
+    this.h = parama.h;
+    this.i = parama.i;
+    this.j = parama.j;
+    this.k = parama.k;
+    this.l = parama.l;
   }
   
-  public static akn a()
+  public final a a()
   {
-    try
-    {
-      akn localakn = new akn(SSLParameters.class.getMethod("setApplicationProtocols", new Class[] { [Ljava.lang.String.class }), SSLSocket.class.getMethod("getApplicationProtocol", new Class[0]));
-      return localakn;
-    }
-    catch (NoSuchMethodException localNoSuchMethodException)
-    {
-      label37:
-      break label37;
+    return new a(this);
+  }
+  
+  @Nullable
+  public final String a(String paramString)
+  {
+    paramString = this.f.a(paramString);
+    if (paramString != null) {
+      return paramString;
     }
     return null;
   }
   
-  @Nullable
-  public final String a(SSLSocket paramSSLSocket)
+  public final ajr b()
   {
-    try
-    {
-      paramSSLSocket = (String)this.b.invoke(paramSSLSocket, new Object[0]);
-      if (paramSSLSocket != null)
-      {
-        boolean bool = paramSSLSocket.equals("");
-        if (!bool) {
-          return paramSSLSocket;
-        }
-      }
-      return null;
+    ajr localajr = this.m;
+    if (localajr != null) {
+      return localajr;
     }
-    catch (InvocationTargetException paramSSLSocket) {}catch (IllegalAccessException paramSSLSocket) {}
-    throw aiw.a("unable to get selected protocols", paramSSLSocket);
+    localajr = ajr.a(this.f);
+    this.m = localajr;
+    return localajr;
   }
   
-  public final void a(SSLSocket paramSSLSocket, String paramString, List<aim> paramList)
+  public final void close()
   {
-    try
+    ako localako = this.g;
+    if (localako != null)
     {
-      paramString = paramSSLSocket.getSSLParameters();
-      paramList = a(paramList);
-      this.a.invoke(paramString, new Object[] { paramList.toArray(new String[paramList.size()]) });
-      paramSSLSocket.setSSLParameters(paramString);
+      localako.close();
       return;
     }
-    catch (InvocationTargetException paramSSLSocket) {}catch (IllegalAccessException paramSSLSocket) {}
-    throw aiw.a("unable to set ssl parameters", paramSSLSocket);
+    throw new IllegalStateException("response is not eligible for a body and must not be closed");
+  }
+  
+  public final String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder("Response{protocol=");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append(", code=");
+    localStringBuilder.append(this.c);
+    localStringBuilder.append(", message=");
+    localStringBuilder.append(this.d);
+    localStringBuilder.append(", url=");
+    localStringBuilder.append(this.a.a);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
+  }
+  
+  public static final class a
+  {
+    public akl a;
+    public akj b;
+    public int c = -1;
+    public String d;
+    @Nullable
+    public akd e;
+    ake.a f;
+    public ako g;
+    akn h;
+    akn i;
+    public akn j;
+    public long k;
+    public long l;
+    
+    public a()
+    {
+      this.f = new ake.a();
+    }
+    
+    a(akn paramakn)
+    {
+      this.a = paramakn.a;
+      this.b = paramakn.b;
+      this.c = paramakn.c;
+      this.d = paramakn.d;
+      this.e = paramakn.e;
+      this.f = paramakn.f.a();
+      this.g = paramakn.g;
+      this.h = paramakn.h;
+      this.i = paramakn.i;
+      this.j = paramakn.j;
+      this.k = paramakn.k;
+      this.l = paramakn.l;
+    }
+    
+    private static void a(String paramString, akn paramakn)
+    {
+      if (paramakn.g == null)
+      {
+        if (paramakn.h == null)
+        {
+          if (paramakn.i == null)
+          {
+            if (paramakn.j == null) {
+              return;
+            }
+            paramakn = new StringBuilder();
+            paramakn.append(paramString);
+            paramakn.append(".priorResponse != null");
+            throw new IllegalArgumentException(paramakn.toString());
+          }
+          paramakn = new StringBuilder();
+          paramakn.append(paramString);
+          paramakn.append(".cacheResponse != null");
+          throw new IllegalArgumentException(paramakn.toString());
+        }
+        paramakn = new StringBuilder();
+        paramakn.append(paramString);
+        paramakn.append(".networkResponse != null");
+        throw new IllegalArgumentException(paramakn.toString());
+      }
+      paramakn = new StringBuilder();
+      paramakn.append(paramString);
+      paramakn.append(".body != null");
+      throw new IllegalArgumentException(paramakn.toString());
+    }
+    
+    public final a a(ake paramake)
+    {
+      this.f = paramake.a();
+      return this;
+    }
+    
+    public final a a(@Nullable akn paramakn)
+    {
+      if (paramakn != null) {
+        a("networkResponse", paramakn);
+      }
+      this.h = paramakn;
+      return this;
+    }
+    
+    public final a a(String paramString1, String paramString2)
+    {
+      ake.a locala = this.f;
+      ake.a.c(paramString1, paramString2);
+      locala.a(paramString1, paramString2);
+      return this;
+    }
+    
+    public final akn a()
+    {
+      if (this.a != null)
+      {
+        if (this.b != null)
+        {
+          if (this.c >= 0)
+          {
+            if (this.d != null) {
+              return new akn(this);
+            }
+            throw new IllegalStateException("message == null");
+          }
+          StringBuilder localStringBuilder = new StringBuilder("code < 0: ");
+          localStringBuilder.append(this.c);
+          throw new IllegalStateException(localStringBuilder.toString());
+        }
+        throw new IllegalStateException("protocol == null");
+      }
+      throw new IllegalStateException("request == null");
+    }
+    
+    public final a b(@Nullable akn paramakn)
+    {
+      if (paramakn != null) {
+        a("cacheResponse", paramakn);
+      }
+      this.i = paramakn;
+      return this;
+    }
   }
 }
 

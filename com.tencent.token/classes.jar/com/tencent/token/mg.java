@@ -1,67 +1,63 @@
 package com.tencent.token;
 
-import android.text.TextUtils;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import java.util.LinkedList;
 
 public final class mg
 {
-  private List a = new ArrayList();
+  public volatile long a = 0L;
+  private volatile LinkedList b = new LinkedList();
+  private Object c = new Object();
   
-  public final String a()
+  public final a a()
   {
-    synchronized (this.a)
+    synchronized (this.c)
     {
-      if (this.a.size() == 0) {
-        return "";
-      }
-      Object localObject1 = new StringBuilder();
-      Iterator localIterator = this.a.iterator();
-      while (localIterator.hasNext())
+      if (this.b.size() > 0)
       {
-        a locala = (a)localIterator.next();
-        StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append(locala.a);
-        localStringBuilder.append(",");
-        localStringBuilder.append(locala.b);
-        localStringBuilder.append(",");
-        localStringBuilder.append(locala.c);
-        ((StringBuilder)localObject1).append(localStringBuilder.toString());
-        ((StringBuilder)localObject1).append(";");
+        a locala = (a)this.b.removeFirst();
+        this.a -= locala.d;
+        return locala;
       }
-      localObject1 = ((StringBuilder)localObject1).toString();
-      return localObject1;
+      return null;
     }
   }
   
-  public final void a(a parama)
+  public final void a(int paramInt, long paramLong1, byte[] paramArrayOfByte, long paramLong2)
   {
-    synchronized (this.a)
+    synchronized (this.c)
     {
-      if (this.a.size() < 20) {
-        this.a.add(parama);
-      }
+      LinkedList localLinkedList = this.b;
+      int i = (int)paramLong2;
+      byte[] arrayOfByte = new byte[i];
+      System.arraycopy(paramArrayOfByte, 0, arrayOfByte, 0, i);
+      localLinkedList.addLast(new a(paramInt, paramLong1, arrayOfByte, paramLong2));
+      this.a += paramLong2;
+      return;
+    }
+  }
+  
+  public final void b()
+  {
+    synchronized (this.c)
+    {
+      while (a() != null) {}
       return;
     }
   }
   
   public static final class a
   {
-    long a;
-    int b;
-    String c;
+    public int a = -1;
+    public long b;
+    public byte[] c;
+    public long d;
     
-    public a(long paramLong, int paramInt, String paramString)
+    public a(int paramInt, long paramLong1, byte[] paramArrayOfByte, long paramLong2)
     {
-      this.a = paramLong;
-      this.b = paramInt;
-      if (TextUtils.isEmpty(paramString)) {}
-      for (paramString = "";; paramString = lq.b(paramString))
-      {
-        this.c = paramString;
-        return;
-      }
+      this.a = paramInt;
+      this.b = paramLong1;
+      this.c = paramArrayOfByte;
+      this.d = paramLong2;
     }
   }
 }

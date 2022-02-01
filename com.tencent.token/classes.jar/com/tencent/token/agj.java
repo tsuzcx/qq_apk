@@ -1,230 +1,317 @@
 package com.tencent.token;
 
 import android.content.Context;
-import com.tencent.wcdb.database.SQLiteCipherSpec;
-import com.tencent.wcdb.database.SQLiteConnectionPool;
-import com.tencent.wcdb.database.SQLiteDatabase;
-import com.tencent.wcdb.database.SQLiteDatabase.a;
-import com.tencent.wcdb.database.SQLiteException;
-import com.tencent.wcdb.database.SQLiteGlobal;
-import com.tencent.wcdb.support.Log;
+import com.tencent.turingfd.sdk.qps.Damson;
+import java.util.ArrayList;
 
-public abstract class agj
+public final class agj
 {
-  private final Context a;
-  private final String b;
-  private final SQLiteDatabase.a c;
-  private final int d;
-  private SQLiteDatabase e;
-  private boolean f;
-  private boolean g;
-  private final afx h;
-  private byte[] i;
-  private SQLiteCipherSpec j;
-  private int k;
-  private boolean l;
+  public static ArrayList<Damson> a;
   
-  static {}
-  
-  public agj(Context paramContext, String paramString, byte[] paramArrayOfByte, SQLiteCipherSpec paramSQLiteCipherSpec, afx paramafx)
+  public static ArrayList<Damson> a(Context paramContext)
   {
-    this.a = paramContext;
-    this.b = paramString;
-    paramContext = null;
-    this.c = null;
-    this.d = 1;
-    this.h = paramafx;
-    this.i = paramArrayOfByte;
-    if (paramSQLiteCipherSpec != null) {
-      paramContext = new SQLiteCipherSpec(paramSQLiteCipherSpec);
+    ArrayList localArrayList = new ArrayList();
+    int i = b(paramContext);
+    if (i > 0)
+    {
+      paramContext = new Damson();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(ago.c);
+      localStringBuilder.append(ago.e);
+      paramContext.a = localStringBuilder.toString();
+      paramContext.b = String.valueOf(i);
+      localArrayList.add(paramContext);
     }
-    this.j = paramContext;
-    this.l = false;
+    return localArrayList;
   }
   
-  private SQLiteDatabase a(SQLiteDatabase paramSQLiteDatabase)
+  /* Error */
+  public static int b(Context paramContext)
   {
-    int m = paramSQLiteDatabase.k();
-    StringBuilder localStringBuilder2;
-    if (m != this.d) {
-      if (!paramSQLiteDatabase.l())
-      {
-        paramSQLiteDatabase.g();
-        if (m != 0) {}
-        try
-        {
-          if (m > this.d)
-          {
-            int n = this.d;
-            StringBuilder localStringBuilder1 = new StringBuilder("Can't downgrade database from version ");
-            localStringBuilder1.append(m);
-            localStringBuilder1.append(" to ");
-            localStringBuilder1.append(n);
-            throw new SQLiteException(localStringBuilder1.toString());
-          }
-          paramSQLiteDatabase.b("PRAGMA user_version = ".concat(String.valueOf(this.d)));
-          paramSQLiteDatabase.i();
-        }
-        finally
-        {
-          paramSQLiteDatabase.h();
-        }
-      }
-      else
-      {
-        localStringBuilder2 = new StringBuilder("Can't upgrade read-only database from version ");
-        localStringBuilder2.append(paramSQLiteDatabase.k());
-        localStringBuilder2.append(" to ");
-        localStringBuilder2.append(this.d);
-        localStringBuilder2.append(": ");
-        localStringBuilder2.append(this.b);
-        throw new SQLiteException(localStringBuilder2.toString());
-      }
-    }
-    if (paramSQLiteDatabase.l())
-    {
-      localStringBuilder2 = new StringBuilder("Opened ");
-      localStringBuilder2.append(this.b);
-      localStringBuilder2.append(" in read-only mode");
-      Log.b("WCDB.SQLiteOpenHelper", localStringBuilder2.toString());
-    }
-    this.e = paramSQLiteDatabase;
-    return paramSQLiteDatabase;
-  }
-  
-  private SQLiteDatabase c()
-  {
-    Object localObject1 = this.e;
-    if (localObject1 != null) {
-      if (!((SQLiteDatabase)localObject1).n()) {
-        this.e = null;
-      } else if (!this.e.l()) {
-        return this.e;
-      }
-    }
-    SQLiteDatabase localSQLiteDatabase2;
-    SQLiteDatabase localSQLiteDatabase1;
-    if (!this.f)
-    {
-      localSQLiteDatabase2 = this.e;
-      localSQLiteDatabase1 = localSQLiteDatabase2;
-    }
-    for (;;)
-    {
-      try
-      {
-        this.f = true;
-        Object localObject3;
-        if (localSQLiteDatabase2 != null)
-        {
-          localObject1 = localSQLiteDatabase2;
-          localSQLiteDatabase1 = localSQLiteDatabase2;
-          if (localSQLiteDatabase2.l())
-          {
-            localSQLiteDatabase1 = localSQLiteDatabase2;
-            localObject1 = localSQLiteDatabase2.a;
-            localSQLiteDatabase1 = localSQLiteDatabase2;
-            try
-            {
-              localSQLiteDatabase2.r();
-              if (!localSQLiteDatabase2.m())
-              {
-                localObject1 = localSQLiteDatabase2;
-                continue;
-              }
-              m = localSQLiteDatabase2.b.d;
-              localSQLiteDatabase2.b.d = (localSQLiteDatabase2.b.d & 0xFFFFFFFE | 0x0);
-              try
-              {
-                localSQLiteDatabase2.c.a(localSQLiteDatabase2.b);
-              }
-              catch (RuntimeException localRuntimeException)
-              {
-                localSQLiteDatabase2.b.d = m;
-                throw localRuntimeException;
-              }
-              localObject3 = localSQLiteDatabase2;
-            }
-            finally
-            {
-              localObject3 = localSQLiteDatabase2;
-            }
-          }
-        }
-        else if (this.b == null)
-        {
-          localObject3 = localSQLiteDatabase2;
-          localObject1 = SQLiteDatabase.j();
-        }
-        else
-        {
-          localObject3 = localSQLiteDatabase2;
-        }
-        try
-        {
-          this.l = true;
-          localObject3 = localSQLiteDatabase2;
-          if (!this.g) {
-            break label347;
-          }
-          m = 8;
-          localObject3 = localSQLiteDatabase2;
-          this.k = m;
-          localObject3 = localSQLiteDatabase2;
-          localObject1 = agt.a(this.a, this.b, this.i, this.j, this.k, this.c, this.h);
-          localObject3 = localObject1;
-          localSQLiteDatabase2 = a((SQLiteDatabase)localObject1);
-          this.f = false;
-          if ((localObject1 != null) && (localObject1 != this.e)) {
-            ((SQLiteDatabase)localObject1).close();
-          }
-          return localSQLiteDatabase2;
-        }
-        catch (SQLiteException localSQLiteException)
-        {
-          localObject3 = localSQLiteDatabase2;
-          throw localSQLiteException;
-        }
-        throw new IllegalStateException("getDatabase called recursively");
-      }
-      finally
-      {
-        this.f = false;
-        if ((localObject3 != null) && (localObject3 != this.e)) {
-          ((SQLiteDatabase)localObject3).close();
-        }
-      }
-      label347:
-      int m = 0;
-    }
-  }
-  
-  public final SQLiteDatabase a()
-  {
-    try
-    {
-      SQLiteDatabase localSQLiteDatabase = c();
-      return localSQLiteDatabase;
-    }
-    finally {}
-  }
-  
-  public final void b()
-  {
-    try
-    {
-      if (!this.f)
-      {
-        if ((this.e != null) && (this.e.n()))
-        {
-          this.e.close();
-          this.e = null;
-        }
-        return;
-      }
-      throw new IllegalStateException("Closed during initialization");
-    }
-    finally {}
+    // Byte code:
+    //   0: invokestatic 66	java/lang/System:currentTimeMillis	()J
+    //   3: pop2
+    //   4: aload_0
+    //   5: invokevirtual 72	android/content/Context:getPackageManager	()Landroid/content/pm/PackageManager;
+    //   8: astore 7
+    //   10: iconst_1
+    //   11: istore 6
+    //   13: aload 7
+    //   15: ifnonnull +6 -> 21
+    //   18: goto +28 -> 46
+    //   21: getstatic 78	com/tencent/token/agg:l	[I
+    //   24: invokestatic 81	com/tencent/token/agg:a	([I)Ljava/lang/String;
+    //   27: astore 8
+    //   29: aload 7
+    //   31: aload 8
+    //   33: sipush 128
+    //   36: invokevirtual 87	android/content/pm/PackageManager:getPackageInfo	(Ljava/lang/String;I)Landroid/content/pm/PackageInfo;
+    //   39: pop
+    //   40: iconst_1
+    //   41: istore 5
+    //   43: goto +6 -> 49
+    //   46: iconst_0
+    //   47: istore 5
+    //   49: iconst_0
+    //   50: iload 5
+    //   52: iconst_0
+    //   53: invokestatic 92	com/tencent/token/agn:a	(IZI)I
+    //   56: istore_3
+    //   57: invokestatic 66	java/lang/System:currentTimeMillis	()J
+    //   60: pop2
+    //   61: new 45	java/lang/String
+    //   64: dup
+    //   65: getstatic 95	com/tencent/token/agg:n	[I
+    //   68: invokestatic 81	com/tencent/token/agg:a	([I)Ljava/lang/String;
+    //   71: invokestatic 100	com/tencent/token/adg:b	(Ljava/lang/String;)[B
+    //   74: invokespecial 103	java/lang/String:<init>	([B)V
+    //   77: astore 7
+    //   79: aload 7
+    //   81: invokestatic 109	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   84: ifne +199 -> 283
+    //   87: aload 7
+    //   89: ldc 111
+    //   91: invokevirtual 115	java/lang/String:split	(Ljava/lang/String;)[Ljava/lang/String;
+    //   94: astore 7
+    //   96: aload 7
+    //   98: ifnull +185 -> 283
+    //   101: aload 7
+    //   103: arraylength
+    //   104: ifeq +179 -> 283
+    //   107: aload_0
+    //   108: invokevirtual 118	android/content/Context:getPackageName	()Ljava/lang/String;
+    //   111: astore 8
+    //   113: aload 7
+    //   115: arraylength
+    //   116: istore 4
+    //   118: iconst_0
+    //   119: istore_2
+    //   120: goto +352 -> 472
+    //   123: aload 11
+    //   125: bipush 47
+    //   127: invokevirtual 122	java/lang/String:indexOf	(I)I
+    //   130: istore_1
+    //   131: iload_1
+    //   132: iconst_m1
+    //   133: if_icmpne +8 -> 141
+    //   136: iconst_0
+    //   137: istore_1
+    //   138: goto +128 -> 266
+    //   141: aload 11
+    //   143: iload_1
+    //   144: invokevirtual 125	java/lang/String:substring	(I)Ljava/lang/String;
+    //   147: invokevirtual 128	java/lang/String:trim	()Ljava/lang/String;
+    //   150: astore 9
+    //   152: aload 9
+    //   154: ldc 130
+    //   156: invokevirtual 134	java/lang/String:startsWith	(Ljava/lang/String;)Z
+    //   159: ifne +8 -> 167
+    //   162: iconst_0
+    //   163: istore_1
+    //   164: goto +102 -> 266
+    //   167: new 23	java/lang/StringBuilder
+    //   170: dup
+    //   171: ldc 136
+    //   173: invokespecial 139	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   176: astore 10
+    //   178: aload 10
+    //   180: aload 8
+    //   182: invokevirtual 34	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   185: pop
+    //   186: aload 10
+    //   188: ldc 141
+    //   190: invokevirtual 34	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   193: pop
+    //   194: aload 9
+    //   196: aload 10
+    //   198: invokevirtual 41	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   201: invokevirtual 134	java/lang/String:startsWith	(Ljava/lang/String;)Z
+    //   204: ifeq +8 -> 212
+    //   207: iconst_0
+    //   208: istore_1
+    //   209: goto +57 -> 266
+    //   212: aload 9
+    //   214: ldc 143
+    //   216: invokevirtual 146	java/lang/String:endsWith	(Ljava/lang/String;)Z
+    //   219: istore 5
+    //   221: iload 5
+    //   223: ifne +271 -> 494
+    //   226: aload 9
+    //   228: ldc 148
+    //   230: invokevirtual 146	java/lang/String:endsWith	(Ljava/lang/String;)Z
+    //   233: ifeq +261 -> 494
+    //   236: iconst_1
+    //   237: istore_1
+    //   238: goto +258 -> 496
+    //   241: aload 11
+    //   243: getstatic 151	com/tencent/token/agg:m	[I
+    //   246: invokestatic 81	com/tencent/token/agg:a	([I)Ljava/lang/String;
+    //   249: invokevirtual 154	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
+    //   252: istore 5
+    //   254: iload 5
+    //   256: ifeq +8 -> 264
+    //   259: iconst_1
+    //   260: istore_1
+    //   261: goto +5 -> 266
+    //   264: iconst_0
+    //   265: istore_1
+    //   266: iload_1
+    //   267: ifeq +9 -> 276
+    //   270: iconst_1
+    //   271: istore 5
+    //   273: goto +13 -> 286
+    //   276: iload_2
+    //   277: iconst_1
+    //   278: iadd
+    //   279: istore_2
+    //   280: goto +192 -> 472
+    //   283: iconst_0
+    //   284: istore 5
+    //   286: iload_3
+    //   287: iload 5
+    //   289: iconst_1
+    //   290: invokestatic 92	com/tencent/token/agn:a	(IZI)I
+    //   293: istore_1
+    //   294: invokestatic 66	java/lang/System:currentTimeMillis	()J
+    //   297: pop2
+    //   298: new 4	java/lang/Object
+    //   301: dup
+    //   302: invokespecial 155	java/lang/Object:<init>	()V
+    //   305: astore 7
+    //   307: new 157	java/util/concurrent/atomic/AtomicReference
+    //   310: dup
+    //   311: invokespecial 158	java/util/concurrent/atomic/AtomicReference:<init>	()V
+    //   314: astore 8
+    //   316: new 160	java/util/concurrent/atomic/AtomicBoolean
+    //   319: dup
+    //   320: iconst_0
+    //   321: invokespecial 163	java/util/concurrent/atomic/AtomicBoolean:<init>	(Z)V
+    //   324: astore 9
+    //   326: aload 8
+    //   328: getstatic 169	java/lang/Boolean:FALSE	Ljava/lang/Boolean;
+    //   331: invokevirtual 173	java/util/concurrent/atomic/AtomicReference:set	(Ljava/lang/Object;)V
+    //   334: new 175	android/os/Handler
+    //   337: dup
+    //   338: aload_0
+    //   339: invokevirtual 179	android/content/Context:getMainLooper	()Landroid/os/Looper;
+    //   342: invokespecial 182	android/os/Handler:<init>	(Landroid/os/Looper;)V
+    //   345: astore_0
+    //   346: invokestatic 66	java/lang/System:currentTimeMillis	()J
+    //   349: pop2
+    //   350: aload_0
+    //   351: new 184	com/tencent/token/agy
+    //   354: dup
+    //   355: aload 9
+    //   357: aload 8
+    //   359: aload 7
+    //   361: invokespecial 187	com/tencent/token/agy:<init>	(Ljava/util/concurrent/atomic/AtomicBoolean;Ljava/util/concurrent/atomic/AtomicReference;Ljava/lang/Object;)V
+    //   364: invokevirtual 191	android/os/Handler:post	(Ljava/lang/Runnable;)Z
+    //   367: pop
+    //   368: aload 7
+    //   370: monitorenter
+    //   371: aload 7
+    //   373: ldc2_w 192
+    //   376: invokevirtual 197	java/lang/Object:wait	(J)V
+    //   379: goto +7 -> 386
+    //   382: astore_0
+    //   383: goto +66 -> 449
+    //   386: aload 7
+    //   388: monitorexit
+    //   389: aload 9
+    //   391: iconst_1
+    //   392: invokevirtual 199	java/util/concurrent/atomic/AtomicBoolean:set	(Z)V
+    //   395: iload_1
+    //   396: aload 8
+    //   398: invokevirtual 203	java/util/concurrent/atomic/AtomicReference:get	()Ljava/lang/Object;
+    //   401: checkcast 165	java/lang/Boolean
+    //   404: invokevirtual 207	java/lang/Boolean:booleanValue	()Z
+    //   407: iconst_2
+    //   408: invokestatic 92	com/tencent/token/agn:a	(IZI)I
+    //   411: istore_1
+    //   412: invokestatic 66	java/lang/System:currentTimeMillis	()J
+    //   415: pop2
+    //   416: getstatic 210	com/tencent/token/agg:aG	[I
+    //   419: invokestatic 81	com/tencent/token/agg:a	([I)Ljava/lang/String;
+    //   422: astore_0
+    //   423: invokestatic 216	java/lang/ClassLoader:getSystemClassLoader	()Ljava/lang/ClassLoader;
+    //   426: aload_0
+    //   427: invokevirtual 220	java/lang/ClassLoader:loadClass	(Ljava/lang/String;)Ljava/lang/Class;
+    //   430: pop
+    //   431: iload 6
+    //   433: istore 5
+    //   435: goto +6 -> 441
+    //   438: iconst_0
+    //   439: istore 5
+    //   441: iload_1
+    //   442: iload 5
+    //   444: iconst_3
+    //   445: invokestatic 92	com/tencent/token/agn:a	(IZI)I
+    //   448: ireturn
+    //   449: aload 7
+    //   451: monitorexit
+    //   452: aload_0
+    //   453: athrow
+    //   454: astore 7
+    //   456: goto -410 -> 46
+    //   459: astore 7
+    //   461: goto -178 -> 283
+    //   464: astore_0
+    //   465: goto -79 -> 386
+    //   468: astore_0
+    //   469: goto -31 -> 438
+    //   472: iload_2
+    //   473: iload 4
+    //   475: if_icmpge -192 -> 283
+    //   478: aload 7
+    //   480: iload_2
+    //   481: aaload
+    //   482: astore 11
+    //   484: aload 11
+    //   486: ifnonnull -363 -> 123
+    //   489: iconst_0
+    //   490: istore_1
+    //   491: goto -225 -> 266
+    //   494: iconst_0
+    //   495: istore_1
+    //   496: iload 5
+    //   498: ifne -257 -> 241
+    //   501: iload_1
+    //   502: ifne -261 -> 241
+    //   505: iconst_0
+    //   506: istore_1
+    //   507: goto -241 -> 266
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	510	0	paramContext	Context
+    //   130	377	1	i	int
+    //   119	362	2	j	int
+    //   56	231	3	k	int
+    //   116	360	4	m	int
+    //   41	456	5	bool1	boolean
+    //   11	421	6	bool2	boolean
+    //   8	442	7	localObject1	Object
+    //   454	1	7	localObject2	Object
+    //   459	20	7	localObject3	Object
+    //   27	370	8	localObject4	Object
+    //   150	240	9	localObject5	Object
+    //   176	21	10	localStringBuilder	StringBuilder
+    //   123	362	11	localObject6	Object
+    // Exception table:
+    //   from	to	target	type
+    //   371	379	382	finally
+    //   386	389	382	finally
+    //   449	452	382	finally
+    //   29	40	454	finally
+    //   61	96	459	finally
+    //   101	118	459	finally
+    //   123	131	459	finally
+    //   141	162	459	finally
+    //   167	207	459	finally
+    //   212	221	459	finally
+    //   226	236	459	finally
+    //   241	254	459	finally
+    //   371	379	464	java/lang/InterruptedException
+    //   416	431	468	finally
   }
 }
 

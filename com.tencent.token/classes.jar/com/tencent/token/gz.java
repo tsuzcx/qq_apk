@@ -1,132 +1,51 @@
 package com.tencent.token;
 
 import android.content.Context;
-import android.support.v7.widget.ActionBarContextView;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
-import android.view.View;
-import java.lang.ref.WeakReference;
+import android.content.pm.ApplicationInfo;
+import android.content.res.Configuration;
+import android.content.res.Resources;
 
 public final class gz
-  extends gw
-  implements hl.a
 {
-  private Context a;
-  private ActionBarContextView b;
-  private gw.a e;
-  private WeakReference<View> f;
-  private boolean g;
-  private boolean h;
-  private hl i;
+  public Context a;
   
-  public gz(Context paramContext, ActionBarContextView paramActionBarContextView, gw.a parama, boolean paramBoolean)
+  private gz(Context paramContext)
   {
     this.a = paramContext;
-    this.b = paramActionBarContextView;
-    this.e = parama;
-    paramContext = new hl(paramActionBarContextView.getContext());
-    paramContext.e = 1;
-    this.i = paramContext;
-    this.i.a(this);
-    this.h = paramBoolean;
   }
   
-  public final MenuInflater a()
+  public static gz a(Context paramContext)
   {
-    return new hb(this.b.getContext());
+    return new gz(paramContext);
   }
   
-  public final void a(int paramInt)
+  public final int a()
   {
-    b(this.a.getString(paramInt));
-  }
-  
-  public final void a(View paramView)
-  {
-    this.b.setCustomView(paramView);
-    if (paramView != null) {
-      paramView = new WeakReference(paramView);
-    } else {
-      paramView = null;
+    Configuration localConfiguration = this.a.getResources().getConfiguration();
+    int i = localConfiguration.screenWidthDp;
+    int j = localConfiguration.screenHeightDp;
+    if ((localConfiguration.smallestScreenWidthDp <= 600) && (i <= 600) && ((i <= 960) || (j <= 720)) && ((i <= 720) || (j <= 960)))
+    {
+      if ((i < 500) && ((i <= 640) || (j <= 480)) && ((i <= 480) || (j <= 640)))
+      {
+        if (i >= 360) {
+          return 3;
+        }
+        return 2;
+      }
+      return 4;
     }
-    this.f = paramView;
+    return 5;
   }
   
-  public final void a(hl paramhl)
+  public final boolean b()
   {
-    d();
-    this.b.a();
+    return this.a.getResources().getBoolean(gs.b.abc_action_bar_embed_tabs);
   }
   
-  public final void a(CharSequence paramCharSequence)
+  public final boolean c()
   {
-    this.b.setSubtitle(paramCharSequence);
-  }
-  
-  public final void a(boolean paramBoolean)
-  {
-    super.a(paramBoolean);
-    this.b.setTitleOptional(paramBoolean);
-  }
-  
-  public final boolean a(hl paramhl, MenuItem paramMenuItem)
-  {
-    return this.e.a(this, paramMenuItem);
-  }
-  
-  public final Menu b()
-  {
-    return this.i;
-  }
-  
-  public final void b(int paramInt)
-  {
-    a(this.a.getString(paramInt));
-  }
-  
-  public final void b(CharSequence paramCharSequence)
-  {
-    this.b.setTitle(paramCharSequence);
-  }
-  
-  public final void c()
-  {
-    if (this.g) {
-      return;
-    }
-    this.g = true;
-    this.b.sendAccessibilityEvent(32);
-    this.e.a(this);
-  }
-  
-  public final void d()
-  {
-    this.e.b(this, this.i);
-  }
-  
-  public final CharSequence f()
-  {
-    return this.b.getTitle();
-  }
-  
-  public final CharSequence g()
-  {
-    return this.b.getSubtitle();
-  }
-  
-  public final boolean h()
-  {
-    return this.b.g;
-  }
-  
-  public final View i()
-  {
-    WeakReference localWeakReference = this.f;
-    if (localWeakReference != null) {
-      return (View)localWeakReference.get();
-    }
-    return null;
+    return this.a.getApplicationInfo().targetSdkVersion < 14;
   }
 }
 

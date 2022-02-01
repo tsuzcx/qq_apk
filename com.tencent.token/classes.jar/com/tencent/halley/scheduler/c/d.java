@@ -1,8 +1,8 @@
 package com.tencent.halley.scheduler.c;
 
 import com.tencent.halley.common.b.c;
-import com.tencent.token.li;
-import com.tencent.token.lj;
+import com.tencent.token.lp;
+import com.tencent.token.lq;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -39,53 +39,53 @@ public final class d
     this.j = paramMap;
   }
   
-  public final void a(li paramli)
+  public final void a(lp paramlp)
   {
-    this.a = paramli.a(0, true);
-    this.b = paramli.a(1, true);
+    this.a = paramlp.a(0, true);
+    this.b = paramlp.a(1, true);
     if (k == null)
     {
       k = new ArrayList();
       k.add("");
     }
-    this.c = ((ArrayList)paramli.a(k, 2, true));
-    this.d = paramli.a(3, false);
-    this.e = paramli.a(4, false);
-    this.f = paramli.a(this.f, 5, false);
-    this.g = paramli.a(this.g, 6, false);
-    this.h = paramli.a(this.h, 7, false);
-    this.i = paramli.a(8, false);
+    this.c = ((ArrayList)paramlp.a(k, 2, true));
+    this.d = paramlp.a(3, false);
+    this.e = paramlp.a(4, false);
+    this.f = paramlp.a(this.f, 5, false);
+    this.g = paramlp.a(this.g, 6, false);
+    this.h = paramlp.a(this.h, 7, false);
+    this.i = paramlp.a(8, false);
     if (l == null)
     {
       l = new HashMap();
       l.put("", "");
     }
-    this.j = ((Map)paramli.a(l, 9, false));
+    this.j = ((Map)paramlp.a(l, 9, false));
   }
   
-  public final void a(lj paramlj)
+  public final void a(lq paramlq)
   {
-    paramlj.a(this.a, 0);
-    paramlj.a(this.b, 1);
-    paramlj.a(this.c, 2);
+    paramlq.a(this.a, 0);
+    paramlq.a(this.b, 1);
+    paramlq.a(this.c, 2);
     Object localObject = this.d;
     if (localObject != null) {
-      paramlj.a((String)localObject, 3);
+      paramlq.a((String)localObject, 3);
     }
     localObject = this.e;
     if (localObject != null) {
-      paramlj.a((String)localObject, 4);
+      paramlq.a((String)localObject, 4);
     }
-    paramlj.a(this.f, 5);
-    paramlj.a(this.g, 6);
-    paramlj.a(this.h, 7);
+    paramlq.a(this.f, 5);
+    paramlq.a(this.g, 6);
+    paramlq.a(this.h, 7);
     localObject = this.i;
     if (localObject != null) {
-      paramlj.a((String)localObject, 8);
+      paramlq.a((String)localObject, 8);
     }
     localObject = this.j;
     if (localObject != null) {
-      paramlj.a((Map)localObject, 9);
+      paramlq.a((Map)localObject, 9);
     }
   }
 }

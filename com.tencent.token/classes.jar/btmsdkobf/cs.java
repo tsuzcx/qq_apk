@@ -4,7 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.text.TextUtils;
 import com.qq.taf.jce.JceStruct;
-import com.tencent.token.jw;
+import com.tencent.token.ka;
 import com.tmsdk.base.utils.ConvertUtil;
 import java.security.Key;
 import java.security.KeyFactory;
@@ -159,7 +159,7 @@ public class cs
     localas.data = cd.a(null, localal, localas.bM, localas);
     ((ArrayList)localObject).add(localas);
     cv.by().a(localas.dc, -1L, null);
-    this.hF.a((ArrayList)localObject, new jw(str)
+    this.hF.a((ArrayList)localObject, new ka(str)
     {
       public final void a(boolean paramAnonymousBoolean, int paramAnonymousInt1, int paramAnonymousInt2, ArrayList<ba> paramAnonymousArrayList)
       {

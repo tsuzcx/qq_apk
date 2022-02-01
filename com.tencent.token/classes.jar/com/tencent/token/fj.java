@@ -1,34 +1,73 @@
 package com.tencent.token;
 
-import android.view.animation.Interpolator;
+import android.os.Build.VERSION;
+import android.os.Bundle;
+import android.view.accessibility.AccessibilityNodeInfo;
+import android.view.accessibility.AccessibilityNodeProvider;
+import java.util.List;
 
-abstract class fj
-  implements Interpolator
+public final class fj
 {
-  private final float[] a;
-  private final float b;
+  public final Object a;
   
-  protected fj(float[] paramArrayOfFloat)
+  public fj()
   {
-    this.a = paramArrayOfFloat;
-    this.b = (1.0F / (this.a.length - 1));
+    if (Build.VERSION.SDK_INT >= 19)
+    {
+      this.a = new b(this);
+      return;
+    }
+    if (Build.VERSION.SDK_INT >= 16)
+    {
+      this.a = new a(this);
+      return;
+    }
+    this.a = null;
   }
   
-  public float getInterpolation(float paramFloat)
+  public fj(Object paramObject)
   {
-    if (paramFloat >= 1.0F) {
-      return 1.0F;
+    this.a = paramObject;
+  }
+  
+  static class a
+    extends AccessibilityNodeProvider
+  {
+    final fj a;
+    
+    a(fj paramfj)
+    {
+      this.a = paramfj;
     }
-    if (paramFloat <= 0.0F) {
-      return 0.0F;
+    
+    public AccessibilityNodeInfo createAccessibilityNodeInfo(int paramInt)
+    {
+      return null;
     }
-    float[] arrayOfFloat = this.a;
-    int i = Math.min((int)((arrayOfFloat.length - 1) * paramFloat), arrayOfFloat.length - 2);
-    float f1 = i;
-    float f2 = this.b;
-    paramFloat = (paramFloat - f1 * f2) / f2;
-    arrayOfFloat = this.a;
-    return arrayOfFloat[i] + paramFloat * (arrayOfFloat[(i + 1)] - arrayOfFloat[i]);
+    
+    public List<AccessibilityNodeInfo> findAccessibilityNodeInfosByText(String paramString, int paramInt)
+    {
+      return null;
+    }
+    
+    public boolean performAction(int paramInt1, int paramInt2, Bundle paramBundle)
+    {
+      return false;
+    }
+  }
+  
+  static final class b
+    extends fj.a
+  {
+    b(fj paramfj)
+    {
+      super();
+    }
+    
+    public final AccessibilityNodeInfo findFocus(int paramInt)
+    {
+      return null;
+    }
   }
 }
 

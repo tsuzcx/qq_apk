@@ -1,35 +1,43 @@
 package com.tencent.token;
 
-import java.util.Iterator;
+import android.content.Context;
+import com.tencent.halley.downloader.DownloaderFactory;
 import java.util.List;
-import java.util.Map;
 
 public final class lb
-  extends ky
 {
-  public lb(String paramString, Map paramMap, ky.a parama, boolean paramBoolean, lg paramlg)
+  public static List a(String paramString, long paramLong)
   {
-    this.q = paramlg;
-    this.a = paramString;
-    this.d = paramMap;
-    this.g = paramBoolean;
-    if (parama != null)
+    try
     {
-      paramString = this.c;
-      int j = 0;
-      paramMap = paramString.a.iterator();
-      do
+      if (nh.a() != null)
       {
-        i = j;
-        if (!paramMap.hasNext()) {
-          break;
-        }
-      } while (!((ky.a)paramMap.next()).equals(parama));
-      int i = 1;
-      if (i == 0) {
-        paramString.a.add(parama);
+        paramString = nh.a().a(paramString, paramLong);
+        return paramString;
       }
     }
+    catch (Exception paramString)
+    {
+      label19:
+      break label19;
+    }
+    return null;
+  }
+  
+  public static void a(Context paramContext, String paramString1, String paramString2, String paramString3)
+  {
+    try
+    {
+      Context localContext = lv.a();
+      if (localContext != null) {
+        return;
+      }
+      lv.a(paramContext, paramString1, paramString2, paramString3);
+      nh.a(paramContext, paramString1, paramString2, paramString3);
+      DownloaderFactory.a(null);
+      return;
+    }
+    finally {}
   }
 }
 

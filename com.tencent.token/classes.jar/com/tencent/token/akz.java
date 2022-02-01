@@ -1,31 +1,23 @@
 package com.tencent.token;
 
-import java.nio.channels.WritableByteChannel;
-
-public abstract interface akz
-  extends aln, WritableByteChannel
+public final class akz
+  implements akg
 {
-  public abstract aky b();
+  public final aki a;
   
-  public abstract akz b(String paramString);
+  public akz(aki paramaki)
+  {
+    this.a = paramaki;
+  }
   
-  public abstract akz c(byte[] paramArrayOfByte);
-  
-  public abstract akz c(byte[] paramArrayOfByte, int paramInt1, int paramInt2);
-  
-  public abstract akz f(int paramInt);
-  
-  public abstract void flush();
-  
-  public abstract akz g(int paramInt);
-  
-  public abstract akz h(int paramInt);
-  
-  public abstract akz j(long paramLong);
-  
-  public abstract akz k(long paramLong);
-  
-  public abstract akz r();
+  public final akn a(akg.a parama)
+  {
+    alm localalm = (alm)parama;
+    akl localakl = localalm.d;
+    alf localalf = localalm.a;
+    boolean bool = localakl.b.equals("GET");
+    return localalm.a(localakl, localalf, localalf.a(this.a, parama, bool ^ true), localalf.b());
+  }
 }
 
 

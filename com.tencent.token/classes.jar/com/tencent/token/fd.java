@@ -1,108 +1,233 @@
 package com.tencent.token;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
 import android.os.Build.VERSION;
-import android.view.WindowInsets;
+import android.view.View;
+import android.view.ViewPropertyAnimator;
+import android.view.animation.Interpolator;
+import java.lang.ref.WeakReference;
 
 public final class fd
 {
-  private final Object a;
+  Runnable a = null;
+  Runnable b = null;
+  int c = -1;
+  private WeakReference<View> d;
   
-  private fd(Object paramObject)
+  fd(View paramView)
   {
-    this.a = paramObject;
+    this.d = new WeakReference(paramView);
   }
   
-  static fd a(Object paramObject)
+  private void a(final View paramView, final fe paramfe)
   {
-    if (paramObject == null) {
-      return null;
-    }
-    return new fd(paramObject);
-  }
-  
-  static Object a(fd paramfd)
-  {
-    if (paramfd == null) {
-      return null;
-    }
-    return paramfd.a;
-  }
-  
-  public final int a()
-  {
-    if (Build.VERSION.SDK_INT >= 20) {
-      return ((WindowInsets)this.a).getSystemWindowInsetLeft();
-    }
-    return 0;
-  }
-  
-  public final fd a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    if (Build.VERSION.SDK_INT >= 20) {
-      return new fd(((WindowInsets)this.a).replaceSystemWindowInsets(paramInt1, paramInt2, paramInt3, paramInt4));
-    }
-    return null;
-  }
-  
-  public final int b()
-  {
-    if (Build.VERSION.SDK_INT >= 20) {
-      return ((WindowInsets)this.a).getSystemWindowInsetTop();
-    }
-    return 0;
-  }
-  
-  public final int c()
-  {
-    if (Build.VERSION.SDK_INT >= 20) {
-      return ((WindowInsets)this.a).getSystemWindowInsetRight();
-    }
-    return 0;
-  }
-  
-  public final int d()
-  {
-    if (Build.VERSION.SDK_INT >= 20) {
-      return ((WindowInsets)this.a).getSystemWindowInsetBottom();
-    }
-    return 0;
-  }
-  
-  public final boolean e()
-  {
-    if (Build.VERSION.SDK_INT >= 21) {
-      return ((WindowInsets)this.a).isConsumed();
-    }
-    return false;
-  }
-  
-  public final boolean equals(Object paramObject)
-  {
-    if (this == paramObject) {
-      return true;
-    }
-    if (paramObject != null)
+    if (paramfe != null)
     {
-      if (getClass() != paramObject.getClass()) {
-        return false;
-      }
-      paramObject = (fd)paramObject;
-      Object localObject = this.a;
-      if (localObject == null) {
-        return paramObject.a == null;
-      }
-      return localObject.equals(paramObject.a);
+      paramView.animate().setListener(new AnimatorListenerAdapter()
+      {
+        public final void onAnimationCancel(Animator paramAnonymousAnimator)
+        {
+          paramfe.c(paramView);
+        }
+        
+        public final void onAnimationEnd(Animator paramAnonymousAnimator)
+        {
+          paramfe.b(paramView);
+        }
+        
+        public final void onAnimationStart(Animator paramAnonymousAnimator)
+        {
+          paramfe.a(paramView);
+        }
+      });
+      return;
     }
-    return false;
+    paramView.animate().setListener(null);
   }
   
-  public final int hashCode()
+  public final long a()
   {
-    Object localObject = this.a;
-    if (localObject == null) {
-      return 0;
+    View localView = (View)this.d.get();
+    if (localView != null) {
+      return localView.animate().getDuration();
     }
-    return localObject.hashCode();
+    return 0L;
+  }
+  
+  public final fd a(float paramFloat)
+  {
+    View localView = (View)this.d.get();
+    if (localView != null) {
+      localView.animate().alpha(paramFloat);
+    }
+    return this;
+  }
+  
+  public final fd a(long paramLong)
+  {
+    View localView = (View)this.d.get();
+    if (localView != null) {
+      localView.animate().setDuration(paramLong);
+    }
+    return this;
+  }
+  
+  public final fd a(Interpolator paramInterpolator)
+  {
+    View localView = (View)this.d.get();
+    if (localView != null) {
+      localView.animate().setInterpolator(paramInterpolator);
+    }
+    return this;
+  }
+  
+  public final fd a(fe paramfe)
+  {
+    View localView = (View)this.d.get();
+    if (localView != null)
+    {
+      if (Build.VERSION.SDK_INT >= 16)
+      {
+        a(localView, paramfe);
+        return this;
+      }
+      localView.setTag(2113929216, paramfe);
+      a(localView, new a(this));
+    }
+    return this;
+  }
+  
+  public final fd a(final fg paramfg)
+  {
+    final View localView = (View)this.d.get();
+    if ((localView != null) && (Build.VERSION.SDK_INT >= 19))
+    {
+      ValueAnimator.AnimatorUpdateListener local2 = null;
+      if (paramfg != null) {
+        local2 = new ValueAnimator.AnimatorUpdateListener()
+        {
+          public final void onAnimationUpdate(ValueAnimator paramAnonymousValueAnimator)
+          {
+            paramfg.a();
+          }
+        };
+      }
+      localView.animate().setUpdateListener(local2);
+    }
+    return this;
+  }
+  
+  public final fd b(float paramFloat)
+  {
+    View localView = (View)this.d.get();
+    if (localView != null) {
+      localView.animate().translationY(paramFloat);
+    }
+    return this;
+  }
+  
+  public final fd b(long paramLong)
+  {
+    View localView = (View)this.d.get();
+    if (localView != null) {
+      localView.animate().setStartDelay(paramLong);
+    }
+    return this;
+  }
+  
+  public final void b()
+  {
+    View localView = (View)this.d.get();
+    if (localView != null) {
+      localView.animate().cancel();
+    }
+  }
+  
+  public final void c()
+  {
+    View localView = (View)this.d.get();
+    if (localView != null) {
+      localView.animate().start();
+    }
+  }
+  
+  static final class a
+    implements fe
+  {
+    fd a;
+    boolean b;
+    
+    a(fd paramfd)
+    {
+      this.a = paramfd;
+    }
+    
+    public final void a(View paramView)
+    {
+      this.b = false;
+      int i = this.a.c;
+      fe localfe = null;
+      if (i >= 0) {
+        paramView.setLayerType(2, null);
+      }
+      if (this.a.a != null)
+      {
+        localObject = this.a.a;
+        this.a.a = null;
+        ((Runnable)localObject).run();
+      }
+      Object localObject = paramView.getTag(2113929216);
+      if ((localObject instanceof fe)) {
+        localfe = (fe)localObject;
+      }
+      if (localfe != null) {
+        localfe.a(paramView);
+      }
+    }
+    
+    public final void b(View paramView)
+    {
+      int i = this.a.c;
+      fe localfe = null;
+      if (i >= 0)
+      {
+        paramView.setLayerType(this.a.c, null);
+        this.a.c = -1;
+      }
+      if ((Build.VERSION.SDK_INT >= 16) || (!this.b))
+      {
+        if (this.a.b != null)
+        {
+          localObject = this.a.b;
+          this.a.b = null;
+          ((Runnable)localObject).run();
+        }
+        Object localObject = paramView.getTag(2113929216);
+        if ((localObject instanceof fe)) {
+          localfe = (fe)localObject;
+        }
+        if (localfe != null) {
+          localfe.b(paramView);
+        }
+        this.b = true;
+      }
+    }
+    
+    public final void c(View paramView)
+    {
+      Object localObject = paramView.getTag(2113929216);
+      if ((localObject instanceof fe)) {
+        localObject = (fe)localObject;
+      } else {
+        localObject = null;
+      }
+      if (localObject != null) {
+        ((fe)localObject).c(paramView);
+      }
+    }
   }
 }
 

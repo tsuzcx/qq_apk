@@ -1,51 +1,140 @@
 package com.tencent.token;
 
-import android.telephony.PhoneStateListener;
+import android.content.Context;
+import android.os.Environment;
+import android.text.TextUtils;
+import java.io.File;
 
 public final class le
 {
-  private static volatile boolean a = false;
-  private static PhoneStateListener b = new lf();
+  public static String a = "";
+  public static String b = "";
+  public static String c = "";
+  public static int d = 5;
+  public static boolean e = true;
+  public static int f = 50;
+  private static int g = 2;
+  private static int h = 3;
+  private static String i = ".temp";
+  private static volatile int j = 500;
+  private static int k = 20000;
   
-  /* Error */
-  public static void a()
+  public static int a()
   {
-    // Byte code:
-    //   0: ldc 2
-    //   2: monitorenter
-    //   3: invokestatic 26	com/tencent/token/lo:a	()Landroid/content/Context;
-    //   6: ldc 28
-    //   8: invokevirtual 34	android/content/Context:getSystemService	(Ljava/lang/String;)Ljava/lang/Object;
-    //   11: checkcast 36	android/telephony/TelephonyManager
-    //   14: getstatic 18	com/tencent/token/le:b	Landroid/telephony/PhoneStateListener;
-    //   17: bipush 64
-    //   19: invokevirtual 40	android/telephony/TelephonyManager:listen	(Landroid/telephony/PhoneStateListener;I)V
-    //   22: ldc 2
-    //   24: monitorexit
-    //   25: return
-    //   26: astore_0
-    //   27: ldc 2
-    //   29: monitorexit
-    //   30: aload_0
-    //   31: athrow
-    //   32: ldc 2
-    //   34: monitorexit
-    //   35: return
-    //   36: astore_0
-    //   37: goto -5 -> 32
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   26	5	0	localObject	Object
-    //   36	1	0	localException	java.lang.Exception
-    // Exception table:
-    //   from	to	target	type
-    //   3	22	26	finally
-    //   3	22	36	java/lang/Exception
+    return g;
   }
   
-  public static boolean b()
+  public static String a(String paramString)
   {
-    return a;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(".bdcfg");
+    return localStringBuilder.toString();
+  }
+  
+  public static void a(int paramInt)
+  {
+    g = Math.min(Math.max(paramInt, 1), 4);
+  }
+  
+  public static int b()
+  {
+    return h;
+  }
+  
+  public static String b(String paramString)
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(i);
+    return localStringBuilder.toString();
+  }
+  
+  public static void b(int paramInt)
+  {
+    h = Math.min(Math.max(paramInt, 1), 6);
+  }
+  
+  public static int c()
+  {
+    lj.e();
+    return 20000;
+  }
+  
+  public static boolean c(String paramString)
+  {
+    return !lx.a(paramString);
+  }
+  
+  public static int d()
+  {
+    lj.e();
+    return 20000;
+  }
+  
+  public static int e()
+  {
+    int n = lj.e();
+    int m = 1048576;
+    switch (n)
+    {
+    default: 
+      return 1048576;
+    case 3: 
+      m = 524288;
+    }
+    return m;
+  }
+  
+  public static int f()
+  {
+    return 524288;
+  }
+  
+  public static String g()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    String str;
+    if ("mounted".equals(Environment.getExternalStorageState()))
+    {
+      str = lx.e();
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(Environment.getExternalStorageDirectory().getAbsolutePath());
+      ((StringBuilder)localObject).append("/");
+      ((StringBuilder)localObject).append(str);
+      ((StringBuilder)localObject).append("/HalleyDownload");
+      str = ((StringBuilder)localObject).toString();
+    }
+    else
+    {
+      str = "";
+    }
+    Object localObject = str;
+    if (TextUtils.isEmpty(str)) {
+      localObject = lv.a().getFilesDir().toString();
+    }
+    localStringBuilder.append((String)localObject);
+    return localStringBuilder.toString();
+  }
+  
+  public static int h()
+  {
+    return j;
+  }
+  
+  public static int i()
+  {
+    return 60000;
+  }
+  
+  public static int j()
+  {
+    return 20000;
+  }
+  
+  public static int k()
+  {
+    return k;
   }
 }
 

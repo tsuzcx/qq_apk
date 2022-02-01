@@ -1,165 +1,89 @@
 package com.tencent.token;
 
-import java.net.InetSocketAddress;
-import java.net.Socket;
-import java.security.NoSuchAlgorithmException;
-import java.security.Provider;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.annotation.Nullable;
-import javax.net.ssl.SSLContext;
-import javax.net.ssl.SSLSocket;
-import javax.net.ssl.SSLSocketFactory;
-import javax.net.ssl.X509TrustManager;
 
-public class akq
+public enum akq
 {
-  private static final Logger a = Logger.getLogger(ail.class.getName());
-  static final akq c;
+  final String f;
   
-  static
+  private akq(String paramString)
   {
-    Object localObject = akl.a();
-    if (localObject == null)
-    {
-      boolean bool;
-      if ("conscrypt".equals(System.getProperty("okhttp.platform"))) {
-        bool = true;
-      } else {
-        bool = "Conscrypt".equals(java.security.Security.getProviders()[0].getName());
-      }
-      if (bool)
-      {
-        localObject = akm.a();
-        if (localObject != null) {}
-      }
-      else
-      {
-        localObject = akn.a();
-        if (localObject == null)
-        {
-          localObject = ako.a();
-          if (localObject == null) {
-            localObject = new akq();
-          }
-        }
-      }
-    }
-    c = (akq)localObject;
+    this.f = paramString;
   }
   
-  public static List<String> a(List<aim> paramList)
+  public static akq a(String paramString)
   {
-    ArrayList localArrayList = new ArrayList(paramList.size());
-    int j = paramList.size();
+    int i = paramString.hashCode();
+    if (i != 79201641)
+    {
+      if (i != 79923350)
+      {
+        switch (i)
+        {
+        default: 
+          break;
+        case -503070501: 
+          if (!paramString.equals("TLSv1.3")) {
+            break;
+          }
+          i = 0;
+          break;
+        case -503070502: 
+          if (!paramString.equals("TLSv1.2")) {
+            break;
+          }
+          i = 1;
+          break;
+        case -503070503: 
+          if (!paramString.equals("TLSv1.1")) {
+            break;
+          }
+          i = 2;
+          break;
+        }
+      }
+      else if (paramString.equals("TLSv1"))
+      {
+        i = 3;
+        break label119;
+      }
+    }
+    else if (paramString.equals("SSLv3"))
+    {
+      i = 4;
+      break label119;
+    }
+    i = -1;
+    switch (i)
+    {
+    default: 
+      throw new IllegalArgumentException("Unexpected TLS version: ".concat(String.valueOf(paramString)));
+    case 4: 
+      return e;
+    case 3: 
+      return d;
+    case 2: 
+      return c;
+    case 1: 
+      label119:
+      return b;
+    }
+    return a;
+  }
+  
+  static List<akq> a(String... paramVarArgs)
+  {
+    ArrayList localArrayList = new ArrayList(paramVarArgs.length);
+    int j = paramVarArgs.length;
     int i = 0;
     while (i < j)
     {
-      aim localaim = (aim)paramList.get(i);
-      if (localaim != aim.a) {
-        localArrayList.add(localaim.toString());
-      }
+      localArrayList.add(a(paramVarArgs[i]));
       i += 1;
     }
-    return localArrayList;
-  }
-  
-  public static akq c()
-  {
-    return c;
-  }
-  
-  public akt a(X509TrustManager paramX509TrustManager)
-  {
-    return new akr(b(paramX509TrustManager));
-  }
-  
-  public Object a(String paramString)
-  {
-    if (a.isLoggable(Level.FINE)) {
-      return new Throwable(paramString);
-    }
-    return null;
-  }
-  
-  @Nullable
-  public String a(SSLSocket paramSSLSocket)
-  {
-    return null;
-  }
-  
-  public void a(int paramInt, String paramString, Throwable paramThrowable)
-  {
-    Level localLevel;
-    if (paramInt == 5) {
-      localLevel = Level.WARNING;
-    } else {
-      localLevel = Level.INFO;
-    }
-    a.log(localLevel, paramString, paramThrowable);
-  }
-  
-  public void a(String paramString, Object paramObject)
-  {
-    Object localObject = paramString;
-    if (paramObject == null)
-    {
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append(paramString);
-      ((StringBuilder)localObject).append(" To see where this was allocated, set the OkHttpClient logger level to FINE: Logger.getLogger(OkHttpClient.class.getName()).setLevel(Level.FINE);");
-      localObject = ((StringBuilder)localObject).toString();
-    }
-    a(5, (String)localObject, (Throwable)paramObject);
-  }
-  
-  public void a(Socket paramSocket, InetSocketAddress paramInetSocketAddress, int paramInt)
-  {
-    paramSocket.connect(paramInetSocketAddress, paramInt);
-  }
-  
-  public void a(SSLSocket paramSSLSocket, String paramString, List<aim> paramList) {}
-  
-  public void a(SSLSocketFactory paramSSLSocketFactory) {}
-  
-  public akv b(X509TrustManager paramX509TrustManager)
-  {
-    return new aks(paramX509TrustManager.getAcceptedIssuers());
-  }
-  
-  public SSLContext b()
-  {
-    if ("1.7".equals(System.getProperty("java.specification.version"))) {}
-    for (;;)
-    {
-      try
-      {
-        localSSLContext = SSLContext.getInstance("TLSv1.2");
-        return localSSLContext;
-      }
-      catch (NoSuchAlgorithmException localNoSuchAlgorithmException2)
-      {
-        SSLContext localSSLContext;
-        continue;
-      }
-      try
-      {
-        localSSLContext = SSLContext.getInstance("TLS");
-        return localSSLContext;
-      }
-      catch (NoSuchAlgorithmException localNoSuchAlgorithmException1)
-      {
-        throw new IllegalStateException("No TLS provider", localNoSuchAlgorithmException1);
-      }
-    }
-  }
-  
-  public void b(SSLSocket paramSSLSocket) {}
-  
-  public boolean b(String paramString)
-  {
-    return true;
+    return Collections.unmodifiableList(localArrayList);
   }
 }
 

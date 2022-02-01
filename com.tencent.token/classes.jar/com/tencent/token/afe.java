@@ -1,37 +1,46 @@
 package com.tencent.token;
 
+import android.content.Context;
+import com.tencent.turingfd.sdk.qps.Grape;
+
 public final class afe
 {
-  public static byte[] a;
-  public static byte[] b = { 116, 117, 114, 105, 110, 103, 109, 109 };
-  public static final String[] c = new String[0];
+  public int a;
+  public long b;
+  public Context c;
+  public int d;
+  public Grape e;
+  public afa f;
   
-  public static String[] a(byte[] paramArrayOfByte)
+  public afe(a parama)
   {
-    try
+    this.a = parama.a;
+    this.b = (parama.b * afg.a);
+    this.c = parama.c;
+    this.f = parama.d;
+    this.d = parama.e;
+    this.e = parama.f;
+  }
+  
+  public static final class a
+  {
+    public int a = 0;
+    public long b = 6L;
+    public Context c;
+    public afa d;
+    public int e = 0;
+    public Grape f = new Grape();
+    
+    public a(Context paramContext, int paramInt)
     {
-      byte[] arrayOfByte = a;
-      if (arrayOfByte != null) {}
+      if (paramInt >= 0)
+      {
+        this.c = paramContext.getApplicationContext();
+        this.a = paramInt;
+        return;
+      }
+      throw new IllegalArgumentException("scenes invalid: ".concat(String.valueOf(paramInt)));
     }
-    catch (Throwable paramArrayOfByte)
-    {
-      label20:
-      label50:
-      break label50;
-    }
-    try
-    {
-      a = aep.a(b);
-    }
-    catch (Exception localException)
-    {
-      break label20;
-    }
-    a = new byte[0];
-    paramArrayOfByte = new String(aey.b(paramArrayOfByte, a));
-    paramArrayOfByte = paramArrayOfByte.split("\\n");
-    return paramArrayOfByte;
-    return c;
   }
 }
 

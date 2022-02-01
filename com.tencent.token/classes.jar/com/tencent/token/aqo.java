@@ -1,13 +1,30 @@
 package com.tencent.token;
 
-final class aqo
-  implements Runnable
+import java.io.Serializable;
+
+public final class aqo
+  implements Serializable
 {
-  aqo(aqm paramaqm, aql paramaql, Integer paramInteger1, Integer paramInteger2) {}
+  public static final aqo b = new aqo(0, 0, "CT_NONE");
+  public static final aqo c = new aqo(1, 1, "CT_GPRS");
+  public static final aqo d = new aqo(2, 2, "CT_WIFI");
+  public static final aqo e = new aqo(3, 3, "CT_GPRS_WAP");
+  public static final aqo f = new aqo(4, 4, "CT_GPRS_NET");
+  public static final aqo g = new aqo(5, 5, "CT_3G_NET");
+  private static aqo[] i = new aqo[6];
+  public int a;
+  private String j = new String();
   
-  public final void run()
+  private aqo(int paramInt1, int paramInt2, String paramString)
   {
-    this.a.f.a(this.a.g, this.a.b, this.b.intValue(), this.c.intValue(), this.a.d);
+    this.j = paramString;
+    this.a = paramInt2;
+    i[paramInt1] = this;
+  }
+  
+  public final String toString()
+  {
+    return this.j;
   }
 }
 

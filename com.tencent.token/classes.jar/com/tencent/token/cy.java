@@ -1,33 +1,54 @@
 package com.tencent.token;
 
-import android.graphics.Color;
+import android.app.AppOpsManager;
+import android.content.Context;
+import android.content.pm.PackageManager;
+import android.os.Build.VERSION;
+import android.os.Process;
 
 public final class cy
 {
-  private static final ThreadLocal<double[]> a = new ThreadLocal();
-  
-  public static int a(int paramInt1, int paramInt2)
+  public static int a(Context paramContext, String paramString)
   {
-    int i = Color.alpha(paramInt2);
-    int j = Color.alpha(paramInt1);
-    int k = 255 - (255 - i) * (255 - j) / 255;
-    return Color.argb(k, a(Color.red(paramInt1), j, Color.red(paramInt2), i, k), a(Color.green(paramInt1), j, Color.green(paramInt2), i, k), a(Color.blue(paramInt1), j, Color.blue(paramInt2), i, k));
-  }
-  
-  private static int a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
-  {
-    if (paramInt5 == 0) {
-      return 0;
+    int i = Process.myPid();
+    int j = Process.myUid();
+    String str = paramContext.getPackageName();
+    if (paramContext.checkPermission(paramString, i, j) == -1) {
+      return -1;
     }
-    return (paramInt1 * 255 * paramInt2 + paramInt3 * paramInt4 * (255 - paramInt2)) / (paramInt5 * 255);
-  }
-  
-  public static int b(int paramInt1, int paramInt2)
-  {
-    if ((paramInt2 >= 0) && (paramInt2 <= 255)) {
-      return paramInt1 & 0xFFFFFF | paramInt2 << 24;
+    if (Build.VERSION.SDK_INT >= 23) {
+      paramString = AppOpsManager.permissionToOp(paramString);
+    } else {
+      paramString = null;
     }
-    throw new IllegalArgumentException("alpha must be between 0 and 255.");
+    if (paramString != null)
+    {
+      Object localObject = str;
+      if (str == null)
+      {
+        localObject = paramContext.getPackageManager().getPackagesForUid(j);
+        if (localObject != null)
+        {
+          if (localObject.length <= 0) {
+            return -1;
+          }
+          localObject = localObject[0];
+        }
+        else
+        {
+          return -1;
+        }
+      }
+      if (Build.VERSION.SDK_INT >= 23) {
+        i = ((AppOpsManager)paramContext.getSystemService(AppOpsManager.class)).noteProxyOpNoThrow(paramString, (String)localObject);
+      } else {
+        i = 1;
+      }
+      if (i != 0) {
+        return -2;
+      }
+    }
+    return 0;
   }
 }
 

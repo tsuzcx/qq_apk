@@ -1,96 +1,135 @@
 package com.tencent.token;
 
-import com.tencent.turingfd.sdk.base.Haw;
-import com.tencent.turingfd.sdk.base.Herbaceous;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import android.os.Handler;
+import android.os.Looper;
+import android.view.Window;
+import java.lang.ref.WeakReference;
 
 public final class acl
+  extends Handler
 {
-  public final int a;
-  public Object[] b;
-  public int c;
-  public final int d;
-  public final int e;
+  public Handler a;
+  public WeakReference<Window> b;
+  public acf c;
+  public String d;
   
-  public acl(int paramInt1, int paramInt2, int paramInt3)
+  public acl(Handler paramHandler, Window paramWindow, Looper paramLooper, acf paramacf, String paramString)
   {
-    this.a = paramInt1;
-    this.b = new Object[(int)Math.ceil(paramInt3 * 1.0F / paramInt2)];
-    this.c = 0;
-    this.d = paramInt3;
-    this.e = paramInt2;
+    super(paramLooper);
+    this.a = paramHandler;
+    this.c = paramacf;
+    this.b = new WeakReference(paramWindow);
+    this.d = paramString;
   }
   
-  public final ArrayList<Herbaceous> a(List<aco> paramList)
+  /* Error */
+  public final void handleMessage(android.os.Message paramMessage)
   {
-    ArrayList localArrayList1 = new ArrayList();
-    int j = 0;
-    for (;;)
-    {
-      Object localObject1 = this.b;
-      if (j >= localObject1.length) {
-        break;
-      }
-      Object localObject2 = (List)localObject1[j];
-      if ((localObject2 != null) && (((List)localObject2).size() != 0))
-      {
-        localObject1 = new Herbaceous();
-        ArrayList localArrayList2 = new ArrayList();
-        Object localObject3 = (List)this.b[j];
-        int k = 2;
-        if (localObject3 != null)
-        {
-          i = 0;
-          while (i < ((List)localObject3).size())
-          {
-            acn localacn = (acn)((List)localObject3).get(i);
-            Haw localHaw = new Haw();
-            float[] arrayOfFloat = localacn.c;
-            localHaw.x = arrayOfFloat[0];
-            localHaw.y = arrayOfFloat[1];
-            localHaw.z = arrayOfFloat[2];
-            localHaw.Rc = localacn.b;
-            localArrayList2.add(localHaw);
-            i += 1;
-          }
-        }
-        localObject3 = new HashMap();
-        int i = this.a;
-        if (i == 1) {
-          i = 0;
-        } else if (i == 4) {
-          i = k;
-        } else if (i == 9) {
-          i = 4;
-        } else if (i == 2) {
-          i = 5;
-        } else {
-          i = -1;
-        }
-        ((Map)localObject3).put(Integer.valueOf(i), localArrayList2);
-        ((Herbaceous)localObject1).Uc = ((Map)localObject3);
-        localObject2 = (acn)((List)localObject2).get(0);
-        if (localObject2 != null)
-        {
-          ((Herbaceous)localObject1).Tc = ((acn)localObject2).b;
-          if (paramList.size() > j)
-          {
-            localObject2 = (aco)paramList.get(j);
-            if (localObject2 != null)
-            {
-              ((Herbaceous)localObject1).Xc = ((aco)localObject2).a;
-              ((Herbaceous)localObject1).Yc = ((aco)localObject2).b;
-            }
-          }
-          localArrayList1.add(localObject1);
-        }
-      }
-      j += 1;
-    }
-    return localArrayList1;
+    // Byte code:
+    //   0: aload_1
+    //   1: getfield 46	android/os/Message:arg2	I
+    //   4: istore_2
+    //   5: aload_1
+    //   6: getfield 49	android/os/Message:what	I
+    //   9: istore_3
+    //   10: aload_0
+    //   11: getfield 20	com/tencent/token/acl:a	Landroid/os/Handler;
+    //   14: aload_1
+    //   15: invokevirtual 51	android/os/Handler:handleMessage	(Landroid/os/Message;)V
+    //   18: aload_0
+    //   19: getfield 22	com/tencent/token/acl:c	Lcom/tencent/token/acf;
+    //   22: ifnonnull +4 -> 26
+    //   25: return
+    //   26: iload_3
+    //   27: iconst_1
+    //   28: if_icmpeq +4 -> 32
+    //   31: return
+    //   32: aload_0
+    //   33: getfield 29	com/tencent/token/acl:b	Ljava/lang/ref/WeakReference;
+    //   36: invokevirtual 55	java/lang/ref/WeakReference:get	()Ljava/lang/Object;
+    //   39: checkcast 57	android/view/Window
+    //   42: astore_1
+    //   43: aload_1
+    //   44: ifnonnull +4 -> 48
+    //   47: return
+    //   48: aload_1
+    //   49: invokevirtual 61	android/view/Window:getDecorView	()Landroid/view/View;
+    //   52: astore_1
+    //   53: iload_2
+    //   54: ifge +6 -> 60
+    //   57: goto +86 -> 143
+    //   60: aload_1
+    //   61: ifnull +82 -> 143
+    //   64: ldc 63
+    //   66: ldc 65
+    //   68: iconst_1
+    //   69: anewarray 67	java/lang/Class
+    //   72: dup
+    //   73: iconst_0
+    //   74: getstatic 73	java/lang/Integer:TYPE	Ljava/lang/Class;
+    //   77: aastore
+    //   78: invokevirtual 77	java/lang/Class:getDeclaredMethod	(Ljava/lang/String;[Ljava/lang/Class;)Ljava/lang/reflect/Method;
+    //   81: astore 4
+    //   83: aload 4
+    //   85: iconst_1
+    //   86: invokevirtual 83	java/lang/reflect/Method:setAccessible	(Z)V
+    //   89: aload 4
+    //   91: aload_1
+    //   92: iconst_1
+    //   93: anewarray 85	java/lang/Object
+    //   96: dup
+    //   97: iconst_0
+    //   98: iload_2
+    //   99: invokestatic 89	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   102: aastore
+    //   103: invokevirtual 93	java/lang/reflect/Method:invoke	(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;
+    //   106: checkcast 63	android/view/View
+    //   109: astore_1
+    //   110: goto +35 -> 145
+    //   113: astore_1
+    //   114: goto +27 -> 141
+    //   117: astore_1
+    //   118: aload_1
+    //   119: invokevirtual 97	java/lang/reflect/InvocationTargetException:printStackTrace	()V
+    //   122: goto +21 -> 143
+    //   125: astore_1
+    //   126: aload_1
+    //   127: invokevirtual 98	java/lang/IllegalAccessException:printStackTrace	()V
+    //   130: goto +13 -> 143
+    //   133: astore_1
+    //   134: aload_1
+    //   135: invokevirtual 99	java/lang/NoSuchMethodException:printStackTrace	()V
+    //   138: goto +5 -> 143
+    //   141: aload_1
+    //   142: athrow
+    //   143: aconst_null
+    //   144: astore_1
+    //   145: aload_1
+    //   146: ifnonnull +4 -> 150
+    //   149: return
+    //   150: aload_0
+    //   151: getfield 22	com/tencent/token/acl:c	Lcom/tencent/token/acf;
+    //   154: aload_0
+    //   155: getfield 31	com/tencent/token/acl:d	Ljava/lang/String;
+    //   158: aload_1
+    //   159: invokeinterface 104 3 0
+    //   164: return
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	165	0	this	acl
+    //   0	165	1	paramMessage	android.os.Message
+    //   4	95	2	i	int
+    //   9	20	3	j	int
+    //   81	9	4	localMethod	java.lang.reflect.Method
+    // Exception table:
+    //   from	to	target	type
+    //   64	110	113	finally
+    //   118	122	113	finally
+    //   126	130	113	finally
+    //   134	138	113	finally
+    //   64	110	117	java/lang/reflect/InvocationTargetException
+    //   64	110	125	java/lang/IllegalAccessException
+    //   64	110	133	java/lang/NoSuchMethodException
   }
 }
 

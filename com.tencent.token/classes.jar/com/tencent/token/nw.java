@@ -1,246 +1,196 @@
 package com.tencent.token;
 
-import java.net.InetAddress;
-import java.net.Socket;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.text.TextUtils;
+import com.tencent.halley.scheduler.c.g;
 import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
 
 public final class nw
-  implements nv
 {
-  private int a = 1;
-  private int b = 1;
-  private int c = 20000;
-  private int d = 3;
-  private ArrayList e = null;
-  private int f = 0;
-  private boolean g = false;
-  private ArrayList h = null;
-  private int i = 0;
-  private boolean j = false;
-  private String k = "dispatcher.3g.qq.com";
-  private Socket l;
-  private int m;
-  private int n;
-  private int o;
-  private int p;
-  private ni q;
+  public static final int[] a = { 80, 8080, 14000 };
+  public long b;
+  private Map c;
   
-  public nw()
+  public nw() {}
+  
+  public nw(g paramg)
   {
-    int[] arrayOfInt = np.a;
-    this.l = null;
-    this.m = 0;
-    this.n = 0;
-    this.o = -1;
-    this.p = -1;
+    this.b = paramg.b;
+    this.c = new HashMap();
+    Iterator localIterator = paramg.a.keySet().iterator();
+    while (localIterator.hasNext())
+    {
+      Integer localInteger = (Integer)localIterator.next();
+      if (og.a(localInteger))
+      {
+        Object localObject = (ArrayList)paramg.a.get(localInteger);
+        ArrayList localArrayList = new ArrayList();
+        localObject = ((ArrayList)localObject).iterator();
+        while (((Iterator)localObject).hasNext())
+        {
+          String str = (String)((Iterator)localObject).next();
+          np localnp = new np();
+          if (localnp.a(str)) {
+            localArrayList.add(localnp);
+          }
+        }
+        this.c.put(localInteger, localArrayList);
+      }
+    }
   }
   
-  private static ArrayList a(ArrayList paramArrayList, int paramInt1, int paramInt2)
+  private static String a(int paramInt)
   {
-    if ((paramArrayList != null) && (paramArrayList.size() > 0))
-    {
-      if (paramInt1 >= paramArrayList.size()) {
-        return paramArrayList;
-      }
-      paramInt2 = Math.min(paramInt2, paramArrayList.size() - paramInt1);
-      if (paramInt2 <= 0) {
-        return paramArrayList;
-      }
-      ArrayList localArrayList = new ArrayList(paramInt2);
-      paramArrayList = paramArrayList.subList(paramInt1, paramInt1 + paramInt2);
-      paramInt1 = 0;
-      while (paramInt1 < paramInt2)
-      {
-        ni localni = (ni)paramArrayList.get(paramInt1);
-        localArrayList.add(new ni(localni.a, localni.b));
-        paramInt1 += 1;
-      }
-      return localArrayList;
+    String str = "";
+    if (paramInt == 1) {
+      return "access_cm";
     }
-    return paramArrayList;
+    if (paramInt == 2) {
+      return "access_uni";
+    }
+    if (paramInt == 3) {
+      str = "access_ct";
+    }
+    return str;
   }
   
   public final void a()
   {
-    Object localObject = this.e;
-    boolean bool;
-    if ((localObject != null) && (((ArrayList)localObject).size() > 0)) {
-      bool = false;
-    } else {
-      bool = true;
-    }
-    this.g = bool;
-    if (this.h == null) {
-      bool = true;
-    } else {
-      bool = false;
-    }
-    this.j = bool;
-    lh.a("SocketConnectorImpl", "doConnect...");
-    while ((!this.g) || (!this.j))
+    SharedPreferences localSharedPreferences = lv.a().getSharedPreferences("Access_Preferences", 0);
+    this.b = localSharedPreferences.getLong("timeStamp", 0L);
+    this.c = new HashMap();
+    int i = 1;
+    while (i <= 3)
     {
-      int i1 = this.n;
-      if (i1 > this.d) {
-        break;
-      }
-      this.n = (i1 + 1);
-      if (nz.c())
+      Object localObject2 = localSharedPreferences.getString(a(i), "");
+      Object localObject1 = localObject2;
+      if (TextUtils.isEmpty((CharSequence)localObject2))
       {
-        this.l = nu.a(this.k, this.c);
-      }
-      else if (!this.g)
-      {
-        l1 = System.currentTimeMillis();
-        localObject = a(this.e, this.f, this.a);
-        if ((localObject != null) && (((ArrayList)localObject).size() > 0))
-        {
-          this.f += ((ArrayList)localObject).size();
-          if (this.f < this.e.size()) {}
+        localObject1 = "";
+        if (i == 1) {
+          localObject1 = "183.61.38.168:14000,117.135.171.182:14000";
         }
-        else
-        {
-          this.g = true;
-        }
-        this.l = nu.a((ArrayList)localObject, this.c);
-        this.o = 0;
-        this.p = ((int)(System.currentTimeMillis() - l1));
-        localObject = new StringBuilder("use IpList, dnsTime: 0 ,connectTime：");
-        ((StringBuilder)localObject).append(this.p);
-        lh.a("SocketConnectorImpl", ((StringBuilder)localObject).toString());
-      }
-      else
-      {
-        ArrayList localArrayList1 = new ArrayList();
-        localObject = localArrayList1;
-        if (!this.j)
-        {
-          ArrayList localArrayList2 = this.h;
-          localObject = localArrayList1;
-          if (localArrayList2 != null)
-          {
-            localObject = localArrayList1;
-            if (localArrayList2.size() > 0)
-            {
-              localObject = localArrayList1;
-              if (this.i < this.h.size())
-              {
-                localArrayList1 = a(this.h, this.i, this.b);
-                localObject = localArrayList1;
-                if (localArrayList1 != null)
-                {
-                  localObject = localArrayList1;
-                  if (localArrayList1.size() > 0)
-                  {
-                    this.i += localArrayList1.size();
-                    localObject = localArrayList1;
-                    if (this.i < this.h.size()) {
-                      break label398;
-                    }
-                    localObject = localArrayList1;
-                  }
-                }
-              }
-            }
-          }
-          this.j = true;
-        }
-        label398:
-        localObject = nu.a((ArrayList)localObject, this.k, this.c);
-        if (localObject != null) {
-          this.l = ((nt)localObject).c;
-        }
-        this.o = nu.a;
-        this.p = nu.b;
-        localObject = new StringBuilder("use IpList DNS parallel , dnsTime:");
-        ((StringBuilder)localObject).append(this.o);
-        ((StringBuilder)localObject).append(",connectTime：");
-        ((StringBuilder)localObject).append(this.p);
-        lh.a("SocketConnectorImpl", ((StringBuilder)localObject).toString());
-      }
-      localObject = this.l;
-      if ((localObject != null) && (((Socket)localObject).isConnected()) && (!this.l.isClosed()))
-      {
-        this.q = new ni(this.l.getInetAddress().getHostAddress(), this.l.getPort());
-        this.m = 0;
-        return;
-      }
-      if (nz.f()) {
-        this.m = -3;
-      }
-      for (long l1 = 3000L;; l1 = 5000L)
-      {
-        try
-        {
-          Thread.sleep(l1);
-        }
-        catch (Exception localException)
+        for (;;)
         {
           break;
+          if (i == 2)
+          {
+            localObject1 = "112.90.140.213:14000,112.90.140.216:14000";
+          }
+          else
+          {
+            if (i != 3) {
+              break;
+            }
+            localObject1 = "14.17.41.159:14000,140.206.160.242:14000";
+          }
         }
-        this.m = -4;
+        lo.b("SdkAccessInfo", "getDefaultIpListByOpType:".concat(String.valueOf(localObject1)));
       }
-      this.l = null;
+      localObject1 = ((String)localObject1).split(",");
+      if (localObject1.length > 0)
+      {
+        localObject2 = new ArrayList();
+        int k = localObject1.length;
+        int j = 0;
+        while (j < k)
+        {
+          String str = localObject1[j];
+          np localnp = new np();
+          if (localnp.a(str)) {
+            ((ArrayList)localObject2).add(localnp);
+          }
+          j += 1;
+        }
+        this.c.put(Integer.valueOf(i), localObject2);
+      }
+      i += 1;
     }
   }
   
-  public final void a(int paramInt)
+  public final void b()
   {
-    this.c = paramInt;
-  }
-  
-  public final void a(String paramString)
-  {
-    this.k = paramString;
-  }
-  
-  public final void a(ArrayList paramArrayList)
-  {
-    this.e = paramArrayList;
-  }
-  
-  public final void a(int[] paramArrayOfInt)
-  {
-    paramArrayOfInt.clone();
-  }
-  
-  public final int b()
-  {
-    return this.m;
-  }
-  
-  public final void b(int paramInt)
-  {
-    if ((paramInt > 0) && (paramInt < 4))
+    SharedPreferences localSharedPreferences = lv.a().getSharedPreferences("Access_Preferences", 0);
+    Object localObject1 = this.c;
+    if ((localObject1 != null) && (((Map)localObject1).size() > 0))
     {
-      this.a = paramInt;
-      this.b = paramInt;
+      localObject1 = this.c.keySet().iterator();
+      while (((Iterator)localObject1).hasNext())
+      {
+        Object localObject2 = (Integer)((Iterator)localObject1).next();
+        if (og.a((Integer)localObject2))
+        {
+          String str = a(((Integer)localObject2).intValue());
+          Object localObject3 = (ArrayList)this.c.get(localObject2);
+          if ((localObject3 != null) && (((ArrayList)localObject3).size() > 0))
+          {
+            localObject3 = new StringBuilder();
+            localObject2 = ((ArrayList)this.c.get(localObject2)).iterator();
+            while (((Iterator)localObject2).hasNext())
+            {
+              ((StringBuilder)localObject3).append(((np)((Iterator)localObject2).next()).a());
+              ((StringBuilder)localObject3).append(",");
+            }
+            ((StringBuilder)localObject3).deleteCharAt(((StringBuilder)localObject3).length() - 1);
+            localSharedPreferences.edit().putString(str, ((StringBuilder)localObject3).toString()).commit();
+          }
+        }
+      }
+      localSharedPreferences.edit().putLong("timesStamp", this.b).commit();
     }
   }
   
-  public final void b(ArrayList paramArrayList)
+  public final ArrayList c()
   {
-    this.h = paramArrayList;
-  }
-  
-  public final Socket c()
-  {
-    return this.l;
-  }
-  
-  public final int d()
-  {
-    return this.o;
-  }
-  
-  public final int e()
-  {
-    return this.p;
-  }
-  
-  public final ni f()
-  {
-    return this.q;
+    int i = og.e();
+    ArrayList localArrayList1 = new ArrayList();
+    boolean bool = og.a(Integer.valueOf(i));
+    int k = 0;
+    Object localObject;
+    if (bool)
+    {
+      localIterator = this.c.keySet().iterator();
+      while (localIterator.hasNext())
+      {
+        localObject = (Integer)localIterator.next();
+        ArrayList localArrayList2 = (ArrayList)this.c.get(localObject);
+        if (i == ((Integer)localObject).intValue()) {
+          localArrayList1.addAll(0, localArrayList2);
+        } else {
+          localArrayList1.addAll(localArrayList2);
+        }
+      }
+    }
+    Iterator localIterator = this.c.keySet().iterator();
+    int j;
+    for (i = 0;; i = Math.max(i, ((ArrayList)this.c.get(localObject)).size()))
+    {
+      j = k;
+      if (!localIterator.hasNext()) {
+        break;
+      }
+      localObject = (Integer)localIterator.next();
+    }
+    while (j < i)
+    {
+      localIterator = this.c.keySet().iterator();
+      while (localIterator.hasNext())
+      {
+        localObject = (Integer)localIterator.next();
+        localObject = (ArrayList)this.c.get(localObject);
+        if (j < ((ArrayList)localObject).size()) {
+          localArrayList1.add(((ArrayList)localObject).get(j));
+        }
+      }
+      j += 1;
+    }
+    return localArrayList1;
   }
 }
 

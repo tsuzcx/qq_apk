@@ -1,329 +1,65 @@
 package com.tencent.token;
 
-import android.text.TextUtils;
-import java.io.IOException;
-import java.net.InetAddress;
-import java.net.InetSocketAddress;
-import java.net.Socket;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.concurrent.CountDownLatch;
-import java.util.concurrent.LinkedBlockingQueue;
-import java.util.concurrent.RejectedExecutionException;
-import java.util.concurrent.ThreadFactory;
-import java.util.concurrent.ThreadPoolExecutor;
-import java.util.concurrent.TimeUnit;
-import java.util.concurrent.atomic.AtomicInteger;
-import java.util.concurrent.locks.Lock;
-import java.util.concurrent.locks.ReentrantLock;
+import android.content.Context;
+import android.content.SharedPreferences;
 
 public final class nu
 {
-  public static int a = -1;
-  public static int b = -1;
-  private static int c = 20000;
-  private static ThreadPoolExecutor d;
-  private static final Lock e = new ReentrantLock();
+  private static nu d;
+  public nw a;
+  public nx b = new nx();
+  public nv c;
   
-  public static nt a(ArrayList paramArrayList, String paramString, int paramInt)
+  private nu()
   {
-    e.lock();
-    CountDownLatch localCountDownLatch = new CountDownLatch(1);
-    c localc = new c((byte)0);
-    localnt = new nt();
+    this.b.a();
+    this.a = new nw();
+    this.a.a();
+    this.c = new nv();
+    nv localnv = this.c;
+    SharedPreferences localSharedPreferences = lv.a().getSharedPreferences("Access_Preferences", 0);
+    localnv.a = localSharedPreferences.getString("detectTaskCode", "200001010101011234");
+    localnv.b = localSharedPreferences.getString("ipInfo", "DEFAULT");
+  }
+  
+  public static nu a()
+  {
     try
     {
       if (d == null) {
-        d = new ThreadPoolExecutor(3, 5, 3000L, TimeUnit.MILLISECONDS, new LinkedBlockingQueue(5), new a("HalleyAccess"));
+        d = new nu();
       }
-      paramArrayList = a(paramArrayList, paramString).iterator();
-      while (paramArrayList.hasNext())
-      {
-        paramString = new b(localCountDownLatch, localc, (nt)paramArrayList.next());
-        d.execute(paramString);
-      }
-      int i;
-      if (paramInt >= 0)
-      {
-        i = paramInt;
-        if (paramInt <= c) {}
-      }
-      else
-      {
-        i = c;
-      }
-      paramArrayList = localnt;
-      if (localCountDownLatch.await(i, TimeUnit.MILLISECONDS)) {
-        paramArrayList = localc.b;
-      }
+      nu localnu = d;
+      return localnu;
     }
-    catch (RejectedExecutionException|InterruptedException|Throwable paramArrayList)
-    {
-      for (;;)
-      {
-        paramArrayList = localnt;
-      }
-    }
-    e.unlock();
-    return paramArrayList;
+    finally {}
   }
   
-  public static Socket a(String paramString, int paramInt)
+  public final void a(nx paramnx)
   {
-    if (paramString != null)
-    {
-      if ("".equals(paramString)) {
-        return null;
-      }
-      paramString = b(paramString, paramInt);
-      if (paramString != null)
-      {
-        lh.a("ParallelResolver", "getFastSocket end.");
-        return paramString.c;
-      }
-      return null;
+    if (paramnx == null) {
+      return;
     }
-    return null;
-  }
-  
-  public static Socket a(ArrayList paramArrayList, int paramInt)
-  {
-    if (paramArrayList != null)
+    lo.b("AccessSchedulerConfiguration", "updateSdkCfInfo...SdkCfgInfo:".concat(String.valueOf(paramnx)));
+    StringBuilder localStringBuilder;
+    if ((paramnx.a < 2000) || (paramnx.a > 60000))
     {
-      if (paramArrayList.size() <= 0) {
-        return null;
-      }
-      paramArrayList = a(paramArrayList, "", paramInt);
-      if (paramArrayList != null)
-      {
-        lh.a("ParallelResolver", "getFastSocket end.");
-        return paramArrayList.c;
-      }
-      return null;
+      localStringBuilder = new StringBuilder("updateSdkCfInfo...connectTimeout:");
+      localStringBuilder.append(paramnx.a);
+      localStringBuilder.append(" is checked to 20s");
+      lo.c("AccessSchedulerConfiguration", localStringBuilder.toString());
+      paramnx.a = 20000;
     }
-    return null;
-  }
-  
-  private static List a(ArrayList paramArrayList, String paramString)
-  {
-    ArrayList localArrayList = new ArrayList();
-    paramArrayList = paramArrayList.iterator();
-    while (paramArrayList.hasNext())
+    if ((paramnx.b < 2000) || (paramnx.b > 60000))
     {
-      ni localni = (ni)paramArrayList.next();
-      nt localnt = new nt();
-      localnt.f = localni;
-      localArrayList.add(localnt);
+      localStringBuilder = new StringBuilder("updateSdkCfInfo...readTimeout:");
+      localStringBuilder.append(paramnx.b);
+      localStringBuilder.append(" is checked to 20s");
+      lo.c("AccessSchedulerConfiguration", localStringBuilder.toString());
+      paramnx.b = 20000;
     }
-    if (!TextUtils.isEmpty(paramString))
-    {
-      paramArrayList = new nt();
-      paramArrayList.b = paramString;
-      localArrayList.add(paramArrayList);
-    }
-    return localArrayList;
-  }
-  
-  public static void a()
-  {
-    ThreadPoolExecutor localThreadPoolExecutor = d;
-    if (localThreadPoolExecutor != null)
-    {
-      localThreadPoolExecutor.shutdownNow();
-      d = null;
-    }
-  }
-  
-  private static nt b(String paramString, int paramInt)
-  {
-    CountDownLatch localCountDownLatch = new CountDownLatch(1);
-    c localc = new c((byte)0);
-    nt localnt = new nt();
-    localnt.b = paramString;
-    paramString = new b(localCountDownLatch, localc, localnt);
-    kw.a().a(paramString);
-    long l = paramInt;
-    try
-    {
-      if (localCountDownLatch.await(l, TimeUnit.MILLISECONDS))
-      {
-        paramString = localc.b;
-        return paramString;
-      }
-    }
-    catch (InterruptedException paramString)
-    {
-      paramString.printStackTrace();
-    }
-    return localnt;
-  }
-  
-  static final class a
-    implements ThreadFactory
-  {
-    private static final AtomicInteger a = new AtomicInteger(1);
-    private final ThreadGroup b;
-    private final AtomicInteger c = new AtomicInteger(1);
-    private final String d;
-    
-    a(String paramString)
-    {
-      Object localObject = System.getSecurityManager();
-      if (localObject != null) {
-        localObject = ((SecurityManager)localObject).getThreadGroup();
-      } else {
-        localObject = Thread.currentThread().getThreadGroup();
-      }
-      this.b = ((ThreadGroup)localObject);
-      localObject = new StringBuilder();
-      ((StringBuilder)localObject).append(paramString);
-      ((StringBuilder)localObject).append("-");
-      ((StringBuilder)localObject).append(a.getAndIncrement());
-      ((StringBuilder)localObject).append("-thread-");
-      this.d = ((StringBuilder)localObject).toString();
-    }
-    
-    public final Thread newThread(Runnable paramRunnable)
-    {
-      ThreadGroup localThreadGroup = this.b;
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(this.d);
-      localStringBuilder.append(this.c.getAndIncrement());
-      paramRunnable = new Thread(localThreadGroup, paramRunnable, localStringBuilder.toString(), 0L);
-      if (paramRunnable.isDaemon()) {
-        paramRunnable.setDaemon(false);
-      }
-      if (paramRunnable.getPriority() != 5) {
-        paramRunnable.setPriority(5);
-      }
-      return paramRunnable;
-    }
-  }
-  
-  static final class b
-    implements Runnable
-  {
-    private CountDownLatch a = null;
-    private nu.c b = null;
-    private nt c = null;
-    
-    public b(CountDownLatch paramCountDownLatch, nu.c paramc, nt paramnt)
-    {
-      this.a = paramCountDownLatch;
-      this.b = paramc;
-      this.c = paramnt;
-    }
-    
-    public final void run()
-    {
-      try
-      {
-        nt localnt = this.c;
-        Object localObject1 = new StringBuilder("Thread:");
-        ((StringBuilder)localObject1).append(Thread.currentThread().getName());
-        ((StringBuilder)localObject1).append(" isDaemon:");
-        ((StringBuilder)localObject1).append(Thread.currentThread().isDaemon());
-        lh.c("ConnectorImpl", ((StringBuilder)localObject1).toString());
-        long l1 = System.currentTimeMillis();
-        boolean bool = TextUtils.isEmpty(localnt.b);
-        InetSocketAddress localInetSocketAddress;
-        if (!bool)
-        {
-          try
-          {
-            localObject1 = InetAddress.getByName(localnt.b);
-          }
-          catch (Exception localException1)
-          {
-            localException1.getClass().getSimpleName();
-            new StringBuilder("Dns InetAddress exception: domain").append(localnt.b);
-            localInetSocketAddress = null;
-          }
-          localnt.d = ((int)(System.currentTimeMillis() - l1));
-          localInetSocketAddress = new InetSocketAddress(localInetSocketAddress.getHostAddress(), 14000);
-        }
-        else
-        {
-          localInetSocketAddress = new InetSocketAddress(localnt.f.a, localnt.f.b);
-          localnt.d = 0;
-        }
-        Socket localSocket = new Socket();
-        l1 = 0L;
-        try
-        {
-          long l2 = System.currentTimeMillis();
-          l1 = l2;
-          localnt.a = nn.a().b.a;
-          l1 = l2;
-          localSocket.connect(localInetSocketAddress, localnt.a);
-          l1 = l2;
-          if (localSocket.isConnected())
-          {
-            l1 = l2;
-            if (!localSocket.isClosed())
-            {
-              l1 = l2;
-              localnt.c = localSocket;
-              l1 = l2;
-              localnt.e = ((int)(System.currentTimeMillis() - l2));
-            }
-          }
-        }
-        catch (Exception localException2)
-        {
-          localException2.printStackTrace();
-          localException2.getClass().getSimpleName();
-          oa.a(localException2);
-          localnt.e = ((int)(System.currentTimeMillis() - l1));
-          localnt.c = null;
-        }
-        System.currentTimeMillis();
-        nu.a = this.c.d;
-        nu.b = this.c.e;
-        localObject2 = this.b;
-        localnt = this.c;
-        if (localnt != null)
-        {
-          ((nu.c)localObject2).a.lock();
-          try
-          {
-            if (((nu.c)localObject2).b == null) {
-              ((nu.c)localObject2).b = localnt;
-            } else {
-              try
-              {
-                localnt.c.close();
-              }
-              catch (IOException localIOException)
-              {
-                localIOException.printStackTrace();
-              }
-            }
-          }
-          finally
-          {
-            ((nu.c)localObject2).a.unlock();
-          }
-        }
-      }
-      catch (Throwable localThrowable)
-      {
-        Object localObject2;
-        label429:
-        break label429;
-      }
-      localObject2 = this.a;
-      if (localObject2 != null) {
-        ((CountDownLatch)localObject2).countDown();
-      }
-    }
-  }
-  
-  static final class c
-  {
-    Lock a = new ReentrantLock();
-    nt b = null;
+    this.b = paramnx;
+    this.b.b();
   }
 }
 

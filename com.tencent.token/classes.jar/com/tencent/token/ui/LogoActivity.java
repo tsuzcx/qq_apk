@@ -11,11 +11,9 @@ import android.content.DialogInterface.OnCancelListener;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.net.Uri;
-import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.SpannableString;
@@ -29,28 +27,23 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-import com.tencent.token.aac;
-import com.tencent.token.aad;
-import com.tencent.token.aav;
-import com.tencent.token.afq;
-import com.tencent.token.ahg;
-import com.tencent.token.bt;
+import com.tencent.token.aao;
+import com.tencent.token.aap;
+import com.tencent.token.abh;
+import com.tencent.token.ahc;
+import com.tencent.token.ais;
 import com.tencent.token.core.bean.ConfigResult;
-import com.tencent.token.cr;
 import com.tencent.token.global.RqdApplication;
-import com.tencent.token.qy;
-import com.tencent.token.ro;
-import com.tencent.token.sc;
-import com.tencent.token.sr;
+import com.tencent.token.rf;
+import com.tencent.token.rw;
+import com.tencent.token.sk;
 import com.tencent.token.sz;
+import com.tencent.token.th;
 import com.tencent.token.upload.NetInfoService;
-import com.tencent.token.ww;
-import com.tencent.token.xa;
-import com.tencent.token.xu;
-import com.tencent.token.yd;
-import com.tencent.token.zj;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.token.xf;
+import com.tencent.token.xj;
+import com.tencent.token.yq;
+import com.tencent.token.zw;
 
 public class LogoActivity
   extends Activity
@@ -63,13 +56,11 @@ public class LogoActivity
   public static final int K_LOGO2UPDATE_INFO_REQUEST = 258;
   public static final int K_LOGO2UPDATE_INFO_RESPONSE = 259;
   public static final int K_LOGO2VERFIY_INTENT_REQUEST = 261;
-  private static String[] PERMISSIONS_DYNAMIC = { "android.permission.WRITE_EXTERNAL_STORAGE", "android.permission.READ_EXTERNAL_STORAGE", "android.permission.READ_PHONE_STATE" };
   private long cur_time;
   private Dialog dialog;
   private final int logo_time = 800;
   private boolean mFromH5 = false;
   private boolean mFromOtherApp = false;
-  private xu mListener;
   private Bitmap mLogoBmp;
   private ImageView mLogoView;
   private long mUin;
@@ -89,38 +80,38 @@ public class LogoActivity
           if (TextUtils.isEmpty(this.schemaKey)) {
             return;
           }
-          Object localObject = new aav();
-          byte[] arrayOfByte = sr.a(paramString);
+          Object localObject = new abh();
+          byte[] arrayOfByte = sz.a(paramString);
           StringBuilder localStringBuilder = new StringBuilder("decryptAndCheck sig=");
           localStringBuilder.append(paramString);
           localStringBuilder.append(" schemaKey=");
           localStringBuilder.append(this.schemaKey);
-          xa.b(localStringBuilder.toString());
-          paramString = ((aav)localObject).a(arrayOfByte, this.schemaKey.getBytes());
+          xj.b(localStringBuilder.toString());
+          paramString = ((abh)localObject).a(arrayOfByte, this.schemaKey.getBytes());
           localObject = new StringBuilder("temp =");
           if (paramString == null)
           {
             bool = true;
             ((StringBuilder)localObject).append(bool);
-            xa.b(((StringBuilder)localObject).toString());
+            xj.b(((StringBuilder)localObject).toString());
             if ((paramString != null) && (paramString.length >= 0))
             {
               paramString = new String(paramString);
-              xa.b("result=".concat(String.valueOf(paramString)));
+              xj.b("result=".concat(String.valueOf(paramString)));
               paramString = paramString.split("&");
               if (paramString.length == 2)
               {
                 int i = Integer.valueOf(paramString[0]).intValue();
                 long l = Long.valueOf(paramString[1]).longValue();
-                int j = (int)qy.a().h();
+                int j = (int)rf.a().h();
                 paramString = new StringBuilder("timeStamp=");
                 paramString.append(i);
                 paramString.append("ad=");
                 paramString.append(l);
-                xa.a(paramString.toString());
+                xj.a(paramString.toString());
                 if (Math.abs(j - i) < this.schemaTimeout)
                 {
-                  this.success = sz.a().a(l);
+                  this.success = th.a().a(l);
                   if (this.success)
                   {
                     launchActivity(paramInt2, paramInt1);
@@ -139,7 +130,7 @@ public class LogoActivity
       }
       catch (Exception paramString)
       {
-        xa.c(paramString.getMessage());
+        xj.c(paramString.getMessage());
         return;
       }
       boolean bool = false;
@@ -154,9 +145,9 @@ public class LogoActivity
       finish();
       return;
     }
-    if (!qy.a().d())
+    if (!rf.a().d())
     {
-      if (sz.a().k.a() == 0)
+      if (th.a().k.a() == 0)
       {
         localIntent = new Intent(this, WtLoginAccountInput.class);
         localIntent.putExtra("page_id", 3);
@@ -212,7 +203,7 @@ public class LogoActivity
   private void gotonext()
   {
     Object localObject;
-    if ((sc.a().c()) && (sc.a().a == 1))
+    if ((sk.a().c()) && (sk.a().a == 1))
     {
       localObject = new Intent(this, StartPwdDigitVerifyActivity.class);
       Bundle localBundle = new Bundle();
@@ -221,11 +212,11 @@ public class LogoActivity
       startActivityForResult((Intent)localObject, 256);
       return;
     }
-    if (aad.a.mStartUpImg != null)
+    if (aap.a.mStartUpImg != null)
     {
       setContentView(2131296454);
-      localObject = (ImageView)findViewById(2131166034);
-      ((ImageView)localObject).setImageBitmap(aad.a.mStartUpImg);
+      localObject = (ImageView)findViewById(2131166036);
+      ((ImageView)localObject).setImageBitmap(aap.a.mStartUpImg);
       ((ImageView)localObject).postDelayed(new Runnable()
       {
         public final void run()
@@ -277,14 +268,14 @@ public class LogoActivity
     {
       localIntent = new Intent(this, ModifyQQPwdActivity.class);
       localIntent.putExtra("indexid", paramInt2);
-      yd.a().a(this, localIntent, yd.b);
+      yq.a().a(this, localIntent, yq.b);
       finish();
     }
   }
   
   private void loadSchemaParm()
   {
-    Object localObject = RqdApplication.n();
+    Object localObject = RqdApplication.p();
     try
     {
       localObject = ((Context)localObject).getSharedPreferences("schemaparm_name", 0);
@@ -294,14 +285,14 @@ public class LogoActivity
       ((StringBuilder)localObject).append(this.schemaKey);
       ((StringBuilder)localObject).append(" schemaTimeout=");
       ((StringBuilder)localObject).append(this.schemaTimeout);
-      xa.b(((StringBuilder)localObject).toString());
+      xj.b(((StringBuilder)localObject).toString());
       return;
     }
     catch (Exception localException)
     {
       StringBuilder localStringBuilder = new StringBuilder("SharedPreferences msg ");
       localStringBuilder.append(localException.getMessage());
-      xa.c(localStringBuilder.toString());
+      xj.c(localStringBuilder.toString());
     }
   }
   
@@ -326,46 +317,11 @@ public class LogoActivity
     }).create().show();
   }
   
-  private void showPermissionDialog()
-  {
-    final SharedPreferences localSharedPreferences = RqdApplication.n().getSharedPreferences(afq.a, 0);
-    long l = localSharedPreferences.getLong(afq.b, 0L);
-    if (System.currentTimeMillis() - l <= 172800000L)
-    {
-      gotonext();
-      return;
-    }
-    if (!need2RequestPermission())
-    {
-      gotonext();
-      return;
-    }
-    new AlertDialog.Builder(this).setTitle("权限申请").setMessage("为了您安全正常使用QQ安全中心，需要您授权读取设备文件权限，及读取本机的识别码权限。该操作不会泄露你的隐私。").setNegativeButton("去授权", new DialogInterface.OnClickListener()
-    {
-      public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
-      {
-        LogoActivity.this.requestRuntimePermissions(LogoActivity.PERMISSIONS_DYNAMIC, new xu()
-        {
-          public final void a()
-          {
-            LogoActivity.this.gotonext();
-          }
-          
-          public final void b()
-          {
-            LogoActivity.this.gotonext();
-          }
-        });
-        localSharedPreferences.edit().putLong(afq.b, System.currentTimeMillis()).apply();
-      }
-    }).setCancelable(false).create().show();
-  }
-  
   private void showPrivacyDialog()
   {
-    boolean bool1 = ro.a().b();
-    boolean bool2 = RqdApplication.e();
-    long l = afq.a("privacy_dialog_agree_time");
+    boolean bool1 = rw.a().b();
+    boolean bool2 = RqdApplication.g();
+    long l = ahc.a("privacy_dialog_agree_time");
     int i;
     if (l > 0L) {
       i = 1;
@@ -381,15 +337,10 @@ public class LogoActivity
     }
     if ((i != 0) && (bool1))
     {
-      if (Build.VERSION.SDK_INT >= 23)
-      {
-        showPermissionDialog();
-        return;
-      }
       gotonext();
       return;
     }
-    Object localObject2 = afq.c("privacy_dialog_line2_wording", null);
+    Object localObject2 = ahc.c("privacy_dialog_line2_wording", null);
     Object localObject1 = localObject2;
     if (TextUtils.isEmpty((CharSequence)localObject2)) {
       localObject1 = "为了向您提供QQ帐号安全体检、QQ帐号足迹、QQ密保管理、QQ密码管理、动态密码、QQ帐号保护等多项功能和服务，我们需要收集设备信息等个人信息；您可以在相关页面访问、更正、删除您的个人信息并管理您的授权。";
@@ -403,7 +354,7 @@ public class LogoActivity
     {
       public final void onClick(View paramAnonymousView)
       {
-        aac.a(LogoActivity.this, "https://sdi.3g.qq.com/v/2019120415543611159");
+        aao.a(LogoActivity.this, "https://sdi.3g.qq.com/v/2019120415543611159");
       }
       
       public final void updateDrawState(TextPaint paramAnonymousTextPaint)
@@ -415,7 +366,7 @@ public class LogoActivity
     {
       public final void onClick(View paramAnonymousView)
       {
-        aac.a(LogoActivity.this, "http://tools.3g.qq.com/j/qqsafety");
+        aao.a(LogoActivity.this, "http://tools.3g.qq.com/j/qqsafety");
       }
       
       public final void updateDrawState(TextPaint paramAnonymousTextPaint)
@@ -427,9 +378,9 @@ public class LogoActivity
     ((SpannableString)localObject3).setSpan(localObject1, 15, 26, 33);
     ((SpannableString)localObject3).setSpan(localObject2, 27, 35, 33);
     localObject1 = new TextView(this);
-    ((TextView)localObject1).setTextSize(0, getResources().getDimensionPixelSize(2131034253));
+    ((TextView)localObject1).setTextSize(0, getResources().getDimensionPixelSize(2131034254));
     ((TextView)localObject1).setTextColor(-1);
-    ((TextView)localObject1).setPadding(aac.a(this, 5.0F), 0, aac.a(this, 5.0F), 0);
+    ((TextView)localObject1).setPadding(aao.a(this, 5.0F), 0, aao.a(this, 5.0F), 0);
     ((TextView)localObject1).setMovementMethod(LinkMovementMethod.getInstance());
     ((TextView)localObject1).setText((CharSequence)localObject3);
     if ((!bool2) && (bool1))
@@ -441,12 +392,7 @@ public class LogoActivity
         public final void onClick(View paramAnonymousView)
         {
           this.a.dismiss();
-          afq.a("privacy_dialog_agree_time", System.currentTimeMillis());
-          if (Build.VERSION.SDK_INT >= 23)
-          {
-            LogoActivity.this.showPermissionDialog();
-            return;
-          }
+          ahc.a("privacy_dialog_agree_time", System.currentTimeMillis());
           LogoActivity.this.gotonext();
         }
       });
@@ -459,8 +405,8 @@ public class LogoActivity
     {
       public final void onClick(View paramAnonymousView)
       {
-        ro.a().a(false);
-        Toast.makeText(RqdApplication.n(), "需要获得您的同意后才可继续使用QQ安全中心提供的服务", 0).show();
+        rw.a().a(false);
+        Toast.makeText(RqdApplication.p(), "需要获得您的同意后才可继续使用QQ安全中心提供的服务", 0).show();
       }
     });
     ((AlertDialog)localObject2).getButton(-2).setOnClickListener(new View.OnClickListener()
@@ -468,17 +414,11 @@ public class LogoActivity
       public final void onClick(View paramAnonymousView)
       {
         this.a.dismiss();
-        RqdApplication.d();
-        afq.a("privacy_dialog_agree_time", System.currentTimeMillis());
+        RqdApplication.f();
+        ahc.a("privacy_dialog_agree_time", System.currentTimeMillis());
         RqdApplication.g = true;
-        ro.a().a(true);
-        RqdApplication.a().b();
+        rw.a().a(true);
         LogoActivity.startNetService(LogoActivity.this);
-        if (Build.VERSION.SDK_INT >= 23)
-        {
-          LogoActivity.this.showPermissionDialog();
-          return;
-        }
         LogoActivity.this.gotonext();
       }
     });
@@ -488,43 +428,12 @@ public class LogoActivity
   {
     try
     {
-      Intent localIntent = new Intent(paramActivity, NetInfoService.class);
-      localIntent.setAction("com.tencent.token.upload.NetInfoService");
-      paramActivity.startService(localIntent);
+      NetInfoService.a(RqdApplication.b());
       return;
     }
     catch (Exception paramActivity)
     {
       paramActivity.printStackTrace();
-    }
-  }
-  
-  boolean need2RequestPermission()
-  {
-    ArrayList localArrayList = new ArrayList();
-    String[] arrayOfString = PERMISSIONS_DYNAMIC;
-    int j = arrayOfString.length;
-    int i = 0;
-    for (;;)
-    {
-      String str;
-      if (i < j) {
-        str = arrayOfString[i];
-      }
-      try
-      {
-        if (cr.a(this, str) != 0) {
-          localArrayList.add(str);
-        }
-        label48:
-        i += 1;
-        continue;
-        return localArrayList.size() > 0;
-      }
-      catch (Exception localException)
-      {
-        break label48;
-      }
     }
   }
   
@@ -555,13 +464,13 @@ public class LogoActivity
         gotoWelcomeActivity();
         return;
       }
-      sc.a().b(null);
+      sk.a().b(null);
       showOldPwdDeleteAlert();
       return;
     }
     if (paramInt1 == 260)
     {
-      if (!sc.a().c())
+      if (!sk.a().c())
       {
         showOldPwdDeleteAlert();
         return;
@@ -594,10 +503,10 @@ public class LogoActivity
     paramBundle.append(this);
     paramBundle.append(",task");
     paramBundle.append(getTaskId());
-    xa.b(paramBundle.toString());
+    xj.b(paramBundle.toString());
     requestWindowFeature(1);
-    RqdApplication.g();
-    ww.a(true);
+    RqdApplication.i();
+    xf.a(true);
     paramBundle = getIntent();
     try
     {
@@ -617,7 +526,7 @@ public class LogoActivity
             if ((localObject.length == 2) && (localObject[0].equals("uin")) && (localObject[1].matches("^\\d+$")))
             {
               this.mFromOtherApp = true;
-              this.mUin = aac.f(Long.parseLong(localObject[1]));
+              this.mUin = aao.f(Long.parseLong(localObject[1]));
               break;
             }
             i -= 1;
@@ -630,7 +539,7 @@ public class LogoActivity
           while (i >= 0)
           {
             localObject = paramBundle[i];
-            xa.c("path: ".concat(String.valueOf(localObject)));
+            xj.c("path: ".concat(String.valueOf(localObject)));
             localObject = ((String)localObject).split("=");
             if ((localObject.length == 2) && (localObject[0].equals("tab")) && (localObject[1].equals("2")))
             {
@@ -729,8 +638,8 @@ public class LogoActivity
       if (paramBundle == null)
       {
         setContentView(2131296371);
-        aad.a(this, findViewById(2131166117), 2130968678);
-        this.mLogoBmp = aad.a(getResources(), 2131099960);
+        aap.a(this, findViewById(2131166119), 2130968678);
+        this.mLogoBmp = aap.a(getResources(), 2131099960);
         this.cur_time = System.currentTimeMillis();
         if (this.mLogoBmp == null)
         {
@@ -744,7 +653,7 @@ public class LogoActivity
       }
       else
       {
-        ww.a(false);
+        xf.a(false);
         this.cur_time = 0L;
       }
       paramBundle = (NotificationManager)getSystemService("notification");
@@ -762,9 +671,9 @@ public class LogoActivity
           }
         }, 800L);
       }
-      aad.a();
-      afq.b();
-      if (ro.a().b()) {
+      aap.a();
+      ahc.b();
+      if (rw.a().b()) {
         startNetService(this);
       }
       return;
@@ -774,7 +683,7 @@ public class LogoActivity
       paramBundle.printStackTrace();
       Object localObject = new StringBuilder("OpenAppCrash ");
       ((StringBuilder)localObject).append(paramBundle.toString());
-      xa.c(((StringBuilder)localObject).toString());
+      xj.c(((StringBuilder)localObject).toString());
       finish();
     }
   }
@@ -788,108 +697,29 @@ public class LogoActivity
       localBitmap.recycle();
       this.mLogoBmp = null;
     }
-    if (aad.a.mStartUpImg != null)
+    if (aap.a.mStartUpImg != null)
     {
-      aad.a.mStartUpImg.recycle();
-      aad.a.mStartUpImg = null;
-    }
-  }
-  
-  public void onRequestPermissionsResult(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    for (;;)
-    {
-      try
-      {
-        super.onRequestPermissionsResult(paramInt, paramArrayOfString, paramArrayOfInt);
-        if (paramArrayOfInt.length > 0)
-        {
-          ArrayList localArrayList = new ArrayList();
-          paramInt = 0;
-          if (paramInt < paramArrayOfInt.length)
-          {
-            if (paramArrayOfInt[paramInt] != 0) {
-              localArrayList.add(paramArrayOfString[paramInt]);
-            }
-          }
-          else
-          {
-            if (!localArrayList.isEmpty())
-            {
-              this.mListener.b();
-              return;
-            }
-            this.mListener.a();
-          }
-        }
-        else
-        {
-          return;
-        }
-      }
-      catch (Exception paramArrayOfString)
-      {
-        paramArrayOfString.printStackTrace();
-        return;
-      }
-      paramInt += 1;
+      aap.a.mStartUpImg.recycle();
+      aap.a.mStartUpImg = null;
     }
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
   {
     super.onWindowFocusChanged(paramBoolean);
-    if (zj.a)
+    if (zw.a)
     {
-      zj.c = System.currentTimeMillis();
+      zw.c = System.currentTimeMillis();
       Object localObject = new StringBuilder();
-      ((StringBuilder)localObject).append(zj.a());
+      ((StringBuilder)localObject).append(zw.a());
       localObject = ((StringBuilder)localObject).toString();
       StringBuilder localStringBuilder = new StringBuilder("start:");
-      localStringBuilder.append(zj.b);
-      xa.c(localStringBuilder.toString());
+      localStringBuilder.append(zw.b);
+      xj.c(localStringBuilder.toString());
       localStringBuilder = new StringBuilder("end:");
-      localStringBuilder.append(zj.c);
-      xa.c(localStringBuilder.toString());
-      xa.c("appTime:".concat(String.valueOf(localObject)));
-    }
-  }
-  
-  public void requestRuntimePermissions(String[] paramArrayOfString, xu paramxu)
-  {
-    for (;;)
-    {
-      int i;
-      try
-      {
-        this.mListener = paramxu;
-        paramxu = new ArrayList();
-        int j = paramArrayOfString.length;
-        i = 0;
-        if (i < j)
-        {
-          String str = paramArrayOfString[i];
-          if (cr.a(this, str) != 0) {
-            paramxu.add(str);
-          }
-        }
-        else
-        {
-          if (!paramxu.isEmpty())
-          {
-            bt.a(this, (String[])paramxu.toArray(new String[paramxu.size()]), 1);
-            return;
-          }
-          this.mListener.a();
-          return;
-        }
-      }
-      catch (Exception paramArrayOfString)
-      {
-        paramArrayOfString.printStackTrace();
-        return;
-      }
-      i += 1;
+      localStringBuilder.append(zw.c);
+      xj.c(localStringBuilder.toString());
+      xj.c("appTime:".concat(String.valueOf(localObject)));
     }
   }
 }

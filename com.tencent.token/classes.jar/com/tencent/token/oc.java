@@ -1,18 +1,33 @@
 package com.tencent.token;
 
-public final class oc
+import java.net.Socket;
+import java.util.ArrayList;
+
+public abstract interface oc
 {
-  public static byte[] a(int paramInt)
-  {
-    byte[] arrayOfByte = new byte[4];
-    int i = 0;
-    while (i < 4)
-    {
-      arrayOfByte[i] = ((byte)(paramInt >> i * 8 & 0xFF));
-      i += 1;
-    }
-    return arrayOfByte;
-  }
+  public abstract void a();
+  
+  public abstract void a(int paramInt);
+  
+  public abstract void a(String paramString);
+  
+  public abstract void a(ArrayList paramArrayList);
+  
+  public abstract void a(int[] paramArrayOfInt);
+  
+  public abstract int b();
+  
+  public abstract void b(int paramInt);
+  
+  public abstract void b(ArrayList paramArrayList);
+  
+  public abstract Socket c();
+  
+  public abstract int d();
+  
+  public abstract int e();
+  
+  public abstract np f();
 }
 
 

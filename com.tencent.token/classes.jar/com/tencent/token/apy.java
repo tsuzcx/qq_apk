@@ -1,35 +1,69 @@
 package com.tencent.token;
 
-public abstract interface apy
-  extends apv, apw
+import android.content.Context;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.text.TextUtils;
+
+public final class apy
 {
-  public abstract void a(long paramLong);
+  public static boolean a(Context paramContext, String paramString)
+  {
+    if (paramContext != null) {
+      if (TextUtils.isEmpty(paramString)) {
+        return false;
+      }
+    }
+    try
+    {
+      paramContext = paramContext.getPackageManager().getPackageInfo(paramString, 0);
+      return paramContext != null;
+    }
+    catch (Throwable paramContext) {}
+    return false;
+  }
   
-  public abstract void a(ag paramag);
+  public static String b(Context paramContext, String paramString)
+  {
+    if (paramContext != null) {
+      if (TextUtils.isEmpty(paramString)) {
+        return null;
+      }
+    }
+    try
+    {
+      paramContext = paramContext.getPackageManager().getPackageInfo(paramString, 0);
+      if (paramContext != null)
+      {
+        paramContext = paramContext.versionName;
+        return paramContext;
+      }
+      return null;
+    }
+    catch (Throwable paramContext) {}
+    return null;
+  }
   
-  public abstract void a(String paramString);
-  
-  public abstract void b(long paramLong);
-  
-  public abstract void b(String paramString);
-  
-  public abstract String c();
-  
-  public abstract void c(String paramString);
-  
-  public abstract String d();
-  
-  public abstract String e();
-  
-  public abstract String f();
-  
-  public abstract ag g();
-  
-  public abstract ag h();
-  
-  public abstract long i();
-  
-  public abstract long j();
+  public static int c(Context paramContext, String paramString)
+  {
+    if (paramContext != null) {
+      if (TextUtils.isEmpty(paramString)) {
+        return 0;
+      }
+    }
+    try
+    {
+      paramContext = paramContext.getPackageManager().getPackageInfo(paramString, 0);
+      if (paramContext != null)
+      {
+        int i = paramContext.versionCode;
+        return i;
+      }
+      return 0;
+    }
+    catch (Throwable paramContext) {}
+    return 0;
+  }
 }
 
 

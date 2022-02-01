@@ -30,13 +30,13 @@ import android.view.accessibility.AccessibilityEvent;
 import android.view.animation.Interpolator;
 import android.widget.EdgeEffect;
 import android.widget.Scroller;
-import com.tencent.token.cr;
-import com.tencent.token.eh;
-import com.tencent.token.et;
-import com.tencent.token.eu;
-import com.tencent.token.ew;
-import com.tencent.token.fd;
-import com.tencent.token.fe;
+import com.tencent.token.cv;
+import com.tencent.token.el;
+import com.tencent.token.ex;
+import com.tencent.token.ey;
+import com.tencent.token.fa;
+import com.tencent.token.fh;
+import com.tencent.token.fi;
 import java.lang.annotation.Annotation;
 import java.lang.annotation.Inherited;
 import java.lang.annotation.Retention;
@@ -101,7 +101,7 @@ public class ViewPager
     }
   };
   private int ak = 0;
-  eu b;
+  ey b;
   int c;
   List<d> d;
   private int e;
@@ -143,37 +143,37 @@ public class ViewPager
     this.P = ((int)(25.0F * f1));
     this.Q = ((int)(2.0F * f1));
     this.E = ((int)(f1 * 16.0F));
-    ew.a(this, new c());
-    if (ew.b(this) == 0) {
-      ew.a(this, 1);
+    fa.a(this, new c());
+    if (fa.b(this) == 0) {
+      fa.a(this, 1);
     }
-    ew.a(this, new et()
+    fa.a(this, new ex()
     {
       private final Rect b = new Rect();
       
-      public final fd a(View paramAnonymousView, fd paramAnonymousfd)
+      public final fh a(View paramAnonymousView, fh paramAnonymousfh)
       {
-        paramAnonymousView = ew.a(paramAnonymousView, paramAnonymousfd);
+        paramAnonymousView = fa.a(paramAnonymousView, paramAnonymousfh);
         if (paramAnonymousView.e()) {
           return paramAnonymousView;
         }
-        paramAnonymousfd = this.b;
-        paramAnonymousfd.left = paramAnonymousView.a();
-        paramAnonymousfd.top = paramAnonymousView.b();
-        paramAnonymousfd.right = paramAnonymousView.c();
-        paramAnonymousfd.bottom = paramAnonymousView.d();
+        paramAnonymousfh = this.b;
+        paramAnonymousfh.left = paramAnonymousView.a();
+        paramAnonymousfh.top = paramAnonymousView.b();
+        paramAnonymousfh.right = paramAnonymousView.c();
+        paramAnonymousfh.bottom = paramAnonymousView.d();
         int i = 0;
         int j = ViewPager.this.getChildCount();
         while (i < j)
         {
-          fd localfd = ew.b(ViewPager.this.getChildAt(i), paramAnonymousView);
-          paramAnonymousfd.left = Math.min(localfd.a(), paramAnonymousfd.left);
-          paramAnonymousfd.top = Math.min(localfd.b(), paramAnonymousfd.top);
-          paramAnonymousfd.right = Math.min(localfd.c(), paramAnonymousfd.right);
-          paramAnonymousfd.bottom = Math.min(localfd.d(), paramAnonymousfd.bottom);
+          fh localfh = fa.b(ViewPager.this.getChildAt(i), paramAnonymousView);
+          paramAnonymousfh.left = Math.min(localfh.a(), paramAnonymousfh.left);
+          paramAnonymousfh.top = Math.min(localfh.b(), paramAnonymousfh.top);
+          paramAnonymousfh.right = Math.min(localfh.c(), paramAnonymousfh.right);
+          paramAnonymousfh.bottom = Math.min(localfh.d(), paramAnonymousfh.bottom);
           i += 1;
         }
-        return paramAnonymousView.a(paramAnonymousfd.left, paramAnonymousfd.top, paramAnonymousfd.right, paramAnonymousfd.bottom);
+        return paramAnonymousView.a(paramAnonymousfh.left, paramAnonymousfh.top, paramAnonymousfh.right, paramAnonymousfh.bottom);
       }
     });
   }
@@ -371,7 +371,7 @@ public class ViewPager
     paramInt1 = Math.min(paramInt1, 600);
     this.o = false;
     this.n.startScroll(i1, i2, i3, i4, paramInt1);
-    ew.a(this);
+    fa.a(this);
   }
   
   private void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
@@ -438,8 +438,8 @@ public class ViewPager
   
   private void a(int paramInt1, boolean paramBoolean1, boolean paramBoolean2, int paramInt2)
   {
-    eu localeu = this.b;
-    if ((localeu != null) && (localeu.a() > 0))
+    ey localey = this.b;
+    if ((localey != null) && (localey.a() > 0))
     {
       if ((!paramBoolean2) && (this.c == paramInt1) && (this.h.size() != 0))
       {
@@ -686,7 +686,7 @@ public class ViewPager
     {
       if (paramBoolean)
       {
-        ew.a(this, this.aj);
+        fa.a(this, this.aj);
         return;
       }
       this.aj.run();
@@ -812,7 +812,7 @@ public class ViewPager
               if (!localObject4.b)
               {
                 this.h.remove(i4);
-                eu.b();
+                ey.b();
                 i1 = i4 - 1;
                 paramInt = i2 - 1;
                 if (i1 >= 0) {
@@ -890,7 +890,7 @@ public class ViewPager
                 if (!localObject4.b)
                 {
                   this.h.remove(i1);
-                  eu.b();
+                  ey.b();
                   if (i1 < this.h.size())
                   {
                     localObject1 = (b)this.h.get(i1);
@@ -1395,8 +1395,8 @@ public class ViewPager
   
   private boolean k()
   {
-    eu localeu = this.b;
-    if ((localeu != null) && (this.c < localeu.a() - 1))
+    ey localey = this.b;
+    if ((localey != null) && (this.c < localey.a() - 1))
     {
       setCurrentItem$2563266(this.c + 1);
       return true;
@@ -1580,7 +1580,7 @@ public class ViewPager
           scrollTo(0, i4);
         }
       }
-      ew.a(this);
+      fa.a(this);
       return;
     }
     a(true);
@@ -1667,8 +1667,8 @@ public class ViewPager
     if (i4 != 0) {
       if (i4 == 1)
       {
-        eu localeu = this.b;
-        if ((localeu != null) && (localeu.a() > 1)) {}
+        ey localey = this.b;
+        if ((localey != null) && (localey.a() > 1)) {}
       }
       else
       {
@@ -1706,7 +1706,7 @@ public class ViewPager
     }
     label256:
     if (bool) {
-      ew.a(this);
+      fa.a(this);
     }
   }
   
@@ -1734,7 +1734,7 @@ public class ViewPager
     return generateDefaultLayoutParams();
   }
   
-  public eu getAdapter()
+  public ey getAdapter()
   {
     return this.b;
   }
@@ -1899,7 +1899,7 @@ public class ViewPager
               this.D = true;
             }
             if ((this.C) && (b(f2))) {
-              ew.a(this);
+              fa.a(this);
             }
           }
         }
@@ -2301,7 +2301,7 @@ public class ViewPager
     Object localObject = this.b;
     if (localObject != null)
     {
-      if (((eu)localObject).a() == 0) {
+      if (((ey)localObject).a() == 0) {
         return false;
       }
       if (this.M == null) {
@@ -2423,7 +2423,7 @@ public class ViewPager
         this.L = paramMotionEvent.getPointerId(0);
       }
       if (bool) {
-        ew.a(this);
+        fa.a(this);
       }
       return true;
     }
@@ -2440,20 +2440,20 @@ public class ViewPager
     super.removeView(paramView);
   }
   
-  public void setAdapter(eu parameu)
+  public void setAdapter(ey paramey)
   {
-    eu localeu = this.b;
+    ey localey = this.b;
     int i3 = 0;
     int i1;
     int i2;
-    if (localeu != null)
+    if (localey != null)
     {
-      localeu.c(null);
+      localey.c(null);
       i1 = 0;
       while (i1 < this.h.size())
       {
         this.h.get(i1);
-        eu.b();
+        ey.b();
         i1 += 1;
       }
       this.h.clear();
@@ -2469,8 +2469,8 @@ public class ViewPager
       this.c = 0;
       scrollTo(0, 0);
     }
-    localeu = this.b;
-    this.b = parameu;
+    localey = this.b;
+    this.b = paramey;
     this.e = 0;
     if (this.b != null)
     {
@@ -2506,7 +2506,7 @@ public class ViewPager
       i1 = i3;
       while (i1 < i2)
       {
-        ((d)this.d.get(i1)).a(localeu, parameu);
+        ((d)this.d.get(i1)).a(localey, paramey);
         i1 += 1;
       }
     }
@@ -2552,7 +2552,7 @@ public class ViewPager
   
   public void setPageMarginDrawable(int paramInt)
   {
-    setPageMarginDrawable(cr.a(getContext(), paramInt));
+    setPageMarginDrawable(cv.a(getContext(), paramInt));
   }
   
   public void setPageMarginDrawable(Drawable paramDrawable)
@@ -2712,7 +2712,7 @@ public class ViewPager
   }
   
   final class c
-    extends eh
+    extends el
   {
     c() {}
     
@@ -2721,16 +2721,16 @@ public class ViewPager
       return (ViewPager.this.b != null) && (ViewPager.this.b.a() > 1);
     }
     
-    public final void a(View paramView, fe paramfe)
+    public final void a(View paramView, fi paramfi)
     {
-      super.a(paramView, paramfe);
-      paramfe.b(ViewPager.class.getName());
-      paramfe.i(a());
+      super.a(paramView, paramfi);
+      paramfi.b(ViewPager.class.getName());
+      paramfi.i(a());
       if (ViewPager.this.canScrollHorizontally(1)) {
-        paramfe.a(4096);
+        paramfi.a(4096);
       }
       if (ViewPager.this.canScrollHorizontally(-1)) {
-        paramfe.a(8192);
+        paramfi.a(8192);
       }
     }
     
@@ -2777,7 +2777,7 @@ public class ViewPager
   
   public static abstract interface d
   {
-    public abstract void a(eu parameu1, eu parameu2);
+    public abstract void a(ey paramey1, ey paramey2);
   }
   
   public static abstract interface e

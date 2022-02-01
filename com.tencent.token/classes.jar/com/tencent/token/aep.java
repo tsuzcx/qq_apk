@@ -1,15 +1,19 @@
 package com.tencent.token;
 
 public final class aep
+  extends Thread
 {
-  static
-  {
-    new String(aey.d("414553"));
-  }
+  public aep(String paramString1, String paramString2) {}
   
-  public static byte[] a(byte[] paramArrayOfByte)
+  public final void run()
   {
-    return aey.e(aey.d(paramArrayOfByte)).getBytes();
+    try
+    {
+      byte[] arrayOfByte = agn.a(this.b.getBytes(), ".turingdebug".getBytes());
+      adg.a(this.a, arrayOfByte);
+      return;
+    }
+    finally {}
   }
 }
 

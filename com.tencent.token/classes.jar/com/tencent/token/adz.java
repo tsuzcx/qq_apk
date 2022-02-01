@@ -1,359 +1,288 @@
 package com.tencent.token;
 
-import android.content.Context;
-import android.text.TextUtils;
-import com.tencent.turingfd.sdk.base.Date;
-import com.tencent.turingfd.sdk.base.Dew;
-import com.tencent.turingfd.sdk.base.Durian;
-import com.tencent.turingfd.sdk.base.Filbert;
-import com.tencent.turingfd.sdk.base.Flat;
-import com.tencent.turingfd.sdk.base.Foxnut;
-import com.tencent.turingfd.sdk.base.Guava;
-import com.tencent.turingfd.sdk.base.Herbaceous;
-import com.tencent.turingfd.sdk.base.Longan;
-import com.tencent.turingfd.sdk.base.Mandarin;
-import com.tencent.turingfd.sdk.base.break;
-import java.io.File;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import android.app.Activity;
+import com.tencent.turingfd.sdk.qps.Cumquat;
+import com.tencent.turingfd.sdk.qps.Grape;
 
-public final class adz
+public class adz
 {
-  public static final afj<adz> a = new a();
+  public static aeq a;
+  public static aeq b;
+  public static aeq c;
+  public static boolean d = false;
+  public static agr e;
+  public static Cumquat f;
+  public static boolean g = true;
+  public static final acd h = new a();
+  public static final acg i = new b();
   
-  public static adl a(Context paramContext, int paramInt)
+  /* Error */
+  public static void a(int paramInt1, int paramInt2, aeq arg2, Grape paramGrape)
   {
-    LinkedHashMap localLinkedHashMap = new LinkedHashMap();
-    paramContext = paramContext.getDir("turingfd", 0);
-    Object localObject1;
-    int i;
-    if (paramContext != null)
-    {
-      localObject1 = new StringBuilder();
-      ((StringBuilder)localObject1).append(paramContext.getAbsolutePath());
-      paramContext = new File(aeu.a((StringBuilder)localObject1, File.separator, "10"));
-      if (paramContext.exists())
-      {
-        paramContext = paramContext.listFiles();
-        if (paramContext != null)
-        {
-          Arrays.sort(paramContext, new aeb());
-          int k = paramContext.length;
-          i = 0;
-          while (i < k)
-          {
-            localObject1 = paramContext[i];
-            try
-            {
-              localObject2 = ((File)localObject1).getName();
-              localObject2 = ((String)localObject2).split("_");
-              if ((localObject2 == null) || (localObject2.length != 2)) {
-                break label1328;
-              }
-              j = Integer.valueOf(localObject2[0]).intValue() / 1000;
-            }
-            catch (Throwable localThrowable)
-            {
-              for (;;)
-              {
-                Object localObject2;
-                Object localObject3;
-                Object localObject4;
-                Iterator localIterator;
-                continue;
-                int j = -1;
-                if (paramInt != j) {
-                  if (paramInt != -1) {}
-                }
-              }
-            }
-            localObject3 = aey.b(aey.b(aey.b(((File)localObject1).getAbsolutePath()), aey.b()));
-            localObject2 = new Dew();
-            localObject3 = new afk((byte[])localObject3);
-            ((Dew)localObject2).Jb = ((afk)localObject3).a(((Dew)localObject2).Jb, 0, true);
-            ((Dew)localObject2).Kb = ((afk)localObject3).a(1, true);
-            if (Dew.Ab == null)
-            {
-              Dew.Ab = new ArrayList();
-              localObject4 = new Guava();
-              Dew.Ab.add(localObject4);
-            }
-            ((Dew)localObject2).Lb = ((ArrayList)((afk)localObject3).a(Dew.Ab, 2, true));
-            ((Dew)localObject2).Mb = ((afk)localObject3).a(((Dew)localObject2).Mb, 3, true);
-            ((Dew)localObject2).S = ((afk)localObject3).a(4, true);
-            ((Dew)localObject2).Nb = ((afk)localObject3).a(((Dew)localObject2).Nb, 5, true);
-            ((Dew)localObject2).Ob = ((afk)localObject3).a(((Dew)localObject2).Ob, 6, true);
-            ((Dew)localObject2).Pb = ((afk)localObject3).a(7, true);
-            ((Dew)localObject2).H = ((afk)localObject3).a(8, false);
-            ((Dew)localObject2).I = ((afk)localObject3).a(9, false);
-            ((Dew)localObject2).Qb = ((afk)localObject3).a(10, false);
-            ((Dew)localObject2).Rb = ((afk)localObject3).a(11, false);
-            ((Dew)localObject2).Sb = ((afk)localObject3).a(12, false);
-            ((Dew)localObject2).Tb = ((afk)localObject3).a(((Dew)localObject2).Tb, 13, false);
-            ((Dew)localObject2).Ub = ((afk)localObject3).a(((Dew)localObject2).Ub, 14, false);
-            ((Dew)localObject2).Vb = ((afk)localObject3).a(15, false);
-            ((Dew)localObject2).W = ((afk)localObject3).a(((Dew)localObject2).W, 16, false);
-            ((Dew)localObject2).Wb = ((afk)localObject3).a(17, false);
-            ((Dew)localObject2).Xb = ((afk)localObject3).a(18, false);
-            ((Dew)localObject2).Yb = ((afk)localObject3).a(((Dew)localObject2).Yb, 19, false);
-            if (Dew.Bb == null) {
-              Dew.Bb = new Filbert();
-            }
-            ((Dew)localObject2).Zb = ((Filbert)((afk)localObject3).a(Dew.Bb, 20, false));
-            if (Dew.Cb == null) {
-              Dew.Cb = new Foxnut();
-            }
-            ((Dew)localObject2)._b = ((Foxnut)((afk)localObject3).a(Dew.Cb, 21, false));
-            if (Dew.Db == null) {
-              Dew.Db = new Date();
-            }
-            ((Dew)localObject2).ac = ((Date)((afk)localObject3).a(Dew.Db, 22, false));
-            ((Dew)localObject2).bc = ((afk)localObject3).a(((Dew)localObject2).bc, 23, false);
-            if (Dew.Eb == null)
-            {
-              Dew.Eb = new ArrayList();
-              localObject4 = new Flat();
-              Dew.Eb.add(localObject4);
-            }
-            ((Dew)localObject2).cc = ((ArrayList)((afk)localObject3).a(Dew.Eb, 24, false));
-            if (Dew.Fb == null)
-            {
-              Dew.Fb = new ArrayList();
-              localObject4 = new Durian();
-              Dew.Fb.add(localObject4);
-            }
-            ((Dew)localObject2).dc = ((ArrayList)((afk)localObject3).a(Dew.Fb, 25, false));
-            if (Dew.Gb == null) {
-              Dew.Gb = new Mandarin();
-            }
-            ((Dew)localObject2).ec = ((Mandarin)((afk)localObject3).a(Dew.Gb, 26, false));
-            if (Dew.Hb == null) {
-              Dew.Hb = new Longan();
-            }
-            ((Dew)localObject2).fc = ((Longan)((afk)localObject3).a(Dew.Hb, 27, false));
-            if (Dew.Ib == null)
-            {
-              localObject4 = new byte[1];
-              Dew.Ib = (byte[])localObject4;
-              localObject4[0] = 0;
-            }
-            localObject4 = Dew.Ib;
-            ((Dew)localObject2).gc = ((afk)localObject3).b(28, false);
-            localLinkedHashMap.put(((File)localObject1).getAbsolutePath(), localObject2);
-            break label885;
-            ((File)localObject1).deleteOnExit();
-            label885:
-            i += 1;
-          }
-        }
-      }
-    }
-    if (localLinkedHashMap.size() == 0) {
-      return null;
-    }
-    localObject4 = new ArrayList();
-    localIterator = localLinkedHashMap.keySet().iterator();
-    paramContext = null;
-    while (localIterator.hasNext())
-    {
-      localObject2 = (String)localIterator.next();
-      localObject1 = (Dew)localLinkedHashMap.get(localObject2);
-      if ((localObject1 != null) && (((Dew)localObject1).Ob == 0))
-      {
-        ((List)localObject4).add(localObject2);
-        if (paramContext == null)
-        {
-          paramContext = (Context)localObject1;
-        }
-        else
-        {
-          localObject2 = paramContext.Lb;
-          if ((localObject2 != null) && (((ArrayList)localObject2).size() != 0))
-          {
-            localObject2 = ((ArrayList)localObject2).iterator();
-            paramInt = 0;
-            do
-            {
-              i = paramInt;
-              if (!((Iterator)localObject2).hasNext()) {
-                break;
-              }
-              localObject3 = ((Guava)((Iterator)localObject2).next()).Nc;
-            } while (localObject3 == null);
-            localObject3 = ((ArrayList)localObject3).iterator();
-            i = paramInt;
-            for (;;)
-            {
-              paramInt = i;
-              if (!((Iterator)localObject3).hasNext()) {
-                break;
-              }
-              Map localMap = ((Herbaceous)((Iterator)localObject3).next()).Uc;
-              if ((localMap != null) && (localMap.containsKey(Integer.valueOf(0)))) {
-                i += 1;
-              }
-            }
-          }
-          i = 0;
-          if (i < 120)
-          {
-            paramContext.Lb.addAll(((Dew)localObject1).Lb);
-            localObject2 = paramContext.ac;
-            localObject3 = ((Dew)localObject1).ac;
-            localObject1 = localObject2;
-            if (localObject2 == null) {
-              localObject1 = new Date();
-            }
-            if (((Date)localObject1).zb == null) {
-              ((Date)localObject1).zb = new ArrayList();
-            }
-            localObject2 = localObject3;
-            if (localObject3 == null) {
-              localObject2 = new Date();
-            }
-            if (((Date)localObject2).zb == null) {
-              ((Date)localObject2).zb = new ArrayList();
-            }
-            ((Date)localObject1).zb.addAll(((Date)localObject2).zb);
-            paramContext.ac = ((Date)localObject1);
-          }
-        }
-      }
-    }
-    if (paramContext != null)
-    {
-      Collections.sort(paramContext.Lb, new aei());
-      localObject1 = new b();
-      ((b)localObject1).a = paramContext;
-      ((b)localObject1).b = ((List)localObject4);
-      paramContext = (Context)localObject1;
-    }
-    else
-    {
-      paramContext = null;
-    }
-    if (paramContext != null) {
-      return new adl(paramContext.a, paramContext.b);
-    }
-    return null;
+    // Byte code:
+    //   0: getstatic 42	com/tencent/token/adl:a	Lcom/tencent/token/agi;
+    //   3: invokevirtual 47	com/tencent/token/agi:b	()Ljava/lang/Object;
+    //   6: checkcast 39	com/tencent/token/adl
+    //   9: astore 5
+    //   11: new 49	com/tencent/token/aea
+    //   14: dup
+    //   15: aload_2
+    //   16: invokespecial 52	com/tencent/token/aea:<init>	(Lcom/tencent/token/aeq;)V
+    //   19: astore 6
+    //   21: aload 5
+    //   23: getfield 55	com/tencent/token/adl:b	Landroid/os/Handler;
+    //   26: aload 6
+    //   28: lconst_0
+    //   29: invokevirtual 61	android/os/Handler:postDelayed	(Ljava/lang/Runnable;J)Z
+    //   32: pop
+    //   33: ldc 63
+    //   35: monitorenter
+    //   36: getstatic 66	com/tencent/token/agn:a	Landroid/content/Context;
+    //   39: astore 5
+    //   41: ldc 63
+    //   43: monitorexit
+    //   44: new 68	com/tencent/token/afe$a
+    //   47: dup
+    //   48: aload 5
+    //   50: iload_0
+    //   51: invokespecial 71	com/tencent/token/afe$a:<init>	(Landroid/content/Context;I)V
+    //   54: astore 5
+    //   56: aload_2
+    //   57: getfield 76	com/tencent/token/aeq:h	I
+    //   60: istore_0
+    //   61: iload_0
+    //   62: ifgt +12 -> 74
+    //   65: aload 5
+    //   67: lconst_1
+    //   68: putfield 79	com/tencent/token/afe$a:b	J
+    //   71: goto +27 -> 98
+    //   74: iload_0
+    //   75: bipush 12
+    //   77: if_icmple +14 -> 91
+    //   80: aload 5
+    //   82: ldc2_w 80
+    //   85: putfield 79	com/tencent/token/afe$a:b	J
+    //   88: goto +10 -> 98
+    //   91: aload 5
+    //   93: iload_0
+    //   94: i2l
+    //   95: putfield 79	com/tencent/token/afe$a:b	J
+    //   98: aload 5
+    //   100: aload_3
+    //   101: putfield 84	com/tencent/token/afe$a:f	Lcom/tencent/turingfd/sdk/qps/Grape;
+    //   104: aload 5
+    //   106: new 86	com/tencent/token/aeh
+    //   109: dup
+    //   110: aload_2
+    //   111: invokespecial 87	com/tencent/token/aeh:<init>	(Lcom/tencent/token/aeq;)V
+    //   114: putfield 90	com/tencent/token/afe$a:d	Lcom/tencent/token/afa;
+    //   117: aload 5
+    //   119: iload_1
+    //   120: putfield 92	com/tencent/token/afe$a:e	I
+    //   123: new 94	com/tencent/token/afe
+    //   126: dup
+    //   127: aload 5
+    //   129: invokespecial 97	com/tencent/token/afe:<init>	(Lcom/tencent/token/afe$a;)V
+    //   132: astore 6
+    //   134: getstatic 100	com/tencent/token/afk:a	Lcom/tencent/token/agi;
+    //   137: invokevirtual 47	com/tencent/token/agi:b	()Ljava/lang/Object;
+    //   140: checkcast 99	com/tencent/token/afk
+    //   143: astore_2
+    //   144: aload_2
+    //   145: monitorenter
+    //   146: aload_2
+    //   147: aload 6
+    //   149: getfield 102	com/tencent/token/afe:c	Landroid/content/Context;
+    //   152: putfield 104	com/tencent/token/afk:e	Landroid/content/Context;
+    //   155: aload_2
+    //   156: aload 6
+    //   158: putfield 107	com/tencent/token/afk:h	Lcom/tencent/token/afe;
+    //   161: new 109	com/tencent/token/afk$b
+    //   164: dup
+    //   165: aload_2
+    //   166: invokespecial 112	com/tencent/token/afk$b:<init>	(Lcom/tencent/token/afk;)V
+    //   169: astore 7
+    //   171: getstatic 115	com/tencent/token/acu:a	Lcom/tencent/token/agi;
+    //   174: invokevirtual 47	com/tencent/token/agi:b	()Ljava/lang/Object;
+    //   177: checkcast 114	com/tencent/token/acu
+    //   180: astore_3
+    //   181: aload_2
+    //   182: getfield 117	com/tencent/token/afk:f	Landroid/os/Handler;
+    //   185: astore 5
+    //   187: aload_3
+    //   188: aload 7
+    //   190: putfield 120	com/tencent/token/acu:h	Lcom/tencent/token/acq;
+    //   193: aload_3
+    //   194: getfield 122	com/tencent/token/acu:b	Z
+    //   197: ifeq +11 -> 208
+    //   200: aload_3
+    //   201: aload 5
+    //   203: aload 7
+    //   205: invokevirtual 125	com/tencent/token/acu:a	(Landroid/os/Handler;Lcom/tencent/token/acq;)V
+    //   208: aload_3
+    //   209: aload 6
+    //   211: putfield 127	com/tencent/token/acu:g	Lcom/tencent/token/afe;
+    //   214: aload_3
+    //   215: iconst_1
+    //   216: putfield 122	com/tencent/token/acu:b	Z
+    //   219: aload_3
+    //   220: getfield 130	com/tencent/token/acu:c	Lcom/tencent/token/act;
+    //   223: ifnonnull +19 -> 242
+    //   226: aload_3
+    //   227: new 132	com/tencent/token/act
+    //   230: dup
+    //   231: aload 6
+    //   233: getfield 102	com/tencent/token/afe:c	Landroid/content/Context;
+    //   236: invokespecial 135	com/tencent/token/act:<init>	(Landroid/content/Context;)V
+    //   239: putfield 130	com/tencent/token/acu:c	Lcom/tencent/token/act;
+    //   242: aload_3
+    //   243: getfield 130	com/tencent/token/acu:c	Lcom/tencent/token/act;
+    //   246: astore 7
+    //   248: aload 7
+    //   250: ifnull +33 -> 283
+    //   253: aload 7
+    //   255: getfield 138	com/tencent/token/act:d	Landroid/util/SparseArray;
+    //   258: astore 6
+    //   260: aload 6
+    //   262: monitorenter
+    //   263: aload 7
+    //   265: getfield 138	com/tencent/token/act:d	Landroid/util/SparseArray;
+    //   268: invokevirtual 143	android/util/SparseArray:clear	()V
+    //   271: aload 6
+    //   273: monitorexit
+    //   274: goto +9 -> 283
+    //   277: astore_3
+    //   278: aload 6
+    //   280: monitorexit
+    //   281: aload_3
+    //   282: athrow
+    //   283: aload_3
+    //   284: getfield 146	com/tencent/token/acu:f	Ljava/util/List;
+    //   287: astore 6
+    //   289: aload 6
+    //   291: monitorenter
+    //   292: aload_3
+    //   293: getfield 146	com/tencent/token/acu:f	Ljava/util/List;
+    //   296: invokeinterface 149 1 0
+    //   301: aload 6
+    //   303: monitorexit
+    //   304: aload_3
+    //   305: aload 5
+    //   307: putfield 151	com/tencent/token/acu:d	Landroid/os/Handler;
+    //   310: aload 5
+    //   312: aload_3
+    //   313: getfield 155	com/tencent/token/acu:j	Ljava/lang/Runnable;
+    //   316: invokevirtual 159	android/os/Handler:post	(Ljava/lang/Runnable;)Z
+    //   319: pop
+    //   320: aload_2
+    //   321: getfield 162	com/tencent/token/afk:g	Ljava/util/concurrent/atomic/AtomicBoolean;
+    //   324: invokevirtual 168	java/util/concurrent/atomic/AtomicBoolean:get	()Z
+    //   327: istore 4
+    //   329: iload 4
+    //   331: ifeq +6 -> 337
+    //   334: aload_2
+    //   335: monitorexit
+    //   336: return
+    //   337: new 170	java/lang/Thread
+    //   340: dup
+    //   341: new 172	com/tencent/token/afm
+    //   344: dup
+    //   345: aload_2
+    //   346: invokespecial 173	com/tencent/token/afm:<init>	(Lcom/tencent/token/afk;)V
+    //   349: invokespecial 176	java/lang/Thread:<init>	(Ljava/lang/Runnable;)V
+    //   352: invokevirtual 179	java/lang/Thread:start	()V
+    //   355: aload_2
+    //   356: monitorexit
+    //   357: return
+    //   358: astore_3
+    //   359: aload 6
+    //   361: monitorexit
+    //   362: aload_3
+    //   363: athrow
+    //   364: astore_3
+    //   365: aload_2
+    //   366: monitorexit
+    //   367: aload_3
+    //   368: athrow
+    //   369: astore_2
+    //   370: ldc 63
+    //   372: monitorexit
+    //   373: aload_2
+    //   374: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	375	0	paramInt1	int
+    //   0	375	1	paramInt2	int
+    //   0	375	3	paramGrape	Grape
+    //   327	3	4	bool	boolean
+    //   9	302	5	localObject1	Object
+    //   169	95	7	localObject3	Object
+    // Exception table:
+    //   from	to	target	type
+    //   263	274	277	finally
+    //   278	281	277	finally
+    //   292	304	358	finally
+    //   359	362	358	finally
+    //   146	208	364	finally
+    //   208	242	364	finally
+    //   242	248	364	finally
+    //   253	263	364	finally
+    //   281	283	364	finally
+    //   283	292	364	finally
+    //   304	329	364	finally
+    //   337	355	364	finally
+    //   362	364	364	finally
+    //   36	41	369	finally
   }
   
-  private static String a(int paramInt)
+  public final class a
+    implements acd
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(paramInt);
-    localStringBuilder.append("000");
-    return localStringBuilder.toString();
-  }
-  
-  public static void a(Context paramContext, int paramInt, Dew paramDew)
-  {
-    Object localObject1 = aey.a(aey.a(paramDew.a()), aey.b());
-    if (localObject1 == null) {
-      return;
-    }
-    paramDew = paramContext.getDir("turingfd", 0);
-    Object localObject2;
-    if (paramDew != null)
+    public final void a(String paramString, int paramInt1, int paramInt2, Grape paramGrape)
     {
-      localObject2 = new StringBuilder();
-      ((StringBuilder)localObject2).append(paramDew.getAbsolutePath());
-      paramDew = new File(aeu.a((StringBuilder)localObject2, File.separator, "10"));
-      if ((paramDew.exists()) || (paramDew.mkdirs()))
+      if (paramInt1 == 100)
       {
-        localObject2 = new StringBuilder();
-        ((StringBuilder)localObject2).append(paramDew.getAbsolutePath());
-        ((StringBuilder)localObject2).append(File.separator);
-        ((StringBuilder)localObject2).append(a(paramInt));
-        ((StringBuilder)localObject2).append("_");
-        ((StringBuilder)localObject2).append(System.currentTimeMillis());
-        paramDew = ((StringBuilder)localObject2).toString();
-        break label155;
-      }
-    }
-    paramDew = "";
-    label155:
-    if (TextUtils.isEmpty(paramDew)) {
-      return;
-    }
-    aey.a(paramDew, (byte[])localObject1);
-    paramDew = a(paramInt);
-    paramContext = paramContext.getDir("turingfd", 0);
-    if (paramContext != null)
-    {
-      localObject1 = new StringBuilder();
-      ((StringBuilder)localObject1).append(paramContext.getAbsolutePath());
-      paramContext = new File(aeu.a((StringBuilder)localObject1, File.separator, "10"));
-      if (paramContext.exists())
-      {
-        localObject1 = paramContext.listFiles();
-        if (localObject1 != null)
+        paramString = adz.c;
+        if ((paramString != null) && (paramString.a()))
         {
-          localObject2 = new ArrayList();
-          int i = localObject1.length;
-          paramInt = 0;
-          Object localObject3;
-          while (paramInt < i)
-          {
-            localObject3 = localObject1[paramInt];
-            if (((File)localObject3).getName().startsWith(paramDew)) {
-              ((List)localObject2).add(localObject3);
-            }
-            paramInt += 1;
-          }
-          if (((List)localObject2).size() > 6)
-          {
-            localObject1 = new ArrayList();
-            localObject2 = ((List)localObject2).iterator();
-            while (((Iterator)localObject2).hasNext())
-            {
-              localObject3 = ((File)((Iterator)localObject2).next()).getName().split("_");
-              if ((localObject3.length == 2) && (localObject3[0].equals(paramDew))) {
-                ((List)localObject1).add(Long.valueOf(Long.parseLong(localObject3[1])));
-              }
-            }
-            if (((List)localObject1).size() > 6)
-            {
-              Collections.sort((List)localObject1);
-              localObject2 = new StringBuilder();
-              ((StringBuilder)localObject2).append(paramContext.getAbsolutePath());
-              ((StringBuilder)localObject2).append(File.separator);
-              ((StringBuilder)localObject2).append(paramDew);
-              ((StringBuilder)localObject2).append("_");
-              ((StringBuilder)localObject2).append(((List)localObject1).get(0));
-              paramContext = ((StringBuilder)localObject2).toString();
-              break label486;
-            }
-          }
+          paramString = adz.c;
+          break label59;
         }
       }
-    }
-    paramContext = "";
-    label486:
-    if (!TextUtils.isEmpty(paramContext)) {
-      new File(paramContext).delete();
+      if (paramInt1 == 999)
+      {
+        paramString = adz.a;
+        if ((paramString != null) && (paramString.a()))
+        {
+          paramString = adz.a;
+          break label59;
+        }
+      }
+      paramString = null;
+      label59:
+      if (paramString != null) {
+        adz.a(paramInt1, paramInt2, paramString, paramGrape);
+      }
     }
   }
   
-  public static final class a
-    extends afj<adz>
+  public final class b
+    implements acg
   {
-    public final Object a()
+    public final void a(Activity paramActivity)
     {
-      return new adz();
+      try
+      {
+        paramActivity = adz.b;
+        if ((paramActivity != null) && (paramActivity.a())) {
+          new aem().start();
+        }
+        return;
+      }
+      finally {}
     }
-  }
-  
-  public static final class b
-  {
-    public Dew a;
-    public List<String> b;
+    
+    public final void b(Activity paramActivity) {}
   }
 }
 

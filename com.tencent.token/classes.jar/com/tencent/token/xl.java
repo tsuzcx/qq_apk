@@ -1,65 +1,220 @@
 package com.tencent.token;
 
-import com.qq.taf.jce.JceStruct;
-import com.tencent.token.global.taiji.CSReportProfile;
-import com.tencent.token.global.taiji.KeyValueProfile;
-import com.tencent.token.global.taiji.SCReportProfile;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Set;
+import android.annotation.SuppressLint;
+import android.content.Context;
+import android.os.Build.VERSION;
+import android.telephony.TelephonyManager;
+import com.tencent.token.global.RqdApplication;
 
 public final class xl
-  implements asf
 {
-  public final void a(HashMap<Integer, String> paramHashMap, HashMap<Integer, Integer> paramHashMap1, final asf.a parama)
+  static Context a;
+  static boolean b = false;
+  static String c;
+  static final Object d = new Object();
+  
+  public static Context a()
   {
-    CSReportProfile localCSReportProfile = new CSReportProfile();
-    localCSReportProfile.profileID = 4;
-    localCSReportProfile.actionID = 0;
-    localCSReportProfile.param = new ArrayList();
-    Object localObject1;
-    Object localObject2;
-    if ((paramHashMap != null) && (paramHashMap.size() > 0))
-    {
-      localObject1 = paramHashMap.keySet().iterator();
-      while (((Iterator)localObject1).hasNext())
-      {
-        localObject2 = (Integer)((Iterator)localObject1).next();
-        KeyValueProfile localKeyValueProfile = new KeyValueProfile();
-        localKeyValueProfile.keyid = ((Integer)localObject2).intValue();
-        localKeyValueProfile.valueType = 3;
-        localKeyValueProfile.str = ((String)paramHashMap.get(localObject2));
-        localCSReportProfile.param.add(localKeyValueProfile.toByteArray("UTF-8"));
-      }
+    if (Build.VERSION.SDK_INT < 21) {
+      return null;
     }
-    if ((paramHashMap1 != null) && (paramHashMap1.size() > 0))
-    {
-      paramHashMap = paramHashMap1.keySet().iterator();
-      while (paramHashMap.hasNext())
-      {
-        localObject1 = (Integer)paramHashMap.next();
-        localObject2 = new KeyValueProfile();
-        ((KeyValueProfile)localObject2).keyid = ((Integer)localObject1).intValue();
-        ((KeyValueProfile)localObject2).valueType = 1;
-        ((KeyValueProfile)localObject2).i = ((Integer)paramHashMap1.get(localObject1)).intValue();
-        localCSReportProfile.param.add(((KeyValueProfile)localObject2).toByteArray("UTF-8"));
-      }
+    Context localContext2 = kx.b;
+    Context localContext1 = localContext2;
+    if (localContext2 == null) {
+      localContext1 = a;
     }
-    xn.a.a().a(1053, localCSReportProfile, new SCReportProfile(), 18, new asl()
-    {
-      public final void a(int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3, JceStruct paramAnonymousJceStruct)
-      {
-        if ((paramAnonymousInt2 == 0) && (paramAnonymousInt3 == 0)) {
-          parama.a();
-        }
-      }
-    });
+    return localContext1;
   }
   
-  static final class a
+  @SuppressLint({"MissingPermission"})
+  static kx.a a(String paramString)
   {
-    private static final xl a = new xl();
+    for (;;)
+    {
+      int i;
+      try
+      {
+        kx.a locala;
+        if ((paramString.contains("getDeviceId")) || (paramString.contains("getImei")) || (paramString.contains("getMeid")))
+        {
+          ??? = Thread.currentThread().getStackTrace();
+          int j = ???.length;
+          i = 0;
+          if (i < j)
+          {
+            locala = ???[i];
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append(locala.getFileName());
+            localStringBuilder.append("||");
+            localStringBuilder.append(locala.getClassName());
+            localStringBuilder.append("||");
+            localStringBuilder.append(locala.getMethodName());
+            if (!localStringBuilder.toString().contains("com.tencent.halley")) {
+              break label503;
+            }
+            paramString = new kx.a();
+            paramString.b = true;
+            paramString.a = "";
+            return paramString;
+          }
+        }
+        if ("getDeviceId".equals(paramString))
+        {
+          locala = new kx.a();
+          synchronized (d)
+          {
+            if (b)
+            {
+              paramString = c;
+            }
+            else
+            {
+              try
+              {
+                paramString = ((TelephonyManager)RqdApplication.c().getSystemService("phone")).getDeviceId();
+              }
+              catch (Exception paramString)
+              {
+                auq.a("get imei err", paramString);
+                paramString = null;
+              }
+              c = paramString;
+              b = true;
+            }
+            locala.b = true;
+            locala.a = paramString;
+            return locala;
+          }
+        }
+        if (paramString.contains("getConnectionInfo"))
+        {
+          paramString = new StringBuilder("getConnectionInfo, sAllowWifiScanResultOptionForce[");
+          paramString.append(xp.b);
+          paramString.append("]");
+          if (((xp.a) || (xp.b)) && (rw.a().b())) {
+            return null;
+          }
+          b();
+          paramString = new kx.a();
+          paramString.b = true;
+          return paramString;
+        }
+        if (paramString.contains("listen"))
+        {
+          if ((xp.a) && (rw.a().b())) {
+            return null;
+          }
+          b();
+          paramString = new kx.a();
+          paramString.b = true;
+          return paramString;
+        }
+        if ((paramString.compareTo("getScanResults") != 0) && (paramString.compareTo("getConfiguredNetworks") != 0)) {
+          if (paramString.compareTo("startScan") != 0) {
+            break;
+          }
+        }
+        ??? = new StringBuilder("getWifiListOption[");
+        ((StringBuilder)???).append(rw.a().b());
+        ((StringBuilder)???).append("]");
+        ??? = new StringBuilder("wifi list Force[");
+        ((StringBuilder)???).append(xp.b);
+        ((StringBuilder)???).append("]");
+        if (!rw.a().a.a("kiawl", false))
+        {
+          if (xp.b) {
+            return null;
+          }
+          ??? = new kx.a();
+          ((kx.a)???).a = null;
+          ((kx.a)???).b = true;
+          if (paramString.compareTo("startScan") == 0) {
+            ((kx.a)???).a = Boolean.FALSE;
+          }
+          return ???;
+        }
+        return null;
+      }
+      catch (Throwable paramString)
+      {
+        return null;
+      }
+      label503:
+      i += 1;
+    }
+    return null;
+  }
+  
+  public static void a(Context paramContext)
+  {
+    try
+    {
+      int i = Build.VERSION.SDK_INT;
+      if (i < 21) {
+        return;
+      }
+      Object localObject = a;
+      if (localObject != null) {
+        return;
+      }
+      a = paramContext;
+      kx.a = new kv()
+      {
+        public final boolean a()
+        {
+          boolean bool = rw.a().b();
+          StringBuilder localStringBuilder = new StringBuilder("isAllow:[");
+          localStringBuilder.append(bool);
+          localStringBuilder.append("]");
+          return bool;
+        }
+        
+        public final boolean b()
+        {
+          StringBuilder localStringBuilder = new StringBuilder("SysInvokeControlerService.sAllowLocation:[");
+          localStringBuilder.append(xp.a);
+          localStringBuilder.append("]");
+          return (xp.a) && (rw.a().b());
+        }
+      };
+      localObject = new kw()
+      {
+        public final kx.a a(String paramAnonymousString)
+        {
+          return xl.a(paramAnonymousString);
+        }
+      };
+      ajh.f.a.a = ((kw)localObject);
+      if (rw.a().b())
+      {
+        kx.a(paramContext, 28L);
+        return;
+      }
+      kx.a(paramContext, 30L);
+      return;
+    }
+    finally {}
+  }
+  
+  @SuppressLint({"LongLogTag"})
+  private static void b()
+  {
+    StackTraceElement[] arrayOfStackTraceElement = Thread.currentThread().getStackTrace();
+    int j = arrayOfStackTraceElement.length;
+    int i = 0;
+    while (i < j)
+    {
+      StackTraceElement localStackTraceElement = arrayOfStackTraceElement[i];
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(localStackTraceElement.getFileName());
+      localStringBuilder.append("||");
+      localStringBuilder.append(localStackTraceElement.getClassName());
+      localStringBuilder.append("||");
+      localStringBuilder.append(localStackTraceElement.getMethodName());
+      localStringBuilder.append("||");
+      localStringBuilder.append(localStackTraceElement.getLineNumber());
+      i += 1;
+    }
   }
 }
 

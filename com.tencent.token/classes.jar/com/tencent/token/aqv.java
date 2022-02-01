@@ -1,8 +1,38 @@
 package com.tencent.token;
 
-public abstract interface aqv
+import android.content.Context;
+import android.os.Handler;
+import java.util.concurrent.ConcurrentHashMap;
+import tmsdk.common.c.a.b;
+
+public final class aqv
 {
-  public abstract void e();
+  private static aqv d;
+  private static Object e = new Object();
+  public Context a = aqp.a();
+  public ConcurrentHashMap b = new ConcurrentHashMap();
+  private Handler c = null;
+  
+  public static aqv a()
+  {
+    if (d == null) {
+      synchronized (e)
+      {
+        if (d == null) {
+          d = new aqv();
+        }
+      }
+    }
+    return d;
+  }
+  
+  public final void a(String paramString)
+  {
+    paramString = (b)this.b.remove(paramString);
+    if (paramString != null) {
+      this.a.unregisterReceiver(paramString);
+    }
+  }
 }
 
 

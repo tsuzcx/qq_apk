@@ -1,163 +1,116 @@
 package com.tencent.token;
 
-import android.graphics.Canvas;
-import android.graphics.ColorFilter;
-import android.graphics.Paint;
-import android.graphics.Path;
-import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
+import android.content.res.ColorStateList;
+import android.content.res.Resources;
+import android.content.res.Resources.Theme;
+import android.content.res.TypedArray;
+import android.graphics.Color;
+import android.util.AttributeSet;
+import android.util.StateSet;
+import android.util.Xml;
+import org.xmlpull.v1.XmlPullParser;
+import org.xmlpull.v1.XmlPullParserException;
 
-public final class gt
-  extends Drawable
+final class gt
 {
-  private static final float b = (float)Math.toRadians(45.0D);
-  private final Paint a;
-  private float c;
-  private float d;
-  private float e;
-  private float f;
-  private boolean g;
-  private final Path h;
-  private final int i;
-  private boolean j;
-  private float k;
-  private float l;
-  private int m;
-  
-  public final void a(float paramFloat)
+  public static ColorStateList a(Resources paramResources, XmlPullParser paramXmlPullParser, Resources.Theme paramTheme)
   {
-    if (this.k != paramFloat)
+    AttributeSet localAttributeSet = Xml.asAttributeSet(paramXmlPullParser);
+    int i;
+    do
     {
-      this.k = paramFloat;
-      invalidateSelf();
-    }
-  }
-  
-  public final void a(boolean paramBoolean)
-  {
-    if (this.j != paramBoolean)
+      i = paramXmlPullParser.next();
+    } while ((i != 2) && (i != 1));
+    if (i == 2)
     {
-      this.j = paramBoolean;
-      invalidateSelf();
-    }
-  }
-  
-  public final void draw(Canvas paramCanvas)
-  {
-    Rect localRect = getBounds();
-    int i2 = this.m;
-    int i1 = 0;
-    int n;
-    if (i2 != 3) {
-      n = i1;
-    }
-    switch (i2)
-    {
-    default: 
-      n = i1;
-      if (dg.e(this) == 1) {
-        n = 1;
+      String str = paramXmlPullParser.getName();
+      if (str.equals("selector")) {
+        return a(paramResources, paramXmlPullParser, localAttributeSet, paramTheme);
       }
-      break;
-    case 1: 
-      n = 1;
-      break;
-      n = i1;
-      if (dg.e(this) == 0) {
-        n = 1;
+      paramResources = new StringBuilder();
+      paramResources.append(paramXmlPullParser.getPositionDescription());
+      paramResources.append(": invalid color state list tag ");
+      paramResources.append(str);
+      throw new XmlPullParserException(paramResources.toString());
+    }
+    throw new XmlPullParserException("No start tag found");
+  }
+  
+  private static ColorStateList a(Resources paramResources, XmlPullParser paramXmlPullParser, AttributeSet paramAttributeSet, Resources.Theme paramTheme)
+  {
+    int i1 = paramXmlPullParser.getDepth() + 1;
+    Object localObject1 = new int[20][];
+    int[] arrayOfInt = new int[20];
+    int i = 0;
+    for (;;)
+    {
+      int j = paramXmlPullParser.next();
+      if (j == 1) {
+        break;
       }
-      break;
-    }
-    float f1 = this.c;
-    float f6 = (float)Math.sqrt(f1 * f1 * 2.0F);
-    float f7 = this.d;
-    float f8 = this.k;
-    float f3 = f7 + (this.e - f7) * f8;
-    float f4 = Math.round((this.l - 0.0F) * f8 + 0.0F);
-    float f9 = b;
-    float f10 = this.k;
-    if (n != 0) {
-      f1 = 0.0F;
-    } else {
-      f1 = -180.0F;
-    }
-    float f2;
-    if (n != 0) {
-      f2 = 180.0F;
-    } else {
-      f2 = 0.0F;
-    }
-    float f5 = this.k;
-    double d1 = (f6 - f7) * f8 + f7;
-    double d2 = (f9 - 0.0F) * f10 + 0.0F;
-    double d3 = Math.cos(d2);
-    Double.isNaN(d1);
-    f6 = (float)Math.round(d3 * d1);
-    d2 = Math.sin(d2);
-    Double.isNaN(d1);
-    f7 = (float)Math.round(d1 * d2);
-    this.h.rewind();
-    f8 = this.f + this.a.getStrokeWidth();
-    f8 += (-this.l - f8) * this.k;
-    f9 = -f3 / 2.0F;
-    this.h.moveTo(f9 + f4, 0.0F);
-    this.h.rLineTo(f3 - f4 * 2.0F, 0.0F);
-    this.h.moveTo(f9, f8);
-    this.h.rLineTo(f6, f7);
-    this.h.moveTo(f9, -f8);
-    this.h.rLineTo(f6, -f7);
-    this.h.close();
-    paramCanvas.save();
-    f3 = this.a.getStrokeWidth();
-    f6 = localRect.height();
-    f4 = this.f;
-    f6 = (int)(f6 - 3.0F * f3 - 2.0F * f4) / 4 * 2;
-    paramCanvas.translate(localRect.centerX(), f6 + (f3 * 1.5F + f4));
-    if (this.g)
-    {
-      if ((this.j ^ n)) {
-        n = -1;
-      } else {
-        n = 1;
+      int k = paramXmlPullParser.getDepth();
+      if ((k < i1) && (j == 3)) {
+        break;
       }
-      paramCanvas.rotate((f1 + (f2 - f1) * f5) * n);
+      if ((j == 2) && (k <= i1)) {
+        if (paramXmlPullParser.getName().equals("item"))
+        {
+          Object localObject2 = gs.j.ColorStateListItem;
+          if (paramTheme == null) {
+            localObject2 = paramResources.obtainAttributes(paramAttributeSet, (int[])localObject2);
+          } else {
+            localObject2 = paramTheme.obtainStyledAttributes(paramAttributeSet, (int[])localObject2, 0, 0);
+          }
+          int i2 = ((TypedArray)localObject2).getColor(gs.j.ColorStateListItem_android_color, -65281);
+          boolean bool = ((TypedArray)localObject2).hasValue(gs.j.ColorStateListItem_android_alpha);
+          float f = 1.0F;
+          if (bool) {
+            f = ((TypedArray)localObject2).getFloat(gs.j.ColorStateListItem_android_alpha, 1.0F);
+          } else if (((TypedArray)localObject2).hasValue(gs.j.ColorStateListItem_alpha)) {
+            f = ((TypedArray)localObject2).getFloat(gs.j.ColorStateListItem_alpha, 1.0F);
+          }
+          ((TypedArray)localObject2).recycle();
+          int i3 = paramAttributeSet.getAttributeCount();
+          localObject2 = new int[i3];
+          j = 0;
+          int m;
+          for (k = 0; j < i3; k = m)
+          {
+            int n = paramAttributeSet.getAttributeNameResource(j);
+            m = k;
+            if (n != 16843173)
+            {
+              m = k;
+              if (n != 16843551)
+              {
+                m = k;
+                if (n != gs.a.alpha)
+                {
+                  if (paramAttributeSet.getAttributeBooleanValue(j, false)) {
+                    m = n;
+                  } else {
+                    m = -n;
+                  }
+                  localObject2[k] = m;
+                  m = k + 1;
+                }
+              }
+            }
+            j += 1;
+          }
+          localObject2 = StateSet.trimStateSet((int[])localObject2, k);
+          arrayOfInt = gv.a(arrayOfInt, i, dc.b(i2, Math.round(Color.alpha(i2) * f)));
+          localObject1 = (int[][])gv.a((Object[])localObject1, i, localObject2);
+          i += 1;
+        }
+        else {}
+      }
     }
-    else if (n != 0)
-    {
-      paramCanvas.rotate(180.0F);
-    }
-    paramCanvas.drawPath(this.h, this.a);
-    paramCanvas.restore();
-  }
-  
-  public final int getIntrinsicHeight()
-  {
-    return this.i;
-  }
-  
-  public final int getIntrinsicWidth()
-  {
-    return this.i;
-  }
-  
-  public final int getOpacity()
-  {
-    return -3;
-  }
-  
-  public final void setAlpha(int paramInt)
-  {
-    if (paramInt != this.a.getAlpha())
-    {
-      this.a.setAlpha(paramInt);
-      invalidateSelf();
-    }
-  }
-  
-  public final void setColorFilter(ColorFilter paramColorFilter)
-  {
-    this.a.setColorFilter(paramColorFilter);
-    invalidateSelf();
+    paramResources = new int[i];
+    paramXmlPullParser = new int[i][];
+    System.arraycopy(arrayOfInt, 0, paramResources, 0, i);
+    System.arraycopy(localObject1, 0, paramXmlPullParser, 0, i);
+    return new ColorStateList(paramXmlPullParser, paramResources);
   }
 }
 

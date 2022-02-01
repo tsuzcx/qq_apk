@@ -1,144 +1,255 @@
 package com.tencent.token;
 
-import android.content.res.ColorStateList;
-import android.graphics.PorterDuff.Mode;
-import android.graphics.drawable.Drawable;
-import android.os.Build.VERSION;
-import android.widget.ImageView;
+import android.content.Context;
+import android.database.ContentObserver;
+import android.database.Cursor;
+import android.database.DataSetObserver;
+import android.os.Handler;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.Filter;
+import android.widget.FilterQueryProvider;
+import android.widget.Filterable;
 
-public final class ft
+public abstract class ft
+  extends BaseAdapter
+  implements Filterable, fu.a
 {
-  static final b a = new a();
+  protected boolean a = false;
+  protected boolean b = true;
+  protected Cursor c = null;
+  protected Context d;
+  protected int e;
+  protected a f;
+  protected DataSetObserver g;
+  protected fu h;
+  protected FilterQueryProvider i;
   
-  static
+  public ft(Context paramContext)
   {
-    if (Build.VERSION.SDK_INT >= 21)
-    {
-      a = new c();
-      return;
+    this.d = paramContext;
+    this.e = -1;
+    this.f = new a();
+    this.g = new b();
+  }
+  
+  public final Cursor a()
+  {
+    return this.c;
+  }
+  
+  public Cursor a(CharSequence paramCharSequence)
+  {
+    FilterQueryProvider localFilterQueryProvider = this.i;
+    if (localFilterQueryProvider != null) {
+      return localFilterQueryProvider.runQuery(paramCharSequence);
     }
+    return this.c;
   }
   
-  public static ColorStateList a(ImageView paramImageView)
-  {
-    return a.a(paramImageView);
-  }
+  public abstract View a(Context paramContext, Cursor paramCursor, ViewGroup paramViewGroup);
   
-  public static void a(ImageView paramImageView, ColorStateList paramColorStateList)
+  public void a(Cursor paramCursor)
   {
-    a.a(paramImageView, paramColorStateList);
-  }
-  
-  public static void a(ImageView paramImageView, PorterDuff.Mode paramMode)
-  {
-    a.a(paramImageView, paramMode);
-  }
-  
-  public static PorterDuff.Mode b(ImageView paramImageView)
-  {
-    return a.b(paramImageView);
-  }
-  
-  static class a
-    implements ft.b
-  {
-    public ColorStateList a(ImageView paramImageView)
+    Cursor localCursor = this.c;
+    if (paramCursor == localCursor)
     {
-      if ((paramImageView instanceof fz)) {
-        return ((fz)paramImageView).getSupportImageTintList();
-      }
-      return null;
+      paramCursor = null;
     }
-    
-    public void a(ImageView paramImageView, ColorStateList paramColorStateList)
+    else
     {
-      if ((paramImageView instanceof fz)) {
-        ((fz)paramImageView).setSupportImageTintList(paramColorStateList);
-      }
-    }
-    
-    public void a(ImageView paramImageView, PorterDuff.Mode paramMode)
-    {
-      if ((paramImageView instanceof fz)) {
-        ((fz)paramImageView).setSupportImageTintMode(paramMode);
-      }
-    }
-    
-    public PorterDuff.Mode b(ImageView paramImageView)
-    {
-      if ((paramImageView instanceof fz)) {
-        return ((fz)paramImageView).getSupportImageTintMode();
-      }
-      return null;
-    }
-  }
-  
-  static abstract interface b
-  {
-    public abstract ColorStateList a(ImageView paramImageView);
-    
-    public abstract void a(ImageView paramImageView, ColorStateList paramColorStateList);
-    
-    public abstract void a(ImageView paramImageView, PorterDuff.Mode paramMode);
-    
-    public abstract PorterDuff.Mode b(ImageView paramImageView);
-  }
-  
-  static final class c
-    extends ft.a
-  {
-    public final ColorStateList a(ImageView paramImageView)
-    {
-      return paramImageView.getImageTintList();
-    }
-    
-    public final void a(ImageView paramImageView, ColorStateList paramColorStateList)
-    {
-      paramImageView.setImageTintList(paramColorStateList);
-      if (Build.VERSION.SDK_INT == 21)
+      Object localObject;
+      if (localCursor != null)
       {
-        paramColorStateList = paramImageView.getDrawable();
-        int i;
-        if ((paramImageView.getImageTintList() != null) && (paramImageView.getImageTintMode() != null)) {
-          i = 1;
-        } else {
-          i = 0;
+        localObject = this.f;
+        if (localObject != null) {
+          localCursor.unregisterContentObserver((ContentObserver)localObject);
         }
-        if ((paramColorStateList != null) && (i != 0))
-        {
-          if (paramColorStateList.isStateful()) {
-            paramColorStateList.setState(paramImageView.getDrawableState());
-          }
-          paramImageView.setImageDrawable(paramColorStateList);
+        localObject = this.g;
+        if (localObject != null) {
+          localCursor.unregisterDataSetObserver((DataSetObserver)localObject);
         }
       }
-    }
-    
-    public final void a(ImageView paramImageView, PorterDuff.Mode paramMode)
-    {
-      paramImageView.setImageTintMode(paramMode);
-      if (Build.VERSION.SDK_INT == 21)
+      this.c = paramCursor;
+      if (paramCursor != null)
       {
-        paramMode = paramImageView.getDrawable();
-        int i;
-        if ((paramImageView.getImageTintList() != null) && (paramImageView.getImageTintMode() != null)) {
-          i = 1;
-        } else {
-          i = 0;
+        localObject = this.f;
+        if (localObject != null) {
+          paramCursor.registerContentObserver((ContentObserver)localObject);
         }
-        if ((paramMode != null) && (i != 0))
-        {
-          if (paramMode.isStateful()) {
-            paramMode.setState(paramImageView.getDrawableState());
-          }
-          paramImageView.setImageDrawable(paramMode);
+        localObject = this.g;
+        if (localObject != null) {
+          paramCursor.registerDataSetObserver((DataSetObserver)localObject);
         }
+        this.e = paramCursor.getColumnIndexOrThrow("_id");
+        this.a = true;
+        notifyDataSetChanged();
+        paramCursor = localCursor;
+      }
+      else
+      {
+        this.e = -1;
+        this.a = false;
+        notifyDataSetInvalidated();
+        paramCursor = localCursor;
       }
     }
-    
-    public final PorterDuff.Mode b(ImageView paramImageView)
+    if (paramCursor != null) {
+      paramCursor.close();
+    }
+  }
+  
+  public abstract void a(View paramView, Cursor paramCursor);
+  
+  public View b(Context paramContext, Cursor paramCursor, ViewGroup paramViewGroup)
+  {
+    return a(paramContext, paramCursor, paramViewGroup);
+  }
+  
+  public CharSequence b(Cursor paramCursor)
+  {
+    if (paramCursor == null) {
+      return "";
+    }
+    return paramCursor.toString();
+  }
+  
+  protected final void b()
+  {
+    if (this.b)
     {
-      return paramImageView.getImageTintMode();
+      Cursor localCursor = this.c;
+      if ((localCursor != null) && (!localCursor.isClosed())) {
+        this.a = this.c.requery();
+      }
+    }
+  }
+  
+  public int getCount()
+  {
+    if (this.a)
+    {
+      Cursor localCursor = this.c;
+      if (localCursor != null) {
+        return localCursor.getCount();
+      }
+    }
+    return 0;
+  }
+  
+  public View getDropDownView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    if (this.a)
+    {
+      this.c.moveToPosition(paramInt);
+      View localView = paramView;
+      if (paramView == null) {
+        localView = b(this.d, this.c, paramViewGroup);
+      }
+      a(localView, this.c);
+      return localView;
+    }
+    return null;
+  }
+  
+  public Filter getFilter()
+  {
+    if (this.h == null) {
+      this.h = new fu(this);
+    }
+    return this.h;
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    if (this.a)
+    {
+      Cursor localCursor = this.c;
+      if (localCursor != null)
+      {
+        localCursor.moveToPosition(paramInt);
+        return this.c;
+      }
+    }
+    return null;
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    if (this.a)
+    {
+      Cursor localCursor = this.c;
+      if (localCursor != null)
+      {
+        if (localCursor.moveToPosition(paramInt)) {
+          return this.c.getLong(this.e);
+        }
+        return 0L;
+      }
+    }
+    return 0L;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    if (this.a)
+    {
+      if (this.c.moveToPosition(paramInt))
+      {
+        View localView = paramView;
+        if (paramView == null) {
+          localView = a(this.d, this.c, paramViewGroup);
+        }
+        a(localView, this.c);
+        return localView;
+      }
+      throw new IllegalStateException("couldn't move cursor to position ".concat(String.valueOf(paramInt)));
+    }
+    throw new IllegalStateException("this should only be called when the cursor is valid");
+  }
+  
+  public boolean hasStableIds()
+  {
+    return true;
+  }
+  
+  final class a
+    extends ContentObserver
+  {
+    a()
+    {
+      super();
+    }
+    
+    public final boolean deliverSelfNotifications()
+    {
+      return true;
+    }
+    
+    public final void onChange(boolean paramBoolean)
+    {
+      ft.this.b();
+    }
+  }
+  
+  final class b
+    extends DataSetObserver
+  {
+    b() {}
+    
+    public final void onChanged()
+    {
+      ft localft = ft.this;
+      localft.a = true;
+      localft.notifyDataSetChanged();
+    }
+    
+    public final void onInvalidated()
+    {
+      ft localft = ft.this;
+      localft.a = false;
+      localft.notifyDataSetInvalidated();
     }
   }
 }

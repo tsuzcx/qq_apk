@@ -1,13 +1,8 @@
 package com.tencent.token;
 
-import java.util.concurrent.TimeUnit;
-
-public final class adk
-{
-  public static final long a = TimeUnit.SECONDS.toMillis(1L);
-  public static final long b = TimeUnit.MILLISECONDS.toMillis(50L);
-  public static final int c = (int)(a / b);
-}
+public abstract class adk
+  extends agv
+{}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.token\classes.jar

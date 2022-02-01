@@ -1,20 +1,47 @@
 package com.tencent.token;
 
-import com.tencent.mm.sdk.plugin.MMPluginOAuth;
-import com.tencent.mm.sdk.plugin.MMPluginOAuth.Receiver;
+import android.os.Handler;
+import android.os.Message;
 
 public final class py
-  implements Runnable
+  extends Handler
 {
-  public py(MMPluginOAuth.Receiver paramReceiver, MMPluginOAuth paramMMPluginOAuth, String paramString) {}
+  private final int a;
+  private final boolean b;
+  private long c;
+  private final a d;
   
-  public final void run()
+  public final void a()
   {
-    MMPluginOAuth localMMPluginOAuth = this.a;
-    String str = this.b;
-    MMPluginOAuth.Receiver.a(localMMPluginOAuth.b);
-    localMMPluginOAuth.a = str;
-    pp.b("MicroMsg.SDK.MMPluginOAuth", "access token: ".concat(String.valueOf(str)));
+    removeMessages(this.a);
+  }
+  
+  protected final void finalize()
+  {
+    a();
+    super.finalize();
+  }
+  
+  public final void handleMessage(Message paramMessage)
+  {
+    if (paramMessage.what == this.a)
+    {
+      paramMessage = this.d;
+      if (paramMessage == null) {
+        return;
+      }
+      if (!paramMessage.a()) {
+        return;
+      }
+      if (this.b) {
+        sendEmptyMessageDelayed(this.a, this.c);
+      }
+    }
+  }
+  
+  public static abstract interface a
+  {
+    public abstract boolean a();
   }
 }
 

@@ -1,159 +1,124 @@
 package com.tencent.token;
 
-import java.io.IOException;
+import java.util.ArrayDeque;
+import java.util.Deque;
+import java.util.Iterator;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.SynchronousQueue;
+import java.util.concurrent.ThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
+import javax.annotation.Nullable;
 
 public final class aka
 {
-  static final alb a = alb.a("PRI * HTTP/2.0\r\n\r\nSM\r\n\r\n");
-  static final String[] b;
-  static final String[] c;
-  private static final String[] d;
+  private int a = 64;
+  private int b = 5;
+  @Nullable
+  private Runnable c;
+  @Nullable
+  private ExecutorService d;
+  private final Deque<akk.a> e = new ArrayDeque();
+  private final Deque<akk.a> f = new ArrayDeque();
+  private final Deque<akk> g = new ArrayDeque();
   
-  static
+  private ExecutorService a()
   {
-    int k = 0;
-    d = new String[] { "DATA", "HEADERS", "PRIORITY", "RST_STREAM", "SETTINGS", "PUSH_PROMISE", "PING", "GOAWAY", "WINDOW_UPDATE", "CONTINUATION" };
-    b = new String[64];
-    c = new String[256];
+    try
+    {
+      if (this.d == null) {
+        this.d = new ThreadPoolExecutor(0, 2147483647, 60L, TimeUnit.SECONDS, new SynchronousQueue(), akt.a("OkHttp Dispatcher", false));
+      }
+      ExecutorService localExecutorService = this.d;
+      return localExecutorService;
+    }
+    finally {}
+  }
+  
+  private void b()
+  {
+    if (this.f.size() >= this.a) {
+      return;
+    }
+    if (this.e.isEmpty()) {
+      return;
+    }
+    Iterator localIterator = this.e.iterator();
+    while (localIterator.hasNext())
+    {
+      akk.a locala = (akk.a)localIterator.next();
+      if (c(locala) < this.b)
+      {
+        localIterator.remove();
+        this.f.add(locala);
+        a().execute(locala);
+      }
+      if (this.f.size() >= this.a) {}
+    }
+  }
+  
+  private int c()
+  {
+    try
+    {
+      int i = this.f.size();
+      int j = this.g.size();
+      return i + j;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  private int c(akk.a parama)
+  {
+    Iterator localIterator = this.f.iterator();
     int i = 0;
-    for (;;)
+    while (localIterator.hasNext())
     {
-      localObject = c;
-      if (i >= localObject.length) {
-        break;
+      akk.a locala = (akk.a)localIterator.next();
+      if ((!locala.a.e) && (locala.a().equals(parama.a()))) {
+        i += 1;
       }
-      localObject[i] = aiw.a("%8s", new Object[] { Integer.toBinaryString(i) }).replace(' ', '0');
-      i += 1;
     }
-    String[] arrayOfString = b;
-    arrayOfString[0] = "";
-    arrayOfString[1] = "END_STREAM";
-    Object localObject = new int[1];
-    localObject[0] = 1;
-    arrayOfString[8] = "PADDED";
-    i = 0;
-    int j;
-    StringBuilder localStringBuilder;
-    while (i <= 0)
+    return i;
+  }
+  
+  final void a(akk.a parama)
+  {
+    try
     {
-      j = localObject[i];
-      arrayOfString = b;
-      localStringBuilder = new StringBuilder();
-      localStringBuilder.append(b[j]);
-      localStringBuilder.append("|PADDED");
-      arrayOfString[(j | 0x8)] = localStringBuilder.toString();
-      i += 1;
-    }
-    arrayOfString = b;
-    arrayOfString[4] = "END_HEADERS";
-    arrayOfString[32] = "PRIORITY";
-    arrayOfString[36] = "END_HEADERS|PRIORITY";
-    i = 0;
-    for (;;)
-    {
-      j = k;
-      if (i >= 3) {
-        break;
-      }
-      int m = new int[] { 4, 32, 36 }[i];
-      j = 0;
-      while (j <= 0)
+      if ((this.f.size() < this.a) && (c(parama) < this.b))
       {
-        int n = localObject[j];
-        arrayOfString = b;
-        int i1 = n | m;
-        localStringBuilder = new StringBuilder();
-        localStringBuilder.append(b[n]);
-        localStringBuilder.append('|');
-        localStringBuilder.append(b[m]);
-        arrayOfString[i1] = localStringBuilder.toString();
-        arrayOfString = b;
-        localStringBuilder = new StringBuilder();
-        localStringBuilder.append(b[n]);
-        localStringBuilder.append('|');
-        localStringBuilder.append(b[m]);
-        localStringBuilder.append("|PADDED");
-        arrayOfString[(i1 | 0x8)] = localStringBuilder.toString();
-        j += 1;
+        this.f.add(parama);
+        a().execute(parama);
+        return;
       }
-      i += 1;
+      this.e.add(parama);
+      return;
     }
-    for (;;)
-    {
-      localObject = b;
-      if (j >= localObject.length) {
-        break;
-      }
-      if (localObject[j] == null) {
-        localObject[j] = c[j];
-      }
-      j += 1;
-    }
+    finally {}
   }
   
-  static IllegalArgumentException a(String paramString, Object... paramVarArgs)
+  final void b(akk.a parama)
   {
-    throw new IllegalArgumentException(aiw.a(paramString, paramVarArgs));
-  }
-  
-  static String a(boolean paramBoolean, int paramInt1, int paramInt2, byte paramByte1, byte paramByte2)
-  {
-    Object localObject = d;
-    String str1;
-    if (paramByte1 < localObject.length) {
-      str1 = localObject[paramByte1];
-    } else {
-      str1 = aiw.a("0x%02x", new Object[] { Byte.valueOf(paramByte1) });
-    }
-    if (paramByte2 == 0)
+    Deque localDeque = this.f;
+    try
     {
-      localObject = "";
-    }
-    else
-    {
-      switch (paramByte1)
+      if (localDeque.remove(parama))
       {
-      case 5: 
-      default: 
-        localObject = b;
-        if (paramByte2 < localObject.length) {
-          localObject = localObject[paramByte2];
+        b();
+        int i = c();
+        parama = this.c;
+        if ((i == 0) && (parama != null)) {
+          parama.run();
         }
-        break;
-      case 4: 
-      case 6: 
-        if (paramByte2 == 1) {
-          localObject = "ACK";
-        } else {
-          localObject = c[paramByte2];
-        }
-        break;
-      case 2: 
-      case 3: 
-      case 7: 
-      case 8: 
-        localObject = c[paramByte2];
-        break;
+        return;
       }
-      localObject = c[paramByte2];
-      if ((paramByte1 == 5) && ((paramByte2 & 0x4) != 0)) {
-        localObject = ((String)localObject).replace("HEADERS", "PUSH_PROMISE");
-      } else if ((paramByte1 == 0) && ((paramByte2 & 0x20) != 0)) {
-        localObject = ((String)localObject).replace("PRIORITY", "COMPRESSED");
-      }
+      throw new AssertionError("Call wasn't in-flight!");
     }
-    String str2;
-    if (paramBoolean) {
-      str2 = "<<";
-    } else {
-      str2 = ">>";
-    }
-    return aiw.a("%s 0x%08x %5d %-13s %s", new Object[] { str2, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), str1, localObject });
-  }
-  
-  static IOException b(String paramString, Object... paramVarArgs)
-  {
-    throw new IOException(aiw.a(paramString, paramVarArgs));
+    finally {}
   }
 }
 

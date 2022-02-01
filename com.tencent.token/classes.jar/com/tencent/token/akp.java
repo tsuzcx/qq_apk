@@ -1,146 +1,64 @@
 package com.tencent.token;
 
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
+import java.net.InetSocketAddress;
+import java.net.Proxy;
+import java.net.Proxy.Type;
+import javax.annotation.Nullable;
 
-final class akp<T>
+public final class akp
 {
-  private final Class<?> a;
-  private final String b;
-  private final Class[] c;
+  public final ajo a;
+  public final Proxy b;
+  public final InetSocketAddress c;
   
-  akp(Class<?> paramClass, String paramString, Class... paramVarArgs)
+  public akp(ajo paramajo, Proxy paramProxy, InetSocketAddress paramInetSocketAddress)
   {
-    this.a = paramClass;
-    this.b = paramString;
-    this.c = paramVarArgs;
-  }
-  
-  private Method a(Class<?> paramClass)
-  {
-    String str = this.b;
-    Method localMethod = null;
-    if (str != null)
+    if (paramajo != null)
     {
-      localMethod = a(paramClass, str, this.c);
-      if (localMethod != null)
+      if (paramProxy != null)
       {
-        paramClass = this.a;
-        if ((paramClass != null) && (!paramClass.isAssignableFrom(localMethod.getReturnType()))) {
-          return null;
-        }
-      }
-    }
-    return localMethod;
-  }
-  
-  private static Method a(Class<?> paramClass, String paramString, Class[] paramArrayOfClass)
-  {
-    try
-    {
-      paramClass = paramClass.getMethod(paramString, paramArrayOfClass);
-      int i;
-      return paramClass;
-    }
-    catch (NoSuchMethodException paramClass)
-    {
-      for (;;)
-      {
-        try
+        if (paramInetSocketAddress != null)
         {
-          i = paramClass.getModifiers();
-          if ((i & 0x1) == 0)
-          {
-            return null;
-            paramClass = null;
-          }
-          return paramClass;
+          this.a = paramajo;
+          this.b = paramProxy;
+          this.c = paramInetSocketAddress;
+          return;
         }
-        catch (NoSuchMethodException paramString) {}
-        paramClass = paramClass;
+        throw new NullPointerException("inetSocketAddress == null");
       }
+      throw new NullPointerException("proxy == null");
     }
+    throw new NullPointerException("address == null");
   }
   
-  private Object c(T paramT, Object... paramVarArgs)
+  public final boolean a()
   {
-    Method localMethod = a(paramT.getClass());
-    if (localMethod == null) {
-      return null;
-    }
-    try
-    {
-      paramT = localMethod.invoke(paramT, paramVarArgs);
-      return paramT;
-    }
-    catch (IllegalAccessException paramT) {}
-    return null;
+    return (this.a.i != null) && (this.b.type() == Proxy.Type.HTTP);
   }
   
-  private Object d(T paramT, Object... paramVarArgs)
+  public final boolean equals(@Nullable Object paramObject)
   {
-    Method localMethod = a(paramT.getClass());
-    if (localMethod != null) {
-      try
-      {
-        paramT = localMethod.invoke(paramT, paramVarArgs);
-        return paramT;
-      }
-      catch (IllegalAccessException paramT)
-      {
-        paramVarArgs = new AssertionError("Unexpectedly could not call: ".concat(String.valueOf(localMethod)));
-        paramVarArgs.initCause(paramT);
-        throw paramVarArgs;
+    if ((paramObject instanceof akp))
+    {
+      paramObject = (akp)paramObject;
+      if ((paramObject.a.equals(this.a)) && (paramObject.b.equals(this.b)) && (paramObject.c.equals(this.c))) {
+        return true;
       }
     }
-    paramVarArgs = new StringBuilder("Method ");
-    paramVarArgs.append(this.b);
-    paramVarArgs.append(" not supported for object ");
-    paramVarArgs.append(paramT);
-    throw new AssertionError(paramVarArgs.toString());
+    return false;
   }
   
-  public final Object a(T paramT, Object... paramVarArgs)
+  public final int hashCode()
   {
-    try
-    {
-      paramT = c(paramT, paramVarArgs);
-      return paramT;
-    }
-    catch (InvocationTargetException paramT)
-    {
-      paramT = paramT.getTargetException();
-      if ((paramT instanceof RuntimeException)) {
-        throw ((RuntimeException)paramT);
-      }
-      paramVarArgs = new AssertionError("Unexpected exception");
-      paramVarArgs.initCause(paramT);
-      throw paramVarArgs;
-    }
+    return ((this.a.hashCode() + 527) * 31 + this.b.hashCode()) * 31 + this.c.hashCode();
   }
   
-  public final boolean a(T paramT)
+  public final String toString()
   {
-    return a(paramT.getClass()) != null;
-  }
-  
-  public final Object b(T paramT, Object... paramVarArgs)
-  {
-    try
-    {
-      paramT = d(paramT, paramVarArgs);
-      return paramT;
-    }
-    catch (InvocationTargetException paramT)
-    {
-      paramT = paramT.getTargetException();
-      if ((paramT instanceof RuntimeException)) {
-        throw ((RuntimeException)paramT);
-      }
-      paramVarArgs = new AssertionError("Unexpected exception");
-      paramVarArgs.initCause(paramT);
-      throw paramVarArgs;
-    }
+    StringBuilder localStringBuilder = new StringBuilder("Route{");
+    localStringBuilder.append(this.c);
+    localStringBuilder.append("}");
+    return localStringBuilder.toString();
   }
 }
 

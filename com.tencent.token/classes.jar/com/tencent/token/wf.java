@@ -3,29 +3,28 @@ package com.tencent.token;
 import android.content.Context;
 import android.os.Handler;
 import android.os.Message;
+import com.tencent.token.core.bean.FreezeStatusResult;
 import com.tencent.token.global.RqdApplication;
 import java.util.HashMap;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 public final class wf
-  extends tj
+  extends tr
 {
   private long d;
-  private String e;
-  private int f;
+  private int e;
+  private FreezeStatusResult f;
   
   public final String a()
   {
-    rz.a();
+    sh.a();
     this.a.a(104, null, null);
     return null;
   }
   
-  public final void a(aaq paramaaq)
+  public final void a(abc paramabc)
   {
-    this.d = ((Long)paramaaq.c.get("param.uinhash")).longValue();
-    this.e = ((String)paramaaq.c.get("param.loginmsg.reportlocation"));
+    this.d = ((Long)paramabc.c.get("param.uinhash")).longValue();
   }
   
   public final void a(JSONObject paramJSONObject)
@@ -36,24 +35,29 @@ public final class wf
       a(i, paramJSONObject.getString("info"));
       return;
     }
-    paramJSONObject = aac.d(paramJSONObject.getString("data"));
+    paramJSONObject = aao.d(paramJSONObject.getString("data"));
     if (paramJSONObject != null)
     {
       paramJSONObject = new JSONObject(new String(paramJSONObject));
-      try
+      i = paramJSONObject.getInt("seq_id");
+      if (i != this.e)
       {
-        this.f = paramJSONObject.getInt("is_priv_ip_user");
+        this.a.a(10030, null, null);
+        paramJSONObject = new StringBuilder("parseJSON error seq is wrong seq=");
+        paramJSONObject.append(i);
+        paramJSONObject.append(",right = ");
+        si.a();
+        paramJSONObject.append(si.b());
+        xj.c(paramJSONObject.toString());
+        return;
       }
-      catch (JSONException paramJSONObject)
-      {
-        this.f = -1;
-        paramJSONObject.printStackTrace();
-      }
+      xj.a("freeze result = ".concat(String.valueOf(paramJSONObject)));
+      this.f = new FreezeStatusResult(paramJSONObject);
       this.a.a = 0;
       return;
     }
-    xa.c("parseJSON error decodeData=".concat(String.valueOf(paramJSONObject)));
-    a(10022, RqdApplication.n().getString(2131493068));
+    xj.c("parseJSON error decodeData=".concat(String.valueOf(paramJSONObject)));
+    a(10022, RqdApplication.p().getString(2131493068));
   }
   
   public final void b()
@@ -62,7 +66,7 @@ public final class wf
     {
       Message localMessage = this.b.d.obtainMessage(this.b.f);
       localMessage.arg1 = 0;
-      localMessage.arg2 = this.f;
+      localMessage.obj = this.f;
       localMessage.sendToTarget();
       this.b.e = true;
     }

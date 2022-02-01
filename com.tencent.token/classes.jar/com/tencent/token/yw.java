@@ -1,68 +1,216 @@
 package com.tencent.token;
 
-import android.content.Context;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.CheckBox;
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Handler;
+import com.tencent.token.core.bean.DeterminVerifyFactorsResult;
+import com.tencent.token.core.bean.DeterminVerifyFactorsResult.VerifyTypeItem;
+import com.tencent.token.core.bean.QQUser;
+import com.tencent.token.ui.AccountPageActivity;
+import com.tencent.token.ui.FaceRecognitionCameraActivity;
+import com.tencent.token.ui.GeneralVerifyMobileUpActivity;
+import com.tencent.token.ui.IndexActivity;
+import com.tencent.token.ui.NetActiveSetDirBySeqActivity;
+import com.tencent.token.ui.NetActiveVryMobileNoSmsActivity;
+import com.tencent.token.ui.NetActiveVryOtherListActivity;
+import com.tencent.token.ui.NetActiveVryQQTokenActivity;
+import com.tencent.token.ui.NetActiveVryQuesActivity;
+import com.tencent.token.ui.RealNameFindActivity;
+import com.tencent.token.ui.UtilsActivity;
+import com.tencent.token.ui.VerifyMobilePhoneActivity;
+import com.tmsdk.TMSDKContext;
+import java.util.List;
 
 public final class yw
-  extends RelativeLayout
 {
-  private Context a;
-  private LayoutInflater b;
-  private View c;
-  private CheckBox d;
-  private a e;
+  private static yw c;
+  public Activity a;
+  public QQUser b = new QQUser();
+  private Handler d = new Handler();
   
-  public yw(Context paramContext, final int paramInt)
+  public static yw a()
   {
-    super(paramContext);
-    this.a = paramContext;
-    this.b = ((LayoutInflater)this.a.getSystemService("layout_inflater"));
-    if (paramInt == 0)
+    if (c == null) {
+      c = new yw();
+    }
+    return c;
+  }
+  
+  private void a(Activity paramActivity, DeterminVerifyFactorsResult paramDeterminVerifyFactorsResult, DeterminVerifyFactorsResult.VerifyTypeItem paramVerifyTypeItem, Handler paramHandler)
+  {
+    if (!paramActivity.isFinishing())
     {
-      this.c = this.b.inflate(2131296423, null);
-      addView(this.c, new RelativeLayout.LayoutParams(-1, -1));
-      this.d = ((CheckBox)findViewById(2131165367));
-      xb.a(paramInt, false);
-      this.d.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
+      if (paramDeterminVerifyFactorsResult == null) {
+        return;
+      }
+      QQUser localQQUser = th.a().k.b();
+      if (paramDeterminVerifyFactorsResult.mScene == 2) {
+        localQQUser = this.b;
+      }
+      if (localQQUser == null) {
+        return;
+      }
+      if (paramVerifyTypeItem != null)
       {
-        public final void onCheckedChanged(CompoundButton paramAnonymousCompoundButton, boolean paramAnonymousBoolean)
+        List localList = paramVerifyTypeItem.mVerifyFactorList;
+        if ((localList != null) && (localList.size() > 0))
         {
-          xb.a(paramInt, paramAnonymousBoolean ^ true);
-        }
-      });
-    }
-    else
-    {
-      this.c = this.b.inflate(2131296424, null);
-      addView(this.c, new RelativeLayout.LayoutParams(-1, -1));
-    }
-    findViewById(2131165946).setOnClickListener(new View.OnClickListener()
-    {
-      public final void onClick(View paramAnonymousView)
-      {
-        yw.this.setVisibility(8);
-        if (yw.a(yw.this) != null) {
-          yw.a(yw.this).a();
+          i = ((Integer)localList.get(0)).intValue();
+          break label90;
         }
       }
-    });
+      int i = -1;
+      label90:
+      a(paramActivity, paramDeterminVerifyFactorsResult, paramVerifyTypeItem, i, true, paramHandler);
+      paramActivity = new StringBuilder();
+      paramActivity.append(localQQUser.mRealUin);
+      TMSDKContext.SaveStringData(1150089, paramActivity.toString());
+      return;
+    }
   }
   
-  public final void setViewListener(a parama)
+  private void a(Activity paramActivity, DeterminVerifyFactorsResult paramDeterminVerifyFactorsResult, QQUser paramQQUser, DeterminVerifyFactorsResult.VerifyTypeItem paramVerifyTypeItem, int paramInt, boolean paramBoolean, Handler paramHandler)
   {
-    this.e = parama;
+    switch (paramInt)
+    {
+    default: 
+      paramHandler = new Intent(paramActivity, NetActiveVryOtherListActivity.class);
+      paramHandler.putExtra("intent.qquser", paramQQUser);
+      paramHandler.putExtra("intent.determin_factors_result", paramDeterminVerifyFactorsResult);
+      paramHandler.putExtra("intent.determin_verify_type", paramVerifyTypeItem);
+      paramActivity.startActivity(paramHandler);
+      return;
+    case 7: 
+      a(paramDeterminVerifyFactorsResult, paramQQUser, paramVerifyTypeItem, 7, paramBoolean, paramActivity, NetActiveVryQuesActivity.class);
+      return;
+    case 6: 
+      a(paramDeterminVerifyFactorsResult, paramQQUser, paramVerifyTypeItem, 6, paramBoolean, paramActivity, RealNameFindActivity.class);
+      return;
+    case 5: 
+      a(paramDeterminVerifyFactorsResult, paramQQUser, paramVerifyTypeItem, 5, paramBoolean, paramActivity, FaceRecognitionCameraActivity.class);
+      return;
+    case 4: 
+      a(paramDeterminVerifyFactorsResult, paramQQUser, paramVerifyTypeItem, 4, paramBoolean, paramActivity, NetActiveVryQQTokenActivity.class);
+      return;
+    case 3: 
+      if (paramDeterminVerifyFactorsResult.d())
+      {
+        a(paramDeterminVerifyFactorsResult, paramQQUser, paramVerifyTypeItem, 3, paramBoolean, paramActivity, NetActiveVryMobileNoSmsActivity.class);
+        return;
+      }
+      if (paramDeterminVerifyFactorsResult.e())
+      {
+        a(paramDeterminVerifyFactorsResult, paramQQUser, paramVerifyTypeItem, 3, paramBoolean, paramActivity, GeneralVerifyMobileUpActivity.class);
+        return;
+      }
+      a(paramDeterminVerifyFactorsResult, paramQQUser, paramVerifyTypeItem, 3, paramBoolean, paramActivity, NetActiveVryMobileNoSmsActivity.class);
+      return;
+    case 2: 
+      a(paramDeterminVerifyFactorsResult, paramQQUser, paramVerifyTypeItem, 2, paramBoolean, paramActivity, VerifyMobilePhoneActivity.class);
+      return;
+    }
+    if (paramDeterminVerifyFactorsResult.b())
+    {
+      si.a().b(paramQQUser.mRealUin, paramVerifyTypeItem.verifyTypeId, "", "", paramHandler);
+      this.a = null;
+      return;
+    }
+    a(paramDeterminVerifyFactorsResult, paramQQUser, paramVerifyTypeItem, 1, paramBoolean, paramActivity, NetActiveSetDirBySeqActivity.class);
   }
   
-  public static abstract interface a
+  private void a(final DeterminVerifyFactorsResult paramDeterminVerifyFactorsResult, final QQUser paramQQUser, final DeterminVerifyFactorsResult.VerifyTypeItem paramVerifyTypeItem, final int paramInt, final boolean paramBoolean, final Activity paramActivity, final Class paramClass)
   {
-    public abstract void a();
+    if ((paramActivity instanceof NetActiveVryOtherListActivity))
+    {
+      paramActivity.setResult(112);
+      paramActivity.finish();
+    }
+    this.d.postDelayed(new Runnable()
+    {
+      public final void run()
+      {
+        Intent localIntent = new Intent(paramActivity, paramClass);
+        localIntent.putExtra("intent.qquser", paramQQUser);
+        localIntent.putExtra("intent.determin_factors_result", paramDeterminVerifyFactorsResult);
+        localIntent.putExtra("intent.determin_verify_type", paramVerifyTypeItem);
+        localIntent.putExtra("intent.determin_verify_factor_id", paramInt);
+        localIntent.putExtra("intent.determin_first_verify_factor", paramBoolean);
+        boolean bool;
+        if ((paramActivity instanceof NetActiveVryOtherListActivity)) {
+          bool = true;
+        } else {
+          bool = false;
+        }
+        localIntent.putExtra("intent.determin_from_list", bool);
+        paramActivity.startActivity(localIntent);
+      }
+    }, 10L);
+  }
+  
+  public static void b() {}
+  
+  public final Intent a(Activity paramActivity)
+  {
+    Object localObject = this.a;
+    if (localObject != null) {
+      localObject = new Intent(paramActivity, localObject.getClass());
+    } else {
+      localObject = new Intent(paramActivity, IndexActivity.class);
+    }
+    Activity localActivity = this.a;
+    if (((localActivity instanceof UtilsActivity)) || ((localActivity instanceof AccountPageActivity))) {
+      localObject = new Intent(paramActivity, IndexActivity.class);
+    }
+    ((Intent)localObject).addFlags(67108864);
+    return localObject;
+  }
+  
+  public final void a(Activity paramActivity, DeterminVerifyFactorsResult paramDeterminVerifyFactorsResult, Handler paramHandler)
+  {
+    if (!paramActivity.isFinishing())
+    {
+      if (paramDeterminVerifyFactorsResult == null) {
+        return;
+      }
+      this.a = paramActivity;
+      Object localObject1 = th.a().k.b();
+      if (paramDeterminVerifyFactorsResult.mScene == 2) {
+        localObject1 = this.b;
+      }
+      if (localObject1 == null) {
+        return;
+      }
+      Object localObject2 = null;
+      localObject1 = localObject2;
+      if (paramDeterminVerifyFactorsResult.mVerifyTypeList != null)
+      {
+        localObject1 = localObject2;
+        if (paramDeterminVerifyFactorsResult.mVerifyTypeList.size() > 0) {
+          localObject1 = (DeterminVerifyFactorsResult.VerifyTypeItem)paramDeterminVerifyFactorsResult.mVerifyTypeList.get(0);
+        }
+      }
+      a(paramActivity, paramDeterminVerifyFactorsResult, (DeterminVerifyFactorsResult.VerifyTypeItem)localObject1, paramHandler);
+      return;
+    }
+  }
+  
+  public final void a(Activity paramActivity, DeterminVerifyFactorsResult paramDeterminVerifyFactorsResult, DeterminVerifyFactorsResult.VerifyTypeItem paramVerifyTypeItem, int paramInt, boolean paramBoolean, Handler paramHandler)
+  {
+    if (!paramActivity.isFinishing())
+    {
+      if (paramDeterminVerifyFactorsResult == null) {
+        return;
+      }
+      QQUser localQQUser = th.a().k.b();
+      if (paramDeterminVerifyFactorsResult.mScene == 2) {
+        localQQUser = this.b;
+      }
+      if (localQQUser == null) {
+        return;
+      }
+      a(paramActivity, paramDeterminVerifyFactorsResult, localQQUser, paramVerifyTypeItem, paramInt, paramBoolean, paramHandler);
+      return;
+    }
   }
 }
 

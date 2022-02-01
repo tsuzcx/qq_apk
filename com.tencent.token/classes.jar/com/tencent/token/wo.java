@@ -1,67 +1,91 @@
 package com.tencent.token;
 
-public class wo
+import android.content.Context;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.token.global.RqdApplication;
+import java.util.HashMap;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+public final class wo
+  extends tr
 {
-  public static long d;
-  public static byte[] k = new byte[16];
-  public short a;
-  public short b;
-  public long c;
-  public short e;
-  public short f;
-  public short g;
-  public long h;
-  public byte i;
-  public byte j;
-  public byte[] l = null;
+  private long d;
+  private String e;
+  private String f;
+  private String g;
+  private int h;
+  private String i;
+  private String j;
+  private String k;
   
-  public wo() {}
-  
-  public wo(short paramShort, byte paramByte)
+  public final String a()
   {
-    this.b = paramShort;
-    this.i = paramByte;
-    this.j = 0;
+    sh.a();
+    this.a.a(104, null, null);
+    return null;
   }
   
-  public final byte[] a()
+  public final void a(abc paramabc)
   {
-    Object localObject = this.l;
-    int m;
-    if ((localObject != null) && (localObject.length > 0)) {
-      m = localObject.length;
-    } else {
-      m = 0;
-    }
-    this.a = ((short)(m + 41 + 1));
-    localObject = new StringBuilder("socket req msg total len: ");
-    ((StringBuilder)localObject).append(this.a);
-    xa.a(((StringBuilder)localObject).toString());
-    this.h = System.currentTimeMillis();
-    short s = this.a;
-    localObject = new byte[s];
-    localObject[0] = 2;
-    sr.a((byte[])localObject, 1, s);
-    sr.a((byte[])localObject, 3, this.b);
-    sr.a((byte[])localObject, 5, this.c);
-    sr.a((byte[])localObject, 9, d);
-    sr.a((byte[])localObject, 13, this.e);
-    sr.a((byte[])localObject, 15, this.f);
-    sr.a((byte[])localObject, 17, this.g);
-    sr.a((byte[])localObject, 19, this.h);
-    localObject[23] = this.i;
-    localObject[24] = this.j;
-    byte[] arrayOfByte = k;
-    sr.a((byte[])localObject, 25, arrayOfByte, 0, arrayOfByte.length);
-    int i1 = k.length + 25;
-    int n = i1;
-    if (m > 0)
+    this.d = ((Long)paramabc.c.get("param.uinhash")).longValue();
+    this.h = ((Integer)paramabc.c.get("param.mbmobile.set")).intValue();
+    this.i = ((String)paramabc.c.get("param.mbmobile.mobile"));
+    this.j = ((String)paramabc.c.get("param.mbmoible.areacode"));
+    this.k = ((String)paramabc.c.get("param.wtlogin.a2"));
+  }
+  
+  public final void a(JSONObject paramJSONObject)
+  {
+    int m = paramJSONObject.getInt("err");
+    if (m == 0)
     {
-      sr.a((byte[])localObject, i1, this.l, 0, m);
-      n = i1 + m;
+      paramJSONObject = aao.d(paramJSONObject.getString("data"));
+      if (paramJSONObject != null)
+      {
+        paramJSONObject = new JSONObject(new String(paramJSONObject));
+        if (paramJSONObject.getInt("seq_id") != this.c)
+        {
+          a(10000, RqdApplication.p().getString(2131493068));
+          return;
+        }
+        this.a.a = 0;
+        this.f = paramJSONObject.getString("time1");
+        this.g = paramJSONObject.getString("time2");
+        this.e = paramJSONObject.optString("extraInfo");
+        return;
+      }
+      xj.c("parseJSON error decodeData=".concat(String.valueOf(paramJSONObject)));
+      this.a.a(10022, RqdApplication.p().getString(2131493068), RqdApplication.p().getString(2131493068));
+      return;
     }
-    localObject[n] = 3;
-    return localObject;
+    paramJSONObject = paramJSONObject.getString("info");
+    this.e = paramJSONObject;
+    a(m, paramJSONObject);
+  }
+  
+  public final void b()
+  {
+    if ((!this.b.e) && (this.b.d != null))
+    {
+      Message localMessage = this.b.d.obtainMessage(this.b.f);
+      localMessage.arg1 = 0;
+      JSONObject localJSONObject = new JSONObject();
+      try
+      {
+        localJSONObject.put("info", this.e);
+        localJSONObject.put("time1", this.f);
+        localJSONObject.put("time2", this.g);
+      }
+      catch (JSONException localJSONException)
+      {
+        localJSONException.printStackTrace();
+      }
+      localMessage.obj = localJSONObject;
+      localMessage.sendToTarget();
+      this.b.e = true;
+    }
   }
 }
 

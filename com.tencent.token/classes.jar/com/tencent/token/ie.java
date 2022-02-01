@@ -1,186 +1,224 @@
 package com.tencent.token;
 
-import android.content.res.ColorStateList;
+import android.content.Context;
+import android.content.res.Configuration;
+import android.content.res.Resources.Theme;
 import android.content.res.TypedArray;
-import android.graphics.PorterDuff.Mode;
-import android.graphics.drawable.Drawable;
-import android.os.Build.VERSION;
+import android.support.v7.widget.ActionMenuPresenter;
+import android.support.v7.widget.ActionMenuView;
 import android.util.AttributeSet;
+import android.util.TypedValue;
+import android.view.ContextThemeWrapper;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.View.MeasureSpec;
+import android.view.ViewGroup;
 
-public final class ie
+public abstract class ie
+  extends ViewGroup
 {
-  private final View a;
-  private final ig b;
-  private int c = -1;
-  private jc d;
-  private jc e;
-  private jc f;
+  protected final a a = new a();
+  protected final Context b;
+  protected ActionMenuView c;
+  protected ActionMenuPresenter d;
+  protected int e;
+  protected fd f;
+  private boolean g;
+  private boolean h;
   
-  public ie(View paramView)
+  ie(Context paramContext, AttributeSet paramAttributeSet)
   {
-    this.a = paramView;
-    this.b = ig.a();
+    this(paramContext, paramAttributeSet, 0);
   }
   
-  private boolean a(Drawable paramDrawable)
+  protected ie(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
-    if (this.f == null) {
-      this.f = new jc();
-    }
-    jc localjc = this.f;
-    localjc.a();
-    Object localObject = ew.m(this.a);
-    if (localObject != null)
+    super(paramContext, paramAttributeSet, paramInt);
+    paramAttributeSet = new TypedValue();
+    if ((paramContext.getTheme().resolveAttribute(gs.a.actionBarPopupTheme, paramAttributeSet, true)) && (paramAttributeSet.resourceId != 0))
     {
-      localjc.d = true;
-      localjc.a = ((ColorStateList)localObject);
+      this.b = new ContextThemeWrapper(paramContext, paramAttributeSet.resourceId);
+      return;
     }
-    localObject = ew.n(this.a);
-    if (localObject != null)
+    this.b = paramContext;
+  }
+  
+  protected static int a(int paramInt1, int paramInt2, boolean paramBoolean)
+  {
+    if (paramBoolean) {
+      return paramInt1 - paramInt2;
+    }
+    return paramInt1 + paramInt2;
+  }
+  
+  protected static int a(View paramView, int paramInt1, int paramInt2)
+  {
+    paramView.measure(View.MeasureSpec.makeMeasureSpec(paramInt1, -2147483648), paramInt2);
+    return Math.max(0, paramInt1 - paramView.getMeasuredWidth() - 0);
+  }
+  
+  protected static int a(View paramView, int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean)
+  {
+    int i = paramView.getMeasuredWidth();
+    int j = paramView.getMeasuredHeight();
+    paramInt2 += (paramInt3 - j) / 2;
+    if (paramBoolean) {
+      paramView.layout(paramInt1 - i, paramInt2, paramInt1, j + paramInt2);
+    } else {
+      paramView.layout(paramInt1, paramInt2, paramInt1 + i, j + paramInt2);
+    }
+    if (paramBoolean) {
+      return -i;
+    }
+    return i;
+  }
+  
+  public fd a(int paramInt, long paramLong)
+  {
+    fd localfd = this.f;
+    if (localfd != null) {
+      localfd.b();
+    }
+    if (paramInt == 0)
     {
-      localjc.c = true;
-      localjc.b = ((PorterDuff.Mode)localObject);
+      if (getVisibility() != 0) {
+        setAlpha(0.0F);
+      }
+      localfd = fa.f(this).a(1.0F);
+      localfd.a(paramLong);
+      localfd.a(this.a.a(localfd, paramInt));
+      return localfd;
     }
-    if ((!localjc.d) && (!localjc.c)) {
-      return false;
+    localfd = fa.f(this).a(0.0F);
+    localfd.a(paramLong);
+    localfd.a(this.a.a(localfd, paramInt));
+    return localfd;
+  }
+  
+  public boolean a()
+  {
+    ActionMenuPresenter localActionMenuPresenter = this.d;
+    if (localActionMenuPresenter != null) {
+      return localActionMenuPresenter.d();
     }
-    ig.a(paramDrawable, localjc, this.a.getDrawableState());
+    return false;
+  }
+  
+  public int getAnimatedVisibility()
+  {
+    if (this.f != null) {
+      return this.a.a;
+    }
+    return getVisibility();
+  }
+  
+  public int getContentHeight()
+  {
+    return this.e;
+  }
+  
+  protected void onConfigurationChanged(Configuration paramConfiguration)
+  {
+    super.onConfigurationChanged(paramConfiguration);
+    paramConfiguration = getContext().obtainStyledAttributes(null, gs.j.ActionBar, gs.a.actionBarStyle, 0);
+    setContentHeight(paramConfiguration.getLayoutDimension(gs.j.ActionBar_height, 0));
+    paramConfiguration.recycle();
+    paramConfiguration = this.d;
+    if (paramConfiguration != null) {
+      paramConfiguration.b();
+    }
+  }
+  
+  public boolean onHoverEvent(MotionEvent paramMotionEvent)
+  {
+    int i = paramMotionEvent.getActionMasked();
+    if (i == 9) {
+      this.h = false;
+    }
+    if (!this.h)
+    {
+      boolean bool = super.onHoverEvent(paramMotionEvent);
+      if ((i == 9) && (!bool)) {
+        this.h = true;
+      }
+    }
+    if ((i == 10) || (i == 3)) {
+      this.h = false;
+    }
     return true;
   }
   
-  private void b(ColorStateList paramColorStateList)
+  public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    if (paramColorStateList != null)
+    int i = paramMotionEvent.getActionMasked();
+    if (i == 0) {
+      this.g = false;
+    }
+    if (!this.g)
     {
-      if (this.d == null) {
-        this.d = new jc();
+      boolean bool = super.onTouchEvent(paramMotionEvent);
+      if ((i == 0) && (!bool)) {
+        this.g = true;
       }
-      jc localjc = this.d;
-      localjc.a = paramColorStateList;
-      localjc.d = true;
     }
-    else
+    if ((i == 1) || (i == 3)) {
+      this.g = false;
+    }
+    return true;
+  }
+  
+  public void setContentHeight(int paramInt)
+  {
+    this.e = paramInt;
+    requestLayout();
+  }
+  
+  public void setVisibility(int paramInt)
+  {
+    if (paramInt != getVisibility())
     {
-      this.d = null;
-    }
-    d();
-  }
-  
-  private boolean e()
-  {
-    int i = Build.VERSION.SDK_INT;
-    if (i > 21) {
-      return this.d != null;
-    }
-    return i == 21;
-  }
-  
-  public final void a()
-  {
-    this.c = -1;
-    b(null);
-    d();
-  }
-  
-  public final void a(int paramInt)
-  {
-    this.c = paramInt;
-    Object localObject = this.b;
-    if (localObject != null) {
-      localObject = ((ig)localObject).b(this.a.getContext(), paramInt);
-    } else {
-      localObject = null;
-    }
-    b((ColorStateList)localObject);
-    d();
-  }
-  
-  public final void a(ColorStateList paramColorStateList)
-  {
-    if (this.e == null) {
-      this.e = new jc();
-    }
-    jc localjc = this.e;
-    localjc.a = paramColorStateList;
-    localjc.d = true;
-    d();
-  }
-  
-  public final void a(PorterDuff.Mode paramMode)
-  {
-    if (this.e == null) {
-      this.e = new jc();
-    }
-    jc localjc = this.e;
-    localjc.b = paramMode;
-    localjc.c = true;
-    d();
-  }
-  
-  public final void a(AttributeSet paramAttributeSet, int paramInt)
-  {
-    paramAttributeSet = je.a(this.a.getContext(), paramAttributeSet, go.j.ViewBackgroundHelper, paramInt, 0);
-    try
-    {
-      if (paramAttributeSet.f(go.j.ViewBackgroundHelper_android_background))
-      {
-        this.c = paramAttributeSet.g(go.j.ViewBackgroundHelper_android_background, -1);
-        ColorStateList localColorStateList = this.b.b(this.a.getContext(), this.c);
-        if (localColorStateList != null) {
-          b(localColorStateList);
-        }
+      fd localfd = this.f;
+      if (localfd != null) {
+        localfd.b();
       }
-      if (paramAttributeSet.f(go.j.ViewBackgroundHelper_backgroundTint)) {
-        ew.a(this.a, paramAttributeSet.e(go.j.ViewBackgroundHelper_backgroundTint));
-      }
-      if (paramAttributeSet.f(go.j.ViewBackgroundHelper_backgroundTintMode)) {
-        ew.a(this.a, iq.a(paramAttributeSet.a(go.j.ViewBackgroundHelper_backgroundTintMode, -1), null));
-      }
-      return;
+      super.setVisibility(paramInt);
     }
-    finally
+  }
+  
+  public final class a
+    implements fe
+  {
+    int a;
+    private boolean c = false;
+    
+    protected a() {}
+    
+    public final a a(fd paramfd, int paramInt)
     {
-      paramAttributeSet.a.recycle();
+      ie.this.f = paramfd;
+      this.a = paramInt;
+      return this;
     }
-  }
-  
-  public final ColorStateList b()
-  {
-    jc localjc = this.e;
-    if (localjc != null) {
-      return localjc.a;
-    }
-    return null;
-  }
-  
-  public final PorterDuff.Mode c()
-  {
-    jc localjc = this.e;
-    if (localjc != null) {
-      return localjc.b;
-    }
-    return null;
-  }
-  
-  public final void d()
-  {
-    Drawable localDrawable = this.a.getBackground();
-    if (localDrawable != null)
+    
+    public final void a(View paramView)
     {
-      if ((e()) && (a(localDrawable))) {
+      ie.a(ie.this);
+      this.c = false;
+    }
+    
+    public final void b(View paramView)
+    {
+      if (this.c) {
         return;
       }
-      jc localjc = this.e;
-      if (localjc != null)
-      {
-        ig.a(localDrawable, localjc, this.a.getDrawableState());
-        return;
-      }
-      localjc = this.d;
-      if (localjc != null) {
-        ig.a(localDrawable, localjc, this.a.getDrawableState());
-      }
+      paramView = ie.this;
+      paramView.f = null;
+      ie.a(paramView, this.a);
+    }
+    
+    public final void c(View paramView)
+    {
+      this.c = true;
     }
   }
 }

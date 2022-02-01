@@ -16,6 +16,7 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES"/>
     <uses-permission android:name="android.permission.REORDER_TASKS"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
     <application android:allowBackup="false" android:icon="@mipmap/ic_launcher" android:label="@string/app_name" android:name="com.tencent.token.global.RqdApplication" android:networkSecurityConfig="@xml/network_security_config" android:theme="@android:style/Theme.NoTitleBar">
         <activity android:configChanges="keyboardHidden|navigation|orientation" android:name="com.tencent.token.ui.LogoActivity" android:screenOrientation="portrait">
             <intent-filter>
@@ -152,28 +153,14 @@
             </intent-filter>
         </receiver>
         <service android:exported="false" android:name="com.tencent.token.widget.TokenService"/>
-        <service android:exported="false" android:name="com.tencent.token.core.push.PushService">
-            <intent-filter>
-                <action android:name="android.net.conn.CONNECTIVITY_CHANGE"/>
-            </intent-filter>
-        </service>
-        <service android:exported="true" android:name="com.tencent.service.ActivateService"/>
+        <service android:exported="false" android:name="com.tencent.token.core.push.PushService"/>
         <service android:exported="false" android:name="com.tencent.token.core.gamelogin.GameLoginService"/>
-        <service android:exported="false" android:name="com.tencent.token.upload.NetInfoService">
-            <intent-filter android:priority="1000">
-                <action android:name="com.tencent.token.upload.NetInfoService"/>
-            </intent-filter>
-        </service>
-        <receiver android:exported="false" android:name="com.tencent.token.core.push.BootBroadcastReceiver">
-            <intent-filter>
-                <action android:name="android.intent.action.BOOT_COMPLETED"/>
-            </intent-filter>
-        </receiver>
         <provider android:authorities="com.tencent.token.FileProvider" android:exported="false" android:grantUriPermissions="true" android:name="android.support.v4.content.FileProvider">
             <meta-data android:name="android.support.FILE_PROVIDER_PATHS" android:resource="@xml/provider_paths"/>
         </provider>
         <meta-data android:name="TA_APPKEY" android:value="atwik2vjlhy4"/>
         <activity android:configChanges="keyboardHidden|navigation|orientation" android:exported="false" android:name="com.tencent.captchasdk.TCaptchaPopupActivity" android:theme="@style/TCaptchaPopupDialogActivity"/>
         <activity android:hardwareAccelerated="false" android:name="com.tencent.qqpimsecure.pg.PermissionGuideActivity" android:screenOrientation="portrait" android:theme="@style/PermissionGuideActivityTheme"/>
+        <provider android:authorities="com.tencent.token.lifecycle-trojan" android:exported="false" android:multiprocess="true" android:name="android.arch.lifecycle.ProcessLifecycleOwnerInitializer"/>
     </application>
 </manifest>

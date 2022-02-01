@@ -1,1564 +1,585 @@
 package com.tencent.token;
 
-import android.app.Activity;
-import android.app.ActivityManager;
-import android.app.ActivityManager.RunningTaskInfo;
-import android.content.ComponentName;
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import android.graphics.BitmapFactory;
-import android.graphics.BitmapFactory.Options;
-import android.graphics.Matrix;
-import android.graphics.Paint;
-import android.media.ExifInterface;
-import android.os.Build;
-import android.os.Build.VERSION;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.ViewGroup.MarginLayoutParams;
-import android.view.Window;
-import android.view.inputmethod.InputMethodManager;
-import com.tencent.token.core.bean.ConfigResult;
-import com.tencent.token.core.bean.FaceRecognitionParamResult;
+import android.view.MotionEvent;
 import com.tencent.token.core.bean.QQUser;
-import com.tencent.token.core.bean.ZzbIntroItem;
 import com.tencent.token.global.RqdApplication;
-import com.tencent.token.utils.ImageCache;
-import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.FileFilter;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.lang.reflect.Field;
-import java.lang.reflect.Method;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.token.utils.UserTask;
+import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.atomic.AtomicReference;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 public final class aad
 {
-  public static ConfigResult a;
-  public static int b;
-  static int c = 0;
-  static boolean d = false;
-  static boolean e = false;
-  private static ImageCache f = new ImageCache(2, RqdApplication.n());
-  private static final FileFilter g;
+  public static int b = 0;
+  public static int c = 1;
+  public static int d = 2;
+  public static int e = 3;
+  public static int f = 4;
+  public static boolean g = false;
+  private static int m = 20;
+  private static int n = 20;
+  private static int o = m;
+  private static aad p = null;
+  private static boolean r = false;
+  public boolean a = true;
+  protected JSONArray h = new JSONArray();
+  protected String i;
+  public MotionEvent j;
+  public int k = b;
+  private int l;
+  private boolean q = false;
+  private QQUser s = null;
+  private boolean t;
+  private UserTask<String, String, xh> u = null;
   
-  static
+  public static aad a()
   {
-    a = new ConfigResult();
-    b = 600;
-    g = new FileFilter()
+    if (p == null) {
+      p = new aad();
+    }
+    if ((!xf.j()) && (!r))
     {
-      public final boolean accept(File paramAnonymousFile)
-      {
-        paramAnonymousFile = paramAnonymousFile.getName();
-        if (paramAnonymousFile.startsWith("cpu"))
-        {
-          int i = 3;
-          while (i < paramAnonymousFile.length()) {
-            if (paramAnonymousFile.charAt(i) >= '0')
-            {
-              if (paramAnonymousFile.charAt(i) > '9') {
-                return false;
-              }
-              i += 1;
-            }
-            else
-            {
-              return false;
-            }
-          }
-          return true;
-        }
-        return false;
-      }
-    };
+      r = true;
+      p.g();
+    }
+    return p;
   }
   
-  public static long a(int paramInt, long paramLong)
+  /* Error */
+  private xh a(String paramString)
   {
-    try
-    {
-      localObject2 = RqdApplication.n().getSharedPreferences("features_file", 0);
-      Object localObject1;
-      if (paramInt == 1)
-      {
-        localObject1 = new StringBuilder();
-        ((StringBuilder)localObject1).append(paramLong);
-        ((StringBuilder)localObject1).append("_login");
-        localObject1 = ((StringBuilder)localObject1).toString();
-      }
-      else
-      {
-        localObject1 = new StringBuilder();
-        ((StringBuilder)localObject1).append(paramLong);
-        ((StringBuilder)localObject1).append("_op");
-        localObject1 = ((StringBuilder)localObject1).toString();
-      }
-      paramLong = ((SharedPreferences)localObject2).getLong((String)localObject1, 0L);
-      return paramLong;
-    }
-    catch (Exception localException)
-    {
-      Object localObject2 = new StringBuilder("SharedPreferences msg ");
-      ((StringBuilder)localObject2).append(localException.getMessage());
-      xa.c(((StringBuilder)localObject2).toString());
-    }
-    return 0L;
+    // Byte code:
+    //   0: new 103	com/tencent/token/xh
+    //   3: dup
+    //   4: invokespecial 104	com/tencent/token/xh:<init>	()V
+    //   7: astore_3
+    //   8: invokestatic 109	com/tencent/token/th:a	()Lcom/tencent/token/th;
+    //   11: invokevirtual 111	com/tencent/token/th:i	()Z
+    //   14: ifne +26 -> 40
+    //   17: aload_0
+    //   18: getfield 113	com/tencent/token/aad:t	Z
+    //   21: ifeq +8 -> 29
+    //   24: aload_0
+    //   25: invokespecial 115	com/tencent/token/aad:f	()Z
+    //   28: pop
+    //   29: aload_3
+    //   30: sipush 30001
+    //   33: aconst_null
+    //   34: aconst_null
+    //   35: invokevirtual 118	com/tencent/token/xh:a	(ILjava/lang/String;Ljava/lang/String;)V
+    //   38: aload_3
+    //   39: areturn
+    //   40: ldc 120
+    //   42: aload_1
+    //   43: invokestatic 126	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
+    //   46: invokevirtual 130	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
+    //   49: invokestatic 135	com/tencent/token/xj:a	(Ljava/lang/String;)V
+    //   52: new 137	java/util/concurrent/CountDownLatch
+    //   55: dup
+    //   56: iconst_1
+    //   57: invokespecial 140	java/util/concurrent/CountDownLatch:<init>	(I)V
+    //   60: astore 5
+    //   62: new 142	java/util/concurrent/atomic/AtomicReference
+    //   65: dup
+    //   66: aconst_null
+    //   67: invokespecial 145	java/util/concurrent/atomic/AtomicReference:<init>	(Ljava/lang/Object;)V
+    //   70: astore 4
+    //   72: invokestatic 150	com/tencent/token/rf:a	()Lcom/tencent/token/rf;
+    //   75: aload_1
+    //   76: new 6	com/tencent/token/aad$1
+    //   79: dup
+    //   80: aload_0
+    //   81: aload 4
+    //   83: aload 5
+    //   85: invokespecial 153	com/tencent/token/aad$1:<init>	(Lcom/tencent/token/aad;Ljava/util/concurrent/atomic/AtomicReference;Ljava/util/concurrent/CountDownLatch;)V
+    //   88: invokevirtual 156	com/tencent/token/rf:e	(Ljava/lang/String;Lcom/tencent/token/rf$a;)V
+    //   91: aload 5
+    //   93: invokevirtual 159	java/util/concurrent/CountDownLatch:await	()V
+    //   96: goto +8 -> 104
+    //   99: astore_1
+    //   100: aload_1
+    //   101: invokevirtual 162	java/lang/InterruptedException:printStackTrace	()V
+    //   104: aload 4
+    //   106: invokevirtual 166	java/util/concurrent/atomic/AtomicReference:get	()Ljava/lang/Object;
+    //   109: checkcast 168	com/tencent/token/ri
+    //   112: astore_1
+    //   113: aload_1
+    //   114: ifnonnull +26 -> 140
+    //   117: aload_0
+    //   118: getfield 113	com/tencent/token/aad:t	Z
+    //   121: ifeq +8 -> 129
+    //   124: aload_0
+    //   125: invokespecial 115	com/tencent/token/aad:f	()Z
+    //   128: pop
+    //   129: aload_3
+    //   130: sipush -789
+    //   133: aconst_null
+    //   134: aconst_null
+    //   135: invokevirtual 118	com/tencent/token/xh:a	(ILjava/lang/String;Ljava/lang/String;)V
+    //   138: aload_3
+    //   139: areturn
+    //   140: aload_1
+    //   141: getfield 169	com/tencent/token/ri:b	I
+    //   144: istore_2
+    //   145: iload_2
+    //   146: ifeq +18 -> 164
+    //   149: aload_1
+    //   150: getfield 171	com/tencent/token/ri:d	Ljava/lang/String;
+    //   153: astore_1
+    //   154: aload_3
+    //   155: iload_2
+    //   156: aload_1
+    //   157: aload_1
+    //   158: invokevirtual 118	com/tencent/token/xh:a	(ILjava/lang/String;Ljava/lang/String;)V
+    //   161: goto +101 -> 262
+    //   164: aload_3
+    //   165: iconst_0
+    //   166: putfield 173	com/tencent/token/xh:a	I
+    //   169: aload_0
+    //   170: getfield 81	com/tencent/token/aad:h	Lorg/json/JSONArray;
+    //   173: invokevirtual 177	org/json/JSONArray:length	()I
+    //   176: getstatic 179	com/tencent/token/aad:n	I
+    //   179: if_icmple +10 -> 189
+    //   182: getstatic 179	com/tencent/token/aad:n	I
+    //   185: istore_2
+    //   186: goto +11 -> 197
+    //   189: aload_0
+    //   190: getfield 81	com/tencent/token/aad:h	Lorg/json/JSONArray;
+    //   193: invokevirtual 177	org/json/JSONArray:length	()I
+    //   196: istore_2
+    //   197: iload_2
+    //   198: getstatic 179	com/tencent/token/aad:n	I
+    //   201: if_icmpgt +17 -> 218
+    //   204: aload_0
+    //   205: new 78	org/json/JSONArray
+    //   208: dup
+    //   209: invokespecial 79	org/json/JSONArray:<init>	()V
+    //   212: putfield 81	com/tencent/token/aad:h	Lorg/json/JSONArray;
+    //   215: goto +47 -> 262
+    //   218: new 78	org/json/JSONArray
+    //   221: dup
+    //   222: invokespecial 79	org/json/JSONArray:<init>	()V
+    //   225: astore_1
+    //   226: iload_2
+    //   227: aload_0
+    //   228: getfield 81	com/tencent/token/aad:h	Lorg/json/JSONArray;
+    //   231: invokevirtual 177	org/json/JSONArray:length	()I
+    //   234: if_icmpge +23 -> 257
+    //   237: aload_1
+    //   238: aload_0
+    //   239: getfield 81	com/tencent/token/aad:h	Lorg/json/JSONArray;
+    //   242: iload_2
+    //   243: invokevirtual 182	org/json/JSONArray:get	(I)Ljava/lang/Object;
+    //   246: invokevirtual 186	org/json/JSONArray:put	(Ljava/lang/Object;)Lorg/json/JSONArray;
+    //   249: pop
+    //   250: iload_2
+    //   251: iconst_1
+    //   252: iadd
+    //   253: istore_2
+    //   254: goto -28 -> 226
+    //   257: aload_0
+    //   258: aload_1
+    //   259: putfield 81	com/tencent/token/aad:h	Lorg/json/JSONArray;
+    //   262: aload_0
+    //   263: getfield 113	com/tencent/token/aad:t	Z
+    //   266: ifeq +162 -> 428
+    //   269: aload_0
+    //   270: invokespecial 115	com/tencent/token/aad:f	()Z
+    //   273: pop
+    //   274: aload_3
+    //   275: areturn
+    //   276: astore_1
+    //   277: goto +153 -> 430
+    //   280: astore_1
+    //   281: new 188	java/lang/StringBuilder
+    //   284: dup
+    //   285: ldc 190
+    //   287: invokespecial 192	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   290: astore 4
+    //   292: aload 4
+    //   294: aload_1
+    //   295: invokevirtual 196	java/lang/Exception:toString	()Ljava/lang/String;
+    //   298: invokevirtual 200	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   301: pop
+    //   302: aload 4
+    //   304: invokevirtual 201	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   307: invokestatic 203	com/tencent/token/xj:c	(Ljava/lang/String;)V
+    //   310: new 188	java/lang/StringBuilder
+    //   313: dup
+    //   314: ldc 205
+    //   316: invokespecial 192	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   319: astore 4
+    //   321: aload 4
+    //   323: aload_1
+    //   324: invokevirtual 196	java/lang/Exception:toString	()Ljava/lang/String;
+    //   327: invokevirtual 200	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   330: pop
+    //   331: aload_3
+    //   332: sipush 10021
+    //   335: aload 4
+    //   337: invokevirtual 201	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   340: aconst_null
+    //   341: invokevirtual 118	com/tencent/token/xh:a	(ILjava/lang/String;Ljava/lang/String;)V
+    //   344: aload_0
+    //   345: getfield 113	com/tencent/token/aad:t	Z
+    //   348: ifeq +80 -> 428
+    //   351: goto -82 -> 269
+    //   354: astore_1
+    //   355: new 188	java/lang/StringBuilder
+    //   358: dup
+    //   359: ldc 207
+    //   361: invokespecial 192	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   364: astore 4
+    //   366: aload 4
+    //   368: aload_1
+    //   369: invokevirtual 208	org/json/JSONException:toString	()Ljava/lang/String;
+    //   372: invokevirtual 200	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   375: pop
+    //   376: aload 4
+    //   378: invokevirtual 201	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   381: invokestatic 203	com/tencent/token/xj:c	(Ljava/lang/String;)V
+    //   384: new 188	java/lang/StringBuilder
+    //   387: dup
+    //   388: ldc 205
+    //   390: invokespecial 192	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   393: astore 4
+    //   395: aload 4
+    //   397: aload_1
+    //   398: invokevirtual 208	org/json/JSONException:toString	()Ljava/lang/String;
+    //   401: invokevirtual 200	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   404: pop
+    //   405: aload_3
+    //   406: sipush 10020
+    //   409: aload 4
+    //   411: invokevirtual 201	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   414: aconst_null
+    //   415: invokevirtual 118	com/tencent/token/xh:a	(ILjava/lang/String;Ljava/lang/String;)V
+    //   418: aload_0
+    //   419: getfield 113	com/tencent/token/aad:t	Z
+    //   422: ifeq +6 -> 428
+    //   425: goto -156 -> 269
+    //   428: aload_3
+    //   429: areturn
+    //   430: aload_0
+    //   431: getfield 113	com/tencent/token/aad:t	Z
+    //   434: ifeq +8 -> 442
+    //   437: aload_0
+    //   438: invokespecial 115	com/tencent/token/aad:f	()Z
+    //   441: pop
+    //   442: aload_1
+    //   443: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	444	0	this	aad
+    //   0	444	1	paramString	String
+    //   144	110	2	i1	int
+    //   7	422	3	localxh	xh
+    //   70	340	4	localObject	Object
+    //   60	32	5	localCountDownLatch	CountDownLatch
+    // Exception table:
+    //   from	to	target	type
+    //   91	96	99	java/lang/InterruptedException
+    //   140	145	276	finally
+    //   149	161	276	finally
+    //   164	186	276	finally
+    //   189	197	276	finally
+    //   197	215	276	finally
+    //   218	226	276	finally
+    //   226	250	276	finally
+    //   257	262	276	finally
+    //   281	344	276	finally
+    //   355	418	276	finally
+    //   140	145	280	java/lang/Exception
+    //   149	161	280	java/lang/Exception
+    //   164	186	280	java/lang/Exception
+    //   189	197	280	java/lang/Exception
+    //   197	215	280	java/lang/Exception
+    //   218	226	280	java/lang/Exception
+    //   226	250	280	java/lang/Exception
+    //   257	262	280	java/lang/Exception
+    //   140	145	354	org/json/JSONException
+    //   149	161	354	org/json/JSONException
+    //   164	186	354	org/json/JSONException
+    //   189	197	354	org/json/JSONException
+    //   197	215	354	org/json/JSONException
+    //   218	226	354	org/json/JSONException
+    //   226	250	354	org/json/JSONException
+    //   257	262	354	org/json/JSONException
   }
   
-  public static Bitmap a(Context paramContext, int paramInt, boolean paramBoolean)
+  /* Error */
+  private boolean a(android.content.Context paramContext)
   {
-    BitmapFactory.Options localOptions = new BitmapFactory.Options();
-    localOptions.inPreferredConfig = Bitmap.Config.RGB_565;
-    localOptions.inPurgeable = true;
-    localOptions.inInputShareable = true;
-    if (paramBoolean) {
-      localOptions.inSampleSize = 2;
-    }
-    return BitmapFactory.decodeResource(paramContext.getResources(), paramInt, localOptions);
+    // Byte code:
+    //   0: invokestatic 89	com/tencent/token/xf:j	()Z
+    //   3: ifeq +5 -> 8
+    //   6: iconst_0
+    //   7: ireturn
+    //   8: aload_0
+    //   9: getfield 81	com/tencent/token/aad:h	Lorg/json/JSONArray;
+    //   12: ifnonnull +5 -> 17
+    //   15: iconst_0
+    //   16: ireturn
+    //   17: iconst_0
+    //   18: putstatic 62	com/tencent/token/aad:r	Z
+    //   21: aload_0
+    //   22: getfield 68	com/tencent/token/aad:a	Z
+    //   25: ifne +5 -> 30
+    //   28: iconst_1
+    //   29: ireturn
+    //   30: aload_1
+    //   31: ldc 215
+    //   33: iconst_0
+    //   34: invokevirtual 221	android/content/Context:openFileOutput	(Ljava/lang/String;I)Ljava/io/FileOutputStream;
+    //   37: astore_1
+    //   38: aload_1
+    //   39: ifnonnull +5 -> 44
+    //   42: iconst_0
+    //   43: ireturn
+    //   44: aload_1
+    //   45: aload_0
+    //   46: getfield 81	com/tencent/token/aad:h	Lorg/json/JSONArray;
+    //   49: invokevirtual 222	org/json/JSONArray:toString	()Ljava/lang/String;
+    //   52: invokevirtual 226	java/lang/String:getBytes	()[B
+    //   55: invokevirtual 232	java/io/FileOutputStream:write	([B)V
+    //   58: aload_1
+    //   59: invokevirtual 235	java/io/FileOutputStream:close	()V
+    //   62: iconst_1
+    //   63: ireturn
+    //   64: aload_1
+    //   65: invokevirtual 235	java/io/FileOutputStream:close	()V
+    //   68: iconst_0
+    //   69: ireturn
+    //   70: astore_1
+    //   71: iconst_0
+    //   72: ireturn
+    //   73: astore_2
+    //   74: goto -10 -> 64
+    //   77: astore_1
+    //   78: iconst_1
+    //   79: ireturn
+    //   80: astore_1
+    //   81: iconst_0
+    //   82: ireturn
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	83	0	this	aad
+    //   0	83	1	paramContext	android.content.Context
+    //   73	1	2	localException	Exception
+    // Exception table:
+    //   from	to	target	type
+    //   30	38	70	java/io/FileNotFoundException
+    //   44	58	73	java/lang/Exception
+    //   58	62	77	java/io/IOException
+    //   64	68	80	java/io/IOException
   }
   
-  public static Bitmap a(Resources paramResources, int paramInt)
+  private boolean f()
   {
-    try
-    {
-      paramResources = BitmapFactory.decodeResource(paramResources, paramInt);
-      return paramResources;
+    if (xf.j()) {
+      return false;
     }
-    catch (OutOfMemoryError paramResources)
-    {
-      label8:
-      break label8;
-    }
-    return null;
+    return a(RqdApplication.p());
   }
   
-  public static Bitmap a(Resources paramResources, int paramInt1, int paramInt2)
+  /* Error */
+  private boolean g()
   {
-    paramResources = a(paramResources, paramInt1);
-    if (paramResources == null) {
-      return null;
-    }
-    paramInt1 = paramResources.getWidth();
-    int i = paramResources.getHeight();
-    float f1 = paramInt2 / paramInt1;
-    Object localObject = new Matrix();
-    ((Matrix)localObject).postScale(f1, f1);
-    try
-    {
-      localObject = Bitmap.createBitmap(paramResources, 0, 0, paramInt1, i, (Matrix)localObject, true);
-      paramResources.recycle();
-      boolean bool = ((Bitmap)localObject).isRecycled();
-      if (bool) {
-        return null;
-      }
-      return localObject;
-    }
-    catch (OutOfMemoryError paramResources)
-    {
-      return null;
-    }
-    catch (Exception paramResources) {}
-    return null;
+    // Byte code:
+    //   0: invokestatic 89	com/tencent/token/xf:j	()Z
+    //   3: ifeq +5 -> 8
+    //   6: iconst_0
+    //   7: ireturn
+    //   8: aload_0
+    //   9: getfield 68	com/tencent/token/aad:a	Z
+    //   12: ifne +5 -> 17
+    //   15: iconst_1
+    //   16: ireturn
+    //   17: invokestatic 241	com/tencent/token/global/RqdApplication:p	()Landroid/content/Context;
+    //   20: ldc 215
+    //   22: invokevirtual 247	android/content/Context:openFileInput	(Ljava/lang/String;)Ljava/io/FileInputStream;
+    //   25: astore_1
+    //   26: aload_1
+    //   27: ifnonnull +5 -> 32
+    //   30: iconst_0
+    //   31: ireturn
+    //   32: sipush 2000
+    //   35: newarray byte
+    //   37: astore_2
+    //   38: aload_1
+    //   39: aload_2
+    //   40: invokevirtual 253	java/io/FileInputStream:read	([B)I
+    //   43: pop
+    //   44: aload_0
+    //   45: new 78	org/json/JSONArray
+    //   48: dup
+    //   49: new 122	java/lang/String
+    //   52: dup
+    //   53: aload_2
+    //   54: invokespecial 255	java/lang/String:<init>	([B)V
+    //   57: invokespecial 256	org/json/JSONArray:<init>	(Ljava/lang/String;)V
+    //   60: putfield 81	com/tencent/token/aad:h	Lorg/json/JSONArray;
+    //   63: aload_1
+    //   64: invokevirtual 257	java/io/FileInputStream:close	()V
+    //   67: iconst_1
+    //   68: ireturn
+    //   69: aload_1
+    //   70: invokevirtual 257	java/io/FileInputStream:close	()V
+    //   73: iconst_0
+    //   74: ireturn
+    //   75: astore_1
+    //   76: iconst_0
+    //   77: ireturn
+    //   78: astore_2
+    //   79: goto -10 -> 69
+    //   82: astore_1
+    //   83: iconst_1
+    //   84: ireturn
+    //   85: astore_1
+    //   86: iconst_0
+    //   87: ireturn
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	88	0	this	aad
+    //   25	45	1	localFileInputStream	java.io.FileInputStream
+    //   75	1	1	localFileNotFoundException	java.io.FileNotFoundException
+    //   82	1	1	localIOException1	java.io.IOException
+    //   85	1	1	localIOException2	java.io.IOException
+    //   37	17	2	arrayOfByte	byte[]
+    //   78	1	2	localException	Exception
+    // Exception table:
+    //   from	to	target	type
+    //   17	26	75	java/io/FileNotFoundException
+    //   32	63	78	java/lang/Exception
+    //   63	67	82	java/io/IOException
+    //   69	73	85	java/io/IOException
   }
   
-  public static Bitmap a(Resources paramResources, int paramInt1, int paramInt2, int paramInt3)
+  private void h()
   {
-    paramResources = a(paramResources, paramInt1);
-    if (paramResources == null) {
-      return null;
-    }
-    paramInt1 = paramResources.getWidth();
-    int i = paramResources.getHeight();
-    float f1 = paramInt2 / paramInt1;
-    float f2 = paramInt3 / i;
-    Object localObject = new Matrix();
-    ((Matrix)localObject).postScale(f1, f2);
-    try
-    {
-      localObject = Bitmap.createBitmap(paramResources, 0, 0, paramInt1, i, (Matrix)localObject, true);
-      paramResources.recycle();
-      boolean bool = ((Bitmap)localObject).isRecycled();
-      if (bool) {
-        return null;
-      }
-      return localObject;
-    }
-    catch (OutOfMemoryError paramResources)
-    {
-      return null;
-    }
-    catch (Exception paramResources) {}
-    return null;
-  }
-  
-  public static Bitmap a(byte[] paramArrayOfByte)
-  {
-    try
-    {
-      paramArrayOfByte = BitmapFactory.decodeByteArray(paramArrayOfByte, 0, paramArrayOfByte.length);
-      return paramArrayOfByte;
-    }
-    catch (OutOfMemoryError paramArrayOfByte)
-    {
-      label10:
-      break label10;
-    }
-    return null;
-  }
-  
-  public static String a(Context paramContext)
-  {
-    paramContext = ((ActivityManager)paramContext.getSystemService("activity")).getRunningTasks(1);
-    if (paramContext != null) {
-      return ((ActivityManager.RunningTaskInfo)paramContext.get(0)).topActivity.getClassName();
-    }
-    return null;
-  }
-  
-  public static String a(String paramString, float paramFloat, int paramInt)
-  {
-    String str = "";
-    Paint localPaint = new Paint();
-    localPaint.setTextSize(paramFloat);
-    int i = 0;
-    int j = 0;
-    while (i < paramString.length())
-    {
-      int k = i + 1;
-      StringBuilder localStringBuilder;
-      if (localPaint.measureText(paramString, j, k) >= paramInt)
-      {
-        localStringBuilder = new StringBuilder();
-        localStringBuilder.append(str);
-        localStringBuilder.append('\n');
-        localStringBuilder.append(paramString.charAt(i));
-        str = localStringBuilder.toString();
-        j = i;
-      }
-      else
-      {
-        localStringBuilder = new StringBuilder();
-        localStringBuilder.append(str);
-        localStringBuilder.append(paramString.charAt(i));
-        str = localStringBuilder.toString();
-      }
-      i = k;
-    }
-    return str;
-  }
-  
-  public static void a()
-  {
-    try
-    {
-      Object localObject1 = RqdApplication.n().getSharedPreferences("features_file", 0);
-      a.mStartUpImgStartTime = ((SharedPreferences)localObject1).getLong("startup_start_time", 0L);
-      a.mStartUpImgEndTime = ((SharedPreferences)localObject1).getLong("startup_end_time", 0L);
-      a.mStartUpImgUrl = ((SharedPreferences)localObject1).getString("startup_img_url", "");
-      long l = qy.a().h();
-      if ((a.mStartUpImgStartTime != 0L) && (a.mStartUpImgEndTime != 0L) && (l >= a.mStartUpImgStartTime) && (l <= a.mStartUpImgEndTime))
-      {
-        localObject1 = a;
-        localObject2 = f;
-        ((ConfigResult)localObject1).mStartUpImg = ((ImageCache)localObject2).b(((ImageCache)localObject2).c("startup_img"));
-      }
-      else
-      {
-        a.mStartUpImg = null;
-      }
-      localObject1 = new StringBuilder("startup current=");
-      ((StringBuilder)localObject1).append(l);
-      ((StringBuilder)localObject1).append(", start=");
-      ((StringBuilder)localObject1).append(a.mStartUpImgStartTime);
-      ((StringBuilder)localObject1).append(", end=");
-      ((StringBuilder)localObject1).append(a.mStartUpImgEndTime);
-      ((StringBuilder)localObject1).append(", url=");
-      ((StringBuilder)localObject1).append(a.mStartUpImgUrl);
-      ((StringBuilder)localObject1).append(", img=");
-      ((StringBuilder)localObject1).append(a.mStartUpImg);
-      xa.c(((StringBuilder)localObject1).toString());
+    if (xf.j()) {
       return;
     }
-    catch (Exception localException)
-    {
-      Object localObject2 = new StringBuilder("SharedPreferences msg ");
-      ((StringBuilder)localObject2).append(localException.getMessage());
-      xa.c(((StringBuilder)localObject2).toString());
-      a.mStartUpImg = null;
-    }
-  }
-  
-  public static void a(int paramInt, long paramLong1, long paramLong2)
-  {
-    if (paramInt == 1) {}
-    try
-    {
-      Object localObject1 = new StringBuilder();
-      ((StringBuilder)localObject1).append(paramLong1);
-      ((StringBuilder)localObject1).append("_login");
-      localObject1 = ((StringBuilder)localObject1).toString();
-      break label70;
-      localObject1 = new StringBuilder();
-      ((StringBuilder)localObject1).append(paramLong1);
-      ((StringBuilder)localObject1).append("_op");
-      localObject1 = ((StringBuilder)localObject1).toString();
-      label70:
-      localObject2 = RqdApplication.n().getSharedPreferences("features_file", 0).edit();
-      ((SharedPreferences.Editor)localObject2).putLong((String)localObject1, paramLong2);
-      ((SharedPreferences.Editor)localObject2).commit();
+    this.t = false;
+    if (this.q) {
       return;
     }
-    catch (Exception localException)
+    int i1;
+    JSONArray localJSONArray;
+    int i2;
+    if (this.a)
     {
-      Object localObject2 = new StringBuilder("SharedPreferences msg ");
-      ((StringBuilder)localObject2).append(localException.getMessage());
-      xa.c(((StringBuilder)localObject2).toString());
-    }
-  }
-  
-  public static void a(long paramLong)
-  {
-    try
-    {
-      SharedPreferences.Editor localEditor = RqdApplication.n().getSharedPreferences("features_file", 0).edit();
-      localEditor.putLong("dns_time", paramLong);
-      localEditor.commit();
-      return;
-    }
-    catch (Exception localException)
-    {
-      StringBuilder localStringBuilder = new StringBuilder("SharedPreferences msg ");
-      localStringBuilder.append(localException.getMessage());
-      xa.c(localStringBuilder.toString());
-    }
-  }
-  
-  public static void a(Activity paramActivity)
-  {
-    ((InputMethodManager)paramActivity.getSystemService("input_method")).hideSoftInputFromWindow(paramActivity.getWindow().peekDecorView().getWindowToken(), 0);
-  }
-  
-  public static void a(Activity paramActivity, int paramInt)
-  {
-    try
-    {
-      if ((Build.VERSION.SDK_INT >= 21) && (c(paramActivity))) {
-        paramActivity.getWindow().setStatusBarColor(paramActivity.getResources().getColor(paramInt));
-      }
-      return;
-    }
-    catch (Exception paramActivity)
-    {
-      paramActivity.printStackTrace();
-    }
-  }
-  
-  public static void a(Activity paramActivity, View paramView, int paramInt)
-  {
-    try
-    {
-      if ((Build.VERSION.SDK_INT >= 21) && (c(paramActivity)))
-      {
-        paramActivity.getWindow().addFlags(-2147483648);
-        paramActivity.getWindow().clearFlags(67108864);
-        paramActivity.getWindow().setStatusBarColor(paramActivity.getResources().getColor(paramInt));
-        paramActivity.getWindow().getDecorView().setSystemUiVisibility(9216);
-        ((ViewGroup.MarginLayoutParams)paramView.getLayoutParams()).topMargin = b(paramActivity);
-      }
-      return;
-    }
-    catch (Exception paramActivity)
-    {
-      paramActivity.printStackTrace();
-    }
-  }
-  
-  public static void a(ConfigResult paramConfigResult)
-  {
-    if ((paramConfigResult != null) && (paramConfigResult.mStartUpImgUrl != null))
-    {
-      if (paramConfigResult.mStartUpImg == null) {
+      if (this.h.length() == 0) {
         return;
       }
-      try
-      {
-        localObject = RqdApplication.n().getSharedPreferences("features_file", 0).edit();
-        ((SharedPreferences.Editor)localObject).putLong("startup_start_time", paramConfigResult.mStartUpImgStartTime);
-        ((SharedPreferences.Editor)localObject).putLong("startup_end_time", paramConfigResult.mStartUpImgEndTime);
-        ((SharedPreferences.Editor)localObject).putString("startup_img_url", paramConfigResult.mStartUpImgUrl);
-        ((SharedPreferences.Editor)localObject).commit();
-        ImageCache.a(f.c("startup_img"));
-        localObject = f;
-        ((ImageCache)localObject).a(((ImageCache)localObject).c("startup_img"), paramConfigResult.mStartUpImg);
-        paramConfigResult.mStartUpImg.recycle();
-        paramConfigResult.mStartUpImg = null;
-        return;
+      i1 = si.b + 1;
+      si.b = i1;
+      this.l = i1;
+      this.q = true;
+      localJSONArray = new JSONArray();
+      i2 = this.h.length();
+      i1 = n;
+      if (i2 <= i1) {
+        i1 = this.h.length();
       }
-      catch (Exception paramConfigResult)
-      {
-        Object localObject = new StringBuilder("SharedPreferences msg ");
-        ((StringBuilder)localObject).append(paramConfigResult.getMessage());
-        xa.c(((StringBuilder)localObject).toString());
-        return;
-      }
+      i2 = 0;
     }
-  }
-  
-  public static void a(String paramString)
-  {
-    try
-    {
-      localObject = RqdApplication.n().getSharedPreferences("features_file", 0).edit();
-      ((SharedPreferences.Editor)localObject).putBoolean(paramString, true);
-      ((SharedPreferences.Editor)localObject).commit();
-      return;
-    }
-    catch (Exception paramString)
-    {
-      Object localObject = new StringBuilder("SharedPreferences msg ");
-      ((StringBuilder)localObject).append(paramString.getMessage());
-      xa.c(((StringBuilder)localObject).toString());
-    }
-  }
-  
-  public static void a(String paramString, int paramInt)
-  {
-    Object localObject = RqdApplication.n();
-    try
-    {
-      localObject = ((Context)localObject).getSharedPreferences("schemaparm_name", 0).edit();
-      ((SharedPreferences.Editor)localObject).putString("key_schemaparm_key", paramString);
-      ((SharedPreferences.Editor)localObject).putInt("key_schemaparm_timeout", paramInt);
-      ((SharedPreferences.Editor)localObject).commit();
-      return;
-    }
-    catch (Exception paramString)
-    {
-      localObject = new StringBuilder("SharedPreferences msg ");
-      ((StringBuilder)localObject).append(paramString.getMessage());
-      xa.c(((StringBuilder)localObject).toString());
-    }
-  }
-  
-  public static void a(JSONObject paramJSONObject)
-  {
-    try
-    {
-      localObject = RqdApplication.n().getSharedPreferences("features_file", 0).edit();
-      StringBuilder localStringBuilder = new StringBuilder("displayAngle");
-      localStringBuilder.append(paramJSONObject.getInt("displayangle"));
-      xa.a(localStringBuilder.toString());
-      ((SharedPreferences.Editor)localObject).putInt("displayAngle_face", paramJSONObject.getInt("displayangle"));
-      ((SharedPreferences.Editor)localObject).putInt("imageAngle_face", paramJSONObject.getInt("imageangle"));
-      ((SharedPreferences.Editor)localObject).commit();
-      return;
-    }
-    catch (Exception paramJSONObject)
-    {
-      Object localObject = new StringBuilder("SharedPreferences msg ");
-      ((StringBuilder)localObject).append(paramJSONObject.getMessage());
-      xa.c(((StringBuilder)localObject).toString());
-    }
-  }
-  
-  public static void a(boolean paramBoolean)
-  {
-    try
-    {
-      SharedPreferences.Editor localEditor = RqdApplication.n().getSharedPreferences("features_file", 0).edit();
-      localEditor.putBoolean("start_camera", paramBoolean);
-      localEditor.commit();
-      return;
-    }
-    catch (Exception localException)
-    {
-      StringBuilder localStringBuilder = new StringBuilder("SharedPreferences msg ");
-      localStringBuilder.append(localException.getMessage());
-      xa.c(localStringBuilder.toString());
-    }
-  }
-  
-  public static boolean a(int paramInt1, int paramInt2)
-  {
-    long l1 = Runtime.getRuntime().maxMemory();
-    long l2 = Runtime.getRuntime().totalMemory();
-    int i = paramInt1 * paramInt2 * 4 * 1;
-    if (l1 - l2 - 4194304L < i)
-    {
-      StringBuilder localStringBuilder = new StringBuilder("use low quality:mem=");
-      localStringBuilder.append(Runtime.getRuntime().maxMemory() - 10485760L);
-      localStringBuilder.append(" ");
-      localStringBuilder.append(paramInt1);
-      localStringBuilder.append("*");
-      localStringBuilder.append(paramInt2);
-      localStringBuilder.append("*4*1=");
-      localStringBuilder.append(i);
-      xa.b(localStringBuilder.toString());
-      return true;
-    }
-    return false;
-  }
-  
-  public static int b(Context paramContext)
-  {
-    int i = c;
-    if (i <= 0) {
-      try
-      {
-        i = paramContext.getResources().getIdentifier("status_bar_height", "dimen", "android");
-        if (i > 0)
-        {
-          i = paramContext.getResources().getDimensionPixelSize(i);
-          c = i;
-          return i;
-        }
-        Class localClass = Class.forName("com.android.internal.R$dimen");
-        Object localObject = localClass.newInstance();
-        i = Integer.parseInt(localClass.getField("status_bar_height").get(localObject).toString());
-        i = paramContext.getResources().getDimensionPixelSize(i);
-        c = i;
-        return i;
-      }
-      catch (Exception localException)
-      {
-        localException.printStackTrace();
-        i = (int)paramContext.getResources().getDimension(2131034200);
-        c = i;
-        return i;
-      }
-    }
-    return i;
-  }
-  
-  public static Bitmap b(String paramString, int paramInt)
-  {
-    Object localObject = new BitmapFactory.Options();
-    ((BitmapFactory.Options)localObject).inJustDecodeBounds = true;
-    BitmapFactory.decodeFile(paramString, (BitmapFactory.Options)localObject);
-    int i = (int)(Math.max(((BitmapFactory.Options)localObject).outWidth, ((BitmapFactory.Options)localObject).outHeight) / paramInt);
-    paramInt = i;
-    if (i <= 0) {
-      paramInt = 1;
-    }
-    ((BitmapFactory.Options)localObject).inSampleSize = paramInt;
-    ((BitmapFactory.Options)localObject).inJustDecodeBounds = false;
-    try
-    {
-      localObject = BitmapFactory.decodeFile(paramString, (BitmapFactory.Options)localObject);
-      if (localObject == null) {
-        return null;
-      }
-      paramInt = f(paramString);
-      if (paramInt != 0)
-      {
-        paramString = new Matrix();
-        paramString.preRotate(paramInt);
-        Bitmap localBitmap = Bitmap.createBitmap((Bitmap)localObject, 0, 0, ((Bitmap)localObject).getWidth(), ((Bitmap)localObject).getHeight(), paramString, true);
-        if (localObject != localBitmap)
-        {
-          paramString = localBitmap;
-          if (((Bitmap)localObject).isRecycled()) {
-            break label133;
-          }
-          ((Bitmap)localObject).recycle();
-          return localBitmap;
-        }
-      }
-      paramString = (String)localObject;
-      label133:
-      return paramString;
-    }
-    catch (Exception paramString)
-    {
-      label135:
-      break label135;
-    }
-    xa.c("BitmapFactory.decodeFile failed...");
-    return null;
-  }
-  
-  public static void b(long paramLong)
-  {
-    try
-    {
-      sc.a();
-      RqdApplication.n();
-      SharedPreferences.Editor localEditor = sc.g().edit();
-      String str1 = rw.b();
-      aav localaav = new aav();
-      String str2 = Long.toString(paramLong);
-      localObject2 = localaav.b(str2.getBytes("UTF8"), aax.a(str1));
-      Object localObject1 = localObject2;
-      if (localObject2 == null) {
-        localObject1 = localaav.b(str2.getBytes("UTF8"), aax.a(str1));
-      }
-      localObject1 = sr.a((byte[])localObject1);
-      localObject2 = new StringBuilder("verify_face_pwd_uin, hex=");
-      ((StringBuilder)localObject2).append((String)localObject1);
-      ((StringBuilder)localObject2).append(", key=");
-      ((StringBuilder)localObject2).append(str1);
-      xa.a(((StringBuilder)localObject2).toString());
-      localEditor.putString("verify_face_pwd_uin", (String)localObject1);
-      localEditor.putString("verify_face_pwd_key", str1);
-      localEditor.commit();
-      return;
-    }
-    catch (Exception localException)
-    {
-      Object localObject2 = new StringBuilder("SharedPreferences msg ");
-      ((StringBuilder)localObject2).append(localException.getMessage());
-      xa.c(((StringBuilder)localObject2).toString());
-    }
-  }
-  
-  public static void b(ConfigResult paramConfigResult)
-  {
-    if ((paramConfigResult != null) && (paramConfigResult.mToolsTitleList != null) && (paramConfigResult.mToolsList != null))
-    {
-      if (paramConfigResult.mToolsTitleList.length() != paramConfigResult.mToolsList.length()) {
-        return;
-      }
-      a.mToolsTitleList = paramConfigResult.mToolsTitleList;
-      a.mToolsList = paramConfigResult.mToolsList;
-      paramConfigResult = new StringBuilder("storeconfig=");
-      paramConfigResult.append(a.mToolsTitleList.toString());
-      paramConfigResult.append("\n");
-      paramConfigResult.append(a.mToolsList.toString());
-      xa.a(paramConfigResult.toString());
-      paramConfigResult = RqdApplication.n().getSharedPreferences("features_file", 0).edit();
-      paramConfigResult.putString("tools_title", a.mToolsTitleList.toString());
-      paramConfigResult.putString("tools_items", a.mToolsList.toString());
-      paramConfigResult.commit();
-      return;
-    }
-  }
-  
-  public static boolean b()
-  {
-    try
-    {
-      int i = RqdApplication.n().getSharedPreferences("features_file", 0).getInt("token_version", 0);
-      int j = ww.d();
-      return i != j;
-    }
-    catch (Exception localException)
-    {
-      StringBuilder localStringBuilder = new StringBuilder("SharedPreferences msg ");
-      localStringBuilder.append(localException.getMessage());
-      xa.c(localStringBuilder.toString());
-    }
-    return false;
-  }
-  
-  public static boolean b(String paramString)
-  {
-    try
-    {
-      boolean bool = RqdApplication.n().getSharedPreferences("features_file", 0).getBoolean(paramString, false);
-      return bool;
-    }
-    catch (Exception paramString) {}
-    return false;
-  }
-  
-  public static void c(ConfigResult paramConfigResult)
-  {
-    try
-    {
-      localObject = RqdApplication.n().getSharedPreferences("features_file", 0).edit();
-      ((SharedPreferences.Editor)localObject).putInt("utils_flag", paramConfigResult.utilsShowFlag);
-      ((SharedPreferences.Editor)localObject).putFloat("face_reg_thres", paramConfigResult.mFaceRecognitionParamResult.mRegRayThres);
-      ((SharedPreferences.Editor)localObject).putFloat("face_verify_thres", paramConfigResult.mFaceRecognitionParamResult.mVerifyRayThres);
-      ((SharedPreferences.Editor)localObject).putFloat("face_disparity_thres", paramConfigResult.mFaceRecognitionParamResult.mDisparityThres);
-      ((SharedPreferences.Editor)localObject).putString("zzb_intro_list", paramConfigResult.zzbIntroList.toString());
-      ((SharedPreferences.Editor)localObject).putInt("face_algorithm", paramConfigResult.face_algorithm);
-      ((SharedPreferences.Editor)localObject).putInt("live_angle", paramConfigResult.live_angle);
-      ((SharedPreferences.Editor)localObject).putString("so_param_ids", paramConfigResult.so_param_ids);
-      ((SharedPreferences.Editor)localObject).putString("so_param_values", paramConfigResult.so_param_values);
-      ((SharedPreferences.Editor)localObject).putInt("collect_device_info", paramConfigResult.uploadDeviceInfoInt);
-      ((SharedPreferences.Editor)localObject).putInt("use_face_start", paramConfigResult.useFaceStart);
-      ((SharedPreferences.Editor)localObject).putInt("use_face_chpwd", paramConfigResult.useFaceChpwd);
-      ((SharedPreferences.Editor)localObject).putInt("use_face_chmobile", paramConfigResult.useFaceChmobile);
-      ((SharedPreferences.Editor)localObject).commit();
-      return;
-    }
-    catch (Exception paramConfigResult)
-    {
-      Object localObject = new StringBuilder("SharedPreferences msg ");
-      ((StringBuilder)localObject).append(paramConfigResult.getMessage());
-      xa.c(((StringBuilder)localObject).toString());
-    }
-  }
-  
-  public static boolean c()
-  {
-    try
-    {
-      boolean bool = RqdApplication.n().getSharedPreferences("features_file", 0).getBoolean("start_camera", false);
-      return bool;
-    }
-    catch (Exception localException)
-    {
-      StringBuilder localStringBuilder = new StringBuilder("SharedPreferences msg ");
-      localStringBuilder.append(localException.getMessage());
-      xa.c(localStringBuilder.toString());
-    }
-    return false;
-  }
-  
-  public static boolean c(Context paramContext)
-  {
-    if (d) {
-      return e;
-    }
-    boolean bool6 = false;
-    boolean bool7 = false;
-    boolean bool8 = false;
-    boolean bool2 = false;
-    boolean bool3 = bool2;
-    boolean bool4 = bool6;
-    boolean bool5 = bool7;
-    boolean bool1 = bool8;
     for (;;)
     {
+      if (i2 < i1) {}
       try
       {
-        paramContext = paramContext.getClassLoader().loadClass("com.huawei.android.util.HwNotchSizeUtil");
-        bool3 = bool2;
-        bool4 = bool6;
-        bool5 = bool7;
-        bool1 = bool8;
-        bool2 = ((Boolean)paramContext.getMethod("hasNotchInScreen", new Class[0]).invoke(paramContext, new Object[0])).booleanValue();
-        bool3 = bool2;
-        bool4 = bool2;
-        bool5 = bool2;
-        bool1 = bool2;
-        xa.c("notch screen".concat(String.valueOf(bool2)));
-        bool1 = bool2;
+        localJSONArray.put(this.h.get(i2));
+        i2 += 1;
       }
-      catch (ClassNotFoundException paramContext) {}catch (NoSuchMethodException paramContext) {}catch (Exception paramContext) {}finally
+      catch (Exception localException1)
       {
-        continue;
+        label123:
+        JSONObject localJSONObject;
+        StringBuilder localStringBuilder;
+        break label123;
       }
-      d = true;
-      e = bool1;
-      return bool1;
-      bool1 = bool5;
-      xa.c("hasNotchInScreen Exception");
-      bool1 = bool5;
-      continue;
-      bool1 = bool4;
-      xa.c("hasNotchInScreen NoSuchMethodException");
-      bool1 = bool4;
-      continue;
-      bool1 = bool3;
-      xa.c("hasNotchInScreen ClassNotFoundException");
-      bool1 = bool3;
     }
-  }
-  
-  /* Error */
-  public static byte[] c(String paramString)
-  {
-    // Byte code:
-    //   0: new 102	android/graphics/BitmapFactory$Options
-    //   3: dup
-    //   4: invokespecial 103	android/graphics/BitmapFactory$Options:<init>	()V
-    //   7: astore_3
-    //   8: iconst_1
-    //   9: istore_1
-    //   10: aload_3
-    //   11: iconst_1
-    //   12: putfield 505	android/graphics/BitmapFactory$Options:inJustDecodeBounds	Z
-    //   15: aload_0
-    //   16: aload_3
-    //   17: invokestatic 509	android/graphics/BitmapFactory:decodeFile	(Ljava/lang/String;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
-    //   20: pop
-    //   21: aload_3
-    //   22: getfield 512	android/graphics/BitmapFactory$Options:outWidth	I
-    //   25: i2f
-    //   26: ldc_w 730
-    //   29: fdiv
-    //   30: aload_3
-    //   31: getfield 515	android/graphics/BitmapFactory$Options:outHeight	I
-    //   34: i2f
-    //   35: ldc_w 730
-    //   38: fdiv
-    //   39: invokestatic 733	java/lang/Math:max	(FF)F
-    //   42: f2i
-    //   43: istore_2
-    //   44: iload_2
-    //   45: ifgt +6 -> 51
-    //   48: goto +5 -> 53
-    //   51: iload_2
-    //   52: istore_1
-    //   53: aload_3
-    //   54: iload_1
-    //   55: putfield 121	android/graphics/BitmapFactory$Options:inSampleSize	I
-    //   58: aload_3
-    //   59: iconst_0
-    //   60: putfield 505	android/graphics/BitmapFactory$Options:inJustDecodeBounds	Z
-    //   63: aload_0
-    //   64: aload_3
-    //   65: invokestatic 509	android/graphics/BitmapFactory:decodeFile	(Ljava/lang/String;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
-    //   68: astore_3
-    //   69: aload_3
-    //   70: ifnonnull +5 -> 75
-    //   73: aconst_null
-    //   74: areturn
-    //   75: aload_0
-    //   76: invokestatic 523	com/tencent/token/aad:f	(Ljava/lang/String;)I
-    //   79: istore_1
-    //   80: iload_1
-    //   81: ifeq +62 -> 143
-    //   84: new 150	android/graphics/Matrix
-    //   87: dup
-    //   88: invokespecial 151	android/graphics/Matrix:<init>	()V
-    //   91: astore_0
-    //   92: aload_0
-    //   93: iload_1
-    //   94: i2f
-    //   95: invokevirtual 527	android/graphics/Matrix:preRotate	(F)Z
-    //   98: pop
-    //   99: aload_3
-    //   100: iconst_0
-    //   101: iconst_0
-    //   102: aload_3
-    //   103: invokevirtual 145	android/graphics/Bitmap:getWidth	()I
-    //   106: aload_3
-    //   107: invokevirtual 148	android/graphics/Bitmap:getHeight	()I
-    //   110: aload_0
-    //   111: iconst_1
-    //   112: invokestatic 159	android/graphics/Bitmap:createBitmap	(Landroid/graphics/Bitmap;IIIILandroid/graphics/Matrix;Z)Landroid/graphics/Bitmap;
-    //   115: astore 4
-    //   117: aload_3
-    //   118: aload 4
-    //   120: if_acmpeq +23 -> 143
-    //   123: aload 4
-    //   125: astore_0
-    //   126: aload_3
-    //   127: invokevirtual 166	android/graphics/Bitmap:isRecycled	()Z
-    //   130: ifne +15 -> 145
-    //   133: aload_3
-    //   134: invokevirtual 162	android/graphics/Bitmap:recycle	()V
-    //   137: aload 4
-    //   139: astore_0
-    //   140: goto +5 -> 145
-    //   143: aload_3
-    //   144: astore_0
-    //   145: new 735	java/io/ByteArrayOutputStream
-    //   148: dup
-    //   149: invokespecial 736	java/io/ByteArrayOutputStream:<init>	()V
-    //   152: astore_3
-    //   153: getstatic 742	android/graphics/Bitmap$CompressFormat:JPEG	Landroid/graphics/Bitmap$CompressFormat;
-    //   156: astore 4
-    //   158: bipush 80
-    //   160: istore_1
-    //   161: aload_0
-    //   162: aload 4
-    //   164: bipush 80
-    //   166: aload_3
-    //   167: invokevirtual 746	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
-    //   170: pop
-    //   171: aload_3
-    //   172: invokevirtual 749	java/io/ByteArrayOutputStream:size	()I
-    //   175: ldc_w 750
-    //   178: if_icmple +25 -> 203
-    //   181: iload_1
-    //   182: bipush 20
-    //   184: isub
-    //   185: istore_1
-    //   186: aload_3
-    //   187: invokevirtual 753	java/io/ByteArrayOutputStream:reset	()V
-    //   190: aload_0
-    //   191: getstatic 742	android/graphics/Bitmap$CompressFormat:JPEG	Landroid/graphics/Bitmap$CompressFormat;
-    //   194: iload_1
-    //   195: aload_3
-    //   196: invokevirtual 746	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
-    //   199: pop
-    //   200: goto -29 -> 171
-    //   203: aload_3
-    //   204: invokevirtual 756	java/io/ByteArrayOutputStream:close	()V
-    //   207: goto +24 -> 231
-    //   210: astore_0
-    //   211: goto +25 -> 236
-    //   214: astore_0
-    //   215: aload_0
-    //   216: invokevirtual 351	java/lang/Exception:printStackTrace	()V
-    //   219: aload_3
-    //   220: invokevirtual 756	java/io/ByteArrayOutputStream:close	()V
-    //   223: goto +8 -> 231
-    //   226: astore_0
-    //   227: aload_0
-    //   228: invokevirtual 757	java/io/IOException:printStackTrace	()V
-    //   231: aload_3
-    //   232: invokevirtual 761	java/io/ByteArrayOutputStream:toByteArray	()[B
-    //   235: areturn
-    //   236: aload_3
-    //   237: invokevirtual 756	java/io/ByteArrayOutputStream:close	()V
-    //   240: goto +8 -> 248
-    //   243: astore_3
-    //   244: aload_3
-    //   245: invokevirtual 757	java/io/IOException:printStackTrace	()V
-    //   248: aload_0
-    //   249: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	250	0	paramString	String
-    //   9	186	1	i	int
-    //   43	9	2	j	int
-    //   7	230	3	localObject1	Object
-    //   243	2	3	localIOException	IOException
-    //   115	48	4	localObject2	Object
-    // Exception table:
-    //   from	to	target	type
-    //   153	158	210	finally
-    //   161	171	210	finally
-    //   171	181	210	finally
-    //   186	200	210	finally
-    //   215	219	210	finally
-    //   153	158	214	java/lang/Exception
-    //   161	171	214	java/lang/Exception
-    //   171	181	214	java/lang/Exception
-    //   186	200	214	java/lang/Exception
-    //   203	207	226	java/io/IOException
-    //   219	223	226	java/io/IOException
-    //   236	240	243	java/io/IOException
-  }
-  
-  public static long d()
-  {
     try
     {
-      long l = RqdApplication.n().getSharedPreferences("features_file", 0).getLong("dns_time", 0L);
-      return l;
-    }
-    catch (Exception localException)
-    {
-      StringBuilder localStringBuilder = new StringBuilder("SharedPreferences msg ");
-      localStringBuilder.append(localException.getMessage());
-      xa.c(localStringBuilder.toString());
-    }
-    return 0L;
-  }
-  
-  public static byte[] d(String paramString)
-  {
-    try
-    {
-      paramString = new FileInputStream(new File(paramString));
-      ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream(1000);
-      byte[] arrayOfByte = new byte[1000];
-      for (;;)
+      localJSONObject = new JSONObject();
+      try
       {
-        int i = paramString.read(arrayOfByte);
-        if (i == -1) {
-          break;
+        if (th.a().k.b() != null) {
+          localJSONObject.put("uin", th.a().k.b().mUin);
         }
-        localByteArrayOutputStream.write(arrayOfByte, 0, i);
+        localJSONObject.put("seq_id", this.l);
+        localJSONObject.put("op_time", (int)rf.a().h());
+        localJSONObject.put("action_list", localJSONArray);
       }
-      paramString.close();
-      localByteArrayOutputStream.close();
-      paramString = localByteArrayOutputStream.toByteArray();
-      return paramString;
-    }
-    catch (IOException paramString)
-    {
-      paramString.printStackTrace();
-    }
-    catch (FileNotFoundException paramString)
-    {
-      paramString.printStackTrace();
-    }
-    return null;
-  }
-  
-  public static long e()
-  {
-    try
-    {
-      sc.a();
-      RqdApplication.n();
-      Object localObject1 = sc.g();
-      aav localaav = new aav();
-      String str = ((SharedPreferences)localObject1).getString("verify_face_pwd_key", "");
-      localObject1 = ((SharedPreferences)localObject1).getString("verify_face_pwd_uin", "");
-      if (!n())
+      catch (Exception localException2)
       {
-        b(0L);
-        return 0L;
+        localException2.printStackTrace();
+        localStringBuilder = new StringBuilder("JSONException:");
+        localStringBuilder.append(localException2.getMessage());
+        xj.c(localStringBuilder.toString());
       }
-      if ((str != null) && (str.length() != 0) && (localObject1 != null))
+      this.i = localJSONObject.toString();
+      this.u = new UserTask()
       {
-        if (((String)localObject1).length() == 0) {
-          return 0L;
-        }
-        byte[] arrayOfByte = sr.a((String)localObject1);
-        localObject2 = localaav.a(arrayOfByte, aax.a(str));
-        localObject1 = localObject2;
-        if (localObject2 == null) {
-          localObject1 = localaav.a(arrayOfByte, aax.a(str));
-        }
-        localObject1 = new String((byte[])localObject1, "UTF8");
-        if (((String)localObject1).length() == 0) {
-          return 0L;
-        }
-        xa.a("facepwd verify uin=".concat(String.valueOf(localObject1)));
-        long l = Long.parseLong((String)localObject1);
-        return l;
-      }
-      return 0L;
-    }
-    catch (Exception localException)
-    {
-      Object localObject2 = new StringBuilder("SharedPreferences msg ");
-      ((StringBuilder)localObject2).append(localException.getMessage());
-      xa.c(((StringBuilder)localObject2).toString());
-    }
-    return 0L;
-  }
-  
-  private static boolean e(String paramString)
-  {
-    return (!TextUtils.isEmpty(paramString)) && (!paramString.startsWith("unknow"));
-  }
-  
-  private static int f(String paramString)
-  {
-    try
-    {
-      int i = new ExifInterface(paramString).getAttributeInt("Orientation", 0);
-      if (i != 3)
-      {
-        if (i != 6)
+        public final void a()
         {
-          if (i != 8) {
-            return 0;
-          }
-          return 270;
+          aad.a(aad.this);
         }
-        return 90;
-      }
-      return 180;
-    }
-    catch (IOException paramString)
-    {
-      paramString.printStackTrace();
-    }
-    return 0;
-  }
-  
-  public static QQUser f()
-  {
-    try
-    {
-      long l = e();
-      if (l == 0L) {
-        return null;
-      }
-      QQUser localQQUser = sz.a().d(l);
-      return localQQUser;
-    }
-    catch (Exception localException)
-    {
-      StringBuilder localStringBuilder = new StringBuilder("SharedPreferences msg ");
-      localStringBuilder.append(localException.getMessage());
-      xa.c(localStringBuilder.toString());
-    }
-    return null;
-  }
-  
-  public static QQUser g()
-  {
-    try
-    {
-      long l = e();
-      if (l == 0L) {
-        return null;
-      }
-      QQUser localQQUser = sz.a().c(aac.f(l));
-      return localQQUser;
-    }
-    catch (Exception localException)
-    {
-      StringBuilder localStringBuilder = new StringBuilder("SharedPreferences msg ");
-      localStringBuilder.append(localException.getMessage());
-      xa.c(localStringBuilder.toString());
-    }
-    return null;
-  }
-  
-  public static FaceRecognitionParamResult h()
-  {
-    FaceRecognitionParamResult localFaceRecognitionParamResult = new FaceRecognitionParamResult();
-    try
-    {
-      Object localObject = RqdApplication.n().getSharedPreferences("features_file", 0);
-      localFaceRecognitionParamResult.mRegRayThres = ((SharedPreferences)localObject).getFloat("face_reg_thres", 0.1F);
-      localFaceRecognitionParamResult.mVerifyRayThres = ((SharedPreferences)localObject).getFloat("face_verify_thres", 0.1F);
-      localFaceRecognitionParamResult.mDisparityThres = ((SharedPreferences)localObject).getFloat("face_disparity_thres", 2.0F);
-      localObject = new StringBuilder("faceparams: ");
-      ((StringBuilder)localObject).append(localFaceRecognitionParamResult.mRegRayThres);
-      ((StringBuilder)localObject).append(",");
-      ((StringBuilder)localObject).append(localFaceRecognitionParamResult.mVerifyRayThres);
-      ((StringBuilder)localObject).append(",");
-      ((StringBuilder)localObject).append(localFaceRecognitionParamResult.mDisparityThres);
-      xa.a(((StringBuilder)localObject).toString());
-      return localFaceRecognitionParamResult;
-    }
-    catch (Exception localException)
-    {
-      StringBuilder localStringBuilder = new StringBuilder("SharedPreferences msg ");
-      localStringBuilder.append(localException.getMessage());
-      xa.c(localStringBuilder.toString());
-      localFaceRecognitionParamResult.mRegRayThres = 0.1F;
-      localFaceRecognitionParamResult.mVerifyRayThres = 0.1F;
-      localFaceRecognitionParamResult.mDisparityThres = 2.0F;
-    }
-    return localFaceRecognitionParamResult;
-  }
-  
-  public static int i()
-  {
-    try
-    {
-      int i = RqdApplication.n().getSharedPreferences("features_file", 0).getInt("face_algorithm", 1);
-      return i;
-    }
-    catch (Exception localException)
-    {
-      StringBuilder localStringBuilder = new StringBuilder("SharedPreferences msg ");
-      localStringBuilder.append(localException.getMessage());
-      xa.c(localStringBuilder.toString());
-    }
-    return 0;
-  }
-  
-  public static JSONArray j()
-  {
-    if (a.mToolsTitleList != null) {
-      return a.mToolsTitleList;
-    }
-    try
-    {
-      JSONArray localJSONArray = new JSONArray(RqdApplication.n().getSharedPreferences("features_file", 0).getString("tools_title", null));
-      return localJSONArray;
-    }
-    catch (Exception localException) {}
-    return null;
-  }
-  
-  public static ArrayList<ArrayList<sl>> k()
-  {
-    try
-    {
-      JSONArray localJSONArray1 = new JSONArray(RqdApplication.n().getSharedPreferences("features_file", 0).getString("tools_items", null));
-      ArrayList localArrayList1 = new ArrayList();
-      if (localJSONArray1.length() >= 0)
-      {
-        int i = 0;
-        while (i < localJSONArray1.length())
-        {
-          JSONArray localJSONArray2 = localJSONArray1.getJSONArray(i);
-          ArrayList localArrayList2 = new ArrayList();
-          int j = 0;
-          while (j < localJSONArray2.length())
-          {
-            localArrayList2.add(new sl(localJSONArray2.getJSONObject(j)));
-            j += 1;
-          }
-          localArrayList1.add(localArrayList2);
-          i += 1;
-        }
-        return localArrayList1;
-      }
-      return null;
-    }
-    catch (Exception localException) {}
-    return null;
-  }
-  
-  public static ArrayList<ZzbIntroItem> l()
-  {
-    if (a.zzbIntroItemlist != null) {
-      return a.zzbIntroItemlist;
-    }
-    Object localObject = RqdApplication.n();
-    int i = 0;
-    localObject = ((Context)localObject).getSharedPreferences("features_file", 0).getString("zzb_intro_list", null);
-    try
-    {
-      localObject = new JSONArray((String)localObject);
-      if (((JSONArray)localObject).length() > 0)
-      {
-        ArrayList localArrayList = new ArrayList();
-        while (i < ((JSONArray)localObject).length())
-        {
-          localArrayList.add(new ZzbIntroItem(((JSONArray)localObject).getJSONObject(i)));
-          i += 1;
-        }
-        return localArrayList;
-      }
-      return null;
-    }
-    catch (Exception localException) {}
-    return null;
-  }
-  
-  public static boolean m()
-  {
-    try
-    {
-      int i = RqdApplication.n().getSharedPreferences("features_file", 0).getInt("collect_device_info", 0);
-      return i == 1;
-    }
-    catch (Exception localException)
-    {
-      StringBuilder localStringBuilder = new StringBuilder("SharedPreferences msg ");
-      localStringBuilder.append(localException.getMessage());
-      xa.c(localStringBuilder.toString());
-    }
-    return false;
-  }
-  
-  public static boolean n()
-  {
-    try
-    {
-      int i = RqdApplication.n().getSharedPreferences("features_file", 0).getInt("use_face_start", 0);
-      return i == 1;
-    }
-    catch (Exception localException)
-    {
-      StringBuilder localStringBuilder = new StringBuilder("SharedPreferences msg ");
-      localStringBuilder.append(localException.getMessage());
-      xa.c(localStringBuilder.toString());
-    }
-    return false;
-  }
-  
-  public static boolean o()
-  {
-    try
-    {
-      int i = RqdApplication.n().getSharedPreferences("features_file", 0).getInt("use_face_chpwd", 0);
-      return i == 1;
-    }
-    catch (Exception localException)
-    {
-      StringBuilder localStringBuilder = new StringBuilder("SharedPreferences msg ");
-      localStringBuilder.append(localException.getMessage());
-      xa.c(localStringBuilder.toString());
-    }
-    return false;
-  }
-  
-  public static boolean p()
-  {
-    try
-    {
-      int i = RqdApplication.n().getSharedPreferences("features_file", 0).getInt("use_face_chmobile", 0);
-      return i == 1;
-    }
-    catch (Exception localException)
-    {
-      StringBuilder localStringBuilder = new StringBuilder("SharedPreferences msg ");
-      localStringBuilder.append(localException.getMessage());
-      xa.c(localStringBuilder.toString());
-    }
-    return false;
-  }
-  
-  public static String q()
-  {
-    try
-    {
-      String str = RqdApplication.n().getSharedPreferences("features_file", 0).getString("so_param_ids", "");
-      return str;
-    }
-    catch (Exception localException)
-    {
-      StringBuilder localStringBuilder = new StringBuilder("SharedPreferences msg ");
-      localStringBuilder.append(localException.getMessage());
-      xa.c(localStringBuilder.toString());
-    }
-    return "";
-  }
-  
-  public static String r()
-  {
-    try
-    {
-      String str = RqdApplication.n().getSharedPreferences("features_file", 0).getString("so_param_values", "");
-      return str;
-    }
-    catch (Exception localException)
-    {
-      StringBuilder localStringBuilder = new StringBuilder("SharedPreferences msg ");
-      localStringBuilder.append(localException.getMessage());
-      xa.c(localStringBuilder.toString());
-    }
-    return "";
-  }
-  
-  public static int s()
-  {
-    try
-    {
-      int i = RqdApplication.n().getSharedPreferences("features_file", 0).getInt("live_angle", 21);
-      return i;
-    }
-    catch (Exception localException)
-    {
-      StringBuilder localStringBuilder = new StringBuilder("SharedPreferences msg ");
-      localStringBuilder.append(localException.getMessage());
-      xa.c(localStringBuilder.toString());
-    }
-    return 0;
-  }
-  
-  public static int t()
-  {
-    try
-    {
-      int i = RqdApplication.n().getSharedPreferences("features_file", 0).getInt("displayAngle_face", -1);
-      return i;
-    }
-    catch (Exception localException)
-    {
-      StringBuilder localStringBuilder = new StringBuilder("SharedPreferences msg ");
-      localStringBuilder.append(localException.getMessage());
-      xa.c(localStringBuilder.toString());
-    }
-    return -1;
-  }
-  
-  public static int u()
-  {
-    try
-    {
-      int i = RqdApplication.n().getSharedPreferences("features_file", 0).getInt("imageAngle_face", -1);
-      return i;
-    }
-    catch (Exception localException)
-    {
-      StringBuilder localStringBuilder = new StringBuilder("SharedPreferences msg ");
-      localStringBuilder.append(localException.getMessage());
-      xa.c(localStringBuilder.toString());
-    }
-    return -1;
-  }
-  
-  public static boolean v()
-  {
-    try
-    {
-      boolean bool = RqdApplication.n().getSharedPreferences("features_file", 0).getBoolean("show_bright_tip", false);
-      return bool;
-    }
-    catch (Exception localException)
-    {
-      StringBuilder localStringBuilder = new StringBuilder("SharedPreferences msg ");
-      localStringBuilder.append(localException.getMessage());
-      xa.c(localStringBuilder.toString());
-    }
-    return true;
-  }
-  
-  public static void w()
-  {
-    try
-    {
-      SharedPreferences.Editor localEditor = RqdApplication.n().getSharedPreferences("features_file", 0).edit();
-      localEditor.putBoolean("show_bright_tip", true);
-      localEditor.commit();
+      };
+      this.u.a(new String[0]);
       return;
     }
-    catch (Exception localException)
-    {
-      StringBuilder localStringBuilder = new StringBuilder("SharedPreferences msg ");
-      localStringBuilder.append(localException.getMessage());
-      xa.c(localStringBuilder.toString());
-    }
+    finally {}
   }
   
-  public static String x()
+  public final void a(int paramInt1, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, int paramInt2, int paramInt3, long paramLong)
   {
-    Object localObject1 = "";
-    if (e(Build.MANUFACTURER))
-    {
-      localObject1 = new StringBuilder();
-      ((StringBuilder)localObject1).append("");
-      ((StringBuilder)localObject1).append(Build.MANUFACTURER);
-      localObject1 = ((StringBuilder)localObject1).toString();
+    if (xf.j()) {
+      return;
     }
-    Object localObject2 = localObject1;
-    if (e(Build.MODEL))
-    {
-      localObject2 = new StringBuilder();
-      ((StringBuilder)localObject2).append((String)localObject1);
-      ((StringBuilder)localObject2).append(Build.MODEL);
-      localObject2 = ((StringBuilder)localObject2).toString();
-    }
-    return localObject2;
-  }
-  
-  public static int y()
-  {
-    if (Build.VERSION.SDK_INT <= 10) {
-      return 1;
+    if (this.h == null) {
+      return;
     }
     try
     {
-      int i = new File("/sys/devices/system/cpu/").listFiles(g).length;
-      return i;
+      JSONObject localJSONObject = new JSONObject();
+      this.s = th.a().k.b();
+      if (this.s != null) {
+        localJSONObject.put("real_uin", this.s.mRealUin);
+      } else {
+        localJSONObject.put("real_uin", 0L);
+      }
+      localJSONObject.put("type", paramInt1);
+      localJSONObject.put("cgi_name", paramString1);
+      localJSONObject.put("page_name", paramString2);
+      localJSONObject.put("ctrl_name", paramString3);
+      localJSONObject.put("optional_A", paramString4);
+      localJSONObject.put("optional_B", paramString5);
+      localJSONObject.put("touch_x", paramInt2);
+      localJSONObject.put("touch_y", paramInt3);
+      localJSONObject.put("touch_time", paramLong);
+      try
+      {
+        this.h.put(localJSONObject);
+      }
+      finally {}
     }
-    catch (SecurityException|NullPointerException|Exception localSecurityException) {}
-    return 1;
+    catch (Exception paramString1)
+    {
+      label191:
+      break label191;
+    }
+    if ((this.h.length() >= o) && (g)) {
+      h();
+    }
   }
   
-  /* Error */
-  public static int z()
+  public final void b()
   {
-    // Byte code:
-    //   0: iconst_0
-    //   1: istore_2
-    //   2: iconst_0
-    //   3: istore_0
-    //   4: iload_2
-    //   5: invokestatic 928	com/tencent/token/aad:y	()I
-    //   8: if_icmpge +138 -> 146
-    //   11: new 65	java/lang/StringBuilder
-    //   14: dup
-    //   15: ldc_w 930
-    //   18: invokespecial 92	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   21: astore_3
-    //   22: aload_3
-    //   23: iload_2
-    //   24: invokevirtual 418	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   27: pop
-    //   28: aload_3
-    //   29: ldc_w 932
-    //   32: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   35: pop
-    //   36: new 767	java/io/File
-    //   39: dup
-    //   40: aload_3
-    //   41: invokevirtual 79	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   44: invokespecial 768	java/io/File:<init>	(Ljava/lang/String;)V
-    //   47: astore_3
-    //   48: iload_0
-    //   49: istore_1
-    //   50: aload_3
-    //   51: invokevirtual 935	java/io/File:exists	()Z
-    //   54: ifeq +83 -> 137
-    //   57: sipush 128
-    //   60: newarray byte
-    //   62: astore 4
-    //   64: new 765	java/io/FileInputStream
-    //   67: dup
-    //   68: aload_3
-    //   69: invokespecial 771	java/io/FileInputStream:<init>	(Ljava/io/File;)V
-    //   72: astore_3
-    //   73: aload_3
-    //   74: aload 4
-    //   76: invokevirtual 777	java/io/FileInputStream:read	([B)I
-    //   79: pop
-    //   80: iconst_0
-    //   81: istore_1
-    //   82: goto +76 -> 158
-    //   85: new 214	java/lang/String
-    //   88: dup
-    //   89: aload 4
-    //   91: iconst_0
-    //   92: iload_1
-    //   93: invokespecial 937	java/lang/String:<init>	([BII)V
-    //   96: invokestatic 496	java/lang/Integer:parseInt	(Ljava/lang/String;)I
-    //   99: invokestatic 940	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   102: astore 4
-    //   104: iload_0
-    //   105: istore_1
-    //   106: aload 4
-    //   108: invokevirtual 943	java/lang/Integer:intValue	()I
-    //   111: iload_0
-    //   112: if_icmple +9 -> 121
-    //   115: aload 4
-    //   117: invokevirtual 943	java/lang/Integer:intValue	()I
-    //   120: istore_1
-    //   121: aload_3
-    //   122: invokevirtual 782	java/io/FileInputStream:close	()V
-    //   125: goto +12 -> 137
-    //   128: astore 4
-    //   130: aload_3
-    //   131: invokevirtual 782	java/io/FileInputStream:close	()V
-    //   134: aload 4
-    //   136: athrow
-    //   137: iload_2
-    //   138: iconst_1
-    //   139: iadd
-    //   140: istore_2
-    //   141: iload_1
-    //   142: istore_0
-    //   143: goto -139 -> 4
-    //   146: iload_0
-    //   147: ireturn
-    //   148: astore_3
-    //   149: iconst_0
-    //   150: ireturn
-    //   151: astore 4
-    //   153: iload_0
-    //   154: istore_1
-    //   155: goto -34 -> 121
-    //   158: aload 4
-    //   160: iload_1
-    //   161: baload
-    //   162: bipush 48
-    //   164: if_icmplt -79 -> 85
-    //   167: aload 4
-    //   169: iload_1
-    //   170: baload
-    //   171: bipush 57
-    //   173: if_icmpgt -88 -> 85
-    //   176: iload_1
-    //   177: sipush 128
-    //   180: if_icmpge -95 -> 85
-    //   183: iload_1
-    //   184: iconst_1
-    //   185: iadd
-    //   186: istore_1
-    //   187: goto -29 -> 158
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   3	151	0	i	int
-    //   49	138	1	j	int
-    //   1	140	2	k	int
-    //   21	110	3	localObject1	Object
-    //   148	1	3	localIOException	IOException
-    //   62	54	4	localObject2	Object
-    //   128	7	4	localObject3	Object
-    //   151	17	4	localNumberFormatException	java.lang.NumberFormatException
-    // Exception table:
-    //   from	to	target	type
-    //   73	80	128	finally
-    //   85	104	128	finally
-    //   106	121	128	finally
-    //   4	48	148	java/io/IOException
-    //   50	73	148	java/io/IOException
-    //   121	125	148	java/io/IOException
-    //   130	137	148	java/io/IOException
-    //   73	80	151	java/lang/NumberFormatException
-    //   85	104	151	java/lang/NumberFormatException
-    //   106	121	151	java/lang/NumberFormatException
+    this.j = null;
+    this.k = b;
   }
 }
 

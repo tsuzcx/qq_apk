@@ -3,7 +3,7 @@ package com.tencent.mm.sdk.channel;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import com.tencent.token.pp;
+import com.tencent.token.pw;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -24,14 +24,14 @@ public final class MMessage
     
     public final void onReceive(Context paramContext, Intent paramIntent)
     {
-      pp.c("MicroMsg.SDK.MMessage", "receive intent=".concat(String.valueOf(paramIntent)));
+      pw.c("MicroMsg.SDK.MMessage", "receive intent=".concat(String.valueOf(paramIntent)));
       if (this.b != null)
       {
-        pp.c("MicroMsg.SDK.MMessage", "mm message self-handled");
+        pw.c("MicroMsg.SDK.MMessage", "mm message self-handled");
         return;
       }
       if ((MMessage.a)a.get(paramIntent.getAction()) != null) {
-        pp.c("MicroMsg.SDK.MMessage", "mm message handled");
+        pw.c("MicroMsg.SDK.MMessage", "mm message handled");
       }
     }
   }

@@ -1,19 +1,10 @@
 package com.tencent.token;
 
-import android.view.Window.Callback;
+import com.tencent.turingfd.sdk.qps.Grape;
 
-public final class acd
-  extends abz
+public abstract interface acd
 {
-  public acc b;
-  public String c;
-  
-  public acd(Window.Callback paramCallback, acc paramacc, String paramString)
-  {
-    super(paramCallback);
-    this.b = paramacc;
-    this.c = paramString;
-  }
+  public abstract void a(String paramString, int paramInt1, int paramInt2, Grape paramGrape);
 }
 
 

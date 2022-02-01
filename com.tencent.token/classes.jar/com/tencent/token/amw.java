@@ -1,43 +1,31 @@
 package com.tencent.token;
 
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+import java.nio.channels.WritableByteChannel;
 
-abstract class amw<V, O>
-  implements amv<O>
+public abstract interface amw
+  extends ank, WritableByteChannel
 {
-  final List<aly<V>> a;
-  final V b;
+  public abstract amv b();
   
-  amw(V paramV)
-  {
-    this(Collections.emptyList(), paramV);
-  }
+  public abstract amw b(String paramString);
   
-  private amw(List<aly<V>> paramList, V paramV)
-  {
-    this.a = paramList;
-    this.b = paramV;
-  }
+  public abstract amw c(byte[] paramArrayOfByte);
   
-  public boolean b()
-  {
-    return !this.a.isEmpty();
-  }
+  public abstract amw c(byte[] paramArrayOfByte, int paramInt1, int paramInt2);
   
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("parseInitialValue=");
-    localStringBuilder.append(this.b);
-    if (!this.a.isEmpty())
-    {
-      localStringBuilder.append(", values=");
-      localStringBuilder.append(Arrays.toString(this.a.toArray()));
-    }
-    return localStringBuilder.toString();
-  }
+  public abstract amw f(int paramInt);
+  
+  public abstract void flush();
+  
+  public abstract amw g(int paramInt);
+  
+  public abstract amw h(int paramInt);
+  
+  public abstract amw j(long paramLong);
+  
+  public abstract amw k(long paramLong);
+  
+  public abstract amw r();
 }
 
 

@@ -27,8 +27,8 @@ public class RealNameFirstJoinActivity
     }
     else
     {
-      localObject = (TextView)findViewById(2131166078);
-      TextView localTextView2 = (TextView)findViewById(2131166079);
+      localObject = (TextView)findViewById(2131166080);
+      TextView localTextView2 = (TextView)findViewById(2131166081);
       ((TextView)localObject).setText(2131492927);
       localTextView2.setVisibility(8);
       localTextView1.setVisibility(8);

@@ -1,11 +1,29 @@
 package com.tencent.token;
 
-import android.graphics.Path;
-
-abstract interface alu
-  extends aof
+public enum alu
 {
-  public abstract Path g_();
+  public final int l;
+  
+  private alu(int paramInt)
+  {
+    this.l = paramInt;
+  }
+  
+  public static alu a(int paramInt)
+  {
+    alu[] arrayOfalu = values();
+    int i1 = arrayOfalu.length;
+    int n = 0;
+    while (n < i1)
+    {
+      alu localalu = arrayOfalu[n];
+      if (localalu.l == paramInt) {
+        return localalu;
+      }
+      n += 1;
+    }
+    return null;
+  }
 }
 
 

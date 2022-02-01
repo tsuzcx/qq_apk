@@ -1,107 +1,96 @@
 package com.tencent.token;
 
-import com.tencent.token.utils.encrypt.random.PRNGFixes;
-import com.tencent.token.utils.encrypt.random.SecureRandom;
-import oicq.wlogin_sdk.tools.MD5;
+import com.tencent.token.core.bean.DeviceInfo;
+import com.tencent.token.core.bean.QQUser;
+import java.util.ArrayList;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public final class aaw
 {
-  public static aas a()
+  public ss a = new ss();
+  public ArrayList<DeviceInfo> b;
+  long c;
+  private th d = th.a();
+  
+  private void a(ss paramss)
   {
-    byte[] arrayOfByte = new byte[14];
-    String str2 = System.getProperty("microedition.platform");
-    String str1 = str2;
-    if (str2 == null) {
-      str1 = "";
-    }
-    int j = Runtime.getRuntime().hashCode();
     try
     {
-      PRNGFixes.a();
+      this.a = paramss;
+      if (th.a().k.b() != null) {
+        this.c = this.d.k.b().mUin;
+      }
+      return;
     }
-    catch (Exception localException)
+    finally
     {
-      localException.printStackTrace();
+      paramss = finally;
+      throw paramss;
     }
-    SecureRandom localSecureRandom1 = new SecureRandom();
-    SecureRandom localSecureRandom2 = new SecureRandom();
-    StringBuffer localStringBuffer = new StringBuffer();
-    localStringBuffer.append(str1);
-    localStringBuffer.append(localSecureRandom2.nextInt());
-    localStringBuffer.append(System.currentTimeMillis());
-    localStringBuffer.append(j);
-    localStringBuffer.append(new Object().hashCode());
-    localSecureRandom1.a(localStringBuffer.toString().getBytes());
-    int i = 1;
-    while (i < 14)
+  }
+  
+  public final boolean a(JSONArray paramJSONArray)
+  {
+    ss localss = new ss();
+    if (paramJSONArray != null) {}
+    for (;;)
     {
-      arrayOfByte[i] = ((byte)(Math.abs(localSecureRandom1.nextInt()) % 256));
-      localSecureRandom2.a(localSecureRandom2.a(i));
-      localStringBuffer = new StringBuffer();
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(System.currentTimeMillis());
-      localStringBuffer.append(localStringBuilder.toString());
-      localStringBuffer.append(localSecureRandom2.nextInt());
-      localStringBuffer.append(j);
-      localStringBuffer.append(new Object().hashCode());
-      localStringBuffer.insert(Math.abs(localSecureRandom2.nextInt()) % localStringBuffer.length(), str1);
-      localSecureRandom1.a(localStringBuffer.toString().getBytes());
+      int i;
+      try
+      {
+        if (paramJSONArray.length() > 0)
+        {
+          i = 0;
+          if (i < paramJSONArray.length())
+          {
+            Object localObject = paramJSONArray.getJSONObject(i);
+            localss.a = ((JSONObject)localObject).getInt("id");
+            localss.b = ((JSONObject)localObject).getString("name");
+            if (((JSONObject)localObject).getInt("value") == 0) {
+              break label270;
+            }
+            bool = true;
+            localss.c = bool;
+            localObject = ((JSONObject)localObject).getJSONArray("list");
+            if (((JSONArray)localObject).length() > 0)
+            {
+              this.b = new ArrayList();
+              int j = 0;
+              if (j >= ((JSONArray)localObject).length()) {
+                break label276;
+              }
+              JSONObject localJSONObject = ((JSONArray)localObject).getJSONObject(j);
+              DeviceInfo localDeviceInfo = new DeviceInfo();
+              localDeviceInfo.dguid = localJSONObject.getString("dguid");
+              localDeviceInfo.dname = localJSONObject.getString("dname");
+              localDeviceInfo.dtype = localJSONObject.getString("dtype");
+              localDeviceInfo.ddes = localJSONObject.getString("ddes");
+              localDeviceInfo.dappid = localJSONObject.getInt("dappid");
+              localDeviceInfo.dsubappid = localJSONObject.getInt("dsubappid");
+              localDeviceInfo.dappname = localJSONObject.getString("dappname");
+              this.b.add(localDeviceInfo);
+              j += 1;
+              continue;
+            }
+            this.b = new ArrayList();
+            break label276;
+          }
+        }
+        a(localss);
+        return true;
+      }
+      catch (Exception paramJSONArray)
+      {
+        paramJSONArray.printStackTrace();
+        return false;
+      }
+      label270:
+      boolean bool = false;
+      continue;
+      label276:
       i += 1;
     }
-    arrayOfByte[0] = ((byte)(Math.abs(localSecureRandom1.nextInt()) % 64));
-    return new aas(arrayOfByte);
-  }
-  
-  public static String a(aas paramaas1, aas paramaas2)
-  {
-    if (paramaas1 != null)
-    {
-      if (paramaas2 == null) {
-        return null;
-      }
-      aas localaas = new aas("2");
-      try
-      {
-        paramaas1 = localaas.a(paramaas1, paramaas2);
-        return paramaas1.a().toUpperCase();
-      }
-      catch (Exception paramaas1)
-      {
-        paramaas1.printStackTrace();
-        return null;
-      }
-    }
-    return null;
-  }
-  
-  public static byte[] a(aas paramaas1, aas paramaas2, aas paramaas3)
-  {
-    paramaas1 = b(paramaas1, paramaas2, paramaas3);
-    if (paramaas1 == null) {
-      return null;
-    }
-    return MD5.toMD5Byte(sr.a(paramaas1.a()));
-  }
-  
-  public static aas b(aas paramaas1, aas paramaas2, aas paramaas3)
-  {
-    if ((paramaas1 != null) && (paramaas2 != null))
-    {
-      if (paramaas3 == null) {
-        return null;
-      }
-      try
-      {
-        paramaas1 = paramaas2.a(paramaas1, paramaas3);
-        return paramaas1;
-      }
-      catch (Exception paramaas1)
-      {
-        paramaas1.printStackTrace();
-        return null;
-      }
-    }
-    return null;
   }
 }
 

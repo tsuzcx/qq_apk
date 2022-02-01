@@ -1,91 +1,183 @@
 package com.tencent.token;
 
 import android.content.Context;
-import android.text.TextUtils;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import android.widget.TextView;
-import java.util.ArrayList;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Looper;
+import com.tencent.token.global.RqdApplication;
+import com.tmsdk.base.utils.SDKUtil;
+import java.lang.reflect.Method;
 
 public final class xz
-  extends BaseAdapter
+  implements aud
 {
-  private Context a;
-  private ArrayList<sj> b;
-  private int c = 0;
+  private SharedPreferences a;
+  private SharedPreferences.Editor b;
+  private boolean c;
   
-  public xz(Context paramContext, ArrayList<sj> paramArrayList)
+  public xz(String paramString)
   {
-    this.a = paramContext;
-    this.b = paramArrayList;
-  }
-  
-  public final int getCount()
-  {
-    return this.b.size();
-  }
-  
-  public final Object getItem(int paramInt)
-  {
-    return Integer.valueOf(paramInt);
-  }
-  
-  public final long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    if (paramView == null)
+    try
     {
-      paramView = new a();
-      paramViewGroup = LayoutInflater.from(this.a).inflate(2131296360, paramViewGroup, false);
-      paramView.d = paramViewGroup.findViewById(2131165615);
-      paramView.a = ((TextView)paramViewGroup.findViewById(2131166166));
-      paramView.b = ((ImageView)paramViewGroup.findViewById(2131165613));
-      paramView.c = ((ImageView)paramViewGroup.findViewById(2131165614));
-      paramViewGroup.setTag(paramView);
+      this.a = RqdApplication.p().getSharedPreferences(paramString, 0);
+      return;
     }
-    else
+    catch (Exception paramString)
     {
-      localObject = (a)paramView.getTag();
-      paramViewGroup = paramView;
-      paramView = (View)localObject;
+      paramString.printStackTrace();
     }
-    Object localObject = (sj)this.b.get(paramInt);
-    if ((localObject != null) && (((sj)localObject).e))
-    {
-      if (!TextUtils.isEmpty(((sj)localObject).c)) {
-        paramView.a.setText(((sj)localObject).c);
-      }
-      paramView.d.setOnClickListener(((sj)localObject).a);
-      if (((sj)localObject).b > 0) {
-        paramView.b.setImageResource(((sj)localObject).b);
-      } else {
-        new zs(paramView.b).execute(new String[] { ((sj)localObject).f });
-      }
-      if (((sj)localObject).d)
-      {
-        paramView.c.setVisibility(0);
-        return paramViewGroup;
-      }
-      paramView.c.setVisibility(4);
-    }
-    return paramViewGroup;
   }
   
-  final class a
+  private static boolean a(SharedPreferences.Editor paramEditor)
   {
-    TextView a;
-    ImageView b;
-    ImageView c;
-    View d;
-    
-    a() {}
+    if ((Thread.currentThread().getId() == Looper.getMainLooper().getThread().getId()) && (SDKUtil.getSDKVersion() >= 9)) {}
+    try
+    {
+      paramEditor.getClass().getMethod("apply", new Class[0]).invoke(paramEditor, new Object[0]);
+      return true;
+    }
+    catch (Throwable localThrowable)
+    {
+      label51:
+      break label51;
+    }
+    return paramEditor.commit();
+    return paramEditor.commit();
+  }
+  
+  private SharedPreferences.Editor d()
+  {
+    if (this.b == null) {
+      this.b = this.a.edit();
+    }
+    return this.b;
+  }
+  
+  public final int a(String paramString, int paramInt)
+  {
+    SharedPreferences localSharedPreferences = this.a;
+    if (localSharedPreferences != null) {
+      return localSharedPreferences.getInt(paramString, paramInt);
+    }
+    return 0;
+  }
+  
+  public final long a(String paramString, long paramLong)
+  {
+    SharedPreferences localSharedPreferences = this.a;
+    if (localSharedPreferences != null) {
+      return localSharedPreferences.getLong(paramString, paramLong);
+    }
+    return 0L;
+  }
+  
+  public final String a(String paramString)
+  {
+    SharedPreferences localSharedPreferences = this.a;
+    if (localSharedPreferences != null) {
+      return localSharedPreferences.getString(paramString, null);
+    }
+    return null;
+  }
+  
+  public final String a(String paramString1, String paramString2)
+  {
+    SharedPreferences localSharedPreferences = this.a;
+    if (localSharedPreferences != null) {
+      return localSharedPreferences.getString(paramString1, paramString2);
+    }
+    return null;
+  }
+  
+  public final void a()
+  {
+    if (this.a != null) {
+      a(d().clear());
+    }
+  }
+  
+  public final boolean a(String paramString, boolean paramBoolean)
+  {
+    SharedPreferences localSharedPreferences = this.a;
+    if (localSharedPreferences != null) {
+      return localSharedPreferences.getBoolean(paramString, paramBoolean);
+    }
+    return false;
+  }
+  
+  public final void b()
+  {
+    this.c = true;
+  }
+  
+  public final boolean b(String paramString)
+  {
+    if (this.a != null) {
+      return a(d().remove(paramString));
+    }
+    return false;
+  }
+  
+  public final boolean b(String paramString, int paramInt)
+  {
+    if (this.a != null)
+    {
+      SharedPreferences.Editor localEditor = d();
+      localEditor.putInt(paramString, paramInt);
+      if (!this.c) {
+        return a(localEditor);
+      }
+    }
+    return false;
+  }
+  
+  public final boolean b(String paramString, long paramLong)
+  {
+    if (this.a != null)
+    {
+      SharedPreferences.Editor localEditor = d();
+      localEditor.putLong(paramString, paramLong);
+      if (!this.c) {
+        return a(localEditor);
+      }
+    }
+    return false;
+  }
+  
+  public final boolean b(String paramString1, String paramString2)
+  {
+    if (this.a != null)
+    {
+      SharedPreferences.Editor localEditor = d();
+      localEditor.putString(paramString1, paramString2);
+      if (!this.c) {
+        return a(localEditor);
+      }
+    }
+    return false;
+  }
+  
+  public final boolean b(String paramString, boolean paramBoolean)
+  {
+    if (this.a != null)
+    {
+      SharedPreferences.Editor localEditor = d();
+      localEditor.putBoolean(paramString, paramBoolean);
+      if (!this.c) {
+        return a(localEditor);
+      }
+    }
+    return false;
+  }
+  
+  public final boolean c()
+  {
+    this.c = false;
+    SharedPreferences.Editor localEditor = this.b;
+    if (localEditor != null) {
+      return a(localEditor);
+    }
+    return true;
   }
 }
 

@@ -4,8 +4,8 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Handler;
-import com.tencent.token.pp;
-import com.tencent.token.py;
+import com.tencent.token.pw;
+import com.tencent.token.qf;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -34,7 +34,7 @@ public final class MMPluginOAuth
     
     public void onReceive(Context paramContext, Intent paramIntent)
     {
-      pp.c("MicroMsg.SDK.MMPluginOAuth", "receive oauth result");
+      pw.c("MicroMsg.SDK.MMPluginOAuth", "receive oauth result");
       String str = paramIntent.getStringExtra("com.tencent.mm.sdk.plugin.Intent.REQUEST_TOKEN");
       paramIntent = paramIntent.getStringExtra("com.tencent.mm.sdk.plugin.Intent.ACCESS_TOKEN");
       paramContext = this.b;
@@ -43,12 +43,12 @@ public final class MMPluginOAuth
         paramContext = (MMPluginOAuth)a.get(str);
         if (paramContext == null)
         {
-          pp.a("MicroMsg.SDK.MMPluginOAuth", "oauth unregistered, request token = ".concat(String.valueOf(str)));
+          pw.a("MicroMsg.SDK.MMPluginOAuth", "oauth unregistered, request token = ".concat(String.valueOf(str)));
           return;
         }
         a(paramContext.b);
       }
-      new Handler().post(new py(this, paramContext, paramIntent));
+      new Handler().post(new qf(this, paramContext, paramIntent));
     }
   }
 }

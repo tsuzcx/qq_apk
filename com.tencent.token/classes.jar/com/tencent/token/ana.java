@@ -1,22 +1,43 @@
 package com.tencent.token;
 
-public final class ana
+public abstract class ana
+  implements anl
 {
-  final int a;
-  final amr b;
-  final amo c;
+  protected final anl d;
   
-  public static enum a
+  public ana(anl paramanl)
   {
-    public static final int a = 1;
-    public static final int b = 2;
-    public static final int c = 3;
-    public static final int d = 4;
-    
-    public static int[] a()
+    if (paramanl != null)
     {
-      return (int[])e.clone();
+      this.d = paramanl;
+      return;
     }
+    throw new IllegalArgumentException("delegate == null");
+  }
+  
+  public long a(amv paramamv, long paramLong)
+  {
+    return this.d.a(paramamv, paramLong);
+  }
+  
+  public final anm a()
+  {
+    return this.d.a();
+  }
+  
+  public void close()
+  {
+    this.d.close();
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(getClass().getSimpleName());
+    localStringBuilder.append("(");
+    localStringBuilder.append(this.d.toString());
+    localStringBuilder.append(")");
+    return localStringBuilder.toString();
   }
 }
 

@@ -1,628 +1,389 @@
 package com.tencent.token;
 
 import android.content.Context;
+import android.content.Intent;
+import android.content.res.ColorStateList;
 import android.content.res.Resources;
-import android.graphics.Rect;
-import android.os.Build.VERSION;
-import android.os.Handler;
-import android.os.SystemClock;
-import android.support.v7.widget.ListPopupWindow;
-import android.util.DisplayMetrics;
+import android.graphics.PorterDuff.Mode;
+import android.graphics.drawable.Drawable;
+import android.view.ActionProvider;
+import android.view.ContextMenu.ContextMenuInfo;
 import android.view.KeyEvent;
-import android.view.LayoutInflater;
 import android.view.MenuItem;
+import android.view.MenuItem.OnActionExpandListener;
+import android.view.MenuItem.OnMenuItemClickListener;
+import android.view.SubMenu;
 import android.view.View;
-import android.view.View.OnAttachStateChangeListener;
-import android.view.View.OnKeyListener;
-import android.view.ViewGroup;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import android.widget.FrameLayout;
-import android.widget.HeaderViewListAdapter;
-import android.widget.ListAdapter;
-import android.widget.ListView;
-import android.widget.PopupWindow;
-import android.widget.PopupWindow.OnDismissListener;
-import android.widget.TextView;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
 
-final class hi
-  extends hq
-  implements View.OnKeyListener, PopupWindow.OnDismissListener, hs
+public final class hi
+  implements dr
 {
-  private PopupWindow.OnDismissListener A;
-  final Handler a;
-  final List<a> b = new ArrayList();
-  View c;
-  boolean d;
-  private final Context f;
-  private final int g;
-  private final int h;
-  private final int i;
-  private final boolean j;
-  private final List<hl> k = new ArrayList();
-  private final ViewTreeObserver.OnGlobalLayoutListener l = new ViewTreeObserver.OnGlobalLayoutListener()
-  {
-    public final void onGlobalLayout()
-    {
-      if ((hi.this.d()) && (hi.this.b.size() > 0) && (!((hi.a)hi.this.b.get(0)).a.p))
-      {
-        Object localObject = hi.this.c;
-        if ((localObject != null) && (((View)localObject).isShown())) {
-          localObject = hi.this.b.iterator();
-        }
-        while (((Iterator)localObject).hasNext())
-        {
-          ((hi.a)((Iterator)localObject).next()).a.b();
-          continue;
-          hi.this.c();
-          return;
-        }
-      }
-    }
-  };
-  private final View.OnAttachStateChangeListener m = new View.OnAttachStateChangeListener()
-  {
-    public final void onViewAttachedToWindow(View paramAnonymousView) {}
-    
-    public final void onViewDetachedFromWindow(View paramAnonymousView)
-    {
-      if (hi.a(hi.this) != null)
-      {
-        if (!hi.a(hi.this).isAlive()) {
-          hi.a(hi.this, paramAnonymousView.getViewTreeObserver());
-        }
-        hi.a(hi.this).removeGlobalOnLayoutListener(hi.b(hi.this));
-      }
-      paramAnonymousView.removeOnAttachStateChangeListener(this);
-    }
-  };
-  private final iu n = new iu()
-  {
-    public final void a(hl paramAnonymoushl, MenuItem paramAnonymousMenuItem)
-    {
-      hi.this.a.removeCallbacksAndMessages(paramAnonymoushl);
-    }
-    
-    public final void b(final hl paramAnonymoushl, final MenuItem paramAnonymousMenuItem)
-    {
-      Handler localHandler = hi.this.a;
-      final hi.a locala = null;
-      localHandler.removeCallbacksAndMessages(null);
-      int j = hi.this.b.size();
-      int i = 0;
-      while (i < j)
-      {
-        if (paramAnonymoushl == ((hi.a)hi.this.b.get(i)).b) {
-          break label75;
-        }
-        i += 1;
-      }
-      i = -1;
-      label75:
-      if (i == -1) {
-        return;
-      }
-      i += 1;
-      if (i < hi.this.b.size()) {
-        locala = (hi.a)hi.this.b.get(i);
-      }
-      paramAnonymousMenuItem = new Runnable()
-      {
-        public final void run()
-        {
-          if (locala != null)
-          {
-            hi.this.d = true;
-            locala.b.a(false);
-            hi.this.d = false;
-          }
-          if ((paramAnonymousMenuItem.isEnabled()) && (paramAnonymousMenuItem.hasSubMenu())) {
-            paramAnonymoushl.a(paramAnonymousMenuItem, null, 4);
-          }
-        }
-      };
-      long l = SystemClock.uptimeMillis();
-      hi.this.a.postAtTime(paramAnonymousMenuItem, paramAnonymoushl, l + 200L);
-    }
-  };
-  private int o = 0;
-  private int p = 0;
-  private View q;
-  private int r;
-  private boolean s;
-  private boolean t;
-  private int u;
-  private int v;
-  private boolean w;
-  private boolean x;
-  private hs.a y;
-  private ViewTreeObserver z;
+  private final int a;
+  private final int b;
+  private final int c;
+  private final int d;
+  private CharSequence e;
+  private CharSequence f;
+  private Intent g;
+  private char h;
+  private int i = 4096;
+  private char j;
+  private int k = 4096;
+  private Drawable l;
+  private int m = 0;
+  private Context n;
+  private MenuItem.OnMenuItemClickListener o;
+  private CharSequence p;
+  private CharSequence q;
+  private ColorStateList r = null;
+  private PorterDuff.Mode s = null;
+  private boolean t = false;
+  private boolean u = false;
+  private int v = 16;
   
-  public hi(Context paramContext, View paramView, int paramInt1, int paramInt2, boolean paramBoolean)
+  public hi(Context paramContext, CharSequence paramCharSequence)
   {
-    this.f = paramContext;
-    this.q = paramView;
-    this.h = paramInt1;
-    this.i = paramInt2;
-    this.j = paramBoolean;
-    this.w = false;
-    this.r = h();
-    paramContext = paramContext.getResources();
-    this.g = Math.max(paramContext.getDisplayMetrics().widthPixels / 2, paramContext.getDimensionPixelSize(go.d.abc_config_prefDialogWidth));
-    this.a = new Handler();
+    this.n = paramContext;
+    this.a = 16908332;
+    this.b = 0;
+    this.c = 0;
+    this.d = 0;
+    this.e = paramCharSequence;
   }
   
-  private static MenuItem a(hl paramhl1, hl paramhl2)
+  private void b()
   {
-    int i2 = paramhl1.size();
-    int i1 = 0;
-    while (i1 < i2)
+    if ((this.l != null) && ((this.t) || (this.u)))
     {
-      MenuItem localMenuItem = paramhl1.getItem(i1);
-      if ((localMenuItem.hasSubMenu()) && (paramhl2 == localMenuItem.getSubMenu())) {
-        return localMenuItem;
-      }
-      i1 += 1;
-    }
-    return null;
-  }
-  
-  private static View a(a parama, hl paramhl)
-  {
-    paramhl = a(parama.b, paramhl);
-    if (paramhl == null) {
-      return null;
-    }
-    ir localir = parama.a.e;
-    parama = localir.getAdapter();
-    boolean bool = parama instanceof HeaderViewListAdapter;
-    int i1 = 0;
-    int i2;
-    if (bool)
-    {
-      parama = (HeaderViewListAdapter)parama;
-      i2 = parama.getHeadersCount();
-      parama = (hk)parama.getWrappedAdapter();
-    }
-    else
-    {
-      parama = (hk)parama;
-      i2 = 0;
-    }
-    int i3 = parama.getCount();
-    while (i1 < i3)
-    {
-      if (paramhl == parama.a(i1)) {
-        break label104;
-      }
-      i1 += 1;
-    }
-    i1 = -1;
-    label104:
-    if (i1 == -1) {
-      return null;
-    }
-    i1 = i1 + i2 - localir.getFirstVisiblePosition();
-    if (i1 >= 0)
-    {
-      if (i1 >= localir.getChildCount()) {
-        return null;
-      }
-      return localir.getChildAt(i1);
-    }
-    return null;
-  }
-  
-  private void c(hl paramhl)
-  {
-    Object localObject3 = LayoutInflater.from(this.f);
-    Object localObject1 = new hk(paramhl, (LayoutInflater)localObject3, this.j);
-    if ((!d()) && (this.w)) {
-      ((hk)localObject1).c = true;
-    } else if (d()) {
-      ((hk)localObject1).c = hq.b(paramhl);
-    }
-    int i4 = a((ListAdapter)localObject1, null, this.f, this.g);
-    iv localiv = g();
-    localiv.a((ListAdapter)localObject1);
-    localiv.b(i4);
-    localiv.h = this.p;
-    if (this.b.size() > 0)
-    {
-      localObject1 = this.b;
-      localObject1 = (a)((List)localObject1).get(((List)localObject1).size() - 1);
-      localObject2 = a((a)localObject1, paramhl);
-    }
-    else
-    {
-      localObject1 = null;
-      localObject2 = localObject1;
-    }
-    if (localObject2 != null)
-    {
-      localiv.l();
-      localiv.a();
-      int i2 = d(i4);
-      int i1;
-      if (i2 == 1) {
-        i1 = 1;
-      } else {
-        i1 = 0;
-      }
-      this.r = i2;
-      int i3;
-      if (Build.VERSION.SDK_INT >= 26)
-      {
-        localiv.k = ((View)localObject2);
-        i2 = 0;
-        i3 = 0;
-      }
-      else
-      {
-        int[] arrayOfInt1 = new int[2];
-        this.q.getLocationOnScreen(arrayOfInt1);
-        int[] arrayOfInt2 = new int[2];
-        ((View)localObject2).getLocationOnScreen(arrayOfInt2);
-        if ((this.p & 0x7) == 5)
-        {
-          arrayOfInt1[0] += this.q.getWidth();
-          arrayOfInt2[0] += ((View)localObject2).getWidth();
-        }
-        i3 = arrayOfInt2[0] - arrayOfInt1[0];
-        i2 = arrayOfInt2[1] - arrayOfInt1[1];
-      }
-      if ((this.p & 0x5) == 5)
-      {
-        if (i1 != 0) {
-          i1 = i3 + i4;
-        } else {
-          i1 = i3 - ((View)localObject2).getWidth();
-        }
-      }
-      else if (i1 != 0) {
-        i1 = i3 + ((View)localObject2).getWidth();
-      } else {
-        i1 = i3 - i4;
-      }
-      localiv.g = i1;
-      localiv.k();
-      localiv.a(i2);
-    }
-    else
-    {
-      if (this.s) {
-        localiv.g = this.u;
-      }
+      this.l = dk.d(this.l);
+      this.l = this.l.mutate();
       if (this.t) {
-        localiv.a(this.v);
+        dk.a(this.l, this.r);
       }
-      localiv.o = this.e;
-    }
-    Object localObject2 = new a(localiv, paramhl, this.r);
-    this.b.add(localObject2);
-    localiv.b();
-    localObject2 = localiv.e;
-    ((ListView)localObject2).setOnKeyListener(this);
-    if ((localObject1 == null) && (this.x) && (paramhl.f != null))
-    {
-      localObject1 = (FrameLayout)((LayoutInflater)localObject3).inflate(go.g.abc_popup_menu_header_item_layout, (ViewGroup)localObject2, false);
-      localObject3 = (TextView)((FrameLayout)localObject1).findViewById(16908310);
-      ((FrameLayout)localObject1).setEnabled(false);
-      ((TextView)localObject3).setText(paramhl.f);
-      ((ListView)localObject2).addHeaderView((View)localObject1, null, false);
-      localiv.b();
-    }
-  }
-  
-  private int d(int paramInt)
-  {
-    Object localObject = this.b;
-    localObject = ((a)((List)localObject).get(((List)localObject).size() - 1)).a.e;
-    int[] arrayOfInt = new int[2];
-    ((ListView)localObject).getLocationOnScreen(arrayOfInt);
-    Rect localRect = new Rect();
-    this.c.getWindowVisibleDisplayFrame(localRect);
-    if (this.r == 1)
-    {
-      if (arrayOfInt[0] + ((ListView)localObject).getWidth() + paramInt > localRect.right) {
-        return 0;
+      if (this.u) {
+        dk.a(this.l, this.s);
       }
-      return 1;
-    }
-    if (arrayOfInt[0] - paramInt < 0) {
-      return 1;
-    }
-    return 0;
-  }
-  
-  private iv g()
-  {
-    iv localiv = new iv(this.f, this.h, this.i);
-    localiv.a = this.n;
-    localiv.l = this;
-    localiv.a(this);
-    localiv.k = this.q;
-    localiv.h = this.p;
-    localiv.f();
-    localiv.h();
-    return localiv;
-  }
-  
-  private int h()
-  {
-    if (ew.c(this.q) == 1) {
-      return 0;
-    }
-    return 1;
-  }
-  
-  public final void a(int paramInt)
-  {
-    if (this.o != paramInt)
-    {
-      this.o = paramInt;
-      this.p = ej.a(paramInt, ew.c(this.q));
     }
   }
   
-  public final void a(View paramView)
+  public final dr a(em paramem)
   {
-    if (this.q != paramView)
-    {
-      this.q = paramView;
-      this.p = ej.a(this.o, ew.c(this.q));
-    }
+    throw new UnsupportedOperationException();
   }
   
-  public final void a(PopupWindow.OnDismissListener paramOnDismissListener)
+  public final dr a(CharSequence paramCharSequence)
   {
-    this.A = paramOnDismissListener;
+    this.p = paramCharSequence;
+    return this;
   }
   
-  public final void a(hl paramhl)
+  public final em a()
   {
-    paramhl.a(this, this.f);
-    if (d())
-    {
-      c(paramhl);
-      return;
-    }
-    this.k.add(paramhl);
+    return null;
   }
   
-  public final void a(hl paramhl, boolean paramBoolean)
+  public final dr b(CharSequence paramCharSequence)
   {
-    int i2 = this.b.size();
-    int i1 = 0;
-    while (i1 < i2)
-    {
-      if (paramhl == ((a)this.b.get(i1)).b) {
-        break label51;
-      }
-      i1 += 1;
+    this.q = paramCharSequence;
+    return this;
+  }
+  
+  public final boolean collapseActionView()
+  {
+    return false;
+  }
+  
+  public final boolean expandActionView()
+  {
+    return false;
+  }
+  
+  public final ActionProvider getActionProvider()
+  {
+    throw new UnsupportedOperationException();
+  }
+  
+  public final View getActionView()
+  {
+    return null;
+  }
+  
+  public final int getAlphabeticModifiers()
+  {
+    return this.k;
+  }
+  
+  public final char getAlphabeticShortcut()
+  {
+    return this.j;
+  }
+  
+  public final CharSequence getContentDescription()
+  {
+    return this.p;
+  }
+  
+  public final int getGroupId()
+  {
+    return this.b;
+  }
+  
+  public final Drawable getIcon()
+  {
+    return this.l;
+  }
+  
+  public final ColorStateList getIconTintList()
+  {
+    return this.r;
+  }
+  
+  public final PorterDuff.Mode getIconTintMode()
+  {
+    return this.s;
+  }
+  
+  public final Intent getIntent()
+  {
+    return this.g;
+  }
+  
+  public final int getItemId()
+  {
+    return this.a;
+  }
+  
+  public final ContextMenu.ContextMenuInfo getMenuInfo()
+  {
+    return null;
+  }
+  
+  public final int getNumericModifiers()
+  {
+    return this.i;
+  }
+  
+  public final char getNumericShortcut()
+  {
+    return this.h;
+  }
+  
+  public final int getOrder()
+  {
+    return this.d;
+  }
+  
+  public final SubMenu getSubMenu()
+  {
+    return null;
+  }
+  
+  public final CharSequence getTitle()
+  {
+    return this.e;
+  }
+  
+  public final CharSequence getTitleCondensed()
+  {
+    CharSequence localCharSequence = this.f;
+    if (localCharSequence != null) {
+      return localCharSequence;
     }
-    i1 = -1;
-    label51:
-    if (i1 < 0) {
-      return;
-    }
-    i2 = i1 + 1;
-    if (i2 < this.b.size()) {
-      ((a)this.b.get(i2)).b.a(false);
-    }
-    Object localObject = (a)this.b.remove(i1);
-    ((a)localObject).b.b(this);
-    if (this.d)
-    {
-      iv localiv = ((a)localObject).a;
-      if (Build.VERSION.SDK_INT >= 23) {
-        localiv.q.setExitTransition(null);
-      }
-      ((a)localObject).a.q.setAnimationStyle(0);
-    }
-    ((a)localObject).a.c();
-    i1 = this.b.size();
-    if (i1 > 0) {
-      this.r = ((a)this.b.get(i1 - 1)).c;
-    } else {
-      this.r = h();
-    }
-    if (i1 == 0)
-    {
-      c();
-      localObject = this.y;
-      if (localObject != null) {
-        ((hs.a)localObject).a(paramhl, true);
-      }
-      paramhl = this.z;
-      if (paramhl != null)
-      {
-        if (paramhl.isAlive()) {
-          this.z.removeGlobalOnLayoutListener(this.l);
-        }
-        this.z = null;
-      }
-      this.c.removeOnAttachStateChangeListener(this.m);
-      this.A.onDismiss();
-      return;
-    }
+    return this.e;
+  }
+  
+  public final CharSequence getTooltipText()
+  {
+    return this.q;
+  }
+  
+  public final boolean hasSubMenu()
+  {
+    return false;
+  }
+  
+  public final boolean isActionViewExpanded()
+  {
+    return false;
+  }
+  
+  public final boolean isCheckable()
+  {
+    return (this.v & 0x1) != 0;
+  }
+  
+  public final boolean isChecked()
+  {
+    return (this.v & 0x2) != 0;
+  }
+  
+  public final boolean isEnabled()
+  {
+    return (this.v & 0x10) != 0;
+  }
+  
+  public final boolean isVisible()
+  {
+    return (this.v & 0x8) == 0;
+  }
+  
+  public final MenuItem setActionProvider(ActionProvider paramActionProvider)
+  {
+    throw new UnsupportedOperationException();
+  }
+  
+  public final MenuItem setAlphabeticShortcut(char paramChar)
+  {
+    this.j = Character.toLowerCase(paramChar);
+    return this;
+  }
+  
+  public final MenuItem setAlphabeticShortcut(char paramChar, int paramInt)
+  {
+    this.j = Character.toLowerCase(paramChar);
+    this.k = KeyEvent.normalizeMetaState(paramInt);
+    return this;
+  }
+  
+  public final MenuItem setCheckable(boolean paramBoolean)
+  {
+    this.v = (paramBoolean | this.v & 0xFFFFFFFE);
+    return this;
+  }
+  
+  public final MenuItem setChecked(boolean paramBoolean)
+  {
+    int i2 = this.v;
+    int i1;
     if (paramBoolean) {
-      ((a)this.b.get(0)).b.a(false);
+      i1 = 2;
+    } else {
+      i1 = 0;
     }
+    this.v = (i1 | i2 & 0xFFFFFFFD);
+    return this;
   }
   
-  public final void a(hs.a parama)
+  public final MenuItem setEnabled(boolean paramBoolean)
   {
-    this.y = parama;
-  }
-  
-  public final void a(boolean paramBoolean)
-  {
-    this.w = paramBoolean;
-  }
-  
-  public final boolean a()
-  {
-    return false;
-  }
-  
-  public final boolean a(hy paramhy)
-  {
-    Object localObject = this.b.iterator();
-    while (((Iterator)localObject).hasNext())
-    {
-      a locala = (a)((Iterator)localObject).next();
-      if (paramhy == locala.b)
-      {
-        locala.a.e.requestFocus();
-        return true;
-      }
+    int i2 = this.v;
+    int i1;
+    if (paramBoolean) {
+      i1 = 16;
+    } else {
+      i1 = 0;
     }
-    if (paramhy.hasVisibleItems())
-    {
-      a(paramhy);
-      localObject = this.y;
-      if (localObject != null) {
-        ((hs.a)localObject).a(paramhy);
-      }
-      return true;
-    }
-    return false;
+    this.v = (i1 | i2 & 0xFFFFFFEF);
+    return this;
   }
   
-  public final void b()
+  public final MenuItem setIcon(int paramInt)
   {
-    if (d()) {
-      return;
-    }
-    Iterator localIterator = this.k.iterator();
-    while (localIterator.hasNext()) {
-      c((hl)localIterator.next());
-    }
-    this.k.clear();
-    this.c = this.q;
-    if (this.c != null)
-    {
-      int i1;
-      if (this.z == null) {
-        i1 = 1;
-      } else {
-        i1 = 0;
-      }
-      this.z = this.c.getViewTreeObserver();
-      if (i1 != 0) {
-        this.z.addOnGlobalLayoutListener(this.l);
-      }
-      this.c.addOnAttachStateChangeListener(this.m);
-    }
+    this.m = paramInt;
+    this.l = cv.a(this.n, paramInt);
+    b();
+    return this;
   }
   
-  public final void b(int paramInt)
+  public final MenuItem setIcon(Drawable paramDrawable)
   {
-    this.s = true;
-    this.u = paramInt;
+    this.l = paramDrawable;
+    this.m = 0;
+    b();
+    return this;
   }
   
-  public final void b(boolean paramBoolean)
+  public final MenuItem setIconTintList(ColorStateList paramColorStateList)
   {
-    Iterator localIterator = this.b.iterator();
-    while (localIterator.hasNext()) {
-      a(((a)localIterator.next()).a.e.getAdapter()).notifyDataSetChanged();
-    }
-  }
-  
-  public final void c()
-  {
-    int i1 = this.b.size();
-    if (i1 > 0)
-    {
-      a[] arrayOfa = (a[])this.b.toArray(new a[i1]);
-      i1 -= 1;
-      while (i1 >= 0)
-      {
-        a locala = arrayOfa[i1];
-        if (locala.a.q.isShowing()) {
-          locala.a.c();
-        }
-        i1 -= 1;
-      }
-    }
-  }
-  
-  public final void c(int paramInt)
-  {
+    this.r = paramColorStateList;
     this.t = true;
-    this.v = paramInt;
+    b();
+    return this;
   }
   
-  public final void c(boolean paramBoolean)
+  public final MenuItem setIconTintMode(PorterDuff.Mode paramMode)
   {
-    this.x = paramBoolean;
+    this.s = paramMode;
+    this.u = true;
+    b();
+    return this;
   }
   
-  public final boolean d()
+  public final MenuItem setIntent(Intent paramIntent)
   {
-    return (this.b.size() > 0) && (((a)this.b.get(0)).a.q.isShowing());
+    this.g = paramIntent;
+    return this;
   }
   
-  public final ListView e()
+  public final MenuItem setNumericShortcut(char paramChar)
   {
-    if (this.b.isEmpty()) {
-      return null;
+    this.h = paramChar;
+    return this;
+  }
+  
+  public final MenuItem setNumericShortcut(char paramChar, int paramInt)
+  {
+    this.h = paramChar;
+    this.i = KeyEvent.normalizeMetaState(paramInt);
+    return this;
+  }
+  
+  public final MenuItem setOnActionExpandListener(MenuItem.OnActionExpandListener paramOnActionExpandListener)
+  {
+    throw new UnsupportedOperationException();
+  }
+  
+  public final MenuItem setOnMenuItemClickListener(MenuItem.OnMenuItemClickListener paramOnMenuItemClickListener)
+  {
+    this.o = paramOnMenuItemClickListener;
+    return this;
+  }
+  
+  public final MenuItem setShortcut(char paramChar1, char paramChar2)
+  {
+    this.h = paramChar1;
+    this.j = Character.toLowerCase(paramChar2);
+    return this;
+  }
+  
+  public final MenuItem setShortcut(char paramChar1, char paramChar2, int paramInt1, int paramInt2)
+  {
+    this.h = paramChar1;
+    this.i = KeyEvent.normalizeMetaState(paramInt1);
+    this.j = Character.toLowerCase(paramChar2);
+    this.k = KeyEvent.normalizeMetaState(paramInt2);
+    return this;
+  }
+  
+  public final void setShowAsAction(int paramInt) {}
+  
+  public final MenuItem setTitle(int paramInt)
+  {
+    this.e = this.n.getResources().getString(paramInt);
+    return this;
+  }
+  
+  public final MenuItem setTitle(CharSequence paramCharSequence)
+  {
+    this.e = paramCharSequence;
+    return this;
+  }
+  
+  public final MenuItem setTitleCondensed(CharSequence paramCharSequence)
+  {
+    this.f = paramCharSequence;
+    return this;
+  }
+  
+  public final MenuItem setVisible(boolean paramBoolean)
+  {
+    int i2 = this.v;
+    int i1 = 8;
+    if (paramBoolean) {
+      i1 = 0;
     }
-    List localList = this.b;
-    return ((a)localList.get(localList.size() - 1)).a.e;
-  }
-  
-  protected final boolean f()
-  {
-    return false;
-  }
-  
-  public final void onDismiss()
-  {
-    int i2 = this.b.size();
-    int i1 = 0;
-    while (i1 < i2)
-    {
-      locala = (a)this.b.get(i1);
-      if (!locala.a.q.isShowing()) {
-        break label56;
-      }
-      i1 += 1;
-    }
-    a locala = null;
-    label56:
-    if (locala != null) {
-      locala.b.a(false);
-    }
-  }
-  
-  public final boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
-  {
-    if ((paramKeyEvent.getAction() == 1) && (paramInt == 82))
-    {
-      c();
-      return true;
-    }
-    return false;
-  }
-  
-  static final class a
-  {
-    public final iv a;
-    public final hl b;
-    public final int c;
-    
-    public a(iv paramiv, hl paramhl, int paramInt)
-    {
-      this.a = paramiv;
-      this.b = paramhl;
-      this.c = paramInt;
-    }
+    this.v = (i2 & 0x8 | i1);
+    return this;
   }
 }
 

@@ -1,296 +1,164 @@
 package com.tencent.token;
 
-import java.io.InputStream;
-import java.text.DecimalFormat;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Stack;
-import javax.xml.parsers.DocumentBuilder;
-import org.w3c.dom.Document;
-import org.w3c.dom.Node;
+import android.os.Binder;
+import android.os.IBinder;
+import android.os.IInterface;
+import android.os.Parcel;
+import com.tencent.turingfd.sdk.qps.Sorgo;
 
-public final class afi
+public abstract interface afi
+  extends IInterface
 {
-  public static final String[] a = { "px", "dp", "sp", "pt", "in", "mm" };
-  public aes b;
-  public Map<String, String> c = new HashMap();
-  public byte[] d;
-  public String[] e;
-  public int[] f;
-  public int g;
-  public int h;
-  public int i;
-  public int j;
+  public abstract int a();
   
-  private String a(int paramInt)
-  {
-    if ((paramInt >= 0) && (paramInt < this.g)) {
-      return this.e[paramInt];
-    }
-    return null;
-  }
+  public abstract Sorgo b();
   
-  private void a(boolean paramBoolean)
-  {
-    int k = b(this.j + 16);
-    String str1 = a(b(this.j + 20));
-    String str2 = a(k);
-    if (paramBoolean) {
-      this.c.put(str1, str2);
-    } else {
-      this.c.remove(str1);
-    }
-    this.j += 24;
-  }
+  public abstract boolean c();
   
-  private int b(int paramInt)
-  {
-    byte[] arrayOfByte = this.d;
-    int k = arrayOfByte[(paramInt + 3)];
-    int m = arrayOfByte[(paramInt + 2)];
-    int n = arrayOfByte[(paramInt + 1)];
-    return arrayOfByte[(paramInt + 0)] << 0 & 0xFF | k << 24 & 0xFF000000 | m << 16 & 0xFF0000 | n << 8 & 0xFF00;
-  }
+  public abstract int d();
   
-  public final Document a(InputStream paramInputStream)
+  public abstract int e();
+  
+  public static abstract class a
+    extends Binder
+    implements afi
   {
-    aes localaes = new aes();
-    this.b = localaes;
-    this.d = new byte[paramInputStream.available()];
-    paramInputStream.read(this.d);
-    paramInputStream.close();
-    for (;;)
+    public static final String a = agg.a(agg.aN);
+    
+    public static final class a
+      implements afi
     {
-      int k = this.j;
-      if (k >= this.d.length) {
-        break;
+      public IBinder a;
+      
+      public a(IBinder paramIBinder)
+      {
+        this.a = paramIBinder;
       }
-      k = b(k);
-      if (k != -1) {
-        if (k != 524291)
+      
+      public final int a()
+      {
+        Parcel localParcel1 = Parcel.obtain();
+        Parcel localParcel2 = Parcel.obtain();
+        try
         {
-          int m;
-          if (k != 524672)
-          {
-            Object localObject1;
-            int n;
-            Object localObject2;
-            label395:
-            int i1;
-            int i2;
-            int i3;
-            int i4;
-            if (k != 1835009)
-            {
-              switch (k)
-              {
-              default: 
-                this.j += 4;
-                break;
-              case 1048836: 
-                paramInputStream = a(b(this.j + 16));
-                localObject1 = this.b;
-                ((Node)((aes)localObject1).a.peek()).appendChild(((aes)localObject1).b.createCDATASection(paramInputStream));
-                this.j += 28;
-                break;
-              case 1048835: 
-                this.b.a.pop();
-                this.j += 24;
-                break;
-              case 1048834: 
-                k = b(this.j + 16);
-                n = b(this.j + 20);
-                m = this.j + 28;
-                paramInputStream = this.d;
-                m = 0xFF00 & paramInputStream[(m + 1)] << 8 | paramInputStream[(m + 0)] << 0 & 0xFF;
-                String str = a(n);
-                if (k == -1)
-                {
-                  paramInputStream = "";
-                }
-                else
-                {
-                  localObject1 = a(k);
-                  paramInputStream = (InputStream)localObject1;
-                  if (this.c.containsKey(localObject1))
-                  {
-                    paramInputStream = new StringBuilder();
-                    paramInputStream.append((String)this.c.get(localObject1));
-                    paramInputStream.append(':');
-                    paramInputStream.append(str);
-                    localObject2 = paramInputStream.toString();
-                    break label395;
-                  }
-                }
-                localObject2 = str;
-                localObject1 = paramInputStream;
-                this.j += 36;
-                aeo[] arrayOfaeo = new aeo[m];
-                k = 0;
-                while (k < m)
-                {
-                  n = b(this.j);
-                  i1 = b(this.j + 4);
-                  i2 = b(this.j + 8);
-                  i3 = b(this.j + 12);
-                  i4 = b(this.j + 16);
-                  aeo localaeo = new aeo();
-                  localaeo.a = a(i1);
-                  if (n == -1)
-                  {
-                    localaeo.c = null;
-                    localaeo.b = null;
-                  }
-                  else
-                  {
-                    paramInputStream = a(n);
-                    if (this.c.containsKey(paramInputStream))
-                    {
-                      localaeo.c = paramInputStream;
-                      localaeo.b = ((String)this.c.get(paramInputStream));
-                    }
-                  }
-                  if (i2 == -1)
-                  {
-                    switch (i3)
-                    {
-                    default: 
-                      paramInputStream = String.format("%08X/0x%08X", new Object[] { Integer.valueOf(i3), Integer.valueOf(i4) });
-                      break;
-                    case 469762056: 
-                    case 486539272: 
-                      paramInputStream = String.format("#%08X", new Object[] { Integer.valueOf(i4) });
-                      break;
-                    case 301989896: 
-                      boolean bool;
-                      if (i4 != 0) {
-                        bool = true;
-                      } else {
-                        bool = false;
-                      }
-                      paramInputStream = Boolean.toString(bool);
-                      break;
-                    case 268435464: 
-                    case 285212680: 
-                      paramInputStream = Integer.toString(i4);
-                      break;
-                    case 100663304: 
-                      double d1 = i4;
-                      Double.isNaN(d1);
-                      d1 /= 2147483647.0D;
-                      paramInputStream = new DecimalFormat("#.##%").format(d1);
-                      break;
-                    case 83886088: 
-                      paramInputStream = new StringBuilder();
-                      paramInputStream.append(Integer.toString(i4 >> 8));
-                      paramInputStream.append(a[(i4 & 0xFF)]);
-                      paramInputStream = paramInputStream.toString();
-                      break;
-                    case 67108872: 
-                      paramInputStream = Float.toString(Float.intBitsToFloat(i4));
-                      break;
-                    case 50331656: 
-                      paramInputStream = a(i4);
-                      break;
-                    case 33554440: 
-                      paramInputStream = String.format("?id/0x%08X", new Object[] { Integer.valueOf(i4) });
-                      break;
-                    case 16777224: 
-                      paramInputStream = String.format("@id/0x%08X", new Object[] { Integer.valueOf(i4) });
-                    }
-                    localaeo.d = paramInputStream;
-                  }
-                  else
-                  {
-                    localaeo.d = a(i2);
-                  }
-                  arrayOfaeo[k] = localaeo;
-                  this.j += 20;
-                  k += 1;
-                }
-                this.b.a((String)localObject1, str, (String)localObject2, arrayOfaeo);
-                break;
-              case 1048833: 
-                a(false);
-                break;
-              case 1048832: 
-                a(true);
-                break;
-              }
-            }
-            else
-            {
-              n = b(this.j + 4);
-              this.g = b(this.j + 8);
-              this.h = b(this.j + 12);
-              i1 = this.j;
-              i2 = b(i1 + 20);
-              this.e = new String[this.g];
-              k = 0;
-              while (k < this.g)
-              {
-                i3 = b((k + 7) * 4 + this.j) + (i2 + i1);
-                localObject2 = this.e;
-                paramInputStream = this.d;
-                m = i3 + 1;
-                if (paramInputStream[m] == paramInputStream[i3])
-                {
-                  i4 = paramInputStream[i3];
-                  localObject1 = new byte[i4];
-                  m = 0;
-                  for (;;)
-                  {
-                    paramInputStream = (InputStream)localObject1;
-                    if (m >= i4) {
-                      break;
-                    }
-                    localObject1[m] = this.d[(i3 + 2 + m)];
-                    m += 1;
-                  }
-                }
-                m = paramInputStream[m];
-                i4 = paramInputStream[i3] & 0xFF | m << 8 & 0xFF00;
-                localObject1 = new byte[i4];
-                m = 0;
-                for (;;)
-                {
-                  paramInputStream = (InputStream)localObject1;
-                  if (m >= i4) {
-                    break;
-                  }
-                  localObject1[m] = this.d[(m * 2 + (i3 + 2))];
-                  m += 1;
-                }
-                localObject2[k] = new String(paramInputStream);
-                k += 1;
-              }
-              this.j += n;
-            }
+          localParcel1.writeInterfaceToken(afi.a.a);
+          localParcel1.writeInt(2000);
+          if (!this.a.transact(1, localParcel1, localParcel2, 0)) {
+            String str = afi.a.a;
           }
-          else
-          {
-            k = 0;
-            m = b(this.j + 4);
-            this.i = (m / 4 - 2);
-            this.f = new int[this.i];
-            while (k < this.i)
-            {
-              this.f[k] = b((k + 2) * 4 + this.j);
-              k += 1;
-            }
-            this.j += m;
-          }
+          localParcel2.readException();
+          int i = localParcel2.readInt();
+          return i;
         }
-        else
+        finally
         {
-          paramInputStream = this.b;
-          paramInputStream.b = paramInputStream.c.newDocument();
-          paramInputStream.a.push(paramInputStream.b);
-          this.j += 8;
+          localParcel2.recycle();
+          localParcel1.recycle();
+        }
+      }
+      
+      public final IBinder asBinder()
+      {
+        return this.a;
+      }
+      
+      public final Sorgo b()
+      {
+        Parcel localParcel1 = Parcel.obtain();
+        Parcel localParcel2 = Parcel.obtain();
+        try
+        {
+          localParcel1.writeInterfaceToken(afi.a.a);
+          localParcel1.writeInt(2000);
+          Object localObject1;
+          if (!this.a.transact(2, localParcel1, localParcel2, 0)) {
+            localObject1 = afi.a.a;
+          }
+          localParcel2.readException();
+          if (localParcel2.readInt() != 0) {
+            localObject1 = new Sorgo(localParcel2);
+          } else {
+            localObject1 = null;
+          }
+          return localObject1;
+        }
+        finally
+        {
+          localParcel2.recycle();
+          localParcel1.recycle();
+        }
+      }
+      
+      public final boolean c()
+      {
+        Parcel localParcel1 = Parcel.obtain();
+        Parcel localParcel2 = Parcel.obtain();
+        try
+        {
+          localParcel1.writeInterfaceToken(afi.a.a);
+          localParcel1.writeInt(2000);
+          Object localObject1 = this.a;
+          boolean bool = false;
+          if (!((IBinder)localObject1).transact(3, localParcel1, localParcel2, 0)) {
+            localObject1 = afi.a.a;
+          }
+          localParcel2.readException();
+          int i = localParcel2.readInt();
+          if (i != 0) {
+            bool = true;
+          }
+          return bool;
+        }
+        finally
+        {
+          localParcel2.recycle();
+          localParcel1.recycle();
+        }
+      }
+      
+      public final int d()
+      {
+        Parcel localParcel1 = Parcel.obtain();
+        Parcel localParcel2 = Parcel.obtain();
+        try
+        {
+          localParcel1.writeInterfaceToken(afi.a.a);
+          localParcel1.writeInt(2000);
+          if (!this.a.transact(7, localParcel1, localParcel2, 0)) {
+            String str = afi.a.a;
+          }
+          localParcel2.readException();
+          int i = localParcel2.readInt();
+          return i;
+        }
+        finally
+        {
+          localParcel2.recycle();
+          localParcel1.recycle();
+        }
+      }
+      
+      public final int e()
+      {
+        Parcel localParcel1 = Parcel.obtain();
+        Parcel localParcel2 = Parcel.obtain();
+        try
+        {
+          localParcel1.writeInterfaceToken(afi.a.a);
+          if (!this.a.transact(12, localParcel1, localParcel2, 0)) {
+            String str = afi.a.a;
+          }
+          localParcel2.readException();
+          int i = localParcel2.readInt();
+          return i;
+        }
+        finally
+        {
+          localParcel2.recycle();
+          localParcel1.recycle();
         }
       }
     }
-    return localaes.b;
   }
 }
 

@@ -1,129 +1,98 @@
 package com.tencent.token;
 
 import android.content.Context;
-import android.content.Intent;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.token.global.RqdApplication;
-import com.tencent.token.ui.IndexActivity;
-import com.tmsdk.TMSDKContext;
+import android.telephony.NeighboringCellInfo;
+import android.telephony.PhoneStateListener;
+import android.telephony.TelephonyManager;
+import android.telephony.gsm.GsmCellLocation;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
 
-public final class qa
-  extends qb
-  implements View.OnClickListener
+final class qa
 {
-  protected TextView a;
-  protected LinearLayout b;
-  protected TextView c;
-  protected ImageView d;
-  protected TextView e;
-  protected TextView f;
-  protected Button g;
-  protected ImageView h;
-  protected String i;
-  protected String j;
-  protected String k;
-  protected String l;
-  protected String m;
-  protected String n;
+  private static int a = 10000;
+  private static int b = 10000;
+  private TelephonyManager c;
+  private PhoneStateListener d = new qb(this);
   
-  protected final void a()
+  public static List<pz.a> a(Context paramContext)
   {
-    super.a();
-    this.t = 8000L;
-  }
-  
-  protected final View b()
-  {
-    this.l = "QQ帐号持续保护中";
-    this.m = "你的帐号今天有新的登录足迹";
-    this.k = "";
-    this.n = "查看";
-    this.j = "";
-    this.i = "";
-    if (TextUtils.isEmpty(this.l)) {
-      return null;
-    }
-    View localView = View.inflate(this.A, 2131296359, null);
-    this.a = ((TextView)localView.findViewById(2131166109));
-    this.b = ((LinearLayout)localView.findViewById(2131165545));
-    this.c = ((TextView)localView.findViewById(2131165546));
-    this.d = ((ImageView)localView.findViewById(2131165583));
-    this.e = ((TextView)localView.findViewById(2131166112));
-    this.f = ((TextView)localView.findViewById(2131166043));
-    this.g = ((Button)localView.findViewById(2131165344));
-    this.h = ((ImageView)localView.findViewById(2131165383));
-    if (!TextUtils.isEmpty(this.i))
+    LinkedList localLinkedList = new LinkedList();
+    Object localObject6 = (TelephonyManager)paramContext.getSystemService("phone");
+    Object localObject5 = ((TelephonyManager)localObject6).getNetworkOperator();
+    Object localObject3;
+    Object localObject2;
+    if (localObject5 != null)
     {
-      this.a.setVisibility(0);
-      this.a.setText(this.i);
-    }
-    if (!TextUtils.isEmpty(this.j))
-    {
-      this.b.setVisibility(0);
-      TextView localTextView = this.c;
-      StringBuilder localStringBuilder = new StringBuilder("·");
-      localStringBuilder.append(this.j);
-      localTextView.setText(localStringBuilder.toString());
-    }
-    if (!TextUtils.isEmpty(this.k))
-    {
-      this.d.setVisibility(0);
-      this.d.setImageResource(2131099894);
-    }
-    if (!TextUtils.isEmpty(this.n))
-    {
-      this.g.setVisibility(0);
-      this.g.setText(this.n);
-    }
-    this.e.setText(this.l);
-    this.f.setText(this.m);
-    localView.setOnClickListener(this);
-    this.g.setOnClickListener(this);
-    this.h.setOnClickListener(new View.OnClickListener()
-    {
-      public final void onClick(View paramAnonymousView)
-      {
-        qa.this.a(false);
+      if (((String)localObject5).equals("")) {
+        return localLinkedList;
       }
-    });
-    TMSDKContext.saveActionData(1150174);
-    return localView;
-  }
-  
-  protected final int c()
-  {
-    return qe.a(this.A, 104.0F);
-  }
-  
-  protected final void d()
-  {
-    super.d();
-  }
-  
-  protected final void e()
-  {
-    super.e();
-  }
-  
-  protected final void f()
-  {
-    super.f();
-    Intent localIntent = new Intent(this.A, IndexActivity.class);
-    localIntent.addFlags(67108864);
-    RqdApplication.n().startActivity(localIntent);
-    TMSDKContext.saveActionData(1150175);
-  }
-  
-  public final void onClick(View paramView)
-  {
-    f();
-    a(true);
+      paramContext = "460";
+      localObject3 = "";
+      try
+      {
+        Object localObject1 = ((String)localObject5).substring(0, 3);
+        paramContext = (Context)localObject1;
+        localObject5 = ((String)localObject5).substring(3);
+        paramContext = (Context)localObject1;
+        localObject1 = localObject5;
+      }
+      catch (Exception localException1)
+      {
+        localException1.printStackTrace();
+        localObject2 = localObject3;
+      }
+    }
+    for (;;)
+    {
+      try
+      {
+        localObject3 = (GsmCellLocation)((TelephonyManager)localObject6).getCellLocation();
+        if (localObject3 == null) {
+          break label218;
+        }
+        i = ((GsmCellLocation)localObject3).getCid();
+        j = ((GsmCellLocation)localObject3).getLac();
+        if ((j >= 65535) || (j == -1) || (i == -1)) {
+          break label218;
+        }
+        if (b == a)
+        {
+          localObject3 = "";
+        }
+        else
+        {
+          localObject3 = new StringBuilder();
+          ((StringBuilder)localObject3).append(b);
+          localObject3 = ((StringBuilder)localObject3).toString();
+        }
+      }
+      catch (Exception localException2)
+      {
+        int i;
+        int j;
+        localException2.printStackTrace();
+      }
+      localLinkedList.add(new pz.a(paramContext, localObject2, String.valueOf(j), String.valueOf(i), (String)localObject3, "gsm", "", "", ""));
+      label218:
+      Object localObject4 = ((TelephonyManager)localObject6).getNeighboringCellInfo();
+      if ((localObject4 != null) && (((List)localObject4).size() > 0))
+      {
+        localObject4 = ((List)localObject4).iterator();
+        while (((Iterator)localObject4).hasNext())
+        {
+          localObject5 = (NeighboringCellInfo)((Iterator)localObject4).next();
+          if (((NeighboringCellInfo)localObject5).getCid() != -1)
+          {
+            localObject6 = new StringBuilder();
+            ((StringBuilder)localObject6).append(((NeighboringCellInfo)localObject5).getCid());
+            localLinkedList.add(new pz.a(paramContext, localObject2, "", ((StringBuilder)localObject6).toString(), "", "gsm", "", "", ""));
+          }
+        }
+      }
+      return localLinkedList;
+    }
   }
 }
 

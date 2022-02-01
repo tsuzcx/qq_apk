@@ -1,36 +1,39 @@
 package com.tencent.token;
 
-import java.util.Iterator;
-import java.util.LinkedList;
-import tmsdk.common.d.a.c.j;
+import java.util.ArrayList;
 
 public final class aqz
-  implements Runnable
 {
-  public aqz(j paramj) {}
+  private static volatile boolean a = false;
+  private static volatile String b;
+  private static volatile boolean c = false;
+  private static volatile boolean d = false;
+  private static volatile long e;
+  private static volatile long f;
+  private static Object g = new Object();
+  private static ArrayList h = new ArrayList();
   
-  public final void run()
+  public static boolean a()
   {
-    synchronized (j.a(this.a))
+    for (;;)
     {
-      LinkedList localLinkedList = (LinkedList)j.a(this.a).clone();
-      ??? = new StringBuilder("copy != null ? ");
-      boolean bool;
-      if (localLinkedList != null) {
-        bool = true;
-      } else {
-        bool = false;
-      }
-      ((StringBuilder)???).append(bool);
-      if (localLinkedList != null)
+      synchronized (g)
       {
-        new StringBuilder("copy.size() : ").append(localLinkedList.size());
-        ??? = localLinkedList.iterator();
-        while (((Iterator)???).hasNext()) {
-          ((arb)((Iterator)???).next()).f();
+        long l = System.currentTimeMillis();
+        if (f - l > 5184000L)
+        {
+          i = 1;
+          if (f - l < 0L) {
+            break label75;
+          }
+          j = 1;
+          return (i == 0) && (j != 0);
         }
       }
-      return;
+      int i = 0;
+      continue;
+      label75:
+      int j = 0;
     }
   }
 }

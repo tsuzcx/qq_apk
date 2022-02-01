@@ -1,16 +1,64 @@
 package com.tencent.token;
 
+import com.qq.taf.jce.JceInputStream;
+import com.qq.taf.jce.JceOutputStream;
+import com.qq.taf.jce.JceStruct;
+import java.util.ArrayList;
+import java.util.Collection;
+
 public final class aoc
+  extends JceStruct
 {
-  private static boolean a = false;
+  static ArrayList<ano> f = new ArrayList();
+  public int a = 0;
+  public int b = 0;
+  public ArrayList<ano> c = null;
+  public String d = "";
+  public int e = 0;
   
-  public static void a() {}
+  static
+  {
+    ano localano = new ano();
+    f.add(localano);
+  }
   
-  public static void b() {}
+  public final JceStruct newInit()
+  {
+    return new aoc();
+  }
   
-  public static void c() {}
+  public final void readFrom(JceInputStream paramJceInputStream)
+  {
+    this.a = paramJceInputStream.read(this.a, 0, false);
+    this.b = paramJceInputStream.read(this.b, 1, false);
+    this.c = ((ArrayList)paramJceInputStream.read(f, 2, false));
+    this.d = paramJceInputStream.readString(3, false);
+    this.e = paramJceInputStream.read(this.e, 4, false);
+  }
   
-  public static void d() {}
+  public final void writeTo(JceOutputStream paramJceOutputStream)
+  {
+    int i = this.a;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 0);
+    }
+    i = this.b;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 1);
+    }
+    Object localObject = this.c;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 2);
+    }
+    localObject = this.d;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 3);
+    }
+    i = this.e;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 4);
+    }
+  }
 }
 
 

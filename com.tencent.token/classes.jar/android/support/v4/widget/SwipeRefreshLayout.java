@@ -18,19 +18,19 @@ import android.view.animation.DecelerateInterpolator;
 import android.view.animation.Transformation;
 import android.widget.AbsListView;
 import android.widget.ListView;
-import com.tencent.token.cr;
-import com.tencent.token.en;
-import com.tencent.token.ep;
-import com.tencent.token.eq;
-import com.tencent.token.es;
+import com.tencent.token.cv;
+import com.tencent.token.er;
+import com.tencent.token.et;
+import com.tencent.token.eu;
 import com.tencent.token.ew;
-import com.tencent.token.fm;
-import com.tencent.token.fn;
-import com.tencent.token.fn.a;
+import com.tencent.token.fa;
+import com.tencent.token.fq;
+import com.tencent.token.fr;
+import com.tencent.token.fr.a;
 
 public class SwipeRefreshLayout
   extends ViewGroup
-  implements en, eq
+  implements er, eu
 {
   private static final int[] D = { 16842766 };
   private static final String m = "SwipeRefreshLayout";
@@ -91,20 +91,20 @@ public class SwipeRefreshLayout
   boolean b = false;
   int c;
   boolean d;
-  fm e;
+  fq e;
   protected int f;
   float g;
   protected int h;
   int i;
-  fn j;
+  fr j;
   boolean k;
   boolean l;
   private View n;
   private int o;
   private float p = -1.0F;
   private float q;
-  private final es r;
-  private final ep s;
+  private final ew r;
+  private final et s;
   private final int[] t = new int[2];
   private final int[] u = new int[2];
   private boolean v;
@@ -122,8 +122,8 @@ public class SwipeRefreshLayout
     this.C = new DecelerateInterpolator(2.0F);
     DisplayMetrics localDisplayMetrics = getResources().getDisplayMetrics();
     this.K = ((int)(localDisplayMetrics.density * 40.0F));
-    this.e = new fm(getContext());
-    this.j = new fn(getContext());
+    this.e = new fq(getContext());
+    this.j = new fr(getContext());
     this.j.a(1);
     this.e.setImageDrawable(this.j);
     this.e.setVisibility(8);
@@ -131,8 +131,8 @@ public class SwipeRefreshLayout
     setChildrenDrawingOrderEnabled(true);
     this.i = ((int)(localDisplayMetrics.density * 64.0F));
     this.p = this.i;
-    this.r = new es(this);
-    this.s = new ep(this);
+    this.r = new ew(this);
+    this.s = new et(this);
     setNestedScrollingEnabled(true);
     int i1 = -this.K;
     this.c = i1;
@@ -155,9 +155,9 @@ public class SwipeRefreshLayout
       }
     };
     local4.setDuration(300L);
-    fm localfm = this.e;
-    localfm.a = null;
-    localfm.clearAnimation();
+    fq localfq = this.e;
+    localfq.a = null;
+    localfq.clearAnimation();
     this.e.startAnimation(local4);
     return local4;
   }
@@ -428,9 +428,9 @@ public class SwipeRefreshLayout
       }
     };
     this.G.setDuration(150L);
-    fm localfm = this.e;
-    localfm.a = paramAnimationListener;
-    localfm.clearAnimation();
+    fq localfq = this.e;
+    localfq.a = paramAnimationListener;
+    localfq.clearAnimation();
     this.e.startAnimation(this.G);
   }
   
@@ -580,7 +580,7 @@ public class SwipeRefreshLayout
     paramInt1 /= 2;
     paramInt3 /= 2;
     paramInt4 = this.c;
-    ((fm)localObject).layout(paramInt1 - paramInt3, paramInt4, paramInt1 + paramInt3, paramInt2 + paramInt4);
+    ((fq)localObject).layout(paramInt1 - paramInt3, paramInt4, paramInt1 + paramInt3, paramInt2 + paramInt4);
   }
   
   public void onMeasure(int paramInt1, int paramInt2)
@@ -761,7 +761,7 @@ public class SwipeRefreshLayout
     if ((Build.VERSION.SDK_INT >= 21) || (!(this.n instanceof AbsListView)))
     {
       View localView = this.n;
-      if ((localView == null) || (ew.o(localView))) {
+      if ((localView == null) || (fa.o(localView))) {
         super.requestDisallowInterceptTouchEvent(paramBoolean);
       }
     }
@@ -782,10 +782,10 @@ public class SwipeRefreshLayout
   public void setColorSchemeColors(int... paramVarArgs)
   {
     d();
-    fn localfn = this.j;
-    localfn.a.a(paramVarArgs);
-    localfn.a.a(0);
-    localfn.invalidateSelf();
+    fr localfr = this.j;
+    localfr.a.a(paramVarArgs);
+    localfr.a.a(0);
+    localfr.invalidateSelf();
   }
   
   public void setColorSchemeResources(int... paramVarArgs)
@@ -795,7 +795,7 @@ public class SwipeRefreshLayout
     int i1 = 0;
     while (i1 < paramVarArgs.length)
     {
-      arrayOfInt[i1] = cr.c(localContext, paramVarArgs[i1]);
+      arrayOfInt[i1] = cv.c(localContext, paramVarArgs[i1]);
       i1 += 1;
     }
     setColorSchemeColors(arrayOfInt);
@@ -842,7 +842,7 @@ public class SwipeRefreshLayout
   
   public void setProgressBackgroundColorSchemeResource(int paramInt)
   {
-    setProgressBackgroundColorSchemeColor(cr.c(getContext(), paramInt));
+    setProgressBackgroundColorSchemeColor(cv.c(getContext(), paramInt));
   }
   
   public void setRefreshing(boolean paramBoolean)
@@ -898,7 +898,7 @@ public class SwipeRefreshLayout
   void setTargetOffsetTopAndBottom(int paramInt)
   {
     this.e.bringToFront();
-    ew.b(this.e, paramInt);
+    fa.b(this.e, paramInt);
     this.c = this.e.getTop();
   }
   

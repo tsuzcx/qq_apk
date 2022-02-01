@@ -1,184 +1,153 @@
 package com.tencent.token;
 
-import android.content.ComponentName;
 import android.content.Context;
-import android.content.Intent;
-import android.view.KeyEvent;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.SubMenu;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
+import android.content.res.Resources;
+import android.graphics.Point;
+import android.graphics.Rect;
+import android.os.Build.VERSION;
+import android.util.DisplayMetrics;
+import android.view.Display;
+import android.view.View;
+import android.view.WindowManager;
+import android.widget.PopupWindow.OnDismissListener;
 
-class hv
-  extends hg<dm>
-  implements Menu
+public class hv
 {
-  hv(Context paramContext, dm paramdm)
+  protected View a;
+  protected int b = 8388611;
+  PopupWindow.OnDismissListener c;
+  private final Context d;
+  private final hp e;
+  private final boolean f;
+  private final int g;
+  private final int h;
+  private boolean i;
+  private hw.a j;
+  private hu k;
+  private final PopupWindow.OnDismissListener l = new PopupWindow.OnDismissListener()
   {
-    super(paramContext, paramdm);
-  }
-  
-  public MenuItem add(int paramInt)
-  {
-    return a(((dm)this.d).add(paramInt));
-  }
-  
-  public MenuItem add(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    return a(((dm)this.d).add(paramInt1, paramInt2, paramInt3, paramInt4));
-  }
-  
-  public MenuItem add(int paramInt1, int paramInt2, int paramInt3, CharSequence paramCharSequence)
-  {
-    return a(((dm)this.d).add(paramInt1, paramInt2, paramInt3, paramCharSequence));
-  }
-  
-  public MenuItem add(CharSequence paramCharSequence)
-  {
-    return a(((dm)this.d).add(paramCharSequence));
-  }
-  
-  public int addIntentOptions(int paramInt1, int paramInt2, int paramInt3, ComponentName paramComponentName, Intent[] paramArrayOfIntent, Intent paramIntent, int paramInt4, MenuItem[] paramArrayOfMenuItem)
-  {
-    MenuItem[] arrayOfMenuItem;
-    if (paramArrayOfMenuItem != null) {
-      arrayOfMenuItem = new MenuItem[paramArrayOfMenuItem.length];
-    } else {
-      arrayOfMenuItem = null;
-    }
-    paramInt2 = ((dm)this.d).addIntentOptions(paramInt1, paramInt2, paramInt3, paramComponentName, paramArrayOfIntent, paramIntent, paramInt4, arrayOfMenuItem);
-    if (arrayOfMenuItem != null)
+    public final void onDismiss()
     {
-      paramInt1 = 0;
-      paramInt3 = arrayOfMenuItem.length;
-      while (paramInt1 < paramInt3)
-      {
-        paramArrayOfMenuItem[paramInt1] = a(arrayOfMenuItem[paramInt1]);
-        paramInt1 += 1;
-      }
+      hv.this.d();
     }
-    return paramInt2;
+  };
+  
+  public hv(Context paramContext, hp paramhp, View paramView, boolean paramBoolean, int paramInt)
+  {
+    this(paramContext, paramhp, paramView, paramBoolean, paramInt, 0);
   }
   
-  public SubMenu addSubMenu(int paramInt)
+  public hv(Context paramContext, hp paramhp, View paramView, boolean paramBoolean, int paramInt1, int paramInt2)
   {
-    return a(((dm)this.d).addSubMenu(paramInt));
+    this.d = paramContext;
+    this.e = paramhp;
+    this.a = paramView;
+    this.f = paramBoolean;
+    this.g = paramInt1;
+    this.h = paramInt2;
   }
   
-  public SubMenu addSubMenu(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public final hu a()
   {
-    return a(((dm)this.d).addSubMenu(paramInt1, paramInt2, paramInt3, paramInt4));
-  }
-  
-  public SubMenu addSubMenu(int paramInt1, int paramInt2, int paramInt3, CharSequence paramCharSequence)
-  {
-    return a(((dm)this.d).addSubMenu(paramInt1, paramInt2, paramInt3, paramCharSequence));
-  }
-  
-  public SubMenu addSubMenu(CharSequence paramCharSequence)
-  {
-    return a(((dm)this.d).addSubMenu(paramCharSequence));
-  }
-  
-  public void clear()
-  {
-    if (this.b != null) {
-      this.b.clear();
-    }
-    if (this.c != null) {
-      this.c.clear();
-    }
-    ((dm)this.d).clear();
-  }
-  
-  public void close()
-  {
-    ((dm)this.d).close();
-  }
-  
-  public MenuItem findItem(int paramInt)
-  {
-    return a(((dm)this.d).findItem(paramInt));
-  }
-  
-  public MenuItem getItem(int paramInt)
-  {
-    return a(((dm)this.d).getItem(paramInt));
-  }
-  
-  public boolean hasVisibleItems()
-  {
-    return ((dm)this.d).hasVisibleItems();
-  }
-  
-  public boolean isShortcutKey(int paramInt, KeyEvent paramKeyEvent)
-  {
-    return ((dm)this.d).isShortcutKey(paramInt, paramKeyEvent);
-  }
-  
-  public boolean performIdentifierAction(int paramInt1, int paramInt2)
-  {
-    return ((dm)this.d).performIdentifierAction(paramInt1, paramInt2);
-  }
-  
-  public boolean performShortcut(int paramInt1, KeyEvent paramKeyEvent, int paramInt2)
-  {
-    return ((dm)this.d).performShortcut(paramInt1, paramKeyEvent, paramInt2);
-  }
-  
-  public void removeGroup(int paramInt)
-  {
-    if (this.b != null)
+    if (this.k == null)
     {
-      Iterator localIterator = this.b.keySet().iterator();
-      while (localIterator.hasNext()) {
-        if (paramInt == ((MenuItem)localIterator.next()).getGroupId()) {
-          localIterator.remove();
-        }
+      Object localObject = ((WindowManager)this.d.getSystemService("window")).getDefaultDisplay();
+      Point localPoint = new Point();
+      if (Build.VERSION.SDK_INT >= 17) {
+        ((Display)localObject).getRealSize(localPoint);
+      } else {
+        ((Display)localObject).getSize(localPoint);
       }
+      int m;
+      if (Math.min(localPoint.x, localPoint.y) >= this.d.getResources().getDimensionPixelSize(gs.d.abc_cascading_menus_min_smallest_width)) {
+        m = 1;
+      } else {
+        m = 0;
+      }
+      if (m != 0) {
+        localObject = new hm(this.d, this.a, this.g, this.h, this.f);
+      } else {
+        localObject = new ib(this.d, this.e, this.a, this.g, this.h, this.f);
+      }
+      ((hu)localObject).a(this.e);
+      ((hu)localObject).a(this.l);
+      ((hu)localObject).a(this.a);
+      ((hu)localObject).a(this.j);
+      ((hu)localObject).a(this.i);
+      ((hu)localObject).a(this.b);
+      this.k = ((hu)localObject);
     }
-    ((dm)this.d).removeGroup(paramInt);
+    return this.k;
   }
   
-  public void removeItem(int paramInt)
+  final void a(int paramInt1, int paramInt2, boolean paramBoolean1, boolean paramBoolean2)
   {
-    if (this.b != null)
+    hu localhu = a();
+    localhu.c(paramBoolean2);
+    if (paramBoolean1)
     {
-      Iterator localIterator = this.b.keySet().iterator();
-      while (localIterator.hasNext()) {
-        if (paramInt == ((MenuItem)localIterator.next()).getItemId()) {
-          localIterator.remove();
-        }
+      int m = paramInt1;
+      if ((en.a(this.b, fa.c(this.a)) & 0x7) == 5) {
+        m = paramInt1 + this.a.getWidth();
       }
+      localhu.b(m);
+      localhu.c(paramInt2);
+      paramInt1 = (int)(this.d.getResources().getDisplayMetrics().density * 48.0F / 2.0F);
+      localhu.e = new Rect(m - paramInt1, paramInt2 - paramInt1, m + paramInt1, paramInt2 + paramInt1);
     }
-    ((dm)this.d).removeItem(paramInt);
+    localhu.b();
   }
   
-  public void setGroupCheckable(int paramInt, boolean paramBoolean1, boolean paramBoolean2)
+  public final void a(hw.a parama)
   {
-    ((dm)this.d).setGroupCheckable(paramInt, paramBoolean1, paramBoolean2);
+    this.j = parama;
+    hu localhu = this.k;
+    if (localhu != null) {
+      localhu.a(parama);
+    }
   }
   
-  public void setGroupEnabled(int paramInt, boolean paramBoolean)
+  public final void a(boolean paramBoolean)
   {
-    ((dm)this.d).setGroupEnabled(paramInt, paramBoolean);
+    this.i = paramBoolean;
+    hu localhu = this.k;
+    if (localhu != null) {
+      localhu.a(paramBoolean);
+    }
   }
   
-  public void setGroupVisible(int paramInt, boolean paramBoolean)
+  public final boolean b()
   {
-    ((dm)this.d).setGroupVisible(paramInt, paramBoolean);
+    if (e()) {
+      return true;
+    }
+    if (this.a == null) {
+      return false;
+    }
+    a(0, 0, false, false);
+    return true;
   }
   
-  public void setQwertyMode(boolean paramBoolean)
+  public final void c()
   {
-    ((dm)this.d).setQwertyMode(paramBoolean);
+    if (e()) {
+      this.k.c();
+    }
   }
   
-  public int size()
+  protected void d()
   {
-    return ((dm)this.d).size();
+    this.k = null;
+    PopupWindow.OnDismissListener localOnDismissListener = this.c;
+    if (localOnDismissListener != null) {
+      localOnDismissListener.onDismiss();
+    }
+  }
+  
+  public final boolean e()
+  {
+    hu localhu = this.k;
+    return (localhu != null) && (localhu.d());
   }
 }
 

@@ -1,42 +1,20 @@
 package com.tencent.token;
 
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
+import android.graphics.PathMeasure;
+import android.graphics.PointF;
+import java.util.List;
 
 public final class anz
+  extends anw<PointF>
 {
-  private static final char[] a = "0123456789abcdef".toCharArray();
+  private final PointF c = new PointF();
+  private final float[] d = new float[2];
+  private any e;
+  private PathMeasure f;
   
-  public static String a(byte[] paramArrayOfByte)
+  public anz(List<? extends anv<PointF>> paramList)
   {
-    paramArrayOfByte = b(paramArrayOfByte);
-    StringBuilder localStringBuilder = new StringBuilder(paramArrayOfByte.length * 3);
-    int j = paramArrayOfByte.length;
-    int i = 0;
-    while (i < j)
-    {
-      int k = paramArrayOfByte[i] & 0xFF;
-      localStringBuilder.append(a[(k >> 4)]);
-      localStringBuilder.append(a[(k & 0xF)]);
-      i += 1;
-    }
-    return localStringBuilder.toString().toUpperCase();
-  }
-  
-  private static byte[] b(byte[] paramArrayOfByte)
-  {
-    try
-    {
-      MessageDigest localMessageDigest = MessageDigest.getInstance("MD5");
-      localMessageDigest.update(paramArrayOfByte);
-      paramArrayOfByte = localMessageDigest.digest();
-      return paramArrayOfByte;
-    }
-    catch (NoSuchAlgorithmException paramArrayOfByte)
-    {
-      paramArrayOfByte.printStackTrace();
-    }
-    return null;
+    super(paramList);
   }
 }
 

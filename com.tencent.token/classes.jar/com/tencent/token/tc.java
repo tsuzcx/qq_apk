@@ -1,118 +1,143 @@
 package com.tencent.token;
 
-import com.tencent.token.core.bean.QQUser;
-import com.tencent.token.global.RqdApplication;
-import java.util.concurrent.CountDownLatch;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 
 public class tc
+  implements sv
 {
-  public static byte c = 1;
-  public static byte d = 2;
-  public static byte e = 3;
-  public aam f = null;
+  public long a = 0L;
+  public ta b = null;
+  private Handler d = null;
+  private ajk e = null;
   
-  protected tc(String paramString)
+  public tc()
   {
-    this.f = new aam(paramString);
-  }
-  
-  final wy a(byte paramByte)
-  {
-    final wy localwy = new wy();
-    sz.a();
-    final QQUser localQQUser = sz.a(localwy);
-    if (localQQUser == null)
-    {
-      xa.a(localwy.b() ^ true);
-      return localwy;
-    }
-    Object localObject = ry.a(RqdApplication.n()).a(localQQUser.mRealUin);
-    if (localObject == null) {
-      localObject = null;
-    } else {
-      localObject = aac.a((byte[])localObject);
-    }
-    qy.a().h();
-    System.currentTimeMillis();
-    long l = aad.a(2, localQQUser.mUin);
-    final CountDownLatch localCountDownLatch = new CountDownLatch(1);
-    qy.a().a(paramByte, 0, 2, localQQUser.mUin, (String)localObject, l, new qy.a()
-    {
-      public final void a(ra paramAnonymousra)
-      {
-        Object localObject = new wy();
-        ((wy)localObject).a = paramAnonymousra.b;
-        ((wy)localObject).c = paramAnonymousra.d;
-        ((wy)localObject).b = paramAnonymousra.d;
-        if (paramAnonymousra.b == 0) {
-          try
-          {
-            localObject = new JSONObject(paramAnonymousra.c);
-            long l = ((JSONObject)localObject).getLong("uin");
-            if (l != localQQUser.mUin)
-            {
-              paramAnonymousra = localwy;
-              localObject = new StringBuilder("uin not match=");
-              ((StringBuilder)localObject).append(l);
-              ((StringBuilder)localObject).append(":");
-              ((StringBuilder)localObject).append(localQQUser.mUin);
-              paramAnonymousra.a(10000, ((StringBuilder)localObject).toString(), null);
-              localCountDownLatch.countDown();
-              return;
-            }
-            tc.this.f.e = l;
-            paramAnonymousra = localwy;
-            localObject = tc.this.f.a((JSONObject)localObject, l, this.d);
-            paramAnonymousra.a = ((wy)localObject).a;
-            paramAnonymousra.b = ((wy)localObject).b;
-            paramAnonymousra.c = ((wy)localObject).c;
-            paramAnonymousra.d = ((wy)localObject).d;
-            paramAnonymousra.e = ((wy)localObject).e;
-            sz.a().g();
-          }
-          catch (JSONException paramAnonymousra)
-          {
-            localObject = localwy;
-            StringBuilder localStringBuilder = new StringBuilder("JSONException:");
-            localStringBuilder.append(paramAnonymousra.toString());
-            ((wy)localObject).a(10020, localStringBuilder.toString(), null);
-          }
-        }
-        localCountDownLatch.countDown();
-      }
-    });
     try
     {
-      localCountDownLatch.await();
-      return localwy;
+      this.e = ajj.a();
+      if ((!c) && (this.e == null)) {
+        throw new AssertionError();
+      }
+      this.b = new ta(this);
+      this.b.a = this.e;
+      return;
     }
-    catch (Throwable localThrowable)
+    catch (Exception localException)
     {
-      localThrowable.printStackTrace();
+      localException.printStackTrace();
+      StringBuilder localStringBuilder = new StringBuilder("RESULT_ERROR!!!");
+      localStringBuilder.append(localException.getMessage());
+      xj.c(localStringBuilder.toString());
     }
-    return localwy;
   }
   
-  public final void a(long paramLong)
+  public final void a()
   {
-    this.f.e = paramLong;
-  }
-  
-  public final boolean c()
-  {
-    aam localaam = this.f;
-    QQUser localQQUser = sz.a().k.b();
-    if (localQQUser != null) {
-      return localQQUser.mUin == localaam.e;
+    Handler localHandler = this.d;
+    if (localHandler == null) {
+      return;
     }
-    return false;
+    localHandler.sendEmptyMessage(10);
   }
   
-  public final void d()
+  public final void a(int paramInt)
   {
-    this.f.d = 0;
+    if (this.d == null) {
+      return;
+    }
+    Message localMessage = Message.obtain();
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("serTime", paramInt);
+    localMessage.what = 13;
+    localMessage.setData(localBundle);
+    this.d.sendMessage(localMessage);
+  }
+  
+  public final void a(int paramInt, String paramString)
+  {
+    if (this.d == null) {
+      return;
+    }
+    Message localMessage = Message.obtain();
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("errCode", paramInt);
+    localBundle.putString("error", paramString);
+    localMessage.what = 9;
+    localMessage.setData(localBundle);
+    this.d.sendMessage(localMessage);
+  }
+  
+  public final void a(String paramString)
+  {
+    if (this.d == null) {
+      return;
+    }
+    Message localMessage = Message.obtain();
+    Bundle localBundle = new Bundle();
+    localBundle.putString("error", paramString);
+    localMessage.what = 14;
+    localMessage.setData(localBundle);
+    this.d.sendMessage(localMessage);
+  }
+  
+  public final void b()
+  {
+    Handler localHandler = this.d;
+    if (localHandler == null) {
+      return;
+    }
+    localHandler.sendEmptyMessage(12);
+  }
+  
+  public final void b(int paramInt, String paramString)
+  {
+    if (this.d == null) {
+      return;
+    }
+    Message localMessage = Message.obtain();
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("errCode", paramInt);
+    localBundle.putString("error", paramString);
+    localMessage.what = 11;
+    localMessage.setData(localBundle);
+    this.d.sendMessage(localMessage);
+  }
+  
+  public final void b(String paramString)
+  {
+    if (this.d == null) {
+      return;
+    }
+    Message localMessage = Message.obtain();
+    Bundle localBundle = new Bundle();
+    localBundle.putString("ucSmsPort", paramString);
+    localMessage.what = 1;
+    localMessage.setData(localBundle);
+    this.d.sendMessage(localMessage);
+  }
+  
+  public final void c()
+  {
+    Handler localHandler = this.d;
+    if (localHandler == null) {
+      return;
+    }
+    localHandler.sendEmptyMessage(15);
+  }
+  
+  public final void c(String paramString)
+  {
+    if (this.d == null) {
+      return;
+    }
+    Message localMessage = Message.obtain();
+    Bundle localBundle = new Bundle();
+    localBundle.putString("error", paramString);
+    localMessage.what = 2;
+    localMessage.setData(localBundle);
+    this.d.sendMessage(localMessage);
   }
 }
 

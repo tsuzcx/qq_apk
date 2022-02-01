@@ -1,12 +1,9 @@
 package com.tencent.token;
 
-import android.content.Context;
-
-public abstract interface adw
+public final class adw
+  implements aei
 {
-  public abstract aea a(Context paramContext);
-  
-  public abstract void b(Context paramContext);
+  public adw(aec paramaec) {}
 }
 
 

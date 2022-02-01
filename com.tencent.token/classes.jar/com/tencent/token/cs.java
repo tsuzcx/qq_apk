@@ -1,34 +1,93 @@
 package com.tencent.token;
 
-public final class cs<D>
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import android.graphics.Canvas;
+import android.graphics.Matrix;
+import android.graphics.Rect;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import android.os.Bundle;
+import android.os.Parcelable;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.ImageView.ScaleType;
+
+public abstract class cs
 {
-  public int a;
-  public a<D> b;
-  public boolean c;
-  public boolean d;
-  public boolean e;
-  public boolean f;
-  public boolean g;
+  static int b = 1048576;
+  Matrix a;
   
-  public static String a(D paramD)
+  static Bitmap a(Drawable paramDrawable)
   {
-    StringBuilder localStringBuilder = new StringBuilder(64);
-    dx.a(paramD, localStringBuilder);
-    localStringBuilder.append("}");
-    return localStringBuilder.toString();
+    int i = paramDrawable.getIntrinsicWidth();
+    int j = paramDrawable.getIntrinsicHeight();
+    if ((i > 0) && (j > 0))
+    {
+      float f = Math.min(1.0F, b / (i * j));
+      if (((paramDrawable instanceof BitmapDrawable)) && (f == 1.0F)) {
+        return ((BitmapDrawable)paramDrawable).getBitmap();
+      }
+      i = (int)(i * f);
+      j = (int)(j * f);
+      Bitmap localBitmap = Bitmap.createBitmap(i, j, Bitmap.Config.ARGB_8888);
+      Canvas localCanvas = new Canvas(localBitmap);
+      Rect localRect = paramDrawable.getBounds();
+      int k = localRect.left;
+      int m = localRect.top;
+      int n = localRect.right;
+      int i1 = localRect.bottom;
+      paramDrawable.setBounds(0, 0, i, j);
+      paramDrawable.draw(localCanvas);
+      paramDrawable.setBounds(k, m, n, i1);
+      return localBitmap;
+    }
+    return null;
   }
   
-  public final String toString()
+  public static View a(Context paramContext, Parcelable paramParcelable)
   {
-    StringBuilder localStringBuilder = new StringBuilder(64);
-    dx.a(this, localStringBuilder);
-    localStringBuilder.append(" id=");
-    localStringBuilder.append(this.a);
-    localStringBuilder.append("}");
-    return localStringBuilder.toString();
+    boolean bool = paramParcelable instanceof Bundle;
+    Object localObject = null;
+    if (bool)
+    {
+      paramParcelable = (Bundle)paramParcelable;
+      localObject = (Bitmap)paramParcelable.getParcelable("sharedElement:snapshot:bitmap");
+      if (localObject == null) {
+        return null;
+      }
+      paramContext = new ImageView(paramContext);
+      paramContext.setImageBitmap((Bitmap)localObject);
+      paramContext.setScaleType(ImageView.ScaleType.valueOf(paramParcelable.getString("sharedElement:snapshot:imageScaleType")));
+      localObject = paramContext;
+      if (paramContext.getScaleType() == ImageView.ScaleType.MATRIX)
+      {
+        paramParcelable = paramParcelable.getFloatArray("sharedElement:snapshot:imageMatrix");
+        localObject = new Matrix();
+        ((Matrix)localObject).setValues(paramParcelable);
+        paramContext.setImageMatrix((Matrix)localObject);
+        return paramContext;
+      }
+    }
+    else if ((paramParcelable instanceof Bitmap))
+    {
+      paramParcelable = (Bitmap)paramParcelable;
+      localObject = new ImageView(paramContext);
+      ((ImageView)localObject).setImageBitmap(paramParcelable);
+    }
+    return localObject;
   }
   
-  public static abstract interface a<D> {}
+  public static void a(a parama)
+  {
+    parama.a();
+  }
+  
+  public static abstract interface a
+  {
+    public abstract void a();
+  }
 }
 
 

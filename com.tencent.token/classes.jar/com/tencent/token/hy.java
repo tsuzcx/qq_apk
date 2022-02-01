@@ -1,129 +1,23 @@
 package com.tencent.token;
 
 import android.content.Context;
-import android.graphics.drawable.Drawable;
+import android.os.Build.VERSION;
+import android.view.Menu;
 import android.view.MenuItem;
-import android.view.SubMenu;
-import android.view.View;
 
 public final class hy
-  extends hl
-  implements SubMenu
 {
-  public hl l;
-  private hn m;
-  
-  public hy(Context paramContext, hl paramhl, hn paramhn)
+  public static Menu a(Context paramContext, dq paramdq)
   {
-    super(paramContext);
-    this.l = paramhl;
-    this.m = paramhn;
+    return new hz(paramContext, paramdq);
   }
   
-  public final String a()
+  public static MenuItem a(Context paramContext, dr paramdr)
   {
-    Object localObject = this.m;
-    int i;
-    if (localObject != null) {
-      i = ((hn)localObject).getItemId();
-    } else {
-      i = 0;
+    if (Build.VERSION.SDK_INT >= 16) {
+      return new ht(paramContext, paramdr);
     }
-    if (i == 0) {
-      return null;
-    }
-    localObject = new StringBuilder();
-    ((StringBuilder)localObject).append(super.a());
-    ((StringBuilder)localObject).append(":");
-    ((StringBuilder)localObject).append(i);
-    return ((StringBuilder)localObject).toString();
-  }
-  
-  public final void a(hl.a parama)
-  {
-    this.l.a(parama);
-  }
-  
-  final boolean a(hl paramhl, MenuItem paramMenuItem)
-  {
-    return (super.a(paramhl, paramMenuItem)) || (this.l.a(paramhl, paramMenuItem));
-  }
-  
-  public final boolean a(hn paramhn)
-  {
-    return this.l.a(paramhn);
-  }
-  
-  public final boolean b()
-  {
-    return this.l.b();
-  }
-  
-  public final boolean b(hn paramhn)
-  {
-    return this.l.b(paramhn);
-  }
-  
-  public final boolean c()
-  {
-    return this.l.c();
-  }
-  
-  public final MenuItem getItem()
-  {
-    return this.m;
-  }
-  
-  public final hl k()
-  {
-    return this.l.k();
-  }
-  
-  public final SubMenu setHeaderIcon(int paramInt)
-  {
-    super.a(0, null, paramInt, null, null);
-    return (SubMenu)this;
-  }
-  
-  public final SubMenu setHeaderIcon(Drawable paramDrawable)
-  {
-    super.a(0, null, 0, paramDrawable, null);
-    return (SubMenu)this;
-  }
-  
-  public final SubMenu setHeaderTitle(int paramInt)
-  {
-    super.a(paramInt, null, 0, null, null);
-    return (SubMenu)this;
-  }
-  
-  public final SubMenu setHeaderTitle(CharSequence paramCharSequence)
-  {
-    super.a(0, paramCharSequence, 0, null, null);
-    return (SubMenu)this;
-  }
-  
-  public final SubMenu setHeaderView(View paramView)
-  {
-    super.a(0, null, 0, null, paramView);
-    return (SubMenu)this;
-  }
-  
-  public final SubMenu setIcon(int paramInt)
-  {
-    this.m.setIcon(paramInt);
-    return this;
-  }
-  
-  public final SubMenu setIcon(Drawable paramDrawable)
-  {
-    this.m.setIcon(paramDrawable);
-    return this;
-  }
-  
-  public final void setQwertyMode(boolean paramBoolean)
-  {
-    this.l.setQwertyMode(paramBoolean);
+    return new hs(paramContext, paramdr);
   }
 }
 

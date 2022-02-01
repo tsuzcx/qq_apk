@@ -1,179 +1,238 @@
 package com.tencent.token;
 
-import java.net.Proxy;
-import java.net.ProxySelector;
-import java.util.List;
-import javax.annotation.Nullable;
-import javax.net.SocketFactory;
-import javax.net.ssl.HostnameVerifier;
-import javax.net.ssl.SSLSocketFactory;
+import com.tencent.wcdb.CursorWindow;
+import com.tencent.wcdb.database.SQLiteDatabase;
+import com.tencent.wcdb.database.SQLiteDatabase.a;
+import com.tencent.wcdb.support.Log;
+import java.util.HashMap;
+import java.util.Map;
 
 public final class ahr
+  extends ahe
 {
-  public final aii a;
-  public final aie b;
-  public final SocketFactory c;
-  final ahs d;
-  public final List<aim> e;
-  public final List<aia> f;
-  public final ProxySelector g;
-  @Nullable
-  public final Proxy h;
-  @Nullable
-  public final SSLSocketFactory i;
-  @Nullable
-  public final HostnameVerifier j;
-  @Nullable
-  public final ahx k;
-  
-  public ahr(String paramString, int paramInt, aie paramaie, SocketFactory paramSocketFactory, @Nullable SSLSocketFactory paramSSLSocketFactory, @Nullable HostnameVerifier paramHostnameVerifier, @Nullable ahx paramahx, ahs paramahs, @Nullable Proxy paramProxy, List<aim> paramList, List<aia> paramList1, ProxySelector paramProxySelector)
+  public static final SQLiteDatabase.a j = new SQLiteDatabase.a()
   {
-    aii.a locala = new aii.a();
-    String str;
-    if (paramSSLSocketFactory != null) {
-      str = "https";
-    } else {
-      str = "http";
-    }
-    if (str.equalsIgnoreCase("http"))
+    public final ahi a(ahs paramAnonymousahs, String paramAnonymousString, ahw paramAnonymousahw)
     {
-      locala.a = "http";
+      return new ahr(paramAnonymousahs, paramAnonymousString, (ahx)paramAnonymousahw);
     }
-    else
+    
+    public final ahw a(SQLiteDatabase paramAnonymousSQLiteDatabase, String paramAnonymousString, Object[] paramAnonymousArrayOfObject, aie paramAnonymousaie)
     {
-      if (!str.equalsIgnoreCase("https")) {
-        break label317;
-      }
-      locala.a = "https";
+      return new ahx(paramAnonymousSQLiteDatabase, paramAnonymousString, paramAnonymousArrayOfObject, paramAnonymousaie);
     }
-    if (paramString != null)
+  };
+  private final String k;
+  private final String[] l;
+  private final ahx m;
+  private final ahs n;
+  private int o = -1;
+  private int p;
+  private Map<String, Integer> q;
+  private final Throwable r;
+  
+  public ahr(ahs paramahs, String paramString, ahx paramahx)
+  {
+    if (paramahx != null)
     {
-      str = aii.a.a(paramString, 0, paramString.length());
-      if (str != null)
+      this.r = null;
+      this.n = paramahs;
+      this.k = paramString;
+      this.q = null;
+      this.m = paramahx;
+      this.l = paramahx.d;
+      this.c = ahk.a(this.l);
+      return;
+    }
+    throw new IllegalArgumentException("query object cannot be null");
+  }
+  
+  private void b(int paramInt)
+  {
+    a(this.m.a.o());
+    try
+    {
+      if (this.o == -1)
       {
-        locala.d = str;
-        if ((paramInt > 0) && (paramInt <= 65535))
-        {
-          locala.e = paramInt;
-          this.a = locala.b();
-          if (paramaie != null)
-          {
-            this.b = paramaie;
-            if (paramSocketFactory != null)
-            {
-              this.c = paramSocketFactory;
-              if (paramahs != null)
-              {
-                this.d = paramahs;
-                if (paramList != null)
-                {
-                  this.e = aiw.a(paramList);
-                  if (paramList1 != null)
-                  {
-                    this.f = aiw.a(paramList1);
-                    if (paramProxySelector != null)
-                    {
-                      this.g = paramProxySelector;
-                      this.h = paramProxy;
-                      this.i = paramSSLSocketFactory;
-                      this.j = paramHostnameVerifier;
-                      this.k = paramahx;
-                      return;
-                    }
-                    throw new NullPointerException("proxySelector == null");
-                  }
-                  throw new NullPointerException("connectionSpecs == null");
-                }
-                throw new NullPointerException("protocols == null");
-              }
-              throw new NullPointerException("proxyAuthenticator == null");
-            }
-            throw new NullPointerException("socketFactory == null");
-          }
-          throw new NullPointerException("dns == null");
-        }
-        throw new IllegalArgumentException("unexpected port: ".concat(String.valueOf(paramInt)));
+        i = ahk.a(paramInt, 0);
+        this.o = this.m.a(this.i, i, paramInt, true);
+        this.p = this.i.b();
+        return;
       }
-      throw new IllegalArgumentException("unexpected host: ".concat(String.valueOf(paramString)));
+      int i = ahk.a(paramInt, this.p);
+      this.m.a(this.i, i, paramInt, false);
+      return;
     }
-    throw new NullPointerException("host == null");
-    label317:
-    throw new IllegalArgumentException("unexpected scheme: ".concat(String.valueOf(str)));
-  }
-  
-  final boolean a(ahr paramahr)
-  {
-    return (this.b.equals(paramahr.b)) && (this.d.equals(paramahr.d)) && (this.e.equals(paramahr.e)) && (this.f.equals(paramahr.f)) && (this.g.equals(paramahr.g)) && (aiw.a(this.h, paramahr.h)) && (aiw.a(this.i, paramahr.i)) && (aiw.a(this.j, paramahr.j)) && (aiw.a(this.k, paramahr.k)) && (this.a.c == paramahr.a.c);
-  }
-  
-  public final boolean equals(@Nullable Object paramObject)
-  {
-    if ((paramObject instanceof ahr))
+    catch (RuntimeException localRuntimeException)
     {
-      aii localaii = this.a;
-      paramObject = (ahr)paramObject;
-      if ((localaii.equals(paramObject.a)) && (a(paramObject))) {
-        return true;
+      c();
+      throw localRuntimeException;
+    }
+  }
+  
+  public final boolean a(int paramInt)
+  {
+    if ((this.i == null) || (paramInt < this.i.b) || (paramInt >= this.i.b + this.i.b())) {
+      b(paramInt);
+    }
+    return true;
+  }
+  
+  public final void close()
+  {
+    super.close();
+    try
+    {
+      this.m.close();
+      return;
+    }
+    finally {}
+  }
+  
+  public final void deactivate()
+  {
+    super.deactivate();
+  }
+  
+  public final void finalize()
+  {
+    try
+    {
+      if (this.i != null) {
+        close();
       }
+      return;
     }
-    return false;
+    finally
+    {
+      super.finalize();
+    }
   }
   
-  public final int hashCode()
+  public final int getColumnIndex(String paramString)
   {
-    int i3 = this.a.hashCode();
-    int i4 = this.b.hashCode();
-    int i5 = this.d.hashCode();
-    int i6 = this.e.hashCode();
-    int i7 = this.f.hashCode();
-    int i8 = this.g.hashCode();
-    Object localObject = this.h;
-    int i2 = 0;
-    int m;
-    if (localObject != null) {
-      m = ((Proxy)localObject).hashCode();
-    } else {
-      m = 0;
+    if (this.q == null)
+    {
+      localObject = this.l;
+      int i1 = localObject.length;
+      HashMap localHashMap = new HashMap(i1, 1.0F);
+      i = 0;
+      while (i < i1)
+      {
+        localHashMap.put(localObject[i], Integer.valueOf(i));
+        i += 1;
+      }
+      this.q = localHashMap;
     }
-    localObject = this.i;
-    int n;
-    if (localObject != null) {
-      n = localObject.hashCode();
-    } else {
-      n = 0;
+    int i = paramString.lastIndexOf('.');
+    Object localObject = paramString;
+    if (i != -1)
+    {
+      localObject = new Exception();
+      Log.a("WCDB.SQLiteCursor", "requesting column name with table name -- ".concat(String.valueOf(paramString)), new Object[] { localObject });
+      localObject = paramString.substring(i + 1);
     }
-    localObject = this.j;
-    int i1;
-    if (localObject != null) {
-      i1 = localObject.hashCode();
-    } else {
-      i1 = 0;
+    paramString = (Integer)this.q.get(localObject);
+    if (paramString != null) {
+      return paramString.intValue();
     }
-    localObject = this.k;
-    if (localObject != null) {
-      i2 = ((ahx)localObject).hashCode();
-    }
-    return (((((((((i3 + 527) * 31 + i4) * 31 + i5) * 31 + i6) * 31 + i7) * 31 + i8) * 31 + m) * 31 + n) * 31 + i1) * 31 + i2;
+    return -1;
   }
   
-  public final String toString()
+  public final String[] getColumnNames()
   {
-    StringBuilder localStringBuilder = new StringBuilder("Address{");
-    localStringBuilder.append(this.a.b);
-    localStringBuilder.append(":");
-    localStringBuilder.append(this.a.c);
-    if (this.h != null)
-    {
-      localStringBuilder.append(", proxy=");
-      localStringBuilder.append(this.h);
+    return this.l;
+  }
+  
+  public final int getCount()
+  {
+    if (this.o == -1) {
+      b(0);
     }
-    else
-    {
-      localStringBuilder.append(", proxySelector=");
-      localStringBuilder.append(this.g);
-    }
-    localStringBuilder.append("}");
-    return localStringBuilder.toString();
+    return this.o;
+  }
+  
+  /* Error */
+  public final boolean requery()
+  {
+    // Byte code:
+    //   0: aload_0
+    //   1: invokevirtual 187	com/tencent/token/ahr:isClosed	()Z
+    //   4: ifeq +5 -> 9
+    //   7: iconst_0
+    //   8: ireturn
+    //   9: aload_0
+    //   10: monitorenter
+    //   11: aload_0
+    //   12: getfield 46	com/tencent/token/ahr:m	Lcom/tencent/token/ahx;
+    //   15: getfield 76	com/tencent/token/ahw:a	Lcom/tencent/wcdb/database/SQLiteDatabase;
+    //   18: invokevirtual 189	com/tencent/wcdb/database/SQLiteDatabase:n	()Z
+    //   21: ifne +7 -> 28
+    //   24: aload_0
+    //   25: monitorexit
+    //   26: iconst_0
+    //   27: ireturn
+    //   28: aload_0
+    //   29: getfield 90	com/tencent/token/ahr:i	Lcom/tencent/wcdb/CursorWindow;
+    //   32: ifnull +10 -> 42
+    //   35: aload_0
+    //   36: getfield 90	com/tencent/token/ahr:i	Lcom/tencent/wcdb/CursorWindow;
+    //   39: invokevirtual 191	com/tencent/wcdb/CursorWindow:a	()V
+    //   42: aload_0
+    //   43: iconst_m1
+    //   44: putfield 192	com/tencent/token/ahr:b	I
+    //   47: aload_0
+    //   48: iconst_m1
+    //   49: putfield 36	com/tencent/token/ahr:o	I
+    //   52: aload_0
+    //   53: monitorexit
+    //   54: aload_0
+    //   55: invokespecial 194	com/tencent/token/ahe:requery	()Z
+    //   58: istore_1
+    //   59: iload_1
+    //   60: ireturn
+    //   61: astore_2
+    //   62: new 196	java/lang/StringBuilder
+    //   65: dup
+    //   66: ldc 198
+    //   68: invokespecial 199	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   71: astore_3
+    //   72: aload_3
+    //   73: aload_2
+    //   74: invokevirtual 202	java/lang/IllegalStateException:getMessage	()Ljava/lang/String;
+    //   77: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   80: pop
+    //   81: ldc 148
+    //   83: aload_3
+    //   84: invokevirtual 209	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   87: iconst_1
+    //   88: anewarray 159	java/lang/Object
+    //   91: dup
+    //   92: iconst_0
+    //   93: aload_2
+    //   94: aastore
+    //   95: invokestatic 211	com/tencent/wcdb/support/Log:b	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   98: iconst_0
+    //   99: ireturn
+    //   100: astore_2
+    //   101: aload_0
+    //   102: monitorexit
+    //   103: aload_2
+    //   104: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	105	0	this	ahr
+    //   58	2	1	bool	boolean
+    //   61	33	2	localIllegalStateException	java.lang.IllegalStateException
+    //   100	4	2	localObject	Object
+    //   71	13	3	localStringBuilder	java.lang.StringBuilder
+    // Exception table:
+    //   from	to	target	type
+    //   54	59	61	java/lang/IllegalStateException
+    //   11	26	100	finally
+    //   28	42	100	finally
+    //   42	54	100	finally
+    //   101	103	100	finally
   }
 }
 

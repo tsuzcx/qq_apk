@@ -1,32 +1,24 @@
 package com.tencent.token;
 
-import android.content.Context;
-import android.os.Handler;
-import android.os.Message;
-import java.lang.ref.WeakReference;
-
-final class aqx
-  extends Handler
+public final class aqx
 {
-  private WeakReference a = null;
-  
-  public aqx(aqt paramaqt)
+  public static final String a(byte[] paramArrayOfByte)
   {
-    super(paramaqt.a.getMainLooper());
-    this.a = new WeakReference(paramaqt);
-  }
-  
-  public final void handleMessage(Message paramMessage)
-  {
-    super.handleMessage(paramMessage);
-    paramMessage = (aqt)this.a.get();
-    if (paramMessage == null) {
-      return;
+    if (paramArrayOfByte == null) {
+      return "";
     }
-    if (paramMessage.d != null) {
-      paramMessage.d.e();
+    StringBuffer localStringBuffer = new StringBuffer(paramArrayOfByte.length);
+    int i = 0;
+    while (i < paramArrayOfByte.length)
+    {
+      String str = Integer.toHexString(paramArrayOfByte[i] & 0xFF);
+      if (str.length() < 2) {
+        localStringBuffer.append(0);
+      }
+      localStringBuffer.append(str.toUpperCase());
+      i += 1;
     }
-    aqs.a(paramMessage.a, "com.tencent.tmsdk.HeartBeatPlot.ACTION_HEARTBEAT_PLOT_ALARM_CYCLE", paramMessage.c);
+    return localStringBuffer.toString();
   }
 }
 

@@ -1,32 +1,116 @@
 package com.tencent.token;
 
 import android.content.Context;
+import android.content.res.ColorStateList;
 import android.content.res.Configuration;
 import android.content.res.Resources;
-import android.graphics.Rect;
-import android.text.method.TransformationMethod;
-import android.view.View;
-import java.util.Locale;
+import android.graphics.drawable.Drawable;
+import android.os.Build.VERSION;
+import android.util.SparseArray;
+import android.util.TypedValue;
+import java.util.WeakHashMap;
+import org.xmlpull.v1.XmlPullParser;
 
 public final class gu
-  implements TransformationMethod
 {
-  private Locale a;
+  private static final ThreadLocal<TypedValue> a = new ThreadLocal();
+  private static final WeakHashMap<Context, SparseArray<a>> b = new WeakHashMap(0);
+  private static final Object c = new Object();
   
-  public gu(Context paramContext)
+  public static ColorStateList a(Context paramContext, int paramInt)
   {
-    this.a = paramContext.getResources().getConfiguration().locale;
+    if (Build.VERSION.SDK_INT >= 23) {
+      return paramContext.getColorStateList(paramInt);
+    }
+    Object localObject1 = d(paramContext, paramInt);
+    if (localObject1 != null) {
+      return localObject1;
+    }
+    ColorStateList localColorStateList = c(paramContext, paramInt);
+    if (localColorStateList != null) {
+      synchronized (c)
+      {
+        SparseArray localSparseArray = (SparseArray)b.get(paramContext);
+        localObject1 = localSparseArray;
+        if (localSparseArray == null)
+        {
+          localObject1 = new SparseArray();
+          b.put(paramContext, localObject1);
+        }
+        ((SparseArray)localObject1).append(paramInt, new a(localColorStateList, paramContext.getResources().getConfiguration()));
+        return localColorStateList;
+      }
+    }
+    return cv.b(paramContext, paramInt);
   }
   
-  public final CharSequence getTransformation(CharSequence paramCharSequence, View paramView)
+  public static Drawable b(Context paramContext, int paramInt)
   {
-    if (paramCharSequence != null) {
-      return paramCharSequence.toString().toUpperCase(this.a);
+    return ik.a().a(paramContext, paramInt, false);
+  }
+  
+  private static ColorStateList c(Context paramContext, int paramInt)
+  {
+    Resources localResources = paramContext.getResources();
+    Object localObject2 = (TypedValue)a.get();
+    Object localObject1 = localObject2;
+    if (localObject2 == null)
+    {
+      localObject1 = new TypedValue();
+      a.set(localObject1);
     }
+    int i = 1;
+    localResources.getValue(paramInt, (TypedValue)localObject1, true);
+    if ((((TypedValue)localObject1).type < 28) || (((TypedValue)localObject1).type > 31)) {
+      i = 0;
+    }
+    if (i != 0) {
+      return null;
+    }
+    localObject1 = paramContext.getResources();
+    localObject2 = ((Resources)localObject1).getXml(paramInt);
+    try
+    {
+      paramContext = gt.a((Resources)localObject1, (XmlPullParser)localObject2, paramContext.getTheme());
+      return paramContext;
+    }
+    catch (Exception paramContext) {}
     return null;
   }
   
-  public final void onFocusChanged(View paramView, CharSequence paramCharSequence, boolean paramBoolean, int paramInt, Rect paramRect) {}
+  private static ColorStateList d(Context paramContext, int paramInt)
+  {
+    synchronized (c)
+    {
+      SparseArray localSparseArray = (SparseArray)b.get(paramContext);
+      if ((localSparseArray != null) && (localSparseArray.size() > 0))
+      {
+        a locala = (a)localSparseArray.get(paramInt);
+        if (locala != null)
+        {
+          if (locala.b.equals(paramContext.getResources().getConfiguration()))
+          {
+            paramContext = locala.a;
+            return paramContext;
+          }
+          localSparseArray.remove(paramInt);
+        }
+      }
+      return null;
+    }
+  }
+  
+  static final class a
+  {
+    final ColorStateList a;
+    final Configuration b;
+    
+    a(ColorStateList paramColorStateList, Configuration paramConfiguration)
+    {
+      this.a = paramColorStateList;
+      this.b = paramConfiguration;
+    }
+  }
 }
 
 

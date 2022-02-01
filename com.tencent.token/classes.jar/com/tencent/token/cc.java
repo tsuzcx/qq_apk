@@ -1,19 +1,29 @@
 package com.tencent.token;
 
 import android.support.v4.app.Fragment;
-import java.util.List;
 
 public final class cc
 {
-  final List<Fragment> a;
-  final List<cc> b;
-  final List<bh> c;
+  public final cd<?> a;
   
-  cc(List<Fragment> paramList, List<cc> paramList1, List<bh> paramList2)
+  public cc(cd<?> paramcd)
   {
-    this.a = paramList;
-    this.b = paramList1;
-    this.c = paramList2;
+    this.a = paramcd;
+  }
+  
+  public final Fragment a(String paramString)
+  {
+    return this.a.f.b(paramString);
+  }
+  
+  public final void a()
+  {
+    this.a.f.j();
+  }
+  
+  public final boolean b()
+  {
+    return this.a.f.h();
   }
 }
 

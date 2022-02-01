@@ -12,7 +12,7 @@ import android.view.View.OnLongClickListener;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
-import com.tencent.token.abj;
+import com.tencent.token.abu;
 import com.tencent.token.ui.base.PullToRefreshListView;
 import com.tencent.token.ui.base.PullToRefreshListView.a;
 import java.io.BufferedReader;
@@ -108,7 +108,7 @@ public class ShowLogActivity
     //   122: astore_3
     //   123: aload_3
     //   124: invokevirtual 150	java/io/IOException:getMessage	()Ljava/lang/String;
-    //   127: invokestatic 155	com/tencent/token/xa:c	(Ljava/lang/String;)V
+    //   127: invokestatic 155	com/tencent/token/xj:c	(Ljava/lang/String;)V
     //   130: aload_1
     //   131: invokevirtual 147	java/io/BufferedReader:close	()V
     //   134: return
@@ -247,7 +247,7 @@ public class ShowLogActivity
         if (((d)localObject).b + 1 >= 2) {
           return;
         }
-        BufferedReader localBufferedReader = abj.b(((d)localObject).b + 1);
+        BufferedReader localBufferedReader = abu.b(((d)localObject).b + 1);
         if (localBufferedReader != null)
         {
           addData(localBufferedReader);

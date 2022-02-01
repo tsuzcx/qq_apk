@@ -1,25 +1,31 @@
 package com.tencent.token;
 
-import java.util.ArrayList;
-import java.util.concurrent.atomic.AtomicReference;
+import com.qq.taf.jce.JceInputStream;
+import com.qq.taf.jce.JceOutputStream;
+import com.qq.taf.jce.JceStruct;
 
 public final class aqh
-  implements Runnable
+  extends JceStruct
 {
-  public aqh(aqg paramaqg) {}
+  public String a = "";
+  public String b = "";
+  public int c = 0;
+  public int d = 0;
   
-  public final void run()
+  public final void readFrom(JceInputStream paramJceInputStream)
   {
-    ArrayList localArrayList = new ArrayList();
-    AtomicReference localAtomicReference = new AtomicReference();
-    int i = this.a.a(null, localArrayList, localAtomicReference);
-    if (-10 != i)
-    {
-      if (i == 0) {
-        return;
-      }
-      return;
-    }
+    this.a = paramJceInputStream.readString(0, true);
+    this.b = paramJceInputStream.readString(1, true);
+    this.c = paramJceInputStream.read(this.c, 2, true);
+    this.d = paramJceInputStream.read(this.d, 3, true);
+  }
+  
+  public final void writeTo(JceOutputStream paramJceOutputStream)
+  {
+    paramJceOutputStream.write(this.a, 0);
+    paramJceOutputStream.write(this.b, 1);
+    paramJceOutputStream.write(this.c, 2);
+    paramJceOutputStream.write(this.d, 3);
   }
 }
 

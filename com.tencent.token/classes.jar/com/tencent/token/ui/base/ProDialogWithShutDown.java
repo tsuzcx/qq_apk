@@ -39,14 +39,14 @@ public class ProDialogWithShutDown
       getWindow().setBackgroundDrawableResource(2131099877);
       if (this.e)
       {
-        paramBundle = (TextView)findViewById(2131165825);
+        paramBundle = (TextView)findViewById(2131165826);
         localObject = this.d;
         if ((localObject != null) && (((String)localObject).length() > 0)) {
           paramBundle.setText(this.d);
         }
       }
-      ((ImageView)findViewById(2131165823)).startAnimation(AnimationUtils.loadAnimation(this.a, 2130771986));
-      this.b = ((ImageView)findViewById(2131165824));
+      ((ImageView)findViewById(2131165824)).startAnimation(AnimationUtils.loadAnimation(this.a, 2130771986));
+      this.b = ((ImageView)findViewById(2131165825));
       this.b.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)

@@ -1,87 +1,68 @@
 package com.tencent.token;
 
 import android.content.Context;
+import com.tencent.token.core.bean.QQUser;
 import com.tencent.token.global.RqdApplication;
-import com.tmsdk.common.util.TmsLog;
+import java.util.HashMap;
 import org.json.JSONObject;
 
 public final class vt
-  extends tj
+  extends tr
 {
-  public static void a(boolean paramBoolean)
-  {
-    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.copyTypes(TypeTransformer.java:311)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.fixTypes(TypeTransformer.java:226)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:207)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
-  }
+  private long d;
+  private int e;
   
   public final String a()
   {
-    rz.a();
+    sh.a();
     this.a.a(104, null, null);
     return null;
   }
   
-  public final void a(aaq paramaaq) {}
+  public final void a(abc paramabc)
+  {
+    this.d = ((Long)paramabc.c.get("param.uinhash")).longValue();
+  }
   
   public final void a(JSONObject paramJSONObject)
   {
     int i = paramJSONObject.getInt("err");
-    Object localObject;
-    StringBuilder localStringBuilder;
     if (i != 0)
     {
       paramJSONObject = paramJSONObject.getString("info");
-      localObject = this.a;
-      localStringBuilder = new StringBuilder("server errcode=");
-      localStringBuilder.append(i);
-      localStringBuilder.append(":");
-      localStringBuilder.append(paramJSONObject);
-      ((wy)localObject).a(i, localStringBuilder.toString(), paramJSONObject);
-      TmsLog.i("mod_seed", "@mod_seed failed, errcode: ".concat(String.valueOf(i)));
-      if ((i == 122) || (i == 205)) {
-        a(true);
-      }
+      this.a.a(i, paramJSONObject, paramJSONObject);
       return;
     }
-    TmsLog.i("mod_seed", "@mod_seed  start parse json.");
-    paramJSONObject = aac.d(paramJSONObject.getString("data"));
+    paramJSONObject = aao.d(paramJSONObject.getString("data"));
     if (paramJSONObject != null)
     {
       paramJSONObject = new JSONObject(new String(paramJSONObject));
-      long l1 = paramJSONObject.getLong("seed_expire_time");
-      sb.b();
-      sb.b(l1);
-      localObject = new StringBuilder("@mod_seed seed recv, String: ");
-      ((StringBuilder)localObject).append(aac.a(paramJSONObject.getString("seed").getBytes()));
-      TmsLog.i("mod_seed", ((StringBuilder)localObject).toString());
-      localObject = aac.e(paramJSONObject.getString("seed"));
-      if (localObject != null)
+      i = paramJSONObject.getInt("seq_id");
+      if (i != this.e)
       {
-        localStringBuilder = new StringBuilder("@mod_seed seed recv, hex: ");
-        localStringBuilder.append(aac.a((byte[])localObject));
-        TmsLog.i("mod_seed", localStringBuilder.toString());
-        sb.b().c();
-        sb.b().a((byte[])localObject);
-        sb.b().a.a();
+        this.a.a(10030, null, null);
+        paramJSONObject = new StringBuilder("parseJSON error seq is wrong seq=");
+        paramJSONObject.append(i);
+        paramJSONObject.append(",right = ");
+        si.a();
+        paramJSONObject.append(si.b());
+        xj.c(paramJSONObject.toString());
+        return;
       }
-      else
-      {
-        TmsLog.i("mod_seed", "@mod_seed seed recv null");
-      }
-      long l2 = paramJSONObject.getLong("server_time");
-      sb.b();
-      sb.a(l2);
-      paramJSONObject = new StringBuilder("@mod_seed recv data, servertime: ");
-      paramJSONObject.append(l2);
-      paramJSONObject.append(" seedExpireTime: ");
-      paramJSONObject.append(l1);
-      TmsLog.i("mod_seed", paramJSONObject.toString());
-      sb.b().a.a(false);
-      a(false);
       this.a.a = 0;
+      QQUser localQQUser = th.a().c(this.d);
+      if (localQQUser == null)
+      {
+        this.a.a(10000, null, null);
+        return;
+      }
+      localQQUser.mRealUin = paramJSONObject.getLong("real_uin");
+      localQQUser.mMobileMask = paramJSONObject.getString("mobile");
+      localQQUser.verify_sms = paramJSONObject.optInt("verify_sms");
       return;
     }
-    xa.c("parseJSON error decodeData=".concat(String.valueOf(paramJSONObject)));
-    a(10022, RqdApplication.n().getString(2131493068));
+    xj.c("parseJSON error decodeData=".concat(String.valueOf(paramJSONObject)));
+    a(10022, RqdApplication.p().getString(2131493068));
   }
 }
 

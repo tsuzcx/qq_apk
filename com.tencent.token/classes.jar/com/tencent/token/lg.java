@@ -2,7 +2,7 @@ package com.tencent.token;
 
 public abstract interface lg
 {
-  public abstract boolean a();
+  public abstract boolean a(byte[] paramArrayOfByte, int paramInt, boolean paramBoolean);
 }
 
 

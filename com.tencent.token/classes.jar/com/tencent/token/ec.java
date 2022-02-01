@@ -1,49 +1,50 @@
 package com.tencent.token;
 
-public final class ec<F, S>
+import java.io.Writer;
+
+public final class ec
+  extends Writer
 {
-  public final F a;
-  public final S b;
+  private final String a;
+  private StringBuilder b = new StringBuilder(128);
   
-  private static boolean a(Object paramObject1, Object paramObject2)
+  public ec(String paramString)
   {
-    return (paramObject1 == paramObject2) || ((paramObject1 != null) && (paramObject1.equals(paramObject2)));
+    this.a = paramString;
   }
   
-  public final boolean equals(Object paramObject)
+  private void a()
   {
-    if (!(paramObject instanceof ec)) {
-      return false;
+    if (this.b.length() > 0)
+    {
+      StringBuilder localStringBuilder = this.b;
+      localStringBuilder.delete(0, localStringBuilder.length());
     }
-    paramObject = (ec)paramObject;
-    return (a(paramObject.a, this.a)) && (a(paramObject.b, this.b));
   }
   
-  public final int hashCode()
+  public final void close()
   {
-    Object localObject = this.a;
-    int j = 0;
-    int i;
-    if (localObject == null) {
-      i = 0;
-    } else {
-      i = localObject.hashCode();
-    }
-    localObject = this.b;
-    if (localObject != null) {
-      j = localObject.hashCode();
-    }
-    return i ^ j;
+    a();
   }
   
-  public final String toString()
+  public final void flush()
   {
-    StringBuilder localStringBuilder = new StringBuilder("Pair{");
-    localStringBuilder.append(String.valueOf(this.a));
-    localStringBuilder.append(" ");
-    localStringBuilder.append(String.valueOf(this.b));
-    localStringBuilder.append("}");
-    return localStringBuilder.toString();
+    a();
+  }
+  
+  public final void write(char[] paramArrayOfChar, int paramInt1, int paramInt2)
+  {
+    int i = 0;
+    while (i < paramInt2)
+    {
+      char c = paramArrayOfChar[(paramInt1 + i)];
+      if (c == '\n') {
+        a();
+      } else {
+        this.b.append(c);
+      }
+      i += 1;
+    }
   }
 }
 

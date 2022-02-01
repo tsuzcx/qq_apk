@@ -1,25 +1,67 @@
 package com.tencent.token;
 
-import com.qq.taf.jce.JceInputStream;
-import com.qq.taf.jce.JceOutputStream;
-import com.qq.taf.jce.JceStruct;
+import android.graphics.Rect;
+import android.os.Build.VERSION;
+import android.view.View;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 
 public final class jo
-  extends JceStruct
 {
-  public long a = 0L;
-  public long b = 0L;
+  private static Method a;
   
-  public final void readFrom(JceInputStream paramJceInputStream)
+  static
   {
-    this.a = paramJceInputStream.read(this.a, 0, true);
-    this.b = paramJceInputStream.read(this.b, 1, true);
+    if (Build.VERSION.SDK_INT >= 18) {}
+    try
+    {
+      Method localMethod = View.class.getDeclaredMethod("computeFitSystemWindows", new Class[] { Rect.class, Rect.class });
+      a = localMethod;
+      if (!localMethod.isAccessible()) {
+        a.setAccessible(true);
+      }
+      return;
+    }
+    catch (NoSuchMethodException localNoSuchMethodException) {}
+    return;
   }
   
-  public final void writeTo(JceOutputStream paramJceOutputStream)
+  public static void a(View paramView, Rect paramRect1, Rect paramRect2)
   {
-    paramJceOutputStream.write(this.a, 0);
-    paramJceOutputStream.write(this.b, 1);
+    Method localMethod = a;
+    if (localMethod != null) {}
+    try
+    {
+      localMethod.invoke(paramView, new Object[] { paramRect1, paramRect2 });
+      return;
+    }
+    catch (Exception paramView) {}
+    return;
+  }
+  
+  public static boolean a(View paramView)
+  {
+    return fa.c(paramView) == 1;
+  }
+  
+  public static void b(View paramView)
+  {
+    if (Build.VERSION.SDK_INT >= 16) {}
+    try
+    {
+      Method localMethod = paramView.getClass().getMethod("makeOptionalFitsSystemWindows", new Class[0]);
+      if (!localMethod.isAccessible()) {
+        localMethod.setAccessible(true);
+      }
+      localMethod.invoke(paramView, new Object[0]);
+      return;
+    }
+    catch (NoSuchMethodException|InvocationTargetException paramView)
+    {
+      return;
+    }
+    catch (IllegalAccessException paramView) {}
+    return;
   }
 }
 

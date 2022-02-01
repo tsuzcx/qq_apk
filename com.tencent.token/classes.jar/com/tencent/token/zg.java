@@ -1,81 +1,46 @@
 package com.tencent.token;
 
-import android.content.Context;
-import android.content.pm.ApplicationInfo;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
-import android.content.pm.Signature;
-import java.io.ByteArrayInputStream;
-import java.security.cert.CertificateFactory;
-import java.security.cert.X509Certificate;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import org.json.JSONArray;
+import android.graphics.Canvas;
+import android.graphics.ColorFilter;
+import android.graphics.Paint;
+import android.graphics.Paint.Style;
+import android.graphics.drawable.Drawable;
 
 public final class zg
+  extends Drawable
 {
-  private static String a(byte[] paramArrayOfByte)
+  private int a;
+  private Paint b;
+  private float c;
+  private float d;
+  private float e;
+  
+  public zg(int paramInt, float paramFloat1, float paramFloat2, float paramFloat3)
   {
-    try
-    {
-      paramArrayOfByte = ((X509Certificate)CertificateFactory.getInstance("X.509").generateCertificate(new ByteArrayInputStream(paramArrayOfByte))).getPublicKey().toString();
-      return paramArrayOfByte;
-    }
-    catch (Exception paramArrayOfByte)
-    {
-      paramArrayOfByte.printStackTrace();
-    }
-    return zk.a;
+    this.a = paramInt;
+    this.b = new Paint();
+    this.b.setColor(this.a);
+    this.b.setAlpha(154);
+    this.b.setAntiAlias(true);
+    this.b.setStyle(Paint.Style.FILL);
+    this.c = paramFloat1;
+    this.d = paramFloat2;
+    this.e = paramFloat3;
   }
   
-  public static JSONArray a(Context paramContext)
+  public final void draw(Canvas paramCanvas)
   {
-    Object localObject = (ArrayList)b(paramContext);
-    paramContext = new JSONArray();
-    if (((ArrayList)localObject).size() == 0) {
-      return paramContext;
-    }
-    localObject = ((ArrayList)localObject).iterator();
-    while (((Iterator)localObject).hasNext()) {
-      paramContext.put(((zf)((Iterator)localObject).next()).a());
-    }
-    return paramContext;
+    paramCanvas.drawCircle(this.c, this.d, this.e, this.b);
   }
   
-  private static List<zf> b(Context paramContext)
+  public final int getOpacity()
   {
-    localArrayList = new ArrayList();
-    try
-    {
-      paramContext = paramContext.getPackageManager();
-      Object localObject = paramContext.getInstalledPackages(64);
-      if ((localObject != null) && (((List)localObject).size() > 0))
-      {
-        localObject = ((List)localObject).iterator();
-        while (((Iterator)localObject).hasNext())
-        {
-          PackageInfo localPackageInfo = (PackageInfo)((Iterator)localObject).next();
-          if ((localPackageInfo.applicationInfo.flags & 0x1) == 0)
-          {
-            zf localzf = new zf();
-            localzf.a = localPackageInfo.applicationInfo.loadLabel(paramContext).toString();
-            localzf.d = localPackageInfo.packageName;
-            localzf.b = localPackageInfo.versionName;
-            if ((localPackageInfo.signatures != null) && (localPackageInfo.signatures.length != 0)) {
-              localzf.c = a(localPackageInfo.signatures[0].toByteArray());
-            }
-            localArrayList.add(localzf);
-          }
-        }
-      }
-      return localArrayList;
-    }
-    catch (Exception paramContext)
-    {
-      paramContext.printStackTrace();
-    }
+    return 0;
   }
+  
+  public final void setAlpha(int paramInt) {}
+  
+  public final void setColorFilter(ColorFilter paramColorFilter) {}
 }
 
 

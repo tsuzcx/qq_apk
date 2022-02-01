@@ -1,32 +1,52 @@
 package com.tencent.token;
 
-import java.util.TimeZone;
+import java.io.PrintStream;
+import java.text.SimpleDateFormat;
+import javax.crypto.Cipher;
+import javax.crypto.SecretKeyFactory;
+import javax.crypto.spec.DESKeySpec;
 
-public final class px
+final class px
 {
-  private static final long[] a = { 300L, 200L, 300L, 200L };
-  private static final TimeZone b = TimeZone.getTimeZone("GMT");
-  private static final char[] c = { 9, 10, 13 };
-  private static final char[] d = { 60, 62, 34, 39, 38 };
-  private static final String[] e = { "&lt;", "&gt;", "&quot;", "&apos;", "&amp;" };
+  private static final SimpleDateFormat a = new SimpleDateFormat("MM-dd HH:mm:ss SSS");
+  private static final byte[] b = { 4, 0, 0, 0, -1, -1, -1, 0 };
   
-  public static String a(String paramString)
+  public static void a(PrintStream paramPrintStream, byte[] paramArrayOfByte, String paramString1, String paramString2)
   {
-    String str = paramString;
-    if (paramString == null) {
-      str = "";
+    if ((paramPrintStream != null) && (!qe.a(paramArrayOfByte)) && (!qe.b(paramString1)))
+    {
+      if (qe.b(paramString2)) {
+        return;
+      }
+      try
+      {
+        StringBuffer localStringBuffer = new StringBuffer();
+        localStringBuffer.append(a.format(Long.valueOf(System.currentTimeMillis())));
+        localStringBuffer.append(" ");
+        localStringBuffer.append(paramString1);
+        localStringBuffer.append(" ");
+        localStringBuffer.append(paramString2);
+        paramString1 = localStringBuffer.toString();
+        try
+        {
+          paramArrayOfByte = new DESKeySpec(paramArrayOfByte);
+          paramArrayOfByte = SecretKeyFactory.getInstance("DES").generateSecret(paramArrayOfByte);
+          paramString2 = Cipher.getInstance("DES");
+          paramString2.init(1, paramArrayOfByte);
+          paramArrayOfByte = paramString2.doFinal(paramString1.getBytes());
+          paramPrintStream.write(oj.a(paramArrayOfByte.length));
+          paramPrintStream.write(paramArrayOfByte);
+          paramPrintStream.write(b);
+        }
+        catch (Exception paramArrayOfByte)
+        {
+          paramArrayOfByte.printStackTrace();
+        }
+        paramPrintStream.flush();
+        return;
+      }
+      finally {}
     }
-    return str;
-  }
-  
-  public static boolean a(byte[] paramArrayOfByte)
-  {
-    return (paramArrayOfByte == null) || (paramArrayOfByte.length <= 0);
-  }
-  
-  public static boolean b(String paramString)
-  {
-    return (paramString == null) || (paramString.length() <= 0);
   }
 }
 

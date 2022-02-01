@@ -1,170 +1,95 @@
 package com.tencent.token;
 
-import android.os.Handler;
-import android.os.Message;
-import android.view.ActionMode;
-import android.view.ActionMode.Callback;
-import android.view.KeyEvent;
-import android.view.KeyboardShortcutGroup;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.MotionEvent;
-import android.view.SearchEvent;
-import android.view.View;
-import android.view.Window.Callback;
-import android.view.WindowManager.LayoutParams;
-import android.view.accessibility.AccessibilityEvent;
-import java.util.List;
+import android.content.Context;
+import com.tencent.turingfd.sdk.qps.Almond;
+import java.io.File;
+import java.util.ArrayList;
+import java.util.LinkedList;
 
-public abstract class abz
-  implements Window.Callback
+public final class abz
 {
-  public final Window.Callback a;
+  public static final agi<abz> a = new a();
   
-  public abz(Window.Callback paramCallback)
+  public static abz a()
   {
-    if (paramCallback != null)
+    return (abz)a.b();
+  }
+  
+  public static aeq a(Context paramContext, int paramInt1, int paramInt2, int paramInt3)
+  {
+    try
     {
-      this.a = paramCallback;
-      return;
+      Almond localAlmond = new Almond();
+      localAlmond.a(new agd(adg.a(a(paramContext, paramInt1))));
+      paramContext = new aeq(paramContext, localAlmond, paramInt2, paramInt3);
+      return paramContext;
     }
-    throw new IllegalArgumentException("Window callback may not be null");
+    finally
+    {
+      label44:
+      break label44;
+    }
+    return null;
   }
   
-  public boolean dispatchGenericMotionEvent(MotionEvent paramMotionEvent)
+  private static String a(Context paramContext, int paramInt)
   {
-    return this.a.dispatchGenericMotionEvent(paramMotionEvent);
+    paramContext = paramContext.getDir("turingfd", 0);
+    if (paramContext == null) {
+      return "";
+    }
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(paramContext.getAbsolutePath());
+    paramContext = File.separator;
+    ((StringBuilder)localObject).append(paramContext);
+    ((StringBuilder)localObject).append("11");
+    localObject = new File(((StringBuilder)localObject).toString());
+    if ((!((File)localObject).exists()) && (!((File)localObject).mkdirs())) {
+      return "";
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(((File)localObject).getAbsolutePath());
+    localStringBuilder.append(paramContext);
+    localStringBuilder.append(61);
+    localStringBuilder.append("_");
+    localStringBuilder.append(paramInt);
+    return localStringBuilder.toString();
   }
   
-  public boolean dispatchKeyEvent(KeyEvent paramKeyEvent)
+  public static void a(Context paramContext, int paramInt, aeq paramaeq)
   {
-    return this.a.dispatchKeyEvent(paramKeyEvent);
+    long l1 = paramaeq.j;
+    long l2 = paramaeq.i;
+    int j = paramaeq.h;
+    int k = paramaeq.e;
+    int m = paramaeq.f;
+    Object localObject = paramaeq.c;
+    paramaeq = new ArrayList();
+    int i = 0;
+    while (i < ((adh)localObject).b.size())
+    {
+      paramaeq.add((Long)((adh)localObject).b.get(i));
+      i += 1;
+    }
+    localObject = new age();
+    ((age)localObject).a(paramInt, 0);
+    ((age)localObject).a(l1, 1);
+    ((age)localObject).a(l2, 2);
+    ((age)localObject).a(j, 3);
+    ((age)localObject).a(k, 4);
+    ((age)localObject).a(m, 5);
+    ((age)localObject).a(paramaeq, 6);
+    paramaeq = ((age)localObject).a();
+    adg.a(a(paramContext, paramInt), paramaeq);
   }
   
-  public boolean dispatchKeyShortcutEvent(KeyEvent paramKeyEvent)
+  public final class a
+    extends agi<abz>
   {
-    return this.a.dispatchKeyShortcutEvent(paramKeyEvent);
-  }
-  
-  public boolean dispatchPopulateAccessibilityEvent(AccessibilityEvent paramAccessibilityEvent)
-  {
-    return this.a.dispatchPopulateAccessibilityEvent(paramAccessibilityEvent);
-  }
-  
-  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
-  {
-    String str = ((acd)this).c;
-    abv localabv = abv.a();
-    localabv.m = str;
-    localabv.f = paramMotionEvent.getAction();
-    localabv.g = paramMotionEvent.getDeviceId();
-    localabv.h = paramMotionEvent.getToolType(0);
-    localabv.i = paramMotionEvent.getRawX();
-    localabv.j = paramMotionEvent.getRawY();
-    localabv.k = paramMotionEvent.getPressure();
-    localabv.l = paramMotionEvent.getSize();
-    abu.b.obtainMessage(1, localabv).sendToTarget();
-    return this.a.dispatchTouchEvent(paramMotionEvent);
-  }
-  
-  public boolean dispatchTrackballEvent(MotionEvent paramMotionEvent)
-  {
-    return this.a.dispatchTrackballEvent(paramMotionEvent);
-  }
-  
-  public void onActionModeFinished(ActionMode paramActionMode)
-  {
-    this.a.onActionModeFinished(paramActionMode);
-  }
-  
-  public void onActionModeStarted(ActionMode paramActionMode)
-  {
-    this.a.onActionModeStarted(paramActionMode);
-  }
-  
-  public void onAttachedToWindow()
-  {
-    this.a.onAttachedToWindow();
-  }
-  
-  public void onContentChanged()
-  {
-    this.a.onContentChanged();
-  }
-  
-  public boolean onCreatePanelMenu(int paramInt, Menu paramMenu)
-  {
-    return this.a.onCreatePanelMenu(paramInt, paramMenu);
-  }
-  
-  public View onCreatePanelView(int paramInt)
-  {
-    return this.a.onCreatePanelView(paramInt);
-  }
-  
-  public void onDetachedFromWindow()
-  {
-    this.a.onDetachedFromWindow();
-  }
-  
-  public boolean onMenuItemSelected(int paramInt, MenuItem paramMenuItem)
-  {
-    return this.a.onMenuItemSelected(paramInt, paramMenuItem);
-  }
-  
-  public boolean onMenuOpened(int paramInt, Menu paramMenu)
-  {
-    return this.a.onMenuOpened(paramInt, paramMenu);
-  }
-  
-  public void onPanelClosed(int paramInt, Menu paramMenu)
-  {
-    this.a.onPanelClosed(paramInt, paramMenu);
-  }
-  
-  public void onPointerCaptureChanged(boolean paramBoolean)
-  {
-    this.a.onPointerCaptureChanged(paramBoolean);
-  }
-  
-  public boolean onPreparePanel(int paramInt, View paramView, Menu paramMenu)
-  {
-    return this.a.onPreparePanel(paramInt, paramView, paramMenu);
-  }
-  
-  public void onProvideKeyboardShortcuts(List<KeyboardShortcutGroup> paramList, Menu paramMenu, int paramInt)
-  {
-    this.a.onProvideKeyboardShortcuts(paramList, paramMenu, paramInt);
-  }
-  
-  public boolean onSearchRequested()
-  {
-    return this.a.onSearchRequested();
-  }
-  
-  public boolean onSearchRequested(SearchEvent paramSearchEvent)
-  {
-    return this.a.onSearchRequested(paramSearchEvent);
-  }
-  
-  public void onWindowAttributesChanged(WindowManager.LayoutParams paramLayoutParams)
-  {
-    this.a.onWindowAttributesChanged(paramLayoutParams);
-  }
-  
-  public void onWindowFocusChanged(boolean paramBoolean)
-  {
-    this.a.onWindowFocusChanged(paramBoolean);
-  }
-  
-  public ActionMode onWindowStartingActionMode(ActionMode.Callback paramCallback)
-  {
-    return this.a.onWindowStartingActionMode(paramCallback);
-  }
-  
-  public ActionMode onWindowStartingActionMode(ActionMode.Callback paramCallback, int paramInt)
-  {
-    return this.a.onWindowStartingActionMode(paramCallback, paramInt);
+    public final Object a()
+    {
+      return new abz();
+    }
   }
 }
 

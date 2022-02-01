@@ -1,7 +1,7 @@
 package com.tencent.mm.sdk.openapi;
 
 import android.os.Bundle;
-import com.tencent.token.pp;
+import com.tencent.token.pw;
 import java.io.File;
 
 public class WXAppExtendObject
@@ -45,7 +45,7 @@ public class WXAppExtendObject
     }
     for (;;)
     {
-      pp.a("MicroMsg.SDK.WXAppExtendObject", (String)localObject);
+      pw.a("MicroMsg.SDK.WXAppExtendObject", (String)localObject);
       return false;
       localObject = this.filePath;
       if ((localObject != null) && (((String)localObject).length() > 10240))

@@ -2,103 +2,135 @@ package com.tencent.token;
 
 import android.content.Context;
 import android.content.res.Resources;
+import android.content.res.Resources.NotFoundException;
 import android.graphics.Typeface;
-import android.os.Build.VERSION;
+import android.os.Handler;
+import android.os.Looper;
+import android.util.TypedValue;
+import java.io.IOException;
+import org.xmlpull.v1.XmlPullParserException;
 
 public final class da
 {
-  private static final a a;
-  private static final ea<String, Typeface> b = new ea(16);
-  
-  static
+  public static Typeface a(Context paramContext, int paramInt1, TypedValue paramTypedValue, int paramInt2, a parama)
   {
-    if (Build.VERSION.SDK_INT >= 26) {
-      a = new dd();
-    } else if ((Build.VERSION.SDK_INT >= 24) && (dc.a())) {
-      a = new dc();
-    } else if (Build.VERSION.SDK_INT >= 21) {
-      a = new db();
-    } else {
-      a = new de();
+    if (paramContext.isRestricted()) {
+      return null;
     }
-  }
-  
-  public static Typeface a(Context paramContext, Resources paramResources, int paramInt1, String paramString, int paramInt2)
-  {
-    paramContext = a.a(paramContext, paramResources, paramInt1, paramString, paramInt2);
-    if (paramContext != null)
+    Resources localResources = paramContext.getResources();
+    localResources.getValue(paramInt1, paramTypedValue, true);
+    paramContext = a(paramContext, localResources, paramTypedValue, paramInt1, paramInt2, parama);
+    if (paramContext == null)
     {
-      paramResources = b(paramResources, paramInt1, paramInt2);
-      b.a(paramResources, paramContext);
+      if (parama != null) {
+        return paramContext;
+      }
+      paramContext = new StringBuilder("Font resource ID #0x");
+      paramContext.append(Integer.toHexString(paramInt1));
+      paramContext.append(" could not be retrieved.");
+      throw new Resources.NotFoundException(paramContext.toString());
     }
     return paramContext;
   }
   
-  public static Typeface a(Context paramContext, cv.a parama, Resources paramResources, int paramInt1, int paramInt2, cw.a parama1)
+  private static Typeface a(Context paramContext, Resources paramResources, TypedValue paramTypedValue, int paramInt1, int paramInt2, a parama)
   {
-    if ((parama instanceof cv.d))
+    if (paramTypedValue.string != null)
     {
-      parama = (cv.d)parama;
-      boolean bool;
-      if (parama.c == 0) {
-        bool = true;
-      } else {
-        bool = false;
+      paramTypedValue = paramTypedValue.string.toString();
+      if (!paramTypedValue.startsWith("res/"))
+      {
+        if (parama != null) {
+          parama.a(-3, null);
+        }
+        return null;
       }
-      int i = parama.b;
-      paramContext = ds.a(paramContext, parama.a, parama1, bool, i, paramInt2);
-    }
-    else
-    {
-      parama = a.a(paramContext, (cv.b)parama, paramResources, paramInt2);
-      paramContext = parama;
-      if (parama1 != null) {
-        if (parama != null)
-        {
-          parama1.a(parama, null);
-          paramContext = parama;
+      Typeface localTypeface = de.a(paramResources, paramInt1, paramInt2);
+      if (localTypeface != null)
+      {
+        if (parama != null) {
+          parama.a(localTypeface, null);
         }
-        else
-        {
-          parama1.a(-3, null);
-          paramContext = parama;
-        }
+        return localTypeface;
       }
     }
-    if (paramContext != null) {
-      b.a(b(paramResources, paramInt1, paramInt2), paramContext);
+    try
+    {
+      if (paramTypedValue.toLowerCase().endsWith(".xml"))
+      {
+        paramTypedValue = cz.a(paramResources.getXml(paramInt1), paramResources);
+        if (paramTypedValue == null)
+        {
+          if (parama == null) {
+            break label242;
+          }
+          parama.a(-3, null);
+          return null;
+        }
+        return de.a(paramContext, paramTypedValue, paramResources, paramInt1, paramInt2, parama);
+      }
+      paramContext = de.a(paramContext, paramResources, paramInt1, paramTypedValue, paramInt2);
+      if (parama != null)
+      {
+        if (paramContext != null)
+        {
+          parama.a(paramContext, null);
+          return paramContext;
+        }
+        parama.a(-3, null);
+      }
+      return paramContext;
     }
-    return paramContext;
+    catch (XmlPullParserException|IOException paramContext)
+    {
+      label162:
+      break label162;
+    }
+    if (parama != null) {
+      parama.a(-3, null);
+    }
+    return null;
+    paramContext = new StringBuilder("Resource \"");
+    paramContext.append(paramResources.getResourceName(paramInt1));
+    paramContext.append("\" (");
+    paramContext.append(Integer.toHexString(paramInt1));
+    paramContext.append(") is not a Font: ");
+    paramContext.append(paramTypedValue);
+    throw new Resources.NotFoundException(paramContext.toString());
+    label242:
+    return null;
   }
   
-  public static Typeface a(Context paramContext, ds.b[] paramArrayOfb, int paramInt)
+  public static abstract class a
   {
-    return a.a(paramContext, paramArrayOfb, paramInt);
-  }
-  
-  public static Typeface a(Resources paramResources, int paramInt1, int paramInt2)
-  {
-    return (Typeface)b.a(b(paramResources, paramInt1, paramInt2));
-  }
-  
-  private static String b(Resources paramResources, int paramInt1, int paramInt2)
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(paramResources.getResourcePackageName(paramInt1));
-    localStringBuilder.append("-");
-    localStringBuilder.append(paramInt1);
-    localStringBuilder.append("-");
-    localStringBuilder.append(paramInt2);
-    return localStringBuilder.toString();
-  }
-  
-  static abstract interface a
-  {
-    public abstract Typeface a(Context paramContext, Resources paramResources, int paramInt1, String paramString, int paramInt2);
+    public final void a(final int paramInt, Handler paramHandler)
+    {
+      Handler localHandler = paramHandler;
+      if (paramHandler == null) {
+        localHandler = new Handler(Looper.getMainLooper());
+      }
+      localHandler.post(new Runnable()
+      {
+        public final void run() {}
+      });
+    }
     
-    public abstract Typeface a(Context paramContext, cv.b paramb, Resources paramResources, int paramInt);
+    public abstract void a(Typeface paramTypeface);
     
-    public abstract Typeface a(Context paramContext, ds.b[] paramArrayOfb, int paramInt);
+    public final void a(final Typeface paramTypeface, Handler paramHandler)
+    {
+      Handler localHandler = paramHandler;
+      if (paramHandler == null) {
+        localHandler = new Handler(Looper.getMainLooper());
+      }
+      localHandler.post(new Runnable()
+      {
+        public final void run()
+        {
+          da.a.this.a(paramTypeface);
+        }
+      });
+    }
   }
 }
 

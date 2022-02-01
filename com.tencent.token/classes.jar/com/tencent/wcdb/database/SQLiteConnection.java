@@ -1,11 +1,11 @@
 package com.tencent.wcdb.database;
 
 import android.annotation.SuppressLint;
-import com.tencent.token.afy;
-import com.tencent.token.agh;
-import com.tencent.token.ags;
-import com.tencent.token.ags.a;
-import com.tencent.token.agu;
+import com.tencent.token.ahk;
+import com.tencent.token.aht;
+import com.tencent.token.aie;
+import com.tencent.token.aie.a;
+import com.tencent.token.aig;
 import com.tencent.wcdb.support.Log;
 import java.lang.ref.WeakReference;
 import java.text.SimpleDateFormat;
@@ -15,7 +15,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.regex.Pattern;
 
 public final class SQLiteConnection
-  implements ags.a
+  implements aie.a
 {
   private static final String[] d = new String[0];
   private static final byte[] e = new byte[0];
@@ -24,7 +24,7 @@ public final class SQLiteConnection
   final b b = new b((byte)0);
   boolean c;
   private final SQLiteConnectionPool g;
-  private final agh h;
+  private final aht h;
   private final int i;
   private final boolean j;
   private final d k;
@@ -38,7 +38,7 @@ public final class SQLiteConnection
   private a s;
   private int t;
   
-  private SQLiteConnection(SQLiteConnectionPool paramSQLiteConnectionPool, agh paramagh, int paramInt, boolean paramBoolean, byte[] paramArrayOfByte, SQLiteCipherSpec paramSQLiteCipherSpec)
+  private SQLiteConnection(SQLiteConnectionPool paramSQLiteConnectionPool, aht paramaht, int paramInt, boolean paramBoolean, byte[] paramArrayOfByte, SQLiteCipherSpec paramSQLiteCipherSpec)
   {
     this.q = paramArrayOfByte;
     if (paramSQLiteCipherSpec == null) {
@@ -48,10 +48,10 @@ public final class SQLiteConnection
     }
     this.r = paramArrayOfByte;
     this.g = paramSQLiteConnectionPool;
-    this.h = new agh(paramagh);
+    this.h = new aht(paramaht);
     this.i = paramInt;
     this.a = paramBoolean;
-    paramInt = paramagh.d;
+    paramInt = paramaht.d;
     paramBoolean = true;
     if ((paramInt & 0x1) == 0) {
       paramBoolean = false;
@@ -60,47 +60,47 @@ public final class SQLiteConnection
     this.k = new d(this.h.e);
   }
   
-  static SQLiteConnection a(SQLiteConnectionPool paramSQLiteConnectionPool, agh paramagh, int paramInt, boolean paramBoolean, byte[] paramArrayOfByte, SQLiteCipherSpec paramSQLiteCipherSpec)
+  static SQLiteConnection a(SQLiteConnectionPool paramSQLiteConnectionPool, aht paramaht, int paramInt, boolean paramBoolean, byte[] paramArrayOfByte, SQLiteCipherSpec paramSQLiteCipherSpec)
   {
-    paramagh = new SQLiteConnection(paramSQLiteConnectionPool, paramagh, paramInt, paramBoolean, paramArrayOfByte, paramSQLiteCipherSpec);
+    paramaht = new SQLiteConnection(paramSQLiteConnectionPool, paramaht, paramInt, paramBoolean, paramArrayOfByte, paramSQLiteCipherSpec);
     for (;;)
     {
       try
       {
-        paramagh.o = paramagh.nativeOpen(paramagh.h.a, paramagh.h.d, paramagh.h.c);
-        if ((paramagh.q != null) && (paramagh.q.length == 0)) {
-          paramagh.q = null;
+        paramaht.o = paramaht.nativeOpen(paramaht.h.a, paramaht.h.d, paramaht.h.c);
+        if ((paramaht.q != null) && (paramaht.q.length == 0)) {
+          paramaht.q = null;
         }
-        if (paramagh.q != null)
+        if (paramaht.q != null)
         {
-          nativeSetKey(paramagh.o, paramagh.q);
-          if (paramagh.r != null)
+          nativeSetKey(paramaht.o, paramaht.q);
+          if (paramaht.r != null)
           {
-            if (paramagh.r.cipher != null)
+            if (paramaht.r.cipher != null)
             {
               paramSQLiteConnectionPool = new StringBuilder("PRAGMA cipher=");
-              paramSQLiteConnectionPool.append(afy.a(paramagh.r.cipher));
-              paramagh.a(paramSQLiteConnectionPool.toString(), null, null);
+              paramSQLiteConnectionPool.append(ahk.a(paramaht.r.cipher));
+              paramaht.a(paramSQLiteConnectionPool.toString(), null, null);
             }
-            if (paramagh.r.kdfIteration != 0)
+            if (paramaht.r.kdfIteration != 0)
             {
               paramSQLiteConnectionPool = new StringBuilder("PRAGMA kdf_iter=");
-              paramSQLiteConnectionPool.append(paramagh.r.kdfIteration);
-              paramagh.a(paramSQLiteConnectionPool.toString(), null, null);
+              paramSQLiteConnectionPool.append(paramaht.r.kdfIteration);
+              paramaht.a(paramSQLiteConnectionPool.toString(), null, null);
             }
             paramSQLiteConnectionPool = new StringBuilder("PRAGMA cipher_use_hmac=");
-            paramSQLiteConnectionPool.append(paramagh.r.hmacEnabled);
-            paramagh.a(paramSQLiteConnectionPool.toString(), null, null);
+            paramSQLiteConnectionPool.append(paramaht.r.hmacEnabled);
+            paramaht.a(paramSQLiteConnectionPool.toString(), null, null);
           }
         }
-        if (!paramagh.h.a())
+        if (!paramaht.h.a())
         {
-          if (paramagh.q != null)
+          if (paramaht.q != null)
           {
             paramSQLiteConnectionPool = "PRAGMA cipher_page_size";
-            if ((paramagh.r != null) && (paramagh.r.pageSize > 0))
+            if ((paramaht.r != null) && (paramaht.r.pageSize > 0))
             {
-              paramInt = paramagh.r.pageSize;
+              paramInt = paramaht.r.pageSize;
               break label472;
             }
             paramInt = SQLiteGlobal.a;
@@ -108,42 +108,42 @@ public final class SQLiteConnection
           }
           paramSQLiteConnectionPool = "PRAGMA page_size";
           l1 = SQLiteGlobal.a;
-          if (paramagh.a(paramSQLiteConnectionPool, null) != l1)
+          if (paramaht.a(paramSQLiteConnectionPool, null) != l1)
           {
             paramArrayOfByte = new StringBuilder();
             paramArrayOfByte.append(paramSQLiteConnectionPool);
             paramArrayOfByte.append("=");
             paramArrayOfByte.append(l1);
-            paramagh.a(paramArrayOfByte.toString(), null, null);
+            paramaht.a(paramArrayOfByte.toString(), null, null);
           }
         }
-        if (paramagh.j) {
-          paramagh.a("PRAGMA query_only = 1", null, null);
+        if (paramaht.j) {
+          paramaht.a("PRAGMA query_only = 1", null, null);
         }
-        paramagh.g();
-        paramagh.h();
-        paramagh.i();
-        if ((!paramagh.h.a()) && (!paramagh.j) && (paramagh.a("PRAGMA journal_size_limit", null) != 524288L)) {
-          paramagh.a("PRAGMA journal_size_limit=524288", null);
+        paramaht.g();
+        paramaht.h();
+        paramaht.i();
+        if ((!paramaht.h.a()) && (!paramaht.j) && (paramaht.a("PRAGMA journal_size_limit", null) != 524288L)) {
+          paramaht.a("PRAGMA journal_size_limit=524288", null);
         }
-        paramagh.f();
-        paramagh.j();
-        paramagh.k();
-        int i1 = paramagh.h.l.size();
+        paramaht.f();
+        paramaht.j();
+        paramaht.k();
+        int i1 = paramaht.h.l.size();
         paramInt = 0;
         if (paramInt < i1)
         {
-          paramSQLiteConnectionPool = (SQLiteCustomFunction)paramagh.h.l.get(paramInt);
-          nativeRegisterCustomFunction(paramagh.o, paramSQLiteConnectionPool);
+          paramSQLiteConnectionPool = (SQLiteCustomFunction)paramaht.h.l.get(paramInt);
+          nativeRegisterCustomFunction(paramaht.o, paramSQLiteConnectionPool);
           paramInt += 1;
           continue;
         }
-        return paramagh;
+        return paramaht;
       }
       catch (SQLiteException paramSQLiteConnectionPool)
       {
-        SQLiteDebug.a(paramagh);
-        paramagh.e();
+        SQLiteDebug.a(paramaht);
+        paramaht.e();
         throw paramSQLiteConnectionPool;
       }
       label472:
@@ -151,16 +151,16 @@ public final class SQLiteConnection
     }
   }
   
-  private void a(ags paramags)
+  private void a(aie paramaie)
   {
-    if (paramags != null)
+    if (paramaie != null)
     {
-      paramags.a();
+      paramaie.a();
       this.p += 1;
       if (this.p == 1)
       {
         nativeResetCancel(this.o, true);
-        paramags.a(this);
+        paramaie.a(this);
       }
     }
   }
@@ -183,7 +183,7 @@ public final class SQLiteConnection
       while (i2 < i1)
       {
         paramc = paramArrayOfObject[i2];
-        int i3 = afy.a(paramc);
+        int i3 = ahk.a(paramc);
         if (i3 != 4) {
           switch (i3)
           {
@@ -229,14 +229,14 @@ public final class SQLiteConnection
     throw new SQLiteBindOrColumnIndexOutOfRangeException(paramArrayOfObject.toString());
   }
   
-  private void b(ags paramags)
+  private void b(aie paramaie)
   {
-    if (paramags != null)
+    if (paramaie != null)
     {
       this.p -= 1;
       if (this.p == 0)
       {
-        paramags.a(null);
+        paramaie.a(null);
         nativeResetCancel(this.o, false);
       }
     }
@@ -324,7 +324,7 @@ public final class SQLiteConnection
     //   44: invokespecial 403	com/tencent/wcdb/database/SQLiteConnection:a	(Lcom/tencent/wcdb/database/SQLiteConnection$c;[Ljava/lang/Object;)V
     //   47: aload_0
     //   48: aconst_null
-    //   49: invokespecial 405	com/tencent/wcdb/database/SQLiteConnection:a	(Lcom/tencent/token/ags;)V
+    //   49: invokespecial 405	com/tencent/wcdb/database/SQLiteConnection:a	(Lcom/tencent/token/aie;)V
     //   52: aload_0
     //   53: getfield 126	com/tencent/wcdb/database/SQLiteConnection:o	J
     //   56: aload_1
@@ -333,7 +333,7 @@ public final class SQLiteConnection
     //   63: astore_3
     //   64: aload_0
     //   65: aconst_null
-    //   66: invokespecial 311	com/tencent/wcdb/database/SQLiteConnection:b	(Lcom/tencent/token/ags;)V
+    //   66: invokespecial 311	com/tencent/wcdb/database/SQLiteConnection:b	(Lcom/tencent/token/aie;)V
     //   69: aload_0
     //   70: aload_1
     //   71: invokevirtual 411	com/tencent/wcdb/database/SQLiteConnection:a	(Lcom/tencent/wcdb/database/SQLiteConnection$c;)V
@@ -346,7 +346,7 @@ public final class SQLiteConnection
     //   84: astore_3
     //   85: aload_0
     //   86: aconst_null
-    //   87: invokespecial 311	com/tencent/wcdb/database/SQLiteConnection:b	(Lcom/tencent/token/ags;)V
+    //   87: invokespecial 311	com/tencent/wcdb/database/SQLiteConnection:b	(Lcom/tencent/token/aie;)V
     //   90: aload_3
     //   91: athrow
     //   92: astore_3
@@ -456,7 +456,7 @@ public final class SQLiteConnection
     try
     {
       int i4 = nativeGetParameterCount(this.o, l1);
-      int i3 = afy.b(paramString);
+      int i3 = ahk.b(paramString);
       boolean bool = nativeIsReadOnly(this.o, l1);
       Object localObject = this.l;
       if (localObject != null)
@@ -568,24 +568,24 @@ public final class SQLiteConnection
   {
     // Byte code:
     //   0: aload_0
-    //   1: getfield 94	com/tencent/wcdb/database/SQLiteConnection:h	Lcom/tencent/token/agh;
+    //   1: getfield 94	com/tencent/wcdb/database/SQLiteConnection:h	Lcom/tencent/token/aht;
     //   4: astore_1
     //   5: aload_1
     //   6: aload_1
-    //   7: getfield 100	com/tencent/token/agh:d	I
+    //   7: getfield 100	com/tencent/token/aht:d	I
     //   10: bipush 16
     //   12: ior
-    //   13: putfield 100	com/tencent/token/agh:d	I
+    //   13: putfield 100	com/tencent/token/aht:d	I
     //   16: aload_0
-    //   17: getfield 94	com/tencent/wcdb/database/SQLiteConnection:h	Lcom/tencent/token/agh;
-    //   20: getfield 100	com/tencent/token/agh:d	I
+    //   17: getfield 94	com/tencent/wcdb/database/SQLiteConnection:h	Lcom/tencent/token/aht;
+    //   20: getfield 100	com/tencent/token/aht:d	I
     //   23: bipush 16
     //   25: iand
     //   26: ifeq +4 -> 30
     //   29: return
     //   30: aload_0
-    //   31: getfield 94	com/tencent/wcdb/database/SQLiteConnection:h	Lcom/tencent/token/agh;
-    //   34: getfield 497	com/tencent/token/agh:f	Ljava/util/Locale;
+    //   31: getfield 94	com/tencent/wcdb/database/SQLiteConnection:h	Lcom/tencent/token/aht;
+    //   34: getfield 497	com/tencent/token/aht:f	Ljava/util/Locale;
     //   37: invokevirtual 500	java/util/Locale:toString	()Ljava/lang/String;
     //   40: astore_1
     //   41: aload_0
@@ -600,7 +600,7 @@ public final class SQLiteConnection
     //   58: ldc_w 506
     //   61: aconst_null
     //   62: aconst_null
-    //   63: invokevirtual 156	com/tencent/wcdb/database/SQLiteConnection:a	(Ljava/lang/String;[Ljava/lang/Object;Lcom/tencent/token/ags;)V
+    //   63: invokevirtual 156	com/tencent/wcdb/database/SQLiteConnection:a	(Ljava/lang/String;[Ljava/lang/Object;Lcom/tencent/token/aie;)V
     //   66: aload_0
     //   67: ldc_w 508
     //   70: invokespecial 353	com/tencent/wcdb/database/SQLiteConnection:e	(Ljava/lang/String;)Ljava/lang/String;
@@ -616,12 +616,12 @@ public final class SQLiteConnection
     //   88: ldc_w 514
     //   91: aconst_null
     //   92: aconst_null
-    //   93: invokevirtual 156	com/tencent/wcdb/database/SQLiteConnection:a	(Ljava/lang/String;[Ljava/lang/Object;Lcom/tencent/token/ags;)V
+    //   93: invokevirtual 156	com/tencent/wcdb/database/SQLiteConnection:a	(Ljava/lang/String;[Ljava/lang/Object;Lcom/tencent/token/aie;)V
     //   96: aload_0
     //   97: ldc_w 516
     //   100: aconst_null
     //   101: aconst_null
-    //   102: invokevirtual 156	com/tencent/wcdb/database/SQLiteConnection:a	(Ljava/lang/String;[Ljava/lang/Object;Lcom/tencent/token/ags;)V
+    //   102: invokevirtual 156	com/tencent/wcdb/database/SQLiteConnection:a	(Ljava/lang/String;[Ljava/lang/Object;Lcom/tencent/token/aie;)V
     //   105: aload_0
     //   106: ldc_w 518
     //   109: iconst_1
@@ -631,24 +631,24 @@ public final class SQLiteConnection
     //   115: aload_1
     //   116: aastore
     //   117: aconst_null
-    //   118: invokevirtual 156	com/tencent/wcdb/database/SQLiteConnection:a	(Ljava/lang/String;[Ljava/lang/Object;Lcom/tencent/token/ags;)V
+    //   118: invokevirtual 156	com/tencent/wcdb/database/SQLiteConnection:a	(Ljava/lang/String;[Ljava/lang/Object;Lcom/tencent/token/aie;)V
     //   121: aload_0
     //   122: ldc_w 520
     //   125: aconst_null
     //   126: aconst_null
-    //   127: invokevirtual 156	com/tencent/wcdb/database/SQLiteConnection:a	(Ljava/lang/String;[Ljava/lang/Object;Lcom/tencent/token/ags;)V
+    //   127: invokevirtual 156	com/tencent/wcdb/database/SQLiteConnection:a	(Ljava/lang/String;[Ljava/lang/Object;Lcom/tencent/token/aie;)V
     //   130: aload_0
     //   131: ldc_w 522
     //   134: aconst_null
     //   135: aconst_null
-    //   136: invokevirtual 156	com/tencent/wcdb/database/SQLiteConnection:a	(Ljava/lang/String;[Ljava/lang/Object;Lcom/tencent/token/ags;)V
+    //   136: invokevirtual 156	com/tencent/wcdb/database/SQLiteConnection:a	(Ljava/lang/String;[Ljava/lang/Object;Lcom/tencent/token/aie;)V
     //   139: return
     //   140: astore_2
     //   141: aload_0
     //   142: ldc_w 524
     //   145: aconst_null
     //   146: aconst_null
-    //   147: invokevirtual 156	com/tencent/wcdb/database/SQLiteConnection:a	(Ljava/lang/String;[Ljava/lang/Object;Lcom/tencent/token/ags;)V
+    //   147: invokevirtual 156	com/tencent/wcdb/database/SQLiteConnection:a	(Ljava/lang/String;[Ljava/lang/Object;Lcom/tencent/token/aie;)V
     //   150: aload_2
     //   151: athrow
     //   152: astore_2
@@ -659,8 +659,8 @@ public final class SQLiteConnection
     //   163: astore_3
     //   164: aload_3
     //   165: aload_0
-    //   166: getfield 94	com/tencent/wcdb/database/SQLiteConnection:h	Lcom/tencent/token/agh;
-    //   169: getfield 370	com/tencent/token/agh:b	Ljava/lang/String;
+    //   166: getfield 94	com/tencent/wcdb/database/SQLiteConnection:h	Lcom/tencent/token/aht;
+    //   169: getfield 370	com/tencent/token/aht:b	Ljava/lang/String;
     //   172: invokevirtual 149	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   175: pop
     //   176: aload_3
@@ -780,7 +780,7 @@ public final class SQLiteConnection
   }
   
   /* Error */
-  public final int a(String paramString, Object[] paramArrayOfObject, com.tencent.wcdb.CursorWindow paramCursorWindow, int paramInt1, int paramInt2, boolean paramBoolean, ags paramags)
+  public final int a(String paramString, Object[] paramArrayOfObject, com.tencent.wcdb.CursorWindow paramCursorWindow, int paramInt1, int paramInt2, boolean paramBoolean, aie paramaie)
   {
     // Byte code:
     //   0: aload_1
@@ -818,7 +818,7 @@ public final class SQLiteConnection
     //   63: invokespecial 403	com/tencent/wcdb/database/SQLiteConnection:a	(Lcom/tencent/wcdb/database/SQLiteConnection$c;[Ljava/lang/Object;)V
     //   66: aload_0
     //   67: aload 7
-    //   69: invokespecial 405	com/tencent/wcdb/database/SQLiteConnection:a	(Lcom/tencent/token/ags;)V
+    //   69: invokespecial 405	com/tencent/wcdb/database/SQLiteConnection:a	(Lcom/tencent/token/aie;)V
     //   72: aload_0
     //   73: getfield 126	com/tencent/wcdb/database/SQLiteConnection:o	J
     //   76: lstore 14
@@ -852,7 +852,7 @@ public final class SQLiteConnection
     //   130: putfield 587	com/tencent/wcdb/CursorWindow:b	I
     //   133: aload_0
     //   134: aload 7
-    //   136: invokespecial 311	com/tencent/wcdb/database/SQLiteConnection:b	(Lcom/tencent/token/ags;)V
+    //   136: invokespecial 311	com/tencent/wcdb/database/SQLiteConnection:b	(Lcom/tencent/token/aie;)V
     //   139: aload_0
     //   140: aload 20
     //   142: invokevirtual 411	com/tencent/wcdb/database/SQLiteConnection:a	(Lcom/tencent/wcdb/database/SQLiteConnection$c;)V
@@ -955,7 +955,7 @@ public final class SQLiteConnection
     //   328: istore 8
     //   330: aload_0
     //   331: aload 7
-    //   333: invokespecial 311	com/tencent/wcdb/database/SQLiteConnection:b	(Lcom/tencent/token/ags;)V
+    //   333: invokespecial 311	com/tencent/wcdb/database/SQLiteConnection:b	(Lcom/tencent/token/aie;)V
     //   336: aload_1
     //   337: athrow
     //   338: astore_1
@@ -1128,7 +1128,7 @@ public final class SQLiteConnection
     //   0	654	4	paramInt1	int
     //   0	654	5	paramInt2	int
     //   0	654	6	paramBoolean	boolean
-    //   0	654	7	paramags	ags
+    //   0	654	7	paramaie	aie
     //   119	488	8	i1	int
     //   34	556	9	i2	int
     //   263	242	10	i3	int
@@ -1215,7 +1215,7 @@ public final class SQLiteConnection
     //   47: invokespecial 403	com/tencent/wcdb/database/SQLiteConnection:a	(Lcom/tencent/wcdb/database/SQLiteConnection$c;[Ljava/lang/Object;)V
     //   50: aload_0
     //   51: aconst_null
-    //   52: invokespecial 405	com/tencent/wcdb/database/SQLiteConnection:a	(Lcom/tencent/token/ags;)V
+    //   52: invokespecial 405	com/tencent/wcdb/database/SQLiteConnection:a	(Lcom/tencent/token/aie;)V
     //   55: aload_0
     //   56: getfield 126	com/tencent/wcdb/database/SQLiteConnection:o	J
     //   59: aload_1
@@ -1224,7 +1224,7 @@ public final class SQLiteConnection
     //   66: lstore 4
     //   68: aload_0
     //   69: aconst_null
-    //   70: invokespecial 311	com/tencent/wcdb/database/SQLiteConnection:b	(Lcom/tencent/token/ags;)V
+    //   70: invokespecial 311	com/tencent/wcdb/database/SQLiteConnection:b	(Lcom/tencent/token/aie;)V
     //   73: aload_0
     //   74: aload_1
     //   75: invokevirtual 411	com/tencent/wcdb/database/SQLiteConnection:a	(Lcom/tencent/wcdb/database/SQLiteConnection$c;)V
@@ -1237,7 +1237,7 @@ public final class SQLiteConnection
     //   89: astore_2
     //   90: aload_0
     //   91: aconst_null
-    //   92: invokespecial 311	com/tencent/wcdb/database/SQLiteConnection:b	(Lcom/tencent/token/ags;)V
+    //   92: invokespecial 311	com/tencent/wcdb/database/SQLiteConnection:b	(Lcom/tencent/token/aie;)V
     //   95: aload_2
     //   96: athrow
     //   97: astore_2
@@ -1311,54 +1311,54 @@ public final class SQLiteConnection
     }
   }
   
-  final void a(agh paramagh)
+  final void a(aht paramaht)
   {
     int i5 = 0;
     this.c = false;
-    int i2 = paramagh.l.size();
+    int i2 = paramaht.l.size();
     int i1 = 0;
     while (i1 < i2)
     {
-      localObject = (SQLiteCustomFunction)paramagh.l.get(i1);
+      localObject = (SQLiteCustomFunction)paramaht.l.get(i1);
       if (!this.h.l.contains(localObject)) {
         nativeRegisterCustomFunction(this.o, (SQLiteCustomFunction)localObject);
       }
       i1 += 1;
     }
-    if (((paramagh.d ^ this.h.d) & 0x20000000) != 0) {
+    if (((paramaht.d ^ this.h.d) & 0x20000000) != 0) {
       i1 = 1;
     } else {
       i1 = 0;
     }
-    if (paramagh.g != this.h.g) {
+    if (paramaht.g != this.h.g) {
       i2 = 1;
     } else {
       i2 = 0;
     }
-    boolean bool = paramagh.f.equals(this.h.f);
+    boolean bool = paramaht.f.equals(this.h.f);
     int i3;
-    if (paramagh.h != this.h.h) {
+    if (paramaht.h != this.h.h) {
       i3 = 1;
     } else {
       i3 = 0;
     }
     int i4;
-    if (paramagh.i != this.h.i) {
+    if (paramaht.i != this.h.i) {
       i4 = 1;
     } else {
       i4 = 0;
     }
-    if ((paramagh.j != this.h.j) || (paramagh.k != this.h.k)) {
+    if ((paramaht.j != this.h.j) || (paramaht.k != this.h.k)) {
       i5 = 1;
     }
-    this.h.a(paramagh);
+    this.h.a(paramaht);
     Object localObject = this.k;
-    int i6 = paramagh.e;
+    int i6 = paramaht.e;
     if (i6 > 0) {
       try
       {
-        ((agu)localObject).b = i6;
-        ((agu)localObject).a(i6);
+        ((aig)localObject).b = i6;
+        ((aig)localObject).a(i6);
         if (i2 != 0) {
           g();
         }
@@ -1404,7 +1404,7 @@ public final class SQLiteConnection
   }
   
   /* Error */
-  public final void a(String paramString, com.tencent.token.agp paramagp)
+  public final void a(String paramString, com.tencent.token.aib paramaib)
   {
     // Byte code:
     //   0: aload_1
@@ -1430,11 +1430,11 @@ public final class SQLiteConnection
     //   40: aload_2
     //   41: aload_1
     //   42: getfield 257	com/tencent/wcdb/database/SQLiteConnection$c:e	I
-    //   45: putfield 642	com/tencent/token/agp:a	I
+    //   45: putfield 642	com/tencent/token/aib:a	I
     //   48: aload_2
     //   49: aload_1
     //   50: getfield 344	com/tencent/wcdb/database/SQLiteConnection$c:g	Z
-    //   53: putfield 643	com/tencent/token/agp:c	Z
+    //   53: putfield 643	com/tencent/token/aib:c	Z
     //   56: aload_0
     //   57: getfield 126	com/tencent/wcdb/database/SQLiteConnection:o	J
     //   60: aload_1
@@ -1445,19 +1445,19 @@ public final class SQLiteConnection
     //   71: ifne +13 -> 84
     //   74: aload_2
     //   75: getstatic 54	com/tencent/wcdb/database/SQLiteConnection:d	[Ljava/lang/String;
-    //   78: putfield 647	com/tencent/token/agp:b	[Ljava/lang/String;
+    //   78: putfield 647	com/tencent/token/aib:b	[Ljava/lang/String;
     //   81: goto +45 -> 126
     //   84: aload_2
     //   85: iload 5
     //   87: anewarray 52	java/lang/String
-    //   90: putfield 647	com/tencent/token/agp:b	[Ljava/lang/String;
+    //   90: putfield 647	com/tencent/token/aib:b	[Ljava/lang/String;
     //   93: iconst_0
     //   94: istore_3
     //   95: iload_3
     //   96: iload 5
     //   98: if_icmpge +28 -> 126
     //   101: aload_2
-    //   102: getfield 647	com/tencent/token/agp:b	[Ljava/lang/String;
+    //   102: getfield 647	com/tencent/token/aib:b	[Ljava/lang/String;
     //   105: iload_3
     //   106: aload_0
     //   107: getfield 126	com/tencent/wcdb/database/SQLiteConnection:o	J
@@ -1517,7 +1517,7 @@ public final class SQLiteConnection
     //   start	length	slot	name	signature
     //   0	206	0	this	SQLiteConnection
     //   0	206	1	paramString	String
-    //   0	206	2	paramagp	com.tencent.token.agp
+    //   0	206	2	paramaib	com.tencent.token.aib
     //   94	29	3	i1	int
     //   23	166	4	i2	int
     //   67	32	5	i3	int
@@ -1540,7 +1540,7 @@ public final class SQLiteConnection
   }
   
   /* Error */
-  public final void a(String paramString, Object[] paramArrayOfObject, ags paramags)
+  public final void a(String paramString, Object[] paramArrayOfObject, aie paramaie)
   {
     // Byte code:
     //   0: aload_1
@@ -1572,7 +1572,7 @@ public final class SQLiteConnection
     //   48: invokespecial 403	com/tencent/wcdb/database/SQLiteConnection:a	(Lcom/tencent/wcdb/database/SQLiteConnection$c;[Ljava/lang/Object;)V
     //   51: aload_0
     //   52: aload_3
-    //   53: invokespecial 405	com/tencent/wcdb/database/SQLiteConnection:a	(Lcom/tencent/token/ags;)V
+    //   53: invokespecial 405	com/tencent/wcdb/database/SQLiteConnection:a	(Lcom/tencent/token/aie;)V
     //   56: aload_0
     //   57: getfield 126	com/tencent/wcdb/database/SQLiteConnection:o	J
     //   60: aload_1
@@ -1580,7 +1580,7 @@ public final class SQLiteConnection
     //   64: invokestatic 653	com/tencent/wcdb/database/SQLiteConnection:nativeExecute	(JJ)V
     //   67: aload_0
     //   68: aload_3
-    //   69: invokespecial 311	com/tencent/wcdb/database/SQLiteConnection:b	(Lcom/tencent/token/ags;)V
+    //   69: invokespecial 311	com/tencent/wcdb/database/SQLiteConnection:b	(Lcom/tencent/token/aie;)V
     //   72: aload_0
     //   73: aload_1
     //   74: invokevirtual 411	com/tencent/wcdb/database/SQLiteConnection:a	(Lcom/tencent/wcdb/database/SQLiteConnection$c;)V
@@ -1592,7 +1592,7 @@ public final class SQLiteConnection
     //   87: astore_2
     //   88: aload_0
     //   89: aload_3
-    //   90: invokespecial 311	com/tencent/wcdb/database/SQLiteConnection:b	(Lcom/tencent/token/ags;)V
+    //   90: invokespecial 311	com/tencent/wcdb/database/SQLiteConnection:b	(Lcom/tencent/token/aie;)V
     //   93: aload_2
     //   94: athrow
     //   95: astore_2
@@ -1634,7 +1634,7 @@ public final class SQLiteConnection
     //   0	160	0	this	SQLiteConnection
     //   0	160	1	paramString	String
     //   0	160	2	paramArrayOfObject	Object[]
-    //   0	160	3	paramags	ags
+    //   0	160	3	paramaie	aie
     //   23	120	4	i1	int
     //   16	16	5	locala	a
     // Exception table:
@@ -1713,7 +1713,7 @@ public final class SQLiteConnection
     //   84: istore 5
     //   86: aload_0
     //   87: aconst_null
-    //   88: invokespecial 405	com/tencent/wcdb/database/SQLiteConnection:a	(Lcom/tencent/token/ags;)V
+    //   88: invokespecial 405	com/tencent/wcdb/database/SQLiteConnection:a	(Lcom/tencent/token/aie;)V
     //   91: aload_0
     //   92: getfield 126	com/tencent/wcdb/database/SQLiteConnection:o	J
     //   95: aload_1
@@ -1724,7 +1724,7 @@ public final class SQLiteConnection
     //   106: istore 5
     //   108: aload_0
     //   109: aconst_null
-    //   110: invokespecial 311	com/tencent/wcdb/database/SQLiteConnection:b	(Lcom/tencent/token/ags;)V
+    //   110: invokespecial 311	com/tencent/wcdb/database/SQLiteConnection:b	(Lcom/tencent/token/aie;)V
     //   113: iload 6
     //   115: istore_3
     //   116: iload 6
@@ -1752,7 +1752,7 @@ public final class SQLiteConnection
     //   163: istore 5
     //   165: aload_0
     //   166: aconst_null
-    //   167: invokespecial 311	com/tencent/wcdb/database/SQLiteConnection:b	(Lcom/tencent/token/ags;)V
+    //   167: invokespecial 311	com/tencent/wcdb/database/SQLiteConnection:b	(Lcom/tencent/token/aie;)V
     //   170: iload 7
     //   172: istore 5
     //   174: aload_2
@@ -1899,7 +1899,7 @@ public final class SQLiteConnection
     //   47: invokespecial 403	com/tencent/wcdb/database/SQLiteConnection:a	(Lcom/tencent/wcdb/database/SQLiteConnection$c;[Ljava/lang/Object;)V
     //   50: aload_0
     //   51: aconst_null
-    //   52: invokespecial 405	com/tencent/wcdb/database/SQLiteConnection:a	(Lcom/tencent/token/ags;)V
+    //   52: invokespecial 405	com/tencent/wcdb/database/SQLiteConnection:a	(Lcom/tencent/token/aie;)V
     //   55: aload_0
     //   56: getfield 126	com/tencent/wcdb/database/SQLiteConnection:o	J
     //   59: aload_1
@@ -1908,7 +1908,7 @@ public final class SQLiteConnection
     //   66: lstore 4
     //   68: aload_0
     //   69: aconst_null
-    //   70: invokespecial 311	com/tencent/wcdb/database/SQLiteConnection:b	(Lcom/tencent/token/ags;)V
+    //   70: invokespecial 311	com/tencent/wcdb/database/SQLiteConnection:b	(Lcom/tencent/token/aie;)V
     //   73: aload_0
     //   74: aload_1
     //   75: invokevirtual 411	com/tencent/wcdb/database/SQLiteConnection:a	(Lcom/tencent/wcdb/database/SQLiteConnection$c;)V
@@ -1921,7 +1921,7 @@ public final class SQLiteConnection
     //   89: astore_2
     //   90: aload_0
     //   91: aconst_null
-    //   92: invokespecial 311	com/tencent/wcdb/database/SQLiteConnection:b	(Lcom/tencent/token/ags;)V
+    //   92: invokespecial 311	com/tencent/wcdb/database/SQLiteConnection:b	(Lcom/tencent/token/aie;)V
     //   95: aload_2
     //   96: athrow
     //   97: astore_2
@@ -2266,7 +2266,7 @@ public final class SQLiteConnection
   }
   
   final class d
-    extends agu<String, SQLiteConnection.c>
+    extends aig<String, SQLiteConnection.c>
   {
     public d(int paramInt)
     {

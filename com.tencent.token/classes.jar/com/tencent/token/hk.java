@@ -1,108 +1,61 @@
 package com.tencent.token;
 
-import android.support.v7.view.menu.ListMenuItemView;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import java.util.ArrayList;
+import android.content.Context;
+import android.view.MenuItem;
+import android.view.SubMenu;
+import java.util.Map;
 
-public final class hk
-  extends BaseAdapter
+abstract class hk<T>
+  extends hl<T>
 {
-  static final int a = go.g.abc_popup_menu_item_layout;
-  public hl b;
-  boolean c;
-  private int d = -1;
-  private final boolean e;
-  private final LayoutInflater f;
+  final Context a;
+  Map<dr, MenuItem> b;
+  Map<ds, SubMenu> c;
   
-  public hk(hl paramhl, LayoutInflater paramLayoutInflater, boolean paramBoolean)
+  hk(Context paramContext, T paramT)
   {
-    this.e = paramBoolean;
-    this.f = paramLayoutInflater;
-    this.b = paramhl;
-    a();
+    super(paramT);
+    this.a = paramContext;
   }
   
-  private void a()
+  final MenuItem a(MenuItem paramMenuItem)
   {
-    hn localhn = this.b.j;
-    if (localhn != null)
+    if ((paramMenuItem instanceof dr))
     {
-      ArrayList localArrayList = this.b.j();
-      int j = localArrayList.size();
-      int i = 0;
-      while (i < j)
+      dr localdr = (dr)paramMenuItem;
+      if (this.b == null) {
+        this.b = new dy();
+      }
+      MenuItem localMenuItem = (MenuItem)this.b.get(paramMenuItem);
+      paramMenuItem = localMenuItem;
+      if (localMenuItem == null)
       {
-        if ((hn)localArrayList.get(i) == localhn)
-        {
-          this.d = i;
-          return;
-        }
-        i += 1;
+        paramMenuItem = hy.a(this.a, localdr);
+        this.b.put(localdr, paramMenuItem);
       }
+      return paramMenuItem;
     }
-    this.d = -1;
+    return paramMenuItem;
   }
   
-  public final hn a(int paramInt)
+  final SubMenu a(SubMenu paramSubMenu)
   {
-    ArrayList localArrayList;
-    if (this.e) {
-      localArrayList = this.b.j();
-    } else {
-      localArrayList = this.b.h();
-    }
-    int j = this.d;
-    int i = paramInt;
-    if (j >= 0)
+    if ((paramSubMenu instanceof ds))
     {
-      i = paramInt;
-      if (paramInt >= j) {
-        i = paramInt + 1;
+      ds localds = (ds)paramSubMenu;
+      if (this.c == null) {
+        this.c = new dy();
       }
+      SubMenu localSubMenu = (SubMenu)this.c.get(localds);
+      paramSubMenu = localSubMenu;
+      if (localSubMenu == null)
+      {
+        paramSubMenu = new id(this.a, localds);
+        this.c.put(localds, paramSubMenu);
+      }
+      return paramSubMenu;
     }
-    return (hn)localArrayList.get(i);
-  }
-  
-  public final int getCount()
-  {
-    ArrayList localArrayList;
-    if (this.e) {
-      localArrayList = this.b.j();
-    } else {
-      localArrayList = this.b.h();
-    }
-    if (this.d < 0) {
-      return localArrayList.size();
-    }
-    return localArrayList.size() - 1;
-  }
-  
-  public final long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    View localView = paramView;
-    if (paramView == null) {
-      localView = this.f.inflate(a, paramViewGroup, false);
-    }
-    paramView = (ht.a)localView;
-    if (this.c) {
-      ((ListMenuItemView)localView).setForceShowIcon(true);
-    }
-    paramView.a(a(paramInt));
-    return localView;
-  }
-  
-  public final void notifyDataSetChanged()
-  {
-    a();
-    super.notifyDataSetChanged();
+    return paramSubMenu;
   }
 }
 

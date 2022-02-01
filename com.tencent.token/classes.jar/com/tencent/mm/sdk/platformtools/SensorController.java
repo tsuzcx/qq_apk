@@ -6,7 +6,7 @@ import android.content.Intent;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
-import com.tencent.token.pp;
+import com.tencent.token.pw;
 
 public class SensorController
   extends BroadcastReceiver
@@ -57,7 +57,7 @@ public class SensorController
     else {
       for (paramSensorEvent = "sensor event false";; paramSensorEvent = "sensor event true")
       {
-        pp.d("MicroMsg.SensorController", paramSensorEvent);
+        pw.d("MicroMsg.SensorController", paramSensorEvent);
         break;
         f2 = this.b;
         f3 = c;

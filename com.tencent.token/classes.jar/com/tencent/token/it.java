@@ -1,245 +1,68 @@
 package com.tencent.token;
 
-import android.os.SystemClock;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnAttachStateChangeListener;
-import android.view.View.OnTouchListener;
-import android.view.ViewConfiguration;
-import android.view.ViewParent;
+import android.content.Context;
+import android.graphics.drawable.Drawable;
+import android.view.Menu;
+import android.view.ViewGroup;
+import android.view.Window.Callback;
 
-public abstract class it
-  implements View.OnAttachStateChangeListener, View.OnTouchListener
+public abstract interface it
 {
-  private final float a;
-  private final int b;
-  final View c;
-  private final int d;
-  private Runnable e;
-  private Runnable f;
-  private boolean g;
-  private int h;
-  private final int[] i = new int[2];
+  public abstract ViewGroup a();
   
-  public it(View paramView)
-  {
-    this.c = paramView;
-    paramView.setLongClickable(true);
-    paramView.addOnAttachStateChangeListener(this);
-    this.a = ViewConfiguration.get(paramView.getContext()).getScaledTouchSlop();
-    this.b = ViewConfiguration.getTapTimeout();
-    this.d = ((this.b + ViewConfiguration.getLongPressTimeout()) / 2);
-  }
+  public abstract fd a(int paramInt, long paramLong);
   
-  private void e()
-  {
-    Runnable localRunnable = this.f;
-    if (localRunnable != null) {
-      this.c.removeCallbacks(localRunnable);
-    }
-    localRunnable = this.e;
-    if (localRunnable != null) {
-      this.c.removeCallbacks(localRunnable);
-    }
-  }
+  public abstract void a(int paramInt);
   
-  public abstract hw a();
+  public abstract void a(Drawable paramDrawable);
   
-  protected boolean b()
-  {
-    hw localhw = a();
-    if ((localhw != null) && (!localhw.d())) {
-      localhw.b();
-    }
-    return true;
-  }
+  public abstract void a(Menu paramMenu, hw.a parama);
   
-  protected boolean c()
-  {
-    hw localhw = a();
-    if ((localhw != null) && (localhw.d())) {
-      localhw.c();
-    }
-    return true;
-  }
+  public abstract void a(Window.Callback paramCallback);
   
-  final void d()
-  {
-    e();
-    View localView = this.c;
-    if (localView.isEnabled())
-    {
-      if (localView.isLongClickable()) {
-        return;
-      }
-      if (!b()) {
-        return;
-      }
-      localView.getParent().requestDisallowInterceptTouchEvent(true);
-      long l = SystemClock.uptimeMillis();
-      MotionEvent localMotionEvent = MotionEvent.obtain(l, l, 3, 0.0F, 0.0F, 0);
-      localView.onTouchEvent(localMotionEvent);
-      localMotionEvent.recycle();
-      this.g = true;
-      return;
-    }
-  }
+  public abstract void a(hw.a parama, hp.a parama1);
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    boolean bool3 = this.g;
-    boolean bool1;
-    int j;
-    boolean bool2;
-    if (bool3)
-    {
-      paramView = this.c;
-      Object localObject = a();
-      if ((localObject != null) && (((hw)localObject).d()))
-      {
-        localObject = (ir)((hw)localObject).e();
-        if ((localObject != null) && (((ir)localObject).isShown()))
-        {
-          MotionEvent localMotionEvent = MotionEvent.obtainNoHistory(paramMotionEvent);
-          int[] arrayOfInt = this.i;
-          paramView.getLocationOnScreen(arrayOfInt);
-          localMotionEvent.offsetLocation(arrayOfInt[0], arrayOfInt[1]);
-          paramView = this.i;
-          ((View)localObject).getLocationOnScreen(paramView);
-          localMotionEvent.offsetLocation(-paramView[0], -paramView[1]);
-          bool1 = ((ir)localObject).a(localMotionEvent, this.h);
-          localMotionEvent.recycle();
-          j = paramMotionEvent.getActionMasked();
-          if ((j != 1) && (j != 3)) {
-            j = 1;
-          } else {
-            j = 0;
-          }
-          if ((bool1) && (j != 0)) {
-            j = 1;
-          } else {
-            j = 0;
-          }
-        }
-        else
-        {
-          j = 0;
-        }
-      }
-      else
-      {
-        j = 0;
-      }
-      if ((j == 0) && (c())) {
-        bool2 = false;
-      } else {
-        bool2 = true;
-      }
-    }
-    else
-    {
-      paramView = this.c;
-      if (paramView.isEnabled()) {
-        switch (paramMotionEvent.getActionMasked())
-        {
-        default: 
-          break;
-        case 2: 
-          j = paramMotionEvent.findPointerIndex(this.h);
-          if (j >= 0)
-          {
-            float f1 = paramMotionEvent.getX(j);
-            float f2 = paramMotionEvent.getY(j);
-            float f3 = this.a;
-            float f4 = -f3;
-            if ((f1 >= f4) && (f2 >= f4) && (f1 < paramView.getRight() - paramView.getLeft() + f3) && (f2 < paramView.getBottom() - paramView.getTop() + f3)) {
-              j = 1;
-            } else {
-              j = 0;
-            }
-            if (j == 0)
-            {
-              e();
-              paramView.getParent().requestDisallowInterceptTouchEvent(true);
-              j = 1;
-            }
-          }
-          break;
-        case 1: 
-        case 3: 
-          e();
-          break;
-        case 0: 
-          this.h = paramMotionEvent.getPointerId(0);
-          if (this.e == null) {
-            this.e = new a();
-          }
-          paramView.postDelayed(this.e, this.b);
-          if (this.f == null) {
-            this.f = new b();
-          }
-          paramView.postDelayed(this.f, this.d);
-        }
-      }
-      j = 0;
-      if ((j != 0) && (b())) {
-        bool1 = true;
-      } else {
-        bool1 = false;
-      }
-      bool2 = bool1;
-      if (bool1)
-      {
-        long l = SystemClock.uptimeMillis();
-        paramView = MotionEvent.obtain(l, l, 3, 0.0F, 0.0F, 0);
-        this.c.onTouchEvent(paramView);
-        paramView.recycle();
-        bool2 = bool1;
-      }
-    }
-    this.g = bool2;
-    if (!bool2) {
-      return bool3;
-    }
-    return true;
-  }
+  public abstract void a(jc paramjc);
   
-  public void onViewAttachedToWindow(View paramView) {}
+  public abstract void a(CharSequence paramCharSequence);
   
-  public void onViewDetachedFromWindow(View paramView)
-  {
-    this.g = false;
-    this.h = -1;
-    paramView = this.e;
-    if (paramView != null) {
-      this.c.removeCallbacks(paramView);
-    }
-  }
+  public abstract void a(boolean paramBoolean);
   
-  final class a
-    implements Runnable
-  {
-    a() {}
-    
-    public final void run()
-    {
-      ViewParent localViewParent = it.this.c.getParent();
-      if (localViewParent != null) {
-        localViewParent.requestDisallowInterceptTouchEvent(true);
-      }
-    }
-  }
+  public abstract Context b();
   
-  final class b
-    implements Runnable
-  {
-    b() {}
-    
-    public final void run()
-    {
-      it.this.d();
-    }
-  }
+  public abstract void b(int paramInt);
+  
+  public abstract void c(int paramInt);
+  
+  public abstract boolean c();
+  
+  public abstract void d();
+  
+  public abstract void d(int paramInt);
+  
+  public abstract CharSequence e();
+  
+  public abstract void e(int paramInt);
+  
+  public abstract boolean f();
+  
+  public abstract boolean g();
+  
+  public abstract boolean h();
+  
+  public abstract boolean i();
+  
+  public abstract boolean j();
+  
+  public abstract void k();
+  
+  public abstract void l();
+  
+  public abstract int m();
+  
+  public abstract int n();
+  
+  public abstract Menu o();
 }
 
 

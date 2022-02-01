@@ -1,136 +1,115 @@
 package com.tencent.token;
 
 import android.content.Context;
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.token.core.bean.AbnormalLoginMsgResult;
-import com.tencent.token.core.bean.OnlineDeviceResult;
 import com.tencent.token.global.RqdApplication;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
+import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 public final class vg
-  extends tj
+  extends tr
 {
-  tb d;
-  td e;
-  private long f;
+  private long d;
+  private int e;
+  private int f;
   private int g;
   private int h;
-  private int i;
-  private int j;
-  private Object k;
-  private String l;
-  private int m;
-  private int n;
-  private String o;
-  private String p;
-  private int q;
+  private String i;
+  private String j;
+  private String k;
   
   public final String a()
   {
-    sb.b().i();
-    System.currentTimeMillis();
-    rz.a();
+    sh.a();
+    StringBuilder localStringBuilder = new StringBuilder("sessId=");
+    localStringBuilder.append(null);
+    xj.c(localStringBuilder.toString());
     this.a.a(104, null, null);
     return null;
   }
   
-  public final void a(aaq paramaaq)
+  public final void a(abc paramabc)
   {
-    this.f = ((Long)paramaaq.c.get("param.uinhash")).longValue();
-    this.g = ((Integer)paramaaq.c.get("param.msg.source")).intValue();
-    this.h = ((Integer)paramaaq.c.get("param.msg.num")).intValue();
-    this.i = ((Integer)paramaaq.c.get("param.msg.type")).intValue();
-    this.j = ((Integer)paramaaq.c.get("param.msg.filter")).intValue();
-    if ((this.j == 0) && (this.i == 1))
-    {
-      this.l = ((String)paramaaq.c.get("param.device.lock.guid"));
-      this.m = ((Integer)paramaaq.c.get("param.device.lock.appid")).intValue();
-      this.n = ((Integer)paramaaq.c.get("param.device.lock.subappid")).intValue();
-      this.o = ((String)paramaaq.c.get("param.device.lock.appname"));
-      this.p = ((String)paramaaq.c.get("param.skey"));
-    }
+    this.d = ((Long)paramabc.c.get("param.uinhash")).longValue();
+    this.e = ((Integer)paramabc.c.get("param.device.lock.id")).intValue();
+    this.i = ((String)paramabc.c.get("param.device.lock.guid"));
+    this.f = ((Integer)paramabc.c.get("param.device.lock.appid")).intValue();
+    this.g = ((Integer)paramabc.c.get("param.device.lock.subappid")).intValue();
+    this.j = ((String)paramabc.c.get("param.device.lock.appname"));
+    this.k = ((String)paramabc.c.get("param.wtlogin.a2"));
+    this.h = ((Integer)paramabc.c.get("param.common.seq")).intValue();
   }
   
   public final void a(JSONObject paramJSONObject)
   {
-    int i1 = paramJSONObject.getInt("err");
-    if (i1 != 0)
+    int m = paramJSONObject.getInt("err");
+    if (m != 0)
     {
-      a(i1, paramJSONObject.getString("info"));
+      a(m, paramJSONObject.getString("info"));
       return;
     }
-    paramJSONObject = aac.d(paramJSONObject.getString("data"));
+    paramJSONObject = aao.d(paramJSONObject.getString("data"));
     if (paramJSONObject != null)
     {
       paramJSONObject = new JSONObject(new String(paramJSONObject));
-      i1 = paramJSONObject.getInt("seq_id");
-      if (i1 != this.q)
+      xj.a("decode json=".concat(String.valueOf(paramJSONObject)));
+      m = paramJSONObject.getInt("seq_id");
+      if (m != this.h)
       {
         this.a.a(10030, null, null);
         paramJSONObject = new StringBuilder("parseJSON error seq is wrong seq=");
-        paramJSONObject.append(i1);
+        paramJSONObject.append(m);
         paramJSONObject.append(",right = ");
-        paramJSONObject.append(this.q);
-        xa.c(paramJSONObject.toString());
+        si.a();
+        paramJSONObject.append(si.b());
+        xj.c(paramJSONObject.toString());
         return;
       }
-      long l1 = paramJSONObject.getLong("uin");
-      long l2 = this.f;
-      Object localObject;
-      if (l1 != l2)
-      {
-        paramJSONObject = this.a;
-        localObject = new StringBuilder("uin not match=");
-        ((StringBuilder)localObject).append(l1);
-        ((StringBuilder)localObject).append(":");
-        ((StringBuilder)localObject).append(this.f);
-        paramJSONObject.a(10000, ((StringBuilder)localObject).toString(), null);
-        return;
-      }
-      if (this.i == 1)
-      {
-        this.d.a(l2);
-        if (this.j == 1)
-        {
-          this.k = new AbnormalLoginMsgResult(paramJSONObject);
-          this.a.a = 0;
-          return;
-        }
-        this.d.b = null;
-        localObject = new ArrayList();
-        if (paramJSONObject.has("devs"))
-        {
-          OnlineDeviceResult localOnlineDeviceResult = new OnlineDeviceResult(paramJSONObject.getJSONArray("devs"));
-          if (localOnlineDeviceResult.mDevicesList != null) {
-            ((ArrayList)localObject).addAll(localOnlineDeviceResult.mDevicesList);
-          }
-          this.d.b = new OnlineDeviceResult(paramJSONObject.getJSONArray("devs"));
-        }
-        rh.a.a().a(this.f, (List)localObject);
-        this.a = this.d.f.a(paramJSONObject, l1, this.i);
-        return;
-      }
-      this.e.a(l2);
-      this.a = this.e.f.a(paramJSONObject, l1, this.i);
-      return;
     }
-    xa.c("parseJSON error decodeData=".concat(String.valueOf(paramJSONObject)));
-    a(10022, RqdApplication.n().getString(2131493068));
-  }
-  
-  public final void b()
-  {
-    if ((!this.b.e) && (this.b.d != null))
+    for (;;)
     {
-      Message localMessage = this.b.d.obtainMessage(this.b.f);
-      localMessage.arg1 = 0;
-      localMessage.obj = this.k;
-      localMessage.sendToTarget();
-      this.b.e = true;
+      try
+      {
+        m = paramJSONObject.getInt("id");
+        paramJSONObject = paramJSONObject.getJSONArray("result");
+        if (m == 70)
+        {
+          ti.a().b(paramJSONObject);
+        }
+        else if (m == 71)
+        {
+          ti.a().c(paramJSONObject);
+        }
+        else if ((m == 80) && (paramJSONObject != null) && (paramJSONObject.length() > 0))
+        {
+          m = 0;
+          if (m < paramJSONObject.length())
+          {
+            JSONObject localJSONObject = paramJSONObject.getJSONObject(m);
+            if (localJSONObject.getInt("id") == 71)
+            {
+              ti.a().a(localJSONObject);
+              break label306;
+            }
+            localJSONObject.getInt("id");
+            break label306;
+          }
+        }
+        this.a.a = 0;
+        return;
+      }
+      catch (JSONException paramJSONObject)
+      {
+        a(201, RqdApplication.p().getString(2131492910));
+        paramJSONObject.printStackTrace();
+        return;
+      }
+      xj.c("parseJSON error decodeData=".concat(String.valueOf(paramJSONObject)));
+      a(10022, RqdApplication.p().getString(2131493068));
+      return;
+      label306:
+      m += 1;
     }
   }
 }

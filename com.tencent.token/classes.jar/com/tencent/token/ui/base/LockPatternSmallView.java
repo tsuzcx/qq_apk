@@ -11,7 +11,7 @@ import android.view.Display;
 import android.view.View;
 import android.view.View.MeasureSpec;
 import android.view.WindowManager;
-import com.tencent.token.aad;
+import com.tencent.token.aap;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -47,10 +47,10 @@ public class LockPatternSmallView
     this.o.getWindowManager().getDefaultDisplay().getMetrics(paramContext);
     this.p = paramContext.widthPixels;
     int i1 = this.p * 14 / 320;
-    this.h = aad.a(getResources(), 2131100142, i1);
-    this.i = aad.a(getResources(), 2131100141, i1);
-    this.j = aad.a(getResources(), 2131100143, i1);
-    this.k = aad.a(getResources(), 2131100144, i1);
+    this.h = aap.a(getResources(), 2131100143, i1);
+    this.i = aap.a(getResources(), 2131100142, i1);
+    this.j = aap.a(getResources(), 2131100144, i1);
+    this.k = aap.a(getResources(), 2131100145, i1);
     this.l = this.h.getWidth();
     this.m = this.h.getHeight();
   }

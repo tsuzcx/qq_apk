@@ -1,14 +1,37 @@
 package com.tencent.token;
 
-import java.util.HashMap;
-
-public abstract interface asf
+public final class asf
+  implements aru
 {
-  public abstract void a(HashMap<Integer, String> paramHashMap, HashMap<Integer, Integer> paramHashMap1, a parama);
+  private Object a = new Object();
+  private int b = 1;
   
-  public static abstract interface a
+  public final int a()
   {
-    public abstract void a();
+    synchronized (this.a)
+    {
+      int i = this.b;
+      this.b += 1;
+      return i;
+    }
+  }
+  
+  public final int b()
+  {
+    synchronized (this.a)
+    {
+      int i = this.b;
+      return i;
+    }
+  }
+  
+  public final void c()
+  {
+    synchronized (this.a)
+    {
+      this.b += 1;
+      return;
+    }
   }
 }
 

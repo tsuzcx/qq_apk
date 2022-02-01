@@ -24,9 +24,9 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
-import com.tencent.token.ew;
-import com.tencent.token.go.a;
-import com.tencent.token.go.f;
+import com.tencent.token.fa;
+import com.tencent.token.gs.a;
+import com.tencent.token.gs.f;
 
 public class AlertDialog
   extends AppCompatDialog
@@ -45,7 +45,7 @@ public class AlertDialog
       return paramInt;
     }
     TypedValue localTypedValue = new TypedValue();
-    paramContext.getTheme().resolveAttribute(go.a.alertDialogTheme, localTypedValue, true);
+    paramContext.getTheme().resolveAttribute(gs.a.alertDialogTheme, localTypedValue, true);
     return localTypedValue.resourceId;
   }
   
@@ -60,11 +60,11 @@ public class AlertDialog
       i = localAlertController.J;
     }
     localAlertController.b.setContentView(i);
-    paramBundle = localAlertController.c.findViewById(go.f.parentPanel);
-    Object localObject4 = paramBundle.findViewById(go.f.topPanel);
-    Object localObject3 = paramBundle.findViewById(go.f.contentPanel);
-    Object localObject2 = paramBundle.findViewById(go.f.buttonPanel);
-    Object localObject1 = (ViewGroup)paramBundle.findViewById(go.f.customPanel);
+    paramBundle = localAlertController.c.findViewById(gs.f.parentPanel);
+    Object localObject4 = paramBundle.findViewById(gs.f.topPanel);
+    Object localObject3 = paramBundle.findViewById(gs.f.contentPanel);
+    Object localObject2 = paramBundle.findViewById(gs.f.buttonPanel);
+    Object localObject1 = (ViewGroup)paramBundle.findViewById(gs.f.customPanel);
     paramBundle = localAlertController.h;
     int i1 = 0;
     if (paramBundle != null) {
@@ -84,7 +84,7 @@ public class AlertDialog
     }
     if (i != 0)
     {
-      localObject5 = (FrameLayout)localAlertController.c.findViewById(go.f.custom);
+      localObject5 = (FrameLayout)localAlertController.c.findViewById(gs.f.custom);
       ((FrameLayout)localObject5).addView(paramBundle, new ViewGroup.LayoutParams(-1, -1));
       if (localAlertController.n) {
         ((FrameLayout)localObject5).setPadding(localAlertController.j, localAlertController.k, localAlertController.l, localAlertController.m);
@@ -97,13 +97,13 @@ public class AlertDialog
     {
       ((ViewGroup)localObject1).setVisibility(8);
     }
-    paramBundle = ((ViewGroup)localObject1).findViewById(go.f.topPanel);
-    View localView = ((ViewGroup)localObject1).findViewById(go.f.contentPanel);
-    Object localObject5 = ((ViewGroup)localObject1).findViewById(go.f.buttonPanel);
+    paramBundle = ((ViewGroup)localObject1).findViewById(gs.f.topPanel);
+    View localView = ((ViewGroup)localObject1).findViewById(gs.f.contentPanel);
+    Object localObject5 = ((ViewGroup)localObject1).findViewById(gs.f.buttonPanel);
     paramBundle = AlertController.a(paramBundle, (View)localObject4);
     localObject3 = AlertController.a(localView, (View)localObject3);
     localObject2 = AlertController.a((View)localObject5, (View)localObject2);
-    localAlertController.A = ((NestedScrollView)localAlertController.c.findViewById(go.f.scrollView));
+    localAlertController.A = ((NestedScrollView)localAlertController.c.findViewById(gs.f.scrollView));
     localAlertController.A.setFocusable(false);
     localAlertController.A.setNestedScrollingEnabled(false);
     localAlertController.F = ((TextView)((ViewGroup)localObject3).findViewById(16908299));
@@ -183,7 +183,7 @@ public class AlertDialog
     }
     localObject4 = localAlertController.a;
     localObject5 = new TypedValue();
-    ((Context)localObject4).getTheme().resolveAttribute(go.a.alertDialogCenterButtons, (TypedValue)localObject5, true);
+    ((Context)localObject4).getTheme().resolveAttribute(gs.a.alertDialogCenterButtons, (TypedValue)localObject5, true);
     int j;
     if (((TypedValue)localObject5).data != 0) {
       j = 1;
@@ -211,14 +211,14 @@ public class AlertDialog
     {
       localObject4 = new ViewGroup.LayoutParams(-1, -2);
       paramBundle.addView(localAlertController.G, 0, (ViewGroup.LayoutParams)localObject4);
-      localAlertController.c.findViewById(go.f.title_template).setVisibility(8);
+      localAlertController.c.findViewById(gs.f.title_template).setVisibility(8);
     }
     else
     {
       localAlertController.D = ((ImageView)localAlertController.c.findViewById(16908294));
       if (((TextUtils.isEmpty(localAlertController.e) ^ true)) && (localAlertController.P))
       {
-        localAlertController.E = ((TextView)localAlertController.c.findViewById(go.f.alertTitle));
+        localAlertController.E = ((TextView)localAlertController.c.findViewById(gs.f.alertTitle));
         localAlertController.E.setText(localAlertController.e);
         if (localAlertController.B != 0)
         {
@@ -236,7 +236,7 @@ public class AlertDialog
       }
       else
       {
-        localAlertController.c.findViewById(go.f.title_template).setVisibility(8);
+        localAlertController.c.findViewById(gs.f.title_template).setVisibility(8);
         localAlertController.D.setVisibility(8);
         paramBundle.setVisibility(8);
       }
@@ -259,7 +259,7 @@ public class AlertDialog
     }
     if ((k == 0) && (localObject3 != null))
     {
-      localObject1 = ((ViewGroup)localObject3).findViewById(go.f.textSpacerNoButtons);
+      localObject1 = ((ViewGroup)localObject3).findViewById(gs.f.textSpacerNoButtons);
       if (localObject1 != null) {
         ((View)localObject1).setVisibility(0);
       }
@@ -272,7 +272,7 @@ public class AlertDialog
       if ((localAlertController.f == null) && (localAlertController.g == null)) {
         paramBundle = null;
       } else {
-        paramBundle = paramBundle.findViewById(go.f.titleDividerNoCustom);
+        paramBundle = paramBundle.findViewById(gs.f.titleDividerNoCustom);
       }
       if (paramBundle != null) {
         paramBundle.setVisibility(0);
@@ -280,7 +280,7 @@ public class AlertDialog
     }
     else if (localObject3 != null)
     {
-      paramBundle = ((ViewGroup)localObject3).findViewById(go.f.textSpacerNoTitle);
+      paramBundle = ((ViewGroup)localObject3).findViewById(gs.f.textSpacerNoTitle);
       if (paramBundle != null) {
         paramBundle.setVisibility(0);
       }
@@ -321,11 +321,11 @@ public class AlertDialog
           i = 2;
         }
         i = j | i;
-        localObject1 = localAlertController.c.findViewById(go.f.scrollIndicatorUp);
-        localObject2 = localAlertController.c.findViewById(go.f.scrollIndicatorDown);
+        localObject1 = localAlertController.c.findViewById(gs.f.scrollIndicatorUp);
+        localObject2 = localAlertController.c.findViewById(gs.f.scrollIndicatorDown);
         if (Build.VERSION.SDK_INT >= 23)
         {
-          ew.d(paramBundle, i);
+          fa.d(paramBundle, i);
           if (localObject1 != null) {
             ((ViewGroup)localObject3).removeView((View)localObject1);
           }

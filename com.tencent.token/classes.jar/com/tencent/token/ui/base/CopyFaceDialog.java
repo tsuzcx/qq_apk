@@ -14,7 +14,7 @@ import android.view.WindowManager;
 import android.view.WindowManager.LayoutParams;
 import android.widget.Button;
 import android.widget.TextView;
-import com.tencent.token.aad;
+import com.tencent.token.aap;
 import com.tencent.token.ui.FaceRecognitionDefaultActivity;
 import com.tencent.token.ui.IndexActivity;
 
@@ -45,7 +45,7 @@ public class CopyFaceDialog
     paramBundle.append(this.a);
     paramBundle.append(this.c.getResources().getString(2131493127));
     paramBundle = paramBundle.toString();
-    this.b.setText(aad.a(paramBundle, this.c.getResources().getDimension(2131034249), (int)(((Activity)this.c).getWindowManager().getDefaultDisplay().getWidth() - IndexActivity.S_DENSITY * 80.0F)));
+    this.b.setText(aap.a(paramBundle, this.c.getResources().getDimension(2131034250), (int)(((Activity)this.c).getWindowManager().getDefaultDisplay().getWidth() - IndexActivity.S_DENSITY * 80.0F)));
     ((Button)findViewById(2131165349)).setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)

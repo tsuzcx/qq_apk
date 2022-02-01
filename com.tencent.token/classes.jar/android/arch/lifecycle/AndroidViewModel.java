@@ -1,9 +1,9 @@
 package android.arch.lifecycle;
 
-import com.tencent.token.bf;
+import com.tencent.token.bj;
 
 public class AndroidViewModel
-  extends bf
+  extends bj
 {}
 
 

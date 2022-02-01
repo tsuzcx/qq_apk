@@ -1,209 +1,288 @@
 package com.tencent.token;
 
-import android.content.res.Resources;
-import android.util.LongSparseArray;
-import java.lang.reflect.Field;
-import java.util.Map;
+import android.app.Activity;
+import android.content.Context;
+import android.content.res.Resources.NotFoundException;
+import android.content.res.TypedArray;
+import android.os.Build.VERSION;
+import android.os.Bundle;
+import android.support.v7.app.ActionBar;
+import android.view.KeyEvent;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.View;
+import android.view.Window;
+import android.view.Window.Callback;
 
-final class gj
+public abstract class gj
+  extends gi
 {
-  private static Field a;
-  private static boolean b;
-  private static Class c;
-  private static boolean d;
-  private static Field e;
-  private static boolean f;
-  private static Field g;
-  private static boolean h;
+  private static boolean o;
+  private static final boolean p;
+  private static final int[] q = { 16842836 };
+  protected final Context b;
+  public final Window c;
+  protected final Window.Callback d;
+  protected final Window.Callback e;
+  public final gh f;
+  protected ActionBar g;
+  protected MenuInflater h;
+  public boolean i;
+  protected boolean j;
+  protected boolean k;
+  protected boolean l;
+  protected boolean m;
+  public boolean n;
+  private CharSequence r;
+  private boolean s;
   
-  static boolean a(Resources paramResources)
+  static
   {
-    if (!b) {}
-    try
-    {
-      Field localField = Resources.class.getDeclaredField("mDrawableCache");
-      a = localField;
-      localField.setAccessible(true);
-      label23:
-      b = true;
-      localField = a;
-      if (localField != null) {}
-      try
-      {
-        paramResources = (Map)localField.get(paramResources);
-      }
-      catch (IllegalAccessException paramResources)
-      {
-        label47:
-        break label47;
-      }
-      paramResources = null;
-      if (paramResources != null)
-      {
-        paramResources.clear();
-        return true;
-      }
-      return false;
+    boolean bool;
+    if (Build.VERSION.SDK_INT < 21) {
+      bool = true;
+    } else {
+      bool = false;
     }
-    catch (NoSuchFieldException localNoSuchFieldException)
+    p = bool;
+    if ((bool) && (!o))
     {
-      break label23;
-    }
-  }
-  
-  private static boolean a(Object paramObject)
-  {
-    if (!d) {}
-    try
-    {
-      c = Class.forName("android.content.res.ThemedResourceCache");
-      d = true;
-      localObject = c;
-      if (localObject == null) {
-        return false;
-      }
-      if (f) {}
-    }
-    catch (ClassNotFoundException localClassNotFoundException)
-    {
-      try
+      Thread.setDefaultUncaughtExceptionHandler(new Thread.UncaughtExceptionHandler()
       {
-        Object localObject = ((Class)localObject).getDeclaredField("mUnthemedEntries");
-        e = (Field)localObject;
-        ((Field)localObject).setAccessible(true);
-        label50:
-        f = true;
-        localObject = e;
-        if (localObject == null) {
-          return false;
-        }
-        try
+        public final void uncaughtException(Thread paramAnonymousThread, Throwable paramAnonymousThrowable)
         {
-          paramObject = (LongSparseArray)((Field)localObject).get(paramObject);
-        }
-        catch (IllegalAccessException paramObject)
-        {
-          label76:
-          break label76;
-        }
-        paramObject = null;
-        if (paramObject != null)
-        {
-          paramObject.clear();
-          return true;
-        }
-        return false;
-        localClassNotFoundException = localClassNotFoundException;
-      }
-      catch (NoSuchFieldException localNoSuchFieldException)
-      {
-        break label50;
-      }
-    }
-  }
-  
-  static boolean b(Resources paramResources)
-  {
-    if (!b) {}
-    try
-    {
-      localObject1 = Resources.class.getDeclaredField("mDrawableCache");
-      a = (Field)localObject1;
-      ((Field)localObject1).setAccessible(true);
-      b = true;
-      localObject3 = null;
-      localField = a;
-      localObject1 = localObject3;
-      if (localField == null) {}
-    }
-    catch (NoSuchFieldException localNoSuchFieldException)
-    {
-      try
-      {
-        Field localField;
-        Object localObject1 = localField.get(paramResources);
-        if (localObject1 == null) {
-          return false;
-        }
-        return (localObject1 != null) && (a(localObject1));
-        localNoSuchFieldException = localNoSuchFieldException;
-      }
-      catch (IllegalAccessException paramResources)
-      {
-        for (;;)
-        {
-          Object localObject3;
-          Object localObject2 = localObject3;
-        }
-      }
-    }
-  }
-  
-  static boolean c(Resources paramResources)
-  {
-    if (!h) {}
-    try
-    {
-      localObject1 = Resources.class.getDeclaredField("mResourcesImpl");
-      g = (Field)localObject1;
-      ((Field)localObject1).setAccessible(true);
-      h = true;
-      localObject1 = g;
-      if (localObject1 == null) {
-        return false;
-      }
-      localObject3 = null;
-    }
-    catch (NoSuchFieldException localNoSuchFieldException2)
-    {
-      try
-      {
-        paramResources = ((Field)localObject1).get(paramResources);
-        break label50;
-        paramResources = null;
-        label50:
-        if (paramResources == null) {
-          return false;
-        }
-        if (b) {}
-      }
-      catch (IllegalAccessException localNoSuchFieldException2)
-      {
-        try
-        {
-          localObject1 = paramResources.getClass().getDeclaredField("mDrawableCache");
-          a = (Field)localObject1;
-          ((Field)localObject1).setAccessible(true);
-          b = true;
-          localField = a;
-          localObject1 = localObject3;
-          if (localField == null) {}
-        }
-        catch (NoSuchFieldException localNoSuchFieldException2)
-        {
-          try
+          boolean bool = paramAnonymousThrowable instanceof Resources.NotFoundException;
+          int j = 0;
+          int i = j;
+          Object localObject;
+          if (bool)
           {
-            for (;;)
-            {
-              Field localField;
-              Object localObject1 = localField.get(paramResources);
-              return (localObject1 != null) && (a(localObject1));
-              localNoSuchFieldException1 = localNoSuchFieldException1;
-              continue;
-              paramResources = paramResources;
-            }
-            localNoSuchFieldException2 = localNoSuchFieldException2;
-          }
-          catch (IllegalAccessException paramResources)
-          {
-            for (;;)
-            {
-              Object localObject3;
-              Object localObject2 = localObject3;
+            localObject = paramAnonymousThrowable.getMessage();
+            i = j;
+            if (localObject != null) {
+              if (!((String)localObject).contains("drawable"))
+              {
+                i = j;
+                if (!((String)localObject).contains("Drawable")) {}
+              }
+              else
+              {
+                i = 1;
+              }
             }
           }
+          if (i != 0)
+          {
+            localObject = new StringBuilder();
+            ((StringBuilder)localObject).append(paramAnonymousThrowable.getMessage());
+            ((StringBuilder)localObject).append(". If the resource you are trying to use is a vector resource, you may be referencing it in an unsupported way. See AppCompatDelegate.setCompatVectorFromResourcesEnabled() for more info.");
+            localObject = new Resources.NotFoundException(((StringBuilder)localObject).toString());
+            ((Throwable)localObject).initCause(paramAnonymousThrowable.getCause());
+            ((Throwable)localObject).setStackTrace(paramAnonymousThrowable.getStackTrace());
+            this.a.uncaughtException(paramAnonymousThread, (Throwable)localObject);
+            return;
+          }
+          this.a.uncaughtException(paramAnonymousThread, paramAnonymousThrowable);
         }
+      });
+      o = true;
+    }
+  }
+  
+  protected gj(Context paramContext, Window paramWindow, gh paramgh)
+  {
+    this.b = paramContext;
+    this.c = paramWindow;
+    this.f = paramgh;
+    this.d = this.c.getCallback();
+    paramWindow = this.d;
+    if (!(paramWindow instanceof b))
+    {
+      this.e = a(paramWindow);
+      this.c.setCallback(this.e);
+      paramContext = ji.a(paramContext, null, q);
+      paramWindow = paramContext.b(0);
+      if (paramWindow != null) {
+        this.c.setBackgroundDrawable(paramWindow);
       }
+      paramContext.a.recycle();
+      return;
+    }
+    throw new IllegalStateException("AppCompat has already installed itself into the Window");
+  }
+  
+  public final ActionBar a()
+  {
+    m();
+    return this.g;
+  }
+  
+  Window.Callback a(Window.Callback paramCallback)
+  {
+    return new b(paramCallback);
+  }
+  
+  public final void a(CharSequence paramCharSequence)
+  {
+    this.r = paramCharSequence;
+    b(paramCharSequence);
+  }
+  
+  protected abstract boolean a(int paramInt, KeyEvent paramKeyEvent);
+  
+  protected abstract boolean a(KeyEvent paramKeyEvent);
+  
+  public final MenuInflater b()
+  {
+    if (this.h == null)
+    {
+      m();
+      Object localObject = this.g;
+      if (localObject != null) {
+        localObject = ((ActionBar)localObject).b();
+      } else {
+        localObject = this.b;
+      }
+      this.h = new hf((Context)localObject);
+    }
+    return this.h;
+  }
+  
+  protected abstract ha b(ha.a parama);
+  
+  public void b(Bundle paramBundle) {}
+  
+  protected abstract void b(CharSequence paramCharSequence);
+  
+  public void d()
+  {
+    this.s = true;
+  }
+  
+  protected abstract void d(int paramInt);
+  
+  public void e()
+  {
+    this.s = false;
+  }
+  
+  protected abstract boolean e(int paramInt);
+  
+  public void h()
+  {
+    this.n = true;
+  }
+  
+  public final gg.a i()
+  {
+    return new a();
+  }
+  
+  public boolean k()
+  {
+    return false;
+  }
+  
+  protected abstract void m();
+  
+  protected final Context n()
+  {
+    Object localObject1 = a();
+    if (localObject1 != null) {
+      localObject1 = ((ActionBar)localObject1).b();
+    } else {
+      localObject1 = null;
+    }
+    Object localObject2 = localObject1;
+    if (localObject1 == null) {
+      localObject2 = this.b;
+    }
+    return localObject2;
+  }
+  
+  protected final CharSequence o()
+  {
+    Window.Callback localCallback = this.d;
+    if ((localCallback instanceof Activity)) {
+      return ((Activity)localCallback).getTitle();
+    }
+    return this.r;
+  }
+  
+  final class a
+    implements gg.a
+  {
+    a() {}
+    
+    public final void a(int paramInt)
+    {
+      ActionBar localActionBar = gj.this.a();
+      if (localActionBar != null) {
+        localActionBar.a(paramInt);
+      }
+    }
+  }
+  
+  class b
+    extends hh
+  {
+    b(Window.Callback paramCallback)
+    {
+      super();
+    }
+    
+    public boolean dispatchKeyEvent(KeyEvent paramKeyEvent)
+    {
+      return (gj.this.a(paramKeyEvent)) || (super.dispatchKeyEvent(paramKeyEvent));
+    }
+    
+    public boolean dispatchKeyShortcutEvent(KeyEvent paramKeyEvent)
+    {
+      return (super.dispatchKeyShortcutEvent(paramKeyEvent)) || (gj.this.a(paramKeyEvent.getKeyCode(), paramKeyEvent));
+    }
+    
+    public void onContentChanged() {}
+    
+    public boolean onCreatePanelMenu(int paramInt, Menu paramMenu)
+    {
+      if ((paramInt == 0) && (!(paramMenu instanceof hp))) {
+        return false;
+      }
+      return super.onCreatePanelMenu(paramInt, paramMenu);
+    }
+    
+    public boolean onMenuOpened(int paramInt, Menu paramMenu)
+    {
+      super.onMenuOpened(paramInt, paramMenu);
+      gj.this.e(paramInt);
+      return true;
+    }
+    
+    public void onPanelClosed(int paramInt, Menu paramMenu)
+    {
+      super.onPanelClosed(paramInt, paramMenu);
+      gj.this.d(paramInt);
+    }
+    
+    public boolean onPreparePanel(int paramInt, View paramView, Menu paramMenu)
+    {
+      hp localhp;
+      if ((paramMenu instanceof hp)) {
+        localhp = (hp)paramMenu;
+      } else {
+        localhp = null;
+      }
+      if ((paramInt == 0) && (localhp == null)) {
+        return false;
+      }
+      if (localhp != null) {
+        localhp.k = true;
+      }
+      boolean bool = super.onPreparePanel(paramInt, paramView, paramMenu);
+      if (localhp != null) {
+        localhp.k = false;
+      }
+      return bool;
     }
   }
 }

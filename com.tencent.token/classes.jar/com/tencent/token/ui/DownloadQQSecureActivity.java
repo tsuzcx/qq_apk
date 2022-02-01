@@ -10,40 +10,40 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import com.tencent.halley.downloader.DownloaderTaskStatus;
-import com.tencent.token.afq;
+import com.tencent.token.ahc;
 import com.tencent.token.r;
-import com.tencent.token.rb;
-import com.tencent.token.rb.a;
-import com.tencent.token.rb.b;
-import com.tencent.token.rb.c;
+import com.tencent.token.rj;
+import com.tencent.token.rj.a;
+import com.tencent.token.rj.b;
+import com.tencent.token.rj.c;
 import com.tencent.token.t;
 import com.tencent.token.ui.qqpim.okdownload.LayoutAppKeyInfo;
-import com.tencent.token.ze;
-import com.tencent.token.ze.a;
+import com.tencent.token.zr;
+import com.tencent.token.zr.a;
 import java.io.File;
 
 public class DownloadQQSecureActivity
   extends Activity
 {
   static final int MSG_UPDATE_UI = 99;
-  rb.c listener = new rb.c()
+  rj.c listener = new rj.c()
   {
-    public final void a(rb.a paramAnonymousa)
+    public final void a(rj.a paramAnonymousa)
     {
       DownloadQQSecureActivity.this.postUpdateUI();
     }
     
-    public final void b(rb.a paramAnonymousa)
+    public final void b(rj.a paramAnonymousa)
     {
       DownloadQQSecureActivity.this.postUpdateUI();
     }
     
-    public final void c(rb.a paramAnonymousa)
+    public final void c(rj.a paramAnonymousa)
     {
       DownloadQQSecureActivity.this.postUpdateUI();
     }
     
-    public final void d(rb.a paramAnonymousa)
+    public final void d(rj.a paramAnonymousa)
     {
       DownloadQQSecureActivity.this.postUpdateUI();
     }
@@ -51,7 +51,7 @@ public class DownloadQQSecureActivity
   LayoutAppKeyInfo mAppLayout;
   FrameLayout mBackView;
   Button mButton;
-  rb.a mDownloadInfo;
+  rj.a mDownloadInfo;
   Handler mHandler = new Handler()
   {
     public final void handleMessage(Message paramAnonymousMessage)
@@ -84,23 +84,23 @@ public class DownloadQQSecureActivity
     default: 
       return;
     case 7: 
-      rb.b.a().c(this.mDownloadInfo);
+      rj.b.a().c(this.mDownloadInfo);
       return;
     case 6: 
-      rb.b.a().d(this.mDownloadInfo);
+      rj.b.a().d(this.mDownloadInfo);
       return;
     case 5: 
-      rb.b.a().c(this.mDownloadInfo);
+      rj.b.a().c(this.mDownloadInfo);
       return;
     case 4: 
-      rb.a(this, new File(rb.a(), this.mDownloadInfo.d));
+      rj.a(this, new File(rj.a(), this.mDownloadInfo.d));
       return;
     case 2: 
     case 3: 
-      rb.b.a().b(this.mDownloadInfo);
+      rj.b.a().b(this.mDownloadInfo);
       return;
     }
-    rb.b.a().c(this.mDownloadInfo);
+    rj.b.a().c(this.mDownloadInfo);
   }
   
   protected void onCreate(Bundle paramBundle)
@@ -108,13 +108,13 @@ public class DownloadQQSecureActivity
     super.onCreate(paramBundle);
     requestWindowFeature(1);
     setContentView(2131296295);
-    this.mButton = ((Button)findViewById(2131165826));
-    this.mBackView = ((FrameLayout)findViewById(2131165858));
-    this.mDownloadInfo = rb.b.a().a("http://qqwx.qq.com/s?aid=index&p=1&c=107014&vt=1&pf=0");
+    this.mButton = ((Button)findViewById(2131165827));
+    this.mBackView = ((FrameLayout)findViewById(2131165859));
+    this.mDownloadInfo = rj.b.a().a("http://qqwx.qq.com/s?aid=index&p=1&c=107014&vt=1&pf=0");
     if (this.mDownloadInfo == null) {
-      this.mDownloadInfo = afq.a("com.tencent.qqpimsecure", "http://qqwx.qq.com/s?aid=index&p=1&c=107014&vt=1&pf=0");
+      this.mDownloadInfo = ahc.a("com.tencent.qqpimsecure", "http://qqwx.qq.com/s?aid=index&p=1&c=107014&vt=1&pf=0");
     }
-    if (rb.b.a().a(this.mDownloadInfo)) {
+    if (rj.b.a().a(this.mDownloadInfo)) {
       this.mDownloadInfo.f = DownloaderTaskStatus.COMPLETE;
     }
     this.mButton.setOnClickListener(new View.OnClickListener()
@@ -132,10 +132,10 @@ public class DownloadQQSecureActivity
       }
     });
     refreshUIByState();
-    rb.b.a().a(this.listener);
-    this.mAppLayout = ((LayoutAppKeyInfo)findViewById(2131166007));
+    rj.b.a().a(this.listener);
+    this.mAppLayout = ((LayoutAppKeyInfo)findViewById(2131166009));
     this.mAppLayout.a("深圳市腾讯计算机系统有限公司", "8.11.0", "腾讯手机管家", "http://ntool.3g.qq.com/permissionInfo?pkgName=com.tencent.qqpimsecure", "https://privacy.qq.com/document/priview/c4c2fc8a9e8c47d19577907a72e62f11", this);
-    ze.a("com.tencent.qqpimsecure", new ze.a()
+    zr.a("com.tencent.qqpimsecure", new zr.a()
     {
       public final void a(final r paramAnonymousr)
       {
@@ -152,7 +152,7 @@ public class DownloadQQSecureActivity
   
   protected void onDestroy()
   {
-    rb.b.a().b(this.listener);
+    rj.b.a().b(this.listener);
     super.onDestroy();
   }
   

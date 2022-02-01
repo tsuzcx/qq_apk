@@ -1,12 +1,17 @@
 package com.tencent.token;
 
+import android.content.res.ColorStateList;
+import android.graphics.PorterDuff.Mode;
+
 public abstract interface gd
 {
-  public abstract void onSupportActionModeFinished(gw paramgw);
+  public abstract ColorStateList getSupportImageTintList();
   
-  public abstract void onSupportActionModeStarted(gw paramgw);
+  public abstract PorterDuff.Mode getSupportImageTintMode();
   
-  public abstract gw onWindowStartingSupportActionMode(gw.a parama);
+  public abstract void setSupportImageTintList(ColorStateList paramColorStateList);
+  
+  public abstract void setSupportImageTintMode(PorterDuff.Mode paramMode);
 }
 
 

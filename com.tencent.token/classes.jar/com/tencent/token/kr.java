@@ -1,360 +1,154 @@
 package com.tencent.token;
 
-import android.content.Context;
-import android.text.TextUtils;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Iterator;
-import org.json.JSONException;
-import org.json.JSONObject;
-
 public final class kr
 {
-  public static int a = 1;
-  public static int b = 2;
-  private String c;
-  private int d = b;
-  private ArrayList<String> e = new ArrayList();
-  private String f;
-  private String g;
-  private String h;
-  private String i;
-  private String j;
-  private String k;
-  private String l;
-  private String m;
-  private String n;
-  private String o;
-  private String p;
-  private String q;
-  private long r;
-  private long s;
-  private long t;
-  private long u;
-  
-  public static kr a(String paramString1, String paramString2)
+  public static final class a
   {
-    if (TextUtils.isEmpty(paramString2)) {
-      return null;
-    }
-    kr localkr = new kr();
-    localkr.c = paramString1;
-    try
-    {
-      paramString2 = new JSONObject(paramString2);
-      if (paramString2.has("pkglist")) {
-        localkr.e = b(paramString2.getString("pkglist"));
-      }
-      if (paramString2.has("mode")) {
-        localkr.d = paramString2.getInt("mode");
-      }
-      if (paramString2.has("img1")) {
-        localkr.f = paramString2.getString("img1");
-      }
-      if (paramString2.has("img2")) {
-        localkr.g = paramString2.getString("img2");
-      }
-      if (paramString2.has("img3")) {
-        localkr.h = paramString2.getString("img3");
-      }
-      if (paramString2.has("text1")) {
-        localkr.i = paramString2.getString("text1");
-      }
-      if (paramString2.has("text2")) {
-        localkr.j = paramString2.getString("text2");
-      }
-      if (paramString2.has("text3")) {
-        localkr.k = paramString2.getString("text3");
-      }
-      if (paramString2.has("text4")) {
-        localkr.l = paramString2.getString("text4");
-      }
-      if (paramString2.has("text5")) {
-        localkr.m = paramString2.getString("text5");
-      }
-      if (paramString2.has("text6")) {
-        localkr.n = paramString2.getString("text6");
-      }
-      if (paramString2.has("text7")) {
-        localkr.o = paramString2.getString("text7");
-      }
-      if (paramString2.has("text8")) {
-        localkr.p = paramString2.getString("text8");
-      }
-      if (paramString2.has("lastpkg")) {
-        localkr.q = paramString2.getString("lastpkg");
-      }
-      if (paramString2.has("interval")) {
-        localkr.s = paramString2.getInt("interval");
-      }
-      if (paramString2.has("begin")) {
-        localkr.t = paramString2.getLong("begin");
-      }
-      if (paramString2.has("end")) {
-        localkr.u = paramString2.getLong("end");
-      }
-      paramString1 = localkr;
-      if (paramString2.has("timestamp"))
-      {
-        localkr.r = paramString2.getLong("timestamp");
-        return localkr;
-      }
-    }
-    catch (JSONException paramString1)
-    {
-      paramString1.printStackTrace();
-      paramString1 = null;
-    }
-    return paramString1;
+    public static final int action_bar = 2131165235;
+    public static final int action_bar_activity_content = 2131165236;
+    public static final int action_bar_container = 2131165237;
+    public static final int action_bar_root = 2131165238;
+    public static final int action_bar_spinner = 2131165239;
+    public static final int action_bar_subtitle = 2131165240;
+    public static final int action_bar_title = 2131165241;
+    public static final int action_container = 2131165242;
+    public static final int action_context_bar = 2131165243;
+    public static final int action_divider = 2131165244;
+    public static final int action_image = 2131165245;
+    public static final int action_menu_divider = 2131165246;
+    public static final int action_menu_presenter = 2131165247;
+    public static final int action_mode_bar = 2131165248;
+    public static final int action_mode_bar_stub = 2131165249;
+    public static final int action_mode_close_button = 2131165250;
+    public static final int action_text = 2131165251;
+    public static final int actions = 2131165252;
+    public static final int activity_chooser_view_content = 2131165257;
+    public static final int add = 2131165263;
+    public static final int alertTitle = 2131165274;
+    public static final int async = 2131165287;
+    public static final int blocking = 2131165314;
+    public static final int bottom = 2131165318;
+    public static final int buttonPanel = 2131165347;
+    public static final int checkbox = 2131165378;
+    public static final int chronometer = 2131165379;
+    public static final int contentPanel = 2131165411;
+    public static final int custom = 2131165419;
+    public static final int customPanel = 2131165420;
+    public static final int decor_content_parent = 2131165426;
+    public static final int default_activity_button = 2131165427;
+    public static final int edit_query = 2131165456;
+    public static final int end = 2131165458;
+    public static final int expand_activities_button = 2131165467;
+    public static final int expanded_menu = 2131165468;
+    public static final int forever = 2131165507;
+    public static final int home = 2131165580;
+    public static final int icon = 2131165583;
+    public static final int icon_group = 2131165584;
+    public static final int image = 2131165587;
+    public static final int info = 2131165602;
+    public static final int italic = 2131165612;
+    public static final int left = 2131165656;
+    public static final int line1 = 2131165661;
+    public static final int line3 = 2131165663;
+    public static final int listMode = 2131165665;
+    public static final int list_item = 2131165667;
+    public static final int message = 2131165737;
+    public static final int multiply = 2131165767;
+    public static final int none = 2131165778;
+    public static final int normal = 2131165779;
+    public static final int notification_background = 2131165780;
+    public static final int notification_main_column = 2131165781;
+    public static final int notification_main_column_container = 2131165782;
+    public static final int parentPanel = 2131165809;
+    public static final int progress_circular = 2131165829;
+    public static final int progress_horizontal = 2131165830;
+    public static final int radio = 2131165876;
+    public static final int right = 2131165917;
+    public static final int right_icon = 2131165918;
+    public static final int right_side = 2131165920;
+    public static final int screen = 2131165950;
+    public static final int scrollIndicatorDown = 2131165952;
+    public static final int scrollIndicatorUp = 2131165953;
+    public static final int scrollView = 2131165954;
+    public static final int search_badge = 2131165956;
+    public static final int search_bar = 2131165957;
+    public static final int search_button = 2131165958;
+    public static final int search_close_btn = 2131165959;
+    public static final int search_edit_frame = 2131165960;
+    public static final int search_go_btn = 2131165961;
+    public static final int search_mag_icon = 2131165962;
+    public static final int search_plate = 2131165963;
+    public static final int search_src_text = 2131165964;
+    public static final int search_voice_btn = 2131165965;
+    public static final int select_dialog_listview = 2131165975;
+    public static final int shortcut = 2131165997;
+    public static final int spacer = 2131166010;
+    public static final int split_action_bar = 2131166011;
+    public static final int src_atop = 2131166030;
+    public static final int src_in = 2131166031;
+    public static final int src_over = 2131166032;
+    public static final int start = 2131166033;
+    public static final int submenuarrow = 2131166048;
+    public static final int submit_area = 2131166049;
+    public static final int tabMode = 2131166054;
+    public static final int tag_transition_group = 2131166059;
+    public static final int tcaptcha_container = 2131166061;
+    public static final int tcaptcha_indicator_layout = 2131166062;
+    public static final int text = 2131166063;
+    public static final int text2 = 2131166065;
+    public static final int textSpacerNoButtons = 2131166066;
+    public static final int textSpacerNoTitle = 2131166067;
+    public static final int time = 2131166086;
+    public static final int title = 2131166114;
+    public static final int titleDividerNoCustom = 2131166115;
+    public static final int title_template = 2131166124;
+    public static final int top = 2131166150;
+    public static final int topPanel = 2131166151;
+    public static final int uniform = 2131166206;
+    public static final int up = 2131166208;
+    public static final int wrap_content = 2131166336;
   }
   
-  private static String a(int paramInt, String paramString)
+  public static final class b
   {
-    if (!TextUtils.isEmpty(paramString))
-    {
-      paramString = b(paramString);
-      if (paramString.size() > paramInt) {
-        return (String)paramString.get(paramInt);
-      }
-    }
-    return null;
-  }
-  
-  private static ArrayList<String> b(String paramString)
-  {
-    ArrayList localArrayList = new ArrayList();
-    if (TextUtils.isEmpty(paramString)) {
-      return localArrayList;
-    }
-    paramString = paramString.split("\\|");
-    if (paramString != null)
-    {
-      int i2 = paramString.length;
-      int i1 = 0;
-      while (i1 < i2)
-      {
-        localArrayList.add(paramString[i1]);
-        i1 += 1;
-      }
-    }
-    return localArrayList;
-  }
-  
-  private JSONObject b()
-  {
-    JSONObject localJSONObject2 = new JSONObject();
-    try
-    {
-      localJSONObject2.put("mode", this.d);
-      if (!TextUtils.isEmpty(this.c)) {
-        localJSONObject2.put("scene", this.c);
-      }
-      Object localObject = c();
-      if (!TextUtils.isEmpty((CharSequence)localObject)) {
-        localJSONObject2.put("pkglist", localObject);
-      }
-      if (!TextUtils.isEmpty(this.f)) {
-        localJSONObject2.put("img1", this.f);
-      }
-      if (!TextUtils.isEmpty(this.g)) {
-        localJSONObject2.put("img2", this.g);
-      }
-      if (!TextUtils.isEmpty(this.h)) {
-        localJSONObject2.put("img3", this.h);
-      }
-      if (!TextUtils.isEmpty(this.i)) {
-        localJSONObject2.put("text1", this.i);
-      }
-      if (!TextUtils.isEmpty(this.j)) {
-        localJSONObject2.put("text2", this.j);
-      }
-      if (!TextUtils.isEmpty(this.k)) {
-        localJSONObject2.put("text3", this.k);
-      }
-      if (!TextUtils.isEmpty(this.l)) {
-        localJSONObject2.put("text4", this.l);
-      }
-      if (!TextUtils.isEmpty(this.m)) {
-        localJSONObject2.put("text5", this.m);
-      }
-      if (!TextUtils.isEmpty(this.n)) {
-        localJSONObject2.put("text6", this.n);
-      }
-      if (!TextUtils.isEmpty(this.o)) {
-        localJSONObject2.put("text7", this.o);
-      }
-      if (!TextUtils.isEmpty(this.p)) {
-        localJSONObject2.put("text8", this.p);
-      }
-      if (!TextUtils.isEmpty(this.q)) {
-        localJSONObject2.put("lastpkg", this.q);
-      }
-      if (this.r > 0L) {
-        localJSONObject2.put("timestamp", this.r);
-      }
-      if (this.s > 0L) {
-        localJSONObject2.put("interval", this.s);
-      }
-      if (this.t > 0L) {
-        localJSONObject2.put("begin", this.t);
-      }
-      localObject = localJSONObject2;
-      if (this.u > 0L)
-      {
-        localJSONObject2.put("end", this.u);
-        return localJSONObject2;
-      }
-    }
-    catch (JSONException localJSONException)
-    {
-      localJSONException.printStackTrace();
-      JSONObject localJSONObject1 = null;
-      return localJSONObject1;
-    }
-  }
-  
-  private String c()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    Iterator localIterator = this.e.iterator();
-    while (localIterator.hasNext())
-    {
-      String str = (String)localIterator.next();
-      localStringBuilder.append(str);
-      if (this.e.indexOf(str) != this.e.size() - 1) {
-        localStringBuilder.append("|");
-      }
-    }
-    return localStringBuilder.toString();
-  }
-  
-  public final kt a(Context paramContext, HashSet<String> paramHashSet)
-  {
-    int i1 = a;
-    int i2 = this.d;
-    Iterator localIterator;
-    Object localObject;
-    if (i1 == i2)
-    {
-      localIterator = this.e.iterator();
-      do
-      {
-        if (!localIterator.hasNext()) {
-          break;
-        }
-        localObject = (String)localIterator.next();
-      } while (((paramHashSet != null) && (paramHashSet.contains(localObject))) || (yy.b(paramContext, (String)localObject)));
-      paramContext = (Context)localObject;
-    }
-    else
-    {
-      if (b == i2)
-      {
-        localObject = new ArrayList();
-        localIterator = this.e.iterator();
-        while (localIterator.hasNext())
-        {
-          String str = (String)localIterator.next();
-          if (((paramHashSet == null) || (!paramHashSet.contains(str))) && (!yy.b(paramContext, str))) {
-            ((ArrayList)localObject).add(str);
-          }
-        }
-        if (((ArrayList)localObject).size() == 1)
-        {
-          paramContext = (String)((ArrayList)localObject).get(0);
-          break label297;
-        }
-        i1 = -1;
-        if (!TextUtils.isEmpty(this.q))
-        {
-          ((ArrayList)localObject).remove(this.q);
-          if (((ArrayList)localObject).size() == 1)
-          {
-            paramContext = (String)((ArrayList)localObject).get(0);
-            break label297;
-          }
-          i1 = this.e.indexOf(this.q);
-        }
-        paramHashSet = ((ArrayList)localObject).iterator();
-        while (paramHashSet.hasNext())
-        {
-          paramContext = (String)paramHashSet.next();
-          if (this.e.indexOf(paramContext) > i1) {
-            break label297;
-          }
-        }
-        if (((ArrayList)localObject).size() > 0)
-        {
-          paramContext = (String)((ArrayList)localObject).get(0);
-          break label297;
-        }
-      }
-      paramContext = null;
-    }
-    label297:
-    if (TextUtils.isEmpty(paramContext)) {
-      return null;
-    }
-    i1 = this.e.indexOf(paramContext);
-    if (i1 < 0) {
-      return null;
-    }
-    paramHashSet = new kt();
-    paramHashSet.a = paramContext;
-    paramHashSet.d = a(i1, this.i);
-    paramHashSet.e = a(i1, this.j);
-    paramHashSet.f = a(i1, this.k);
-    paramHashSet.g = a(i1, this.l);
-    paramHashSet.b = a(i1, this.f);
-    paramHashSet.c = a(i1, this.g);
-    paramHashSet.h = new ArrayList();
-    paramContext = a(i1, this.m);
-    if (!TextUtils.isEmpty(paramContext)) {
-      paramHashSet.h.add(paramContext);
-    }
-    paramContext = a(i1, this.n);
-    if (!TextUtils.isEmpty(paramContext)) {
-      paramHashSet.h.add(paramContext);
-    }
-    paramContext = a(i1, this.o);
-    if (!TextUtils.isEmpty(paramContext)) {
-      paramHashSet.h.add(paramContext);
-    }
-    paramContext = a(i1, this.p);
-    if (!TextUtils.isEmpty(paramContext)) {
-      paramHashSet.h.add(paramContext);
-    }
-    return paramHashSet;
-  }
-  
-  public final void a(String paramString)
-  {
-    this.q = paramString;
-    this.r = System.currentTimeMillis();
-    paramString = b();
-    if ((paramString != null) && (!TextUtils.isEmpty(this.c))) {
-      afq.b(this.c, paramString.toString());
-    }
-  }
-  
-  public final boolean a()
-  {
-    if ((this.s > 0L) && (Math.abs(System.currentTimeMillis() - this.r) < this.s * 3600000L)) {
-      return false;
-    }
-    if ((this.t > 0L) && (System.currentTimeMillis() < this.t * 1000L)) {
-      return false;
-    }
-    return (this.u <= 0L) || (System.currentTimeMillis() <= this.u * 1000L);
-  }
-  
-  public final String toString()
-  {
-    JSONObject localJSONObject = b();
-    if (localJSONObject != null) {
-      return localJSONObject.toString();
-    }
-    return "invalid guideinfo.";
+    public static final int abc_action_bar_title_item = 2131296256;
+    public static final int abc_action_bar_up_container = 2131296257;
+    public static final int abc_action_menu_item_layout = 2131296258;
+    public static final int abc_action_menu_layout = 2131296259;
+    public static final int abc_action_mode_bar = 2131296260;
+    public static final int abc_action_mode_close_item_material = 2131296261;
+    public static final int abc_activity_chooser_view = 2131296262;
+    public static final int abc_activity_chooser_view_list_item = 2131296263;
+    public static final int abc_alert_dialog_button_bar_material = 2131296264;
+    public static final int abc_alert_dialog_material = 2131296265;
+    public static final int abc_alert_dialog_title_material = 2131296266;
+    public static final int abc_dialog_title_material = 2131296267;
+    public static final int abc_expanded_menu_layout = 2131296268;
+    public static final int abc_list_menu_item_checkbox = 2131296269;
+    public static final int abc_list_menu_item_icon = 2131296270;
+    public static final int abc_list_menu_item_layout = 2131296271;
+    public static final int abc_list_menu_item_radio = 2131296272;
+    public static final int abc_popup_menu_header_item_layout = 2131296273;
+    public static final int abc_popup_menu_item_layout = 2131296274;
+    public static final int abc_screen_content_include = 2131296275;
+    public static final int abc_screen_simple = 2131296276;
+    public static final int abc_screen_simple_overlay_action_mode = 2131296277;
+    public static final int abc_screen_toolbar = 2131296278;
+    public static final int abc_search_dropdown_item_icons_2line = 2131296279;
+    public static final int abc_search_view = 2131296280;
+    public static final int abc_select_dialog_material = 2131296281;
+    public static final int abc_tooltip = 2131296282;
+    public static final int notification_action = 2131296389;
+    public static final int notification_action_tombstone = 2131296390;
+    public static final int notification_template_custom_big = 2131296391;
+    public static final int notification_template_icon_group = 2131296392;
+    public static final int notification_template_part_chronometer = 2131296393;
+    public static final int notification_template_part_time = 2131296394;
+    public static final int select_dialog_item_material = 2131296434;
+    public static final int select_dialog_multichoice_material = 2131296435;
+    public static final int select_dialog_singlechoice_material = 2131296436;
+    public static final int support_simple_spinner_dropdown_item = 2131296455;
+    public static final int tcaptcha_popup = 2131296456;
   }
 }
 

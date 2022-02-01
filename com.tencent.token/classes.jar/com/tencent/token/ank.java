@@ -1,60 +1,18 @@
 package com.tencent.token;
 
-import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.ColorFilter;
-import android.graphics.Matrix;
-import android.graphics.Paint;
-import android.graphics.Paint.Style;
-import android.graphics.RectF;
+import java.io.Closeable;
+import java.io.Flushable;
 
-public final class ank
-  extends ane
+public abstract interface ank
+  extends Closeable, Flushable
 {
-  private final RectF g = new RectF();
-  private final Paint h = new Paint();
-  private final anh i;
+  public abstract anm a();
   
-  ank(asv paramasv, anh paramanh)
-  {
-    super(paramasv, paramanh);
-    this.i = paramanh;
-    this.h.setAlpha(0);
-    this.h.setStyle(Paint.Style.FILL);
-    this.h.setColor(paramanh.l);
-  }
+  public abstract void a_(amv paramamv, long paramLong);
   
-  private void a(Matrix paramMatrix)
-  {
-    this.g.set(0.0F, 0.0F, this.i.j, this.i.k);
-    paramMatrix.mapRect(this.g);
-  }
+  public abstract void close();
   
-  public final void a(RectF paramRectF, Matrix paramMatrix)
-  {
-    super.a(paramRectF, paramMatrix);
-    a(this.a);
-    paramRectF.set(this.g);
-  }
-  
-  public final void a(String paramString1, String paramString2, ColorFilter paramColorFilter)
-  {
-    this.h.setColorFilter(paramColorFilter);
-  }
-  
-  public final void b(Canvas paramCanvas, Matrix paramMatrix, int paramInt)
-  {
-    int j = Color.alpha(this.i.l);
-    if (j == 0) {
-      return;
-    }
-    paramInt = (int)(paramInt / 255.0F * (j / 255.0F * ((Integer)this.f.a.a()).intValue() / 100.0F) * 255.0F);
-    a(paramMatrix);
-    this.h.setAlpha(paramInt);
-    if (paramInt > 0) {
-      paramCanvas.drawRect(this.g, this.h);
-    }
-  }
+  public abstract void flush();
 }
 
 

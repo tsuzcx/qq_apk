@@ -1,151 +1,63 @@
 package com.tencent.token;
 
+import android.content.ContentProviderClient;
+import android.content.ContentResolver;
 import android.content.Context;
-import android.content.pm.PackageManager;
-import android.text.TextUtils;
-import com.tencent.turingfd.sdk.base.Flat;
-import java.util.ArrayList;
+import android.net.Uri;
+import android.os.Build.VERSION;
+import android.os.Bundle;
 
 public final class afc
+  implements aew
 {
-  public static ArrayList<Flat> a;
-  
-  public static ArrayList<Flat> a(Context paramContext)
+  public final aez a(Context paramContext)
   {
-    ArrayList localArrayList = new ArrayList();
-    int i = b(paramContext);
-    if (i > 0)
-    {
-      paramContext = new Flat();
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(afm.c);
-      localStringBuilder.append(afm.e);
-      paramContext.sc = localStringBuilder.toString();
-      paramContext.tc = String.valueOf(i);
-      localArrayList.add(paramContext);
-    }
-    return localArrayList;
-  }
-  
-  public static int b(Context paramContext)
-  {
-    Object localObject1 = paramContext.getPackageManager();
-    bool2 = false;
-    String str;
-    if (localObject1 != null) {
-      str = aff.a(aff.l);
+    Object localObject4 = Uri.parse(agg.a(agg.ax));
+    String str = agg.a(agg.a);
+    int i = Build.VERSION.SDK_INT;
+    Object localObject2 = null;
+    Object localObject3 = null;
+    Object localObject1 = null;
+    if (i >= 17) {
+      localObject4 = paramContext.getContentResolver().acquireContentProviderClient((Uri)localObject4);
     }
     try
     {
-      ((PackageManager)localObject1).getPackageInfo(str, 128);
-      bool1 = true;
+      paramContext = ((ContentProviderClient)localObject4).call(str, null, null);
+      if (i < 24) {}
     }
-    catch (Throwable localThrowable)
+    finally
     {
-      label42:
-      int k;
-      break label42;
+      label70:
+      break label70;
     }
-    bool1 = false;
-    k = aey.a(0, bool1, 0);
-    try
+    paramContext = localObject3;
+    if (localObject4 != null)
     {
-      localObject1 = new String(aey.c(aff.a(aff.n)));
-      boolean bool3 = TextUtils.isEmpty((CharSequence)localObject1);
-      bool1 = bool2;
-      if (bool3) {
-        break label289;
-      }
-      localObject1 = ((String)localObject1).split("\\n");
-      bool1 = bool2;
-      if (localObject1 == null) {
-        break label289;
-      }
-      bool1 = bool2;
-      if (localObject1.length == 0) {
-        break label289;
-      }
-      paramContext = paramContext.getPackageName();
-      m = localObject1.length;
-      j = 0;
-    }
-    catch (Throwable paramContext)
-    {
-      for (;;)
+      paramContext = localObject2;
+      if (Build.VERSION.SDK_INT >= 24)
       {
-        int m;
-        int j;
-        Object localObject2;
-        int i;
-        StringBuilder localStringBuilder;
-        bool1 = bool2;
-        continue;
-        bool1 = bool2;
-        if (j < m)
-        {
-          localObject2 = localThrowable[j];
-          if (localObject2 == null)
-          {
-            i = 0;
-            continue;
-            i = 0;
-            if ((!bool1) && (i == 0)) {
-              i = 0;
-            }
-          }
-        }
-      }
-    }
-    i = localObject2.indexOf('/');
-    if (i == -1)
-    {
-      i = 0;
-    }
-    else
-    {
-      str = localObject2.substring(i).trim();
-      if (!str.startsWith("/data/"))
-      {
-        i = 0;
+        paramContext = localObject1;
+        ((ContentProviderClient)localObject4).close();
       }
       else
       {
-        localStringBuilder = new StringBuilder("/data/data/");
-        localStringBuilder.append(paramContext);
-        localStringBuilder.append("/");
-        if (str.startsWith(localStringBuilder.toString()))
-        {
-          i = 0;
-        }
-        else
-        {
-          bool1 = str.endsWith(".so");
-          if ((bool1) || (!str.endsWith(".jar"))) {
-            break label336;
-          }
-          i = 1;
-          break label338;
-          bool1 = localObject2.contains(aff.a(aff.m));
-          if (bool1) {
-            i = 1;
-          } else {
-            i = 0;
-          }
-        }
+        ((ContentProviderClient)localObject4).release();
+        break label122;
+        paramContext = paramContext.getContentResolver().call((Uri)localObject4, str, null, null);
       }
     }
-    if (i != 0)
-    {
-      bool1 = true;
+    label122:
+    if (paramContext == null) {
+      return aez.a(-1);
     }
-    else
-    {
-      j += 1;
-      break label310;
+    if (paramContext.getInt(agg.a(agg.ay), -1) != 0) {
+      return aez.a(-2);
     }
-    label289:
-    return aey.a(k, bool1, 1);
+    return new aez(paramContext.getString(agg.a(agg.az)), 0);
   }
+  
+  public final void b(Context paramContext) {}
 }
 
 

@@ -1,251 +1,326 @@
 package com.tencent.token;
 
-import android.content.Context;
+import android.os.Handler;
+import android.os.Handler.Callback;
+import android.os.HandlerThread;
+import android.text.format.Time;
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.io.FilenameFilter;
 import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.io.Serializable;
-import java.io.StreamCorruptedException;
-import java.lang.ref.SoftReference;
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.concurrent.ConcurrentLinkedQueue;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public final class aag
-  implements aaf
+  extends abw
+  implements Handler.Callback
 {
-  private static final Comparator<File> a = new b();
-  private static final FilenameFilter b = new c();
-  private static final Object f = new Object();
-  private final Context c;
-  private final Map<String, SoftReference<a>> d;
-  private int e;
+  aah a;
+  private FileOutputStream d;
+  private File e;
+  private char[] f;
+  private volatile abt g;
+  private volatile abt h;
+  private volatile abt i;
+  private volatile abt j;
+  private volatile boolean k = false;
+  private HandlerThread l;
+  private Handler m;
   
-  public aag(Context paramContext)
+  private aag(int paramInt, abv paramabv, aah paramaah)
   {
-    this.c = paramContext;
-    this.d = new HashMap();
-    this.e = -1;
+    super(paramInt, paramabv);
+    this.a = paramaah;
+    this.g = new abt();
+    this.h = new abt();
+    this.i = this.g;
+    this.j = this.h;
+    this.f = new char[paramaah.c];
+    b();
+    this.l = new HandlerThread(paramaah.b, paramaah.f);
+    paramabv = this.l;
+    if (paramabv != null) {
+      paramabv.start();
+    }
+    if (this.l.isAlive()) {
+      this.m = new Handler(this.l.getLooper(), this);
+    }
+    a();
+    this.m.postDelayed(new Runnable()
+    {
+      public final void run()
+      {
+        aah localaah = aag.this.a;
+        if (localaah.e != null)
+        {
+          File[] arrayOfFile = localaah.e.listFiles(aah.a);
+          if (arrayOfFile != null)
+          {
+            int j = arrayOfFile.length;
+            int i = 0;
+            while (i < j)
+            {
+              File localFile = arrayOfFile[i];
+              long l = aah.a(localFile);
+              if (System.currentTimeMillis() - l > localaah.h) {
+                aai.a(localFile);
+              }
+              i += 1;
+            }
+          }
+        }
+      }
+    }, 15000L);
+  }
+  
+  public aag(aah paramaah)
+  {
+    this(xf.a.h, abv.a, paramaah);
   }
   
   private void a()
   {
-    int i = this.e;
-    if ((i < 0) || (i > 100))
-    {
-      File[] arrayOfFile = this.c.getCacheDir().listFiles(b);
-      if (arrayOfFile == null) {
-        return;
-      }
-      int j = arrayOfFile.length;
-      this.e = j;
-      if (j >= 100)
-      {
-        Arrays.sort(arrayOfFile, a);
-        i = 0;
-        while ((i < j) && (this.e > 75))
-        {
-          if (arrayOfFile[i].delete()) {
-            this.e -= 1;
-          }
-          i += 1;
-        }
-      }
-    }
+    this.m.sendEmptyMessageDelayed(1024, this.a.d);
   }
   
-  private aaf.a b(aah paramaah)
+  private FileOutputStream b()
   {
-    for (;;)
+    File localFile1 = this.a.a(System.currentTimeMillis());
+    File localFile2 = this.e;
+    int n;
+    if ((localFile2 != null) && ((!localFile2.exists()) || (!this.e.canWrite()))) {
+      n = 1;
+    } else {
+      n = 0;
+    }
+    if ((n != 0) || ((localFile1 != null) && (!localFile1.equals(this.e))))
     {
-      synchronized (f)
+      this.e = localFile1;
+      try
       {
-        String str = paramaah.c();
-        localObject1 = (SoftReference)this.d.get(str);
-        if (localObject1 != null)
+        if (this.d != null)
         {
-          Object localObject2 = (a)((SoftReference)localObject1).get();
-          localObject1 = localObject2;
-          if (localObject2 == null)
-          {
-            this.d.remove(str);
-            localObject1 = localObject2;
-          }
-          localObject2 = localObject1;
-          if (localObject1 == null) {
-            localObject2 = c(paramaah);
-          }
-          if (localObject2 != null)
-          {
-            paramaah = new aaf.a();
-            System.currentTimeMillis();
-            paramaah.a = false;
-            paramaah.b = ((a)localObject2).b;
-            paramaah.c = ((a)localObject2).c;
-            return paramaah;
-          }
-          return null;
+          this.d.flush();
+          this.d.close();
         }
       }
-      Object localObject1 = null;
-    }
-  }
-  
-  private a c(aah paramaah)
-  {
-    Object localObject = d(paramaah);
-    if (!((File)localObject).exists()) {
-      return null;
+      catch (Exception localException)
+      {
+        localException.printStackTrace();
+      }
     }
     try
     {
-      ObjectInputStream localObjectInputStream = new ObjectInputStream(new FileInputStream((File)localObject));
-      if (localObjectInputStream.readInt() != 1)
-      {
-        ((File)localObject).delete();
-        return null;
-      }
-      localObject = new a();
-      ((a)localObject).a = localObjectInputStream.readLong();
-      if (localObjectInputStream.readBoolean()) {
-        ((a)localObject).b = paramaah.a((Serializable)localObjectInputStream.readObject());
-      }
-      if (localObjectInputStream.readBoolean()) {
-        ((a)localObject).c = ((Serializable)localObjectInputStream.readObject());
-      }
-      return localObject;
+      this.d = new FileOutputStream(this.e, true);
+      return this.d;
     }
-    catch (ClassNotFoundException paramaah)
+    catch (IOException localIOException)
     {
-      paramaah.printStackTrace();
-      return null;
-    }
-    catch (IOException paramaah)
-    {
-      paramaah.printStackTrace();
-      return null;
-    }
-    catch (FileNotFoundException paramaah)
-    {
-      paramaah.printStackTrace();
-      return null;
-    }
-    catch (StreamCorruptedException paramaah)
-    {
-      paramaah.printStackTrace();
+      label118:
+      break label118;
     }
     return null;
   }
   
-  private File d(aah paramaah)
+  public final void a(int paramInt, Thread paramThread, long paramLong, String paramString1, String paramString2)
   {
-    paramaah = aac.c(paramaah.c());
-    return new File(this.c.getCacheDir(), "TOKEN_".concat(String.valueOf(paramaah)));
-  }
-  
-  public final aaf.a a(aah paramaah)
-  {
-    return b(paramaah);
-  }
-  
-  public final void a(aah paramaah, aar paramaar)
-  {
-    synchronized (f)
+    long l1 = paramLong % 1000L;
+    Time localTime = new Time();
+    localTime.set(paramLong);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(abv.a(paramInt));
+    localStringBuilder.append('/');
+    localStringBuilder.append(localTime.format("%Y-%m-%d %H:%M:%S"));
+    localStringBuilder.append('.');
+    if (l1 < 10L) {
+      localStringBuilder.append("00");
+    } else if (l1 < 100L) {
+      localStringBuilder.append('0');
+    }
+    localStringBuilder.append(l1);
+    localStringBuilder.append(' ');
+    localStringBuilder.append('[');
+    if (paramThread == null) {
+      localStringBuilder.append("N/A");
+    } else {
+      localStringBuilder.append(paramThread.getName());
+    }
+    localStringBuilder.append(']');
+    localStringBuilder.append('[');
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append(']');
+    localStringBuilder.append(' ');
+    localStringBuilder.append(paramString2);
+    localStringBuilder.append('\n');
+    paramThread = localStringBuilder.toString();
+    paramString1 = this.i;
+    paramInt = paramThread.length();
+    paramString1.a.add(paramThread);
+    paramString1.b.addAndGet(paramInt);
+    if (this.i.b.get() >= this.a.c)
     {
-      a locala = new a();
-      locala.b = paramaar;
-      locala.c = null;
-      locala.a = System.currentTimeMillis();
-      paramaar = paramaah.c();
-      Object localObject2 = new SoftReference(locala);
-      this.d.put(paramaar, localObject2);
-      a();
-      paramaar = d(paramaah);
-      try
-      {
-        try
-        {
-          localObject2 = new ObjectOutputStream(new FileOutputStream(paramaar));
-          ((ObjectOutputStream)localObject2).writeInt(1);
-          ((ObjectOutputStream)localObject2).writeLong(locala.a);
-          if (locala.b != null)
-          {
-            Serializable localSerializable = paramaah.a(locala.b);
-            if (localSerializable != null)
-            {
-              ((ObjectOutputStream)localObject2).writeBoolean(true);
-              ((ObjectOutputStream)localObject2).writeObject(localSerializable);
-            }
-            else
-            {
-              ((ObjectOutputStream)localObject2).writeBoolean(false);
-            }
-          }
-          else
-          {
-            ((ObjectOutputStream)localObject2).writeBoolean(false);
-          }
-          if (locala.c != null)
-          {
-            ((ObjectOutputStream)localObject2).writeBoolean(true);
-            ((ObjectOutputStream)localObject2).writeObject(locala.c);
-          }
-          else
-          {
-            ((ObjectOutputStream)localObject2).writeBoolean(false);
-          }
-          ((ObjectOutputStream)localObject2).flush();
-        }
-        catch (IOException localIOException)
-        {
-          localIOException.printStackTrace();
-          paramaar.delete();
-          paramaar = new StringBuilder();
-          paramaar.append(paramaah.c());
-          paramaar.append(": writting error:");
-          paramaar.append(localIOException);
-          xa.c(paramaar.toString());
-        }
+      if (this.m.hasMessages(1024)) {
+        this.m.removeMessages(1024);
       }
-      catch (FileNotFoundException paramaar)
-      {
-        label263:
-        break label263;
-      }
-      paramaar = new StringBuilder();
-      paramaar.append(paramaah.c());
-      paramaar.append(": can't open cache file to write");
-      xa.c(paramaar.toString());
-      return;
+      this.m.sendEmptyMessage(1024);
     }
   }
   
-  final class a
+  /* Error */
+  public final boolean handleMessage(android.os.Message paramMessage)
   {
-    public long a;
-    public aar b;
-    public Serializable c;
-    
-    a() {}
-  }
-  
-  static final class b
-    implements Comparator<File>
-  {}
-  
-  static final class c
-    implements FilenameFilter
-  {
-    public final boolean accept(File paramFile, String paramString)
-    {
-      return paramString.startsWith("TOKEN_");
-    }
+    // Byte code:
+    //   0: aload_1
+    //   1: getfield 258	android/os/Message:what	I
+    //   4: sipush 1024
+    //   7: if_icmpeq +5 -> 12
+    //   10: iconst_1
+    //   11: ireturn
+    //   12: invokestatic 262	java/lang/Thread:currentThread	()Ljava/lang/Thread;
+    //   15: aload_0
+    //   16: getfield 73	com/tencent/token/aag:l	Landroid/os/HandlerThread;
+    //   19: if_acmpne +192 -> 211
+    //   22: aload_0
+    //   23: getfield 34	com/tencent/token/aag:k	Z
+    //   26: ifne +185 -> 211
+    //   29: aload_0
+    //   30: iconst_1
+    //   31: putfield 34	com/tencent/token/aag:k	Z
+    //   34: aconst_null
+    //   35: astore 4
+    //   37: aconst_null
+    //   38: astore 5
+    //   40: aconst_null
+    //   41: astore_2
+    //   42: aload_0
+    //   43: monitorenter
+    //   44: aload_0
+    //   45: getfield 47	com/tencent/token/aag:i	Lcom/tencent/token/abt;
+    //   48: aload_0
+    //   49: getfield 43	com/tencent/token/aag:g	Lcom/tencent/token/abt;
+    //   52: if_acmpne +22 -> 74
+    //   55: aload_0
+    //   56: aload_0
+    //   57: getfield 45	com/tencent/token/aag:h	Lcom/tencent/token/abt;
+    //   60: putfield 47	com/tencent/token/aag:i	Lcom/tencent/token/abt;
+    //   63: aload_0
+    //   64: aload_0
+    //   65: getfield 43	com/tencent/token/aag:g	Lcom/tencent/token/abt;
+    //   68: putfield 49	com/tencent/token/aag:j	Lcom/tencent/token/abt;
+    //   71: goto +19 -> 90
+    //   74: aload_0
+    //   75: aload_0
+    //   76: getfield 43	com/tencent/token/aag:g	Lcom/tencent/token/abt;
+    //   79: putfield 47	com/tencent/token/aag:i	Lcom/tencent/token/abt;
+    //   82: aload_0
+    //   83: aload_0
+    //   84: getfield 45	com/tencent/token/aag:h	Lcom/tencent/token/abt;
+    //   87: putfield 49	com/tencent/token/aag:j	Lcom/tencent/token/abt;
+    //   90: aload_0
+    //   91: monitorexit
+    //   92: aload 4
+    //   94: astore_3
+    //   95: aload 5
+    //   97: astore_1
+    //   98: aload_0
+    //   99: invokespecial 61	com/tencent/token/aag:b	()Ljava/io/FileOutputStream;
+    //   102: astore 6
+    //   104: aload 6
+    //   106: ifnull +50 -> 156
+    //   109: aload 4
+    //   111: astore_3
+    //   112: aload 5
+    //   114: astore_1
+    //   115: aload 6
+    //   117: invokevirtual 266	java/io/FileOutputStream:getChannel	()Ljava/nio/channels/FileChannel;
+    //   120: invokevirtual 272	java/nio/channels/FileChannel:lock	()Ljava/nio/channels/FileLock;
+    //   123: astore_2
+    //   124: aload_2
+    //   125: astore_3
+    //   126: aload_2
+    //   127: astore_1
+    //   128: new 274	java/io/OutputStreamWriter
+    //   131: dup
+    //   132: aload 6
+    //   134: invokespecial 277	java/io/OutputStreamWriter:<init>	(Ljava/io/OutputStream;)V
+    //   137: astore 4
+    //   139: aload_2
+    //   140: astore_3
+    //   141: aload_2
+    //   142: astore_1
+    //   143: aload_0
+    //   144: getfield 49	com/tencent/token/aag:j	Lcom/tencent/token/abt;
+    //   147: aload 4
+    //   149: aload_0
+    //   150: getfield 57	com/tencent/token/aag:f	[C
+    //   153: invokevirtual 280	com/tencent/token/abt:a	(Ljava/io/Writer;[C)V
+    //   156: aload_2
+    //   157: ifnull +34 -> 191
+    //   160: aload_2
+    //   161: astore_1
+    //   162: goto +25 -> 187
+    //   165: astore_1
+    //   166: aload_3
+    //   167: ifnull +7 -> 174
+    //   170: aload_3
+    //   171: invokevirtual 285	java/nio/channels/FileLock:release	()V
+    //   174: aload_0
+    //   175: getfield 49	com/tencent/token/aag:j	Lcom/tencent/token/abt;
+    //   178: invokevirtual 286	com/tencent/token/abt:a	()V
+    //   181: aload_1
+    //   182: athrow
+    //   183: aload_1
+    //   184: ifnull +7 -> 191
+    //   187: aload_1
+    //   188: invokevirtual 285	java/nio/channels/FileLock:release	()V
+    //   191: aload_0
+    //   192: getfield 49	com/tencent/token/aag:j	Lcom/tencent/token/abt;
+    //   195: invokevirtual 286	com/tencent/token/abt:a	()V
+    //   198: aload_0
+    //   199: iconst_0
+    //   200: putfield 34	com/tencent/token/aag:k	Z
+    //   203: goto +8 -> 211
+    //   206: astore_1
+    //   207: aload_0
+    //   208: monitorexit
+    //   209: aload_1
+    //   210: athrow
+    //   211: aload_0
+    //   212: invokespecial 93	com/tencent/token/aag:a	()V
+    //   215: iconst_1
+    //   216: ireturn
+    //   217: astore_2
+    //   218: goto -35 -> 183
+    //   221: astore_2
+    //   222: goto -48 -> 174
+    //   225: astore_1
+    //   226: goto -35 -> 191
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	229	0	this	aag
+    //   0	229	1	paramMessage	android.os.Message
+    //   41	120	2	localFileLock	java.nio.channels.FileLock
+    //   217	1	2	localException1	Exception
+    //   221	1	2	localException2	Exception
+    //   94	77	3	localObject1	Object
+    //   35	113	4	localOutputStreamWriter	java.io.OutputStreamWriter
+    //   38	75	5	localObject2	Object
+    //   102	31	6	localFileOutputStream	FileOutputStream
+    // Exception table:
+    //   from	to	target	type
+    //   98	104	165	finally
+    //   115	124	165	finally
+    //   128	139	165	finally
+    //   143	156	165	finally
+    //   44	71	206	finally
+    //   74	90	206	finally
+    //   90	92	206	finally
+    //   207	209	206	finally
+    //   98	104	217	java/lang/Exception
+    //   115	124	217	java/lang/Exception
+    //   128	139	217	java/lang/Exception
+    //   143	156	217	java/lang/Exception
+    //   170	174	221	java/lang/Exception
+    //   187	191	225	java/lang/Exception
   }
 }
 

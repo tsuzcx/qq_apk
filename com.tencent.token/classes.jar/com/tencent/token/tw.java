@@ -1,84 +1,78 @@
 package com.tencent.token;
 
 import android.content.Context;
+import android.os.Handler;
+import android.os.Message;
 import com.tencent.token.global.RqdApplication;
-import com.tmsdk.common.util.TmsLog;
-import org.json.JSONException;
+import java.util.HashMap;
 import org.json.JSONObject;
 
 public final class tw
-  extends tj
+  extends tr
 {
-  private static final aas d = new aas("B8008767A628A4F53BCB84C13C961A55BF87607DAA5BE0BA3AC2E0CB778E494579BD444F699885F4968CD9028BB3FC6FA657D532F1718F581669BDC333F83DC3", 16);
-  private aas e;
-  private sb f;
+  public static int d = -1;
+  public static int e = -1;
+  private long f;
+  private int g;
   
   public final String a()
   {
-    rz.a();
+    sh.a();
     this.a.a(104, null, null);
     return null;
   }
   
-  public final void a(aaq paramaaq) {}
+  public final void a(abc paramabc)
+  {
+    this.f = ((Long)paramabc.c.get("param.realuin")).longValue();
+  }
   
   public final void a(JSONObject paramJSONObject)
   {
     int i = paramJSONObject.getInt("err");
-    TmsLog.i("mod_seed", "active token parseJon, errcode: ".concat(String.valueOf(i)));
-    Object localObject;
     if (i != 0)
     {
-      paramJSONObject = paramJSONObject.getString("info");
-      localObject = this.a;
-      StringBuilder localStringBuilder = new StringBuilder("server errcode=");
-      localStringBuilder.append(i);
-      localStringBuilder.append(":");
-      localStringBuilder.append(paramJSONObject);
-      ((wy)localObject).a(i, localStringBuilder.toString(), paramJSONObject);
+      a(i, paramJSONObject.getString("info"));
       return;
     }
-    paramJSONObject = aac.d(paramJSONObject.getString("data"));
+    paramJSONObject = aao.d(paramJSONObject.getString("data"));
     if (paramJSONObject != null)
     {
       paramJSONObject = new JSONObject(new String(paramJSONObject));
-      i = paramJSONObject.getInt("seq_id");
-      if (this.c != i)
-      {
-        this.a.a(10030, null, null);
-        return;
-      }
-      localObject = paramJSONObject.getString("svc_pub_key");
-      if (((String)localObject).length() > 0)
-      {
+      this.g = paramJSONObject.getInt("need_idcard_detect");
+      if (this.g == 1) {
         try
         {
-          sb.b(paramJSONObject.getLong("seed_expire_time"));
+          d = paramJSONObject.getInt("displayangle");
+          e = paramJSONObject.getInt("imageangle");
+          paramJSONObject = new StringBuilder("plain angle=");
+          paramJSONObject.append(d);
+          paramJSONObject.append(",angel2=");
+          paramJSONObject.append(e);
+          xj.a(paramJSONObject.toString());
         }
-        catch (JSONException localJSONException)
+        catch (Exception paramJSONObject)
         {
-          localJSONException.printStackTrace();
+          paramJSONObject.printStackTrace();
         }
-        this.f.c();
-        localObject = new aas((String)localObject, 16);
-        localObject = aaw.b(this.e, (aas)localObject, d);
-        if (localObject == null)
-        {
-          this.a.a(10026, null, null);
-          return;
-        }
-        this.f.a((aas)localObject);
-        this.f.e();
-        this.f.j();
-        sb.a(paramJSONObject.getLong("server_time"));
-        ru.a.a().b();
-        this.a.a = 0;
-        return;
       }
-      throw new JSONException("");
+      this.a.a = 0;
+      return;
     }
-    xa.c("parseJSON error decodeData=".concat(String.valueOf(paramJSONObject)));
-    a(10022, RqdApplication.n().getString(2131493068));
+    xj.c("parseJSON error decodeData=".concat(String.valueOf(paramJSONObject)));
+    a(10022, RqdApplication.p().getString(2131493068));
+  }
+  
+  public final void b()
+  {
+    if ((!this.b.e) && (this.b.d != null))
+    {
+      Message localMessage = this.b.d.obtainMessage(this.b.f);
+      localMessage.arg1 = 0;
+      localMessage.arg2 = this.g;
+      localMessage.sendToTarget();
+      this.b.e = true;
+    }
   }
 }
 

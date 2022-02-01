@@ -1,94 +1,100 @@
 package com.tencent.token;
 
-import android.content.Context;
 import android.os.Handler;
+import android.os.HandlerThread;
 import android.os.Message;
-import com.tencent.token.global.RqdApplication;
+import android.os.SystemClock;
+import android.view.MotionEvent;
+import java.util.Collections;
 import java.util.HashMap;
-import org.json.JSONObject;
+import java.util.Map;
+import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
 
 public final class ts
-  extends tj
 {
-  private long d;
-  private int e;
-  private int f;
-  private int g;
-  private int h;
-  private int i;
-  private int j;
-  private String k;
-  private String l;
-  private String m;
-  private String n;
-  private String o;
-  private String p;
-  
-  public final String a()
+  ExecutorService a = Executors.newFixedThreadPool(5);
+  public b b = new b("");
+  public a c = new a()
   {
-    rz.a();
-    StringBuilder localStringBuilder = new StringBuilder("sessId=");
-    localStringBuilder.append(null);
-    xa.c(localStringBuilder.toString());
-    this.a.a(104, null, null);
-    return null;
-  }
-  
-  public final void a(aaq paramaaq)
-  {
-    this.d = ((Long)paramaaq.c.get("param.uinhash")).longValue();
-    this.k = ((String)paramaaq.c.get("param.device.lock.dguid"));
-    this.l = ((String)paramaaq.c.get("param.device.lock.ddes"));
-    this.h = ((Integer)paramaaq.c.get("param.device.lock.dappid")).intValue();
-    this.i = ((Integer)paramaaq.c.get("param.device.lock.dsubappid")).intValue();
-    this.p = ((String)paramaaq.c.get("param.device.lock.dappname"));
-    this.e = ((Integer)paramaaq.c.get("param.device.lock.id")).intValue();
-    this.m = ((String)paramaaq.c.get("param.device.lock.guid"));
-    this.f = ((Integer)paramaaq.c.get("param.device.lock.appid")).intValue();
-    this.g = ((Integer)paramaaq.c.get("param.device.lock.subappid")).intValue();
-    this.n = ((String)paramaaq.c.get("param.device.lock.appname"));
-    this.o = ((String)paramaaq.c.get("param.wtlogin.a2"));
-    this.j = ((Integer)paramaaq.c.get("param.common.seq")).intValue();
-  }
-  
-  public final void a(JSONObject paramJSONObject)
-  {
-    int i1 = paramJSONObject.getInt("err");
-    if (i1 != 0)
+    public final void a(abc paramAnonymousabc)
     {
-      a(i1, paramJSONObject.getString("info"));
-      return;
-    }
-    paramJSONObject = aac.d(paramJSONObject.getString("data"));
-    if (paramJSONObject != null)
-    {
-      i1 = new JSONObject(new String(paramJSONObject)).getInt("seq_id");
-      if (i1 != this.j)
+      MotionEvent localMotionEvent = aad.a().j;
+      if (localMotionEvent != null)
       {
-        this.a.a(10030, null, null);
-        paramJSONObject = new StringBuilder("parseJSON error seq is wrong seq=");
-        paramJSONObject.append(i1);
-        paramJSONObject.append(",right = ");
-        sa.a();
-        paramJSONObject.append(sa.b());
-        xa.c(paramJSONObject.toString());
-        return;
+        StringBuilder localStringBuilder = new StringBuilder("cginame:");
+        localStringBuilder.append(paramAnonymousabc.a);
+        xj.c(localStringBuilder.toString());
+        localStringBuilder = new StringBuilder("pagename:");
+        localStringBuilder.append(paramAnonymousabc.i);
+        xj.c(localStringBuilder.toString());
+        localStringBuilder = new StringBuilder("getRawX:");
+        localStringBuilder.append(localMotionEvent.getRawX());
+        xj.c(localStringBuilder.toString());
+        localStringBuilder = new StringBuilder("getRawY:");
+        localStringBuilder.append(localMotionEvent.getRawY());
+        xj.c(localStringBuilder.toString());
+        long l = System.currentTimeMillis() - (SystemClock.uptimeMillis() - localMotionEvent.getDownTime());
+        xj.c("eventStartTime:".concat(String.valueOf(l)));
+        int i = aad.a().k;
+        xj.c("touch_type:".concat(String.valueOf(i)));
+        aad.a().a(i, paramAnonymousabc.a, paramAnonymousabc.i, "", "", "", (int)localMotionEvent.getRawX(), (int)localMotionEvent.getRawY(), l);
+        aad.a().b();
       }
-      this.a.a = 0;
-      return;
     }
-    xa.c("parseJSON error decodeData=".concat(String.valueOf(paramJSONObject)));
-    a(10022, RqdApplication.n().getString(2131493068));
+    
+    public final void a(abc paramAnonymousabc, xh paramAnonymousxh)
+    {
+      if (paramAnonymousxh.b())
+      {
+        sf.a().a(System.currentTimeMillis(), 0, paramAnonymousabc.a, 0, "", aao.i());
+        if ((!paramAnonymousabc.e) && (paramAnonymousabc.d != null))
+        {
+          paramAnonymousxh = paramAnonymousabc.d.obtainMessage(paramAnonymousabc.f);
+          paramAnonymousxh.arg1 = 0;
+          paramAnonymousxh.sendToTarget();
+          paramAnonymousabc.e = true;
+        }
+      }
+      else
+      {
+        if (paramAnonymousxh.a < 10000) {
+          sf.a().a(System.currentTimeMillis(), 0, paramAnonymousabc.a, 0, "", aao.i());
+        } else {
+          sf.a().a(System.currentTimeMillis(), sf.a(paramAnonymousxh.a), paramAnonymousabc.a, 1, paramAnonymousxh.b, aao.i());
+        }
+        if ((!paramAnonymousabc.e) && (paramAnonymousabc.d != null))
+        {
+          Message localMessage = paramAnonymousabc.d.obtainMessage(paramAnonymousabc.f);
+          localMessage.arg1 = paramAnonymousxh.a;
+          localMessage.obj = paramAnonymousxh;
+          localMessage.sendToTarget();
+          paramAnonymousabc.e = true;
+        }
+      }
+      paramAnonymousxh = ts.this.b;
+      paramAnonymousxh.a.post(new ts.b.4(paramAnonymousxh, paramAnonymousabc));
+    }
+  };
+  
+  public static abstract interface a
+  {
+    public abstract void a(abc paramabc);
+    
+    public abstract void a(abc paramabc, xh paramxh);
   }
   
-  public final void b()
+  public final class b
+    extends HandlerThread
   {
-    if ((!this.b.e) && (this.b.d != null))
+    public Handler a = new Handler();
+    private Map<abc, Future<xh>> c = Collections.synchronizedMap(new HashMap());
+    
+    public b(String paramString)
     {
-      Message localMessage = this.b.d.obtainMessage(this.b.f);
-      localMessage.arg1 = 0;
-      localMessage.sendToTarget();
-      this.b.e = true;
+      super();
     }
   }
 }

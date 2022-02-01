@@ -1,25 +1,17 @@
 package com.tencent.token;
 
-import android.os.Bundle;
-import android.os.IInterface;
-import com.tencent.wcdb.CursorWindow;
+import com.tencent.turingfd.sdk.qps.Filbert;
+import java.util.Comparator;
 
-public abstract interface aga
-  extends IInterface
+public final class aga
+  implements Comparator<Filbert>
 {
-  public abstract int a(agb paramagb);
-  
-  public abstract Bundle a(Bundle paramBundle);
-  
-  public abstract CursorWindow a(int paramInt);
-  
-  public abstract void a();
-  
-  public abstract void b();
-  
-  public abstract void b(int paramInt);
-  
-  public abstract Bundle c();
+  public final int compare(Object paramObject1, Object paramObject2)
+  {
+    paramObject1 = (Filbert)paramObject1;
+    paramObject2 = (Filbert)paramObject2;
+    return (int)(paramObject1.c - paramObject2.c);
+  }
 }
 
 

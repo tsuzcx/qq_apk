@@ -1,155 +1,145 @@
 package com.tencent.token;
 
-import android.app.Activity;
 import android.content.Context;
-import android.content.ContextWrapper;
-import android.content.res.Resources;
-import android.graphics.Rect;
-import android.util.DisplayMetrics;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.View.MeasureSpec;
-import android.view.ViewGroup.LayoutParams;
-import android.view.Window;
-import android.view.WindowManager;
-import android.view.WindowManager.LayoutParams;
-import android.widget.TextView;
+import android.content.res.ColorStateList;
+import android.content.res.TypedArray;
+import android.graphics.Typeface;
+import android.graphics.drawable.Drawable;
+import android.util.AttributeSet;
+import android.util.TypedValue;
 
-final class ji
+public final class ji
 {
-  private final Context a;
-  private final View b;
-  private final TextView c;
-  private final WindowManager.LayoutParams d = new WindowManager.LayoutParams();
-  private final Rect e = new Rect();
-  private final int[] f = new int[2];
-  private final int[] g = new int[2];
+  public final TypedArray a;
+  private final Context b;
+  private TypedValue c;
   
-  ji(Context paramContext)
+  private ji(Context paramContext, TypedArray paramTypedArray)
   {
-    this.a = paramContext;
-    this.b = LayoutInflater.from(this.a).inflate(go.g.abc_tooltip, null);
-    this.c = ((TextView)this.b.findViewById(go.f.message));
-    this.d.setTitle(getClass().getSimpleName());
-    this.d.packageName = this.a.getPackageName();
-    paramContext = this.d;
-    paramContext.type = 1002;
-    paramContext.width = -2;
-    paramContext.height = -2;
-    paramContext.format = -3;
-    paramContext.windowAnimations = go.i.Animation_AppCompat_Tooltip;
-    this.d.flags = 24;
+    this.b = paramContext;
+    this.a = paramTypedArray;
   }
   
-  private static View a(View paramView)
+  public static ji a(Context paramContext, int paramInt, int[] paramArrayOfInt)
   {
-    View localView = paramView.getRootView();
-    ViewGroup.LayoutParams localLayoutParams = localView.getLayoutParams();
-    if (((localLayoutParams instanceof WindowManager.LayoutParams)) && (((WindowManager.LayoutParams)localLayoutParams).type == 2)) {
-      return localView;
+    return new ji(paramContext, paramContext.obtainStyledAttributes(paramInt, paramArrayOfInt));
+  }
+  
+  public static ji a(Context paramContext, AttributeSet paramAttributeSet, int[] paramArrayOfInt)
+  {
+    return new ji(paramContext, paramContext.obtainStyledAttributes(paramAttributeSet, paramArrayOfInt));
+  }
+  
+  public static ji a(Context paramContext, AttributeSet paramAttributeSet, int[] paramArrayOfInt, int paramInt1, int paramInt2)
+  {
+    return new ji(paramContext, paramContext.obtainStyledAttributes(paramAttributeSet, paramArrayOfInt, paramInt1, paramInt2));
+  }
+  
+  public final int a(int paramInt1, int paramInt2)
+  {
+    return this.a.getInt(paramInt1, paramInt2);
+  }
+  
+  public final Typeface a(int paramInt1, int paramInt2, da.a parama)
+  {
+    paramInt1 = this.a.getResourceId(paramInt1, 0);
+    if (paramInt1 == 0) {
+      return null;
     }
-    for (paramView = paramView.getContext(); (paramView instanceof ContextWrapper); paramView = ((ContextWrapper)paramView).getBaseContext()) {
-      if ((paramView instanceof Activity)) {
-        return ((Activity)paramView).getWindow().getDecorView();
+    if (this.c == null) {
+      this.c = new TypedValue();
+    }
+    return da.a(this.b, paramInt1, this.c, paramInt2, parama);
+  }
+  
+  public final Drawable a(int paramInt)
+  {
+    if (this.a.hasValue(paramInt))
+    {
+      int i = this.a.getResourceId(paramInt, 0);
+      if (i != 0) {
+        return gu.b(this.b, i);
       }
     }
-    return localView;
+    return this.a.getDrawable(paramInt);
   }
   
-  private void a(View paramView, int paramInt1, int paramInt2, boolean paramBoolean, WindowManager.LayoutParams paramLayoutParams)
+  public final boolean a(int paramInt, boolean paramBoolean)
   {
-    paramLayoutParams.token = paramView.getApplicationWindowToken();
-    int i = this.a.getResources().getDimensionPixelOffset(go.d.tooltip_precise_anchor_threshold);
-    if (paramView.getWidth() < i) {
-      paramInt1 = paramView.getWidth() / 2;
-    }
-    if (paramView.getHeight() >= i)
+    return this.a.getBoolean(paramInt, paramBoolean);
+  }
+  
+  public final int b(int paramInt1, int paramInt2)
+  {
+    return this.a.getColor(paramInt1, paramInt2);
+  }
+  
+  public final Drawable b(int paramInt)
+  {
+    if (this.a.hasValue(paramInt))
     {
-      j = this.a.getResources().getDimensionPixelOffset(go.d.tooltip_precise_anchor_extra_offset);
-      i = paramInt2 + j;
-      j = paramInt2 - j;
-      paramInt2 = i;
-      i = j;
-    }
-    else
-    {
-      paramInt2 = paramView.getHeight();
-      i = 0;
-    }
-    paramLayoutParams.gravity = 49;
-    Object localObject1 = this.a.getResources();
-    if (paramBoolean) {
-      j = go.d.tooltip_y_offset_touch;
-    } else {
-      j = go.d.tooltip_y_offset_non_touch;
-    }
-    int k = ((Resources)localObject1).getDimensionPixelOffset(j);
-    localObject1 = a(paramView);
-    if (localObject1 == null) {
-      return;
-    }
-    ((View)localObject1).getWindowVisibleDisplayFrame(this.e);
-    if ((this.e.left < 0) && (this.e.top < 0))
-    {
-      localObject2 = this.a.getResources();
-      j = ((Resources)localObject2).getIdentifier("status_bar_height", "dimen", "android");
-      if (j != 0) {
-        j = ((Resources)localObject2).getDimensionPixelSize(j);
-      } else {
-        j = 0;
-      }
-      localObject2 = ((Resources)localObject2).getDisplayMetrics();
-      this.e.set(0, j, ((DisplayMetrics)localObject2).widthPixels, ((DisplayMetrics)localObject2).heightPixels);
-    }
-    ((View)localObject1).getLocationOnScreen(this.g);
-    paramView.getLocationOnScreen(this.f);
-    paramView = this.f;
-    int j = paramView[0];
-    Object localObject2 = this.g;
-    paramView[0] = (j - localObject2[0]);
-    paramView[1] -= localObject2[1];
-    paramLayoutParams.x = (paramView[0] + paramInt1 - ((View)localObject1).getWidth() / 2);
-    paramInt1 = View.MeasureSpec.makeMeasureSpec(0, 0);
-    this.b.measure(paramInt1, paramInt1);
-    paramInt1 = this.b.getMeasuredHeight();
-    paramView = this.f;
-    i = paramView[1] + i - k - paramInt1;
-    paramInt2 = paramView[1] + paramInt2 + k;
-    if (paramBoolean)
-    {
-      if (i < 0) {
-        paramLayoutParams.y = paramInt2;
+      paramInt = this.a.getResourceId(paramInt, 0);
+      if (paramInt != 0) {
+        return ik.a().a(this.b, paramInt, true);
       }
     }
-    else if (paramInt1 + paramInt2 <= this.e.height())
+    return null;
+  }
+  
+  public final int c(int paramInt1, int paramInt2)
+  {
+    return this.a.getInteger(paramInt1, paramInt2);
+  }
+  
+  public final CharSequence c(int paramInt)
+  {
+    return this.a.getText(paramInt);
+  }
+  
+  public final int d(int paramInt1, int paramInt2)
+  {
+    return this.a.getDimensionPixelOffset(paramInt1, paramInt2);
+  }
+  
+  public final String d(int paramInt)
+  {
+    return this.a.getString(paramInt);
+  }
+  
+  public final int e(int paramInt1, int paramInt2)
+  {
+    return this.a.getDimensionPixelSize(paramInt1, paramInt2);
+  }
+  
+  public final ColorStateList e(int paramInt)
+  {
+    if (this.a.hasValue(paramInt))
     {
-      paramLayoutParams.y = paramInt2;
-      return;
+      int i = this.a.getResourceId(paramInt, 0);
+      if (i != 0)
+      {
+        ColorStateList localColorStateList = gu.a(this.b, i);
+        if (localColorStateList != null) {
+          return localColorStateList;
+        }
+      }
     }
-    paramLayoutParams.y = i;
+    return this.a.getColorStateList(paramInt);
   }
   
-  private boolean b()
+  public final int f(int paramInt1, int paramInt2)
   {
-    return this.b.getParent() != null;
+    return this.a.getLayoutDimension(paramInt1, paramInt2);
   }
   
-  final void a()
+  public final boolean f(int paramInt)
   {
-    if (!b()) {
-      return;
-    }
-    ((WindowManager)this.a.getSystemService("window")).removeView(this.b);
+    return this.a.hasValue(paramInt);
   }
   
-  final void a(View paramView, int paramInt1, int paramInt2, boolean paramBoolean, CharSequence paramCharSequence)
+  public final int g(int paramInt1, int paramInt2)
   {
-    if (b()) {
-      a();
-    }
-    this.c.setText(paramCharSequence);
-    a(paramView, paramInt1, paramInt2, paramBoolean, this.d);
-    ((WindowManager)this.a.getSystemService("window")).addView(this.b, this.d);
+    return this.a.getResourceId(paramInt1, paramInt2);
   }
 }
 

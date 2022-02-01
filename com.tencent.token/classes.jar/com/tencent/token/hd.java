@@ -1,157 +1,132 @@
 package com.tencent.token;
 
-import android.view.ActionMode;
-import android.view.ActionMode.Callback;
-import android.view.KeyEvent;
-import android.view.KeyboardShortcutGroup;
+import android.content.Context;
+import android.support.v7.widget.ActionBarContextView;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.MotionEvent;
-import android.view.SearchEvent;
 import android.view.View;
-import android.view.Window.Callback;
-import android.view.WindowManager.LayoutParams;
-import android.view.accessibility.AccessibilityEvent;
-import java.util.List;
+import java.lang.ref.WeakReference;
 
-public class hd
-  implements Window.Callback
+public final class hd
+  extends ha
+  implements hp.a
 {
-  final Window.Callback e;
+  private Context a;
+  private ActionBarContextView b;
+  private ha.a e;
+  private WeakReference<View> f;
+  private boolean g;
+  private boolean h;
+  private hp i;
   
-  public hd(Window.Callback paramCallback)
+  public hd(Context paramContext, ActionBarContextView paramActionBarContextView, ha.a parama, boolean paramBoolean)
   {
-    if (paramCallback != null)
-    {
-      this.e = paramCallback;
+    this.a = paramContext;
+    this.b = paramActionBarContextView;
+    this.e = parama;
+    paramContext = new hp(paramActionBarContextView.getContext());
+    paramContext.e = 1;
+    this.i = paramContext;
+    this.i.a(this);
+    this.h = paramBoolean;
+  }
+  
+  public final MenuInflater a()
+  {
+    return new hf(this.b.getContext());
+  }
+  
+  public final void a(int paramInt)
+  {
+    b(this.a.getString(paramInt));
+  }
+  
+  public final void a(View paramView)
+  {
+    this.b.setCustomView(paramView);
+    if (paramView != null) {
+      paramView = new WeakReference(paramView);
+    } else {
+      paramView = null;
+    }
+    this.f = paramView;
+  }
+  
+  public final void a(hp paramhp)
+  {
+    d();
+    this.b.a();
+  }
+  
+  public final void a(CharSequence paramCharSequence)
+  {
+    this.b.setSubtitle(paramCharSequence);
+  }
+  
+  public final void a(boolean paramBoolean)
+  {
+    super.a(paramBoolean);
+    this.b.setTitleOptional(paramBoolean);
+  }
+  
+  public final boolean a(hp paramhp, MenuItem paramMenuItem)
+  {
+    return this.e.a(this, paramMenuItem);
+  }
+  
+  public final Menu b()
+  {
+    return this.i;
+  }
+  
+  public final void b(int paramInt)
+  {
+    a(this.a.getString(paramInt));
+  }
+  
+  public final void b(CharSequence paramCharSequence)
+  {
+    this.b.setTitle(paramCharSequence);
+  }
+  
+  public final void c()
+  {
+    if (this.g) {
       return;
     }
-    throw new IllegalArgumentException("Window callback may not be null");
+    this.g = true;
+    this.b.sendAccessibilityEvent(32);
+    this.e.a(this);
   }
   
-  public boolean dispatchGenericMotionEvent(MotionEvent paramMotionEvent)
+  public final void d()
   {
-    return this.e.dispatchGenericMotionEvent(paramMotionEvent);
+    this.e.b(this, this.i);
   }
   
-  public boolean dispatchKeyEvent(KeyEvent paramKeyEvent)
+  public final CharSequence f()
   {
-    return this.e.dispatchKeyEvent(paramKeyEvent);
+    return this.b.getTitle();
   }
   
-  public boolean dispatchKeyShortcutEvent(KeyEvent paramKeyEvent)
+  public final CharSequence g()
   {
-    return this.e.dispatchKeyShortcutEvent(paramKeyEvent);
+    return this.b.getSubtitle();
   }
   
-  public boolean dispatchPopulateAccessibilityEvent(AccessibilityEvent paramAccessibilityEvent)
+  public final boolean h()
   {
-    return this.e.dispatchPopulateAccessibilityEvent(paramAccessibilityEvent);
+    return this.b.g;
   }
   
-  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
+  public final View i()
   {
-    return this.e.dispatchTouchEvent(paramMotionEvent);
-  }
-  
-  public boolean dispatchTrackballEvent(MotionEvent paramMotionEvent)
-  {
-    return this.e.dispatchTrackballEvent(paramMotionEvent);
-  }
-  
-  public void onActionModeFinished(ActionMode paramActionMode)
-  {
-    this.e.onActionModeFinished(paramActionMode);
-  }
-  
-  public void onActionModeStarted(ActionMode paramActionMode)
-  {
-    this.e.onActionModeStarted(paramActionMode);
-  }
-  
-  public void onAttachedToWindow()
-  {
-    this.e.onAttachedToWindow();
-  }
-  
-  public void onContentChanged()
-  {
-    this.e.onContentChanged();
-  }
-  
-  public boolean onCreatePanelMenu(int paramInt, Menu paramMenu)
-  {
-    return this.e.onCreatePanelMenu(paramInt, paramMenu);
-  }
-  
-  public View onCreatePanelView(int paramInt)
-  {
-    return this.e.onCreatePanelView(paramInt);
-  }
-  
-  public void onDetachedFromWindow()
-  {
-    this.e.onDetachedFromWindow();
-  }
-  
-  public boolean onMenuItemSelected(int paramInt, MenuItem paramMenuItem)
-  {
-    return this.e.onMenuItemSelected(paramInt, paramMenuItem);
-  }
-  
-  public boolean onMenuOpened(int paramInt, Menu paramMenu)
-  {
-    return this.e.onMenuOpened(paramInt, paramMenu);
-  }
-  
-  public void onPanelClosed(int paramInt, Menu paramMenu)
-  {
-    this.e.onPanelClosed(paramInt, paramMenu);
-  }
-  
-  public void onPointerCaptureChanged(boolean paramBoolean)
-  {
-    this.e.onPointerCaptureChanged(paramBoolean);
-  }
-  
-  public boolean onPreparePanel(int paramInt, View paramView, Menu paramMenu)
-  {
-    return this.e.onPreparePanel(paramInt, paramView, paramMenu);
-  }
-  
-  public void onProvideKeyboardShortcuts(List<KeyboardShortcutGroup> paramList, Menu paramMenu, int paramInt)
-  {
-    this.e.onProvideKeyboardShortcuts(paramList, paramMenu, paramInt);
-  }
-  
-  public boolean onSearchRequested()
-  {
-    return this.e.onSearchRequested();
-  }
-  
-  public boolean onSearchRequested(SearchEvent paramSearchEvent)
-  {
-    return this.e.onSearchRequested(paramSearchEvent);
-  }
-  
-  public void onWindowAttributesChanged(WindowManager.LayoutParams paramLayoutParams)
-  {
-    this.e.onWindowAttributesChanged(paramLayoutParams);
-  }
-  
-  public void onWindowFocusChanged(boolean paramBoolean)
-  {
-    this.e.onWindowFocusChanged(paramBoolean);
-  }
-  
-  public ActionMode onWindowStartingActionMode(ActionMode.Callback paramCallback)
-  {
-    return this.e.onWindowStartingActionMode(paramCallback);
-  }
-  
-  public ActionMode onWindowStartingActionMode(ActionMode.Callback paramCallback, int paramInt)
-  {
-    return this.e.onWindowStartingActionMode(paramCallback, paramInt);
+    WeakReference localWeakReference = this.f;
+    if (localWeakReference != null) {
+      return (View)localWeakReference.get();
+    }
+    return null;
   }
 }
 

@@ -1,18 +1,27 @@
 package com.tencent.token;
 
-import com.tencent.turingfd.sdk.base.Dew;
-import java.util.ArrayList;
-import java.util.List;
+import android.os.Handler;
+import android.os.HandlerThread;
 
 public final class adl
 {
-  public Dew a;
-  public List<String> b = new ArrayList();
+  public static final agi<adl> a = new a();
+  public Handler b;
   
-  public adl(Dew paramDew, List<String> paramList)
+  public adl()
   {
-    this.a = paramDew;
-    this.b.addAll(paramList);
+    HandlerThread localHandlerThread = new HandlerThread("TuringMMWorker");
+    localHandlerThread.start();
+    this.b = new Handler(localHandlerThread.getLooper());
+  }
+  
+  public final class a
+    extends agi<adl>
+  {
+    public final Object a()
+    {
+      return new adl();
+    }
   }
 }
 

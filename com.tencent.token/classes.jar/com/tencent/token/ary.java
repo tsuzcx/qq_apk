@@ -1,54 +1,20 @@
 package com.tencent.token;
 
-import android.app.Application;
-
-public final class ary
+final class ary
 {
-  public static int a(int paramInt)
-  {
-    return ql.a.a().a(paramInt);
-  }
+  public int a;
+  public ai b = null;
+  public int c = 0;
+  public boolean d = false;
+  public aik e = null;
+  public long f = -1L;
   
-  public static a a(int... paramVarArgs)
+  public ary(ai paramai, int paramInt, boolean paramBoolean, aik paramaik)
   {
-    return new a(paramVarArgs, (byte)0);
-  }
-  
-  public static void a(Application paramApplication, ase paramase)
-  {
-    qp.a.a().a = paramase;
-    asc.b.a().a = null;
-    ql.a.a().a(paramApplication);
-  }
-  
-  public static final class a
-  {
-    private int[] a;
-    private int b = 0;
-    private int c;
-    private boolean d;
-    private boolean e;
-    private boolean f;
-    
-    private a(int... paramVarArgs)
-    {
-      this.a = paramVarArgs;
-    }
-    
-    public final void a(asa paramasa)
-    {
-      if (this.b != 0)
-      {
-        ql.a.a().a(this.a, this.d, this.e, this.c, paramasa);
-        return;
-      }
-      if (this.f)
-      {
-        ql.a.a().c(this.a, this.d, this.e, this.c, paramasa);
-        return;
-      }
-      ql.a.a().b(this.a, this.d, this.e, this.c, paramasa);
-    }
+    this.c = paramInt;
+    this.b = paramai;
+    this.d = paramBoolean;
+    this.e = paramaik;
   }
 }
 

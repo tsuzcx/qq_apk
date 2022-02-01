@@ -1,150 +1,191 @@
 package com.tencent.token;
 
-import android.content.Intent;
-import android.content.res.Resources;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.os.Handler;
-import android.os.Message;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
-import android.view.ViewGroup.MarginLayoutParams;
+import android.view.animation.AccelerateInterpolator;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.view.animation.TranslateAnimation;
 import android.widget.BaseAdapter;
-import android.widget.Button;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
-import com.tencent.token.core.bean.OnlineDeviceResult;
-import com.tencent.token.core.bean.OnlineDeviceResult.a;
-import com.tencent.token.core.bean.QQUser;
-import com.tencent.token.core.bean.SafeMsgItem;
 import com.tencent.token.global.RqdApplication;
-import com.tencent.token.ui.IndexActivity;
-import com.tencent.token.ui.LoginMsgActivity;
-import com.tencent.token.ui.OpMsgDisplayActivity;
-import com.tmsdk.TMSDKContext;
-import java.util.ArrayList;
-import oicq.wlogin_sdk.request.WtloginHelper;
+import com.tencent.token.ui.UtilsAccountLockActivity;
+import com.tencent.token.ui.base.SwitchButton;
+import com.tencent.token.ui.base.UtilsAccountLockTipDialog;
 
 public final class ye
   extends BaseAdapter
 {
-  public final int a = 15;
-  View.OnClickListener b = null;
-  public View c;
-  public View d;
-  public View e;
-  public int f = 1;
-  private final int g = 1;
-  private final int h = 2;
-  private final int i = 3;
-  private final int j = 4;
-  private LoginMsgActivity k = null;
-  private LayoutInflater l = null;
-  private aam m;
-  private OnlineDeviceResult n;
+  public UtilsAccountLockActivity a;
+  public boolean b;
+  public ss c;
+  public zi d;
+  public Handler e;
+  public int f;
+  public int g;
+  public int h;
+  public boolean i = false;
+  a j = new a();
+  private LayoutInflater k;
+  private ListView l;
+  private TranslateAnimation m;
   
-  public ye(LoginMsgActivity paramLoginMsgActivity)
+  public ye(UtilsAccountLockActivity paramUtilsAccountLockActivity, ListView paramListView, Handler paramHandler)
   {
-    this.k = paramLoginMsgActivity;
-    this.l = LayoutInflater.from(paramLoginMsgActivity);
+    this.a = paramUtilsAccountLockActivity;
+    this.k = LayoutInflater.from(paramUtilsAccountLockActivity);
+    this.l = paramListView;
+    this.e = paramHandler;
+    this.g = ti.a().a(true);
+    this.h = ti.a().a(false);
+    this.f = (this.g + this.h);
+    int n = this.f;
+    if (n != 0) {
+      this.f = (n + 1);
+    }
   }
   
-  public final void a()
+  public static void a()
   {
-    aam localaam = this.m;
-    if (localaam == null) {
+    int i1 = ti.a().a(true);
+    int n = 0;
+    ss localss;
+    while (n < i1)
+    {
+      localss = ti.a().a(n, true);
+      if (localss != null) {
+        localss.e = false;
+      }
+      n += 1;
+    }
+    i1 = ti.a().a(false);
+    n = 0;
+    while (n < i1)
+    {
+      localss = ti.a().a(n, false);
+      if (localss != null) {
+        localss.e = false;
+      }
+      n += 1;
+    }
+  }
+  
+  public final void a(final zi paramzi, boolean paramBoolean)
+  {
+    if ((paramzi != null) && (paramzi.h != null))
+    {
+      Object localObject = this.a;
+      if (localObject != null)
+      {
+        if (((UtilsAccountLockActivity)localObject).isFinishing()) {
+          return;
+        }
+        localObject = paramzi.h;
+        TextView localTextView = paramzi.b;
+        SwitchButton localSwitchButton = paramzi.d;
+        ProgressBar localProgressBar = paramzi.c;
+        ImageView localImageView = paramzi.e;
+        if ((localTextView != null) && (localSwitchButton != null) && (localProgressBar != null) && (localImageView != null))
+        {
+          if (localObject == null) {
+            return;
+          }
+          if ((paramBoolean) && (!((ss)localObject).b.equals(localTextView.getText()))) {
+            return;
+          }
+          if (((ss)localObject).c) {
+            paramzi.g.setVisibility(0);
+          } else {
+            paramzi.g.setVisibility(8);
+          }
+          if ((this.i) && (((ss)localObject).b.equals(this.c.b)) && (((ss)localObject).c == true))
+          {
+            paramzi = paramzi.f;
+            paramzi.setVisibility(0);
+            this.m = new TranslateAnimation(-300.0F, UtilsAccountLockActivity.windowWidth, 0.0F, 0.0F);
+            this.m.setDuration(800L);
+            this.m.setInterpolator(new AccelerateInterpolator());
+            this.m.setAnimationListener(new Animation.AnimationListener()
+            {
+              public final void onAnimationEnd(Animation paramAnonymousAnimation)
+              {
+                paramzi.setVisibility(8);
+              }
+              
+              public final void onAnimationRepeat(Animation paramAnonymousAnimation) {}
+              
+              public final void onAnimationStart(Animation paramAnonymousAnimation) {}
+            });
+            paramzi.startAnimation(this.m);
+            this.i = false;
+          }
+          if (((ss)localObject).f) {
+            localImageView.setVisibility(0);
+          } else {
+            localImageView.setVisibility(4);
+          }
+          if ((!((ss)localObject).e) && (ti.a().b()))
+          {
+            localProgressBar.setVisibility(4);
+            localSwitchButton.setVisibility(0);
+            localSwitchButton.setEnabled(true);
+            localSwitchButton.a(((ss)localObject).c ^ true, false);
+          }
+          else
+          {
+            localProgressBar.setVisibility(0);
+            localSwitchButton.setVisibility(0);
+            localSwitchButton.setEnabled(false);
+          }
+          if (!ti.a().b()) {
+            this.a.queryAccountLockStatus();
+          }
+          localTextView.setText(((ss)localObject).b);
+          return;
+        }
+        return;
+      }
+    }
+  }
+  
+  public final void b(zi paramzi, boolean paramBoolean)
+  {
+    ss localss = paramzi.h;
+    if ((localss != null) && (paramzi.a != null) && (ti.a().b()))
+    {
+      if (paramBoolean != localss.c) {
+        return;
+      }
+      if (!localss.e)
+      {
+        if (this.b) {
+          return;
+        }
+        this.c = localss;
+        this.d = paramzi;
+        localss.e = true;
+        this.b = true;
+        a(paramzi, false);
+        tm.a().a(3, this.a.getHandler());
+        return;
+      }
       return;
     }
-    int i1 = localaam.a(this.f * 15);
-    if (i1 <= 0)
-    {
-      b();
-      f();
-      d();
-    }
-    else if (i1 >= this.f * 15)
-    {
-      c();
-      f();
-    }
-    else
-    {
-      d();
-      e();
-    }
-    xa.a("query login msg=".concat(String.valueOf(i1)));
-    notifyDataSetChanged();
-    this.k.checkTimeZoneFlag();
-  }
-  
-  public final void a(aam paramaam, OnlineDeviceResult paramOnlineDeviceResult)
-  {
-    this.m = paramaam;
-    this.n = paramOnlineDeviceResult;
-  }
-  
-  public final boolean areAllItemsEnabled()
-  {
-    return true;
-  }
-  
-  public final void b()
-  {
-    TextView localTextView = (TextView)this.c.findViewById(2131166094);
-    localTextView.setVisibility(0);
-    ImageView localImageView = (ImageView)this.c.findViewById(2131165599);
-    OnlineDeviceResult localOnlineDeviceResult = this.n;
-    if ((localOnlineDeviceResult != null) && (localOnlineDeviceResult.mDevicesList != null) && (this.n.mDevicesList.size() > 0))
-    {
-      localTextView.setVisibility(8);
-      localImageView.setVisibility(8);
-      return;
-    }
-    localTextView.setText(2131493413);
-    localTextView.setVisibility(0);
-    localImageView.setVisibility(0);
-  }
-  
-  public final void c()
-  {
-    this.d.findViewById(2131165750).setVisibility(0);
-  }
-  
-  public final void d()
-  {
-    this.d.findViewById(2131165750).setVisibility(8);
-  }
-  
-  public final void e()
-  {
-    this.e.setVisibility(0);
-  }
-  
-  public final void f()
-  {
-    this.e.setVisibility(8);
   }
   
   public final int getCount()
   {
-    Object localObject = this.n;
-    if (localObject != null) {
-      localObject = ((OnlineDeviceResult)localObject).mDevicesList;
-    } else {
-      localObject = null;
-    }
-    if ((localObject != null) && (((ArrayList)localObject).size() > 0)) {
-      return ((ArrayList)localObject).size() + this.m.e();
-    }
-    localObject = this.m;
-    if (localObject == null) {
-      return 0;
-    }
-    return ((aam)localObject).e();
+    return this.f;
   }
   
   public final Object getItem(int paramInt)
@@ -157,339 +198,61 @@ public final class ye
     return paramInt;
   }
   
-  public final int getItemViewType(int paramInt)
-  {
-    return 1;
-  }
-  
   public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    if (paramView == null) {
-      paramView = this.l.inflate(2131296366, paramViewGroup, false);
+    int n = this.g;
+    if (paramInt == n) {
+      return this.k.inflate(2131296470, paramViewGroup, false);
     }
-    Object localObject1 = this.n;
-    int i1;
-    if ((localObject1 != null) && (((OnlineDeviceResult)localObject1).mDevicesList != null)) {
-      i1 = this.n.mDevicesList.size();
-    } else {
-      i1 = 0;
-    }
-    localObject1 = this.n;
-    Object localObject3;
-    Object localObject4;
-    Object localObject5;
-    TextView localTextView1;
-    if ((localObject1 != null) && (((OnlineDeviceResult)localObject1).mDevicesList != null) && (i1 > paramInt))
+    if (paramInt < n)
     {
-      localObject1 = (OnlineDeviceResult.a)this.n.mDevicesList.get(paramInt);
-      paramView = this.l.inflate(2131296366, paramViewGroup, false);
-      paramViewGroup = (RelativeLayout)paramView.findViewById(2131165788);
-      localObject2 = (RelativeLayout)paramView.findViewById(2131165699);
-      localObject3 = (RelativeLayout)paramView.findViewById(2131165700);
-      localObject4 = (RelativeLayout)paramView.findViewById(2131165697);
-      localObject5 = (RelativeLayout)paramView.findViewById(2131165698);
-      localTextView1 = (TextView)paramView.findViewById(2131165787);
-      paramViewGroup.setVisibility(0);
-      ((RelativeLayout)localObject2).setVisibility(8);
-      ((RelativeLayout)localObject3).setVisibility(8);
-      ((RelativeLayout)localObject4).setVisibility(8);
-      ((RelativeLayout)localObject5).setVisibility(8);
-      if (paramInt == 0)
-      {
-        localTextView1.setVisibility(0);
-        localTextView1.setText(2131493420);
-      }
-      else
-      {
-        localTextView1.setVisibility(8);
-      }
-      paramViewGroup = (ImageView)paramView.findViewById(2131165789);
-      localObject2 = (TextView)paramView.findViewById(2131165786);
-      localObject3 = (TextView)paramView.findViewById(2131165785);
-      localObject4 = (Button)paramView.findViewById(2131165352);
-      localObject5 = (ProgressBar)paramView.findViewById(2131165790);
-      ((Button)localObject4).setOnClickListener(new View.OnClickListener()
-      {
-        public final void onClick(View paramAnonymousView)
-        {
-          paramAnonymousView = sa.a();
-          Object localObject = this.a.a;
-          String str1 = this.a.d;
-          int i = this.a.e;
-          int j = this.a.f;
-          String str2 = this.a.g;
-          String str3 = aac.a(ry.a(RqdApplication.n()).a.GetGuid());
-          ye.a(ye.this);
-          String str4 = LoginMsgActivity.mSkey;
-          Handler localHandler = ye.a(ye.this).mHandler;
-          QQUser localQQUser = sz.a().k.b();
-          if (localQQUser == null)
-          {
-            paramAnonymousView = localHandler.obtainMessage(3056);
-            localObject = new wy();
-            ((wy)localObject).a(110, null, null);
-            paramAnonymousView.arg1 = ((wy)localObject).a;
-            paramAnonymousView.obj = localObject;
-            paramAnonymousView.sendToTarget();
-          }
-          else
-          {
-            long l = localQQUser.mUin;
-            qy.a().a(l, (String)localObject, str1, i, str2, str3, "com.tencent.token", str4, new sa.31(paramAnonymousView, l, i, j, str2, (String)localObject, localHandler));
-          }
-          this.b.setVisibility(0);
-          TMSDKContext.saveActionData(1150063);
-        }
-      });
-      ((ProgressBar)localObject5).setVisibility(8);
-      ((TextView)localObject2).setText(((OnlineDeviceResult.a)localObject1).b);
-      ((TextView)localObject3).setText(((OnlineDeviceResult.a)localObject1).c);
-      if (((OnlineDeviceResult.a)localObject1).h == 4) {
-        paramViewGroup.setImageResource(2131099900);
-      } else if (((OnlineDeviceResult.a)localObject1).h == 3) {
-        paramViewGroup.setImageResource(2131099927);
-      } else {
-        paramViewGroup.setImageResource(2131099916);
-      }
-      paramViewGroup = (ImageView)paramView.findViewById(2131165448);
-      localObject1 = (ImageView)paramView.findViewById(2131165449);
-      localObject2 = (ImageView)paramView.findViewById(2131165450);
-      if (paramInt == 0) {
-        paramViewGroup.setVisibility(0);
-      } else {
-        paramViewGroup.setVisibility(8);
-      }
-      if ((this.n.mDevicesList != null) && (paramInt == this.n.mDevicesList.size() - 1))
-      {
-        ((ImageView)localObject1).setVisibility(0);
-        ((ImageView)localObject2).setVisibility(8);
-        return paramView;
-      }
-      ((ImageView)localObject1).setVisibility(8);
-      ((ImageView)localObject2).setVisibility(0);
+      paramView = this.k.inflate(2131296473, paramViewGroup, false);
+      paramViewGroup = ti.a().a(paramInt, true);
+    }
+    else
+    {
+      paramView = this.k.inflate(2131296472, paramViewGroup, false);
+      paramViewGroup = ti.a().a(paramInt - this.g - 1, false);
+    }
+    if (paramViewGroup == null) {
       return paramView;
     }
-    paramViewGroup = this.m;
-    if (paramViewGroup == null) {
-      return null;
-    }
-    int i2 = paramInt - i1;
-    Object localObject2 = paramViewGroup.b(i2);
-    if (localObject2 != null)
-    {
-      if ((((SafeMsgItem)localObject2).mFlag & 0x4) == 4) {
-        paramInt = 1;
-      } else {
-        paramInt = 0;
-      }
-      paramView.setOnClickListener(new a((SafeMsgItem)localObject2, i2));
-      if (paramInt != 0) {
-        paramView.setOnTouchListener(new b(true, ((SafeMsgItem)localObject2).c()));
-      } else {
-        paramView.setOnTouchListener(new b(false, ((SafeMsgItem)localObject2).c()));
-      }
-      paramViewGroup = (TextView)paramView.findViewById(2131165787);
-      if (i2 == 0)
-      {
-        paramViewGroup.setVisibility(0);
-        paramViewGroup.setText(2131493311);
-      }
-      else
-      {
-        paramViewGroup.setVisibility(8);
-      }
-      paramViewGroup = (RelativeLayout)paramView.findViewById(2131165788);
-      RelativeLayout localRelativeLayout = (RelativeLayout)paramView.findViewById(2131165699);
-      localObject3 = (RelativeLayout)paramView.findViewById(2131165700);
-      localObject4 = (RelativeLayout)paramView.findViewById(2131165697);
-      localObject5 = (RelativeLayout)paramView.findViewById(2131165698);
-      paramViewGroup.setVisibility(8);
-      ((RelativeLayout)localObject3).setVisibility(0);
-      TextView localTextView3 = (TextView)paramView.findViewById(2131166076);
-      TextView localTextView4 = (TextView)paramView.findViewById(2131166075);
-      TextView localTextView5 = (TextView)paramView.findViewById(2131165758);
-      localTextView1 = (TextView)paramView.findViewById(2131165693);
-      TextView localTextView2 = (TextView)paramView.findViewById(2131165694);
-      ImageView localImageView1 = (ImageView)paramView.findViewById(2131165695);
-      ImageView localImageView2 = (ImageView)paramView.findViewById(2131165696);
-      ImageView localImageView3 = (ImageView)paramView.findViewById(2131165703);
-      localObject1 = (ImageView)paramView.findViewById(2131165704);
-      ImageView localImageView4 = (ImageView)paramView.findViewById(2131165705);
-      paramViewGroup = (ImageView)paramView.findViewById(2131165706);
-      if (i2 == 0)
-      {
-        localRelativeLayout.setVisibility(0);
-        ((ViewGroup.MarginLayoutParams)localRelativeLayout.getLayoutParams()).topMargin = ((int)(10.0F * IndexActivity.S_DENSITY));
-      }
-      else
-      {
-        SafeMsgItem localSafeMsgItem = this.m.b(i2 - 1);
-        if ((localSafeMsgItem != null) && (!aac.a(localSafeMsgItem.mTime * 1000L, ((SafeMsgItem)localObject2).mTime * 1000L)))
-        {
-          localRelativeLayout.setVisibility(0);
-          ((ViewGroup.MarginLayoutParams)localRelativeLayout.getLayoutParams()).topMargin = 0;
-        }
-        else
-        {
-          localRelativeLayout.setVisibility(8);
-        }
-      }
-      if ((paramInt == 0) && (!((SafeMsgItem)localObject2).d()))
-      {
-        ((RelativeLayout)localObject3).setBackgroundResource(2131099949);
-        localTextView3.setTextAppearance(this.k, 2131558772);
-        localTextView4.setTextAppearance(this.k, 2131558771);
-        ((RelativeLayout)localObject4).setVisibility(0);
-        ((RelativeLayout)localObject5).setVisibility(4);
-        localImageView3.setBackgroundResource(2131099944);
-        if (i2 == getCount() - 1 - i1) {
-          localImageView4.setVisibility(4);
-        } else {
-          localImageView4.setVisibility(0);
-        }
-      }
-      else if ((!((SafeMsgItem)localObject2).c()) && (!((SafeMsgItem)localObject2).d()))
-      {
-        ((ImageView)localObject1).setBackgroundResource(2131099946);
-        if (i2 == getCount() - 1 - i1) {
-          paramViewGroup.setVisibility(4);
-        } else {
-          paramViewGroup.setVisibility(0);
-        }
-        ((RelativeLayout)localObject3).setBackgroundResource(2131099948);
-        localTextView3.setTextAppearance(this.k, 2131558768);
-        localTextView4.setTextAppearance(this.k, 2131558767);
-        ((RelativeLayout)localObject4).setVisibility(4);
-        ((RelativeLayout)localObject5).setVisibility(0);
-      }
-      else
-      {
-        ((RelativeLayout)localObject3).setBackgroundResource(2131099949);
-        localTextView3.setTextAppearance(this.k, 2131558772);
-        localTextView4.setTextAppearance(this.k, 2131558771);
-        ((RelativeLayout)localObject4).setVisibility(4);
-        ((RelativeLayout)localObject5).setVisibility(0);
-        ((ImageView)localObject1).setBackgroundResource(2131099945);
-        if (i2 == getCount() - 1 - i1) {
-          paramViewGroup.setVisibility(4);
-        } else {
-          paramViewGroup.setVisibility(0);
-        }
-      }
-      localTextView3.setText(((SafeMsgItem)localObject2).mTitle);
-      paramInt = ((SafeMsgItem)localObject2).mContent.indexOf('|');
-      if (paramInt != -1) {
-        localTextView4.setText(((SafeMsgItem)localObject2).mContent.substring(0, paramInt));
-      } else {
-        localTextView4.setText(((SafeMsgItem)localObject2).mContent);
-      }
-      localTextView5.setText(aac.d(((SafeMsgItem)localObject2).mTime * 1000L));
-      paramViewGroup = aac.b(((SafeMsgItem)localObject2).mTime * 1000L);
-      if (paramViewGroup.length() > 2)
-      {
-        localTextView1.setVisibility(8);
-        localTextView2.setVisibility(0);
-        localTextView2.setText(paramViewGroup);
-        localImageView1.setVisibility(4);
-        localImageView2.setVisibility(0);
-      }
-      else
-      {
-        localTextView2.setVisibility(8);
-        localTextView1.setVisibility(0);
-        localTextView1.setText(paramViewGroup);
-        localImageView1.setVisibility(0);
-        localImageView2.setVisibility(4);
-      }
-    }
+    paramViewGroup = new zi(paramView, paramViewGroup);
+    paramViewGroup.d.setTag(paramViewGroup);
+    paramViewGroup.d.setOnCheckedChangeListener(this.j);
+    a(paramViewGroup, false);
     return paramView;
   }
   
-  public final int getViewTypeCount()
-  {
-    return 1;
-  }
-  
   final class a
-    implements View.OnClickListener
+    implements CompoundButton.OnCheckedChangeListener
   {
-    int a;
-    SafeMsgItem b;
+    a() {}
     
-    public a(SafeMsgItem paramSafeMsgItem, int paramInt)
+    public final void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
     {
-      this.a = paramInt;
-      this.b = paramSafeMsgItem;
-    }
-    
-    public final void onClick(View paramView)
-    {
-      paramView = new Intent(ye.a(ye.this), OpMsgDisplayActivity.class);
-      paramView.putExtra("position", this.a);
-      paramView.putExtra("type", 1);
-      paramView.putExtra("ipcmsg", this.b.b());
-      StringBuilder localStringBuilder = new StringBuilder("ipsmsg = ");
-      localStringBuilder.append(this.b.b());
-      xa.c(localStringBuilder.toString());
-      ye.a(ye.this).startActivity(paramView);
-      TMSDKContext.SaveStringData(1150064, "");
-    }
-  }
-  
-  final class b
-    implements View.OnTouchListener
-  {
-    private boolean b;
-    private boolean c;
-    
-    public b(boolean paramBoolean1, boolean paramBoolean2)
-    {
-      this.b = paramBoolean1;
-      this.c = paramBoolean2;
-    }
-    
-    public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-    {
-      TextView localTextView1 = (TextView)paramView.findViewById(2131166076);
-      TextView localTextView2 = (TextView)paramView.findViewById(2131166075);
-      TextView localTextView3 = (TextView)paramView.findViewById(2131165758);
-      RelativeLayout localRelativeLayout = (RelativeLayout)paramView.findViewById(2131165700);
-      int i = ye.a(ye.this).getResources().getColor(2130968665);
-      switch (paramMotionEvent.getAction())
-      {
-      default: 
-        break;
-      case 2: 
-        if (paramView.isPressed())
-        {
-          localTextView1.setTextColor(i);
-          localTextView2.setTextColor(i);
-          localTextView3.setTextColor(i);
-          localRelativeLayout.setBackgroundResource(2131099950);
-        }
-        break;
-      case 1: 
-      case 3: 
-        if ((this.b) && (!this.c))
-        {
-          localRelativeLayout.setBackgroundResource(2131099948);
-          localTextView1.setTextAppearance(ye.a(ye.this), 2131558768);
-          localTextView2.setTextAppearance(ye.a(ye.this), 2131558767);
-        }
-        else
-        {
-          localRelativeLayout.setBackgroundResource(2131099949);
-          localTextView1.setTextAppearance(ye.a(ye.this), 2131558772);
-          localTextView2.setTextAppearance(ye.a(ye.this), 2131558771);
-        }
-        localTextView3.setTextAppearance(ye.a(ye.this), 2131558783);
-        break;
+      paramCompoundButton = (zi)paramCompoundButton.getTag();
+      if (paramCompoundButton == null) {
+        return;
       }
-      localTextView1.setTextColor(i);
-      localTextView2.setTextColor(i);
-      localTextView3.setTextColor(i);
-      localRelativeLayout.setBackgroundResource(2131099950);
-      return false;
+      if ((!xm.c()) && (!paramBoolean))
+      {
+        try
+        {
+          SharedPreferences.Editor localEditor = RqdApplication.p().getSharedPreferences("sp_name_global", 0).edit();
+          localEditor.putBoolean("utils_account_lock_tip", true);
+          localEditor.commit();
+        }
+        catch (Exception localException)
+        {
+          StringBuilder localStringBuilder = new StringBuilder("SharedPreferences msg ");
+          localStringBuilder.append(localException.getMessage());
+          xj.c(localStringBuilder.toString());
+        }
+        new UtilsAccountLockTipDialog(ye.a(ye.this), ye.b(ye.this), paramCompoundButton, paramBoolean).show();
+        return;
+      }
+      ye.this.b(paramCompoundButton, paramBoolean);
     }
   }
 }

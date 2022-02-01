@@ -1,511 +1,276 @@
 package com.tencent.token;
 
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.text.TextUtils;
 import com.tencent.token.global.RqdApplication;
-import com.tencent.token.utils.encrypt.TknEncManager;
-import com.tencent.token.utils.encrypt.random.PRNGFixes;
-import com.tencent.token.utils.encrypt.random.SecureRandom;
-import com.tencent.wcdb.database.SQLiteDatabase;
-import com.tmsdk.common.util.TmsLog;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.TimeZone;
 
-public final class rw
+public class rw
 {
-  public byte[] a;
-  long b = 0L;
-  int c = 30;
-  public int[] d = new int[6];
-  long e = 0L;
-  public String f = "";
-  Handler g = new Handler(Looper.getMainLooper())
-  {
-    public final void handleMessage(Message paramAnonymousMessage)
-    {
-      if (paramAnonymousMessage.what == 4016)
-      {
-        if (paramAnonymousMessage.arg1 == 0)
-        {
-          TmsLog.i("mod_seed", "mod seed done, success.");
-          return;
-        }
-        if (sz.a().k.b() == null) {
-          return;
-        }
-        paramAnonymousMessage = (wy)paramAnonymousMessage.obj;
-        StringBuilder localStringBuilder = new StringBuilder("mod seed failed, errcode:");
-        localStringBuilder.append(paramAnonymousMessage.a);
-        TmsLog.e("mod_seed", localStringBuilder.toString());
-      }
-    }
-  };
-  Runnable h = new Runnable()
-  {
-    public final void run()
-    {
-      if (System.currentTimeMillis() - rw.this.i > 1000L)
-      {
-        TmsLog.i("mod_seed", "auto mod is excuting.");
-        ru.a.a().b(rw.this.g);
-        rw.this.i = System.currentTimeMillis();
-      }
-    }
-  };
-  long i = 0L;
-  private int j = 0;
+  private static rw c;
+  private final String A = "conch_update_cloud_cmd_id";
+  private final String B = "conch_update_cloud_conchseqno";
+  private final String C = "conch_update_cloud_task_for_active";
+  private final String D = "meri_silent_update_switch_user";
+  private final String E = "meri_silent_update_switch_cloud";
+  private final String F = "meri_silent_update";
+  private final String G = "meri_silent_update_url";
+  private final String H = "meri_silent_update_msg_title";
+  private final String I = "meri_silent_update_msg";
+  private final String J = "meri_silent_update_msg_type";
+  private final String K = "meri_silent_update_msg_ask_type";
+  private final String L = "meri_silent_update_show_insatll_dlg";
+  private final String M = "meri_silent_update_next_notify_time";
+  private final String N = "meri_silent_update_show_insatll_notice";
+  private final String O = "is_need_report_go_browser";
+  private final String P = "auto_install_under_root";
+  private final String Q = "has_click_update_tip_in_main_page";
+  private final String R = "silent_download_time_control";
+  private final String S = "qqpim_download_position_show";
+  private final String T = "kiawl";
+  public ru a = new rs(RqdApplication.p(), "updateConfig");
+  final String b = "huagp";
+  private final String d = "meri_lastest_version_p";
+  private final String e = "meri_lastest_version_c";
+  private final String f = "meri_lastest_version_h";
+  private final String g = "meri_lastest_build";
+  private final String h = "meri_lastest_version_code";
+  private final String i = "meri_lastest_featrue";
+  private final String j = "meri_lastest_size";
+  private final String k = "meri_lastest_url";
+  private final String l = "meri_patch_url";
+  private final String m = "meri_need_show_update_dialog";
+  private final String n = "meri_update_start_time";
+  private final String o = "meri_update_end_time";
+  private final String p = "meri_update_url_type";
+  private final String q = "meri_update_market";
+  private final String r = "meri_update_msg_type";
+  private final String s = "meri_update_msg_title";
+  private final String t = "meri_update_process";
+  private final String u = "meri_update_need_show";
+  private final String v = "meri_update_remind_time";
+  private final String w = "meri_update_cycle_time";
+  private final String x = "meri_update_show_dialog_count";
+  private final String y = "conch_update_cloud_task_id";
+  private final String z = "conch_update_cloud_task_seqno";
   
-  public rw()
+  public static rw a()
   {
-    h();
-  }
-  
-  public static String b()
-  {
-    try
-    {
-      String str = c().getString("token_info", "");
-      return str;
-    }
-    catch (Exception localException)
-    {
-      label15:
-      break label15;
-    }
-    return null;
-  }
-  
-  public static SharedPreferences c()
-  {
-    switch ()
-    {
-    default: 
-      return RqdApplication.n().getSharedPreferences("token_save_info", 0);
-    case 3: 
-      return RqdApplication.n().getSharedPreferences("token_save_info_gray", 0);
-    case 2: 
-      return RqdApplication.n().getSharedPreferences("token_save_info_exp", 0);
-    case 1: 
-      return RqdApplication.n().getSharedPreferences("token_save_info", 0);
-    }
-    return RqdApplication.n().getSharedPreferences("token_save_info_test", 0);
-  }
-  
-  private int[] f()
-  {
-    int[] arrayOfInt2 = new int[16];
-    int k = 0;
-    while (k < 16)
-    {
-      arrayOfInt2[k] = 0;
-      k += 1;
-    }
-    Object localObject2 = c().getString("token_seq_sp", "");
-    Object localObject1 = localObject2;
-    if (TextUtils.isEmpty((CharSequence)localObject2)) {
-      localObject1 = e();
-    }
-    localObject2 = arrayOfInt2;
-    if (16 == ((String)localObject1).length())
-    {
-      k = 0;
-      int[] arrayOfInt1;
-      for (;;)
-      {
-        localObject2 = arrayOfInt2;
-        if (k >= 16) {
-          return localObject2;
-        }
-        try
-        {
-          arrayOfInt2[k] = Integer.parseInt(String.valueOf(((String)localObject1).charAt(k)));
-          k += 1;
-        }
-        catch (Exception localException)
-        {
-          localException.printStackTrace();
-          arrayOfInt1 = new int[16];
-          k = 0;
-        }
-      }
-      for (;;)
-      {
-        localObject2 = arrayOfInt1;
-        if (k >= 16) {
-          break;
-        }
-        arrayOfInt1[k] = 0;
-        k += 1;
-      }
-    }
-    return localObject2;
-  }
-  
-  private static String g()
-  {
-    byte[] arrayOfByte = new byte[16];
-    Object localObject2 = sb.a();
-    Object localObject1;
-    if (localObject2 != null)
-    {
-      localObject1 = localObject2;
-      if (((String)localObject2).length() != 0) {}
-    }
-    else
-    {
-      localObject1 = System.getProperty("microedition.platform");
-    }
-    localObject2 = localObject1;
-    if (localObject1 == null) {
-      localObject2 = "";
-    }
-    int m = Runtime.getRuntime().hashCode();
-    try
-    {
-      PRNGFixes.a();
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-    }
-    SecureRandom localSecureRandom1 = new SecureRandom();
-    SecureRandom localSecureRandom2 = new SecureRandom();
-    StringBuffer localStringBuffer = new StringBuffer();
-    localStringBuffer.append((String)localObject2);
-    localStringBuffer.append(localSecureRandom2.nextInt());
-    localStringBuffer.append(System.currentTimeMillis());
-    localStringBuffer.append(m);
-    localStringBuffer.append(new Object().hashCode());
-    localSecureRandom1.a(localStringBuffer.toString().getBytes());
-    int k = 1;
-    while (k < 16)
-    {
-      arrayOfByte[k] = ((byte)(Math.abs(localSecureRandom1.nextInt()) % 256));
-      localSecureRandom2.a(localSecureRandom2.a(k));
-      localStringBuffer = new StringBuffer();
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(System.currentTimeMillis());
-      localStringBuffer.append(localStringBuilder.toString());
-      localStringBuffer.append(localSecureRandom2.nextInt());
-      localStringBuffer.append(m);
-      localStringBuffer.append(new Object().hashCode());
-      localStringBuffer.insert(Math.abs(localSecureRandom2.nextInt()) % localStringBuffer.length(), (String)localObject2);
-      localSecureRandom1.a(localStringBuffer.toString().getBytes());
-      k += 1;
-    }
-    arrayOfByte[0] = ((byte)(Math.abs(localSecureRandom1.nextInt()) % 64));
-    return sr.a(arrayOfByte);
-  }
-  
-  private void h()
-  {
-    for (;;)
-    {
+    if (c == null) {
       try
       {
-        Object localObject1 = ahh.a();
-        Object localObject3 = new ahk();
-        ((SQLiteDatabase)localObject1).b("CREATE TABLE IF NOT EXISTS token_conf(_ID INTEGER PRIMARY KEY autoincrement,key INTEGER,plusTime INTEGER,tokenIntVTime INTEGER,data BLOB);");
-        Object localObject4 = (ahk)ahh.a((ahj)localObject3, "token_conf", new String[] { "plusTime", "tokenIntVTime", "data" });
-        int k;
-        if (localObject4 == null)
-        {
-          k = 0;
-        }
-        else
-        {
-          ((ahk)localObject3).b = ((ahk)localObject4).b;
-          ((ahk)localObject3).c = ((ahk)localObject4).c;
-          ((ahk)localObject3).d = ((ahk)localObject4).d;
-          k = 1;
-        }
-        if (k == 0)
-        {
-          ((ahk)localObject3).b = 0L;
-          ((ahk)localObject3).d = null;
-          ((ahk)localObject3).c = 30;
-          ((ahk)localObject3).b((SQLiteDatabase)localObject1);
-        }
-        localObject4 = new ahd();
-        ((SQLiteDatabase)localObject1).b("CREATE TABLE IF NOT EXISTS ksid_data(_ID INTEGER PRIMARY KEY autoincrement,key INTEGER,ksid TEXT);");
-        Object localObject5 = (ahd)ahh.a((ahj)localObject4, "ksid_data", new String[] { "ksid" });
-        if (localObject5 == null)
-        {
-          k = 0;
-        }
-        else
-        {
-          ((ahd)localObject4).c = ((ahd)localObject5).c;
-          k = 1;
-        }
-        if (k == 0)
-        {
-          ((ahd)localObject4).c = "";
-          ((ahd)localObject4).b((SQLiteDatabase)localObject1);
-        }
-        this.b = ((ahk)localObject3).b;
-        this.a = ((ahk)localObject3).d;
-        this.c = ((ahk)localObject3).c;
-        this.f = ((ahd)localObject4).c;
-        localObject1 = c();
-        if (localObject1 != null)
-        {
-          bool = true;
-          xa.a(bool);
-          localObject3 = ((SharedPreferences)localObject1).edit();
-          ((SharedPreferences.Editor)localObject3).putBoolean("token_status", true);
-          ((SharedPreferences.Editor)localObject3).commit();
-          if ((this.a != null) && (this.a.length > 0))
-          {
-            this.j = ((SharedPreferences)localObject1).getInt("token_type", 0);
-            if (2 == this.j)
-            {
-              localObject4 = ((SharedPreferences)localObject1).getString("token_info", "");
-              if ((localObject4 != null) && (((String)localObject4).length() != 0))
-              {
-                localObject5 = new aav();
-                localObject3 = ((aav)localObject5).a(this.a, aax.a((String)localObject4));
-                localObject1 = localObject3;
-                if (localObject3 == null) {
-                  localObject1 = ((aav)localObject5).a(this.a, aax.a((String)localObject4));
-                }
-                this.a = ((byte[])localObject1);
-                return;
-              }
-              this.a = null;
-              return;
-            }
-            if (1 == this.j) {
-              this.a = TknEncManager.a().decInitCode(this.a);
-            }
-            a();
-          }
-          return;
+        if (c == null) {
+          c = new rw();
         }
       }
       finally {}
-      boolean bool = false;
     }
+    return c;
   }
   
-  public final void a()
+  public final void a(int paramInt)
   {
-    for (;;)
-    {
-      try
-      {
-        ahk localahk = new ahk();
-        if ((this.a != null) && (this.a.length > 0))
-        {
-          String str = g();
-          aav localaav = new aav();
-          Object localObject3 = localaav.b(this.a, aax.a(str));
-          Object localObject1 = localObject3;
-          if (localObject3 == null) {
-            localObject1 = localaav.b(this.a, aax.a(str));
-          }
-          localObject3 = c();
-          if (localObject3 != null)
-          {
-            bool = true;
-            xa.a(bool);
-            localObject3 = ((SharedPreferences)localObject3).edit();
-            ((SharedPreferences.Editor)localObject3).putInt("token_type", 2);
-            ((SharedPreferences.Editor)localObject3).putString("token_info", str);
-            ((SharedPreferences.Editor)localObject3).commit();
-            localahk.a(this.b, this.c, (byte[])localObject1);
-          }
-        }
-        else
-        {
-          localahk.a(this.b, this.c, this.a);
-          return;
-        }
-      }
-      finally {}
-      boolean bool = false;
-    }
+    this.a.b("meri_update_url_type", paramInt);
   }
   
-  final void a(long paramLong)
+  public final void a(long paramLong)
   {
-    Object localObject1 = Calendar.getInstance();
-    ((Calendar)localObject1).setTime(new Date(paramLong));
-    ((Calendar)localObject1).setTimeZone(TimeZone.getTimeZone("GMT+8"));
-    Object localObject2 = new StringBuffer();
-    ((StringBuffer)localObject2).append(((Calendar)localObject1).get(1));
-    ((StringBuffer)localObject2).append('-');
-    ((StringBuffer)localObject2).append(aac.a(((Calendar)localObject1).get(2) + 1));
-    ((StringBuffer)localObject2).append('-');
-    ((StringBuffer)localObject2).append(aac.a(((Calendar)localObject1).get(5)));
-    ((StringBuffer)localObject2).append(' ');
-    ((StringBuffer)localObject2).append(aac.a(((Calendar)localObject1).get(11)));
-    ((StringBuffer)localObject2).append(':');
-    ((StringBuffer)localObject2).append(aac.a(((Calendar)localObject1).get(12)));
-    ((StringBuffer)localObject2).append(':');
-    ((StringBuffer)localObject2).append(aac.a(((Calendar)localObject1).get(13) / 30 * 30));
-    localObject1 = ((StringBuffer)localObject2).toString().getBytes();
-    localObject2 = this.a;
-    if (localObject2 == null) {
-      return;
-    }
-    byte[] arrayOfByte = new byte[localObject2.length + localObject1.length];
-    System.arraycopy(localObject2, 0, arrayOfByte, 0, localObject2.length);
-    System.arraycopy(localObject1, 0, arrayOfByte, this.a.length, localObject1.length);
-    localObject1 = new aba().b(arrayOfByte);
-    localObject2 = new byte[localObject1.length * 2];
-    int k = 0;
-    int m;
-    while (k < localObject1.length)
-    {
-      m = k * 2;
-      localObject2[m] = ((byte)((localObject1[k] & 0xFF) >>> 4));
-      localObject2[(m + 1)] = ((byte)(localObject1[k] & 0xF));
-      k += 1;
-    }
-    k = 0;
-    while (k < 6)
-    {
-      m = 0;
-      int n = 0;
-      while (m < 9)
-      {
-        n += localObject2[(k + 1 + m * 7)];
-        m += 1;
-      }
-      this.d[k] = (n % 10);
-      k += 1;
-    }
-    paramLong /= 1000L;
-    k = this.c;
-    this.e = (paramLong / k * k * 1000L);
+    this.a.b("meri_update_end_time", paramLong);
+  }
+  
+  public final void a(long paramLong1, long paramLong2, int paramInt1, int paramInt2)
+  {
+    this.a.a();
+    this.a.b("conch_update_cloud_task_id", paramLong1);
+    this.a.b("conch_update_cloud_task_seqno", paramLong2);
+    this.a.b("conch_update_cloud_cmd_id", paramInt1);
+    this.a.b("conch_update_cloud_conchseqno", paramInt2);
+    this.a.b();
+  }
+  
+  public final void a(String paramString)
+  {
+    this.a.b("meri_update_market", paramString);
   }
   
   public final void a(boolean paramBoolean)
   {
-    if (paramBoolean)
-    {
-      if (System.currentTimeMillis() - this.i > 1000L)
-      {
-        TmsLog.i("mod_seed", "handle mod is excuting.");
-        ru.a.a().b(this.g);
-        this.i = System.currentTimeMillis();
-      }
-      return;
-    }
-    Object localObject = c();
-    long l2 = 0L;
-    long l1 = ((SharedPreferences)localObject).getLong("seed_expire_time", 0L);
-    long l3 = System.currentTimeMillis();
-    long l4 = this.b;
-    if (l1 == 0L) {
-      l1 = 31536000000L;
-    } else {
-      l1 -= l3 + l4;
-    }
-    if (l1 >= 31536000000L) {
-      return;
-    }
-    if (l1 < 0L) {
-      l1 = l2;
-    }
-    this.g.removeCallbacks(this.h);
-    this.g.postDelayed(this.h, l1);
-    localObject = new StringBuilder("auto mod will excute in ");
-    ((StringBuilder)localObject).append(l1);
-    ((StringBuilder)localObject).append(" ms later.");
-    TmsLog.i("mod_seed", ((StringBuilder)localObject).toString());
+    this.a.b("huagp", paramBoolean);
   }
   
-  public final long d()
+  public final void b(int paramInt)
+  {
+    this.a.b("meri_lastest_version_p", paramInt);
+  }
+  
+  public final void b(long paramLong)
+  {
+    this.a.b("meri_update_cycle_time", paramLong);
+  }
+  
+  public final void b(String paramString)
+  {
+    this.a.b("meri_lastest_featrue", paramString);
+  }
+  
+  public final void b(boolean paramBoolean)
+  {
+    this.a.b("meri_silent_update", paramBoolean);
+  }
+  
+  public final boolean b()
+  {
+    return this.a.a("huagp", false);
+  }
+  
+  public final long c()
+  {
+    return this.a.a("meri_update_end_time", 0L);
+  }
+  
+  public final void c(int paramInt)
+  {
+    this.a.b("meri_lastest_version_c", paramInt);
+  }
+  
+  public final void c(long paramLong)
   {
     try
     {
-      int[] arrayOfInt = f();
-      StringBuffer localStringBuffer = new StringBuffer();
-      int k = 0;
-      while (k < 16)
-      {
-        localStringBuffer.append(arrayOfInt[k]);
-        k += 1;
-      }
-      l = Long.parseLong(localStringBuffer.toString());
+      throw new Exception();
     }
     catch (Exception localException)
     {
-      long l;
-      label52:
-      break label52;
+      localException.printStackTrace();
+      this.a.b("meri_update_remind_time", paramLong);
     }
-    l = 0L;
-    TmsLog.i("mod_seed", "tokenseq: ".concat(String.valueOf(l)));
-    return l;
   }
   
-  public final String e()
+  public final void c(String paramString)
   {
-    Object localObject1 = new int[16];
-    Object localObject2 = new aba();
-    Object localObject3 = new aba();
-    int i1 = 0;
-    for (;;)
-    {
-      int m;
-      try
-      {
-        localObject2 = ((aba)localObject2).b(((aba)localObject3).b(this.a));
-        localObject3 = new byte[localObject2.length * 2];
-        k = 0;
-        if (k >= localObject2.length) {
-          continue;
-        }
-        m = k * 2;
-        localObject3[m] = ((byte)((localObject2[k] & 0xFF) >>> 4));
-        localObject3[(m + 1)] = ((byte)(localObject2[k] & 0xF));
-        k += 1;
-        continue;
-        if (localObject1[0] == 0) {
-          localObject1[0] = 1;
-        }
-      }
-      catch (Exception localException)
-      {
-        continue;
-        k = 0;
-      }
-      localObject2 = new StringBuilder();
-      int k = i1;
-      if (k < 16)
-      {
-        ((StringBuilder)localObject2).append(localObject1[k]);
-        k += 1;
-      }
-      else
-      {
-        localObject1 = c().edit();
-        ((SharedPreferences.Editor)localObject1).putString("token_seq_sp", ((StringBuilder)localObject2).toString());
-        ((SharedPreferences.Editor)localObject1).commit();
-        return ((StringBuilder)localObject2).toString();
-        while (k < 16)
-        {
-          m = 0;
-          int n = 0;
-          while (m < 4)
-          {
-            n += localObject3[(m * 16 + k)];
-            m += 1;
-          }
-          localObject1[k] = (n % 10);
-          k += 1;
-        }
-      }
-    }
+    this.a.b("meri_lastest_url", paramString);
+  }
+  
+  public final void c(boolean paramBoolean)
+  {
+    this.a.b("meri_update_need_show", paramBoolean);
+  }
+  
+  public final int d()
+  {
+    return this.a.a("meri_lastest_version_p", 0);
+  }
+  
+  public final void d(int paramInt)
+  {
+    this.a.b("meri_lastest_version_h", paramInt);
+  }
+  
+  public final void d(String paramString)
+  {
+    this.a.b("meri_update_msg_title", paramString);
+  }
+  
+  public final int e()
+  {
+    return this.a.a("meri_lastest_version_c", 0);
+  }
+  
+  public final void e(int paramInt)
+  {
+    this.a.b("meri_lastest_build", paramInt);
+  }
+  
+  public final void e(String paramString)
+  {
+    this.a.b("meri_silent_update_url", paramString);
+  }
+  
+  public final int f()
+  {
+    return this.a.a("meri_lastest_version_h", 0);
+  }
+  
+  public final void f(int paramInt)
+  {
+    this.a.b("meri_lastest_version_code", paramInt);
+  }
+  
+  public final void f(String paramString)
+  {
+    this.a.b("meri_silent_update_msg_title", paramString);
+  }
+  
+  public final int g()
+  {
+    return this.a.a("meri_lastest_build", 0);
+  }
+  
+  public final void g(int paramInt)
+  {
+    this.a.b("meri_lastest_size", paramInt);
+  }
+  
+  public final void g(String paramString)
+  {
+    this.a.b("meri_silent_update_msg", paramString);
+  }
+  
+  public final int h()
+  {
+    return this.a.a("meri_lastest_size", -1);
+  }
+  
+  public final void h(int paramInt)
+  {
+    this.a.b("meri_update_msg_type", paramInt);
+  }
+  
+  public final long i()
+  {
+    return this.a.a("conch_update_cloud_task_id", 0L);
+  }
+  
+  public final void i(int paramInt)
+  {
+    this.a.b("meri_silent_update_msg_type", paramInt);
+  }
+  
+  public final String j()
+  {
+    return this.a.a("meri_update_msg_title", "");
+  }
+  
+  public final void j(int paramInt)
+  {
+    this.a.b("meri_silent_update_msg_ask_type", paramInt);
+  }
+  
+  public final void k()
+  {
+    this.a.b("meri_silent_update_show_insatll_dlg", false);
+  }
+  
+  public final void k(int paramInt)
+  {
+    this.a.b("meri_update_process", paramInt);
+  }
+  
+  public final boolean l()
+  {
+    return this.a.a("meri_silent_update_show_insatll_dlg", false);
+  }
+  
+  public final void m()
+  {
+    this.a.b("meri_silent_update_show_insatll_notice", false);
+  }
+  
+  public final long n()
+  {
+    return this.a.a("meri_update_cycle_time", 604800000L);
+  }
+  
+  public final long o()
+  {
+    return this.a.a("meri_update_remind_time", 0L);
   }
 }
 

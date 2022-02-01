@@ -1,101 +1,118 @@
 package com.tencent.token;
 
-import android.os.Handler;
-import android.os.HandlerThread;
-import android.os.Message;
-import android.os.SystemClock;
-import android.view.MotionEvent;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.concurrent.Callable;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.Future;
+import com.tencent.token.core.bean.QQUser;
+import com.tencent.token.global.RqdApplication;
+import java.util.concurrent.CountDownLatch;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public final class tk
+public class tk
 {
-  ExecutorService a = Executors.newFixedThreadPool(5);
-  public b b = new b("");
-  public a c = new a()
-  {
-    public final void a(aaq paramAnonymousaaq)
-    {
-      MotionEvent localMotionEvent = zr.a().j;
-      if (localMotionEvent != null)
-      {
-        StringBuilder localStringBuilder = new StringBuilder("cginame:");
-        localStringBuilder.append(paramAnonymousaaq.a);
-        xa.c(localStringBuilder.toString());
-        localStringBuilder = new StringBuilder("pagename:");
-        localStringBuilder.append(paramAnonymousaaq.i);
-        xa.c(localStringBuilder.toString());
-        localStringBuilder = new StringBuilder("getRawX:");
-        localStringBuilder.append(localMotionEvent.getRawX());
-        xa.c(localStringBuilder.toString());
-        localStringBuilder = new StringBuilder("getRawY:");
-        localStringBuilder.append(localMotionEvent.getRawY());
-        xa.c(localStringBuilder.toString());
-        long l = System.currentTimeMillis() - (SystemClock.uptimeMillis() - localMotionEvent.getDownTime());
-        xa.c("eventStartTime:".concat(String.valueOf(l)));
-        int i = zr.a().k;
-        xa.c("touch_type:".concat(String.valueOf(i)));
-        zr.a().a(i, paramAnonymousaaq.a, paramAnonymousaaq.i, "", "", "", (int)localMotionEvent.getRawX(), (int)localMotionEvent.getRawY(), l);
-        zr.a().b();
-      }
-    }
-    
-    public final void a(aaq paramAnonymousaaq, wy paramAnonymouswy)
-    {
-      if (paramAnonymouswy.b())
-      {
-        rx.a().a(System.currentTimeMillis(), 0, paramAnonymousaaq.a, 0, "", aac.i());
-        if ((!paramAnonymousaaq.e) && (paramAnonymousaaq.d != null))
-        {
-          paramAnonymouswy = paramAnonymousaaq.d.obtainMessage(paramAnonymousaaq.f);
-          paramAnonymouswy.arg1 = 0;
-          paramAnonymouswy.sendToTarget();
-          paramAnonymousaaq.e = true;
-        }
-      }
-      else
-      {
-        if (paramAnonymouswy.a < 10000) {
-          rx.a().a(System.currentTimeMillis(), 0, paramAnonymousaaq.a, 0, "", aac.i());
-        } else {
-          rx.a().a(System.currentTimeMillis(), rx.a(paramAnonymouswy.a), paramAnonymousaaq.a, 1, paramAnonymouswy.b, aac.i());
-        }
-        if ((!paramAnonymousaaq.e) && (paramAnonymousaaq.d != null))
-        {
-          Message localMessage = paramAnonymousaaq.d.obtainMessage(paramAnonymousaaq.f);
-          localMessage.arg1 = paramAnonymouswy.a;
-          localMessage.obj = paramAnonymouswy;
-          localMessage.sendToTarget();
-          paramAnonymousaaq.e = true;
-        }
-      }
-      paramAnonymouswy = tk.this.b;
-      paramAnonymouswy.a.post(new tk.b.4(paramAnonymouswy, paramAnonymousaaq));
-    }
-  };
+  public static byte c = 1;
+  public static byte d = 2;
+  public static byte e = 3;
+  public aay f = null;
   
-  public static abstract interface a
+  protected tk(String paramString)
   {
-    public abstract void a(aaq paramaaq);
-    
-    public abstract void a(aaq paramaaq, wy paramwy);
+    this.f = new aay(paramString);
   }
   
-  public final class b
-    extends HandlerThread
+  final xh a(byte paramByte)
   {
-    public Handler a = new Handler();
-    private Map<aaq, Future<wy>> c = Collections.synchronizedMap(new HashMap());
-    
-    public b(String paramString)
+    final xh localxh = new xh();
+    th.a();
+    final QQUser localQQUser = th.a(localxh);
+    if (localQQUser == null)
     {
-      super();
+      xj.a(localxh.b() ^ true);
+      return localxh;
     }
+    Object localObject = sg.a(RqdApplication.p()).a(localQQUser.mRealUin);
+    if (localObject == null) {
+      localObject = null;
+    } else {
+      localObject = aao.a((byte[])localObject);
+    }
+    rf.a().h();
+    System.currentTimeMillis();
+    long l = aap.a(2, localQQUser.mUin);
+    final CountDownLatch localCountDownLatch = new CountDownLatch(1);
+    rf.a().a(paramByte, 0, 2, localQQUser.mUin, (String)localObject, l, new rf.a()
+    {
+      public final void a(ri paramAnonymousri)
+      {
+        Object localObject = new xh();
+        ((xh)localObject).a = paramAnonymousri.b;
+        ((xh)localObject).c = paramAnonymousri.d;
+        ((xh)localObject).b = paramAnonymousri.d;
+        if (paramAnonymousri.b == 0) {
+          try
+          {
+            localObject = new JSONObject(paramAnonymousri.c);
+            long l = ((JSONObject)localObject).getLong("uin");
+            if (l != localQQUser.mUin)
+            {
+              paramAnonymousri = localxh;
+              localObject = new StringBuilder("uin not match=");
+              ((StringBuilder)localObject).append(l);
+              ((StringBuilder)localObject).append(":");
+              ((StringBuilder)localObject).append(localQQUser.mUin);
+              paramAnonymousri.a(10000, ((StringBuilder)localObject).toString(), null);
+              localCountDownLatch.countDown();
+              return;
+            }
+            tk.this.f.e = l;
+            paramAnonymousri = localxh;
+            localObject = tk.this.f.a((JSONObject)localObject, l, this.d);
+            paramAnonymousri.a = ((xh)localObject).a;
+            paramAnonymousri.b = ((xh)localObject).b;
+            paramAnonymousri.c = ((xh)localObject).c;
+            paramAnonymousri.d = ((xh)localObject).d;
+            paramAnonymousri.e = ((xh)localObject).e;
+            th.a().g();
+          }
+          catch (JSONException paramAnonymousri)
+          {
+            localObject = localxh;
+            StringBuilder localStringBuilder = new StringBuilder("JSONException:");
+            localStringBuilder.append(paramAnonymousri.toString());
+            ((xh)localObject).a(10020, localStringBuilder.toString(), null);
+          }
+        }
+        localCountDownLatch.countDown();
+      }
+    });
+    try
+    {
+      localCountDownLatch.await();
+      return localxh;
+    }
+    catch (Throwable localThrowable)
+    {
+      localThrowable.printStackTrace();
+    }
+    return localxh;
+  }
+  
+  public final void a(long paramLong)
+  {
+    this.f.e = paramLong;
+  }
+  
+  public final boolean c()
+  {
+    aay localaay = this.f;
+    QQUser localQQUser = th.a().k.b();
+    if (localQQUser != null) {
+      return localQQUser.mUin == localaay.e;
+    }
+    return false;
+  }
+  
+  public final void d()
+  {
+    this.f.d = 0;
   }
 }
 

@@ -1,19 +1,10 @@
 package com.tencent.token;
 
-import android.content.ContentValues;
 import com.tencent.wcdb.database.SQLiteDatabase;
 
 public abstract interface ahj
 {
-  public abstract ahj a(afw paramafw);
-  
-  public abstract String a();
-  
   public abstract void a(SQLiteDatabase paramSQLiteDatabase);
-  
-  public abstract long b(SQLiteDatabase paramSQLiteDatabase);
-  
-  public abstract ContentValues b();
 }
 
 

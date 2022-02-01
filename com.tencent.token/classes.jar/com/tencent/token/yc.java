@@ -1,38 +1,45 @@
 package com.tencent.token;
 
 import android.content.Intent;
-import android.content.res.Resources;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.view.ViewGroup.MarginLayoutParams;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
-import com.tencent.token.core.bean.MbInfoResult;
-import com.tencent.token.core.bean.MbInfoResult.MbInfoItem;
-import com.tencent.token.core.bean.MbInfoResult.MbInfoItemDetail;
-import com.tencent.token.ui.UtilsMbInfoActivity;
-import com.tencent.token.ui.UtilsMbInfoItemActivity;
-import com.tencent.token.ui.UtilsModSetMobileStep1Activity;
-import java.util.ArrayList;
+import com.tencent.token.core.bean.AbnormalLoginMsgResult;
+import com.tencent.token.core.bean.SafeMsgItem;
+import com.tencent.token.ui.AbnormalLoginActivity;
+import com.tencent.token.ui.IndexActivity;
+import java.util.List;
 
 public final class yc
   extends BaseAdapter
 {
-  private UtilsMbInfoActivity a;
-  private LayoutInflater b;
+  private AbnormalLoginActivity a = null;
+  private AbnormalLoginMsgResult b;
+  private LayoutInflater c = null;
   
-  public yc(UtilsMbInfoActivity paramUtilsMbInfoActivity)
+  public yc(AbnormalLoginActivity paramAbnormalLoginActivity)
   {
-    this.a = paramUtilsMbInfoActivity;
-    this.b = LayoutInflater.from(paramUtilsMbInfoActivity);
+    this.b = ((AbnormalLoginMsgResult)paramAbnormalLoginActivity.getIntent().getExtras().get("msgs"));
+    this.a = paramAbnormalLoginActivity;
+    this.c = LayoutInflater.from(paramAbnormalLoginActivity);
+  }
+  
+  public final boolean areAllItemsEnabled()
+  {
+    return true;
   }
   
   public final int getCount()
   {
-    MbInfoResult localMbInfoResult = aal.a().c();
-    if ((localMbInfoResult != null) && (localMbInfoResult.mMbInfoItems != null)) {
-      return localMbInfoResult.mMbInfoItems.size();
+    AbnormalLoginMsgResult localAbnormalLoginMsgResult = this.b;
+    if ((localAbnormalLoginMsgResult != null) && (localAbnormalLoginMsgResult.mCnt != 0)) {
+      return this.b.mCnt + 2;
     }
     return 0;
   }
@@ -47,59 +54,129 @@ public final class yc
     return paramInt;
   }
   
-  public final View getView(final int paramInt, final View paramView, ViewGroup paramViewGroup)
+  public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    View localView = paramView;
     if (paramView == null) {
-      localView = this.b.inflate(2131296488, paramViewGroup, false);
+      paramView = this.c.inflate(2131296284, paramViewGroup, false);
     }
-    paramView = aal.a().c();
-    if ((paramView == null) && (!this.a.mIsIniting))
+    if ((this.b.mCnt > 0) && (paramInt >= this.b.mCnt))
     {
-      this.a.getMbInfo();
-      return localView;
+      paramView.setVisibility(4);
+      return paramView;
     }
-    if ((paramView != null) && (paramView.mMbInfoItems != null))
+    SafeMsgItem localSafeMsgItem1 = (SafeMsgItem)this.b.mMsgList.get(paramInt);
+    if (localSafeMsgItem1 != null)
     {
-      if (paramView.mMbInfoItems.size() <= paramInt) {
-        return localView;
+      int i;
+      if ((localSafeMsgItem1.mFlag & 0x4) == 4) {
+        i = 1;
+      } else {
+        i = 0;
       }
-      paramView = (MbInfoResult.MbInfoItem)paramView.mMbInfoItems.get(paramInt);
-      paramViewGroup = (TextView)localView.findViewById(2131166237);
-      TextView localTextView1 = (TextView)localView.findViewById(2131166236);
-      TextView localTextView2 = (TextView)localView.findViewById(2131166238);
-      if (paramView.mName != null) {
-        paramViewGroup.setText(paramView.mName);
-      }
-      if (paramView.mDesc != null) {
-        localTextView1.setText(paramView.mDesc);
-      }
-      if (paramView.mOpName != null) {
-        localTextView2.setText(paramView.mOpName);
-      }
-      localView.setOnClickListener(new View.OnClickListener()
+      RelativeLayout localRelativeLayout3 = (RelativeLayout)paramView.findViewById(2131165699);
+      RelativeLayout localRelativeLayout1 = (RelativeLayout)paramView.findViewById(2131165697);
+      RelativeLayout localRelativeLayout2 = (RelativeLayout)paramView.findViewById(2131165698);
+      TextView localTextView3 = (TextView)paramView.findViewById(2131166078);
+      TextView localTextView4 = (TextView)paramView.findViewById(2131166077);
+      TextView localTextView5 = (TextView)paramView.findViewById(2131165759);
+      TextView localTextView1 = (TextView)paramView.findViewById(2131165693);
+      TextView localTextView2 = (TextView)paramView.findViewById(2131165694);
+      ImageView localImageView2 = (ImageView)paramView.findViewById(2131165695);
+      ImageView localImageView3 = (ImageView)paramView.findViewById(2131165696);
+      ImageView localImageView4 = (ImageView)paramView.findViewById(2131165703);
+      ImageView localImageView5 = (ImageView)paramView.findViewById(2131165704);
+      paramViewGroup = (ImageView)paramView.findViewById(2131165705);
+      ImageView localImageView1 = (ImageView)paramView.findViewById(2131165706);
+      if (paramInt == 0)
       {
-        public final void onClick(View paramAnonymousView)
+        localRelativeLayout3.setVisibility(0);
+        ((ViewGroup.MarginLayoutParams)localRelativeLayout3.getLayoutParams()).topMargin = ((int)(10.0F * IndexActivity.S_DENSITY));
+      }
+      else
+      {
+        SafeMsgItem localSafeMsgItem2 = (SafeMsgItem)this.b.mMsgList.get(paramInt - 1);
+        if ((localSafeMsgItem2 != null) && (!aao.a(localSafeMsgItem2.mTime * 1000L, localSafeMsgItem1.mTime * 1000L)))
         {
-          if ((paramView.mId == 51) && (paramView.mDetail.mBtnType == 1))
-          {
-            paramAnonymousView = new Intent(yc.a(yc.this), UtilsModSetMobileStep1Activity.class);
-            StringBuilder localStringBuilder = new StringBuilder();
-            localStringBuilder.append(yc.a(yc.this).getResources().getString(2131493573));
-            localStringBuilder.append(paramView.mName);
-            paramAnonymousView.putExtra("title", localStringBuilder.toString());
-            paramAnonymousView.putExtra("op_type", 1);
-            paramAnonymousView.putExtra("position", paramInt);
-            yc.a(yc.this).startActivity(paramAnonymousView);
-            return;
-          }
-          paramAnonymousView = new Intent(yc.a(yc.this), UtilsMbInfoItemActivity.class);
-          paramAnonymousView.putExtra("position", paramInt);
-          yc.a(yc.this).startActivity(paramAnonymousView);
+          localRelativeLayout3.setVisibility(0);
+          ((ViewGroup.MarginLayoutParams)localRelativeLayout3.getLayoutParams()).topMargin = 0;
         }
-      });
+        else
+        {
+          localRelativeLayout3.setVisibility(8);
+        }
+      }
+      if ((i == 0) && (!localSafeMsgItem1.d()))
+      {
+        localTextView3.setTextAppearance(this.a, 2131558772);
+        localTextView4.setTextAppearance(this.a, 2131558771);
+        localRelativeLayout1.setVisibility(0);
+        localRelativeLayout2.setVisibility(4);
+        localImageView4.setBackgroundResource(2131099944);
+        if (paramInt == getCount() - 3) {
+          paramViewGroup.setVisibility(4);
+        } else {
+          paramViewGroup.setVisibility(0);
+        }
+      }
+      else if ((!localSafeMsgItem1.c()) && (!localSafeMsgItem1.d()))
+      {
+        localImageView5.setBackgroundResource(2131099946);
+        if (paramInt == getCount() - 3) {
+          localImageView1.setVisibility(4);
+        } else {
+          localImageView1.setVisibility(0);
+        }
+        localTextView3.setTextAppearance(this.a, 2131558768);
+        localTextView4.setTextAppearance(this.a, 2131558767);
+        localRelativeLayout1.setVisibility(4);
+        localRelativeLayout2.setVisibility(0);
+      }
+      else
+      {
+        localTextView3.setTextAppearance(this.a, 2131558772);
+        localTextView4.setTextAppearance(this.a, 2131558771);
+        localRelativeLayout1.setVisibility(4);
+        localRelativeLayout2.setVisibility(0);
+        localImageView5.setBackgroundResource(2131099945);
+        if (paramInt == getCount() - 3) {
+          localImageView1.setVisibility(4);
+        } else {
+          localImageView1.setVisibility(0);
+        }
+      }
+      localTextView3.setText(localSafeMsgItem1.mTitle);
+      paramInt = localSafeMsgItem1.mContent.indexOf('|');
+      if (paramInt != -1) {
+        localTextView4.setText(localSafeMsgItem1.mContent.substring(0, paramInt));
+      } else {
+        localTextView4.setText(localSafeMsgItem1.mContent);
+      }
+      localTextView5.setText(aao.d(localSafeMsgItem1.mTime * 1000L));
+      paramViewGroup = aao.b(localSafeMsgItem1.mTime * 1000L);
+      if (paramViewGroup.length() > 2)
+      {
+        localTextView1.setVisibility(8);
+        localTextView2.setVisibility(0);
+        localTextView2.setText(paramViewGroup);
+        localImageView2.setVisibility(4);
+        localImageView3.setVisibility(0);
+      }
+      else
+      {
+        localTextView2.setVisibility(8);
+        localTextView1.setVisibility(0);
+        localTextView1.setText(paramViewGroup);
+        localImageView2.setVisibility(0);
+        localImageView3.setVisibility(4);
+      }
     }
-    return localView;
+    paramView.setVisibility(0);
+    return paramView;
+  }
+  
+  public final boolean isEnabled(int paramInt)
+  {
+    return false;
   }
 }
 

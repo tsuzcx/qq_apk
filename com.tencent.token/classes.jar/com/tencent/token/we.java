@@ -1,24 +1,31 @@
 package com.tencent.token;
 
+import android.content.Context;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.token.core.bean.QueryCaptchaResult;
+import com.tencent.token.global.RqdApplication;
 import java.util.HashMap;
-import org.json.JSONArray;
 import org.json.JSONObject;
 
 public final class we
-  extends tj
+  extends tr
 {
-  private JSONArray d;
+  public QueryCaptchaResult d;
+  private long e;
+  private int f;
   
   public final String a()
   {
-    rz.a();
+    sh.a();
     this.a.a(104, null, null);
     return null;
   }
   
-  public final void a(aaq paramaaq)
+  public final void a(abc paramabc)
   {
-    this.d = ((JSONArray)paramaaq.c.get("param.reportdns.domain"));
+    this.e = ((Long)paramabc.c.get("param.realuin")).longValue();
+    this.f = ((Integer)paramabc.c.get("param.scene.id")).intValue();
   }
   
   public final void a(JSONObject paramJSONObject)
@@ -29,8 +36,30 @@ public final class we
       a(i, paramJSONObject.getString("info"));
       return;
     }
-    aad.a(System.currentTimeMillis() / 1000L);
-    this.a.a = 0;
+    paramJSONObject = aao.d(paramJSONObject.getString("data"));
+    if (paramJSONObject != null)
+    {
+      this.d = new QueryCaptchaResult(new JSONObject(new String(paramJSONObject)));
+      paramJSONObject = this.d;
+      paramJSONObject.mRealUin = this.e;
+      paramJSONObject.mSceneId = this.f;
+      this.a.a = 0;
+      return;
+    }
+    xj.c("parseJSON error decodeData=".concat(String.valueOf(paramJSONObject)));
+    a(10022, RqdApplication.p().getString(2131493068));
+  }
+  
+  public final void b()
+  {
+    if ((!this.b.e) && (this.b.d != null))
+    {
+      Message localMessage = this.b.d.obtainMessage(this.b.f);
+      localMessage.arg1 = 0;
+      localMessage.obj = this.d;
+      localMessage.sendToTarget();
+      this.b.e = true;
+    }
   }
 }
 

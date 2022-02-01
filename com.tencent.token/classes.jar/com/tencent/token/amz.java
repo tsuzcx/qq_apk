@@ -1,42 +1,48 @@
 package com.tencent.token;
 
-import com.qq.taf.jce.JceInputStream;
-import com.qq.taf.jce.JceOutputStream;
-import com.qq.taf.jce.JceStruct;
-
-public final class amz
-  extends JceStruct
+public abstract class amz
+  implements ank
 {
-  public String a = "";
-  public int b = 0;
-  public String c = "";
+  private final ank a;
   
-  public final JceStruct newInit()
+  public amz(ank paramank)
   {
-    return new amz();
+    if (paramank != null)
+    {
+      this.a = paramank;
+      return;
+    }
+    throw new IllegalArgumentException("delegate == null");
   }
   
-  public final void readFrom(JceInputStream paramJceInputStream)
+  public final anm a()
   {
-    this.a = paramJceInputStream.readString(0, false);
-    this.b = paramJceInputStream.read(this.b, 1, false);
-    this.c = paramJceInputStream.readString(2, false);
+    return this.a.a();
   }
   
-  public final void writeTo(JceOutputStream paramJceOutputStream)
+  public void a_(amv paramamv, long paramLong)
   {
-    String str = this.a;
-    if (str != null) {
-      paramJceOutputStream.write(str, 0);
-    }
-    int i = this.b;
-    if (i != 0) {
-      paramJceOutputStream.write(i, 1);
-    }
-    str = this.c;
-    if (str != null) {
-      paramJceOutputStream.write(str, 2);
-    }
+    this.a.a_(paramamv, paramLong);
+  }
+  
+  public void close()
+  {
+    this.a.close();
+  }
+  
+  public void flush()
+  {
+    this.a.flush();
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(getClass().getSimpleName());
+    localStringBuilder.append("(");
+    localStringBuilder.append(this.a.toString());
+    localStringBuilder.append(")");
+    return localStringBuilder.toString();
   }
 }
 

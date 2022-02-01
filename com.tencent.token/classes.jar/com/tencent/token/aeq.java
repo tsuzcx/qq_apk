@@ -1,72 +1,93 @@
 package com.tencent.token;
 
+import android.content.Context;
+import com.tencent.turingfd.sdk.qps.Almond;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.concurrent.TimeUnit;
+
 public final class aeq
 {
-  static
+  public static long a = TimeUnit.DAYS.toMillis(1L);
+  public static long b = TimeUnit.HOURS.toMillis(1L);
+  public adh c;
+  public Context d;
+  public int e;
+  public int f;
+  public int g;
+  public int h;
+  public long i;
+  public long j;
+  
+  public aeq(Context paramContext, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
   {
-    byte[] arrayOfByte1 = new byte[16];
-    byte[] tmp6_5 = arrayOfByte1;
-    tmp6_5[0] = 48;
-    byte[] tmp11_6 = tmp6_5;
-    tmp11_6[1] = 49;
-    byte[] tmp16_11 = tmp11_6;
-    tmp16_11[2] = 50;
-    byte[] tmp21_16 = tmp16_11;
-    tmp21_16[3] = 51;
-    byte[] tmp26_21 = tmp21_16;
-    tmp26_21[4] = 52;
-    byte[] tmp31_26 = tmp26_21;
-    tmp31_26[5] = 53;
-    byte[] tmp36_31 = tmp31_26;
-    tmp36_31[6] = 54;
-    byte[] tmp42_36 = tmp36_31;
-    tmp42_36[7] = 55;
-    byte[] tmp48_42 = tmp42_36;
-    tmp48_42[8] = 56;
-    byte[] tmp54_48 = tmp48_42;
-    tmp54_48[9] = 57;
-    byte[] tmp60_54 = tmp54_48;
-    tmp60_54[10] = 65;
-    byte[] tmp66_60 = tmp60_54;
-    tmp66_60[11] = 66;
-    byte[] tmp72_66 = tmp66_60;
-    tmp72_66[12] = 67;
-    byte[] tmp78_72 = tmp72_66;
-    tmp78_72[13] = 68;
-    byte[] tmp84_78 = tmp78_72;
-    tmp84_78[14] = 69;
-    byte[] tmp90_84 = tmp84_78;
-    tmp90_84[15] = 70;
-    tmp90_84;
-    byte[] arrayOfByte2 = new byte[256];
-    byte[] arrayOfByte3 = new byte[256];
-    int i = 0;
-    while (i < 256)
+    this.d = paramContext;
+    this.c = new adh(paramInt1);
+    this.i = TimeUnit.SECONDS.toMillis(paramInt3);
+    this.h = paramInt4;
+    this.e = paramInt1;
+    this.g = paramInt5;
+    this.f = paramInt2;
+  }
+  
+  public aeq(Context paramContext, Almond paramAlmond, int paramInt1, int paramInt2)
+  {
+    this.d = paramContext;
+    this.j = paramAlmond.c;
+    this.c = new adh(paramInt1);
+    paramContext = paramAlmond.h.iterator();
+    while (paramContext.hasNext())
     {
-      arrayOfByte2[i] = arrayOfByte1[(i >>> 4)];
-      arrayOfByte3[i] = arrayOfByte1[(i & 0xF)];
-      i += 1;
+      Long localLong = (Long)paramContext.next();
+      this.c.a(localLong);
     }
+    this.i = paramAlmond.d;
+    this.h = paramAlmond.e;
+    this.e = paramInt1;
+    this.g = paramAlmond.b;
+    this.f = paramInt2;
   }
   
-  public static boolean a(int paramInt1, int paramInt2)
+  public final boolean a()
   {
-    return paramInt1 == paramInt2;
-  }
-  
-  public static boolean a(long paramLong1, long paramLong2)
-  {
-    return paramLong1 == paramLong2;
-  }
-  
-  public static boolean a(Object paramObject1, Object paramObject2)
-  {
-    return paramObject1.equals(paramObject2);
-  }
-  
-  public static boolean a(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    return paramBoolean1 == paramBoolean2;
+    long l2 = System.currentTimeMillis();
+    long l3 = this.j;
+    long l1 = this.i;
+    l2 = Math.abs(l2 - l3);
+    boolean bool = true;
+    int k;
+    if (l2 > l1) {
+      k = 1;
+    } else {
+      k = 0;
+    }
+    if (k != 0)
+    {
+      if (this.c.b.size() < this.f) {
+        return true;
+      }
+      Object localObject = (Long)this.c.b.getFirst();
+      if ((Math.abs(System.currentTimeMillis() - ((Long)localObject).longValue()) < a) && (this.c.b.size() >= this.e)) {
+        k = 0;
+      } else {
+        k = 1;
+      }
+      if (k != 0)
+      {
+        localObject = this.c;
+        k = ((adh)localObject).b.size();
+        int m = this.f;
+        localObject = (Long)((adh)localObject).b.get(k - m);
+        if (Math.abs(System.currentTimeMillis() - ((Long)localObject).longValue()) >= b) {}
+      }
+      else
+      {
+        bool = false;
+      }
+      return bool;
+    }
+    return false;
   }
 }
 

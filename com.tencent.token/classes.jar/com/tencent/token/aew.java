@@ -1,21 +1,12 @@
 package com.tencent.token;
 
+import android.content.Context;
+
 public abstract interface aew
 {
-  public static final class a
-  {
-    public final byte[] a;
-    
-    private a(byte[] paramArrayOfByte)
-    {
-      this.a = paramArrayOfByte;
-    }
-    
-    public static a a(byte[] paramArrayOfByte)
-    {
-      return new a(paramArrayOfByte);
-    }
-  }
+  public abstract aez a(Context paramContext);
+  
+  public abstract void b(Context paramContext);
 }
 
 

@@ -1,255 +1,437 @@
 package com.tencent.token;
 
-import java.io.Closeable;
-import java.io.File;
-import java.io.Flushable;
-import java.io.IOException;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.LinkedHashMap;
-import java.util.concurrent.Executor;
-import java.util.regex.Pattern;
+import android.annotation.SuppressLint;
+import android.app.PendingIntent;
+import android.location.Criteria;
+import android.location.GnssMeasurementsEvent.Callback;
+import android.location.GnssNavigationMessage.Callback;
+import android.location.GnssStatus.Callback;
+import android.location.GpsStatus;
+import android.location.GpsStatus.Listener;
+import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
+import android.location.LocationProvider;
+import android.location.OnNmeaMessageListener;
+import android.os.Build.VERSION;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import java.util.List;
 
-public final class aja
-  implements Closeable, Flushable
+public class aja
+  extends ko
 {
-  static final Pattern a = Pattern.compile("[a-z0-9_-]{1,120}");
-  final akk b;
-  final int c;
-  akz d;
-  final LinkedHashMap<String, b> e;
-  int f;
-  boolean g;
-  boolean h;
-  boolean i;
-  private long k;
-  private long l;
-  private final Executor m;
-  private final Runnable n;
+  private LocationManager a;
   
-  private void a(a parama)
+  public aja(LocationManager paramLocationManager)
   {
-    try
-    {
-      b localb = parama.a;
-      if (localb.f == parama)
-      {
-        int i1 = 0;
-        while (i1 < this.c)
-        {
-          parama = localb.d[i1];
-          this.b.a(parama);
-          i1 += 1;
-        }
-        this.f += 1;
-        localb.f = null;
-        if ((false | localb.e))
-        {
-          localb.e = true;
-          this.d.b("CLEAN").h(32);
-          this.d.b(localb.a);
-          localb.a(this.d);
-          this.d.h(10);
-        }
-        else
-        {
-          this.e.remove(localb.a);
-          this.d.b("REMOVE").h(32);
-          this.d.b(localb.a);
-          this.d.h(10);
-        }
-        this.d.flush();
-        if ((this.l > this.k) || (a())) {
-          this.m.execute(this.n);
-        }
-        return;
-      }
-      throw new IllegalStateException();
-    }
-    finally {}
+    super(paramLocationManager);
+    this.a = paramLocationManager;
   }
   
-  private boolean a()
+  @SuppressLint({"MissingPermission"})
+  public boolean addGpsStatusListener(GpsStatus.Listener paramListener)
   {
-    int i1 = this.f;
-    return (i1 >= 2000) && (i1 >= this.e.size());
+    boolean bool = this.a.addGpsStatusListener(paramListener);
+    paramListener = new StringBuilder("addGpsStatusListener:");
+    paramListener.append(bool);
+    paramListener.append("]");
+    aji.a("[API]LocationManager_");
+    return bool;
   }
   
-  private boolean a(b paramb)
+  @SuppressLint({"MissingPermission"})
+  public boolean addNmeaListener(OnNmeaMessageListener paramOnNmeaMessageListener)
   {
-    a locala = paramb.f;
-    int i2 = 0;
-    int i1 = i2;
-    if (locala != null)
-    {
-      locala = paramb.f;
-      i1 = i2;
-      if (locala.a.f == locala) {
-        i1 = 0;
-      }
+    boolean bool;
+    if (Build.VERSION.SDK_INT >= 24) {
+      bool = this.a.addNmeaListener(paramOnNmeaMessageListener);
+    } else {
+      bool = false;
     }
-    for (;;)
-    {
-      if (i1 < locala.c.c) {}
-      try
-      {
-        locala.c.b.a(locala.a.d[i1]);
-        label73:
-        i1 += 1;
-        continue;
-        locala.a.f = null;
-        i1 = i2;
-        while (i1 < this.c)
-        {
-          this.b.a(paramb.c[i1]);
-          this.l -= paramb.b[i1];
-          paramb.b[i1] = 0L;
-          i1 += 1;
-        }
-        this.f += 1;
-        this.d.b("REMOVE").h(32).b(paramb.a).h(10);
-        this.e.remove(paramb.a);
-        if (a()) {
-          this.m.execute(this.n);
-        }
-        return true;
-      }
-      catch (IOException localIOException)
-      {
-        break label73;
-      }
+    paramOnNmeaMessageListener = new StringBuilder("addNmeaListener:");
+    paramOnNmeaMessageListener.append(bool);
+    paramOnNmeaMessageListener.append("]");
+    aji.a("[API]LocationManager_");
+    return bool;
+  }
+  
+  @SuppressLint({"MissingPermission"})
+  public boolean addNmeaListener(OnNmeaMessageListener paramOnNmeaMessageListener, Handler paramHandler)
+  {
+    boolean bool;
+    if (Build.VERSION.SDK_INT >= 24) {
+      bool = this.a.addNmeaListener(paramOnNmeaMessageListener, paramHandler);
+    } else {
+      bool = false;
+    }
+    paramOnNmeaMessageListener = new StringBuilder("addNmeaListener:");
+    paramOnNmeaMessageListener.append(bool);
+    paramOnNmeaMessageListener.append("]");
+    aji.a("[API]LocationManager_");
+    return bool;
+  }
+  
+  @SuppressLint({"MissingPermission"})
+  public void addProximityAlert(double paramDouble1, double paramDouble2, float paramFloat, long paramLong, PendingIntent paramPendingIntent)
+  {
+    aji.a("[API]LocationManager_");
+    this.a.addProximityAlert(paramDouble1, paramDouble2, paramFloat, paramLong, paramPendingIntent);
+  }
+  
+  public void addTestProvider(String paramString, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4, boolean paramBoolean5, boolean paramBoolean6, boolean paramBoolean7, int paramInt1, int paramInt2)
+  {
+    aji.a("[API]LocationManager_");
+    this.a.addTestProvider(paramString, paramBoolean1, paramBoolean2, paramBoolean3, paramBoolean4, paramBoolean5, paramBoolean6, paramBoolean7, paramInt1, paramInt2);
+  }
+  
+  public void clearTestProviderEnabled(String paramString)
+  {
+    StringBuilder localStringBuilder = new StringBuilder("clearTestProviderEnabled:[");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append("]");
+    aji.a("[API]LocationManager_");
+    this.a.clearTestProviderEnabled(paramString);
+  }
+  
+  public void clearTestProviderLocation(String paramString)
+  {
+    StringBuilder localStringBuilder = new StringBuilder("clearTestProviderLocation:[");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append("]");
+    aji.a("[API]LocationManager_");
+    this.a.clearTestProviderLocation(paramString);
+  }
+  
+  public void clearTestProviderStatus(String paramString)
+  {
+    StringBuilder localStringBuilder = new StringBuilder("clearTestProviderStatus:[");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append("]");
+    aji.a("[API]LocationManager_");
+    this.a.clearTestProviderStatus(paramString);
+  }
+  
+  public List<String> getAllProviders()
+  {
+    aji.a("[API]LocationManager_");
+    return this.a.getAllProviders();
+  }
+  
+  public String getBestProvider(Criteria paramCriteria, boolean paramBoolean)
+  {
+    paramCriteria = this.a.getBestProvider(paramCriteria, paramBoolean);
+    StringBuilder localStringBuilder = new StringBuilder("getBestProvider, enabledOnly:[");
+    localStringBuilder.append(paramBoolean);
+    localStringBuilder.append("]ret:[");
+    localStringBuilder.append(paramCriteria);
+    localStringBuilder.append("]");
+    aji.a("[API]LocationManager_");
+    return paramCriteria;
+  }
+  
+  @SuppressLint({"MissingPermission"})
+  public GpsStatus getGpsStatus(GpsStatus paramGpsStatus)
+  {
+    aji.a("[API]LocationManager_");
+    return this.a.getGpsStatus(paramGpsStatus);
+  }
+  
+  @SuppressLint({"MissingPermission"})
+  public Location getLastKnownLocation(String paramString)
+  {
+    StringBuilder localStringBuilder = new StringBuilder("getLastKnownLocation, provider:[");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append("]");
+    aji.a("[API]LocationManager_");
+    return this.a.getLastKnownLocation(paramString);
+  }
+  
+  public LocationProvider getProvider(String paramString)
+  {
+    StringBuilder localStringBuilder = new StringBuilder("getProvider, provider:[");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append("]");
+    aji.a("[API]LocationManager_");
+    return this.a.getProvider(paramString);
+  }
+  
+  public List<String> getProviders(Criteria paramCriteria, boolean paramBoolean)
+  {
+    StringBuilder localStringBuilder = new StringBuilder("getProviders, enabledOnly:[");
+    localStringBuilder.append(paramBoolean);
+    localStringBuilder.append("]");
+    aji.a("[API]LocationManager_");
+    return this.a.getProviders(paramCriteria, paramBoolean);
+  }
+  
+  public List<String> getProviders(boolean paramBoolean)
+  {
+    StringBuilder localStringBuilder = new StringBuilder("getProviders, enabledOnly:[");
+    localStringBuilder.append(paramBoolean);
+    localStringBuilder.append("]");
+    aji.a("[API]LocationManager_");
+    return this.a.getProviders(paramBoolean);
+  }
+  
+  public boolean isProviderEnabled(String paramString)
+  {
+    boolean bool = this.a.isProviderEnabled(paramString);
+    StringBuilder localStringBuilder = new StringBuilder("isProviderEnabled, provider:[");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append("]ret:[");
+    localStringBuilder.append(bool);
+    localStringBuilder.append("]");
+    aji.a("[API]LocationManager_");
+    return bool;
+  }
+  
+  @SuppressLint({"MissingPermission"})
+  public boolean registerGnssMeasurementsCallback(GnssMeasurementsEvent.Callback paramCallback)
+  {
+    boolean bool;
+    if (Build.VERSION.SDK_INT >= 24) {
+      bool = this.a.registerGnssMeasurementsCallback(paramCallback);
+    } else {
+      bool = false;
+    }
+    paramCallback = new StringBuilder("registerGnssMeasurementsCallback, ret:[");
+    paramCallback.append(bool);
+    paramCallback.append("]");
+    aji.a("[API]LocationManager_");
+    return bool;
+  }
+  
+  @SuppressLint({"MissingPermission"})
+  public boolean registerGnssMeasurementsCallback(GnssMeasurementsEvent.Callback paramCallback, Handler paramHandler)
+  {
+    boolean bool;
+    if (Build.VERSION.SDK_INT >= 24) {
+      bool = this.a.registerGnssMeasurementsCallback(paramCallback, paramHandler);
+    } else {
+      bool = false;
+    }
+    paramCallback = new StringBuilder("registerGnssMeasurementsCallback, ret:[");
+    paramCallback.append(bool);
+    paramCallback.append("]");
+    aji.a("[API]LocationManager_");
+    return bool;
+  }
+  
+  public boolean registerGnssNavigationMessageCallback(GnssNavigationMessage.Callback paramCallback)
+  {
+    boolean bool;
+    if (Build.VERSION.SDK_INT >= 24) {
+      bool = this.a.registerGnssNavigationMessageCallback(paramCallback);
+    } else {
+      bool = false;
+    }
+    paramCallback = new StringBuilder("registerGnssNavigationMessageCallback, ret:[");
+    paramCallback.append(bool);
+    paramCallback.append("]");
+    aji.a("[API]LocationManager_");
+    return bool;
+  }
+  
+  @SuppressLint({"MissingPermission"})
+  public boolean registerGnssNavigationMessageCallback(GnssNavigationMessage.Callback paramCallback, Handler paramHandler)
+  {
+    boolean bool;
+    if (Build.VERSION.SDK_INT >= 24) {
+      bool = this.a.registerGnssNavigationMessageCallback(paramCallback, paramHandler);
+    } else {
+      bool = false;
+    }
+    paramCallback = new StringBuilder("registerGnssNavigationMessageCallback, ret:[");
+    paramCallback.append(bool);
+    paramCallback.append("]");
+    aji.a("[API]LocationManager_");
+    return bool;
+  }
+  
+  @SuppressLint({"MissingPermission"})
+  public boolean registerGnssStatusCallback(GnssStatus.Callback paramCallback)
+  {
+    boolean bool;
+    if (Build.VERSION.SDK_INT >= 24) {
+      bool = this.a.registerGnssStatusCallback(paramCallback);
+    } else {
+      bool = false;
+    }
+    paramCallback = new StringBuilder("registerGnssStatusCallback, ret:[");
+    paramCallback.append(bool);
+    paramCallback.append("]");
+    aji.a("[API]LocationManager_");
+    return bool;
+  }
+  
+  @SuppressLint({"MissingPermission"})
+  public boolean registerGnssStatusCallback(GnssStatus.Callback paramCallback, Handler paramHandler)
+  {
+    boolean bool;
+    if (Build.VERSION.SDK_INT >= 24) {
+      bool = this.a.registerGnssStatusCallback(paramCallback, paramHandler);
+    } else {
+      bool = false;
+    }
+    paramCallback = new StringBuilder("registerGnssStatusCallback, ret:[");
+    paramCallback.append(bool);
+    paramCallback.append("]");
+    aji.a("[API]LocationManager_");
+    return bool;
+  }
+  
+  public void removeGpsStatusListener(GpsStatus.Listener paramListener)
+  {
+    aji.a("[API]LocationManager_");
+    this.a.removeGpsStatusListener(paramListener);
+  }
+  
+  public void removeNmeaListener(OnNmeaMessageListener paramOnNmeaMessageListener)
+  {
+    aji.a("[API]LocationManager_");
+    if (Build.VERSION.SDK_INT >= 24) {
+      this.a.removeNmeaListener(paramOnNmeaMessageListener);
     }
   }
   
-  private boolean b()
+  public void removeProximityAlert(PendingIntent paramPendingIntent)
   {
-    try
-    {
-      boolean bool = this.h;
-      return bool;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
+    aji.a("[API]LocationManager_");
+    this.a.removeProximityAlert(paramPendingIntent);
+  }
+  
+  public void removeTestProvider(String paramString)
+  {
+    aji.a("[API]LocationManager_");
+    this.a.removeTestProvider(paramString);
+  }
+  
+  public void removeUpdates(PendingIntent paramPendingIntent)
+  {
+    aji.a("[API]LocationManager_");
+    this.a.removeUpdates(paramPendingIntent);
+  }
+  
+  public void removeUpdates(LocationListener paramLocationListener)
+  {
+    aji.a("[API]LocationManager_");
+    this.a.removeUpdates(paramLocationListener);
+  }
+  
+  @SuppressLint({"MissingPermission"})
+  public void requestLocationUpdates(long paramLong, float paramFloat, Criteria paramCriteria, PendingIntent paramPendingIntent)
+  {
+    aji.a("[API]LocationManager_");
+    this.a.requestLocationUpdates(paramLong, paramFloat, paramCriteria, paramPendingIntent);
+  }
+  
+  @SuppressLint({"MissingPermission"})
+  public void requestLocationUpdates(long paramLong, float paramFloat, Criteria paramCriteria, LocationListener paramLocationListener, Looper paramLooper)
+  {
+    aji.a("[API]LocationManager_");
+    this.a.requestLocationUpdates(paramLong, paramFloat, paramCriteria, paramLocationListener, paramLooper);
+  }
+  
+  @SuppressLint({"MissingPermission"})
+  public void requestLocationUpdates(String paramString, long paramLong, float paramFloat, PendingIntent paramPendingIntent)
+  {
+    aji.a("[API]LocationManager_");
+    this.a.requestLocationUpdates(paramString, paramLong, paramFloat, paramPendingIntent);
+  }
+  
+  @SuppressLint({"MissingPermission"})
+  public void requestLocationUpdates(String paramString, long paramLong, float paramFloat, LocationListener paramLocationListener)
+  {
+    aji.a("[API]LocationManager_");
+    this.a.requestLocationUpdates(paramString, paramLong, paramFloat, paramLocationListener);
+  }
+  
+  @SuppressLint({"MissingPermission"})
+  public void requestLocationUpdates(String paramString, long paramLong, float paramFloat, LocationListener paramLocationListener, Looper paramLooper)
+  {
+    aji.a("[API]LocationManager_");
+    this.a.requestLocationUpdates(paramString, paramLong, paramFloat, paramLocationListener, paramLooper);
+  }
+  
+  @SuppressLint({"MissingPermission"})
+  public void requestSingleUpdate(Criteria paramCriteria, PendingIntent paramPendingIntent)
+  {
+    aji.a("[API]LocationManager_");
+    this.a.requestSingleUpdate(paramCriteria, paramPendingIntent);
+  }
+  
+  @SuppressLint({"MissingPermission"})
+  public void requestSingleUpdate(Criteria paramCriteria, LocationListener paramLocationListener, Looper paramLooper)
+  {
+    aji.a("[API]LocationManager_");
+    this.a.requestSingleUpdate(paramCriteria, paramLocationListener, paramLooper);
+  }
+  
+  @SuppressLint({"MissingPermission"})
+  public void requestSingleUpdate(String paramString, PendingIntent paramPendingIntent)
+  {
+    aji.a("[API]LocationManager_");
+    this.a.requestSingleUpdate(paramString, paramPendingIntent);
+  }
+  
+  @SuppressLint({"MissingPermission"})
+  public void requestSingleUpdate(String paramString, LocationListener paramLocationListener, Looper paramLooper)
+  {
+    aji.a("[API]LocationManager_");
+    this.a.requestSingleUpdate(paramString, paramLocationListener, paramLooper);
+  }
+  
+  public boolean sendExtraCommand(String paramString1, String paramString2, Bundle paramBundle)
+  {
+    boolean bool = this.a.sendExtraCommand(paramString1, paramString2, paramBundle);
+    paramString1 = new StringBuilder("sendExtraCommand, ret:[");
+    paramString1.append(bool);
+    paramString1.append("]");
+    aji.a("[API]LocationManager_");
+    return bool;
+  }
+  
+  public void setTestProviderEnabled(String paramString, boolean paramBoolean)
+  {
+    aji.a("[API]LocationManager_");
+    this.a.setTestProviderEnabled(paramString, paramBoolean);
+  }
+  
+  public void setTestProviderLocation(String paramString, Location paramLocation)
+  {
+    aji.a("[API]LocationManager_");
+    this.a.setTestProviderLocation(paramString, paramLocation);
+  }
+  
+  public void setTestProviderStatus(String paramString, int paramInt, Bundle paramBundle, long paramLong)
+  {
+    aji.a("[API]LocationManager_");
+    this.a.setTestProviderStatus(paramString, paramInt, paramBundle, paramLong);
+  }
+  
+  public void unregisterGnssMeasurementsCallback(GnssMeasurementsEvent.Callback paramCallback)
+  {
+    aji.a("[API]LocationManager_");
+    if (Build.VERSION.SDK_INT >= 24) {
+      this.a.unregisterGnssMeasurementsCallback(paramCallback);
     }
   }
   
-  private void c()
+  public void unregisterGnssNavigationMessageCallback(GnssNavigationMessage.Callback paramCallback)
   {
-    try
-    {
-      boolean bool = b();
-      if (!bool) {
-        return;
-      }
-      throw new IllegalStateException("cache is closed");
-    }
-    finally {}
-  }
-  
-  private void d()
-  {
-    while (this.l > this.k) {
-      a((b)this.e.values().iterator().next());
-    }
-    this.i = false;
-  }
-  
-  public final void close()
-  {
-    for (;;)
-    {
-      int i1;
-      try
-      {
-        if ((this.g) && (!this.h))
-        {
-          b[] arrayOfb = (b[])this.e.values().toArray(new b[this.e.size()]);
-          int i2 = arrayOfb.length;
-          i1 = 0;
-          if (i1 < i2)
-          {
-            ??? = arrayOfb[i1];
-            if (((b)???).f != null)
-            {
-              a locala = ((b)???).f;
-              synchronized (locala.c)
-              {
-                if (!locala.b)
-                {
-                  if (locala.a.f == locala) {
-                    locala.c.a(locala);
-                  }
-                  locala.b = true;
-                  break label181;
-                }
-                throw new IllegalStateException();
-              }
-            }
-          }
-          else
-          {
-            d();
-            this.d.close();
-            this.d = null;
-            this.h = true;
-          }
-        }
-        else
-        {
-          this.h = true;
-          return;
-        }
-      }
-      finally {}
-      label181:
-      i1 += 1;
+    aji.a("[API]LocationManager_");
+    if (Build.VERSION.SDK_INT >= 24) {
+      this.a.unregisterGnssNavigationMessageCallback(paramCallback);
     }
   }
   
-  public final void flush()
+  public void unregisterGnssStatusCallback(GnssStatus.Callback paramCallback)
   {
-    try
-    {
-      boolean bool = this.g;
-      if (!bool) {
-        return;
-      }
-      c();
-      d();
-      this.d.flush();
-      return;
-    }
-    finally {}
-  }
-  
-  public final class a
-  {
-    final aja.b a;
-    boolean b;
-  }
-  
-  final class b
-  {
-    final String a;
-    final long[] b;
-    final File[] c;
-    final File[] d;
-    boolean e;
-    aja.a f;
-    
-    final void a(akz paramakz)
-    {
-      long[] arrayOfLong = this.b;
-      int j = arrayOfLong.length;
-      int i = 0;
-      while (i < j)
-      {
-        long l = arrayOfLong[i];
-        paramakz.h(32).k(l);
-        i += 1;
-      }
+    aji.a("[API]LocationManager_");
+    if (Build.VERSION.SDK_INT >= 24) {
+      this.a.unregisterGnssStatusCallback(paramCallback);
     }
   }
 }

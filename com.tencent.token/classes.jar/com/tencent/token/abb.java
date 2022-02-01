@@ -1,12 +1,29 @@
 package com.tencent.token;
 
-public abstract interface abb
+import com.tencent.token.core.bean.QQUser;
+
+public final class abb
 {
-  public abstract int a(byte[] paramArrayOfByte);
+  public ss a = new ss();
+  long b;
+  public boolean c;
   
-  public abstract void a(byte paramByte);
-  
-  public abstract void a(byte[] paramArrayOfByte, int paramInt1, int paramInt2);
+  public final void a(ss paramss)
+  {
+    try
+    {
+      this.a = paramss;
+      if (th.a().k.b() != null) {
+        this.b = th.a().k.b().mUin;
+      }
+      return;
+    }
+    finally
+    {
+      paramss = finally;
+      throw paramss;
+    }
+  }
 }
 
 

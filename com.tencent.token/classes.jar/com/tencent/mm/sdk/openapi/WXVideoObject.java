@@ -1,7 +1,7 @@
 package com.tencent.mm.sdk.openapi;
 
 import android.os.Bundle;
-import com.tencent.token.pp;
+import com.tencent.token.pw;
 
 public class WXVideoObject
   implements WXMediaMessage.a
@@ -26,7 +26,7 @@ public class WXVideoObject
     }
     for (;;)
     {
-      pp.a("MicroMsg.SDK.WXVideoObject", str);
+      pw.a("MicroMsg.SDK.WXVideoObject", str);
       return false;
       str = this.videoLowBandUrl;
       if ((str != null) && (str.length() > 10240))

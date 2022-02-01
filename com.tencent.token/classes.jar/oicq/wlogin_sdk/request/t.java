@@ -7,6 +7,7 @@ import android.content.Context;
 import android.os.Build;
 import android.os.Build.VERSION;
 import android.os.Process;
+import com.tencent.token.xr;
 import java.net.Socket;
 import java.security.SecureRandom;
 import java.text.SimpleDateFormat;
@@ -401,18 +402,20 @@ public class t
       localObject2 = ((String)localObject1).substring(0, 16);
     }
     J = ((String)localObject2).getBytes();
-    localObject1 = Build.MODEL;
+    localObject1 = xr.a;
     if (localObject1 == null) {
-      I = new byte[0];
+      localObject1 = new byte[0];
     } else {
-      I = ((String)localObject1).getBytes();
+      localObject1 = ((String)localObject1).getBytes();
     }
+    I = (byte[])localObject1;
     localObject1 = Build.BRAND;
     if (localObject1 == null) {
-      P = new byte[0];
+      localObject1 = new byte[0];
     } else {
-      P = ((String)localObject1).getBytes();
+      localObject1 = ((String)localObject1).getBytes();
     }
+    P = (byte[])localObject1;
     if ((!util.isFileExist("/system/bin/su")) && (!util.isFileExist("/system/xbin/su")) && (!util.isFileExist("/sbin/su"))) {
       i1 = 0;
     } else {
@@ -529,12 +532,11 @@ public class t
       localt.n = ((byte[])arrayOfByte.clone());
       localt.p = ((byte[])this.p.clone());
     }
-    if (paramLong <= 0L)
-    {
-      localt.h = a();
-      return localt;
+    long l1 = paramLong;
+    if (paramLong <= 0L) {
+      l1 = a();
     }
-    localt.h = paramLong;
+    localt.h = l1;
     return localt;
   }
   
