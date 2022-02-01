@@ -54,6 +54,191 @@
 - [QQ 发送菜刀加符号导致脏话的真实原因分析](https://github.com/pingfangx/BlogX/blob/master/essay/draft/android/crack/%5B2538%5DQQ%20%E5%8F%91%E9%80%81%E8%8F%9C%E5%88%80%E5%8A%A0%E7%AC%A6%E5%8F%B7%E5%AF%BC%E8%87%B4%E8%84%8F%E8%AF%9D%E7%9A%84%E7%9C%9F%E5%AE%9E%E5%8E%9F%E5%9B%A0%E5%88%86%E6%9E%90.md)
 - [QQ表情-脏话bug漏洞](https://skylinelulu.github.io/2018/09/02/QQEmojiBug/)
 
+### 8.8.68 反编译失败
+
+Apktool 报错。命令行输出：
+
+```
+I: Using Apktool 2.6.0 on QQ-8.8.68-2538-3834.apk
+I: Loading resource table...
+I: Decoding Shared Library (com.tencent.mobileqq.aelight_impl), pkgId: 123
+I: Decoding Shared Library (com.tencent.mobileqq.cmshow_impl), pkgId: 118
+I: Decoding Shared Library (com.tencent.mobileqq.aelight_impl), pkgId: 123
+I: Decoding Shared Library (com.tencent.mobileqq.cmshow_impl), pkgId: 118
+I: Decoding Shared Library (com.tencent.mobileqq.aelight_impl), pkgId: 123
+I: Decoding Shared Library (com.tencent.mobileqq.kandian_ad_feature_impl), pkgId: 126
+I: Decoding Shared Library (com.tencent.mobileqq.cmshow_impl), pkgId: 118
+I: Decoding Shared Library (com.tencent.mobileqq.aelight_impl), pkgId: 123
+I: Decoding Shared Library (com.tencent.mobileqq.kandian_feature_impl), pkgId: 125
+I: Decoding Shared Library (com.tencent.mobileqq.kandian_ad_feature_impl), pkgId: 126
+I: Decoding Shared Library (com.tencent.mobileqq.matchfriend_impl), pkgId: 109
+I: Decoding Shared Library (com.tencent.mobileqq.cmshow_impl), pkgId: 118
+I: Decoding Shared Library (com.tencent.mobileqq.aelight_impl), pkgId: 123
+I: Decoding Shared Library (com.tencent.mobileqq.kandian_feature_impl), pkgId: 125
+I: Decoding Shared Library (com.tencent.mobileqq.kandian_ad_feature_impl), pkgId: 126
+I: Decoding Shared Library (com.tencent.mobileqq.matchfriend_impl), pkgId: 109
+I: Decoding Shared Library (com.tencent.mobileqq.profilecard_feature_impl), pkgId: 110
+I: Decoding Shared Library (com.tencent.mobileqq.cmshow_impl), pkgId: 118
+I: Decoding Shared Library (com.tencent.mobileqq.aelight_impl), pkgId: 123
+I: Decoding Shared Library (com.tencent.mobileqq.kandian_feature_impl), pkgId: 125
+I: Decoding Shared Library (com.tencent.mobileqq.kandian_ad_feature_impl), pkgId: 126
+I: Decoding Shared Library (com.tencent.mobileqq.matchfriend_impl), pkgId: 109
+I: Decoding Shared Library (com.tencent.mobileqq.profilecard_feature_impl), pkgId: 110
+I: Decoding Shared Library (com.tencent.mobileqq.cmshow_impl), pkgId: 118
+I: Decoding Shared Library (com.tencent.mobileqq.qq_comic_impl), pkgId: 119
+I: Decoding Shared Library (com.tencent.mobileqq.aelight_impl), pkgId: 123
+I: Decoding Shared Library (com.tencent.mobileqq.kandian_feature_impl), pkgId: 125
+I: Decoding Shared Library (com.tencent.mobileqq.kandian_ad_feature_impl), pkgId: 126
+I: Decoding Shared Library (com.tencent.mobileqq.matchfriend_impl), pkgId: 109
+I: Decoding Shared Library (com.tencent.mobileqq.profilecard_feature_impl), pkgId: 110
+I: Decoding Shared Library (com.tencent.mobileqq.cmshow_impl), pkgId: 118
+I: Decoding Shared Library (com.tencent.mobileqq.qq_comic_impl), pkgId: 119
+I: Decoding Shared Library (com.tencent.mobileqq.aelight_impl), pkgId: 123
+I: Decoding Shared Library (com.tencent.mobileqq.qq_qzonehub_impl), pkgId: 124
+I: Decoding Shared Library (com.tencent.mobileqq.kandian_feature_impl), pkgId: 125
+I: Decoding Shared Library (com.tencent.mobileqq.kandian_ad_feature_impl), pkgId: 126
+I: Decoding Shared Library (com.tencent.mobileqq.matchfriend_impl), pkgId: 109
+I: Decoding Shared Library (com.tencent.mobileqq.profilecard_feature_impl), pkgId: 110
+I: Decoding Shared Library (com.tencent.mobileqq.qqexpand_impl), pkgId: 113
+I: Decoding Shared Library (com.tencent.mobileqq.cmshow_impl), pkgId: 118
+I: Decoding Shared Library (com.tencent.mobileqq.qq_comic_impl), pkgId: 119
+I: Decoding Shared Library (com.tencent.mobileqq.aelight_impl), pkgId: 123
+I: Decoding Shared Library (com.tencent.mobileqq.qq_qzonehub_impl), pkgId: 124
+I: Decoding Shared Library (com.tencent.mobileqq.kandian_feature_impl), pkgId: 125
+I: Decoding Shared Library (com.tencent.mobileqq.kandian_ad_feature_impl), pkgId: 126
+I: Decoding Shared Library (com.tencent.mobileqq.matchfriend_impl), pkgId: 109
+I: Decoding Shared Library (com.tencent.mobileqq.profilecard_feature_impl), pkgId: 110
+I: Decoding Shared Library (com.tencent.mobileqq.qqguild_df_impl), pkgId: 112
+I: Decoding Shared Library (com.tencent.mobileqq.qqexpand_impl), pkgId: 113
+I: Decoding Shared Library (com.tencent.mobileqq.cmshow_impl), pkgId: 118
+I: Decoding Shared Library (com.tencent.mobileqq.qq_comic_impl), pkgId: 119
+I: Decoding Shared Library (com.tencent.mobileqq.aelight_impl), pkgId: 123
+I: Decoding Shared Library (com.tencent.mobileqq.qq_qzonehub_impl), pkgId: 124
+I: Decoding Shared Library (com.tencent.mobileqq.kandian_feature_impl), pkgId: 125
+I: Decoding Shared Library (com.tencent.mobileqq.kandian_ad_feature_impl), pkgId: 126
+I: Decoding Shared Library (com.tencent.mobileqq.matchfriend_impl), pkgId: 109
+I: Decoding Shared Library (com.tencent.mobileqq.profilecard_feature_impl), pkgId: 110
+I: Decoding Shared Library (com.tencent.mobileqq.qqguild_df_impl), pkgId: 112
+I: Decoding Shared Library (com.tencent.mobileqq.qqexpand_impl), pkgId: 113
+I: Decoding Shared Library (com.tencent.mobileqq.cmshow_impl), pkgId: 118
+I: Decoding Shared Library (com.tencent.mobileqq.qq_comic_impl), pkgId: 119
+I: Decoding Shared Library (com.tencent.mobileqq.qqmini_impl), pkgId: 121
+I: Decoding Shared Library (com.tencent.mobileqq.aelight_impl), pkgId: 123
+I: Decoding Shared Library (com.tencent.mobileqq.qq_qzonehub_impl), pkgId: 124
+I: Decoding Shared Library (com.tencent.mobileqq.kandian_feature_impl), pkgId: 125
+I: Decoding Shared Library (com.tencent.mobileqq.kandian_ad_feature_impl), pkgId: 126
+I: Decoding Shared Library (com.tencent.mobileqq.matchfriend_impl), pkgId: 109
+I: Decoding Shared Library (com.tencent.mobileqq.profilecard_feature_impl), pkgId: 110
+I: Decoding Shared Library (com.tencent.mobileqq.qqguild_df_impl), pkgId: 112
+I: Decoding Shared Library (com.tencent.mobileqq.qqexpand_impl), pkgId: 113
+I: Decoding Shared Library (com.tencent.mobileqq.qqnearby_impl), pkgId: 115
+I: Decoding Shared Library (com.tencent.mobileqq.cmshow_impl), pkgId: 118
+I: Decoding Shared Library (com.tencent.mobileqq.qq_comic_impl), pkgId: 119
+I: Decoding Shared Library (com.tencent.mobileqq.qqmini_impl), pkgId: 121
+I: Decoding Shared Library (com.tencent.mobileqq.aelight_impl), pkgId: 123
+I: Decoding Shared Library (com.tencent.mobileqq.qq_qzonehub_impl), pkgId: 124
+I: Decoding Shared Library (com.tencent.mobileqq.kandian_feature_impl), pkgId: 125
+I: Decoding Shared Library (com.tencent.mobileqq.kandian_ad_feature_impl), pkgId: 126
+I: Decoding Shared Library (com.tencent.mobileqq.matchfriend_impl), pkgId: 109
+I: Decoding Shared Library (com.tencent.mobileqq.profilecard_feature_impl), pkgId: 110
+I: Decoding Shared Library (com.tencent.mobileqq.qqguild_df_impl), pkgId: 112
+I: Decoding Shared Library (com.tencent.mobileqq.qqexpand_impl), pkgId: 113
+I: Decoding Shared Library (com.tencent.mobileqq.qqnearby_impl), pkgId: 115
+I: Decoding Shared Library (com.tencent.mobileqq.cmshow_impl), pkgId: 118
+I: Decoding Shared Library (com.tencent.mobileqq.qq_comic_impl), pkgId: 119
+I: Decoding Shared Library (com.tencent.mobileqq.qqmini_impl), pkgId: 121
+I: Decoding Shared Library (com.tencent.mobileqq.qqpay_temp_impl), pkgId: 122
+I: Decoding Shared Library (com.tencent.mobileqq.aelight_impl), pkgId: 123
+I: Decoding Shared Library (com.tencent.mobileqq.qq_qzonehub_impl), pkgId: 124
+I: Decoding Shared Library (com.tencent.mobileqq.kandian_feature_impl), pkgId: 125
+I: Decoding Shared Library (com.tencent.mobileqq.kandian_ad_feature_impl), pkgId: 126
+I: Decoding Shared Library (com.tencent.mobileqq.matchfriend_impl), pkgId: 109
+I: Decoding Shared Library (com.tencent.mobileqq.profilecard_feature_impl), pkgId: 110
+I: Decoding Shared Library (com.tencent.mobileqq.qqguild_df_impl), pkgId: 112
+I: Decoding Shared Library (com.tencent.mobileqq.qqexpand_impl), pkgId: 113
+I: Decoding Shared Library (com.tencent.mobileqq.qqnearby_impl), pkgId: 115
+I: Decoding Shared Library (com.tencent.mobileqq.qqpubaccount_impl), pkgId: 116
+I: Decoding Shared Library (com.tencent.mobileqq.cmshow_impl), pkgId: 118
+I: Decoding Shared Library (com.tencent.mobileqq.qq_comic_impl), pkgId: 119
+I: Decoding Shared Library (com.tencent.mobileqq.qqmini_impl), pkgId: 121
+I: Decoding Shared Library (com.tencent.mobileqq.qqpay_temp_impl), pkgId: 122
+I: Decoding Shared Library (com.tencent.mobileqq.aelight_impl), pkgId: 123
+I: Decoding Shared Library (com.tencent.mobileqq.qq_qzonehub_impl), pkgId: 124
+I: Decoding Shared Library (com.tencent.mobileqq.kandian_feature_impl), pkgId: 125
+I: Decoding Shared Library (com.tencent.mobileqq.kandian_ad_feature_impl), pkgId: 126
+I: Decoding Shared Library (com.tencent.mobileqq.matchfriend_impl), pkgId: 109
+I: Decoding Shared Library (com.tencent.mobileqq.profilecard_feature_impl), pkgId: 110
+I: Decoding Shared Library (com.tencent.mobileqq.qqguild_df_impl), pkgId: 112
+I: Decoding Shared Library (com.tencent.mobileqq.qqexpand_impl), pkgId: 113
+I: Decoding Shared Library (com.tencent.mobileqq.qqnearby_impl), pkgId: 115
+I: Decoding Shared Library (com.tencent.mobileqq.qqpubaccount_impl), pkgId: 116
+I: Decoding Shared Library (com.tencent.mobileqq.cmshow_impl), pkgId: 118
+I: Decoding Shared Library (com.tencent.mobileqq.qq_comic_impl), pkgId: 119
+I: Decoding Shared Library (com.tencent.mobileqq.qqrtc_feature_impl), pkgId: 120
+I: Decoding Shared Library (com.tencent.mobileqq.qqmini_impl), pkgId: 121
+I: Decoding Shared Library (com.tencent.mobileqq.qqpay_temp_impl), pkgId: 122
+I: Decoding Shared Library (com.tencent.mobileqq.aelight_impl), pkgId: 123
+I: Decoding Shared Library (com.tencent.mobileqq.qq_qzonehub_impl), pkgId: 124
+I: Decoding Shared Library (com.tencent.mobileqq.kandian_feature_impl), pkgId: 125
+I: Decoding Shared Library (com.tencent.mobileqq.kandian_ad_feature_impl), pkgId: 126
+I: Decoding Shared Library (com.tencent.mobileqq.matchfriend_impl), pkgId: 109
+I: Decoding Shared Library (com.tencent.mobileqq.profilecard_feature_impl), pkgId: 110
+I: Decoding Shared Library (com.tencent.mobileqq.qqguild_df_impl), pkgId: 112
+I: Decoding Shared Library (com.tencent.mobileqq.qqexpand_impl), pkgId: 113
+I: Decoding Shared Library (com.tencent.mobileqq.qqweishi_impl), pkgId: 114
+I: Decoding Shared Library (com.tencent.mobileqq.qqnearby_impl), pkgId: 115
+I: Decoding Shared Library (com.tencent.mobileqq.qqpubaccount_impl), pkgId: 116
+I: Decoding Shared Library (com.tencent.mobileqq.cmshow_impl), pkgId: 118
+I: Decoding Shared Library (com.tencent.mobileqq.qq_comic_impl), pkgId: 119
+I: Decoding Shared Library (com.tencent.mobileqq.qqrtc_feature_impl), pkgId: 120
+I: Decoding Shared Library (com.tencent.mobileqq.qqmini_impl), pkgId: 121
+I: Decoding Shared Library (com.tencent.mobileqq.qqpay_temp_impl), pkgId: 122
+I: Decoding Shared Library (com.tencent.mobileqq.aelight_impl), pkgId: 123
+I: Decoding Shared Library (com.tencent.mobileqq.qq_qzonehub_impl), pkgId: 124
+I: Decoding Shared Library (com.tencent.mobileqq.kandian_feature_impl), pkgId: 125
+I: Decoding Shared Library (com.tencent.mobileqq.kandian_ad_feature_impl), pkgId: 126
+I: Decoding Shared Library (com.tencent.mobileqq.matchfriend_impl), pkgId: 109
+I: Decoding Shared Library (com.tencent.mobileqq.profilecard_feature_impl), pkgId: 110
+I: Decoding Shared Library (com.tencent.mobileqq.wxmini_impl), pkgId: 111
+I: Decoding Shared Library (com.tencent.mobileqq.qqguild_df_impl), pkgId: 112
+I: Decoding Shared Library (com.tencent.mobileqq.qqexpand_impl), pkgId: 113
+I: Decoding Shared Library (com.tencent.mobileqq.qqweishi_impl), pkgId: 114
+I: Decoding Shared Library (com.tencent.mobileqq.qqnearby_impl), pkgId: 115
+I: Decoding Shared Library (com.tencent.mobileqq.qqpubaccount_impl), pkgId: 116
+I: Decoding Shared Library (com.tencent.mobileqq.cmshow_impl), pkgId: 118
+I: Decoding Shared Library (com.tencent.mobileqq.qq_comic_impl), pkgId: 119
+I: Decoding Shared Library (com.tencent.mobileqq.qqrtc_feature_impl), pkgId: 120
+I: Decoding Shared Library (com.tencent.mobileqq.qqmini_impl), pkgId: 121
+I: Decoding Shared Library (com.tencent.mobileqq.qqpay_temp_impl), pkgId: 122
+I: Decoding Shared Library (com.tencent.mobileqq.aelight_impl), pkgId: 123
+I: Decoding Shared Library (com.tencent.mobileqq.qq_qzonehub_impl), pkgId: 124
+I: Decoding Shared Library (com.tencent.mobileqq.kandian_feature_impl), pkgId: 125
+I: Decoding Shared Library (com.tencent.mobileqq.kandian_ad_feature_impl), pkgId: 126
+Exception in thread "main" java.lang.IllegalArgumentException: Chunk [ text-decoration:none] is not a valid entry
+        at com.google.common.base.Preconditions.checkArgument(Preconditions.java:219)
+        at com.google.common.base.Splitter$MapSplitter.split(Splitter.java:526)
+        at brut.androlib.res.decoder.StringBlock$Tag.toString(StringBlock.java:167)
+        at java.lang.String.valueOf(String.java:2994)
+        at java.lang.StringBuilder.append(StringBuilder.java:131)
+        at brut.androlib.res.decoder.StringBlock.processStyledString(StringBlock.java:260)
+        at brut.androlib.res.decoder.StringBlock.getHTML(StringBlock.java:288)
+        at brut.androlib.res.decoder.ARSCDecoder.readValue(ARSCDecoder.java:366)
+        at brut.androlib.res.decoder.ARSCDecoder.readEntryData(ARSCDecoder.java:285)
+        at brut.androlib.res.decoder.ARSCDecoder.readTableType(ARSCDecoder.java:261)
+        at brut.androlib.res.decoder.ARSCDecoder.readTableTypeSpec(ARSCDecoder.java:184)
+        at brut.androlib.res.decoder.ARSCDecoder.readTablePackage(ARSCDecoder.java:135)
+        at brut.androlib.res.decoder.ARSCDecoder.readTableHeader(ARSCDecoder.java:84)
+        at brut.androlib.res.decoder.ARSCDecoder.decode(ARSCDecoder.java:50)
+        at brut.androlib.res.AndrolibResources.getResPackagesFromApk(AndrolibResources.java:783)
+        at brut.androlib.res.AndrolibResources.loadMainPkg(AndrolibResources.java:64)
+        at brut.androlib.res.AndrolibResources.getResTable(AndrolibResources.java:56)
+        at brut.androlib.Androlib.getResTable(Androlib.java:69)
+        at brut.androlib.ApkDecoder.getResTable(ApkDecoder.java:247)
+        at brut.androlib.ApkDecoder.decode(ApkDecoder.java:109)
+        at brut.apktool.Main.cmdDecode(Main.java:175)
+        at brut.apktool.Main.main(Main.java:78)
+```
+
 ## QQ国际版：com.tencent.mobileqqi
 
 | 版本  | 修改日期  |
