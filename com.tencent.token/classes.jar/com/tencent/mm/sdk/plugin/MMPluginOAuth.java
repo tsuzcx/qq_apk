@@ -1,6 +1,7 @@
 package com.tencent.mm.sdk.plugin;
 
 import android.app.Activity;
+import android.content.BroadcastReceiver;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
@@ -8,16 +9,18 @@ import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.os.Handler;
 import com.tencent.mm.sdk.platformtools.Log;
+import java.util.HashMap;
+import java.util.Map;
 
 public class MMPluginOAuth
 {
-  private final MMPluginOAuth.IResult bG;
+  private final IResult bG;
   private String bH;
   private String bI;
   private Handler handler;
   private final Context q;
   
-  public MMPluginOAuth(Context paramContext, MMPluginOAuth.IResult paramIResult)
+  public MMPluginOAuth(Context paramContext, IResult paramIResult)
   {
     this.q = paramContext;
     this.bG = paramIResult;
@@ -76,7 +79,7 @@ public class MMPluginOAuth
     }
     for (int i = 0; i != 0; i = 1)
     {
-      MMPluginOAuth.Receiver.register(this.bI, this);
+      Receiver.register(this.bI, this);
       return true;
       if (!(this.q instanceof Activity)) {
         paramHandler.setFlags(268435456);
@@ -84,6 +87,62 @@ public class MMPluginOAuth
       this.q.startActivity(paramHandler);
     }
     return false;
+  }
+  
+  public static abstract interface IResult
+  {
+    public abstract void onResult(MMPluginOAuth paramMMPluginOAuth);
+    
+    public abstract void onSessionTimeOut();
+  }
+  
+  public static class Receiver
+    extends BroadcastReceiver
+  {
+    private static final Map<String, MMPluginOAuth> ah = new HashMap();
+    private final MMPluginOAuth bK;
+    
+    public Receiver()
+    {
+      this(null);
+    }
+    
+    public Receiver(MMPluginOAuth paramMMPluginOAuth)
+    {
+      this.bK = paramMMPluginOAuth;
+    }
+    
+    public static void register(String paramString, MMPluginOAuth paramMMPluginOAuth)
+    {
+      ah.put(paramString, paramMMPluginOAuth);
+    }
+    
+    public static void unregister(String paramString)
+    {
+      ah.remove(paramString);
+    }
+    
+    public void onReceive(Context paramContext, Intent paramIntent)
+    {
+      Log.d("MicroMsg.SDK.MMPluginOAuth", "receive oauth result");
+      String str = paramIntent.getStringExtra("com.tencent.mm.sdk.plugin.Intent.REQUEST_TOKEN");
+      paramIntent = paramIntent.getStringExtra("com.tencent.mm.sdk.plugin.Intent.ACCESS_TOKEN");
+      if (this.bK != null) {
+        paramContext = this.bK;
+      }
+      for (;;)
+      {
+        new Handler().post(new MMPluginOAuth.Receiver.1(this, paramContext, paramIntent));
+        return;
+        paramContext = (MMPluginOAuth)ah.get(str);
+        if (paramContext == null)
+        {
+          Log.e("MicroMsg.SDK.MMPluginOAuth", "oauth unregistered, request token = " + str);
+          return;
+        }
+        unregister(MMPluginOAuth.a(paramContext));
+      }
+    }
   }
 }
 

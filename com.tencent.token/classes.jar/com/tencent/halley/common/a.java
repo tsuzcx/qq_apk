@@ -1,5 +1,8 @@
 package com.tencent.halley.common;
 
+import android.util.SparseArray;
+import java.util.concurrent.ScheduledExecutorService;
+
 public abstract class a
 {
   private static a a;
@@ -9,7 +12,7 @@ public abstract class a
     try
     {
       if (a == null) {
-        a = new b();
+        a = new a();
       }
       a locala = a;
       return locala;
@@ -18,6 +21,33 @@ public abstract class a
   }
   
   public abstract void a(Runnable paramRunnable);
+  
+  static final class a
+    extends a
+  {
+    private ScheduledExecutorService a = null;
+    private boolean b = false;
+    
+    public a()
+    {
+      new SparseArray();
+    }
+    
+    public final void a(Runnable paramRunnable)
+    {
+      if (paramRunnable == null) {}
+      for (;;)
+      {
+        try
+        {
+          b.d("AsyncTaskHandlerAbs", "task runner should not be null");
+          return;
+        }
+        finally {}
+        this.a.execute(paramRunnable);
+      }
+    }
+  }
 }
 
 

@@ -141,7 +141,13 @@ public class cx
     paramString = null;
     try
     {
-      String str = ef.a(new fx());
+      String str = ef.a(new ef.a()
+      {
+        public void c(boolean paramAnonymousBoolean1, boolean paramAnonymousBoolean2)
+        {
+          eh.f("SharkHelper", "[detect_conn]needWifiApprove() callback,  need: " + paramAnonymousBoolean1 + " receivedError: " + paramAnonymousBoolean2);
+        }
+      });
       paramString = str;
     }
     catch (Throwable localThrowable)
@@ -169,20 +175,20 @@ public class cx
     // Byte code:
     //   0: iconst_0
     //   1: istore_2
-    //   2: ldc 57
-    //   4: new 59	java/lang/StringBuilder
+    //   2: ldc 59
+    //   4: new 61	java/lang/StringBuilder
     //   7: dup
-    //   8: invokespecial 60	java/lang/StringBuilder:<init>	()V
+    //   8: invokespecial 62	java/lang/StringBuilder:<init>	()V
     //   11: ldc 187
-    //   13: invokevirtual 66	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   13: invokevirtual 68	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   16: ldc 189
-    //   18: invokevirtual 66	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   18: invokevirtual 68	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   21: ldc 191
-    //   23: invokevirtual 66	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   23: invokevirtual 68	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   26: aload_0
-    //   27: invokevirtual 66	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   30: invokevirtual 73	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   33: invokestatic 155	btmsdkobf/eh:f	(Ljava/lang/String;Ljava/lang/String;)V
+    //   27: invokevirtual 68	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   30: invokevirtual 75	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   33: invokestatic 157	btmsdkobf/eh:f	(Ljava/lang/String;Ljava/lang/String;)V
     //   36: invokestatic 196	java/lang/System:currentTimeMillis	()J
     //   39: lstore_3
     //   40: aconst_null
@@ -231,22 +237,22 @@ public class cx
     //   114: invokevirtual 224	java/net/Socket:close	()V
     //   117: iload_2
     //   118: istore_1
-    //   119: ldc 57
-    //   121: new 59	java/lang/StringBuilder
+    //   119: ldc 59
+    //   121: new 61	java/lang/StringBuilder
     //   124: dup
-    //   125: invokespecial 60	java/lang/StringBuilder:<init>	()V
+    //   125: invokespecial 62	java/lang/StringBuilder:<init>	()V
     //   128: ldc 226
-    //   130: invokevirtual 66	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   130: invokevirtual 68	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   133: iload_1
     //   134: invokevirtual 174	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
     //   137: ldc 228
-    //   139: invokevirtual 66	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   139: invokevirtual 68	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   142: invokestatic 196	java/lang/System:currentTimeMillis	()J
     //   145: lload_3
     //   146: lsub
     //   147: invokevirtual 231	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   150: invokevirtual 73	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   153: invokestatic 155	btmsdkobf/eh:f	(Ljava/lang/String;Ljava/lang/String;)V
+    //   150: invokevirtual 75	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   153: invokestatic 157	btmsdkobf/eh:f	(Ljava/lang/String;Ljava/lang/String;)V
     //   156: iload_1
     //   157: ireturn
     //   158: astore_0
@@ -260,16 +266,16 @@ public class cx
     //   171: astore_0
     //   172: aload_0
     //   173: astore 5
-    //   175: ldc 57
-    //   177: new 59	java/lang/StringBuilder
+    //   175: ldc 59
+    //   177: new 61	java/lang/StringBuilder
     //   180: dup
-    //   181: invokespecial 60	java/lang/StringBuilder:<init>	()V
+    //   181: invokespecial 62	java/lang/StringBuilder:<init>	()V
     //   184: ldc 236
-    //   186: invokevirtual 66	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   186: invokevirtual 68	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   189: aload 6
     //   191: invokevirtual 239	java/io/IOException:getMessage	()Ljava/lang/String;
-    //   194: invokevirtual 66	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   197: invokevirtual 73	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   194: invokevirtual 68	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   197: invokevirtual 75	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   200: aload 6
     //   202: invokestatic 243	btmsdkobf/eh:b	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   205: iload_2
@@ -299,16 +305,16 @@ public class cx
     //   246: astore 6
     //   248: aload_0
     //   249: astore 5
-    //   251: ldc 57
-    //   253: new 59	java/lang/StringBuilder
+    //   251: ldc 59
+    //   253: new 61	java/lang/StringBuilder
     //   256: dup
-    //   257: invokespecial 60	java/lang/StringBuilder:<init>	()V
+    //   257: invokespecial 62	java/lang/StringBuilder:<init>	()V
     //   260: ldc 245
-    //   262: invokevirtual 66	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   262: invokevirtual 68	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   265: aload 6
     //   267: invokevirtual 246	java/lang/Throwable:getMessage	()Ljava/lang/String;
-    //   270: invokevirtual 66	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   273: invokevirtual 73	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   270: invokevirtual 68	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   273: invokevirtual 75	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   276: aload 6
     //   278: invokestatic 243	btmsdkobf/eh:b	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   281: iload_2

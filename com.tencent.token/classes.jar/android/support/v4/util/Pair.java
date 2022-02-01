@@ -3,23 +3,23 @@ package android.support.v4.util;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
-public class Pair
+public class Pair<F, S>
 {
   @Nullable
-  public final Object first;
+  public final F first;
   @Nullable
-  public final Object second;
+  public final S second;
   
-  public Pair(@Nullable Object paramObject1, @Nullable Object paramObject2)
+  public Pair(@Nullable F paramF, @Nullable S paramS)
   {
-    this.first = paramObject1;
-    this.second = paramObject2;
+    this.first = paramF;
+    this.second = paramS;
   }
   
   @NonNull
-  public static Pair create(@Nullable Object paramObject1, @Nullable Object paramObject2)
+  public static <A, B> Pair<A, B> create(@Nullable A paramA, @Nullable B paramB)
   {
-    return new Pair(paramObject1, paramObject2);
+    return new Pair(paramA, paramB);
   }
   
   private static boolean objectsEqual(Object paramObject1, Object paramObject2)

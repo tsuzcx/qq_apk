@@ -17,10 +17,10 @@ public class LifecycleRegistry
   private static final String LOG_TAG = "LifecycleRegistry";
   private int mAddingObserverCounter = 0;
   private boolean mHandlingEvent = false;
-  private final WeakReference mLifecycleOwner;
+  private final WeakReference<LifecycleOwner> mLifecycleOwner;
   private boolean mNewEventOccurred = false;
-  private FastSafeIterableMap mObserverMap = new FastSafeIterableMap();
-  private ArrayList mParentStates = new ArrayList();
+  private FastSafeIterableMap<LifecycleObserver, ObserverWithState> mObserverMap = new FastSafeIterableMap();
+  private ArrayList<Lifecycle.State> mParentStates = new ArrayList();
   private Lifecycle.State mState;
   
   public LifecycleRegistry(@NonNull LifecycleOwner paramLifecycleOwner)
@@ -35,7 +35,7 @@ public class LifecycleRegistry
     while ((localIterator.hasNext()) && (!this.mNewEventOccurred))
     {
       Map.Entry localEntry = (Map.Entry)localIterator.next();
-      LifecycleRegistry.ObserverWithState localObserverWithState = (LifecycleRegistry.ObserverWithState)localEntry.getValue();
+      ObserverWithState localObserverWithState = (ObserverWithState)localEntry.getValue();
       while ((localObserverWithState.mState.compareTo(this.mState) > 0) && (!this.mNewEventOccurred) && (this.mObserverMap.contains(localEntry.getKey())))
       {
         Lifecycle.Event localEvent = downEvent(localObserverWithState.mState);
@@ -51,7 +51,7 @@ public class LifecycleRegistry
     paramLifecycleObserver = this.mObserverMap.ceil(paramLifecycleObserver);
     if (paramLifecycleObserver != null)
     {
-      paramLifecycleObserver = ((LifecycleRegistry.ObserverWithState)paramLifecycleObserver.getValue()).mState;
+      paramLifecycleObserver = ((ObserverWithState)paramLifecycleObserver.getValue()).mState;
       if (this.mParentStates.isEmpty()) {
         break label74;
       }
@@ -67,7 +67,7 @@ public class LifecycleRegistry
   
   private static Lifecycle.Event downEvent(Lifecycle.State paramState)
   {
-    switch (LifecycleRegistry.1.$SwitchMap$android$arch$lifecycle$Lifecycle$State[paramState.ordinal()])
+    switch (1.$SwitchMap$android$arch$lifecycle$Lifecycle$State[paramState.ordinal()])
     {
     default: 
       throw new IllegalArgumentException("Unexpected state value " + paramState);
@@ -89,7 +89,7 @@ public class LifecycleRegistry
     while ((localIteratorWithAdditions.hasNext()) && (!this.mNewEventOccurred))
     {
       Map.Entry localEntry = (Map.Entry)localIteratorWithAdditions.next();
-      LifecycleRegistry.ObserverWithState localObserverWithState = (LifecycleRegistry.ObserverWithState)localEntry.getValue();
+      ObserverWithState localObserverWithState = (ObserverWithState)localEntry.getValue();
       while ((localObserverWithState.mState.compareTo(this.mState) < 0) && (!this.mNewEventOccurred) && (this.mObserverMap.contains(localEntry.getKey())))
       {
         pushParentState(localObserverWithState.mState);
@@ -101,7 +101,7 @@ public class LifecycleRegistry
   
   static Lifecycle.State getStateAfter(Lifecycle.Event paramEvent)
   {
-    switch (LifecycleRegistry.1.$SwitchMap$android$arch$lifecycle$Lifecycle$Event[paramEvent.ordinal()])
+    switch (1.$SwitchMap$android$arch$lifecycle$Lifecycle$Event[paramEvent.ordinal()])
     {
     default: 
       throw new IllegalArgumentException("Unexpected event value " + paramEvent);
@@ -122,8 +122,8 @@ public class LifecycleRegistry
     if (this.mObserverMap.size() == 0) {
       return true;
     }
-    Lifecycle.State localState1 = ((LifecycleRegistry.ObserverWithState)this.mObserverMap.eldest().getValue()).mState;
-    Lifecycle.State localState2 = ((LifecycleRegistry.ObserverWithState)this.mObserverMap.newest().getValue()).mState;
+    Lifecycle.State localState1 = ((ObserverWithState)this.mObserverMap.eldest().getValue()).mState;
+    Lifecycle.State localState2 = ((ObserverWithState)this.mObserverMap.newest().getValue()).mState;
     if ((localState1 == localState2) && (this.mState == localState2)) {}
     for (boolean bool = true;; bool = false) {
       return bool;
@@ -175,11 +175,11 @@ public class LifecycleRegistry
     while (!isSynced())
     {
       this.mNewEventOccurred = false;
-      if (this.mState.compareTo(((LifecycleRegistry.ObserverWithState)this.mObserverMap.eldest().getValue()).mState) < 0) {
+      if (this.mState.compareTo(((ObserverWithState)this.mObserverMap.eldest().getValue()).mState) < 0) {
         backwardPass(localLifecycleOwner);
       }
       Map.Entry localEntry = this.mObserverMap.newest();
-      if ((!this.mNewEventOccurred) && (localEntry != null) && (this.mState.compareTo(((LifecycleRegistry.ObserverWithState)localEntry.getValue()).mState) > 0)) {
+      if ((!this.mNewEventOccurred) && (localEntry != null) && (this.mState.compareTo(((ObserverWithState)localEntry.getValue()).mState) > 0)) {
         forwardPass(localLifecycleOwner);
       }
     }
@@ -188,7 +188,7 @@ public class LifecycleRegistry
   
   private static Lifecycle.Event upEvent(Lifecycle.State paramState)
   {
-    switch (LifecycleRegistry.1.$SwitchMap$android$arch$lifecycle$Lifecycle$State[paramState.ordinal()])
+    switch (1.$SwitchMap$android$arch$lifecycle$Lifecycle$State[paramState.ordinal()])
     {
     default: 
       throw new IllegalArgumentException("Unexpected state value " + paramState);
@@ -206,12 +206,12 @@ public class LifecycleRegistry
   public void addObserver(@NonNull LifecycleObserver paramLifecycleObserver)
   {
     Lifecycle.State localState;
-    LifecycleRegistry.ObserverWithState localObserverWithState;
+    ObserverWithState localObserverWithState;
     if (this.mState == Lifecycle.State.DESTROYED)
     {
       localState = Lifecycle.State.DESTROYED;
-      localObserverWithState = new LifecycleRegistry.ObserverWithState(paramLifecycleObserver, localState);
-      if ((LifecycleRegistry.ObserverWithState)this.mObserverMap.putIfAbsent(paramLifecycleObserver, localObserverWithState) == null) {
+      localObserverWithState = new ObserverWithState(paramLifecycleObserver, localState);
+      if ((ObserverWithState)this.mObserverMap.putIfAbsent(paramLifecycleObserver, localObserverWithState) == null) {
         break label49;
       }
     }
@@ -268,6 +268,26 @@ public class LifecycleRegistry
   public void removeObserver(@NonNull LifecycleObserver paramLifecycleObserver)
   {
     this.mObserverMap.remove(paramLifecycleObserver);
+  }
+  
+  static class ObserverWithState
+  {
+    GenericLifecycleObserver mLifecycleObserver;
+    Lifecycle.State mState;
+    
+    ObserverWithState(LifecycleObserver paramLifecycleObserver, Lifecycle.State paramState)
+    {
+      this.mLifecycleObserver = Lifecycling.getCallback(paramLifecycleObserver);
+      this.mState = paramState;
+    }
+    
+    void dispatchEvent(LifecycleOwner paramLifecycleOwner, Lifecycle.Event paramEvent)
+    {
+      Lifecycle.State localState = LifecycleRegistry.getStateAfter(paramEvent);
+      this.mState = LifecycleRegistry.min(this.mState, localState);
+      this.mLifecycleObserver.onStateChanged(paramLifecycleOwner, paramEvent);
+      this.mState = localState;
+    }
   }
 }
 

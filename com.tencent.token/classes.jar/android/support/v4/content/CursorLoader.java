@@ -11,11 +11,11 @@ import java.io.PrintWriter;
 import java.util.Arrays;
 
 public class CursorLoader
-  extends AsyncTaskLoader
+  extends AsyncTaskLoader<Cursor>
 {
   CancellationSignal mCancellationSignal;
   Cursor mCursor;
-  final Loader.ForceLoadContentObserver mObserver = new Loader.ForceLoadContentObserver(this);
+  final Loader<Cursor>.ForceLoadContentObserver mObserver = new Loader.ForceLoadContentObserver(this);
   String[] mProjection;
   String mSelection;
   String[] mSelectionArgs;
@@ -133,11 +133,11 @@ public class CursorLoader
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: invokevirtual 137	android/support/v4/content/CursorLoader:isLoadInBackgroundCanceled	()Z
+    //   3: invokevirtual 139	android/support/v4/content/CursorLoader:isLoadInBackgroundCanceled	()Z
     //   6: ifeq +16 -> 22
-    //   9: new 139	android/support/v4/os/OperationCanceledException
+    //   9: new 141	android/support/v4/os/OperationCanceledException
     //   12: dup
-    //   13: invokespecial 141	android/support/v4/os/OperationCanceledException:<init>	()V
+    //   13: invokespecial 143	android/support/v4/os/OperationCanceledException:<init>	()V
     //   16: athrow
     //   17: astore_1
     //   18: aload_0
@@ -145,50 +145,50 @@ public class CursorLoader
     //   20: aload_1
     //   21: athrow
     //   22: aload_0
-    //   23: new 52	android/support/v4/os/CancellationSignal
+    //   23: new 54	android/support/v4/os/CancellationSignal
     //   26: dup
-    //   27: invokespecial 142	android/support/v4/os/CancellationSignal:<init>	()V
-    //   30: putfield 50	android/support/v4/content/CursorLoader:mCancellationSignal	Landroid/support/v4/os/CancellationSignal;
+    //   27: invokespecial 144	android/support/v4/os/CancellationSignal:<init>	()V
+    //   30: putfield 52	android/support/v4/content/CursorLoader:mCancellationSignal	Landroid/support/v4/os/CancellationSignal;
     //   33: aload_0
     //   34: monitorexit
     //   35: aload_0
-    //   36: invokevirtual 146	android/support/v4/content/CursorLoader:getContext	()Landroid/content/Context;
-    //   39: invokevirtual 152	android/content/Context:getContentResolver	()Landroid/content/ContentResolver;
+    //   36: invokevirtual 148	android/support/v4/content/CursorLoader:getContext	()Landroid/content/Context;
+    //   39: invokevirtual 154	android/content/Context:getContentResolver	()Landroid/content/ContentResolver;
     //   42: aload_0
-    //   43: getfield 36	android/support/v4/content/CursorLoader:mUri	Landroid/net/Uri;
+    //   43: getfield 38	android/support/v4/content/CursorLoader:mUri	Landroid/net/Uri;
     //   46: aload_0
-    //   47: getfield 38	android/support/v4/content/CursorLoader:mProjection	[Ljava/lang/String;
+    //   47: getfield 40	android/support/v4/content/CursorLoader:mProjection	[Ljava/lang/String;
     //   50: aload_0
-    //   51: getfield 40	android/support/v4/content/CursorLoader:mSelection	Ljava/lang/String;
+    //   51: getfield 42	android/support/v4/content/CursorLoader:mSelection	Ljava/lang/String;
     //   54: aload_0
-    //   55: getfield 42	android/support/v4/content/CursorLoader:mSelectionArgs	[Ljava/lang/String;
+    //   55: getfield 44	android/support/v4/content/CursorLoader:mSelectionArgs	[Ljava/lang/String;
     //   58: aload_0
-    //   59: getfield 44	android/support/v4/content/CursorLoader:mSortOrder	Ljava/lang/String;
+    //   59: getfield 46	android/support/v4/content/CursorLoader:mSortOrder	Ljava/lang/String;
     //   62: aload_0
-    //   63: getfield 50	android/support/v4/content/CursorLoader:mCancellationSignal	Landroid/support/v4/os/CancellationSignal;
-    //   66: invokestatic 158	android/support/v4/content/ContentResolverCompat:query	(Landroid/content/ContentResolver;Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;Landroid/support/v4/os/CancellationSignal;)Landroid/database/Cursor;
+    //   63: getfield 52	android/support/v4/content/CursorLoader:mCancellationSignal	Landroid/support/v4/os/CancellationSignal;
+    //   66: invokestatic 160	android/support/v4/content/ContentResolverCompat:query	(Landroid/content/ContentResolver;Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;Landroid/support/v4/os/CancellationSignal;)Landroid/database/Cursor;
     //   69: astore_1
     //   70: aload_1
     //   71: ifnull +20 -> 91
     //   74: aload_1
-    //   75: invokeinterface 162 1 0
+    //   75: invokeinterface 164 1 0
     //   80: pop
     //   81: aload_1
     //   82: aload_0
-    //   83: getfield 30	android/support/v4/content/CursorLoader:mObserver	Landroid/support/v4/content/Loader$ForceLoadContentObserver;
-    //   86: invokeinterface 166 2 0
+    //   83: getfield 32	android/support/v4/content/CursorLoader:mObserver	Landroid/support/v4/content/Loader$ForceLoadContentObserver;
+    //   86: invokeinterface 168 2 0
     //   91: aload_0
     //   92: monitorenter
     //   93: aload_0
     //   94: aconst_null
-    //   95: putfield 50	android/support/v4/content/CursorLoader:mCancellationSignal	Landroid/support/v4/os/CancellationSignal;
+    //   95: putfield 52	android/support/v4/content/CursorLoader:mCancellationSignal	Landroid/support/v4/os/CancellationSignal;
     //   98: aload_0
     //   99: monitorexit
     //   100: aload_1
     //   101: areturn
     //   102: astore_2
     //   103: aload_1
-    //   104: invokeinterface 66 1 0
+    //   104: invokeinterface 68 1 0
     //   109: aload_2
     //   110: athrow
     //   111: astore_1
@@ -196,7 +196,7 @@ public class CursorLoader
     //   113: monitorenter
     //   114: aload_0
     //   115: aconst_null
-    //   116: putfield 50	android/support/v4/content/CursorLoader:mCancellationSignal	Landroid/support/v4/os/CancellationSignal;
+    //   116: putfield 52	android/support/v4/content/CursorLoader:mCancellationSignal	Landroid/support/v4/os/CancellationSignal;
     //   119: aload_0
     //   120: monitorexit
     //   121: aload_1

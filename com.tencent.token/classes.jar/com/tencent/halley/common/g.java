@@ -1,309 +1,148 @@
 package com.tencent.halley.common;
 
-import android.content.Context;
-import android.net.Uri;
-import android.os.Environment;
-import android.os.StatFs;
-import android.text.TextUtils;
-import com.tencent.halley.common.b.f;
-import com.tencent.token.bq;
-import com.tencent.token.br;
-import com.tencent.token.ca;
-import com.tencent.token.cc;
-import java.io.File;
-import java.io.IOException;
-import java.io.UnsupportedEncodingException;
-import java.net.URLDecoder;
-import java.util.HashMap;
+import com.tencent.halley.scheduler.c.h;
+import com.tencent.token.al;
+import com.tencent.token.am;
+import com.tencent.token.bd;
+import com.tencent.token.be;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class g
 {
-  public int a = 0;
-  public String b = "";
+  public static com.tencent.halley.b a;
   
-  public g() {}
-  
-  public g(int paramInt, String paramString)
-  {
-    this.a = paramInt;
-    if (!TextUtils.isEmpty(paramString))
-    {
-      this.b = paramString;
-      return;
-    }
-    this.b = "";
-  }
-  
-  public static long a()
+  public static void a(byte[] paramArrayOfByte)
   {
     try
     {
-      StatFs localStatFs = new StatFs(Environment.getExternalStorageDirectory().getAbsolutePath());
-      long l = localStatFs.getBlockSize();
-      int i = localStatFs.getAvailableBlocks();
-      return i * l;
-    }
-    catch (Throwable localThrowable)
-    {
-      localThrowable.printStackTrace();
-    }
-    return -1L;
-  }
-  
-  public static br a(f paramf)
-  {
-    paramf = new ca(paramf);
-    try
-    {
-      paramf.i();
-      return paramf;
-    }
-    catch (Exception localException)
-    {
-      paramf.b = -2;
-      paramf.c = cc.a(localException);
-    }
-    return paramf;
-  }
-  
-  public static String a(String paramString)
-  {
-    String str = "";
-    if (!TextUtils.isEmpty(paramString)) {
-      str = paramString.replace('\n', ' ').replace('\r', ' ').replace("|", "%7C").replace("&", "%26").replace("=", "%3D");
-    }
-    return str;
-  }
-  
-  private static String a(String paramString1, String paramString2)
-  {
-    for (;;)
-    {
-      try
+      Object localObject1 = new com.tencent.halley.scheduler.c.b();
+      ((com.tencent.halley.scheduler.c.b)localObject1).a(new com.tencent.halley.common.b.a(paramArrayOfByte));
+      Object localObject2 = ((com.tencent.halley.scheduler.c.b)localObject1).a;
+      paramArrayOfByte = new ArrayList();
+      localObject2 = ((List)localObject2).iterator();
+      while (((Iterator)localObject2).hasNext())
       {
-        if (TextUtils.isEmpty(paramString1)) {
-          break;
-        }
-        i = paramString1.indexOf("filename=");
-        if (-1 == i) {
-          break;
-        }
-        int k = i + 9;
-        int j = paramString1.indexOf(";", k);
-        i = j;
-        if (j == -1) {
-          i = paramString1.length();
-        }
-        paramString1 = paramString1.substring(k, i);
-      }
-      catch (Exception paramString1)
-      {
-        try
+        Object localObject3 = (com.tencent.halley.scheduler.c.a)((Iterator)localObject2).next();
+        al localal = new al();
+        Object localObject4 = ((com.tencent.halley.scheduler.c.a)localObject3).a;
+        localObject4 = ((com.tencent.halley.scheduler.c.a)localObject3).b;
+        int i = ((com.tencent.halley.scheduler.c.a)localObject3).d;
+        localObject3 = ((com.tencent.halley.scheduler.c.a)localObject3).c.iterator();
+        while (((Iterator)localObject3).hasNext())
         {
-          int i;
-          String str1;
-          String str4;
-          String str2 = URLDecoder.decode(paramString1, "gbk");
-          paramString1 = str2;
+          Object localObject5 = (h)((Iterator)localObject3).next();
+          localObject4 = new am();
+          i = ((h)localObject5).a;
+          i = ((h)localObject5).b;
+          localObject5 = ((h)localObject5).c;
+          localal.a.add(localObject4);
         }
-        catch (UnsupportedEncodingException localUnsupportedEncodingException2) {}
-        paramString1 = paramString1;
-        paramString1.printStackTrace();
-        return null;
+        paramArrayOfByte.add(localal);
       }
-      try
+      paramArrayOfByte = ((com.tencent.halley.scheduler.c.b)localObject1).b;
+      localObject1 = bd.a();
+      if ((paramArrayOfByte == null) || (!"".equals(paramArrayOfByte)))
       {
-        str1 = URLDecoder.decode(paramString1, "utf-8");
-        paramString1 = str1;
-        if (TextUtils.isEmpty(paramString1)) {
-          break;
-        }
-        i = paramString1.lastIndexOf("/") + 1;
-        if (i <= 0) {
-          break label142;
-        }
-        str1 = paramString1.substring(i);
-        str4 = str1;
-        if (!TextUtils.isEmpty(str1)) {
-          str4 = c(paramString1, paramString2);
-        }
-        return str4;
-      }
-      catch (UnsupportedEncodingException localUnsupportedEncodingException1) {}
-      continue;
-      label142:
-      String str3 = paramString1;
-    }
-    return null;
-  }
-  
-  public static String a(String paramString1, String paramString2, String paramString3, String paramString4)
-  {
-    String str = a(paramString3, paramString4);
-    paramString3 = str;
-    if (str == null)
-    {
-      paramString1 = b(paramString1, paramString4);
-      paramString3 = paramString1;
-      if (paramString1 == null)
-      {
-        paramString1 = "downloadfile" + paramString4;
-        paramString3 = paramString1;
-        if (!TextUtils.isEmpty(paramString2))
-        {
-          paramString3 = paramString1;
-          if (paramString2.equalsIgnoreCase("application/vnd.android.package-archive")) {
-            paramString3 = paramString1 + ".apk";
-          }
-        }
+        localObject1 = ((bd)localObject1).c;
+        be.a("detectTaskCode", paramArrayOfByte);
+        return;
       }
     }
-    paramString1 = paramString3;
-    if (!TextUtils.isEmpty(paramString3)) {
-      paramString1 = paramString3.replace("?", "").replace("*", "").replace(":", "").replace("\\", "").replace("/", "").replace("\"", "").replace("<", "").replace(">", "").replace("|", "");
-    }
-    return paramString1;
+    catch (Exception paramArrayOfByte) {}
   }
   
-  public static HashMap a(bq parambq)
+  /* Error */
+  public static boolean a(String paramString, boolean paramBoolean1, long paramLong1, long paramLong2, java.util.Map paramMap, boolean paramBoolean2)
   {
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("B50", parambq.d);
-    localHashMap.put("B51", a(parambq.g));
-    localHashMap.put("B69", a(parambq.e));
-    localHashMap.put("B52", parambq.h);
-    localHashMap.put("B53", a(parambq.j));
-    localHashMap.put("B54", parambq.k);
-    localHashMap.put("B55", parambq.l);
-    localHashMap.put("B56", parambq.m);
-    if (!TextUtils.isEmpty(parambq.n)) {
-      localHashMap.put("B57", a(parambq.n));
-    }
-    if ((!TextUtils.isEmpty(parambq.o)) && (!parambq.o.equals("null"))) {
-      localHashMap.put("B58", a(parambq.o));
-    }
-    localHashMap.put("B59", parambq.p);
-    localHashMap.put("B63", parambq.u);
-    localHashMap.put("B60", parambq.q);
-    localHashMap.put("B61", parambq.r);
-    localHashMap.put("B62", parambq.s);
-    localHashMap.put("B71", parambq.t);
-    localHashMap.put("B76", 0);
-    return localHashMap;
-  }
-  
-  public static void a(String paramString, HashMap paramHashMap)
-  {
-    try
-    {
-      i.a(paramString, true, 0L, 0L, paramHashMap, true);
-      label10:
-      c.b("report:", paramString + "--" + paramHashMap.toString());
-      return;
-    }
-    catch (Exception localException)
-    {
-      break label10;
-    }
-  }
-  
-  public static boolean a(Exception paramException)
-  {
-    if ((paramException != null) && ((paramException instanceof IOException)))
-    {
-      paramException = paramException.getMessage();
-      if ((paramException != null) && ((paramException.contains("ENOSPC")) || (paramException.contains("No space left on device")))) {
-        return true;
-      }
-    }
-    return false;
-  }
-  
-  public static long b()
-  {
-    try
-    {
-      String str = h.a().getFilesDir().getAbsolutePath();
-      StatFs localStatFs = new StatFs(str);
-      localStatFs.restat(str);
-      long l = localStatFs.getAvailableBlocks();
-      int i = localStatFs.getBlockSize();
-      return i * l;
-    }
-    catch (Throwable localThrowable)
-    {
-      localThrowable.printStackTrace();
-    }
-    return -1L;
-  }
-  
-  private static String b(String paramString1, String paramString2)
-  {
-    String str1 = null;
-    for (;;)
-    {
-      try
-      {
-        String str2 = Uri.decode(paramString1);
-        if (str2 != null)
-        {
-          int i = str2.indexOf('?');
-          paramString1 = str2;
-          if (i > 0) {
-            paramString1 = str2.substring(0, i);
-          }
-          if (!paramString1.endsWith("/"))
-          {
-            i = paramString1.lastIndexOf('/') + 1;
-            if (i > 0)
-            {
-              paramString1 = paramString1.substring(i);
-              if (!TextUtils.isEmpty(paramString1)) {
-                str1 = c(paramString1, paramString2);
-              }
-              return str1;
-            }
-          }
-        }
-      }
-      catch (Exception paramString1)
-      {
-        paramString1.printStackTrace();
-        return null;
-      }
-      paramString1 = null;
-    }
-  }
-  
-  public static boolean b(Exception paramException)
-  {
-    if ((paramException != null) && ((paramException instanceof IOException)))
-    {
-      paramException = paramException.getMessage();
-      if ((paramException != null) && (paramException.contains("Read-only file system"))) {
-        return true;
-      }
-    }
-    return false;
-  }
-  
-  private static String c(String paramString1, String paramString2)
-  {
-    int i = paramString1.lastIndexOf(".");
-    String str3 = "";
-    String str2 = str3;
-    String str1 = paramString1;
-    if (i > 0)
-    {
-      str2 = str3;
-      str1 = paramString1;
-      if (paramString1.length() > i + 1)
-      {
-        str1 = paramString1.substring(0, i);
-        str2 = paramString1.substring(i);
-      }
-    }
-    return str1 + paramString2 + str2;
+    // Byte code:
+    //   0: aload_0
+    //   1: iconst_1
+    //   2: lconst_0
+    //   3: lconst_0
+    //   4: aload 6
+    //   6: iconst_1
+    //   7: invokestatic 113	com/tencent/beacon/event/UserAction:onUserAction	(Ljava/lang/String;ZJJLjava/util/Map;Z)Z
+    //   10: istore_1
+    //   11: ldc 115
+    //   13: new 117	java/lang/StringBuilder
+    //   16: dup
+    //   17: ldc 119
+    //   19: invokespecial 122	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   22: aload_0
+    //   23: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   26: ldc 128
+    //   28: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   31: iload_1
+    //   32: invokevirtual 131	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   35: invokevirtual 135	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   38: invokestatic 139	com/tencent/halley/common/b:c	(Ljava/lang/String;Ljava/lang/String;)V
+    //   41: iload_1
+    //   42: istore 8
+    //   44: iload_1
+    //   45: ifne +70 -> 115
+    //   48: iload_1
+    //   49: istore 8
+    //   51: iload_1
+    //   52: istore 7
+    //   54: getstatic 141	com/tencent/halley/common/g:a	Lcom/tencent/halley/b;
+    //   57: ifnull +58 -> 115
+    //   60: iload_1
+    //   61: istore 7
+    //   63: getstatic 141	com/tencent/halley/common/g:a	Lcom/tencent/halley/b;
+    //   66: aload_0
+    //   67: iconst_1
+    //   68: lconst_0
+    //   69: lconst_0
+    //   70: aload 6
+    //   72: iconst_1
+    //   73: invokeinterface 145 9 0
+    //   78: istore 8
+    //   80: iload 8
+    //   82: istore 7
+    //   84: ldc 115
+    //   86: new 117	java/lang/StringBuilder
+    //   89: dup
+    //   90: ldc 147
+    //   92: invokespecial 122	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   95: aload_0
+    //   96: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   99: ldc 128
+    //   101: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   104: iload 8
+    //   106: invokevirtual 131	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   109: invokevirtual 135	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   112: invokestatic 139	com/tencent/halley/common/b:c	(Ljava/lang/String;Ljava/lang/String;)V
+    //   115: iload 8
+    //   117: ireturn
+    //   118: astore_0
+    //   119: iload 7
+    //   121: ireturn
+    //   122: astore 9
+    //   124: iconst_0
+    //   125: istore_1
+    //   126: goto -85 -> 41
+    //   129: astore 9
+    //   131: goto -90 -> 41
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	134	0	paramString	String
+    //   0	134	1	paramBoolean1	boolean
+    //   0	134	2	paramLong1	long
+    //   0	134	4	paramLong2	long
+    //   0	134	6	paramMap	java.util.Map
+    //   0	134	7	paramBoolean2	boolean
+    //   42	74	8	bool	boolean
+    //   122	1	9	localThrowable1	java.lang.Throwable
+    //   129	1	9	localThrowable2	java.lang.Throwable
+    // Exception table:
+    //   from	to	target	type
+    //   54	60	118	java/lang/Throwable
+    //   63	80	118	java/lang/Throwable
+    //   84	115	118	java/lang/Throwable
+    //   0	11	122	java/lang/Throwable
+    //   11	41	129	java/lang/Throwable
   }
 }
 

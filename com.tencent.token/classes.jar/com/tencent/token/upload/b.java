@@ -26,10 +26,10 @@ public class b
     {
       paramArrayOfByte.printStackTrace();
     }
-    return g.a;
+    return f.a;
   }
   
-  public static List a(Context paramContext)
+  public static List<a> a(Context paramContext)
   {
     localArrayList = new ArrayList();
     try

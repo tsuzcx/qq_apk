@@ -1,9 +1,11 @@
 package com.tencent.token.upload;
 
 import java.io.File;
+import java.io.FileFilter;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.LineNumberReader;
+import java.util.regex.Pattern;
 
 public class c
 {
@@ -18,12 +20,12 @@ public class c
     {
       localException.printStackTrace();
     }
-    return g.a;
+    return f.a;
   }
   
   public static String b()
   {
-    str2 = g.a;
+    str2 = f.a;
     try
     {
       LineNumberReader localLineNumberReader = new LineNumberReader(new InputStreamReader(Runtime.getRuntime().exec("cat /proc/cpuinfo").getInputStream()));
@@ -57,7 +59,7 @@ public class c
   
   public static String c()
   {
-    str2 = g.a;
+    str2 = f.a;
     try
     {
       LineNumberReader localLineNumberReader = new LineNumberReader(new InputStreamReader(Runtime.getRuntime().exec("cat /proc/cpuinfo").getInputStream()));
@@ -93,7 +95,7 @@ public class c
   {
     try
     {
-      int i = new File("/sys/devices/system/cpu/").listFiles(new d()).length;
+      int i = new File("/sys/devices/system/cpu/").listFiles(new a()).length;
       return i;
     }
     catch (Exception localException) {}
@@ -117,10 +119,19 @@ public class c
       for (;;)
       {
         localException.printStackTrace();
-        String str2 = g.a;
+        String str2 = f.a;
       }
     }
     return str1.trim();
+  }
+  
+  class a
+    implements FileFilter
+  {
+    public boolean accept(File paramFile)
+    {
+      return Pattern.matches("cpu[0-9]", paramFile.getName());
+    }
   }
 }
 

@@ -4,7 +4,7 @@ import java.util.ListIterator;
 
 abstract interface e
 {
-  public abstract void a(ListIterator paramListIterator);
+  public abstract void a(ListIterator<br> paramListIterator);
 }
 
 

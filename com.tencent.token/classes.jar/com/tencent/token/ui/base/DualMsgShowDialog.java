@@ -3,17 +3,25 @@ package com.tencent.token.ui.base;
 import android.app.Activity;
 import android.app.AlertDialog.Builder;
 import android.app.Dialog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+import com.tencent.token.cm;
+import com.tencent.token.cn;
+import com.tencent.token.co;
 import com.tencent.token.core.bean.a;
-import com.tencent.token.dk;
-import com.tencent.token.dl;
-import com.tencent.token.dm;
+import com.tencent.token.ek;
+import com.tencent.token.global.e;
+import com.tencent.token.global.g;
 import com.tencent.token.ui.IndexActivity;
+import com.tencent.token.ui.ModifyQQPwdActivity;
+import com.tencent.token.ui.o;
 import com.tencent.token.utils.UserTask;
 
 public class DualMsgShowDialog
@@ -47,7 +55,7 @@ public class DualMsgShowDialog
     this.h = paramLong;
   }
   
-  private void a(a parama, int paramInt)
+  private void a(final a parama, final int paramInt)
   {
     if ((this.b == null) || (this.j == null) || (this.k == null)) {
       return;
@@ -57,8 +65,19 @@ public class DualMsgShowDialog
       this.b.a(paramInt);
       return;
     }
-    new h(this, parama, paramInt).c(new String[] { "" });
-    com.tencent.token.global.h.a("current item index: " + this.e);
+    new UserTask()
+    {
+      public e a(String... paramAnonymousVarArgs)
+      {
+        if (DualMsgShowDialog.d(DualMsgShowDialog.this) == 0) {
+          return co.a().a(parama, paramInt);
+        }
+        return cm.a().a(parama, paramInt);
+      }
+      
+      public void a(e paramAnonymouse) {}
+    }.c(new String[] { "" });
+    g.a("current item index: " + this.e);
     if (paramInt == 2)
     {
       this.k.setText(2131230947);
@@ -73,7 +92,7 @@ public class DualMsgShowDialog
       }
     }
     label264:
-    for (parama = dm.a();; parama = dk.a())
+    for (parama = co.a();; parama = cm.a())
     {
       if (this.e != parama.b()) {
         break label271;
@@ -82,7 +101,14 @@ public class DualMsgShowDialog
       if ((paramInt != 3) || (this.d != 0)) {
         break;
       }
-      new AlertDialog.Builder(this.a).setTitle(2131230843).setMessage(this.a.getString(2131230951)).setPositiveButton(2131231243, new i(this)).setNegativeButton(2131230886, null).create().show();
+      new AlertDialog.Builder(this.a).setTitle(2131230843).setMessage(this.a.getString(2131230951)).setPositiveButton(2131231243, new DialogInterface.OnClickListener()
+      {
+        public void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
+        {
+          paramAnonymousDialogInterface = new Intent(DualMsgShowDialog.b(DualMsgShowDialog.this), ModifyQQPwdActivity.class);
+          o.a().a(DualMsgShowDialog.b(DualMsgShowDialog.this), paramAnonymousDialogInterface, o.b);
+        }
+      }).setNegativeButton(2131230886, null).create().show();
       return;
       this.k.setText(2131230948);
       this.j.show();
@@ -105,11 +131,11 @@ public class DualMsgShowDialog
   private void c()
   {
     if (this.d == 0) {}
-    for (this.g = dm.a().a(this.e);; this.g = dk.a().a(this.e))
+    for (this.g = co.a().a(this.e);; this.g = cm.a().a(this.e))
     {
       if ((this.g == null) || (this.g.f() == null) || (this.g.g() == null) || (this.g.h() == null) || (this.g.i() == null))
       {
-        com.tencent.token.global.h.c("item content err");
+        g.c("item content err");
         this.g = null;
       }
       return;
@@ -118,7 +144,27 @@ public class DualMsgShowDialog
   
   private void d()
   {
-    new j(this).equals("");
+    new UserTask()
+    {
+      public e a(String... paramAnonymousVarArgs)
+      {
+        try
+        {
+          ek.a("tbl_dual_msg");
+          ek.a("tbl_barcode_msg");
+          label10:
+          return null;
+        }
+        catch (Error paramAnonymousVarArgs)
+        {
+          break label10;
+        }
+        catch (Exception paramAnonymousVarArgs)
+        {
+          break label10;
+        }
+      }
+    }.equals("");
   }
   
   public void a()
@@ -139,11 +185,33 @@ public class DualMsgShowDialog
   {
     super.onCreate(paramBundle);
     this.b = new DualMsgView(this.a);
-    this.b.setListener(new g(this));
+    this.b.setListener(new DualMsgView.f()
+    {
+      public void a()
+      {
+        DualMsgShowDialog.this.dismiss();
+        if (DualMsgShowDialog.a(DualMsgShowDialog.this))
+        {
+          Intent localIntent = new Intent(DualMsgShowDialog.b(DualMsgShowDialog.this), IndexActivity.class);
+          localIntent.putExtra("intent.retcode", DualMsgShowDialog.c(DualMsgShowDialog.this));
+          DualMsgShowDialog.b(DualMsgShowDialog.this).startActivity(localIntent);
+        }
+      }
+      
+      public void a(int paramAnonymousInt)
+      {
+        if (DualMsgShowDialog.d(DualMsgShowDialog.this) == 0) {}
+        for (a locala = co.a().a(DualMsgShowDialog.e(DualMsgShowDialog.this));; locala = cm.a().a(DualMsgShowDialog.e(DualMsgShowDialog.this)))
+        {
+          DualMsgShowDialog.a(DualMsgShowDialog.this, locala, paramAnonymousInt);
+          return;
+        }
+      }
+    });
     if (!this.b.a(this.a))
     {
       dismiss();
-      com.tencent.token.global.h.a("Dual initView failed!");
+      g.a("Dual initView failed!");
       return;
     }
     c();
@@ -160,8 +228,8 @@ public class DualMsgShowDialog
     this.j.setView(paramBundle);
     this.j.setDuration(0);
     this.j.setGravity(55, 0, IndexActivity.S_TITLE_HEIGHT);
-    this.k = ((TextView)paramBundle.findViewById(2131558987));
-    ((ImageView)paramBundle.findViewById(2131558986)).setBackgroundResource(2130838018);
+    this.k = ((TextView)paramBundle.findViewById(2131558988));
+    ((ImageView)paramBundle.findViewById(2131558987)).setBackgroundResource(2130838018);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)

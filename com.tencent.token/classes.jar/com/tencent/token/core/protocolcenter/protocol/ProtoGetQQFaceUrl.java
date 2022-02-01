@@ -3,22 +3,22 @@ package com.tencent.token.core.protocolcenter.protocol;
 import android.content.Context;
 import android.os.Handler;
 import android.os.Message;
-import com.tencent.token.core.protocolcenter.e;
-import com.tencent.token.cv;
-import com.tencent.token.cw;
-import com.tencent.token.cx;
-import com.tencent.token.ev;
+import com.tencent.token.bz;
+import com.tencent.token.ca;
+import com.tencent.token.cb;
+import com.tencent.token.core.protocolcenter.d;
+import com.tencent.token.dn;
 import com.tencent.token.global.RqdApplication;
 import com.tencent.token.global.c;
-import com.tencent.token.global.f;
-import com.tencent.token.global.h;
-import com.tencent.token.utils.w;
+import com.tencent.token.global.e;
+import com.tencent.token.global.g;
+import com.tencent.token.utils.l;
 import java.util.HashMap;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class ProtoGetQQFaceUrl
-  extends e
+  extends d
 {
   private long d;
   private String e;
@@ -27,7 +27,7 @@ public class ProtoGetQQFaceUrl
   protected String a()
   {
     Object localObject1 = null;
-    String str = cv.a().b();
+    String str = bz.a().b();
     if (str == null)
     {
       this.a.b(104);
@@ -37,30 +37,30 @@ public class ProtoGetQQFaceUrl
     {
       Object localObject2 = new JSONObject();
       ((JSONObject)localObject2).put("uin", this.d);
-      int i = cw.a + 1;
-      cw.a = i;
+      int i = ca.a + 1;
+      ca.a = i;
       this.f = i;
       ((JSONObject)localObject2).put("seq_id", this.f);
-      ((JSONObject)localObject2).put("op_time", cx.c().s() / 1000L);
+      ((JSONObject)localObject2).put("op_time", cb.c().s() / 1000L);
       localObject2 = ((JSONObject)localObject2).toString();
-      h.a("plain:" + (String)localObject2);
-      localObject2 = w.b(((String)localObject2).getBytes());
+      g.a("plain:" + (String)localObject2);
+      localObject2 = l.b(((String)localObject2).getBytes());
       localObject1 = localObject2;
     }
     catch (JSONException localJSONException)
     {
       for (;;)
       {
-        h.c("JSONException:" + localJSONException.getMessage());
+        g.c("JSONException:" + localJSONException.getMessage());
       }
     }
     localObject1 = "?aq_base_sid=" + str + "&data=" + (String)localObject1;
     return c.e() + "/cn/mbtoken3/mbtoken3_get_photo_v3" + (String)localObject1;
   }
   
-  protected void a(ev paramev)
+  protected void a(dn paramdn)
   {
-    this.d = ((Long)paramev.c.get("param.uinhash")).longValue();
+    this.d = ((Long)paramdn.c.get("param.uinhash")).longValue();
   }
   
   protected void a(JSONObject paramJSONObject)
@@ -70,20 +70,20 @@ public class ProtoGetQQFaceUrl
       this.e = null;
       return;
     }
-    byte[] arrayOfByte = w.c(paramJSONObject.getString("data"));
+    byte[] arrayOfByte = l.c(paramJSONObject.getString("data"));
     if (arrayOfByte != null)
     {
       int i = new JSONObject(new String(arrayOfByte)).getInt("seq_id");
       if (i != this.f)
       {
         this.a.b(10030);
-        h.c("parseJSON error seq is wrong seq=" + i + ",right = " + cw.a().b());
+        g.c("parseJSON error seq is wrong seq=" + i + ",right = " + ca.a().b());
         return;
       }
       this.e = paramJSONObject.getString("photo_url");
       return;
     }
-    h.c("parseJSON error decodeData=" + arrayOfByte);
+    g.c("parseJSON error decodeData=" + arrayOfByte);
     a(10022, RqdApplication.l().getString(2131230925));
   }
   

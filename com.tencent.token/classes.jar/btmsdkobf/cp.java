@@ -6,9 +6,9 @@ import com.qq.taf.jce.JceStruct;
 
 public class cp
 {
-  public static JceStruct a(byte[] paramArrayOfByte, JceStruct paramJceStruct, boolean paramBoolean)
+  public static <T extends JceStruct> T a(byte[] paramArrayOfByte, T paramT, boolean paramBoolean)
   {
-    if ((paramArrayOfByte == null) || (paramJceStruct == null)) {
+    if ((paramArrayOfByte == null) || (paramT == null)) {
       return null;
     }
     if (paramBoolean) {}
@@ -16,10 +16,10 @@ public class cp
     {
       try
       {
-        paramJceStruct = paramJceStruct.newInit();
-        paramJceStruct.recyle();
-        paramJceStruct.readFrom(h(paramArrayOfByte));
-        return paramJceStruct;
+        paramT = paramT.newInit();
+        paramT.recyle();
+        paramT.readFrom(h(paramArrayOfByte));
+        return paramT;
       }
       catch (Exception paramArrayOfByte)
       {

@@ -3,6 +3,12 @@ package tmsdk.common.module.pgsdk;
 public abstract interface UpdateListener
 {
   public abstract void onCallback(int[] paramArrayOfInt1, int[] paramArrayOfInt2);
+  
+  public static abstract interface AdapterUpdate
+  {
+    public static final int UPDATE_HELPER_SOLUTION = 1;
+    public static final int UPDATE_MANUAL_SOLUTION = 2;
+  }
 }
 
 

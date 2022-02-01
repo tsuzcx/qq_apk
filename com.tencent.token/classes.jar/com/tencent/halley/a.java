@@ -1,7 +1,7 @@
 package com.tencent.halley;
 
-import com.tencent.token.ap;
-import com.tencent.token.av;
+import com.tencent.token.ak;
+import com.tencent.token.aq;
 import java.util.List;
 
 public class a
@@ -10,9 +10,9 @@ public class a
   {
     try
     {
-      if (av.a() != null)
+      if (aq.a() != null)
       {
-        paramString = av.a().a(paramString, paramInt, paramLong, paramBoolean);
+        paramString = aq.a().a(paramString, paramInt, paramLong, paramBoolean);
         return paramString;
       }
     }
@@ -26,7 +26,7 @@ public class a
     // Byte code:
     //   0: ldc 2
     //   2: monitorenter
-    //   3: invokestatic 24	com/tencent/halley/common/h:a	()Landroid/content/Context;
+    //   3: invokestatic 24	com/tencent/halley/common/f:a	()Landroid/content/Context;
     //   6: astore 6
     //   8: aload 6
     //   10: ifnull +7 -> 17
@@ -37,12 +37,12 @@ public class a
     //   18: aload_1
     //   19: aload_2
     //   20: aload_3
-    //   21: invokestatic 27	com/tencent/halley/common/h:a	(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+    //   21: invokestatic 27	com/tencent/halley/common/f:a	(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
     //   24: aload_0
     //   25: aload_1
     //   26: aload_2
     //   27: aload_3
-    //   28: invokestatic 30	com/tencent/token/av:a	(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lcom/tencent/token/ap;
+    //   28: invokestatic 30	com/tencent/token/aq:a	(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lcom/tencent/token/ak;
     //   31: astore_0
     //   32: aload_0
     //   33: ifnull +11 -> 44

@@ -14,7 +14,7 @@ public class WtloginMsfListener
   static Object TicketMgr;
   private static final Object __SyncCB;
   private static final Object __SyncSeq = new Object();
-  private static Map __cbs = new HashMap();
+  private static Map<Long, WtloginMsfListener> __cbs = new HashMap();
   private static long __seq;
   private byte[] data;
   private boolean flag;

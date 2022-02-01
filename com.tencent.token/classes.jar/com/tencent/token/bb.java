@@ -1,21 +1,10 @@
 package com.tencent.token;
 
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.halley.common.a;
-import com.tencent.halley.common.c;
-
-final class bb
-  extends BroadcastReceiver
+public abstract interface bb
 {
-  bb(ax paramax) {}
+  public abstract az a(String paramString);
   
-  public final void onReceive(Context paramContext, Intent paramIntent)
-  {
-    c.a("AccessSchedulerTrigger", "onAccessSchedulerTriggered by timer, curTime:" + System.currentTimeMillis());
-    a.a().a(new ay(this.a, (byte)0));
-  }
+  public abstract void a(az paramaz);
 }
 
 

@@ -5,9 +5,9 @@ import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import com.tencent.token.cx;
-import com.tencent.token.cy;
-import com.tencent.token.cz;
+import com.tencent.token.cb;
+import com.tencent.token.cc;
+import com.tencent.token.cd;
 
 public class WidgetReceiver
   extends BroadcastReceiver
@@ -36,10 +36,10 @@ public class WidgetReceiver
     }
     if (paramIntent.equals("com.tencent.token.widget.SPEECH"))
     {
-      paramIntent = cx.c();
-      cy localcy = cy.a();
-      if ((!paramIntent.g()) && (!localcy.c())) {
-        cz.a(paramContext).a(paramIntent.l(), 0);
+      paramIntent = cb.c();
+      cc localcc = cc.a();
+      if ((!paramIntent.g()) && (!localcc.c())) {
+        cd.a(paramContext).a(paramIntent.l(), 0);
       }
     }
   }

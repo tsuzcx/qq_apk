@@ -1,8 +1,10 @@
 package android.support.v4.content.pm;
 
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentSender;
+import android.content.IntentSender.SendIntentException;
 import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
@@ -70,7 +72,18 @@ public class ShortcutManagerCompat
       paramContext.sendBroadcast(paramShortcutInfoCompat);
       return true;
     }
-    paramContext.sendOrderedBroadcast(paramShortcutInfoCompat, null, new ShortcutManagerCompat.1(paramIntentSender), null, -1, null, null);
+    paramContext.sendOrderedBroadcast(paramShortcutInfoCompat, null, new BroadcastReceiver()
+    {
+      public void onReceive(Context paramAnonymousContext, Intent paramAnonymousIntent)
+      {
+        try
+        {
+          this.val$callback.sendIntent(paramAnonymousContext, 0, null, null, null);
+          return;
+        }
+        catch (IntentSender.SendIntentException paramAnonymousContext) {}
+      }
+    }, null, -1, null, null);
     return true;
   }
 }

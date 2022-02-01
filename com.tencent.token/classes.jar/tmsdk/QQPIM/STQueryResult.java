@@ -10,8 +10,8 @@ public final class STQueryResult
   extends JceStruct
   implements Cloneable
 {
-  static ArrayList eO;
-  public ArrayList queryinfo = null;
+  static ArrayList<STQueryInfo> eO;
+  public ArrayList<STQueryInfo> queryinfo = null;
   
   static
   {
@@ -28,7 +28,7 @@ public final class STQueryResult
     setQueryinfo(this.queryinfo);
   }
   
-  public STQueryResult(ArrayList paramArrayList)
+  public STQueryResult(ArrayList<STQueryInfo> paramArrayList)
   {
     setQueryinfo(paramArrayList);
   }
@@ -68,7 +68,7 @@ public final class STQueryResult
     return "tmsdk.QQPIM.STQueryResult";
   }
   
-  public ArrayList getQueryinfo()
+  public ArrayList<STQueryInfo> getQueryinfo()
   {
     return this.queryinfo;
   }
@@ -97,7 +97,7 @@ public final class STQueryResult
     setQueryinfo((ArrayList)paramJceInputStream.read(eO, 0, false));
   }
   
-  public void setQueryinfo(ArrayList paramArrayList)
+  public void setQueryinfo(ArrayList<STQueryInfo> paramArrayList)
   {
     this.queryinfo = paramArrayList;
   }

@@ -1,18 +1,17 @@
 package com.tencent.token;
 
-public class gf
+import java.security.cert.Certificate;
+import java.util.List;
+import javax.net.ssl.X509TrustManager;
+
+public abstract class gf
 {
-  private static gg a = null;
-  
-  public static gg a()
+  public static gf a(X509TrustManager paramX509TrustManager)
   {
-    if (a == null)
-    {
-      a = new gg(4, 20);
-      a.a();
-    }
-    return a;
+    return gb.c().a(paramX509TrustManager);
   }
+  
+  public abstract List<Certificate> a(List<Certificate> paramList, String paramString);
 }
 
 

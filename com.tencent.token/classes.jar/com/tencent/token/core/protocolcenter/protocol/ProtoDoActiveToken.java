@@ -1,32 +1,34 @@
 package com.tencent.token.core.protocolcenter.protocol;
 
 import android.content.Context;
-import com.tencent.token.core.protocolcenter.e;
-import com.tencent.token.cv;
-import com.tencent.token.cw;
-import com.tencent.token.cx;
-import com.tencent.token.ev;
-import com.tencent.token.ex;
+import com.tencent.token.bz;
+import com.tencent.token.ca;
+import com.tencent.token.cb;
+import com.tencent.token.core.protocolcenter.d;
+import com.tencent.token.dn;
+import com.tencent.token.dp;
 import com.tencent.token.global.RqdApplication;
 import com.tencent.token.global.c;
-import com.tencent.token.global.f;
-import com.tencent.token.global.h;
+import com.tencent.token.global.e;
+import com.tencent.token.global.g;
+import com.tencent.token.global.k;
 import com.tencent.token.utils.encrypt.b;
-import com.tencent.token.utils.w;
+import com.tencent.token.utils.l;
+import com.tmsdk.common.util.TmsLog;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class ProtoDoActiveToken
-  extends e
+  extends d
 {
-  private static final ex e = new ex("B8008767A628A4F53BCB84C13C961A55BF87607DAA5BE0BA3AC2E0CB778E494579BD444F699885F4968CD9028BB3FC6FA657D532F1718F581669BDC333F83DC3", 16);
+  private static final dp e = new dp("B8008767A628A4F53BCB84C13C961A55BF87607DAA5BE0BA3AC2E0CB778E494579BD444F699885F4968CD9028BB3FC6FA657D532F1718F581669BDC333F83DC3", 16);
   private final long d = 2L;
-  private ex f = new ex("-1");
-  private cx g = cx.c();
+  private dp f = new dp("-1");
+  private cb g = cb.c();
   
   protected String a()
   {
-    String str1 = cv.a().b();
+    String str1 = bz.a().b();
     if (str1 == null)
     {
       this.a.b(104);
@@ -39,11 +41,11 @@ public class ProtoDoActiveToken
       this.a.b(10025);
       return null;
     }
-    int i = cw.a + 1;
-    cw.a = i;
+    int i = ca.a + 1;
+    ca.a = i;
     this.c = i;
-    h.a("client_pub_key=" + str2 + ", length=" + str2.length());
-    str2 = w.a(new Object[] { "imei", cx.b(), "clt_pub_key", str2, "seq_id", Integer.valueOf(this.c), "op_time", Integer.valueOf((int)(cx.c().s() / 1000L)) });
+    g.a("client_pub_key=" + str2 + ", length=" + str2.length());
+    str2 = l.a(new Object[] { "imei", cb.b(), "clt_pub_key", str2, "seq_id", Integer.valueOf(this.c), "op_time", Integer.valueOf((int)(cb.c().s() / 1000L)), "turingd_ticket_id", k.c() });
     if (str2 == null)
     {
       this.a.a(10000, "encrypt imei failed");
@@ -53,18 +55,19 @@ public class ProtoDoActiveToken
     return c.e() + "/cn/mbtoken3/mbtoken3_activate_token_encrypt" + str1;
   }
   
-  protected void a(ev paramev) {}
+  protected void a(dn paramdn) {}
   
   protected void a(JSONObject paramJSONObject)
   {
     int i = paramJSONObject.getInt("err");
+    TmsLog.i("mod_seed", "active token parseJon, errcode: " + i);
     if (i != 0)
     {
       paramJSONObject = paramJSONObject.getString("info");
       this.a.a(i, "server errcode=" + i + ":" + paramJSONObject, paramJSONObject);
       return;
     }
-    paramJSONObject = w.c(paramJSONObject.getString("data"));
+    paramJSONObject = l.c(paramJSONObject.getString("data"));
     if (paramJSONObject != null)
     {
       paramJSONObject = new JSONObject(new String(paramJSONObject));
@@ -78,22 +81,35 @@ public class ProtoDoActiveToken
       if (((String)localObject).length() <= 0) {
         throw new JSONException("");
       }
-      this.g.e();
-      localObject = new ex((String)localObject, 16);
-      localObject = b.b(this.f, (ex)localObject, e);
-      if (localObject == null)
+      try
       {
-        this.a.b(10026);
+        l = paramJSONObject.getLong("seed_expire_time");
+        this.g.c(l);
+        this.g.e();
+        localObject = new dp((String)localObject, 16);
+        localObject = b.b(this.f, (dp)localObject, e);
+        if (localObject == null)
+        {
+          this.a.b(10026);
+          return;
+        }
+      }
+      catch (JSONException localJSONException)
+      {
+        for (;;)
+        {
+          localJSONException.printStackTrace();
+        }
+        this.g.a((dp)localObject);
+        this.g.n();
+        this.g.v();
+        long l = paramJSONObject.getLong("server_time");
+        this.g.b(l);
+        this.a.c();
         return;
       }
-      this.g.a((ex)localObject);
-      this.g.n();
-      long l = paramJSONObject.getLong("server_time");
-      this.g.b(l);
-      this.a.c();
-      return;
     }
-    h.c("parseJSON error decodeData=" + paramJSONObject);
+    g.c("parseJSON error decodeData=" + paramJSONObject);
     a(10022, RqdApplication.l().getString(2131230925));
   }
 }

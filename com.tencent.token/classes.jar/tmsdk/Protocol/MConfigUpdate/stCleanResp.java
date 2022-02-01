@@ -10,10 +10,10 @@ import java.util.Map;
 public final class stCleanResp
   extends JceStruct
 {
-  static ArrayList bJ = new ArrayList();
+  static ArrayList<Map<Integer, String>> bJ = new ArrayList();
   static byte[] bK;
   public byte[] vecChild = null;
-  public ArrayList vecRoot = null;
+  public ArrayList<Map<Integer, String>> vecRoot = null;
   
   static
   {

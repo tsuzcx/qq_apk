@@ -10,6 +10,7 @@ import android.os.Build.VERSION;
 import android.support.annotation.NonNull;
 import android.support.annotation.RequiresApi;
 import android.support.annotation.RestrictTo;
+import android.support.v4.content.res.ResourcesCompat.FontCallback;
 import android.support.v4.widget.AutoSizeableTextView;
 import android.support.v7.appcompat.R.styleable;
 import android.text.method.PasswordTransformationMethod;
@@ -61,7 +62,7 @@ class AppCompatTextHelper
     return null;
   }
   
-  private void onAsyncTypefaceReceived(WeakReference paramWeakReference, Typeface paramTypeface)
+  private void onAsyncTypefaceReceived(WeakReference<TextView> paramWeakReference, Typeface paramTypeface)
   {
     if (this.mAsyncFontPending)
     {
@@ -89,7 +90,15 @@ class AppCompatTextHelper
       {
         i = R.styleable.TextAppearance_fontFamily;
         if (!paramContext.isRestricted()) {
-          paramContext = new AppCompatTextHelper.1(this, new WeakReference(this.mView));
+          paramContext = new ResourcesCompat.FontCallback()
+          {
+            public void onFontRetrievalFailed(int paramAnonymousInt) {}
+            
+            public void onFontRetrieved(@NonNull Typeface paramAnonymousTypeface)
+            {
+              AppCompatTextHelper.this.onAsyncTypefaceReceived(this.val$textViewWeak, paramAnonymousTypeface);
+            }
+          };
         }
       }
     }

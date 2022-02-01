@@ -58,18 +58,18 @@ public final class e
     }
   }
   
-  public final void a(d paramd)
+  public final void a(b paramb)
   {
-    paramd.a(this.a, 1);
-    paramd.a(this.f, 2);
-    paramd.a(this.g, 3);
-    paramd.a(this.b, 4);
-    paramd.a(this.c, 5);
-    paramd.a(this.d, 6);
-    paramd.a(this.e, 7);
-    paramd.a(this.h, 8);
-    paramd.a(this.i, 9);
-    paramd.a(this.j, 10);
+    paramb.a(this.a, 1);
+    paramb.a(this.f, 2);
+    paramb.a(this.g, 3);
+    paramb.a(this.b, 4);
+    paramb.a(this.c, 5);
+    paramb.a(this.d, 6);
+    paramb.a(this.e, 7);
+    paramb.a(this.h, 8);
+    paramb.a(this.i, 9);
+    paramb.a(this.j, 10);
   }
 }
 

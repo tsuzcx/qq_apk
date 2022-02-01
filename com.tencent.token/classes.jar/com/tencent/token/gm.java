@@ -1,30 +1,74 @@
 package com.tencent.token;
 
-public abstract class gm
-  implements Runnable
+import android.graphics.Path;
+import android.graphics.PointF;
+import java.util.List;
+import taiji.aa;
+import taiji.ao;
+
+public class gm
 {
-  protected final String b;
-  
-  public gm(String paramString, Object... paramVarArgs)
+  public static float a(float paramFloat1, float paramFloat2, float paramFloat3)
   {
-    this.b = gn.a(paramString, paramVarArgs);
+    return (paramFloat2 - paramFloat1) * paramFloat3 + paramFloat1;
   }
   
-  protected abstract void c();
-  
-  public final void run()
+  static int a(float paramFloat1, float paramFloat2)
   {
-    String str = Thread.currentThread().getName();
-    Thread.currentThread().setName(this.b);
-    try
+    return a((int)paramFloat1, (int)paramFloat2);
+  }
+  
+  static int a(int paramInt1, int paramInt2)
+  {
+    return paramInt1 - b(paramInt1, paramInt2) * paramInt2;
+  }
+  
+  public static int a(int paramInt1, int paramInt2, float paramFloat)
+  {
+    return (int)(paramInt1 + (paramInt2 - paramInt1) * paramFloat);
+  }
+  
+  public static void a(ao paramao, Path paramPath)
+  {
+    paramPath.reset();
+    PointF localPointF1 = paramao.a();
+    paramPath.moveTo(localPointF1.x, localPointF1.y);
+    localPointF1 = new PointF(localPointF1.x, localPointF1.y);
+    int i = 0;
+    if (i < paramao.c().size())
     {
-      c();
-      return;
+      Object localObject = (aa)paramao.c().get(i);
+      PointF localPointF2 = ((aa)localObject).a();
+      PointF localPointF3 = ((aa)localObject).b();
+      localObject = ((aa)localObject).c();
+      if ((localPointF2.equals(localPointF1)) && (localPointF3.equals(localObject))) {
+        paramPath.lineTo(((PointF)localObject).x, ((PointF)localObject).y);
+      }
+      for (;;)
+      {
+        localPointF1.set(((PointF)localObject).x, ((PointF)localObject).y);
+        i += 1;
+        break;
+        paramPath.cubicTo(localPointF2.x, localPointF2.y, localPointF3.x, localPointF3.y, ((PointF)localObject).x, ((PointF)localObject).y);
+      }
     }
-    finally
+    if (paramao.b()) {
+      paramPath.close();
+    }
+  }
+  
+  private static int b(int paramInt1, int paramInt2)
+  {
+    int j = paramInt1 / paramInt2;
+    int i = j;
+    if ((paramInt1 ^ paramInt2) < 0)
     {
-      Thread.currentThread().setName(str);
+      i = j;
+      if (j * paramInt2 != paramInt1) {
+        i = j - 1;
+      }
     }
+    return i;
   }
 }
 

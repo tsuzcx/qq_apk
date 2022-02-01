@@ -9,8 +9,8 @@ public final class CommControl
   extends JceStruct
 {
   static ProductVersion dX = new ProductVersion();
-  static ArrayList dY = new ArrayList();
-  public ArrayList buildNoList = null;
+  static ArrayList<Integer> dY = new ArrayList();
+  public ArrayList<Integer> buildNoList = null;
   public int cmdId = 0;
   public int count = 0;
   public String lc = "";

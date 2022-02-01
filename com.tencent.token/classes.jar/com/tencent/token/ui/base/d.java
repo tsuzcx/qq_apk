@@ -1,16 +1,111 @@
 package com.tencent.token.ui.base;
 
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.graphics.Canvas;
+import android.graphics.drawable.GradientDrawable;
+import android.graphics.drawable.GradientDrawable.Orientation;
+import com.tencent.token.utils.l;
+import java.lang.reflect.Method;
 
-class d
-  implements View.OnClickListener
+public class d
+  extends GradientDrawable
 {
-  d(CommonActionSheetDialog paramCommonActionSheetDialog, int paramInt) {}
+  private int a;
+  private int b;
+  private boolean c;
+  private int d;
+  private int e;
+  private int f;
+  private int g;
   
-  public void onClick(View paramView)
+  public d(GradientDrawable.Orientation paramOrientation, int paramInt1, int paramInt2)
   {
-    CommonActionSheetDialog.a(this.b).a(this.a);
+    setDither(true);
+    setShape(0);
+    mutate();
+    if (l.n() >= 16) {}
+    for (;;)
+    {
+      try
+      {
+        getClass().getMethod("setOrientation", new Class[] { GradientDrawable.Orientation.class }).invoke(this, new Object[] { paramOrientation });
+        getClass().getMethod("setColors", new Class[] { [I.class }).invoke(this, new Object[] { { paramInt1, paramInt2 } });
+        this.d = paramInt1;
+        this.e = paramInt2;
+        return;
+      }
+      catch (Exception paramOrientation)
+      {
+        paramOrientation.printStackTrace();
+        continue;
+      }
+      setColor(paramInt1);
+    }
+  }
+  
+  private int a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    if (paramInt3 == paramInt4 - 1) {
+      return paramInt2 | 0xFF000000;
+    }
+    int i = paramInt1 >> 16 & 0xFF;
+    int j = paramInt1 >> 8 & 0xFF;
+    paramInt1 &= 0xFF;
+    return (i + ((paramInt2 >> 16 & 0xFF) - i) / paramInt4 * paramInt3 << 16 | j + ((paramInt2 >> 8 & 0xFF) - j) / paramInt4 * paramInt3 << 8 | paramInt1 + ((paramInt2 & 0xFF) - paramInt1) / paramInt4 * paramInt3) & 0xFFFFFF | 0xFF000000;
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    this.f = paramInt1;
+    this.d = paramInt1;
+    this.g = paramInt2;
+    this.e = paramInt2;
+    this.c = true;
+    invalidateSelf();
+  }
+  
+  public void a(int paramInt1, int paramInt2, int paramInt3)
+  {
+    this.c = true;
+    this.b = paramInt1;
+    this.f = paramInt2;
+    this.g = paramInt3;
+  }
+  
+  public void draw(Canvas paramCanvas)
+  {
+    super.draw(paramCanvas);
+    if (this.c)
+    {
+      mutate();
+      this.a += 1;
+      if (this.a > this.b) {}
+    }
+    else
+    {
+      try
+      {
+        if (l.n() >= 16) {
+          getClass().getMethod("setColors", new Class[] { [I.class }).invoke(this, new Object[] { { a(this.d, this.f, this.a, this.b), a(this.e, this.g, this.a, this.b) } });
+        }
+        for (;;)
+        {
+          invalidateSelf();
+          return;
+          setColor(a(this.d, this.f, this.a, this.b));
+        }
+      }
+      catch (Exception paramCanvas)
+      {
+        for (;;)
+        {
+          paramCanvas.printStackTrace();
+        }
+      }
+    }
+    this.d = this.f;
+    this.e = this.g;
+    this.c = false;
+    this.a = 0;
   }
 }
 

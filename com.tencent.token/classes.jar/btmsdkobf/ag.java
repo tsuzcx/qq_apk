@@ -8,9 +8,9 @@ import java.util.ArrayList;
 public final class ag
   extends JceStruct
 {
-  static ArrayList bp = new ArrayList();
+  static ArrayList<ac> bp = new ArrayList();
   public int bi = 0;
-  public ArrayList bo = null;
+  public ArrayList<ac> bo = null;
   
   static
   {

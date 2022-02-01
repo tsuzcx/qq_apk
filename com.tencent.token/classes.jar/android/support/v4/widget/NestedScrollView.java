@@ -7,16 +7,22 @@ import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Rect;
 import android.os.Build.VERSION;
+import android.os.Bundle;
+import android.os.Parcel;
 import android.os.Parcelable;
+import android.os.Parcelable.Creator;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.annotation.RestrictTo;
+import android.support.v4.view.AccessibilityDelegateCompat;
 import android.support.v4.view.NestedScrollingChild2;
 import android.support.v4.view.NestedScrollingChildHelper;
 import android.support.v4.view.NestedScrollingParent;
 import android.support.v4.view.NestedScrollingParentHelper;
 import android.support.v4.view.ScrollingView;
 import android.support.v4.view.ViewCompat;
+import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat;
+import android.support.v4.view.accessibility.AccessibilityRecordCompat;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.util.TypedValue;
@@ -25,17 +31,20 @@ import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.VelocityTracker;
 import android.view.View;
+import android.view.View.BaseSavedState;
 import android.view.View.MeasureSpec;
 import android.view.ViewConfiguration;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.view.ViewGroup.MarginLayoutParams;
 import android.view.ViewParent;
+import android.view.accessibility.AccessibilityEvent;
 import android.view.animation.AnimationUtils;
 import android.widget.EdgeEffect;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.OverScroller;
+import android.widget.ScrollView;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -43,7 +52,7 @@ public class NestedScrollView
   extends FrameLayout
   implements NestedScrollingChild2, NestedScrollingParent, ScrollingView
 {
-  private static final NestedScrollView.AccessibilityDelegate ACCESSIBILITY_DELEGATE = new NestedScrollView.AccessibilityDelegate();
+  private static final AccessibilityDelegate ACCESSIBILITY_DELEGATE = new AccessibilityDelegate();
   static final int ANIMATED_SCROLL_GAP = 250;
   private static final int INVALID_POINTER = -1;
   static final float MAX_SCROLL_FACTOR = 0.5F;
@@ -64,9 +73,9 @@ public class NestedScrollView
   private int mMaximumVelocity;
   private int mMinimumVelocity;
   private int mNestedYOffset;
-  private NestedScrollView.OnScrollChangeListener mOnScrollChangeListener;
+  private OnScrollChangeListener mOnScrollChangeListener;
   private final NestedScrollingParentHelper mParentHelper;
-  private NestedScrollView.SavedState mSavedState;
+  private SavedState mSavedState;
   private final int[] mScrollConsumed = new int[2];
   private final int[] mScrollOffset = new int[2];
   private OverScroller mScroller;
@@ -1229,12 +1238,12 @@ public class NestedScrollView
   
   protected void onRestoreInstanceState(Parcelable paramParcelable)
   {
-    if (!(paramParcelable instanceof NestedScrollView.SavedState))
+    if (!(paramParcelable instanceof SavedState))
     {
       super.onRestoreInstanceState(paramParcelable);
       return;
     }
-    paramParcelable = (NestedScrollView.SavedState)paramParcelable;
+    paramParcelable = (SavedState)paramParcelable;
     super.onRestoreInstanceState(paramParcelable.getSuperState());
     this.mSavedState = paramParcelable;
     requestLayout();
@@ -1242,7 +1251,7 @@ public class NestedScrollView
   
   protected Parcelable onSaveInstanceState()
   {
-    NestedScrollView.SavedState localSavedState = new NestedScrollView.SavedState(super.onSaveInstanceState());
+    SavedState localSavedState = new SavedState(super.onSaveInstanceState());
     localSavedState.scrollPosition = getScrollY();
     return localSavedState;
   }
@@ -1624,7 +1633,7 @@ public class NestedScrollView
     this.mChildHelper.setNestedScrollingEnabled(paramBoolean);
   }
   
-  public void setOnScrollChangeListener(@Nullable NestedScrollView.OnScrollChangeListener paramOnScrollChangeListener)
+  public void setOnScrollChangeListener(@Nullable OnScrollChangeListener paramOnScrollChangeListener)
   {
     this.mOnScrollChangeListener = paramOnScrollChangeListener;
   }
@@ -1689,6 +1698,127 @@ public class NestedScrollView
   public void stopNestedScroll(int paramInt)
   {
     this.mChildHelper.stopNestedScroll(paramInt);
+  }
+  
+  static class AccessibilityDelegate
+    extends AccessibilityDelegateCompat
+  {
+    public void onInitializeAccessibilityEvent(View paramView, AccessibilityEvent paramAccessibilityEvent)
+    {
+      super.onInitializeAccessibilityEvent(paramView, paramAccessibilityEvent);
+      paramView = (NestedScrollView)paramView;
+      paramAccessibilityEvent.setClassName(ScrollView.class.getName());
+      if (paramView.getScrollRange() > 0) {}
+      for (boolean bool = true;; bool = false)
+      {
+        paramAccessibilityEvent.setScrollable(bool);
+        paramAccessibilityEvent.setScrollX(paramView.getScrollX());
+        paramAccessibilityEvent.setScrollY(paramView.getScrollY());
+        AccessibilityRecordCompat.setMaxScrollX(paramAccessibilityEvent, paramView.getScrollX());
+        AccessibilityRecordCompat.setMaxScrollY(paramAccessibilityEvent, paramView.getScrollRange());
+        return;
+      }
+    }
+    
+    public void onInitializeAccessibilityNodeInfo(View paramView, AccessibilityNodeInfoCompat paramAccessibilityNodeInfoCompat)
+    {
+      super.onInitializeAccessibilityNodeInfo(paramView, paramAccessibilityNodeInfoCompat);
+      paramView = (NestedScrollView)paramView;
+      paramAccessibilityNodeInfoCompat.setClassName(ScrollView.class.getName());
+      if (paramView.isEnabled())
+      {
+        int i = paramView.getScrollRange();
+        if (i > 0)
+        {
+          paramAccessibilityNodeInfoCompat.setScrollable(true);
+          if (paramView.getScrollY() > 0) {
+            paramAccessibilityNodeInfoCompat.addAction(8192);
+          }
+          if (paramView.getScrollY() < i) {
+            paramAccessibilityNodeInfoCompat.addAction(4096);
+          }
+        }
+      }
+    }
+    
+    public boolean performAccessibilityAction(View paramView, int paramInt, Bundle paramBundle)
+    {
+      if (super.performAccessibilityAction(paramView, paramInt, paramBundle)) {
+        return true;
+      }
+      paramView = (NestedScrollView)paramView;
+      if (!paramView.isEnabled()) {
+        return false;
+      }
+      switch (paramInt)
+      {
+      default: 
+        return false;
+      case 4096: 
+        paramInt = Math.min(paramView.getHeight() - paramView.getPaddingBottom() - paramView.getPaddingTop() + paramView.getScrollY(), paramView.getScrollRange());
+        if (paramInt != paramView.getScrollY())
+        {
+          paramView.smoothScrollTo(0, paramInt);
+          return true;
+        }
+        return false;
+      }
+      paramInt = paramView.getHeight();
+      int i = paramView.getPaddingBottom();
+      int j = paramView.getPaddingTop();
+      paramInt = Math.max(paramView.getScrollY() - (paramInt - i - j), 0);
+      if (paramInt != paramView.getScrollY())
+      {
+        paramView.smoothScrollTo(0, paramInt);
+        return true;
+      }
+      return false;
+    }
+  }
+  
+  public static abstract interface OnScrollChangeListener
+  {
+    public abstract void onScrollChange(NestedScrollView paramNestedScrollView, int paramInt1, int paramInt2, int paramInt3, int paramInt4);
+  }
+  
+  static class SavedState
+    extends View.BaseSavedState
+  {
+    public static final Parcelable.Creator<SavedState> CREATOR = new Parcelable.Creator()
+    {
+      public NestedScrollView.SavedState createFromParcel(Parcel paramAnonymousParcel)
+      {
+        return new NestedScrollView.SavedState(paramAnonymousParcel);
+      }
+      
+      public NestedScrollView.SavedState[] newArray(int paramAnonymousInt)
+      {
+        return new NestedScrollView.SavedState[paramAnonymousInt];
+      }
+    };
+    public int scrollPosition;
+    
+    SavedState(Parcel paramParcel)
+    {
+      super();
+      this.scrollPosition = paramParcel.readInt();
+    }
+    
+    SavedState(Parcelable paramParcelable)
+    {
+      super();
+    }
+    
+    public String toString()
+    {
+      return "HorizontalScrollView.SavedState{" + Integer.toHexString(System.identityHashCode(this)) + " scrollPosition=" + this.scrollPosition + "}";
+    }
+    
+    public void writeToParcel(Parcel paramParcel, int paramInt)
+    {
+      super.writeToParcel(paramParcel, paramInt);
+      paramParcel.writeInt(this.scrollPosition);
+    }
   }
 }
 

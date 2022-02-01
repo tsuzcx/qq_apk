@@ -1,19 +1,288 @@
 package com.tencent.turingfd.sdk.base;
 
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Set;
+import android.app.Activity;
+import java.util.ArrayList;
 
 public class ag
 {
-  public static final byte[] a = { -118, -55, -37, -62, 74, -98, 13, -19, 78, 73, 68, -113, 47, -36, -22, -108, 17, -99, 107, -79, 58, -8, -114, 90, -92, 77, -66, -66, -100, -27, 62, 26, 121, 83, -28, -51, 35, 12, -118, 26, 93, -22, -71, 16, 120, 60, 48, -39, 97, 39, -8, 21, 108, -51, -34, 126, 49, 94, -107, -62, -118, -25, 101, -27, 127, 40, 67, 78, 75, -92, 8, 39, -40, 17, 57, 84, -53, -111, -29, 25, -68, 103, 118, 53, -72, -75, -30, -19, -45, -89, -111, 85, -99, -110, -50, -3, -119, 29, 69, 56, 69, -22, -110, -120, 68, 75, 50, -123, -33, -44, -116, -95, -26, 105, 86, 14, 112, 57, 51, -92, 105, 6, -68, -55, 70, 94, 30, 38, 62, -46, -67, 96, -58, 51, -113, -43, -19, 93, -4, 1, 28, -16, 42, -82, -24, 76, 44, -76, 108, -8, -82, 30, 107, -14, 93, -17, -3, -26, -79, 88, 104, 101, 45, -100, 26, -96, -91, 92, 44, -49, 118, -96, 35, 73, 67, -66, -61, 78, -35, 68, -71, -45, -122, 32, 89, -7, -34, -5, -5, 66, -74, -55, -61, -104, -86, 114, 84, 85, 127, 89, 39, 123, 21, -66, -70, 78, 86, -99, 109, -113, -105, 33, -15, -74, -105, 14, 99, 57, 100, 14, 4, 58, -73, 52, -111, -10, 79, 84, 46, -107, 77, 44, -80, 120, -14, -78, -73, 99, -100, 83, 116, 47, 51, -117, 50, -79, 33, -121, -87, -123, 23, 26, 31, 51, -45, 53, 60, 75, 68, 101, -46, 42, 94, -59, -76, -109, -77, 77, -9, -32, -118, 3, -113, -43, -58, -117, 102, -81, -87, 30, -100, -118, 78, 13, 9, 28, 43, 0, 100, -69, -111, -85, 10, 125, 78, -9, -19, 29, -123, -12, 59, 22, -61, 115, -102, -30, 65, 98, 97, -35, 44, 110, -42, -70, -14, -41, 116, 98, -26, 56, 64, -67, -103, 72, -70, 125, -54, 80, 90, -70, -117, -38, 41, 91, 79, 82, -117, -57, 88, 61, -67, -8, -60, 105, -64, -36, 99, 117, 47, 30, -128, 93, -19, 19, -89, 5, -20, 94, -73, 8, 57, -94, 120, 20, -114, 20, 125, 65, 32, 66, -45, 118, -72, -111, -46, -52, -70, -127, 45, -118, 37, 91, -110, -44, 32, 100, 72, 65, -41, 48, 50, -123, 9, 89, 46, -76, 29, -17, -32, 101, 81, -94, 106, -20, -120, -44, -80, 115, -80, -91, 73, -89, -67, 56, -86, 80, 34, 79, -78, 1, 76, -22, -57, -110, 29, -8, 66, 42, -88, 38, 109, -44, 43, -121, 57, -106, 116, 97, -15, -107, -3, 61, 66, 74, 55, -49, 25, -44, 100, -87, -75, -56, 112, 108, 49, 26, 41, 61, -80, 103, -31, 33, 53, 3, -6, 122, 3, -116, 9, 96, -21, 93, -13, 86, -127, -6, -80, -16, -100, 77, -34, -46, 112, 84, 79, 65, 97, -39, -80, -15, 86, 110, -102, -14, 40, 35, -94, 103, 83, -13, -120, -88, -83, -89, -52, -50, -92, 14, -17, -58, -58, -110, -125, 69, -76, 89, -126, 7, 45, -37, -67, -30, 45, 10, -6, -19, -41, -45, -89, -108, -54, 66, -70, -21, -112, -51, -103, -20, -27, 115, -5, 26, -128, 34, 22, 87, -117, -47, 79, 114, -121, -98, -21, 121, 43, 76, 121, -36, 108, -16, -26, 11, 89, -99, 86, 109, -10, -21, 3, 40, 90, 42, -95, -27, -105, 83, -67, -93, -90, 44, 55, -58, -85, -49, 61, 19, 110, -14, -48, 103, -54, -105, -27, 125, 61, -39, 3, -121, 60, -44, -116, -127, 119, -8, 39, 118, 121, -53, -26, -1, 37, 79, -51, -108, -67, 70, 47, 123, -111, 99, 11, 84, -51, 50, 92, 2, 29, -75, 61, 118, 38, 24, 15, -46, 117, -51, -20, 26, 117, 34, -49, -113, -86, 123, -63, -21, 23, 125, -124, -6, -19, -69, 16, -53, -18, -126, 97, -74, -119, -97, -82, 83, 86, -85, 99, 101, -45, 57, 105, 9, 88, -58, 39, -32, -71, -36, 38, -116, -31, 13, 119, 111, 65, 113, -106, -71, -75, -54, 74, -67, -43, -59, -54, -60, 71, 3, 27, 25, 35, 2, 50, -6, 5, 89, 107, -95, -92, 22, 80, -107, -95, 70, 78, -43, -90, -74, -20, -50, -99, -64, -73, 3, 2, -84, 4, 122, 113, -89, -14, 122, 5, 9, 12, -49, 125, 53, -29, 11, 10, -64, -71, -62, 33, -95, 58, 73, -116, 64, -52, -9, 94, -45, 13, -29, -108, -95, 27, -111, 42, 78, 36, 46, 117, 97, 82, -75, -19, 7, -14, 22, 72, -51, 92, 79, -101, 123, -27, -118, -97, 100, -42, -52, -103, 75, 115, -55, -13, 15, 43, 43, -113, -89, 123, -31, 15, 90, 41, 1, -44, -12, -12, 13, -117, 3, -123, 45, 111, 123, 32, 36, -55, -44, 33, -68, -18, -81, -5, -6, -1, 80, 58, -17, -65, -108, 123, 102, 114, -5, 3, 44, 80, -5, -81, -126, -91, -3, -98, 100, -116, -21, 56, 76, 85, -84, 27, -82, 75, -81, 79, -112, -124, -67, 32, 111, -1, 101, -67, 65, 60, 6, -82, 6, 107, 63, 37, -82, 116, -41, -4, -77, 113, 65, -58, 38, -23, 0, 34, 126, -25, -67, -127, -2, 29, -19, 42, -64, -8, -105, -104, -15, 111, -20, -44, 115, -71, -34, 48, 127, 6, -109, -116, 34, 114, -4, 87, -51, 101, 117, 112, 54, -107, -58, 89, 114, 99, -66, 96, 13, -123, -37, -8, -59, 3, 55, 35, 42, 62, 30, -89, -51, 102, -82, -16, 109, 67, -18, 121, -118, 79, -85, -17, 69, 112, 16, -102, 65, -32, -105, 15, 48, -113, 21, 26, -115, -111, 11, 1, -57, 31, -73, 78, 23, 27, -35, -13, 65, 81, 73, -85, 105, -78, 121, -92, -31, -43, -109, 22, -66, -62, 110, 90, 95, -43, 85, 94, 92, 11, 26, -96, -75, 43, 65, 43, 85, -6, -88, 112, 41, -1, -81, -13, -83, 79, -124, 41, 61, -25, -14, 46, -29, -55, 74, 106, 111, -49, -88, -77, 50, 75, 91, 60, 10, 113, -6, -77, -53, -32, -83, 78, 40, 31, 65, -114, 68, -105, 109, -26, 66, -3, 12, -22, -6, 97, 37, 48, 69, 38, 123, -83, -44, -57, -124, 39, 112, -113, -74, -77, 68, 38, 87, -116, -100, -97, 111, -36, 2, -56, 38, 116, -25, 55, -87, 109, 84, 2, 11, 118, -104, -52, 100, 103, 38, -121, 122, -28, -38, 5, -6, -62, 32, 70, 90, -128, 9, 22, -110, -60, -75, -49, 69, -52, -123, 44, 89, 44, 69, -38, 12, -66, -1, -23, 125, -66, 18, 84, -40, -72, 89, 87, 35, -21, 13, 71, 87, -100, 50, 35, -36, 21, -109, -109, 55, 127, -97, -12, -68, 3, -94, -64, 105, 9, 98, -4, 69, -87, -110, 46, -29, -44, 82, -69, -126, -58, -47, 75, -117, -45, 90, 126, -42, 59, -105, -101, -81, 14, 39, -123, -1, 54, -68, -105, 34, 44, -109, -31, 85, 90, -11, -33, -80, 116, 92, -49, -52, 109, -55, 102, -80, 83, -16, 56, -6, 1, -121, -5, -93, 102, 34, -5, -62, 100, -103, -81, 111, -124, -119, -125, 16, 53, 29, 57, -56, 3, 20, -103, -82, 38, 1, 17, 40, -20, 119, -23, -57, 8, 6, 48, -51, 80, 18, 53, -12, 43, 21, -125, -111, -73, -3, 91, -58, -73, -4, 20, -82, -28, 71, -11, 37, -62, 5, 25, 80, 45, -73, -123, -2, -14, 66, -59, -96, 29, 83, 24, 38, 90, -89, 119, -81, 108, -122, 100, -97, 35, -121, 43, 46, -19, 120, -78, 104, 37, 26, -69, -110, 60, -61, -14, 2, -125, -16, 40, -100, -118, -5, 92, 82, -112, 80, -113, 74, -7, 72, -94, 70, -72, 109, 41, -36, 37, 82, -58, -92, -50, -128, -60, 124, 15, -100, -67, -70, 50, -80, -9, -124, 105, 10, -60, 50, -43, -97, 69, 43, 61, -5, -10, 114, 45, -106, -59, -13, -96, -49, 24, -111, 100, -75, 113, 35, 43, -127, 46, -90, 78, -27, 117, -5, -50, 67, -34, 117, -126, 65, -26, 59, -13, -105, -36, 109, -99, -118, 124, 0, 3, -56, -6, 59, -83, -80, -20, -29, 72, -116, -89, 37, 42, 14, -113, 45, -111, -42, 50, -97, -53, -48, -20, 34, 27, 64, 6, -33, 75, -17, -106, 39, -119, -112, -111, -107, 82, -71, 104, 95, -102, 94, -12, -80, 83, 16, -48, 80, -63, -78, 95, 44, 50, 94, 79, -14, -26, -25, -29, 81, 68, -76, 14, 23, -21, -71, 0, 123, -29, 29, -88, -125, -2, -99, 87, 44, 117, 44, 68, 82, -16, -94, -110, 13, 118, 53, -107, 53, -44, 54, -89, 2, -83, 125, -127, -8, 79, -88, 22, -14, 18, -63, -32, 77, 95, -3, 68, 24, 114, -122, 72, -63, -46, -6, 120, 14, 8, 51, 17, -92, 29, -60, -2, -124, 74, -13, 104, -73, 55, -71, 58, -83, -91, -95, -66, 34, -113, -55, 3, -37, -5, -49, -57, -39, 90, 17, -20, 13, -32, 113, 38, -116, -83, -114, 93, 50, -64, 105, 110, -16, 47, -85, -128, 4, -3, -5, 57, -68, 58, -6, 18, 14, 126, -14, -17, 97, -113, 93, -22, -90, -63, -40, 48, 76, -21, 64, -10, 98, -90, 71, 42, -68, 118, -77, 94, -67, -12, -43, 51, 103, -85, 127, 56, -34, 67, 16, 41, 32, 17, 94, 45, 6, -107, -39, 121, -52, -78, -96, 121, 50, -96, -20, 45, 120, -9, 51, 5, -31, 112, 16, 15, 95, -3, -2, 98, -65, -108, -117, 103, -65, 111, 92, 53, 1, 31, 113, 31, 42, -17, 122, -98, -42, -8, -127, -38, -55, 23, 58, -28, -126, -12, -69, 111, -100, 16, -25, 54, 67, -49, -104, -121, 98, 50, 23, -53, -127, -105, -99, 36, -35, -36, 27, 10, 30, 123, -13, 52, 50, 75, 88, 110, -16, -79, -4, 13, 108, 116, -22, 88, 74, 4, 43, -77, 60, 39, -33, 61, -54, -65, 122, -117, -107, 113, 21, 109, -127, -89, -5, 47, 72, -83, 83, 65, -80, 116, -22, 19, 100, 40, 5, 24, -91, -94, 10, -43, -119, 122, 123, -57, 94, -75, -104, -122, 84, 29, 69, 81, -88, 8, 72, -51, 69, -68, 64, 106, 73, 96, -32, 31, 110, 79, -56, 79, 98, -77, 54, 8, -9, 100, 116, -111, -39, -33, 59, 115, 51, -13, -38, 69, -54, -38, -36, -87, -61, 104, -117, -17, -51, 106, -5, -65, -98, 91, 17, -115, 2, -64, 72, 127, 21, -22, -110, 17, -63, 12, 32, -99, 10, -79, -89, 31, -6, -93, 67, 94, -120, -106, -32, 125, -40, -80, -36, -40, -120, 82, -38, -28, -104, -28, -65, 44, -70, 20, -121, 100, 117, -127, -15, -53, 4, 38, 54, -9, -114, -95, 94, -91, -20, -42, 51, 126, -59, 80, -29, 16, -118, -111, 14, -44, 61, -100, 105, -111, -111, -92, -101, 41, -115, -34, -8, 42, -122, 20, 67, -80, 82, 46, 126, -70, 30, -50, 111, 16, 68, 87, -39, 3, -43, 39, -29, 63, 6, -78, -105, -82, -84, 45, 115, 109, -87, -46, -83, -119, -73, 6, -4, -49, -17, 119, -14, -11, 86, -118, -40, 61, 76, 80, -93, -36, 4, 54, 15, 71, -99, -50, 78, -59, 8, 87, -59, 1, -1, -101, 31, 70, -118, -102, 21, -27, 48, -37, -31, 2, 78, -24, 90, 120, -53, 125, 105, -29, 114, 29, 16, 93, -45, -53, 8, -105, 56, -95, -59, 8, -91, -117, 80, 122, -54, -10, 100, -117, 19, 9, -92, -64, 10, 114, 106, 81, 61, -16, 108, -32, -118, -2, 4, -48, 88, 13, -72, -92, 37, 98, -53, -30, -48, 124, -127, 6, 73, -2, -98, -71, 82, -97, -95, 83, -82, -118, -25, -111, -22, -85, -15, 89, -21, 25, 124, -51, -89, 101, 31, -38, -77, 57, 93, -26, -62, 111, 110, 76, -81, -126, 93, 24, -91, -126, -38, 99, 32, 71, 99, -27, 14, -65, 17, 17, -3, 39, -127, 127, -91, 19, 46, 72, 33, -37, 50, -68, -99, 78, 126, -111, -39, 15, 43, -120, 61, 18, -63, -62, -3, -55, -85, -103, 119, 87, -93, -22, -109, 42, 96, 102, 98, -98, -60, -82, 15, -45, -34, 105, -58, -21, -94, 43, -106, -54, 48, -85, 60, 87, -64, -3, -60, -85, 24, 124, 14, -116, 41, -62, 19 };
-  public static final dj b = new w();
-  public final Set c = new HashSet();
+  public static ak a;
+  public static ak b;
+  public static ak c;
+  public static boolean d = false;
+  public static cu e;
+  public static Filbert f;
+  public static boolean g = true;
+  public static final f h = new a();
+  public static final h i = new c();
   
-  public ag()
+  public static void a()
   {
-    String[] arrayOfString = da.a(a);
-    this.c.addAll(Arrays.asList(arrayOfString));
+    try
+    {
+      if (b.a())
+      {
+        b.b();
+        new d().start();
+      }
+      return;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  public static void a(int paramInt1, int paramInt2, ak paramak, Lemon paramLemon)
+  {
+    paramak.b();
+    at.b localb = new at.b(cm.a(), paramInt1, null);
+    paramInt1 = paramak.h;
+    if (paramInt1 < 1) {
+      localb.b = 1L;
+    }
+    for (;;)
+    {
+      localb.f = paramLemon;
+      localb.d = new b(paramak);
+      localb.e = paramInt2;
+      paramak = new at(localb, null);
+      ((bb)bb.a.b()).a(paramak);
+      return;
+      if (paramInt1 > 12) {
+        localb.b = 12L;
+      } else {
+        localb.b = paramInt1;
+      }
+    }
+  }
+  
+  /* Error */
+  public static void a(cu paramcu)
+  {
+    // Byte code:
+    //   0: ldc 2
+    //   2: monitorenter
+    //   3: aload_0
+    //   4: invokevirtual 127	com/tencent/turingfd/sdk/base/cu:j	()Landroid/content/Context;
+    //   7: invokestatic 130	com/tencent/turingfd/sdk/base/cm:a	(Landroid/content/Context;)Z
+    //   10: pop
+    //   11: aload_0
+    //   12: putstatic 109	com/tencent/turingfd/sdk/base/ag:e	Lcom/tencent/turingfd/sdk/base/cu;
+    //   15: new 132	com/tencent/turingfd/sdk/base/Filbert
+    //   18: dup
+    //   19: invokespecial 133	com/tencent/turingfd/sdk/base/Filbert:<init>	()V
+    //   22: astore_2
+    //   23: new 135	com/tencent/turingfd/sdk/base/Ginkgo
+    //   26: dup
+    //   27: invokespecial 136	com/tencent/turingfd/sdk/base/Ginkgo:<init>	()V
+    //   30: astore_3
+    //   31: aload_2
+    //   32: aload_0
+    //   33: invokevirtual 139	com/tencent/turingfd/sdk/base/cu:y	()Ljava/lang/String;
+    //   36: putfield 143	com/tencent/turingfd/sdk/base/Filbert:metaData	Ljava/lang/String;
+    //   39: aload_3
+    //   40: aload_0
+    //   41: invokevirtual 146	com/tencent/turingfd/sdk/base/cu:m	()Ljava/lang/String;
+    //   44: putfield 149	com/tencent/turingfd/sdk/base/Ginkgo:version	Ljava/lang/String;
+    //   47: aload_3
+    //   48: aload_0
+    //   49: invokevirtual 152	com/tencent/turingfd/sdk/base/cu:l	()Ljava/lang/String;
+    //   52: putfield 155	com/tencent/turingfd/sdk/base/Ginkgo:Nb	Ljava/lang/String;
+    //   55: aload_3
+    //   56: aload_0
+    //   57: invokevirtual 158	com/tencent/turingfd/sdk/base/cu:o	()Ljava/lang/String;
+    //   60: putfield 161	com/tencent/turingfd/sdk/base/Ginkgo:S	Ljava/lang/String;
+    //   63: aload_3
+    //   64: aload_0
+    //   65: invokevirtual 165	com/tencent/turingfd/sdk/base/cu:n	()I
+    //   68: putfield 168	com/tencent/turingfd/sdk/base/Ginkgo:xc	I
+    //   71: aload_3
+    //   72: ldc 170
+    //   74: invokestatic 175	com/tencent/turingfd/sdk/base/ci:a	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   77: aload_0
+    //   78: invokevirtual 177	com/tencent/turingfd/sdk/base/cu:b	()I
+    //   81: invokevirtual 183	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   84: invokevirtual 186	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   87: putfield 189	com/tencent/turingfd/sdk/base/Ginkgo:yc	Ljava/lang/String;
+    //   90: aload_2
+    //   91: aload_3
+    //   92: putfield 193	com/tencent/turingfd/sdk/base/Filbert:rc	Lcom/tencent/turingfd/sdk/base/Ginkgo;
+    //   95: aload_2
+    //   96: putstatic 195	com/tencent/turingfd/sdk/base/ag:f	Lcom/tencent/turingfd/sdk/base/Filbert;
+    //   99: getstatic 197	com/tencent/turingfd/sdk/base/ag:d	Z
+    //   102: istore_1
+    //   103: iload_1
+    //   104: ifeq +7 -> 111
+    //   107: ldc 2
+    //   109: monitorexit
+    //   110: return
+    //   111: iconst_1
+    //   112: putstatic 197	com/tencent/turingfd/sdk/base/ag:d	Z
+    //   115: invokestatic 202	com/tencent/turingfd/sdk/base/a:a	()Lcom/tencent/turingfd/sdk/base/a;
+    //   118: astore_2
+    //   119: aload_0
+    //   120: invokevirtual 127	com/tencent/turingfd/sdk/base/cu:j	()Landroid/content/Context;
+    //   123: astore_3
+    //   124: aload_2
+    //   125: aload_3
+    //   126: bipush 100
+    //   128: invokevirtual 205	com/tencent/turingfd/sdk/base/a:a	(Landroid/content/Context;I)Lcom/tencent/turingfd/sdk/base/ak;
+    //   131: putstatic 207	com/tencent/turingfd/sdk/base/ag:c	Lcom/tencent/turingfd/sdk/base/ak;
+    //   134: getstatic 207	com/tencent/turingfd/sdk/base/ag:c	Lcom/tencent/turingfd/sdk/base/ak;
+    //   137: ifnonnull +32 -> 169
+    //   140: new 44	com/tencent/turingfd/sdk/base/ak
+    //   143: dup
+    //   144: aload_3
+    //   145: aload_0
+    //   146: invokevirtual 210	com/tencent/turingfd/sdk/base/cu:w	()I
+    //   149: aload_0
+    //   150: invokevirtual 213	com/tencent/turingfd/sdk/base/cu:x	()I
+    //   153: aload_0
+    //   154: invokevirtual 216	com/tencent/turingfd/sdk/base/cu:v	()I
+    //   157: aload_0
+    //   158: invokevirtual 219	com/tencent/turingfd/sdk/base/cu:u	()I
+    //   161: bipush 100
+    //   163: invokespecial 222	com/tencent/turingfd/sdk/base/ak:<init>	(Landroid/content/Context;IIIII)V
+    //   166: putstatic 207	com/tencent/turingfd/sdk/base/ag:c	Lcom/tencent/turingfd/sdk/base/ak;
+    //   169: aload_2
+    //   170: aload_3
+    //   171: sipush 999
+    //   174: invokevirtual 205	com/tencent/turingfd/sdk/base/a:a	(Landroid/content/Context;I)Lcom/tencent/turingfd/sdk/base/ak;
+    //   177: putstatic 224	com/tencent/turingfd/sdk/base/ag:a	Lcom/tencent/turingfd/sdk/base/ak;
+    //   180: getstatic 224	com/tencent/turingfd/sdk/base/ag:a	Lcom/tencent/turingfd/sdk/base/ak;
+    //   183: ifnonnull +24 -> 207
+    //   186: new 44	com/tencent/turingfd/sdk/base/ak
+    //   189: dup
+    //   190: aload_3
+    //   191: bipush 20
+    //   193: bipush 12
+    //   195: bipush 30
+    //   197: iconst_3
+    //   198: sipush 999
+    //   201: invokespecial 222	com/tencent/turingfd/sdk/base/ak:<init>	(Landroid/content/Context;IIIII)V
+    //   204: putstatic 224	com/tencent/turingfd/sdk/base/ag:a	Lcom/tencent/turingfd/sdk/base/ak;
+    //   207: aload_2
+    //   208: aload_3
+    //   209: sipush 998
+    //   212: invokevirtual 205	com/tencent/turingfd/sdk/base/a:a	(Landroid/content/Context;I)Lcom/tencent/turingfd/sdk/base/ak;
+    //   215: putstatic 42	com/tencent/turingfd/sdk/base/ag:b	Lcom/tencent/turingfd/sdk/base/ak;
+    //   218: getstatic 42	com/tencent/turingfd/sdk/base/ag:b	Lcom/tencent/turingfd/sdk/base/ak;
+    //   221: ifnonnull +24 -> 245
+    //   224: new 44	com/tencent/turingfd/sdk/base/ak
+    //   227: dup
+    //   228: aload_3
+    //   229: iconst_3
+    //   230: iconst_1
+    //   231: sipush 3600
+    //   234: bipush 6
+    //   236: sipush 998
+    //   239: invokespecial 222	com/tencent/turingfd/sdk/base/ak:<init>	(Landroid/content/Context;IIIII)V
+    //   242: putstatic 42	com/tencent/turingfd/sdk/base/ag:b	Lcom/tencent/turingfd/sdk/base/ak;
+    //   245: invokestatic 229	com/tencent/turingfd/sdk/base/e:a	()Lcom/tencent/turingfd/sdk/base/e;
+    //   248: aload_0
+    //   249: invokevirtual 233	com/tencent/turingfd/sdk/base/cu:z	()Lcom/tencent/turingfd/sdk/base/ck;
+    //   252: invokevirtual 236	com/tencent/turingfd/sdk/base/e:a	(Lcom/tencent/turingfd/sdk/base/ck;)V
+    //   255: aload_0
+    //   256: invokevirtual 127	com/tencent/turingfd/sdk/base/cu:j	()Landroid/content/Context;
+    //   259: getstatic 36	com/tencent/turingfd/sdk/base/ag:h	Lcom/tencent/turingfd/sdk/base/f;
+    //   262: getstatic 39	com/tencent/turingfd/sdk/base/ag:i	Lcom/tencent/turingfd/sdk/base/h;
+    //   265: invokestatic 241	com/tencent/turingfd/sdk/base/al:a	(Landroid/content/Context;Lcom/tencent/turingfd/sdk/base/f;Lcom/tencent/turingfd/sdk/base/h;)V
+    //   268: invokestatic 243	com/tencent/turingfd/sdk/base/al:a	()V
+    //   271: aload_0
+    //   272: invokevirtual 247	com/tencent/turingfd/sdk/base/cu:r	()Ljava/lang/ref/WeakReference;
+    //   275: ifnull +16 -> 291
+    //   278: aload_0
+    //   279: invokevirtual 247	com/tencent/turingfd/sdk/base/cu:r	()Ljava/lang/ref/WeakReference;
+    //   282: invokevirtual 252	java/lang/ref/WeakReference:get	()Ljava/lang/Object;
+    //   285: checkcast 254	android/app/Activity
+    //   288: invokestatic 257	com/tencent/turingfd/sdk/base/al:a	(Landroid/app/Activity;)V
+    //   291: invokestatic 258	com/tencent/turingfd/sdk/base/ag:a	()V
+    //   294: goto -187 -> 107
+    //   297: astore_0
+    //   298: ldc 2
+    //   300: monitorexit
+    //   301: aload_0
+    //   302: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	303	0	paramcu	cu
+    //   102	2	1	bool	boolean
+    //   22	186	2	localObject1	Object
+    //   30	199	3	localObject2	Object
+    // Exception table:
+    //   from	to	target	type
+    //   3	103	297	finally
+    //   111	169	297	finally
+    //   169	207	297	finally
+    //   207	245	297	finally
+    //   245	291	297	finally
+    //   291	294	297	finally
+  }
+  
+  public static void b()
+  {
+    try
+    {
+      Lemon localLemon = new Lemon();
+      localLemon.od = System.currentTimeMillis();
+      localLemon.duration = 0;
+      localLemon.pd = new ArrayList();
+      a(998, 0, b, localLemon);
+      return;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  public static final class a
+    implements f
+  {
+    public void a(String paramString, int paramInt1, int paramInt2, Lemon paramLemon)
+    {
+      Object localObject = null;
+      if ((paramInt1 == 100) && (ag.c.a())) {
+        paramString = ag.c;
+      }
+      for (;;)
+      {
+        if (paramString != null) {
+          ag.a(paramInt1, paramInt2, paramString, paramLemon);
+        }
+        return;
+        paramString = localObject;
+        if (paramInt1 == 999)
+        {
+          paramString = localObject;
+          if (ag.a.a()) {
+            paramString = ag.a;
+          }
+        }
+      }
+    }
+  }
+  
+  public static final class b
+    implements ar
+  {
+    public b(ak paramak) {}
+  }
+  
+  public static final class c
+    implements h
+  {
+    public void a(Activity paramActivity) {}
+    
+    public void b(Activity paramActivity) {}
+  }
+  
+  public static final class d
+    extends Thread
+  {
+    public void run() {}
   }
 }
 

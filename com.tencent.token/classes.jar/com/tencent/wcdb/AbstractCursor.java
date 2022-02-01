@@ -9,7 +9,9 @@ import android.database.DataSetObserver;
 import android.net.Uri;
 import android.os.Bundle;
 import com.tencent.wcdb.support.Log;
+import java.lang.ref.WeakReference;
 import java.util.HashMap;
+import java.util.Map;
 
 public abstract class AbstractCursor
   implements CrossProcessCursor
@@ -30,7 +32,7 @@ public abstract class AbstractCursor
   private final Object mSelfObserverLock = new Object();
   private boolean mSelfObserverRegistered;
   @Deprecated
-  protected HashMap mUpdatedRows = new HashMap();
+  protected HashMap<Long, Map<String, Object>> mUpdatedRows = new HashMap();
   
   protected void checkPosition()
   {
@@ -359,7 +361,7 @@ public abstract class AbstractCursor
       if (this.mSelfObserver != null) {
         this.mContentResolver.unregisterContentObserver(this.mSelfObserver);
       }
-      this.mSelfObserver = new AbstractCursor.SelfContentObserver(this);
+      this.mSelfObserver = new SelfContentObserver(this);
       this.mContentResolver.registerContentObserver(this.mNotifyUri, true, this.mSelfObserver);
       this.mSelfObserverRegistered = true;
       return;
@@ -376,6 +378,31 @@ public abstract class AbstractCursor
   public void unregisterDataSetObserver(DataSetObserver paramDataSetObserver)
   {
     this.mDataSetObservable.unregisterObserver(paramDataSetObserver);
+  }
+  
+  protected static class SelfContentObserver
+    extends ContentObserver
+  {
+    WeakReference<AbstractCursor> mCursor;
+    
+    public SelfContentObserver(AbstractCursor paramAbstractCursor)
+    {
+      super();
+      this.mCursor = new WeakReference(paramAbstractCursor);
+    }
+    
+    public boolean deliverSelfNotifications()
+    {
+      return false;
+    }
+    
+    public void onChange(boolean paramBoolean)
+    {
+      AbstractCursor localAbstractCursor = (AbstractCursor)this.mCursor.get();
+      if (localAbstractCursor != null) {
+        localAbstractCursor.onChange(false);
+      }
+    }
   }
 }
 

@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.text.TextUtils;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 public class cf
 {
@@ -36,10 +37,10 @@ public class cf
     }
   }
   
-  private void a(an paraman, String paramString)
+  private void a(final an paraman, String paramString)
   {
     eh.f("GuidCertifier", "[cu_guid]updateGuid(), for: " + this.hH);
-    int i = cu.bu().bm();
+    final int i = cu.bu().bm();
     Object localObject = b(paraman, paramString);
     paramString = new as();
     paramString.dc = i;
@@ -54,7 +55,60 @@ public class cf
     localObject = new ArrayList();
     ((ArrayList)localObject).add(paramString);
     cv.by().a(paramString.dc, -1L, null);
-    this.hF.a(0, 0L, false, (ArrayList)localObject, new fq(this, i, paraman));
+    this.hF.a(0, 0L, false, (ArrayList)localObject, new cy.b()
+    {
+      public void a(boolean paramAnonymousBoolean, int paramAnonymousInt1, int paramAnonymousInt2, ArrayList<ba> paramAnonymousArrayList)
+      {
+        paramAnonymousInt2 = 0;
+        eh.e("GuidCertifier", "updateGuid() retCode: " + paramAnonymousInt1);
+        if (paramAnonymousInt1 != 0)
+        {
+          eh.h("GuidCertifier", "[cu_guid]updateGuid() ESharkCode.ERR_NONE != retCode, retCode: " + paramAnonymousInt1);
+          cv.by().a("GuidCertifier", 10002, i, null, 30, paramAnonymousInt1);
+          cv.by().x(i);
+          return;
+        }
+        if ((paramAnonymousArrayList == null) || (paramAnonymousArrayList.size() <= 0))
+        {
+          eh.h("GuidCertifier", "[cu_guid]updateGuid(), no sashimi, serverSashimis: " + paramAnonymousArrayList);
+          paramAnonymousInt1 = -21250000;
+        }
+        for (;;)
+        {
+          cv.by().a("GuidCertifier", 10002, i, null, 30, paramAnonymousInt1);
+          cv.by().x(i);
+          return;
+          paramAnonymousArrayList = paramAnonymousArrayList.iterator();
+          for (;;)
+          {
+            if (paramAnonymousArrayList.hasNext())
+            {
+              ba localba = (ba)paramAnonymousArrayList.next();
+              if ((localba != null) && (10002 == localba.bM))
+              {
+                if (localba.df != 0)
+                {
+                  eh.h("GuidCertifier", "[cu_guid]updateGuid(), mazu error: " + localba.df);
+                  paramAnonymousInt1 = localba.df;
+                  break;
+                }
+                if (localba.dg != 0)
+                {
+                  eh.h("GuidCertifier", "[cu_guid]updateGuid(), dataRetCode: " + localba.dg);
+                  paramAnonymousInt1 = -21300000;
+                  break;
+                }
+                eh.e("GuidCertifier", "[cu_guid]updateGuid(), succ, save info to db, mGuid: " + cf.c(cf.this));
+                cf.a(cf.this, cf.c(cf.this), paraman, false);
+                paramAnonymousInt1 = paramAnonymousInt2;
+                break;
+              }
+            }
+          }
+          paramAnonymousInt1 = -21250000;
+        }
+      }
+    });
   }
   
   private void a(String paramString, an paraman, boolean paramBoolean)
@@ -380,7 +434,7 @@ public class cf
     return paramInt1 != paramInt2;
   }
   
-  public void a(cf.a parama)
+  public void a(final a parama)
   {
     eh.f("GuidCertifier", "[cu_guid]registerGuid()");
     if (!aY())
@@ -389,9 +443,9 @@ public class cf
       return;
     }
     this.hF.bL().aN();
-    an localan = g(false);
+    final an localan = g(false);
     as localas = new as();
-    int i = cu.bu().bm();
+    final int i = cu.bu().bm();
     localas.dc = i;
     localas.bM = 1;
     localas.data = cd.a(this.mContext, localan, 1, localas);
@@ -405,7 +459,78 @@ public class cf
     ArrayList localArrayList = new ArrayList();
     localArrayList.add(localas);
     cv.by().a(localas.dc, -1L, null);
-    this.hF.b(localArrayList, new fp(this, parama, i, localan));
+    this.hF.b(localArrayList, new cy.b()
+    {
+      public void a(boolean paramAnonymousBoolean, int paramAnonymousInt1, int paramAnonymousInt2, ArrayList<ba> paramAnonymousArrayList)
+      {
+        if (paramAnonymousInt1 != 0)
+        {
+          eh.h("GuidCertifier", "[cu_guid]registerGuid(), retCode: " + paramAnonymousInt1);
+          parama.a(i, 1, paramAnonymousInt1, null);
+          return;
+        }
+        if (paramAnonymousArrayList == null)
+        {
+          eh.h("GuidCertifier", "[cu_guid]registerGuid(), null == serverSashimis");
+          parama.a(i, 1, -21250000, null);
+          return;
+        }
+        if (paramAnonymousArrayList.size() <= 0)
+        {
+          eh.h("GuidCertifier", "[cu_guid]registerGuid(), serverSashimis.size() <= 0");
+          parama.a(i, 1, -21250000, null);
+          return;
+        }
+        paramAnonymousArrayList = (ba)paramAnonymousArrayList.get(0);
+        if (paramAnonymousArrayList == null)
+        {
+          eh.h("GuidCertifier", "[cu_guid]registerGuid(), serverSashimi is null");
+          parama.a(i, 1, -21250000, null);
+          return;
+        }
+        if (paramAnonymousArrayList.df != 0)
+        {
+          eh.h("GuidCertifier", "[cu_guid]registerGuid(), mazu error: " + paramAnonymousArrayList.df);
+          parama.a(i, 1, paramAnonymousArrayList.df, null);
+          return;
+        }
+        if (paramAnonymousArrayList.dg != 0)
+        {
+          eh.h("GuidCertifier", "[cu_guid]registerGuid(), dataRetCode: " + paramAnonymousArrayList.dg);
+          parama.a(i, 1, -21300000, null);
+          return;
+        }
+        byte[] arrayOfByte = paramAnonymousArrayList.data;
+        if (arrayOfByte == null)
+        {
+          eh.h("GuidCertifier", "[cu_guid]registerGuid(), null == respData");
+          parama.a(i, 1, -21000005, null);
+          return;
+        }
+        eh.e("GuidCertifier", "[cu_guid]registerGuid() rs.data.length: " + paramAnonymousArrayList.data.length);
+        aw localaw = new aw();
+        try
+        {
+          paramAnonymousArrayList = cd.a(cf.a(cf.this), cf.b(cf.this).ai().is.getBytes(), arrayOfByte, localaw, false, paramAnonymousArrayList.di);
+          if (paramAnonymousArrayList == null)
+          {
+            eh.h("GuidCertifier", "[cu_guid]registerGuid(), decode jce failed: null");
+            parama.a(i, 1, -21000400, null);
+            return;
+          }
+        }
+        catch (Exception paramAnonymousArrayList)
+        {
+          eh.h("GuidCertifier", "[cu_guid]registerGuid(), decode jce exception: " + paramAnonymousArrayList);
+          parama.a(i, 1, -21000400, null);
+          return;
+        }
+        paramAnonymousArrayList = (aw)paramAnonymousArrayList;
+        eh.e("GuidCertifier", "[cu_guid]registerGuid(), guid got: " + paramAnonymousArrayList.guid);
+        cf.a(cf.this, paramAnonymousArrayList.guid, localan, true);
+        parama.a(i, 1, 0, paramAnonymousArrayList.guid);
+      }
+    });
   }
   
   public void a(boolean paramBoolean, String paramString)
@@ -461,6 +586,11 @@ public class cf
       return this.hH;
     }
     return "";
+  }
+  
+  public static abstract interface a
+  {
+    public abstract void a(int paramInt1, int paramInt2, int paramInt3, String paramString);
   }
 }
 

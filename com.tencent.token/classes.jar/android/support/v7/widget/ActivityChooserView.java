@@ -1,6 +1,7 @@
 package android.support.v7.widget;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.content.res.Resources;
@@ -10,23 +11,34 @@ import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.support.annotation.RestrictTo;
 import android.support.v4.view.ActionProvider;
+import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat;
 import android.support.v7.appcompat.R.dimen;
 import android.support.v7.appcompat.R.id;
 import android.support.v7.appcompat.R.layout;
 import android.support.v7.appcompat.R.string;
 import android.support.v7.appcompat.R.styleable;
+import android.support.v7.view.menu.ShowableListMenu;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.AccessibilityDelegate;
 import android.view.View.MeasureSpec;
+import android.view.View.OnClickListener;
+import android.view.View.OnLongClickListener;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.view.accessibility.AccessibilityNodeInfo;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.BaseAdapter;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.PopupWindow.OnDismissListener;
+import android.widget.TextView;
 
 @RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
 public class ActivityChooserView
@@ -36,8 +48,8 @@ public class ActivityChooserView
   private static final String LOG_TAG = "ActivityChooserView";
   private final View mActivityChooserContent;
   private final Drawable mActivityChooserContentBackground;
-  final ActivityChooserView.ActivityChooserViewAdapter mAdapter;
-  private final ActivityChooserView.Callbacks mCallbacks;
+  final ActivityChooserViewAdapter mAdapter;
+  private final Callbacks mCallbacks;
   private int mDefaultActionButtonContentDescription;
   final FrameLayout mDefaultActivityButton;
   private final ImageView mDefaultActivityButtonImage;
@@ -48,9 +60,41 @@ public class ActivityChooserView
   boolean mIsSelectingDefaultActivity;
   private final int mListPopupMaxWidth;
   private ListPopupWindow mListPopupWindow;
-  final DataSetObserver mModelDataSetObserver = new ActivityChooserView.1(this);
+  final DataSetObserver mModelDataSetObserver = new DataSetObserver()
+  {
+    public void onChanged()
+    {
+      super.onChanged();
+      ActivityChooserView.this.mAdapter.notifyDataSetChanged();
+    }
+    
+    public void onInvalidated()
+    {
+      super.onInvalidated();
+      ActivityChooserView.this.mAdapter.notifyDataSetInvalidated();
+    }
+  };
   PopupWindow.OnDismissListener mOnDismissListener;
-  private final ViewTreeObserver.OnGlobalLayoutListener mOnGlobalLayoutListener = new ActivityChooserView.2(this);
+  private final ViewTreeObserver.OnGlobalLayoutListener mOnGlobalLayoutListener = new ViewTreeObserver.OnGlobalLayoutListener()
+  {
+    public void onGlobalLayout()
+    {
+      if (ActivityChooserView.this.isShowingPopup())
+      {
+        if (ActivityChooserView.this.isShown()) {
+          break label31;
+        }
+        ActivityChooserView.this.getListPopupWindow().dismiss();
+      }
+      label31:
+      do
+      {
+        return;
+        ActivityChooserView.this.getListPopupWindow().show();
+      } while (ActivityChooserView.this.mProvider == null);
+      ActivityChooserView.this.mProvider.subUiVisibilityChanged(true);
+    }
+  };
   ActionProvider mProvider;
   
   public ActivityChooserView(Context paramContext)
@@ -71,7 +115,7 @@ public class ActivityChooserView
     paramAttributeSet = ((TypedArray)localObject).getDrawable(R.styleable.ActivityChooserView_expandActivityOverflowButtonDrawable);
     ((TypedArray)localObject).recycle();
     LayoutInflater.from(getContext()).inflate(R.layout.abc_activity_chooser_view, this, true);
-    this.mCallbacks = new ActivityChooserView.Callbacks(this);
+    this.mCallbacks = new Callbacks();
     this.mActivityChooserContent = findViewById(R.id.activity_chooser_view_content);
     this.mActivityChooserContentBackground = this.mActivityChooserContent.getBackground();
     this.mDefaultActivityButton = ((FrameLayout)findViewById(R.id.default_activity_button));
@@ -80,13 +124,45 @@ public class ActivityChooserView
     this.mDefaultActivityButtonImage = ((ImageView)this.mDefaultActivityButton.findViewById(R.id.image));
     localObject = (FrameLayout)findViewById(R.id.expand_activities_button);
     ((FrameLayout)localObject).setOnClickListener(this.mCallbacks);
-    ((FrameLayout)localObject).setAccessibilityDelegate(new ActivityChooserView.3(this));
-    ((FrameLayout)localObject).setOnTouchListener(new ActivityChooserView.4(this, (View)localObject));
+    ((FrameLayout)localObject).setAccessibilityDelegate(new View.AccessibilityDelegate()
+    {
+      public void onInitializeAccessibilityNodeInfo(View paramAnonymousView, AccessibilityNodeInfo paramAnonymousAccessibilityNodeInfo)
+      {
+        super.onInitializeAccessibilityNodeInfo(paramAnonymousView, paramAnonymousAccessibilityNodeInfo);
+        AccessibilityNodeInfoCompat.wrap(paramAnonymousAccessibilityNodeInfo).setCanOpenPopup(true);
+      }
+    });
+    ((FrameLayout)localObject).setOnTouchListener(new ForwardingListener((View)localObject)
+    {
+      public ShowableListMenu getPopup()
+      {
+        return ActivityChooserView.this.getListPopupWindow();
+      }
+      
+      protected boolean onForwardingStarted()
+      {
+        ActivityChooserView.this.showPopup();
+        return true;
+      }
+      
+      protected boolean onForwardingStopped()
+      {
+        ActivityChooserView.this.dismissPopup();
+        return true;
+      }
+    });
     this.mExpandActivityOverflowButton = ((FrameLayout)localObject);
     this.mExpandActivityOverflowButtonImage = ((ImageView)((FrameLayout)localObject).findViewById(R.id.image));
     this.mExpandActivityOverflowButtonImage.setImageDrawable(paramAttributeSet);
-    this.mAdapter = new ActivityChooserView.ActivityChooserViewAdapter(this);
-    this.mAdapter.registerDataSetObserver(new ActivityChooserView.5(this));
+    this.mAdapter = new ActivityChooserViewAdapter();
+    this.mAdapter.registerDataSetObserver(new DataSetObserver()
+    {
+      public void onChanged()
+      {
+        super.onChanged();
+        ActivityChooserView.this.updateAppearance();
+      }
+    });
     paramContext = paramContext.getResources();
     this.mListPopupMaxWidth = Math.max(paramContext.getDisplayMetrics().widthPixels / 2, paramContext.getDimensionPixelSize(R.dimen.abc_config_prefDialogWidth));
   }
@@ -318,6 +394,318 @@ public class ActivityChooserView
     }
     label173:
     this.mActivityChooserContent.setBackgroundDrawable(null);
+  }
+  
+  private class ActivityChooserViewAdapter
+    extends BaseAdapter
+  {
+    private static final int ITEM_VIEW_TYPE_ACTIVITY = 0;
+    private static final int ITEM_VIEW_TYPE_COUNT = 3;
+    private static final int ITEM_VIEW_TYPE_FOOTER = 1;
+    public static final int MAX_ACTIVITY_COUNT_DEFAULT = 4;
+    public static final int MAX_ACTIVITY_COUNT_UNLIMITED = 2147483647;
+    private ActivityChooserModel mDataModel;
+    private boolean mHighlightDefaultActivity;
+    private int mMaxActivityCount = 4;
+    private boolean mShowDefaultActivity;
+    private boolean mShowFooterView;
+    
+    ActivityChooserViewAdapter() {}
+    
+    public int getActivityCount()
+    {
+      return this.mDataModel.getActivityCount();
+    }
+    
+    public int getCount()
+    {
+      int j = this.mDataModel.getActivityCount();
+      int i = j;
+      if (!this.mShowDefaultActivity)
+      {
+        i = j;
+        if (this.mDataModel.getDefaultActivity() != null) {
+          i = j - 1;
+        }
+      }
+      j = Math.min(i, this.mMaxActivityCount);
+      i = j;
+      if (this.mShowFooterView) {
+        i = j + 1;
+      }
+      return i;
+    }
+    
+    public ActivityChooserModel getDataModel()
+    {
+      return this.mDataModel;
+    }
+    
+    public ResolveInfo getDefaultActivity()
+    {
+      return this.mDataModel.getDefaultActivity();
+    }
+    
+    public int getHistorySize()
+    {
+      return this.mDataModel.getHistorySize();
+    }
+    
+    public Object getItem(int paramInt)
+    {
+      switch (getItemViewType(paramInt))
+      {
+      default: 
+        throw new IllegalArgumentException();
+      case 1: 
+        return null;
+      }
+      int i = paramInt;
+      if (!this.mShowDefaultActivity)
+      {
+        i = paramInt;
+        if (this.mDataModel.getDefaultActivity() != null) {
+          i = paramInt + 1;
+        }
+      }
+      return this.mDataModel.getActivity(i);
+    }
+    
+    public long getItemId(int paramInt)
+    {
+      return paramInt;
+    }
+    
+    public int getItemViewType(int paramInt)
+    {
+      if ((this.mShowFooterView) && (paramInt == getCount() - 1)) {
+        return 1;
+      }
+      return 0;
+    }
+    
+    public boolean getShowDefaultActivity()
+    {
+      return this.mShowDefaultActivity;
+    }
+    
+    public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+    {
+      View localView;
+      switch (getItemViewType(paramInt))
+      {
+      default: 
+        throw new IllegalArgumentException();
+      case 1: 
+        if (paramView != null)
+        {
+          localView = paramView;
+          if (paramView.getId() == 1) {}
+        }
+        else
+        {
+          localView = LayoutInflater.from(ActivityChooserView.this.getContext()).inflate(R.layout.abc_activity_chooser_view_list_item, paramViewGroup, false);
+          localView.setId(1);
+          ((TextView)localView.findViewById(R.id.title)).setText(ActivityChooserView.this.getContext().getString(R.string.abc_activity_chooser_view_see_all));
+        }
+        return localView;
+      }
+      if (paramView != null)
+      {
+        localView = paramView;
+        if (paramView.getId() == R.id.list_item) {}
+      }
+      else
+      {
+        localView = LayoutInflater.from(ActivityChooserView.this.getContext()).inflate(R.layout.abc_activity_chooser_view_list_item, paramViewGroup, false);
+      }
+      paramView = ActivityChooserView.this.getContext().getPackageManager();
+      paramViewGroup = (ImageView)localView.findViewById(R.id.icon);
+      ResolveInfo localResolveInfo = (ResolveInfo)getItem(paramInt);
+      paramViewGroup.setImageDrawable(localResolveInfo.loadIcon(paramView));
+      ((TextView)localView.findViewById(R.id.title)).setText(localResolveInfo.loadLabel(paramView));
+      if ((this.mShowDefaultActivity) && (paramInt == 0) && (this.mHighlightDefaultActivity))
+      {
+        localView.setActivated(true);
+        return localView;
+      }
+      localView.setActivated(false);
+      return localView;
+    }
+    
+    public int getViewTypeCount()
+    {
+      return 3;
+    }
+    
+    public int measureContentWidth()
+    {
+      int i = 0;
+      int k = this.mMaxActivityCount;
+      this.mMaxActivityCount = 2147483647;
+      int m = View.MeasureSpec.makeMeasureSpec(0, 0);
+      int n = View.MeasureSpec.makeMeasureSpec(0, 0);
+      int i1 = getCount();
+      View localView = null;
+      int j = 0;
+      while (i < i1)
+      {
+        localView = getView(i, localView, null);
+        localView.measure(m, n);
+        j = Math.max(j, localView.getMeasuredWidth());
+        i += 1;
+      }
+      this.mMaxActivityCount = k;
+      return j;
+    }
+    
+    public void setDataModel(ActivityChooserModel paramActivityChooserModel)
+    {
+      ActivityChooserModel localActivityChooserModel = ActivityChooserView.this.mAdapter.getDataModel();
+      if ((localActivityChooserModel != null) && (ActivityChooserView.this.isShown())) {
+        localActivityChooserModel.unregisterObserver(ActivityChooserView.this.mModelDataSetObserver);
+      }
+      this.mDataModel = paramActivityChooserModel;
+      if ((paramActivityChooserModel != null) && (ActivityChooserView.this.isShown())) {
+        paramActivityChooserModel.registerObserver(ActivityChooserView.this.mModelDataSetObserver);
+      }
+      notifyDataSetChanged();
+    }
+    
+    public void setMaxActivityCount(int paramInt)
+    {
+      if (this.mMaxActivityCount != paramInt)
+      {
+        this.mMaxActivityCount = paramInt;
+        notifyDataSetChanged();
+      }
+    }
+    
+    public void setShowDefaultActivity(boolean paramBoolean1, boolean paramBoolean2)
+    {
+      if ((this.mShowDefaultActivity != paramBoolean1) || (this.mHighlightDefaultActivity != paramBoolean2))
+      {
+        this.mShowDefaultActivity = paramBoolean1;
+        this.mHighlightDefaultActivity = paramBoolean2;
+        notifyDataSetChanged();
+      }
+    }
+    
+    public void setShowFooterView(boolean paramBoolean)
+    {
+      if (this.mShowFooterView != paramBoolean)
+      {
+        this.mShowFooterView = paramBoolean;
+        notifyDataSetChanged();
+      }
+    }
+  }
+  
+  private class Callbacks
+    implements View.OnClickListener, View.OnLongClickListener, AdapterView.OnItemClickListener, PopupWindow.OnDismissListener
+  {
+    Callbacks() {}
+    
+    private void notifyOnDismissListener()
+    {
+      if (ActivityChooserView.this.mOnDismissListener != null) {
+        ActivityChooserView.this.mOnDismissListener.onDismiss();
+      }
+    }
+    
+    public void onClick(View paramView)
+    {
+      if (paramView == ActivityChooserView.this.mDefaultActivityButton)
+      {
+        ActivityChooserView.this.dismissPopup();
+        paramView = ActivityChooserView.this.mAdapter.getDefaultActivity();
+        int i = ActivityChooserView.this.mAdapter.getDataModel().getActivityIndex(paramView);
+        paramView = ActivityChooserView.this.mAdapter.getDataModel().chooseActivity(i);
+        if (paramView != null)
+        {
+          paramView.addFlags(524288);
+          ActivityChooserView.this.getContext().startActivity(paramView);
+        }
+        return;
+      }
+      if (paramView == ActivityChooserView.this.mExpandActivityOverflowButton)
+      {
+        ActivityChooserView.this.mIsSelectingDefaultActivity = false;
+        ActivityChooserView.this.showPopupUnchecked(ActivityChooserView.this.mInitialActivityCount);
+        return;
+      }
+      throw new IllegalArgumentException();
+    }
+    
+    public void onDismiss()
+    {
+      notifyOnDismissListener();
+      if (ActivityChooserView.this.mProvider != null) {
+        ActivityChooserView.this.mProvider.subUiVisibilityChanged(false);
+      }
+    }
+    
+    public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+    {
+      switch (((ActivityChooserView.ActivityChooserViewAdapter)paramAdapterView.getAdapter()).getItemViewType(paramInt))
+      {
+      default: 
+        throw new IllegalArgumentException();
+      case 1: 
+        ActivityChooserView.this.showPopupUnchecked(2147483647);
+      }
+      do
+      {
+        return;
+        ActivityChooserView.this.dismissPopup();
+        if (!ActivityChooserView.this.mIsSelectingDefaultActivity) {
+          break;
+        }
+      } while (paramInt <= 0);
+      ActivityChooserView.this.mAdapter.getDataModel().setDefaultActivity(paramInt);
+      return;
+      if (ActivityChooserView.this.mAdapter.getShowDefaultActivity()) {}
+      for (;;)
+      {
+        paramAdapterView = ActivityChooserView.this.mAdapter.getDataModel().chooseActivity(paramInt);
+        if (paramAdapterView == null) {
+          break;
+        }
+        paramAdapterView.addFlags(524288);
+        ActivityChooserView.this.getContext().startActivity(paramAdapterView);
+        return;
+        paramInt += 1;
+      }
+    }
+    
+    public boolean onLongClick(View paramView)
+    {
+      if (paramView == ActivityChooserView.this.mDefaultActivityButton)
+      {
+        if (ActivityChooserView.this.mAdapter.getCount() > 0)
+        {
+          ActivityChooserView.this.mIsSelectingDefaultActivity = true;
+          ActivityChooserView.this.showPopupUnchecked(ActivityChooserView.this.mInitialActivityCount);
+        }
+        return true;
+      }
+      throw new IllegalArgumentException();
+    }
+  }
+  
+  @RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
+  public static class InnerLayout
+    extends LinearLayout
+  {
+    private static final int[] TINT_ATTRS = { 16842964 };
+    
+    public InnerLayout(Context paramContext, AttributeSet paramAttributeSet)
+    {
+      super(paramAttributeSet);
+      paramContext = TintTypedArray.obtainStyledAttributes(paramContext, paramAttributeSet, TINT_ATTRS);
+      setBackgroundDrawable(paramContext.getDrawable(0));
+      paramContext.recycle();
+    }
   }
 }
 

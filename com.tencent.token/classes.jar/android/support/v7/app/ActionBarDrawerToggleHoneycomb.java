@@ -7,6 +7,8 @@ import android.graphics.drawable.Drawable;
 import android.os.Build.VERSION;
 import android.support.annotation.RequiresApi;
 import android.util.Log;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageView;
 import java.lang.reflect.Method;
 
@@ -24,11 +26,11 @@ class ActionBarDrawerToggleHoneycomb
     return localDrawable;
   }
   
-  public static ActionBarDrawerToggleHoneycomb.SetIndicatorInfo setActionBarDescription(ActionBarDrawerToggleHoneycomb.SetIndicatorInfo paramSetIndicatorInfo, Activity paramActivity, int paramInt)
+  public static SetIndicatorInfo setActionBarDescription(SetIndicatorInfo paramSetIndicatorInfo, Activity paramActivity, int paramInt)
   {
-    ActionBarDrawerToggleHoneycomb.SetIndicatorInfo localSetIndicatorInfo = paramSetIndicatorInfo;
+    SetIndicatorInfo localSetIndicatorInfo = paramSetIndicatorInfo;
     if (paramSetIndicatorInfo == null) {
-      localSetIndicatorInfo = new ActionBarDrawerToggleHoneycomb.SetIndicatorInfo(paramActivity);
+      localSetIndicatorInfo = new SetIndicatorInfo(paramActivity);
     }
     if (localSetIndicatorInfo.setHomeAsUpIndicator != null) {}
     try
@@ -47,9 +49,9 @@ class ActionBarDrawerToggleHoneycomb
     return localSetIndicatorInfo;
   }
   
-  public static ActionBarDrawerToggleHoneycomb.SetIndicatorInfo setActionBarUpIndicator(ActionBarDrawerToggleHoneycomb.SetIndicatorInfo paramSetIndicatorInfo, Activity paramActivity, Drawable paramDrawable, int paramInt)
+  public static SetIndicatorInfo setActionBarUpIndicator(SetIndicatorInfo paramSetIndicatorInfo, Activity paramActivity, Drawable paramDrawable, int paramInt)
   {
-    paramSetIndicatorInfo = new ActionBarDrawerToggleHoneycomb.SetIndicatorInfo(paramActivity);
+    paramSetIndicatorInfo = new SetIndicatorInfo(paramActivity);
     if (paramSetIndicatorInfo.setHomeAsUpIndicator != null) {
       try
       {
@@ -71,6 +73,50 @@ class ActionBarDrawerToggleHoneycomb
     }
     Log.w("ActionBarDrawerToggleHC", "Couldn't set home-as-up indicator");
     return paramSetIndicatorInfo;
+  }
+  
+  static class SetIndicatorInfo
+  {
+    public Method setHomeActionContentDescription;
+    public Method setHomeAsUpIndicator;
+    public ImageView upIndicatorView;
+    
+    SetIndicatorInfo(Activity paramActivity)
+    {
+      for (;;)
+      {
+        Object localObject;
+        try
+        {
+          this.setHomeAsUpIndicator = ActionBar.class.getDeclaredMethod("setHomeAsUpIndicator", new Class[] { Drawable.class });
+          this.setHomeActionContentDescription = ActionBar.class.getDeclaredMethod("setHomeActionContentDescription", new Class[] { Integer.TYPE });
+          return;
+        }
+        catch (NoSuchMethodException localNoSuchMethodException)
+        {
+          paramActivity = paramActivity.findViewById(16908332);
+          if (paramActivity == null) {
+            continue;
+          }
+          localObject = (ViewGroup)paramActivity.getParent();
+          if (((ViewGroup)localObject).getChildCount() != 2) {
+            continue;
+          }
+          paramActivity = ((ViewGroup)localObject).getChildAt(0);
+          localObject = ((ViewGroup)localObject).getChildAt(1);
+          if (paramActivity.getId() != 16908332) {
+            break label113;
+          }
+        }
+        paramActivity = (Activity)localObject;
+        label113:
+        while ((paramActivity instanceof ImageView))
+        {
+          this.upIndicatorView = ((ImageView)paramActivity);
+          return;
+        }
+      }
+    }
   }
 }
 

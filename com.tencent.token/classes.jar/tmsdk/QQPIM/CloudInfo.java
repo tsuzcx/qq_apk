@@ -13,9 +13,9 @@ public final class CloudInfo
   static BaseInfo dR;
   static TimeCtrl dS;
   static TipsInfo dT;
-  static ArrayList dU;
+  static ArrayList<CloudCmd> dU;
   public BaseInfo base = null;
-  public ArrayList cloudcmds = null;
+  public ArrayList<CloudCmd> cloudcmds = null;
   public TimeCtrl time = null;
   public TipsInfo tips = null;
   
@@ -37,7 +37,7 @@ public final class CloudInfo
     setCloudcmds(this.cloudcmds);
   }
   
-  public CloudInfo(BaseInfo paramBaseInfo, TimeCtrl paramTimeCtrl, TipsInfo paramTipsInfo, ArrayList paramArrayList)
+  public CloudInfo(BaseInfo paramBaseInfo, TimeCtrl paramTimeCtrl, TipsInfo paramTipsInfo, ArrayList<CloudCmd> paramArrayList)
   {
     setBase(paramBaseInfo);
     setTime(paramTimeCtrl);
@@ -87,7 +87,7 @@ public final class CloudInfo
     return this.base;
   }
   
-  public ArrayList getCloudcmds()
+  public ArrayList<CloudCmd> getCloudcmds()
   {
     return this.cloudcmds;
   }
@@ -143,7 +143,7 @@ public final class CloudInfo
     this.base = paramBaseInfo;
   }
   
-  public void setCloudcmds(ArrayList paramArrayList)
+  public void setCloudcmds(ArrayList<CloudCmd> paramArrayList)
   {
     this.cloudcmds = paramArrayList;
   }

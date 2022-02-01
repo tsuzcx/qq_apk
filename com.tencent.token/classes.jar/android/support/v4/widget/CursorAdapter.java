@@ -1,8 +1,10 @@
 package android.support.v4.widget;
 
 import android.content.Context;
+import android.database.ContentObserver;
 import android.database.Cursor;
 import android.database.DataSetObserver;
+import android.os.Handler;
 import android.support.annotation.RestrictTo;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,7 +23,7 @@ public abstract class CursorAdapter
   @RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
   protected boolean mAutoRequery;
   @RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
-  protected CursorAdapter.ChangeObserver mChangeObserver;
+  protected ChangeObserver mChangeObserver;
   @RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
   protected Context mContext;
   @RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
@@ -190,9 +192,9 @@ public abstract class CursorAdapter
       if ((paramInt & 0x2) != 2) {
         break label151;
       }
-      this.mChangeObserver = new CursorAdapter.ChangeObserver(this);
+      this.mChangeObserver = new ChangeObserver();
     }
-    for (this.mDataSetObserver = new CursorAdapter.MyDataSetObserver(this);; this.mDataSetObserver = null)
+    for (this.mDataSetObserver = new MyDataSetObserver();; this.mDataSetObserver = null)
     {
       if (bool)
       {
@@ -288,6 +290,43 @@ public abstract class CursorAdapter
     this.mDataValid = false;
     notifyDataSetInvalidated();
     return localCursor;
+  }
+  
+  private class ChangeObserver
+    extends ContentObserver
+  {
+    ChangeObserver()
+    {
+      super();
+    }
+    
+    public boolean deliverSelfNotifications()
+    {
+      return true;
+    }
+    
+    public void onChange(boolean paramBoolean)
+    {
+      CursorAdapter.this.onContentChanged();
+    }
+  }
+  
+  private class MyDataSetObserver
+    extends DataSetObserver
+  {
+    MyDataSetObserver() {}
+    
+    public void onChanged()
+    {
+      CursorAdapter.this.mDataValid = true;
+      CursorAdapter.this.notifyDataSetChanged();
+    }
+    
+    public void onInvalidated()
+    {
+      CursorAdapter.this.mDataValid = false;
+      CursorAdapter.this.notifyDataSetInvalidated();
+    }
   }
 }
 

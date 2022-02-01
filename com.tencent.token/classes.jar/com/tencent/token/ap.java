@@ -2,11 +2,57 @@ package com.tencent.token;
 
 import java.util.List;
 
-public abstract interface ap
+public class ap
 {
-  public abstract List a(String paramString, int paramInt, long paramLong, boolean paramBoolean);
+  private az a;
+  private bg b;
+  private bf c;
+  private List d;
   
-  public abstract void a(List paramList);
+  public az a()
+  {
+    return this.a;
+  }
+  
+  public void a(az paramaz)
+  {
+    this.a = paramaz;
+  }
+  
+  public void a(bf parambf)
+  {
+    this.c = parambf;
+  }
+  
+  public void a(bg parambg)
+  {
+    this.b = parambg;
+  }
+  
+  public void a(List paramList)
+  {
+    this.d = paramList;
+  }
+  
+  public bg b()
+  {
+    return this.b;
+  }
+  
+  public bf c()
+  {
+    return this.c;
+  }
+  
+  public String d()
+  {
+    return "accessInfo:" + this.a + ", sdkCfgInfo:" + this.b + ", sdkAccessInfo:" + this.c;
+  }
+  
+  public List e()
+  {
+    return this.d;
+  }
 }
 
 

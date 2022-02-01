@@ -1,264 +1,219 @@
 package okhttp3.internal.http2;
 
-import com.tencent.token.gn;
-import java.util.Arrays;
+import com.tencent.token.ez;
+import com.tencent.token.fb;
+import com.tencent.token.fk;
+import com.tencent.token.fm;
+import com.tencent.token.fp;
+import com.tencent.token.fq;
+import com.tencent.token.fs;
+import java.io.IOException;
+import java.net.ProtocolException;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
+import java.util.Locale;
+import java.util.concurrent.TimeUnit;
+import okhttp3.Protocol;
+import okhttp3.aa;
+import okhttp3.internal.connection.f;
+import okhttp3.r.a;
+import okhttp3.s;
+import okhttp3.t.a;
+import okhttp3.v;
+import okhttp3.x;
+import okhttp3.z;
+import okhttp3.z.a;
 import okio.ByteString;
-import okio.f;
+import okio.c;
+import okio.k;
+import okio.q;
 
-final class d
+public final class d
+  implements fk
 {
-  int a;
-  int b;
-  a[] c = new a[8];
-  int d = this.c.length - 1;
-  int e = 0;
-  int f = 0;
-  private final f g;
-  private final boolean h;
-  private int i = 2147483647;
-  private boolean j;
+  private static final ByteString b = ByteString.a("connection");
+  private static final ByteString c = ByteString.a("host");
+  private static final ByteString d = ByteString.a("keep-alive");
+  private static final ByteString e = ByteString.a("proxy-connection");
+  private static final ByteString f = ByteString.a("transfer-encoding");
+  private static final ByteString g = ByteString.a("te");
+  private static final ByteString h = ByteString.a("encoding");
+  private static final ByteString i = ByteString.a("upgrade");
+  private static final List<ByteString> j = fb.a(new ByteString[] { b, c, d, e, g, f, h, i, a.c, a.d, a.e, a.f });
+  private static final List<ByteString> k = fb.a(new ByteString[] { b, c, d, e, g, f, h, i });
+  final f a;
+  private final t.a l;
+  private final e m;
+  private g n;
+  private final Protocol o;
   
-  d(int paramInt, boolean paramBoolean, f paramf)
+  public d(v paramv, t.a parama, f paramf, e parame)
   {
-    this.a = paramInt;
-    this.b = paramInt;
-    this.h = paramBoolean;
-    this.g = paramf;
-  }
-  
-  d(f paramf)
-  {
-    this(4096, true, paramf);
-  }
-  
-  private void a()
-  {
-    Arrays.fill(this.c, null);
-    this.d = (this.c.length - 1);
-    this.e = 0;
-    this.f = 0;
-  }
-  
-  private void a(a parama)
-  {
-    int k = parama.i;
-    if (k > this.b)
+    this.l = parama;
+    this.a = paramf;
+    this.m = parame;
+    if (paramv.u().contains(Protocol.H2_PRIOR_KNOWLEDGE)) {}
+    for (paramv = Protocol.H2_PRIOR_KNOWLEDGE;; paramv = Protocol.HTTP_2)
     {
-      a();
+      this.o = paramv;
       return;
     }
-    b(this.f + k - this.b);
-    if (this.e + 1 > this.c.length)
-    {
-      a[] arrayOfa = new a[this.c.length * 2];
-      System.arraycopy(this.c, 0, arrayOfa, this.c.length, this.c.length);
-      this.d = (this.c.length - 1);
-      this.c = arrayOfa;
-    }
-    int m = this.d;
-    this.d = (m - 1);
-    this.c[m] = parama;
-    this.e += 1;
-    this.f = (k + this.f);
   }
   
-  private int b(int paramInt)
+  public static z.a a(List<a> paramList, Protocol paramProtocol)
   {
-    int k = 0;
-    int n = 0;
-    if (paramInt > 0)
+    r.a locala = new r.a();
+    int i2 = paramList.size();
+    int i1 = 0;
+    fs localfs = null;
+    if (i1 < i2)
     {
-      k = this.c.length - 1;
-      int m = paramInt;
-      paramInt = n;
-      while ((k >= this.d) && (m > 0))
+      Object localObject = (a)paramList.get(i1);
+      if (localObject == null)
       {
-        m -= this.c[k].i;
-        this.f -= this.c[k].i;
-        this.e -= 1;
-        paramInt += 1;
-        k -= 1;
-      }
-      System.arraycopy(this.c, this.d + 1, this.c, this.d + 1 + paramInt, this.e);
-      Arrays.fill(this.c, this.d + 1, this.d + 1 + paramInt, null);
-      this.d += paramInt;
-      k = paramInt;
-    }
-    return k;
-  }
-  
-  private void b()
-  {
-    if (this.b < this.f)
-    {
-      if (this.b == 0) {
-        a();
-      }
-    }
-    else {
-      return;
-    }
-    b(this.f - this.b);
-  }
-  
-  void a(int paramInt)
-  {
-    this.a = paramInt;
-    paramInt = Math.min(paramInt, 16384);
-    if (this.b == paramInt) {
-      return;
-    }
-    if (paramInt < this.b) {
-      this.i = Math.min(this.i, paramInt);
-    }
-    this.j = true;
-    this.b = paramInt;
-    b();
-  }
-  
-  void a(int paramInt1, int paramInt2, int paramInt3)
-  {
-    if (paramInt1 < paramInt2)
-    {
-      this.g.b(paramInt3 | paramInt1);
-      return;
-    }
-    this.g.b(paramInt3 | paramInt2);
-    paramInt1 -= paramInt2;
-    while (paramInt1 >= 128)
-    {
-      this.g.b(paramInt1 & 0x7F | 0x80);
-      paramInt1 >>>= 7;
-    }
-    this.g.b(paramInt1);
-  }
-  
-  void a(List paramList)
-  {
-    if (this.j)
-    {
-      if (this.i < this.b) {
-        a(this.i, 31, 32);
-      }
-      this.j = false;
-      this.i = 2147483647;
-      a(this.b, 31, 32);
-    }
-    int i4 = paramList.size();
-    int n = 0;
-    a locala;
-    ByteString localByteString1;
-    ByteString localByteString2;
-    int m;
-    int k;
-    if (n < i4)
-    {
-      locala = (a)paramList.get(n);
-      localByteString1 = locala.g.f();
-      localByteString2 = locala.h;
-      Integer localInteger = (Integer)b.b.get(localByteString1);
-      if (localInteger == null) {
-        break label446;
-      }
-      m = localInteger.intValue() + 1;
-      if ((m <= 1) || (m >= 8)) {
-        break label441;
-      }
-      if (gn.a(b.a[(m - 1)].h, localByteString2)) {
-        k = m;
-      }
-    }
-    for (;;)
-    {
-      label160:
-      int i2 = m;
-      int i3 = k;
-      int i1;
-      if (k == -1)
-      {
-        i1 = this.d + 1;
-        int i5 = this.c.length;
-        label186:
-        i2 = m;
-        i3 = k;
-        if (i1 < i5)
-        {
-          i2 = m;
-          if (!gn.a(this.c[i1].g, localByteString1)) {
-            break label326;
-          }
-          if (!gn.a(this.c[i1].h, localByteString2)) {
-            break label304;
-          }
-          i3 = i1 - this.d + b.a.length;
-          i2 = m;
+        if ((localfs == null) || (localfs.b != 100)) {
+          break label161;
         }
+        locala = new r.a();
+        localfs = null;
       }
-      if (i3 != -1) {
-        a(i3, 127, 128);
-      }
+      label161:
       for (;;)
       {
-        n += 1;
-        break;
-        if (!gn.a(b.a[m].h, localByteString2)) {
-          break label441;
-        }
-        k = m + 1;
-        break label160;
-        label304:
-        i2 = m;
-        if (m == -1) {
-          i2 = i1 - this.d + b.a.length;
-        }
-        label326:
         i1 += 1;
-        m = i2;
-        break label186;
-        if (i2 == -1)
-        {
-          this.g.b(64);
-          a(localByteString1);
-          a(localByteString2);
-          a(locala);
-        }
-        else if ((localByteString1.a(a.a)) && (!a.f.equals(localByteString1)))
-        {
-          a(i2, 15, 0);
-          a(localByteString2);
-        }
-        else
-        {
-          a(i2, 63, 64);
-          a(localByteString2);
-          a(locala);
+        break;
+        ByteString localByteString = ((a)localObject).g;
+        localObject = ((a)localObject).h.a();
+        if (localByteString.equals(a.b)) {
+          localfs = fs.a("HTTP/1.1 " + (String)localObject);
+        } else if (!k.contains(localByteString)) {
+          ez.a.a(locala, localByteString.a(), (String)localObject);
         }
       }
+    }
+    if (localfs == null) {
+      throw new ProtocolException("Expected ':status' header not present");
+    }
+    return new z.a().a(paramProtocol).a(localfs.b).a(localfs.c).a(locala.a());
+  }
+  
+  public static List<a> b(x paramx)
+  {
+    okhttp3.r localr = paramx.c();
+    ArrayList localArrayList = new ArrayList(localr.a() + 4);
+    localArrayList.add(new a(a.c, paramx.b()));
+    localArrayList.add(new a(a.d, fq.a(paramx.a())));
+    String str = paramx.a("Host");
+    if (str != null) {
+      localArrayList.add(new a(a.f, str));
+    }
+    localArrayList.add(new a(a.e, paramx.a().b()));
+    int i1 = 0;
+    int i2 = localr.a();
+    while (i1 < i2)
+    {
+      paramx = ByteString.a(localr.a(i1).toLowerCase(Locale.US));
+      if (!j.contains(paramx)) {
+        localArrayList.add(new a(paramx, localr.b(i1)));
+      }
+      i1 += 1;
+    }
+    return localArrayList;
+  }
+  
+  public aa a(z paramz)
+  {
+    this.a.c.f(this.a.b);
+    return new fp(paramz.a("Content-Type"), fm.a(paramz), k.a(new a(this.n.g())));
+  }
+  
+  public z.a a(boolean paramBoolean)
+  {
+    z.a locala2 = a(this.n.d(), this.o);
+    z.a locala1 = locala2;
+    if (paramBoolean)
+    {
+      locala1 = locala2;
+      if (ez.a.a(locala2) == 100) {
+        locala1 = null;
+      }
+    }
+    return locala1;
+  }
+  
+  public okio.p a(x paramx, long paramLong)
+  {
+    return this.n.h();
+  }
+  
+  public void a()
+  {
+    this.m.b();
+  }
+  
+  public void a(x paramx)
+  {
+    if (this.n != null) {
       return;
-      label441:
-      k = -1;
-      continue;
-      label446:
-      m = -1;
-      k = -1;
+    }
+    if (paramx.d() != null) {}
+    for (boolean bool = true;; bool = false)
+    {
+      paramx = b(paramx);
+      this.n = this.m.a(paramx, bool);
+      this.n.e().a(this.l.c(), TimeUnit.MILLISECONDS);
+      this.n.f().a(this.l.d(), TimeUnit.MILLISECONDS);
+      return;
     }
   }
   
-  void a(ByteString paramByteString)
+  public void b()
   {
-    if ((this.h) && (ae.a().a(paramByteString) < paramByteString.g()))
+    this.n.h().close();
+  }
+  
+  class a
+    extends okio.g
+  {
+    boolean a = false;
+    long b = 0L;
+    
+    a(q paramq)
     {
-      f localf = new f();
-      ae.a().a(paramByteString, localf);
-      paramByteString = localf.n();
-      a(paramByteString.g(), 127, 128);
-      this.g.a(paramByteString);
-      return;
+      super();
     }
-    a(paramByteString.g(), 127, 0);
-    this.g.a(paramByteString);
+    
+    private void a(IOException paramIOException)
+    {
+      if (this.a) {
+        return;
+      }
+      this.a = true;
+      d.this.a.a(false, d.this, this.b, paramIOException);
+    }
+    
+    public long a(c paramc, long paramLong)
+    {
+      try
+      {
+        paramLong = b().a(paramc, paramLong);
+        if (paramLong > 0L) {
+          this.b += paramLong;
+        }
+        return paramLong;
+      }
+      catch (IOException paramc)
+      {
+        a(paramc);
+        throw paramc;
+      }
+    }
+    
+    public void close()
+    {
+      super.close();
+      a(null);
+    }
   }
 }
 

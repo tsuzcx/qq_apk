@@ -8,8 +8,8 @@ import java.util.ArrayList;
 public final class AuthSolutionConfig
   extends JceStruct
 {
-  static ArrayList a = new ArrayList();
-  public ArrayList authSolutionConfigList = null;
+  static ArrayList<String> a = new ArrayList();
+  public ArrayList<String> authSolutionConfigList = null;
   
   static
   {

@@ -63,7 +63,7 @@ public final class NavUtils
   }
   
   @Nullable
-  public static Intent getParentActivityIntent(@NonNull Context paramContext, @NonNull Class paramClass)
+  public static Intent getParentActivityIntent(@NonNull Context paramContext, @NonNull Class<?> paramClass)
   {
     paramClass = getParentActivityName(paramContext, new ComponentName(paramContext, paramClass));
     if (paramClass == null) {

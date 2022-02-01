@@ -14,7 +14,7 @@ public class VectorEnabledTintResources
   extends Resources
 {
   public static final int MAX_SDK_WHERE_REQUIRED = 20;
-  private final WeakReference mContextRef;
+  private final WeakReference<Context> mContextRef;
   
   public VectorEnabledTintResources(@NonNull Context paramContext, @NonNull Resources paramResources)
   {

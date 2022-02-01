@@ -22,7 +22,7 @@ public class SwitchButton
   extends CheckBox
 {
   private static ImageCache g = null;
-  private cv A;
+  private a A;
   private CompoundButton.OnCheckedChangeListener B = null;
   private CompoundButton.OnCheckedChangeListener C = null;
   private boolean D;
@@ -148,7 +148,7 @@ public class SwitchButton
     {
       this.J = f1;
       this.I = this.m;
-      new cw(this, null).run();
+      new b(null).run();
       return;
     }
   }
@@ -187,9 +187,15 @@ public class SwitchButton
     }
   }
   
-  private void setCheckedDelayed(boolean paramBoolean)
+  private void setCheckedDelayed(final boolean paramBoolean)
   {
-    postDelayed(new cu(this, paramBoolean), 10L);
+    postDelayed(new Runnable()
+    {
+      public void run()
+      {
+        SwitchButton.this.a(paramBoolean, true);
+      }
+    }, 10L);
   }
   
   public void a(boolean paramBoolean1, boolean paramBoolean2)
@@ -299,7 +305,7 @@ public class SwitchButton
         break;
       }
       if (this.A == null) {
-        this.A = new cv(this, null);
+        this.A = new a(null);
       }
       if (!post(this.A)) {
         performClick();
@@ -351,6 +357,32 @@ public class SwitchButton
     {
       setChecked(bool);
       return;
+    }
+  }
+  
+  private final class a
+    implements Runnable
+  {
+    private a() {}
+    
+    public void run()
+    {
+      SwitchButton.this.performClick();
+    }
+  }
+  
+  private final class b
+    implements Runnable
+  {
+    private b() {}
+    
+    public void run()
+    {
+      if (!SwitchButton.a(SwitchButton.this)) {
+        return;
+      }
+      SwitchButton.b(SwitchButton.this);
+      c.a(this);
     }
   }
 }

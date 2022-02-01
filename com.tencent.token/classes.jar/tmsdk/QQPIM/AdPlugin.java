@@ -8,10 +8,10 @@ import java.util.ArrayList;
 public final class AdPlugin
   extends JceStruct
 {
-  static ArrayList dA;
-  static ArrayList dz;
-  public ArrayList banIps = null;
-  public ArrayList banUrls = null;
+  static ArrayList<String> dA;
+  static ArrayList<String> dz;
+  public ArrayList<String> banIps = null;
+  public ArrayList<String> banUrls = null;
   public int behavior1 = 0;
   public int behavior2 = 0;
   public int id = 0;
@@ -20,7 +20,7 @@ public final class AdPlugin
   
   public AdPlugin() {}
   
-  public AdPlugin(int paramInt1, int paramInt2, int paramInt3, int paramInt4, ArrayList paramArrayList1, ArrayList paramArrayList2, String paramString)
+  public AdPlugin(int paramInt1, int paramInt2, int paramInt3, int paramInt4, ArrayList<String> paramArrayList1, ArrayList<String> paramArrayList2, String paramString)
   {
     this.id = paramInt1;
     this.type = paramInt2;

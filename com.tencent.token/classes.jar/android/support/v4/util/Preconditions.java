@@ -135,30 +135,30 @@ public class Preconditions
     return paramArrayOfFloat;
   }
   
-  public static Object[] checkArrayElementsNotNull(Object[] paramArrayOfObject, String paramString)
+  public static <T> T[] checkArrayElementsNotNull(T[] paramArrayOfT, String paramString)
   {
-    if (paramArrayOfObject == null) {
+    if (paramArrayOfT == null) {
       throw new NullPointerException(paramString + " must not be null");
     }
     int i = 0;
-    while (i < paramArrayOfObject.length)
+    while (i < paramArrayOfT.length)
     {
-      if (paramArrayOfObject[i] == null) {
+      if (paramArrayOfT[i] == null) {
         throw new NullPointerException(String.format(Locale.US, "%s[%d] must not be null", new Object[] { paramString, Integer.valueOf(i) }));
       }
       i += 1;
     }
-    return paramArrayOfObject;
+    return paramArrayOfT;
   }
   
   @NonNull
-  public static Collection checkCollectionElementsNotNull(Collection paramCollection, String paramString)
+  public static <C extends Collection<T>, T> C checkCollectionElementsNotNull(C paramC, String paramString)
   {
-    if (paramCollection == null) {
+    if (paramC == null) {
       throw new NullPointerException(paramString + " must not be null");
     }
     long l = 0L;
-    Iterator localIterator = paramCollection.iterator();
+    Iterator localIterator = paramC.iterator();
     while (localIterator.hasNext())
     {
       if (localIterator.next() == null) {
@@ -166,10 +166,10 @@ public class Preconditions
       }
       l += 1L;
     }
-    return paramCollection;
+    return paramC;
   }
   
-  public static Collection checkCollectionNotEmpty(Collection paramCollection, String paramString)
+  public static <T> Collection<T> checkCollectionNotEmpty(Collection<T> paramCollection, String paramString)
   {
     if (paramCollection == null) {
       throw new NullPointerException(paramString + " must not be null");
@@ -189,21 +189,21 @@ public class Preconditions
   }
   
   @NonNull
-  public static Object checkNotNull(Object paramObject)
+  public static <T> T checkNotNull(T paramT)
   {
-    if (paramObject == null) {
+    if (paramT == null) {
       throw new NullPointerException();
     }
-    return paramObject;
+    return paramT;
   }
   
   @NonNull
-  public static Object checkNotNull(Object paramObject1, Object paramObject2)
+  public static <T> T checkNotNull(T paramT, Object paramObject)
   {
-    if (paramObject1 == null) {
-      throw new NullPointerException(String.valueOf(paramObject2));
+    if (paramT == null) {
+      throw new NullPointerException(String.valueOf(paramObject));
     }
-    return paramObject1;
+    return paramT;
   }
   
   public static void checkState(boolean paramBoolean)
@@ -219,21 +219,21 @@ public class Preconditions
   }
   
   @NonNull
-  public static CharSequence checkStringNotEmpty(CharSequence paramCharSequence)
+  public static <T extends CharSequence> T checkStringNotEmpty(T paramT)
   {
-    if (TextUtils.isEmpty(paramCharSequence)) {
+    if (TextUtils.isEmpty(paramT)) {
       throw new IllegalArgumentException();
     }
-    return paramCharSequence;
+    return paramT;
   }
   
   @NonNull
-  public static CharSequence checkStringNotEmpty(CharSequence paramCharSequence, Object paramObject)
+  public static <T extends CharSequence> T checkStringNotEmpty(T paramT, Object paramObject)
   {
-    if (TextUtils.isEmpty(paramCharSequence)) {
+    if (TextUtils.isEmpty(paramT)) {
       throw new IllegalArgumentException(String.valueOf(paramObject));
     }
-    return paramCharSequence;
+    return paramT;
   }
 }
 

@@ -2,6 +2,7 @@ package android.support.v4.app;
 
 import android.animation.Animator;
 import android.animation.AnimatorInflater;
+import android.animation.AnimatorListenerAdapter;
 import android.animation.AnimatorSet;
 import android.animation.PropertyValuesHolder;
 import android.animation.ValueAnimator;
@@ -16,6 +17,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Parcelable;
+import android.support.annotation.CallSuper;
 import android.support.annotation.NonNull;
 import android.support.v4.util.ArraySet;
 import android.support.v4.util.DebugUtils;
@@ -40,6 +42,7 @@ import android.view.animation.AnimationUtils;
 import android.view.animation.DecelerateInterpolator;
 import android.view.animation.Interpolator;
 import android.view.animation.ScaleAnimation;
+import android.view.animation.Transformation;
 import java.io.FileDescriptor;
 import java.io.PrintWriter;
 import java.lang.reflect.Field;
@@ -72,36 +75,42 @@ final class FragmentManagerImpl
   static final String USER_VISIBLE_HINT_TAG = "android:user_visible_hint";
   static final String VIEW_STATE_TAG = "android:view_state";
   static Field sAnimationListenerField = null;
-  SparseArray mActive;
-  final ArrayList mAdded = new ArrayList();
-  ArrayList mAvailBackStackIndices;
-  ArrayList mBackStack;
-  ArrayList mBackStackChangeListeners;
-  ArrayList mBackStackIndices;
+  SparseArray<Fragment> mActive;
+  final ArrayList<Fragment> mAdded = new ArrayList();
+  ArrayList<Integer> mAvailBackStackIndices;
+  ArrayList<BackStackRecord> mBackStack;
+  ArrayList<FragmentManager.OnBackStackChangedListener> mBackStackChangeListeners;
+  ArrayList<BackStackRecord> mBackStackIndices;
   FragmentContainer mContainer;
-  ArrayList mCreatedMenus;
+  ArrayList<Fragment> mCreatedMenus;
   int mCurState = 0;
   boolean mDestroyed;
-  Runnable mExecCommit = new FragmentManagerImpl.1(this);
+  Runnable mExecCommit = new Runnable()
+  {
+    public void run()
+    {
+      FragmentManagerImpl.this.execPendingActions();
+    }
+  };
   boolean mExecutingActions;
   boolean mHavePendingDeferredStart;
   FragmentHostCallback mHost;
-  private final CopyOnWriteArrayList mLifecycleCallbacks = new CopyOnWriteArrayList();
+  private final CopyOnWriteArrayList<Pair<FragmentManager.FragmentLifecycleCallbacks, Boolean>> mLifecycleCallbacks = new CopyOnWriteArrayList();
   boolean mNeedMenuInvalidate;
   int mNextFragmentIndex = 0;
   String mNoTransactionsBecause;
   Fragment mParent;
-  ArrayList mPendingActions;
-  ArrayList mPostponedTransactions;
+  ArrayList<OpGenerator> mPendingActions;
+  ArrayList<StartEnterTransitionListener> mPostponedTransactions;
   Fragment mPrimaryNav;
   FragmentManagerNonConfig mSavedNonConfig;
-  SparseArray mStateArray = null;
+  SparseArray<Parcelable> mStateArray = null;
   Bundle mStateBundle = null;
   boolean mStateSaved;
   boolean mStopped;
-  ArrayList mTmpAddedFragments;
-  ArrayList mTmpIsPop;
-  ArrayList mTmpRecords;
+  ArrayList<Fragment> mTmpAddedFragments;
+  ArrayList<Boolean> mTmpIsPop;
+  ArrayList<BackStackRecord> mTmpRecords;
   
   static
   {
@@ -110,7 +119,7 @@ final class FragmentManagerImpl
     ACCELERATE_QUINT = new AccelerateInterpolator(2.5F);
   }
   
-  private void addAddedFragments(ArraySet paramArraySet)
+  private void addAddedFragments(ArraySet<Fragment> paramArraySet)
   {
     if (this.mCurState < 1) {}
     for (;;)
@@ -134,24 +143,52 @@ final class FragmentManagerImpl
     }
   }
   
-  private void animateRemoveFragment(@NonNull Fragment paramFragment, @NonNull FragmentManagerImpl.AnimationOrAnimator paramAnimationOrAnimator, int paramInt)
+  private void animateRemoveFragment(@NonNull final Fragment paramFragment, @NonNull AnimationOrAnimator paramAnimationOrAnimator, int paramInt)
   {
-    View localView = paramFragment.mView;
-    ViewGroup localViewGroup = paramFragment.mContainer;
+    final View localView = paramFragment.mView;
+    final ViewGroup localViewGroup = paramFragment.mContainer;
     localViewGroup.startViewTransition(localView);
     paramFragment.setStateAfterAnimating(paramInt);
     if (paramAnimationOrAnimator.animation != null)
     {
-      localObject = new FragmentManagerImpl.EndViewTransitionAnimator(paramAnimationOrAnimator.animation, localViewGroup, localView);
+      localObject = new EndViewTransitionAnimator(paramAnimationOrAnimator.animation, localViewGroup, localView);
       paramFragment.setAnimatingAway(paramFragment.mView);
-      ((Animation)localObject).setAnimationListener(new FragmentManagerImpl.2(this, getAnimationListener((Animation)localObject), localViewGroup, paramFragment));
+      ((Animation)localObject).setAnimationListener(new AnimationListenerWrapper(getAnimationListener((Animation)localObject), localViewGroup)
+      {
+        public void onAnimationEnd(Animation paramAnonymousAnimation)
+        {
+          super.onAnimationEnd(paramAnonymousAnimation);
+          localViewGroup.post(new Runnable()
+          {
+            public void run()
+            {
+              if (FragmentManagerImpl.2.this.val$fragment.getAnimatingAway() != null)
+              {
+                FragmentManagerImpl.2.this.val$fragment.setAnimatingAway(null);
+                FragmentManagerImpl.this.moveToState(FragmentManagerImpl.2.this.val$fragment, FragmentManagerImpl.2.this.val$fragment.getStateAfterAnimating(), 0, 0, false);
+              }
+            }
+          });
+        }
+      });
       setHWLayerAnimListenerIfAlpha(localView, paramAnimationOrAnimator);
       paramFragment.mView.startAnimation((Animation)localObject);
       return;
     }
     Object localObject = paramAnimationOrAnimator.animator;
     paramFragment.setAnimator(paramAnimationOrAnimator.animator);
-    ((Animator)localObject).addListener(new FragmentManagerImpl.3(this, localViewGroup, localView, paramFragment));
+    ((Animator)localObject).addListener(new AnimatorListenerAdapter()
+    {
+      public void onAnimationEnd(Animator paramAnonymousAnimator)
+      {
+        localViewGroup.endViewTransition(localView);
+        paramAnonymousAnimator = paramFragment.getAnimator();
+        paramFragment.setAnimator(null);
+        if ((paramAnonymousAnimator != null) && (localViewGroup.indexOfChild(localView) < 0)) {
+          FragmentManagerImpl.this.moveToState(paramFragment, paramFragment.getStateAfterAnimating(), 0, 0, false);
+        }
+      }
+    });
     ((Animator)localObject).setTarget(paramFragment.mView);
     setHWLayerAnimListenerIfAlpha(paramFragment.mView, paramAnimationOrAnimator);
     ((Animator)localObject).start();
@@ -330,13 +367,13 @@ final class FragmentManagerImpl
     }
   }
   
-  private static void executeOps(ArrayList paramArrayList1, ArrayList paramArrayList2, int paramInt1, int paramInt2)
+  private static void executeOps(ArrayList<BackStackRecord> paramArrayList, ArrayList<Boolean> paramArrayList1, int paramInt1, int paramInt2)
   {
     if (paramInt1 < paramInt2)
     {
-      BackStackRecord localBackStackRecord = (BackStackRecord)paramArrayList1.get(paramInt1);
+      BackStackRecord localBackStackRecord = (BackStackRecord)paramArrayList.get(paramInt1);
       boolean bool;
-      if (((Boolean)paramArrayList2.get(paramInt1)).booleanValue())
+      if (((Boolean)paramArrayList1.get(paramInt1)).booleanValue())
       {
         localBackStackRecord.bumpBackStackNesting(-1);
         if (paramInt1 == paramInt2 - 1)
@@ -358,9 +395,9 @@ final class FragmentManagerImpl
     }
   }
   
-  private void executeOpsTogether(ArrayList paramArrayList1, ArrayList paramArrayList2, int paramInt1, int paramInt2)
+  private void executeOpsTogether(ArrayList<BackStackRecord> paramArrayList, ArrayList<Boolean> paramArrayList1, int paramInt1, int paramInt2)
   {
-    boolean bool = ((BackStackRecord)paramArrayList1.get(paramInt1)).mReorderingAllowed;
+    boolean bool = ((BackStackRecord)paramArrayList.get(paramInt1)).mReorderingAllowed;
     Object localObject;
     int j;
     label55:
@@ -375,8 +412,8 @@ final class FragmentManagerImpl
       if (j >= paramInt2) {
         break label158;
       }
-      localBackStackRecord = (BackStackRecord)paramArrayList1.get(j);
-      if (((Boolean)paramArrayList2.get(j)).booleanValue()) {
+      localBackStackRecord = (BackStackRecord)paramArrayList.get(j);
+      if (((Boolean)paramArrayList1.get(j)).booleanValue()) {
         break label136;
       }
       localObject = localBackStackRecord.expandOps(this.mTmpAddedFragments, (Fragment)localObject);
@@ -399,14 +436,14 @@ final class FragmentManagerImpl
     label158:
     this.mTmpAddedFragments.clear();
     if (!bool) {
-      FragmentTransition.startTransitions(this, paramArrayList1, paramArrayList2, paramInt1, paramInt2, false);
+      FragmentTransition.startTransitions(this, paramArrayList, paramArrayList1, paramInt1, paramInt2, false);
     }
-    executeOps(paramArrayList1, paramArrayList2, paramInt1, paramInt2);
+    executeOps(paramArrayList, paramArrayList1, paramInt1, paramInt2);
     if (bool)
     {
       localObject = new ArraySet();
       addAddedFragments((ArraySet)localObject);
-      j = postponePostponableTransactions(paramArrayList1, paramArrayList2, paramInt1, paramInt2, (ArraySet)localObject);
+      j = postponePostponableTransactions(paramArrayList, paramArrayList1, paramInt1, paramInt2, (ArraySet)localObject);
       makeRemovedFragmentsInvisible((ArraySet)localObject);
     }
     for (;;)
@@ -417,15 +454,15 @@ final class FragmentManagerImpl
         k = paramInt1;
         if (bool)
         {
-          FragmentTransition.startTransitions(this, paramArrayList1, paramArrayList2, paramInt1, j, true);
+          FragmentTransition.startTransitions(this, paramArrayList, paramArrayList1, paramInt1, j, true);
           moveToState(this.mCurState, true);
           k = paramInt1;
         }
       }
       while (k < paramInt2)
       {
-        localObject = (BackStackRecord)paramArrayList1.get(k);
-        if ((((Boolean)paramArrayList2.get(k)).booleanValue()) && (((BackStackRecord)localObject).mIndex >= 0))
+        localObject = (BackStackRecord)paramArrayList.get(k);
+        if ((((Boolean)paramArrayList1.get(k)).booleanValue()) && (((BackStackRecord)localObject).mIndex >= 0))
         {
           freeBackStackIndex(((BackStackRecord)localObject).mIndex);
           ((BackStackRecord)localObject).mIndex = -1;
@@ -441,12 +478,12 @@ final class FragmentManagerImpl
     }
   }
   
-  private void executePostponedTransaction(ArrayList paramArrayList1, ArrayList paramArrayList2)
+  private void executePostponedTransaction(ArrayList<BackStackRecord> paramArrayList, ArrayList<Boolean> paramArrayList1)
   {
     int i;
     int j;
     label12:
-    FragmentManagerImpl.StartEnterTransitionListener localStartEnterTransitionListener;
+    StartEnterTransitionListener localStartEnterTransitionListener;
     int k;
     if (this.mPostponedTransactions == null)
     {
@@ -455,12 +492,12 @@ final class FragmentManagerImpl
       if (j >= i) {
         return;
       }
-      localStartEnterTransitionListener = (FragmentManagerImpl.StartEnterTransitionListener)this.mPostponedTransactions.get(j);
-      if ((paramArrayList1 == null) || (FragmentManagerImpl.StartEnterTransitionListener.access$300(localStartEnterTransitionListener))) {
+      localStartEnterTransitionListener = (StartEnterTransitionListener)this.mPostponedTransactions.get(j);
+      if ((paramArrayList == null) || (localStartEnterTransitionListener.mIsBack)) {
         break label101;
       }
-      k = paramArrayList1.indexOf(FragmentManagerImpl.StartEnterTransitionListener.access$400(localStartEnterTransitionListener));
-      if ((k == -1) || (!((Boolean)paramArrayList2.get(k)).booleanValue())) {
+      k = paramArrayList.indexOf(localStartEnterTransitionListener.mRecord);
+      if ((k == -1) || (!((Boolean)paramArrayList1.get(k)).booleanValue())) {
         break label101;
       }
       localStartEnterTransitionListener.cancelTransaction();
@@ -477,11 +514,11 @@ final class FragmentManagerImpl
       {
         m = j;
         k = i;
-        if (paramArrayList1 != null)
+        if (paramArrayList != null)
         {
           m = j;
           k = i;
-          if (!FragmentManagerImpl.StartEnterTransitionListener.access$400(localStartEnterTransitionListener).interactsWith(paramArrayList1, 0, paramArrayList1.size())) {}
+          if (!localStartEnterTransitionListener.mRecord.interactsWith(paramArrayList, 0, paramArrayList.size())) {}
         }
       }
       else
@@ -489,10 +526,10 @@ final class FragmentManagerImpl
         this.mPostponedTransactions.remove(j);
         m = j - 1;
         k = i - 1;
-        if ((paramArrayList1 != null) && (!FragmentManagerImpl.StartEnterTransitionListener.access$300(localStartEnterTransitionListener)))
+        if ((paramArrayList != null) && (!localStartEnterTransitionListener.mIsBack))
         {
-          i = paramArrayList1.indexOf(FragmentManagerImpl.StartEnterTransitionListener.access$400(localStartEnterTransitionListener));
-          if ((i != -1) && (((Boolean)paramArrayList2.get(i)).booleanValue()))
+          i = paramArrayList.indexOf(localStartEnterTransitionListener.mRecord);
+          if ((i != -1) && (((Boolean)paramArrayList1.get(i)).booleanValue()))
           {
             localStartEnterTransitionListener.cancelTransaction();
             j = m;
@@ -540,12 +577,12 @@ final class FragmentManagerImpl
   {
     if (this.mPostponedTransactions != null) {
       while (!this.mPostponedTransactions.isEmpty()) {
-        ((FragmentManagerImpl.StartEnterTransitionListener)this.mPostponedTransactions.remove(0)).completeTransaction();
+        ((StartEnterTransitionListener)this.mPostponedTransactions.remove(0)).completeTransaction();
       }
     }
   }
   
-  private boolean generateOpsForPendingActions(ArrayList paramArrayList1, ArrayList paramArrayList2)
+  private boolean generateOpsForPendingActions(ArrayList<BackStackRecord> paramArrayList, ArrayList<Boolean> paramArrayList1)
   {
     try
     {
@@ -557,7 +594,7 @@ final class FragmentManagerImpl
       boolean bool = false;
       while (i < j)
       {
-        bool |= ((FragmentManagerImpl.OpGenerator)this.mPendingActions.get(i)).generateOps(paramArrayList1, paramArrayList2);
+        bool |= ((OpGenerator)this.mPendingActions.get(i)).generateOps(paramArrayList, paramArrayList1);
         i += 1;
       }
       this.mPendingActions.clear();
@@ -591,15 +628,15 @@ final class FragmentManagerImpl
     return null;
   }
   
-  static FragmentManagerImpl.AnimationOrAnimator makeFadeAnimation(Context paramContext, float paramFloat1, float paramFloat2)
+  static AnimationOrAnimator makeFadeAnimation(Context paramContext, float paramFloat1, float paramFloat2)
   {
     paramContext = new AlphaAnimation(paramFloat1, paramFloat2);
     paramContext.setInterpolator(DECELERATE_CUBIC);
     paramContext.setDuration(220L);
-    return new FragmentManagerImpl.AnimationOrAnimator(paramContext, null);
+    return new AnimationOrAnimator(paramContext, null);
   }
   
-  static FragmentManagerImpl.AnimationOrAnimator makeOpenCloseAnimation(Context paramContext, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
+  static AnimationOrAnimator makeOpenCloseAnimation(Context paramContext, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
   {
     paramContext = new AnimationSet(false);
     Object localObject = new ScaleAnimation(paramFloat1, paramFloat2, paramFloat1, paramFloat2, 1, 0.5F, 1, 0.5F);
@@ -610,10 +647,10 @@ final class FragmentManagerImpl
     ((AlphaAnimation)localObject).setInterpolator(DECELERATE_CUBIC);
     ((AlphaAnimation)localObject).setDuration(220L);
     paramContext.addAnimation((Animation)localObject);
-    return new FragmentManagerImpl.AnimationOrAnimator(paramContext, null);
+    return new AnimationOrAnimator(paramContext, null);
   }
   
-  private void makeRemovedFragmentsInvisible(ArraySet paramArraySet)
+  private void makeRemovedFragmentsInvisible(ArraySet<Fragment> paramArraySet)
   {
     int j = paramArraySet.size();
     int i = 0;
@@ -664,7 +701,7 @@ final class FragmentManagerImpl
     }
   }
   
-  static boolean modifiesAlpha(FragmentManagerImpl.AnimationOrAnimator paramAnimationOrAnimator)
+  static boolean modifiesAlpha(AnimationOrAnimator paramAnimationOrAnimator)
   {
     boolean bool2 = false;
     boolean bool1;
@@ -720,7 +757,7 @@ final class FragmentManagerImpl
     }
   }
   
-  private int postponePostponableTransactions(ArrayList paramArrayList1, ArrayList paramArrayList2, int paramInt1, int paramInt2, ArraySet paramArraySet)
+  private int postponePostponableTransactions(ArrayList<BackStackRecord> paramArrayList, ArrayList<Boolean> paramArrayList1, int paramInt1, int paramInt2, ArraySet<Fragment> paramArraySet)
   {
     int j = paramInt2 - 1;
     int i = paramInt2;
@@ -728,9 +765,9 @@ final class FragmentManagerImpl
     int k;
     if (j >= paramInt1)
     {
-      localBackStackRecord = (BackStackRecord)paramArrayList1.get(j);
-      boolean bool = ((Boolean)paramArrayList2.get(j)).booleanValue();
-      if ((localBackStackRecord.isPostponed()) && (!localBackStackRecord.interactsWith(paramArrayList1, j + 1, paramInt2)))
+      localBackStackRecord = (BackStackRecord)paramArrayList.get(j);
+      boolean bool = ((Boolean)paramArrayList1.get(j)).booleanValue();
+      if ((localBackStackRecord.isPostponed()) && (!localBackStackRecord.interactsWith(paramArrayList, j + 1, paramInt2)))
       {
         k = 1;
         label67:
@@ -740,7 +777,7 @@ final class FragmentManagerImpl
         if (this.mPostponedTransactions == null) {
           this.mPostponedTransactions = new ArrayList();
         }
-        FragmentManagerImpl.StartEnterTransitionListener localStartEnterTransitionListener = new FragmentManagerImpl.StartEnterTransitionListener(localBackStackRecord, bool);
+        StartEnterTransitionListener localStartEnterTransitionListener = new StartEnterTransitionListener(localBackStackRecord, bool);
         this.mPostponedTransactions.add(localStartEnterTransitionListener);
         localBackStackRecord.setOnStartPostponedListener(localStartEnterTransitionListener);
         if (!bool) {
@@ -751,8 +788,8 @@ final class FragmentManagerImpl
         i -= 1;
         if (j != i)
         {
-          paramArrayList1.remove(j);
-          paramArrayList1.add(i, localBackStackRecord);
+          paramArrayList.remove(j);
+          paramArrayList.add(i, localBackStackRecord);
         }
         addAddedFragments(paramArraySet);
       }
@@ -771,30 +808,30 @@ final class FragmentManagerImpl
     }
   }
   
-  private void removeRedundantOperationsAndExecute(ArrayList paramArrayList1, ArrayList paramArrayList2)
+  private void removeRedundantOperationsAndExecute(ArrayList<BackStackRecord> paramArrayList, ArrayList<Boolean> paramArrayList1)
   {
     int i = 0;
-    if ((paramArrayList1 == null) || (paramArrayList1.isEmpty())) {
+    if ((paramArrayList == null) || (paramArrayList.isEmpty())) {
       return;
     }
-    if ((paramArrayList2 == null) || (paramArrayList1.size() != paramArrayList2.size())) {
+    if ((paramArrayList1 == null) || (paramArrayList.size() != paramArrayList1.size())) {
       throw new IllegalStateException("Internal error with the back stack records");
     }
-    executePostponedTransaction(paramArrayList1, paramArrayList2);
-    int m = paramArrayList1.size();
+    executePostponedTransaction(paramArrayList, paramArrayList1);
+    int m = paramArrayList.size();
     int j = 0;
     label55:
     if (i < m)
     {
-      if (((BackStackRecord)paramArrayList1.get(i)).mReorderingAllowed) {
+      if (((BackStackRecord)paramArrayList.get(i)).mReorderingAllowed) {
         break label220;
       }
       if (j != i) {
-        executeOpsTogether(paramArrayList1, paramArrayList2, j, i);
+        executeOpsTogether(paramArrayList, paramArrayList1, j, i);
       }
       int k = i + 1;
       j = k;
-      if (((Boolean)paramArrayList2.get(i)).booleanValue()) {
+      if (((Boolean)paramArrayList1.get(i)).booleanValue()) {
         for (;;)
         {
           j = k;
@@ -802,17 +839,17 @@ final class FragmentManagerImpl
             break;
           }
           j = k;
-          if (!((Boolean)paramArrayList2.get(k)).booleanValue()) {
+          if (!((Boolean)paramArrayList1.get(k)).booleanValue()) {
             break;
           }
           j = k;
-          if (((BackStackRecord)paramArrayList1.get(k)).mReorderingAllowed) {
+          if (((BackStackRecord)paramArrayList.get(k)).mReorderingAllowed) {
             break;
           }
           k += 1;
         }
       }
-      executeOpsTogether(paramArrayList1, paramArrayList2, i, j);
+      executeOpsTogether(paramArrayList, paramArrayList1, i, j);
       i = j;
       k = j - 1;
       j = i;
@@ -826,7 +863,7 @@ final class FragmentManagerImpl
       if (j == m) {
         break;
       }
-      executeOpsTogether(paramArrayList1, paramArrayList2, j, m);
+      executeOpsTogether(paramArrayList, paramArrayList1, j, m);
       return;
     }
   }
@@ -886,7 +923,7 @@ final class FragmentManagerImpl
     }
   }
   
-  private static void setHWLayerAnimListenerIfAlpha(View paramView, FragmentManagerImpl.AnimationOrAnimator paramAnimationOrAnimator)
+  private static void setHWLayerAnimListenerIfAlpha(View paramView, AnimationOrAnimator paramAnimationOrAnimator)
   {
     if ((paramView == null) || (paramAnimationOrAnimator == null)) {}
     while (!shouldRunOnHWLayer(paramView, paramAnimationOrAnimator)) {
@@ -894,12 +931,12 @@ final class FragmentManagerImpl
     }
     if (paramAnimationOrAnimator.animator != null)
     {
-      paramAnimationOrAnimator.animator.addListener(new FragmentManagerImpl.AnimatorOnHWLayerIfNeededListener(paramView));
+      paramAnimationOrAnimator.animator.addListener(new AnimatorOnHWLayerIfNeededListener(paramView));
       return;
     }
     Animation.AnimationListener localAnimationListener = getAnimationListener(paramAnimationOrAnimator.animation);
     paramView.setLayerType(2, null);
-    paramAnimationOrAnimator.animation.setAnimationListener(new FragmentManagerImpl.AnimateOnHWLayerIfNeededListener(paramView, localAnimationListener));
+    paramAnimationOrAnimator.animation.setAnimationListener(new AnimateOnHWLayerIfNeededListener(paramView, localAnimationListener));
   }
   
   private static void setRetaining(FragmentManagerNonConfig paramFragmentManagerNonConfig)
@@ -927,7 +964,7 @@ final class FragmentManagerImpl
     }
   }
   
-  static boolean shouldRunOnHWLayer(View paramView, FragmentManagerImpl.AnimationOrAnimator paramAnimationOrAnimator)
+  static boolean shouldRunOnHWLayer(View paramView, AnimationOrAnimator paramAnimationOrAnimator)
   {
     if ((paramView == null) || (paramAnimationOrAnimator == null)) {}
     while ((Build.VERSION.SDK_INT < 19) || (paramView.getLayerType() != 0) || (!ViewCompat.hasOverlappingRendering(paramView)) || (!modifiesAlpha(paramAnimationOrAnimator))) {
@@ -1103,10 +1140,10 @@ final class FragmentManagerImpl
     return new BackStackRecord(this);
   }
   
-  void completeShowHideFragment(Fragment paramFragment)
+  void completeShowHideFragment(final Fragment paramFragment)
   {
     boolean bool;
-    FragmentManagerImpl.AnimationOrAnimator localAnimationOrAnimator;
+    AnimationOrAnimator localAnimationOrAnimator;
     if (paramFragment.mView != null)
     {
       i = paramFragment.getNextTransition();
@@ -1141,10 +1178,20 @@ final class FragmentManagerImpl
       bool = false;
       break;
       label140:
-      ViewGroup localViewGroup = paramFragment.mContainer;
-      View localView = paramFragment.mView;
+      final ViewGroup localViewGroup = paramFragment.mContainer;
+      final View localView = paramFragment.mView;
       localViewGroup.startViewTransition(localView);
-      localAnimationOrAnimator.animator.addListener(new FragmentManagerImpl.4(this, localViewGroup, localView, paramFragment));
+      localAnimationOrAnimator.animator.addListener(new AnimatorListenerAdapter()
+      {
+        public void onAnimationEnd(Animator paramAnonymousAnimator)
+        {
+          localViewGroup.endViewTransition(localView);
+          paramAnonymousAnimator.removeListener(this);
+          if (paramFragment.mView != null) {
+            paramFragment.mView.setVisibility(8);
+          }
+        }
+      });
       continue;
       label183:
       paramFragment.mView.setVisibility(0);
@@ -1828,7 +1875,7 @@ final class FragmentManagerImpl
           i = j;
           while (i < k)
           {
-            paramFileDescriptor = (FragmentManagerImpl.OpGenerator)this.mPendingActions.get(i);
+            paramFileDescriptor = (OpGenerator)this.mPendingActions.get(i);
             paramPrintWriter.print(paramString);
             paramPrintWriter.print("  #");
             paramPrintWriter.print(i);
@@ -1877,7 +1924,7 @@ final class FragmentManagerImpl
     }
   }
   
-  public void enqueueAction(FragmentManagerImpl.OpGenerator paramOpGenerator, boolean paramBoolean)
+  public void enqueueAction(OpGenerator paramOpGenerator, boolean paramBoolean)
   {
     if (!paramBoolean) {
       checkStateLoss();
@@ -1947,7 +1994,7 @@ final class FragmentManagerImpl
     return bool;
   }
   
-  public void execSingleAction(FragmentManagerImpl.OpGenerator paramOpGenerator, boolean paramBoolean)
+  public void execSingleAction(OpGenerator paramOpGenerator, boolean paramBoolean)
   {
     if ((paramBoolean) && ((this.mHost == null) || (this.mDestroyed))) {
       return;
@@ -2096,7 +2143,7 @@ final class FragmentManagerImpl
     return this.mActive.size();
   }
   
-  List getActiveFragments()
+  List<Fragment> getActiveFragments()
   {
     Object localObject;
     if (this.mActive == null)
@@ -2148,7 +2195,7 @@ final class FragmentManagerImpl
     return localFragment;
   }
   
-  public List getFragments()
+  public List<Fragment> getFragments()
   {
     if (this.mAdded.isEmpty()) {
       return Collections.EMPTY_LIST;
@@ -2207,16 +2254,16 @@ final class FragmentManagerImpl
     return (this.mStateSaved) || (this.mStopped);
   }
   
-  FragmentManagerImpl.AnimationOrAnimator loadAnimation(Fragment paramFragment, int paramInt1, boolean paramBoolean, int paramInt2)
+  AnimationOrAnimator loadAnimation(Fragment paramFragment, int paramInt1, boolean paramBoolean, int paramInt2)
   {
     int j = paramFragment.getNextAnim();
     Animation localAnimation = paramFragment.onCreateAnimation(paramInt1, paramBoolean, j);
     if (localAnimation != null) {
-      return new FragmentManagerImpl.AnimationOrAnimator(localAnimation, null);
+      return new AnimationOrAnimator(localAnimation, null);
     }
     paramFragment = paramFragment.onCreateAnimator(paramInt1, paramBoolean, j);
     if (paramFragment != null) {
-      return new FragmentManagerImpl.AnimationOrAnimator(paramFragment, null);
+      return new AnimationOrAnimator(paramFragment, null);
     }
     boolean bool;
     if (j != 0)
@@ -2233,7 +2280,7 @@ final class FragmentManagerImpl
         paramFragment = AnimationUtils.loadAnimation(this.mHost.getContext(), j);
         if (paramFragment != null)
         {
-          paramFragment = new FragmentManagerImpl.AnimationOrAnimator(paramFragment, null);
+          paramFragment = new AnimationOrAnimator(paramFragment, null);
           return paramFragment;
         }
       }
@@ -2249,7 +2296,7 @@ final class FragmentManagerImpl
             if (paramFragment == null) {
               break label199;
             }
-            paramFragment = new FragmentManagerImpl.AnimationOrAnimator(paramFragment, null);
+            paramFragment = new AnimationOrAnimator(paramFragment, null);
             return paramFragment;
           }
           catch (RuntimeException paramFragment)
@@ -2267,7 +2314,7 @@ final class FragmentManagerImpl
         continue;
         paramFragment = AnimationUtils.loadAnimation(this.mHost.getContext(), j);
         if (paramFragment != null) {
-          return new FragmentManagerImpl.AnimationOrAnimator(paramFragment, null);
+          return new AnimationOrAnimator(paramFragment, null);
         }
       }
       label199:
@@ -2386,11 +2433,11 @@ final class FragmentManagerImpl
             localObject = loadAnimation(paramFragment, paramFragment.getNextTransition(), true, paramFragment.getNextTransitionStyle());
             if (localObject != null)
             {
-              setHWLayerAnimListenerIfAlpha(paramFragment.mView, (FragmentManagerImpl.AnimationOrAnimator)localObject);
-              if (((FragmentManagerImpl.AnimationOrAnimator)localObject).animation == null) {
+              setHWLayerAnimListenerIfAlpha(paramFragment.mView, (AnimationOrAnimator)localObject);
+              if (((AnimationOrAnimator)localObject).animation == null) {
                 break label234;
               }
-              paramFragment.mView.startAnimation(((FragmentManagerImpl.AnimationOrAnimator)localObject).animation);
+              paramFragment.mView.startAnimation(((AnimationOrAnimator)localObject).animation);
             }
           }
         }
@@ -2404,8 +2451,8 @@ final class FragmentManagerImpl
         return;
         i = Math.min(j, 0);
         break;
-        ((FragmentManagerImpl.AnimationOrAnimator)localObject).animator.setTarget(paramFragment.mView);
-        ((FragmentManagerImpl.AnimationOrAnimator)localObject).animator.start();
+        ((AnimationOrAnimator)localObject).animator.setTarget(paramFragment.mView);
+        ((AnimationOrAnimator)localObject).animator.start();
       }
     }
   }
@@ -2783,7 +2830,7 @@ final class FragmentManagerImpl
         {
           paramFragment.mPostponedAlpha = 0.0F;
           if (localObject2 != null) {
-            animateRemoveFragment(paramFragment, (FragmentManagerImpl.AnimationOrAnimator)localObject2, paramInt1);
+            animateRemoveFragment(paramFragment, (AnimationOrAnimator)localObject2, paramInt1);
           }
           paramFragment.mContainer.removeView(paramFragment.mView);
           paramFragment.mContainer = null;
@@ -2859,7 +2906,7 @@ final class FragmentManagerImpl
       return null;
     }
     String str1 = paramAttributeSet.getAttributeValue(null, "class");
-    paramString = paramContext.obtainStyledAttributes(paramAttributeSet, FragmentManagerImpl.FragmentTag.Fragment);
+    paramString = paramContext.obtainStyledAttributes(paramAttributeSet, FragmentTag.Fragment);
     if (str1 == null) {
       str1 = paramString.getString(0);
     }
@@ -2980,7 +3027,7 @@ final class FragmentManagerImpl
   
   public void popBackStack()
   {
-    enqueueAction(new FragmentManagerImpl.PopBackStackState(this, null, -1, 0), false);
+    enqueueAction(new PopBackStackState(null, -1, 0), false);
   }
   
   public void popBackStack(int paramInt1, int paramInt2)
@@ -2988,12 +3035,12 @@ final class FragmentManagerImpl
     if (paramInt1 < 0) {
       throw new IllegalArgumentException("Bad id: " + paramInt1);
     }
-    enqueueAction(new FragmentManagerImpl.PopBackStackState(this, null, paramInt1, paramInt2), false);
+    enqueueAction(new PopBackStackState(null, paramInt1, paramInt2), false);
   }
   
   public void popBackStack(String paramString, int paramInt)
   {
-    enqueueAction(new FragmentManagerImpl.PopBackStackState(this, paramString, -1, paramInt), false);
+    enqueueAction(new PopBackStackState(paramString, -1, paramInt), false);
   }
   
   public boolean popBackStackImmediate()
@@ -3018,7 +3065,7 @@ final class FragmentManagerImpl
     return popBackStackImmediate(paramString, -1, paramInt);
   }
   
-  boolean popBackStackState(ArrayList paramArrayList1, ArrayList paramArrayList2, String paramString, int paramInt1, int paramInt2)
+  boolean popBackStackState(ArrayList<BackStackRecord> paramArrayList, ArrayList<Boolean> paramArrayList1, String paramString, int paramInt1, int paramInt2)
   {
     if (this.mBackStack == null) {
       return false;
@@ -3029,8 +3076,8 @@ final class FragmentManagerImpl
       if (paramInt1 < 0) {
         return false;
       }
-      paramArrayList1.add(this.mBackStack.remove(paramInt1));
-      paramArrayList2.add(Boolean.valueOf(true));
+      paramArrayList.add(this.mBackStack.remove(paramInt1));
+      paramArrayList1.add(Boolean.valueOf(true));
     }
     for (;;)
     {
@@ -3091,8 +3138,8 @@ final class FragmentManagerImpl
       paramInt1 = this.mBackStack.size() - 1;
       while (paramInt1 > i)
       {
-        paramArrayList1.add(this.mBackStack.remove(paramInt1));
-        paramArrayList2.add(Boolean.valueOf(true));
+        paramArrayList.add(this.mBackStack.remove(paramInt1));
+        paramArrayList1.add(Boolean.valueOf(true));
         paramInt1 -= 1;
       }
     }
@@ -3668,44 +3715,44 @@ final class FragmentManagerImpl
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 852	android/support/v4/app/FragmentManagerImpl:mBackStackIndices	Ljava/util/ArrayList;
+    //   3: getfield 889	android/support/v4/app/FragmentManagerImpl:mBackStackIndices	Ljava/util/ArrayList;
     //   6: ifnonnull +14 -> 20
     //   9: aload_0
-    //   10: new 118	java/util/ArrayList
+    //   10: new 167	java/util/ArrayList
     //   13: dup
-    //   14: invokespecial 119	java/util/ArrayList:<init>	()V
-    //   17: putfield 852	android/support/v4/app/FragmentManagerImpl:mBackStackIndices	Ljava/util/ArrayList;
+    //   14: invokespecial 168	java/util/ArrayList:<init>	()V
+    //   17: putfield 889	android/support/v4/app/FragmentManagerImpl:mBackStackIndices	Ljava/util/ArrayList;
     //   20: aload_0
-    //   21: getfield 852	android/support/v4/app/FragmentManagerImpl:mBackStackIndices	Ljava/util/ArrayList;
-    //   24: invokevirtual 161	java/util/ArrayList:size	()I
+    //   21: getfield 889	android/support/v4/app/FragmentManagerImpl:mBackStackIndices	Ljava/util/ArrayList;
+    //   24: invokevirtual 208	java/util/ArrayList:size	()I
     //   27: istore 4
     //   29: iload 4
     //   31: istore_3
     //   32: iload_1
     //   33: iload 4
     //   35: if_icmpge +58 -> 93
-    //   38: getstatic 90	android/support/v4/app/FragmentManagerImpl:DEBUG	Z
+    //   38: getstatic 139	android/support/v4/app/FragmentManagerImpl:DEBUG	Z
     //   41: ifeq +39 -> 80
-    //   44: ldc 33
-    //   46: new 310	java/lang/StringBuilder
+    //   44: ldc 72
+    //   46: new 351	java/lang/StringBuilder
     //   49: dup
-    //   50: invokespecial 311	java/lang/StringBuilder:<init>	()V
-    //   53: ldc_w 854
-    //   56: invokevirtual 317	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   50: invokespecial 352	java/lang/StringBuilder:<init>	()V
+    //   53: ldc_w 891
+    //   56: invokevirtual 358	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   59: iload_1
-    //   60: invokevirtual 857	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   63: ldc_w 859
-    //   66: invokevirtual 317	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   60: invokevirtual 894	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   63: ldc_w 896
+    //   66: invokevirtual 358	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   69: aload_2
-    //   70: invokevirtual 811	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   73: invokevirtual 321	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   76: invokestatic 814	android/util/Log:v	(Ljava/lang/String;Ljava/lang/String;)I
+    //   70: invokevirtual 848	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   73: invokevirtual 362	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   76: invokestatic 851	android/util/Log:v	(Ljava/lang/String;Ljava/lang/String;)I
     //   79: pop
     //   80: aload_0
-    //   81: getfield 852	android/support/v4/app/FragmentManagerImpl:mBackStackIndices	Ljava/util/ArrayList;
+    //   81: getfield 889	android/support/v4/app/FragmentManagerImpl:mBackStackIndices	Ljava/util/ArrayList;
     //   84: iload_1
     //   85: aload_2
-    //   86: invokevirtual 872	java/util/ArrayList:set	(ILjava/lang/Object;)Ljava/lang/Object;
+    //   86: invokevirtual 909	java/util/ArrayList:set	(ILjava/lang/Object;)Ljava/lang/Object;
     //   89: pop
     //   90: aload_0
     //   91: monitorexit
@@ -3714,63 +3761,63 @@ final class FragmentManagerImpl
     //   94: iload_1
     //   95: if_icmpge +81 -> 176
     //   98: aload_0
-    //   99: getfield 852	android/support/v4/app/FragmentManagerImpl:mBackStackIndices	Ljava/util/ArrayList;
+    //   99: getfield 889	android/support/v4/app/FragmentManagerImpl:mBackStackIndices	Ljava/util/ArrayList;
     //   102: aconst_null
-    //   103: invokevirtual 340	java/util/ArrayList:add	(Ljava/lang/Object;)Z
+    //   103: invokevirtual 381	java/util/ArrayList:add	(Ljava/lang/Object;)Z
     //   106: pop
     //   107: aload_0
-    //   108: getfield 850	android/support/v4/app/FragmentManagerImpl:mAvailBackStackIndices	Ljava/util/ArrayList;
+    //   108: getfield 887	android/support/v4/app/FragmentManagerImpl:mAvailBackStackIndices	Ljava/util/ArrayList;
     //   111: ifnonnull +14 -> 125
     //   114: aload_0
-    //   115: new 118	java/util/ArrayList
+    //   115: new 167	java/util/ArrayList
     //   118: dup
-    //   119: invokespecial 119	java/util/ArrayList:<init>	()V
-    //   122: putfield 850	android/support/v4/app/FragmentManagerImpl:mAvailBackStackIndices	Ljava/util/ArrayList;
-    //   125: getstatic 90	android/support/v4/app/FragmentManagerImpl:DEBUG	Z
+    //   119: invokespecial 168	java/util/ArrayList:<init>	()V
+    //   122: putfield 887	android/support/v4/app/FragmentManagerImpl:mAvailBackStackIndices	Ljava/util/ArrayList;
+    //   125: getstatic 139	android/support/v4/app/FragmentManagerImpl:DEBUG	Z
     //   128: ifeq +29 -> 157
-    //   131: ldc 33
-    //   133: new 310	java/lang/StringBuilder
+    //   131: ldc 72
+    //   133: new 351	java/lang/StringBuilder
     //   136: dup
-    //   137: invokespecial 311	java/lang/StringBuilder:<init>	()V
-    //   140: ldc_w 1851
-    //   143: invokevirtual 317	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   137: invokespecial 352	java/lang/StringBuilder:<init>	()V
+    //   140: ldc_w 1884
+    //   143: invokevirtual 358	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   146: iload_3
-    //   147: invokevirtual 857	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   150: invokevirtual 321	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   153: invokestatic 814	android/util/Log:v	(Ljava/lang/String;Ljava/lang/String;)I
+    //   147: invokevirtual 894	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   150: invokevirtual 362	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   153: invokestatic 851	android/util/Log:v	(Ljava/lang/String;Ljava/lang/String;)I
     //   156: pop
     //   157: aload_0
-    //   158: getfield 850	android/support/v4/app/FragmentManagerImpl:mAvailBackStackIndices	Ljava/util/ArrayList;
+    //   158: getfield 887	android/support/v4/app/FragmentManagerImpl:mAvailBackStackIndices	Ljava/util/ArrayList;
     //   161: iload_3
-    //   162: invokestatic 1227	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   165: invokevirtual 340	java/util/ArrayList:add	(Ljava/lang/Object;)Z
+    //   162: invokestatic 1262	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   165: invokevirtual 381	java/util/ArrayList:add	(Ljava/lang/Object;)Z
     //   168: pop
     //   169: iload_3
     //   170: iconst_1
     //   171: iadd
     //   172: istore_3
     //   173: goto -80 -> 93
-    //   176: getstatic 90	android/support/v4/app/FragmentManagerImpl:DEBUG	Z
+    //   176: getstatic 139	android/support/v4/app/FragmentManagerImpl:DEBUG	Z
     //   179: ifeq +39 -> 218
-    //   182: ldc 33
-    //   184: new 310	java/lang/StringBuilder
+    //   182: ldc 72
+    //   184: new 351	java/lang/StringBuilder
     //   187: dup
-    //   188: invokespecial 311	java/lang/StringBuilder:<init>	()V
-    //   191: ldc_w 866
-    //   194: invokevirtual 317	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   188: invokespecial 352	java/lang/StringBuilder:<init>	()V
+    //   191: ldc_w 903
+    //   194: invokevirtual 358	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   197: iload_1
-    //   198: invokevirtual 857	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   201: ldc_w 868
-    //   204: invokevirtual 317	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   198: invokevirtual 894	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   201: ldc_w 905
+    //   204: invokevirtual 358	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   207: aload_2
-    //   208: invokevirtual 811	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   211: invokevirtual 321	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   214: invokestatic 814	android/util/Log:v	(Ljava/lang/String;Ljava/lang/String;)I
+    //   208: invokevirtual 848	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   211: invokevirtual 362	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   214: invokestatic 851	android/util/Log:v	(Ljava/lang/String;Ljava/lang/String;)I
     //   217: pop
     //   218: aload_0
-    //   219: getfield 852	android/support/v4/app/FragmentManagerImpl:mBackStackIndices	Ljava/util/ArrayList;
+    //   219: getfield 889	android/support/v4/app/FragmentManagerImpl:mBackStackIndices	Ljava/util/ArrayList;
     //   222: aload_2
-    //   223: invokevirtual 340	java/util/ArrayList:add	(Ljava/lang/Object;)Z
+    //   223: invokevirtual 381	java/util/ArrayList:add	(Ljava/lang/Object;)Z
     //   226: pop
     //   227: goto -137 -> 90
     //   230: astore_2
@@ -3879,6 +3926,279 @@ final class FragmentManagerImpl
         }
       }
       i += 1;
+    }
+  }
+  
+  private static class AnimateOnHWLayerIfNeededListener
+    extends FragmentManagerImpl.AnimationListenerWrapper
+  {
+    View mView;
+    
+    AnimateOnHWLayerIfNeededListener(View paramView, Animation.AnimationListener paramAnimationListener)
+    {
+      super(null);
+      this.mView = paramView;
+    }
+    
+    @CallSuper
+    public void onAnimationEnd(Animation paramAnimation)
+    {
+      if ((ViewCompat.isAttachedToWindow(this.mView)) || (Build.VERSION.SDK_INT >= 24)) {
+        this.mView.post(new Runnable()
+        {
+          public void run()
+          {
+            FragmentManagerImpl.AnimateOnHWLayerIfNeededListener.this.mView.setLayerType(0, null);
+          }
+        });
+      }
+      for (;;)
+      {
+        super.onAnimationEnd(paramAnimation);
+        return;
+        this.mView.setLayerType(0, null);
+      }
+    }
+  }
+  
+  private static class AnimationListenerWrapper
+    implements Animation.AnimationListener
+  {
+    private final Animation.AnimationListener mWrapped;
+    
+    private AnimationListenerWrapper(Animation.AnimationListener paramAnimationListener)
+    {
+      this.mWrapped = paramAnimationListener;
+    }
+    
+    @CallSuper
+    public void onAnimationEnd(Animation paramAnimation)
+    {
+      if (this.mWrapped != null) {
+        this.mWrapped.onAnimationEnd(paramAnimation);
+      }
+    }
+    
+    @CallSuper
+    public void onAnimationRepeat(Animation paramAnimation)
+    {
+      if (this.mWrapped != null) {
+        this.mWrapped.onAnimationRepeat(paramAnimation);
+      }
+    }
+    
+    @CallSuper
+    public void onAnimationStart(Animation paramAnimation)
+    {
+      if (this.mWrapped != null) {
+        this.mWrapped.onAnimationStart(paramAnimation);
+      }
+    }
+  }
+  
+  private static class AnimationOrAnimator
+  {
+    public final Animation animation;
+    public final Animator animator;
+    
+    private AnimationOrAnimator(Animator paramAnimator)
+    {
+      this.animation = null;
+      this.animator = paramAnimator;
+      if (paramAnimator == null) {
+        throw new IllegalStateException("Animator cannot be null");
+      }
+    }
+    
+    private AnimationOrAnimator(Animation paramAnimation)
+    {
+      this.animation = paramAnimation;
+      this.animator = null;
+      if (paramAnimation == null) {
+        throw new IllegalStateException("Animation cannot be null");
+      }
+    }
+  }
+  
+  private static class AnimatorOnHWLayerIfNeededListener
+    extends AnimatorListenerAdapter
+  {
+    View mView;
+    
+    AnimatorOnHWLayerIfNeededListener(View paramView)
+    {
+      this.mView = paramView;
+    }
+    
+    public void onAnimationEnd(Animator paramAnimator)
+    {
+      this.mView.setLayerType(0, null);
+      paramAnimator.removeListener(this);
+    }
+    
+    public void onAnimationStart(Animator paramAnimator)
+    {
+      this.mView.setLayerType(2, null);
+    }
+  }
+  
+  private static class EndViewTransitionAnimator
+    extends AnimationSet
+    implements Runnable
+  {
+    private final View mChild;
+    private boolean mEnded;
+    private final ViewGroup mParent;
+    private boolean mTransitionEnded;
+    
+    EndViewTransitionAnimator(@NonNull Animation paramAnimation, @NonNull ViewGroup paramViewGroup, @NonNull View paramView)
+    {
+      super();
+      this.mParent = paramViewGroup;
+      this.mChild = paramView;
+      addAnimation(paramAnimation);
+    }
+    
+    public boolean getTransformation(long paramLong, Transformation paramTransformation)
+    {
+      if (this.mEnded) {
+        if (this.mTransitionEnded) {}
+      }
+      while (super.getTransformation(paramLong, paramTransformation))
+      {
+        return true;
+        return false;
+      }
+      this.mEnded = true;
+      OneShotPreDrawListener.add(this.mParent, this);
+      return true;
+    }
+    
+    public boolean getTransformation(long paramLong, Transformation paramTransformation, float paramFloat)
+    {
+      if (this.mEnded) {
+        if (this.mTransitionEnded) {}
+      }
+      while (super.getTransformation(paramLong, paramTransformation, paramFloat))
+      {
+        return true;
+        return false;
+      }
+      this.mEnded = true;
+      OneShotPreDrawListener.add(this.mParent, this);
+      return true;
+    }
+    
+    public void run()
+    {
+      this.mParent.endViewTransition(this.mChild);
+      this.mTransitionEnded = true;
+    }
+  }
+  
+  static class FragmentTag
+  {
+    public static final int[] Fragment = { 16842755, 16842960, 16842961 };
+    public static final int Fragment_id = 1;
+    public static final int Fragment_name = 0;
+    public static final int Fragment_tag = 2;
+  }
+  
+  static abstract interface OpGenerator
+  {
+    public abstract boolean generateOps(ArrayList<BackStackRecord> paramArrayList, ArrayList<Boolean> paramArrayList1);
+  }
+  
+  private class PopBackStackState
+    implements FragmentManagerImpl.OpGenerator
+  {
+    final int mFlags;
+    final int mId;
+    final String mName;
+    
+    PopBackStackState(String paramString, int paramInt1, int paramInt2)
+    {
+      this.mName = paramString;
+      this.mId = paramInt1;
+      this.mFlags = paramInt2;
+    }
+    
+    public boolean generateOps(ArrayList<BackStackRecord> paramArrayList, ArrayList<Boolean> paramArrayList1)
+    {
+      if ((FragmentManagerImpl.this.mPrimaryNav != null) && (this.mId < 0) && (this.mName == null))
+      {
+        FragmentManager localFragmentManager = FragmentManagerImpl.this.mPrimaryNav.peekChildFragmentManager();
+        if ((localFragmentManager != null) && (localFragmentManager.popBackStackImmediate())) {
+          return false;
+        }
+      }
+      return FragmentManagerImpl.this.popBackStackState(paramArrayList, paramArrayList1, this.mName, this.mId, this.mFlags);
+    }
+  }
+  
+  static class StartEnterTransitionListener
+    implements Fragment.OnStartEnterTransitionListener
+  {
+    private final boolean mIsBack;
+    private int mNumPostponed;
+    private final BackStackRecord mRecord;
+    
+    StartEnterTransitionListener(BackStackRecord paramBackStackRecord, boolean paramBoolean)
+    {
+      this.mIsBack = paramBoolean;
+      this.mRecord = paramBackStackRecord;
+    }
+    
+    public void cancelTransaction()
+    {
+      this.mRecord.mManager.completeExecute(this.mRecord, this.mIsBack, false, false);
+    }
+    
+    public void completeTransaction()
+    {
+      boolean bool1 = false;
+      if (this.mNumPostponed > 0) {}
+      for (int i = 1;; i = 0)
+      {
+        localFragmentManagerImpl = this.mRecord.mManager;
+        int k = localFragmentManagerImpl.mAdded.size();
+        int j = 0;
+        while (j < k)
+        {
+          localObject = (Fragment)localFragmentManagerImpl.mAdded.get(j);
+          ((Fragment)localObject).setOnStartEnterTransitionListener(null);
+          if ((i != 0) && (((Fragment)localObject).isPostponed())) {
+            ((Fragment)localObject).startPostponedEnterTransition();
+          }
+          j += 1;
+        }
+      }
+      FragmentManagerImpl localFragmentManagerImpl = this.mRecord.mManager;
+      Object localObject = this.mRecord;
+      boolean bool2 = this.mIsBack;
+      if (i == 0) {
+        bool1 = true;
+      }
+      localFragmentManagerImpl.completeExecute((BackStackRecord)localObject, bool2, bool1, true);
+    }
+    
+    public boolean isReady()
+    {
+      return this.mNumPostponed == 0;
+    }
+    
+    public void onStartEnterTransition()
+    {
+      this.mNumPostponed -= 1;
+      if (this.mNumPostponed != 0) {
+        return;
+      }
+      this.mRecord.mManager.scheduleCommit();
+    }
+    
+    public void startListening()
+    {
+      this.mNumPostponed += 1;
     }
   }
 }

@@ -1,6 +1,11 @@
 package com.tencent.turingfd.sdk.base;
 
-public abstract interface bt {}
+import android.content.Context;
+
+public class bt
+{
+  public static Context a;
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.token\classes.jar

@@ -12,6 +12,7 @@ import android.util.Log;
 import android.widget.Toast;
 import com.tencent.halley.downloader.DownloaderFactory;
 import com.tencent.halley.downloader.DownloaderTaskStatus;
+import com.tencent.halley.downloader.b;
 import com.tencent.halley.downloader.c;
 import com.tencent.halley.downloader.exceptions.DownloaderAddTaskException;
 import com.tencent.token.global.RqdApplication;
@@ -25,20 +26,94 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class a
 {
-  c a = new b(this);
+  c a = new c()
+  {
+    public void a(b paramAnonymousb)
+    {
+      Log.i("DownloadService", "onTaskPendingMainloop");
+    }
+    
+    public void b(b paramAnonymousb)
+    {
+      Log.i("DownloadService", "onTaskStartedMainloop");
+    }
+    
+    public void c(b paramAnonymousb)
+    {
+      Log.i("DownloadService", "onTaskDetectedMainloop");
+    }
+    
+    public void d(b paramAnonymousb)
+    {
+      Log.i("DownloadService", "onTaskReceivedMainloop");
+    }
+    
+    public void e(b paramAnonymousb)
+    {
+      Log.i("DownloadService", "onTaskPendingMainloop");
+    }
+    
+    public void f(b paramAnonymousb)
+    {
+      Log.i("DownloadService", "onTaskFailedMainloop");
+    }
+    
+    public void g(b paramAnonymousb)
+    {
+      Log.i("DownloadService", "onTaskCompletedMainloop");
+    }
+    
+    public void h(b paramAnonymousb)
+    {
+      Log.i("DownloadService", "onTaskStartedSubloop");
+    }
+    
+    public void i(b paramAnonymousb)
+    {
+      Log.i("DownloadService", "onTaskDetectedSubloop");
+    }
+    
+    public void j(b paramAnonymousb)
+    {
+      if (paramAnonymousb != null) {
+        a.this.a(paramAnonymousb);
+      }
+    }
+    
+    public void k(b paramAnonymousb)
+    {
+      if (paramAnonymousb != null) {
+        a.this.b(paramAnonymousb);
+      }
+    }
+    
+    public void l(b paramAnonymousb)
+    {
+      if (paramAnonymousb != null) {
+        a.this.b(paramAnonymousb);
+      }
+    }
+    
+    public void m(b paramAnonymousb)
+    {
+      if (paramAnonymousb != null) {
+        a.this.b(paramAnonymousb);
+      }
+    }
+  };
   private com.tencent.halley.downloader.a b = null;
-  private Map c = new ConcurrentHashMap();
-  private Map d = new ConcurrentHashMap();
-  private List e = new ArrayList();
+  private Map<String, a> c = new ConcurrentHashMap();
+  private Map<String, b> d = new ConcurrentHashMap();
+  private List<c> e = new ArrayList();
   
   public static a a()
   {
-    return e.a();
+    return b.a();
   }
   
   private String a(DownloaderTaskStatus paramDownloaderTaskStatus)
   {
-    switch (c.a[paramDownloaderTaskStatus.ordinal()])
+    switch (2.a[paramDownloaderTaskStatus.ordinal()])
     {
     default: 
       return "";
@@ -83,7 +158,7 @@ public class a
     return RqdApplication.l().getFilesDir().getAbsolutePath();
   }
   
-  private String c(com.tencent.halley.downloader.b paramb)
+  private String c(b paramb)
   {
     int i = paramb.m();
     String str = paramb.n();
@@ -96,7 +171,7 @@ public class a
     return (localNetworkInfo != null) && (localNetworkInfo.isConnectedOrConnecting());
   }
   
-  private List d()
+  private List<c> d()
   {
     synchronized (this.e)
     {
@@ -105,25 +180,25 @@ public class a
     }
   }
   
-  private void e(d paramd)
+  private void e(a parama)
   {
-    this.c.remove(paramd.c);
-    paramd = (com.tencent.halley.downloader.b)this.d.remove(paramd.c);
+    this.c.remove(parama.c);
+    parama = (b)this.d.remove(parama.c);
   }
   
-  public d a(String paramString)
+  public a a(String paramString)
   {
     if (paramString == null) {
       return null;
     }
-    return (d)this.c.get(paramString);
+    return (a)this.c.get(paramString);
   }
   
   public void a(Context paramContext)
   {
     try
     {
-      com.tencent.halley.a.a(paramContext, "0M100WJ33N1CQ08O", "1002", TMSDKBaseContext.getGuid(), null, null);
+      com.tencent.halley.a.a(paramContext, "0M100WJ33N1CQ08O", "1001", TMSDKBaseContext.getGuid(), null, null);
       this.b = DownloaderFactory.getDownloader();
       Log.i("DownloadService", "init done.");
       return;
@@ -134,59 +209,59 @@ public class a
     }
   }
   
-  void a(com.tencent.halley.downloader.b paramb)
+  void a(b paramb)
   {
-    d locald = (d)this.c.get(paramb.c());
-    if (locald == null) {}
+    a locala = (a)this.c.get(paramb.c());
+    if (locala == null) {}
     for (;;)
     {
       return;
-      a(paramb, locald);
+      a(paramb, locala);
       Log.i("DownloadService", "progressChangedCallback: [" + c(paramb) + "]");
       paramb = d().iterator();
       while (paramb.hasNext()) {
-        ((f)paramb.next()).a(locald);
+        ((c)paramb.next()).a(locala);
       }
     }
   }
   
-  void a(com.tencent.halley.downloader.b paramb, d paramd)
+  void a(b paramb, a parama)
   {
-    if ((paramb == null) || (paramd == null)) {
+    if ((paramb == null) || (parama == null)) {
       return;
     }
-    paramd.e = paramb.g();
-    paramd.f = paramb.d();
-    paramd.b = paramb.b();
+    parama.e = paramb.g();
+    parama.f = paramb.d();
+    parama.b = paramb.b();
   }
   
-  public void a(f paramf)
+  public void a(c paramc)
   {
     synchronized (this.e)
     {
-      this.e.add(0, paramf);
+      this.e.add(0, paramc);
       return;
     }
   }
   
-  public boolean a(d paramd)
+  public boolean a(a parama)
   {
-    if (a(paramd.c) != null) {
+    if (a(parama.c) != null) {
       return false;
     }
-    return new File(b(), paramd.d).exists();
+    return new File(b(), parama.d).exists();
   }
   
-  void b(com.tencent.halley.downloader.b paramb)
+  void b(b paramb)
   {
-    d locald = (d)this.c.get(paramb.c());
-    if (locald == null) {
+    a locala = (a)this.c.get(paramb.c());
+    if (locala == null) {
       return;
     }
-    a(paramb, locald);
+    a(paramb, locala);
     Log.i("DownloadService", "stateChangedCallback: [" + c(paramb) + "]");
     Object localObject = d();
-    switch (c.a[paramb.d().ordinal()])
+    switch (2.a[paramb.d().ordinal()])
     {
     case 1: 
     case 2: 
@@ -196,45 +271,45 @@ public class a
     case 4: 
       paramb = ((List)localObject).iterator();
       while (paramb.hasNext()) {
-        ((f)paramb.next()).d(locald);
+        ((c)paramb.next()).d(locala);
       }
-      e(locald);
+      e(locala);
       return;
     case 5: 
       localObject = ((List)localObject).iterator();
       while (((Iterator)localObject).hasNext()) {
-        ((f)((Iterator)localObject).next()).c(locald);
+        ((c)((Iterator)localObject).next()).c(locala);
       }
       this.b.a(paramb, true);
-      e(locald);
+      e(locala);
       return;
     case 6: 
       paramb = ((List)localObject).iterator();
       while (paramb.hasNext()) {
-        ((f)paramb.next()).b(locald);
+        ((c)paramb.next()).b(locala);
       }
     }
-    e(locald);
+    e(locala);
   }
   
-  public void b(d paramd)
+  public void b(a parama)
   {
-    paramd = (com.tencent.halley.downloader.b)this.d.get(paramd.c);
-    if (paramd != null) {
-      paramd.k();
+    parama = (b)this.d.get(parama.c);
+    if (parama != null) {
+      parama.k();
     }
   }
   
-  public void b(f paramf)
+  public void b(c paramc)
   {
     synchronized (this.e)
     {
-      this.e.remove(paramf);
+      this.e.remove(paramc);
       return;
     }
   }
   
-  public void c(d paramd)
+  public void c(a parama)
   {
     if (this.b == null) {
       return;
@@ -244,22 +319,22 @@ public class a
       Toast.makeText(RqdApplication.l(), "请开启网络再试", 0).show();
       return;
     }
-    e(paramd);
+    e(parama);
     try
     {
-      com.tencent.halley.downloader.b localb = this.b.a(1, paramd.a, paramd.c, null, null, null, b(), paramd.d, this.a, false, 0L);
+      b localb = this.b.a(1, parama.a, parama.c, null, null, null, b(), parama.d, this.a, false, 0L);
       this.b.a(localb);
-      this.c.put(paramd.c, paramd);
-      this.d.put(paramd.c, localb);
+      this.c.put(parama.c, parama);
+      this.d.put(parama.c, localb);
       return;
     }
-    catch (Exception paramd)
+    catch (Exception parama)
     {
-      paramd.printStackTrace();
+      parama.printStackTrace();
     }
   }
   
-  public void d(d paramd)
+  public void d(a parama)
   {
     if (!c()) {
       Toast.makeText(RqdApplication.l(), "请开启网络再试", 0).show();
@@ -267,17 +342,43 @@ public class a
     do
     {
       return;
-      paramd = (com.tencent.halley.downloader.b)this.d.get(paramd.c);
-    } while (paramd == null);
+      parama = (b)this.d.get(parama.c);
+    } while (parama == null);
     try
     {
-      paramd.l();
+      parama.l();
       return;
     }
-    catch (DownloaderAddTaskException paramd)
+    catch (DownloaderAddTaskException parama)
     {
-      paramd.printStackTrace();
+      parama.printStackTrace();
     }
+  }
+  
+  public static class a
+  {
+    public String a;
+    public String b;
+    public String c;
+    public String d;
+    public int e;
+    public DownloaderTaskStatus f = DownloaderTaskStatus.PENDING;
+  }
+  
+  public static class b
+  {
+    private static a a = new a();
+  }
+  
+  public static abstract interface c
+  {
+    public abstract void a(a.a parama);
+    
+    public abstract void b(a.a parama);
+    
+    public abstract void c(a.a parama);
+    
+    public abstract void d(a.a parama);
   }
 }
 

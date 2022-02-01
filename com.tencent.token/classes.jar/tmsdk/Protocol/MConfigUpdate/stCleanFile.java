@@ -8,8 +8,8 @@ import java.util.ArrayList;
 public final class stCleanFile
   extends JceStruct
 {
-  static ArrayList bI = new ArrayList();
-  public ArrayList vecResp = null;
+  static ArrayList<stCleanResp> bI = new ArrayList();
+  public ArrayList<stCleanResp> vecResp = null;
   
   static
   {

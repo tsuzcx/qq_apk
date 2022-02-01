@@ -1,18 +1,12 @@
 package com.tencent.token.ui;
 
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.token.utils.w;
+import java.util.List;
 
-class f
-  implements View.OnClickListener
+public abstract interface f
 {
-  f(AboutActivity paramAboutActivity) {}
+  public abstract void a();
   
-  public void onClick(View paramView)
-  {
-    w.a(this.a, this.a.getString(2131231300));
-  }
+  public abstract void a(List<String> paramList);
 }
 
 

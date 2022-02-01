@@ -144,7 +144,7 @@ public class BuglyBroadcastRecevier
     paramContext.sendBroadcast(localIntent);
   }
   
-  private static Bundle getBundleFromMap(Map paramMap)
+  private static Bundle getBundleFromMap(Map<String, String> paramMap)
   {
     Bundle localBundle = new Bundle();
     if ((paramMap != null) && (paramMap.size() > 0))
@@ -229,9 +229,9 @@ public class BuglyBroadcastRecevier
     //   6: aload_2
     //   7: ifnull +17 -> 24
     //   10: aload_2
-    //   11: invokevirtual 380	android/content/Intent:getAction	()Ljava/lang/String;
+    //   11: invokevirtual 382	android/content/Intent:getAction	()Ljava/lang/String;
     //   14: ldc 14
-    //   16: invokevirtual 384	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   16: invokevirtual 386	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   19: istore_3
     //   20: iload_3
     //   21: ifne +9 -> 30
@@ -244,7 +244,7 @@ public class BuglyBroadcastRecevier
     //   30: aload_0
     //   31: getfield 102	com/tencent/feedback/eup/BuglyBroadcastRecevier:monierHandler	Lcom/tencent/feedback/eup/ProcessMoniterHandler;
     //   34: ifnonnull +19 -> 53
-    //   37: ldc_w 386
+    //   37: ldc_w 388
     //   40: iconst_0
     //   41: anewarray 117	java/lang/Object
     //   44: invokestatic 169	com/tencent/feedback/common/e:a	(Ljava/lang/String;[Ljava/lang/Object;)Z
@@ -253,25 +253,25 @@ public class BuglyBroadcastRecevier
     //   49: istore_3
     //   50: goto -24 -> 26
     //   53: aload_1
-    //   54: invokevirtual 389	android/content/Context:getPackageName	()Ljava/lang/String;
+    //   54: invokevirtual 391	android/content/Context:getPackageName	()Ljava/lang/String;
     //   57: astore 4
     //   59: aload_1
-    //   60: invokestatic 394	com/tencent/feedback/common/c:a	(Landroid/content/Context;)Lcom/tencent/feedback/common/c;
-    //   63: invokevirtual 397	com/tencent/feedback/common/c:E	()Ljava/lang/String;
+    //   60: invokestatic 396	com/tencent/feedback/common/c:a	(Landroid/content/Context;)Lcom/tencent/feedback/common/c;
+    //   63: invokevirtual 399	com/tencent/feedback/common/c:E	()Ljava/lang/String;
     //   66: astore_1
     //   67: aload_2
     //   68: ldc 38
-    //   70: invokevirtual 400	android/content/Intent:getByteArrayExtra	(Ljava/lang/String;)[B
+    //   70: invokevirtual 402	android/content/Intent:getByteArrayExtra	(Ljava/lang/String;)[B
     //   73: astore 5
     //   75: aload_2
     //   76: ldc 23
-    //   78: invokevirtual 404	android/content/Intent:getBundleExtra	(Ljava/lang/String;)Landroid/os/Bundle;
+    //   78: invokevirtual 406	android/content/Intent:getBundleExtra	(Ljava/lang/String;)Landroid/os/Bundle;
     //   81: astore_2
     //   82: aload 5
     //   84: ifnull +7 -> 91
     //   87: aload_2
     //   88: ifnonnull +54 -> 142
-    //   91: ldc_w 406
+    //   91: ldc_w 408
     //   94: iconst_2
     //   95: anewarray 117	java/lang/Object
     //   98: dup
@@ -280,7 +280,7 @@ public class BuglyBroadcastRecevier
     //   103: dup
     //   104: invokespecial 201	java/lang/StringBuilder:<init>	()V
     //   107: aload 5
-    //   109: invokevirtual 409	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   109: invokevirtual 411	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   112: invokevirtual 153	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   115: aastore
     //   116: dup
@@ -289,10 +289,10 @@ public class BuglyBroadcastRecevier
     //   121: dup
     //   122: invokespecial 201	java/lang/StringBuilder:<init>	()V
     //   125: aload_2
-    //   126: invokevirtual 409	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   126: invokevirtual 411	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   129: invokevirtual 153	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   132: aastore
-    //   133: invokestatic 412	com/tencent/feedback/common/e:c	(Ljava/lang/String;[Ljava/lang/Object;)Z
+    //   133: invokestatic 414	com/tencent/feedback/common/e:c	(Ljava/lang/String;[Ljava/lang/Object;)Z
     //   136: pop
     //   137: iconst_1
     //   138: istore_3
@@ -302,17 +302,17 @@ public class BuglyBroadcastRecevier
     //   146: aload 5
     //   148: iconst_1
     //   149: ldc 8
-    //   151: invokestatic 414	com/tencent/feedback/proguard/a:b	([BILjava/lang/String;)[B
+    //   151: invokestatic 416	com/tencent/feedback/proguard/a:b	([BILjava/lang/String;)[B
     //   154: ldc 179
-    //   156: invokespecial 417	java/lang/String:<init>	([BLjava/lang/String;)V
+    //   156: invokespecial 419	java/lang/String:<init>	([BLjava/lang/String;)V
     //   159: astore 5
     //   161: aload 5
     //   163: aload_2
     //   164: ldc 53
-    //   166: invokevirtual 421	android/os/Bundle:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   169: invokevirtual 384	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   166: invokevirtual 423	android/os/Bundle:getString	(Ljava/lang/String;)Ljava/lang/String;
+    //   169: invokevirtual 386	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   172: ifne +46 -> 218
-    //   175: ldc_w 423
+    //   175: ldc_w 425
     //   178: iconst_2
     //   179: anewarray 117	java/lang/Object
     //   182: dup
@@ -326,11 +326,11 @@ public class BuglyBroadcastRecevier
     //   193: invokespecial 201	java/lang/StringBuilder:<init>	()V
     //   196: aload_2
     //   197: ldc 53
-    //   199: invokevirtual 421	android/os/Bundle:getString	(Ljava/lang/String;)Ljava/lang/String;
+    //   199: invokevirtual 423	android/os/Bundle:getString	(Ljava/lang/String;)Ljava/lang/String;
     //   202: invokevirtual 150	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   205: invokevirtual 153	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   208: aastore
-    //   209: invokestatic 412	com/tencent/feedback/common/e:c	(Ljava/lang/String;[Ljava/lang/Object;)Z
+    //   209: invokestatic 414	com/tencent/feedback/common/e:c	(Ljava/lang/String;[Ljava/lang/Object;)Z
     //   212: pop
     //   213: iconst_1
     //   214: istore_3
@@ -342,7 +342,7 @@ public class BuglyBroadcastRecevier
     //   227: invokevirtual 150	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   230: aload_2
     //   231: ldc 56
-    //   233: invokevirtual 421	android/os/Bundle:getString	(Ljava/lang/String;)Ljava/lang/String;
+    //   233: invokevirtual 423	android/os/Bundle:getString	(Ljava/lang/String;)Ljava/lang/String;
     //   236: invokevirtual 150	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   239: invokevirtual 153	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   242: new 131	java/lang/StringBuilder
@@ -353,9 +353,9 @@ public class BuglyBroadcastRecevier
     //   254: aload_1
     //   255: invokevirtual 150	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   258: invokevirtual 153	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   261: invokevirtual 384	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   261: invokevirtual 386	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   264: ifeq +19 -> 283
-    //   267: ldc_w 425
+    //   267: ldc_w 427
     //   270: iconst_0
     //   271: anewarray 117	java/lang/Object
     //   274: invokestatic 169	com/tencent/feedback/common/e:a	(Ljava/lang/String;[Ljava/lang/Object;)Z
@@ -363,7 +363,7 @@ public class BuglyBroadcastRecevier
     //   278: iconst_1
     //   279: istore_3
     //   280: goto -254 -> 26
-    //   283: ldc_w 427
+    //   283: ldc_w 429
     //   286: iconst_1
     //   287: anewarray 117	java/lang/Object
     //   290: dup
@@ -377,40 +377,40 @@ public class BuglyBroadcastRecevier
     //   303: aload 5
     //   305: aload_2
     //   306: ldc 56
-    //   308: invokevirtual 421	android/os/Bundle:getString	(Ljava/lang/String;)Ljava/lang/String;
+    //   308: invokevirtual 423	android/os/Bundle:getString	(Ljava/lang/String;)Ljava/lang/String;
     //   311: aload_2
     //   312: ldc 68
-    //   314: invokevirtual 421	android/os/Bundle:getString	(Ljava/lang/String;)Ljava/lang/String;
+    //   314: invokevirtual 423	android/os/Bundle:getString	(Ljava/lang/String;)Ljava/lang/String;
     //   317: aload_2
     //   318: ldc 35
-    //   320: invokevirtual 431	android/os/Bundle:getByte	(Ljava/lang/String;)B
+    //   320: invokevirtual 433	android/os/Bundle:getByte	(Ljava/lang/String;)B
     //   323: aload_2
     //   324: ldc 29
-    //   326: invokevirtual 435	android/os/Bundle:getLong	(Ljava/lang/String;)J
+    //   326: invokevirtual 437	android/os/Bundle:getLong	(Ljava/lang/String;)J
     //   329: aload_2
     //   330: ldc 32
-    //   332: invokevirtual 435	android/os/Bundle:getLong	(Ljava/lang/String;)J
+    //   332: invokevirtual 437	android/os/Bundle:getLong	(Ljava/lang/String;)J
     //   335: aload_2
     //   336: ldc 26
-    //   338: invokevirtual 435	android/os/Bundle:getLong	(Ljava/lang/String;)J
+    //   338: invokevirtual 437	android/os/Bundle:getLong	(Ljava/lang/String;)J
     //   341: aload_2
     //   342: ldc 47
-    //   344: invokevirtual 421	android/os/Bundle:getString	(Ljava/lang/String;)Ljava/lang/String;
+    //   344: invokevirtual 423	android/os/Bundle:getString	(Ljava/lang/String;)Ljava/lang/String;
     //   347: aload_2
     //   348: ldc 41
-    //   350: invokevirtual 421	android/os/Bundle:getString	(Ljava/lang/String;)Ljava/lang/String;
+    //   350: invokevirtual 423	android/os/Bundle:getString	(Ljava/lang/String;)Ljava/lang/String;
     //   353: aload_2
     //   354: ldc 44
-    //   356: invokevirtual 421	android/os/Bundle:getString	(Ljava/lang/String;)Ljava/lang/String;
+    //   356: invokevirtual 423	android/os/Bundle:getString	(Ljava/lang/String;)Ljava/lang/String;
     //   359: aload_2
     //   360: ldc 50
-    //   362: invokevirtual 438	android/os/Bundle:getBoolean	(Ljava/lang/String;)Z
+    //   362: invokevirtual 440	android/os/Bundle:getBoolean	(Ljava/lang/String;)Z
     //   365: aload_2
     //   366: ldc 65
-    //   368: invokevirtual 435	android/os/Bundle:getLong	(Ljava/lang/String;)J
+    //   368: invokevirtual 437	android/os/Bundle:getLong	(Ljava/lang/String;)J
     //   371: aload_2
-    //   372: invokeinterface 444 18 0
-    //   377: ldc_w 446
+    //   372: invokeinterface 446 18 0
+    //   377: ldc_w 448
     //   380: iconst_1
     //   381: anewarray 117	java/lang/Object
     //   384: dup
@@ -424,7 +424,7 @@ public class BuglyBroadcastRecevier
     //   395: goto -369 -> 26
     //   398: astore_1
     //   399: aload_1
-    //   400: invokevirtual 449	java/io/UnsupportedEncodingException:printStackTrace	()V
+    //   400: invokevirtual 451	java/io/UnsupportedEncodingException:printStackTrace	()V
     //   403: goto -10 -> 393
     //   406: astore_1
     //   407: aload_0

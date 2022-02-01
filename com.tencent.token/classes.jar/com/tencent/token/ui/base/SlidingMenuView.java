@@ -11,7 +11,7 @@ import android.view.ViewConfiguration;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.Scroller;
-import com.tencent.token.global.h;
+import com.tencent.token.global.g;
 import com.tmsdk.TMSDKContext;
 
 public class SlidingMenuView
@@ -29,7 +29,7 @@ public class SlidingMenuView
   private float j;
   private boolean k;
   private int l;
-  private ct m;
+  private a m;
   
   public SlidingMenuView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -40,7 +40,13 @@ public class SlidingMenuView
   {
     super(paramContext, paramAttributeSet, paramInt);
     d();
-    postDelayed(new cs(this), 1L);
+    postDelayed(new Runnable()
+    {
+      public void run()
+      {
+        SlidingMenuView.this.scrollTo(SlidingMenuView.this.findViewById(2131558951).getWidth(), 0);
+      }
+    }, 1L);
   }
   
   private void d()
@@ -95,8 +101,8 @@ public class SlidingMenuView
   
   public void a(int paramInt1, int paramInt2)
   {
-    findViewById(2131558950).measure(paramInt1 - getScreenWidth() / 6, paramInt2);
-    findViewById(2131558952).measure(paramInt1, paramInt2);
+    findViewById(2131558951).measure(paramInt1 - getScreenWidth() / 6, paramInt2);
+    findViewById(2131558953).measure(paramInt1, paramInt2);
   }
   
   public void a(int paramInt, boolean paramBoolean)
@@ -254,7 +260,7 @@ public class SlidingMenuView
   
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
-    h.a("onInterceptTouchEvent");
+    g.a("onInterceptTouchEvent");
     int n = paramMotionEvent.getAction();
     if ((n == 2) && (this.a != 0)) {}
     for (;;)
@@ -299,7 +305,7 @@ public class SlidingMenuView
           n = 0;
           break label135;
         }
-        h.a("mLastMotionX" + this.i);
+        g.a("mLastMotionX" + this.i);
         this.i = f1;
         this.j = f2;
         this.k = true;
@@ -435,9 +441,14 @@ public class SlidingMenuView
     invalidate();
   }
   
-  public void setStateChangeListener(ct paramct)
+  public void setStateChangeListener(a parama)
   {
-    this.m = paramct;
+    this.m = parama;
+  }
+  
+  public static abstract interface a
+  {
+    public abstract void a(boolean paramBoolean);
   }
 }
 

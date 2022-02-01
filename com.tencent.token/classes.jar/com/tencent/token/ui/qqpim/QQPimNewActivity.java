@@ -2,10 +2,12 @@ package com.tencent.token.ui.qqpim;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.Environment;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.FrameLayout;
@@ -14,10 +16,12 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
-import com.tencent.token.dz;
+import com.tencent.token.cw;
+import com.tencent.token.cx;
 import com.tencent.token.global.RqdApplication;
 import com.tencent.token.ui.BaseActivity;
-import com.tencent.token.utils.x;
+import com.tencent.token.upload.i;
+import com.tencent.token.utils.m;
 import com.tmsdk.TMSDKContext;
 import java.io.File;
 
@@ -36,8 +40,42 @@ public class QQPimNewActivity
   private ImageView ivQqpimContact;
   private ImageView ivQqpimFile;
   private float lastProgress = 0.0F;
-  private BroadcastReceiver mNetworkMsgReceiver = new n(this);
-  private QQPimNewActivity.InstallBroadcastReceiver mReceiver;
+  private BroadcastReceiver mNetworkMsgReceiver = new BroadcastReceiver()
+  {
+    public void onReceive(Context paramAnonymousContext, Intent paramAnonymousIntent)
+    {
+      paramAnonymousContext = paramAnonymousIntent.getAction();
+      if (paramAnonymousContext != null)
+      {
+        if (!paramAnonymousContext.equals("android.net.conn.CONNECTIVITY_CHANGE")) {
+          break label128;
+        }
+        paramAnonymousContext = i.o(QQPimNewActivity.this);
+        if ((!i.a()) || (!"WIFI".equals(paramAnonymousContext))) {
+          break label68;
+        }
+        if (!QQPimNewActivity.this.isWifiFirstRun) {
+          QQPimNewActivity.this.downloadApk();
+        }
+      }
+      label68:
+      while (!paramAnonymousContext.equals("noConnectivity"))
+      {
+        QQPimNewActivity.access$102(QQPimNewActivity.this, false);
+        do
+        {
+          return;
+        } while (!cx.f().g());
+        cx.f().c();
+        QQPimNewActivity.this.tvQqpimDownload.setVisibility(0);
+        QQPimNewActivity.this.qqpimFlProgressNew.setVisibility(4);
+        QQPimNewActivity.this.tvQqpimDownload.setText(QQPimNewActivity.this.getResources().getText(2131231311));
+        return;
+      }
+      label128:
+    }
+  };
+  private InstallBroadcastReceiver mReceiver;
   private boolean needReportInstall = false;
   private ImageView qqpimBackNew;
   private FrameLayout qqpimFlProgressNew;
@@ -47,42 +85,118 @@ public class QQPimNewActivity
   
   private void downloadApk()
   {
-    this.isApkDownload = dz.f().d();
+    this.isApkDownload = cx.f().d();
     if (this.isApkDownload) {
       return;
     }
-    dz.f().b(new o(this));
+    cx.f().b(new cw()
+    {
+      public void a()
+      {
+        QQPimNewActivity.access$502(QQPimNewActivity.this, true);
+        QQPimNewActivity.this.runOnUiThread(new Runnable()
+        {
+          public void run()
+          {
+            QQPimNewActivity.this.tvQqpimDownload.setText(QQPimNewActivity.this.getResources().getText(2131231303));
+            Toast.makeText(QQPimNewActivity.this, QQPimNewActivity.this.getResources().getText(2131231307), 0).show();
+            a.a(QQPimNewActivity.this, QQPimNewActivity.this.filePath);
+            QQPimNewActivity.access$702(QQPimNewActivity.this, true);
+            QQPimNewActivity.this.tvQqpimDownload.setVisibility(0);
+            QQPimNewActivity.this.qqpimFlProgressNew.setVisibility(4);
+          }
+        });
+        QQPimNewActivity.access$802(QQPimNewActivity.this, 0.0F);
+        TMSDKContext.saveActionData(170023);
+        Log.i("QQPimNewActivity", "onFinished: ");
+      }
+      
+      public void a(final float paramAnonymousFloat)
+      {
+        Log.i("QQPimNewActivity", "onProgress: " + paramAnonymousFloat);
+        if ((paramAnonymousFloat > 0.01D) && (paramAnonymousFloat <= 1.0F) && (paramAnonymousFloat > QQPimNewActivity.this.lastProgress))
+        {
+          QQPimNewActivity.this.runOnUiThread(new Runnable()
+          {
+            public void run()
+            {
+              QQPimNewActivity.this.tvQqpimDownload.setVisibility(4);
+              QQPimNewActivity.this.qqpimFlProgressNew.setVisibility(0);
+              QQPimNewActivity.this.qqpimTvProgressChangeNew.setTextWhiteLength(paramAnonymousFloat);
+              QQPimNewActivity.this.qqpimPbDownloadProgressNew.setProgress((int)(paramAnonymousFloat * 100.0F));
+              QQPimNewActivity.this.qqpimTvProgressChangeNew.setText("下载中..." + (int)(paramAnonymousFloat * 100.0F) + "%");
+            }
+          });
+          QQPimNewActivity.access$802(QQPimNewActivity.this, paramAnonymousFloat);
+        }
+      }
+      
+      public void b()
+      {
+        Log.i("QQPimNewActivity", "onPause: ");
+        QQPimNewActivity.this.runOnUiThread(new Runnable()
+        {
+          public void run()
+          {
+            QQPimNewActivity.this.tvQqpimDownload.setVisibility(0);
+            QQPimNewActivity.this.qqpimFlProgressNew.setVisibility(4);
+            QQPimNewActivity.this.tvQqpimDownload.setText(QQPimNewActivity.this.getResources().getText(2131231306));
+          }
+        });
+      }
+      
+      public void c()
+      {
+        QQPimNewActivity.this.runOnUiThread(new Runnable()
+        {
+          public void run()
+          {
+            QQPimNewActivity.this.tvQqpimDownload.setVisibility(0);
+            QQPimNewActivity.this.qqpimFlProgressNew.setVisibility(4);
+            QQPimNewActivity.this.tvQqpimDownload.setText(QQPimNewActivity.this.getResources().getText(2131231311));
+          }
+        });
+        Log.i("QQPimNewActivity", "onCancel: ");
+        QQPimNewActivity.access$802(QQPimNewActivity.this, 0.0F);
+      }
+    });
     if (Environment.getExternalStorageDirectory().getFreeSpace() < 20971520L)
     {
       Toast.makeText(this, getResources().getText(2131230901), 0).show();
       return;
     }
     this.tvQqpimDownload.setText(getResources().getText(2131231312));
-    dz.f().a();
+    cx.f().a();
   }
   
   private void initStatus()
   {
-    this.isApkDownload = dz.f().d();
+    this.isApkDownload = cx.f().d();
     this.isInstall = a.b(this, "com.tencent.qqpim");
-    this.filePath = dz.f().e();
+    this.filePath = cx.f().e();
   }
   
   private void initView()
   {
-    this.qqpimBackNew = ((ImageView)findViewById(2131558706));
-    this.tvQqpimDownload = ((TextView)findViewById(2131558711));
-    this.qqpimFlProgressNew = ((FrameLayout)findViewById(2131558712));
-    this.qqpimPbDownloadProgressNew = ((ProgressBar)findViewById(2131558713));
-    this.qqpimTvProgressChangeNew = ((ProgressTextView)findViewById(2131558714));
-    this.LlQqpimDesc = ((LinearLayout)findViewById(2131558707));
-    this.ivQqpimFile = ((ImageView)findViewById(2131558708));
-    this.ivQqpimContact = ((ImageView)findViewById(2131558709));
-    this.ivQqpimCoinCenter = ((ImageView)findViewById(2131558710));
+    this.qqpimBackNew = ((ImageView)findViewById(2131558707));
+    this.tvQqpimDownload = ((TextView)findViewById(2131558712));
+    this.qqpimFlProgressNew = ((FrameLayout)findViewById(2131558713));
+    this.qqpimPbDownloadProgressNew = ((ProgressBar)findViewById(2131558714));
+    this.qqpimTvProgressChangeNew = ((ProgressTextView)findViewById(2131558715));
+    this.LlQqpimDesc = ((LinearLayout)findViewById(2131558708));
+    this.ivQqpimFile = ((ImageView)findViewById(2131558709));
+    this.ivQqpimContact = ((ImageView)findViewById(2131558710));
+    this.ivQqpimCoinCenter = ((ImageView)findViewById(2131558711));
     this.qqpimTvProgressChangeNew.setColorId(2131493002);
     this.tvQqpimDownload.setOnClickListener(this);
     this.qqpimFlProgressNew.setOnClickListener(this);
-    this.qqpimBackNew.setOnClickListener(new l(this));
+    this.qqpimBackNew.setOnClickListener(new View.OnClickListener()
+    {
+      public void onClick(View paramAnonymousView)
+      {
+        QQPimNewActivity.this.finish();
+      }
+    });
   }
   
   private void registReceiver()
@@ -96,7 +210,7 @@ public class QQPimNewActivity
   
   private void registerInstallReceiver()
   {
-    this.mReceiver = new QQPimNewActivity.InstallBroadcastReceiver(this);
+    this.mReceiver = new InstallBroadcastReceiver();
     IntentFilter localIntentFilter = new IntentFilter();
     localIntentFilter.addAction("android.intent.action.PACKAGE_ADDED");
     localIntentFilter.addAction("android.intent.action.PACKAGE_REPLACED");
@@ -115,7 +229,13 @@ public class QQPimNewActivity
   
   private void show4GNotifyShow()
   {
-    new QQPim4GNotifyDialog(this, 2131362182, new m(this)).show();
+    new QQPim4GNotifyDialog(this, 2131362182, new QQPim4GNotifyDialog.a()
+    {
+      public void a()
+      {
+        QQPimNewActivity.this.startDownload();
+      }
+    }).show();
   }
   
   private void startDownload()
@@ -157,7 +277,7 @@ public class QQPimNewActivity
   public void onClick(View paramView)
   {
     int i = paramView.getId();
-    if ((i == 2131558711) || (i == 2131558712))
+    if ((i == 2131558712) || (i == 2131558713))
     {
       if (this.isInstall) {
         a.c(this, "com.tencent.qqpim");
@@ -172,14 +292,14 @@ public class QQPimNewActivity
       return;
     }
     TMSDKContext.saveActionData(170022);
-    if (com.tencent.token.upload.o.a())
+    if (i.a())
     {
-      if (dz.f().g())
+      if (cx.f().g())
       {
-        dz.f().c();
+        cx.f().c();
         return;
       }
-      if ("4G".equals(com.tencent.token.upload.o.o(this)))
+      if ("4G".equals(i.o(this)))
       {
         show4GNotifyShow();
         return;
@@ -195,7 +315,7 @@ public class QQPimNewActivity
     super.onCreate(paramBundle);
     setContentView(2130968619);
     TMSDKContext.saveActionData(170021);
-    x.a(this, this.mTitleBar, 2131492933);
+    m.a(this, this.mTitleBar, 2131492933);
     initView();
     registReceiver();
     registerInstallReceiver();
@@ -213,6 +333,21 @@ public class QQPimNewActivity
     super.onResume();
     initStatus();
     updateBtnState();
+  }
+  
+  public class InstallBroadcastReceiver
+    extends BroadcastReceiver
+  {
+    public InstallBroadcastReceiver() {}
+    
+    public void onReceive(Context paramContext, Intent paramIntent)
+    {
+      if ((paramIntent.getAction() != null) && (paramIntent.getAction().equals("android.intent.action.PACKAGE_ADDED")) && (QQPimNewActivity.this.needReportInstall))
+      {
+        TMSDKContext.saveActionData(170024);
+        QQPimNewActivity.access$502(QQPimNewActivity.this, false);
+      }
+    }
   }
 }
 

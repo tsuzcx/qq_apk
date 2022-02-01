@@ -12,7 +12,7 @@ public final class WindowCompat
   public static final int FEATURE_ACTION_MODE_OVERLAY = 10;
   
   @NonNull
-  public static View requireViewById(@NonNull Window paramWindow, @IdRes int paramInt)
+  public static <T extends View> T requireViewById(@NonNull Window paramWindow, @IdRes int paramInt)
   {
     paramWindow = paramWindow.findViewById(paramInt);
     if (paramWindow == null) {

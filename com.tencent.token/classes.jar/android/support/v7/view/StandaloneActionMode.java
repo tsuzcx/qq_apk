@@ -21,7 +21,7 @@ public class StandaloneActionMode
   private ActionMode.Callback mCallback;
   private Context mContext;
   private ActionBarContextView mContextView;
-  private WeakReference mCustomView;
+  private WeakReference<View> mCustomView;
   private boolean mFinished;
   private boolean mFocusable;
   private MenuBuilder mMenu;

@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.AnimationUtils;
+import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
@@ -30,9 +31,21 @@ public class ListFragment
   ListView mList;
   View mListContainer;
   boolean mListShown;
-  private final AdapterView.OnItemClickListener mOnClickListener = new ListFragment.2(this);
+  private final AdapterView.OnItemClickListener mOnClickListener = new AdapterView.OnItemClickListener()
+  {
+    public void onItemClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
+    {
+      ListFragment.this.onListItemClick((ListView)paramAnonymousAdapterView, paramAnonymousView, paramAnonymousInt, paramAnonymousLong);
+    }
+  };
   View mProgressContainer;
-  private final Runnable mRequestFocus = new ListFragment.1(this);
+  private final Runnable mRequestFocus = new Runnable()
+  {
+    public void run()
+    {
+      ListFragment.this.mList.focusableViewAvailable(ListFragment.this.mList);
+    }
+  };
   TextView mStandardEmptyView;
   
   private void ensureList()

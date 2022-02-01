@@ -2,14 +2,17 @@ package com.tencent.token.ui.base;
 
 import android.app.Activity;
 import android.app.Dialog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 import android.os.Bundle;
+import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.token.cw;
-import com.tencent.token.global.h;
+import com.tencent.token.ca;
+import com.tencent.token.global.g;
 
 public class ProDialogWithShutDown
   extends Dialog
@@ -30,9 +33,9 @@ public class ProDialogWithShutDown
   
   private void a()
   {
-    h.c("dismiss and cancel request");
+    g.c("dismiss and cancel request");
     if (this.a != null) {
-      cw.a().a(this.a.getClass().getName());
+      ca.a().a(this.a.getClass().getName());
     }
   }
   
@@ -48,15 +51,30 @@ public class ProDialogWithShutDown
     getWindow().setBackgroundDrawableResource(2130837730);
     if (this.e)
     {
-      paramBundle = (TextView)findViewById(2131559125);
+      paramBundle = (TextView)findViewById(2131559126);
       if ((this.d != null) && (this.d.length() > 0)) {
         paramBundle.setText(this.d);
       }
     }
-    ((ImageView)findViewById(2131559124)).startAnimation(AnimationUtils.loadAnimation(this.a, 2131034130));
-    this.b = ((ImageView)findViewById(2131559127));
-    this.b.setOnClickListener(new cb(this));
-    setOnDismissListener(new cc(this));
+    ((ImageView)findViewById(2131559125)).startAnimation(AnimationUtils.loadAnimation(this.a, 2131034130));
+    this.b = ((ImageView)findViewById(2131559128));
+    this.b.setOnClickListener(new View.OnClickListener()
+    {
+      public void onClick(View paramAnonymousView)
+      {
+        ProDialogWithShutDown.this.dismiss();
+      }
+    });
+    setOnDismissListener(new DialogInterface.OnDismissListener()
+    {
+      public void onDismiss(DialogInterface paramAnonymousDialogInterface)
+      {
+        ProDialogWithShutDown.a(ProDialogWithShutDown.this);
+        if (ProDialogWithShutDown.b(ProDialogWithShutDown.this) != null) {
+          ProDialogWithShutDown.b(ProDialogWithShutDown.this).onClick(ProDialogWithShutDown.c(ProDialogWithShutDown.this));
+        }
+      }
+    });
   }
 }
 

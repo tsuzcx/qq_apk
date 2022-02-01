@@ -2,23 +2,23 @@ package com.tencent.token.core.protocolcenter.protocol;
 
 import android.os.Handler;
 import android.os.Message;
-import com.tencent.token.core.protocolcenter.e;
-import com.tencent.token.cv;
-import com.tencent.token.ev;
+import com.tencent.token.bz;
+import com.tencent.token.core.protocolcenter.d;
+import com.tencent.token.dn;
 import com.tencent.token.global.c;
-import com.tencent.token.global.f;
+import com.tencent.token.global.e;
 import java.util.HashMap;
 import org.json.JSONObject;
 
 public class ProtoGetOperateMsg
-  extends e
+  extends d
 {
   private long d;
   private String e;
   
   protected String a()
   {
-    String str = cv.a().b();
+    String str = bz.a().b();
     if (str == null)
     {
       this.a.b(104);
@@ -28,9 +28,9 @@ public class ProtoGetOperateMsg
     return c.e() + "/cn/mbtoken3/mbtoken3_get_ads_info" + str;
   }
   
-  protected void a(ev paramev)
+  protected void a(dn paramdn)
   {
-    this.d = ((Long)paramev.c.get("param.uinhash")).longValue();
+    this.d = ((Long)paramdn.c.get("param.uinhash")).longValue();
   }
   
   protected void a(JSONObject paramJSONObject)

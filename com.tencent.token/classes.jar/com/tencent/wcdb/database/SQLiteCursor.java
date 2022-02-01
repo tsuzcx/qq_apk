@@ -1,8 +1,10 @@
 package com.tencent.wcdb.database;
 
 import com.tencent.wcdb.AbstractWindowedCursor;
+import com.tencent.wcdb.Cursor;
 import com.tencent.wcdb.CursorWindow;
 import com.tencent.wcdb.DatabaseUtils;
+import com.tencent.wcdb.support.CancellationSignal;
 import com.tencent.wcdb.support.Log;
 import java.util.HashMap;
 import java.util.Map;
@@ -10,10 +12,21 @@ import java.util.Map;
 public class SQLiteCursor
   extends AbstractWindowedCursor
 {
-  public static final SQLiteDatabase.CursorFactory FACTORY = new SQLiteCursor.1();
+  public static final SQLiteDatabase.CursorFactory FACTORY = new SQLiteDatabase.CursorFactory()
+  {
+    public Cursor newCursor(SQLiteDatabase paramAnonymousSQLiteDatabase, SQLiteCursorDriver paramAnonymousSQLiteCursorDriver, String paramAnonymousString, SQLiteProgram paramAnonymousSQLiteProgram)
+    {
+      return new SQLiteCursor(paramAnonymousSQLiteCursorDriver, paramAnonymousString, (SQLiteQuery)paramAnonymousSQLiteProgram);
+    }
+    
+    public SQLiteProgram newQuery(SQLiteDatabase paramAnonymousSQLiteDatabase, String paramAnonymousString, Object[] paramAnonymousArrayOfObject, CancellationSignal paramAnonymousCancellationSignal)
+    {
+      return new SQLiteQuery(paramAnonymousSQLiteDatabase, paramAnonymousString, paramAnonymousArrayOfObject, paramAnonymousCancellationSignal);
+    }
+  };
   static final int NO_COUNT = -1;
   static final String TAG = "WCDB.SQLiteCursor";
-  private Map mColumnNameMap;
+  private Map<String, Integer> mColumnNameMap;
   private final String[] mColumns;
   private int mCount = -1;
   private int mCursorWindowCapacity;

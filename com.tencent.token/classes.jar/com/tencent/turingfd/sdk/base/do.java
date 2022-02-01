@@ -1,73 +1,73 @@
 package com.tencent.turingfd.sdk.base;
 
 public final class do
-  extends float
+  extends break
 {
-  public int A = 0;
-  public String B = "";
-  public String C = "";
-  public String D = "";
+  public String A = "";
+  public int B = 0;
+  public int C = 0;
+  public long D = 0L;
   public int F = 0;
-  public int G = 0;
-  public long H = 0L;
-  public int I = 0;
-  public String J = "";
-  public int v = 2;
+  public String G = "";
+  public int s = 2;
+  public int t = 0;
+  public String u = "";
+  public String v = "";
   
-  public float a()
+  public break a()
   {
     return new do();
   }
   
-  public void a(dp paramdp)
+  public void a(cy paramcy)
   {
-    this.v = paramdp.a(this.v, 0, true);
-    this.A = paramdp.a(this.A, 1, true);
-    this.B = paramdp.a(2, false);
-    this.C = paramdp.a(3, false);
-    this.D = paramdp.a(4, false);
-    this.F = paramdp.a(this.F, 5, false);
-    this.G = paramdp.a(this.G, 6, false);
-    this.H = paramdp.a(this.H, 7, false);
-    this.I = paramdp.a(this.I, 8, false);
-    this.J = paramdp.a(9, false);
+    this.s = paramcy.a(this.s, 0, true);
+    this.t = paramcy.a(this.t, 1, true);
+    this.u = paramcy.a(2, false);
+    this.v = paramcy.a(3, false);
+    this.A = paramcy.a(4, false);
+    this.B = paramcy.a(this.B, 5, false);
+    this.C = paramcy.a(this.C, 6, false);
+    this.D = paramcy.a(this.D, 7, false);
+    this.F = paramcy.a(this.F, 8, false);
+    this.G = paramcy.a(9, false);
   }
   
-  public void a(dv paramdv)
+  public void a(db paramdb)
   {
-    paramdv.a(this.v, 0);
-    paramdv.a(this.A, 1);
-    String str = this.B;
+    paramdb.a(this.s, 0);
+    paramdb.a(this.t, 1);
+    String str = this.u;
     if (str != null) {
-      paramdv.a(str, 2);
+      paramdb.a(str, 2);
     }
-    str = this.C;
+    str = this.v;
     if (str != null) {
-      paramdv.a(str, 3);
+      paramdb.a(str, 3);
     }
-    str = this.D;
+    str = this.A;
     if (str != null) {
-      paramdv.a(str, 4);
+      paramdb.a(str, 4);
     }
-    int i = this.F;
+    int i = this.B;
     if (i != 0) {
-      paramdv.a(i, 5);
+      paramdb.a(i, 5);
     }
-    i = this.G;
+    i = this.C;
     if (i != 0) {
-      paramdv.a(i, 6);
+      paramdb.a(i, 6);
     }
-    long l = this.H;
+    long l = this.D;
     if (l != 0L) {
-      paramdv.a(l, 7);
+      paramdb.a(l, 7);
     }
-    i = this.I;
+    i = this.F;
     if (i != 0) {
-      paramdv.a(i, 8);
+      paramdb.a(i, 8);
     }
-    str = this.J;
+    str = this.G;
     if (str != null) {
-      paramdv.a(str, 9);
+      paramdb.a(str, 9);
     }
   }
 }

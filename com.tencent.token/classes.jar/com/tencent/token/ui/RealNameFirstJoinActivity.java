@@ -3,6 +3,8 @@ package com.tencent.token.ui;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -16,18 +18,31 @@ public class RealNameFirstJoinActivity
   private void initView()
   {
     setContentView(2130968663);
-    Button localButton = (Button)findViewById(2131558920);
-    TextView localTextView1 = (TextView)findViewById(2131558918);
+    Button localButton = (Button)findViewById(2131558921);
+    TextView localTextView1 = (TextView)findViewById(2131558919);
     if (this.mResult != null) {
       localTextView1.setText(String.valueOf(this.mResult.reg_rank));
     }
     for (;;)
     {
-      localButton.setOnClickListener(new vf(this));
-      ((ImageView)findViewById(2131558922)).setOnClickListener(new vg(this));
+      localButton.setOnClickListener(new View.OnClickListener()
+      {
+        public void onClick(View paramAnonymousView)
+        {
+          RealNameFirstJoinActivity.this.setResult(1);
+          RealNameFirstJoinActivity.this.finish();
+        }
+      });
+      ((ImageView)findViewById(2131558923)).setOnClickListener(new View.OnClickListener()
+      {
+        public void onClick(View paramAnonymousView)
+        {
+          RealNameFirstJoinActivity.this.finish();
+        }
+      });
       return;
-      TextView localTextView2 = (TextView)findViewById(2131558917);
-      TextView localTextView3 = (TextView)findViewById(2131558919);
+      TextView localTextView2 = (TextView)findViewById(2131558918);
+      TextView localTextView3 = (TextView)findViewById(2131558920);
       localTextView2.setText(2131230784);
       localTextView3.setVisibility(8);
       localTextView1.setVisibility(8);

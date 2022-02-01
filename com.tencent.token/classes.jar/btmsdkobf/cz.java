@@ -7,6 +7,9 @@ import android.net.NetworkInfo;
 import android.net.NetworkInfo.State;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import java.util.Iterator;
 import java.util.LinkedList;
 
 public class cz
@@ -19,10 +22,21 @@ public class cz
   private NetworkInfo.State kb = NetworkInfo.State.UNKNOWN;
   private String kc = null;
   private String kd = null;
-  private LinkedList ke = new LinkedList();
-  private LinkedList kf = new LinkedList();
+  private LinkedList<a> ke = new LinkedList();
+  private LinkedList<b> kf = new LinkedList();
   private Object kh = new Object();
-  private Handler mHandler = new gn(this, cx.getLooper());
+  private Handler mHandler = new Handler(cx.getLooper())
+  {
+    public void handleMessage(Message paramAnonymousMessage)
+    {
+      switch (paramAnonymousMessage.what)
+      {
+      default: 
+        return;
+      }
+      cz.a(cz.this);
+    }
+  };
   
   private void a(Intent paramIntent)
   {
@@ -83,12 +97,64 @@ public class cz
   
   private void bT()
   {
-    ee.cT().addUrgentTask(new gp(this), "network_disconnected");
+    ee.cT().addUrgentTask(new Runnable()
+    {
+      public void run()
+      {
+        eh.e("SharkNetworkReceiver", "[conn_monitor]handleChange2DisConnected(), 有网络 -> 无网络");
+        synchronized (cz.c(cz.this))
+        {
+          Object localObject2 = (LinkedList)cz.c(cz.this).clone();
+          ??? = ((LinkedList)localObject2).iterator();
+          while (((Iterator)???).hasNext())
+          {
+            localObject2 = (cz.a)((Iterator)???).next();
+            if (localObject2 != null) {
+              ((cz.a)localObject2).onDisconnected();
+            }
+          }
+        }
+      }
+    }, "network_disconnected");
   }
   
   private void bU()
   {
-    ee.cT().addUrgentTask(new gq(this), "network_connected");
+    ee.cT().addUrgentTask(new Runnable()
+    {
+      public void run()
+      {
+        eh.e("SharkNetworkReceiver", "[conn_monitor]handleChange2Connected(), 无网络 -> 有网络");
+        ??? = cg.bb();
+        Object localObject2 = new StringBuilder().append("[conn_monitor][ip_list]handleChange2Connected(), notify hiplist first: ");
+        boolean bool;
+        if (??? != null) {
+          bool = true;
+        }
+        for (;;)
+        {
+          eh.e("SharkNetworkReceiver", bool);
+          if (??? != null) {
+            ((cg)???).bc();
+          }
+          synchronized (cz.c(cz.this))
+          {
+            localObject2 = (LinkedList)cz.c(cz.this).clone();
+            ??? = ((LinkedList)localObject2).iterator();
+            while (((Iterator)???).hasNext())
+            {
+              localObject2 = (cz.a)((Iterator)???).next();
+              if (localObject2 != null)
+              {
+                ((cz.a)localObject2).onConnected();
+                continue;
+                bool = false;
+              }
+            }
+          }
+        }
+      }
+    }, "network_connected");
   }
   
   private void bV()
@@ -109,7 +175,25 @@ public class cz
   
   private void bc()
   {
-    ee.cT().addUrgentTask(new go(this), "network_change");
+    ee.cT().addUrgentTask(new Runnable()
+    {
+      public void run()
+      {
+        eh.e("SharkNetworkReceiver", "[conn_monitor]handleNetworkChange()");
+        synchronized (cz.b(cz.this))
+        {
+          Object localObject2 = (LinkedList)cz.b(cz.this).clone();
+          ??? = ((LinkedList)localObject2).iterator();
+          while (((Iterator)???).hasNext())
+          {
+            localObject2 = (cz.b)((Iterator)???).next();
+            if (localObject2 != null) {
+              ((cz.b)localObject2).bz();
+            }
+          }
+        }
+      }
+    }, "network_change");
   }
   
   /* Error */
@@ -119,131 +203,131 @@ public class cz
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 40	btmsdkobf/cz:ka	Z
+    //   3: getfield 58	btmsdkobf/cz:ka	Z
     //   6: istore_2
     //   7: iload_2
-    //   8: ifne +110 -> 118
-    //   11: invokestatic 246	com/tmsdk/base/utils/NetworkUtil:getActiveNetworkInfo	()Landroid/net/NetworkInfo;
+    //   8: ifne +112 -> 120
+    //   11: invokestatic 254	com/tmsdk/base/utils/NetworkUtil:getActiveNetworkInfo	()Landroid/net/NetworkInfo;
     //   14: astore_3
     //   15: aload_3
-    //   16: ifnull +105 -> 121
+    //   16: ifnull +107 -> 123
     //   19: aload_0
     //   20: aload_3
-    //   21: invokevirtual 148	android/net/NetworkInfo:getState	()Landroid/net/NetworkInfo$State;
-    //   24: putfield 47	btmsdkobf/cz:kb	Landroid/net/NetworkInfo$State;
+    //   21: invokevirtual 163	android/net/NetworkInfo:getState	()Landroid/net/NetworkInfo$State;
+    //   24: putfield 65	btmsdkobf/cz:kb	Landroid/net/NetworkInfo$State;
     //   27: aload_0
     //   28: aload_3
-    //   29: invokevirtual 151	android/net/NetworkInfo:getTypeName	()Ljava/lang/String;
-    //   32: putfield 49	btmsdkobf/cz:kc	Ljava/lang/String;
+    //   29: invokevirtual 166	android/net/NetworkInfo:getTypeName	()Ljava/lang/String;
+    //   32: putfield 67	btmsdkobf/cz:kc	Ljava/lang/String;
     //   35: aload_0
     //   36: aload_3
-    //   37: invokevirtual 154	android/net/NetworkInfo:getSubtypeName	()Ljava/lang/String;
-    //   40: putfield 51	btmsdkobf/cz:kd	Ljava/lang/String;
-    //   43: ldc 85
-    //   45: new 87	java/lang/StringBuilder
+    //   37: invokevirtual 169	android/net/NetworkInfo:getSubtypeName	()Ljava/lang/String;
+    //   40: putfield 69	btmsdkobf/cz:kd	Ljava/lang/String;
+    //   43: ldc 100
+    //   45: new 102	java/lang/StringBuilder
     //   48: dup
-    //   49: invokespecial 88	java/lang/StringBuilder:<init>	()V
-    //   52: ldc 248
-    //   54: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   57: aload_0
-    //   58: getfield 47	btmsdkobf/cz:kb	Landroid/net/NetworkInfo$State;
-    //   61: invokevirtual 159	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   64: invokevirtual 101	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   67: invokestatic 107	btmsdkobf/eh:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   70: new 250	android/content/IntentFilter
-    //   73: dup
-    //   74: invokespecial 251	android/content/IntentFilter:<init>	()V
-    //   77: astore_3
-    //   78: aload_3
-    //   79: ldc 253
-    //   81: invokevirtual 257	android/content/IntentFilter:addAction	(Ljava/lang/String;)V
-    //   84: aload_3
-    //   85: ldc_w 258
-    //   88: invokevirtual 261	android/content/IntentFilter:setPriority	(I)V
-    //   91: aload_1
-    //   92: aload_0
-    //   93: aload_3
-    //   94: invokevirtual 267	android/content/Context:registerReceiver	(Landroid/content/BroadcastReceiver;Landroid/content/IntentFilter;)Landroid/content/Intent;
-    //   97: pop
-    //   98: aload_0
-    //   99: invokestatic 81	java/lang/System:currentTimeMillis	()J
-    //   102: putfield 38	btmsdkobf/cz:jZ	J
-    //   105: aload_0
-    //   106: iconst_1
-    //   107: putfield 40	btmsdkobf/cz:ka	Z
-    //   110: ldc 85
-    //   112: ldc_w 269
-    //   115: invokestatic 164	btmsdkobf/eh:f	(Ljava/lang/String;Ljava/lang/String;)V
-    //   118: aload_0
-    //   119: monitorexit
-    //   120: return
-    //   121: aload_0
-    //   122: getstatic 177	android/net/NetworkInfo$State:DISCONNECTED	Landroid/net/NetworkInfo$State;
-    //   125: putfield 47	btmsdkobf/cz:kb	Landroid/net/NetworkInfo$State;
-    //   128: ldc 85
-    //   130: new 87	java/lang/StringBuilder
-    //   133: dup
-    //   134: invokespecial 88	java/lang/StringBuilder:<init>	()V
-    //   137: ldc_w 271
-    //   140: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   143: aload_0
-    //   144: getfield 47	btmsdkobf/cz:kb	Landroid/net/NetworkInfo$State;
-    //   147: invokevirtual 159	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   150: invokevirtual 101	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   153: invokestatic 107	btmsdkobf/eh:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   156: goto -86 -> 70
-    //   159: astore_3
-    //   160: ldc 85
-    //   162: new 87	java/lang/StringBuilder
-    //   165: dup
-    //   166: invokespecial 88	java/lang/StringBuilder:<init>	()V
-    //   169: ldc_w 273
-    //   172: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   175: aload_3
-    //   176: invokevirtual 159	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   179: invokevirtual 101	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   182: invokestatic 232	btmsdkobf/eh:h	(Ljava/lang/String;Ljava/lang/String;)V
-    //   185: goto -115 -> 70
-    //   188: astore_1
-    //   189: aload_0
-    //   190: monitorexit
-    //   191: aload_1
-    //   192: athrow
-    //   193: astore_1
-    //   194: ldc 85
-    //   196: new 87	java/lang/StringBuilder
-    //   199: dup
-    //   200: invokespecial 88	java/lang/StringBuilder:<init>	()V
-    //   203: ldc_w 275
-    //   206: invokevirtual 94	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   209: aload_1
-    //   210: invokevirtual 159	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   213: invokevirtual 101	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   216: invokestatic 232	btmsdkobf/eh:h	(Ljava/lang/String;Ljava/lang/String;)V
-    //   219: goto -101 -> 118
+    //   49: invokespecial 103	java/lang/StringBuilder:<init>	()V
+    //   52: ldc_w 256
+    //   55: invokevirtual 109	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   58: aload_0
+    //   59: getfield 65	btmsdkobf/cz:kb	Landroid/net/NetworkInfo$State;
+    //   62: invokevirtual 174	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   65: invokevirtual 116	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   68: invokestatic 122	btmsdkobf/eh:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   71: new 258	android/content/IntentFilter
+    //   74: dup
+    //   75: invokespecial 259	android/content/IntentFilter:<init>	()V
+    //   78: astore_3
+    //   79: aload_3
+    //   80: ldc_w 261
+    //   83: invokevirtual 265	android/content/IntentFilter:addAction	(Ljava/lang/String;)V
+    //   86: aload_3
+    //   87: ldc_w 266
+    //   90: invokevirtual 269	android/content/IntentFilter:setPriority	(I)V
+    //   93: aload_1
+    //   94: aload_0
+    //   95: aload_3
+    //   96: invokevirtual 275	android/content/Context:registerReceiver	(Landroid/content/BroadcastReceiver;Landroid/content/IntentFilter;)Landroid/content/Intent;
+    //   99: pop
+    //   100: aload_0
+    //   101: invokestatic 96	java/lang/System:currentTimeMillis	()J
+    //   104: putfield 56	btmsdkobf/cz:jZ	J
+    //   107: aload_0
+    //   108: iconst_1
+    //   109: putfield 58	btmsdkobf/cz:ka	Z
+    //   112: ldc 100
+    //   114: ldc_w 277
+    //   117: invokestatic 179	btmsdkobf/eh:f	(Ljava/lang/String;Ljava/lang/String;)V
+    //   120: aload_0
+    //   121: monitorexit
+    //   122: return
+    //   123: aload_0
+    //   124: getstatic 192	android/net/NetworkInfo$State:DISCONNECTED	Landroid/net/NetworkInfo$State;
+    //   127: putfield 65	btmsdkobf/cz:kb	Landroid/net/NetworkInfo$State;
+    //   130: ldc 100
+    //   132: new 102	java/lang/StringBuilder
+    //   135: dup
+    //   136: invokespecial 103	java/lang/StringBuilder:<init>	()V
+    //   139: ldc_w 279
+    //   142: invokevirtual 109	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   145: aload_0
+    //   146: getfield 65	btmsdkobf/cz:kb	Landroid/net/NetworkInfo$State;
+    //   149: invokevirtual 174	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   152: invokevirtual 116	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   155: invokestatic 122	btmsdkobf/eh:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   158: goto -87 -> 71
+    //   161: astore_3
+    //   162: ldc 100
+    //   164: new 102	java/lang/StringBuilder
+    //   167: dup
+    //   168: invokespecial 103	java/lang/StringBuilder:<init>	()V
+    //   171: ldc_w 281
+    //   174: invokevirtual 109	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   177: aload_3
+    //   178: invokevirtual 174	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   181: invokevirtual 116	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   184: invokestatic 242	btmsdkobf/eh:h	(Ljava/lang/String;Ljava/lang/String;)V
+    //   187: goto -116 -> 71
+    //   190: astore_1
+    //   191: aload_0
+    //   192: monitorexit
+    //   193: aload_1
+    //   194: athrow
+    //   195: astore_1
+    //   196: ldc 100
+    //   198: new 102	java/lang/StringBuilder
+    //   201: dup
+    //   202: invokespecial 103	java/lang/StringBuilder:<init>	()V
+    //   205: ldc_w 283
+    //   208: invokevirtual 109	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   211: aload_1
+    //   212: invokevirtual 174	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   215: invokevirtual 116	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   218: invokestatic 242	btmsdkobf/eh:h	(Ljava/lang/String;Ljava/lang/String;)V
+    //   221: goto -101 -> 120
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	222	0	this	cz
-    //   0	222	1	paramContext	Context
+    //   0	224	0	this	cz
+    //   0	224	1	paramContext	Context
     //   6	2	2	bool	boolean
-    //   14	80	3	localObject	Object
-    //   159	17	3	localException	java.lang.Exception
+    //   14	82	3	localObject	Object
+    //   161	17	3	localException	java.lang.Exception
     // Exception table:
     //   from	to	target	type
-    //   11	15	159	java/lang/Exception
-    //   19	70	159	java/lang/Exception
-    //   121	156	159	java/lang/Exception
-    //   2	7	188	finally
-    //   11	15	188	finally
-    //   19	70	188	finally
-    //   70	118	188	finally
-    //   121	156	188	finally
-    //   160	185	188	finally
-    //   194	219	188	finally
-    //   70	118	193	java/lang/Throwable
+    //   11	15	161	java/lang/Exception
+    //   19	71	161	java/lang/Exception
+    //   123	158	161	java/lang/Exception
+    //   2	7	190	finally
+    //   11	15	190	finally
+    //   19	71	190	finally
+    //   71	120	190	finally
+    //   123	158	190	finally
+    //   162	187	190	finally
+    //   196	221	190	finally
+    //   71	120	195	java/lang/Throwable
   }
   
-  public void a(cz.a parama)
+  public void a(a parama)
   {
     if (parama == null) {
       return;
@@ -257,7 +341,7 @@ public class cz
     }
   }
   
-  public void a(cz.b paramb)
+  public void a(b paramb)
   {
     if (paramb == null) {
       return;
@@ -271,7 +355,7 @@ public class cz
     }
   }
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onReceive(Context paramContext, final Intent paramIntent)
   {
     if ((paramIntent == null) || (paramIntent.getAction() == null)) {}
     do
@@ -280,7 +364,27 @@ public class cz
       paramContext = paramIntent.getAction();
       eh.e("SharkNetworkReceiver", "[conn_monitor]doOnRecv(), action: " + paramContext);
     } while (!"android.net.conn.CONNECTIVITY_CHANGE".equals(paramContext));
-    this.mHandler.post(new gr(this, paramIntent));
+    this.mHandler.post(new Runnable()
+    {
+      public void run()
+      {
+        if (bc.m()) {
+          cz.a(cz.this, paramIntent);
+        }
+      }
+    });
+  }
+  
+  public static abstract interface a
+  {
+    public abstract void onConnected();
+    
+    public abstract void onDisconnected();
+  }
+  
+  public static abstract interface b
+  {
+    public abstract void bz();
   }
 }
 

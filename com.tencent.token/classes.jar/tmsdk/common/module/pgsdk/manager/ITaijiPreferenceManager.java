@@ -12,7 +12,7 @@ public abstract interface ITaijiPreferenceManager
   
   public abstract boolean endTransaction();
   
-  public abstract Map getAll();
+  public abstract Map<String, ?> getAll();
   
   public abstract boolean getBoolean(String paramString);
   

@@ -7,18 +7,58 @@ import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.KeyEvent;
 import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
 import android.widget.RelativeLayout;
+import org.json.JSONObject;
 
 public class TCaptchaPopupActivity
   extends Activity
 {
-  private e a;
+  private b a;
   private RelativeLayout b;
   private float c;
   private String d;
-  private g e;
+  private d e;
   private String f;
-  private l g = new d(this);
+  private d.a g = new d.a()
+  {
+    public void a(int paramAnonymousInt1, int paramAnonymousInt2)
+    {
+      ViewGroup.LayoutParams localLayoutParams = TCaptchaPopupActivity.a(TCaptchaPopupActivity.this).getLayoutParams();
+      localLayoutParams.width = ((int)(paramAnonymousInt1 * TCaptchaPopupActivity.b(TCaptchaPopupActivity.this)));
+      localLayoutParams.height = ((int)(paramAnonymousInt2 * TCaptchaPopupActivity.b(TCaptchaPopupActivity.this)));
+      TCaptchaPopupActivity.a(TCaptchaPopupActivity.this).setLayoutParams(localLayoutParams);
+      TCaptchaPopupActivity.a(TCaptchaPopupActivity.this).setVisibility(0);
+      TCaptchaPopupActivity.c(TCaptchaPopupActivity.this).setVisibility(4);
+    }
+    
+    public void a(int paramAnonymousInt, String paramAnonymousString)
+    {
+      try
+      {
+        Intent localIntent = new Intent();
+        JSONObject localJSONObject = new JSONObject();
+        localJSONObject.put("ret", paramAnonymousInt);
+        localJSONObject.put("info", paramAnonymousString);
+        localIntent.putExtra("retJson", localJSONObject.toString());
+        TCaptchaPopupActivity.this.setResult(-1, localIntent);
+        TCaptchaPopupActivity.this.finish();
+        return;
+      }
+      catch (Exception paramAnonymousString)
+      {
+        paramAnonymousString.printStackTrace();
+      }
+    }
+    
+    public void a(String paramAnonymousString)
+    {
+      Intent localIntent = new Intent();
+      localIntent.putExtra("retJson", paramAnonymousString);
+      TCaptchaPopupActivity.this.setResult(-1, localIntent);
+      TCaptchaPopupActivity.this.finish();
+    }
+  };
   
   protected void onCreate(Bundle paramBundle)
   {
@@ -26,14 +66,14 @@ public class TCaptchaPopupActivity
     requestWindowFeature(1);
     this.d = getIntent().getStringExtra("appid");
     this.f = getIntent().getStringExtra("map");
-    setContentView(c.tcaptcha_popup);
+    setContentView(a.b.tcaptcha_popup);
     this.c = getResources().getDisplayMetrics().density;
-    paramBundle = (RelativeLayout)findViewById(b.tcaptcha_container);
-    this.a = new e(this);
+    paramBundle = (RelativeLayout)findViewById(a.a.tcaptcha_container);
+    this.a = new b(this);
     this.a.setLayerType(1, null);
-    this.b = ((RelativeLayout)findViewById(b.tcaptcha_indicator_layout));
-    int i = f.a(this, getWindow(), paramBundle, this.b, this.a);
-    this.e = new g(this, this.g, this.d, this.a, this.f, i);
+    this.b = ((RelativeLayout)findViewById(a.a.tcaptcha_indicator_layout));
+    int i = c.a(this, getWindow(), paramBundle, this.b, this.a);
+    this.e = new d(this, this.g, this.d, this.a, this.f, i);
   }
   
   protected void onDestroy()

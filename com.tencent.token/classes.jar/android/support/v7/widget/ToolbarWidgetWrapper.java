@@ -2,15 +2,18 @@ package android.support.v7.widget;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
+import android.os.Parcelable;
 import android.support.annotation.RestrictTo;
 import android.support.v4.view.ViewCompat;
 import android.support.v4.view.ViewPropertyAnimatorCompat;
+import android.support.v4.view.ViewPropertyAnimatorListenerAdapter;
 import android.support.v7.appcompat.R.attr;
 import android.support.v7.appcompat.R.drawable;
 import android.support.v7.appcompat.R.id;
 import android.support.v7.appcompat.R.string;
 import android.support.v7.appcompat.R.styleable;
 import android.support.v7.content.res.AppCompatResources;
+import android.support.v7.view.menu.ActionMenuItem;
 import android.support.v7.view.menu.MenuBuilder;
 import android.support.v7.view.menu.MenuBuilder.Callback;
 import android.support.v7.view.menu.MenuPresenter.Callback;
@@ -20,6 +23,7 @@ import android.util.SparseArray;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.view.Window.Callback;
@@ -130,7 +134,17 @@ public class ToolbarWidgetWrapper
       paramToolbar.recycle();
       setDefaultNavigationContentDescription(paramInt1);
       this.mHomeDescription = this.mToolbar.getNavigationContentDescription();
-      this.mToolbar.setNavigationOnClickListener(new ToolbarWidgetWrapper.1(this));
+      this.mToolbar.setNavigationOnClickListener(new View.OnClickListener()
+      {
+        final ActionMenuItem mNavItem = new ActionMenuItem(ToolbarWidgetWrapper.this.mToolbar.getContext(), 0, 16908332, 0, 0, ToolbarWidgetWrapper.this.mTitle);
+        
+        public void onClick(View paramAnonymousView)
+        {
+          if ((ToolbarWidgetWrapper.this.mWindowCallback != null) && (ToolbarWidgetWrapper.this.mMenuPrepared)) {
+            ToolbarWidgetWrapper.this.mWindowCallback.onMenuItemSelected(0, this.mNavItem);
+          }
+        }
+      });
       return;
       bool = false;
       break;
@@ -361,12 +375,12 @@ public class ToolbarWidgetWrapper
     return this.mToolbar.isTitleTruncated();
   }
   
-  public void restoreHierarchyState(SparseArray paramSparseArray)
+  public void restoreHierarchyState(SparseArray<Parcelable> paramSparseArray)
   {
     this.mToolbar.restoreHierarchyState(paramSparseArray);
   }
   
-  public void saveHierarchyState(SparseArray paramSparseArray)
+  public void saveHierarchyState(SparseArray<Parcelable> paramSparseArray)
   {
     this.mToolbar.saveHierarchyState(paramSparseArray);
   }
@@ -644,12 +658,32 @@ public class ToolbarWidgetWrapper
     }
   }
   
-  public ViewPropertyAnimatorCompat setupAnimatorToVisibility(int paramInt, long paramLong)
+  public ViewPropertyAnimatorCompat setupAnimatorToVisibility(final int paramInt, long paramLong)
   {
     ViewPropertyAnimatorCompat localViewPropertyAnimatorCompat = ViewCompat.animate(this.mToolbar);
     if (paramInt == 0) {}
     for (float f = 1.0F;; f = 0.0F) {
-      return localViewPropertyAnimatorCompat.alpha(f).setDuration(paramLong).setListener(new ToolbarWidgetWrapper.2(this, paramInt));
+      localViewPropertyAnimatorCompat.alpha(f).setDuration(paramLong).setListener(new ViewPropertyAnimatorListenerAdapter()
+      {
+        private boolean mCanceled = false;
+        
+        public void onAnimationCancel(View paramAnonymousView)
+        {
+          this.mCanceled = true;
+        }
+        
+        public void onAnimationEnd(View paramAnonymousView)
+        {
+          if (!this.mCanceled) {
+            ToolbarWidgetWrapper.this.mToolbar.setVisibility(paramInt);
+          }
+        }
+        
+        public void onAnimationStart(View paramAnonymousView)
+        {
+          ToolbarWidgetWrapper.this.mToolbar.setVisibility(0);
+        }
+      });
     }
   }
   

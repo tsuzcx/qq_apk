@@ -11,14 +11,14 @@ import android.widget.TextView;
 public class SimpleCursorAdapter
   extends ResourceCursorAdapter
 {
-  private SimpleCursorAdapter.CursorToStringConverter mCursorToStringConverter;
+  private CursorToStringConverter mCursorToStringConverter;
   @RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
   protected int[] mFrom;
   String[] mOriginalFrom;
   private int mStringConversionColumn = -1;
   @RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
   protected int[] mTo;
-  private SimpleCursorAdapter.ViewBinder mViewBinder;
+  private ViewBinder mViewBinder;
   
   @Deprecated
   public SimpleCursorAdapter(Context paramContext, int paramInt, Cursor paramCursor, String[] paramArrayOfString, int[] paramArrayOfInt)
@@ -57,7 +57,7 @@ public class SimpleCursorAdapter
   
   public void bindView(View paramView, Context paramContext, Cursor paramCursor)
   {
-    SimpleCursorAdapter.ViewBinder localViewBinder = this.mViewBinder;
+    ViewBinder localViewBinder = this.mViewBinder;
     int j = this.mTo.length;
     int[] arrayOfInt1 = this.mFrom;
     int[] arrayOfInt2 = this.mTo;
@@ -122,7 +122,7 @@ public class SimpleCursorAdapter
     return super.convertToString(paramCursor);
   }
   
-  public SimpleCursorAdapter.CursorToStringConverter getCursorToStringConverter()
+  public CursorToStringConverter getCursorToStringConverter()
   {
     return this.mCursorToStringConverter;
   }
@@ -132,12 +132,12 @@ public class SimpleCursorAdapter
     return this.mStringConversionColumn;
   }
   
-  public SimpleCursorAdapter.ViewBinder getViewBinder()
+  public ViewBinder getViewBinder()
   {
     return this.mViewBinder;
   }
   
-  public void setCursorToStringConverter(SimpleCursorAdapter.CursorToStringConverter paramCursorToStringConverter)
+  public void setCursorToStringConverter(CursorToStringConverter paramCursorToStringConverter)
   {
     this.mCursorToStringConverter = paramCursorToStringConverter;
   }
@@ -147,7 +147,7 @@ public class SimpleCursorAdapter
     this.mStringConversionColumn = paramInt;
   }
   
-  public void setViewBinder(SimpleCursorAdapter.ViewBinder paramViewBinder)
+  public void setViewBinder(ViewBinder paramViewBinder)
   {
     this.mViewBinder = paramViewBinder;
   }
@@ -174,6 +174,16 @@ public class SimpleCursorAdapter
   {
     findColumns(paramCursor, this.mOriginalFrom);
     return super.swapCursor(paramCursor);
+  }
+  
+  public static abstract interface CursorToStringConverter
+  {
+    public abstract CharSequence convertToString(Cursor paramCursor);
+  }
+  
+  public static abstract interface ViewBinder
+  {
+    public abstract boolean setViewValue(View paramView, Cursor paramCursor, int paramInt);
   }
 }
 

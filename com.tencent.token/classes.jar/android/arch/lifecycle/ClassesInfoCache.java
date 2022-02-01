@@ -1,9 +1,12 @@
 package android.arch.lifecycle;
 
 import android.support.annotation.Nullable;
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
@@ -14,10 +17,10 @@ class ClassesInfoCache
   private static final int CALL_TYPE_PROVIDER = 1;
   private static final int CALL_TYPE_PROVIDER_WITH_EVENT = 2;
   static ClassesInfoCache sInstance = new ClassesInfoCache();
-  private final Map mCallbackMap = new HashMap();
-  private final Map mHasLifecycleMethods = new HashMap();
+  private final Map<Class, CallbackInfo> mCallbackMap = new HashMap();
+  private final Map<Class, Boolean> mHasLifecycleMethods = new HashMap();
   
-  private ClassesInfoCache.CallbackInfo createInfo(Class paramClass, @Nullable Method[] paramArrayOfMethod)
+  private CallbackInfo createInfo(Class paramClass, @Nullable Method[] paramArrayOfMethod)
   {
     Object localObject1 = paramClass.getSuperclass();
     HashMap localHashMap = new HashMap();
@@ -25,7 +28,7 @@ class ClassesInfoCache
     {
       localObject1 = getInfo((Class)localObject1);
       if (localObject1 != null) {
-        localHashMap.putAll(((ClassesInfoCache.CallbackInfo)localObject1).mHandlerToEvent);
+        localHashMap.putAll(((CallbackInfo)localObject1).mHandlerToEvent);
       }
     }
     localObject1 = paramClass.getInterfaces();
@@ -38,7 +41,7 @@ class ClassesInfoCache
       while (((Iterator)localObject2).hasNext())
       {
         localObject3 = (Map.Entry)((Iterator)localObject2).next();
-        verifyAndPutHandler(localHashMap, (ClassesInfoCache.MethodReference)((Map.Entry)localObject3).getKey(), (Lifecycle.Event)((Map.Entry)localObject3).getValue(), paramClass);
+        verifyAndPutHandler(localHashMap, (MethodReference)((Map.Entry)localObject3).getKey(), (Lifecycle.Event)((Map.Entry)localObject3).getValue(), paramClass);
       }
       i += 1;
     }
@@ -85,11 +88,11 @@ class ClassesInfoCache
       if (localObject2.length > 2) {
         throw new IllegalArgumentException("cannot have more than 2 params");
       }
-      verifyAndPutHandler(localHashMap, new ClassesInfoCache.MethodReference(i, (Method)localObject1), (Lifecycle.Event)localObject3, paramClass);
+      verifyAndPutHandler(localHashMap, new MethodReference(i, (Method)localObject1), (Lifecycle.Event)localObject3, paramClass);
       bool = true;
       break;
       label345:
-      paramArrayOfMethod = new ClassesInfoCache.CallbackInfo(localHashMap);
+      paramArrayOfMethod = new CallbackInfo(localHashMap);
       this.mCallbackMap.put(paramClass, paramArrayOfMethod);
       this.mHasLifecycleMethods.put(paramClass, Boolean.valueOf(bool));
       return paramArrayOfMethod;
@@ -109,7 +112,7 @@ class ClassesInfoCache
     }
   }
   
-  private void verifyAndPutHandler(Map paramMap, ClassesInfoCache.MethodReference paramMethodReference, Lifecycle.Event paramEvent, Class paramClass)
+  private void verifyAndPutHandler(Map<MethodReference, Lifecycle.Event> paramMap, MethodReference paramMethodReference, Lifecycle.Event paramEvent, Class paramClass)
   {
     Lifecycle.Event localEvent = (Lifecycle.Event)paramMap.get(paramMethodReference);
     if ((localEvent != null) && (paramEvent != localEvent))
@@ -122,9 +125,9 @@ class ClassesInfoCache
     }
   }
   
-  ClassesInfoCache.CallbackInfo getInfo(Class paramClass)
+  CallbackInfo getInfo(Class paramClass)
   {
-    ClassesInfoCache.CallbackInfo localCallbackInfo = (ClassesInfoCache.CallbackInfo)this.mCallbackMap.get(paramClass);
+    CallbackInfo localCallbackInfo = (CallbackInfo)this.mCallbackMap.get(paramClass);
     if (localCallbackInfo != null) {
       return localCallbackInfo;
     }
@@ -150,6 +153,108 @@ class ClassesInfoCache
     }
     this.mHasLifecycleMethods.put(paramClass, Boolean.valueOf(false));
     return false;
+  }
+  
+  static class CallbackInfo
+  {
+    final Map<Lifecycle.Event, List<ClassesInfoCache.MethodReference>> mEventToHandlers;
+    final Map<ClassesInfoCache.MethodReference, Lifecycle.Event> mHandlerToEvent;
+    
+    CallbackInfo(Map<ClassesInfoCache.MethodReference, Lifecycle.Event> paramMap)
+    {
+      this.mHandlerToEvent = paramMap;
+      this.mEventToHandlers = new HashMap();
+      Iterator localIterator = paramMap.entrySet().iterator();
+      while (localIterator.hasNext())
+      {
+        Map.Entry localEntry = (Map.Entry)localIterator.next();
+        Lifecycle.Event localEvent = (Lifecycle.Event)localEntry.getValue();
+        List localList = (List)this.mEventToHandlers.get(localEvent);
+        paramMap = localList;
+        if (localList == null)
+        {
+          paramMap = new ArrayList();
+          this.mEventToHandlers.put(localEvent, paramMap);
+        }
+        paramMap.add(localEntry.getKey());
+      }
+    }
+    
+    private static void invokeMethodsForEvent(List<ClassesInfoCache.MethodReference> paramList, LifecycleOwner paramLifecycleOwner, Lifecycle.Event paramEvent, Object paramObject)
+    {
+      if (paramList != null)
+      {
+        int i = paramList.size() - 1;
+        while (i >= 0)
+        {
+          ((ClassesInfoCache.MethodReference)paramList.get(i)).invokeCallback(paramLifecycleOwner, paramEvent, paramObject);
+          i -= 1;
+        }
+      }
+    }
+    
+    void invokeCallbacks(LifecycleOwner paramLifecycleOwner, Lifecycle.Event paramEvent, Object paramObject)
+    {
+      invokeMethodsForEvent((List)this.mEventToHandlers.get(paramEvent), paramLifecycleOwner, paramEvent, paramObject);
+      invokeMethodsForEvent((List)this.mEventToHandlers.get(Lifecycle.Event.ON_ANY), paramLifecycleOwner, paramEvent, paramObject);
+    }
+  }
+  
+  static class MethodReference
+  {
+    final int mCallType;
+    final Method mMethod;
+    
+    MethodReference(int paramInt, Method paramMethod)
+    {
+      this.mCallType = paramInt;
+      this.mMethod = paramMethod;
+      this.mMethod.setAccessible(true);
+    }
+    
+    public boolean equals(Object paramObject)
+    {
+      if (this == paramObject) {}
+      do
+      {
+        return true;
+        if ((paramObject == null) || (getClass() != paramObject.getClass())) {
+          return false;
+        }
+        paramObject = (MethodReference)paramObject;
+      } while ((this.mCallType == paramObject.mCallType) && (this.mMethod.getName().equals(paramObject.mMethod.getName())));
+      return false;
+    }
+    
+    public int hashCode()
+    {
+      return this.mCallType * 31 + this.mMethod.getName().hashCode();
+    }
+    
+    void invokeCallback(LifecycleOwner paramLifecycleOwner, Lifecycle.Event paramEvent, Object paramObject)
+    {
+      try
+      {
+        switch (this.mCallType)
+        {
+        case 0: 
+          this.mMethod.invoke(paramObject, new Object[0]);
+          return;
+        }
+      }
+      catch (InvocationTargetException paramLifecycleOwner)
+      {
+        throw new RuntimeException("Failed to call observer method", paramLifecycleOwner.getCause());
+        this.mMethod.invoke(paramObject, new Object[] { paramLifecycleOwner });
+        return;
+      }
+      catch (IllegalAccessException paramLifecycleOwner)
+      {
+        throw new RuntimeException(paramLifecycleOwner);
+      }
+      this.mMethod.invoke(paramObject, new Object[] { paramLifecycleOwner, paramEvent });
+      return;
+    }
   }
 }
 

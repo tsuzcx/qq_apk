@@ -2,6 +2,8 @@ package btmsdkobf;
 
 import android.os.Handler;
 import android.os.HandlerThread;
+import android.os.Looper;
+import android.os.Message;
 import android.text.TextUtils;
 import com.tmsdk.base.utils.NetworkUtil;
 
@@ -20,7 +22,7 @@ public class cr
   private cr()
   {
     this.ik.start();
-    this.mHandler = new ft(this, this.ik.getLooper());
+    this.mHandler = new a(this.ik.getLooper());
     eh.f("NetworkDetector", "[detect_conn]init, register & start detect");
     cz.bS().a(this);
     this.mHandler.sendEmptyMessageDelayed(1, 5000L);
@@ -51,7 +53,24 @@ public class cr
     Object localObject = null;
     try
     {
-      String str = ef.a(new fs(this));
+      String str = ef.a(new ef.a()
+      {
+        public void c(boolean paramAnonymousBoolean1, boolean paramAnonymousBoolean2)
+        {
+          eh.f("NetworkDetector", "[detect_conn]detectSync(), network error? " + paramAnonymousBoolean2);
+          if (paramAnonymousBoolean2)
+          {
+            cr.a(cr.this, -3);
+            return;
+          }
+          if (paramAnonymousBoolean1)
+          {
+            cr.a(cr.this, -2);
+            return;
+          }
+          cr.a(cr.this, 0);
+        }
+      });
       localObject = str;
     }
     catch (Throwable localThrowable)
@@ -159,6 +178,25 @@ public class cr
     br();
     this.mHandler.removeMessages(1);
     this.ig = -1;
+  }
+  
+  private class a
+    extends Handler
+  {
+    public a(Looper paramLooper)
+    {
+      super();
+    }
+    
+    public void handleMessage(Message paramMessage)
+    {
+      switch (paramMessage.what)
+      {
+      default: 
+        return;
+      }
+      cr.a(cr.this);
+    }
   }
 }
 

@@ -9,19 +9,19 @@ import android.support.annotation.RequiresApi;
 import android.support.annotation.RestrictTo;
 import android.support.v4.internal.view.SupportMenuItem;
 import android.util.Log;
-import android.view.CollapsibleActionView;
 import android.view.ContextMenu.ContextMenuInfo;
 import android.view.MenuItem;
 import android.view.MenuItem.OnActionExpandListener;
 import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.SubMenu;
 import android.view.View;
+import android.widget.FrameLayout;
 import java.lang.reflect.Method;
 
 @RequiresApi(14)
 @RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
 public class MenuItemWrapperICS
-  extends BaseMenuWrapper
+  extends BaseMenuWrapper<SupportMenuItem>
   implements MenuItem
 {
   static final String LOG_TAG = "MenuItemWrapper";
@@ -37,9 +37,9 @@ public class MenuItemWrapperICS
     return ((SupportMenuItem)this.mWrappedObject).collapseActionView();
   }
   
-  MenuItemWrapperICS.ActionProviderWrapper createActionProviderWrapper(android.view.ActionProvider paramActionProvider)
+  ActionProviderWrapper createActionProviderWrapper(android.view.ActionProvider paramActionProvider)
   {
-    return new MenuItemWrapperICS.ActionProviderWrapper(this, this.mContext, paramActionProvider);
+    return new ActionProviderWrapper(this.mContext, paramActionProvider);
   }
   
   public boolean expandActionView()
@@ -50,8 +50,8 @@ public class MenuItemWrapperICS
   public android.view.ActionProvider getActionProvider()
   {
     android.support.v4.view.ActionProvider localActionProvider = ((SupportMenuItem)this.mWrappedObject).getSupportActionProvider();
-    if ((localActionProvider instanceof MenuItemWrapperICS.ActionProviderWrapper)) {
-      return ((MenuItemWrapperICS.ActionProviderWrapper)localActionProvider).mInner;
+    if ((localActionProvider instanceof ActionProviderWrapper)) {
+      return ((ActionProviderWrapper)localActionProvider).mInner;
     }
     return null;
   }
@@ -60,8 +60,8 @@ public class MenuItemWrapperICS
   {
     View localView2 = ((SupportMenuItem)this.mWrappedObject).getActionView();
     View localView1 = localView2;
-    if ((localView2 instanceof MenuItemWrapperICS.CollapsibleActionViewWrapper)) {
-      localView1 = ((MenuItemWrapperICS.CollapsibleActionViewWrapper)localView2).getWrappedView();
+    if ((localView2 instanceof CollapsibleActionViewWrapper)) {
+      localView1 = ((CollapsibleActionViewWrapper)localView2).getWrappedView();
     }
     return localView1;
   }
@@ -196,8 +196,8 @@ public class MenuItemWrapperICS
   {
     ((SupportMenuItem)this.mWrappedObject).setActionView(paramInt);
     View localView = ((SupportMenuItem)this.mWrappedObject).getActionView();
-    if ((localView instanceof CollapsibleActionView)) {
-      ((SupportMenuItem)this.mWrappedObject).setActionView(new MenuItemWrapperICS.CollapsibleActionViewWrapper(localView));
+    if ((localView instanceof android.view.CollapsibleActionView)) {
+      ((SupportMenuItem)this.mWrappedObject).setActionView(new CollapsibleActionViewWrapper(localView));
     }
     return this;
   }
@@ -205,8 +205,8 @@ public class MenuItemWrapperICS
   public MenuItem setActionView(View paramView)
   {
     Object localObject = paramView;
-    if ((paramView instanceof CollapsibleActionView)) {
-      localObject = new MenuItemWrapperICS.CollapsibleActionViewWrapper(paramView);
+    if ((paramView instanceof android.view.CollapsibleActionView)) {
+      localObject = new CollapsibleActionViewWrapper(paramView);
     }
     ((SupportMenuItem)this.mWrappedObject).setActionView((View)localObject);
     return this;
@@ -310,7 +310,7 @@ public class MenuItemWrapperICS
   {
     SupportMenuItem localSupportMenuItem = (SupportMenuItem)this.mWrappedObject;
     if (paramOnActionExpandListener != null) {}
-    for (paramOnActionExpandListener = new MenuItemWrapperICS.OnActionExpandListenerWrapper(this, paramOnActionExpandListener);; paramOnActionExpandListener = null)
+    for (paramOnActionExpandListener = new OnActionExpandListenerWrapper(paramOnActionExpandListener);; paramOnActionExpandListener = null)
     {
       localSupportMenuItem.setOnActionExpandListener(paramOnActionExpandListener);
       return this;
@@ -321,7 +321,7 @@ public class MenuItemWrapperICS
   {
     SupportMenuItem localSupportMenuItem = (SupportMenuItem)this.mWrappedObject;
     if (paramOnMenuItemClickListener != null) {}
-    for (paramOnMenuItemClickListener = new MenuItemWrapperICS.OnMenuItemClickListenerWrapper(this, paramOnMenuItemClickListener);; paramOnMenuItemClickListener = null)
+    for (paramOnMenuItemClickListener = new OnMenuItemClickListenerWrapper(paramOnMenuItemClickListener);; paramOnMenuItemClickListener = null)
     {
       localSupportMenuItem.setOnMenuItemClickListener(paramOnMenuItemClickListener);
       return this;
@@ -378,6 +378,102 @@ public class MenuItemWrapperICS
   public MenuItem setVisible(boolean paramBoolean)
   {
     return ((SupportMenuItem)this.mWrappedObject).setVisible(paramBoolean);
+  }
+  
+  class ActionProviderWrapper
+    extends android.support.v4.view.ActionProvider
+  {
+    final android.view.ActionProvider mInner;
+    
+    public ActionProviderWrapper(Context paramContext, android.view.ActionProvider paramActionProvider)
+    {
+      super();
+      this.mInner = paramActionProvider;
+    }
+    
+    public boolean hasSubMenu()
+    {
+      return this.mInner.hasSubMenu();
+    }
+    
+    public View onCreateActionView()
+    {
+      return this.mInner.onCreateActionView();
+    }
+    
+    public boolean onPerformDefaultAction()
+    {
+      return this.mInner.onPerformDefaultAction();
+    }
+    
+    public void onPrepareSubMenu(SubMenu paramSubMenu)
+    {
+      this.mInner.onPrepareSubMenu(MenuItemWrapperICS.this.getSubMenuWrapper(paramSubMenu));
+    }
+  }
+  
+  static class CollapsibleActionViewWrapper
+    extends FrameLayout
+    implements android.support.v7.view.CollapsibleActionView
+  {
+    final android.view.CollapsibleActionView mWrappedView;
+    
+    CollapsibleActionViewWrapper(View paramView)
+    {
+      super();
+      this.mWrappedView = ((android.view.CollapsibleActionView)paramView);
+      addView(paramView);
+    }
+    
+    View getWrappedView()
+    {
+      return (View)this.mWrappedView;
+    }
+    
+    public void onActionViewCollapsed()
+    {
+      this.mWrappedView.onActionViewCollapsed();
+    }
+    
+    public void onActionViewExpanded()
+    {
+      this.mWrappedView.onActionViewExpanded();
+    }
+  }
+  
+  private class OnActionExpandListenerWrapper
+    extends BaseWrapper<MenuItem.OnActionExpandListener>
+    implements MenuItem.OnActionExpandListener
+  {
+    OnActionExpandListenerWrapper(MenuItem.OnActionExpandListener paramOnActionExpandListener)
+    {
+      super();
+    }
+    
+    public boolean onMenuItemActionCollapse(MenuItem paramMenuItem)
+    {
+      return ((MenuItem.OnActionExpandListener)this.mWrappedObject).onMenuItemActionCollapse(MenuItemWrapperICS.this.getMenuItemWrapper(paramMenuItem));
+    }
+    
+    public boolean onMenuItemActionExpand(MenuItem paramMenuItem)
+    {
+      return ((MenuItem.OnActionExpandListener)this.mWrappedObject).onMenuItemActionExpand(MenuItemWrapperICS.this.getMenuItemWrapper(paramMenuItem));
+    }
+  }
+  
+  private class OnMenuItemClickListenerWrapper
+    extends BaseWrapper<MenuItem.OnMenuItemClickListener>
+    implements MenuItem.OnMenuItemClickListener
+  {
+    OnMenuItemClickListenerWrapper(MenuItem.OnMenuItemClickListener paramOnMenuItemClickListener)
+    {
+      super();
+    }
+    
+    public boolean onMenuItemClick(MenuItem paramMenuItem)
+    {
+      return ((MenuItem.OnMenuItemClickListener)this.mWrappedObject).onMenuItemClick(MenuItemWrapperICS.this.getMenuItemWrapper(paramMenuItem));
+    }
   }
 }
 

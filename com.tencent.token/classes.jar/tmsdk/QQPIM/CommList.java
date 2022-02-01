@@ -11,8 +11,8 @@ public final class CommList
   extends JceStruct
   implements Cloneable
 {
-  static ArrayList dZ;
-  public ArrayList vctCommList = null;
+  static ArrayList<CommElementInfo> dZ;
+  public ArrayList<CommElementInfo> vctCommList = null;
   
   static
   {
@@ -26,7 +26,7 @@ public final class CommList
   
   public CommList() {}
   
-  public CommList(ArrayList paramArrayList)
+  public CommList(ArrayList<CommElementInfo> paramArrayList)
   {
     this.vctCommList = paramArrayList;
   }
@@ -71,7 +71,7 @@ public final class CommList
     return "tmsdk.QQPIM.CommList";
   }
   
-  public ArrayList getVctCommList()
+  public ArrayList<CommElementInfo> getVctCommList()
   {
     return this.vctCommList;
   }
@@ -100,7 +100,7 @@ public final class CommList
     this.vctCommList = ((ArrayList)paramJceInputStream.read(dZ, 0, true));
   }
   
-  public void setVctCommList(ArrayList paramArrayList)
+  public void setVctCommList(ArrayList<CommElementInfo> paramArrayList)
   {
     this.vctCommList = paramArrayList;
   }

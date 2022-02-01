@@ -11,8 +11,8 @@ public final class NetInterfaceTypeInfoList
   extends JceStruct
   implements Cloneable
 {
-  static ArrayList eE;
-  public ArrayList vctInterfaceInfos = null;
+  static ArrayList<NetInterfaceTypeInfo> eE;
+  public ArrayList<NetInterfaceTypeInfo> vctInterfaceInfos = null;
   
   static
   {
@@ -26,7 +26,7 @@ public final class NetInterfaceTypeInfoList
   
   public NetInterfaceTypeInfoList() {}
   
-  public NetInterfaceTypeInfoList(ArrayList paramArrayList)
+  public NetInterfaceTypeInfoList(ArrayList<NetInterfaceTypeInfo> paramArrayList)
   {
     this.vctInterfaceInfos = paramArrayList;
   }
@@ -71,7 +71,7 @@ public final class NetInterfaceTypeInfoList
     return "tmsdk.QQPIM.NetInterfaceTypeInfoList";
   }
   
-  public ArrayList getVctInterfaceInfos()
+  public ArrayList<NetInterfaceTypeInfo> getVctInterfaceInfos()
   {
     return this.vctInterfaceInfos;
   }
@@ -100,7 +100,7 @@ public final class NetInterfaceTypeInfoList
     this.vctInterfaceInfos = ((ArrayList)paramJceInputStream.read(eE, 0, true));
   }
   
-  public void setVctInterfaceInfos(ArrayList paramArrayList)
+  public void setVctInterfaceInfos(ArrayList<NetInterfaceTypeInfo> paramArrayList)
   {
     this.vctInterfaceInfos = paramArrayList;
   }

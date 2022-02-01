@@ -1,12 +1,14 @@
 package com.tencent.token;
 
-public class de
-  extends df
+import java.io.Serializable;
+
+public abstract interface de
 {
-  public int b;
-  public String c;
-  public int d;
-  public short e;
+  public abstract do a(Serializable paramSerializable);
+  
+  public abstract Serializable a(do paramdo);
+  
+  public abstract String d();
 }
 
 

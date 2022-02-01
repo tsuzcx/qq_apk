@@ -48,7 +48,7 @@ public class WtloginListener
   
   public void OnInit(int paramInt) {}
   
-  public void OnQueryCodeResult(long paramLong1, List paramList, long paramLong2, WUserSigInfo paramWUserSigInfo, byte[] paramArrayOfByte, int paramInt) {}
+  public void OnQueryCodeResult(long paramLong1, List<byte[]> paramList, long paramLong2, WUserSigInfo paramWUserSigInfo, byte[] paramArrayOfByte, int paramInt) {}
   
   public void OnQuickRegisterCheckAccount(WUserSigInfo paramWUserSigInfo, int paramInt, byte[] paramArrayOfByte) {}
   
@@ -86,7 +86,7 @@ public class WtloginListener
   
   public void OnRequestTransport(String paramString, long paramLong1, long paramLong2, TransReqContext paramTransReqContext, WUserSigInfo paramWUserSigInfo, int paramInt) {}
   
-  public void OnVerifyCode(String paramString, byte[] paramArrayOfByte1, long paramLong, List paramList, WUserSigInfo paramWUserSigInfo, byte[] paramArrayOfByte2, int paramInt) {}
+  public void OnVerifyCode(String paramString, byte[] paramArrayOfByte1, long paramLong, List<byte[]> paramList, WUserSigInfo paramWUserSigInfo, byte[] paramArrayOfByte2, int paramInt) {}
   
   public void OnVerifySMSVerifyLoginCode(String paramString1, String paramString2, WUserSigInfo paramWUserSigInfo, int paramInt, ErrMsg paramErrMsg) {}
   

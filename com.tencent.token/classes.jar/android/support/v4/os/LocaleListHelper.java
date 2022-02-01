@@ -160,7 +160,7 @@ final class LocaleListHelper
     this.mStringRepresentation = localStringBuilder.toString();
   }
   
-  private Locale computeFirstMatch(Collection paramCollection, boolean paramBoolean)
+  private Locale computeFirstMatch(Collection<String> paramCollection, boolean paramBoolean)
   {
     int i = computeFirstMatchIndex(paramCollection, paramBoolean);
     if (i == -1) {
@@ -169,7 +169,7 @@ final class LocaleListHelper
     return this.mList[i];
   }
   
-  private int computeFirstMatchIndex(Collection paramCollection, boolean paramBoolean)
+  private int computeFirstMatchIndex(Collection<String> paramCollection, boolean paramBoolean)
   {
     int j;
     if (this.mList.length == 1)
@@ -466,7 +466,7 @@ final class LocaleListHelper
   }
   
   @RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
-  int getFirstMatchIndexWithEnglishSupported(Collection paramCollection)
+  int getFirstMatchIndexWithEnglishSupported(Collection<String> paramCollection)
   {
     return computeFirstMatchIndex(paramCollection, true);
   }

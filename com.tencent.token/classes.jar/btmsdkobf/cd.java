@@ -23,7 +23,7 @@ public class cd
   private static String hx;
   private static boolean hy = false;
   
-  private static at a(Context paramContext, boolean paramBoolean, cy.f paramf, cs.b paramb, ArrayList paramArrayList, String paramString, cl paramcl)
+  private static at a(Context paramContext, boolean paramBoolean, cy.f paramf, cs.b paramb, ArrayList<as> paramArrayList, String paramString, cl paramcl)
   {
     at localat = cp.bp();
     localat.dc = paramf.jQ;

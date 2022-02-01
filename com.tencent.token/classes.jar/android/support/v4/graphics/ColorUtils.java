@@ -11,7 +11,7 @@ public final class ColorUtils
 {
   private static final int MIN_ALPHA_SEARCH_MAX_ITERATIONS = 10;
   private static final int MIN_ALPHA_SEARCH_PRECISION = 1;
-  private static final ThreadLocal TEMP_ARRAY = new ThreadLocal();
+  private static final ThreadLocal<double[]> TEMP_ARRAY = new ThreadLocal();
   private static final double XYZ_EPSILON = 0.008855999999999999D;
   private static final double XYZ_KAPPA = 903.29999999999995D;
   private static final double XYZ_WHITE_REFERENCE_X = 95.046999999999997D;

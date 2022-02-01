@@ -1,6 +1,5 @@
 package android.support.v4.app;
 
-import android.app.RemoteInput.Builder;
 import android.content.ClipData;
 import android.content.ClipData.Item;
 import android.content.ClipDescription;
@@ -11,6 +10,7 @@ import android.os.Bundle;
 import android.support.annotation.RequiresApi;
 import android.util.Log;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -23,13 +23,13 @@ public final class RemoteInput
   public static final String RESULTS_CLIP_LABEL = "android.remoteinput.results";
   private static final String TAG = "RemoteInput";
   private final boolean mAllowFreeFormTextInput;
-  private final Set mAllowedDataTypes;
+  private final Set<String> mAllowedDataTypes;
   private final CharSequence[] mChoices;
   private final Bundle mExtras;
   private final CharSequence mLabel;
   private final String mResultKey;
   
-  RemoteInput(String paramString, CharSequence paramCharSequence, CharSequence[] paramArrayOfCharSequence, boolean paramBoolean, Bundle paramBundle, Set paramSet)
+  RemoteInput(String paramString, CharSequence paramCharSequence, CharSequence[] paramArrayOfCharSequence, boolean paramBoolean, Bundle paramBundle, Set<String> paramSet)
   {
     this.mResultKey = paramString;
     this.mLabel = paramCharSequence;
@@ -39,7 +39,7 @@ public final class RemoteInput
     this.mAllowedDataTypes = paramSet;
   }
   
-  public static void addDataResultToIntent(RemoteInput paramRemoteInput, Intent paramIntent, Map paramMap)
+  public static void addDataResultToIntent(RemoteInput paramRemoteInput, Intent paramIntent, Map<String, Uri> paramMap)
   {
     if (Build.VERSION.SDK_INT >= 26)
     {
@@ -155,7 +155,7 @@ public final class RemoteInput
   @RequiresApi(20)
   static android.app.RemoteInput fromCompat(RemoteInput paramRemoteInput)
   {
-    return new RemoteInput.Builder(paramRemoteInput.getResultKey()).setLabel(paramRemoteInput.getLabel()).setChoices(paramRemoteInput.getChoices()).setAllowFreeFormInput(paramRemoteInput.getAllowFreeFormInput()).addExtras(paramRemoteInput.getExtras()).build();
+    return new android.app.RemoteInput.Builder(paramRemoteInput.getResultKey()).setLabel(paramRemoteInput.getLabel()).setChoices(paramRemoteInput.getChoices()).setAllowFreeFormInput(paramRemoteInput.getAllowFreeFormInput()).addExtras(paramRemoteInput.getExtras()).build();
   }
   
   @RequiresApi(20)
@@ -188,7 +188,7 @@ public final class RemoteInput
     return paramIntent.getItemAt(0).getIntent();
   }
   
-  public static Map getDataResultsFromIntent(Intent paramIntent, String paramString)
+  public static Map<String, Uri> getDataResultsFromIntent(Intent paramIntent, String paramString)
   {
     Iterator localIterator = null;
     if (Build.VERSION.SDK_INT >= 26) {
@@ -263,7 +263,7 @@ public final class RemoteInput
     return this.mAllowFreeFormTextInput;
   }
   
-  public Set getAllowedDataTypes()
+  public Set<String> getAllowedDataTypes()
   {
     return this.mAllowedDataTypes;
   }
@@ -291,6 +291,71 @@ public final class RemoteInput
   public boolean isDataOnly()
   {
     return (!getAllowFreeFormInput()) && ((getChoices() == null) || (getChoices().length == 0)) && (getAllowedDataTypes() != null) && (!getAllowedDataTypes().isEmpty());
+  }
+  
+  public static final class Builder
+  {
+    private boolean mAllowFreeFormTextInput = true;
+    private final Set<String> mAllowedDataTypes = new HashSet();
+    private CharSequence[] mChoices;
+    private Bundle mExtras = new Bundle();
+    private CharSequence mLabel;
+    private final String mResultKey;
+    
+    public Builder(String paramString)
+    {
+      if (paramString == null) {
+        throw new IllegalArgumentException("Result key can't be null");
+      }
+      this.mResultKey = paramString;
+    }
+    
+    public Builder addExtras(Bundle paramBundle)
+    {
+      if (paramBundle != null) {
+        this.mExtras.putAll(paramBundle);
+      }
+      return this;
+    }
+    
+    public RemoteInput build()
+    {
+      return new RemoteInput(this.mResultKey, this.mLabel, this.mChoices, this.mAllowFreeFormTextInput, this.mExtras, this.mAllowedDataTypes);
+    }
+    
+    public Bundle getExtras()
+    {
+      return this.mExtras;
+    }
+    
+    public Builder setAllowDataType(String paramString, boolean paramBoolean)
+    {
+      if (paramBoolean)
+      {
+        this.mAllowedDataTypes.add(paramString);
+        return this;
+      }
+      this.mAllowedDataTypes.remove(paramString);
+      return this;
+    }
+    
+    public Builder setAllowFreeFormInput(boolean paramBoolean)
+    {
+      this.mAllowFreeFormTextInput = paramBoolean;
+      return this;
+    }
+    
+    public Builder setChoices(CharSequence[] paramArrayOfCharSequence)
+    {
+      this.mChoices = paramArrayOfCharSequence;
+      return this;
+    }
+    
+    public Builder setLabel(CharSequence paramCharSequence)
+    {
+      this.mLabel = paramCharSequence;
+      return this;
+    }
   }
 }
 

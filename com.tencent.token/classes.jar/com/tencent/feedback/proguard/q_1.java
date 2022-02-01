@@ -3,7 +3,7 @@ package com.tencent.feedback.proguard;
 import java.io.Serializable;
 
 public class q
-  implements Serializable, Comparable
+  implements Serializable, Comparable<q>
 {
   private long a;
   private long b;

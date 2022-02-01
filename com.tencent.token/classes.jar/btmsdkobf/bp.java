@@ -98,7 +98,13 @@ public class bp
     }
     try
     {
-      bx.ar().a(paramInt1, paramJceStruct1, paramJceStruct2, paramInt2, new fg(paramISharkCallBackNest), paramLong);
+      bx.ar().a(paramInt1, paramJceStruct1, paramJceStruct2, paramInt2, new cj()
+      {
+        public void onFinish(int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3, int paramAnonymousInt4, JceStruct paramAnonymousJceStruct)
+        {
+          this.a.onFinish(paramAnonymousInt1, paramAnonymousInt2, paramAnonymousInt3, paramAnonymousInt4, paramAnonymousJceStruct);
+        }
+      }, paramLong);
       return true;
     }
     catch (Throwable paramJceStruct1) {}

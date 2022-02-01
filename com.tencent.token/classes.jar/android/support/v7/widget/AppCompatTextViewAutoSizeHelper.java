@@ -38,7 +38,7 @@ class AppCompatTextViewAutoSizeHelper
   private static final RectF TEMP_RECTF = new RectF();
   static final float UNSET_AUTO_SIZE_UNIFORM_CONFIGURATION_VALUE = -1.0F;
   private static final int VERY_WIDE = 1048576;
-  private static ConcurrentHashMap sTextViewMethodByNameCache = new ConcurrentHashMap();
+  private static ConcurrentHashMap<String, Method> sTextViewMethodByNameCache = new ConcurrentHashMap();
   private float mAutoSizeMaxTextSizeInPx = -1.0F;
   private float mAutoSizeMinTextSizeInPx = -1.0F;
   private float mAutoSizeStepGranularityInPx = -1.0F;
@@ -182,21 +182,21 @@ class AppCompatTextViewAutoSizeHelper
     return null;
   }
   
-  private Object invokeAndReturnWithDefault(@NonNull Object paramObject1, @NonNull String paramString, @NonNull Object paramObject2)
+  private <T> T invokeAndReturnWithDefault(@NonNull Object paramObject, @NonNull String paramString, @NonNull T paramT)
   {
     i = 0;
     try
     {
-      paramObject1 = getTextViewMethod(paramString).invoke(paramObject1, new Object[0]);
-      paramObject2 = paramObject1;
-      if (paramObject1 != null) {}
+      paramObject = getTextViewMethod(paramString).invoke(paramObject, new Object[0]);
+      paramT = paramObject;
+      if (paramObject != null) {}
     }
-    catch (Exception paramObject1)
+    catch (Exception paramObject)
     {
       do
       {
         i = 1;
-        Log.w("ACTVAutoSizeHelper", "Failed to invoke TextView#" + paramString + "() method", paramObject1);
+        Log.w("ACTVAutoSizeHelper", "Failed to invoke TextView#" + paramString + "() method", paramObject);
       } while (0 == 0);
       return null;
     }
@@ -206,7 +206,7 @@ class AppCompatTextViewAutoSizeHelper
         break label78;
       }
     }
-    return paramObject2;
+    return paramT;
   }
   
   private void setRawTextSize(float paramFloat)

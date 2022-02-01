@@ -16,13 +16,13 @@ import java.util.Set;
 
 class OldUniAttribute
 {
-  protected HashMap _data = new HashMap();
+  protected HashMap<String, HashMap<String, byte[]>> _data = new HashMap();
   JceInputStream _is = new JceInputStream();
-  protected HashMap cachedClassName = new HashMap();
-  private HashMap cachedData = new HashMap();
+  protected HashMap<String, Object> cachedClassName = new HashMap();
+  private HashMap<String, Object> cachedData = new HashMap();
   protected String encodeName = "GBK";
   
-  private void checkObjectType(ArrayList paramArrayList, Object paramObject)
+  private void checkObjectType(ArrayList<String> paramArrayList, Object paramObject)
   {
     if (paramObject.getClass().isArray())
     {
@@ -117,7 +117,7 @@ class OldUniAttribute
     return JceUtil.getJceBufArray(localJceOutputStream.getByteBuffer());
   }
   
-  public Object get(String paramString)
+  public <T> T get(String paramString)
   {
     Object localObject2 = null;
     if (!this._data.containsKey(paramString)) {
@@ -150,7 +150,7 @@ class OldUniAttribute
     }
   }
   
-  public Object get(String paramString, Object paramObject)
+  public <T> T get(String paramString, Object paramObject)
   {
     if (!this._data.containsKey(paramString)) {
       return paramObject;
@@ -193,7 +193,7 @@ class OldUniAttribute
     return this.encodeName;
   }
   
-  public Object getJceStruct(String paramString)
+  public <T> T getJceStruct(String paramString)
   {
     if (!this._data.containsKey(paramString)) {
       return null;
@@ -227,7 +227,7 @@ class OldUniAttribute
     }
   }
   
-  public Set getKeySet()
+  public Set<String> getKeySet()
   {
     return Collections.unmodifiableSet(this._data.keySet());
   }
@@ -237,30 +237,30 @@ class OldUniAttribute
     return this._data.isEmpty();
   }
   
-  public void put(String paramString, Object paramObject)
+  public <T> void put(String paramString, T paramT)
   {
     if (paramString == null) {
       throw new IllegalArgumentException("put key can not is null");
     }
-    if (paramObject == null) {
+    if (paramT == null) {
       throw new IllegalArgumentException("put value can not is null");
     }
-    if ((paramObject instanceof Set)) {
+    if ((paramT instanceof Set)) {
       throw new IllegalArgumentException("can not support Set");
     }
     Object localObject = new JceOutputStream();
     ((JceOutputStream)localObject).setServerEncoding(this.encodeName);
-    ((JceOutputStream)localObject).write(paramObject, 0);
+    ((JceOutputStream)localObject).write(paramT, 0);
     localObject = JceUtil.getJceBufArray(((JceOutputStream)localObject).getByteBuffer());
     HashMap localHashMap = new HashMap(1);
     ArrayList localArrayList = new ArrayList(1);
-    checkObjectType(localArrayList, paramObject);
+    checkObjectType(localArrayList, paramT);
     localHashMap.put(BasicClassTypeUtil.transTypeList(localArrayList), localObject);
     this.cachedData.remove(paramString);
     this._data.put(paramString, localHashMap);
   }
   
-  public Object remove(String paramString)
+  public <T> T remove(String paramString)
   {
     if (!this._data.containsKey(paramString)) {
       return null;

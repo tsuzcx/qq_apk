@@ -13,7 +13,7 @@ class PhoneUtil20Impl
   private int aO;
   
   /* Error */
-  public java.util.List getCellInfoList(Context paramContext)
+  public java.util.List<PhoneUtil.CellInfo> getCellInfoList(Context paramContext)
   {
     // Byte code:
     //   0: aload_1

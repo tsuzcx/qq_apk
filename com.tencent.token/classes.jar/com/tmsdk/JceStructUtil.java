@@ -16,9 +16,9 @@ public class JceStructUtil
     return paramArrayOfByte;
   }
   
-  public static JceStruct getJceStruct(byte[] paramArrayOfByte, JceStruct paramJceStruct, boolean paramBoolean)
+  public static <T extends JceStruct> T getJceStruct(byte[] paramArrayOfByte, T paramT, boolean paramBoolean)
   {
-    if ((paramArrayOfByte == null) || (paramJceStruct == null)) {
+    if ((paramArrayOfByte == null) || (paramT == null)) {
       return null;
     }
     if (paramBoolean) {}
@@ -26,10 +26,10 @@ public class JceStructUtil
     {
       try
       {
-        paramJceStruct = paramJceStruct.newInit();
-        paramJceStruct.recyle();
-        paramJceStruct.readFrom(createUTF8InputStream(paramArrayOfByte));
-        return paramJceStruct;
+        paramT = paramT.newInit();
+        paramT.recyle();
+        paramT.readFrom(createUTF8InputStream(paramArrayOfByte));
+        return paramT;
       }
       catch (Exception paramArrayOfByte)
       {

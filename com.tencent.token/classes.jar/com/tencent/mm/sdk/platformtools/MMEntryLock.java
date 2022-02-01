@@ -5,7 +5,7 @@ import java.util.Set;
 
 public final class MMEntryLock
 {
-  private static Set an = new HashSet();
+  private static Set<String> an = new HashSet();
   
   public static boolean isLocked(String paramString)
   {

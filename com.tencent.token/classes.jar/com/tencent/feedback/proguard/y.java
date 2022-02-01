@@ -49,7 +49,7 @@ public final class y
     // Byte code:
     //   0: ldc 2
     //   2: monitorenter
-    //   3: getstatic 66	com/tencent/feedback/proguard/y:a	Lcom/tencent/feedback/proguard/y;
+    //   3: getstatic 74	com/tencent/feedback/proguard/y:a	Lcom/tencent/feedback/proguard/y;
     //   6: ifnonnull +20 -> 26
     //   9: aload_0
     //   10: ifnonnull +25 -> 35
@@ -58,16 +58,16 @@ public final class y
     //   17: aload_0
     //   18: aload_1
     //   19: aload_2
-    //   20: invokespecial 69	com/tencent/feedback/proguard/y:<init>	(Landroid/content/Context;Lcom/tencent/feedback/common/b;Lcom/tencent/feedback/upload/e;)V
-    //   23: putstatic 66	com/tencent/feedback/proguard/y:a	Lcom/tencent/feedback/proguard/y;
-    //   26: getstatic 66	com/tencent/feedback/proguard/y:a	Lcom/tencent/feedback/proguard/y;
+    //   20: invokespecial 77	com/tencent/feedback/proguard/y:<init>	(Landroid/content/Context;Lcom/tencent/feedback/common/b;Lcom/tencent/feedback/upload/e;)V
+    //   23: putstatic 74	com/tencent/feedback/proguard/y:a	Lcom/tencent/feedback/proguard/y;
+    //   26: getstatic 74	com/tencent/feedback/proguard/y:a	Lcom/tencent/feedback/proguard/y;
     //   29: astore_0
     //   30: ldc 2
     //   32: monitorexit
     //   33: aload_0
     //   34: areturn
     //   35: aload_0
-    //   36: invokevirtual 75	android/content/Context:getApplicationContext	()Landroid/content/Context;
+    //   36: invokevirtual 83	android/content/Context:getApplicationContext	()Landroid/content/Context;
     //   39: astore_3
     //   40: aload_3
     //   41: ifnull -28 -> 13
@@ -178,7 +178,16 @@ public final class y
                 if (0L > 0L) {
                   continue;
                 }
-                ((b)localObject1).a(new y.3(this, (byte)2));
+                ((b)localObject1).a(new Runnable()
+                {
+                  public final void run()
+                  {
+                    com.tencent.feedback.upload.e locale = y.this.h();
+                    if (locale != null) {
+                      locale.a(new A(y.a(y.this), y.a(), this.a));
+                    }
+                  }
+                });
                 bool1 = bool2;
               }
             }
@@ -187,7 +196,16 @@ public final class y
             if (0L <= 0L) {
               continue;
             }
-            ((b)localObject1).a(new y.4(this, (byte)2), 0L);
+            ((b)localObject1).a(new Runnable()
+            {
+              public final void run()
+              {
+                com.tencent.feedback.upload.e locale = y.this.h();
+                if (locale != null) {
+                  locale.a(new A(y.a(y.this), y.a(), this.a));
+                }
+              }
+            }, 0L);
             bool1 = bool2;
             continue;
           }
@@ -226,7 +244,31 @@ public final class y
               bool1 = bool2;
               if (paramLong > l2)
               {
-                this.c.a(new y.1(this), paramLong - l2);
+                this.c.a(new Runnable()
+                {
+                  public final void run()
+                  {
+                    long l2 = y.this.f();
+                    long l1 = new Date().getTime();
+                    l2 -= l1;
+                    b localb = y.this.g();
+                    if (localb != null)
+                    {
+                      if (l2 > 0L) {
+                        localb.a(this, l2 + 1000L);
+                      }
+                    }
+                    else {
+                      return;
+                    }
+                    com.tencent.feedback.common.e.b("rqdp{  next day to upload}", new Object[0]);
+                    y.this.d();
+                    l2 = y.this.e();
+                    y.this.b(l2);
+                    localb.a(this, l2 - l1);
+                    com.tencent.feedback.common.e.b("rqdp{ next day %d}", new Object[] { Long.valueOf(l2 - l1) });
+                  }
+                }, paramLong - l2);
                 com.tencent.feedback.common.e.b("rqdp{ next day %d}", new Object[] { Long.valueOf(paramLong - l2) });
                 bool1 = bool2;
               }
@@ -312,7 +354,13 @@ public final class y
   {
     try
     {
-      boolean bool = b.b().a(new y.2(this));
+      boolean bool = b.b().a(new Runnable()
+      {
+        public final void run()
+        {
+          com.tencent.feedback.common.e.b("rqdp{ login state record %b}", new Object[] { Boolean.valueOf(y.this.a(4)) });
+        }
+      });
       return bool;
     }
     finally

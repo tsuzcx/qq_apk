@@ -5,9 +5,10 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.os.Build.VERSION;
 import android.telephony.TelephonyManager;
-import com.tencent.token.cx;
+import com.tencent.token.cb;
 import com.tencent.token.ui.IndexActivity;
-import com.tencent.token.utils.u;
+import com.tencent.token.utils.j;
+import java.io.File;
 
 public class c
 {
@@ -25,7 +26,7 @@ public class c
     a = "official";
     c = "https://w.aq.qq.com";
     d = 1;
-    if (u.c == 0)
+    if (j.c == 0)
     {
       c = "http://test.aq.qq.com";
       d = 0;
@@ -38,18 +39,18 @@ public class c
       g = null;
       h = 0;
       return;
-      if (u.c == 1)
+      if (j.c == 1)
       {
         c = "https://w.aq.qq.com";
         d = 1;
       }
-      else if (u.c == 2)
+      else if (j.c == 2)
       {
         c = "http://exp.aq.qq.com";
         d = 2;
         a = "rdm";
       }
-      else if (u.c == 3)
+      else if (j.c == 3)
       {
         c = "http://gray.aq.qq.com";
         d = 3;
@@ -69,7 +70,7 @@ public class c
     if (d == 0)
     {
       a("http://test.aq.qq.com");
-      cx.a("http://test.aq.qq.com");
+      cb.a("http://test.aq.qq.com");
     }
     do
     {
@@ -77,18 +78,18 @@ public class c
       if (d == 1)
       {
         a("https://w.aq.qq.com");
-        cx.a("https://aq.qq.com");
+        cb.a("https://aq.qq.com");
         return;
       }
       if (d == 2)
       {
         a("http://exp.aq.qq.com");
-        cx.a("https://aq.qq.com");
+        cb.a("https://aq.qq.com");
         return;
       }
     } while (d != 3);
     a("http://gray.aq.qq.com");
-    cx.a("https://aq.qq.com");
+    cb.a("https://aq.qq.com");
   }
   
   public static void a(Context paramContext)
@@ -138,7 +139,7 @@ public class c
     if (f != null) {}
     for (boolean bool = true;; bool = false)
     {
-      h.a(bool);
+      g.a(bool);
       return f;
     }
   }
@@ -189,7 +190,7 @@ public class c
   private static int m()
   {
     Context localContext = g();
-    int i = u.a;
+    int i = j.a;
     try
     {
       int j = localContext.getPackageManager().getPackageInfo(localContext.getPackageName(), 16384).versionCode;
@@ -199,11 +200,23 @@ public class c
     {
       for (;;)
       {
-        h.c(localException.getMessage());
+        g.c(localException.getMessage());
       }
     }
-    h.b("versionCode : " + i);
+    g.b("versionCode : " + i);
     return i;
+  }
+  
+  public static abstract interface a
+  {
+    public static final boolean a = j.e;
+    public static final boolean b = j.f;
+    public static final boolean c = j.g;
+    public static final boolean d = j.i;
+    public static final boolean e = j.j;
+    public static final boolean f = j.k;
+    public static final String g = "Tencent" + File.separator + "QQSec" + File.separator + "log";
+    public static final int h = j.h;
   }
 }
 

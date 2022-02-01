@@ -1,8 +1,8 @@
 package com.tencent.halley.scheduler.c;
 
 import com.tencent.halley.common.b.a;
+import com.tencent.halley.common.b.b;
 import com.tencent.halley.common.b.c;
-import com.tencent.halley.common.b.d;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -35,15 +35,15 @@ public final class f
     this.d = ((Map)parama.a(f, 3, false));
   }
   
-  public final void a(d paramd)
+  public final void a(b paramb)
   {
-    paramd.a(this.c, 0);
-    paramd.a(this.a, 1);
+    paramb.a(this.c, 0);
+    paramb.a(this.a, 1);
     if (this.b != null) {
-      paramd.a(this.b, 2);
+      paramb.a(this.b, 2);
     }
     if (this.d != null) {
-      paramd.a(this.d, 3);
+      paramb.a(this.d, 3);
     }
   }
 }

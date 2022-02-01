@@ -1,8 +1,10 @@
 package btmsdkobf;
 
 import android.content.ContentValues;
+import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteDatabase.CursorFactory;
 import android.database.sqlite.SQLiteOpenHelper;
 import com.qq.taf.jce.HexUtil;
 import java.util.ArrayList;
@@ -19,7 +21,25 @@ public class bs
   private bs()
   {
     bo.k("DataManager-DataManager");
-    this.gE = new fj(this, bc.n(), "r.db", null, 10);
+    this.gE = new SQLiteOpenHelper(bc.n(), "r.db", null, 10)
+    {
+      public void onCreate(SQLiteDatabase paramAnonymousSQLiteDatabase)
+      {
+        bo.k("onCreate-db:[" + paramAnonymousSQLiteDatabase + "]");
+        bs.a(bs.this, paramAnonymousSQLiteDatabase);
+      }
+      
+      public void onDowngrade(SQLiteDatabase paramAnonymousSQLiteDatabase, int paramAnonymousInt1, int paramAnonymousInt2)
+      {
+        bo.k("onDowngrade-db:[" + paramAnonymousSQLiteDatabase + "]oldVersion:[" + paramAnonymousInt1 + "]newVersion:[" + paramAnonymousInt2 + "]");
+      }
+      
+      public void onUpgrade(SQLiteDatabase paramAnonymousSQLiteDatabase, int paramAnonymousInt1, int paramAnonymousInt2)
+      {
+        bo.k("onUpgrade-db:[" + paramAnonymousSQLiteDatabase + "]oldVersion:[" + paramAnonymousInt1 + "]newVersion:[" + paramAnonymousInt2 + "]");
+        bs.a(bs.this, paramAnonymousSQLiteDatabase, paramAnonymousInt1, paramAnonymousInt2);
+      }
+    };
     this.gE.getWritableDatabase().setLockingEnabled(false);
   }
   
@@ -38,21 +58,21 @@ public class bs
     // Byte code:
     //   0: ldc 2
     //   2: monitorenter
-    //   3: getstatic 16	btmsdkobf/bs:gC	Lbtmsdkobf/bs;
+    //   3: getstatic 18	btmsdkobf/bs:gC	Lbtmsdkobf/bs;
     //   6: ifnonnull +25 -> 31
     //   9: ldc 2
     //   11: monitorenter
-    //   12: getstatic 16	btmsdkobf/bs:gC	Lbtmsdkobf/bs;
+    //   12: getstatic 18	btmsdkobf/bs:gC	Lbtmsdkobf/bs;
     //   15: ifnonnull +13 -> 28
     //   18: new 2	btmsdkobf/bs
     //   21: dup
     //   22: invokespecial 80	btmsdkobf/bs:<init>	()V
-    //   25: putstatic 16	btmsdkobf/bs:gC	Lbtmsdkobf/bs;
+    //   25: putstatic 18	btmsdkobf/bs:gC	Lbtmsdkobf/bs;
     //   28: ldc 2
     //   30: monitorexit
     //   31: ldc 2
     //   33: monitorexit
-    //   34: getstatic 16	btmsdkobf/bs:gC	Lbtmsdkobf/bs;
+    //   34: getstatic 18	btmsdkobf/bs:gC	Lbtmsdkobf/bs;
     //   37: areturn
     //   38: astore_0
     //   39: ldc 2
@@ -79,7 +99,7 @@ public class bs
     //   45	48	44	finally
   }
   
-  private List b(Cursor paramCursor)
+  private List<br> b(Cursor paramCursor)
   {
     localArrayList = new ArrayList();
     try
@@ -184,28 +204,28 @@ public class bs
   }
   
   /* Error */
-  public List ae()
+  public List<br> ae()
   {
     // Byte code:
     //   0: aconst_null
     //   1: astore 5
-    //   3: invokestatic 294	java/lang/System:currentTimeMillis	()J
+    //   3: invokestatic 296	java/lang/System:currentTimeMillis	()J
     //   6: lstore_2
     //   7: new 199	java/lang/StringBuilder
     //   10: dup
     //   11: bipush 120
-    //   13: invokespecial 297	java/lang/StringBuilder:<init>	(I)V
+    //   13: invokespecial 299	java/lang/StringBuilder:<init>	(I)V
     //   16: astore 4
     //   18: aload 4
-    //   20: ldc_w 299
+    //   20: ldc_w 301
     //   23: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   26: pop
     //   27: aload 4
-    //   29: ldc_w 301
+    //   29: ldc_w 303
     //   32: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   35: pop
     //   36: aload 4
-    //   38: ldc_w 303
+    //   38: ldc_w 305
     //   41: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   44: pop
     //   45: aload 4
@@ -213,15 +233,15 @@ public class bs
     //   49: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   52: pop
     //   53: aload 4
-    //   55: ldc_w 305
+    //   55: ldc_w 307
     //   58: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   61: pop
     //   62: aload 4
     //   64: iconst_2
-    //   65: invokevirtual 308	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   65: invokevirtual 310	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   68: pop
     //   69: aload 4
-    //   71: ldc_w 310
+    //   71: ldc_w 312
     //   74: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   77: pop
     //   78: aload 4
@@ -229,17 +249,17 @@ public class bs
     //   82: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   85: pop
     //   86: aload 4
-    //   88: ldc_w 312
+    //   88: ldc_w 314
     //   91: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   94: pop
     //   95: aload 4
     //   97: lload_2
-    //   98: invokevirtual 315	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   98: invokevirtual 317	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   101: pop
     //   102: new 199	java/lang/StringBuilder
     //   105: dup
     //   106: invokespecial 200	java/lang/StringBuilder:<init>	()V
-    //   109: ldc_w 317
+    //   109: ldc_w 319
     //   112: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   115: aload 4
     //   117: invokevirtual 215	java/lang/StringBuilder:toString	()Ljava/lang/String;
@@ -247,11 +267,11 @@ public class bs
     //   123: ldc 211
     //   125: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   128: invokevirtual 215	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   131: invokestatic 34	btmsdkobf/bo:k	(Ljava/lang/String;)V
+    //   131: invokestatic 36	btmsdkobf/bo:k	(Ljava/lang/String;)V
     //   134: aload_0
     //   135: aload 4
     //   137: invokevirtual 215	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   140: invokespecial 319	btmsdkobf/bs:m	(Ljava/lang/String;)Landroid/database/Cursor;
+    //   140: invokespecial 321	btmsdkobf/bs:m	(Ljava/lang/String;)Landroid/database/Cursor;
     //   143: astore 4
     //   145: aload 4
     //   147: astore 5
@@ -261,14 +281,14 @@ public class bs
     //   156: astore 6
     //   158: aload_0
     //   159: aload 5
-    //   161: invokespecial 321	btmsdkobf/bs:b	(Landroid/database/Cursor;)Ljava/util/List;
+    //   161: invokespecial 323	btmsdkobf/bs:b	(Landroid/database/Cursor;)Ljava/util/List;
     //   164: astore 4
     //   166: aload 5
     //   168: astore 6
     //   170: new 199	java/lang/StringBuilder
     //   173: dup
     //   174: invokespecial 200	java/lang/StringBuilder:<init>	()V
-    //   177: ldc_w 323
+    //   177: ldc_w 325
     //   180: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   183: astore 7
     //   185: aload 4
@@ -282,17 +302,17 @@ public class bs
     //   204: astore 6
     //   206: aload 7
     //   208: iload_1
-    //   209: invokevirtual 308	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   209: invokevirtual 310	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   212: ldc 211
     //   214: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   217: invokevirtual 215	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   220: invokestatic 34	btmsdkobf/bo:k	(Ljava/lang/String;)V
+    //   220: invokestatic 36	btmsdkobf/bo:k	(Ljava/lang/String;)V
     //   223: aload 4
     //   225: astore 6
     //   227: aload 5
     //   229: ifnull +14 -> 243
     //   232: aload 5
-    //   234: invokeinterface 324 1 0
+    //   234: invokeinterface 326 1 0
     //   239: aload 4
     //   241: astore 6
     //   243: aload 6
@@ -311,7 +331,7 @@ public class bs
     //   270: ldc 211
     //   272: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   275: invokevirtual 215	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   278: invokestatic 34	btmsdkobf/bo:k	(Ljava/lang/String;)V
+    //   278: invokestatic 36	btmsdkobf/bo:k	(Ljava/lang/String;)V
     //   281: aload 4
     //   283: areturn
     //   284: astore 7
@@ -331,13 +351,13 @@ public class bs
     //   313: ldc 211
     //   315: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   318: invokevirtual 215	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   321: invokestatic 34	btmsdkobf/bo:k	(Ljava/lang/String;)V
+    //   321: invokestatic 36	btmsdkobf/bo:k	(Ljava/lang/String;)V
     //   324: aload 4
     //   326: astore 6
     //   328: aload 5
     //   330: ifnull -87 -> 243
     //   333: aload 5
-    //   335: invokeinterface 324 1 0
+    //   335: invokeinterface 326 1 0
     //   340: aload 4
     //   342: areturn
     //   343: astore 5
@@ -351,14 +371,14 @@ public class bs
     //   362: ldc 211
     //   364: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   367: invokevirtual 215	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   370: invokestatic 34	btmsdkobf/bo:k	(Ljava/lang/String;)V
+    //   370: invokestatic 36	btmsdkobf/bo:k	(Ljava/lang/String;)V
     //   373: aload 4
     //   375: areturn
     //   376: astore 4
     //   378: aload 5
     //   380: ifnull +10 -> 390
     //   383: aload 5
-    //   385: invokeinterface 324 1 0
+    //   385: invokeinterface 326 1 0
     //   390: aload 4
     //   392: athrow
     //   393: astore 5
@@ -372,7 +392,7 @@ public class bs
     //   412: ldc 211
     //   414: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   417: invokevirtual 215	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   420: invokestatic 34	btmsdkobf/bo:k	(Ljava/lang/String;)V
+    //   420: invokestatic 36	btmsdkobf/bo:k	(Ljava/lang/String;)V
     //   423: goto -33 -> 390
     //   426: astore 4
     //   428: aload 6
@@ -426,7 +446,7 @@ public class bs
   }
   
   /* Error */
-  public List af()
+  public List<br> af()
   {
     // Byte code:
     //   0: aconst_null
@@ -434,18 +454,18 @@ public class bs
     //   2: new 199	java/lang/StringBuilder
     //   5: dup
     //   6: bipush 120
-    //   8: invokespecial 297	java/lang/StringBuilder:<init>	(I)V
+    //   8: invokespecial 299	java/lang/StringBuilder:<init>	(I)V
     //   11: astore_2
     //   12: aload_2
-    //   13: ldc_w 299
+    //   13: ldc_w 301
     //   16: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   19: pop
     //   20: aload_2
-    //   21: ldc_w 301
+    //   21: ldc_w 303
     //   24: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   27: pop
     //   28: aload_2
-    //   29: ldc_w 303
+    //   29: ldc_w 305
     //   32: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   35: pop
     //   36: aload_2
@@ -453,15 +473,15 @@ public class bs
     //   39: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   42: pop
     //   43: aload_2
-    //   44: ldc_w 305
+    //   44: ldc_w 307
     //   47: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   50: pop
     //   51: aload_2
     //   52: iconst_1
-    //   53: invokevirtual 308	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   53: invokevirtual 310	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   56: pop
     //   57: aload_2
-    //   58: ldc_w 310
+    //   58: ldc_w 312
     //   61: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   64: pop
     //   65: aload_2
@@ -469,15 +489,15 @@ public class bs
     //   68: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   71: pop
     //   72: aload_2
-    //   73: ldc_w 305
+    //   73: ldc_w 307
     //   76: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   79: pop
     //   80: aload_2
     //   81: iconst_2
-    //   82: invokevirtual 308	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   82: invokevirtual 310	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   85: pop
     //   86: aload_2
-    //   87: ldc_w 327
+    //   87: ldc_w 330
     //   90: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   93: pop
     //   94: aload_2
@@ -485,17 +505,17 @@ public class bs
     //   97: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   100: pop
     //   101: aload_2
-    //   102: ldc_w 305
+    //   102: ldc_w 307
     //   105: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   108: pop
     //   109: aload_2
     //   110: iconst_1
-    //   111: invokevirtual 308	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   111: invokevirtual 310	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   114: pop
     //   115: new 199	java/lang/StringBuilder
     //   118: dup
     //   119: invokespecial 200	java/lang/StringBuilder:<init>	()V
-    //   122: ldc_w 329
+    //   122: ldc_w 332
     //   125: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   128: aload_2
     //   129: invokevirtual 215	java/lang/StringBuilder:toString	()Ljava/lang/String;
@@ -503,11 +523,11 @@ public class bs
     //   135: ldc 211
     //   137: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   140: invokevirtual 215	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   143: invokestatic 34	btmsdkobf/bo:k	(Ljava/lang/String;)V
+    //   143: invokestatic 36	btmsdkobf/bo:k	(Ljava/lang/String;)V
     //   146: aload_0
     //   147: aload_2
     //   148: invokevirtual 215	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   151: invokespecial 319	btmsdkobf/bs:m	(Ljava/lang/String;)Landroid/database/Cursor;
+    //   151: invokespecial 321	btmsdkobf/bs:m	(Ljava/lang/String;)Landroid/database/Cursor;
     //   154: astore_2
     //   155: aload_2
     //   156: astore_3
@@ -517,14 +537,14 @@ public class bs
     //   162: astore 4
     //   164: aload_0
     //   165: aload_3
-    //   166: invokespecial 321	btmsdkobf/bs:b	(Landroid/database/Cursor;)Ljava/util/List;
+    //   166: invokespecial 323	btmsdkobf/bs:b	(Landroid/database/Cursor;)Ljava/util/List;
     //   169: astore_2
     //   170: aload_3
     //   171: astore 4
     //   173: new 199	java/lang/StringBuilder
     //   176: dup
     //   177: invokespecial 200	java/lang/StringBuilder:<init>	()V
-    //   180: ldc_w 331
+    //   180: ldc_w 334
     //   183: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   186: astore 5
     //   188: aload_2
@@ -538,17 +558,17 @@ public class bs
     //   203: astore 4
     //   205: aload 5
     //   207: iload_1
-    //   208: invokevirtual 308	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   208: invokevirtual 310	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   211: ldc 211
     //   213: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   216: invokevirtual 215	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   219: invokestatic 34	btmsdkobf/bo:k	(Ljava/lang/String;)V
+    //   219: invokestatic 36	btmsdkobf/bo:k	(Ljava/lang/String;)V
     //   222: aload_2
     //   223: astore 4
     //   225: aload_3
     //   226: ifnull +12 -> 238
     //   229: aload_3
-    //   230: invokeinterface 324 1 0
+    //   230: invokeinterface 326 1 0
     //   235: aload_2
     //   236: astore 4
     //   238: aload 4
@@ -567,7 +587,7 @@ public class bs
     //   263: ldc 211
     //   265: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   268: invokevirtual 215	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   271: invokestatic 34	btmsdkobf/bo:k	(Ljava/lang/String;)V
+    //   271: invokestatic 36	btmsdkobf/bo:k	(Ljava/lang/String;)V
     //   274: aload_2
     //   275: areturn
     //   276: astore 5
@@ -587,13 +607,13 @@ public class bs
     //   302: ldc 211
     //   304: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   307: invokevirtual 215	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   310: invokestatic 34	btmsdkobf/bo:k	(Ljava/lang/String;)V
+    //   310: invokestatic 36	btmsdkobf/bo:k	(Ljava/lang/String;)V
     //   313: aload_2
     //   314: astore 4
     //   316: aload_3
     //   317: ifnull -79 -> 238
     //   320: aload_3
-    //   321: invokeinterface 324 1 0
+    //   321: invokeinterface 326 1 0
     //   326: aload_2
     //   327: areturn
     //   328: astore_3
@@ -607,14 +627,14 @@ public class bs
     //   345: ldc 211
     //   347: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   350: invokevirtual 215	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   353: invokestatic 34	btmsdkobf/bo:k	(Ljava/lang/String;)V
+    //   353: invokestatic 36	btmsdkobf/bo:k	(Ljava/lang/String;)V
     //   356: aload_2
     //   357: areturn
     //   358: astore_2
     //   359: aload_3
     //   360: ifnull +9 -> 369
     //   363: aload_3
-    //   364: invokeinterface 324 1 0
+    //   364: invokeinterface 326 1 0
     //   369: aload_2
     //   370: athrow
     //   371: astore_3
@@ -628,7 +648,7 @@ public class bs
     //   388: ldc 211
     //   390: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   393: invokevirtual 215	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   396: invokestatic 34	btmsdkobf/bo:k	(Ljava/lang/String;)V
+    //   396: invokestatic 36	btmsdkobf/bo:k	(Ljava/lang/String;)V
     //   399: goto -30 -> 369
     //   402: astore_2
     //   403: aload 4
@@ -681,7 +701,7 @@ public class bs
   }
   
   /* Error */
-  public List ag()
+  public List<br> ag()
   {
     // Byte code:
     //   0: aconst_null
@@ -689,18 +709,18 @@ public class bs
     //   2: new 199	java/lang/StringBuilder
     //   5: dup
     //   6: bipush 120
-    //   8: invokespecial 297	java/lang/StringBuilder:<init>	(I)V
+    //   8: invokespecial 299	java/lang/StringBuilder:<init>	(I)V
     //   11: astore_2
     //   12: aload_2
-    //   13: ldc_w 299
+    //   13: ldc_w 301
     //   16: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   19: pop
     //   20: aload_2
-    //   21: ldc_w 301
+    //   21: ldc_w 303
     //   24: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   27: pop
     //   28: aload_2
-    //   29: ldc_w 303
+    //   29: ldc_w 305
     //   32: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   35: pop
     //   36: aload_2
@@ -708,15 +728,15 @@ public class bs
     //   39: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   42: pop
     //   43: aload_2
-    //   44: ldc_w 305
+    //   44: ldc_w 307
     //   47: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   50: pop
     //   51: aload_2
     //   52: iconst_3
-    //   53: invokevirtual 308	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   53: invokevirtual 310	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   56: pop
     //   57: aload_2
-    //   58: ldc_w 327
+    //   58: ldc_w 330
     //   61: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   64: pop
     //   65: aload_2
@@ -724,17 +744,17 @@ public class bs
     //   68: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   71: pop
     //   72: aload_2
-    //   73: ldc_w 305
+    //   73: ldc_w 307
     //   76: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   79: pop
     //   80: aload_2
     //   81: iconst_1
-    //   82: invokevirtual 308	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   82: invokevirtual 310	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   85: pop
     //   86: new 199	java/lang/StringBuilder
     //   89: dup
     //   90: invokespecial 200	java/lang/StringBuilder:<init>	()V
-    //   93: ldc_w 334
+    //   93: ldc_w 337
     //   96: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   99: aload_2
     //   100: invokevirtual 215	java/lang/StringBuilder:toString	()Ljava/lang/String;
@@ -742,11 +762,11 @@ public class bs
     //   106: ldc 211
     //   108: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   111: invokevirtual 215	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   114: invokestatic 34	btmsdkobf/bo:k	(Ljava/lang/String;)V
+    //   114: invokestatic 36	btmsdkobf/bo:k	(Ljava/lang/String;)V
     //   117: aload_0
     //   118: aload_2
     //   119: invokevirtual 215	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   122: invokespecial 319	btmsdkobf/bs:m	(Ljava/lang/String;)Landroid/database/Cursor;
+    //   122: invokespecial 321	btmsdkobf/bs:m	(Ljava/lang/String;)Landroid/database/Cursor;
     //   125: astore_2
     //   126: aload_2
     //   127: astore_3
@@ -756,14 +776,14 @@ public class bs
     //   133: astore 4
     //   135: aload_0
     //   136: aload_3
-    //   137: invokespecial 321	btmsdkobf/bs:b	(Landroid/database/Cursor;)Ljava/util/List;
+    //   137: invokespecial 323	btmsdkobf/bs:b	(Landroid/database/Cursor;)Ljava/util/List;
     //   140: astore_2
     //   141: aload_3
     //   142: astore 4
     //   144: new 199	java/lang/StringBuilder
     //   147: dup
     //   148: invokespecial 200	java/lang/StringBuilder:<init>	()V
-    //   151: ldc_w 336
+    //   151: ldc_w 339
     //   154: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   157: astore 5
     //   159: aload_2
@@ -777,17 +797,17 @@ public class bs
     //   174: astore 4
     //   176: aload 5
     //   178: iload_1
-    //   179: invokevirtual 308	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   179: invokevirtual 310	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   182: ldc 211
     //   184: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   187: invokevirtual 215	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   190: invokestatic 34	btmsdkobf/bo:k	(Ljava/lang/String;)V
+    //   190: invokestatic 36	btmsdkobf/bo:k	(Ljava/lang/String;)V
     //   193: aload_2
     //   194: astore 4
     //   196: aload_3
     //   197: ifnull +12 -> 209
     //   200: aload_3
-    //   201: invokeinterface 324 1 0
+    //   201: invokeinterface 326 1 0
     //   206: aload_2
     //   207: astore 4
     //   209: aload 4
@@ -806,7 +826,7 @@ public class bs
     //   234: ldc 211
     //   236: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   239: invokevirtual 215	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   242: invokestatic 34	btmsdkobf/bo:k	(Ljava/lang/String;)V
+    //   242: invokestatic 36	btmsdkobf/bo:k	(Ljava/lang/String;)V
     //   245: aload_2
     //   246: areturn
     //   247: astore 5
@@ -826,13 +846,13 @@ public class bs
     //   273: ldc 211
     //   275: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   278: invokevirtual 215	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   281: invokestatic 34	btmsdkobf/bo:k	(Ljava/lang/String;)V
+    //   281: invokestatic 36	btmsdkobf/bo:k	(Ljava/lang/String;)V
     //   284: aload_2
     //   285: astore 4
     //   287: aload_3
     //   288: ifnull -79 -> 209
     //   291: aload_3
-    //   292: invokeinterface 324 1 0
+    //   292: invokeinterface 326 1 0
     //   297: aload_2
     //   298: areturn
     //   299: astore_3
@@ -846,14 +866,14 @@ public class bs
     //   316: ldc 211
     //   318: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   321: invokevirtual 215	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   324: invokestatic 34	btmsdkobf/bo:k	(Ljava/lang/String;)V
+    //   324: invokestatic 36	btmsdkobf/bo:k	(Ljava/lang/String;)V
     //   327: aload_2
     //   328: areturn
     //   329: astore_2
     //   330: aload_3
     //   331: ifnull +9 -> 340
     //   334: aload_3
-    //   335: invokeinterface 324 1 0
+    //   335: invokeinterface 326 1 0
     //   340: aload_2
     //   341: athrow
     //   342: astore_3
@@ -867,7 +887,7 @@ public class bs
     //   359: ldc 211
     //   361: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   364: invokevirtual 215	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   367: invokestatic 34	btmsdkobf/bo:k	(Ljava/lang/String;)V
+    //   367: invokestatic 36	btmsdkobf/bo:k	(Ljava/lang/String;)V
     //   370: goto -30 -> 340
     //   373: astore_2
     //   374: aload 4
@@ -954,20 +974,20 @@ public class bs
     //   0: new 199	java/lang/StringBuilder
     //   3: dup
     //   4: bipush 120
-    //   6: invokespecial 297	java/lang/StringBuilder:<init>	(I)V
+    //   6: invokespecial 299	java/lang/StringBuilder:<init>	(I)V
     //   9: astore_3
     //   10: aload_3
-    //   11: ldc_w 351
+    //   11: ldc_w 354
     //   14: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   17: pop
     //   18: aload_3
-    //   19: ldc_w 301
+    //   19: ldc_w 303
     //   22: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   25: pop
     //   26: aload_0
     //   27: aload_3
     //   28: invokevirtual 215	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   31: invokespecial 319	btmsdkobf/bs:m	(Ljava/lang/String;)Landroid/database/Cursor;
+    //   31: invokespecial 321	btmsdkobf/bs:m	(Ljava/lang/String;)Landroid/database/Cursor;
     //   34: astore_3
     //   35: aload_3
     //   36: ifnull +251 -> 287
@@ -987,20 +1007,20 @@ public class bs
     //   65: new 199	java/lang/StringBuilder
     //   68: dup
     //   69: invokespecial 200	java/lang/StringBuilder:<init>	()V
-    //   72: ldc_w 353
+    //   72: ldc_w 356
     //   75: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   78: iload_1
-    //   79: invokevirtual 308	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   79: invokevirtual 310	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   82: ldc 211
     //   84: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   87: invokevirtual 215	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   90: invokestatic 34	btmsdkobf/bo:k	(Ljava/lang/String;)V
+    //   90: invokestatic 36	btmsdkobf/bo:k	(Ljava/lang/String;)V
     //   93: iload_1
     //   94: istore_2
     //   95: aload_3
     //   96: ifnull +11 -> 107
     //   99: aload_3
-    //   100: invokeinterface 324 1 0
+    //   100: invokeinterface 326 1 0
     //   105: iload_1
     //   106: istore_2
     //   107: iload_2
@@ -1016,7 +1036,7 @@ public class bs
     //   126: ldc 211
     //   128: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   131: invokevirtual 215	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   134: invokestatic 34	btmsdkobf/bo:k	(Ljava/lang/String;)V
+    //   134: invokestatic 36	btmsdkobf/bo:k	(Ljava/lang/String;)V
     //   137: iload_1
     //   138: ireturn
     //   139: astore 5
@@ -1036,13 +1056,13 @@ public class bs
     //   165: ldc 211
     //   167: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   170: invokevirtual 215	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   173: invokestatic 34	btmsdkobf/bo:k	(Ljava/lang/String;)V
+    //   173: invokestatic 36	btmsdkobf/bo:k	(Ljava/lang/String;)V
     //   176: iload_1
     //   177: istore_2
     //   178: aload_3
     //   179: ifnull -72 -> 107
     //   182: aload_3
-    //   183: invokeinterface 324 1 0
+    //   183: invokeinterface 326 1 0
     //   188: iload_1
     //   189: ireturn
     //   190: astore_3
@@ -1056,7 +1076,7 @@ public class bs
     //   207: ldc 211
     //   209: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   212: invokevirtual 215	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   215: invokestatic 34	btmsdkobf/bo:k	(Ljava/lang/String;)V
+    //   215: invokestatic 36	btmsdkobf/bo:k	(Ljava/lang/String;)V
     //   218: iload_1
     //   219: ireturn
     //   220: astore_3
@@ -1065,7 +1085,7 @@ public class bs
     //   224: aload 4
     //   226: ifnull +10 -> 236
     //   229: aload 4
-    //   231: invokeinterface 324 1 0
+    //   231: invokeinterface 326 1 0
     //   236: aload_3
     //   237: athrow
     //   238: astore 4
@@ -1079,7 +1099,7 @@ public class bs
     //   257: ldc 211
     //   259: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   262: invokevirtual 215	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   265: invokestatic 34	btmsdkobf/bo:k	(Ljava/lang/String;)V
+    //   265: invokestatic 36	btmsdkobf/bo:k	(Ljava/lang/String;)V
     //   268: goto -32 -> 236
     //   271: astore_3
     //   272: goto -48 -> 224
@@ -1131,29 +1151,29 @@ public class bs
     //   0: new 199	java/lang/StringBuilder
     //   3: dup
     //   4: invokespecial 200	java/lang/StringBuilder:<init>	()V
-    //   7: ldc_w 356
+    //   7: ldc_w 359
     //   10: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   13: iload_1
-    //   14: invokevirtual 308	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   14: invokevirtual 310	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   17: ldc 211
     //   19: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   22: invokevirtual 215	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   25: invokestatic 34	btmsdkobf/bo:k	(Ljava/lang/String;)V
+    //   25: invokestatic 36	btmsdkobf/bo:k	(Ljava/lang/String;)V
     //   28: new 199	java/lang/StringBuilder
     //   31: dup
     //   32: bipush 120
-    //   34: invokespecial 297	java/lang/StringBuilder:<init>	(I)V
+    //   34: invokespecial 299	java/lang/StringBuilder:<init>	(I)V
     //   37: astore_2
     //   38: aload_2
-    //   39: ldc_w 299
+    //   39: ldc_w 301
     //   42: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   45: pop
     //   46: aload_2
-    //   47: ldc_w 301
+    //   47: ldc_w 303
     //   50: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   53: pop
     //   54: aload_2
-    //   55: ldc_w 303
+    //   55: ldc_w 305
     //   58: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   61: pop
     //   62: aload_2
@@ -1161,17 +1181,17 @@ public class bs
     //   65: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   68: pop
     //   69: aload_2
-    //   70: ldc_w 305
+    //   70: ldc_w 307
     //   73: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   76: pop
     //   77: aload_2
     //   78: iload_1
-    //   79: invokevirtual 308	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   79: invokevirtual 310	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   82: pop
     //   83: aload_0
     //   84: aload_2
     //   85: invokevirtual 215	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   88: invokespecial 319	btmsdkobf/bs:m	(Ljava/lang/String;)Landroid/database/Cursor;
+    //   88: invokespecial 321	btmsdkobf/bs:m	(Ljava/lang/String;)Landroid/database/Cursor;
     //   91: astore_3
     //   92: aload_3
     //   93: ifnull +269 -> 362
@@ -1179,7 +1199,7 @@ public class bs
     //   97: astore 4
     //   99: aload_0
     //   100: aload_3
-    //   101: invokespecial 321	btmsdkobf/bs:b	(Landroid/database/Cursor;)Ljava/util/List;
+    //   101: invokespecial 323	btmsdkobf/bs:b	(Landroid/database/Cursor;)Ljava/util/List;
     //   104: astore_2
     //   105: aload_2
     //   106: ifnull +256 -> 362
@@ -1192,7 +1212,7 @@ public class bs
     //   122: astore 4
     //   124: aload_2
     //   125: iconst_0
-    //   126: invokeinterface 360 2 0
+    //   126: invokeinterface 363 2 0
     //   131: checkcast 98	btmsdkobf/br
     //   134: astore_2
     //   135: aload_3
@@ -1200,20 +1220,20 @@ public class bs
     //   138: new 199	java/lang/StringBuilder
     //   141: dup
     //   142: invokespecial 200	java/lang/StringBuilder:<init>	()V
-    //   145: ldc_w 362
+    //   145: ldc_w 365
     //   148: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   151: aload_2
     //   152: invokevirtual 209	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   155: ldc 211
     //   157: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   160: invokevirtual 215	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   163: invokestatic 34	btmsdkobf/bo:k	(Ljava/lang/String;)V
+    //   163: invokestatic 36	btmsdkobf/bo:k	(Ljava/lang/String;)V
     //   166: aload_2
     //   167: astore 4
     //   169: aload_3
     //   170: ifnull +12 -> 182
     //   173: aload_3
-    //   174: invokeinterface 324 1 0
+    //   174: invokeinterface 326 1 0
     //   179: aload_2
     //   180: astore 4
     //   182: aload 4
@@ -1229,7 +1249,7 @@ public class bs
     //   202: ldc 211
     //   204: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   207: invokevirtual 215	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   210: invokestatic 34	btmsdkobf/bo:k	(Ljava/lang/String;)V
+    //   210: invokestatic 36	btmsdkobf/bo:k	(Ljava/lang/String;)V
     //   213: aload_2
     //   214: areturn
     //   215: astore 5
@@ -1249,13 +1269,13 @@ public class bs
     //   241: ldc 211
     //   243: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   246: invokevirtual 215	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   249: invokestatic 34	btmsdkobf/bo:k	(Ljava/lang/String;)V
+    //   249: invokestatic 36	btmsdkobf/bo:k	(Ljava/lang/String;)V
     //   252: aload_2
     //   253: astore 4
     //   255: aload_3
     //   256: ifnull -74 -> 182
     //   259: aload_3
-    //   260: invokeinterface 324 1 0
+    //   260: invokeinterface 326 1 0
     //   265: aload_2
     //   266: areturn
     //   267: astore_3
@@ -1269,7 +1289,7 @@ public class bs
     //   284: ldc 211
     //   286: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   289: invokevirtual 215	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   292: invokestatic 34	btmsdkobf/bo:k	(Ljava/lang/String;)V
+    //   292: invokestatic 36	btmsdkobf/bo:k	(Ljava/lang/String;)V
     //   295: aload_2
     //   296: areturn
     //   297: astore_2
@@ -1278,7 +1298,7 @@ public class bs
     //   301: aload 4
     //   303: ifnull +10 -> 313
     //   306: aload 4
-    //   308: invokeinterface 324 1 0
+    //   308: invokeinterface 326 1 0
     //   313: aload_2
     //   314: athrow
     //   315: astore_3
@@ -1292,7 +1312,7 @@ public class bs
     //   332: ldc 211
     //   334: invokevirtual 206	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   337: invokevirtual 215	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   340: invokestatic 34	btmsdkobf/bo:k	(Ljava/lang/String;)V
+    //   340: invokestatic 36	btmsdkobf/bo:k	(Ljava/lang/String;)V
     //   343: goto -30 -> 313
     //   346: astore_2
     //   347: goto -46 -> 301

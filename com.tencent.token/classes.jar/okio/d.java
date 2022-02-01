@@ -1,41 +1,31 @@
 package okio;
 
-final class d
-  extends Thread
+import java.nio.channels.WritableByteChannel;
+
+public abstract interface d
+  extends WritableByteChannel, p
 {
-  d()
-  {
-    super("Okio Watchdog");
-    setDaemon(true);
-  }
+  public abstract d b(String paramString);
   
-  public void run()
-  {
-    for (;;)
-    {
-      try
-      {
-        try
-        {
-          a locala = a.e();
-          if (locala != null) {
-            break label27;
-          }
-          continue;
-        }
-        finally {}
-        continue;
-      }
-      catch (InterruptedException localInterruptedException) {}
-      label27:
-      if (localInterruptedException == a.b)
-      {
-        a.b = null;
-        return;
-      }
-      localInterruptedException.a();
-    }
-  }
+  public abstract c c();
+  
+  public abstract d c(byte[] paramArrayOfByte);
+  
+  public abstract d c(byte[] paramArrayOfByte, int paramInt1, int paramInt2);
+  
+  public abstract void flush();
+  
+  public abstract d g(int paramInt);
+  
+  public abstract d h(int paramInt);
+  
+  public abstract d i(int paramInt);
+  
+  public abstract d k(long paramLong);
+  
+  public abstract d l(long paramLong);
+  
+  public abstract d u();
 }
 
 

@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Map<Ljava.lang.String;Ljava.lang.String;>;
 
 public class c
 {
@@ -248,7 +249,7 @@ public class c
     //   205	212	314	java/io/IOException
   }
   
-  private static com.tencent.feedback.eup.e a(Context paramContext, Map paramMap)
+  private static com.tencent.feedback.eup.e a(Context paramContext, Map<String, String> paramMap)
   {
     if (paramMap == null)
     {
@@ -320,7 +321,7 @@ public class c
           }
           localObject = "unknown2";
           String str7 = (String)paramMap.get("jstack");
-          paramMap = (Map)localObject;
+          paramMap = (Map<String, String>)localObject;
           if (str7 != null) {
             paramMap = (String)localObject + "java:\n" + str7;
           }
@@ -376,7 +377,7 @@ public class c
     com.tencent.feedback.common.e.b("delete record file %s", new Object[] { paramString.getAbsoluteFile() });
   }
   
-  private static Map b(String paramString)
+  private static Map<String, Integer> b(String paramString)
   {
     if (paramString == null) {
       return null;

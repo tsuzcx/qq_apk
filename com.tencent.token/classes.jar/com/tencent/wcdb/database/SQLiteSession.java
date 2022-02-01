@@ -15,8 +15,8 @@ public final class SQLiteSession
   private int mConnectionFlags;
   private final SQLiteConnectionPool mConnectionPool;
   private int mConnectionUseCount;
-  private SQLiteSession.Transaction mTransactionPool;
-  private SQLiteSession.Transaction mTransactionStack;
+  private Transaction mTransactionPool;
+  private Transaction mTransactionStack;
   
   static
   {
@@ -54,79 +54,79 @@ public final class SQLiteSession
     //   0: aload 4
     //   2: ifnull +8 -> 10
     //   5: aload 4
-    //   7: invokevirtual 86	com/tencent/wcdb/support/CancellationSignal:throwIfCanceled	()V
+    //   7: invokevirtual 91	com/tencent/wcdb/support/CancellationSignal:throwIfCanceled	()V
     //   10: aload_0
-    //   11: getfield 88	com/tencent/wcdb/database/SQLiteSession:mTransactionStack	Lcom/tencent/wcdb/database/SQLiteSession$Transaction;
+    //   11: getfield 93	com/tencent/wcdb/database/SQLiteSession:mTransactionStack	Lcom/tencent/wcdb/database/SQLiteSession$Transaction;
     //   14: ifnonnull +11 -> 25
     //   17: aload_0
     //   18: aconst_null
     //   19: iload_3
     //   20: aload 4
-    //   22: invokespecial 90	com/tencent/wcdb/database/SQLiteSession:acquireConnection	(Ljava/lang/String;ILcom/tencent/wcdb/support/CancellationSignal;)V
+    //   22: invokespecial 95	com/tencent/wcdb/database/SQLiteSession:acquireConnection	(Ljava/lang/String;ILcom/tencent/wcdb/support/CancellationSignal;)V
     //   25: aload_0
-    //   26: getfield 88	com/tencent/wcdb/database/SQLiteSession:mTransactionStack	Lcom/tencent/wcdb/database/SQLiteSession$Transaction;
+    //   26: getfield 93	com/tencent/wcdb/database/SQLiteSession:mTransactionStack	Lcom/tencent/wcdb/database/SQLiteSession$Transaction;
     //   29: ifnonnull +39 -> 68
     //   32: iload_1
     //   33: tableswitch	default:+143 -> 176, 1:+77->110, 2:+106->139
-    //   57: getfield 50	com/tencent/wcdb/database/SQLiteSession:mConnection	Lcom/tencent/wcdb/database/SQLiteConnection;
-    //   60: ldc 92
+    //   57: getfield 55	com/tencent/wcdb/database/SQLiteSession:mConnection	Lcom/tencent/wcdb/database/SQLiteConnection;
+    //   60: ldc 97
     //   62: aconst_null
     //   63: aload 4
-    //   65: invokevirtual 96	com/tencent/wcdb/database/SQLiteConnection:execute	(Ljava/lang/String;[Ljava/lang/Object;Lcom/tencent/wcdb/support/CancellationSignal;)V
+    //   65: invokevirtual 101	com/tencent/wcdb/database/SQLiteConnection:execute	(Ljava/lang/String;[Ljava/lang/Object;Lcom/tencent/wcdb/support/CancellationSignal;)V
     //   68: aload_2
     //   69: ifnull +9 -> 78
     //   72: aload_2
-    //   73: invokeinterface 101 1 0
+    //   73: invokeinterface 106 1 0
     //   78: aload_0
     //   79: iload_1
     //   80: aload_2
-    //   81: invokespecial 105	com/tencent/wcdb/database/SQLiteSession:obtainTransaction	(ILcom/tencent/wcdb/database/SQLiteTransactionListener;)Lcom/tencent/wcdb/database/SQLiteSession$Transaction;
+    //   81: invokespecial 110	com/tencent/wcdb/database/SQLiteSession:obtainTransaction	(ILcom/tencent/wcdb/database/SQLiteTransactionListener;)Lcom/tencent/wcdb/database/SQLiteSession$Transaction;
     //   84: astore_2
     //   85: aload_2
     //   86: aload_0
-    //   87: getfield 88	com/tencent/wcdb/database/SQLiteSession:mTransactionStack	Lcom/tencent/wcdb/database/SQLiteSession$Transaction;
-    //   90: putfield 110	com/tencent/wcdb/database/SQLiteSession$Transaction:mParent	Lcom/tencent/wcdb/database/SQLiteSession$Transaction;
+    //   87: getfield 93	com/tencent/wcdb/database/SQLiteSession:mTransactionStack	Lcom/tencent/wcdb/database/SQLiteSession$Transaction;
+    //   90: putfield 113	com/tencent/wcdb/database/SQLiteSession$Transaction:mParent	Lcom/tencent/wcdb/database/SQLiteSession$Transaction;
     //   93: aload_0
     //   94: aload_2
-    //   95: putfield 88	com/tencent/wcdb/database/SQLiteSession:mTransactionStack	Lcom/tencent/wcdb/database/SQLiteSession$Transaction;
+    //   95: putfield 93	com/tencent/wcdb/database/SQLiteSession:mTransactionStack	Lcom/tencent/wcdb/database/SQLiteSession$Transaction;
     //   98: aload_0
-    //   99: getfield 88	com/tencent/wcdb/database/SQLiteSession:mTransactionStack	Lcom/tencent/wcdb/database/SQLiteSession$Transaction;
+    //   99: getfield 93	com/tencent/wcdb/database/SQLiteSession:mTransactionStack	Lcom/tencent/wcdb/database/SQLiteSession$Transaction;
     //   102: ifnonnull +7 -> 109
     //   105: aload_0
-    //   106: invokespecial 113	com/tencent/wcdb/database/SQLiteSession:releaseConnection	()V
+    //   106: invokespecial 116	com/tencent/wcdb/database/SQLiteSession:releaseConnection	()V
     //   109: return
     //   110: aload_0
-    //   111: getfield 50	com/tencent/wcdb/database/SQLiteSession:mConnection	Lcom/tencent/wcdb/database/SQLiteConnection;
-    //   114: ldc 115
+    //   111: getfield 55	com/tencent/wcdb/database/SQLiteSession:mConnection	Lcom/tencent/wcdb/database/SQLiteConnection;
+    //   114: ldc 118
     //   116: aconst_null
     //   117: aload 4
-    //   119: invokevirtual 96	com/tencent/wcdb/database/SQLiteConnection:execute	(Ljava/lang/String;[Ljava/lang/Object;Lcom/tencent/wcdb/support/CancellationSignal;)V
+    //   119: invokevirtual 101	com/tencent/wcdb/database/SQLiteConnection:execute	(Ljava/lang/String;[Ljava/lang/Object;Lcom/tencent/wcdb/support/CancellationSignal;)V
     //   122: goto -54 -> 68
     //   125: astore_2
     //   126: aload_0
-    //   127: getfield 88	com/tencent/wcdb/database/SQLiteSession:mTransactionStack	Lcom/tencent/wcdb/database/SQLiteSession$Transaction;
+    //   127: getfield 93	com/tencent/wcdb/database/SQLiteSession:mTransactionStack	Lcom/tencent/wcdb/database/SQLiteSession$Transaction;
     //   130: ifnonnull +7 -> 137
     //   133: aload_0
-    //   134: invokespecial 113	com/tencent/wcdb/database/SQLiteSession:releaseConnection	()V
+    //   134: invokespecial 116	com/tencent/wcdb/database/SQLiteSession:releaseConnection	()V
     //   137: aload_2
     //   138: athrow
     //   139: aload_0
-    //   140: getfield 50	com/tencent/wcdb/database/SQLiteSession:mConnection	Lcom/tencent/wcdb/database/SQLiteConnection;
-    //   143: ldc 117
+    //   140: getfield 55	com/tencent/wcdb/database/SQLiteSession:mConnection	Lcom/tencent/wcdb/database/SQLiteConnection;
+    //   143: ldc 120
     //   145: aconst_null
     //   146: aload 4
-    //   148: invokevirtual 96	com/tencent/wcdb/database/SQLiteConnection:execute	(Ljava/lang/String;[Ljava/lang/Object;Lcom/tencent/wcdb/support/CancellationSignal;)V
+    //   148: invokevirtual 101	com/tencent/wcdb/database/SQLiteConnection:execute	(Ljava/lang/String;[Ljava/lang/Object;Lcom/tencent/wcdb/support/CancellationSignal;)V
     //   151: goto -83 -> 68
     //   154: astore_2
     //   155: aload_0
-    //   156: getfield 88	com/tencent/wcdb/database/SQLiteSession:mTransactionStack	Lcom/tencent/wcdb/database/SQLiteSession$Transaction;
+    //   156: getfield 93	com/tencent/wcdb/database/SQLiteSession:mTransactionStack	Lcom/tencent/wcdb/database/SQLiteSession$Transaction;
     //   159: ifnonnull +15 -> 174
     //   162: aload_0
-    //   163: getfield 50	com/tencent/wcdb/database/SQLiteSession:mConnection	Lcom/tencent/wcdb/database/SQLiteConnection;
-    //   166: ldc 119
+    //   163: getfield 55	com/tencent/wcdb/database/SQLiteSession:mConnection	Lcom/tencent/wcdb/database/SQLiteConnection;
+    //   166: ldc 122
     //   168: aconst_null
     //   169: aload 4
-    //   171: invokevirtual 96	com/tencent/wcdb/database/SQLiteConnection:execute	(Ljava/lang/String;[Ljava/lang/Object;Lcom/tencent/wcdb/support/CancellationSignal;)V
+    //   171: invokevirtual 101	com/tencent/wcdb/database/SQLiteConnection:execute	(Ljava/lang/String;[Ljava/lang/Object;Lcom/tencent/wcdb/support/CancellationSignal;)V
     //   174: aload_2
     //   175: athrow
     //   176: goto -120 -> 56
@@ -156,7 +156,7 @@ public final class SQLiteSession
     if (paramCancellationSignal != null) {
       paramCancellationSignal.throwIfCanceled();
     }
-    SQLiteSession.Transaction localTransaction = this.mTransactionStack;
+    Transaction localTransaction = this.mTransactionStack;
     int i;
     SQLiteTransactionListener localSQLiteTransactionListener;
     if (((localTransaction.mMarkedSuccessful) || (paramBoolean)) && (!localTransaction.mChildFailed))
@@ -242,9 +242,9 @@ public final class SQLiteSession
     return true;
   }
   
-  private SQLiteSession.Transaction obtainTransaction(int paramInt, SQLiteTransactionListener paramSQLiteTransactionListener)
+  private Transaction obtainTransaction(int paramInt, SQLiteTransactionListener paramSQLiteTransactionListener)
   {
-    SQLiteSession.Transaction localTransaction = this.mTransactionPool;
+    Transaction localTransaction = this.mTransactionPool;
     if (localTransaction != null)
     {
       this.mTransactionPool = localTransaction.mParent;
@@ -257,11 +257,11 @@ public final class SQLiteSession
       localTransaction.mMode = paramInt;
       localTransaction.mListener = paramSQLiteTransactionListener;
       return localTransaction;
-      localTransaction = new SQLiteSession.Transaction(null);
+      localTransaction = new Transaction(null);
     }
   }
   
-  private void recycleTransaction(SQLiteSession.Transaction paramTransaction)
+  private void recycleTransaction(Transaction paramTransaction)
   {
     paramTransaction.mParent = this.mTransactionPool;
     paramTransaction.mListener = null;
@@ -541,7 +541,7 @@ public final class SQLiteSession
     this.mTransactionStack.mMarkedSuccessful = true;
   }
   
-  public Pair walCheckpoint(String paramString, int paramInt)
+  public Pair<Integer, Integer> walCheckpoint(String paramString, int paramInt)
   {
     acquireConnection(null, paramInt, null);
     try
@@ -574,6 +574,15 @@ public final class SQLiteSession
       return false;
     }
     return yieldTransactionUnchecked(paramLong, paramCancellationSignal);
+  }
+  
+  private static final class Transaction
+  {
+    public boolean mChildFailed;
+    public SQLiteTransactionListener mListener;
+    public boolean mMarkedSuccessful;
+    public int mMode;
+    public Transaction mParent;
   }
 }
 

@@ -1,12 +1,17 @@
 package btmsdkobf;
 
+import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 import android.os.PowerManager;
 import com.tmsdk.base.utils.NetworkUtil;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -16,17 +21,55 @@ public class de
 {
   private cl he;
   private PowerManager iB;
-  private de.a lW;
-  private ht lX;
+  private a lW;
+  private b lX;
   private v lY;
   private AtomicInteger lZ = new AtomicInteger(0);
   private Context mContext = bc.n();
-  private Handler mHandler = new hq(this, cx.getLooper());
+  private Handler mHandler = new Handler(cx.getLooper())
+  {
+    public void handleMessage(Message paramAnonymousMessage)
+    {
+      switch (paramAnonymousMessage.what)
+      {
+      case 2: 
+      default: 
+        return;
+      case 0: 
+        eh.f("SharkTcpControler", "[tcp_control][shark_conf] MSG_EXE_RULE_OPEN");
+        de.a(de.this);
+        de.b(de.this).cp();
+        return;
+      case 1: 
+        eh.f("SharkTcpControler", "[tcp_control][shark_conf] MSG_EXE_RULE_CLOSE");
+        de.this.ci();
+        return;
+      }
+      eh.f("SharkTcpControler", "[tcp_control][shark_conf] MSG_EXE_RULE_CYCLE");
+      de.c(de.this);
+    }
+  };
   private boolean ma = false;
-  private Runnable mb = new hr(this);
+  private Runnable mb = new Runnable()
+  {
+    public void run()
+    {
+      synchronized (de.this)
+      {
+        if (de.d(de.this))
+        {
+          eh.e("SharkTcpControler", "[tcp_control][shark_conf][shark_alarm] keep after send timeout, tryCloseConnectionAsyn()");
+          de.this.ci();
+          de.a(de.this, false);
+        }
+        eh.e("SharkTcpControler", "[tcp_control][shark_conf][shark_alarm] keep after send timeout(by alarm), delay 5s by handler");
+        return;
+      }
+    }
+  };
   private boolean mc = false;
   
-  public de(cl paramcl, de.a parama)
+  public de(cl paramcl, a parama)
   {
     this.he = paramcl;
     this.lW = parama;
@@ -48,7 +91,7 @@ public class de
     return G(paramInt * 60);
   }
   
-  private static void b(List paramList)
+  private static void b(List<t> paramList)
   {
     if ((paramList == null) || (paramList.size() == 0)) {
       return;
@@ -64,7 +107,13 @@ public class de
     }
     try
     {
-      Collections.sort(paramList, new hs());
+      Collections.sort(paramList, new Comparator()
+      {
+        public int a(t paramAnonymoust1, t paramAnonymoust2)
+        {
+          return paramAnonymoust1.aD - paramAnonymoust2.aD;
+        }
+      });
       return;
     }
     catch (Throwable paramList)
@@ -82,7 +131,7 @@ public class de
     eh.f("SharkTcpControler", "[tcp_control][shark_conf]markKeepAlive(), refCount: " + i);
   }
   
-  private static ArrayList ck()
+  private static ArrayList<t> ck()
   {
     ArrayList localArrayList = new ArrayList();
     t localt = new t();
@@ -338,51 +387,51 @@ public class de
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 63	btmsdkobf/de:mc	Z
+    //   3: getfield 71	btmsdkobf/de:mc	Z
     //   6: istore_1
     //   7: iload_1
     //   8: ifeq +6 -> 14
     //   11: aload_0
     //   12: monitorexit
     //   13: return
-    //   14: ldc 141
-    //   16: ldc_w 413
-    //   19: invokestatic 242	btmsdkobf/eh:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   14: ldc 145
+    //   16: ldc_w 420
+    //   19: invokestatic 249	btmsdkobf/eh:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   22: aload_0
-    //   23: getfield 415	btmsdkobf/de:lX	Lbtmsdkobf/ht;
+    //   23: getfield 422	btmsdkobf/de:lX	Lbtmsdkobf/de$b;
     //   26: ifnonnull +49 -> 75
     //   29: aload_0
-    //   30: new 417	btmsdkobf/ht
+    //   30: new 15	btmsdkobf/de$b
     //   33: dup
     //   34: aload_0
     //   35: aconst_null
-    //   36: invokespecial 420	btmsdkobf/ht:<init>	(Lbtmsdkobf/de;Lbtmsdkobf/hq;)V
-    //   39: putfield 415	btmsdkobf/de:lX	Lbtmsdkobf/ht;
-    //   42: new 422	android/content/IntentFilter
+    //   36: invokespecial 425	btmsdkobf/de$b:<init>	(Lbtmsdkobf/de;Lbtmsdkobf/de$1;)V
+    //   39: putfield 422	btmsdkobf/de:lX	Lbtmsdkobf/de$b;
+    //   42: new 427	android/content/IntentFilter
     //   45: dup
-    //   46: invokespecial 423	android/content/IntentFilter:<init>	()V
+    //   46: invokespecial 428	android/content/IntentFilter:<init>	()V
     //   49: astore_2
     //   50: aload_2
-    //   51: ldc 217
-    //   53: invokevirtual 427	android/content/IntentFilter:addAction	(Ljava/lang/String;)V
+    //   51: ldc 224
+    //   53: invokevirtual 432	android/content/IntentFilter:addAction	(Ljava/lang/String;)V
     //   56: aload_2
-    //   57: ldc 231
-    //   59: invokevirtual 427	android/content/IntentFilter:addAction	(Ljava/lang/String;)V
+    //   57: ldc 238
+    //   59: invokevirtual 432	android/content/IntentFilter:addAction	(Ljava/lang/String;)V
     //   62: aload_0
-    //   63: getfield 71	btmsdkobf/de:mContext	Landroid/content/Context;
+    //   63: getfield 79	btmsdkobf/de:mContext	Landroid/content/Context;
     //   66: aload_0
-    //   67: getfield 415	btmsdkobf/de:lX	Lbtmsdkobf/ht;
+    //   67: getfield 422	btmsdkobf/de:lX	Lbtmsdkobf/de$b;
     //   70: aload_2
-    //   71: invokevirtual 431	android/content/Context:registerReceiver	(Landroid/content/BroadcastReceiver;Landroid/content/IntentFilter;)Landroid/content/Intent;
+    //   71: invokevirtual 436	android/content/Context:registerReceiver	(Landroid/content/BroadcastReceiver;Landroid/content/IntentFilter;)Landroid/content/Intent;
     //   74: pop
     //   75: aload_0
-    //   76: getfield 54	btmsdkobf/de:mHandler	Landroid/os/Handler;
+    //   76: getfield 64	btmsdkobf/de:mHandler	Landroid/os/Handler;
     //   79: iconst_3
-    //   80: invokevirtual 215	android/os/Handler:sendEmptyMessage	(I)Z
+    //   80: invokevirtual 222	android/os/Handler:sendEmptyMessage	(I)Z
     //   83: pop
     //   84: aload_0
     //   85: iconst_1
-    //   86: putfield 63	btmsdkobf/de:mc	Z
+    //   86: putfield 71	btmsdkobf/de:mc	Z
     //   89: goto -78 -> 11
     //   92: astore_2
     //   93: aload_0
@@ -390,16 +439,16 @@ public class de
     //   95: aload_2
     //   96: athrow
     //   97: astore_2
-    //   98: ldc 141
-    //   100: new 143	java/lang/StringBuilder
+    //   98: ldc 145
+    //   100: new 147	java/lang/StringBuilder
     //   103: dup
-    //   104: invokespecial 144	java/lang/StringBuilder:<init>	()V
-    //   107: ldc_w 433
-    //   110: invokevirtual 150	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   104: invokespecial 148	java/lang/StringBuilder:<init>	()V
+    //   107: ldc_w 438
+    //   110: invokevirtual 154	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   113: aload_2
-    //   114: invokevirtual 153	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   117: invokevirtual 157	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   120: invokestatic 200	btmsdkobf/eh:g	(Ljava/lang/String;Ljava/lang/String;)V
+    //   114: invokevirtual 157	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   117: invokevirtual 161	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   120: invokestatic 207	btmsdkobf/eh:g	(Ljava/lang/String;Ljava/lang/String;)V
     //   123: goto -48 -> 75
     // Local variable table:
     //   start	length	slot	name	signature
@@ -425,36 +474,36 @@ public class de
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 63	btmsdkobf/de:mc	Z
+    //   3: getfield 71	btmsdkobf/de:mc	Z
     //   6: istore_1
     //   7: iload_1
     //   8: ifne +6 -> 14
     //   11: aload_0
     //   12: monitorexit
     //   13: return
-    //   14: ldc 141
-    //   16: ldc_w 436
-    //   19: invokestatic 242	btmsdkobf/eh:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   14: ldc 145
+    //   16: ldc_w 441
+    //   19: invokestatic 249	btmsdkobf/eh:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   22: aload_0
-    //   23: invokespecial 203	btmsdkobf/de:cm	()V
+    //   23: invokespecial 210	btmsdkobf/de:cm	()V
     //   26: aload_0
-    //   27: getfield 415	btmsdkobf/de:lX	Lbtmsdkobf/ht;
+    //   27: getfield 422	btmsdkobf/de:lX	Lbtmsdkobf/de$b;
     //   30: astore_2
     //   31: aload_2
     //   32: ifnull +19 -> 51
     //   35: aload_0
-    //   36: getfield 71	btmsdkobf/de:mContext	Landroid/content/Context;
+    //   36: getfield 79	btmsdkobf/de:mContext	Landroid/content/Context;
     //   39: aload_0
-    //   40: getfield 415	btmsdkobf/de:lX	Lbtmsdkobf/ht;
-    //   43: invokevirtual 440	android/content/Context:unregisterReceiver	(Landroid/content/BroadcastReceiver;)V
+    //   40: getfield 422	btmsdkobf/de:lX	Lbtmsdkobf/de$b;
+    //   43: invokevirtual 445	android/content/Context:unregisterReceiver	(Landroid/content/BroadcastReceiver;)V
     //   46: aload_0
     //   47: aconst_null
-    //   48: putfield 415	btmsdkobf/de:lX	Lbtmsdkobf/ht;
+    //   48: putfield 422	btmsdkobf/de:lX	Lbtmsdkobf/de$b;
     //   51: aload_0
-    //   52: invokevirtual 443	btmsdkobf/de:ci	()V
+    //   52: invokevirtual 448	btmsdkobf/de:ci	()V
     //   55: aload_0
     //   56: iconst_0
-    //   57: putfield 63	btmsdkobf/de:mc	Z
+    //   57: putfield 71	btmsdkobf/de:mc	Z
     //   60: goto -49 -> 11
     //   63: astore_2
     //   64: aload_0
@@ -462,22 +511,22 @@ public class de
     //   66: aload_2
     //   67: athrow
     //   68: astore_2
-    //   69: ldc 141
-    //   71: new 143	java/lang/StringBuilder
+    //   69: ldc 145
+    //   71: new 147	java/lang/StringBuilder
     //   74: dup
-    //   75: invokespecial 144	java/lang/StringBuilder:<init>	()V
-    //   78: ldc_w 445
-    //   81: invokevirtual 150	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   75: invokespecial 148	java/lang/StringBuilder:<init>	()V
+    //   78: ldc_w 450
+    //   81: invokevirtual 154	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   84: aload_2
-    //   85: invokevirtual 153	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   88: invokevirtual 157	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   91: invokestatic 200	btmsdkobf/eh:g	(Ljava/lang/String;Ljava/lang/String;)V
+    //   85: invokevirtual 157	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   88: invokevirtual 161	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   91: invokestatic 207	btmsdkobf/eh:g	(Ljava/lang/String;Ljava/lang/String;)V
     //   94: goto -43 -> 51
     // Local variable table:
     //   start	length	slot	name	signature
     //   0	97	0	this	de
     //   6	2	1	bool	boolean
-    //   30	2	2	localht	ht
+    //   30	2	2	localb	b
     //   63	4	2	localObject	Object
     //   68	17	2	localThrowable	Throwable
     // Exception table:
@@ -532,6 +581,39 @@ public class de
       return;
     }
     finally {}
+  }
+  
+  public static abstract interface a
+  {
+    public abstract void cp();
+    
+    public abstract void onClose();
+  }
+  
+  private class b
+    extends BroadcastReceiver
+  {
+    private b() {}
+    
+    public void onReceive(Context paramContext, Intent paramIntent)
+    {
+      eh.e("SharkTcpControler", "[tcp_control][shark_conf]doOnRecv()");
+      paramContext = paramIntent.getAction();
+      paramIntent = paramIntent.getPackage();
+      if ((paramContext == null) || (paramIntent == null) || (!paramIntent.equals(bc.n().getPackageName()))) {
+        eh.e("SharkTcpControler", "[tcp_control][shark_conf]TcpControlReceiver.onReceive(), null action or from other pkg, ignore");
+      }
+      do
+      {
+        return;
+        if (paramContext.equals("action_keep_alive_cycle"))
+        {
+          de.e(de.this).sendEmptyMessage(3);
+          return;
+        }
+      } while (!paramContext.equals("action_keep_alive_close"));
+      de.e(de.this).sendEmptyMessage(1);
+    }
   }
 }
 

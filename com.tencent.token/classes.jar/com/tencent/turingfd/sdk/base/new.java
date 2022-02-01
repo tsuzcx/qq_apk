@@ -4,57 +4,57 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 public final class new
-  extends float
+  extends break
 {
-  public static do jb = new do();
-  public static ArrayList kb = new ArrayList();
-  public int cb = 0;
-  public int db = 0;
-  public int lb = 5;
-  public do mb = null;
-  public ArrayList nb = null;
+  public static do gb = new do();
+  public static ArrayList<int> hb = new ArrayList();
+  public int _a = 0;
+  public int ab = 0;
+  public int ib = 5;
+  public do jb = null;
+  public ArrayList<int> kb = null;
   
   static
   {
     int localint = new int();
-    kb.add(localint);
+    hb.add(localint);
   }
   
-  public float a()
+  public break a()
   {
     return new new();
   }
   
-  public void a(dp paramdp)
+  public void a(cy paramcy)
   {
-    this.cb = paramdp.a(this.cb, 0, false);
-    this.db = paramdp.a(this.db, 1, false);
-    this.lb = paramdp.a(this.lb, 2, false);
-    this.mb = ((do)paramdp.a(jb, 3, false));
-    this.nb = ((ArrayList)paramdp.a(kb, 4, false));
+    this._a = paramcy.a(this._a, 0, false);
+    this.ab = paramcy.a(this.ab, 1, false);
+    this.ib = paramcy.a(this.ib, 2, false);
+    this.jb = ((do)paramcy.a(gb, 3, false));
+    this.kb = ((ArrayList)paramcy.a(hb, 4, false));
   }
   
-  public void a(dv paramdv)
+  public void a(db paramdb)
   {
-    int i = this.cb;
+    int i = this._a;
     if (i != 0) {
-      paramdv.a(i, 0);
+      paramdb.a(i, 0);
     }
-    i = this.db;
+    i = this.ab;
     if (i != 0) {
-      paramdv.a(i, 1);
+      paramdb.a(i, 1);
     }
-    i = this.lb;
+    i = this.ib;
     if (i != 1) {
-      paramdv.a(i, 2);
+      paramdb.a(i, 2);
     }
-    Object localObject = this.mb;
+    Object localObject = this.jb;
     if (localObject != null) {
-      paramdv.a((float)localObject, 3);
+      paramdb.a((break)localObject, 3);
     }
-    localObject = this.nb;
+    localObject = this.kb;
     if (localObject != null) {
-      paramdv.a((Collection)localObject, 4);
+      paramdb.a((Collection)localObject, 4);
     }
   }
 }

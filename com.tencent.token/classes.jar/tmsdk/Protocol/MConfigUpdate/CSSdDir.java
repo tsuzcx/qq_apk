@@ -8,8 +8,8 @@ import java.util.ArrayList;
 public final class CSSdDir
   extends JceStruct
 {
-  static ArrayList bw = new ArrayList();
-  public ArrayList vecSdDir = null;
+  static ArrayList<String> bw = new ArrayList();
+  public ArrayList<String> vecSdDir = null;
   
   static
   {

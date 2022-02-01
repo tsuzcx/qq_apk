@@ -1,160 +1,382 @@
 package com.tencent.token;
 
-import android.content.Context;
-import com.tencent.token.core.bean.QQUser;
-import com.tencent.token.core.bean.a;
+import com.tencent.token.core.bean.NewConfigureCacheItem;
 import com.tencent.token.global.RqdApplication;
-import com.tencent.token.global.c;
-import com.tencent.token.global.f;
+import com.tencent.token.global.g;
 import com.tencent.token.global.h;
-import com.tencent.token.utils.w;
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Observable;
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class dk
-  extends dl
+  extends Observable
+  implements de
 {
-  static dk a;
-  private final String e = "/cn/mbtoken3/mbtoken3_scan_qrcode_v2";
-  private String f;
-  private int g;
-  private int h;
+  public static final String[] a = { "login_protect", "account_prot", "mail_protect", "qb_prot", "account_lock", "game_lock", "real_name", "modify_pwd", "recover_friends", "account_freeze", "key_value" };
+  public int b = 0;
+  private List<NewConfigureCacheItem> c = Collections.synchronizedList(new ArrayList());
+  private boolean d = false;
   
-  private dk()
+  private boolean a(List<NewConfigureCacheItem> paramList)
   {
-    super(2);
-  }
-  
-  public static dk a()
-  {
-    if (a == null) {
-      a = new dk();
+    if (paramList == null) {
+      return false;
     }
-    return a;
-  }
-  
-  public f a(String paramString)
-  {
-    this.b.clear();
-    this.f = "";
-    this.g = 0;
-    f localf = new f();
-    Object localObject3 = do.a();
-    if ((localObject3 == null) || (((do)localObject3).e() == null))
+    int k = paramList.size();
+    int i = 0;
+    label16:
+    if (i < a.length)
     {
-      localf.b(110);
-      return localf;
-    }
-    long l = ((do)localObject3).f();
-    if (l == 0L)
-    {
-      localf.b(10029);
-      return localf;
-    }
-    if (((do)localObject3).e().mIsBinded) {
-      l = ((do)localObject3).e().mUin;
-    }
-    gk localgk = new gk();
-    try
-    {
-      localObject1 = new JSONObject();
-      ((JSONObject)localObject1).put("uin", l);
-      i = cw.a + 1;
-      cw.a = i;
-      this.h = i;
-      ((JSONObject)localObject1).put("seq_id", this.h);
-      ((JSONObject)localObject1).put("op_time", cx.c().s() / 1000L);
-      if (paramString != null) {
-        ((JSONObject)localObject1).put("url_data", paramString);
-      }
-      localObject1 = ((JSONObject)localObject1).toString();
-      h.a("plain:" + (String)localObject1);
-      localObject1 = w.b(((String)localObject1).getBytes());
-    }
-    catch (JSONException localJSONException)
-    {
-      int i;
-      Object localObject2;
+      int j = 0;
       for (;;)
       {
-        Object localObject1;
-        h.c("JSONException:" + localJSONException.getMessage());
-        localObject2 = null;
-      }
-      for (;;)
-      {
-        try
+        if (j < k)
         {
-          localObject2 = new JSONObject(new String((byte[])localObject3));
-          i = ((JSONObject)localObject2).getInt("err");
-          if (i != 0)
-          {
-            paramString = ((JSONObject)localObject2).getString("info");
-            localf.a(i, paramString, paramString);
-            break label822;
-          }
-          localObject2 = w.c(((JSONObject)localObject2).getString("data"));
-          if (localObject2 == null) {
+          NewConfigureCacheItem localNewConfigureCacheItem = (NewConfigureCacheItem)paramList.get(j);
+          if (!a[i].equals(localNewConfigureCacheItem.mConfKey)) {}
+        }
+        else
+        {
+          if (j == k) {
             break;
           }
-          localObject2 = new JSONObject(new String((byte[])localObject2));
-          i = ((JSONObject)localObject2).getInt("seq_id");
-          if (i != this.h)
-          {
-            localf.b(10030);
-            h.c("parseJSON error seq is wrong seq=" + i + ",right = " + cw.a().b());
-            return localf;
-          }
-          this.g = ((JSONObject)localObject2).getInt("type");
-          if (1 != this.g) {
-            break label750;
-          }
-          paramString = ((JSONObject)localObject2).getJSONObject("msg");
-          localObject2 = new a();
-          if (((a)localObject2).a(paramString)) {
-            continue;
-          }
-          h.c("object item parse failed ");
+          i += 1;
+          break label16;
         }
-        catch (JSONException paramString)
-        {
-          paramString.printStackTrace();
-          h.c("parse json failed: " + paramString.toString());
-          localf.a(10020, "JSONException:" + paramString.toString());
-          break label822;
-          this.b.add(localObject2);
-          continue;
+        j += 1;
+      }
+    }
+    paramList = paramList.iterator();
+    while (paramList.hasNext()) {
+      if (((NewConfigureCacheItem)paramList.next()).mConfIDs == null) {
+        return false;
+      }
+    }
+    return true;
+  }
+  
+  private boolean a(JSONArray paramJSONArray)
+  {
+    if (paramJSONArray == null) {
+      return false;
+    }
+    int i = 0;
+    for (;;)
+    {
+      int j;
+      try
+      {
+        if (i >= paramJSONArray.length()) {
+          break label153;
         }
-        catch (Exception paramString)
-        {
-          paramString.printStackTrace();
-          h.c("unknown err: " + paramString.toString());
-          localf.a(10021, "JSONException:" + paramString.toString());
+        localObject = paramJSONArray.getJSONArray(i);
+        str = (String)((JSONArray)localObject).get(0);
+        k = ((Integer)((JSONArray)localObject).get(1)).intValue();
+        NewConfigureCacheItem localNewConfigureCacheItem = a(str);
+        localObject = localNewConfigureCacheItem;
+        if (localNewConfigureCacheItem != null) {
+          break label155;
         }
-        do.a().m();
-        localf.c();
-        break label822;
-        if (2 == this.g) {
-          this.f = ((JSONObject)localObject2).getString("text");
-        } else {
-          this.f = paramString;
+        localObject = new NewConfigureCacheItem(str);
+        a((NewConfigureCacheItem)localObject);
+      }
+      catch (JSONException paramJSONArray)
+      {
+        Object localObject;
+        String str;
+        int k;
+        return false;
+      }
+      catch (Exception paramJSONArray)
+      {
+        return false;
+      }
+      if (j < a.length - 1)
+      {
+        if ((this.b != 0) && (((NewConfigureCacheItem)localObject).mClientVersion < k) && (str.equals(a[j]))) {
+          this.d = true;
         }
       }
-      h.c("parseJSON error decodeData=" + localObject2);
-      localf.a(10022, RqdApplication.l().getString(2131230925));
+      else
+      {
+        ((NewConfigureCacheItem)localObject).mClientVersion = k;
+        i += 1;
+        continue;
+        label153:
+        return true;
+        label155:
+        j = 0;
+        continue;
+      }
+      j += 1;
     }
-    localObject1 = "?aq_base_sid=" + ((do)localObject3).g() + "&data=" + (String)localObject1;
-    localObject1 = c.e() + "/cn/mbtoken3/mbtoken3_scan_qrcode_v2" + (String)localObject1;
-    localObject3 = localgk.a((String)localObject1);
-    if (localObject3 == null)
+  }
+  
+  private boolean b(JSONObject paramJSONObject)
+  {
+    if (paramJSONObject == null) {
+      return false;
+    }
+    Object localObject1;
+    int i;
+    int j;
+    try
     {
-      localf.a(localgk.a());
-      h.c("client request url: " + (String)localObject1 + " failed, reason: " + localf.a + ":" + localf.b);
-      return localf;
+      localObject1 = paramJSONObject.getJSONArray("main_tab_new");
+      paramJSONObject = paramJSONObject.getJSONArray("conf_id_new");
+      if (localObject1 != null)
+      {
+        i = 0;
+        if (i < ((JSONArray)localObject1).length())
+        {
+          localObject2 = (String)((JSONArray)localObject1).get(i);
+          NewConfigureCacheItem localNewConfigureCacheItem = a((String)localObject2);
+          if (localNewConfigureCacheItem == null) {
+            break label282;
+          }
+          localNewConfigureCacheItem.mClickVersion = -1;
+          j = 0;
+          label69:
+          if (j >= a.length - 1) {
+            break label282;
+          }
+          if (!((String)localObject2).equals(a[j])) {
+            break label275;
+          }
+          this.d = true;
+          break label275;
+        }
+      }
+      localObject1 = this.c.iterator();
+      while (((Iterator)localObject1).hasNext())
+      {
+        localObject2 = (NewConfigureCacheItem)((Iterator)localObject1).next();
+        if (((NewConfigureCacheItem)localObject2).mClickVersion != -1) {
+          ((NewConfigureCacheItem)localObject2).mClickVersion = ((NewConfigureCacheItem)localObject2).mClientVersion;
+        }
+      }
+      localObject1 = a("game_lock");
     }
-    label750:
-    return localf;
+    catch (Exception paramJSONObject)
+    {
+      g.b(paramJSONObject.toString());
+      return false;
+    }
+    if (((NewConfigureCacheItem)localObject1).mConfIDs == null) {
+      ((NewConfigureCacheItem)localObject1).mConfIDs = new ArrayList();
+    }
+    Object localObject2 = a("account_prot");
+    if (((NewConfigureCacheItem)localObject2).mConfIDs == null) {
+      ((NewConfigureCacheItem)localObject2).mConfIDs = new ArrayList();
+    }
+    for (;;)
+    {
+      if (i < paramJSONObject.length())
+      {
+        ((NewConfigureCacheItem)localObject1).mConfIDs.add(Integer.valueOf(paramJSONObject.getInt(i)));
+        ((NewConfigureCacheItem)localObject2).mConfIDs.add(Integer.valueOf(paramJSONObject.getInt(i)));
+        i += 1;
+      }
+      else
+      {
+        label275:
+        label282:
+        do
+        {
+          return true;
+          j += 1;
+          break label69;
+          i += 1;
+          break;
+        } while (paramJSONObject == null);
+        i = 0;
+      }
+    }
+  }
+  
+  private void e()
+  {
+    List localList = g();
+    if (a(localList)) {
+      this.c.addAll(localList);
+    }
+    for (;;)
+    {
+      return;
+      int i = 0;
+      while (i < a.length)
+      {
+        a(new NewConfigureCacheItem(a[i]));
+        i += 1;
+      }
+    }
+  }
+  
+  private void f()
+  {
+    do localdo = new do();
+    localdo.a = this.c;
+    RqdApplication.k().a(this, localdo, null);
+  }
+  
+  private List<NewConfigureCacheItem> g()
+  {
+    dc.a locala = RqdApplication.k().a(this);
+    if (locala == null) {
+      return null;
+    }
+    return (List)locala.b.a;
+  }
+  
+  /* Error */
+  public NewConfigureCacheItem a(String paramString)
+  {
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: aload_0
+    //   3: getfield 58	com/tencent/token/dk:c	Ljava/util/List;
+    //   6: invokeinterface 87 1 0
+    //   11: astore 4
+    //   13: aload 4
+    //   15: invokeinterface 93 1 0
+    //   20: ifeq +33 -> 53
+    //   23: aload 4
+    //   25: invokeinterface 97 1 0
+    //   30: checkcast 75	com/tencent/token/core/bean/NewConfigureCacheItem
+    //   33: astore_3
+    //   34: aload_3
+    //   35: getfield 79	com/tencent/token/core/bean/NewConfigureCacheItem:mConfKey	Ljava/lang/String;
+    //   38: aload_1
+    //   39: invokevirtual 83	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   42: istore_2
+    //   43: iload_2
+    //   44: ifeq -31 -> 13
+    //   47: aload_3
+    //   48: astore_1
+    //   49: aload_0
+    //   50: monitorexit
+    //   51: aload_1
+    //   52: areturn
+    //   53: aconst_null
+    //   54: astore_1
+    //   55: goto -6 -> 49
+    //   58: astore_1
+    //   59: aload_0
+    //   60: monitorexit
+    //   61: aload_1
+    //   62: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	63	0	this	dk
+    //   0	63	1	paramString	String
+    //   42	2	2	bool	boolean
+    //   33	15	3	localNewConfigureCacheItem	NewConfigureCacheItem
+    //   11	13	4	localIterator	Iterator
+    // Exception table:
+    //   from	to	target	type
+    //   2	13	58	finally
+    //   13	43	58	finally
+  }
+  
+  public do a(Serializable paramSerializable)
+  {
+    do localdo = new do();
+    localdo.a = paramSerializable;
+    return localdo;
+  }
+  
+  public Serializable a(do paramdo)
+  {
+    return (Serializable)paramdo.a;
+  }
+  
+  public void a()
+  {
+    f();
+  }
+  
+  public void a(NewConfigureCacheItem paramNewConfigureCacheItem)
+  {
+    try
+    {
+      this.c.add(paramNewConfigureCacheItem);
+      return;
+    }
+    finally
+    {
+      paramNewConfigureCacheItem = finally;
+      throw paramNewConfigureCacheItem;
+    }
+  }
+  
+  public boolean a(JSONObject paramJSONObject)
+  {
+    bool2 = false;
+    bool1 = false;
+    if (paramJSONObject == null)
+    {
+      bool2 = bool1;
+      return bool2;
+    }
+    g.c(paramJSONObject.toString());
+    for (;;)
+    {
+      try
+      {
+        int i = paramJSONObject.getInt("version");
+        if (this.b >= i) {
+          continue;
+        }
+        bool1 = a(paramJSONObject.getJSONArray("config_version"));
+        h.b(i);
+        if (this.b == 0) {
+          bool1 = b(paramJSONObject.getJSONObject("install_new"));
+        }
+        this.b = i;
+      }
+      catch (Exception paramJSONObject)
+      {
+        bool1 = bool2;
+        continue;
+      }
+      bool2 = bool1;
+      if (!bool1) {
+        break;
+      }
+      a();
+      setChanged();
+      notifyObservers();
+      bool2 = bool1;
+      if (!this.d) {
+        break;
+      }
+      h.a(true);
+      return bool1;
+      bool1 = false;
+    }
+  }
+  
+  public void b()
+  {
+    this.b = h.c();
+    e();
+  }
+  
+  public void c()
+  {
+    a();
+  }
+  
+  public String d()
+  {
+    return getClass().toString();
   }
 }
 

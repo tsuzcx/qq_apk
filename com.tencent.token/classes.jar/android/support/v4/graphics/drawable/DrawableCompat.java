@@ -254,7 +254,7 @@ public final class DrawableCompat
     ((TintAwareDrawable)paramDrawable).setTintMode(paramMode);
   }
   
-  public static Drawable unwrap(@NonNull Drawable paramDrawable)
+  public static <T extends Drawable> T unwrap(@NonNull Drawable paramDrawable)
   {
     Drawable localDrawable = paramDrawable;
     if ((paramDrawable instanceof WrappedDrawable)) {

@@ -10,9 +10,9 @@ public final class UploadFileInfo
   extends JceStruct
   implements Cloneable
 {
-  static ArrayList fg;
+  static ArrayList<UploadFile> fg;
   public String id = "";
-  public ArrayList vecUploadFile = null;
+  public ArrayList<UploadFile> vecUploadFile = null;
   
   static
   {
@@ -30,7 +30,7 @@ public final class UploadFileInfo
     setVecUploadFile(this.vecUploadFile);
   }
   
-  public UploadFileInfo(String paramString, ArrayList paramArrayList)
+  public UploadFileInfo(String paramString, ArrayList<UploadFile> paramArrayList)
   {
     setId(paramString);
     setVecUploadFile(paramArrayList);
@@ -78,7 +78,7 @@ public final class UploadFileInfo
     return this.id;
   }
   
-  public ArrayList getVecUploadFile()
+  public ArrayList<UploadFile> getVecUploadFile()
   {
     return this.vecUploadFile;
   }
@@ -110,7 +110,7 @@ public final class UploadFileInfo
     this.id = paramString;
   }
   
-  public void setVecUploadFile(ArrayList paramArrayList)
+  public void setVecUploadFile(ArrayList<UploadFile> paramArrayList)
   {
     this.vecUploadFile = paramArrayList;
   }

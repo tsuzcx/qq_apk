@@ -6,7 +6,10 @@ import android.content.res.Configuration;
 import android.graphics.drawable.Drawable;
 import android.support.annotation.Nullable;
 import android.support.v4.view.ViewCompat;
+import android.support.v7.view.WindowCallbackWrapper;
 import android.support.v7.view.menu.MenuBuilder;
+import android.support.v7.view.menu.MenuBuilder.Callback;
+import android.support.v7.view.menu.MenuPresenter.Callback;
 import android.support.v7.widget.DecorToolbar;
 import android.support.v7.widget.Toolbar;
 import android.support.v7.widget.Toolbar.OnMenuItemClickListener;
@@ -15,6 +18,7 @@ import android.view.KeyCharacterMap;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window.Callback;
@@ -27,16 +31,28 @@ class ToolbarActionBar
   DecorToolbar mDecorToolbar;
   private boolean mLastMenuVisibility;
   private boolean mMenuCallbackSet;
-  private final Toolbar.OnMenuItemClickListener mMenuClicker = new ToolbarActionBar.2(this);
-  private final Runnable mMenuInvalidator = new ToolbarActionBar.1(this);
-  private ArrayList mMenuVisibilityListeners = new ArrayList();
+  private final Toolbar.OnMenuItemClickListener mMenuClicker = new Toolbar.OnMenuItemClickListener()
+  {
+    public boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
+    {
+      return ToolbarActionBar.this.mWindowCallback.onMenuItemSelected(0, paramAnonymousMenuItem);
+    }
+  };
+  private final Runnable mMenuInvalidator = new Runnable()
+  {
+    public void run()
+    {
+      ToolbarActionBar.this.populateOptionsMenu();
+    }
+  };
+  private ArrayList<ActionBar.OnMenuVisibilityListener> mMenuVisibilityListeners = new ArrayList();
   boolean mToolbarMenuPrepared;
   Window.Callback mWindowCallback;
   
   ToolbarActionBar(Toolbar paramToolbar, CharSequence paramCharSequence, Window.Callback paramCallback)
   {
     this.mDecorToolbar = new ToolbarWidgetWrapper(paramToolbar, false);
-    this.mWindowCallback = new ToolbarActionBar.ToolbarCallbackWrapper(this, paramCallback);
+    this.mWindowCallback = new ToolbarCallbackWrapper(paramCallback);
     this.mDecorToolbar.setWindowCallback(this.mWindowCallback);
     paramToolbar.setOnMenuItemClickListener(this.mMenuClicker);
     this.mDecorToolbar.setWindowTitle(paramCharSequence);
@@ -46,7 +62,7 @@ class ToolbarActionBar
   {
     if (!this.mMenuCallbackSet)
     {
-      this.mDecorToolbar.setMenuCallbacks(new ToolbarActionBar.ActionMenuPresenterCallback(this), new ToolbarActionBar.MenuBuilderCallback(this));
+      this.mDecorToolbar.setMenuCallbacks(new ActionMenuPresenterCallback(), new MenuBuilderCallback());
       this.mMenuCallbackSet = true;
     }
     return this.mDecorToolbar.getMenu();
@@ -522,6 +538,92 @@ class ToolbarActionBar
   public void show()
   {
     this.mDecorToolbar.setVisibility(0);
+  }
+  
+  private final class ActionMenuPresenterCallback
+    implements MenuPresenter.Callback
+  {
+    private boolean mClosingActionMenu;
+    
+    ActionMenuPresenterCallback() {}
+    
+    public void onCloseMenu(MenuBuilder paramMenuBuilder, boolean paramBoolean)
+    {
+      if (this.mClosingActionMenu) {
+        return;
+      }
+      this.mClosingActionMenu = true;
+      ToolbarActionBar.this.mDecorToolbar.dismissPopupMenus();
+      if (ToolbarActionBar.this.mWindowCallback != null) {
+        ToolbarActionBar.this.mWindowCallback.onPanelClosed(108, paramMenuBuilder);
+      }
+      this.mClosingActionMenu = false;
+    }
+    
+    public boolean onOpenSubMenu(MenuBuilder paramMenuBuilder)
+    {
+      if (ToolbarActionBar.this.mWindowCallback != null)
+      {
+        ToolbarActionBar.this.mWindowCallback.onMenuOpened(108, paramMenuBuilder);
+        return true;
+      }
+      return false;
+    }
+  }
+  
+  private final class MenuBuilderCallback
+    implements MenuBuilder.Callback
+  {
+    MenuBuilderCallback() {}
+    
+    public boolean onMenuItemSelected(MenuBuilder paramMenuBuilder, MenuItem paramMenuItem)
+    {
+      return false;
+    }
+    
+    public void onMenuModeChange(MenuBuilder paramMenuBuilder)
+    {
+      if (ToolbarActionBar.this.mWindowCallback != null)
+      {
+        if (!ToolbarActionBar.this.mDecorToolbar.isOverflowMenuShowing()) {
+          break label41;
+        }
+        ToolbarActionBar.this.mWindowCallback.onPanelClosed(108, paramMenuBuilder);
+      }
+      label41:
+      while (!ToolbarActionBar.this.mWindowCallback.onPreparePanel(0, null, paramMenuBuilder)) {
+        return;
+      }
+      ToolbarActionBar.this.mWindowCallback.onMenuOpened(108, paramMenuBuilder);
+    }
+  }
+  
+  private class ToolbarCallbackWrapper
+    extends WindowCallbackWrapper
+  {
+    public ToolbarCallbackWrapper(Window.Callback paramCallback)
+    {
+      super();
+    }
+    
+    public View onCreatePanelView(int paramInt)
+    {
+      if (paramInt == 0) {
+        return new View(ToolbarActionBar.this.mDecorToolbar.getContext());
+      }
+      return super.onCreatePanelView(paramInt);
+    }
+    
+    public boolean onPreparePanel(int paramInt, View paramView, Menu paramMenu)
+    {
+      boolean bool = super.onPreparePanel(paramInt, paramView, paramMenu);
+      if ((bool) && (!ToolbarActionBar.this.mToolbarMenuPrepared))
+      {
+        ToolbarActionBar.this.mDecorToolbar.setMenuPrepared();
+        ToolbarActionBar.this.mToolbarMenuPrepared = true;
+      }
+      return bool;
+    }
   }
 }
 

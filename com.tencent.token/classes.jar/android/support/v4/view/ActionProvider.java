@@ -11,8 +11,8 @@ public abstract class ActionProvider
 {
   private static final String TAG = "ActionProvider(support)";
   private final Context mContext;
-  private ActionProvider.SubUiVisibilityListener mSubUiVisibilityListener;
-  private ActionProvider.VisibilityListener mVisibilityListener;
+  private SubUiVisibilityListener mSubUiVisibilityListener;
+  private VisibilityListener mVisibilityListener;
   
   public ActionProvider(Context paramContext)
   {
@@ -68,12 +68,12 @@ public abstract class ActionProvider
   }
   
   @RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
-  public void setSubUiVisibilityListener(ActionProvider.SubUiVisibilityListener paramSubUiVisibilityListener)
+  public void setSubUiVisibilityListener(SubUiVisibilityListener paramSubUiVisibilityListener)
   {
     this.mSubUiVisibilityListener = paramSubUiVisibilityListener;
   }
   
-  public void setVisibilityListener(ActionProvider.VisibilityListener paramVisibilityListener)
+  public void setVisibilityListener(VisibilityListener paramVisibilityListener)
   {
     if ((this.mVisibilityListener != null) && (paramVisibilityListener != null)) {
       Log.w("ActionProvider(support)", "setVisibilityListener: Setting a new ActionProvider.VisibilityListener when one is already set. Are you reusing this " + getClass().getSimpleName() + " instance while it is still in use somewhere else?");
@@ -87,6 +87,17 @@ public abstract class ActionProvider
     if (this.mSubUiVisibilityListener != null) {
       this.mSubUiVisibilityListener.onSubUiVisibilityChanged(paramBoolean);
     }
+  }
+  
+  @RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
+  public static abstract interface SubUiVisibilityListener
+  {
+    public abstract void onSubUiVisibilityChanged(boolean paramBoolean);
+  }
+  
+  public static abstract interface VisibilityListener
+  {
+    public abstract void onActionProviderVisibilityChanged(boolean paramBoolean);
   }
 }
 

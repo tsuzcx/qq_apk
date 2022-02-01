@@ -18,8 +18,10 @@ import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.view.ContextThemeWrapper;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.MeasureSpec;
+import android.view.ViewDebug.ExportedProperty;
 import android.view.ViewGroup.LayoutParams;
 import android.view.accessibility.AccessibilityEvent;
 
@@ -37,7 +39,7 @@ public class ActionMenuView
   private MenuBuilder mMenu;
   MenuBuilder.Callback mMenuBuilderCallback;
   private int mMinCellSize;
-  ActionMenuView.OnMenuItemClickListener mOnMenuItemClickListener;
+  OnMenuItemClickListener mOnMenuItemClickListener;
   private Context mPopupContext;
   private int mPopupTheme;
   private ActionMenuPresenter mPresenter;
@@ -62,7 +64,7 @@ public class ActionMenuView
   static int measureChildForCells(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     boolean bool2 = false;
-    ActionMenuView.LayoutParams localLayoutParams = (ActionMenuView.LayoutParams)paramView.getLayoutParams();
+    LayoutParams localLayoutParams = (LayoutParams)paramView.getLayoutParams();
     int i = View.MeasureSpec.makeMeasureSpec(View.MeasureSpec.getSize(paramInt3) - paramInt4, View.MeasureSpec.getMode(paramInt3));
     ActionMenuItemView localActionMenuItemView;
     if ((paramView instanceof ActionMenuItemView))
@@ -141,7 +143,7 @@ public class ActionMenuView
     int i2 = 0;
     Object localObject;
     boolean bool;
-    ActionMenuView.LayoutParams localLayoutParams;
+    LayoutParams localLayoutParams;
     label274:
     label291:
     int i5;
@@ -167,7 +169,7 @@ public class ActionMenuView
           if (bool) {
             ((View)localObject).setPadding(this.mGeneratedItemPadding, 0, this.mGeneratedItemPadding, 0);
           }
-          localLayoutParams = (ActionMenuView.LayoutParams)((View)localObject).getLayoutParams();
+          localLayoutParams = (LayoutParams)((View)localObject).getLayoutParams();
           localLayoutParams.expanded = false;
           localLayoutParams.extraPixels = 0;
           localLayoutParams.cellsUsed = 0;
@@ -230,8 +232,8 @@ public class ActionMenuView
             if (i4 >= i11) {
               break label569;
             }
-            localObject = (ActionMenuView.LayoutParams)getChildAt(i4).getLayoutParams();
-            if (((ActionMenuView.LayoutParams)localObject).expandable) {
+            localObject = (LayoutParams)getChildAt(i4).getLayoutParams();
+            if (((LayoutParams)localObject).expandable) {
               break label512;
             }
             i5 = paramInt2;
@@ -249,15 +251,15 @@ public class ActionMenuView
             break label448;
             i3 = 0;
             break;
-            if (((ActionMenuView.LayoutParams)localObject).cellsUsed < paramInt1)
+            if (((LayoutParams)localObject).cellsUsed < paramInt1)
             {
-              paramInt2 = ((ActionMenuView.LayoutParams)localObject).cellsUsed;
+              paramInt2 = ((LayoutParams)localObject).cellsUsed;
               l2 = 1L << i4;
               paramInt1 = 1;
             }
             else
             {
-              if (((ActionMenuView.LayoutParams)localObject).cellsUsed != paramInt1) {
+              if (((LayoutParams)localObject).cellsUsed != paramInt1) {
                 break label1182;
               }
               l2 |= 1L << i4;
@@ -288,7 +290,7 @@ public class ActionMenuView
               if ((1L & l1) != 0L)
               {
                 f1 = f3;
-                if (!((ActionMenuView.LayoutParams)getChildAt(0).getLayoutParams()).preventEdgeOffset) {
+                if (!((LayoutParams)getChildAt(0).getLayoutParams()).preventEdgeOffset) {
                   f1 = f3 - 0.5F;
                 }
               }
@@ -297,7 +299,7 @@ public class ActionMenuView
                 break label1173;
               }
               f2 = f1;
-              if (((ActionMenuView.LayoutParams)getChildAt(i11 - 1).getLayoutParams()).preventEdgeOffset) {
+              if (((LayoutParams)getChildAt(i11 - 1).getLayoutParams()).preventEdgeOffset) {
                 break label1173;
               }
               f1 -= 0.5F;
@@ -326,7 +328,7 @@ public class ActionMenuView
               if (j < i11)
               {
                 localObject = getChildAt(j);
-                localLayoutParams = (ActionMenuView.LayoutParams)((View)localObject).getLayoutParams();
+                localLayoutParams = (LayoutParams)((View)localObject).getLayoutParams();
                 if ((1 << j & l2) == 0L)
                 {
                   if (localLayoutParams.cellsUsed != paramInt1 + 1) {
@@ -355,7 +357,7 @@ public class ActionMenuView
               paramInt2 = 0;
               break label742;
               localObject = getChildAt(j);
-              localLayoutParams = (ActionMenuView.LayoutParams)((View)localObject).getLayoutParams();
+              localLayoutParams = (LayoutParams)((View)localObject).getLayoutParams();
               if ((localObject instanceof ActionMenuItemView))
               {
                 localLayoutParams.extraPixels = paramInt2;
@@ -388,7 +390,7 @@ public class ActionMenuView
                 if (paramInt1 < i11)
                 {
                   localObject = getChildAt(paramInt1);
-                  localLayoutParams = (ActionMenuView.LayoutParams)((View)localObject).getLayoutParams();
+                  localLayoutParams = (LayoutParams)((View)localObject).getLayoutParams();
                   if (!localLayoutParams.expanded) {}
                   for (;;)
                   {
@@ -429,7 +431,7 @@ public class ActionMenuView
   
   protected boolean checkLayoutParams(ViewGroup.LayoutParams paramLayoutParams)
   {
-    return (paramLayoutParams != null) && ((paramLayoutParams instanceof ActionMenuView.LayoutParams));
+    return (paramLayoutParams != null) && ((paramLayoutParams instanceof LayoutParams));
   }
   
   public void dismissPopupMenus()
@@ -444,24 +446,24 @@ public class ActionMenuView
     return false;
   }
   
-  protected ActionMenuView.LayoutParams generateDefaultLayoutParams()
+  protected LayoutParams generateDefaultLayoutParams()
   {
-    ActionMenuView.LayoutParams localLayoutParams = new ActionMenuView.LayoutParams(-2, -2);
+    LayoutParams localLayoutParams = new LayoutParams(-2, -2);
     localLayoutParams.gravity = 16;
     return localLayoutParams;
   }
   
-  public ActionMenuView.LayoutParams generateLayoutParams(AttributeSet paramAttributeSet)
+  public LayoutParams generateLayoutParams(AttributeSet paramAttributeSet)
   {
-    return new ActionMenuView.LayoutParams(getContext(), paramAttributeSet);
+    return new LayoutParams(getContext(), paramAttributeSet);
   }
   
-  protected ActionMenuView.LayoutParams generateLayoutParams(ViewGroup.LayoutParams paramLayoutParams)
+  protected LayoutParams generateLayoutParams(ViewGroup.LayoutParams paramLayoutParams)
   {
     if (paramLayoutParams != null)
     {
-      if ((paramLayoutParams instanceof ActionMenuView.LayoutParams)) {}
-      for (paramLayoutParams = new ActionMenuView.LayoutParams((ActionMenuView.LayoutParams)paramLayoutParams);; paramLayoutParams = new ActionMenuView.LayoutParams(paramLayoutParams))
+      if ((paramLayoutParams instanceof LayoutParams)) {}
+      for (paramLayoutParams = new LayoutParams((LayoutParams)paramLayoutParams);; paramLayoutParams = new LayoutParams(paramLayoutParams))
       {
         if (paramLayoutParams.gravity <= 0) {
           paramLayoutParams.gravity = 16;
@@ -473,9 +475,9 @@ public class ActionMenuView
   }
   
   @RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
-  public ActionMenuView.LayoutParams generateOverflowButtonLayoutParams()
+  public LayoutParams generateOverflowButtonLayoutParams()
   {
-    ActionMenuView.LayoutParams localLayoutParams = generateDefaultLayoutParams();
+    LayoutParams localLayoutParams = generateDefaultLayoutParams();
     localLayoutParams.isOverflowButton = true;
     return localLayoutParams;
   }
@@ -487,7 +489,7 @@ public class ActionMenuView
     {
       localObject = getContext();
       this.mMenu = new MenuBuilder((Context)localObject);
-      this.mMenu.setCallback(new ActionMenuView.MenuBuilderCallback(this));
+      this.mMenu.setCallback(new MenuBuilderCallback());
       this.mPresenter = new ActionMenuPresenter((Context)localObject);
       this.mPresenter.setReserveOverflow(true);
       localActionMenuPresenter = this.mPresenter;
@@ -496,7 +498,7 @@ public class ActionMenuView
       }
     }
     label109:
-    for (Object localObject = this.mActionMenuPresenterCallback;; localObject = new ActionMenuView.ActionMenuPresenterCallback())
+    for (Object localObject = this.mActionMenuPresenterCallback;; localObject = new ActionMenuPresenterCallback())
     {
       localActionMenuPresenter.setCallback((MenuPresenter.Callback)localObject);
       this.mMenu.addMenuPresenter(this.mPresenter, this.mPopupContext);
@@ -536,12 +538,12 @@ public class ActionMenuView
     if (paramInt < getChildCount())
     {
       bool1 = bool2;
-      if ((localView1 instanceof ActionMenuView.ActionMenuChildView)) {
-        bool1 = false | ((ActionMenuView.ActionMenuChildView)localView1).needsDividerAfter();
+      if ((localView1 instanceof ActionMenuChildView)) {
+        bool1 = false | ((ActionMenuChildView)localView1).needsDividerAfter();
       }
     }
-    if ((paramInt > 0) && ((localView2 instanceof ActionMenuView.ActionMenuChildView))) {
-      return ((ActionMenuView.ActionMenuChildView)localView2).needsDividerBefore() | bool1;
+    if ((paramInt > 0) && ((localView2 instanceof ActionMenuChildView))) {
+      return ((ActionMenuChildView)localView2).needsDividerBefore() | bool1;
     }
     return bool1;
   }
@@ -617,7 +619,7 @@ public class ActionMenuView
     paramBoolean = ViewUtils.isLayoutRtl(this);
     int k = 0;
     View localView;
-    ActionMenuView.LayoutParams localLayoutParams;
+    LayoutParams localLayoutParams;
     if (k < i2)
     {
       localView = getChildAt(k);
@@ -643,7 +645,7 @@ public class ActionMenuView
         paramInt4 = k;
         k = n;
         break;
-        localLayoutParams = (ActionMenuView.LayoutParams)localView.getLayoutParams();
+        localLayoutParams = (LayoutParams)localView.getLayoutParams();
         if (localLayoutParams.isOverflowButton)
         {
           m = localView.getMeasuredWidth();
@@ -717,7 +719,7 @@ public class ActionMenuView
       if (paramInt2 < i2)
       {
         localView = getChildAt(paramInt2);
-        localLayoutParams = (ActionMenuView.LayoutParams)localView.getLayoutParams();
+        localLayoutParams = (LayoutParams)localView.getLayoutParams();
         if (localView.getVisibility() == 8) {
           break label744;
         }
@@ -753,7 +755,7 @@ public class ActionMenuView
       if (paramInt2 < i2)
       {
         localView = getChildAt(paramInt2);
-        localLayoutParams = (ActionMenuView.LayoutParams)localView.getLayoutParams();
+        localLayoutParams = (LayoutParams)localView.getLayoutParams();
         if (localView.getVisibility() == 8) {
           break label741;
         }
@@ -803,7 +805,7 @@ public class ActionMenuView
     int i = 0;
     while (i < j)
     {
-      ActionMenuView.LayoutParams localLayoutParams = (ActionMenuView.LayoutParams)getChildAt(i).getLayoutParams();
+      LayoutParams localLayoutParams = (LayoutParams)getChildAt(i).getLayoutParams();
       localLayoutParams.rightMargin = 0;
       localLayoutParams.leftMargin = 0;
       i += 1;
@@ -830,7 +832,7 @@ public class ActionMenuView
     this.mMenuBuilderCallback = paramCallback1;
   }
   
-  public void setOnMenuItemClickListener(ActionMenuView.OnMenuItemClickListener paramOnMenuItemClickListener)
+  public void setOnMenuItemClickListener(OnMenuItemClickListener paramOnMenuItemClickListener)
   {
     this.mOnMenuItemClickListener = paramOnMenuItemClickListener;
   }
@@ -873,6 +875,92 @@ public class ActionMenuView
   public boolean showOverflowMenu()
   {
     return (this.mPresenter != null) && (this.mPresenter.showOverflowMenu());
+  }
+  
+  @RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
+  public static abstract interface ActionMenuChildView
+  {
+    public abstract boolean needsDividerAfter();
+    
+    public abstract boolean needsDividerBefore();
+  }
+  
+  private static class ActionMenuPresenterCallback
+    implements MenuPresenter.Callback
+  {
+    public void onCloseMenu(MenuBuilder paramMenuBuilder, boolean paramBoolean) {}
+    
+    public boolean onOpenSubMenu(MenuBuilder paramMenuBuilder)
+    {
+      return false;
+    }
+  }
+  
+  public static class LayoutParams
+    extends LinearLayoutCompat.LayoutParams
+  {
+    @ViewDebug.ExportedProperty
+    public int cellsUsed;
+    @ViewDebug.ExportedProperty
+    public boolean expandable;
+    boolean expanded;
+    @ViewDebug.ExportedProperty
+    public int extraPixels;
+    @ViewDebug.ExportedProperty
+    public boolean isOverflowButton;
+    @ViewDebug.ExportedProperty
+    public boolean preventEdgeOffset;
+    
+    public LayoutParams(int paramInt1, int paramInt2)
+    {
+      super(paramInt2);
+      this.isOverflowButton = false;
+    }
+    
+    LayoutParams(int paramInt1, int paramInt2, boolean paramBoolean)
+    {
+      super(paramInt2);
+      this.isOverflowButton = paramBoolean;
+    }
+    
+    public LayoutParams(Context paramContext, AttributeSet paramAttributeSet)
+    {
+      super(paramAttributeSet);
+    }
+    
+    public LayoutParams(LayoutParams paramLayoutParams)
+    {
+      super();
+      this.isOverflowButton = paramLayoutParams.isOverflowButton;
+    }
+    
+    public LayoutParams(ViewGroup.LayoutParams paramLayoutParams)
+    {
+      super();
+    }
+  }
+  
+  private class MenuBuilderCallback
+    implements MenuBuilder.Callback
+  {
+    MenuBuilderCallback() {}
+    
+    public boolean onMenuItemSelected(MenuBuilder paramMenuBuilder, MenuItem paramMenuItem)
+    {
+      return (ActionMenuView.this.mOnMenuItemClickListener != null) && (ActionMenuView.this.mOnMenuItemClickListener.onMenuItemClick(paramMenuItem));
+    }
+    
+    public void onMenuModeChange(MenuBuilder paramMenuBuilder)
+    {
+      if (ActionMenuView.this.mMenuBuilderCallback != null) {
+        ActionMenuView.this.mMenuBuilderCallback.onMenuModeChange(paramMenuBuilder);
+      }
+    }
+  }
+  
+  public static abstract interface OnMenuItemClickListener
+  {
+    public abstract boolean onMenuItemClick(MenuItem paramMenuItem);
   }
 }
 

@@ -4,17 +4,17 @@ import android.util.Log;
 import uilib.doraemon.e;
 
 public class cd
-  implements ay
+  implements an
 {
   private final String a;
-  private final cd.b b;
+  private final b b;
   
   public String a()
   {
     return this.a;
   }
   
-  public cx a(e parame, bd parambd)
+  public br a(e parame, ar paramar)
   {
     if (!parame.a())
     {
@@ -24,7 +24,7 @@ public class cd
     return new g(this);
   }
   
-  public cd.b b()
+  public b b()
   {
     return this.b;
   }
@@ -32,6 +32,11 @@ public class cd
   public String toString()
   {
     return "MergePaths{mode=" + this.b + '}';
+  }
+  
+  public static enum b
+  {
+    private b() {}
   }
 }
 

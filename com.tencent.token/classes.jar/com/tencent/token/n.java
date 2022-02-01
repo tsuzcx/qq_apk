@@ -1,20 +1,8 @@
 package com.tencent.token;
 
-import java.util.Map;
-
-public final class n
-  extends i
+public abstract interface n
 {
-  public n(String paramString, Map paramMap, j paramj, boolean paramBoolean, u paramu)
-  {
-    this.d = paramu;
-    this.a = paramString;
-    this.b = paramMap;
-    this.c = paramBoolean;
-    if (paramj != null) {
-      a(paramj);
-    }
-  }
+  public abstract void r();
 }
 
 

@@ -1,31 +1,62 @@
 package com.tencent.token;
 
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.token.global.f;
-import com.tencent.token.utils.UserTask;
+import android.text.format.Time;
+import android.util.Log;
 
-class dx
-  extends UserTask
+public final class dx
 {
-  dx(dw paramdw, int paramInt, Handler paramHandler) {}
+  public static final dx a = new dx();
   
-  public f a(String... paramVarArgs)
+  public final String a(int paramInt)
   {
-    return this.c.a(this.a);
+    switch (paramInt)
+    {
+    default: 
+      return "-";
+    case 2: 
+      return "D";
+    case 4: 
+      return "I";
+    case 8: 
+      return "W";
+    case 16: 
+      return "E";
+    case 1: 
+      return "V";
+    }
+    return "A";
   }
   
-  public void a(f paramf)
+  public String a(int paramInt, Thread paramThread, long paramLong, String paramString1, String paramString2, Throwable paramThrowable)
   {
-    Message localMessage = new Message();
-    localMessage.arg1 = this.a;
-    if ((paramf.b()) && (1 == dw.a(this.c))) {}
-    for (localMessage.what = 1011;; localMessage.what = 1010)
+    long l = paramLong % 1000L;
+    Time localTime = new Time();
+    localTime.set(paramLong);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(a(paramInt)).append('/').append(localTime.format("%Y-%m-%d %H:%M:%S")).append('.');
+    if (l < 10L)
     {
-      if (this.b != null) {
-        this.b.sendMessage(localMessage);
+      localStringBuilder.append("00");
+      localStringBuilder.append(l).append(' ').append('[');
+      if (paramThread != null) {
+        break label199;
       }
-      return;
+      localStringBuilder.append("N/A");
+    }
+    for (;;)
+    {
+      localStringBuilder.append(']').append('[').append(paramString1).append(']').append(' ').append(paramString2).append('\n');
+      if (paramThrowable != null) {
+        localStringBuilder.append("* Exception : \n").append(Log.getStackTraceString(paramThrowable)).append('\n');
+      }
+      return localStringBuilder.toString();
+      if (l >= 100L) {
+        break;
+      }
+      localStringBuilder.append('0');
+      break;
+      label199:
+      localStringBuilder.append(paramThread.getName());
     }
   }
 }

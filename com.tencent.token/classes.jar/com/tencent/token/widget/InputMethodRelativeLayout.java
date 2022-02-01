@@ -60,6 +60,11 @@ public class InputMethodRelativeLayout
   {
     this.a = parama;
   }
+  
+  public static abstract interface a
+  {
+    public abstract void a(boolean paramBoolean, int paramInt1, int paramInt2);
+  }
 }
 
 

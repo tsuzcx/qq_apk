@@ -1,29 +1,29 @@
 package com.tencent.token.core.protocolcenter.protocol;
 
-import com.tencent.token.core.protocolcenter.e;
-import com.tencent.token.cv;
-import com.tencent.token.ev;
+import com.tencent.token.bz;
+import com.tencent.token.core.protocolcenter.d;
+import com.tencent.token.dn;
 import com.tencent.token.global.c;
-import com.tencent.token.global.f;
-import com.tencent.token.global.h;
-import com.tencent.token.utils.w;
+import com.tencent.token.global.e;
+import com.tencent.token.global.g;
+import com.tencent.token.utils.l;
 import java.util.HashMap;
 import org.json.JSONObject;
 
 public class ProtoDelUnverifyUin
-  extends e
+  extends d
 {
   private String d;
   
-  public static void a(ev paramev, long paramLong)
+  public static void a(dn paramdn, long paramLong)
   {
-    paramev.c.put("param.realuin", Long.valueOf(paramLong));
+    paramdn.c.put("param.realuin", Long.valueOf(paramLong));
   }
   
   protected String a()
   {
-    String str1 = cv.a().b();
-    String str2 = w.a(new Object[] { "uin", this.d });
+    String str1 = bz.a().b();
+    String str2 = l.a(new Object[] { "uin", this.d });
     if ((str1 == null) || (str2 == null))
     {
       this.a.b(104);
@@ -33,15 +33,15 @@ public class ProtoDelUnverifyUin
     return c.e() + "/cn/mbtoken3/mbtoken3_del_unvfy_uin" + str1;
   }
   
-  protected void a(ev paramev)
+  protected void a(dn paramdn)
   {
-    this.d = ("" + paramev.c.get("param.realuin"));
+    this.d = ("" + paramdn.c.get("param.realuin"));
   }
   
   protected void a(JSONObject paramJSONObject)
   {
     int i = paramJSONObject.getInt("err");
-    h.a("ProtoDelUnverifyUin:errCode" + i);
+    g.a("ProtoDelUnverifyUin:errCode" + i);
     if (i != 0)
     {
       a(i, paramJSONObject.getString("info"));

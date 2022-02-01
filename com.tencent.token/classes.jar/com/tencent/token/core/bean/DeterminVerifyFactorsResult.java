@@ -1,9 +1,11 @@
 package com.tencent.token.core.bean;
 
-import com.tencent.token.global.h;
+import com.tencent.token.global.g;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -29,17 +31,17 @@ public class DeterminVerifyFactorsResult
   private String mMobileMask = "";
   private int mMobileUp = 0;
   private int mQuesAppear = 0;
-  private List mQuesInfo = new ArrayList();
+  private List<QuesInfoItem> mQuesInfo = new ArrayList();
   private String mSMSChannel = "";
   private String mSMSContent = "";
   private String mSMSLeftMsg = "";
   private int mScene = 0;
   private String mSmsPrefix = "";
-  private List mVerifyTypeList = new ArrayList();
+  private List<VerifyTypeItem> mVerifyTypeList = new ArrayList();
   
   public DeterminVerifyFactorsResult(JSONObject paramJSONObject)
   {
-    h.a("DeterminVerifyFactorsResult jsonObject=" + paramJSONObject.toString());
+    g.a("DeterminVerifyFactorsResult jsonObject=" + paramJSONObject.toString());
     s_SourceId = 0;
     this.mCanVerify = paramJSONObject.getInt("can_verify");
     this.mScene = paramJSONObject.optInt("scene");
@@ -66,7 +68,7 @@ public class DeterminVerifyFactorsResult
       int i = 0;
       while (i < ((JSONArray)localObject).length())
       {
-        DeterminVerifyFactorsResult.QuesInfoItem localQuesInfoItem = new DeterminVerifyFactorsResult.QuesInfoItem(this, ((JSONArray)localObject).getJSONObject(i));
+        QuesInfoItem localQuesInfoItem = new QuesInfoItem(((JSONArray)localObject).getJSONObject(i));
         this.mQuesInfo.add(localQuesInfoItem);
         i += 1;
       }
@@ -74,7 +76,7 @@ public class DeterminVerifyFactorsResult
       i = j;
       while (i < paramJSONObject.length())
       {
-        localObject = new DeterminVerifyFactorsResult.VerifyTypeItem(this, paramJSONObject.getJSONObject(i));
+        localObject = new VerifyTypeItem(paramJSONObject.getJSONObject(i));
         this.mVerifyTypeList.add(localObject);
         i += 1;
       }
@@ -141,14 +143,102 @@ public class DeterminVerifyFactorsResult
     return this.mMobileUp == 1;
   }
   
-  public List k()
+  public List<QuesInfoItem> k()
   {
     return this.mQuesInfo;
   }
   
-  public List l()
+  public List<VerifyTypeItem> l()
   {
     return this.mVerifyTypeList;
+  }
+  
+  public class QuesInfoItem
+    implements Serializable
+  {
+    private static final long serialVersionUID = -545981221446172220L;
+    public String mContent = null;
+    public int mId = 0;
+    public int mType = 0;
+    
+    public QuesInfoItem(JSONObject paramJSONObject)
+    {
+      this.mId = paramJSONObject.getInt("ques_id");
+      this.mContent = paramJSONObject.getString("ques_context");
+      this.mType = paramJSONObject.getInt("ques_type");
+    }
+    
+    public int a()
+    {
+      return this.mId;
+    }
+    
+    public String b()
+    {
+      return this.mContent;
+    }
+    
+    public int c()
+    {
+      return this.mType;
+    }
+  }
+  
+  public class VerifyTypeItem
+    implements Serializable
+  {
+    private static final long serialVersionUID = 7129591075283836873L;
+    private Map<Integer, Integer> factorPositionMap = new HashMap();
+    private List<Integer> mVerifyFactorList = new ArrayList();
+    private int verifyTypeId;
+    private String verifyTypeName;
+    
+    public VerifyTypeItem(JSONObject paramJSONObject)
+    {
+      this.verifyTypeId = paramJSONObject.getInt("verify_type_id");
+      this.verifyTypeName = paramJSONObject.getString("verify_type_name");
+      this$1 = paramJSONObject.getJSONArray("verify_factors");
+      int i = 0;
+      while (i < DeterminVerifyFactorsResult.this.length())
+      {
+        this.mVerifyFactorList.add(Integer.valueOf(DeterminVerifyFactorsResult.this.getInt(i)));
+        this.factorPositionMap.put(Integer.valueOf(DeterminVerifyFactorsResult.this.getInt(i)), Integer.valueOf(i));
+        i += 1;
+      }
+    }
+    
+    public int a()
+    {
+      return this.verifyTypeId;
+    }
+    
+    public int a(int paramInt)
+    {
+      paramInt = ((Integer)this.factorPositionMap.get(Integer.valueOf(paramInt))).intValue();
+      if (paramInt < this.mVerifyFactorList.size() - 1) {
+        paramInt += 1;
+      }
+      for (;;)
+      {
+        return ((Integer)this.mVerifyFactorList.get(paramInt)).intValue();
+        paramInt = this.mVerifyFactorList.size() - 1;
+      }
+    }
+    
+    public boolean a(Integer paramInteger)
+    {
+      return ((Integer)this.factorPositionMap.get(paramInteger)).intValue() == this.mVerifyFactorList.size() - 1;
+    }
+    
+    public String b()
+    {
+      return this.verifyTypeName;
+    }
+    
+    public List<Integer> c()
+    {
+      return this.mVerifyFactorList;
+    }
   }
 }
 

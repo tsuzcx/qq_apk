@@ -2,7 +2,11 @@ package android.support.v4.widget;
 
 import android.content.Context;
 import android.content.res.Resources;
+import android.graphics.Canvas;
 import android.graphics.Paint;
+import android.graphics.RadialGradient;
+import android.graphics.RectF;
+import android.graphics.Shader.TileMode;
 import android.graphics.drawable.ShapeDrawable;
 import android.graphics.drawable.shapes.OvalShape;
 import android.os.Build.VERSION;
@@ -41,7 +45,7 @@ class CircleImageView
       paramContext.getPaint().setColor(paramInt);
       ViewCompat.setBackground(this, paramContext);
       return;
-      paramContext = new ShapeDrawable(new CircleImageView.OvalShadow(this, this.mShadowRadius));
+      paramContext = new ShapeDrawable(new OvalShadow(this.mShadowRadius));
       setLayerType(1, paramContext.getPaint());
       paramContext.getPaint().setShadowLayer(this.mShadowRadius, j, i, 503316480);
       i = this.mShadowRadius;
@@ -93,6 +97,43 @@ class CircleImageView
   public void setBackgroundColorRes(int paramInt)
   {
     setBackgroundColor(ContextCompat.getColor(getContext(), paramInt));
+  }
+  
+  private class OvalShadow
+    extends OvalShape
+  {
+    private RadialGradient mRadialGradient;
+    private Paint mShadowPaint = new Paint();
+    
+    OvalShadow(int paramInt)
+    {
+      CircleImageView.this.mShadowRadius = paramInt;
+      updateRadialGradient((int)rect().width());
+    }
+    
+    private void updateRadialGradient(int paramInt)
+    {
+      float f1 = paramInt / 2;
+      float f2 = paramInt / 2;
+      float f3 = CircleImageView.this.mShadowRadius;
+      Shader.TileMode localTileMode = Shader.TileMode.CLAMP;
+      this.mRadialGradient = new RadialGradient(f1, f2, f3, new int[] { 1023410176, 0 }, null, localTileMode);
+      this.mShadowPaint.setShader(this.mRadialGradient);
+    }
+    
+    public void draw(Canvas paramCanvas, Paint paramPaint)
+    {
+      int i = CircleImageView.this.getWidth();
+      int j = CircleImageView.this.getHeight();
+      paramCanvas.drawCircle(i / 2, j / 2, i / 2, this.mShadowPaint);
+      paramCanvas.drawCircle(i / 2, j / 2, i / 2 - CircleImageView.this.mShadowRadius, paramPaint);
+    }
+    
+    protected void onResize(float paramFloat1, float paramFloat2)
+    {
+      super.onResize(paramFloat1, paramFloat2);
+      updateRadialGradient((int)paramFloat1);
+    }
   }
 }
 

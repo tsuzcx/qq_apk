@@ -1,137 +1,73 @@
 package com.tencent.qqpimsecure.pg;
 
-import Protocol.MMGRAuth.SolutionItem;
 import android.content.Context;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
-import android.text.TextUtils;
-import com.tencent.qqpimsecure.taiji.n;
-import java.util.ArrayList;
-import taiji.cl;
-import tmsdk.common.module.pgsdk.manager.ITaijiReportManager;
+import com.tencent.qqpimsecure.taiji.c;
+import tmsdk.common.module.pgsdk.manager.ITaijiPreferenceManager;
 
 public class f
 {
-  private static SolutionItem a(Context paramContext, int paramInt)
+  public static int a(Context paramContext)
   {
-    switch (paramInt)
-    {
-    default: 
-      return null;
-    }
-    paramContext = new SolutionItem();
-    paramContext.commSoluId = (-paramInt);
-    paramContext.extSoluId = (-paramInt);
-    return paramContext;
+    return c.a().a(paramContext, "pgd_sp", 4).getInt("t_t_s", 2);
   }
   
-  static void a(Context paramContext, int paramInt1, int paramInt2, int paramInt3)
+  public static long a(Context paramContext, long paramLong)
   {
-    SolutionItem localSolutionItem2 = n.a(paramContext).a(paramInt1);
-    SolutionItem localSolutionItem1;
-    if (localSolutionItem2 != null)
-    {
-      localSolutionItem1 = localSolutionItem2;
-      if (localSolutionItem2.soluInfo != null) {}
-    }
-    else
-    {
-      localSolutionItem2 = a(paramContext, paramInt1);
-      localSolutionItem1 = localSolutionItem2;
-      if (localSolutionItem2 != null) {}
-    }
-    long l;
-    do
-    {
-      return;
-      cl.b("AdapterSolutionMonitor", "adapterID:" + paramInt1 + " solutionID:" + localSolutionItem1.extSoluId + " validity:" + paramInt2 + " verCode:" + paramInt3);
-      l = System.currentTimeMillis();
-    } while (l - q.a(paramContext, localSolutionItem1.extSoluId) <= 86400000L);
-    q.a(paramContext, localSolutionItem1.extSoluId, l);
-    paramContext = new ArrayList();
-    paramContext.add(String.valueOf(localSolutionItem1.commSoluId));
-    if (paramInt2 == 0)
-    {
-      paramContext.add(String.valueOf(2));
-      if (paramInt3 != 0) {
-        break label219;
-      }
-      paramContext.add("");
-    }
-    for (;;)
-    {
-      paramContext.add(String.valueOf(localSolutionItem1.extSoluId));
-      com.tencent.qqpimsecure.taiji.f.a().e().reportString(265219, paramContext);
-      return;
-      paramContext.add(String.valueOf(1));
-      break;
-      label219:
-      paramContext.add(String.valueOf(paramInt3));
-    }
+    String str = "s" + paramLong + "ct";
+    return c.a().a(paramContext, "pgd_sp", 4).getLong(str, 0L);
   }
   
-  static void a(Context paramContext, int paramInt1, int paramInt2, int paramInt3, int paramInt4, String paramString)
+  public static void a(Context paramContext, int paramInt)
   {
-    SolutionItem localSolutionItem2 = n.a(paramContext).a(paramInt1);
-    SolutionItem localSolutionItem1;
-    if (localSolutionItem2 != null)
-    {
-      localSolutionItem1 = localSolutionItem2;
-      if (localSolutionItem2.soluInfo != null) {}
-    }
-    else
-    {
-      localSolutionItem2 = a(paramContext, paramInt1);
-      localSolutionItem1 = localSolutionItem2;
-      if (localSolutionItem2 == null) {
-        return;
-      }
-    }
-    cl.b("AdapterSolutionMonitor", "adapterID:" + paramInt1 + " operation:" + paramInt2 + " source:" + paramInt3 + " errCode:" + paramInt4 + " pkgName:" + paramString);
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.add(String.valueOf(localSolutionItem1.commSoluId));
-    paramInt1 = 14;
-    switch (paramInt2)
-    {
-    default: 
-      localArrayList.add(String.valueOf(paramInt1 + (paramInt3 << 7) + (paramInt4 << 18)));
-      if (!TextUtils.isEmpty(paramString)) {
-        localSolutionItem2 = null;
-      }
-      break;
-    }
-    for (;;)
-    {
-      try
-      {
-        paramContext = paramContext.getPackageManager().getPackageInfo(paramString, 0);
-        if (paramContext != null)
-        {
-          paramInt1 = paramContext.versionCode;
-          if (paramInt1 == 0)
-          {
-            localArrayList.add("");
-            localArrayList.add(String.valueOf(localSolutionItem1.extSoluId));
-            com.tencent.qqpimsecure.taiji.f.a().e().reportString(265219, localArrayList);
-            return;
-            paramInt1 = 78;
-            break;
-            paramInt1 = 46;
-            break;
-            paramInt1 = 30;
-            break;
-          }
-          localArrayList.add(String.valueOf(paramInt1));
-          continue;
-        }
-      }
-      catch (Throwable paramContext)
-      {
-        paramContext = localSolutionItem2;
-        continue;
-      }
-      paramInt1 = 0;
-    }
+    c.a().a(paramContext, "pgd_sp", 4).putInt("t_t_s", paramInt);
+  }
+  
+  public static void a(Context paramContext, int paramInt1, int paramInt2)
+  {
+    String str = "pg" + paramInt1 + "s";
+    c.a().a(paramContext, "pgd_sp", 4).putInt(str, paramInt2);
+  }
+  
+  public static void a(Context paramContext, long paramLong1, long paramLong2)
+  {
+    String str = "s" + paramLong1 + "ct";
+    c.a().a(paramContext, "pgd_sp", 4).putLong(str, paramLong2);
+  }
+  
+  public static void a(Context paramContext, boolean paramBoolean)
+  {
+    c.a().a(paramContext, "pgd_sp", 4).putBoolean("fg_v", paramBoolean);
+  }
+  
+  public static int b(Context paramContext)
+  {
+    return c.a().a(paramContext, "pgd_sp", 4).getInt("f_w_c", 2);
+  }
+  
+  public static void b(Context paramContext, int paramInt)
+  {
+    c.a().a(paramContext, "pgd_sp", 4).putInt("f_w_c", paramInt);
+  }
+  
+  public static void b(Context paramContext, long paramLong)
+  {
+    c.a().a(paramContext, "pgd_sp", 4).putLong("f_w_m_t", paramLong);
+  }
+  
+  public static int c(Context paramContext, int paramInt)
+  {
+    String str = "pg" + paramInt + "s";
+    return c.a().a(paramContext, "pgd_sp", 4).getInt(str, 0);
+  }
+  
+  public static long c(Context paramContext)
+  {
+    return c.a().a(paramContext, "pgd_sp", 4).getLong("f_w_m_t", 0L);
+  }
+  
+  public static boolean d(Context paramContext)
+  {
+    return c.a().a(paramContext, "pgd_sp", 4).getBoolean("fg_v", true);
   }
 }
 

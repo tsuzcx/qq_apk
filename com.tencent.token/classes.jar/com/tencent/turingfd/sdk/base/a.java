@@ -1,15 +1,73 @@
 package com.tencent.turingfd.sdk.base;
 
-public final class a
+import android.content.Context;
+import java.io.File;
+import java.util.ArrayList;
+
+public class a
 {
-  static
+  public static final cx<a> a = new a();
+  
+  public static a a()
   {
-    new String(ed.d("414553"));
+    return (a)a.b();
   }
   
-  public static byte[] a(byte[] paramArrayOfByte)
+  public ak a(Context paramContext, int paramInt)
   {
-    return ed.d(paramArrayOfByte).getBytes();
+    try
+    {
+      Virgo localVirgo = new Virgo();
+      localVirgo.a(new cy(cm.b(b(paramContext, paramInt))));
+      paramContext = new ak(paramContext, localVirgo);
+      return paramContext;
+    }
+    catch (Throwable paramContext) {}
+    return null;
+  }
+  
+  public void a(Context paramContext, int paramInt, ak paramak)
+  {
+    Virgo localVirgo = new Virgo();
+    localVirgo.qb = paramInt;
+    localVirgo.rb = paramak.j;
+    localVirgo.sb = paramak.i;
+    localVirgo.tb = paramak.h;
+    localVirgo.ub = paramak.e;
+    localVirgo.vb = paramak.f;
+    paramak = paramak.c;
+    ArrayList localArrayList = new ArrayList();
+    int i = 0;
+    while (i < paramak.b())
+    {
+      localArrayList.add((Long)paramak.a(i));
+      i += 1;
+    }
+    localVirgo.wb = localArrayList;
+    paramak = localVirgo.c();
+    cm.a(b(paramContext, paramInt), paramak);
+  }
+  
+  public final String b(Context paramContext, int paramInt)
+  {
+    paramContext = paramContext.getDir("turingfd", 0);
+    if (paramContext == null) {
+      return "";
+    }
+    paramContext = new File(ci.a(new StringBuilder().append(paramContext.getAbsolutePath()), File.separator, "11"));
+    if ((!paramContext.exists()) && (!paramContext.mkdirs())) {
+      return "";
+    }
+    return paramContext.getAbsolutePath() + File.separator + 49 + "_" + paramInt;
+  }
+  
+  public static final class a
+    extends cx<a>
+  {
+    public Object a()
+    {
+      return new a();
+    }
   }
 }
 

@@ -12,7 +12,7 @@ public class ReportFragment
   extends Fragment
 {
   private static final String REPORT_FRAGMENT_TAG = "android.arch.lifecycle.LifecycleDispatcher.report_fragment_tag";
-  private ReportFragment.ActivityInitializationListener mProcessListener;
+  private ActivityInitializationListener mProcessListener;
   
   private void dispatch(Lifecycle.Event paramEvent)
   {
@@ -31,21 +31,21 @@ public class ReportFragment
     ((LifecycleRegistry)localObject).handleLifecycleEvent(paramEvent);
   }
   
-  private void dispatchCreate(ReportFragment.ActivityInitializationListener paramActivityInitializationListener)
+  private void dispatchCreate(ActivityInitializationListener paramActivityInitializationListener)
   {
     if (paramActivityInitializationListener != null) {
       paramActivityInitializationListener.onCreate();
     }
   }
   
-  private void dispatchResume(ReportFragment.ActivityInitializationListener paramActivityInitializationListener)
+  private void dispatchResume(ActivityInitializationListener paramActivityInitializationListener)
   {
     if (paramActivityInitializationListener != null) {
       paramActivityInitializationListener.onResume();
     }
   }
   
-  private void dispatchStart(ReportFragment.ActivityInitializationListener paramActivityInitializationListener)
+  private void dispatchStart(ActivityInitializationListener paramActivityInitializationListener)
   {
     if (paramActivityInitializationListener != null) {
       paramActivityInitializationListener.onStart();
@@ -107,9 +107,18 @@ public class ReportFragment
     dispatch(Lifecycle.Event.ON_STOP);
   }
   
-  void setProcessListener(ReportFragment.ActivityInitializationListener paramActivityInitializationListener)
+  void setProcessListener(ActivityInitializationListener paramActivityInitializationListener)
   {
     this.mProcessListener = paramActivityInitializationListener;
+  }
+  
+  static abstract interface ActivityInitializationListener
+  {
+    public abstract void onCreate();
+    
+    public abstract void onResume();
+    
+    public abstract void onStart();
   }
 }
 

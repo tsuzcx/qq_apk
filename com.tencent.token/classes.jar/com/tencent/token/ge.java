@@ -1,73 +1,73 @@
 package com.tencent.token;
 
-import android.content.ContentValues;
-import com.tencent.wcdb.Cursor;
-import com.tencent.wcdb.database.SQLiteDatabase;
+import java.security.PublicKey;
+import java.security.cert.X509Certificate;
+import java.util.Iterator;
+import java.util.LinkedHashMap;
+import java.util.LinkedHashSet;
+import java.util.Map;
+import java.util.Set;
+import javax.security.auth.x500.X500Principal;
 
-public class ge
-  implements gd
+public final class ge
+  implements gh
 {
-  public final String a = "token_conf";
-  public long b = 1L;
-  public int c = 1;
-  public byte[] d = null;
-  private int e = 11;
+  private final Map<X500Principal, Set<X509Certificate>> a = new LinkedHashMap();
   
-  public gd a(Cursor paramCursor)
+  public ge(X509Certificate... paramVarArgs)
   {
-    ge localge = new ge();
-    localge.b = paramCursor.getLong(paramCursor.getColumnIndex("plusTime"));
-    localge.c = paramCursor.getInt(paramCursor.getColumnIndex("tokenIntVTime"));
-    localge.d = paramCursor.getBlob(paramCursor.getColumnIndex("data"));
-    return localge;
-  }
-  
-  public void a(long paramLong, int paramInt, byte[] paramArrayOfByte)
-  {
-    ContentValues localContentValues = new ContentValues();
-    localContentValues.put("plusTime", Long.valueOf(paramLong));
-    localContentValues.put("tokenIntVTime", Integer.valueOf(paramInt));
-    localContentValues.put("data", paramArrayOfByte);
-    ga.a(this, "token_conf", localContentValues, "key=?", new String[] { String.valueOf(this.e) });
-  }
-  
-  public void a(SQLiteDatabase paramSQLiteDatabase)
-  {
-    paramSQLiteDatabase.execSQL("CREATE TABLE IF NOT EXISTS token_conf(_ID INTEGER PRIMARY KEY autoincrement,key INTEGER,plusTime INTEGER,tokenIntVTime INTEGER,data BLOB);");
-  }
-  
-  public boolean a()
-  {
-    ge localge = (ge)ga.a(this, "token_conf", new String[] { "plusTime", "tokenIntVTime", "data" }, null, null);
-    if (localge == null) {
-      return false;
+    int j = paramVarArgs.length;
+    int i = 0;
+    while (i < j)
+    {
+      X509Certificate localX509Certificate = paramVarArgs[i];
+      X500Principal localX500Principal = localX509Certificate.getSubjectX500Principal();
+      Set localSet = (Set)this.a.get(localX500Principal);
+      Object localObject = localSet;
+      if (localSet == null)
+      {
+        localObject = new LinkedHashSet(1);
+        this.a.put(localX500Principal, localObject);
+      }
+      ((Set)localObject).add(localX509Certificate);
+      i += 1;
     }
-    this.b = localge.b;
-    this.c = localge.c;
-    this.d = localge.d;
-    return true;
   }
   
-  public long b(SQLiteDatabase paramSQLiteDatabase)
+  public X509Certificate a(X509Certificate paramX509Certificate)
   {
-    a(paramSQLiteDatabase);
-    new ContentValues();
-    ContentValues localContentValues = new ContentValues();
-    localContentValues.put("key", Integer.valueOf(this.e));
-    localContentValues.put("plusTime", Long.valueOf(this.b));
-    localContentValues.put("tokenIntVTime", Integer.valueOf(this.c));
-    localContentValues.put("data", this.d);
-    return paramSQLiteDatabase.insert("token_conf", null, localContentValues);
-  }
-  
-  public String b()
-  {
-    return "token_conf";
-  }
-  
-  public ContentValues c()
-  {
+    Object localObject = paramX509Certificate.getIssuerX500Principal();
+    localObject = (Set)this.a.get(localObject);
+    if (localObject == null) {
+      return null;
+    }
+    localObject = ((Set)localObject).iterator();
+    while (((Iterator)localObject).hasNext())
+    {
+      X509Certificate localX509Certificate = (X509Certificate)((Iterator)localObject).next();
+      PublicKey localPublicKey = localX509Certificate.getPublicKey();
+      try
+      {
+        paramX509Certificate.verify(localPublicKey);
+        return localX509Certificate;
+      }
+      catch (Exception localException) {}
+    }
     return null;
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    if (paramObject == this) {}
+    while (((paramObject instanceof ge)) && (((ge)paramObject).a.equals(this.a))) {
+      return true;
+    }
+    return false;
+  }
+  
+  public int hashCode()
+  {
+    return this.a.hashCode();
   }
 }
 

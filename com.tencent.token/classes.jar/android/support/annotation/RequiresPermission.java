@@ -16,6 +16,18 @@ public @interface RequiresPermission
   boolean conditional() default false;
   
   String value() default "";
+  
+  @Target({java.lang.annotation.ElementType.FIELD, java.lang.annotation.ElementType.METHOD, java.lang.annotation.ElementType.PARAMETER})
+  public static @interface Read
+  {
+    RequiresPermission value() default @RequiresPermission;
+  }
+  
+  @Target({java.lang.annotation.ElementType.FIELD, java.lang.annotation.ElementType.METHOD, java.lang.annotation.ElementType.PARAMETER})
+  public static @interface Write
+  {
+    RequiresPermission value() default @RequiresPermission;
+  }
 }
 
 

@@ -1,30 +1,14 @@
 package taiji;
 
-import java.util.Collections;
+import uilib.doraemon.f;
 
 public class y
-  extends s
 {
-  private final Object b;
+  private f a;
   
-  public y(Object paramObject)
+  public void a(f paramf)
   {
-    super(Collections.emptyList());
-    this.b = paramObject;
-  }
-  
-  public void a(float paramFloat) {}
-  
-  public void a(o paramo) {}
-  
-  public Object b()
-  {
-    return this.b;
-  }
-  
-  public Object b(r paramr, float paramFloat)
-  {
-    return this.b;
+    this.a = paramf;
   }
 }
 

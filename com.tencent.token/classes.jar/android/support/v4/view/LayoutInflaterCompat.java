@@ -1,15 +1,20 @@
 package android.support.v4.view;
 
+import android.content.Context;
 import android.os.Build.VERSION;
 import android.support.annotation.NonNull;
+import android.support.annotation.RequiresApi;
+import android.util.AttributeSet;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.LayoutInflater.Factory;
 import android.view.LayoutInflater.Factory2;
+import android.view.View;
 import java.lang.reflect.Field;
 
 public final class LayoutInflaterCompat
 {
-  static final LayoutInflaterCompat.LayoutInflaterCompatBaseImpl IMPL = new LayoutInflaterCompat.LayoutInflaterCompatBaseImpl();
+  static final LayoutInflaterCompatBaseImpl IMPL = new LayoutInflaterCompatBaseImpl();
   private static final String TAG = "LayoutInflaterCompatHC";
   private static boolean sCheckedField;
   private static Field sLayoutInflaterFactory2Field;
@@ -18,7 +23,7 @@ public final class LayoutInflaterCompat
   {
     if (Build.VERSION.SDK_INT >= 21)
     {
-      IMPL = new LayoutInflaterCompat.LayoutInflaterCompatApi21Impl();
+      IMPL = new LayoutInflaterCompatApi21Impl();
       return;
     }
   }
@@ -67,6 +72,86 @@ public final class LayoutInflaterCompat
   public static void setFactory2(@NonNull LayoutInflater paramLayoutInflater, @NonNull LayoutInflater.Factory2 paramFactory2)
   {
     IMPL.setFactory2(paramLayoutInflater, paramFactory2);
+  }
+  
+  static class Factory2Wrapper
+    implements LayoutInflater.Factory2
+  {
+    final LayoutInflaterFactory mDelegateFactory;
+    
+    Factory2Wrapper(LayoutInflaterFactory paramLayoutInflaterFactory)
+    {
+      this.mDelegateFactory = paramLayoutInflaterFactory;
+    }
+    
+    public View onCreateView(View paramView, String paramString, Context paramContext, AttributeSet paramAttributeSet)
+    {
+      return this.mDelegateFactory.onCreateView(paramView, paramString, paramContext, paramAttributeSet);
+    }
+    
+    public View onCreateView(String paramString, Context paramContext, AttributeSet paramAttributeSet)
+    {
+      return this.mDelegateFactory.onCreateView(null, paramString, paramContext, paramAttributeSet);
+    }
+    
+    public String toString()
+    {
+      return getClass().getName() + "{" + this.mDelegateFactory + "}";
+    }
+  }
+  
+  @RequiresApi(21)
+  static class LayoutInflaterCompatApi21Impl
+    extends LayoutInflaterCompat.LayoutInflaterCompatBaseImpl
+  {
+    public void setFactory(LayoutInflater paramLayoutInflater, LayoutInflaterFactory paramLayoutInflaterFactory)
+    {
+      if (paramLayoutInflaterFactory != null) {}
+      for (paramLayoutInflaterFactory = new LayoutInflaterCompat.Factory2Wrapper(paramLayoutInflaterFactory);; paramLayoutInflaterFactory = null)
+      {
+        paramLayoutInflater.setFactory2(paramLayoutInflaterFactory);
+        return;
+      }
+    }
+    
+    public void setFactory2(LayoutInflater paramLayoutInflater, LayoutInflater.Factory2 paramFactory2)
+    {
+      paramLayoutInflater.setFactory2(paramFactory2);
+    }
+  }
+  
+  static class LayoutInflaterCompatBaseImpl
+  {
+    public LayoutInflaterFactory getFactory(LayoutInflater paramLayoutInflater)
+    {
+      paramLayoutInflater = paramLayoutInflater.getFactory();
+      if ((paramLayoutInflater instanceof LayoutInflaterCompat.Factory2Wrapper)) {
+        return ((LayoutInflaterCompat.Factory2Wrapper)paramLayoutInflater).mDelegateFactory;
+      }
+      return null;
+    }
+    
+    public void setFactory(LayoutInflater paramLayoutInflater, LayoutInflaterFactory paramLayoutInflaterFactory)
+    {
+      if (paramLayoutInflaterFactory != null) {}
+      for (paramLayoutInflaterFactory = new LayoutInflaterCompat.Factory2Wrapper(paramLayoutInflaterFactory);; paramLayoutInflaterFactory = null)
+      {
+        setFactory2(paramLayoutInflater, paramLayoutInflaterFactory);
+        return;
+      }
+    }
+    
+    public void setFactory2(LayoutInflater paramLayoutInflater, LayoutInflater.Factory2 paramFactory2)
+    {
+      paramLayoutInflater.setFactory2(paramFactory2);
+      LayoutInflater.Factory localFactory = paramLayoutInflater.getFactory();
+      if ((localFactory instanceof LayoutInflater.Factory2))
+      {
+        LayoutInflaterCompat.forceSetFactory2(paramLayoutInflater, (LayoutInflater.Factory2)localFactory);
+        return;
+      }
+      LayoutInflaterCompat.forceSetFactory2(paramLayoutInflater, paramFactory2);
+    }
   }
 }
 

@@ -1,30 +1,30 @@
 package okhttp3.internal.connection;
 
-import com.tencent.token.hi;
-import okhttp3.ah;
-import okhttp3.ai;
-import okhttp3.ak;
-import okhttp3.ap;
-import okhttp3.at;
+import com.tencent.token.fo;
+import okhttp3.t;
+import okhttp3.t.a;
+import okhttp3.v;
+import okhttp3.x;
+import okhttp3.z;
 
 public final class a
-  implements ah
+  implements t
 {
-  public final ak a;
+  public final v a;
   
-  public a(ak paramak)
+  public a(v paramv)
   {
-    this.a = paramak;
+    this.a = paramv;
   }
   
-  public at a(ai paramai)
+  public z a(t.a parama)
   {
-    hi localhi = (hi)paramai;
-    ap localap = localhi.a();
-    g localg = localhi.f();
-    if (!localap.b().equals("GET")) {}
+    fo localfo = (fo)parama;
+    x localx = localfo.a();
+    f localf = localfo.f();
+    if (!localx.b().equals("GET")) {}
     for (boolean bool = true;; bool = false) {
-      return localhi.a(localap, localg, localg.a(this.a, paramai, bool), localg.c());
+      return localfo.a(localx, localf, localf.a(this.a, parama, bool), localf.c());
     }
   }
 }

@@ -9,8 +9,8 @@ import java.util.ArrayList;
 public final class RequestTemplate
   extends JceStruct
 {
-  static ArrayList eG;
-  public ArrayList reqTemp = null;
+  static ArrayList<UrlCheckRequest> eG;
+  public ArrayList<UrlCheckRequest> reqTemp = null;
   
   static
   {
@@ -27,7 +27,7 @@ public final class RequestTemplate
     setReqTemp(this.reqTemp);
   }
   
-  public RequestTemplate(ArrayList paramArrayList)
+  public RequestTemplate(ArrayList<UrlCheckRequest> paramArrayList)
   {
     setReqTemp(paramArrayList);
   }
@@ -59,7 +59,7 @@ public final class RequestTemplate
     return JceUtil.equals(this.reqTemp, paramObject.reqTemp);
   }
   
-  public ArrayList getReqTemp()
+  public ArrayList<UrlCheckRequest> getReqTemp()
   {
     return this.reqTemp;
   }
@@ -75,7 +75,7 @@ public final class RequestTemplate
     setReqTemp((ArrayList)paramJceInputStream.read(eG, 0, false));
   }
   
-  public void setReqTemp(ArrayList paramArrayList)
+  public void setReqTemp(ArrayList<UrlCheckRequest> paramArrayList)
   {
     this.reqTemp = paramArrayList;
   }

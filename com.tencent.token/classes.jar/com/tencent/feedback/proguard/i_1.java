@@ -343,7 +343,7 @@ public final class i
     }
   }
   
-  public final void a(Collection paramCollection, int paramInt)
+  public final <T> void a(Collection<T> paramCollection, int paramInt)
   {
     a(8);
     b((byte)9, paramInt);
@@ -361,7 +361,7 @@ public final class i
     }
   }
   
-  public final void a(Map paramMap, int paramInt)
+  public final <K, V> void a(Map<K, V> paramMap, int paramInt)
   {
     a(8);
     b((byte)8, paramInt);

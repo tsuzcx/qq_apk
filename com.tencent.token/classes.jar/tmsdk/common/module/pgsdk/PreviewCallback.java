@@ -9,11 +9,11 @@ public abstract interface PreviewCallback
   @Deprecated
   public abstract void onShowPreviewAnimation(int[] paramArrayOfInt, int paramInt1, int paramInt2, PageNextCallback paramPageNextCallback, ConfirmCallback paramConfirmCallback);
   
-  public abstract void onShowPreviewDoraemon(int[] paramArrayOfInt, int paramInt, boolean paramBoolean, ArrayList paramArrayList1, ArrayList paramArrayList2, ArrayList paramArrayList3, PageNextCallback paramPageNextCallback, ConfirmCallback paramConfirmCallback);
+  public abstract void onShowPreviewDoraemon(int[] paramArrayOfInt, int paramInt, boolean paramBoolean, ArrayList<String> paramArrayList, ArrayList<Integer> paramArrayList1, ArrayList<ArrayList<String>> paramArrayList2, PageNextCallback paramPageNextCallback, ConfirmCallback paramConfirmCallback);
   
-  public abstract void onShowPreviewImage(int[] paramArrayOfInt, int paramInt, ArrayList paramArrayList1, ArrayList paramArrayList2, PageNextCallback paramPageNextCallback, ConfirmCallback paramConfirmCallback);
+  public abstract void onShowPreviewImage(int[] paramArrayOfInt, int paramInt, ArrayList<String> paramArrayList1, ArrayList<String> paramArrayList2, PageNextCallback paramPageNextCallback, ConfirmCallback paramConfirmCallback);
   
-  public abstract void onShowPreviewImageText(int[] paramArrayOfInt, int paramInt, boolean paramBoolean, ArrayList paramArrayList1, ArrayList paramArrayList2, PageNextCallback paramPageNextCallback, ConfirmCallback paramConfirmCallback);
+  public abstract void onShowPreviewImageText(int[] paramArrayOfInt, int paramInt, boolean paramBoolean, ArrayList<String> paramArrayList1, ArrayList<String> paramArrayList2, PageNextCallback paramPageNextCallback, ConfirmCallback paramConfirmCallback);
   
   public abstract void onShowPreviewText(int[] paramArrayOfInt, int paramInt, String paramString, PageNextCallback paramPageNextCallback, ConfirmCallback paramConfirmCallback);
 }

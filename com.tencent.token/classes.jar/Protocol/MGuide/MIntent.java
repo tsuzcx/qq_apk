@@ -10,12 +10,12 @@ import java.util.Map;
 public final class MIntent
   extends JceStruct
 {
-  static Map a = new HashMap();
-  static ArrayList b;
+  static Map<String, String> a = new HashMap();
+  static ArrayList<MBundle> b;
   public String mAction = "";
-  public Map mCategories = null;
+  public Map<String, String> mCategories = null;
   public String mClass = "";
-  public ArrayList mExtras = null;
+  public ArrayList<MBundle> mExtras = null;
   public int mFlags = 0;
   public String mPackage = "";
   public String mType = "";

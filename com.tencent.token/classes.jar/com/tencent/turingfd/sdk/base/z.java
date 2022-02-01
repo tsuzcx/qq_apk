@@ -1,154 +1,105 @@
 package com.tencent.turingfd.sdk.base;
 
-import android.os.HandlerThread;
-import android.os.Message;
-import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class z
 {
-  public static final dj a = new s();
-  public aa b;
-  public final AtomicBoolean c = new AtomicBoolean(false);
+  public final int a;
+  public Object[] b;
+  public int c;
+  public final int d;
+  public final int e;
   
-  /* Error */
-  public float a(int paramInt1, int paramInt2, int paramInt3, float paramfloat1, float paramfloat2, long paramLong)
+  public z(int paramInt1, int paramInt2, int paramInt3)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 28	com/tencent/turingfd/sdk/base/z:c	Ljava/util/concurrent/atomic/AtomicBoolean;
-    //   6: invokevirtual 145	java/util/concurrent/atomic/AtomicBoolean:get	()Z
-    //   9: ifeq +156 -> 165
-    //   12: new 4	java/lang/Object
-    //   15: dup
-    //   16: invokespecial 21	java/lang/Object:<init>	()V
-    //   19: astore 8
-    //   21: new 147	java/util/concurrent/atomic/AtomicReference
-    //   24: dup
-    //   25: invokespecial 148	java/util/concurrent/atomic/AtomicReference:<init>	()V
-    //   28: astore 9
-    //   30: new 23	java/util/concurrent/atomic/AtomicBoolean
-    //   33: dup
-    //   34: iconst_0
-    //   35: invokespecial 26	java/util/concurrent/atomic/AtomicBoolean:<init>	(Z)V
-    //   38: astore 10
-    //   40: aload 9
-    //   42: aload 5
-    //   44: invokevirtual 152	java/util/concurrent/atomic/AtomicReference:set	(Ljava/lang/Object;)V
-    //   47: new 154	com/tencent/turingfd/sdk/base/t
-    //   50: dup
-    //   51: aload_0
-    //   52: aload 10
-    //   54: aload 9
-    //   56: aload 8
-    //   58: invokespecial 157	com/tencent/turingfd/sdk/base/t:<init>	(Lcom/tencent/turingfd/sdk/base/z;Ljava/util/concurrent/atomic/AtomicBoolean;Ljava/util/concurrent/atomic/AtomicReference;Ljava/lang/Object;)V
-    //   61: astore 11
-    //   63: aload_0
-    //   64: getfield 159	com/tencent/turingfd/sdk/base/z:b	Lcom/tencent/turingfd/sdk/base/aa;
-    //   67: astore 12
-    //   69: new 161	com/tencent/turingfd/sdk/base/ad
-    //   72: dup
-    //   73: iload_1
-    //   74: iload_2
-    //   75: iload_3
-    //   76: invokespecial 164	com/tencent/turingfd/sdk/base/ad:<init>	(III)V
-    //   79: astore 13
-    //   81: aload 13
-    //   83: aload 4
-    //   85: putfield 168	com/tencent/turingfd/sdk/base/ad:d	Lcom/tencent/turingfd/sdk/base/float;
-    //   88: aload 13
-    //   90: aload 5
-    //   92: putfield 171	com/tencent/turingfd/sdk/base/ad:f	Lcom/tencent/turingfd/sdk/base/float;
-    //   95: aload 13
-    //   97: aload 11
-    //   99: putfield 174	com/tencent/turingfd/sdk/base/ad:a	Lcom/tencent/turingfd/sdk/base/ae;
-    //   102: aload 12
-    //   104: iconst_2
-    //   105: aload 13
-    //   107: invokevirtual 177	com/tencent/turingfd/sdk/base/ad:a	()Lcom/tencent/turingfd/sdk/base/ac;
-    //   110: invokestatic 183	android/os/Message:obtain	(Landroid/os/Handler;ILjava/lang/Object;)Landroid/os/Message;
-    //   113: invokevirtual 186	android/os/Message:sendToTarget	()V
-    //   116: aload 8
-    //   118: monitorenter
-    //   119: aload 8
-    //   121: lload 6
-    //   123: invokevirtual 190	java/lang/Object:wait	(J)V
-    //   126: aload 8
-    //   128: monitorexit
-    //   129: aload 10
-    //   131: iconst_1
-    //   132: invokevirtual 192	java/util/concurrent/atomic/AtomicBoolean:set	(Z)V
-    //   135: aload 9
-    //   137: invokevirtual 194	java/util/concurrent/atomic/AtomicReference:get	()Ljava/lang/Object;
-    //   140: checkcast 196	com/tencent/turingfd/sdk/base/float
-    //   143: astore 4
-    //   145: aload_0
-    //   146: monitorexit
-    //   147: aload 4
-    //   149: areturn
-    //   150: astore 4
-    //   152: aload 8
-    //   154: monitorexit
-    //   155: aload 4
-    //   157: athrow
-    //   158: astore 4
-    //   160: aload_0
-    //   161: monitorexit
-    //   162: aload 4
-    //   164: athrow
-    //   165: new 198	java/lang/RuntimeException
-    //   168: dup
-    //   169: ldc 200
-    //   171: invokespecial 203	java/lang/RuntimeException:<init>	(Ljava/lang/String;)V
-    //   174: athrow
-    //   175: astore 4
-    //   177: goto -51 -> 126
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	180	0	this	z
-    //   0	180	1	paramInt1	int
-    //   0	180	2	paramInt2	int
-    //   0	180	3	paramInt3	int
-    //   0	180	4	paramfloat1	float
-    //   0	180	5	paramfloat2	float
-    //   0	180	6	paramLong	long
-    //   19	134	8	localObject	Object
-    //   28	108	9	localAtomicReference	java.util.concurrent.atomic.AtomicReference
-    //   38	92	10	localAtomicBoolean	AtomicBoolean
-    //   61	37	11	localt	t
-    //   67	36	12	localaa	aa
-    //   79	27	13	localad	ad
-    // Exception table:
-    //   from	to	target	type
-    //   119	126	150	finally
-    //   126	129	150	finally
-    //   152	155	150	finally
-    //   2	119	158	finally
-    //   129	145	158	finally
-    //   155	158	158	finally
-    //   165	175	158	finally
-    //   119	126	175	java/lang/InterruptedException
+    this.a = paramInt1;
+    this.b = new Object[(int)Math.ceil(paramInt3 * 1.0F / paramInt2)];
+    this.c = 0;
+    this.d = paramInt3;
+    this.e = paramInt2;
   }
   
-  public void a(dg paramdg)
+  public ArrayList<Herbaceous> a(List<ac> paramList)
   {
-    if (paramdg == null) {}
+    ArrayList localArrayList1 = new ArrayList();
+    int j = 0;
+    Object localObject2;
     for (;;)
     {
-      return;
-      try
-      {
-        if (!this.c.compareAndSet(false, true)) {
-          continue;
-        }
-        HandlerThread localHandlerThread = new HandlerThread("TuringFdShark");
-        localHandlerThread.start();
-        this.b = new aa(localHandlerThread.getLooper(), paramdg);
-        Message.obtain(this.b, 1).sendToTarget();
+      localObject1 = this.b;
+      if (j >= localObject1.length) {
+        break label347;
       }
-      finally {}
+      localObject2 = (List)localObject1[j];
+      if ((localObject2 != null) && (((List)localObject2).size() != 0)) {
+        break;
+      }
+      j += 1;
     }
+    Object localObject1 = new Herbaceous();
+    ArrayList localArrayList2 = new ArrayList();
+    Object localObject3 = (List)this.b[j];
+    label89:
+    int i;
+    if (localObject3 == null)
+    {
+      localObject3 = new HashMap();
+      i = this.a;
+      if (i != 1) {
+        break label311;
+      }
+      i = 0;
+    }
+    for (;;)
+    {
+      ((Map)localObject3).put(Integer.valueOf(i), localArrayList2);
+      ((Herbaceous)localObject1).Uc = ((Map)localObject3);
+      localObject2 = (ab)((List)localObject2).get(0);
+      if (localObject2 == null) {
+        break;
+      }
+      ((Herbaceous)localObject1).Tc = ((ab)localObject2).b;
+      if (paramList.size() > j)
+      {
+        localObject2 = (ac)paramList.get(j);
+        if (localObject2 != null)
+        {
+          ((Herbaceous)localObject1).Xc = ((ac)localObject2).a;
+          ((Herbaceous)localObject1).Yc = ((ac)localObject2).b;
+        }
+      }
+      localArrayList1.add(localObject1);
+      break;
+      i = 0;
+      while (i < ((List)localObject3).size())
+      {
+        ab localab = (ab)((List)localObject3).get(i);
+        Haw localHaw = new Haw();
+        float[] arrayOfFloat = localab.c;
+        localHaw.x = arrayOfFloat[0];
+        localHaw.y = arrayOfFloat[1];
+        localHaw.z = arrayOfFloat[2];
+        localHaw.Rc = localab.b;
+        localArrayList2.add(localHaw);
+        i += 1;
+      }
+      break label89;
+      label311:
+      if (i == 4) {
+        i = 2;
+      } else if (i == 9) {
+        i = 4;
+      } else if (i == 2) {
+        i = 5;
+      } else {
+        i = -1;
+      }
+    }
+    label347:
+    return localArrayList1;
   }
 }
 

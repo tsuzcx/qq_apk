@@ -8,8 +8,8 @@ import java.util.ArrayList;
 public final class SCCleanInfo
   extends JceStruct
 {
-  static ArrayList bz = new ArrayList();
-  public ArrayList vecClean = null;
+  static ArrayList<stCleanResp> bz = new ArrayList();
+  public ArrayList<stCleanResp> vecClean = null;
   
   static
   {

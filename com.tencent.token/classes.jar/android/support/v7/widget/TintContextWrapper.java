@@ -16,7 +16,7 @@ public class TintContextWrapper
   extends ContextWrapper
 {
   private static final Object CACHE_LOCK = new Object();
-  private static ArrayList sCache;
+  private static ArrayList<WeakReference<TintContextWrapper>> sCache;
   private final Resources mResources;
   private final Resources.Theme mTheme;
   

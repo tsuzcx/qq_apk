@@ -1,22 +1,43 @@
 package taiji;
 
-import com.tencent.token.it;
+import android.graphics.Path;
+import java.util.ArrayList;
 import java.util.List;
 
 public class q
-  extends s
 {
-  public q(List paramList)
+  private final List<l<?, Path>> a;
+  private final List<p<Integer>> b;
+  private final List<cc> c;
+  
+  public q(List<cc> paramList)
   {
-    super(paramList);
+    this.c = paramList;
+    this.a = new ArrayList(paramList.size());
+    this.b = new ArrayList(paramList.size());
+    int i = 0;
+    while (i < paramList.size())
+    {
+      this.a.add(((cc)paramList.get(i)).b().c());
+      ad localad = ((cc)paramList.get(i)).c();
+      this.b.add(localad.a());
+      i += 1;
+    }
   }
   
-  public Float a(r paramr, float paramFloat)
+  public List<cc> a()
   {
-    if ((paramr.a == null) || (paramr.b == null)) {
-      throw new IllegalStateException("Missing values for keyframe.");
-    }
-    return Float.valueOf(it.a(((Float)paramr.a).floatValue(), ((Float)paramr.b).floatValue(), paramFloat));
+    return this.c;
+  }
+  
+  public List<l<?, Path>> b()
+  {
+    return this.a;
+  }
+  
+  public List<p<Integer>> c()
+  {
+    return this.b;
   }
 }
 

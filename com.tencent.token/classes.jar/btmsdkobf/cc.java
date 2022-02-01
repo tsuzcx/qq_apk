@@ -4,37 +4,37 @@ import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.Set;
 
-public class cc
+public class cc<K, V>
 {
   private int hu = -1;
-  private LinkedHashMap hv = new LinkedHashMap();
+  private LinkedHashMap<K, V> hv = new LinkedHashMap();
   
   public cc(int paramInt)
   {
     this.hu = paramInt;
   }
   
-  public void a(Object paramObject)
+  public void a(K paramK)
   {
     try
     {
-      this.hv.remove(paramObject);
+      this.hv.remove(paramK);
       return;
     }
-    catch (Throwable paramObject) {}
+    catch (Throwable paramK) {}
   }
   
-  public LinkedHashMap aT()
+  public LinkedHashMap<K, V> aT()
   {
     return this.hv;
   }
   
-  public Object get(Object paramObject)
+  public V get(K paramK)
   {
-    return this.hv.get(paramObject);
+    return this.hv.get(paramK);
   }
   
-  public Object put(Object paramObject1, Object paramObject2)
+  public V put(K paramK, V paramV)
   {
     Object localObject;
     if (this.hv.size() >= this.hu)
@@ -50,7 +50,7 @@ public class cc
     {
       this.hv.remove(((Iterator)localObject).next());
       label56:
-      return this.hv.put(paramObject1, paramObject2);
+      return this.hv.put(paramK, paramV);
     }
     catch (Throwable localThrowable)
     {

@@ -5,7 +5,7 @@ import android.util.SparseArray;
 public final class w
 {
   public static boolean a = false;
-  private SparseArray b = null;
+  private SparseArray<a> b = null;
   private String c = "http://monitor.uu.qq.com/analytics/rqdsync";
   private int d = -1;
   private int e = 6;
@@ -16,7 +16,7 @@ public final class w
   
   public w()
   {
-    this.b.append(3, new w.a(3));
+    this.b.append(3, new a(3));
     this.b = this.b;
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("S(@L@L").append("@)");
@@ -140,19 +140,19 @@ public final class w
   }
   
   /* Error */
-  public final w.a c(int paramInt)
+  public final a c(int paramInt)
   {
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 27	com/tencent/feedback/proguard/w:b	Landroid/util/SparseArray;
+    //   3: getfield 30	com/tencent/feedback/proguard/w:b	Landroid/util/SparseArray;
     //   6: ifnull +19 -> 25
     //   9: aload_0
-    //   10: getfield 27	com/tencent/feedback/proguard/w:b	Landroid/util/SparseArray;
+    //   10: getfield 30	com/tencent/feedback/proguard/w:b	Landroid/util/SparseArray;
     //   13: iload_1
-    //   14: invokevirtual 86	android/util/SparseArray:get	(I)Ljava/lang/Object;
-    //   17: checkcast 52	com/tencent/feedback/proguard/w$a
+    //   14: invokevirtual 87	android/util/SparseArray:get	(I)Ljava/lang/Object;
+    //   17: checkcast 6	com/tencent/feedback/proguard/w$a
     //   20: astore_2
     //   21: aload_0
     //   22: monitorexit
@@ -170,7 +170,7 @@ public final class w
     //   start	length	slot	name	signature
     //   0	35	0	this	w
     //   0	35	1	paramInt	int
-    //   20	7	2	locala	w.a
+    //   20	7	2	locala	a
     //   30	4	2	localObject	Object
     // Exception table:
     //   from	to	target	type
@@ -230,6 +230,77 @@ public final class w
     {
       localObject = finally;
       throw localObject;
+    }
+  }
+  
+  public static final class a
+  {
+    private String a = "http://monitor.uu.qq.com/analytics/rqdsync";
+    private boolean b = false;
+    private boolean c = true;
+    private boolean d = false;
+    
+    public a(int paramInt) {}
+    
+    public final String a()
+    {
+      try
+      {
+        String str = this.a;
+        return str;
+      }
+      finally
+      {
+        localObject = finally;
+        throw localObject;
+      }
+    }
+    
+    public final void a(boolean paramBoolean)
+    {
+      try
+      {
+        this.b = paramBoolean;
+        return;
+      }
+      finally
+      {
+        localObject = finally;
+        throw localObject;
+      }
+    }
+    
+    public final boolean b()
+    {
+      try
+      {
+        boolean bool = this.b;
+        return bool;
+      }
+      finally
+      {
+        localObject = finally;
+        throw localObject;
+      }
+    }
+    
+    public final boolean c()
+    {
+      try
+      {
+        boolean bool = this.c;
+        return bool;
+      }
+      finally
+      {
+        localObject = finally;
+        throw localObject;
+      }
+    }
+    
+    public final boolean d()
+    {
+      return false;
     }
   }
 }

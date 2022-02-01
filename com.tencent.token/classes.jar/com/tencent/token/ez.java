@@ -1,51 +1,40 @@
 package com.tencent.token;
 
-class ez
-  extends ey
+import java.net.Socket;
+import javax.net.ssl.SSLSocket;
+import okhttp3.a;
+import okhttp3.ab;
+import okhttp3.internal.connection.c;
+import okhttp3.internal.connection.d;
+import okhttp3.internal.connection.f;
+import okhttp3.j;
+import okhttp3.k;
+import okhttp3.r.a;
+import okhttp3.z.a;
+
+public abstract class ez
 {
-  int d = 1;
+  public static ez a;
   
-  ez() {}
+  public abstract int a(z.a parama);
   
-  ez(int paramInt)
-  {
-    super(paramInt);
-  }
+  public abstract Socket a(j paramj, a parama, f paramf);
   
-  void a(ez paramez)
-  {
-    if (this.d == paramez.d)
-    {
-      c(paramez);
-      return;
-    }
-    this.d *= d(paramez);
-  }
+  public abstract c a(j paramj, a parama, f paramf, ab paramab);
   
-  void b(ez paramez)
-  {
-    if (this.d == paramez.d)
-    {
-      this.d *= d(paramez);
-      return;
-    }
-    c(paramez);
-  }
+  public abstract d a(j paramj);
   
-  void f(ey paramey)
-  {
-    if (this.d == 1)
-    {
-      c(paramey);
-      return;
-    }
-    this.d *= d(paramey);
-  }
+  public abstract void a(k paramk, SSLSocket paramSSLSocket, boolean paramBoolean);
   
-  public String toString()
-  {
-    return new ex(this, this.d).toString();
-  }
+  public abstract void a(r.a parama, String paramString);
+  
+  public abstract void a(r.a parama, String paramString1, String paramString2);
+  
+  public abstract boolean a(a parama1, a parama2);
+  
+  public abstract boolean a(j paramj, c paramc);
+  
+  public abstract void b(j paramj, c paramc);
 }
 
 

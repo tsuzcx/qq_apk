@@ -1,25 +1,67 @@
 package com.tencent.token.global.taiji;
 
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.os.HandlerThread;
+import android.os.Looper;
+import java.util.HashMap;
 
-class e
-  implements Runnable
+public class e
 {
-  e(d paramd, boolean paramBoolean, i parami) {}
+  private static HashMap<Thread, i.c> a = new HashMap();
+  private static HandlerThread b;
+  private static HandlerThread c;
   
-  public void run()
+  public static HandlerThread a(String paramString, int paramInt, long paramLong)
   {
-    if (!this.a)
+    try
     {
-      localIterator = this.c.a().iterator();
-      while (localIterator.hasNext()) {
-        ((s)localIterator.next()).a();
-      }
+      paramString = new d(paramString, paramInt, paramLong);
+      return paramString;
     }
-    Iterator localIterator = this.c.b().iterator();
-    while (localIterator.hasNext()) {
-      ((r)localIterator.next()).a(this.b.a());
+    finally
+    {
+      paramString = finally;
+      throw paramString;
+    }
+  }
+  
+  public static Looper a(long paramLong)
+  {
+    if (1L == paramLong)
+    {
+      try
+      {
+        if (b != null) {
+          if (!b.isAlive())
+          {
+            b = new d("hostHandlerThread", 5, paramLong, true);
+            b.start();
+          }
+        }
+        for (;;)
+        {
+          Looper localLooper1 = b.getLooper();
+          return localLooper1;
+          b = new d("hostHandlerThread", 5, paramLong, true);
+          b.start();
+        }
+        if (c == null) {
+          break label133;
+        }
+      }
+      finally {}
+    }
+    else if (!c.isAlive())
+    {
+      c = new d("otherHandlerThread", 5, paramLong, true);
+      c.start();
+    }
+    for (;;)
+    {
+      Looper localLooper2 = c.getLooper();
+      break;
+      label133:
+      c = new d("otherHandlerThread", 5, paramLong, true);
+      c.start();
     }
   }
 }

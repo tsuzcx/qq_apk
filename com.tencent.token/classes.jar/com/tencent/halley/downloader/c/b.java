@@ -1,13 +1,14 @@
 package com.tencent.halley.downloader.c;
 
 import android.os.Handler;
+import com.tencent.halley.common.f;
 import com.tencent.halley.downloader.DownloaderTaskStatus;
 import java.util.Vector;
 import java.util.concurrent.LinkedBlockingQueue;
 
 public final class b
 {
-  private h a;
+  private e a;
   private volatile DownloaderTaskStatus b = DownloaderTaskStatus.PENDING;
   private Vector c = new Vector();
   private Vector d = new Vector();
@@ -15,9 +16,9 @@ public final class b
   private volatile boolean f = false;
   private LinkedBlockingQueue g = new LinkedBlockingQueue();
   
-  public b(h paramh)
+  public b(e parame)
   {
-    this.a = paramh;
+    this.a = parame;
   }
   
   private void a(DownloaderTaskStatus paramDownloaderTaskStatus, boolean paramBoolean)
@@ -36,27 +37,27 @@ public final class b
         }
         this.b = paramDownloaderTaskStatus;
         localDownloaderTaskStatus = null;
-        switch (e.a[paramDownloaderTaskStatus.ordinal()])
+        switch (1.a[paramDownloaderTaskStatus.ordinal()])
         {
         case 1: 
           a(paramDownloaderTaskStatus);
           continue;
-          paramDownloaderTaskStatus = b.a.a;
+          paramDownloaderTaskStatus = a.a;
         }
       }
       finally {}
       continue;
-      paramDownloaderTaskStatus = b.a.b;
+      paramDownloaderTaskStatus = a.b;
       continue;
-      paramDownloaderTaskStatus = b.a.d;
+      paramDownloaderTaskStatus = a.d;
       continue;
-      paramDownloaderTaskStatus = b.a.g;
+      paramDownloaderTaskStatus = a.g;
       continue;
-      paramDownloaderTaskStatus = b.a.f;
+      paramDownloaderTaskStatus = a.f;
       continue;
-      paramDownloaderTaskStatus = b.a.e;
+      paramDownloaderTaskStatus = a.e;
       continue;
-      paramDownloaderTaskStatus = b.a.h;
+      paramDownloaderTaskStatus = a.h;
       continue;
       paramDownloaderTaskStatus = localDownloaderTaskStatus;
     }
@@ -71,7 +72,7 @@ public final class b
   {
     try
     {
-      com.tencent.halley.common.c.b("StatusInformer", "updateTaskStatus:" + paramDownloaderTaskStatus.name());
+      com.tencent.halley.common.b.b("StatusInformer", "updateTaskStatus:" + paramDownloaderTaskStatus.name());
       a(paramDownloaderTaskStatus, true);
       return;
     }
@@ -82,10 +83,10 @@ public final class b
     }
   }
   
-  public final void a(b.a parama)
+  public final void a(a parama)
   {
     if (parama != null) {
-      if ((parama != null) && (parama != b.a.h)) {
+      if ((parama != null) && (parama != a.h)) {
         break label28;
       }
     }
@@ -100,11 +101,11 @@ public final class b
       catch (InterruptedException parama)
       {
         label28:
-        f localf;
+        c localc;
         parama.printStackTrace();
       }
-      localf = new f(this, parama);
-      com.tencent.halley.common.h.h().post(localf);
+      localc = new c(this, parama);
+      f.h().post(localc);
     }
   }
   
@@ -155,17 +156,17 @@ public final class b
     //   1: istore_2
     //   2: aload_0
     //   3: iconst_1
-    //   4: putfield 40	com/tencent/halley/downloader/c/b:f	Z
+    //   4: putfield 44	com/tencent/halley/downloader/c/b:f	Z
     //   7: aconst_null
     //   8: astore 10
     //   10: aconst_null
     //   11: astore 9
     //   13: aload_0
-    //   14: getfield 45	com/tencent/halley/downloader/c/b:g	Ljava/util/concurrent/LinkedBlockingQueue;
+    //   14: getfield 49	com/tencent/halley/downloader/c/b:g	Ljava/util/concurrent/LinkedBlockingQueue;
     //   17: invokevirtual 164	java/util/concurrent/LinkedBlockingQueue:take	()Ljava/lang/Object;
-    //   20: checkcast 76	com/tencent/halley/downloader/c/b$a
+    //   20: checkcast 8	com/tencent/halley/downloader/c/b$a
     //   23: astore 7
-    //   25: getstatic 166	com/tencent/halley/downloader/c/e:b	[I
+    //   25: getstatic 166	com/tencent/halley/downloader/c/b$1:b	[I
     //   28: aload 7
     //   30: invokevirtual 167	com/tencent/halley/downloader/c/b$a:ordinal	()I
     //   33: iaload
@@ -187,22 +188,22 @@ public final class b
     //   112: pop
     //   113: aload_0
     //   114: iconst_0
-    //   115: putfield 40	com/tencent/halley/downloader/c/b:f	Z
+    //   115: putfield 44	com/tencent/halley/downloader/c/b:f	Z
     //   118: return
     //   119: iconst_0
     //   120: istore_1
     //   121: goto -35 -> 86
-    //   124: invokestatic 185	com/tencent/token/y:a	()Lcom/tencent/token/y;
+    //   124: invokestatic 185	com/tencent/token/x:a	()Lcom/tencent/token/x;
     //   127: aload_0
-    //   128: getfield 47	com/tencent/halley/downloader/c/b:a	Lcom/tencent/halley/downloader/c/h;
-    //   131: invokevirtual 188	com/tencent/token/y:h	(Lcom/tencent/halley/downloader/b;)V
+    //   128: getfield 51	com/tencent/halley/downloader/c/b:a	Lcom/tencent/halley/downloader/c/e;
+    //   131: invokevirtual 188	com/tencent/token/x:h	(Lcom/tencent/halley/downloader/b;)V
     //   134: aload_0
-    //   135: getfield 34	com/tencent/halley/downloader/c/b:c	Ljava/util/Vector;
+    //   135: getfield 38	com/tencent/halley/downloader/c/b:c	Ljava/util/Vector;
     //   138: astore 8
     //   140: aload 8
     //   142: monitorenter
     //   143: aload_0
-    //   144: getfield 34	com/tencent/halley/downloader/c/b:c	Ljava/util/Vector;
+    //   144: getfield 38	com/tencent/halley/downloader/c/b:c	Ljava/util/Vector;
     //   147: invokevirtual 192	java/util/Vector:iterator	()Ljava/util/Iterator;
     //   150: astore 9
     //   152: aload 9
@@ -216,7 +217,7 @@ public final class b
     //   176: ifnull -24 -> 152
     //   179: aload 10
     //   181: aload_0
-    //   182: getfield 47	com/tencent/halley/downloader/c/b:a	Lcom/tencent/halley/downloader/c/h;
+    //   182: getfield 51	com/tencent/halley/downloader/c/b:a	Lcom/tencent/halley/downloader/c/e;
     //   185: invokeinterface 204 2 0
     //   190: goto -38 -> 152
     //   193: astore 9
@@ -247,17 +248,17 @@ public final class b
     //   243: iconst_0
     //   244: istore_1
     //   245: goto -159 -> 86
-    //   248: invokestatic 185	com/tencent/token/y:a	()Lcom/tencent/token/y;
+    //   248: invokestatic 185	com/tencent/token/x:a	()Lcom/tencent/token/x;
     //   251: aload_0
-    //   252: getfield 47	com/tencent/halley/downloader/c/b:a	Lcom/tencent/halley/downloader/c/h;
-    //   255: invokevirtual 207	com/tencent/token/y:i	(Lcom/tencent/halley/downloader/b;)V
+    //   252: getfield 51	com/tencent/halley/downloader/c/b:a	Lcom/tencent/halley/downloader/c/e;
+    //   255: invokevirtual 207	com/tencent/token/x:i	(Lcom/tencent/halley/downloader/b;)V
     //   258: aload_0
-    //   259: getfield 34	com/tencent/halley/downloader/c/b:c	Ljava/util/Vector;
+    //   259: getfield 38	com/tencent/halley/downloader/c/b:c	Ljava/util/Vector;
     //   262: astore 8
     //   264: aload 8
     //   266: monitorenter
     //   267: aload_0
-    //   268: getfield 34	com/tencent/halley/downloader/c/b:c	Ljava/util/Vector;
+    //   268: getfield 38	com/tencent/halley/downloader/c/b:c	Ljava/util/Vector;
     //   271: invokevirtual 192	java/util/Vector:iterator	()Ljava/util/Iterator;
     //   274: astore 9
     //   276: aload 9
@@ -271,7 +272,7 @@ public final class b
     //   300: ifnull -24 -> 276
     //   303: aload 10
     //   305: aload_0
-    //   306: getfield 47	com/tencent/halley/downloader/c/b:a	Lcom/tencent/halley/downloader/c/h;
+    //   306: getfield 51	com/tencent/halley/downloader/c/b:a	Lcom/tencent/halley/downloader/c/e;
     //   309: invokeinterface 208 2 0
     //   314: goto -38 -> 276
     //   317: astore 9
@@ -300,17 +301,17 @@ public final class b
     //   362: iconst_0
     //   363: istore_1
     //   364: goto -278 -> 86
-    //   367: invokestatic 185	com/tencent/token/y:a	()Lcom/tencent/token/y;
+    //   367: invokestatic 185	com/tencent/token/x:a	()Lcom/tencent/token/x;
     //   370: aload_0
-    //   371: getfield 47	com/tencent/halley/downloader/c/b:a	Lcom/tencent/halley/downloader/c/h;
-    //   374: invokevirtual 211	com/tencent/token/y:j	(Lcom/tencent/halley/downloader/b;)V
+    //   371: getfield 51	com/tencent/halley/downloader/c/b:a	Lcom/tencent/halley/downloader/c/e;
+    //   374: invokevirtual 211	com/tencent/token/x:j	(Lcom/tencent/halley/downloader/b;)V
     //   377: aload_0
-    //   378: getfield 34	com/tencent/halley/downloader/c/b:c	Ljava/util/Vector;
+    //   378: getfield 38	com/tencent/halley/downloader/c/b:c	Ljava/util/Vector;
     //   381: astore 8
     //   383: aload 8
     //   385: monitorenter
     //   386: aload_0
-    //   387: getfield 34	com/tencent/halley/downloader/c/b:c	Ljava/util/Vector;
+    //   387: getfield 38	com/tencent/halley/downloader/c/b:c	Ljava/util/Vector;
     //   390: invokevirtual 192	java/util/Vector:iterator	()Ljava/util/Iterator;
     //   393: astore 9
     //   395: aload 9
@@ -324,7 +325,7 @@ public final class b
     //   419: ifnull -24 -> 395
     //   422: aload 10
     //   424: aload_0
-    //   425: getfield 47	com/tencent/halley/downloader/c/b:a	Lcom/tencent/halley/downloader/c/h;
+    //   425: getfield 51	com/tencent/halley/downloader/c/b:a	Lcom/tencent/halley/downloader/c/e;
     //   428: invokeinterface 212 2 0
     //   433: goto -38 -> 395
     //   436: astore 9
@@ -337,17 +338,17 @@ public final class b
     //   447: iconst_0
     //   448: istore_1
     //   449: goto -363 -> 86
-    //   452: invokestatic 185	com/tencent/token/y:a	()Lcom/tencent/token/y;
+    //   452: invokestatic 185	com/tencent/token/x:a	()Lcom/tencent/token/x;
     //   455: aload_0
-    //   456: getfield 47	com/tencent/halley/downloader/c/b:a	Lcom/tencent/halley/downloader/c/h;
-    //   459: invokevirtual 215	com/tencent/token/y:k	(Lcom/tencent/halley/downloader/b;)V
+    //   456: getfield 51	com/tencent/halley/downloader/c/b:a	Lcom/tencent/halley/downloader/c/e;
+    //   459: invokevirtual 215	com/tencent/token/x:k	(Lcom/tencent/halley/downloader/b;)V
     //   462: aload_0
-    //   463: getfield 34	com/tencent/halley/downloader/c/b:c	Ljava/util/Vector;
+    //   463: getfield 38	com/tencent/halley/downloader/c/b:c	Ljava/util/Vector;
     //   466: astore 8
     //   468: aload 8
     //   470: monitorenter
     //   471: aload_0
-    //   472: getfield 34	com/tencent/halley/downloader/c/b:c	Ljava/util/Vector;
+    //   472: getfield 38	com/tencent/halley/downloader/c/b:c	Ljava/util/Vector;
     //   475: invokevirtual 192	java/util/Vector:iterator	()Ljava/util/Iterator;
     //   478: astore 9
     //   480: aload 9
@@ -361,7 +362,7 @@ public final class b
     //   504: ifnull -24 -> 480
     //   507: aload 10
     //   509: aload_0
-    //   510: getfield 47	com/tencent/halley/downloader/c/b:a	Lcom/tencent/halley/downloader/c/h;
+    //   510: getfield 51	com/tencent/halley/downloader/c/b:a	Lcom/tencent/halley/downloader/c/e;
     //   513: invokeinterface 216 2 0
     //   518: goto -38 -> 480
     //   521: astore 9
@@ -378,17 +379,17 @@ public final class b
     //   539: iconst_1
     //   540: istore_1
     //   541: goto -455 -> 86
-    //   544: invokestatic 185	com/tencent/token/y:a	()Lcom/tencent/token/y;
+    //   544: invokestatic 185	com/tencent/token/x:a	()Lcom/tencent/token/x;
     //   547: aload_0
-    //   548: getfield 47	com/tencent/halley/downloader/c/b:a	Lcom/tencent/halley/downloader/c/h;
-    //   551: invokevirtual 219	com/tencent/token/y:l	(Lcom/tencent/halley/downloader/b;)V
+    //   548: getfield 51	com/tencent/halley/downloader/c/b:a	Lcom/tencent/halley/downloader/c/e;
+    //   551: invokevirtual 219	com/tencent/token/x:l	(Lcom/tencent/halley/downloader/b;)V
     //   554: aload_0
-    //   555: getfield 34	com/tencent/halley/downloader/c/b:c	Ljava/util/Vector;
+    //   555: getfield 38	com/tencent/halley/downloader/c/b:c	Ljava/util/Vector;
     //   558: astore 8
     //   560: aload 8
     //   562: monitorenter
     //   563: aload_0
-    //   564: getfield 34	com/tencent/halley/downloader/c/b:c	Ljava/util/Vector;
+    //   564: getfield 38	com/tencent/halley/downloader/c/b:c	Ljava/util/Vector;
     //   567: invokevirtual 192	java/util/Vector:iterator	()Ljava/util/Iterator;
     //   570: astore 9
     //   572: aload 9
@@ -402,7 +403,7 @@ public final class b
     //   596: ifnull -24 -> 572
     //   599: aload 10
     //   601: aload_0
-    //   602: getfield 47	com/tencent/halley/downloader/c/b:a	Lcom/tencent/halley/downloader/c/h;
+    //   602: getfield 51	com/tencent/halley/downloader/c/b:a	Lcom/tencent/halley/downloader/c/e;
     //   605: invokeinterface 220 2 0
     //   610: goto -38 -> 572
     //   613: astore 9
@@ -422,12 +423,12 @@ public final class b
     //   636: invokestatic 226	android/os/SystemClock:elapsedRealtime	()J
     //   639: lstore_3
     //   640: aload_0
-    //   641: getfield 34	com/tencent/halley/downloader/c/b:c	Ljava/util/Vector;
+    //   641: getfield 38	com/tencent/halley/downloader/c/b:c	Ljava/util/Vector;
     //   644: astore 8
     //   646: aload 8
     //   648: monitorenter
     //   649: aload_0
-    //   650: getfield 34	com/tencent/halley/downloader/c/b:c	Ljava/util/Vector;
+    //   650: getfield 38	com/tencent/halley/downloader/c/b:c	Ljava/util/Vector;
     //   653: invokevirtual 192	java/util/Vector:iterator	()Ljava/util/Iterator;
     //   656: astore 9
     //   658: aload 9
@@ -441,7 +442,7 @@ public final class b
     //   682: ifnull -24 -> 658
     //   685: aload 10
     //   687: aload_0
-    //   688: getfield 47	com/tencent/halley/downloader/c/b:a	Lcom/tencent/halley/downloader/c/h;
+    //   688: getfield 51	com/tencent/halley/downloader/c/b:a	Lcom/tencent/halley/downloader/c/e;
     //   691: invokeinterface 229 2 0
     //   696: goto -38 -> 658
     //   699: astore 9
@@ -458,10 +459,10 @@ public final class b
     //   718: lload_3
     //   719: lsub
     //   720: l2i
-    //   721: putfield 38	com/tencent/halley/downloader/c/b:e	I
+    //   721: putfield 42	com/tencent/halley/downloader/c/b:e	I
     //   724: aload_0
-    //   725: getfield 47	com/tencent/halley/downloader/c/b:a	Lcom/tencent/halley/downloader/c/h;
-    //   728: invokevirtual 234	com/tencent/halley/downloader/c/h:N	()V
+    //   725: getfield 51	com/tencent/halley/downloader/c/b:a	Lcom/tencent/halley/downloader/c/e;
+    //   728: invokevirtual 234	com/tencent/halley/downloader/c/e:N	()V
     //   731: invokestatic 226	android/os/SystemClock:elapsedRealtime	()J
     //   734: lload 5
     //   736: lsub
@@ -476,20 +477,20 @@ public final class b
     //   753: ldc 241
     //   755: invokevirtual 112	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   758: aload_0
-    //   759: getfield 47	com/tencent/halley/downloader/c/b:a	Lcom/tencent/halley/downloader/c/h;
-    //   762: invokevirtual 244	com/tencent/halley/downloader/c/h:a_	()J
+    //   759: getfield 51	com/tencent/halley/downloader/c/b:a	Lcom/tencent/halley/downloader/c/e;
+    //   762: invokevirtual 244	com/tencent/halley/downloader/c/e:a_	()J
     //   765: invokevirtual 239	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   768: invokevirtual 115	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   771: invokestatic 246	com/tencent/halley/common/c:a	(Ljava/lang/String;Ljava/lang/String;)V
+    //   771: invokestatic 246	com/tencent/halley/common/b:a	(Ljava/lang/String;Ljava/lang/String;)V
     //   774: aload_0
-    //   775: getfield 47	com/tencent/halley/downloader/c/b:a	Lcom/tencent/halley/downloader/c/h;
+    //   775: getfield 51	com/tencent/halley/downloader/c/b:a	Lcom/tencent/halley/downloader/c/e;
     //   778: lload_3
     //   779: l2i
-    //   780: putfield 249	com/tencent/halley/downloader/c/h:E	I
-    //   783: invokestatic 185	com/tencent/token/y:a	()Lcom/tencent/token/y;
+    //   780: putfield 249	com/tencent/halley/downloader/c/e:E	I
+    //   783: invokestatic 185	com/tencent/token/x:a	()Lcom/tencent/token/x;
     //   786: aload_0
-    //   787: getfield 47	com/tencent/halley/downloader/c/b:a	Lcom/tencent/halley/downloader/c/h;
-    //   790: invokevirtual 250	com/tencent/token/y:m	(Lcom/tencent/halley/downloader/b;)V
+    //   787: getfield 51	com/tencent/halley/downloader/c/b:a	Lcom/tencent/halley/downloader/c/e;
+    //   790: invokevirtual 250	com/tencent/token/x:m	(Lcom/tencent/halley/downloader/b;)V
     //   793: iconst_1
     //   794: istore_1
     //   795: goto -709 -> 86
@@ -608,6 +609,14 @@ public final class b
   public final int e()
   {
     return this.e;
+  }
+  
+  public static enum a
+  {
+    public static a[] a()
+    {
+      return (a[])i.clone();
+    }
   }
 }
 

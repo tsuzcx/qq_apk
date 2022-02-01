@@ -13,7 +13,7 @@ public class c
   public int b = 0;
   public long c = 0L;
   public byte[] d = new byte[0];
-  public List e = null;
+  public List<byte[]> e = null;
   public byte[] f = new byte[0];
   public byte[] g = new byte[0];
   public long h = 0L;

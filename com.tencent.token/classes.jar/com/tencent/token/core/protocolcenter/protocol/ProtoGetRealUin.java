@@ -1,37 +1,37 @@
 package com.tencent.token.core.protocolcenter.protocol;
 
 import android.content.Context;
+import com.tencent.token.bz;
+import com.tencent.token.ca;
+import com.tencent.token.cb;
 import com.tencent.token.core.bean.QQUser;
-import com.tencent.token.core.protocolcenter.e;
-import com.tencent.token.cv;
-import com.tencent.token.cw;
-import com.tencent.token.cx;
-import com.tencent.token.do;
-import com.tencent.token.ev;
+import com.tencent.token.core.protocolcenter.d;
+import com.tencent.token.cq;
+import com.tencent.token.dn;
 import com.tencent.token.global.RqdApplication;
 import com.tencent.token.global.c;
-import com.tencent.token.global.f;
-import com.tencent.token.global.h;
-import com.tencent.token.utils.w;
+import com.tencent.token.global.e;
+import com.tencent.token.global.g;
+import com.tencent.token.utils.l;
 import java.util.HashMap;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class ProtoGetRealUin
-  extends e
+  extends d
 {
   private long d;
   private int e;
   
-  public static void a(ev paramev, long paramLong)
+  public static void a(dn paramdn, long paramLong)
   {
-    paramev.c.put("param.uinhash", Long.valueOf(paramLong));
+    paramdn.c.put("param.uinhash", Long.valueOf(paramLong));
   }
   
   protected String a()
   {
     Object localObject1 = null;
-    String str = cv.a().b();
+    String str = bz.a().b();
     if (str == null)
     {
       this.a.b(104);
@@ -41,32 +41,32 @@ public class ProtoGetRealUin
     {
       Object localObject2 = new JSONObject();
       ((JSONObject)localObject2).put("uin", this.d);
-      int i = cw.a + 1;
-      cw.a = i;
+      int i = ca.a + 1;
+      ca.a = i;
       this.e = i;
       ((JSONObject)localObject2).put("seq_id", this.e);
-      ((JSONObject)localObject2).put("op_time", cx.c().s() / 1000L);
+      ((JSONObject)localObject2).put("op_time", cb.c().s() / 1000L);
       localObject2 = ((JSONObject)localObject2).toString();
-      h.a("plain:" + (String)localObject2);
-      localObject2 = w.b(((String)localObject2).getBytes());
+      g.a("plain:" + (String)localObject2);
+      localObject2 = l.b(((String)localObject2).getBytes());
       localObject1 = localObject2;
     }
     catch (JSONException localJSONException)
     {
       for (;;)
       {
-        h.c("JSONException:" + localJSONException.getMessage());
+        g.c("JSONException:" + localJSONException.getMessage());
       }
     }
     localObject1 = "?aq_base_sid=" + str + "&data=" + (String)localObject1;
     localObject1 = c.e() + "/cn/mbtoken3/mbtoken3_query_real_uin_v2" + (String)localObject1;
-    h.a("url" + (String)localObject1);
+    g.a("url" + (String)localObject1);
     return localObject1;
   }
   
-  protected void a(ev paramev)
+  protected void a(dn paramdn)
   {
-    this.d = ((Long)paramev.c.get("param.uinhash")).longValue();
+    this.d = ((Long)paramdn.c.get("param.uinhash")).longValue();
   }
   
   protected void a(JSONObject paramJSONObject)
@@ -78,7 +78,7 @@ public class ProtoGetRealUin
       this.a.a(i, paramJSONObject, paramJSONObject);
       return;
     }
-    paramJSONObject = w.c(paramJSONObject.getString("data"));
+    paramJSONObject = l.c(paramJSONObject.getString("data"));
     if (paramJSONObject != null)
     {
       paramJSONObject = new JSONObject(new String(paramJSONObject));
@@ -86,11 +86,11 @@ public class ProtoGetRealUin
       if (i != this.e)
       {
         this.a.b(10030);
-        h.c("parseJSON error seq is wrong seq=" + i + ",right = " + cw.a().b());
+        g.c("parseJSON error seq is wrong seq=" + i + ",right = " + ca.a().b());
         return;
       }
       this.a.c();
-      QQUser localQQUser = do.a().c(this.d);
+      QQUser localQQUser = cq.a().c(this.d);
       if (localQQUser == null)
       {
         this.a.b(10000);
@@ -101,7 +101,7 @@ public class ProtoGetRealUin
       localQQUser.verify_sms = paramJSONObject.optInt("verify_sms");
       return;
     }
-    h.c("parseJSON error decodeData=" + paramJSONObject);
+    g.c("parseJSON error decodeData=" + paramJSONObject);
     a(10022, RqdApplication.l().getString(2131230925));
   }
 }

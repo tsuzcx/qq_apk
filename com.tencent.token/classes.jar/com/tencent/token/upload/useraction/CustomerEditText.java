@@ -9,7 +9,7 @@ import android.view.View;
 import android.view.View.OnFocusChangeListener;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
-import com.tencent.token.global.h;
+import com.tencent.token.global.g;
 
 public class CustomerEditText
   extends EditText
@@ -69,14 +69,14 @@ public class CustomerEditText
       {
         if (getText() != null)
         {
-          h.c("focus start:" + getText().toString());
+          g.c("focus start:" + getText().toString());
           a.a().a(a.c, "", this.f, getClass().getName(), getText().toString(), "", this.d, this.e, this.c);
           a.a().d();
         }
-        h.c("pagename:" + this.f);
-        h.c("ctrlName:" + getClass().getName());
-        h.c("getRawX:" + this.d);
-        h.c("getRawY:" + this.e);
+        g.c("pagename:" + this.f);
+        g.c("ctrlName:" + getClass().getName());
+        g.c("getRawX:" + this.d);
+        g.c("getRawY:" + this.e);
         return;
       }
     }
@@ -88,7 +88,7 @@ public class CustomerEditText
         continue;
         if (getText() != null)
         {
-          h.c("focus end" + getText().toString());
+          g.c("focus end" + getText().toString());
           a.a().a(a.d, "", this.f, getClass().getName(), getText().toString(), "", this.d, this.e, this.c);
         }
       }

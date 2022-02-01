@@ -1,103 +1,223 @@
 package com.tencent.token;
 
-import java.io.Writer;
-import java.util.Iterator;
-import java.util.concurrent.ConcurrentLinkedQueue;
-import java.util.concurrent.atomic.AtomicInteger;
+import java.io.IOException;
+import java.util.concurrent.TimeUnit;
+import okhttp3.Protocol;
+import okhttp3.aa;
+import okhttp3.r.a;
+import okhttp3.t;
+import okhttp3.t.a;
+import okhttp3.x;
+import okhttp3.z;
+import okhttp3.z.a;
+import okio.c;
+import okio.d;
+import okio.e;
+import okio.k;
+import okio.p;
+import okio.q;
 
-public class fd
-  implements Iterable
+public final class fd
+  implements t
 {
-  private ConcurrentLinkedQueue a = null;
-  private AtomicInteger b = null;
+  final fh a;
   
-  public int a()
+  public fd(fh paramfh)
   {
-    return this.b.get();
+    this.a = paramfh;
   }
   
-  public int a(String paramString)
+  private static okhttp3.r a(okhttp3.r paramr1, okhttp3.r paramr2)
   {
-    int i = paramString.length();
-    this.a.add(paramString);
-    return this.b.addAndGet(i);
-  }
-  
-  public void a(Writer paramWriter, char[] paramArrayOfChar)
-  {
-    if ((paramWriter == null) || (paramArrayOfChar == null) || (paramArrayOfChar.length == 0)) {
-      return;
-    }
-    int n = paramArrayOfChar.length;
-    for (;;)
+    int j = 0;
+    r.a locala = new r.a();
+    int k = paramr1.a();
+    int i = 0;
+    if (i < k)
     {
-      int j;
-      int k;
-      int i1;
-      int i2;
-      try
+      String str1 = paramr1.a(i);
+      String str2 = paramr1.b(i);
+      if (("Warning".equalsIgnoreCase(str1)) && (str2.startsWith("1"))) {}
+      for (;;)
       {
-        Iterator localIterator = iterator();
-        j = 0;
-        i = n;
-        if (localIterator.hasNext())
-        {
-          String str = (String)localIterator.next();
-          k = str.length();
-          m = 0;
-          break label169;
-          str.getChars(m, m + i1, paramArrayOfChar, j);
-          i2 = i - i1;
-          k -= i1;
-          i = i1 + m;
-          if (i2 == 0)
-          {
-            paramWriter.write(paramArrayOfChar, 0, n);
-            i1 = 0;
-            j = n;
-            m = i;
-            i = j;
-            j = i1;
-            break label169;
-          }
-        }
-        else
-        {
-          if (j > 0) {
-            paramWriter.write(paramArrayOfChar, 0, j);
-          }
-          paramWriter.flush();
-          return;
-        }
-      }
-      catch (Exception paramWriter)
-      {
-        paramWriter.printStackTrace();
-        return;
-      }
-      j += i1;
-      int m = i;
-      int i = i2;
-      label169:
-      if (k > 0) {
-        if (i > k) {
-          i1 = k;
-        } else {
-          i1 = i;
+        i += 1;
+        break;
+        if ((b(str1)) || (!a(str1)) || (paramr2.a(str1) == null)) {
+          ez.a.a(locala, str1, str2);
         }
       }
     }
+    k = paramr2.a();
+    i = j;
+    while (i < k)
+    {
+      paramr1 = paramr2.a(i);
+      if ((!b(paramr1)) && (a(paramr1))) {
+        ez.a.a(locala, paramr1, paramr2.b(i));
+      }
+      i += 1;
+    }
+    return locala.a();
   }
   
-  public void b()
+  private z a(final fe paramfe, z paramz)
   {
-    this.a.clear();
-    this.b.set(0);
+    if (paramfe == null) {}
+    do
+    {
+      return paramz;
+      localObject = paramfe.a();
+    } while (localObject == null);
+    paramfe = new q()
+    {
+      boolean a;
+      
+      public long a(c paramAnonymousc, long paramAnonymousLong)
+      {
+        try
+        {
+          paramAnonymousLong = this.b.a(paramAnonymousc, paramAnonymousLong);
+          if (paramAnonymousLong == -1L)
+          {
+            if (!this.a)
+            {
+              this.a = true;
+              this.d.close();
+            }
+            return -1L;
+          }
+        }
+        catch (IOException paramAnonymousc)
+        {
+          if (!this.a)
+          {
+            this.a = true;
+            paramfe.b();
+          }
+          throw paramAnonymousc;
+        }
+        paramAnonymousc.a(this.d.c(), paramAnonymousc.b() - paramAnonymousLong, paramAnonymousLong);
+        this.d.u();
+        return paramAnonymousLong;
+      }
+      
+      public okio.r a()
+      {
+        return this.b.a();
+      }
+      
+      public void close()
+      {
+        if ((!this.a) && (!fb.a(this, 100, TimeUnit.MILLISECONDS)))
+        {
+          this.a = true;
+          paramfe.b();
+        }
+        this.b.close();
+      }
+    };
+    Object localObject = paramz.a("Content-Type");
+    long l = paramz.e().a();
+    return paramz.f().a(new fp((String)localObject, l, k.a(paramfe))).a();
   }
   
-  public Iterator iterator()
+  private static z a(z paramz)
   {
-    return this.a.iterator();
+    z localz = paramz;
+    if (paramz != null)
+    {
+      localz = paramz;
+      if (paramz.e() != null) {
+        localz = paramz.f().a(null).a();
+      }
+    }
+    return localz;
+  }
+  
+  static boolean a(String paramString)
+  {
+    return (!"Connection".equalsIgnoreCase(paramString)) && (!"Keep-Alive".equalsIgnoreCase(paramString)) && (!"Proxy-Authenticate".equalsIgnoreCase(paramString)) && (!"Proxy-Authorization".equalsIgnoreCase(paramString)) && (!"TE".equalsIgnoreCase(paramString)) && (!"Trailers".equalsIgnoreCase(paramString)) && (!"Transfer-Encoding".equalsIgnoreCase(paramString)) && (!"Upgrade".equalsIgnoreCase(paramString));
+  }
+  
+  static boolean b(String paramString)
+  {
+    return ("Content-Length".equalsIgnoreCase(paramString)) || ("Content-Encoding".equalsIgnoreCase(paramString)) || ("Content-Type".equalsIgnoreCase(paramString));
+  }
+  
+  public z a(t.a parama)
+  {
+    z localz1;
+    x localx;
+    z localz2;
+    if (this.a != null)
+    {
+      localz1 = this.a.a(parama.a());
+      ff localff = new ff.a(System.currentTimeMillis(), parama.a(), localz1).a();
+      localx = localff.a;
+      localz2 = localff.b;
+      if (this.a != null) {
+        this.a.a(localff);
+      }
+      if ((localz1 != null) && (localz2 == null)) {
+        fb.a(localz1.e());
+      }
+      if ((localx != null) || (localz2 != null)) {
+        break label163;
+      }
+      parama = new z.a().a(parama.a()).a(Protocol.HTTP_1_1).a(504).a("Unsatisfiable Request (only-if-cached)").a(fb.c).a(-1L).b(System.currentTimeMillis()).a();
+    }
+    label163:
+    label331:
+    do
+    {
+      do
+      {
+        return parama;
+        localz1 = null;
+        break;
+        if (localx == null) {
+          return localz2.f().b(a(localz2)).a();
+        }
+        try
+        {
+          parama = parama.a(localx);
+          if ((parama == null) && (localz1 != null)) {
+            fb.a(localz1.e());
+          }
+          if (localz2 == null) {
+            break label331;
+          }
+          if (parama.b() == 304)
+          {
+            localz1 = localz2.f().a(a(localz2.d(), parama.d())).a(parama.i()).b(parama.j()).b(a(localz2)).a(a(parama)).a();
+            parama.e().close();
+            this.a.a();
+            this.a.a(localz2, localz1);
+            return localz1;
+          }
+        }
+        finally
+        {
+          if ((0 == 0) && (localz1 != null)) {
+            fb.a(localz1.e());
+          }
+        }
+        fb.a(localz2.e());
+        localz1 = parama.f().b(a(localz2)).a(a(parama)).a();
+        parama = localz1;
+      } while (this.a == null);
+      if ((fm.b(localz1)) && (ff.a(localz1, localx))) {
+        return a(this.a.a(localz1), localz1);
+      }
+      parama = localz1;
+    } while (!fn.a(localx.b()));
+    try
+    {
+      this.a.b(localx);
+      return localz1;
+    }
+    catch (IOException parama) {}
+    return localz1;
   }
 }
 

@@ -11,10 +11,10 @@ import java.util.Map;
 public class StartPwdDigitSelActivity
   extends BaseActivity
 {
-  private List mData;
+  private List<Map<String, Object>> mData;
   ListView mListView;
   
-  private List getData()
+  private List<Map<String, Object>> getData()
   {
     ArrayList localArrayList = new ArrayList();
     HashMap localHashMap = new HashMap();
@@ -30,9 +30,9 @@ public class StartPwdDigitSelActivity
   {
     super.onCreate(paramBundle);
     setContentView(2130968783);
-    this.mListView = ((ListView)findViewById(2131559322));
+    this.mListView = ((ListView)findViewById(2131559323));
     this.mData = getData();
-    paramBundle = new aau(this, this.mData);
+    paramBundle = new s(this, this.mData);
     this.mListView.setAdapter(paramBundle);
   }
 }

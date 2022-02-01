@@ -9,12 +9,12 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.IBinder;
 import android.widget.RemoteViews;
-import com.tencent.token.cx;
-import com.tencent.token.cy;
-import com.tencent.token.cz;
-import com.tencent.token.global.h;
+import com.tencent.token.cb;
+import com.tencent.token.cc;
+import com.tencent.token.cd;
+import com.tencent.token.global.g;
 import com.tencent.token.ui.WidgetTransitionActivity;
-import com.tencent.token.utils.x;
+import com.tencent.token.utils.m;
 
 public class TokenService
   extends Service
@@ -48,24 +48,24 @@ public class TokenService
   private void a()
   {
     int i1 = 0;
-    cx localcx = cx.c();
-    if (!localcx.g())
+    cb localcb = cb.c();
+    if (!localcb.g())
     {
       AppWidgetManager localAppWidgetManager = AppWidgetManager.getInstance(this);
       int[] arrayOfInt = localAppWidgetManager.getAppWidgetIds(this.e);
-      this.c.setImageViewResource(2131559337, 2130838055);
+      this.c.setImageViewResource(2131559338, 2130838055);
       if (!this.f)
       {
-        localcx.m();
-        this.b = localcx.l();
+        localcb.m();
+        this.b = localcb.l();
         if (this.g) {
-          this.c.setImageViewResource(2131559337, 2130838052);
+          this.c.setImageViewResource(2131559338, 2130838052);
         }
+        this.c.setViewVisibility(2131559337, 4);
         this.c.setViewVisibility(2131559336, 4);
-        this.c.setViewVisibility(2131559335, 4);
-        this.c.setViewVisibility(2131559334, 0);
-        this.c.setViewVisibility(2131559338, 0);
-        this.c.setOnClickPendingIntent(2131559334, this.j);
+        this.c.setViewVisibility(2131559335, 0);
+        this.c.setViewVisibility(2131559339, 0);
+        this.c.setOnClickPendingIntent(2131559335, this.j);
         int m = 0;
         for (;;)
         {
@@ -73,15 +73,15 @@ public class TokenService
           if (m >= this.b.length) {
             break;
           }
-          this.c.setImageViewResource(2131559339 + m, this.h[this.b[m]]);
+          this.c.setImageViewResource(2131559340 + m, this.h[this.b[m]]);
           m += 1;
         }
       }
-      this.c.setViewVisibility(2131559334, 4);
-      this.c.setViewVisibility(2131559338, 4);
+      this.c.setViewVisibility(2131559335, 4);
+      this.c.setViewVisibility(2131559339, 4);
+      this.c.setViewVisibility(2131559337, 0);
       this.c.setViewVisibility(2131559336, 0);
-      this.c.setViewVisibility(2131559335, 0);
-      this.c.setOnClickPendingIntent(2131559336, this.i);
+      this.c.setOnClickPendingIntent(2131559337, this.i);
       int n = i1;
       try
       {
@@ -95,7 +95,7 @@ public class TokenService
       catch (Exception localException)
       {
         localException.printStackTrace();
-        h.d("TokenService " + localException.toString());
+        g.d("TokenService " + localException.toString());
       }
     }
   }
@@ -108,11 +108,11 @@ public class TokenService
       this.d = new Intent(this, TokenService.class);
       this.c = new RemoteViews(getPackageName(), 2130968785);
       this.e = new ComponentName(this, TokenWidgetProvider.class);
-      this.c.setOnClickPendingIntent(2131559338, this.i);
-      this.c.setOnClickPendingIntent(2131559336, this.i);
+      this.c.setOnClickPendingIntent(2131559339, this.i);
+      this.c.setOnClickPendingIntent(2131559337, this.i);
       this.j = PendingIntent.getBroadcast(this, 0, new Intent("com.tencent.token.widget.SPEECH"), 0);
-      this.c.setOnClickPendingIntent(2131559334, this.j);
-      cz.a(this);
+      this.c.setOnClickPendingIntent(2131559335, this.j);
+      cd.a(this);
     }
   }
   
@@ -123,7 +123,7 @@ public class TokenService
   
   public void onCreate()
   {
-    h.a("onCreate");
+    g.a("onCreate");
     IntentFilter localIntentFilter = new IntentFilter();
     localIntentFilter.addAction("android.intent.action.SCREEN_ON");
     localIntentFilter.addAction("android.intent.action.SCREEN_OFF");
@@ -135,7 +135,7 @@ public class TokenService
   public void onDestroy()
   {
     super.onDestroy();
-    cz.a(this).b();
+    cd.a(this).b();
     unregisterReceiver(this.k);
   }
   
@@ -149,9 +149,9 @@ public class TokenService
     {
       try
       {
-        if (!cx.c().g())
+        if (!cb.c().g())
         {
-          if ((!cy.a().c()) && (x.e() == 0L)) {
+          if ((!cc.a().c()) && (m.e() == 0L)) {
             continue;
           }
           this.f = true;
@@ -168,7 +168,7 @@ public class TokenService
       finally {}
       return;
       this.f = false;
-      l1 = cx.c().r();
+      l1 = cb.c().r();
       if (l1 > 5000L)
       {
         l1 -= 5000L;

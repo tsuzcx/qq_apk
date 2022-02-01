@@ -19,7 +19,7 @@ public abstract interface dp
   
   public abstract void o(boolean paramBoolean);
   
-  public abstract ArrayList p(boolean paramBoolean);
+  public abstract ArrayList<String> p(boolean paramBoolean);
   
   public abstract int q(boolean paramBoolean);
 }

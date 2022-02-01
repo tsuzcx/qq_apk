@@ -11,9 +11,9 @@ public class MTimerHandler
   private final int ad;
   private final boolean av;
   private long aw = 0L;
-  private final MTimerHandler.CallBack ax;
+  private final CallBack ax;
   
-  public MTimerHandler(Looper paramLooper, MTimerHandler.CallBack paramCallBack, boolean paramBoolean)
+  public MTimerHandler(Looper paramLooper, CallBack paramCallBack, boolean paramBoolean)
   {
     super(paramLooper);
     this.ax = paramCallBack;
@@ -21,7 +21,7 @@ public class MTimerHandler
     this.av = paramBoolean;
   }
   
-  public MTimerHandler(MTimerHandler.CallBack paramCallBack, boolean paramBoolean)
+  public MTimerHandler(CallBack paramCallBack, boolean paramBoolean)
   {
     this.ax = paramCallBack;
     this.ad = d();
@@ -68,6 +68,11 @@ public class MTimerHandler
   public boolean stopped()
   {
     return !hasMessages(this.ad);
+  }
+  
+  public static abstract interface CallBack
+  {
+    public abstract boolean onTimerExpired();
   }
 }
 

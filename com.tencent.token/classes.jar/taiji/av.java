@@ -1,8 +1,39 @@
 package taiji;
 
-public abstract interface av
+import android.graphics.Canvas;
+import android.graphics.ColorFilter;
+import android.graphics.Matrix;
+import android.graphics.RectF;
+import java.util.Collections;
+import uilib.doraemon.e;
+
+public class av
+  extends ar
 {
-  public abstract n c();
+  private final bs e;
+  
+  av(e parame, cs paramcs)
+  {
+    super(parame, paramcs);
+    this.e = new bs(parame, this, new ap(paramcs.f(), paramcs.n()));
+    this.e.a(Collections.emptyList(), Collections.emptyList());
+  }
+  
+  public void a(RectF paramRectF, Matrix paramMatrix)
+  {
+    super.a(paramRectF, paramMatrix);
+    this.e.a(paramRectF, this.a);
+  }
+  
+  public void a(String paramString1, String paramString2, ColorFilter paramColorFilter)
+  {
+    this.e.a(paramString1, paramString2, paramColorFilter);
+  }
+  
+  void b(Canvas paramCanvas, Matrix paramMatrix, int paramInt)
+  {
+    this.e.a(paramCanvas, paramMatrix, paramInt);
+  }
 }
 
 

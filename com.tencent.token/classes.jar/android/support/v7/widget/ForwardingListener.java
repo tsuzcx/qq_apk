@@ -91,11 +91,11 @@ public abstract class ForwardingListener
       case 0: 
         this.mActivePointerId = paramMotionEvent.getPointerId(0);
         if (this.mDisallowIntercept == null) {
-          this.mDisallowIntercept = new ForwardingListener.DisallowIntercept(this);
+          this.mDisallowIntercept = new DisallowIntercept();
         }
         localView.postDelayed(this.mDisallowIntercept, this.mTapTimeout);
         if (this.mTriggerLongPress == null) {
-          this.mTriggerLongPress = new ForwardingListener.TriggerLongPress(this);
+          this.mTriggerLongPress = new TriggerLongPress();
         }
         localView.postDelayed(this.mTriggerLongPress, this.mLongPressTimeout);
         return false;
@@ -211,6 +211,31 @@ public abstract class ForwardingListener
     this.mActivePointerId = -1;
     if (this.mDisallowIntercept != null) {
       this.mSrc.removeCallbacks(this.mDisallowIntercept);
+    }
+  }
+  
+  private class DisallowIntercept
+    implements Runnable
+  {
+    DisallowIntercept() {}
+    
+    public void run()
+    {
+      ViewParent localViewParent = ForwardingListener.this.mSrc.getParent();
+      if (localViewParent != null) {
+        localViewParent.requestDisallowInterceptTouchEvent(true);
+      }
+    }
+  }
+  
+  private class TriggerLongPress
+    implements Runnable
+  {
+    TriggerLongPress() {}
+    
+    public void run()
+    {
+      ForwardingListener.this.onLongPress();
     }
   }
 }

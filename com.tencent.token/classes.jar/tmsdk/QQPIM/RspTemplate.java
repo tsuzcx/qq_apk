@@ -9,8 +9,8 @@ import java.util.ArrayList;
 public final class RspTemplate
   extends JceStruct
 {
-  static ArrayList eH;
-  public ArrayList rspTemp = null;
+  static ArrayList<UrlCheckResponse> eH;
+  public ArrayList<UrlCheckResponse> rspTemp = null;
   
   static
   {
@@ -27,7 +27,7 @@ public final class RspTemplate
     setRspTemp(this.rspTemp);
   }
   
-  public RspTemplate(ArrayList paramArrayList)
+  public RspTemplate(ArrayList<UrlCheckResponse> paramArrayList)
   {
     setRspTemp(paramArrayList);
   }
@@ -59,7 +59,7 @@ public final class RspTemplate
     return JceUtil.equals(this.rspTemp, paramObject.rspTemp);
   }
   
-  public ArrayList getRspTemp()
+  public ArrayList<UrlCheckResponse> getRspTemp()
   {
     return this.rspTemp;
   }
@@ -75,7 +75,7 @@ public final class RspTemplate
     setRspTemp((ArrayList)paramJceInputStream.read(eH, 0, false));
   }
   
-  public void setRspTemp(ArrayList paramArrayList)
+  public void setRspTemp(ArrayList<UrlCheckResponse> paramArrayList)
   {
     this.rspTemp = paramArrayList;
   }

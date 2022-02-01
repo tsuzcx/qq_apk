@@ -35,7 +35,7 @@ public abstract class BaseProfile
   public String field_username;
   public String field_weibo;
   
-  public static IAutoDBItem.MAutoDBInfo initAutoDBInfo(Class paramClass)
+  public static IAutoDBItem.MAutoDBInfo initAutoDBInfo(Class<?> paramClass)
   {
     paramClass = new IAutoDBItem.MAutoDBInfo();
     paramClass.fields = new Field[11];

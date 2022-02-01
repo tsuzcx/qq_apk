@@ -1,8 +1,21 @@
 package com.tencent.turingfd.sdk.base;
 
-public abstract interface au
+public class au
 {
-  public abstract void a(String paramString, int paramInt1, int paramInt2, Guava paramGuava);
+  public static final byte[] a = new byte[0];
+  public int b;
+  public byte[] c;
+  
+  public au(int paramInt, byte[] paramArrayOfByte)
+  {
+    this.b = paramInt;
+    this.c = paramArrayOfByte;
+  }
+  
+  public static au a(int paramInt)
+  {
+    return new au(paramInt, a);
+  }
 }
 
 

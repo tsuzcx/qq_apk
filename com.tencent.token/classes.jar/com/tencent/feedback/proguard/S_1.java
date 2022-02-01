@@ -8,13 +8,13 @@ public final class S
   extends j
   implements Cloneable
 {
-  private static ArrayList f;
-  private static Map g;
+  private static ArrayList<R> f;
+  private static Map<String, String> g;
   public byte a = 0;
   public String b = "";
   public String c = "";
-  public ArrayList d = null;
-  public Map e = null;
+  public ArrayList<R> d = null;
+  public Map<String, String> e = null;
   
   public final void a(h paramh)
   {

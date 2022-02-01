@@ -40,19 +40,19 @@ final class GrowingArrayUtils
     return arrayOfLong;
   }
   
-  public static Object[] append(Object[] paramArrayOfObject, int paramInt, Object paramObject)
+  public static <T> T[] append(T[] paramArrayOfT, int paramInt, T paramT)
   {
-    assert (paramInt <= paramArrayOfObject.length);
-    if (paramInt + 1 > paramArrayOfObject.length)
+    assert (paramInt <= paramArrayOfT.length);
+    if (paramInt + 1 > paramArrayOfT.length)
     {
-      Object[] arrayOfObject = (Object[])Array.newInstance(paramArrayOfObject.getClass().getComponentType(), growSize(paramInt));
-      System.arraycopy(paramArrayOfObject, 0, arrayOfObject, 0, paramInt);
-      paramArrayOfObject = arrayOfObject;
+      Object[] arrayOfObject = (Object[])Array.newInstance(paramArrayOfT.getClass().getComponentType(), growSize(paramInt));
+      System.arraycopy(paramArrayOfT, 0, arrayOfObject, 0, paramInt);
+      paramArrayOfT = arrayOfObject;
     }
     for (;;)
     {
-      paramArrayOfObject[paramInt] = paramObject;
-      return paramArrayOfObject;
+      paramArrayOfT[paramInt] = paramT;
+      return paramArrayOfT;
     }
   }
   
@@ -109,19 +109,19 @@ final class GrowingArrayUtils
     return arrayOfLong;
   }
   
-  public static Object[] insert(Object[] paramArrayOfObject, int paramInt1, int paramInt2, Object paramObject)
+  public static <T> T[] insert(T[] paramArrayOfT, int paramInt1, int paramInt2, T paramT)
   {
-    assert (paramInt1 <= paramArrayOfObject.length);
-    if (paramInt1 + 1 <= paramArrayOfObject.length)
+    assert (paramInt1 <= paramArrayOfT.length);
+    if (paramInt1 + 1 <= paramArrayOfT.length)
     {
-      System.arraycopy(paramArrayOfObject, paramInt2, paramArrayOfObject, paramInt2 + 1, paramInt1 - paramInt2);
-      paramArrayOfObject[paramInt2] = paramObject;
-      return paramArrayOfObject;
+      System.arraycopy(paramArrayOfT, paramInt2, paramArrayOfT, paramInt2 + 1, paramInt1 - paramInt2);
+      paramArrayOfT[paramInt2] = paramT;
+      return paramArrayOfT;
     }
-    Object[] arrayOfObject = (Object[])Array.newInstance(paramArrayOfObject.getClass().getComponentType(), growSize(paramInt1));
-    System.arraycopy(paramArrayOfObject, 0, arrayOfObject, 0, paramInt2);
-    arrayOfObject[paramInt2] = paramObject;
-    System.arraycopy(paramArrayOfObject, paramInt2, arrayOfObject, paramInt2 + 1, paramArrayOfObject.length - paramInt2);
+    Object[] arrayOfObject = (Object[])Array.newInstance(paramArrayOfT.getClass().getComponentType(), growSize(paramInt1));
+    System.arraycopy(paramArrayOfT, 0, arrayOfObject, 0, paramInt2);
+    arrayOfObject[paramInt2] = paramT;
+    System.arraycopy(paramArrayOfT, paramInt2, arrayOfObject, paramInt2 + 1, paramArrayOfT.length - paramInt2);
     return arrayOfObject;
   }
   

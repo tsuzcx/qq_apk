@@ -25,7 +25,7 @@ public class ej
     this.oq.edit().clear().commit();
   }
   
-  public Map getAll()
+  public Map<String, ?> getAll()
   {
     if (this.oq == null) {
       return null;

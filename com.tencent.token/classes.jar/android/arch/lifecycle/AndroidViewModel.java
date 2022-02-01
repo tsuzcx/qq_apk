@@ -16,7 +16,7 @@ public class AndroidViewModel
   }
   
   @NonNull
-  public Application getApplication()
+  public <T extends Application> T getApplication()
   {
     return this.mApplication;
   }

@@ -1,33 +1,88 @@
 package okhttp3.internal.http2;
 
-import com.tencent.token.gm;
-import java.io.IOException;
-import java.util.List;
-import java.util.Set;
+import java.util.Arrays;
 
-class k
-  extends gm
+public final class k
 {
-  k(h paramh, String paramString, Object[] paramArrayOfObject, int paramInt, List paramVarArgs)
+  private int a;
+  private final int[] b = new int[10];
+  
+  k a(int paramInt1, int paramInt2)
   {
-    super(paramString, paramArrayOfObject);
+    if ((paramInt1 < 0) || (paramInt1 >= this.b.length)) {
+      return this;
+    }
+    this.a = (1 << paramInt1 | this.a);
+    this.b[paramInt1] = paramInt2;
+    return this;
   }
   
-  public void c()
+  void a()
   {
-    if (this.d.h.a(this.a, this.c)) {
-      try
+    this.a = 0;
+    Arrays.fill(this.b, 0);
+  }
+  
+  void a(k paramk)
+  {
+    int i = 0;
+    if (i < 10)
+    {
+      if (!paramk.a(i)) {}
+      for (;;)
       {
-        this.d.o.a(this.a, ErrorCode.CANCEL);
-        synchronized (this.d)
-        {
-          this.d.q.remove(Integer.valueOf(this.a));
-          return;
-        }
-        return;
+        i += 1;
+        break;
+        a(i, paramk.b(i));
       }
-      catch (IOException localIOException) {}
     }
+  }
+  
+  boolean a(int paramInt)
+  {
+    return (1 << paramInt & this.a) != 0;
+  }
+  
+  int b()
+  {
+    return Integer.bitCount(this.a);
+  }
+  
+  int b(int paramInt)
+  {
+    return this.b[paramInt];
+  }
+  
+  int c()
+  {
+    if ((0x2 & this.a) != 0) {
+      return this.b[1];
+    }
+    return -1;
+  }
+  
+  int c(int paramInt)
+  {
+    if ((0x10 & this.a) != 0) {
+      paramInt = this.b[4];
+    }
+    return paramInt;
+  }
+  
+  int d()
+  {
+    if ((0x80 & this.a) != 0) {
+      return this.b[7];
+    }
+    return 65535;
+  }
+  
+  int d(int paramInt)
+  {
+    if ((0x20 & this.a) != 0) {
+      paramInt = this.b[5];
+    }
+    return paramInt;
   }
 }
 

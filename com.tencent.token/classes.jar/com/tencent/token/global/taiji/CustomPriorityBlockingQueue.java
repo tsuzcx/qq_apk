@@ -2,8 +2,8 @@ package com.tencent.token.global.taiji;
 
 import java.util.concurrent.PriorityBlockingQueue;
 
-public class CustomPriorityBlockingQueue
-  extends PriorityBlockingQueue
+public class CustomPriorityBlockingQueue<E>
+  extends PriorityBlockingQueue<E>
 {
   private static final String TAG = "CustomPriorityBlockingQueue";
   
@@ -12,16 +12,16 @@ public class CustomPriorityBlockingQueue
     super(paramInt);
   }
   
-  public boolean offer(Object paramObject)
+  public boolean offer(E paramE)
   {
     try
     {
-      boolean bool = super.offer(paramObject);
+      boolean bool = super.offer(paramE);
       return bool;
     }
-    catch (Exception paramObject)
+    catch (Exception paramE)
     {
-      paramObject.printStackTrace();
+      paramE.printStackTrace();
     }
     return false;
   }
@@ -40,7 +40,7 @@ public class CustomPriorityBlockingQueue
     return 0;
   }
   
-  public Object take()
+  public E take()
   {
     try
     {

@@ -1,16 +1,16 @@
 package btmsdkobf;
 
-public class dj
+public class dj<F, S, T>
 {
-  public Object first;
-  public Object mU;
-  public Object second;
+  public F first;
+  public T mU;
+  public S second;
   
-  public dj(Object paramObject1, Object paramObject2, Object paramObject3)
+  public dj(F paramF, S paramS, T paramT)
   {
-    this.first = paramObject1;
-    this.second = paramObject2;
-    this.mU = paramObject3;
+    this.first = paramF;
+    this.second = paramS;
+    this.mU = paramT;
   }
 }
 

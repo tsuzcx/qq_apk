@@ -12,7 +12,7 @@ import java.util.Map;
 
 public class BasicClassTypeUtil
 {
-  private static void addType(ArrayList paramArrayList, String paramString)
+  private static void addType(ArrayList<String> paramArrayList, String paramString)
   {
     int i = paramString.length();
     int j;
@@ -228,7 +228,7 @@ public class BasicClassTypeUtil
     return "Character";
   }
   
-  public static ArrayList getTypeList(String paramString)
+  public static ArrayList<String> getTypeList(String paramString)
   {
     ArrayList localArrayList = new ArrayList();
     int j = 0;
@@ -361,7 +361,7 @@ public class BasicClassTypeUtil
     }
   }
   
-  public static String transTypeList(ArrayList paramArrayList)
+  public static String transTypeList(ArrayList<String> paramArrayList)
   {
     StringBuffer localStringBuffer = new StringBuffer();
     int i = 0;

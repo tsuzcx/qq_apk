@@ -10,12 +10,12 @@ import java.util.Map;
 public final class u
   extends JceStruct
 {
-  static ArrayList aK = new ArrayList();
-  static Map aL;
-  public ArrayList aG = null;
+  static ArrayList<String> aK = new ArrayList();
+  static Map<String, String> aL;
+  public ArrayList<String> aG = null;
   public int aH = 0;
   public boolean aI = false;
-  public Map aJ = null;
+  public Map<String, String> aJ = null;
   public int apn = 0;
   public int ay = 0;
   

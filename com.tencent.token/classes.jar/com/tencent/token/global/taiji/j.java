@@ -1,35 +1,89 @@
 package com.tencent.token.global.taiji;
 
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
+import android.content.Context;
+import com.tmsdk.TMSDKContext;
+import java.util.ArrayList;
+import tmsdk.common.module.pgsdk.manager.ITaijiFactory;
+import tmsdk.common.module.pgsdk.manager.ITaijiKVProfileManager;
+import tmsdk.common.module.pgsdk.manager.ITaijiPreferenceManager;
+import tmsdk.common.module.pgsdk.manager.ITaijiReportManager;
+import tmsdk.common.module.pgsdk.manager.ITaijiSharkNetwork;
+import tmsdk.common.module.pgsdk.manager.ITaijiTccCryptManager;
+import tmsdk.common.module.pgsdk.manager.ITaijiThreadPoolManager;
+import tmsdk.common.tcc.TccCryptor;
 
-class j
-  extends Handler
+public class j
+  implements ITaijiFactory
 {
-  public j(d paramd, Looper paramLooper)
+  public static String a(ArrayList<String> paramArrayList)
   {
-    super(paramLooper);
+    StringBuilder localStringBuilder = new StringBuilder();
+    if ((paramArrayList != null) && (paramArrayList.size() > 0))
+    {
+      int j = paramArrayList.size();
+      int i = 0;
+      while (i < j)
+      {
+        localStringBuilder.append((String)paramArrayList.get(i));
+        if (i != j - 1) {
+          localStringBuilder.append(",");
+        }
+        i += 1;
+      }
+    }
+    return localStringBuilder.toString();
   }
   
-  public void handleMessage(Message paramMessage)
+  public ITaijiKVProfileManager getKVProfileManager()
   {
-    switch (paramMessage.what)
+    return k.a();
+  }
+  
+  public ITaijiPreferenceManager getPreferenceManager(Context paramContext, String paramString, int paramInt)
+  {
+    return new l(paramString);
+  }
+  
+  public ITaijiReportManager getReportManager()
+  {
+    new ITaijiReportManager()
     {
-    default: 
-      return;
-    }
-    removeMessages(paramMessage.what);
-    if (d.d(this.a))
-    {
-      long l = System.currentTimeMillis();
-      if ((d.d() > 0L) && (Math.abs(d.e() - l) > d.d())) {
-        this.a.c();
+      public void reportString(int paramAnonymousInt, ArrayList<String> paramAnonymousArrayList)
+      {
+        TMSDKContext.SaveStringData(paramAnonymousInt, j.a(paramAnonymousArrayList));
       }
-      sendEmptyMessageDelayed(1, 1000L);
-      return;
-    }
-    d.e(this.a);
+    };
+  }
+  
+  public ITaijiSharkNetwork getSharkNetwork()
+  {
+    return m.a();
+  }
+  
+  public ITaijiTccCryptManager getTccCryptManager()
+  {
+    new ITaijiTccCryptManager()
+    {
+      public byte[] decrypt(byte[] paramAnonymousArrayOfByte1, byte[] paramAnonymousArrayOfByte2)
+      {
+        return TccCryptor.decrypt(paramAnonymousArrayOfByte1, paramAnonymousArrayOfByte2);
+      }
+      
+      public byte[] encrypt(byte[] paramAnonymousArrayOfByte1, byte[] paramAnonymousArrayOfByte2)
+      {
+        return TccCryptor.encrypt(paramAnonymousArrayOfByte1, paramAnonymousArrayOfByte2);
+      }
+      
+      public byte[] makePassword(byte[] paramAnonymousArrayOfByte)
+      {
+        return TccCryptor.makePassword(paramAnonymousArrayOfByte);
+      }
+    };
+  }
+  
+  public ITaijiThreadPoolManager getThreadPoolManager()
+  {
+    return n.a();
   }
 }
 

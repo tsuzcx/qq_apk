@@ -1,29 +1,96 @@
 package com.tencent.token.ui;
 
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.token.global.j;
-import com.tencent.token.ui.base.UtilsAccountLockTipDialog;
-import com.tencent.token.ui.base.dj;
+import android.content.Context;
+import android.text.TextUtils;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.token.core.bean.e;
+import com.tencent.token.utils.a;
+import java.util.ArrayList;
 
-class k
-  implements CompoundButton.OnCheckedChangeListener
+public class k
+  extends BaseAdapter
 {
-  k(i parami) {}
+  private Context a;
+  private ArrayList<e> b;
+  private int c = 0;
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public k(Context paramContext, ArrayList<e> paramArrayList)
   {
-    paramCompoundButton = (dj)paramCompoundButton.getTag();
-    if (paramCompoundButton == null) {
-      return;
-    }
-    if ((!j.e()) && (!paramBoolean))
+    this.a = paramContext;
+    this.b = paramArrayList;
+  }
+  
+  public int getCount()
+  {
+    return this.b.size();
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return Integer.valueOf(paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    Object localObject;
+    if (paramView == null)
     {
-      j.b(true);
-      new UtilsAccountLockTipDialog(i.a(this.a), 2131362182, i.b(this.a), paramCompoundButton, paramBoolean).show();
-      return;
+      localObject = new a();
+      paramView = LayoutInflater.from(this.a).inflate(2130968678, paramViewGroup, false);
+      ((a)localObject).d = paramView.findViewById(2131558970);
+      ((a)localObject).a = ((TextView)paramView.findViewById(2131558973));
+      ((a)localObject).b = ((ImageView)paramView.findViewById(2131558971));
+      ((a)localObject).c = ((ImageView)paramView.findViewById(2131558972));
+      paramView.setTag(localObject);
+      paramViewGroup = (ViewGroup)localObject;
+      localObject = (e)this.b.get(paramInt);
+      if ((localObject != null) && (((e)localObject).f()))
+      {
+        if (!TextUtils.isEmpty(((e)localObject).c())) {
+          paramViewGroup.a.setText(((e)localObject).c());
+        }
+        paramViewGroup.d.setOnClickListener(((e)localObject).d());
+        if (((e)localObject).b() <= 0) {
+          break label201;
+        }
+        paramViewGroup.b.setImageResource(((e)localObject).b());
+      }
     }
-    this.a.b(paramCompoundButton, paramBoolean);
+    for (;;)
+    {
+      if (!((e)localObject).e()) {
+        break label231;
+      }
+      paramViewGroup.c.setVisibility(0);
+      return paramView;
+      paramViewGroup = (a)paramView.getTag();
+      break;
+      label201:
+      new a(paramViewGroup.b).execute(new String[] { ((e)localObject).a() });
+    }
+    label231:
+    paramViewGroup.c.setVisibility(4);
+    return paramView;
+  }
+  
+  class a
+  {
+    TextView a;
+    ImageView b;
+    ImageView c;
+    View d;
+    
+    a() {}
   }
 }
 

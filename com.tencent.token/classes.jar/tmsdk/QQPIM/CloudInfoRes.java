@@ -10,9 +10,9 @@ public final class CloudInfoRes
   extends JceStruct
   implements Cloneable
 {
-  static ArrayList dV;
+  static ArrayList<CloudCmdRes> dV;
   public int action = 0;
-  public ArrayList cmdres = null;
+  public ArrayList<CloudCmdRes> cmdres = null;
   public int confirmtype = 0;
   public int phase = 0;
   public int res = 0;
@@ -40,7 +40,7 @@ public final class CloudInfoRes
     setTime(this.time);
   }
   
-  public CloudInfoRes(String paramString, int paramInt1, int paramInt2, ArrayList paramArrayList, int paramInt3, int paramInt4, int paramInt5)
+  public CloudInfoRes(String paramString, int paramInt1, int paramInt2, ArrayList<CloudCmdRes> paramArrayList, int paramInt3, int paramInt4, int paramInt5)
   {
     setTipsid(paramString);
     setAction(paramInt1);
@@ -93,7 +93,7 @@ public final class CloudInfoRes
     return this.action;
   }
   
-  public ArrayList getCmdres()
+  public ArrayList<CloudCmdRes> getCmdres()
   {
     return this.cmdres;
   }
@@ -158,7 +158,7 @@ public final class CloudInfoRes
     this.action = paramInt;
   }
   
-  public void setCmdres(ArrayList paramArrayList)
+  public void setCmdres(ArrayList<CloudCmdRes> paramArrayList)
   {
     this.cmdres = paramArrayList;
   }

@@ -1,26 +1,12 @@
 package com.tencent.turingfd.sdk.base;
 
-import android.app.Activity;
-import android.app.Application.ActivityLifecycleCallbacks;
-import android.os.Bundle;
+import android.content.Context;
 
-public abstract class bk
-  implements Application.ActivityLifecycleCallbacks
+public abstract interface bk
 {
-  public abstract void a(Activity paramActivity, String paramString);
+  public abstract bo a(Context paramContext);
   
-  public void onActivityCreated(Activity paramActivity, Bundle paramBundle) {}
-  
-  public void onActivityDestroyed(Activity paramActivity) {}
-  
-  public void onActivitySaveInstanceState(Activity paramActivity, Bundle paramBundle) {}
-  
-  public void onActivityStarted(Activity paramActivity)
-  {
-    a(paramActivity, "onActivityStarted");
-  }
-  
-  public void onActivityStopped(Activity paramActivity) {}
+  public abstract void b(Context paramContext);
 }
 
 

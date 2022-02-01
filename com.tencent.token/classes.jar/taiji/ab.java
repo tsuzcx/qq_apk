@@ -1,14 +1,19 @@
 package taiji;
 
-import uilib.doraemon.l;
-
 public class ab
+  extends al<Integer, Integer>
 {
-  private l a;
-  
-  public void a(l paraml)
+  public p<Integer> a()
   {
-    this.a = paraml;
+    if (!b()) {
+      return new v(this.b);
+    }
+    return new m(this.a);
+  }
+  
+  public String toString()
+  {
+    return "AnimatableColorValue{initialValue=" + this.b + '}';
   }
 }
 

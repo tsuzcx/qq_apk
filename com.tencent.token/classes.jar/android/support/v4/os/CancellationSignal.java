@@ -7,7 +7,7 @@ public final class CancellationSignal
   private boolean mCancelInProgress;
   private Object mCancellationSignalObj;
   private boolean mIsCanceled;
-  private CancellationSignal.OnCancelListener mOnCancelListener;
+  private OnCancelListener mOnCancelListener;
   
   private void waitForCancelFinishedLocked()
   {
@@ -27,44 +27,44 @@ public final class CancellationSignal
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 27	android/support/v4/os/CancellationSignal:mIsCanceled	Z
+    //   3: getfield 30	android/support/v4/os/CancellationSignal:mIsCanceled	Z
     //   6: ifeq +6 -> 12
     //   9: aload_0
     //   10: monitorexit
     //   11: return
     //   12: aload_0
     //   13: iconst_1
-    //   14: putfield 27	android/support/v4/os/CancellationSignal:mIsCanceled	Z
+    //   14: putfield 30	android/support/v4/os/CancellationSignal:mIsCanceled	Z
     //   17: aload_0
     //   18: iconst_1
-    //   19: putfield 21	android/support/v4/os/CancellationSignal:mCancelInProgress	Z
+    //   19: putfield 24	android/support/v4/os/CancellationSignal:mCancelInProgress	Z
     //   22: aload_0
-    //   23: getfield 29	android/support/v4/os/CancellationSignal:mOnCancelListener	Landroid/support/v4/os/CancellationSignal$OnCancelListener;
+    //   23: getfield 32	android/support/v4/os/CancellationSignal:mOnCancelListener	Landroid/support/v4/os/CancellationSignal$OnCancelListener;
     //   26: astore_1
     //   27: aload_0
-    //   28: getfield 31	android/support/v4/os/CancellationSignal:mCancellationSignalObj	Ljava/lang/Object;
+    //   28: getfield 34	android/support/v4/os/CancellationSignal:mCancellationSignalObj	Ljava/lang/Object;
     //   31: astore_2
     //   32: aload_0
     //   33: monitorexit
     //   34: aload_1
     //   35: ifnull +9 -> 44
     //   38: aload_1
-    //   39: invokeinterface 36 1 0
+    //   39: invokeinterface 37 1 0
     //   44: aload_2
     //   45: ifnull +18 -> 63
-    //   48: getstatic 42	android/os/Build$VERSION:SDK_INT	I
+    //   48: getstatic 43	android/os/Build$VERSION:SDK_INT	I
     //   51: bipush 16
     //   53: if_icmplt +10 -> 63
     //   56: aload_2
-    //   57: checkcast 44	android/os/CancellationSignal
-    //   60: invokevirtual 46	android/os/CancellationSignal:cancel	()V
+    //   57: checkcast 45	android/os/CancellationSignal
+    //   60: invokevirtual 47	android/os/CancellationSignal:cancel	()V
     //   63: aload_0
     //   64: monitorenter
     //   65: aload_0
     //   66: iconst_0
-    //   67: putfield 21	android/support/v4/os/CancellationSignal:mCancelInProgress	Z
+    //   67: putfield 24	android/support/v4/os/CancellationSignal:mCancelInProgress	Z
     //   70: aload_0
-    //   71: invokevirtual 49	java/lang/Object:notifyAll	()V
+    //   71: invokevirtual 50	java/lang/Object:notifyAll	()V
     //   74: aload_0
     //   75: monitorexit
     //   76: return
@@ -83,9 +83,9 @@ public final class CancellationSignal
     //   89: monitorenter
     //   90: aload_0
     //   91: iconst_0
-    //   92: putfield 21	android/support/v4/os/CancellationSignal:mCancelInProgress	Z
+    //   92: putfield 24	android/support/v4/os/CancellationSignal:mCancelInProgress	Z
     //   95: aload_0
-    //   96: invokevirtual 49	java/lang/Object:notifyAll	()V
+    //   96: invokevirtual 50	java/lang/Object:notifyAll	()V
     //   99: aload_0
     //   100: monitorexit
     //   101: aload_1
@@ -98,7 +98,7 @@ public final class CancellationSignal
     // Local variable table:
     //   start	length	slot	name	signature
     //   0	108	0	this	CancellationSignal
-    //   26	13	1	localOnCancelListener	CancellationSignal.OnCancelListener
+    //   26	13	1	localOnCancelListener	OnCancelListener
     //   77	4	1	localObject1	Object
     //   82	4	1	localObject2	Object
     //   87	15	1	localObject3	Object
@@ -147,7 +147,7 @@ public final class CancellationSignal
     finally {}
   }
   
-  public void setOnCancelListener(CancellationSignal.OnCancelListener paramOnCancelListener)
+  public void setOnCancelListener(OnCancelListener paramOnCancelListener)
   {
     try
     {
@@ -169,6 +169,11 @@ public final class CancellationSignal
     if (isCanceled()) {
       throw new OperationCanceledException();
     }
+  }
+  
+  public static abstract interface OnCancelListener
+  {
+    public abstract void onCancel();
   }
 }
 

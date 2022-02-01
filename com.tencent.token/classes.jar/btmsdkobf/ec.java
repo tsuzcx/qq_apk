@@ -26,7 +26,7 @@ public class ec
     this.ob.clear();
   }
   
-  public Map getAll()
+  public Map<String, ?> getAll()
   {
     return this.ob.getAll();
   }

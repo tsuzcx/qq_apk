@@ -5,7 +5,7 @@ import android.content.res.Resources;
 import android.os.Bundle;
 import android.webkit.WebView;
 import com.tencent.token.global.c;
-import com.tencent.token.global.h;
+import com.tencent.token.global.g;
 
 public class FindPasswdH5Activity
   extends EmbedWebBaseActivity
@@ -17,7 +17,7 @@ public class FindPasswdH5Activity
     super.onCreate(paramBundle);
     setNeverShowLockVerifyView();
     paramBundle = getIntent().getStringExtra("captcha_sig");
-    h.a("captcha_sig=" + paramBundle);
+    g.a("captcha_sig=" + paramBundle);
     switch (c.a())
     {
     default: 

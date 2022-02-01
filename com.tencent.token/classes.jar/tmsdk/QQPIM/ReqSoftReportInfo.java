@@ -8,8 +8,8 @@ import java.util.ArrayList;
 public final class ReqSoftReportInfo
   extends JceStruct
 {
-  static ArrayList eF;
-  public ArrayList vecReportSofts = null;
+  static ArrayList<SoftReportInfo> eF;
+  public ArrayList<SoftReportInfo> vecReportSofts = null;
   
   public void readFrom(JceInputStream paramJceInputStream)
   {

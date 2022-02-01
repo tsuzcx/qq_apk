@@ -15,6 +15,8 @@ import android.support.v4.content.ContextCompat;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewConfiguration;
 import android.widget.TextView;
 
@@ -67,9 +69,21 @@ public class PagerTabStrip
     setTextSpacing(getTextSpacing());
     setWillNotDraw(false);
     this.mPrevText.setFocusable(true);
-    this.mPrevText.setOnClickListener(new PagerTabStrip.1(this));
+    this.mPrevText.setOnClickListener(new View.OnClickListener()
+    {
+      public void onClick(View paramAnonymousView)
+      {
+        PagerTabStrip.this.mPager.setCurrentItem(PagerTabStrip.this.mPager.getCurrentItem() - 1);
+      }
+    });
     this.mNextText.setFocusable(true);
-    this.mNextText.setOnClickListener(new PagerTabStrip.2(this));
+    this.mNextText.setOnClickListener(new View.OnClickListener()
+    {
+      public void onClick(View paramAnonymousView)
+      {
+        PagerTabStrip.this.mPager.setCurrentItem(PagerTabStrip.this.mPager.getCurrentItem() + 1);
+      }
+    });
     if (getBackground() == null) {
       this.mDrawFullUnderline = true;
     }

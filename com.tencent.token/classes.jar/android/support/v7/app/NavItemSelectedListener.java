@@ -14,14 +14,14 @@ class NavItemSelectedListener
     this.mListener = paramOnNavigationListener;
   }
   
-  public void onItemSelected(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void onItemSelected(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
     if (this.mListener != null) {
       this.mListener.onNavigationItemSelected(paramInt, paramLong);
     }
   }
   
-  public void onNothingSelected(AdapterView paramAdapterView) {}
+  public void onNothingSelected(AdapterView<?> paramAdapterView) {}
 }
 
 

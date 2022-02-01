@@ -4,12 +4,12 @@ import android.annotation.SuppressLint;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-public class LruCache
+public class LruCache<K, V>
 {
   private int createCount;
   private int evictionCount;
   private int hitCount;
-  private final LinkedHashMap map;
+  private final LinkedHashMap<K, V> map;
   private int maxSize;
   private int missCount;
   private int putCount;
@@ -24,16 +24,16 @@ public class LruCache
     this.map = new LinkedHashMap(0, 0.75F, true);
   }
   
-  private int safeSizeOf(Object paramObject1, Object paramObject2)
+  private int safeSizeOf(K paramK, V paramV)
   {
-    int i = sizeOf(paramObject1, paramObject2);
+    int i = sizeOf(paramK, paramV);
     if (i < 0) {
-      throw new IllegalStateException("Negative size: " + paramObject1 + "=" + paramObject2);
+      throw new IllegalStateException("Negative size: " + paramK + "=" + paramV);
     }
     return i;
   }
   
-  protected Object create(Object paramObject)
+  protected V create(K paramK)
   {
     return null;
   }
@@ -52,7 +52,7 @@ public class LruCache
     }
   }
   
-  protected void entryRemoved(boolean paramBoolean, Object paramObject1, Object paramObject2, Object paramObject3) {}
+  protected void entryRemoved(boolean paramBoolean, K paramK, V paramV1, V paramV2) {}
   
   public final void evictAll()
   {
@@ -73,22 +73,22 @@ public class LruCache
     }
   }
   
-  public final Object get(Object paramObject)
+  public final V get(K paramK)
   {
-    if (paramObject == null) {
+    if (paramK == null) {
       throw new NullPointerException("key == null");
     }
     Object localObject1;
     try
     {
-      localObject1 = this.map.get(paramObject);
+      localObject1 = this.map.get(paramK);
       if (localObject1 != null)
       {
         this.hitCount += 1;
         return localObject1;
       }
       this.missCount += 1;
-      localObject1 = create(paramObject);
+      localObject1 = create(paramK);
       if (localObject1 == null) {
         return null;
       }
@@ -97,18 +97,18 @@ public class LruCache
     try
     {
       this.createCount += 1;
-      Object localObject2 = this.map.put(paramObject, localObject1);
+      Object localObject2 = this.map.put(paramK, localObject1);
       if (localObject2 != null) {
-        this.map.put(paramObject, localObject2);
+        this.map.put(paramK, localObject2);
       }
       for (;;)
       {
         if (localObject2 == null) {
           break;
         }
-        entryRemoved(false, paramObject, localObject1, localObject2);
+        entryRemoved(false, paramK, localObject1, localObject2);
         return localObject2;
-        this.size += safeSizeOf(paramObject, localObject1);
+        this.size += safeSizeOf(paramK, localObject1);
       }
       trimToSize(this.maxSize);
     }
@@ -158,21 +158,21 @@ public class LruCache
     }
   }
   
-  public final Object put(Object paramObject1, Object paramObject2)
+  public final V put(K paramK, V paramV)
   {
-    if ((paramObject1 == null) || (paramObject2 == null)) {
+    if ((paramK == null) || (paramV == null)) {
       throw new NullPointerException("key == null || value == null");
     }
     try
     {
       this.putCount += 1;
-      this.size += safeSizeOf(paramObject1, paramObject2);
-      Object localObject = this.map.put(paramObject1, paramObject2);
+      this.size += safeSizeOf(paramK, paramV);
+      Object localObject = this.map.put(paramK, paramV);
       if (localObject != null) {
-        this.size -= safeSizeOf(paramObject1, localObject);
+        this.size -= safeSizeOf(paramK, localObject);
       }
       if (localObject != null) {
-        entryRemoved(false, paramObject1, localObject, paramObject2);
+        entryRemoved(false, paramK, localObject, paramV);
       }
       trimToSize(this.maxSize);
       return localObject;
@@ -194,19 +194,19 @@ public class LruCache
     }
   }
   
-  public final Object remove(Object paramObject)
+  public final V remove(K paramK)
   {
-    if (paramObject == null) {
+    if (paramK == null) {
       throw new NullPointerException("key == null");
     }
     try
     {
-      Object localObject = this.map.remove(paramObject);
+      Object localObject = this.map.remove(paramK);
       if (localObject != null) {
-        this.size -= safeSizeOf(paramObject, localObject);
+        this.size -= safeSizeOf(paramK, localObject);
       }
       if (localObject != null) {
-        entryRemoved(false, paramObject, localObject, null);
+        entryRemoved(false, paramK, localObject, null);
       }
       return localObject;
     }
@@ -241,12 +241,12 @@ public class LruCache
     }
   }
   
-  protected int sizeOf(Object paramObject1, Object paramObject2)
+  protected int sizeOf(K paramK, V paramV)
   {
     return 1;
   }
   
-  public final Map snapshot()
+  public final Map<K, V> snapshot()
   {
     try
     {
@@ -283,28 +283,28 @@ public class LruCache
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 98	com/tencent/wcdb/support/LruCache:size	I
+    //   3: getfield 104	com/tencent/wcdb/support/LruCache:size	I
     //   6: iflt +20 -> 26
     //   9: aload_0
-    //   10: getfield 36	com/tencent/wcdb/support/LruCache:map	Ljava/util/LinkedHashMap;
-    //   13: invokevirtual 135	java/util/LinkedHashMap:isEmpty	()Z
+    //   10: getfield 38	com/tencent/wcdb/support/LruCache:map	Ljava/util/LinkedHashMap;
+    //   13: invokevirtual 143	java/util/LinkedHashMap:isEmpty	()Z
     //   16: ifeq +48 -> 64
     //   19: aload_0
-    //   20: getfield 98	com/tencent/wcdb/support/LruCache:size	I
+    //   20: getfield 104	com/tencent/wcdb/support/LruCache:size	I
     //   23: ifeq +41 -> 64
-    //   26: new 44	java/lang/IllegalStateException
+    //   26: new 46	java/lang/IllegalStateException
     //   29: dup
-    //   30: new 46	java/lang/StringBuilder
+    //   30: new 48	java/lang/StringBuilder
     //   33: dup
-    //   34: invokespecial 47	java/lang/StringBuilder:<init>	()V
+    //   34: invokespecial 49	java/lang/StringBuilder:<init>	()V
     //   37: aload_0
-    //   38: invokevirtual 139	java/lang/Object:getClass	()Ljava/lang/Class;
-    //   41: invokevirtual 144	java/lang/Class:getName	()Ljava/lang/String;
-    //   44: invokevirtual 53	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   47: ldc 146
-    //   49: invokevirtual 53	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   52: invokevirtual 62	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   55: invokespecial 63	java/lang/IllegalStateException:<init>	(Ljava/lang/String;)V
+    //   38: invokevirtual 147	java/lang/Object:getClass	()Ljava/lang/Class;
+    //   41: invokevirtual 152	java/lang/Class:getName	()Ljava/lang/String;
+    //   44: invokevirtual 55	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   47: ldc 154
+    //   49: invokevirtual 55	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   52: invokevirtual 64	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   55: invokespecial 65	java/lang/IllegalStateException:<init>	(Ljava/lang/String;)V
     //   58: athrow
     //   59: astore_2
     //   60: aload_0
@@ -312,28 +312,28 @@ public class LruCache
     //   62: aload_2
     //   63: athrow
     //   64: aload_0
-    //   65: getfield 98	com/tencent/wcdb/support/LruCache:size	I
+    //   65: getfield 104	com/tencent/wcdb/support/LruCache:size	I
     //   68: iload_1
     //   69: if_icmple +13 -> 82
     //   72: aload_0
-    //   73: getfield 36	com/tencent/wcdb/support/LruCache:map	Ljava/util/LinkedHashMap;
-    //   76: invokevirtual 135	java/util/LinkedHashMap:isEmpty	()Z
+    //   73: getfield 38	com/tencent/wcdb/support/LruCache:map	Ljava/util/LinkedHashMap;
+    //   76: invokevirtual 143	java/util/LinkedHashMap:isEmpty	()Z
     //   79: ifeq +6 -> 85
     //   82: aload_0
     //   83: monitorexit
     //   84: return
     //   85: aload_0
-    //   86: getfield 36	com/tencent/wcdb/support/LruCache:map	Ljava/util/LinkedHashMap;
-    //   89: invokevirtual 150	java/util/LinkedHashMap:entrySet	()Ljava/util/Set;
-    //   92: invokeinterface 156 1 0
-    //   97: invokeinterface 161 1 0
+    //   86: getfield 38	com/tencent/wcdb/support/LruCache:map	Ljava/util/LinkedHashMap;
+    //   89: invokevirtual 158	java/util/LinkedHashMap:entrySet	()Ljava/util/Set;
+    //   92: invokeinterface 164 1 0
+    //   97: invokeinterface 169 1 0
     //   102: ifeq +92 -> 194
     //   105: aload_0
-    //   106: getfield 36	com/tencent/wcdb/support/LruCache:map	Ljava/util/LinkedHashMap;
-    //   109: invokevirtual 150	java/util/LinkedHashMap:entrySet	()Ljava/util/Set;
-    //   112: invokeinterface 156 1 0
-    //   117: invokeinterface 165 1 0
-    //   122: checkcast 167	java/util/Map$Entry
+    //   106: getfield 38	com/tencent/wcdb/support/LruCache:map	Ljava/util/LinkedHashMap;
+    //   109: invokevirtual 158	java/util/LinkedHashMap:entrySet	()Ljava/util/Set;
+    //   112: invokeinterface 164 1 0
+    //   117: invokeinterface 173 1 0
+    //   122: checkcast 175	java/util/Map$Entry
     //   125: astore_2
     //   126: aload_2
     //   127: ifnonnull +6 -> 133
@@ -341,31 +341,31 @@ public class LruCache
     //   131: monitorexit
     //   132: return
     //   133: aload_2
-    //   134: invokeinterface 170 1 0
+    //   134: invokeinterface 178 1 0
     //   139: astore_3
     //   140: aload_2
-    //   141: invokeinterface 173 1 0
+    //   141: invokeinterface 181 1 0
     //   146: astore_2
     //   147: aload_0
-    //   148: getfield 36	com/tencent/wcdb/support/LruCache:map	Ljava/util/LinkedHashMap;
+    //   148: getfield 38	com/tencent/wcdb/support/LruCache:map	Ljava/util/LinkedHashMap;
     //   151: aload_3
-    //   152: invokevirtual 107	java/util/LinkedHashMap:remove	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   152: invokevirtual 114	java/util/LinkedHashMap:remove	(Ljava/lang/Object;)Ljava/lang/Object;
     //   155: pop
     //   156: aload_0
     //   157: aload_0
-    //   158: getfield 98	com/tencent/wcdb/support/LruCache:size	I
+    //   158: getfield 104	com/tencent/wcdb/support/LruCache:size	I
     //   161: aload_0
     //   162: aload_3
     //   163: aload_2
-    //   164: invokespecial 100	com/tencent/wcdb/support/LruCache:safeSizeOf	(Ljava/lang/Object;Ljava/lang/Object;)I
+    //   164: invokespecial 106	com/tencent/wcdb/support/LruCache:safeSizeOf	(Ljava/lang/Object;Ljava/lang/Object;)I
     //   167: isub
-    //   168: putfield 98	com/tencent/wcdb/support/LruCache:size	I
+    //   168: putfield 104	com/tencent/wcdb/support/LruCache:size	I
     //   171: aload_0
     //   172: aload_0
-    //   173: getfield 76	com/tencent/wcdb/support/LruCache:evictionCount	I
+    //   173: getfield 82	com/tencent/wcdb/support/LruCache:evictionCount	I
     //   176: iconst_1
     //   177: iadd
-    //   178: putfield 76	com/tencent/wcdb/support/LruCache:evictionCount	I
+    //   178: putfield 82	com/tencent/wcdb/support/LruCache:evictionCount	I
     //   181: aload_0
     //   182: monitorexit
     //   183: aload_0
@@ -373,7 +373,7 @@ public class LruCache
     //   185: aload_3
     //   186: aload_2
     //   187: aconst_null
-    //   188: invokevirtual 96	com/tencent/wcdb/support/LruCache:entryRemoved	(ZLjava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)V
+    //   188: invokevirtual 102	com/tencent/wcdb/support/LruCache:entryRemoved	(ZLjava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)V
     //   191: goto -191 -> 0
     //   194: aconst_null
     //   195: astore_2

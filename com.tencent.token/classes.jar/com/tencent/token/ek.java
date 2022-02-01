@@ -1,17 +1,20 @@
 package com.tencent.token;
 
-import java.io.File;
-import java.util.Comparator;
+import com.tencent.token.global.g;
 
-class ek
-  implements Comparator
+public class ek
 {
-  public int a(File paramFile1, File paramFile2)
+  public static void a(String paramString)
   {
-    if (paramFile1.lastModified() > paramFile2.lastModified()) {
-      return -1;
+    try
+    {
+      eq.a(paramString);
+      return;
     }
-    return 1;
+    catch (Exception paramString)
+    {
+      g.c("delete database table failed: " + paramString.toString());
+    }
   }
 }
 

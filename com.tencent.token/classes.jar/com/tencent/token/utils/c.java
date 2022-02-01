@@ -4,40 +4,41 @@ import android.os.Handler;
 import android.os.Handler.Callback;
 import android.os.HandlerThread;
 import android.os.Message;
-import com.tencent.token.fd;
-import com.tencent.token.ff;
-import com.tencent.token.fg;
+import com.tencent.token.dv;
+import com.tencent.token.dx;
+import com.tencent.token.dy;
+import com.tencent.token.global.c.a;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
 public class c
-  extends fg
+  extends dy
   implements Handler.Callback
 {
-  private e a;
+  private d a;
   private FileOutputStream b;
   private File c;
   private char[] d;
-  private volatile fd e;
-  private volatile fd f;
-  private volatile fd g;
-  private volatile fd h;
+  private volatile dv e;
+  private volatile dv f;
+  private volatile dv g;
+  private volatile dv h;
   private volatile boolean i = false;
   private HandlerThread j;
   private Handler k;
   
-  public c(int paramInt, boolean paramBoolean, ff paramff, e parame)
+  public c(int paramInt, boolean paramBoolean, dx paramdx, d paramd)
   {
-    super(paramInt, paramBoolean, paramff);
-    a(parame);
-    this.e = new fd();
-    this.f = new fd();
+    super(paramInt, paramBoolean, paramdx);
+    a(paramd);
+    this.e = new dv();
+    this.f = new dv();
     this.g = this.e;
     this.h = this.f;
-    this.d = new char[parame.f()];
+    this.d = new char[paramd.f()];
     g();
-    this.j = new HandlerThread(parame.c(), parame.i());
+    this.j = new HandlerThread(paramd.c(), paramd.i());
     if (this.j != null) {
       this.j.start();
     }
@@ -45,12 +46,18 @@ public class c
       this.k = new Handler(this.j.getLooper(), this);
     }
     e();
-    this.k.postDelayed(new d(this), 15000L);
+    this.k.postDelayed(new Runnable()
+    {
+      public void run()
+      {
+        c.this.b().b();
+      }
+    }, 15000L);
   }
   
-  public c(e parame)
+  public c(d paramd)
   {
-    this(com.tencent.token.global.d.h, true, ff.a, parame);
+    this(c.a.h, true, dx.a, paramd);
   }
   
   private void e()
@@ -64,15 +71,15 @@ public class c
     // Byte code:
     //   0: invokestatic 132	java/lang/Thread:currentThread	()Ljava/lang/Thread;
     //   3: aload_0
-    //   4: getfield 70	com/tencent/token/utils/c:j	Landroid/os/HandlerThread;
+    //   4: getfield 72	com/tencent/token/utils/c:j	Landroid/os/HandlerThread;
     //   7: if_acmpeq +4 -> 11
     //   10: return
     //   11: aload_0
-    //   12: getfield 32	com/tencent/token/utils/c:i	Z
+    //   12: getfield 34	com/tencent/token/utils/c:i	Z
     //   15: ifne -5 -> 10
     //   18: aload_0
     //   19: iconst_1
-    //   20: putfield 32	com/tencent/token/utils/c:i	Z
+    //   20: putfield 34	com/tencent/token/utils/c:i	Z
     //   23: aconst_null
     //   24: astore_1
     //   25: aconst_null
@@ -82,7 +89,7 @@ public class c
     //   31: aload_1
     //   32: astore_2
     //   33: aload_0
-    //   34: invokespecial 58	com/tencent/token/utils/c:g	()Ljava/io/FileOutputStream;
+    //   34: invokespecial 60	com/tencent/token/utils/c:g	()Ljava/io/FileOutputStream;
     //   37: astore 4
     //   39: aload_3
     //   40: astore_2
@@ -108,11 +115,11 @@ public class c
     //   75: aload_1
     //   76: astore_2
     //   77: aload_0
-    //   78: getfield 48	com/tencent/token/utils/c:h	Lcom/tencent/token/fd;
+    //   78: getfield 50	com/tencent/token/utils/c:h	Lcom/tencent/token/dv;
     //   81: aload_3
     //   82: aload_0
-    //   83: getfield 55	com/tencent/token/utils/c:d	[C
-    //   86: invokevirtual 154	com/tencent/token/fd:a	(Ljava/io/Writer;[C)V
+    //   83: getfield 57	com/tencent/token/utils/c:d	[C
+    //   86: invokevirtual 154	com/tencent/token/dv:a	(Ljava/io/Writer;[C)V
     //   89: aload_1
     //   90: astore_2
     //   91: aload_2
@@ -120,11 +127,11 @@ public class c
     //   95: aload_2
     //   96: invokevirtual 159	java/nio/channels/FileLock:release	()V
     //   99: aload_0
-    //   100: getfield 48	com/tencent/token/utils/c:h	Lcom/tencent/token/fd;
-    //   103: invokevirtual 161	com/tencent/token/fd:b	()V
+    //   100: getfield 50	com/tencent/token/utils/c:h	Lcom/tencent/token/dv;
+    //   103: invokevirtual 161	com/tencent/token/dv:b	()V
     //   106: aload_0
     //   107: iconst_0
-    //   108: putfield 32	com/tencent/token/utils/c:i	Z
+    //   108: putfield 34	com/tencent/token/utils/c:i	Z
     //   111: return
     //   112: astore_1
     //   113: aload_2
@@ -132,8 +139,8 @@ public class c
     //   117: aload_2
     //   118: invokevirtual 159	java/nio/channels/FileLock:release	()V
     //   121: aload_0
-    //   122: getfield 48	com/tencent/token/utils/c:h	Lcom/tencent/token/fd;
-    //   125: invokevirtual 161	com/tencent/token/fd:b	()V
+    //   122: getfield 50	com/tencent/token/utils/c:h	Lcom/tencent/token/dv;
+    //   125: invokevirtual 161	com/tencent/token/dv:b	()V
     //   128: goto -22 -> 106
     //   131: astore_1
     //   132: aconst_null
@@ -143,8 +150,8 @@ public class c
     //   138: aload_2
     //   139: invokevirtual 159	java/nio/channels/FileLock:release	()V
     //   142: aload_0
-    //   143: getfield 48	com/tencent/token/utils/c:h	Lcom/tencent/token/fd;
-    //   146: invokevirtual 161	com/tencent/token/fd:b	()V
+    //   143: getfield 50	com/tencent/token/utils/c:h	Lcom/tencent/token/dv;
+    //   146: invokevirtual 161	com/tencent/token/dv:b	()V
     //   149: aload_1
     //   150: athrow
     //   151: astore_1
@@ -164,15 +171,15 @@ public class c
     //   0	171	0	this	c
     //   24	66	1	localFileLock	java.nio.channels.FileLock
     //   112	1	1	localException1	Exception
-    //   131	19	1	localObject1	java.lang.Object
+    //   131	19	1	localObject1	Object
     //   151	1	1	localException2	Exception
     //   155	10	1	localException3	Exception
-    //   167	1	1	localObject2	java.lang.Object
-    //   32	107	2	localObject3	java.lang.Object
+    //   167	1	1	localObject2	Object
+    //   32	107	2	localObject3	Object
     //   159	1	2	localException4	Exception
     //   165	1	2	localException5	Exception
     //   26	56	3	localOutputStreamWriter	java.io.OutputStreamWriter
-    //   163	4	3	localObject4	java.lang.Object
+    //   163	4	3	localObject4	Object
     //   37	27	4	localFileOutputStream	FileOutputStream
     // Exception table:
     //   from	to	target	type
@@ -243,29 +250,29 @@ public class c
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 46	com/tencent/token/utils/c:g	Lcom/tencent/token/fd;
+    //   3: getfield 48	com/tencent/token/utils/c:g	Lcom/tencent/token/dv;
     //   6: aload_0
-    //   7: getfield 42	com/tencent/token/utils/c:e	Lcom/tencent/token/fd;
+    //   7: getfield 44	com/tencent/token/utils/c:e	Lcom/tencent/token/dv;
     //   10: if_acmpne +22 -> 32
     //   13: aload_0
     //   14: aload_0
-    //   15: getfield 44	com/tencent/token/utils/c:f	Lcom/tencent/token/fd;
-    //   18: putfield 46	com/tencent/token/utils/c:g	Lcom/tencent/token/fd;
+    //   15: getfield 46	com/tencent/token/utils/c:f	Lcom/tencent/token/dv;
+    //   18: putfield 48	com/tencent/token/utils/c:g	Lcom/tencent/token/dv;
     //   21: aload_0
     //   22: aload_0
-    //   23: getfield 42	com/tencent/token/utils/c:e	Lcom/tencent/token/fd;
-    //   26: putfield 48	com/tencent/token/utils/c:h	Lcom/tencent/token/fd;
+    //   23: getfield 44	com/tencent/token/utils/c:e	Lcom/tencent/token/dv;
+    //   26: putfield 50	com/tencent/token/utils/c:h	Lcom/tencent/token/dv;
     //   29: aload_0
     //   30: monitorexit
     //   31: return
     //   32: aload_0
     //   33: aload_0
-    //   34: getfield 42	com/tencent/token/utils/c:e	Lcom/tencent/token/fd;
-    //   37: putfield 46	com/tencent/token/utils/c:g	Lcom/tencent/token/fd;
+    //   34: getfield 44	com/tencent/token/utils/c:e	Lcom/tencent/token/dv;
+    //   37: putfield 48	com/tencent/token/utils/c:g	Lcom/tencent/token/dv;
     //   40: aload_0
     //   41: aload_0
-    //   42: getfield 44	com/tencent/token/utils/c:f	Lcom/tencent/token/fd;
-    //   45: putfield 48	com/tencent/token/utils/c:h	Lcom/tencent/token/fd;
+    //   42: getfield 46	com/tencent/token/utils/c:f	Lcom/tencent/token/dv;
+    //   45: putfield 50	com/tencent/token/utils/c:h	Lcom/tencent/token/dv;
     //   48: goto -19 -> 29
     //   51: astore_1
     //   52: aload_0
@@ -275,7 +282,7 @@ public class c
     // Local variable table:
     //   start	length	slot	name	signature
     //   0	56	0	this	c
-    //   51	4	1	localObject	java.lang.Object
+    //   51	4	1	localObject	Object
     // Exception table:
     //   from	to	target	type
     //   2	29	51	finally
@@ -297,9 +304,9 @@ public class c
     a(d().a(paramInt, paramThread, paramLong, paramString1, paramString2, paramThrowable));
   }
   
-  public void a(e parame)
+  public void a(d paramd)
   {
-    this.a = parame;
+    this.a = paramd;
   }
   
   protected void a(String paramString)
@@ -310,7 +317,7 @@ public class c
     }
   }
   
-  public e b()
+  public d b()
   {
     return this.a;
   }

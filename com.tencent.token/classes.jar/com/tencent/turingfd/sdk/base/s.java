@@ -1,13 +1,6 @@
 package com.tencent.turingfd.sdk.base;
 
-public final class s
-  extends dj
-{
-  public Object a()
-  {
-    return new z(null);
-  }
-}
+public abstract interface s {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.token\classes.jar

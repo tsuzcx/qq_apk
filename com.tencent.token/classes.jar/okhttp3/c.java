@@ -1,11 +1,24 @@
 package okhttp3;
 
-class c
-  implements b
+import com.tencent.token.fg;
+import com.tencent.token.fh;
+import java.io.Closeable;
+import java.io.Flushable;
+
+public final class c
+  implements Closeable, Flushable
 {
-  public ap a(ax paramax, at paramat)
+  final fh a;
+  final fg b;
+  
+  public void close()
   {
-    return null;
+    this.b.close();
+  }
+  
+  public void flush()
+  {
+    this.b.flush();
   }
 }
 

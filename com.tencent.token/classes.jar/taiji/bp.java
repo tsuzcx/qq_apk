@@ -1,15 +1,30 @@
 package taiji;
 
-import android.graphics.Paint;
-import android.graphics.Paint.Style;
+import android.view.accessibility.AccessibilityEvent;
 
-class bp
-  extends Paint
+public class bp
 {
-  bp(bo parambo, int paramInt)
+  public static abstract class a
   {
-    super(paramInt);
-    setStyle(Paint.Style.FILL);
+    public abstract void a();
+    
+    public abstract void a(int paramInt1, int paramInt2);
+    
+    public abstract void b();
+  }
+  
+  public static abstract class b
+  {
+    public abstract void a(AccessibilityEvent paramAccessibilityEvent);
+  }
+  
+  public static class c
+  {
+    public int a = -1;
+    public int b = 0;
+    public long c = -1L;
+    public String d = null;
+    public String e;
   }
 }
 

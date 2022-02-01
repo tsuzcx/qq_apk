@@ -1,5 +1,6 @@
 package com.tencent.wcdb.database;
 
+import android.annotation.SuppressLint;
 import android.util.Printer;
 import com.tencent.wcdb.support.Log;
 import java.util.ArrayList;
@@ -8,7 +9,7 @@ public final class SQLiteDebug
 {
   private static final String TAG = "WCDB.SQLiteDebug";
   private static volatile int sLastErrorLine;
-  private static volatile ArrayList sLastIOTraceStats;
+  private static volatile ArrayList<IOTraceStats> sLastIOTraceStats;
   
   static {}
   
@@ -68,9 +69,9 @@ public final class SQLiteDebug
     SQLiteDatabase.dumpAll(paramPrinter, bool);
   }
   
-  public static SQLiteDebug.PagerStats getDatabaseInfo()
+  public static PagerStats getDatabaseInfo()
   {
-    SQLiteDebug.PagerStats localPagerStats = new SQLiteDebug.PagerStats();
+    PagerStats localPagerStats = new PagerStats();
     nativeGetPagerStats(localPagerStats);
     localPagerStats.dbStats = SQLiteDatabase.getDbStats();
     return localPagerStats;
@@ -81,16 +82,16 @@ public final class SQLiteDebug
     return sLastErrorLine;
   }
   
-  public static ArrayList getLastIOTraceStats()
+  public static ArrayList<IOTraceStats> getLastIOTraceStats()
   {
     return sLastIOTraceStats;
   }
   
-  private static native void nativeGetIOTraceStats(long paramLong, ArrayList paramArrayList);
+  private static native void nativeGetIOTraceStats(long paramLong, ArrayList<IOTraceStats> paramArrayList);
   
   private static native int nativeGetLastErrorLine();
   
-  private static native void nativeGetPagerStats(SQLiteDebug.PagerStats paramPagerStats);
+  private static native void nativeGetPagerStats(PagerStats paramPagerStats);
   
   private static native void nativeSetIOTraceFlags(int paramInt);
   
@@ -102,6 +103,55 @@ public final class SQLiteDebug
   public static final boolean shouldLogSlowQuery(long paramLong)
   {
     return paramLong > 300L;
+  }
+  
+  public static class DbStats
+  {
+    public String cache;
+    public String dbName;
+    public long dbSize;
+    public int lookaside;
+    public long pageSize;
+    
+    public DbStats(String paramString, long paramLong1, long paramLong2, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+    {
+      this.dbName = paramString;
+      this.pageSize = (paramLong2 / 1024L);
+      this.dbSize = (paramLong1 * paramLong2 / 1024L);
+      this.lookaside = paramInt1;
+      this.cache = (paramInt2 + "/" + paramInt3 + "/" + paramInt4);
+    }
+  }
+  
+  public static class IOTraceStats
+  {
+    public String dbName;
+    public String journalMode;
+    public long lastJournalReadOffset;
+    public byte[] lastJournalReadPage;
+    public long lastJournalWriteOffset;
+    public byte[] lastJournalWritePage;
+    public long lastReadOffset;
+    public byte[] lastReadPage;
+    public long lastWriteOffset;
+    public byte[] lastWritePage;
+    public long pageCount;
+    public long pageSize;
+    public String path;
+    
+    @SuppressLint({"DefaultLocale"})
+    public String toString()
+    {
+      return String.format("[%s | %s] pageSize: %d, pageCount: %d, journal: %s, lastRead: %d, lastWrite: %d, lastJournalRead: %d, lastJournalWrite: %d", new Object[] { this.dbName, this.path, Long.valueOf(this.pageSize), Long.valueOf(this.pageCount), this.journalMode, Long.valueOf(this.lastReadOffset), Long.valueOf(this.lastWriteOffset), Long.valueOf(this.lastJournalReadOffset), Long.valueOf(this.lastJournalWriteOffset) });
+    }
+  }
+  
+  public static class PagerStats
+  {
+    public ArrayList<SQLiteDebug.DbStats> dbStats;
+    public int largestMemAlloc;
+    public int memoryUsed;
+    public int pageCacheOverflow;
   }
 }
 

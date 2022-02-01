@@ -11,7 +11,7 @@ public class tlv_t16b
     this._cmd = 363;
   }
   
-  public byte[] get_tlv_16b(List paramList)
+  public byte[] get_tlv_16b(List<String> paramList)
   {
     int k;
     int i;

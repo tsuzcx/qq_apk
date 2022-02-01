@@ -7,6 +7,10 @@ import android.os.Build.VERSION;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.annotation.RequiresPermission;
+import android.support.annotation.RestrictTo;
+import java.lang.annotation.Annotation;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
 
 public final class ConnectivityManagerCompat
 {
@@ -61,6 +65,10 @@ public final class ConnectivityManagerCompat
     }
     return false;
   }
+  
+  @Retention(RetentionPolicy.SOURCE)
+  @RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
+  public static @interface RestrictBackgroundStatus {}
 }
 
 

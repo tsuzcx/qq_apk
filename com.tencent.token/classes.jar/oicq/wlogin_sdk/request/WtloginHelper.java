@@ -14,6 +14,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Timer;
 import oicq.wlogin_sdk.a.g;
 import oicq.wlogin_sdk.code2d.fetch_code;
 import oicq.wlogin_sdk.code2d.fetch_code.QRCodeCustom;
@@ -99,7 +100,7 @@ public class WtloginHelper
     }
     if (paramInt == 0)
     {
-      new WtloginHelper.HelperThread(this, this, this.mHelperHandler, paramString, paramArrayOfByte, paramWUserSigInfo, paramArrayOfByte1, "CheckPictureAndGetSt").RunReq(2);
+      new HelperThread(this, this.mHelperHandler, paramString, paramArrayOfByte, paramWUserSigInfo, paramArrayOfByte1, "CheckPictureAndGetSt").RunReq(2);
       return -1001;
     }
     int i = 0;
@@ -290,7 +291,7 @@ public class WtloginHelper
     }
     if (paramInt == 0)
     {
-      new WtloginHelper.HelperThread(this, this, this.mHelperHandler, paramString, paramArrayOfByte, paramWUserSigInfo, paramArrayOfByte1, "CheckSMSAndGetSt").RunReq(4);
+      new HelperThread(this, this.mHelperHandler, paramString, paramArrayOfByte, paramWUserSigInfo, paramArrayOfByte1, "CheckSMSAndGetSt").RunReq(4);
       return -1001;
     }
     if (paramWUserSigInfo._seqence == 0L) {
@@ -388,7 +389,7 @@ public class WtloginHelper
     }
     if (paramInt == 0)
     {
-      new WtloginHelper.HelperThread(this, this, this.mHelperHandler, paramLong1, paramLong2, paramString, paramWUserSigInfo, "CheckSMSVerifyLoginAccount").RunReq(12);
+      new HelperThread(this, this.mHelperHandler, paramLong1, paramLong2, paramString, paramWUserSigInfo, "CheckSMSVerifyLoginAccount").RunReq(12);
       return -1001;
     }
     Object localObject = this.mG.a(0L);
@@ -458,7 +459,7 @@ public class WtloginHelper
     int i = paramInt1 | 0xC0;
     if (paramInt2 == 0)
     {
-      new WtloginHelper.HelperThread(this, this, this.mHelperHandler, paramString, paramLong1, paramLong2, i, paramArrayOfByte1, paramLong3, paramLong4, paramLong5, paramArrayOfByte2, paramArrayOfByte3, paramWUserSigInfo, paramWFastLoginInfo, "GetA1WithA1").RunReq(6);
+      new HelperThread(this, this.mHelperHandler, paramString, paramLong1, paramLong2, i, paramArrayOfByte1, paramLong3, paramLong4, paramLong5, paramArrayOfByte2, paramArrayOfByte3, paramWUserSigInfo, paramWFastLoginInfo, "GetA1WithA1").RunReq(6);
       return -1001;
     }
     t localt = this.mG.a(0L);
@@ -675,7 +676,7 @@ public class WtloginHelper
     }
     if (paramInt2 == 0)
     {
-      new WtloginHelper.HelperThread(this, this, this.mHelperHandler, paramWtTicketPromise, paramString, paramLong1, paramLong2, paramLong3, i, paramLong4, paramArrayOfLong, paramWUserSigInfo, paramArrayOfByte1, paramArrayOfByte2, "GetStWithoutPasswd").RunReq(5);
+      new HelperThread(this, this.mHelperHandler, paramWtTicketPromise, paramString, paramLong1, paramLong2, paramLong3, i, paramLong4, paramArrayOfLong, paramWUserSigInfo, paramArrayOfByte1, paramArrayOfByte2, "GetStWithoutPasswd").RunReq(5);
       return -1001;
     }
     paramWtTicketPromise = this.mG.a(0L);
@@ -1404,7 +1405,7 @@ public class WtloginHelper
     }
     if (paramInt == 0)
     {
-      new WtloginHelper.HelperThread(this, this, this.mHelperHandler, paramString, paramWUserSigInfo, "RefreshPictureData").RunReq(1);
+      new HelperThread(this, this.mHelperHandler, paramString, paramWUserSigInfo, "RefreshPictureData").RunReq(1);
       return -1001;
     }
     if (paramWUserSigInfo._seqence == 0L) {
@@ -1455,7 +1456,7 @@ public class WtloginHelper
     }
     if (paramInt == 0)
     {
-      new WtloginHelper.HelperThread(this, this, this.mHelperHandler, paramString, paramLong, paramWUserSigInfo, "RefreshSMSData").RunReq(3);
+      new HelperThread(this, this.mHelperHandler, paramString, paramLong, paramWUserSigInfo, "RefreshSMSData").RunReq(3);
       return -1001;
     }
     if (paramWUserSigInfo._seqence == 0L) {
@@ -1505,7 +1506,7 @@ public class WtloginHelper
     }
     if (paramInt == 0)
     {
-      new WtloginHelper.HelperThread(this, this, this.mHelperHandler, paramString, paramWUserSigInfo, "RefreshSMSVerifyLoginCode").RunReq(14);
+      new HelperThread(this, this.mHelperHandler, paramString, paramWUserSigInfo, "RefreshSMSVerifyLoginCode").RunReq(14);
       return -1001;
     }
     if (paramWUserSigInfo._seqence == 0L) {
@@ -1594,7 +1595,7 @@ public class WtloginHelper
   {
     if (paramInt == 0)
     {
-      new WtloginHelper.HelperThread(this, this, this.mHelperHandler, paramArrayOfByte1, paramArrayOfByte2, paramLong1, paramLong2, "RequestReport").RunReq(7);
+      new HelperThread(this, this.mHelperHandler, paramArrayOfByte1, paramArrayOfByte2, paramLong1, paramLong2, "RequestReport").RunReq(7);
       return -1001;
     }
     t localt = this.mG.a(0L);
@@ -1610,7 +1611,7 @@ public class WtloginHelper
   {
     if (paramInt1 == 0)
     {
-      new WtloginHelper.HelperThread(this, this, this.mHelperHandler, paramArrayOfByte1, paramArrayOfByte2, paramLong1, paramLong2, paramInt2, "RequestReportError").RunReq(8);
+      new HelperThread(this, this.mHelperHandler, paramArrayOfByte1, paramArrayOfByte2, paramLong1, paramLong2, paramInt2, "RequestReportError").RunReq(8);
       return -1001;
     }
     t localt = this.mG.a(0L);
@@ -1643,7 +1644,7 @@ public class WtloginHelper
     }
     if (paramInt == 0)
     {
-      new WtloginHelper.HelperThread(this, this, this.mHelperHandler, paramString1, paramString2, paramWUserSigInfo, "VerifySMSVerifyLoginCode").RunReq(13);
+      new HelperThread(this, this.mHelperHandler, paramString1, paramString2, paramWUserSigInfo, "VerifySMSVerifyLoginCode").RunReq(13);
       return -1001;
     }
     if (paramWUserSigInfo._seqence == 0L) {
@@ -1705,16 +1706,16 @@ public class WtloginHelper
     return null;
   }
   
-  private int getStWithPtSig(String paramString1, String paramString2, WtloginHelper.QuickLoginParam paramQuickLoginParam)
+  private int getStWithPtSig(String paramString1, String paramString2, QuickLoginParam paramQuickLoginParam)
   {
     return getStWithPtSig(paramString1, paramString2, paramQuickLoginParam, 0);
   }
   
-  private int getStWithPtSig(String paramString1, String paramString2, WtloginHelper.QuickLoginParam paramQuickLoginParam, int paramInt)
+  private int getStWithPtSig(String paramString1, String paramString2, QuickLoginParam paramQuickLoginParam, int paramInt)
   {
     if (paramInt == 0)
     {
-      new WtloginHelper.HelperThread(this, this, this.mHelperHandler, paramString1, paramString2, paramQuickLoginParam, "getStWithPtSig").RunReq(16);
+      new HelperThread(this, this.mHelperHandler, paramString1, paramString2, paramQuickLoginParam, "getStWithPtSig").RunReq(16);
       return -1001;
     }
     WUserSigInfo localWUserSigInfo = paramQuickLoginParam.userSigInfo;
@@ -1802,16 +1803,16 @@ public class WtloginHelper
     }
   }
   
-  private int getStWithQQSig(String paramString, WtloginHelper.QuickLoginParam paramQuickLoginParam)
+  private int getStWithQQSig(String paramString, QuickLoginParam paramQuickLoginParam)
   {
     return getStWithQQSig(paramString, paramQuickLoginParam, 0);
   }
   
-  private int getStWithQQSig(String paramString, WtloginHelper.QuickLoginParam paramQuickLoginParam, int paramInt)
+  private int getStWithQQSig(String paramString, QuickLoginParam paramQuickLoginParam, int paramInt)
   {
     if (paramInt == 0)
     {
-      new WtloginHelper.HelperThread(this, this, this.mHelperHandler, paramString, paramQuickLoginParam, "getStWithQQSig").RunReq(15);
+      new HelperThread(this, this.mHelperHandler, paramString, paramQuickLoginParam, "getStWithQQSig").RunReq(15);
       return -1001;
     }
     Object localObject1 = paramQuickLoginParam.userSigInfo;
@@ -1897,7 +1898,7 @@ public class WtloginHelper
       }
     }
     localObject1 = GetUserSigInfoTicket((WUserSigInfo)localObject1, 128);
-    paramQuickLoginParam = (WtloginHelper.QuickLoginParam)localObject1;
+    paramQuickLoginParam = (QuickLoginParam)localObject1;
     if (localObject1 == null) {
       paramQuickLoginParam = new Ticket();
     }
@@ -1932,7 +1933,7 @@ public class WtloginHelper
     int i = paramInt1 | 0xC0;
     if (paramInt2 == 0)
     {
-      new WtloginHelper.HelperThread(this, this, this.mHelperHandler, paramString, paramLong1, i, paramLong2, paramWUserSigInfo, "getStWithQrSig").RunReq(17);
+      new HelperThread(this, this.mHelperHandler, paramString, paramLong1, i, paramLong2, paramWUserSigInfo, "getStWithQrSig").RunReq(17);
       return -1001;
     }
     paramInt2 = 0;
@@ -2457,40 +2458,40 @@ public class WtloginHelper
   public Boolean ClearUserLoginData(String paramString, long paramLong)
   {
     // Byte code:
-    //   0: new 134	java/lang/StringBuilder
+    //   0: new 153	java/lang/StringBuilder
     //   3: dup
-    //   4: invokespecial 135	java/lang/StringBuilder:<init>	()V
-    //   7: ldc 137
-    //   9: invokevirtual 141	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   4: invokespecial 154	java/lang/StringBuilder:<init>	()V
+    //   7: ldc 156
+    //   9: invokevirtual 160	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   12: aload_1
-    //   13: invokevirtual 141	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   16: ldc_w 1428
-    //   19: invokevirtual 141	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   13: invokevirtual 160	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   16: ldc_w 1447
+    //   19: invokevirtual 160	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   22: lload_2
-    //   23: invokevirtual 146	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   26: ldc_w 1950
-    //   29: invokevirtual 141	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   32: invokevirtual 152	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   23: invokevirtual 165	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   26: ldc_w 1967
+    //   29: invokevirtual 160	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   32: invokevirtual 171	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   35: aload_1
-    //   36: invokestatic 158	oicq/wlogin_sdk/tools/util:LOGI	(Ljava/lang/String;Ljava/lang/String;)V
+    //   36: invokestatic 177	oicq/wlogin_sdk/tools/util:LOGI	(Ljava/lang/String;Ljava/lang/String;)V
     //   39: aload_1
     //   40: ifnull +10 -> 50
     //   43: aload_1
-    //   44: invokevirtual 603	java/lang/String:length	()I
+    //   44: invokevirtual 622	java/lang/String:length	()I
     //   47: ifgt +8 -> 55
     //   50: iconst_1
-    //   51: invokestatic 1953	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
+    //   51: invokestatic 1970	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
     //   54: areturn
     //   55: aload_0
     //   56: monitorenter
     //   57: aload_1
-    //   58: invokestatic 175	oicq/wlogin_sdk/tools/util:check_uin_account	(Ljava/lang/String;)Ljava/lang/Boolean;
-    //   61: invokevirtual 181	java/lang/Boolean:booleanValue	()Z
+    //   58: invokestatic 194	oicq/wlogin_sdk/tools/util:check_uin_account	(Ljava/lang/String;)Ljava/lang/Boolean;
+    //   61: invokevirtual 200	java/lang/Boolean:booleanValue	()Z
     //   64: ifne +72 -> 136
     //   67: aload_0
-    //   68: getfield 46	oicq/wlogin_sdk/request/WtloginHelper:mG	Loicq/wlogin_sdk/request/t;
+    //   68: getfield 67	oicq/wlogin_sdk/request/WtloginHelper:mG	Loicq/wlogin_sdk/request/t;
     //   71: aload_1
-    //   72: invokevirtual 184	oicq/wlogin_sdk/request/t:b	(Ljava/lang/String;)J
+    //   72: invokevirtual 203	oicq/wlogin_sdk/request/t:b	(Ljava/lang/String;)J
     //   75: lstore 5
     //   77: lload 5
     //   79: lconst_0
@@ -2502,30 +2503,30 @@ public class WtloginHelper
     //   89: iconst_1
     //   90: if_icmpne +13 -> 103
     //   93: aload_0
-    //   94: getfield 46	oicq/wlogin_sdk/request/WtloginHelper:mG	Loicq/wlogin_sdk/request/t;
+    //   94: getfield 67	oicq/wlogin_sdk/request/WtloginHelper:mG	Loicq/wlogin_sdk/request/t;
     //   97: lload 5
     //   99: lload_2
-    //   100: invokevirtual 1955	oicq/wlogin_sdk/request/t:e	(JJ)V
+    //   100: invokevirtual 1972	oicq/wlogin_sdk/request/t:e	(JJ)V
     //   103: aload_0
     //   104: monitorexit
     //   105: iconst_0
     //   106: newarray byte
-    //   108: putstatic 749	oicq/wlogin_sdk/sharemem/WloginSigInfo:_QRPUSHSig	[B
+    //   108: putstatic 768	oicq/wlogin_sdk/sharemem/WloginSigInfo:_QRPUSHSig	[B
     //   111: iconst_0
     //   112: newarray byte
-    //   114: putstatic 740	oicq/wlogin_sdk/sharemem/WloginSigInfo:_LHSig	[B
+    //   114: putstatic 759	oicq/wlogin_sdk/sharemem/WloginSigInfo:_LHSig	[B
     //   117: iconst_1
-    //   118: invokestatic 1953	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
+    //   118: invokestatic 1970	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
     //   121: areturn
     //   122: aload_0
-    //   123: getfield 46	oicq/wlogin_sdk/request/WtloginHelper:mG	Loicq/wlogin_sdk/request/t;
+    //   123: getfield 67	oicq/wlogin_sdk/request/WtloginHelper:mG	Loicq/wlogin_sdk/request/t;
     //   126: aload_1
-    //   127: invokevirtual 1231	oicq/wlogin_sdk/request/t:d	(Ljava/lang/String;)V
+    //   127: invokevirtual 1250	oicq/wlogin_sdk/request/t:d	(Ljava/lang/String;)V
     //   130: iconst_1
     //   131: istore 4
     //   133: goto -46 -> 87
     //   136: aload_1
-    //   137: invokestatic 272	java/lang/Long:parseLong	(Ljava/lang/String;)J
+    //   137: invokestatic 291	java/lang/Long:parseLong	(Ljava/lang/String;)J
     //   140: lstore 5
     //   142: iconst_1
     //   143: istore 4
@@ -2552,7 +2553,7 @@ public class WtloginHelper
     //   149	151	148	finally
   }
   
-  public int CloseCode(String paramString, long paramLong, byte[] paramArrayOfByte, int paramInt, List paramList, WUserSigInfo paramWUserSigInfo)
+  public int CloseCode(String paramString, long paramLong, byte[] paramArrayOfByte, int paramInt, List<byte[]> paramList, WUserSigInfo paramWUserSigInfo)
   {
     Object localObject = new WloginSimpleInfo();
     if (!GetBasicUserInfo(paramString, (WloginSimpleInfo)localObject).booleanValue()) {
@@ -2650,7 +2651,7 @@ public class WtloginHelper
     return cryptor.encrypt(arrayOfByte, 0, arrayOfByte.length, t.B);
   }
   
-  public List GetAllLoginInfo()
+  public List<WloginLoginInfo> GetAllLoginInfo()
   {
     return this.mG.k();
   }
@@ -3582,7 +3583,7 @@ public class WtloginHelper
   {
     if (paramInt1 == 0)
     {
-      new WtloginHelper.HelperThread(this, this, this.mHelperHandler, paramInt2, paramString, paramLong1, paramLong2, paramTransReqContext, paramWUserSigInfo, "RequestTransport").RunReq(9);
+      new HelperThread(this, this.mHelperHandler, paramInt2, paramString, paramLong1, paramLong2, paramTransReqContext, paramWUserSigInfo, "RequestTransport").RunReq(9);
       return -1001;
     }
     t localt = this.mG.a(0L);
@@ -3628,7 +3629,7 @@ public class WtloginHelper
   {
     if (paramInt1 == 0)
     {
-      new WtloginHelper.HelperThread(this, this, this.mHelperHandler, paramInt2, paramString, paramLong1, paramLong2, paramTransReqContext, "RequestTransportMsf").RunReq(10);
+      new HelperThread(this, this.mHelperHandler, paramInt2, paramString, paramLong1, paramLong2, paramTransReqContext, "RequestTransportMsf").RunReq(10);
       return -1001;
     }
     t localt = this.mG.a(0L);
@@ -3912,7 +3913,7 @@ public class WtloginHelper
     return "";
   }
   
-  public int onQuickLoginActivityResultData(WtloginHelper.QuickLoginParam paramQuickLoginParam, Intent paramIntent)
+  public int onQuickLoginActivityResultData(QuickLoginParam paramQuickLoginParam, Intent paramIntent)
   {
     if (paramIntent == null)
     {
@@ -3942,11 +3943,11 @@ public class WtloginHelper
     return getStWithPtSig(paramIntent.getStringExtra("uin"), paramIntent.getStringExtra("sig"), paramQuickLoginParam);
   }
   
-  public int quickLogin(Activity paramActivity, long paramLong1, long paramLong2, String paramString, WtloginHelper.QuickLoginParam paramQuickLoginParam)
+  public int quickLogin(Activity paramActivity, long paramLong1, long paramLong2, String paramString, QuickLoginParam paramQuickLoginParam)
   {
     try
     {
-      int i = ((Integer)Class.forName("oicq.wlogin_sdk.quicklogin.QuickLogin").getMethod("jumpToLoginActivity", new Class[] { Context.class, Activity.class, Long.TYPE, Long.TYPE, String.class, WtloginHelper.QuickLoginParam.class }).invoke(null, new Object[] { this.mContext, paramActivity, Long.valueOf(paramLong1), Long.valueOf(paramLong2), paramString, paramQuickLoginParam })).intValue();
+      int i = ((Integer)Class.forName("oicq.wlogin_sdk.quicklogin.QuickLogin").getMethod("jumpToLoginActivity", new Class[] { Context.class, Activity.class, Long.TYPE, Long.TYPE, String.class, QuickLoginParam.class }).invoke(null, new Object[] { this.mContext, paramActivity, Long.valueOf(paramLong1), Long.valueOf(paramLong2), paramString, paramQuickLoginParam })).intValue();
       return i;
     }
     catch (Exception paramActivity) {}
@@ -3995,6 +3996,565 @@ public class WtloginHelper
     oicq.wlogin_sdk.devicelock.DevlockBase.a.a = paramInt1;
     oicq.wlogin_sdk.devicelock.DevlockBase.a.b = paramInt2;
     oicq.wlogin_sdk.devicelock.DevlockBase.a.c = paramInt3;
+  }
+  
+  private static class A1SRC
+  {
+    public static final int A1SRC_PASSWORD = 1;
+    public static final int A1SRC_PTSIG = 4;
+    public static final int A1SRC_QUICKLOGIN = 2;
+    public static final int A1SRC_SMS = 3;
+  }
+  
+  public class HelperThread
+    extends Thread
+  {
+    boolean isSelfLooper = false;
+    byte[] mAppName2;
+    byte[] mAppSign2;
+    byte[] mAppVer2;
+    long mAppid1;
+    long mAppid2;
+    long mDwAppid;
+    long mDwDstAppPri;
+    long mDwDstAppid;
+    long[] mDwDstSubAppidList;
+    int mDwMainSigMap;
+    long[] mDwSubAppidList;
+    long mDwSubDstAppid;
+    int mEncrypt;
+    WFastLoginInfo mFastLoginInfo;
+    Handler mHandler;
+    WtloginHelper mHelper;
+    boolean mIsSmslogin = false;
+    String mMsgCode;
+    byte[] mPictureData;
+    WtTicketPromise mPromise;
+    boolean mPwdMd5;
+    int mReportErrType;
+    TransReqContext mReqContext;
+    int mReqType;
+    byte[][] mReserve;
+    long mRole;
+    byte[][] mST;
+    byte[] mST1;
+    byte[] mST1Key;
+    long mSmsAppid;
+    long mSsoVer2;
+    long mSubAppid1;
+    long mSubAppid2;
+    long mUIN;
+    String mUserAccount;
+    byte[] mUserInput;
+    String mUserPasswd;
+    WUserSigInfo mUserSigInfo = null;
+    String ptSig;
+    WtloginHelper.QuickLoginParam quickLoginParam;
+    
+    HelperThread(WtloginHelper paramWtloginHelper, Handler paramHandler)
+    {
+      this.mHelper = paramWtloginHelper;
+      this.mHandler = paramHandler;
+    }
+    
+    HelperThread(WtloginHelper paramWtloginHelper, Handler paramHandler, int paramInt, String paramString1, long paramLong1, long paramLong2, TransReqContext paramTransReqContext, String paramString2)
+    {
+      this.mHelper = paramWtloginHelper;
+      this.mHandler = paramHandler;
+      this.mEncrypt = paramInt;
+      this.mUserAccount = paramString1;
+      this.mDwAppid = paramLong1;
+      this.mRole = paramLong2;
+      this.mReqContext = paramTransReqContext;
+      setName(paramString2);
+    }
+    
+    HelperThread(WtloginHelper paramWtloginHelper, Handler paramHandler, int paramInt, String paramString1, long paramLong1, long paramLong2, TransReqContext paramTransReqContext, WUserSigInfo paramWUserSigInfo, String paramString2)
+    {
+      this.mHelper = paramWtloginHelper;
+      this.mHandler = paramHandler;
+      this.mEncrypt = paramInt;
+      this.mUserAccount = paramString1;
+      this.mDwAppid = paramLong1;
+      this.mRole = paramLong2;
+      this.mReqContext = paramTransReqContext;
+      this.mUserSigInfo = paramWUserSigInfo;
+      setName(paramString2);
+    }
+    
+    HelperThread(WtloginHelper paramWtloginHelper, Handler paramHandler, long paramLong1, long paramLong2, String paramString1, WUserSigInfo paramWUserSigInfo, String paramString2)
+    {
+      this.mHelper = paramWtloginHelper;
+      this.mHandler = paramHandler;
+      this.mUserAccount = paramString1;
+      this.mAppid1 = paramLong1;
+      this.mSubAppid1 = paramLong2;
+      this.mUserSigInfo = paramWUserSigInfo;
+      setName(paramString2);
+    }
+    
+    HelperThread(WtloginHelper paramWtloginHelper, Handler paramHandler, String paramString1, long paramLong1, int paramInt, long paramLong2, WUserSigInfo paramWUserSigInfo, String paramString2)
+    {
+      this.mHelper = paramWtloginHelper;
+      this.mHandler = paramHandler;
+      this.mUserAccount = paramString1;
+      this.mDwAppid = paramLong1;
+      this.mDwMainSigMap = paramInt;
+      this.mDwSubDstAppid = paramLong2;
+      this.mUserSigInfo = paramWUserSigInfo;
+      setName(paramString2);
+    }
+    
+    HelperThread(WtloginHelper paramWtloginHelper, Handler paramHandler, String paramString1, long paramLong1, int paramInt, long paramLong2, long[] paramArrayOfLong, boolean paramBoolean1, String paramString2, WUserSigInfo paramWUserSigInfo, byte[][] paramArrayOfByte, boolean paramBoolean2, String paramString3)
+    {
+      this.mHelper = paramWtloginHelper;
+      this.mHandler = paramHandler;
+      this.mUserAccount = paramString1;
+      this.mDwAppid = paramLong1;
+      this.mDwMainSigMap = paramInt;
+      this.mDwSubDstAppid = paramLong2;
+      this.mDwSubAppidList = paramArrayOfLong;
+      this.mPwdMd5 = paramBoolean1;
+      this.mUserPasswd = paramString2;
+      this.mUserSigInfo = paramWUserSigInfo;
+      this.mST = paramArrayOfByte;
+      this.mIsSmslogin = paramBoolean2;
+      setName(paramString3);
+    }
+    
+    HelperThread(WtloginHelper paramWtloginHelper, Handler paramHandler, String paramString1, long paramLong1, long paramLong2, int paramInt, byte[] paramArrayOfByte1, long paramLong3, long paramLong4, long paramLong5, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, WUserSigInfo paramWUserSigInfo, WFastLoginInfo paramWFastLoginInfo, String paramString2)
+    {
+      this.mHelper = paramWtloginHelper;
+      this.mHandler = paramHandler;
+      this.mUserAccount = paramString1;
+      this.mAppid1 = paramLong1;
+      this.mSubAppid1 = paramLong2;
+      this.mDwMainSigMap = paramInt;
+      this.mAppName2 = paramArrayOfByte1;
+      this.mSsoVer2 = paramLong4;
+      this.mAppid2 = paramLong4;
+      this.mSubAppid2 = paramLong5;
+      this.mAppVer2 = paramArrayOfByte2;
+      this.mAppSign2 = paramArrayOfByte3;
+      this.mUserSigInfo = paramWUserSigInfo;
+      this.mFastLoginInfo = paramWFastLoginInfo;
+      setName(paramString2);
+    }
+    
+    HelperThread(WtloginHelper paramWtloginHelper, Handler paramHandler, String paramString1, long paramLong, WUserSigInfo paramWUserSigInfo, String paramString2)
+    {
+      this.mHelper = paramWtloginHelper;
+      this.mHandler = paramHandler;
+      this.mUserAccount = paramString1;
+      this.mSmsAppid = paramLong;
+      this.mUserSigInfo = paramWUserSigInfo;
+      setName(paramString2);
+    }
+    
+    HelperThread(WtloginHelper paramWtloginHelper, Handler paramHandler, String paramString1, String paramString2, WUserSigInfo paramWUserSigInfo, String paramString3)
+    {
+      this.mHelper = paramWtloginHelper;
+      this.mHandler = paramHandler;
+      this.mUserAccount = paramString1;
+      this.mMsgCode = paramString2;
+      this.mUserSigInfo = paramWUserSigInfo;
+      setName(paramString3);
+    }
+    
+    HelperThread(WtloginHelper paramWtloginHelper, Handler paramHandler, String paramString1, String paramString2, WtloginHelper.QuickLoginParam paramQuickLoginParam, String paramString3)
+    {
+      this.mHelper = paramWtloginHelper;
+      this.mHandler = paramHandler;
+      this.mUserAccount = paramString1;
+      this.ptSig = paramString2;
+      this.quickLoginParam = paramQuickLoginParam;
+      this.mUserSigInfo = paramQuickLoginParam.userSigInfo;
+      setName(paramString3);
+    }
+    
+    HelperThread(WtloginHelper paramWtloginHelper, Handler paramHandler, String paramString1, WUserSigInfo paramWUserSigInfo, String paramString2)
+    {
+      this.mHelper = paramWtloginHelper;
+      this.mHandler = paramHandler;
+      this.mUserAccount = paramString1;
+      this.mUserSigInfo = paramWUserSigInfo;
+      setName(paramString2);
+    }
+    
+    HelperThread(WtloginHelper paramWtloginHelper, Handler paramHandler, String paramString1, WtloginHelper.QuickLoginParam paramQuickLoginParam, String paramString2)
+    {
+      this.mHelper = paramWtloginHelper;
+      this.mHandler = paramHandler;
+      this.mUserAccount = paramString1;
+      this.quickLoginParam = paramQuickLoginParam;
+      this.mUserSigInfo = paramQuickLoginParam.userSigInfo;
+      setName(paramString2);
+    }
+    
+    HelperThread(WtloginHelper paramWtloginHelper, Handler paramHandler, String paramString1, byte[] paramArrayOfByte, WUserSigInfo paramWUserSigInfo, byte[][] paramArrayOfByte1, String paramString2)
+    {
+      this.mHelper = paramWtloginHelper;
+      this.mHandler = paramHandler;
+      this.mUserAccount = paramString1;
+      this.mUserInput = paramArrayOfByte;
+      this.mUserSigInfo = paramWUserSigInfo;
+      this.mST = paramArrayOfByte1;
+      setName(paramString2);
+    }
+    
+    HelperThread(WtloginHelper paramWtloginHelper, Handler paramHandler, WtTicketPromise paramWtTicketPromise, String paramString1, long paramLong1, long paramLong2, long paramLong3, int paramInt, long paramLong4, long[] paramArrayOfLong, WUserSigInfo paramWUserSigInfo, byte[][] paramArrayOfByte1, byte[][] paramArrayOfByte2, String paramString2)
+    {
+      this.mHelper = paramWtloginHelper;
+      this.mHandler = paramHandler;
+      this.mPromise = paramWtTicketPromise;
+      this.mUserAccount = paramString1;
+      this.mDwAppid = paramLong1;
+      this.mDwDstAppid = paramLong2;
+      this.mDwDstAppPri = paramLong3;
+      this.mDwMainSigMap = paramInt;
+      this.mDwSubDstAppid = paramLong4;
+      this.mDwDstSubAppidList = paramArrayOfLong;
+      this.mUserSigInfo = paramWUserSigInfo;
+      this.mST = paramArrayOfByte1;
+      this.mReserve = paramArrayOfByte2;
+      setName(paramString2);
+    }
+    
+    HelperThread(WtloginHelper paramWtloginHelper, Handler paramHandler, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, long paramLong1, long paramLong2, int paramInt, String paramString)
+    {
+      this.mHelper = paramWtloginHelper;
+      this.mHandler = paramHandler;
+      this.mST1 = paramArrayOfByte1;
+      this.mST1Key = paramArrayOfByte2;
+      this.mUIN = paramLong1;
+      this.mDwAppid = paramLong2;
+      this.mReportErrType = paramInt;
+      setName(paramString);
+    }
+    
+    HelperThread(WtloginHelper paramWtloginHelper, Handler paramHandler, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, long paramLong1, long paramLong2, String paramString)
+    {
+      this.mHelper = paramWtloginHelper;
+      this.mHandler = paramHandler;
+      this.mST1 = paramArrayOfByte1;
+      this.mST1Key = paramArrayOfByte2;
+      this.mUIN = paramLong1;
+      this.mDwAppid = paramLong2;
+      setName(paramString);
+    }
+    
+    private void quitSelfLooper()
+    {
+      try
+      {
+        if (this.isSelfLooper)
+        {
+          Looper localLooper = Looper.myLooper();
+          if (localLooper != null) {
+            localLooper.quit();
+          }
+          this.mHandler = null;
+        }
+        return;
+      }
+      catch (Exception localException)
+      {
+        util.printException(localException, "");
+      }
+    }
+    
+    public void RunReq(int paramInt)
+    {
+      this.mReqType = paramInt;
+      if (this.mReqType == 7)
+      {
+        start();
+        return;
+      }
+      synchronized (WtloginHelper.__sync_top)
+      {
+        Timer localTimer = new Timer();
+        WtloginHelper.HelperThread.1 local1 = new WtloginHelper.HelperThread.1(this);
+        paramInt = WtloginHelper.__top;
+        WtloginHelper.__top = paramInt + 1;
+        localTimer.schedule(local1, paramInt * 500);
+        util.LOGI("push queue " + WtloginHelper.__top, "");
+        return;
+      }
+    }
+    
+    public void run()
+    {
+      if ((this.mHelper.mListener == null) && (this.mPromise == null)) {}
+      for (;;)
+      {
+        return;
+        int i = this.mHelper.mG.s;
+        boolean bool;
+        if (this.mHandler == null)
+        {
+          bool = true;
+          label38:
+          this.isSelfLooper = bool;
+          if (this.isSelfLooper)
+          {
+            Looper.prepare();
+            this.mHandler = WtloginHelper.this.newHelperHandler();
+          }
+        }
+        try
+        {
+          if (this.mHandler == null) {
+            throw new Exception("Handler should not be null!");
+          }
+        }
+        catch (Exception localException)
+        {
+          util.printException(localException, "");
+          this.mHandler.post(new WtloginHelper.HelperThread.17(this, i));
+          if (this.isSelfLooper) {
+            Looper.loop();
+          }
+          if (this.mReqType == 7) {
+            continue;
+          }
+          synchronized (WtloginHelper.__sync_top)
+          {
+            if (WtloginHelper.__top > 0) {
+              WtloginHelper.__top -= 1;
+            }
+            util.LOGI("pop queue " + WtloginHelper.__top, "");
+            return;
+          }
+          bool = false;
+          break label38;
+          if (this.mReqType == 0)
+          {
+            j = this.mHelper.GetStWithPasswd(this.mUserAccount, this.mDwAppid, this.mDwMainSigMap, this.mDwSubDstAppid, this.mDwSubAppidList, this.mPwdMd5, this.mUserPasswd, this.mUserSigInfo, this.mST, this.mIsSmslogin, 1);
+            this.mHandler.post(new WtloginHelper.HelperThread.2(this, i, j));
+          }
+          for (;;)
+          {
+            if (this.isSelfLooper) {
+              Looper.loop();
+            }
+            if (this.mReqType == 7) {
+              break;
+            }
+            synchronized (WtloginHelper.__sync_top)
+            {
+              if (WtloginHelper.__top > 0) {
+                WtloginHelper.__top -= 1;
+              }
+              util.LOGI("pop queue " + WtloginHelper.__top, "");
+              return;
+            }
+            if (this.mReqType != 1) {
+              break label469;
+            }
+            j = this.mHelper.RefreshPictureData(this.mUserAccount, this.mUserSigInfo, 1);
+            this.mHandler.post(new WtloginHelper.HelperThread.3(this, i, j));
+          }
+        }
+        finally
+        {
+          for (;;)
+          {
+            int j;
+            if (this.isSelfLooper) {
+              Looper.loop();
+            }
+            if (this.mReqType != 7) {}
+            synchronized (WtloginHelper.__sync_top)
+            {
+              if (WtloginHelper.__top > 0) {
+                WtloginHelper.__top -= 1;
+              }
+              util.LOGI("pop queue " + WtloginHelper.__top, "");
+              throw localObject4;
+              label469:
+              if (this.mReqType == 2)
+              {
+                j = this.mHelper.CheckPictureAndGetSt(this.mUserAccount, this.mUserInput, this.mUserSigInfo, this.mST, 1);
+                this.mHandler.post(new WtloginHelper.HelperThread.4(this, i, j));
+                continue;
+              }
+              if (this.mReqType == 3)
+              {
+                j = this.mHelper.RefreshSMSData(this.mUserAccount, this.mSmsAppid, this.mUserSigInfo, 1);
+                this.mHandler.post(new WtloginHelper.HelperThread.5(this, i, j));
+                continue;
+              }
+              if (this.mReqType == 4)
+              {
+                j = this.mHelper.CheckSMSAndGetSt(this.mUserAccount, this.mUserInput, this.mUserSigInfo, this.mST, 1);
+                this.mHandler.post(new WtloginHelper.HelperThread.6(this, i, j));
+                continue;
+              }
+              if (this.mReqType == 5)
+              {
+                j = this.mHelper.GetStWithoutPasswd(this.mUserAccount, this.mDwAppid, this.mDwDstAppid, this.mDwDstAppPri, this.mDwMainSigMap, this.mDwSubDstAppid, this.mDwDstSubAppidList, this.mUserSigInfo, this.mST, this.mReserve, 1, this.mPromise);
+                this.mHandler.post(new WtloginHelper.HelperThread.7(this, i, j));
+                continue;
+              }
+              if (this.mReqType == 6)
+              {
+                j = this.mHelper.GetA1WithA1(this.mUserAccount, this.mAppid1, this.mSubAppid1, this.mDwMainSigMap, this.mAppName2, this.mSsoVer2, this.mAppid2, this.mSubAppid2, this.mAppVer2, this.mAppSign2, this.mUserSigInfo, this.mFastLoginInfo, 1);
+                this.mHandler.post(new WtloginHelper.HelperThread.8(this, i, j));
+                continue;
+              }
+              if (this.mReqType == 7)
+              {
+                this.mHelper.RequestReport(1, this.mST1, this.mST1Key, this.mUIN, this.mDwAppid);
+                continue;
+              }
+              if (this.mReqType == 9)
+              {
+                j = this.mHelper.RequestTransport(1, this.mEncrypt, this.mUserAccount, this.mDwAppid, this.mRole, this.mReqContext, this.mUserSigInfo);
+                this.mHandler.post(new WtloginHelper.HelperThread.9(this, i, j));
+                continue;
+              }
+              if (this.mReqType == 10)
+              {
+                j = this.mHelper.RequestTransportMsf(1, this.mEncrypt, this.mUserAccount, this.mDwAppid, this.mRole, this.mReqContext);
+                this.mHandler.post(new WtloginHelper.HelperThread.10(this, i, j));
+                continue;
+              }
+              if (this.mReqType == 12)
+              {
+                j = this.mHelper.CheckSMSVerifyLoginAccount(this.mAppid1, this.mSubAppid1, this.mUserAccount, this.mUserSigInfo, 1);
+                this.mHandler.post(new WtloginHelper.HelperThread.11(this, i, j));
+                continue;
+              }
+              if (this.mReqType == 13)
+              {
+                j = this.mHelper.VerifySMSVerifyLoginCode(this.mUserAccount, this.mMsgCode, this.mUserSigInfo, 1);
+                this.mHandler.post(new WtloginHelper.HelperThread.12(this, i, j));
+                continue;
+              }
+              if (this.mReqType == 14)
+              {
+                j = this.mHelper.RefreshSMSVerifyLoginCode(this.mUserAccount, this.mUserSigInfo, 1);
+                this.mHandler.post(new WtloginHelper.HelperThread.13(this, i, j));
+                continue;
+              }
+              if (this.mReqType == 8)
+              {
+                this.mHelper.RequestReportError(1, this.mST1, this.mST1Key, this.mUIN, this.mDwAppid, this.mReportErrType);
+                continue;
+              }
+              if (this.mReqType == 15)
+              {
+                j = this.mHelper.getStWithQQSig(this.mUserAccount, this.quickLoginParam, 1);
+                this.mHandler.post(new WtloginHelper.HelperThread.14(this, i, j));
+                continue;
+              }
+              if (this.mReqType == 16)
+              {
+                j = this.mHelper.getStWithPtSig(this.mUserAccount, this.ptSig, this.quickLoginParam, 1);
+                this.mHandler.post(new WtloginHelper.HelperThread.15(this, i, j));
+                continue;
+              }
+              if (this.mReqType != 17) {
+                continue;
+              }
+              j = this.mHelper.getStWithQrSig(this.mUserAccount, this.mDwAppid, this.mDwSubDstAppid, this.mDwMainSigMap, this.mUserSigInfo, 1);
+              this.mHandler.post(new WtloginHelper.HelperThread.16(this, i, j));
+            }
+          }
+        }
+      }
+    }
+  }
+  
+  public static class LoginSourceType
+  {
+    public static final int IM = 10;
+    public static final int QQConn = 20;
+    public static final int QQWallet = 40;
+    public static final int unknown = 0;
+    public static final int webView = 30;
+    public static final int webViewForceRefresh = 31;
+    public static final int webViewOnTimeRefresh = 32;
+  }
+  
+  public static class QuickLoginParam
+  {
+    public long appid;
+    public long dstAppid;
+    public long[] dstSubAppidList;
+    public int finishAnimEnter = 0;
+    public int finishAnimExit = 0;
+    public boolean forceWebLogin = false;
+    public boolean isUserAccountLocked = false;
+    public int sigMap;
+    public int startAnimEnter = 0;
+    public int startAnimExit = 0;
+    public long subAppid = 1L;
+    public String titleBackgroundColor = "#3F51B5";
+    public String titleTextColor = "#FFFFFF";
+    public String userAccount;
+    public WUserSigInfo userSigInfo = new WUserSigInfo();
+    public String webViewActivityClassName;
+  }
+  
+  public class QuickLoginRequestCode
+  {
+    public static final int REQUEST_PT_LOGIN = 1202;
+    public static final int REQUEST_QQ_LOGIN = 1201;
+    
+    public QuickLoginRequestCode() {}
+  }
+  
+  public static class RegTLVType
+  {
+    public static final int ADDRESS_BOOK = 7;
+    public static final int APPID = 2;
+    public static final int APPNAME = 14;
+    public static final int CALL_BACK_URL = 5;
+    public static final int EMAIL_URL = 4;
+    public static final int GUID = 10;
+    public static final int HAS_ADDRESS_BOOK = 8;
+    public static final int ID = 1;
+    public static final int LANGUAGE = 3;
+    public static final int MPASSWD = 11;
+    public static final int MSALT = 12;
+    public static final int NEW_UIN = 31;
+    public static final int NICK_NAME = 6;
+    public static final int NOPASSWD_REG = 9;
+    public static final int PHONE_NUMBER = 30;
+    public static final int PHONE_NUMBER_BOUND_UIN = 36;
+    public static final int PICTURE_ID = 17;
+    public static final int PICTURE_URL = 40;
+    public static final int REGISTER_SIG = 16;
+    public static final int REG_SIG = 33;
+    public static final int SET_DEVLOCK_FLG = 15;
+    public static final int SUBAPPID = 13;
+  }
+  
+  public static final class SigType
+  {
+    public static final int WLOGIN_A2 = 64;
+    public static final int WLOGIN_A5 = 2;
+    public static final int WLOGIN_AQSIG = 2097152;
+    public static final int WLOGIN_D2 = 262144;
+    public static final int WLOGIN_DA2 = 33554432;
+    public static final int WLOGIN_LHSIG = 4194304;
+    public static final int WLOGIN_LSKEY = 512;
+    public static final int WLOGIN_OPENKEY = 16384;
+    public static final int WLOGIN_PAYTOKEN = 8388608;
+    public static final int WLOGIN_PF = 16777216;
+    public static final int WLOGIN_PSKEY = 1048576;
+    public static final int WLOGIN_PT4Token = 134217728;
+    public static final int WLOGIN_QRPUSH = 67108864;
+    public static final int WLOGIN_RESERVED = 16;
+    public static final int WLOGIN_SID = 524288;
+    public static final int WLOGIN_SIG64 = 8192;
+    public static final int WLOGIN_SKEY = 4096;
+    public static final int WLOGIN_ST = 128;
+    public static final int WLOGIN_STWEB = 32;
+    public static final int WLOGIN_TOKEN = 32768;
+    public static final int WLOGIN_VKEY = 131072;
   }
 }
 

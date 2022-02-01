@@ -1,14 +1,17 @@
 package com.tencent.token;
 
-import java.io.File;
-import java.io.FilenameFilter;
+import com.tencent.wcdb.DatabaseErrorHandler;
+import com.tencent.wcdb.DefaultDatabaseErrorHandler;
+import com.tencent.wcdb.database.SQLiteDatabase;
 
-class el
-  implements FilenameFilter
+public final class el
+  implements DatabaseErrorHandler
 {
-  public boolean accept(File paramFile, String paramString)
+  private DefaultDatabaseErrorHandler a = new DefaultDatabaseErrorHandler();
+  
+  public void onCorruption(SQLiteDatabase paramSQLiteDatabase)
   {
-    return paramString.startsWith("TOKEN_");
+    this.a.onCorruption(paramSQLiteDatabase);
   }
 }
 

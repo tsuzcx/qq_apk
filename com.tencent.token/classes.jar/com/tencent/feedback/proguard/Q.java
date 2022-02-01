@@ -8,9 +8,9 @@ public final class Q
   implements Cloneable
 {
   private static P h;
-  private static Map i;
+  private static Map<String, String> i;
   public String a = "";
-  public Map b = null;
+  public Map<String, String> b = null;
   private boolean c = true;
   private boolean d = true;
   private boolean e = true;

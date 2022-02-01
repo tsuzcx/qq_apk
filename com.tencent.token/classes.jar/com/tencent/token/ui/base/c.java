@@ -1,16 +1,34 @@
 package com.tencent.token.ui.base;
 
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.os.Handler;
+import android.os.Message;
 
-class c
-  implements View.OnClickListener
+public class c
 {
-  c(CommonActionSheetDialog paramCommonActionSheetDialog) {}
+  private static final Handler a = new a(null);
   
-  public void onClick(View paramView)
+  public static void a(Runnable paramRunnable)
   {
-    CommonActionSheetDialog.a(this.a).a(1);
+    Message localMessage = new Message();
+    localMessage.what = 1000;
+    localMessage.obj = paramRunnable;
+    a.sendMessageDelayed(localMessage, 16L);
+  }
+  
+  private static class a
+    extends Handler
+  {
+    public void handleMessage(Message paramMessage)
+    {
+      switch (paramMessage.what)
+      {
+      }
+      do
+      {
+        return;
+      } while (paramMessage.obj == null);
+      ((Runnable)paramMessage.obj).run();
+    }
   }
 }
 

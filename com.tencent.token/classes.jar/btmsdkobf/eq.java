@@ -3,7 +3,7 @@ package btmsdkobf;
 public class eq
   extends Thread
 {
-  private eq.a oN;
+  private a oN;
   private Runnable oR;
   
   public void run()
@@ -28,6 +28,15 @@ public class eq
       return;
     }
     finally {}
+  }
+  
+  public static abstract interface a
+  {
+    public abstract void a(Thread paramThread, Runnable paramRunnable);
+    
+    public abstract void b(Thread paramThread, Runnable paramRunnable);
+    
+    public abstract void beforeExecute(Thread paramThread, Runnable paramRunnable);
   }
 }
 

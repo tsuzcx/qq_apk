@@ -8,12 +8,12 @@ import java.util.ArrayList;
 public final class a
   extends JceStruct
 {
-  static ArrayList A;
+  static ArrayList<String> A;
   static d B;
-  static ArrayList C;
-  static ArrayList x = new ArrayList();
-  static ArrayList y;
-  static ArrayList z;
+  static ArrayList<d> C;
+  static ArrayList<c> x = new ArrayList();
+  static ArrayList<String> y;
+  static ArrayList<String> z;
   public int a = 0;
   public String b = "";
   public boolean c = false;
@@ -21,22 +21,22 @@ public final class a
   public String e = "";
   public String f = "";
   public String g = "";
-  public ArrayList h = null;
+  public ArrayList<c> h = null;
   public int i = 0;
   public int j = 0;
-  public ArrayList k = null;
+  public ArrayList<String> k = null;
   public int l = 0;
   public String m = "";
   public String n = "";
   public int o = 0;
   public String p = "";
   public int q = 0;
-  public ArrayList r = null;
+  public ArrayList<String> r = null;
   public int s = 0;
-  public ArrayList t = null;
+  public ArrayList<String> t = null;
   public int u = 0;
   public d v = null;
-  public ArrayList w = null;
+  public ArrayList<d> w = null;
   
   static
   {

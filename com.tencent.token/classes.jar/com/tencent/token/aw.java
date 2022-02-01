@@ -1,18 +1,10 @@
 package com.tencent.token;
 
-public final class aw
+public abstract interface aw
 {
-  private boolean a;
+  public abstract void a(ao paramao, ap paramap);
   
-  public aw(boolean paramBoolean)
-  {
-    this.a = paramBoolean;
-  }
-  
-  public final boolean a()
-  {
-    return this.a;
-  }
+  public abstract void b(ao paramao, ap paramap);
 }
 
 

@@ -10,24 +10,25 @@ import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.annotation.RequiresApi;
 import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import java.util.ArrayList;
 import java.util.Iterator;
 
 public final class TaskStackBuilder
-  implements Iterable
+  implements Iterable<Intent>
 {
-  private static final TaskStackBuilder.TaskStackBuilderBaseImpl IMPL = new TaskStackBuilder.TaskStackBuilderBaseImpl();
+  private static final TaskStackBuilderBaseImpl IMPL = new TaskStackBuilderBaseImpl();
   private static final String TAG = "TaskStackBuilder";
-  private final ArrayList mIntents = new ArrayList();
+  private final ArrayList<Intent> mIntents = new ArrayList();
   private final Context mSourceContext;
   
   static
   {
     if (Build.VERSION.SDK_INT >= 16)
     {
-      IMPL = new TaskStackBuilder.TaskStackBuilderApi16Impl();
+      IMPL = new TaskStackBuilderApi16Impl();
       return;
     }
   }
@@ -75,8 +76,8 @@ public final class TaskStackBuilder
   public TaskStackBuilder addParentStack(@NonNull Activity paramActivity)
   {
     Object localObject = null;
-    if ((paramActivity instanceof TaskStackBuilder.SupportParentable)) {
-      localObject = ((TaskStackBuilder.SupportParentable)paramActivity).getSupportParentActivityIntent();
+    if ((paramActivity instanceof SupportParentable)) {
+      localObject = ((SupportParentable)paramActivity).getSupportParentActivityIntent();
     }
     if (localObject == null) {}
     for (paramActivity = NavUtils.getParentActivityIntent(paramActivity);; paramActivity = (Activity)localObject)
@@ -113,7 +114,7 @@ public final class TaskStackBuilder
   }
   
   @NonNull
-  public TaskStackBuilder addParentStack(@NonNull Class paramClass)
+  public TaskStackBuilder addParentStack(@NonNull Class<?> paramClass)
   {
     return addParentStack(new ComponentName(this.mSourceContext, paramClass));
   }
@@ -170,7 +171,7 @@ public final class TaskStackBuilder
   }
   
   @Deprecated
-  public Iterator iterator()
+  public Iterator<Intent> iterator()
   {
     return this.mIntents.iterator();
   }
@@ -192,6 +193,32 @@ public final class TaskStackBuilder
       paramBundle = new Intent(arrayOfIntent[(arrayOfIntent.length - 1)]);
       paramBundle.addFlags(268435456);
       this.mSourceContext.startActivity(paramBundle);
+    }
+  }
+  
+  public static abstract interface SupportParentable
+  {
+    @Nullable
+    public abstract Intent getSupportParentActivityIntent();
+  }
+  
+  @RequiresApi(16)
+  static class TaskStackBuilderApi16Impl
+    extends TaskStackBuilder.TaskStackBuilderBaseImpl
+  {
+    public PendingIntent getPendingIntent(Context paramContext, Intent[] paramArrayOfIntent, int paramInt1, int paramInt2, Bundle paramBundle)
+    {
+      paramArrayOfIntent[0] = new Intent(paramArrayOfIntent[0]).addFlags(268484608);
+      return PendingIntent.getActivities(paramContext, paramInt1, paramArrayOfIntent, paramInt2, paramBundle);
+    }
+  }
+  
+  static class TaskStackBuilderBaseImpl
+  {
+    public PendingIntent getPendingIntent(Context paramContext, Intent[] paramArrayOfIntent, int paramInt1, int paramInt2, Bundle paramBundle)
+    {
+      paramArrayOfIntent[0] = new Intent(paramArrayOfIntent[0]).addFlags(268484608);
+      return PendingIntent.getActivities(paramContext, paramInt1, paramArrayOfIntent, paramInt2);
     }
   }
 }

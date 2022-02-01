@@ -1,12 +1,16 @@
 package com.tencent.token;
 
-import java.io.Serializable;
-
-public abstract interface eg
+public class eg
 {
-  public abstract eh a(em paramem);
+  public static final int a(int paramInt)
+  {
+    return paramInt & 0x18;
+  }
   
-  public abstract void a(em paramem, ew paramew, Serializable paramSerializable);
+  public static final int b(int paramInt)
+  {
+    return paramInt & 0x60;
+  }
 }
 
 

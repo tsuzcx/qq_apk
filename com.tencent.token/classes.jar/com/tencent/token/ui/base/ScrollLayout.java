@@ -11,7 +11,7 @@ import android.view.ViewConfiguration;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.Scroller;
-import com.tencent.token.ce;
+import com.tencent.token.br.a;
 
 public class ScrollLayout
   extends ViewGroup
@@ -25,7 +25,7 @@ public class ScrollLayout
   private float g;
   private float h;
   private int i;
-  private co j;
+  private a j;
   private int k;
   private boolean l;
   
@@ -38,7 +38,7 @@ public class ScrollLayout
   {
     super(paramContext, paramAttributeSet, paramInt);
     this.a = new Scroller(paramContext);
-    this.l = paramContext.obtainStyledAttributes(paramAttributeSet, ce.scrolllayout).getBoolean(0, false);
+    this.l = paramContext.obtainStyledAttributes(paramAttributeSet, br.a.scrolllayout).getBoolean(0, false);
     this.c = this.d;
     this.f = ViewConfiguration.get(getContext()).getScaledTouchSlop();
   }
@@ -218,9 +218,9 @@ public class ScrollLayout
     }
   }
   
-  public void setOnScrollListner(co paramco)
+  public void setOnScrollListner(a parama)
   {
-    this.j = paramco;
+    this.j = parama;
   }
   
   public void setToScreen(int paramInt)
@@ -228,6 +228,11 @@ public class ScrollLayout
     paramInt = Math.max(0, Math.min(paramInt, getChildCount() - 1));
     this.c = paramInt;
     scrollTo(paramInt * getWidth(), getTop());
+  }
+  
+  public static abstract interface a
+  {
+    public abstract void a(int paramInt);
   }
 }
 

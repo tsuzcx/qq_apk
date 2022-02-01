@@ -9,49 +9,49 @@ public class ef
   public static String oe;
   
   /* Error */
-  public static String a(ef.a parama)
+  public static String a(a parama)
   {
     // Byte code:
     //   0: aconst_null
     //   1: astore 5
     //   3: aconst_null
     //   4: astore_3
-    //   5: new 12	java/net/URL
+    //   5: new 14	java/net/URL
     //   8: dup
-    //   9: ldc 14
-    //   11: invokespecial 18	java/net/URL:<init>	(Ljava/lang/String;)V
-    //   14: invokevirtual 22	java/net/URL:openConnection	()Ljava/net/URLConnection;
-    //   17: checkcast 24	java/net/HttpURLConnection
+    //   9: ldc 16
+    //   11: invokespecial 20	java/net/URL:<init>	(Ljava/lang/String;)V
+    //   14: invokevirtual 24	java/net/URL:openConnection	()Ljava/net/URLConnection;
+    //   17: checkcast 26	java/net/HttpURLConnection
     //   20: astore 4
-    //   22: invokestatic 30	com/tmsdk/base/utils/SDKUtil:getSDKVersion	()I
+    //   22: invokestatic 32	com/tmsdk/base/utils/SDKUtil:getSDKVersion	()I
     //   25: bipush 8
     //   27: if_icmpge +11 -> 38
-    //   30: ldc 32
-    //   32: ldc 34
-    //   34: invokestatic 40	java/lang/System:setProperty	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   30: ldc 34
+    //   32: ldc 36
+    //   34: invokestatic 42	java/lang/System:setProperty	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
     //   37: pop
     //   38: aload 4
     //   40: iconst_0
-    //   41: invokevirtual 44	java/net/HttpURLConnection:setUseCaches	(Z)V
+    //   41: invokevirtual 46	java/net/HttpURLConnection:setUseCaches	(Z)V
     //   44: aload 4
-    //   46: ldc 46
-    //   48: ldc 48
-    //   50: invokevirtual 52	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
+    //   46: ldc 48
+    //   48: ldc 50
+    //   50: invokevirtual 54	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
     //   53: aload 4
-    //   55: ldc 54
-    //   57: ldc 48
-    //   59: invokevirtual 52	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
+    //   55: ldc 56
+    //   57: ldc 50
+    //   59: invokevirtual 54	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
     //   62: aload 4
     //   64: iconst_0
-    //   65: invokevirtual 57	java/net/HttpURLConnection:setInstanceFollowRedirects	(Z)V
+    //   65: invokevirtual 59	java/net/HttpURLConnection:setInstanceFollowRedirects	(Z)V
     //   68: aload 4
-    //   70: ldc 59
-    //   72: invokevirtual 62	java/net/HttpURLConnection:setRequestMethod	(Ljava/lang/String;)V
+    //   70: ldc 61
+    //   72: invokevirtual 64	java/net/HttpURLConnection:setRequestMethod	(Ljava/lang/String;)V
     //   75: aload 4
     //   77: sipush 5000
-    //   80: invokevirtual 66	java/net/HttpURLConnection:setReadTimeout	(I)V
+    //   80: invokevirtual 68	java/net/HttpURLConnection:setReadTimeout	(I)V
     //   83: aload 4
-    //   85: invokevirtual 69	java/net/HttpURLConnection:getResponseCode	()I
+    //   85: invokevirtual 71	java/net/HttpURLConnection:getResponseCode	()I
     //   88: istore_1
     //   89: iload_1
     //   90: sipush 200
@@ -63,24 +63,24 @@ public class ef
     //   104: sipush 305
     //   107: if_icmpgt +59 -> 166
     //   110: aload 4
-    //   112: ldc 71
-    //   114: invokevirtual 75	java/net/HttpURLConnection:getHeaderField	(Ljava/lang/String;)Ljava/lang/String;
+    //   112: ldc 73
+    //   114: invokevirtual 77	java/net/HttpURLConnection:getHeaderField	(Ljava/lang/String;)Ljava/lang/String;
     //   117: astore 5
     //   119: aload 5
     //   121: ifnull +13 -> 134
     //   124: aload 5
-    //   126: ldc 71
-    //   128: invokevirtual 81	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   126: ldc 73
+    //   128: invokevirtual 83	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   131: ifne +9 -> 140
     //   134: aload 4
-    //   136: invokestatic 84	btmsdkobf/ef:a	(Ljava/net/HttpURLConnection;)Ljava/lang/String;
+    //   136: invokestatic 86	btmsdkobf/ef:a	(Ljava/net/HttpURLConnection;)Ljava/lang/String;
     //   139: astore_3
     //   140: iconst_0
     //   141: istore_2
     //   142: aload 4
     //   144: ifnull +8 -> 152
     //   147: aload 4
-    //   149: invokevirtual 88	java/net/HttpURLConnection:disconnect	()V
+    //   149: invokevirtual 90	java/net/HttpURLConnection:disconnect	()V
     //   152: aload_3
     //   153: ifnonnull +21 -> 174
     //   156: aload_0
@@ -108,7 +108,7 @@ public class ef
     //   192: aload 4
     //   194: ifnull +8 -> 202
     //   197: aload 4
-    //   199: invokevirtual 88	java/net/HttpURLConnection:disconnect	()V
+    //   199: invokevirtual 90	java/net/HttpURLConnection:disconnect	()V
     //   202: iconst_0
     //   203: ifne +13 -> 216
     //   206: aload_0
@@ -131,7 +131,7 @@ public class ef
     //   234: aload 4
     //   236: ifnull +8 -> 244
     //   239: aload 4
-    //   241: invokevirtual 88	java/net/HttpURLConnection:disconnect	()V
+    //   241: invokevirtual 90	java/net/HttpURLConnection:disconnect	()V
     //   244: iconst_0
     //   245: ifne +13 -> 258
     //   248: aload_0
@@ -153,7 +153,7 @@ public class ef
     //   278: goto -86 -> 192
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	281	0	parama	ef.a
+    //   0	281	0	parama	a
     //   88	20	1	i	int
     //   141	40	2	bool	boolean
     //   4	183	3	str1	String
@@ -185,15 +185,15 @@ public class ef
     // Byte code:
     //   0: aconst_null
     //   1: astore_2
-    //   2: new 12	java/net/URL
+    //   2: new 14	java/net/URL
     //   5: dup
-    //   6: ldc 14
-    //   8: invokespecial 18	java/net/URL:<init>	(Ljava/lang/String;)V
+    //   6: ldc 16
+    //   8: invokespecial 20	java/net/URL:<init>	(Ljava/lang/String;)V
     //   11: invokevirtual 103	java/net/URL:getHost	()Ljava/lang/String;
     //   14: aload_0
     //   15: invokevirtual 107	java/net/HttpURLConnection:getURL	()Ljava/net/URL;
     //   18: invokevirtual 103	java/net/URL:getHost	()Ljava/lang/String;
-    //   21: invokevirtual 81	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   21: invokevirtual 83	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   24: ifne +218 -> 242
     //   27: aload_0
     //   28: invokevirtual 107	java/net/HttpURLConnection:getURL	()Ljava/net/URL;
@@ -209,13 +209,13 @@ public class ef
     //   44: astore_2
     //   45: aload_0
     //   46: ldc 112
-    //   48: invokevirtual 75	java/net/HttpURLConnection:getHeaderField	(Ljava/lang/String;)Ljava/lang/String;
+    //   48: invokevirtual 77	java/net/HttpURLConnection:getHeaderField	(Ljava/lang/String;)Ljava/lang/String;
     //   51: ifnull +12 -> 63
     //   54: aload_1
     //   55: astore_2
     //   56: aload_0
     //   57: ldc 112
-    //   59: invokevirtual 75	java/net/HttpURLConnection:getHeaderField	(Ljava/lang/String;)Ljava/lang/String;
+    //   59: invokevirtual 77	java/net/HttpURLConnection:getHeaderField	(Ljava/lang/String;)Ljava/lang/String;
     //   62: astore_3
     //   63: aload_3
     //   64: astore_1
@@ -227,13 +227,13 @@ public class ef
     //   72: astore_2
     //   73: aload_0
     //   74: ldc 114
-    //   76: invokevirtual 75	java/net/HttpURLConnection:getHeaderField	(Ljava/lang/String;)Ljava/lang/String;
+    //   76: invokevirtual 77	java/net/HttpURLConnection:getHeaderField	(Ljava/lang/String;)Ljava/lang/String;
     //   79: ifnull +39 -> 118
     //   82: aload_3
     //   83: astore_2
     //   84: aload_0
     //   85: ldc 114
-    //   87: invokevirtual 75	java/net/HttpURLConnection:getHeaderField	(Ljava/lang/String;)Ljava/lang/String;
+    //   87: invokevirtual 77	java/net/HttpURLConnection:getHeaderField	(Ljava/lang/String;)Ljava/lang/String;
     //   90: ldc 116
     //   92: invokevirtual 120	java/lang/String:split	(Ljava/lang/String;)[Ljava/lang/String;
     //   95: astore 4
@@ -481,6 +481,11 @@ public class ef
     //   33	39	63	finally
     //   43	47	70	java/io/IOException
     //   64	68	74	java/io/IOException
+  }
+  
+  public static abstract interface a
+  {
+    public abstract void c(boolean paramBoolean1, boolean paramBoolean2);
   }
 }
 

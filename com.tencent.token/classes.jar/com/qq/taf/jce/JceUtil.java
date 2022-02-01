@@ -126,12 +126,12 @@ public final class JceUtil
     return 0;
   }
   
-  public static int compareTo(Comparable paramComparable1, Comparable paramComparable2)
+  public static <T extends Comparable<T>> int compareTo(T paramT1, T paramT2)
   {
-    return paramComparable1.compareTo(paramComparable2);
+    return paramT1.compareTo(paramT2);
   }
   
-  public static int compareTo(List paramList1, List paramList2)
+  public static <T extends Comparable<T>> int compareTo(List<T> paramList1, List<T> paramList2)
   {
     paramList1 = paramList1.iterator();
     paramList2 = paramList2.iterator();
@@ -273,20 +273,20 @@ public final class JceUtil
     return compareTo(paramArrayOfLong1.length, paramArrayOfLong2.length);
   }
   
-  public static int compareTo(Comparable[] paramArrayOfComparable1, Comparable[] paramArrayOfComparable2)
+  public static <T extends Comparable<T>> int compareTo(T[] paramArrayOfT1, T[] paramArrayOfT2)
   {
     int i = 0;
     int j = 0;
-    while ((j < paramArrayOfComparable1.length) && (i < paramArrayOfComparable2.length))
+    while ((j < paramArrayOfT1.length) && (i < paramArrayOfT2.length))
     {
-      int k = paramArrayOfComparable1[j].compareTo(paramArrayOfComparable2[i]);
+      int k = paramArrayOfT1[j].compareTo(paramArrayOfT2[i]);
       if (k != 0) {
         return k;
       }
       j += 1;
       i += 1;
     }
-    return compareTo(paramArrayOfComparable1.length, paramArrayOfComparable2.length);
+    return compareTo(paramArrayOfT1.length, paramArrayOfT2.length);
   }
   
   public static int compareTo(short[] paramArrayOfShort1, short[] paramArrayOfShort2)

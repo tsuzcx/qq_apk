@@ -1,29 +1,33 @@
 package com.tencent.turingfd.sdk.base;
 
 public final class Filbert
-  extends float
+  extends break
 {
-  public int xc = 0;
-  public long yc = 0L;
-  public long zc = 0L;
+  public static Ginkgo pc;
+  public String metaData = "";
+  public String qc = "";
+  public Ginkgo rc = null;
   
-  public void a(dp paramdp)
+  public void a(cy paramcy)
   {
-    this.xc = paramdp.a(this.xc, 0, true);
-    this.yc = paramdp.a(this.yc, 1, false);
-    this.zc = paramdp.a(this.zc, 2, false);
+    this.qc = paramcy.a(0, true);
+    this.metaData = paramcy.a(1, false);
+    if (pc == null) {
+      pc = new Ginkgo();
+    }
+    this.rc = ((Ginkgo)paramcy.a(pc, 2, false));
   }
   
-  public void a(dv paramdv)
+  public void a(db paramdb)
   {
-    paramdv.a(this.xc, 0);
-    long l = this.yc;
-    if (l != 0L) {
-      paramdv.a(l, 1);
+    paramdb.a(this.qc, 0);
+    Object localObject = this.metaData;
+    if (localObject != null) {
+      paramdb.a((String)localObject, 1);
     }
-    l = this.zc;
-    if (l != 0L) {
-      paramdv.a(l, 2);
+    localObject = this.rc;
+    if (localObject != null) {
+      paramdb.a((break)localObject, 2);
     }
   }
 }

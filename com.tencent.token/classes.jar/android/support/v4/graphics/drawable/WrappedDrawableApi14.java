@@ -23,7 +23,7 @@ class WrappedDrawableApi14
   private PorterDuff.Mode mCurrentMode;
   Drawable mDrawable;
   private boolean mMutated;
-  WrappedDrawableApi14.DrawableWrapperState mState;
+  DrawableWrapperState mState;
   
   WrappedDrawableApi14(@Nullable Drawable paramDrawable)
   {
@@ -31,7 +31,7 @@ class WrappedDrawableApi14
     setWrappedDrawable(paramDrawable);
   }
   
-  WrappedDrawableApi14(@NonNull WrappedDrawableApi14.DrawableWrapperState paramDrawableWrapperState, @Nullable Resources paramResources)
+  WrappedDrawableApi14(@NonNull DrawableWrapperState paramDrawableWrapperState, @Nullable Resources paramResources)
   {
     this.mState = paramDrawableWrapperState;
     updateLocalState(paramResources);
@@ -173,7 +173,7 @@ class WrappedDrawableApi14
   @NonNull
   public Drawable mutate()
   {
-    WrappedDrawableApi14.DrawableWrapperState localDrawableWrapperState;
+    DrawableWrapperState localDrawableWrapperState;
     if ((!this.mMutated) && (super.mutate() == this))
     {
       this.mState = mutateConstantState();
@@ -198,9 +198,9 @@ class WrappedDrawableApi14
   }
   
   @NonNull
-  WrappedDrawableApi14.DrawableWrapperState mutateConstantState()
+  DrawableWrapperState mutateConstantState()
   {
-    return new WrappedDrawableApi14.DrawableWrapperStateBase(this.mState, null);
+    return new DrawableWrapperStateBase(this.mState, null);
   }
   
   protected void onBoundsChange(Rect paramRect)
@@ -296,6 +296,64 @@ class WrappedDrawableApi14
   public void unscheduleDrawable(@NonNull Drawable paramDrawable, @NonNull Runnable paramRunnable)
   {
     unscheduleSelf(paramRunnable);
+  }
+  
+  protected static abstract class DrawableWrapperState
+    extends Drawable.ConstantState
+  {
+    int mChangingConfigurations;
+    Drawable.ConstantState mDrawableState;
+    ColorStateList mTint = null;
+    PorterDuff.Mode mTintMode = WrappedDrawableApi14.DEFAULT_TINT_MODE;
+    
+    DrawableWrapperState(@Nullable DrawableWrapperState paramDrawableWrapperState, @Nullable Resources paramResources)
+    {
+      if (paramDrawableWrapperState != null)
+      {
+        this.mChangingConfigurations = paramDrawableWrapperState.mChangingConfigurations;
+        this.mDrawableState = paramDrawableWrapperState.mDrawableState;
+        this.mTint = paramDrawableWrapperState.mTint;
+        this.mTintMode = paramDrawableWrapperState.mTintMode;
+      }
+    }
+    
+    boolean canConstantState()
+    {
+      return this.mDrawableState != null;
+    }
+    
+    public int getChangingConfigurations()
+    {
+      int j = this.mChangingConfigurations;
+      if (this.mDrawableState != null) {}
+      for (int i = this.mDrawableState.getChangingConfigurations();; i = 0) {
+        return i | j;
+      }
+    }
+    
+    @NonNull
+    public Drawable newDrawable()
+    {
+      return newDrawable(null);
+    }
+    
+    @NonNull
+    public abstract Drawable newDrawable(@Nullable Resources paramResources);
+  }
+  
+  private static class DrawableWrapperStateBase
+    extends WrappedDrawableApi14.DrawableWrapperState
+  {
+    DrawableWrapperStateBase(@Nullable WrappedDrawableApi14.DrawableWrapperState paramDrawableWrapperState, @Nullable Resources paramResources)
+    {
+      super(paramResources);
+    }
+    
+    @NonNull
+    public Drawable newDrawable(@Nullable Resources paramResources)
+    {
+      return new WrappedDrawableApi14(this, paramResources);
+    }
   }
 }
 

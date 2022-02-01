@@ -1,52 +1,34 @@
 package com.tencent.token.global.taiji;
 
-class i
-  implements Comparable, Runnable
+public abstract interface i
 {
-  private t b = new t();
-  
-  public i(d paramd, int paramInt, Runnable paramRunnable, String paramString, long paramLong, boolean paramBoolean, Object paramObject)
+  public static abstract interface a
   {
-    if (paramString != null)
-    {
-      paramd = paramString;
-      if (paramString.length() != 0) {}
-    }
-    else
-    {
-      paramd = paramRunnable.getClass().getName();
-    }
-    this.b.a = 1;
-    this.b.d = paramInt;
-    this.b.c = paramd;
-    this.b.b = paramLong;
-    this.b.i = paramRunnable;
-    this.b.h = paramBoolean;
-    this.b.j = paramObject;
-    this.b.e = System.currentTimeMillis();
+    public abstract void a(i.c paramc);
+    
+    public abstract void a(i.c paramc, int paramInt);
+    
+    public abstract void b(i.c paramc);
   }
   
-  public int a(i parami)
+  public static abstract interface b
   {
-    int k = (int)(Math.abs(System.currentTimeMillis() - this.b.e) / 200L);
-    int j = this.b.d;
-    int i = j;
-    if (k > 0) {
-      i = j + k;
-    }
-    return parami.b.d - i;
+    public abstract void a();
   }
   
-  public t a()
+  public static class c
   {
-    return this.b;
-  }
-  
-  public void run()
-  {
-    if ((this.b != null) && (this.b.i != null)) {
-      this.b.i.run();
-    }
+    public int a;
+    public long b;
+    public String c;
+    public int d;
+    public long e;
+    public long f;
+    public long g;
+    public boolean h;
+    public Runnable i;
+    public Object j;
+    public long k;
   }
 }
 

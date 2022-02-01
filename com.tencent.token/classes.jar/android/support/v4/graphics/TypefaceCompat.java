@@ -21,8 +21,8 @@ import android.support.v4.util.LruCache;
 public class TypefaceCompat
 {
   private static final String TAG = "TypefaceCompat";
-  private static final LruCache sTypefaceCache;
-  private static final TypefaceCompat.TypefaceCompatImpl sTypefaceCompatImpl;
+  private static final LruCache<String, Typeface> sTypefaceCache;
+  private static final TypefaceCompatImpl sTypefaceCompatImpl;
   
   static
   {
@@ -123,6 +123,15 @@ public class TypefaceCompat
   public static Typeface findFromCache(@NonNull Resources paramResources, int paramInt1, int paramInt2)
   {
     return (Typeface)sTypefaceCache.get(createResourceUid(paramResources, paramInt1, paramInt2));
+  }
+  
+  static abstract interface TypefaceCompatImpl
+  {
+    public abstract Typeface createFromFontFamilyFilesResourceEntry(Context paramContext, FontResourcesParserCompat.FontFamilyFilesResourceEntry paramFontFamilyFilesResourceEntry, Resources paramResources, int paramInt);
+    
+    public abstract Typeface createFromFontInfo(Context paramContext, @Nullable CancellationSignal paramCancellationSignal, @NonNull FontsContractCompat.FontInfo[] paramArrayOfFontInfo, int paramInt);
+    
+    public abstract Typeface createFromResourcesFontFile(Context paramContext, Resources paramResources, int paramInt1, String paramString, int paramInt2);
   }
 }
 

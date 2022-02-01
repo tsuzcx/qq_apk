@@ -1,19 +1,27 @@
 package taiji;
 
 public class af
-  extends aw
+  extends al<az, az>
 {
   private af()
   {
-    super(Float.valueOf(0.0F));
+    super(new az());
   }
   
-  public s a()
+  public p<az> a()
   {
     if (!b()) {
-      return new y(this.b);
+      return new v(this.b);
     }
-    return new q(this.a);
+    return new t(this.a);
+  }
+  
+  static final class a
+  {
+    static af a()
+    {
+      return new af(null);
+    }
   }
 }
 

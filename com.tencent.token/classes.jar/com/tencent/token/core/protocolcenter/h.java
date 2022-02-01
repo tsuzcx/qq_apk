@@ -1,13 +1,28 @@
 package com.tencent.token.core.protocolcenter;
 
-import com.tencent.token.ev;
-import com.tencent.token.global.f;
+import com.tencent.token.dn;
+import com.tencent.token.global.e;
+import java.util.concurrent.Callable;
 
-public abstract interface h
+public class h
 {
-  public abstract void a(ev paramev);
-  
-  public abstract void a(ev paramev, f paramf);
+  public static Callable<e> a(dn paramdn)
+  {
+    new Callable()
+    {
+      public e a()
+      {
+        e locale = new e();
+        d locald = b.a(this.a.a);
+        if (locald != null)
+        {
+          locale = locald.c(this.a);
+          this.a.l.a(this.a, locale);
+        }
+        return locale;
+      }
+    };
+  }
 }
 
 

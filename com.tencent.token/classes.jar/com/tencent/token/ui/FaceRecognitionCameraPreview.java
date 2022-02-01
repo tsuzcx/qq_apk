@@ -2,6 +2,7 @@ package com.tencent.token.ui;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.res.Resources;
 import android.hardware.Camera;
 import android.os.Handler;
 import android.provider.Settings.SettingNotFoundException;
@@ -11,13 +12,15 @@ import android.view.SurfaceHolder;
 import android.view.SurfaceHolder.Callback;
 import android.view.SurfaceView;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.Window;
 import android.view.WindowManager.LayoutParams;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.token.global.h;
+import com.tencent.token.bu;
+import com.tencent.token.global.g;
 import com.tencent.token.ui.base.FaceView;
-import com.tencent.token.utils.x;
+import com.tencent.token.utils.m;
 
 public class FaceRecognitionCameraPreview
   extends SurfaceView
@@ -26,7 +29,7 @@ public class FaceRecognitionCameraPreview
   private SurfaceHolder a;
   private int b = -1;
   private Handler c;
-  private gx d;
+  private h d;
   private Context e;
   private FaceView f;
   private TextView g;
@@ -161,25 +164,67 @@ public class FaceRecognitionCameraPreview
   
   public void surfaceCreated(SurfaceHolder paramSurfaceHolder)
   {
-    h.c("surfaceCreated!");
+    g.c("surfaceCreated!");
     try
     {
       b();
-      h.a("set brightvalue=" + Settings.System.getInt(this.e.getContentResolver(), "screen_brightness"));
+      g.a("set brightvalue=" + Settings.System.getInt(this.e.getContentResolver(), "screen_brightness"));
       if (this.b != 5)
       {
-        this.i = ((ImageView)((Activity)this.e).findViewById(2131558696));
-        this.j = ((Activity)this.e).findViewById(2131558859);
-        this.k = ((Activity)this.e).findViewById(2131558860);
-        if (!x.v())
+        this.i = ((ImageView)((Activity)this.e).findViewById(2131558697));
+        this.j = ((Activity)this.e).findViewById(2131558860);
+        this.k = ((Activity)this.e).findViewById(2131558861);
+        if (!m.v())
         {
           this.k.setVisibility(0);
           this.k.bringToFront();
-          x.w();
-          this.k.postDelayed(new gv(this), 6000L);
+          m.w();
+          this.k.postDelayed(new Runnable()
+          {
+            public void run()
+            {
+              FaceRecognitionCameraPreview.a(FaceRecognitionCameraPreview.this).setVisibility(4);
+            }
+          }, 6000L);
         }
         if ((this.i != null) && (this.j != null)) {
-          this.j.setOnClickListener(new gw(this));
+          this.j.setOnClickListener(new View.OnClickListener()
+          {
+            public void onClick(View paramAnonymousView)
+            {
+              for (;;)
+              {
+                try
+                {
+                  bool = FaceRecognitionCameraPreview.b(FaceRecognitionCameraPreview.this).getBrightMode();
+                  if (!bool) {
+                    continue;
+                  }
+                  FaceRecognitionCameraPreview.d(FaceRecognitionCameraPreview.this).setImageDrawable(FaceRecognitionCameraPreview.c(FaceRecognitionCameraPreview.this).getResources().getDrawable(2130837698));
+                  paramAnonymousView = FaceRecognitionCameraPreview.b(FaceRecognitionCameraPreview.this);
+                  if (bool) {
+                    continue;
+                  }
+                  bool = true;
+                }
+                catch (Exception paramAnonymousView)
+                {
+                  paramAnonymousView.printStackTrace();
+                  return;
+                  boolean bool = false;
+                  continue;
+                }
+                catch (Error paramAnonymousView)
+                {
+                  paramAnonymousView.printStackTrace();
+                }
+                paramAnonymousView.setBrightMode(bool);
+                return;
+                FaceRecognitionCameraPreview.d(FaceRecognitionCameraPreview.this).setImageDrawable(FaceRecognitionCameraPreview.c(FaceRecognitionCameraPreview.this).getResources().getDrawable(2130837699));
+                bu.a().a(System.currentTimeMillis(), 201);
+              }
+            }
+          });
         }
       }
     }
@@ -191,14 +236,14 @@ public class FaceRecognitionCameraPreview
       }
     }
     if (this.d == null) {
-      this.d = new gx(this.e, this.a, this.c, this.l, this.b, this.f, this.g, this.k);
+      this.d = new h(this.e, this.a, this.c, this.l, this.b, this.f, this.g, this.k);
     }
     this.d.c();
   }
   
   public void surfaceDestroyed(SurfaceHolder paramSurfaceHolder)
   {
-    h.c("surfaceDestroyed!");
+    g.c("surfaceDestroyed!");
     try
     {
       if (this.d != null) {

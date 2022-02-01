@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.pm.PackageManager;
 import android.hardware.fingerprint.FingerprintManager;
 import android.hardware.fingerprint.FingerprintManager.AuthenticationCallback;
+import android.hardware.fingerprint.FingerprintManager.AuthenticationResult;
 import android.hardware.fingerprint.FingerprintManager.CryptoObject;
 import android.os.Build.VERSION;
 import android.os.Handler;
@@ -11,6 +12,9 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
 import android.support.annotation.RequiresPermission;
+import java.security.Signature;
+import javax.crypto.Cipher;
+import javax.crypto.Mac;
 
 public final class FingerprintManagerCompat
 {
@@ -38,30 +42,51 @@ public final class FingerprintManagerCompat
   }
   
   @RequiresApi(23)
-  private static FingerprintManagerCompat.CryptoObject unwrapCryptoObject(FingerprintManager.CryptoObject paramCryptoObject)
+  private static CryptoObject unwrapCryptoObject(FingerprintManager.CryptoObject paramCryptoObject)
   {
     if (paramCryptoObject == null) {}
     do
     {
       return null;
       if (paramCryptoObject.getCipher() != null) {
-        return new FingerprintManagerCompat.CryptoObject(paramCryptoObject.getCipher());
+        return new CryptoObject(paramCryptoObject.getCipher());
       }
       if (paramCryptoObject.getSignature() != null) {
-        return new FingerprintManagerCompat.CryptoObject(paramCryptoObject.getSignature());
+        return new CryptoObject(paramCryptoObject.getSignature());
       }
     } while (paramCryptoObject.getMac() == null);
-    return new FingerprintManagerCompat.CryptoObject(paramCryptoObject.getMac());
+    return new CryptoObject(paramCryptoObject.getMac());
   }
   
   @RequiresApi(23)
-  private static FingerprintManager.AuthenticationCallback wrapCallback(FingerprintManagerCompat.AuthenticationCallback paramAuthenticationCallback)
+  private static FingerprintManager.AuthenticationCallback wrapCallback(AuthenticationCallback paramAuthenticationCallback)
   {
-    return new FingerprintManagerCompat.1(paramAuthenticationCallback);
+    new FingerprintManager.AuthenticationCallback()
+    {
+      public void onAuthenticationError(int paramAnonymousInt, CharSequence paramAnonymousCharSequence)
+      {
+        this.val$callback.onAuthenticationError(paramAnonymousInt, paramAnonymousCharSequence);
+      }
+      
+      public void onAuthenticationFailed()
+      {
+        this.val$callback.onAuthenticationFailed();
+      }
+      
+      public void onAuthenticationHelp(int paramAnonymousInt, CharSequence paramAnonymousCharSequence)
+      {
+        this.val$callback.onAuthenticationHelp(paramAnonymousInt, paramAnonymousCharSequence);
+      }
+      
+      public void onAuthenticationSucceeded(FingerprintManager.AuthenticationResult paramAnonymousAuthenticationResult)
+      {
+        this.val$callback.onAuthenticationSucceeded(new FingerprintManagerCompat.AuthenticationResult(FingerprintManagerCompat.unwrapCryptoObject(paramAnonymousAuthenticationResult.getCryptoObject())));
+      }
+    };
   }
   
   @RequiresApi(23)
-  private static FingerprintManager.CryptoObject wrapCryptoObject(FingerprintManagerCompat.CryptoObject paramCryptoObject)
+  private static FingerprintManager.CryptoObject wrapCryptoObject(CryptoObject paramCryptoObject)
   {
     if (paramCryptoObject == null) {}
     do
@@ -78,7 +103,7 @@ public final class FingerprintManagerCompat
   }
   
   @RequiresPermission("android.permission.USE_FINGERPRINT")
-  public void authenticate(@Nullable FingerprintManagerCompat.CryptoObject paramCryptoObject, int paramInt, @Nullable android.support.v4.os.CancellationSignal paramCancellationSignal, @NonNull FingerprintManagerCompat.AuthenticationCallback paramAuthenticationCallback, @Nullable Handler paramHandler)
+  public void authenticate(@Nullable CryptoObject paramCryptoObject, int paramInt, @Nullable android.support.v4.os.CancellationSignal paramCancellationSignal, @NonNull AuthenticationCallback paramAuthenticationCallback, @Nullable Handler paramHandler)
   {
     FingerprintManager localFingerprintManager;
     if (Build.VERSION.SDK_INT >= 23)
@@ -136,6 +161,78 @@ public final class FingerprintManagerCompat
       }
     }
     return bool1;
+  }
+  
+  public static abstract class AuthenticationCallback
+  {
+    public void onAuthenticationError(int paramInt, CharSequence paramCharSequence) {}
+    
+    public void onAuthenticationFailed() {}
+    
+    public void onAuthenticationHelp(int paramInt, CharSequence paramCharSequence) {}
+    
+    public void onAuthenticationSucceeded(FingerprintManagerCompat.AuthenticationResult paramAuthenticationResult) {}
+  }
+  
+  public static final class AuthenticationResult
+  {
+    private final FingerprintManagerCompat.CryptoObject mCryptoObject;
+    
+    public AuthenticationResult(FingerprintManagerCompat.CryptoObject paramCryptoObject)
+    {
+      this.mCryptoObject = paramCryptoObject;
+    }
+    
+    public FingerprintManagerCompat.CryptoObject getCryptoObject()
+    {
+      return this.mCryptoObject;
+    }
+  }
+  
+  public static class CryptoObject
+  {
+    private final Cipher mCipher;
+    private final Mac mMac;
+    private final Signature mSignature;
+    
+    public CryptoObject(@NonNull Signature paramSignature)
+    {
+      this.mSignature = paramSignature;
+      this.mCipher = null;
+      this.mMac = null;
+    }
+    
+    public CryptoObject(@NonNull Cipher paramCipher)
+    {
+      this.mCipher = paramCipher;
+      this.mSignature = null;
+      this.mMac = null;
+    }
+    
+    public CryptoObject(@NonNull Mac paramMac)
+    {
+      this.mMac = paramMac;
+      this.mCipher = null;
+      this.mSignature = null;
+    }
+    
+    @Nullable
+    public Cipher getCipher()
+    {
+      return this.mCipher;
+    }
+    
+    @Nullable
+    public Mac getMac()
+    {
+      return this.mMac;
+    }
+    
+    @Nullable
+    public Signature getSignature()
+    {
+      return this.mSignature;
+    }
   }
 }
 

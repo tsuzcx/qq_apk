@@ -1,17 +1,38 @@
 package com.tencent.turingfd.sdk.base;
 
-import java.util.Comparator;
+import java.util.LinkedList;
 
-public class v
-  implements Comparator
+public class v<E>
 {
-  public v(x paramx) {}
+  public int a;
+  public LinkedList<E> b = new LinkedList();
   
-  public int compare(Object paramObject1, Object paramObject2)
+  public v(int paramInt)
   {
-    paramObject1 = (Gooseberry)paramObject1;
-    paramObject2 = (Gooseberry)paramObject2;
-    return (int)(paramObject1.Oc - paramObject2.Oc);
+    this.a = paramInt;
+  }
+  
+  public E a()
+  {
+    return this.b.getFirst();
+  }
+  
+  public E a(int paramInt)
+  {
+    return this.b.get(paramInt);
+  }
+  
+  public void a(E paramE)
+  {
+    if (this.b.size() >= this.a) {
+      this.b.poll();
+    }
+    this.b.offer(paramE);
+  }
+  
+  public int b()
+  {
+    return this.b.size();
   }
 }
 

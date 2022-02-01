@@ -2,13 +2,15 @@ package android.support.v4.view;
 
 import android.os.Build.VERSION;
 import android.support.annotation.NonNull;
+import android.support.annotation.RequiresApi;
+import android.support.compat.R.id;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.accessibility.AccessibilityEvent;
 
 public final class ViewGroupCompat
 {
-  static final ViewGroupCompat.ViewGroupCompatBaseImpl IMPL = new ViewGroupCompat.ViewGroupCompatBaseImpl();
+  static final ViewGroupCompatBaseImpl IMPL = new ViewGroupCompatBaseImpl();
   public static final int LAYOUT_MODE_CLIP_BOUNDS = 0;
   public static final int LAYOUT_MODE_OPTICAL_BOUNDS = 1;
   
@@ -16,12 +18,12 @@ public final class ViewGroupCompat
   {
     if (Build.VERSION.SDK_INT >= 21)
     {
-      IMPL = new ViewGroupCompat.ViewGroupCompatApi21Impl();
+      IMPL = new ViewGroupCompatApi21Impl();
       return;
     }
     if (Build.VERSION.SDK_INT >= 18)
     {
-      IMPL = new ViewGroupCompat.ViewGroupCompatApi18Impl();
+      IMPL = new ViewGroupCompatApi18Impl();
       return;
     }
   }
@@ -61,6 +63,70 @@ public final class ViewGroupCompat
   public static void setTransitionGroup(ViewGroup paramViewGroup, boolean paramBoolean)
   {
     IMPL.setTransitionGroup(paramViewGroup, paramBoolean);
+  }
+  
+  @RequiresApi(18)
+  static class ViewGroupCompatApi18Impl
+    extends ViewGroupCompat.ViewGroupCompatBaseImpl
+  {
+    public int getLayoutMode(ViewGroup paramViewGroup)
+    {
+      return paramViewGroup.getLayoutMode();
+    }
+    
+    public void setLayoutMode(ViewGroup paramViewGroup, int paramInt)
+    {
+      paramViewGroup.setLayoutMode(paramInt);
+    }
+  }
+  
+  @RequiresApi(21)
+  static class ViewGroupCompatApi21Impl
+    extends ViewGroupCompat.ViewGroupCompatApi18Impl
+  {
+    public int getNestedScrollAxes(ViewGroup paramViewGroup)
+    {
+      return paramViewGroup.getNestedScrollAxes();
+    }
+    
+    public boolean isTransitionGroup(ViewGroup paramViewGroup)
+    {
+      return paramViewGroup.isTransitionGroup();
+    }
+    
+    public void setTransitionGroup(ViewGroup paramViewGroup, boolean paramBoolean)
+    {
+      paramViewGroup.setTransitionGroup(paramBoolean);
+    }
+  }
+  
+  static class ViewGroupCompatBaseImpl
+  {
+    public int getLayoutMode(ViewGroup paramViewGroup)
+    {
+      return 0;
+    }
+    
+    public int getNestedScrollAxes(ViewGroup paramViewGroup)
+    {
+      if ((paramViewGroup instanceof NestedScrollingParent)) {
+        return ((NestedScrollingParent)paramViewGroup).getNestedScrollAxes();
+      }
+      return 0;
+    }
+    
+    public boolean isTransitionGroup(ViewGroup paramViewGroup)
+    {
+      Boolean localBoolean = (Boolean)paramViewGroup.getTag(R.id.tag_transition_group);
+      return ((localBoolean != null) && (localBoolean.booleanValue())) || (paramViewGroup.getBackground() != null) || (ViewCompat.getTransitionName(paramViewGroup) != null);
+    }
+    
+    public void setLayoutMode(ViewGroup paramViewGroup, int paramInt) {}
+    
+    public void setTransitionGroup(ViewGroup paramViewGroup, boolean paramBoolean)
+    {
+      paramViewGroup.setTag(R.id.tag_transition_group, Boolean.valueOf(paramBoolean));
+    }
   }
 }
 

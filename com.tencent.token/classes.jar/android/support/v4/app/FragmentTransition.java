@@ -29,7 +29,7 @@ class FragmentTransition
     }
   }
   
-  private static void addSharedElementsWithMatchingNames(ArrayList paramArrayList, ArrayMap paramArrayMap, Collection paramCollection)
+  private static void addSharedElementsWithMatchingNames(ArrayList<View> paramArrayList, ArrayMap<String, View> paramArrayMap, Collection<String> paramCollection)
   {
     int i = paramArrayMap.size() - 1;
     while (i >= 0)
@@ -42,7 +42,7 @@ class FragmentTransition
     }
   }
   
-  private static void addToFirstInLastOut(BackStackRecord paramBackStackRecord, BackStackRecord.Op paramOp, SparseArray paramSparseArray, boolean paramBoolean1, boolean paramBoolean2)
+  private static void addToFirstInLastOut(BackStackRecord paramBackStackRecord, BackStackRecord.Op paramOp, SparseArray<FragmentContainerTransition> paramSparseArray, boolean paramBoolean1, boolean paramBoolean2)
   {
     Fragment localFragment = paramOp.fragment;
     if (localFragment == null) {}
@@ -68,7 +68,7 @@ class FragmentTransition
         j = 0;
         k = 0;
         bool = false;
-        paramOp = (FragmentTransition.FragmentContainerTransition)paramSparseArray.get(n);
+        paramOp = (FragmentContainerTransition)paramSparseArray.get(n);
         if (bool)
         {
           paramOp = ensureContainer(paramOp, paramSparseArray, n);
@@ -183,7 +183,7 @@ class FragmentTransition
     }
   }
   
-  public static void calculateFragments(BackStackRecord paramBackStackRecord, SparseArray paramSparseArray, boolean paramBoolean)
+  public static void calculateFragments(BackStackRecord paramBackStackRecord, SparseArray<FragmentContainerTransition> paramSparseArray, boolean paramBoolean)
   {
     int j = paramBackStackRecord.mOps.size();
     int i = 0;
@@ -194,20 +194,20 @@ class FragmentTransition
     }
   }
   
-  private static ArrayMap calculateNameOverrides(int paramInt1, ArrayList paramArrayList1, ArrayList paramArrayList2, int paramInt2, int paramInt3)
+  private static ArrayMap<String, String> calculateNameOverrides(int paramInt1, ArrayList<BackStackRecord> paramArrayList, ArrayList<Boolean> paramArrayList1, int paramInt2, int paramInt3)
   {
     ArrayMap localArrayMap = new ArrayMap();
     paramInt3 -= 1;
     if (paramInt3 >= paramInt2)
     {
-      Object localObject = (BackStackRecord)paramArrayList1.get(paramInt3);
+      Object localObject = (BackStackRecord)paramArrayList.get(paramInt3);
       if (!((BackStackRecord)localObject).interactsWith(paramInt1)) {}
       boolean bool;
       do
       {
         paramInt3 -= 1;
         break;
-        bool = ((Boolean)paramArrayList2.get(paramInt3)).booleanValue();
+        bool = ((Boolean)paramArrayList1.get(paramInt3)).booleanValue();
       } while (((BackStackRecord)localObject).mSharedElementSourceNames == null);
       int j = ((BackStackRecord)localObject).mSharedElementSourceNames.size();
       ArrayList localArrayList1;
@@ -247,7 +247,7 @@ class FragmentTransition
     return localArrayMap;
   }
   
-  public static void calculatePopFragments(BackStackRecord paramBackStackRecord, SparseArray paramSparseArray, boolean paramBoolean)
+  public static void calculatePopFragments(BackStackRecord paramBackStackRecord, SparseArray<FragmentContainerTransition> paramSparseArray, boolean paramBoolean)
   {
     if (!paramBackStackRecord.mManager.mContainer.onHasView()) {}
     for (;;)
@@ -262,7 +262,7 @@ class FragmentTransition
     }
   }
   
-  private static void callSharedElementStartEnd(Fragment paramFragment1, Fragment paramFragment2, boolean paramBoolean1, ArrayMap paramArrayMap, boolean paramBoolean2)
+  private static void callSharedElementStartEnd(Fragment paramFragment1, Fragment paramFragment2, boolean paramBoolean1, ArrayMap<String, View> paramArrayMap, boolean paramBoolean2)
   {
     int j = 0;
     ArrayList localArrayList;
@@ -304,7 +304,7 @@ class FragmentTransition
     paramFragment1.onSharedElementEnd(localArrayList, paramFragment2, null);
   }
   
-  private static boolean canHandleAll(FragmentTransitionImpl paramFragmentTransitionImpl, List paramList)
+  private static boolean canHandleAll(FragmentTransitionImpl paramFragmentTransitionImpl, List<Object> paramList)
   {
     int j = paramList.size();
     int i = 0;
@@ -318,7 +318,7 @@ class FragmentTransition
     return true;
   }
   
-  private static ArrayMap captureInSharedElements(FragmentTransitionImpl paramFragmentTransitionImpl, ArrayMap paramArrayMap, Object paramObject, FragmentTransition.FragmentContainerTransition paramFragmentContainerTransition)
+  private static ArrayMap<String, View> captureInSharedElements(FragmentTransitionImpl paramFragmentTransitionImpl, ArrayMap<String, String> paramArrayMap, Object paramObject, FragmentContainerTransition paramFragmentContainerTransition)
   {
     Fragment localFragment = paramFragmentContainerTransition.lastIn;
     View localView = localFragment.getView();
@@ -381,7 +381,7 @@ class FragmentTransition
     return localArrayMap;
   }
   
-  private static ArrayMap captureOutSharedElements(FragmentTransitionImpl paramFragmentTransitionImpl, ArrayMap paramArrayMap, Object paramObject, FragmentTransition.FragmentContainerTransition paramFragmentContainerTransition)
+  private static ArrayMap<String, View> captureOutSharedElements(FragmentTransitionImpl paramFragmentTransitionImpl, ArrayMap<String, String> paramArrayMap, Object paramObject, FragmentContainerTransition paramFragmentContainerTransition)
   {
     if ((paramArrayMap.isEmpty()) || (paramObject == null))
     {
@@ -481,7 +481,7 @@ class FragmentTransition
     throw new IllegalArgumentException("Invalid Transition types");
   }
   
-  private static ArrayList configureEnteringExitingViews(FragmentTransitionImpl paramFragmentTransitionImpl, Object paramObject, Fragment paramFragment, ArrayList paramArrayList, View paramView)
+  private static ArrayList<View> configureEnteringExitingViews(FragmentTransitionImpl paramFragmentTransitionImpl, Object paramObject, Fragment paramFragment, ArrayList<View> paramArrayList, View paramView)
   {
     Object localObject = null;
     if (paramObject != null)
@@ -505,15 +505,15 @@ class FragmentTransition
     return localObject;
   }
   
-  private static Object configureSharedElementsOrdered(FragmentTransitionImpl paramFragmentTransitionImpl, ViewGroup paramViewGroup, View paramView, ArrayMap paramArrayMap, FragmentTransition.FragmentContainerTransition paramFragmentContainerTransition, ArrayList paramArrayList1, ArrayList paramArrayList2, Object paramObject1, Object paramObject2)
+  private static Object configureSharedElementsOrdered(FragmentTransitionImpl paramFragmentTransitionImpl, ViewGroup paramViewGroup, final View paramView, final ArrayMap<String, String> paramArrayMap, final FragmentContainerTransition paramFragmentContainerTransition, final ArrayList<View> paramArrayList1, final ArrayList<View> paramArrayList2, final Object paramObject1, final Object paramObject2)
   {
-    Fragment localFragment1 = paramFragmentContainerTransition.lastIn;
-    Fragment localFragment2 = paramFragmentContainerTransition.firstOut;
+    final Fragment localFragment1 = paramFragmentContainerTransition.lastIn;
+    final Fragment localFragment2 = paramFragmentContainerTransition.firstOut;
     if ((localFragment1 == null) || (localFragment2 == null)) {
       return null;
     }
-    boolean bool = paramFragmentContainerTransition.lastInIsPop;
-    Object localObject;
+    final boolean bool = paramFragmentContainerTransition.lastInIsPop;
+    final Object localObject;
     ArrayMap localArrayMap;
     if (paramArrayMap.isEmpty())
     {
@@ -550,25 +550,45 @@ class FragmentTransition
     }
     for (paramObject2 = localRect;; paramObject2 = null)
     {
-      OneShotPreDrawListener.add(paramViewGroup, new FragmentTransition.4(paramFragmentTransitionImpl, paramArrayMap, localObject, paramFragmentContainerTransition, paramArrayList2, paramView, localFragment1, localFragment2, bool, paramArrayList1, paramObject1, paramObject2));
+      OneShotPreDrawListener.add(paramViewGroup, new Runnable()
+      {
+        public void run()
+        {
+          Object localObject = FragmentTransition.captureInSharedElements(this.val$impl, paramArrayMap, localObject, paramFragmentContainerTransition);
+          if (localObject != null)
+          {
+            paramArrayList2.addAll(((ArrayMap)localObject).values());
+            paramArrayList2.add(paramView);
+          }
+          FragmentTransition.callSharedElementStartEnd(localFragment1, localFragment2, bool, (ArrayMap)localObject, false);
+          if (localObject != null)
+          {
+            this.val$impl.swapSharedElementTargets(localObject, paramArrayList1, paramArrayList2);
+            localObject = FragmentTransition.getInEpicenterView((ArrayMap)localObject, paramFragmentContainerTransition, paramObject1, bool);
+            if (localObject != null) {
+              this.val$impl.getBoundsOnScreen((View)localObject, paramObject2);
+            }
+          }
+        }
+      });
       return localObject;
     }
   }
   
-  private static Object configureSharedElementsReordered(FragmentTransitionImpl paramFragmentTransitionImpl, ViewGroup paramViewGroup, View paramView, ArrayMap paramArrayMap, FragmentTransition.FragmentContainerTransition paramFragmentContainerTransition, ArrayList paramArrayList1, ArrayList paramArrayList2, Object paramObject1, Object paramObject2)
+  private static Object configureSharedElementsReordered(final FragmentTransitionImpl paramFragmentTransitionImpl, ViewGroup paramViewGroup, final View paramView, ArrayMap<String, String> paramArrayMap, final FragmentContainerTransition paramFragmentContainerTransition, ArrayList<View> paramArrayList1, ArrayList<View> paramArrayList2, Object paramObject1, Object paramObject2)
   {
     Fragment localFragment1 = paramFragmentContainerTransition.lastIn;
-    Fragment localFragment2 = paramFragmentContainerTransition.firstOut;
+    final Fragment localFragment2 = paramFragmentContainerTransition.firstOut;
     if (localFragment1 != null) {
       localFragment1.getView().setVisibility(0);
     }
     if ((localFragment1 == null) || (localFragment2 == null)) {
       return null;
     }
-    boolean bool = paramFragmentContainerTransition.lastInIsPop;
+    final boolean bool = paramFragmentContainerTransition.lastInIsPop;
     Object localObject;
     ArrayMap localArrayMap2;
-    ArrayMap localArrayMap1;
+    final ArrayMap localArrayMap1;
     if (paramArrayMap.isEmpty())
     {
       localObject = null;
@@ -617,13 +637,22 @@ class FragmentTransition
     }
     for (paramView = paramArrayList2;; paramView = null)
     {
-      OneShotPreDrawListener.add(paramViewGroup, new FragmentTransition.3(localFragment1, localFragment2, bool, localArrayMap1, paramView, paramFragmentTransitionImpl, paramFragmentContainerTransition));
+      OneShotPreDrawListener.add(paramViewGroup, new Runnable()
+      {
+        public void run()
+        {
+          FragmentTransition.callSharedElementStartEnd(this.val$inFragment, localFragment2, bool, localArrayMap1, false);
+          if (paramView != null) {
+            paramFragmentTransitionImpl.getBoundsOnScreen(paramView, paramFragmentContainerTransition);
+          }
+        }
+      });
       return paramArrayMap;
       paramFragmentContainerTransition = null;
     }
   }
   
-  private static void configureTransitionsOrdered(FragmentManagerImpl paramFragmentManagerImpl, int paramInt, FragmentTransition.FragmentContainerTransition paramFragmentContainerTransition, View paramView, ArrayMap paramArrayMap)
+  private static void configureTransitionsOrdered(FragmentManagerImpl paramFragmentManagerImpl, int paramInt, FragmentContainerTransition paramFragmentContainerTransition, View paramView, ArrayMap<String, String> paramArrayMap)
   {
     ViewGroup localViewGroup = null;
     if (paramFragmentManagerImpl.mContainer.onHasView()) {
@@ -674,7 +703,7 @@ class FragmentTransition
     }
   }
   
-  private static void configureTransitionsReordered(FragmentManagerImpl paramFragmentManagerImpl, int paramInt, FragmentTransition.FragmentContainerTransition paramFragmentContainerTransition, View paramView, ArrayMap paramArrayMap)
+  private static void configureTransitionsReordered(FragmentManagerImpl paramFragmentManagerImpl, int paramInt, FragmentContainerTransition paramFragmentContainerTransition, View paramView, ArrayMap<String, String> paramArrayMap)
   {
     ViewGroup localViewGroup = null;
     if (paramFragmentManagerImpl.mContainer.onHasView()) {
@@ -721,18 +750,18 @@ class FragmentTransition
     paramFragmentManagerImpl.swapSharedElementTargets(paramFragmentContainerTransition, localArrayList2, localArrayList1);
   }
   
-  private static FragmentTransition.FragmentContainerTransition ensureContainer(FragmentTransition.FragmentContainerTransition paramFragmentContainerTransition, SparseArray paramSparseArray, int paramInt)
+  private static FragmentContainerTransition ensureContainer(FragmentContainerTransition paramFragmentContainerTransition, SparseArray<FragmentContainerTransition> paramSparseArray, int paramInt)
   {
-    FragmentTransition.FragmentContainerTransition localFragmentContainerTransition = paramFragmentContainerTransition;
+    FragmentContainerTransition localFragmentContainerTransition = paramFragmentContainerTransition;
     if (paramFragmentContainerTransition == null)
     {
-      localFragmentContainerTransition = new FragmentTransition.FragmentContainerTransition();
+      localFragmentContainerTransition = new FragmentContainerTransition();
       paramSparseArray.put(paramInt, localFragmentContainerTransition);
     }
     return localFragmentContainerTransition;
   }
   
-  private static String findKeyForValue(ArrayMap paramArrayMap, String paramString)
+  private static String findKeyForValue(ArrayMap<String, String> paramArrayMap, String paramString)
   {
     int j = paramArrayMap.size();
     int i = 0;
@@ -768,7 +797,7 @@ class FragmentTransition
     }
   }
   
-  private static View getInEpicenterView(ArrayMap paramArrayMap, FragmentTransition.FragmentContainerTransition paramFragmentContainerTransition, Object paramObject, boolean paramBoolean)
+  private static View getInEpicenterView(ArrayMap<String, View> paramArrayMap, FragmentContainerTransition paramFragmentContainerTransition, Object paramObject, boolean paramBoolean)
   {
     paramFragmentContainerTransition = paramFragmentContainerTransition.lastInTransaction;
     if ((paramObject != null) && (paramArrayMap != null) && (paramFragmentContainerTransition.mSharedElementSourceNames != null) && (!paramFragmentContainerTransition.mSharedElementSourceNames.isEmpty()))
@@ -816,13 +845,19 @@ class FragmentTransition
     return paramFragmentTransitionImpl.mergeTransitionsInSequence(paramObject2, paramObject1, paramObject3);
   }
   
-  private static void replaceHide(FragmentTransitionImpl paramFragmentTransitionImpl, Object paramObject, Fragment paramFragment, ArrayList paramArrayList)
+  private static void replaceHide(FragmentTransitionImpl paramFragmentTransitionImpl, Object paramObject, Fragment paramFragment, ArrayList<View> paramArrayList)
   {
     if ((paramFragment != null) && (paramObject != null) && (paramFragment.mAdded) && (paramFragment.mHidden) && (paramFragment.mHiddenChanged))
     {
       paramFragment.setHideReplaced(true);
       paramFragmentTransitionImpl.scheduleHideFragmentView(paramObject, paramFragment.getView(), paramArrayList);
-      OneShotPreDrawListener.add(paramFragment.mContainer, new FragmentTransition.1(paramArrayList));
+      OneShotPreDrawListener.add(paramFragment.mContainer, new Runnable()
+      {
+        public void run()
+        {
+          FragmentTransition.setViewVisibility(this.val$exitingViews, 4);
+        }
+      });
     }
   }
   
@@ -837,24 +872,47 @@ class FragmentTransition
     return null;
   }
   
-  private static void retainValues(ArrayMap paramArrayMap1, ArrayMap paramArrayMap2)
+  private static void retainValues(ArrayMap<String, String> paramArrayMap, ArrayMap<String, View> paramArrayMap1)
   {
-    int i = paramArrayMap1.size() - 1;
+    int i = paramArrayMap.size() - 1;
     while (i >= 0)
     {
-      if (!paramArrayMap2.containsKey((String)paramArrayMap1.valueAt(i))) {
-        paramArrayMap1.removeAt(i);
+      if (!paramArrayMap1.containsKey((String)paramArrayMap.valueAt(i))) {
+        paramArrayMap.removeAt(i);
       }
       i -= 1;
     }
   }
   
-  private static void scheduleTargetChange(FragmentTransitionImpl paramFragmentTransitionImpl, ViewGroup paramViewGroup, Fragment paramFragment, View paramView, ArrayList paramArrayList1, Object paramObject1, ArrayList paramArrayList2, Object paramObject2, ArrayList paramArrayList3)
+  private static void scheduleTargetChange(final FragmentTransitionImpl paramFragmentTransitionImpl, ViewGroup paramViewGroup, final Fragment paramFragment, final View paramView, final ArrayList<View> paramArrayList1, Object paramObject1, final ArrayList<View> paramArrayList2, final Object paramObject2, final ArrayList<View> paramArrayList3)
   {
-    OneShotPreDrawListener.add(paramViewGroup, new FragmentTransition.2(paramObject1, paramFragmentTransitionImpl, paramView, paramFragment, paramArrayList1, paramArrayList2, paramArrayList3, paramObject2));
+    OneShotPreDrawListener.add(paramViewGroup, new Runnable()
+    {
+      public void run()
+      {
+        ArrayList localArrayList;
+        if (this.val$enterTransition != null)
+        {
+          paramFragmentTransitionImpl.removeTarget(this.val$enterTransition, paramView);
+          localArrayList = FragmentTransition.configureEnteringExitingViews(paramFragmentTransitionImpl, this.val$enterTransition, paramFragment, paramArrayList1, paramView);
+          paramArrayList2.addAll(localArrayList);
+        }
+        if (paramArrayList3 != null)
+        {
+          if (paramObject2 != null)
+          {
+            localArrayList = new ArrayList();
+            localArrayList.add(paramView);
+            paramFragmentTransitionImpl.replaceTargets(paramObject2, paramArrayList3, localArrayList);
+          }
+          paramArrayList3.clear();
+          paramArrayList3.add(paramView);
+        }
+      }
+    });
   }
   
-  private static void setOutEpicenter(FragmentTransitionImpl paramFragmentTransitionImpl, Object paramObject1, Object paramObject2, ArrayMap paramArrayMap, boolean paramBoolean, BackStackRecord paramBackStackRecord)
+  private static void setOutEpicenter(FragmentTransitionImpl paramFragmentTransitionImpl, Object paramObject1, Object paramObject2, ArrayMap<String, View> paramArrayMap, boolean paramBoolean, BackStackRecord paramBackStackRecord)
   {
     if ((paramBackStackRecord.mSharedElementSourceNames != null) && (!paramBackStackRecord.mSharedElementSourceNames.isEmpty())) {
       if (!paramBoolean) {
@@ -873,7 +931,7 @@ class FragmentTransition
     }
   }
   
-  private static void setViewVisibility(ArrayList paramArrayList, int paramInt)
+  private static void setViewVisibility(ArrayList<View> paramArrayList, int paramInt)
   {
     if (paramArrayList == null) {}
     for (;;)
@@ -888,7 +946,7 @@ class FragmentTransition
     }
   }
   
-  static void startTransitions(FragmentManagerImpl paramFragmentManagerImpl, ArrayList paramArrayList1, ArrayList paramArrayList2, int paramInt1, int paramInt2, boolean paramBoolean)
+  static void startTransitions(FragmentManagerImpl paramFragmentManagerImpl, ArrayList<BackStackRecord> paramArrayList, ArrayList<Boolean> paramArrayList1, int paramInt1, int paramInt2, boolean paramBoolean)
   {
     if (paramFragmentManagerImpl.mCurState < 1) {}
     SparseArray localSparseArray;
@@ -899,8 +957,8 @@ class FragmentTransition
       i = paramInt1;
       if (i < paramInt2)
       {
-        localObject = (BackStackRecord)paramArrayList1.get(i);
-        if (((Boolean)paramArrayList2.get(i)).booleanValue()) {
+        localObject = (BackStackRecord)paramArrayList.get(i);
+        if (((Boolean)paramArrayList1.get(i)).booleanValue()) {
           calculatePopFragments((BackStackRecord)localObject, localSparseArray, paramBoolean);
         }
         for (;;)
@@ -917,12 +975,12 @@ class FragmentTransition
     label118:
     int k;
     ArrayMap localArrayMap;
-    FragmentTransition.FragmentContainerTransition localFragmentContainerTransition;
+    FragmentContainerTransition localFragmentContainerTransition;
     if (i < j)
     {
       k = localSparseArray.keyAt(i);
-      localArrayMap = calculateNameOverrides(k, paramArrayList1, paramArrayList2, paramInt1, paramInt2);
-      localFragmentContainerTransition = (FragmentTransition.FragmentContainerTransition)localSparseArray.valueAt(i);
+      localArrayMap = calculateNameOverrides(k, paramArrayList, paramArrayList1, paramInt1, paramInt2);
+      localFragmentContainerTransition = (FragmentContainerTransition)localSparseArray.valueAt(i);
       if (!paramBoolean) {
         break label184;
       }
@@ -941,6 +999,16 @@ class FragmentTransition
   static boolean supportsTransition()
   {
     return (PLATFORM_IMPL != null) || (SUPPORT_IMPL != null);
+  }
+  
+  static class FragmentContainerTransition
+  {
+    public Fragment firstOut;
+    public boolean firstOutIsPop;
+    public BackStackRecord firstOutTransaction;
+    public Fragment lastIn;
+    public boolean lastInIsPop;
+    public BackStackRecord lastInTransaction;
   }
 }
 

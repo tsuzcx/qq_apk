@@ -1,5 +1,7 @@
 package uilib.doraemon;
 
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -13,17 +15,17 @@ import android.os.Build.VERSION;
 import android.util.Log;
 import android.view.View;
 import android.view.animation.LinearInterpolator;
-import com.tencent.token.io;
-import com.tencent.token.ip;
+import com.tencent.token.gi;
+import com.tencent.token.gj;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
-import taiji.ab;
-import taiji.ac;
-import taiji.bg;
-import taiji.bk;
+import taiji.as;
+import taiji.cs.a;
+import taiji.y;
+import taiji.z;
 
 @TargetApi(11)
 public class e
@@ -31,25 +33,25 @@ public class e
   implements Drawable.Callback
 {
   private static final String d = e.class.getSimpleName();
-  l a;
+  f a;
   d b;
-  io c;
+  gi c;
   private final Matrix e = new Matrix();
   private final Matrix f = new Matrix();
   private a g;
-  private final ip h = new ip();
+  private final gj h = new gj();
   private float i = 1.0F;
   private float j = 0.0F;
   private float k = 1.0F;
-  private final Set l = new HashSet();
-  private final ArrayList m = new ArrayList();
-  private ac n;
+  private final Set<a> l = new HashSet();
+  private final ArrayList<b> m = new ArrayList();
+  private z n;
   private String o;
   private c p;
-  private ab q;
+  private y q;
   private boolean r;
   private boolean s;
-  private bg t;
+  private as t;
   private int u = 255;
   private boolean v;
   private DoraemonAnimationView.a w = DoraemonAnimationView.a.a;
@@ -61,7 +63,19 @@ public class e
     this.x = paramView;
     this.h.setRepeatCount(0);
     this.h.setInterpolator(new LinearInterpolator());
-    this.h.addUpdateListener(new f(this));
+    this.h.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
+    {
+      public void onAnimationUpdate(ValueAnimator paramAnonymousValueAnimator)
+      {
+        if (e.a(e.this))
+        {
+          e.b(e.this).cancel();
+          e.this.d(1.0F);
+          return;
+        }
+        e.this.d(((Float)paramAnonymousValueAnimator.getAnimatedValue()).floatValue());
+      }
+    });
   }
   
   private boolean a(Canvas paramCanvas)
@@ -147,7 +161,13 @@ public class e
   {
     if (this.t == null)
     {
-      this.m.add(new g(this));
+      this.m.add(new b()
+      {
+        public void a(a paramAnonymousa)
+        {
+          e.this.g();
+        }
+      });
       return;
     }
     if (paramBoolean) {}
@@ -165,7 +185,7 @@ public class e
   private void o()
   {
     if (this.g != null) {
-      this.t = new bg(this, bk.a(this.g), this.g.e(), this.g);
+      this.t = new as(this, cs.a.a(this.g), this.g.e(), this.g);
     }
   }
   
@@ -178,8 +198,8 @@ public class e
       Iterator localIterator = this.l.iterator();
       while (localIterator.hasNext())
       {
-        j localj = (j)localIterator.next();
-        this.t.a(localj.a, localj.b, localj.c);
+        a locala = (a)localIterator.next();
+        this.t.a(locala.a, locala.b, locala.c);
       }
     }
   }
@@ -201,7 +221,7 @@ public class e
     setBounds(0, 0, (int)(this.g.b().width() * f1), (int)(f1 * this.g.b().height()));
   }
   
-  private ac s()
+  private z s()
   {
     if (getCallback() == null) {
       return null;
@@ -212,7 +232,7 @@ public class e
       this.n = null;
     }
     if (this.n == null) {
-      this.n = new ac(getCallback(), this.o, this.p, this.g.h());
+      this.n = new z(getCallback(), this.o, this.p, this.g.h());
     }
     return this.n;
   }
@@ -234,19 +254,25 @@ public class e
     this.h.a(paramFloat);
   }
   
-  public void a(int paramInt)
+  public void a(final int paramInt)
   {
     if (this.g == null)
     {
-      this.m.add(new h(this, paramInt));
+      this.m.add(new b()
+      {
+        public void a(a paramAnonymousa)
+        {
+          e.this.a(paramInt / paramAnonymousa.i());
+        }
+      });
       return;
     }
     a(paramInt / this.g.i());
   }
   
-  public void a(io paramio)
+  public void a(gi paramgi)
   {
-    this.c = paramio;
+    this.c = paramgi;
   }
   
   public void a(String paramString)
@@ -272,11 +298,11 @@ public class e
     this.b = paramd;
   }
   
-  public void a(l paraml)
+  public void a(f paramf)
   {
-    this.a = paraml;
+    this.a = paramf;
     if (this.q != null) {
-      this.q.a(paraml);
+      this.q.a(paramf);
     }
   }
   
@@ -313,7 +339,7 @@ public class e
     Iterator localIterator = this.m.iterator();
     while (localIterator.hasNext())
     {
-      ((k)localIterator.next()).a(parama);
+      ((b)localIterator.next()).a(parama);
       localIterator.remove();
     }
     if (parama != null) {
@@ -324,9 +350,9 @@ public class e
   
   public Bitmap b(String paramString)
   {
-    ac localac = s();
-    if (localac != null) {
-      return localac.a(paramString);
+    z localz = s();
+    if (localz != null) {
+      return localz.a(paramString);
     }
     return null;
   }
@@ -341,11 +367,17 @@ public class e
     this.h.b(paramFloat);
   }
   
-  public void b(int paramInt)
+  public void b(final int paramInt)
   {
     if (this.g == null)
     {
-      this.m.add(new i(this, paramInt));
+      this.m.add(new b()
+      {
+        public void a(a paramAnonymousa)
+        {
+          e.this.b(paramInt / paramAnonymousa.i());
+        }
+      });
       return;
     }
     b(paramInt / this.g.i());
@@ -369,11 +401,11 @@ public class e
   public void c(float paramFloat)
   {
     this.i = paramFloat;
-    ip localip = this.h;
+    gj localgj = this.h;
     if (paramFloat < 0.0F) {}
     for (boolean bool = true;; bool = false)
     {
-      localip.a(bool);
+      localgj.a(bool);
       if (this.g != null) {
         this.h.setDuration(((float)this.g.c() / Math.abs(paramFloat)));
       }
@@ -383,16 +415,16 @@ public class e
   
   public void c(boolean paramBoolean)
   {
-    ip localip = this.h;
+    gj localgj = this.h;
     if (paramBoolean) {}
     for (int i1 = -1;; i1 = 0)
     {
-      localip.setRepeatCount(i1);
+      localgj.setRepeatCount(i1);
       return;
     }
   }
   
-  public n d()
+  public h d()
   {
     if (this.g != null) {
       return this.g.a();
@@ -410,7 +442,7 @@ public class e
   
   public void draw(Canvas paramCanvas)
   {
-    m.a("Drawable#draw");
+    g.a("Drawable#draw");
     if (this.t == null) {}
     boolean bool;
     do
@@ -420,7 +452,7 @@ public class e
       this.e.reset();
       this.e.preScale(this.k, this.k);
       this.t.a(paramCanvas, this.e, this.u);
-      m.b("Drawable#draw");
+      g.b("Drawable#draw");
     } while (!bool);
     paramCanvas.restore();
   }
@@ -509,7 +541,7 @@ public class e
     return (this.b == null) && (this.g.f().size() > 0);
   }
   
-  public io k()
+  public gi k()
   {
     return this.c;
   }
@@ -553,6 +585,45 @@ public class e
       return;
     }
     paramDrawable.unscheduleDrawable(this, paramRunnable);
+  }
+  
+  private static class a
+  {
+    final String a;
+    final String b;
+    final ColorFilter c;
+    
+    public boolean equals(Object paramObject)
+    {
+      if (this == paramObject) {}
+      do
+      {
+        return true;
+        if (!(paramObject instanceof a)) {
+          return false;
+        }
+        paramObject = (a)paramObject;
+      } while ((hashCode() == paramObject.hashCode()) && (this.c == paramObject.c));
+      return false;
+    }
+    
+    public int hashCode()
+    {
+      int i = 17;
+      if (this.a != null) {
+        i = this.a.hashCode() * 527;
+      }
+      int j = i;
+      if (this.b != null) {
+        j = i * 31 * this.b.hashCode();
+      }
+      return j;
+    }
+  }
+  
+  private static abstract interface b
+  {
+    public abstract void a(a parama);
   }
 }
 

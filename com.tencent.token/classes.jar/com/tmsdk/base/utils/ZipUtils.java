@@ -68,7 +68,7 @@ public class ZipUtils
     }
   }
   
-  public static boolean checkValidZipFiles(List paramList)
+  public static boolean checkValidZipFiles(List<File> paramList)
   {
     paramList = paramList.iterator();
     while (paramList.hasNext()) {

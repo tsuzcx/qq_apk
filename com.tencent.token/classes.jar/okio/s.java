@@ -1,195 +1,50 @@
 package okio;
 
-import java.nio.ByteBuffer;
+import java.nio.charset.Charset;
 
 final class s
-  implements h
 {
-  public final f a = new f();
-  public final x b;
-  boolean c;
+  public static final Charset a = Charset.forName("UTF-8");
   
-  s(x paramx)
+  public static int a(int paramInt)
   {
-    if (paramx == null) {
-      throw new NullPointerException("sink == null");
+    return (0xFF000000 & paramInt) >>> 24 | (0xFF0000 & paramInt) >>> 8 | (0xFF00 & paramInt) << 8 | (paramInt & 0xFF) << 24;
+  }
+  
+  public static short a(short paramShort)
+  {
+    paramShort = 0xFFFF & paramShort;
+    return (short)((paramShort & 0xFF) << 8 | (0xFF00 & paramShort) >>> 8);
+  }
+  
+  public static void a(long paramLong1, long paramLong2, long paramLong3)
+  {
+    if (((paramLong2 | paramLong3) < 0L) || (paramLong2 > paramLong1) || (paramLong1 - paramLong2 < paramLong3)) {
+      throw new ArrayIndexOutOfBoundsException(String.format("size=%s offset=%s byteCount=%s", new Object[] { Long.valueOf(paramLong1), Long.valueOf(paramLong2), Long.valueOf(paramLong3) }));
     }
-    this.b = paramx;
   }
   
-  public z a()
+  public static void a(Throwable paramThrowable)
   {
-    return this.b.a();
+    b(paramThrowable);
   }
   
-  public void a_(f paramf, long paramLong)
+  public static boolean a(byte[] paramArrayOfByte1, int paramInt1, byte[] paramArrayOfByte2, int paramInt2, int paramInt3)
   {
-    if (this.c) {
-      throw new IllegalStateException("closed");
-    }
-    this.a.a_(paramf, paramLong);
-    u();
-  }
-  
-  public h b(String paramString)
-  {
-    if (this.c) {
-      throw new IllegalStateException("closed");
-    }
-    this.a.a(paramString);
-    return u();
-  }
-  
-  public f c()
-  {
-    return this.a;
-  }
-  
-  public h c(byte[] paramArrayOfByte)
-  {
-    if (this.c) {
-      throw new IllegalStateException("closed");
-    }
-    this.a.b(paramArrayOfByte);
-    return u();
-  }
-  
-  public h c(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
-  {
-    if (this.c) {
-      throw new IllegalStateException("closed");
-    }
-    this.a.b(paramArrayOfByte, paramInt1, paramInt2);
-    return u();
-  }
-  
-  public void close()
-  {
-    if (this.c) {}
-    do
+    int i = 0;
+    while (i < paramInt3)
     {
-      return;
-      localObject2 = null;
-      localObject1 = localObject2;
-      for (;;)
-      {
-        try
-        {
-          if (this.a.b > 0L)
-          {
-            this.b.a_(this.a, this.a.b);
-            localObject1 = localObject2;
-          }
-        }
-        catch (Throwable localThrowable1)
-        {
-          continue;
-        }
-        try
-        {
-          this.b.close();
-          localObject2 = localObject1;
-        }
-        catch (Throwable localThrowable2)
-        {
-          localObject2 = localObject1;
-          if (localObject1 != null) {
-            continue;
-          }
-          localObject2 = localThrowable2;
-        }
+      if (paramArrayOfByte1[(i + paramInt1)] != paramArrayOfByte2[(i + paramInt2)]) {
+        return false;
       }
-      this.c = true;
-    } while (localObject2 == null);
-    ab.a(localObject2);
+      i += 1;
+    }
+    return true;
   }
   
-  public void flush()
+  private static <T extends Throwable> void b(Throwable paramThrowable)
   {
-    if (this.c) {
-      throw new IllegalStateException("closed");
-    }
-    if (this.a.b > 0L) {
-      this.b.a_(this.a, this.a.b);
-    }
-    this.b.flush();
-  }
-  
-  public h g(int paramInt)
-  {
-    if (this.c) {
-      throw new IllegalStateException("closed");
-    }
-    this.a.d(paramInt);
-    return u();
-  }
-  
-  public h h(int paramInt)
-  {
-    if (this.c) {
-      throw new IllegalStateException("closed");
-    }
-    this.a.c(paramInt);
-    return u();
-  }
-  
-  public h i(int paramInt)
-  {
-    if (this.c) {
-      throw new IllegalStateException("closed");
-    }
-    this.a.b(paramInt);
-    return u();
-  }
-  
-  public boolean isOpen()
-  {
-    return !this.c;
-  }
-  
-  public h k(long paramLong)
-  {
-    if (this.c) {
-      throw new IllegalStateException("closed");
-    }
-    this.a.j(paramLong);
-    return u();
-  }
-  
-  public h l(long paramLong)
-  {
-    if (this.c) {
-      throw new IllegalStateException("closed");
-    }
-    this.a.i(paramLong);
-    return u();
-  }
-  
-  public String toString()
-  {
-    return "buffer(" + this.b + ")";
-  }
-  
-  public h u()
-  {
-    if (this.c) {
-      throw new IllegalStateException("closed");
-    }
-    long l = this.a.g();
-    if (l > 0L) {
-      this.b.a_(this.a, l);
-    }
-    return this;
-  }
-  
-  public int write(ByteBuffer paramByteBuffer)
-  {
-    if (this.c) {
-      throw new IllegalStateException("closed");
-    }
-    int i = this.a.write(paramByteBuffer);
-    u();
-    return i;
+    throw paramThrowable;
   }
 }
 

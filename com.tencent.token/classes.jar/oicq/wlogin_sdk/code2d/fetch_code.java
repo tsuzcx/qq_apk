@@ -13,7 +13,7 @@ public class fetch_code
     this._cmd = 49;
   }
   
-  public byte[] get_request(long paramLong1, long paramLong2, long paramLong3, byte[] paramArrayOfByte1, fetch_code.QRCodeCustom paramQRCodeCustom, long paramLong4, long paramLong5, byte[] paramArrayOfByte2)
+  public byte[] get_request(long paramLong1, long paramLong2, long paramLong3, byte[] paramArrayOfByte1, QRCodeCustom paramQRCodeCustom, long paramLong4, long paramLong5, byte[] paramArrayOfByte2)
   {
     int j = paramArrayOfByte1.length + 17 + 2;
     int[] arrayOfInt = new int[7];
@@ -188,6 +188,17 @@ public class fetch_code
       }
     }
     return _status.b;
+  }
+  
+  public static class QRCodeCustom
+  {
+    public int Dpi = 72;
+    public int EcLevel = 2;
+    public int Hint = 2;
+    public int Margin = 4;
+    public int Micro = 0;
+    public int Size = 3;
+    public int Version = 0;
   }
 }
 

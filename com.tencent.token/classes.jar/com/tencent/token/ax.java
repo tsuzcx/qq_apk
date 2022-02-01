@@ -1,21 +1,14 @@
 package com.tencent.token;
 
-import android.app.AlarmManager;
-import android.app.PendingIntent;
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.content.IntentFilter;
-import android.net.NetworkInfo;
-import com.tencent.halley.common.c;
-import com.tencent.halley.common.h;
+import com.tencent.halley.common.b;
+import com.tencent.halley.common.e;
+import java.util.Iterator;
+import java.util.List;
 
-final class ax
+public final class ax
+  implements aw
 {
   private static ax a = null;
-  private bc b;
-  private final BroadcastReceiver c = new ba(this);
-  private final BroadcastReceiver d = new bb(this);
   
   public static ax a()
   {
@@ -30,68 +23,103 @@ final class ax
     finally {}
   }
   
-  public final void a(NetworkInfo paramNetworkInfo)
+  private static bh a(ao paramao)
   {
-    String str;
-    if (paramNetworkInfo != null)
+    bh localbh = new bh();
+    localbh.a = paramao.b();
+    localbh.b = paramao.c();
+    localbh.c = paramao.d();
+    localbh.d = paramao.a();
+    localbh.e = paramao.e();
+    localbh.h = paramao.g();
+    if (localbh.h == 1) {
+      localbh.g = bp.a();
+    }
+    StringBuilder localStringBuilder;
+    for (;;)
     {
-      paramNetworkInfo = cb.b;
-      cb.b();
-      str = cb.b;
-      if (!paramNetworkInfo.equals(str))
+      localbh.i = paramao.h();
+      Object localObject = paramao.f();
+      if ((localObject == null) || (((List)localObject).size() <= 0)) {
+        break label290;
+      }
+      localStringBuilder = new StringBuilder();
+      localObject = ((List)localObject).iterator();
+      while (((Iterator)localObject).hasNext())
       {
-        if ((!paramNetworkInfo.equals(cb.a)) || (!cb.f())) {
-          break label64;
-        }
-        if (this.b == null) {
-          break label56;
-        }
-        this.b.a();
+        localStringBuilder.append((String)((Iterator)localObject).next());
+        localStringBuilder.append("|");
+      }
+      localbh.f = bp.a();
+    }
+    localStringBuilder.deleteCharAt(localStringBuilder.length() - 1);
+    localbh.j = localStringBuilder.toString();
+    localbh.k = paramao.i();
+    if (paramao.j()) {}
+    for (int i = 1;; i = 0)
+    {
+      localbh.l = i;
+      localbh.m = paramao.k();
+      localbh.n = paramao.l();
+      localbh.o = paramao.m();
+      localbh.p = paramao.n();
+      localbh.r = paramao.p();
+      localbh.q = paramao.o();
+      localbh.s = paramao.q();
+      localbh.t = paramao.r();
+      localbh.u = paramao.s();
+      return localbh;
+      label290:
+      localbh.j = "";
+      break;
+    }
+  }
+  
+  public final void a(ao paramao, ap paramap)
+  {
+    b.b("AccessSchedulerStatistics", "AccessSchedulerStatistics...onAccessSchedulerFinished, do sdk report...");
+    paramao = a(paramao);
+    if (paramao != null)
+    {
+      b.b("AccessSchedulerStatistics", "AccessSchedulerFinished：" + paramao.toString());
+      new a(paramao).start();
+    }
+  }
+  
+  public final void b(ao paramao, ap paramap)
+  {
+    b.b("AccessSchedulerStatistics", "AccessSchedulerStatistics...onResSchedulerFinished, do sdk report...");
+    paramao = a(paramao);
+    if (paramao != null)
+    {
+      b.b("AccessSchedulerStatistics", "ResSchedulerFinished：" + paramao.toString());
+      e.a("B_ACSDK_RES_Result", e.a(paramao));
+    }
+  }
+  
+  final class a
+    extends Thread
+  {
+    private bh a;
+    
+    a(bh parambh)
+    {
+      this.a = parambh;
+    }
+    
+    public final void run()
+    {
+      try
+      {
+        Thread.sleep(10000L);
+        e.a("B_ACSDK_SDK_Result", e.a(this.a));
+        return;
+      }
+      catch (InterruptedException localInterruptedException)
+      {
+        localInterruptedException.printStackTrace();
       }
     }
-    label56:
-    label64:
-    while ((str.equals(cb.a)) || (!cb.f()))
-    {
-      return;
-      c.c("AccessSchedulerTrigger", "onAccessSchedulerTriggered not call for triggerlistener is null");
-      return;
-    }
-    if (this.b != null)
-    {
-      this.b.a();
-      return;
-    }
-    c.c("AccessSchedulerTrigger", "onAccessSchedulerTriggered not call for triggerlistener is null");
-  }
-  
-  public final void a(bc parambc)
-  {
-    this.b = parambc;
-    parambc = new IntentFilter("android.net.conn.CONNECTIVITY_CHANGE");
-    h.a().registerReceiver(this.c, parambc);
-    c.b("AccessSchedulerTrigger", "startListenNetworkChange...");
-    c.b("AccessSchedulerTrigger", "try startAccessSchedulerTimer...");
-    parambc = new IntentFilter("action.scheduler.access.trigger.timer");
-    h.a().registerReceiver(this.d, parambc);
-    parambc = (AlarmManager)h.a().getSystemService("alarm");
-    if (parambc != null)
-    {
-      long l = System.currentTimeMillis();
-      Intent localIntent = new Intent("action.scheduler.access.trigger.timer");
-      parambc.setRepeating(3, l + 1800000L, 1800000L, PendingIntent.getBroadcast(h.a(), 0, localIntent, 0));
-      c.a("AccessSchedulerTrigger", "startAccessSchedulerTimer timer start...");
-    }
-  }
-  
-  public final void b()
-  {
-    if (this.b != null)
-    {
-      this.b.a();
-      return;
-    }
-    c.c("AccessSchedulerTrigger", "onAccessSchedulerTriggered not call for triggerlistener is null");
   }
 }
 

@@ -8,12 +8,12 @@ import java.util.ArrayList;
 public final class STTrafficTemplate_Optional
   extends JceStruct
 {
-  static ArrayList eQ;
-  public ArrayList matchRules_optional = null;
+  static ArrayList<STMatchRule_Optional> eQ;
+  public ArrayList<STMatchRule_Optional> matchRules_optional = null;
   
   public STTrafficTemplate_Optional() {}
   
-  public STTrafficTemplate_Optional(ArrayList paramArrayList)
+  public STTrafficTemplate_Optional(ArrayList<STMatchRule_Optional> paramArrayList)
   {
     this.matchRules_optional = paramArrayList;
   }

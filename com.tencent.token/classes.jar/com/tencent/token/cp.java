@@ -1,315 +1,79 @@
 package com.tencent.token;
 
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Handler;
-import com.tencent.token.global.f;
-import com.tencent.token.utils.u;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Timer;
-import oicq.wlogin_sdk.request.Ticket;
-import oicq.wlogin_sdk.request.WUserSigInfo;
-import oicq.wlogin_sdk.request.WtloginHelper;
-import oicq.wlogin_sdk.request.WtloginHelper.QuickLoginParam;
-import oicq.wlogin_sdk.request.WtloginListener;
-import oicq.wlogin_sdk.sharemem.WloginSimpleInfo;
-import oicq.wlogin_sdk.tools.util;
+import com.tencent.token.core.push.b;
+import com.tencent.token.global.c;
+import com.tencent.token.global.e;
+import com.tencent.token.global.g;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class cp
 {
-  public static String c = new String("");
-  public static int d = 2101344;
-  private static cp j;
-  public String a;
-  public f b;
-  public WtloginListener e = new cq(this);
-  private WtloginHelper f;
-  private Handler g;
-  private Timer h;
-  private Object i;
-  private boolean k = false;
-  private long l;
-  private int m;
-  private int n = 1;
+  private static cp a = null;
+  private String b = "/cn/mbtoken3/mbtoken3_asec_push_getconn";
   
-  private cp(Context paramContext)
+  public static cp a()
   {
-    this.f = new WtloginHelper(paramContext);
-    this.f.SetTimeOut(5000);
-    util.LOGCAT_OUT = false;
-    this.f.SetListener(this.e);
-    this.f.SetImgType(4);
-    this.h = new Timer();
-    this.i = new Object();
-    this.b = new f();
-  }
-  
-  public static cp a(Context paramContext)
-  {
-    if (j == null) {
-      j = new cp(paramContext);
+    if (a == null) {
+      a = new cp();
     }
-    return j;
+    return a;
   }
   
-  public static byte[] a(int paramInt, byte[] paramArrayOfByte)
+  public e b()
   {
-    byte[] arrayOfByte = new byte[paramArrayOfByte.length + 4];
-    util.int16_to_buf(arrayOfByte, 0, paramInt);
-    util.int16_to_buf(arrayOfByte, 2, paramArrayOfByte.length);
-    System.arraycopy(paramArrayOfByte, 0, arrayOfByte, 4, paramArrayOfByte.length);
-    return arrayOfByte;
-  }
-  
-  public int a(Activity paramActivity, long paramLong, Handler paramHandler)
-  {
+    e locale = new e();
+    Object localObject1 = new ey();
+    Object localObject2 = c.e() + this.b;
+    Object localObject3 = ((ey)localObject1).a((String)localObject2);
+    if (localObject3 == null)
+    {
+      locale.a(((ey)localObject1).a());
+      g.c("client request url: " + (String)localObject2 + " failed, reason: " + locale.a + ":" + locale.b);
+      return locale;
+    }
     try
     {
-      this.f.quickLogin(paramActivity, paramLong, this.n, u.b, a(paramLong));
-      this.g = paramHandler;
-      return -1;
-    }
-    catch (Exception paramActivity)
-    {
-      for (;;)
+      localObject1 = new JSONObject(new String((byte[])localObject3));
+      int i = ((JSONObject)localObject1).getInt("err");
+      if (i != 0)
       {
-        paramActivity.printStackTrace();
+        g.c("error" + ((JSONObject)localObject1).toString());
+        localObject1 = ((JSONObject)localObject1).getString("info");
+        locale.a(i, (String)localObject1, (String)localObject1);
       }
-    }
-  }
-  
-  public int a(Activity paramActivity, long paramLong, Handler paramHandler, String paramString)
-  {
-    try
-    {
-      WtloginHelper.QuickLoginParam localQuickLoginParam = new WtloginHelper.QuickLoginParam();
-      localQuickLoginParam.sigMap = 192;
-      localQuickLoginParam.appid = paramLong;
-      localQuickLoginParam.userAccount = paramString;
-      localQuickLoginParam.forceWebLogin = true;
-      localQuickLoginParam.isUserAccountLocked = true;
-      this.f.quickLogin(paramActivity, paramLong, this.n, u.b, localQuickLoginParam);
-      this.g = paramHandler;
-      return -1;
-    }
-    catch (Exception paramActivity)
-    {
-      for (;;)
+      else
       {
-        paramActivity.printStackTrace();
-      }
-    }
-  }
-  
-  public int a(String paramString, Handler paramHandler)
-  {
-    if (this.g == null)
-    {
-      this.h.cancel();
-      this.f.RefreshPictureData(paramString, new WUserSigInfo());
-      this.g = paramHandler;
-      return 0;
-    }
-    return -1;
-  }
-  
-  public int a(String paramString, Handler paramHandler, long paramLong)
-  {
-    try
-    {
-      this.l = paramLong;
-      Handler localHandler = this.g;
-      if (localHandler == null) {
-        try
+        int j = ((JSONObject)localObject1).getInt("retry_cnt");
+        int k = ((JSONObject)localObject1).getInt("retry_time");
+        int m = ((JSONObject)localObject1).getInt("hb_time");
+        localObject1 = ((JSONObject)localObject1).getJSONArray("conn");
+        localObject2 = new String[((JSONArray)localObject1).length()];
+        localObject3 = new int[((JSONArray)localObject1).length()];
+        i = 0;
+        while (i < ((JSONArray)localObject1).length())
         {
-          this.h.cancel();
-          this.f.GetStWithoutPasswd(paramString, paramLong, paramLong, this.n, d, new WUserSigInfo());
-          this.g = paramHandler;
-          this.h = new Timer();
-          this.h.schedule(new cr(this), 30000L);
-          return 0;
+          JSONObject localJSONObject = ((JSONArray)localObject1).getJSONObject(i);
+          localObject2[i] = localJSONObject.getString("ip");
+          localObject3[i] = localJSONObject.getInt("port");
+          i += 1;
         }
-        catch (Exception localException)
-        {
-          for (;;)
-          {
-            localException.printStackTrace();
-          }
-        }
+        b.a().a((String[])localObject2, (int[])localObject3, j, k * 1000, m * 1000);
+        locale.c();
       }
-      return -1;
     }
-    catch (Exception paramString)
+    catch (JSONException localJSONException)
     {
-      paramString.printStackTrace();
+      g.c("parse json failed: " + localJSONException.toString());
+      locale.a(10020, "JSONException:" + localJSONException.toString());
     }
-  }
-  
-  public int a(String paramString, Handler paramHandler, long paramLong, int paramInt)
-  {
-    this.g = null;
-    this.m = paramInt;
-    return a(paramString, paramHandler, paramLong);
-  }
-  
-  public int a(String paramString, byte[] paramArrayOfByte, Handler paramHandler)
-  {
-    if (this.g == null)
+    catch (Exception localException)
     {
-      this.h.cancel();
-      this.f.CheckPictureAndGetSt(paramString, paramArrayOfByte, new WUserSigInfo());
-      this.g = paramHandler;
-      this.h = new Timer();
-      this.h.schedule(new cs(this), 30000L);
-      return 0;
+      g.c("unknown err: " + localException.toString());
+      locale.a(10021, "JSONException:" + localException.toString());
     }
-    return -1;
-  }
-  
-  public int a(String paramString1, byte[] paramArrayOfByte, Handler paramHandler, String paramString2, long paramLong)
-  {
-    if (this.g == null)
-    {
-      this.h.cancel();
-      paramString2 = this.f;
-      WUserSigInfo localWUserSigInfo = new WUserSigInfo();
-      paramString2.VerifyCode(paramString1, paramLong, true, paramArrayOfByte, new int[0], 1, localWUserSigInfo);
-      this.g = paramHandler;
-      this.h = new Timer();
-      try
-      {
-        this.h.schedule(new ct(this), 30000L);
-        return 0;
-      }
-      catch (Exception paramString1)
-      {
-        for (;;)
-        {
-          paramString1.printStackTrace();
-        }
-      }
-    }
-    return -1;
-  }
-  
-  public int a(String paramString1, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, String paramString2, Handler paramHandler, long paramLong)
-  {
-    if (this.g == null)
-    {
-      this.h.cancel();
-      if (paramArrayOfByte2 == null)
-      {
-        paramArrayOfByte2 = new ArrayList();
-        paramArrayOfByte2.add(a(8, paramString2.getBytes()));
-      }
-      for (;;)
-      {
-        this.f.CloseCode(paramString1, paramLong, paramArrayOfByte1, 1, paramArrayOfByte2, new WUserSigInfo());
-        this.g = paramHandler;
-        this.h = new Timer();
-        try
-        {
-          this.h.schedule(new cu(this), 30000L);
-          return 0;
-          ArrayList localArrayList = new ArrayList();
-          localArrayList.add(a(1, paramArrayOfByte2));
-          localArrayList.add(a(8, paramString2.getBytes()));
-          paramArrayOfByte2 = localArrayList;
-        }
-        catch (Exception paramString1)
-        {
-          for (;;)
-          {
-            paramString1.printStackTrace();
-          }
-        }
-      }
-    }
-    return -1;
-  }
-  
-  public long a()
-  {
-    if (this.a != null) {
-      return this.f.GetAppidFromUrl(this.a);
-    }
-    return 0L;
-  }
-  
-  public WtloginHelper.QuickLoginParam a(long paramLong)
-  {
-    WtloginHelper.QuickLoginParam localQuickLoginParam = new WtloginHelper.QuickLoginParam();
-    localQuickLoginParam.sigMap = 192;
-    localQuickLoginParam.appid = paramLong;
-    return localQuickLoginParam;
-  }
-  
-  public void a(Intent paramIntent)
-  {
-    this.f.onQuickLoginActivityResultData(a(523005419L), paramIntent);
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.k = paramBoolean;
-  }
-  
-  public boolean a(String paramString)
-  {
-    return this.f.IsWtLoginUrl(paramString);
-  }
-  
-  public boolean a(String paramString, long paramLong)
-  {
-    return this.f.ClearUserLoginData(paramString, paramLong).booleanValue();
-  }
-  
-  public byte[] a(WUserSigInfo paramWUserSigInfo)
-  {
-    return WtloginHelper.GetTicketSig(paramWUserSigInfo, 64);
-  }
-  
-  public void b(String paramString)
-  {
-    this.a = paramString;
-  }
-  
-  public boolean b(String paramString, long paramLong)
-  {
-    return this.f.IsNeedLoginWithPasswd(paramString, paramLong).booleanValue();
-  }
-  
-  public byte[] b()
-  {
-    return this.f.GetGuid();
-  }
-  
-  public byte[] b(long paramLong)
-  {
-    Ticket localTicket = this.f.GetLocalTicket("" + paramLong, 523005419L, 64);
-    if (localTicket != null) {
-      return localTicket._sig;
-    }
-    return null;
-  }
-  
-  public String c()
-  {
-    return this.a;
-  }
-  
-  public WloginSimpleInfo c(String paramString)
-  {
-    WloginSimpleInfo localWloginSimpleInfo = new WloginSimpleInfo();
-    this.f.GetBasicUserInfo(paramString, localWloginSimpleInfo);
-    return localWloginSimpleInfo;
-  }
-  
-  public byte[] d(String paramString)
-  {
-    return this.f.GetPictureData(paramString);
+    return locale;
   }
 }
 

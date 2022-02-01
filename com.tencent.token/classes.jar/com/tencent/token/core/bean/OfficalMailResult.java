@@ -7,7 +7,7 @@ public class OfficalMailResult
   implements Serializable
 {
   private static final long serialVersionUID = 8437486574837818710L;
-  public ArrayList mMailList;
+  public ArrayList<String> mMailList;
   public String mTitle;
 }
 

@@ -4,7 +4,7 @@ import android.os.Parcel;
 import android.os.Parcelable.Creator;
 
 final class WUserSigInfo$1
-  implements Parcelable.Creator
+  implements Parcelable.Creator<WUserSigInfo>
 {
   public WUserSigInfo createFromParcel(Parcel paramParcel)
   {

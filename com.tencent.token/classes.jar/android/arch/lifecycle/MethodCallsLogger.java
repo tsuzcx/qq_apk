@@ -7,7 +7,7 @@ import java.util.Map;
 @RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
 public class MethodCallsLogger
 {
-  private Map mCalledMethods = new HashMap();
+  private Map<String, Integer> mCalledMethods = new HashMap();
   
   @RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
   public boolean approveCall(String paramString, int paramInt)

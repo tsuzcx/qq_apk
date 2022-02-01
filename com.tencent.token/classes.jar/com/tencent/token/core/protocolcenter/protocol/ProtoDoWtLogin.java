@@ -1,47 +1,47 @@
 package com.tencent.token.core.protocolcenter.protocol;
 
 import android.content.Context;
+import com.tencent.token.bz;
+import com.tencent.token.ca;
+import com.tencent.token.cb;
 import com.tencent.token.core.bean.QQUser;
-import com.tencent.token.core.protocolcenter.e;
-import com.tencent.token.cv;
-import com.tencent.token.cw;
-import com.tencent.token.cx;
-import com.tencent.token.do;
-import com.tencent.token.ev;
+import com.tencent.token.core.protocolcenter.d;
+import com.tencent.token.cq;
+import com.tencent.token.dn;
 import com.tencent.token.global.RqdApplication;
 import com.tencent.token.global.c;
-import com.tencent.token.global.f;
-import com.tencent.token.global.h;
-import com.tencent.token.utils.w;
+import com.tencent.token.global.e;
+import com.tencent.token.global.g;
+import com.tencent.token.utils.l;
 import java.util.HashMap;
 import org.json.JSONObject;
 
 public class ProtoDoWtLogin
-  extends e
+  extends d
 {
   private String d;
   private byte[] e;
   private int f;
   
-  public static void a(ev paramev, String paramString, byte[] paramArrayOfByte, int paramInt)
+  public static void a(dn paramdn, String paramString, byte[] paramArrayOfByte, int paramInt)
   {
-    paramev.c.put("param.uin.wtlogin", paramString);
-    paramev.c.put("param.wtlogin.a2", paramArrayOfByte);
-    paramev.c.put("param.wtlogin.type", Integer.valueOf(paramInt));
+    paramdn.c.put("param.uin.wtlogin", paramString);
+    paramdn.c.put("param.wtlogin.a2", paramArrayOfByte);
+    paramdn.c.put("param.wtlogin.type", Integer.valueOf(paramInt));
   }
   
   protected String a()
   {
-    String str1 = cv.a().b();
+    String str1 = bz.a().b();
     if (str1 == null)
     {
       this.a.b(104);
       return null;
     }
-    int i = cw.a + 1;
-    cw.a = i;
+    int i = ca.a + 1;
+    ca.a = i;
     this.c = i;
-    String str2 = w.a(new Object[] { "uin", this.d, "wtlogin_sig", w.a(this.e), "wtlogin_type", Integer.valueOf(this.f), "seq_id", Integer.valueOf(this.c), "op_time", Integer.valueOf((int)(cx.c().s() / 1000L)) });
+    String str2 = l.a(new Object[] { "uin", this.d, "wtlogin_sig", l.a(this.e), "wtlogin_type", Integer.valueOf(this.f), "seq_id", Integer.valueOf(this.c), "op_time", Integer.valueOf((int)(cb.c().s() / 1000L)) });
     if (str2 == null)
     {
       this.a.b(10000);
@@ -51,11 +51,11 @@ public class ProtoDoWtLogin
     return c.e() + "/cn/mbtoken3/mbtoken3_vfy_wtlogin_encrypt" + str1;
   }
   
-  protected void a(ev paramev)
+  protected void a(dn paramdn)
   {
-    this.d = ((String)paramev.c.get("param.uin.wtlogin"));
-    this.e = ((byte[])paramev.c.get("param.wtlogin.a2"));
-    this.f = ((Integer)paramev.c.get("param.wtlogin.type")).intValue();
+    this.d = ((String)paramdn.c.get("param.uin.wtlogin"));
+    this.e = ((byte[])paramdn.c.get("param.wtlogin.a2"));
+    this.f = ((Integer)paramdn.c.get("param.wtlogin.type")).intValue();
   }
   
   protected void a(JSONObject paramJSONObject)
@@ -66,7 +66,7 @@ public class ProtoDoWtLogin
       a(i, paramJSONObject.getString("info"));
       return;
     }
-    paramJSONObject = w.c(paramJSONObject.getString("data"));
+    paramJSONObject = l.c(paramJSONObject.getString("data"));
     if (paramJSONObject != null)
     {
       paramJSONObject = new JSONObject(new String(paramJSONObject));
@@ -81,7 +81,7 @@ public class ProtoDoWtLogin
       try
       {
         long l2 = Long.parseLong(this.d);
-        QQUser localQQUser = do.a().d(l2);
+        QQUser localQQUser = cq.a().d(l2);
         if (localQQUser != null)
         {
           localQQUser.mUin = l1;
@@ -89,7 +89,7 @@ public class ProtoDoWtLogin
         }
         this.b.c.put("param.uinhash", Long.valueOf(l1));
         this.b.c.put("param.wtlogin.a2", this.e);
-        do.a().e(l2);
+        cq.a().e(l2);
         this.a.c();
         return;
       }
@@ -99,7 +99,7 @@ public class ProtoDoWtLogin
         return;
       }
     }
-    h.c("parseJSON error decodeData=" + paramJSONObject);
+    g.c("parseJSON error decodeData=" + paramJSONObject);
     a(10022, RqdApplication.l().getString(2131230925));
   }
 }

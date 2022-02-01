@@ -9,7 +9,7 @@ import java.lang.ref.WeakReference;
 class TintResources
   extends ResourcesWrapper
 {
-  private final WeakReference mContextRef;
+  private final WeakReference<Context> mContextRef;
   
   public TintResources(@NonNull Context paramContext, @NonNull Resources paramResources)
   {

@@ -1,31 +1,50 @@
 package com.tencent.turingfd.sdk.base;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public final class Herbaceous
-  extends float
+  extends break
 {
-  public static ArrayList hd;
-  public ArrayList jd = null;
-  public int kc = 0;
+  public static Map<Integer, ArrayList<Haw>> Sc;
+  public long Tc = 0L;
+  public Map<Integer, ArrayList<Haw>> Uc = null;
+  public int Vc = 0;
+  public int Wc = 0;
+  public int Xc = 0;
+  public int Yc = 0;
+  public int Zc = 0;
   
-  public void a(dp paramdp)
+  public void a(cy paramcy)
   {
-    this.kc = paramdp.a(this.kc, 0, true);
-    if (hd == null)
+    this.Tc = paramcy.a(this.Tc, 0, true);
+    if (Sc == null)
     {
-      hd = new ArrayList();
-      hd.add("");
+      Sc = new HashMap();
+      ArrayList localArrayList = new ArrayList();
+      localArrayList.add(new Haw());
+      Sc.put(Integer.valueOf(0), localArrayList);
     }
-    this.jd = ((ArrayList)paramdp.a(hd, 1, false));
+    this.Uc = ((Map)paramcy.a(Sc, 1, true));
+    this.Vc = paramcy.a(this.Vc, 2, false);
+    this.Wc = paramcy.a(this.Wc, 3, false);
+    this.Xc = paramcy.a(this.Xc, 4, false);
+    this.Yc = paramcy.a(this.Yc, 5, false);
+    this.Zc = paramcy.a(this.Zc, 6, false);
   }
   
-  public void a(dv paramdv)
+  public void a(db paramdb)
   {
-    paramdv.a(this.kc, 0);
-    ArrayList localArrayList = this.jd;
-    if (localArrayList != null) {
-      paramdv.a(localArrayList, 1);
+    paramdb.a(this.Tc, 0);
+    paramdb.a(this.Uc, 1);
+    paramdb.a(this.Vc, 2);
+    paramdb.a(this.Wc, 3);
+    paramdb.a(this.Xc, 4);
+    paramdb.a(this.Yc, 5);
+    int i = this.Zc;
+    if (i != 0) {
+      paramdb.a(i, 6);
     }
   }
 }

@@ -1,47 +1,58 @@
 package com.tmsdk.base.oaid;
 
+import android.content.ComponentName;
+import android.content.Context;
+import android.content.ServiceConnection;
+import android.os.IBinder;
+import android.text.TextUtils;
+import btmsdkobf.m;
+import btmsdkobf.m.a;
+import java.util.ArrayList;
+import java.util.concurrent.LinkedBlockingQueue;
+import java.util.concurrent.atomic.AtomicReference;
+
 public class OaidProxy
 {
   /* Error */
-  public static java.lang.String doGetOaid(android.content.Context paramContext)
+  public static String doGetOaid(Context paramContext)
   {
     // Byte code:
     //   0: aload_0
     //   1: ifnonnull +5 -> 6
     //   4: aconst_null
     //   5: areturn
-    //   6: invokestatic 19	com/tmsdk/base/utils/PhoneInfoFetcher:isHUAWEI	()Z
+    //   6: invokestatic 26	com/tmsdk/base/utils/PhoneInfoFetcher:isHUAWEI	()Z
     //   9: ifeq +77 -> 86
-    //   12: new 21	android/content/Intent
+    //   12: new 28	android/content/Intent
     //   15: dup
-    //   16: ldc 23
-    //   18: invokespecial 26	android/content/Intent:<init>	(Ljava/lang/String;)V
+    //   16: ldc 30
+    //   18: invokespecial 33	android/content/Intent:<init>	(Ljava/lang/String;)V
     //   21: astore 4
     //   23: aload 4
-    //   25: ldc 28
-    //   27: invokevirtual 32	android/content/Intent:setPackage	(Ljava/lang/String;)Landroid/content/Intent;
+    //   25: ldc 35
+    //   27: invokevirtual 39	android/content/Intent:setPackage	(Ljava/lang/String;)Landroid/content/Intent;
     //   30: pop
-    //   31: new 34	com/tmsdk/base/oaid/OaidProxy$a
+    //   31: new 10	com/tmsdk/base/oaid/OaidProxy$a
     //   34: dup
     //   35: aconst_null
-    //   36: invokespecial 37	com/tmsdk/base/oaid/OaidProxy$a:<init>	(Lcom/tmsdk/base/oaid/OaidProxy$1;)V
+    //   36: invokespecial 42	com/tmsdk/base/oaid/OaidProxy$a:<init>	(Lcom/tmsdk/base/oaid/OaidProxy$1;)V
     //   39: astore_3
     //   40: aload_0
     //   41: aload 4
     //   43: aload_3
     //   44: iconst_1
-    //   45: invokevirtual 43	android/content/Context:bindService	(Landroid/content/Intent;Landroid/content/ServiceConnection;I)Z
+    //   45: invokevirtual 48	android/content/Context:bindService	(Landroid/content/Intent;Landroid/content/ServiceConnection;I)Z
     //   48: istore_2
     //   49: iload_2
     //   50: ifeq +36 -> 86
     //   53: aload_3
-    //   54: invokevirtual 47	com/tmsdk/base/oaid/OaidProxy$a:getBinder	()Landroid/os/IBinder;
-    //   57: invokestatic 53	btmsdkobf/g$a:a	(Landroid/os/IBinder;)Lbtmsdkobf/g;
-    //   60: invokeinterface 59 1 0
+    //   54: invokevirtual 52	com/tmsdk/base/oaid/OaidProxy$a:getBinder	()Landroid/os/IBinder;
+    //   57: invokestatic 57	btmsdkobf/g$a:a	(Landroid/os/IBinder;)Lbtmsdkobf/g;
+    //   60: invokeinterface 63 1 0
     //   65: astore 4
     //   67: aload_0
     //   68: aload_3
-    //   69: invokevirtual 63	android/content/Context:unbindService	(Landroid/content/ServiceConnection;)V
+    //   69: invokevirtual 67	android/content/Context:unbindService	(Landroid/content/ServiceConnection;)V
     //   72: aload 4
     //   74: areturn
     //   75: astore_0
@@ -50,88 +61,88 @@ public class OaidProxy
     //   79: astore 4
     //   81: aload_0
     //   82: aload_3
-    //   83: invokevirtual 63	android/content/Context:unbindService	(Landroid/content/ServiceConnection;)V
-    //   86: invokestatic 66	com/tmsdk/base/utils/PhoneInfoFetcher:isXIAOMI	()Z
+    //   83: invokevirtual 67	android/content/Context:unbindService	(Landroid/content/ServiceConnection;)V
+    //   86: invokestatic 70	com/tmsdk/base/utils/PhoneInfoFetcher:isXIAOMI	()Z
     //   89: ifeq +20 -> 109
     //   92: aload_0
-    //   93: invokestatic 70	btmsdkobf/f:a	(Landroid/content/Context;)Ljava/lang/String;
+    //   93: invokestatic 74	btmsdkobf/f:a	(Landroid/content/Context;)Ljava/lang/String;
     //   96: astore_0
     //   97: aload_0
     //   98: areturn
     //   99: astore 4
     //   101: aload_0
     //   102: aload_3
-    //   103: invokevirtual 63	android/content/Context:unbindService	(Landroid/content/ServiceConnection;)V
+    //   103: invokevirtual 67	android/content/Context:unbindService	(Landroid/content/ServiceConnection;)V
     //   106: aload 4
     //   108: athrow
-    //   109: invokestatic 73	com/tmsdk/base/utils/PhoneInfoFetcher:isOPPO	()Z
+    //   109: invokestatic 77	com/tmsdk/base/utils/PhoneInfoFetcher:isOPPO	()Z
     //   112: ifne +10 -> 122
     //   115: aload_0
-    //   116: invokestatic 77	com/tmsdk/base/utils/PhoneInfoFetcher:isOnePlus	(Landroid/content/Context;)Z
+    //   116: invokestatic 81	com/tmsdk/base/utils/PhoneInfoFetcher:isOnePlus	(Landroid/content/Context;)Z
     //   119: ifeq +8 -> 127
     //   122: aload_0
-    //   123: invokestatic 80	btmsdkobf/ev:a	(Landroid/content/Context;)Ljava/lang/String;
+    //   123: invokestatic 84	btmsdkobf/ev:a	(Landroid/content/Context;)Ljava/lang/String;
     //   126: areturn
-    //   127: invokestatic 83	com/tmsdk/base/utils/PhoneInfoFetcher:isVIVO	()Z
+    //   127: invokestatic 87	com/tmsdk/base/utils/PhoneInfoFetcher:isVIVO	()Z
     //   130: ifeq +8 -> 138
     //   133: aload_0
-    //   134: invokestatic 86	btmsdkobf/ew:a	(Landroid/content/Context;)Ljava/lang/String;
+    //   134: invokestatic 90	btmsdkobf/ew:a	(Landroid/content/Context;)Ljava/lang/String;
     //   137: areturn
-    //   138: invokestatic 89	com/tmsdk/base/utils/PhoneInfoFetcher:isMEIZU	()Z
+    //   138: invokestatic 93	com/tmsdk/base/utils/PhoneInfoFetcher:isMEIZU	()Z
     //   141: ifeq +8 -> 149
     //   144: aload_0
-    //   145: invokestatic 92	btmsdkobf/b:a	(Landroid/content/Context;)Ljava/lang/String;
+    //   145: invokestatic 96	btmsdkobf/b:a	(Landroid/content/Context;)Ljava/lang/String;
     //   148: areturn
-    //   149: invokestatic 95	com/tmsdk/base/utils/PhoneInfoFetcher:isLenovo	()Z
+    //   149: invokestatic 99	com/tmsdk/base/utils/PhoneInfoFetcher:isLenovo	()Z
     //   152: istore_2
     //   153: iload_2
     //   154: ifeq +120 -> 274
     //   157: new 4	java/lang/Object
     //   160: dup
-    //   161: invokespecial 8	java/lang/Object:<init>	()V
+    //   161: invokespecial 15	java/lang/Object:<init>	()V
     //   164: astore_3
-    //   165: new 97	java/util/ArrayList
+    //   165: new 101	java/util/ArrayList
     //   168: dup
-    //   169: invokespecial 98	java/util/ArrayList:<init>	()V
+    //   169: invokespecial 102	java/util/ArrayList:<init>	()V
     //   172: astore 4
     //   174: aload 4
-    //   176: ldc 100
-    //   178: invokevirtual 104	java/util/ArrayList:add	(Ljava/lang/Object;)Z
+    //   176: ldc 104
+    //   178: invokevirtual 108	java/util/ArrayList:add	(Ljava/lang/Object;)Z
     //   181: pop
-    //   182: new 106	btmsdkobf/m
+    //   182: new 110	btmsdkobf/m
     //   185: dup
-    //   186: invokespecial 107	btmsdkobf/m:<init>	()V
+    //   186: invokespecial 111	btmsdkobf/m:<init>	()V
     //   189: aload_0
-    //   190: new 109	com/tmsdk/base/oaid/OaidProxy$2
+    //   190: new 8	com/tmsdk/base/oaid/OaidProxy$2
     //   193: dup
     //   194: aload 4
     //   196: aload_3
-    //   197: invokespecial 112	com/tmsdk/base/oaid/OaidProxy$2:<init>	(Ljava/util/ArrayList;Ljava/lang/Object;)V
-    //   200: invokevirtual 115	btmsdkobf/m:a	(Landroid/content/Context;Lbtmsdkobf/m$a;)I
+    //   197: invokespecial 114	com/tmsdk/base/oaid/OaidProxy$2:<init>	(Ljava/util/ArrayList;Ljava/lang/Object;)V
+    //   200: invokevirtual 117	btmsdkobf/m:a	(Landroid/content/Context;Lbtmsdkobf/m$a;)I
     //   203: pop
     //   204: aload_3
     //   205: monitorenter
     //   206: aload 4
     //   208: iconst_0
-    //   209: invokevirtual 119	java/util/ArrayList:get	(I)Ljava/lang/Object;
-    //   212: checkcast 121	java/lang/String
-    //   215: ldc 100
-    //   217: invokevirtual 125	java/lang/String:compareTo	(Ljava/lang/String;)I
+    //   209: invokevirtual 121	java/util/ArrayList:get	(I)Ljava/lang/Object;
+    //   212: checkcast 123	java/lang/String
+    //   215: ldc 104
+    //   217: invokevirtual 127	java/lang/String:compareTo	(Ljava/lang/String;)I
     //   220: istore_1
     //   221: iload_1
     //   222: ifne +7 -> 229
     //   225: aload_3
-    //   226: invokevirtual 128	java/lang/Object:wait	()V
+    //   226: invokevirtual 130	java/lang/Object:wait	()V
     //   229: aload_3
     //   230: monitorexit
     //   231: aload 4
-    //   233: invokevirtual 132	java/util/ArrayList:size	()I
+    //   233: invokevirtual 134	java/util/ArrayList:size	()I
     //   236: iconst_1
     //   237: if_icmple +37 -> 274
     //   240: aload 4
     //   242: iconst_1
-    //   243: invokevirtual 119	java/util/ArrayList:get	(I)Ljava/lang/Object;
-    //   246: checkcast 121	java/lang/String
+    //   243: invokevirtual 121	java/util/ArrayList:get	(I)Ljava/lang/Object;
+    //   246: checkcast 123	java/lang/String
     //   249: astore_0
     //   250: aload_0
     //   251: areturn
@@ -153,15 +164,15 @@ public class OaidProxy
     //   275: areturn
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	276	0	paramContext	android.content.Context
+    //   0	276	0	paramContext	Context
     //   220	2	1	i	int
     //   48	106	2	bool	boolean
     //   39	215	3	localObject1	Object
-    //   261	1	3	localThrowable1	java.lang.Throwable
+    //   261	1	3	localThrowable1	Throwable
     //   21	56	4	localObject2	Object
-    //   79	1	4	localThrowable2	java.lang.Throwable
+    //   79	1	4	localThrowable2	Throwable
     //   99	8	4	localObject3	Object
-    //   172	69	4	localArrayList	java.util.ArrayList
+    //   172	69	4	localArrayList	ArrayList
     // Exception table:
     //   from	to	target	type
     //   67	72	75	java/lang/Throwable
@@ -188,19 +199,19 @@ public class OaidProxy
   }
   
   /* Error */
-  public static java.lang.String getOaid(android.content.Context paramContext)
+  public static String getOaid(final Context paramContext)
   {
     // Byte code:
     //   0: new 4	java/lang/Object
     //   3: dup
-    //   4: invokespecial 8	java/lang/Object:<init>	()V
+    //   4: invokespecial 15	java/lang/Object:<init>	()V
     //   7: astore_1
-    //   8: new 135	java/util/concurrent/atomic/AtomicReference
+    //   8: new 137	java/util/concurrent/atomic/AtomicReference
     //   11: dup
-    //   12: ldc 137
-    //   14: invokespecial 140	java/util/concurrent/atomic/AtomicReference:<init>	(Ljava/lang/Object;)V
+    //   12: ldc 139
+    //   14: invokespecial 142	java/util/concurrent/atomic/AtomicReference:<init>	(Ljava/lang/Object;)V
     //   17: astore_2
-    //   18: new 142	com/tmsdk/base/oaid/OaidProxy$1
+    //   18: new 6	com/tmsdk/base/oaid/OaidProxy$1
     //   21: dup
     //   22: aload_2
     //   23: aload_0
@@ -216,7 +227,7 @@ public class OaidProxy
     //   41: monitorexit
     //   42: aload_2
     //   43: invokevirtual 156	java/util/concurrent/atomic/AtomicReference:get	()Ljava/lang/Object;
-    //   46: checkcast 121	java/lang/String
+    //   46: checkcast 123	java/lang/String
     //   49: areturn
     //   50: astore_0
     //   51: aload_1
@@ -227,15 +238,49 @@ public class OaidProxy
     //   56: goto -16 -> 40
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	59	0	paramContext	android.content.Context
+    //   0	59	0	paramContext	Context
     //   7	45	1	localObject	Object
-    //   17	26	2	localAtomicReference	java.util.concurrent.atomic.AtomicReference
+    //   17	26	2	localAtomicReference	AtomicReference
     // Exception table:
     //   from	to	target	type
     //   33	40	50	finally
     //   40	42	50	finally
     //   51	53	50	finally
     //   33	40	55	java/lang/Throwable
+  }
+  
+  private static final class a
+    implements ServiceConnection
+  {
+    boolean A = false;
+    private final LinkedBlockingQueue<IBinder> B = new LinkedBlockingQueue(1);
+    
+    public IBinder getBinder()
+    {
+      if (this.A) {
+        return null;
+      }
+      this.A = true;
+      try
+      {
+        IBinder localIBinder = (IBinder)this.B.take();
+        return localIBinder;
+      }
+      catch (Throwable localThrowable) {}
+      return null;
+    }
+    
+    public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
+    {
+      try
+      {
+        this.B.put(paramIBinder);
+        return;
+      }
+      catch (Throwable paramComponentName) {}
+    }
+    
+    public void onServiceDisconnected(ComponentName paramComponentName) {}
   }
 }
 

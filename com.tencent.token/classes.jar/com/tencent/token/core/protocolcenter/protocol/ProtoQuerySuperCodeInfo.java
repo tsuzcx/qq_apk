@@ -4,19 +4,19 @@ import android.content.Context;
 import android.os.Handler;
 import android.os.Message;
 import android.text.TextUtils;
-import com.tencent.token.core.protocolcenter.e;
-import com.tencent.token.cv;
-import com.tencent.token.ev;
+import com.tencent.token.bz;
+import com.tencent.token.core.protocolcenter.d;
+import com.tencent.token.dn;
 import com.tencent.token.global.RqdApplication;
 import com.tencent.token.global.c;
-import com.tencent.token.global.f;
-import com.tencent.token.global.h;
-import com.tencent.token.utils.w;
+import com.tencent.token.global.e;
+import com.tencent.token.global.g;
+import com.tencent.token.utils.l;
 import java.util.HashMap;
 import org.json.JSONObject;
 
 public class ProtoQuerySuperCodeInfo
-  extends e
+  extends d
 {
   public long d;
   private int e;
@@ -24,11 +24,11 @@ public class ProtoQuerySuperCodeInfo
   
   protected String a()
   {
-    String str = cv.a().b();
+    String str = bz.a().b();
     if (str == null)
     {
       this.a.b(104);
-      h.c(this + "sessId null ");
+      g.c(this + "sessId null ");
       return null;
     }
     Object localObject1 = "";
@@ -37,7 +37,7 @@ public class ProtoQuerySuperCodeInfo
       localObject2 = new JSONObject();
       ((JSONObject)localObject2).put("uin", this.d);
       ((JSONObject)localObject2).put("seq_id", this.e);
-      localObject2 = w.b(((JSONObject)localObject2).toString().getBytes());
+      localObject2 = l.b(((JSONObject)localObject2).toString().getBytes());
       localObject1 = localObject2;
     }
     catch (Exception localException)
@@ -45,27 +45,27 @@ public class ProtoQuerySuperCodeInfo
       for (;;)
       {
         Object localObject2;
-        h.c(localException.getMessage());
+        g.c(localException.getMessage());
         localException.printStackTrace();
       }
       this.a.b(10000);
-      h.c(this + "ProtoQuerySuperCodeInfo url data is null ");
+      g.c(this + "ProtoQuerySuperCodeInfo url data is null ");
     }
     localObject2 = "?aq_base_sid=" + str;
     if (!TextUtils.isEmpty((CharSequence)localObject1))
     {
       localObject1 = (String)localObject2 + "&data=" + (String)localObject1;
       localObject1 = c.e() + "/cn/mbtoken3/mbtoken3_qry_super_code_info" + (String)localObject1;
-      h.c(this + "ProtoQuerySuperCodeInfo url " + (String)localObject1);
+      g.c(this + "ProtoQuerySuperCodeInfo url " + (String)localObject1);
       return localObject1;
     }
     return null;
   }
   
-  protected void a(ev paramev)
+  protected void a(dn paramdn)
   {
-    this.d = ((Long)paramev.c.get("param.uinhash")).longValue();
-    this.e = ((Integer)paramev.c.get("param.common.seq")).intValue();
+    this.d = ((Long)paramdn.c.get("param.uinhash")).longValue();
+    this.e = ((Integer)paramdn.c.get("param.common.seq")).intValue();
   }
   
   protected void a(JSONObject paramJSONObject)
@@ -74,26 +74,26 @@ public class ProtoQuerySuperCodeInfo
     if (i != 0)
     {
       paramJSONObject = paramJSONObject.getString("info");
-      h.a("error" + paramJSONObject + ",error code =" + i);
+      g.a("error" + paramJSONObject + ",error code =" + i);
       this.a.a(i, "server errcode=" + i + ":" + paramJSONObject, paramJSONObject);
       return;
     }
-    paramJSONObject = w.c(paramJSONObject.getString("data"));
+    paramJSONObject = l.c(paramJSONObject.getString("data"));
     if (paramJSONObject != null)
     {
-      h.a(this + "--data:" + new String(paramJSONObject));
+      g.a(this + "--data:" + new String(paramJSONObject));
       paramJSONObject = new JSONObject(new String(paramJSONObject));
       if (paramJSONObject.getInt("seq_id") != this.e)
       {
         this.a.b(10030);
-        h.c(this + "parseJSON error seq is wrong seq=" + paramJSONObject.getInt("seq_id") + ",right = " + this.e);
+        g.c(this + "parseJSON error seq is wrong seq=" + paramJSONObject.getInt("seq_id") + ",right = " + this.e);
         return;
       }
       this.f = paramJSONObject.optInt("config_val");
       this.a.c();
       return;
     }
-    h.c("parseJSON error decodeData=" + paramJSONObject);
+    g.c("parseJSON error decodeData=" + paramJSONObject);
     a(10022, RqdApplication.l().getString(2131230925));
   }
   

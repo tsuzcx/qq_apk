@@ -8,11 +8,11 @@ import java.util.ArrayList;
 public final class SCSolutionRes
   extends JceStruct
 {
-  static ArrayList a = new ArrayList();
-  static ArrayList b;
-  public ArrayList canceledSolutionList = null;
+  static ArrayList<SolutionItem> a = new ArrayList();
+  static ArrayList<SolutionItem> b;
+  public ArrayList<SolutionItem> canceledSolutionList = null;
   public int ret = 0;
-  public ArrayList solutionList = null;
+  public ArrayList<SolutionItem> solutionList = null;
   
   static
   {

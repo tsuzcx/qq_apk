@@ -1,19 +1,8 @@
 package com.tencent.token;
 
-public final class aa
+public abstract interface aa
 {
-  public int a = -1;
-  public long b;
-  public byte[] c;
-  public long d;
-  
-  public aa(int paramInt, long paramLong1, byte[] paramArrayOfByte, long paramLong2)
-  {
-    this.a = paramInt;
-    this.b = paramLong1;
-    this.c = paramArrayOfByte;
-    this.d = paramLong2;
-  }
+  public abstract boolean e();
 }
 
 

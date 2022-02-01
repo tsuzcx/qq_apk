@@ -7,11 +7,12 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.KeyEvent;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import com.tencent.token.global.h;
-import com.tencent.token.utils.i;
+import com.tencent.token.global.g;
+import com.tencent.token.utils.e;
 
 public class FaceRegConfirmActivity
   extends BaseActivity
@@ -23,30 +24,46 @@ public class FaceRegConfirmActivity
   
   private void init()
   {
-    h.c("pathpath: w=" + this.mBitmap1.getWidth() + ",h=" + this.mBitmap1.getHeight());
+    g.c("pathpath: w=" + this.mBitmap1.getWidth() + ",h=" + this.mBitmap1.getHeight());
     if ((this.mBitmap1 != null) && (this.mBitmap2 != null))
     {
-      ImageView localImageView1 = (ImageView)findViewById(2131558906);
-      ImageView localImageView2 = (ImageView)findViewById(2131558909);
+      ImageView localImageView1 = (ImageView)findViewById(2131558907);
+      ImageView localImageView2 = (ImageView)findViewById(2131558910);
       localImageView1.setImageBitmap(this.mBitmap1);
       localImageView2.setImageBitmap(this.mBitmap2);
     }
-    ((Button)findViewById(2131558910)).setOnClickListener(new ig(this));
-    ((Button)findViewById(2131558911)).setOnClickListener(new ih(this));
+    ((Button)findViewById(2131558911)).setOnClickListener(new View.OnClickListener()
+    {
+      public void onClick(View paramAnonymousView)
+      {
+        FaceRegConfirmActivity.this.setResult(20);
+        FaceRegConfirmActivity.this.finish();
+      }
+    });
+    ((Button)findViewById(2131558912)).setOnClickListener(new View.OnClickListener()
+    {
+      public void onClick(View paramAnonymousView)
+      {
+        e.b(FaceRegConfirmActivity.this.mPath1);
+        e.b(FaceRegConfirmActivity.this.mPath2);
+        FaceRegConfirmActivity.this.setResult(10);
+        FaceRegConfirmActivity.this.finish();
+      }
+    });
   }
   
   private void initOriginImg()
   {
-    Object localObject = i.a(this.mPath1);
+    Object localObject = e.a(this.mPath1);
     this.mBitmap1 = BitmapFactory.decodeByteArray((byte[])localObject, 0, localObject.length);
-    localObject = i.a(this.mPath2);
+    localObject = e.a(this.mPath2);
     this.mBitmap2 = BitmapFactory.decodeByteArray((byte[])localObject, 0, localObject.length);
-    localObject = (ImageView)findViewById(2131558906);
-    ImageView localImageView = (ImageView)findViewById(2131558909);
-    LinearLayout localLinearLayout1 = (LinearLayout)findViewById(2131558904);
-    LinearLayout localLinearLayout2 = (LinearLayout)findViewById(2131558905);
-    LinearLayout localLinearLayout3 = (LinearLayout)findViewById(2131558907);
-    LinearLayout localLinearLayout4 = (LinearLayout)findViewById(2131558908);
+    localObject = (ImageView)findViewById(2131558907);
+    ImageView localImageView = (ImageView)findViewById(2131558910);
+    LinearLayout localLinearLayout1 = (LinearLayout)findViewById(2131558905);
+    LinearLayout localLinearLayout2 = (LinearLayout)findViewById(2131558906);
+    LinearLayout localLinearLayout3 = (LinearLayout)findViewById(2131558908);
+    LinearLayout localLinearLayout4 = (LinearLayout)findViewById(2131558909);
     int i = (int)(this.mBitmap1.getHeight() * 140 / this.mBitmap1.getWidth() * IndexActivity.S_DENSITY);
     int j = (int)(i + 6.0F * IndexActivity.S_DENSITY);
     int k = (int)(i + 4.0F * IndexActivity.S_DENSITY);
@@ -115,7 +132,17 @@ public class FaceRegConfirmActivity
     if ((this.mTitleBar.getVisibility() == 0) && (this.mBackArrow != null))
     {
       this.mBackArrow.setVisibility(0);
-      this.mBackArrow.setOnClickListener(new ii(this));
+      this.mBackArrow.setOnClickListener(new View.OnClickListener()
+      {
+        public void onClick(View paramAnonymousView)
+        {
+          g.c("onBackPressed");
+          e.b(FaceRegConfirmActivity.this.mPath1);
+          e.b(FaceRegConfirmActivity.this.mPath2);
+          FaceRegConfirmActivity.this.setResult(10);
+          FaceRegConfirmActivity.this.finish();
+        }
+      });
     }
   }
 }

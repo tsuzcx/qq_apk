@@ -1,7 +1,11 @@
 package com.tencent.wcdb;
 
+import android.database.ContentObserver;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.IBinder;
 import android.os.IBinder.DeathRecipient;
+import android.os.RemoteException;
 
 public final class CursorToBulkCursorAdaptor
   extends BulkCursorNative
@@ -11,7 +15,7 @@ public final class CursorToBulkCursorAdaptor
   private CrossProcessCursor mCursor;
   private CursorWindow mFilledWindow;
   private final Object mLock = new Object();
-  private CursorToBulkCursorAdaptor.ContentObserverProxy mObserver;
+  private ContentObserverProxy mObserver;
   private final String mProviderName;
   
   public CursorToBulkCursorAdaptor(Cursor arg1, IContentObserver paramIContentObserver, String paramString)
@@ -45,7 +49,7 @@ public final class CursorToBulkCursorAdaptor
     if (this.mObserver != null) {
       throw new IllegalStateException("an observer is already registered");
     }
-    this.mObserver = new CursorToBulkCursorAdaptor.ContentObserverProxy(paramIContentObserver, this);
+    this.mObserver = new ContentObserverProxy(paramIContentObserver, this);
     this.mCursor.registerContentObserver(this.mObserver);
   }
   
@@ -222,6 +226,44 @@ public final class CursorToBulkCursorAdaptor
       throwIfCursorIsClosed();
       paramBundle = this.mCursor.respond(paramBundle);
       return paramBundle;
+    }
+  }
+  
+  private static final class ContentObserverProxy
+    extends ContentObserver
+  {
+    protected IContentObserver mRemote;
+    
+    public ContentObserverProxy(IContentObserver paramIContentObserver, IBinder.DeathRecipient paramDeathRecipient)
+    {
+      super();
+      this.mRemote = paramIContentObserver;
+      try
+      {
+        paramIContentObserver.asBinder().linkToDeath(paramDeathRecipient, 0);
+        return;
+      }
+      catch (RemoteException paramIContentObserver) {}
+    }
+    
+    public boolean deliverSelfNotifications()
+    {
+      return false;
+    }
+    
+    public void onChange(boolean paramBoolean, Uri paramUri)
+    {
+      try
+      {
+        this.mRemote.onChange(paramBoolean, paramUri);
+        return;
+      }
+      catch (RemoteException paramUri) {}
+    }
+    
+    public boolean unlinkToDeath(IBinder.DeathRecipient paramDeathRecipient)
+    {
+      return this.mRemote.asBinder().unlinkToDeath(paramDeathRecipient, 0);
     }
   }
 }

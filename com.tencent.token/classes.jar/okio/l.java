@@ -1,72 +1,195 @@
 package okio;
 
-import java.util.concurrent.TimeUnit;
+import java.nio.ByteBuffer;
 
-public class l
-  extends z
+final class l
+  implements d
 {
-  private z a;
+  public final c a = new c();
+  public final p b;
+  boolean c;
   
-  public l(z paramz)
+  l(p paramp)
   {
-    if (paramz == null) {
-      throw new IllegalArgumentException("delegate == null");
+    if (paramp == null) {
+      throw new NullPointerException("sink == null");
     }
-    this.a = paramz;
+    this.b = paramp;
   }
   
-  public final l a(z paramz)
+  public r a()
   {
-    if (paramz == null) {
-      throw new IllegalArgumentException("delegate == null");
-    }
-    this.a = paramz;
-    return this;
+    return this.b.a();
   }
   
-  public final z a()
+  public void a_(c paramc, long paramLong)
+  {
+    if (this.c) {
+      throw new IllegalStateException("closed");
+    }
+    this.a.a_(paramc, paramLong);
+    u();
+  }
+  
+  public d b(String paramString)
+  {
+    if (this.c) {
+      throw new IllegalStateException("closed");
+    }
+    this.a.a(paramString);
+    return u();
+  }
+  
+  public c c()
   {
     return this.a;
   }
   
-  public z a(long paramLong)
+  public d c(byte[] paramArrayOfByte)
   {
-    return this.a.a(paramLong);
+    if (this.c) {
+      throw new IllegalStateException("closed");
+    }
+    this.a.b(paramArrayOfByte);
+    return u();
   }
   
-  public z a(long paramLong, TimeUnit paramTimeUnit)
+  public d c(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
-    return this.a.a(paramLong, paramTimeUnit);
+    if (this.c) {
+      throw new IllegalStateException("closed");
+    }
+    this.a.b(paramArrayOfByte, paramInt1, paramInt2);
+    return u();
   }
   
-  public long c_()
+  public void close()
   {
-    return this.a.c_();
+    if (this.c) {}
+    do
+    {
+      return;
+      localObject2 = null;
+      localObject1 = localObject2;
+      for (;;)
+      {
+        try
+        {
+          if (this.a.b > 0L)
+          {
+            this.b.a_(this.a, this.a.b);
+            localObject1 = localObject2;
+          }
+        }
+        catch (Throwable localThrowable1)
+        {
+          continue;
+        }
+        try
+        {
+          this.b.close();
+          localObject2 = localObject1;
+        }
+        catch (Throwable localThrowable2)
+        {
+          localObject2 = localObject1;
+          if (localObject1 != null) {
+            continue;
+          }
+          localObject2 = localThrowable2;
+        }
+      }
+      this.c = true;
+    } while (localObject2 == null);
+    s.a(localObject2);
   }
   
-  public long d()
+  public void flush()
   {
-    return this.a.d();
+    if (this.c) {
+      throw new IllegalStateException("closed");
+    }
+    if (this.a.b > 0L) {
+      this.b.a_(this.a, this.a.b);
+    }
+    this.b.flush();
   }
   
-  public boolean d_()
+  public d g(int paramInt)
   {
-    return this.a.d_();
+    if (this.c) {
+      throw new IllegalStateException("closed");
+    }
+    this.a.d(paramInt);
+    return u();
   }
   
-  public z e_()
+  public d h(int paramInt)
   {
-    return this.a.e_();
+    if (this.c) {
+      throw new IllegalStateException("closed");
+    }
+    this.a.c(paramInt);
+    return u();
   }
   
-  public z f()
+  public d i(int paramInt)
   {
-    return this.a.f();
+    if (this.c) {
+      throw new IllegalStateException("closed");
+    }
+    this.a.b(paramInt);
+    return u();
   }
   
-  public void g()
+  public boolean isOpen()
   {
-    this.a.g();
+    return !this.c;
+  }
+  
+  public d k(long paramLong)
+  {
+    if (this.c) {
+      throw new IllegalStateException("closed");
+    }
+    this.a.j(paramLong);
+    return u();
+  }
+  
+  public d l(long paramLong)
+  {
+    if (this.c) {
+      throw new IllegalStateException("closed");
+    }
+    this.a.i(paramLong);
+    return u();
+  }
+  
+  public String toString()
+  {
+    return "buffer(" + this.b + ")";
+  }
+  
+  public d u()
+  {
+    if (this.c) {
+      throw new IllegalStateException("closed");
+    }
+    long l = this.a.g();
+    if (l > 0L) {
+      this.b.a_(this.a, l);
+    }
+    return this;
+  }
+  
+  public int write(ByteBuffer paramByteBuffer)
+  {
+    if (this.c) {
+      throw new IllegalStateException("closed");
+    }
+    int i = this.a.write(paramByteBuffer);
+    u();
+    return i;
   }
 }
 

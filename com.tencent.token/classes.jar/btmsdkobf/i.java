@@ -6,6 +6,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.HandlerThread;
+import android.os.Looper;
 import android.os.Message;
 import android.os.SystemClock;
 import android.util.Log;
@@ -57,40 +58,40 @@ public class i
   public static i c(Context paramContext)
   {
     // Byte code:
-    //   0: getstatic 61	btmsdkobf/i:ad	Lbtmsdkobf/i;
+    //   0: getstatic 63	btmsdkobf/i:ad	Lbtmsdkobf/i;
     //   3: ifnonnull +32 -> 35
     //   6: ldc 2
     //   8: monitorenter
-    //   9: getstatic 61	btmsdkobf/i:ad	Lbtmsdkobf/i;
+    //   9: getstatic 63	btmsdkobf/i:ad	Lbtmsdkobf/i;
     //   12: ifnonnull +20 -> 32
     //   15: aload_0
-    //   16: invokevirtual 121	android/content/Context:getApplicationContext	()Landroid/content/Context;
-    //   19: putstatic 123	btmsdkobf/i:mContext	Landroid/content/Context;
+    //   16: invokevirtual 123	android/content/Context:getApplicationContext	()Landroid/content/Context;
+    //   19: putstatic 125	btmsdkobf/i:mContext	Landroid/content/Context;
     //   22: new 2	btmsdkobf/i
     //   25: dup
-    //   26: invokespecial 124	btmsdkobf/i:<init>	()V
-    //   29: putstatic 61	btmsdkobf/i:ad	Lbtmsdkobf/i;
+    //   26: invokespecial 126	btmsdkobf/i:<init>	()V
+    //   29: putstatic 63	btmsdkobf/i:ad	Lbtmsdkobf/i;
     //   32: ldc 2
     //   34: monitorexit
-    //   35: getstatic 63	btmsdkobf/i:ae	Lbtmsdkobf/h;
+    //   35: getstatic 65	btmsdkobf/i:ae	Lbtmsdkobf/h;
     //   38: ifnonnull +41 -> 79
     //   41: ldc 2
     //   43: monitorenter
-    //   44: getstatic 63	btmsdkobf/i:ae	Lbtmsdkobf/h;
+    //   44: getstatic 65	btmsdkobf/i:ae	Lbtmsdkobf/h;
     //   47: ifnonnull +29 -> 76
     //   50: aload_0
-    //   51: invokevirtual 121	android/content/Context:getApplicationContext	()Landroid/content/Context;
-    //   54: putstatic 123	btmsdkobf/i:mContext	Landroid/content/Context;
-    //   57: invokestatic 127	btmsdkobf/i:e	()V
-    //   60: new 129	btmsdkobf/h
+    //   51: invokevirtual 123	android/content/Context:getApplicationContext	()Landroid/content/Context;
+    //   54: putstatic 125	btmsdkobf/i:mContext	Landroid/content/Context;
+    //   57: invokestatic 129	btmsdkobf/i:e	()V
+    //   60: new 131	btmsdkobf/h
     //   63: dup
-    //   64: getstatic 123	btmsdkobf/i:mContext	Landroid/content/Context;
-    //   67: invokespecial 132	btmsdkobf/h:<init>	(Landroid/content/Context;)V
-    //   70: putstatic 63	btmsdkobf/i:ae	Lbtmsdkobf/h;
-    //   73: invokestatic 135	btmsdkobf/i:h	()V
+    //   64: getstatic 125	btmsdkobf/i:mContext	Landroid/content/Context;
+    //   67: invokespecial 134	btmsdkobf/h:<init>	(Landroid/content/Context;)V
+    //   70: putstatic 65	btmsdkobf/i:ae	Lbtmsdkobf/h;
+    //   73: invokestatic 137	btmsdkobf/i:h	()V
     //   76: ldc 2
     //   78: monitorexit
-    //   79: getstatic 61	btmsdkobf/i:ad	Lbtmsdkobf/i;
+    //   79: getstatic 63	btmsdkobf/i:ad	Lbtmsdkobf/i;
     //   82: areturn
     //   83: astore_0
     //   84: ldc 2
@@ -132,7 +133,33 @@ public class i
   {
     W = new HandlerThread("SqlWorkThread");
     W.start();
-    X = new jc(W.getLooper());
+    X = new Handler(W.getLooper())
+    {
+      public void handleMessage(Message arg1)
+      {
+        if (???.what == 11)
+        {
+          int i = ???.getData().getInt("type");
+          ??? = ???.getData().getString("appid");
+          try
+          {
+            i.d(i.i().a(i, ???));
+            Log.e("VMS_IDLG_SDK_Client", "message type valid");
+          }
+          catch (Exception ???)
+          {
+            synchronized (i.j())
+            {
+              i.j().notify();
+              return;
+              ??? = ???;
+              Log.e("VMS_IDLG_SDK_Client", "readException:" + ???.toString());
+              ???.printStackTrace();
+            }
+          }
+        }
+      }
+    };
   }
   
   public static String getProperty(String paramString1, String paramString2)

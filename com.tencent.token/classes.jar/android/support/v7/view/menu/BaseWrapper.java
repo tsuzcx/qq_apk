@@ -1,18 +1,18 @@
 package android.support.v7.view.menu;
 
-class BaseWrapper
+class BaseWrapper<T>
 {
-  final Object mWrappedObject;
+  final T mWrappedObject;
   
-  BaseWrapper(Object paramObject)
+  BaseWrapper(T paramT)
   {
-    if (paramObject == null) {
+    if (paramT == null) {
       throw new IllegalArgumentException("Wrapped Object can not be null.");
     }
-    this.mWrappedObject = paramObject;
+    this.mWrappedObject = paramT;
   }
   
-  public Object getWrappedObject()
+  public T getWrappedObject()
   {
     return this.mWrappedObject;
   }

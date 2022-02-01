@@ -1,43 +1,43 @@
 package com.tencent.token.core.protocolcenter.protocol;
 
-import com.tencent.token.core.protocolcenter.e;
-import com.tencent.token.cv;
-import com.tencent.token.cw;
-import com.tencent.token.cx;
-import com.tencent.token.ev;
+import com.tencent.token.bz;
+import com.tencent.token.ca;
+import com.tencent.token.cb;
+import com.tencent.token.core.protocolcenter.d;
+import com.tencent.token.dn;
 import com.tencent.token.global.c;
-import com.tencent.token.global.f;
-import com.tencent.token.utils.w;
+import com.tencent.token.global.e;
+import com.tencent.token.utils.l;
 import java.util.HashMap;
 import org.json.JSONObject;
 
 public class ProtoDoVerifyQQToken
-  extends e
+  extends d
 {
   public String d;
   public long e;
   private int f;
   private int g = 0;
   
-  public static void a(ev paramev, long paramLong, String paramString, int paramInt)
+  public static void a(dn paramdn, long paramLong, String paramString, int paramInt)
   {
-    paramev.c.put("param.realuin", Long.valueOf(paramLong));
-    paramev.c.put("param.qqtoken", paramString);
-    paramev.c.put("param.type", Integer.valueOf(paramInt));
+    paramdn.c.put("param.realuin", Long.valueOf(paramLong));
+    paramdn.c.put("param.qqtoken", paramString);
+    paramdn.c.put("param.type", Integer.valueOf(paramInt));
   }
   
   protected String a()
   {
-    String str1 = cv.a().b();
+    String str1 = bz.a().b();
     if (str1 == null)
     {
       this.a.b(104);
       return null;
     }
-    int i = cw.a + 1;
-    cw.a = i;
+    int i = ca.a + 1;
+    ca.a = i;
     this.f = i;
-    String str2 = w.a(new Object[] { "seq_id", Integer.valueOf(this.f), "op_time", Long.valueOf(cx.c().s() / 1000L), "uin", Long.valueOf(this.e), "qqtoken_code", this.d, "verify_type_id", Integer.valueOf(this.g) });
+    String str2 = l.a(new Object[] { "seq_id", Integer.valueOf(this.f), "op_time", Long.valueOf(cb.c().s() / 1000L), "uin", Long.valueOf(this.e), "qqtoken_code", this.d, "verify_type_id", Integer.valueOf(this.g) });
     if (str2 == null)
     {
       this.a.a(10000, "encrypt qqtoken code failed");
@@ -47,11 +47,11 @@ public class ProtoDoVerifyQQToken
     return c.e() + "/cn/mbtoken3/mbtoken3_verify_qqtoken_v2" + str1;
   }
   
-  protected void a(ev paramev)
+  protected void a(dn paramdn)
   {
-    this.e = ((Long)paramev.c.get("param.realuin")).longValue();
-    this.d = ((String)paramev.c.get("param.qqtoken"));
-    this.g = ((Integer)paramev.c.get("param.type")).intValue();
+    this.e = ((Long)paramdn.c.get("param.realuin")).longValue();
+    this.d = ((String)paramdn.c.get("param.qqtoken"));
+    this.g = ((Integer)paramdn.c.get("param.type")).intValue();
   }
   
   protected void a(JSONObject paramJSONObject)

@@ -10,8 +10,8 @@ public final class ServerCmdInfo
   extends JceStruct
   implements Cloneable
 {
-  static ArrayList dx;
-  public ArrayList cloudinfos = null;
+  static ArrayList<CloudInfo> dx;
+  public ArrayList<CloudInfo> cloudinfos = null;
   public String newtipsid = "";
   public int nextcheckinterval = 0;
   
@@ -32,7 +32,7 @@ public final class ServerCmdInfo
     setNewtipsid(this.newtipsid);
   }
   
-  public ServerCmdInfo(ArrayList paramArrayList, int paramInt, String paramString)
+  public ServerCmdInfo(ArrayList<CloudInfo> paramArrayList, int paramInt, String paramString)
   {
     setCloudinfos(paramArrayList);
     setNextcheckinterval(paramInt);
@@ -76,7 +76,7 @@ public final class ServerCmdInfo
     return "tmsdk.QQPIM.ServerCmdInfo";
   }
   
-  public ArrayList getCloudinfos()
+  public ArrayList<CloudInfo> getCloudinfos()
   {
     return this.cloudinfos;
   }
@@ -117,7 +117,7 @@ public final class ServerCmdInfo
     setNewtipsid(paramJceInputStream.readString(3, false));
   }
   
-  public void setCloudinfos(ArrayList paramArrayList)
+  public void setCloudinfos(ArrayList<CloudInfo> paramArrayList)
   {
     this.cloudinfos = paramArrayList;
   }

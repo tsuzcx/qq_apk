@@ -1,60 +1,175 @@
 package com.tencent.token;
 
+import com.tencent.token.core.bean.MbInfoResult;
+import com.tencent.token.core.bean.MbInfoResult.MbInfoItem;
+import com.tencent.token.core.bean.QQUser;
+import java.util.ArrayList;
+
 public class di
 {
-  public short a(byte[] paramArrayOfByte)
+  static di d = null;
+  public MbInfoResult a;
+  String b;
+  long c;
+  
+  public static di a()
   {
-    if ((paramArrayOfByte == null) || (paramArrayOfByte.length < 2) || (paramArrayOfByte[0] != 2) || (paramArrayOfByte[(paramArrayOfByte.length - 1)] != 3)) {
-      return -1;
+    if (d == null)
+    {
+      d = new di();
+      return d;
     }
-    return dg.a(paramArrayOfByte, 20);
+    return d;
   }
   
-  public void a(dd paramdd)
+  public int a(int paramInt)
   {
-    paramdd.a = dg.b(paramdd.f, 0, 32);
+    for (;;)
+    {
+      try
+      {
+        MbInfoResult localMbInfoResult = c();
+        if (localMbInfoResult == null)
+        {
+          paramInt = -1;
+          return paramInt;
+        }
+        int i;
+        if (this.a.mMbInfoItems == null)
+        {
+          paramInt = -1;
+          continue;
+          if (i < this.a.mMbInfoItems.size())
+          {
+            int j = ((MbInfoResult.MbInfoItem)this.a.mMbInfoItems.get(i)).mId;
+            if (j == paramInt) {
+              paramInt = i;
+            } else {
+              i += 1;
+            }
+          }
+          else
+          {
+            paramInt = -1;
+          }
+        }
+        else
+        {
+          i = 0;
+        }
+      }
+      finally {}
+    }
   }
   
-  public void a(de paramde, byte[] paramArrayOfByte)
+  public void a(MbInfoResult paramMbInfoResult)
   {
-    if ((paramArrayOfByte == null) || (paramArrayOfByte.length < 2) || (paramArrayOfByte[0] != 2) || (paramArrayOfByte[(paramArrayOfByte.length - 1)] != 3)) {
+    try
+    {
+      this.a = paramMbInfoResult;
+      cq.a();
+      this.b = cq.c;
+      if (cq.a().e() != null) {
+        this.c = cq.a().e().mUin;
+      }
       return;
     }
-    paramde.g = dg.b(paramArrayOfByte, 1);
-    paramde.h = dg.a(paramArrayOfByte, 5);
-    paramde.i = paramArrayOfByte[7];
-    paramde.j = dg.a(paramArrayOfByte, 8);
-    paramde.k = dg.a(paramArrayOfByte, 10);
-    paramde.l = ((int)dg.b(paramArrayOfByte, 12));
-    paramde.m = ((int)dg.b(paramArrayOfByte, 16));
-    paramde.n = dg.a(paramArrayOfByte, 20);
-    paramde.o = dg.a(paramArrayOfByte, 22);
-    paramde.p = dg.a(paramArrayOfByte, 24);
-    paramde.q = dg.a(paramArrayOfByte, 26);
-    paramde.r = dg.b(paramArrayOfByte, 28, 64);
-    paramde.b = ((int)dg.b(paramArrayOfByte, 92));
-    paramde.c = dg.b(paramArrayOfByte, 96, 256);
-    paramde.d = ((int)dg.b(paramArrayOfByte, 352));
-    paramde.e = dg.a(paramArrayOfByte, 356);
-    dg.a(paramde.t, 0, paramArrayOfByte, 358, paramde.t.length);
-    int j = paramde.t.length + 358;
-    int k = paramArrayOfByte.length - 1 - paramde.s.length - j;
-    int i = j;
-    if (k > 0)
+    finally
     {
-      paramde.f = new byte[k];
-      dg.a(paramde.f, 0, paramArrayOfByte, j, paramde.f.length);
-      i = j + paramde.f.length;
+      paramMbInfoResult = finally;
+      throw paramMbInfoResult;
     }
-    dg.a(paramde.s, 0, paramArrayOfByte, i, paramde.s.length);
-    i = paramde.s.length;
   }
   
-  public byte[] a(long paramLong, int paramInt)
+  public void b()
   {
-    df localdf = new df();
-    localdf.a(paramLong, paramInt, (int)(System.currentTimeMillis() / 1000L), (short)1);
-    return localdf.a();
+    try
+    {
+      this.a = null;
+      return;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  /* Error */
+  public MbInfoResult c()
+  {
+    // Byte code:
+    //   0: aconst_null
+    //   1: astore_2
+    //   2: aload_0
+    //   3: monitorenter
+    //   4: invokestatic 56	com/tencent/token/cq:a	()Lcom/tencent/token/cq;
+    //   7: invokevirtual 64	com/tencent/token/cq:e	()Lcom/tencent/token/core/bean/QQUser;
+    //   10: astore_3
+    //   11: aload_2
+    //   12: astore_1
+    //   13: aload_0
+    //   14: getfield 60	com/tencent/token/di:b	Ljava/lang/String;
+    //   17: ifnull +20 -> 37
+    //   20: aload_2
+    //   21: astore_1
+    //   22: aload_3
+    //   23: ifnull +14 -> 37
+    //   26: aload_0
+    //   27: getfield 28	com/tencent/token/di:a	Lcom/tencent/token/core/bean/MbInfoResult;
+    //   30: astore_1
+    //   31: aload_1
+    //   32: ifnonnull +9 -> 41
+    //   35: aload_2
+    //   36: astore_1
+    //   37: aload_0
+    //   38: monitorexit
+    //   39: aload_1
+    //   40: areturn
+    //   41: aload_0
+    //   42: getfield 60	com/tencent/token/di:b	Ljava/lang/String;
+    //   45: astore 4
+    //   47: invokestatic 56	com/tencent/token/cq:a	()Lcom/tencent/token/cq;
+    //   50: pop
+    //   51: aload_2
+    //   52: astore_1
+    //   53: aload 4
+    //   55: getstatic 58	com/tencent/token/cq:c	Ljava/lang/String;
+    //   58: invokevirtual 77	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   61: ifeq -24 -> 37
+    //   64: aload_2
+    //   65: astore_1
+    //   66: aload_0
+    //   67: getfield 71	com/tencent/token/di:c	J
+    //   70: aload_3
+    //   71: getfield 69	com/tencent/token/core/bean/QQUser:mUin	J
+    //   74: lcmp
+    //   75: ifne -38 -> 37
+    //   78: aload_0
+    //   79: getfield 28	com/tencent/token/di:a	Lcom/tencent/token/core/bean/MbInfoResult;
+    //   82: astore_1
+    //   83: goto -46 -> 37
+    //   86: astore_1
+    //   87: aload_0
+    //   88: monitorexit
+    //   89: aload_1
+    //   90: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	91	0	this	di
+    //   12	71	1	localObject1	Object
+    //   86	4	1	localObject2	Object
+    //   1	64	2	localObject3	Object
+    //   10	61	3	localQQUser	QQUser
+    //   45	9	4	str	String
+    // Exception table:
+    //   from	to	target	type
+    //   4	11	86	finally
+    //   13	20	86	finally
+    //   26	31	86	finally
+    //   41	51	86	finally
+    //   53	64	86	finally
+    //   66	83	86	finally
   }
 }
 

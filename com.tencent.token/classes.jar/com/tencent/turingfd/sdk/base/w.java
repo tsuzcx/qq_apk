@@ -1,11 +1,28 @@
 package com.tencent.turingfd.sdk.base;
 
-public final class w
-  extends dj
+public class w
 {
-  public Object a()
+  public int a;
+  public int b;
+  public int c;
+  public String d = "";
+  public int e;
+  
+  public w(int paramInt1, int paramInt2, String paramString1, int paramInt3, String paramString2, int paramInt4)
   {
-    return new ag(null);
+    this.a = paramInt1;
+    this.b = paramInt2;
+    this.d = paramString1;
+    this.c = paramInt3;
+    this.e = paramInt4;
+  }
+  
+  public String toString()
+  {
+    String str1 = String.format("% 6d", new Object[] { Integer.valueOf(this.a) });
+    String str2 = String.format("% 6d", new Object[] { Integer.valueOf(this.b) });
+    String str3 = String.format("% 6d", new Object[] { Integer.valueOf(this.c) });
+    return "" + str1 + "    " + str2 + "    " + str3 + "    " + this.d;
   }
 }
 

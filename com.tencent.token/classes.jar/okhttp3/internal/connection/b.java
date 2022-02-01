@@ -1,6 +1,6 @@
 package okhttp3.internal.connection;
 
-import com.tencent.token.gl;
+import com.tencent.token.ez;
 import java.io.IOException;
 import java.io.InterruptedIOException;
 import java.net.ProtocolException;
@@ -12,16 +12,16 @@ import javax.net.ssl.SSLHandshakeException;
 import javax.net.ssl.SSLPeerUnverifiedException;
 import javax.net.ssl.SSLProtocolException;
 import javax.net.ssl.SSLSocket;
-import okhttp3.q;
+import okhttp3.k;
 
 public final class b
 {
-  private final List a;
+  private final List<k> a;
   private int b = 0;
   private boolean c;
   private boolean d;
   
-  public b(List paramList)
+  public b(List<k> paramList)
   {
     this.a = paramList;
   }
@@ -31,7 +31,7 @@ public final class b
     int i = this.b;
     while (i < this.a.size())
     {
-      if (((q)this.a.get(i)).a(paramSSLSocket)) {
+      if (((k)this.a.get(i)).a(paramSSLSocket)) {
         return true;
       }
       i += 1;
@@ -39,30 +39,30 @@ public final class b
     return false;
   }
   
-  public q a(SSLSocket paramSSLSocket)
+  public k a(SSLSocket paramSSLSocket)
   {
     int i = this.b;
     int j = this.a.size();
-    q localq;
+    k localk;
     if (i < j)
     {
-      localq = (q)this.a.get(i);
-      if (localq.a(paramSSLSocket)) {
+      localk = (k)this.a.get(i);
+      if (localk.a(paramSSLSocket)) {
         this.b = (i + 1);
       }
     }
     for (;;)
     {
-      if (localq == null)
+      if (localk == null)
       {
         throw new UnknownServiceException("Unable to find acceptable protocols. isFallback=" + this.d + ", modes=" + this.a + ", supported protocols=" + Arrays.toString(paramSSLSocket.getEnabledProtocols()));
         i += 1;
         break;
       }
       this.c = b(paramSSLSocket);
-      gl.a.a(localq, paramSSLSocket, this.d);
-      return localq;
-      localq = null;
+      ez.a.a(localk, paramSSLSocket, this.d);
+      return localk;
+      localk = null;
     }
   }
   

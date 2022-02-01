@@ -6,6 +6,7 @@ import com.tencent.feedback.common.e;
 import com.tencent.feedback.proguard.l;
 import com.tencent.feedback.proguard.o;
 import java.io.File;
+import java.io.FilenameFilter;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -15,9 +16,9 @@ public final class a
 {
   private Context a;
   private String b;
-  private List c;
+  private List<File> c;
   
-  public a(Context paramContext, String paramString, List paramList)
+  public a(Context paramContext, String paramString, List<File> paramList)
   {
     this.a = paramContext;
     this.b = paramString;
@@ -34,7 +35,13 @@ public final class a
     int i;
     if ((((File)localObject1).exists()) && (((File)localObject1).isDirectory()))
     {
-      localObject1 = ((File)localObject1).listFiles(new a.1(this));
+      localObject1 = ((File)localObject1).listFiles(new FilenameFilter()
+      {
+        public final boolean accept(File paramAnonymousFile, String paramAnonymousString)
+        {
+          return paramAnonymousString.endsWith("so");
+        }
+      });
       if (localObject1 != null)
       {
         int j = localObject1.length;

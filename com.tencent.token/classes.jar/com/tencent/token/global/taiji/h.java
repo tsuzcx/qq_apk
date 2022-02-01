@@ -1,31 +1,10 @@
 package com.tencent.token.global.taiji;
 
-import java.util.ArrayList;
-import java.util.Iterator;
+import java.util.concurrent.atomic.AtomicInteger;
 
-class h
-  implements Runnable
+public abstract interface h
 {
-  h(d paramd, i parami) {}
-  
-  public void run()
-  {
-    if (this.b.e.getCorePoolSize() < 18)
-    {
-      this.b.e.execute(this.a);
-      this.b.e.setCorePoolSize(this.b.e.getCorePoolSize() + 1);
-      this.b.e.setMaximumPoolSize(this.b.e.getCorePoolSize() + 1);
-    }
-    for (;;)
-    {
-      Iterator localIterator = this.b.b().iterator();
-      while (localIterator.hasNext()) {
-        ((r)localIterator.next()).a(this.a.a(), this.b.e.getActiveCount());
-      }
-      i.b(this.a).d = 5;
-      this.b.e.execute(this.a);
-    }
-  }
+  public static final AtomicInteger a = new AtomicInteger(1);
 }
 
 

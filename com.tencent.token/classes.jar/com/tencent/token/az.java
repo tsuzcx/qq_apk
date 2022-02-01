@@ -1,22 +1,142 @@
 package com.tencent.token;
 
-import android.content.Intent;
-import android.net.NetworkInfo;
+import android.text.TextUtils;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 
-final class az
-  implements Runnable
+public final class az
 {
-  private Intent a;
+  private String a;
+  private Map b;
   
-  az(ax paramax, Intent paramIntent)
+  public az(String paramString)
   {
-    this.a = paramIntent;
+    this.a = paramString;
+    this.b = new HashMap();
   }
   
-  public final void run()
+  public final a a(String paramString)
   {
-    NetworkInfo localNetworkInfo = (NetworkInfo)this.a.getParcelableExtra("networkInfo");
-    this.b.a(localNetworkInfo);
+    return (a)this.b.get(paramString);
+  }
+  
+  public final Map a()
+  {
+    return this.b;
+  }
+  
+  public final void a(a parama)
+  {
+    this.b.put(a.a(parama), parama);
+  }
+  
+  public final String b()
+  {
+    return this.a;
+  }
+  
+  public static final class a
+  {
+    private String a;
+    private String b;
+    private List c;
+    private long d;
+    
+    public a(String paramString1, long paramLong, String paramString2)
+    {
+      this.a = paramString1;
+      this.d = paramLong;
+      this.b = paramString2;
+      this.c = new ArrayList();
+    }
+    
+    public a(String paramString1, long paramLong, String paramString2, String paramString3, String paramString4)
+    {
+      this.a = paramString1;
+      this.d = paramLong;
+      this.b = paramString3;
+      this.c = a(paramString2);
+      if (!TextUtils.isEmpty(paramString4))
+      {
+        paramString1 = paramString4.split(":");
+        if ((paramString1 != null) && (paramString1.length > 0)) {
+          new ay(paramString1[0], Integer.parseInt(paramString1[1]));
+        }
+      }
+    }
+    
+    private static ArrayList a(String paramString)
+    {
+      ArrayList localArrayList = new ArrayList();
+      if (!TextUtils.isEmpty(paramString))
+      {
+        paramString = paramString.split(",");
+        if ((paramString != null) && (paramString.length > 0))
+        {
+          int j = paramString.length;
+          int i = 0;
+          while (i < j)
+          {
+            String[] arrayOfString = paramString[i].split(":");
+            if ((arrayOfString != null) && (arrayOfString.length > 0)) {
+              localArrayList.add(new ay(arrayOfString[0], Integer.parseInt(arrayOfString[1])));
+            }
+            i += 1;
+          }
+        }
+      }
+      return localArrayList;
+    }
+    
+    public final String a()
+    {
+      return this.a;
+    }
+    
+    public final void a(ay paramay)
+    {
+      this.c.add(paramay);
+    }
+    
+    public final long b()
+    {
+      return this.d;
+    }
+    
+    public final List c()
+    {
+      return this.c;
+    }
+    
+    public final String d()
+    {
+      Object localObject = this.c;
+      if ((localObject == null) || (((List)localObject).size() == 0)) {
+        return "";
+      }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localObject = ((List)localObject).iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        localStringBuilder.append(((ay)((Iterator)localObject).next()).c());
+        localStringBuilder.append(",");
+      }
+      localStringBuilder.deleteCharAt(localStringBuilder.length() - 1);
+      return localStringBuilder.toString();
+    }
+    
+    public final String e()
+    {
+      return this.b;
+    }
+    
+    public final boolean f()
+    {
+      return System.currentTimeMillis() - this.d > bd.a().b.e * 60 * 1000;
+    }
   }
 }
 

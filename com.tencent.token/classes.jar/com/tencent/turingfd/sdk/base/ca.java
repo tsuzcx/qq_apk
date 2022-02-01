@@ -1,27 +1,70 @@
 package com.tencent.turingfd.sdk.base;
 
-import android.os.Build;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
+import android.content.Context;
+import android.text.TextUtils;
 
-public class ca
+public final class ca
 {
-  public static Map a = new ConcurrentHashMap();
-  public static cc b;
-  public static String c;
-  
-  static
+  public static a a(Context paramContext)
   {
-    a.put("22C4185", new cb(new ck()));
-    a.put("C892BA2", new cb(new cl()));
-    a.put("43780D5", new cb(new cl()));
-    c = "";
-    try
+    return a(cz.a(paramContext));
+  }
+  
+  public static a a(cf paramcf)
+  {
+    return new b(paramcf);
+  }
+  
+  public static void a(bz parambz)
+  {
+    cz.a(parambz);
+  }
+  
+  public static abstract interface a
+  {
+    public abstract String a();
+    
+    public abstract int b();
+    
+    public abstract String c();
+  }
+  
+  public static final class b
+    implements ca.a
+  {
+    public b(cf paramcf) {}
+    
+    public String a()
     {
-      c = ed.d(Build.MANUFACTURER.toLowerCase().getBytes()).substring(0, 7);
-      return;
+      return ((ao)this.a).b;
     }
-    catch (Throwable localThrowable) {}
+    
+    public int b()
+    {
+      return ((ao)this.a).d;
+    }
+    
+    public String c()
+    {
+      String str2 = ((ao)this.a).g;
+      if (TextUtils.isEmpty(str2)) {}
+      for (;;)
+      {
+        return "";
+        try
+        {
+          String str1 = str2.substring(0, 2);
+          str2 = str2.substring(2);
+          if (Integer.parseInt(str1, 16) == 1)
+          {
+            str1 = cm.a(str2);
+            return str1;
+          }
+        }
+        catch (Throwable localThrowable) {}
+      }
+      return "";
+    }
   }
 }
 

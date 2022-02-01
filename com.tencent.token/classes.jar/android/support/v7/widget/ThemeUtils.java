@@ -18,7 +18,7 @@ class ThemeUtils
   static final int[] PRESSED_STATE_SET;
   static final int[] SELECTED_STATE_SET;
   private static final int[] TEMP_ARRAY = new int[1];
-  private static final ThreadLocal TL_TYPED_VALUE = new ThreadLocal();
+  private static final ThreadLocal<TypedValue> TL_TYPED_VALUE = new ThreadLocal();
   
   static
   {

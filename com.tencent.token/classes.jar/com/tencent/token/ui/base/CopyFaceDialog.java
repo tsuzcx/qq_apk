@@ -3,16 +3,20 @@ package com.tencent.token.ui.base;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.Display;
+import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.Window;
 import android.view.WindowManager;
 import android.view.WindowManager.LayoutParams;
 import android.widget.Button;
 import android.widget.TextView;
+import com.tencent.token.ui.FaceRecognitionDefaultActivity;
 import com.tencent.token.ui.IndexActivity;
-import com.tencent.token.utils.x;
+import com.tencent.token.utils.m;
 
 public class CopyFaceDialog
   extends Dialog
@@ -36,10 +40,20 @@ public class CopyFaceDialog
     WindowManager.LayoutParams localLayoutParams = paramBundle.getAttributes();
     localLayoutParams.width = ((int)(((Activity)this.c).getWindowManager().getDefaultDisplay().getWidth() - 46.0F * IndexActivity.S_DENSITY));
     paramBundle.setAttributes(localLayoutParams);
-    this.b = ((TextView)findViewById(2131558759));
+    this.b = ((TextView)findViewById(2131558760));
     paramBundle = this.a + this.c.getResources().getString(2131230984);
-    this.b.setText(x.a(paramBundle, this.c.getResources().getDimension(2131296399), (int)(((Activity)this.c).getWindowManager().getDefaultDisplay().getWidth() - 80.0F * IndexActivity.S_DENSITY)));
-    ((Button)findViewById(2131558760)).setOnClickListener(new f(this));
+    this.b.setText(m.a(paramBundle, this.c.getResources().getDimension(2131296399), (int)(((Activity)this.c).getWindowManager().getDefaultDisplay().getWidth() - 80.0F * IndexActivity.S_DENSITY)));
+    ((Button)findViewById(2131558761)).setOnClickListener(new View.OnClickListener()
+    {
+      public void onClick(View paramAnonymousView)
+      {
+        CopyFaceDialog.this.dismiss();
+        paramAnonymousView = new Intent(CopyFaceDialog.a(CopyFaceDialog.this), FaceRecognitionDefaultActivity.class);
+        paramAnonymousView.addFlags(67108864);
+        CopyFaceDialog.a(CopyFaceDialog.this).startActivity(paramAnonymousView);
+        ((Activity)CopyFaceDialog.a(CopyFaceDialog.this)).finish();
+      }
+    });
   }
 }
 

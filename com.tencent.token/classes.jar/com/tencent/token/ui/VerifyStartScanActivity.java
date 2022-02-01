@@ -5,26 +5,41 @@ import android.content.res.Resources;
 import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.qbardemo.MainActivity;
-import com.tencent.token.global.j;
+import com.tencent.token.global.h;
 import com.tencent.token.ui.base.CameraPrepareDialog;
-import com.tencent.token.ui.base.dk;
+import com.tencent.token.ui.base.m;
+import com.tencent.token.ui.base.m.a;
+import com.tencent.token.utils.l;
+import java.util.List;
 
 public class VerifyStartScanActivity
   extends BaseActivity
 {
   private CameraPrepareDialog mCameraDialog;
-  private dk mScanTipView;
+  private m mScanTipView;
   private int mSource;
   
   private void gotoScan()
   {
     if (Build.VERSION.SDK_INT >= 23)
     {
-      afc localafc = new afc(this);
-      requestRuntimePermissions(new String[] { "android.permission.CAMERA" }, localafc);
+      f local3 = new f()
+      {
+        public void a()
+        {
+          VerifyStartScanActivity.this.gotonext();
+        }
+        
+        public void a(List<String> paramAnonymousList)
+        {
+          VerifyStartScanActivity.this.gotonext();
+        }
+      };
+      requestRuntimePermissions(new String[] { "android.permission.CAMERA" }, local3);
       return;
     }
     gotonext();
@@ -45,14 +60,26 @@ public class VerifyStartScanActivity
     View localView = new View(this);
     localView.setBackgroundColor(-16777216);
     setContentView(localView);
-    if (!j.a(this.mSource))
+    if (!h.a(this.mSource))
     {
       gotoScan();
-      setRightTitleImage(2130838011, new afa(this));
+      setRightTitleImage(2130838011, new View.OnClickListener()
+      {
+        public void onClick(View paramAnonymousView)
+        {
+          l.b(VerifyStartScanActivity.this, VerifyStartScanActivity.this.getString(2131231286));
+        }
+      });
       return;
     }
-    this.mScanTipView = new dk(this, this.mSource);
-    this.mScanTipView.setViewListener(new afb(this));
+    this.mScanTipView = new m(this, this.mSource);
+    this.mScanTipView.setViewListener(new m.a()
+    {
+      public void a()
+      {
+        VerifyStartScanActivity.this.gotoScan();
+      }
+    });
     addContentView(this.mScanTipView);
     if (this.mSource == 0)
     {

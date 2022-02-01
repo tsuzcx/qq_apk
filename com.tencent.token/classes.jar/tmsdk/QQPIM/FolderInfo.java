@@ -8,7 +8,7 @@ import java.util.ArrayList;
 public final class FolderInfo
   extends JceStruct
 {
-  static ArrayList ez = new ArrayList();
+  static ArrayList<SuffixInfo> ez = new ArrayList();
   public String absolutepath = "";
   public long clearTime = 0L;
   public long deleteSize = 0L;
@@ -16,7 +16,7 @@ public final class FolderInfo
   public boolean isView = false;
   public String packageName = "";
   public int pathType = 0;
-  public ArrayList suffixinfos = null;
+  public ArrayList<SuffixInfo> suffixinfos = null;
   
   static
   {

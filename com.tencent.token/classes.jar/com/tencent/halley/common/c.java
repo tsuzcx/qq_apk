@@ -1,372 +1,473 @@
 package com.tencent.halley.common;
 
-import android.util.Log;
-import java.io.FileWriter;
+import java.io.ByteArrayInputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.InputStream;
+import java.io.UnsupportedEncodingException;
+import java.security.MessageDigest;
 
-public class c
+public final class c
 {
-  private static volatile boolean a = true;
-  private static volatile boolean b = false;
-  private static FileWriter c = null;
+  private static byte[] a = { -128, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+  private long[] b = new long[4];
+  private long[] c = new long[2];
+  private byte[] d = new byte[64];
+  private byte[] e = new byte[16];
   
-  public static void a(String paramString1, String paramString2)
+  public c()
   {
-    if (a) {
-      Log.d(paramString1, paramString2);
+    a();
+  }
+  
+  private long a(long paramLong1, long paramLong2, long paramLong3, long paramLong4, long paramLong5, long paramLong6, long paramLong7)
+  {
+    paramLong1 = (paramLong2 & paramLong3 | (0xFFFFFFFF ^ paramLong2) & paramLong4) + paramLong5 + paramLong7 + paramLong1;
+    int i = (int)paramLong1;
+    int j = (int)paramLong6;
+    return ((int)paramLong1 >>> (int)(32L - paramLong6) | i << j) + paramLong2;
+  }
+  
+  public static String a(File paramFile)
+  {
+    int i = 0;
+    Object localObject1 = new FileInputStream(paramFile);
+    Object localObject2 = new byte[1024];
+    paramFile = new char[16];
+    paramFile[0] = 48;
+    paramFile[1] = 49;
+    paramFile[2] = 50;
+    paramFile[3] = 51;
+    paramFile[4] = 52;
+    paramFile[5] = 53;
+    paramFile[6] = 54;
+    paramFile[7] = 55;
+    paramFile[8] = 56;
+    paramFile[9] = 57;
+    paramFile[10] = 97;
+    paramFile[11] = 98;
+    paramFile[12] = 99;
+    paramFile[13] = 100;
+    paramFile[14] = 101;
+    paramFile[15] = 102;
+    paramFile;
+    MessageDigest localMessageDigest;
+    try
+    {
+      localMessageDigest = MessageDigest.getInstance("MD5");
+      for (;;)
+      {
+        j = ((FileInputStream)localObject1).read((byte[])localObject2, 0, 1024);
+        if (j == -1) {
+          break;
+        }
+        localMessageDigest.update((byte[])localObject2, 0, j);
+      }
+      ((FileInputStream)localObject1).close();
     }
-    if (b) {
-      a("D", paramString1, paramString2, null);
+    catch (Exception paramFile)
+    {
+      paramFile.printStackTrace();
+      return null;
+    }
+    localObject1 = localMessageDigest.digest();
+    localObject2 = new char[32];
+    int j = 0;
+    for (;;)
+    {
+      paramFile = new String((char[])localObject2);
+      return paramFile;
+      while (i < 16)
+      {
+        int k = localObject1[i];
+        int m = j + 1;
+        localObject2[j] = paramFile[(k >>> 4 & 0xF)];
+        j = m + 1;
+        localObject2[m] = paramFile[(k & 0xF)];
+        i += 1;
+      }
     }
   }
   
-  /* Error */
-  private static void a(String paramString1, String paramString2, String paramString3, Throwable paramThrowable)
+  public static String a(String paramString)
   {
-    // Byte code:
-    //   0: invokestatic 42	com/tencent/halley/common/h:a	()Landroid/content/Context;
-    //   3: ifnonnull +4 -> 7
-    //   6: return
-    //   7: new 44	java/lang/StringBuilder
-    //   10: dup
-    //   11: new 44	java/lang/StringBuilder
-    //   14: dup
-    //   15: invokespecial 45	java/lang/StringBuilder:<init>	()V
-    //   18: aload_0
-    //   19: invokevirtual 49	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   22: ldc 51
-    //   24: invokevirtual 49	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   27: invokevirtual 55	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   30: invokespecial 58	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   33: astore 5
-    //   35: aload 5
-    //   37: new 44	java/lang/StringBuilder
-    //   40: dup
-    //   41: invokespecial 45	java/lang/StringBuilder:<init>	()V
-    //   44: new 60	java/text/SimpleDateFormat
-    //   47: dup
-    //   48: ldc 62
-    //   50: getstatic 68	java/util/Locale:US	Ljava/util/Locale;
-    //   53: invokespecial 71	java/text/SimpleDateFormat:<init>	(Ljava/lang/String;Ljava/util/Locale;)V
-    //   56: new 73	java/util/Date
-    //   59: dup
-    //   60: invokestatic 79	java/lang/System:currentTimeMillis	()J
-    //   63: invokespecial 82	java/util/Date:<init>	(J)V
-    //   66: invokevirtual 86	java/text/SimpleDateFormat:format	(Ljava/util/Date;)Ljava/lang/String;
-    //   69: invokevirtual 49	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   72: ldc 51
-    //   74: invokevirtual 49	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   77: invokevirtual 55	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   80: invokevirtual 49	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   83: pop
-    //   84: aload 5
-    //   86: new 44	java/lang/StringBuilder
-    //   89: dup
-    //   90: invokespecial 45	java/lang/StringBuilder:<init>	()V
-    //   93: aload_1
-    //   94: invokevirtual 49	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   97: ldc 51
-    //   99: invokevirtual 49	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   102: invokevirtual 55	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   105: invokevirtual 49	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   108: pop
-    //   109: aload_2
-    //   110: ifnull +30 -> 140
-    //   113: aload 5
-    //   115: new 44	java/lang/StringBuilder
-    //   118: dup
-    //   119: ldc 88
-    //   121: invokespecial 58	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   124: aload_2
-    //   125: invokevirtual 49	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   128: ldc 51
-    //   130: invokevirtual 49	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   133: invokevirtual 55	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   136: invokevirtual 49	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   139: pop
-    //   140: aload_3
-    //   141: ifnull +28 -> 169
-    //   144: aload 5
-    //   146: new 44	java/lang/StringBuilder
-    //   149: dup
-    //   150: ldc 90
-    //   152: invokespecial 58	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   155: aload_3
-    //   156: invokestatic 94	android/util/Log:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
-    //   159: invokevirtual 49	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   162: invokevirtual 55	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   165: invokevirtual 49	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   168: pop
-    //   169: aload 5
-    //   171: ldc 96
-    //   173: invokevirtual 49	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   176: pop
-    //   177: ldc 2
-    //   179: monitorenter
-    //   180: getstatic 17	com/tencent/halley/common/c:c	Ljava/io/FileWriter;
-    //   183: astore_0
-    //   184: aload_0
-    //   185: ifnull +20 -> 205
-    //   188: getstatic 17	com/tencent/halley/common/c:c	Ljava/io/FileWriter;
-    //   191: aload 5
-    //   193: invokevirtual 55	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   196: invokevirtual 101	java/io/FileWriter:write	(Ljava/lang/String;)V
-    //   199: getstatic 17	com/tencent/halley/common/c:c	Ljava/io/FileWriter;
-    //   202: invokevirtual 104	java/io/FileWriter:flush	()V
-    //   205: getstatic 17	com/tencent/halley/common/c:c	Ljava/io/FileWriter;
-    //   208: ifnonnull +200 -> 408
-    //   211: new 60	java/text/SimpleDateFormat
-    //   214: dup
-    //   215: ldc 106
-    //   217: getstatic 68	java/util/Locale:US	Ljava/util/Locale;
-    //   220: invokespecial 71	java/text/SimpleDateFormat:<init>	(Ljava/lang/String;Ljava/util/Locale;)V
-    //   223: new 73	java/util/Date
-    //   226: dup
-    //   227: invokestatic 79	java/lang/System:currentTimeMillis	()J
-    //   230: invokespecial 82	java/util/Date:<init>	(J)V
-    //   233: invokevirtual 86	java/text/SimpleDateFormat:format	(Ljava/util/Date;)Ljava/lang/String;
-    //   236: astore_0
-    //   237: new 44	java/lang/StringBuilder
-    //   240: dup
-    //   241: ldc 108
-    //   243: invokespecial 58	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   246: aload_0
-    //   247: invokevirtual 49	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   250: invokevirtual 55	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   253: astore_1
-    //   254: invokestatic 113	com/tencent/halley/common/j:a	()Z
-    //   257: ifeq +256 -> 513
-    //   260: new 44	java/lang/StringBuilder
-    //   263: dup
-    //   264: invokespecial 45	java/lang/StringBuilder:<init>	()V
-    //   267: astore_2
-    //   268: invokestatic 113	com/tencent/halley/common/j:a	()Z
-    //   271: ifeq +253 -> 524
-    //   274: invokestatic 116	com/tencent/halley/common/j:e	()Ljava/lang/String;
-    //   277: astore_0
-    //   278: new 44	java/lang/StringBuilder
-    //   281: dup
-    //   282: invokespecial 45	java/lang/StringBuilder:<init>	()V
-    //   285: invokestatic 122	android/os/Environment:getExternalStorageDirectory	()Ljava/io/File;
-    //   288: invokevirtual 127	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   291: invokevirtual 49	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   294: ldc 129
-    //   296: invokevirtual 49	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   299: aload_0
-    //   300: invokevirtual 49	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   303: invokevirtual 55	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   306: astore_0
-    //   307: aload_2
-    //   308: aload_0
-    //   309: invokevirtual 49	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   312: ldc 131
-    //   314: invokevirtual 49	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   317: invokevirtual 55	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   320: astore_0
-    //   321: new 124	java/io/File
-    //   324: dup
-    //   325: aload_0
-    //   326: invokespecial 132	java/io/File:<init>	(Ljava/lang/String;)V
-    //   329: astore_2
-    //   330: aload_2
-    //   331: invokevirtual 135	java/io/File:exists	()Z
-    //   334: ifne +8 -> 342
-    //   337: aload_2
-    //   338: invokevirtual 138	java/io/File:mkdirs	()Z
-    //   341: pop
-    //   342: new 124	java/io/File
-    //   345: dup
-    //   346: aload_0
-    //   347: aload_1
-    //   348: invokespecial 140	java/io/File:<init>	(Ljava/lang/String;Ljava/lang/String;)V
-    //   351: astore_0
-    //   352: aload_0
-    //   353: invokevirtual 143	java/io/File:isDirectory	()Z
-    //   356: ifeq +8 -> 364
-    //   359: aload_0
-    //   360: invokevirtual 146	java/io/File:delete	()Z
-    //   363: pop
-    //   364: aload_0
-    //   365: invokevirtual 135	java/io/File:exists	()Z
-    //   368: istore 4
-    //   370: iload 4
-    //   372: ifne +8 -> 380
-    //   375: aload_0
-    //   376: invokevirtual 149	java/io/File:createNewFile	()Z
-    //   379: pop
-    //   380: new 98	java/io/FileWriter
-    //   383: dup
-    //   384: aload_0
-    //   385: invokespecial 152	java/io/FileWriter:<init>	(Ljava/io/File;)V
-    //   388: astore_0
-    //   389: aload_0
-    //   390: putstatic 17	com/tencent/halley/common/c:c	Ljava/io/FileWriter;
-    //   393: aload_0
-    //   394: aload 5
-    //   396: invokevirtual 55	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   399: invokevirtual 101	java/io/FileWriter:write	(Ljava/lang/String;)V
-    //   402: getstatic 17	com/tencent/halley/common/c:c	Ljava/io/FileWriter;
-    //   405: invokevirtual 104	java/io/FileWriter:flush	()V
-    //   408: ldc 2
-    //   410: monitorexit
-    //   411: return
-    //   412: astore_0
-    //   413: ldc 2
-    //   415: monitorexit
-    //   416: aload_0
-    //   417: athrow
-    //   418: astore_0
-    //   419: aload_0
-    //   420: invokevirtual 155	java/io/IOException:printStackTrace	()V
-    //   423: getstatic 17	com/tencent/halley/common/c:c	Ljava/io/FileWriter;
-    //   426: invokevirtual 158	java/io/FileWriter:close	()V
-    //   429: aconst_null
-    //   430: putstatic 17	com/tencent/halley/common/c:c	Ljava/io/FileWriter;
-    //   433: goto -228 -> 205
-    //   436: astore_0
-    //   437: aload_0
-    //   438: invokevirtual 155	java/io/IOException:printStackTrace	()V
-    //   441: goto -12 -> 429
-    //   444: astore_0
-    //   445: aload_0
-    //   446: invokevirtual 155	java/io/IOException:printStackTrace	()V
-    //   449: getstatic 17	com/tencent/halley/common/c:c	Ljava/io/FileWriter;
-    //   452: astore_0
-    //   453: aload_0
-    //   454: ifnull +13 -> 467
-    //   457: getstatic 17	com/tencent/halley/common/c:c	Ljava/io/FileWriter;
-    //   460: invokevirtual 158	java/io/FileWriter:close	()V
-    //   463: aconst_null
-    //   464: putstatic 17	com/tencent/halley/common/c:c	Ljava/io/FileWriter;
-    //   467: ldc 2
-    //   469: monitorexit
-    //   470: return
-    //   471: astore_0
-    //   472: aload_0
-    //   473: invokevirtual 159	java/lang/Exception:printStackTrace	()V
-    //   476: goto -13 -> 463
-    //   479: astore_0
-    //   480: aload_0
-    //   481: invokevirtual 155	java/io/IOException:printStackTrace	()V
-    //   484: getstatic 17	com/tencent/halley/common/c:c	Ljava/io/FileWriter;
-    //   487: astore_0
-    //   488: aload_0
-    //   489: ifnull -81 -> 408
-    //   492: getstatic 17	com/tencent/halley/common/c:c	Ljava/io/FileWriter;
-    //   495: invokevirtual 158	java/io/FileWriter:close	()V
-    //   498: aconst_null
-    //   499: putstatic 17	com/tencent/halley/common/c:c	Ljava/io/FileWriter;
-    //   502: goto -94 -> 408
-    //   505: astore_0
-    //   506: aload_0
-    //   507: invokevirtual 159	java/lang/Exception:printStackTrace	()V
-    //   510: goto -12 -> 498
-    //   513: ldc 161
-    //   515: ldc 163
-    //   517: invokestatic 166	android/util/Log:w	(Ljava/lang/String;Ljava/lang/String;)I
-    //   520: pop
-    //   521: goto -113 -> 408
-    //   524: ldc 168
-    //   526: astore_0
-    //   527: goto -220 -> 307
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	530	0	paramString1	String
-    //   0	530	1	paramString2	String
-    //   0	530	2	paramString3	String
-    //   0	530	3	paramThrowable	Throwable
-    //   368	3	4	bool	boolean
-    //   33	362	5	localStringBuilder	java.lang.StringBuilder
-    // Exception table:
-    //   from	to	target	type
-    //   180	184	412	finally
-    //   188	205	412	finally
-    //   205	307	412	finally
-    //   307	342	412	finally
-    //   342	364	412	finally
-    //   364	370	412	finally
-    //   375	380	412	finally
-    //   380	408	412	finally
-    //   408	411	412	finally
-    //   419	423	412	finally
-    //   423	429	412	finally
-    //   429	433	412	finally
-    //   437	441	412	finally
-    //   445	453	412	finally
-    //   457	463	412	finally
-    //   463	467	412	finally
-    //   467	470	412	finally
-    //   472	476	412	finally
-    //   480	488	412	finally
-    //   492	498	412	finally
-    //   498	502	412	finally
-    //   506	510	412	finally
-    //   513	521	412	finally
-    //   188	205	418	java/io/IOException
-    //   423	429	436	java/io/IOException
-    //   375	380	444	java/io/IOException
-    //   457	463	471	java/lang/Exception
-    //   380	408	479	java/io/IOException
-    //   492	498	505	java/lang/Exception
+    try
+    {
+      localObject = paramString.getBytes("ISO8859_1");
+      paramString = (String)localObject;
+    }
+    catch (UnsupportedEncodingException localUnsupportedEncodingException)
+    {
+      for (;;)
+      {
+        Object localObject;
+        paramString = paramString.getBytes();
+        continue;
+        int i = 120 - i;
+      }
+    }
+    localObject = new c();
+    ((c)localObject).a();
+    ((c)localObject).a(new ByteArrayInputStream(paramString), paramString.length);
+    paramString = new byte[8];
+    a(paramString, ((c)localObject).c, 8);
+    i = (int)(localObject.c[0] >>> 3) & 0x3F;
+    if (i < 56)
+    {
+      i = 56 - i;
+      ((c)localObject).a(a, i);
+      ((c)localObject).a(paramString, 8);
+      a(((c)localObject).e, ((c)localObject).b, 16);
+      localObject = ((c)localObject).e;
+      paramString = "";
+      i = 0;
+      while (i < 16)
+      {
+        paramString = new StringBuilder().append(paramString);
+        int j = localObject[i];
+        char[] arrayOfChar = new char[16];
+        char[] tmp144_142 = arrayOfChar;
+        tmp144_142[0] = 48;
+        char[] tmp149_144 = tmp144_142;
+        tmp149_144[1] = 49;
+        char[] tmp154_149 = tmp149_144;
+        tmp154_149[2] = 50;
+        char[] tmp159_154 = tmp154_149;
+        tmp159_154[3] = 51;
+        char[] tmp164_159 = tmp159_154;
+        tmp164_159[4] = 52;
+        char[] tmp169_164 = tmp164_159;
+        tmp169_164[5] = 53;
+        char[] tmp174_169 = tmp169_164;
+        tmp174_169[6] = 54;
+        char[] tmp180_174 = tmp174_169;
+        tmp180_174[7] = 55;
+        char[] tmp186_180 = tmp180_174;
+        tmp186_180[8] = 56;
+        char[] tmp192_186 = tmp186_180;
+        tmp192_186[9] = 57;
+        char[] tmp198_192 = tmp192_186;
+        tmp198_192[10] = 65;
+        char[] tmp204_198 = tmp198_192;
+        tmp204_198[11] = 66;
+        char[] tmp210_204 = tmp204_198;
+        tmp210_204[12] = 67;
+        char[] tmp216_210 = tmp210_204;
+        tmp216_210[13] = 68;
+        char[] tmp222_216 = tmp216_210;
+        tmp222_216[14] = 69;
+        char[] tmp228_222 = tmp222_216;
+        tmp228_222[15] = 70;
+        tmp228_222;
+        paramString = new String(new char[] { arrayOfChar[(j >>> 4 & 0xF)], arrayOfChar[(j & 0xF)] });
+        i += 1;
+      }
+    }
+    return paramString;
   }
   
-  public static void a(String paramString1, String paramString2, Throwable paramThrowable)
+  private void a()
   {
-    if (a) {
-      Log.w(paramString1, paramString2, paramThrowable);
+    this.c[0] = 0L;
+    this.c[1] = 0L;
+    this.b[0] = 1732584193L;
+    this.b[1] = 4023233417L;
+    this.b[2] = 2562383102L;
+    this.b[3] = 271733878L;
+  }
+  
+  private void a(byte[] paramArrayOfByte)
+  {
+    long l8 = this.b[0];
+    long l5 = this.b[1];
+    long l6 = this.b[2];
+    long l7 = this.b[3];
+    long[] arrayOfLong = new long[16];
+    int j = 0;
+    int i = 0;
+    if (j < 64)
+    {
+      int k = paramArrayOfByte[j];
+      if (k < 0)
+      {
+        l1 = k & 0xFF;
+        label67:
+        k = paramArrayOfByte[(j + 1)];
+        if (k >= 0) {
+          break label173;
+        }
+        l2 = k & 0xFF;
+        label88:
+        k = paramArrayOfByte[(j + 2)];
+        if (k >= 0) {
+          break label181;
+        }
+        l3 = k & 0xFF;
+        label109:
+        k = paramArrayOfByte[(j + 3)];
+        if (k >= 0) {
+          break label189;
+        }
+      }
+      label173:
+      label181:
+      label189:
+      for (l4 = k & 0xFF;; l4 = k)
+      {
+        arrayOfLong[i] = (l4 << 24 | l2 << 8 | l1 | l3 << 16);
+        j += 4;
+        i += 1;
+        break;
+        l1 = k;
+        break label67;
+        l2 = k;
+        break label88;
+        l3 = k;
+        break label109;
+      }
     }
-    if (b) {
-      a("W", paramString1, paramString2, paramThrowable);
+    long l1 = a(l8, l5, l6, l7, arrayOfLong[0], 7L, 3614090360L);
+    long l2 = a(l7, l1, l5, l6, arrayOfLong[1], 12L, 3905402710L);
+    long l3 = a(l6, l2, l1, l5, arrayOfLong[2], 17L, 606105819L);
+    long l4 = a(l5, l3, l2, l1, arrayOfLong[3], 22L, 3250441966L);
+    l1 = a(l1, l4, l3, l2, arrayOfLong[4], 7L, 4118548399L);
+    l2 = a(l2, l1, l4, l3, arrayOfLong[5], 12L, 1200080426L);
+    l3 = a(l3, l2, l1, l4, arrayOfLong[6], 17L, 2821735955L);
+    l4 = a(l4, l3, l2, l1, arrayOfLong[7], 22L, 4249261313L);
+    l1 = a(l1, l4, l3, l2, arrayOfLong[8], 7L, 1770035416L);
+    l2 = a(l2, l1, l4, l3, arrayOfLong[9], 12L, 2336552879L);
+    l3 = a(l3, l2, l1, l4, arrayOfLong[10], 17L, 4294925233L);
+    l4 = a(l4, l3, l2, l1, arrayOfLong[11], 22L, 2304563134L);
+    l1 = a(l1, l4, l3, l2, arrayOfLong[12], 7L, 1804603682L);
+    l2 = a(l2, l1, l4, l3, arrayOfLong[13], 12L, 4254626195L);
+    l3 = a(l3, l2, l1, l4, arrayOfLong[14], 17L, 2792965006L);
+    l4 = a(l4, l3, l2, l1, arrayOfLong[15], 22L, 1236535329L);
+    l1 = b(l1, l4, l3, l2, arrayOfLong[1], 5L, 4129170786L);
+    l2 = b(l2, l1, l4, l3, arrayOfLong[6], 9L, 3225465664L);
+    l3 = b(l3, l2, l1, l4, arrayOfLong[11], 14L, 643717713L);
+    l4 = b(l4, l3, l2, l1, arrayOfLong[0], 20L, 3921069994L);
+    l1 = b(l1, l4, l3, l2, arrayOfLong[5], 5L, 3593408605L);
+    l2 = b(l2, l1, l4, l3, arrayOfLong[10], 9L, 38016083L);
+    l3 = b(l3, l2, l1, l4, arrayOfLong[15], 14L, 3634488961L);
+    l4 = b(l4, l3, l2, l1, arrayOfLong[4], 20L, 3889429448L);
+    l1 = b(l1, l4, l3, l2, arrayOfLong[9], 5L, 568446438L);
+    l2 = b(l2, l1, l4, l3, arrayOfLong[14], 9L, 3275163606L);
+    l3 = b(l3, l2, l1, l4, arrayOfLong[3], 14L, 4107603335L);
+    l4 = b(l4, l3, l2, l1, arrayOfLong[8], 20L, 1163531501L);
+    l1 = b(l1, l4, l3, l2, arrayOfLong[13], 5L, 2850285829L);
+    l2 = b(l2, l1, l4, l3, arrayOfLong[2], 9L, 4243563512L);
+    l3 = b(l3, l2, l1, l4, arrayOfLong[7], 14L, 1735328473L);
+    l4 = b(l4, l3, l2, l1, arrayOfLong[12], 20L, 2368359562L);
+    l1 = c(l1, l4, l3, l2, arrayOfLong[5], 4L, 4294588738L);
+    l2 = c(l2, l1, l4, l3, arrayOfLong[8], 11L, 2272392833L);
+    l3 = c(l3, l2, l1, l4, arrayOfLong[11], 16L, 1839030562L);
+    l4 = c(l4, l3, l2, l1, arrayOfLong[14], 23L, 4259657740L);
+    l1 = c(l1, l4, l3, l2, arrayOfLong[1], 4L, 2763975236L);
+    l2 = c(l2, l1, l4, l3, arrayOfLong[4], 11L, 1272893353L);
+    l3 = c(l3, l2, l1, l4, arrayOfLong[7], 16L, 4139469664L);
+    l4 = c(l4, l3, l2, l1, arrayOfLong[10], 23L, 3200236656L);
+    l1 = c(l1, l4, l3, l2, arrayOfLong[13], 4L, 681279174L);
+    l2 = c(l2, l1, l4, l3, arrayOfLong[0], 11L, 3936430074L);
+    l3 = c(l3, l2, l1, l4, arrayOfLong[3], 16L, 3572445317L);
+    l4 = c(l4, l3, l2, l1, arrayOfLong[6], 23L, 76029189L);
+    l1 = c(l1, l4, l3, l2, arrayOfLong[9], 4L, 3654602809L);
+    l2 = c(l2, l1, l4, l3, arrayOfLong[12], 11L, 3873151461L);
+    l3 = c(l3, l2, l1, l4, arrayOfLong[15], 16L, 530742520L);
+    l4 = c(l4, l3, l2, l1, arrayOfLong[2], 23L, 3299628645L);
+    l1 = d(l1, l4, l3, l2, arrayOfLong[0], 6L, 4096336452L);
+    l2 = d(l2, l1, l4, l3, arrayOfLong[7], 10L, 1126891415L);
+    l3 = d(l3, l2, l1, l4, arrayOfLong[14], 15L, 2878612391L);
+    l4 = d(l4, l3, l2, l1, arrayOfLong[5], 21L, 4237533241L);
+    l1 = d(l1, l4, l3, l2, arrayOfLong[12], 6L, 1700485571L);
+    l2 = d(l2, l1, l4, l3, arrayOfLong[3], 10L, 2399980690L);
+    l3 = d(l3, l2, l1, l4, arrayOfLong[10], 15L, 4293915773L);
+    l4 = d(l4, l3, l2, l1, arrayOfLong[1], 21L, 2240044497L);
+    l1 = d(l1, l4, l3, l2, arrayOfLong[8], 6L, 1873313359L);
+    l2 = d(l2, l1, l4, l3, arrayOfLong[15], 10L, 4264355552L);
+    l3 = d(l3, l2, l1, l4, arrayOfLong[6], 15L, 2734768916L);
+    l4 = d(l4, l3, l2, l1, arrayOfLong[13], 21L, 1309151649L);
+    l1 = d(l1, l4, l3, l2, arrayOfLong[4], 6L, 4149444226L);
+    l2 = d(l2, l1, l4, l3, arrayOfLong[11], 10L, 3174756917L);
+    l3 = d(l3, l2, l1, l4, arrayOfLong[2], 15L, 718787259L);
+    l4 = d(l4, l3, l2, l1, arrayOfLong[9], 21L, 3951481745L);
+    paramArrayOfByte = this.b;
+    paramArrayOfByte[0] += l1;
+    paramArrayOfByte = this.b;
+    paramArrayOfByte[1] = (l4 + paramArrayOfByte[1]);
+    paramArrayOfByte = this.b;
+    paramArrayOfByte[2] += l3;
+    paramArrayOfByte = this.b;
+    paramArrayOfByte[3] += l2;
+  }
+  
+  private void a(byte[] paramArrayOfByte, int paramInt)
+  {
+    int k = 0;
+    byte[] arrayOfByte = new byte[64];
+    int j = (int)(this.c[0] >>> 3) & 0x3F;
+    Object localObject = this.c;
+    long l = localObject[0] + (paramInt << 3);
+    localObject[0] = l;
+    if (l < paramInt << 3)
+    {
+      localObject = this.c;
+      localObject[1] += 1L;
+    }
+    localObject = this.c;
+    localObject[1] += (paramInt >>> 29);
+    int m = 64 - j;
+    int i;
+    if (paramInt >= m)
+    {
+      localObject = this.d;
+      i = 0;
+      while (i < m)
+      {
+        localObject[(j + i)] = paramArrayOfByte[(0 + i)];
+        i += 1;
+      }
+      a(this.d);
+      i = m;
+      while (i + 63 < paramInt)
+      {
+        j = 0;
+        while (j < 64)
+        {
+          arrayOfByte[(0 + j)] = paramArrayOfByte[(i + j)];
+          j += 1;
+        }
+        a(arrayOfByte);
+        i += 64;
+      }
+      j = 0;
+    }
+    for (;;)
+    {
+      arrayOfByte = this.d;
+      while (k < paramInt - i)
+      {
+        arrayOfByte[(j + k)] = paramArrayOfByte[(i + k)];
+        k += 1;
+      }
+      i = 0;
     }
   }
   
-  public static void a(String paramString, Throwable paramThrowable)
+  private static void a(byte[] paramArrayOfByte, long[] paramArrayOfLong, int paramInt)
   {
-    if (a) {
-      Log.w(paramString, paramThrowable);
-    }
-    if (b) {
-      a("W", paramString, null, paramThrowable);
+    int i = 0;
+    int j = 0;
+    while (i < paramInt)
+    {
+      paramArrayOfByte[i] = ((byte)(int)(paramArrayOfLong[j] & 0xFF));
+      paramArrayOfByte[(i + 1)] = ((byte)(int)(paramArrayOfLong[j] >>> 8 & 0xFF));
+      paramArrayOfByte[(i + 2)] = ((byte)(int)(paramArrayOfLong[j] >>> 16 & 0xFF));
+      paramArrayOfByte[(i + 3)] = ((byte)(int)(paramArrayOfLong[j] >>> 24 & 0xFF));
+      j += 1;
+      i += 4;
     }
   }
   
-  public static void b(String paramString1, String paramString2)
+  private boolean a(InputStream paramInputStream, long paramLong)
   {
-    if (a) {
-      Log.i(paramString1, paramString2);
+    byte[] arrayOfByte1 = new byte[64];
+    int j = (int)(this.c[0] >>> 3) & 0x3F;
+    Object localObject = this.c;
+    long l = localObject[0] + (paramLong << 3);
+    localObject[0] = l;
+    if (l < paramLong << 3)
+    {
+      localObject = this.c;
+      localObject[1] += 1L;
     }
-    if (b) {
-      a("I", paramString1, paramString2, null);
+    localObject = this.c;
+    localObject[1] += (paramLong >>> 29);
+    int k = 64 - j;
+    int i;
+    if (paramLong >= k)
+    {
+      localObject = new byte[k];
+      try
+      {
+        paramInputStream.read((byte[])localObject, 0, k);
+        byte[] arrayOfByte2 = this.d;
+        i = 0;
+        while (i < k)
+        {
+          arrayOfByte2[(j + i)] = localObject[(0 + i)];
+          i += 1;
+        }
+        a(this.d);
+      }
+      catch (Exception paramInputStream)
+      {
+        paramInputStream.printStackTrace();
+        return false;
+      }
+      i = k;
+      while (i + 63 < paramLong) {
+        try
+        {
+          paramInputStream.read(arrayOfByte1);
+          a(arrayOfByte1);
+          i += 64;
+        }
+        catch (Exception paramInputStream)
+        {
+          paramInputStream.printStackTrace();
+          return false;
+        }
+      }
+      j = 0;
     }
+    for (;;)
+    {
+      arrayOfByte1 = new byte[(int)(paramLong - i)];
+      try
+      {
+        paramInputStream.read(arrayOfByte1);
+        paramInputStream = this.d;
+        k = arrayOfByte1.length;
+        i = 0;
+        while (i < k)
+        {
+          paramInputStream[(j + i)] = arrayOfByte1[(0 + i)];
+          i += 1;
+          continue;
+          i = 0;
+        }
+      }
+      catch (Exception paramInputStream)
+      {
+        paramInputStream.printStackTrace();
+        return false;
+      }
+    }
+    return true;
   }
   
-  public static void b(String paramString1, String paramString2, Throwable paramThrowable)
+  private long b(long paramLong1, long paramLong2, long paramLong3, long paramLong4, long paramLong5, long paramLong6, long paramLong7)
   {
-    if (a) {
-      Log.e(paramString1, paramString2, paramThrowable);
-    }
-    if (b) {
-      a("E", paramString1, paramString2, paramThrowable);
-    }
+    paramLong1 = (paramLong2 & paramLong4 | (0xFFFFFFFF ^ paramLong4) & paramLong3) + paramLong5 + paramLong7 + paramLong1;
+    int i = (int)paramLong1;
+    int j = (int)paramLong6;
+    return ((int)paramLong1 >>> (int)(32L - paramLong6) | i << j) + paramLong2;
   }
   
-  public static void c(String paramString1, String paramString2)
+  private long c(long paramLong1, long paramLong2, long paramLong3, long paramLong4, long paramLong5, long paramLong6, long paramLong7)
   {
-    if (a) {
-      Log.w(paramString1, paramString2);
-    }
-    if (b) {
-      a("W", paramString1, paramString2, null);
-    }
+    paramLong1 = (paramLong2 ^ paramLong3 ^ paramLong4) + paramLong5 + paramLong7 + paramLong1;
+    int i = (int)paramLong1;
+    int j = (int)paramLong6;
+    return ((int)paramLong1 >>> (int)(32L - paramLong6) | i << j) + paramLong2;
   }
   
-  public static void d(String paramString1, String paramString2)
+  private long d(long paramLong1, long paramLong2, long paramLong3, long paramLong4, long paramLong5, long paramLong6, long paramLong7)
   {
-    if (a) {
-      Log.e(paramString1, paramString2);
-    }
-    if (b) {
-      a("E", paramString1, paramString2, null);
-    }
+    paramLong1 = ((0xFFFFFFFF ^ paramLong4 | paramLong2) ^ paramLong3) + paramLong5 + paramLong7 + paramLong1;
+    int i = (int)paramLong1;
+    int j = (int)paramLong6;
+    return ((int)paramLong1 >>> (int)(32L - paramLong6) | i << j) + paramLong2;
   }
 }
 

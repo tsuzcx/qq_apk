@@ -1,34 +1,30 @@
 package com.tencent.turingfd.sdk.base;
 
 public final class Durian
-  extends float
+  extends break
 {
-  public static Flat sc;
-  public String metaData = "";
-  public String tc = "";
-  public Flat uc = null;
+  public int hc = 0;
+  public int ic = 0;
+  public int jc = 0;
+  public int kc = 0;
+  public int lc = 0;
   
-  public void a(dp paramdp)
+  public void a(cy paramcy)
   {
-    this.tc = paramdp.a(0, true);
-    this.metaData = paramdp.a(1, false);
-    if (sc == null) {
-      sc = new Flat();
-    }
-    this.uc = ((Flat)paramdp.a(sc, 2, false));
+    this.hc = paramcy.a(this.hc, 0, true);
+    this.ic = paramcy.a(this.ic, 1, true);
+    this.jc = paramcy.a(this.jc, 2, true);
+    this.kc = paramcy.a(this.kc, 3, true);
+    this.lc = paramcy.a(this.lc, 4, true);
   }
   
-  public void a(dv paramdv)
+  public void a(db paramdb)
   {
-    paramdv.a(this.tc, 0);
-    Object localObject = this.metaData;
-    if (localObject != null) {
-      paramdv.a((String)localObject, 1);
-    }
-    localObject = this.uc;
-    if (localObject != null) {
-      paramdv.a((float)localObject, 2);
-    }
+    paramdb.a(this.hc, 0);
+    paramdb.a(this.ic, 1);
+    paramdb.a(this.jc, 2);
+    paramdb.a(this.kc, 3);
+    paramdb.a(this.lc, 4);
   }
 }
 

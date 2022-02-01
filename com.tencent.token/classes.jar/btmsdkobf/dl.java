@@ -6,7 +6,7 @@ import java.util.List;
 public class dl
   implements Serializable
 {
-  private List mY;
+  private List<Long> mY;
   
   public boolean b(int paramInt, long paramLong)
   {

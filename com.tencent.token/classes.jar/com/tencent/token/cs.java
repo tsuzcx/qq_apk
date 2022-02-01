@@ -1,17 +1,43 @@
 package com.tencent.token;
 
-import java.util.TimerTask;
-import oicq.wlogin_sdk.request.WtloginListener;
-import oicq.wlogin_sdk.tools.ErrMsg;
+import android.os.Handler;
+import com.tencent.token.core.bean.OnlineDeviceResult;
+import com.tencent.token.global.RqdApplication;
+import com.tencent.token.utils.l;
 
-class cs
-  extends TimerTask
+public class cs
+  extends ct
 {
-  cs(cp paramcp) {}
+  static cs a = null;
+  public OnlineDeviceResult b;
   
-  public void run()
+  private cs()
   {
-    this.a.e.OnCheckPictureAndGetSt(null, null, null, 8192, new ErrMsg());
+    super("tbl_login_log");
+  }
+  
+  public static cs a()
+  {
+    if (a == null) {
+      a = new cs();
+    }
+    return a;
+  }
+  
+  public static void b()
+  {
+    a = null;
+  }
+  
+  public void a(byte paramByte, String paramString, Handler paramHandler)
+  {
+    c();
+    ca.a().a(0L, paramByte, 0, l.a(by.a(RqdApplication.l()).b()), 523005419, 1, "com.tencent.token", paramString, paramHandler);
+  }
+  
+  public void c()
+  {
+    a(0);
   }
 }
 

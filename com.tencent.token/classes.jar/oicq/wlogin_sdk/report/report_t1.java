@@ -17,7 +17,7 @@ public class report_t1
   public String _device = new String("");
   public String _disp_name = new String("");
   public String _ksid = new String("");
-  public TreeMap _lst = new TreeMap();
+  public TreeMap<Integer, report_t2> _lst = new TreeMap();
   public int _os = 2;
   public String _os_v = new String("");
   public String _sdk_v = new Integer(5).toString();
@@ -42,8 +42,8 @@ public class report_t1
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 77	oicq/wlogin_sdk/report/report_t1:_lst	Ljava/util/TreeMap;
-    //   6: invokevirtual 84	java/util/TreeMap:size	()I
+    //   3: getfield 78	oicq/wlogin_sdk/report/report_t1:_lst	Ljava/util/TreeMap;
+    //   6: invokevirtual 85	java/util/TreeMap:size	()I
     //   9: istore_2
     //   10: iload_2
     //   11: ifgt +6 -> 17
@@ -51,17 +51,17 @@ public class report_t1
     //   15: monitorexit
     //   16: return
     //   17: aload_0
-    //   18: getfield 77	oicq/wlogin_sdk/report/report_t1:_lst	Ljava/util/TreeMap;
+    //   18: getfield 78	oicq/wlogin_sdk/report/report_t1:_lst	Ljava/util/TreeMap;
     //   21: aload_0
-    //   22: getfield 77	oicq/wlogin_sdk/report/report_t1:_lst	Ljava/util/TreeMap;
-    //   25: invokevirtual 84	java/util/TreeMap:size	()I
+    //   22: getfield 78	oicq/wlogin_sdk/report/report_t1:_lst	Ljava/util/TreeMap;
+    //   25: invokevirtual 85	java/util/TreeMap:size	()I
     //   28: iconst_1
     //   29: isub
-    //   30: invokestatic 88	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   33: invokevirtual 101	java/util/TreeMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   36: checkcast 103	oicq/wlogin_sdk/report/report_t2
+    //   30: invokestatic 89	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   33: invokevirtual 102	java/util/TreeMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   36: checkcast 104	oicq/wlogin_sdk/report/report_t2
     //   39: aload_1
-    //   40: invokevirtual 105	oicq/wlogin_sdk/report/report_t2:add_t3	(Loicq/wlogin_sdk/report/report_t3;)V
+    //   40: invokevirtual 106	oicq/wlogin_sdk/report/report_t2:add_t3	(Loicq/wlogin_sdk/report/report_t3;)V
     //   43: goto -29 -> 14
     //   46: astore_1
     //   47: aload_0
@@ -135,8 +135,8 @@ public class report_t1
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 77	oicq/wlogin_sdk/report/report_t1:_lst	Ljava/util/TreeMap;
-    //   6: invokevirtual 84	java/util/TreeMap:size	()I
+    //   3: getfield 78	oicq/wlogin_sdk/report/report_t1:_lst	Ljava/util/TreeMap;
+    //   6: invokevirtual 85	java/util/TreeMap:size	()I
     //   9: istore 6
     //   11: iload 6
     //   13: ifgt +6 -> 19
@@ -144,35 +144,35 @@ public class report_t1
     //   17: monitorexit
     //   18: return
     //   19: aload_0
-    //   20: getfield 77	oicq/wlogin_sdk/report/report_t1:_lst	Ljava/util/TreeMap;
+    //   20: getfield 78	oicq/wlogin_sdk/report/report_t1:_lst	Ljava/util/TreeMap;
     //   23: aload_0
-    //   24: getfield 77	oicq/wlogin_sdk/report/report_t1:_lst	Ljava/util/TreeMap;
-    //   27: invokevirtual 84	java/util/TreeMap:size	()I
+    //   24: getfield 78	oicq/wlogin_sdk/report/report_t1:_lst	Ljava/util/TreeMap;
+    //   27: invokevirtual 85	java/util/TreeMap:size	()I
     //   30: iconst_1
     //   31: isub
-    //   32: invokestatic 88	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   35: invokevirtual 101	java/util/TreeMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   38: checkcast 103	oicq/wlogin_sdk/report/report_t2
+    //   32: invokestatic 89	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   35: invokevirtual 102	java/util/TreeMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   38: checkcast 104	oicq/wlogin_sdk/report/report_t2
     //   41: lload_1
     //   42: aload_3
     //   43: iload 4
     //   45: iload 5
-    //   47: invokevirtual 142	oicq/wlogin_sdk/report/report_t2:commit	(JLjava/lang/String;II)V
-    //   50: getstatic 146	oicq/wlogin_sdk/tools/util:LCB	Loicq/wlogin_sdk/tools/LogCallBack;
+    //   47: invokevirtual 143	oicq/wlogin_sdk/report/report_t2:commit	(JLjava/lang/String;II)V
+    //   50: getstatic 147	oicq/wlogin_sdk/tools/util:LCB	Loicq/wlogin_sdk/tools/LogCallBack;
     //   53: ifnull -37 -> 16
-    //   56: getstatic 146	oicq/wlogin_sdk/tools/util:LCB	Loicq/wlogin_sdk/tools/LogCallBack;
+    //   56: getstatic 147	oicq/wlogin_sdk/tools/util:LCB	Loicq/wlogin_sdk/tools/LogCallBack;
     //   59: aload_0
-    //   60: getfield 77	oicq/wlogin_sdk/report/report_t1:_lst	Ljava/util/TreeMap;
+    //   60: getfield 78	oicq/wlogin_sdk/report/report_t1:_lst	Ljava/util/TreeMap;
     //   63: aload_0
-    //   64: getfield 77	oicq/wlogin_sdk/report/report_t1:_lst	Ljava/util/TreeMap;
-    //   67: invokevirtual 84	java/util/TreeMap:size	()I
+    //   64: getfield 78	oicq/wlogin_sdk/report/report_t1:_lst	Ljava/util/TreeMap;
+    //   67: invokevirtual 85	java/util/TreeMap:size	()I
     //   70: iconst_1
     //   71: isub
-    //   72: invokestatic 88	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   75: invokevirtual 101	java/util/TreeMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   78: checkcast 103	oicq/wlogin_sdk/report/report_t2
-    //   81: invokevirtual 150	oicq/wlogin_sdk/report/report_t2:toJasonObj	()Lorg/json/JSONObject;
-    //   84: invokevirtual 156	oicq/wlogin_sdk/tools/LogCallBack:OnLog	(Lorg/json/JSONObject;)V
+    //   72: invokestatic 89	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   75: invokevirtual 102	java/util/TreeMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   78: checkcast 104	oicq/wlogin_sdk/report/report_t2
+    //   81: invokevirtual 151	oicq/wlogin_sdk/report/report_t2:toJasonObj	()Lorg/json/JSONObject;
+    //   84: invokevirtual 157	oicq/wlogin_sdk/tools/LogCallBack:OnLog	(Lorg/json/JSONObject;)V
     //   87: goto -71 -> 16
     //   90: astore_3
     //   91: aload_0
@@ -203,106 +203,106 @@ public class report_t1
     //   3: monitorenter
     //   4: aconst_null
     //   5: astore_3
-    //   6: new 160	org/json/JSONObject
+    //   6: new 161	org/json/JSONObject
     //   9: dup
-    //   10: invokespecial 161	org/json/JSONObject:<init>	()V
+    //   10: invokespecial 162	org/json/JSONObject:<init>	()V
     //   13: astore_2
     //   14: aload_2
-    //   15: ldc 163
-    //   17: ldc 165
+    //   15: ldc 164
+    //   17: ldc 166
     //   19: iconst_1
-    //   20: anewarray 167	java/lang/Object
+    //   20: anewarray 168	java/lang/Object
     //   23: dup
     //   24: iconst_0
     //   25: aload_0
-    //   26: getfield 29	oicq/wlogin_sdk/report/report_t1:_os	I
-    //   29: invokestatic 88	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   26: getfield 30	oicq/wlogin_sdk/report/report_t1:_os	I
+    //   29: invokestatic 89	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   32: aastore
-    //   33: invokestatic 171	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
-    //   36: invokevirtual 174	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   33: invokestatic 172	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+    //   36: invokevirtual 175	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
     //   39: pop
     //   40: aload_2
-    //   41: ldc 176
+    //   41: ldc 177
     //   43: aload_0
-    //   44: getfield 38	oicq/wlogin_sdk/report/report_t1:_os_v	Ljava/lang/String;
-    //   47: invokevirtual 174	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   44: getfield 39	oicq/wlogin_sdk/report/report_t1:_os_v	Ljava/lang/String;
+    //   47: invokevirtual 175	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
     //   50: pop
     //   51: aload_2
-    //   52: ldc 178
+    //   52: ldc 179
     //   54: aload_0
-    //   55: getfield 40	oicq/wlogin_sdk/report/report_t1:_app_v	Ljava/lang/String;
-    //   58: invokevirtual 174	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   55: getfield 41	oicq/wlogin_sdk/report/report_t1:_app_v	Ljava/lang/String;
+    //   58: invokevirtual 175	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
     //   61: pop
     //   62: aload_2
-    //   63: ldc 180
+    //   63: ldc 181
     //   65: aload_0
-    //   66: getfield 51	oicq/wlogin_sdk/report/report_t1:_sdk_v	Ljava/lang/String;
-    //   69: invokevirtual 174	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   66: getfield 52	oicq/wlogin_sdk/report/report_t1:_sdk_v	Ljava/lang/String;
+    //   69: invokevirtual 175	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
     //   72: pop
     //   73: aload_2
-    //   74: ldc 182
+    //   74: ldc 183
     //   76: aload_0
-    //   77: getfield 53	oicq/wlogin_sdk/report/report_t1:_ksid	Ljava/lang/String;
-    //   80: invokevirtual 174	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   77: getfield 54	oicq/wlogin_sdk/report/report_t1:_ksid	Ljava/lang/String;
+    //   80: invokevirtual 175	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
     //   83: pop
     //   84: aload_2
-    //   85: ldc 184
+    //   85: ldc 185
     //   87: aload_0
-    //   88: getfield 55	oicq/wlogin_sdk/report/report_t1:_app_n	Ljava/lang/String;
-    //   91: invokevirtual 174	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   88: getfield 56	oicq/wlogin_sdk/report/report_t1:_app_n	Ljava/lang/String;
+    //   91: invokevirtual 175	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
     //   94: pop
     //   95: aload_2
-    //   96: ldc 186
+    //   96: ldc 187
     //   98: aload_0
-    //   99: getfield 57	oicq/wlogin_sdk/report/report_t1:_disp_name	Ljava/lang/String;
-    //   102: invokevirtual 174	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   99: getfield 58	oicq/wlogin_sdk/report/report_t1:_disp_name	Ljava/lang/String;
+    //   102: invokevirtual 175	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
     //   105: pop
     //   106: aload_2
-    //   107: ldc 188
+    //   107: ldc 189
     //   109: aload_0
-    //   110: getfield 59	oicq/wlogin_sdk/report/report_t1:_device	Ljava/lang/String;
-    //   113: invokevirtual 174	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   110: getfield 60	oicq/wlogin_sdk/report/report_t1:_device	Ljava/lang/String;
+    //   113: invokevirtual 175	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
     //   116: pop
     //   117: aload_2
-    //   118: ldc 190
+    //   118: ldc 191
     //   120: aload_0
-    //   121: getfield 61	oicq/wlogin_sdk/report/report_t1:_app_sig	Ljava/lang/String;
-    //   124: invokevirtual 174	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   121: getfield 62	oicq/wlogin_sdk/report/report_t1:_app_sig	Ljava/lang/String;
+    //   124: invokevirtual 175	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
     //   127: pop
     //   128: aload_2
-    //   129: ldc 192
+    //   129: ldc 193
     //   131: aload_0
-    //   132: getfield 68	oicq/wlogin_sdk/report/report_t1:_btime	Ljava/lang/String;
-    //   135: invokevirtual 174	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   132: getfield 69	oicq/wlogin_sdk/report/report_t1:_btime	Ljava/lang/String;
+    //   135: invokevirtual 175	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
     //   138: pop
     //   139: aload_2
-    //   140: ldc 194
+    //   140: ldc 195
     //   142: aload_0
-    //   143: getfield 72	oicq/wlogin_sdk/report/report_t1:_bver	Ljava/lang/String;
-    //   146: invokevirtual 174	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   143: getfield 73	oicq/wlogin_sdk/report/report_t1:_bver	Ljava/lang/String;
+    //   146: invokevirtual 175	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
     //   149: pop
-    //   150: new 196	org/json/JSONArray
+    //   150: new 197	org/json/JSONArray
     //   153: dup
-    //   154: invokespecial 197	org/json/JSONArray:<init>	()V
+    //   154: invokespecial 198	org/json/JSONArray:<init>	()V
     //   157: astore_3
     //   158: aload_0
-    //   159: getfield 77	oicq/wlogin_sdk/report/report_t1:_lst	Ljava/util/TreeMap;
-    //   162: invokevirtual 114	java/util/TreeMap:keySet	()Ljava/util/Set;
-    //   165: invokeinterface 120 1 0
+    //   159: getfield 78	oicq/wlogin_sdk/report/report_t1:_lst	Ljava/util/TreeMap;
+    //   162: invokevirtual 115	java/util/TreeMap:keySet	()Ljava/util/Set;
+    //   165: invokeinterface 121 1 0
     //   170: astore 4
     //   172: aload 4
-    //   174: invokeinterface 126 1 0
+    //   174: invokeinterface 127 1 0
     //   179: ifeq +36 -> 215
     //   182: aload_3
     //   183: iload_1
     //   184: aload_0
-    //   185: getfield 77	oicq/wlogin_sdk/report/report_t1:_lst	Ljava/util/TreeMap;
+    //   185: getfield 78	oicq/wlogin_sdk/report/report_t1:_lst	Ljava/util/TreeMap;
     //   188: aload 4
-    //   190: invokeinterface 130 1 0
-    //   195: invokevirtual 101	java/util/TreeMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   198: checkcast 103	oicq/wlogin_sdk/report/report_t2
-    //   201: invokevirtual 150	oicq/wlogin_sdk/report/report_t2:toJasonObj	()Lorg/json/JSONObject;
-    //   204: invokevirtual 200	org/json/JSONArray:put	(ILjava/lang/Object;)Lorg/json/JSONArray;
+    //   190: invokeinterface 131 1 0
+    //   195: invokevirtual 102	java/util/TreeMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   198: checkcast 104	oicq/wlogin_sdk/report/report_t2
+    //   201: invokevirtual 151	oicq/wlogin_sdk/report/report_t2:toJasonObj	()Lorg/json/JSONObject;
+    //   204: invokevirtual 201	org/json/JSONArray:put	(ILjava/lang/Object;)Lorg/json/JSONArray;
     //   207: pop
     //   208: iload_1
     //   209: iconst_1
@@ -310,9 +310,9 @@ public class report_t1
     //   211: istore_1
     //   212: goto -40 -> 172
     //   215: aload_2
-    //   216: ldc 202
+    //   216: ldc 203
     //   218: aload_3
-    //   219: invokevirtual 174	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   219: invokevirtual 175	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
     //   222: pop
     //   223: aload_0
     //   224: monitorexit

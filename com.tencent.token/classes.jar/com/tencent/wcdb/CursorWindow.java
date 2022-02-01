@@ -11,7 +11,7 @@ public class CursorWindow
   extends SQLiteClosable
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR;
+  public static final Parcelable.Creator<CursorWindow> CREATOR;
   private static final String STATS_TAG = "WCDB.CursorWindowStats";
   private static int sCursorWindowSize;
   private final String mName;
@@ -24,7 +24,18 @@ public class CursorWindow
     if (i != 0) {}
     for (sCursorWindowSize = Resources.getSystem().getInteger(i) * 1024;; sCursorWindowSize = 2097152)
     {
-      CREATOR = new CursorWindow.1();
+      CREATOR = new Parcelable.Creator()
+      {
+        public CursorWindow createFromParcel(Parcel paramAnonymousParcel)
+        {
+          return new CursorWindow(paramAnonymousParcel, null);
+        }
+        
+        public CursorWindow[] newArray(int paramAnonymousInt)
+        {
+          return new CursorWindow[paramAnonymousInt];
+        }
+      };
       return;
     }
   }

@@ -3,12 +3,16 @@ package android.support.v4.content.res;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.support.annotation.ArrayRes;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.annotation.RestrictTo;
 import android.support.compat.R.styleable;
 import android.support.v4.provider.FontRequest;
 import android.util.Base64;
 import android.util.Xml;
+import java.lang.annotation.Annotation;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -26,7 +30,7 @@ public class FontResourcesParserCompat
   private static final int NORMAL_WEIGHT = 400;
   
   @Nullable
-  public static FontResourcesParserCompat.FamilyResourceEntry parse(XmlPullParser paramXmlPullParser, Resources paramResources)
+  public static FamilyResourceEntry parse(XmlPullParser paramXmlPullParser, Resources paramResources)
   {
     int i;
     do
@@ -39,7 +43,7 @@ public class FontResourcesParserCompat
     return readFamilies(paramXmlPullParser, paramResources);
   }
   
-  public static List readCerts(Resources paramResources, @ArrayRes int paramInt)
+  public static List<List<byte[]>> readCerts(Resources paramResources, @ArrayRes int paramInt)
   {
     Object localObject1 = null;
     Object localObject2 = null;
@@ -80,7 +84,7 @@ public class FontResourcesParserCompat
   }
   
   @Nullable
-  private static FontResourcesParserCompat.FamilyResourceEntry readFamilies(XmlPullParser paramXmlPullParser, Resources paramResources)
+  private static FamilyResourceEntry readFamilies(XmlPullParser paramXmlPullParser, Resources paramResources)
   {
     paramXmlPullParser.require(2, null, "font-family");
     if (paramXmlPullParser.getName().equals("font-family")) {
@@ -91,7 +95,7 @@ public class FontResourcesParserCompat
   }
   
   @Nullable
-  private static FontResourcesParserCompat.FamilyResourceEntry readFamily(XmlPullParser paramXmlPullParser, Resources paramResources)
+  private static FamilyResourceEntry readFamily(XmlPullParser paramXmlPullParser, Resources paramResources)
   {
     Object localObject = paramResources.obtainAttributes(Xml.asAttributeSet(paramXmlPullParser), R.styleable.FontFamily);
     String str1 = ((TypedArray)localObject).getString(R.styleable.FontFamily_fontProviderAuthority);
@@ -106,7 +110,7 @@ public class FontResourcesParserCompat
       while (paramXmlPullParser.next() != 3) {
         skip(paramXmlPullParser);
       }
-      return new FontResourcesParserCompat.ProviderResourceEntry(new FontRequest(str1, str2, str3, readCerts(paramResources, i)), j, k);
+      return new ProviderResourceEntry(new FontRequest(str1, str2, str3, readCerts(paramResources, i)), j, k);
     }
     localObject = new ArrayList();
     while (paramXmlPullParser.next() != 3) {
@@ -121,10 +125,10 @@ public class FontResourcesParserCompat
     if (((List)localObject).isEmpty()) {
       return null;
     }
-    return new FontResourcesParserCompat.FontFamilyFilesResourceEntry((FontResourcesParserCompat.FontFileResourceEntry[])((List)localObject).toArray(new FontResourcesParserCompat.FontFileResourceEntry[((List)localObject).size()]));
+    return new FontFamilyFilesResourceEntry((FontFileResourceEntry[])((List)localObject).toArray(new FontFileResourceEntry[((List)localObject).size()]));
   }
   
-  private static FontResourcesParserCompat.FontFileResourceEntry readFont(XmlPullParser paramXmlPullParser, Resources paramResources)
+  private static FontFileResourceEntry readFont(XmlPullParser paramXmlPullParser, Resources paramResources)
   {
     paramResources = paramResources.obtainAttributes(Xml.asAttributeSet(paramXmlPullParser), R.styleable.FontFamilyFont);
     int j;
@@ -167,7 +171,7 @@ public class FontResourcesParserCompat
       bool = false;
       break label62;
     }
-    return new FontResourcesParserCompat.FontFileResourceEntry(str, j, bool, k);
+    return new FontFileResourceEntry(str, j, bool, k);
   }
   
   private static void skip(XmlPullParser paramXmlPullParser)
@@ -187,7 +191,7 @@ public class FontResourcesParserCompat
     }
   }
   
-  private static List toByteArrayList(String[] paramArrayOfString)
+  private static List<byte[]> toByteArrayList(String[] paramArrayOfString)
   {
     ArrayList localArrayList = new ArrayList();
     int j = paramArrayOfString.length;
@@ -198,6 +202,99 @@ public class FontResourcesParserCompat
       i += 1;
     }
     return localArrayList;
+  }
+  
+  public static abstract interface FamilyResourceEntry {}
+  
+  @Retention(RetentionPolicy.SOURCE)
+  public static @interface FetchStrategy {}
+  
+  public static final class FontFamilyFilesResourceEntry
+    implements FontResourcesParserCompat.FamilyResourceEntry
+  {
+    @NonNull
+    private final FontResourcesParserCompat.FontFileResourceEntry[] mEntries;
+    
+    public FontFamilyFilesResourceEntry(@NonNull FontResourcesParserCompat.FontFileResourceEntry[] paramArrayOfFontFileResourceEntry)
+    {
+      this.mEntries = paramArrayOfFontFileResourceEntry;
+    }
+    
+    @NonNull
+    public FontResourcesParserCompat.FontFileResourceEntry[] getEntries()
+    {
+      return this.mEntries;
+    }
+  }
+  
+  public static final class FontFileResourceEntry
+  {
+    @NonNull
+    private final String mFileName;
+    private boolean mItalic;
+    private int mResourceId;
+    private int mWeight;
+    
+    public FontFileResourceEntry(@NonNull String paramString, int paramInt1, boolean paramBoolean, int paramInt2)
+    {
+      this.mFileName = paramString;
+      this.mWeight = paramInt1;
+      this.mItalic = paramBoolean;
+      this.mResourceId = paramInt2;
+    }
+    
+    @NonNull
+    public String getFileName()
+    {
+      return this.mFileName;
+    }
+    
+    public int getResourceId()
+    {
+      return this.mResourceId;
+    }
+    
+    public int getWeight()
+    {
+      return this.mWeight;
+    }
+    
+    public boolean isItalic()
+    {
+      return this.mItalic;
+    }
+  }
+  
+  public static final class ProviderResourceEntry
+    implements FontResourcesParserCompat.FamilyResourceEntry
+  {
+    @NonNull
+    private final FontRequest mRequest;
+    private final int mStrategy;
+    private final int mTimeoutMs;
+    
+    public ProviderResourceEntry(@NonNull FontRequest paramFontRequest, int paramInt1, int paramInt2)
+    {
+      this.mRequest = paramFontRequest;
+      this.mStrategy = paramInt1;
+      this.mTimeoutMs = paramInt2;
+    }
+    
+    public int getFetchStrategy()
+    {
+      return this.mStrategy;
+    }
+    
+    @NonNull
+    public FontRequest getRequest()
+    {
+      return this.mRequest;
+    }
+    
+    public int getTimeout()
+    {
+      return this.mTimeoutMs;
+    }
   }
 }
 

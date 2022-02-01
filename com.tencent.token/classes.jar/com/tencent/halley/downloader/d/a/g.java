@@ -1,13 +1,13 @@
 package com.tencent.halley.downloader.d.a;
 
 final class g
-  extends Thread
+  implements Thread.UncaughtExceptionHandler
 {
-  private final long a;
+  g(f paramf) {}
   
-  public final long a()
+  public final void uncaughtException(Thread paramThread, Throwable paramThrowable)
   {
-    return this.a;
+    paramThrowable.printStackTrace();
   }
 }
 

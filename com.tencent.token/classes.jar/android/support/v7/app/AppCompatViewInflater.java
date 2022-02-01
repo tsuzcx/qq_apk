@@ -2,6 +2,7 @@ package android.support.v7.app;
 
 import android.content.Context;
 import android.content.ContextWrapper;
+import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.os.Build.VERSION;
 import android.support.annotation.NonNull;
@@ -27,15 +28,18 @@ import android.support.v7.widget.TintContextWrapper;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
+import android.view.View.OnClickListener;
 import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.Map;
 
 public class AppCompatViewInflater
 {
   private static final String LOG_TAG = "AppCompatViewInflater";
   private static final String[] sClassPrefixList = { "android.widget.", "android.view.", "android.webkit." };
-  private static final Map sConstructorMap = new ArrayMap();
-  private static final Class[] sConstructorSignature = { Context.class, AttributeSet.class };
+  private static final Map<String, Constructor<? extends View>> sConstructorMap = new ArrayMap();
+  private static final Class<?>[] sConstructorSignature = { Context.class, AttributeSet.class };
   private static final int[] sOnClickAttrs = { 16843375 };
   private final Object[] mConstructorArgs = new Object[2];
   
@@ -48,7 +52,7 @@ public class AppCompatViewInflater
     paramAttributeSet = ((Context)localObject).obtainStyledAttributes(paramAttributeSet, sOnClickAttrs);
     localObject = paramAttributeSet.getString(0);
     if (localObject != null) {
-      paramView.setOnClickListener(new AppCompatViewInflater.DeclaredOnClickListener(paramView, (String)localObject));
+      paramView.setOnClickListener(new DeclaredOnClickListener(paramView, (String)localObject));
     }
     paramAttributeSet.recycle();
   }
@@ -385,6 +389,74 @@ public class AppCompatViewInflater
         paramView = createSeekBar((Context)localObject, paramAttributeSet);
         verifyNotNull(paramView, paramString);
         break label254;
+      }
+    }
+  }
+  
+  private static class DeclaredOnClickListener
+    implements View.OnClickListener
+  {
+    private final View mHostView;
+    private final String mMethodName;
+    private Context mResolvedContext;
+    private Method mResolvedMethod;
+    
+    public DeclaredOnClickListener(@NonNull View paramView, @NonNull String paramString)
+    {
+      this.mHostView = paramView;
+      this.mMethodName = paramString;
+    }
+    
+    @NonNull
+    private void resolveMethod(@Nullable Context paramContext, @NonNull String paramString)
+    {
+      while (paramContext != null) {
+        try
+        {
+          if (!paramContext.isRestricted())
+          {
+            paramString = paramContext.getClass().getMethod(this.mMethodName, new Class[] { View.class });
+            if (paramString != null)
+            {
+              this.mResolvedMethod = paramString;
+              this.mResolvedContext = paramContext;
+              return;
+            }
+          }
+        }
+        catch (NoSuchMethodException paramString)
+        {
+          if ((paramContext instanceof ContextWrapper)) {
+            paramContext = ((ContextWrapper)paramContext).getBaseContext();
+          } else {
+            paramContext = null;
+          }
+        }
+      }
+      int i = this.mHostView.getId();
+      if (i == -1) {}
+      for (paramContext = "";; paramContext = " with id '" + this.mHostView.getContext().getResources().getResourceEntryName(i) + "'") {
+        throw new IllegalStateException("Could not find method " + this.mMethodName + "(View) in a parent or ancestor Context for android:onClick " + "attribute defined on view " + this.mHostView.getClass() + paramContext);
+      }
+    }
+    
+    public void onClick(@NonNull View paramView)
+    {
+      if (this.mResolvedMethod == null) {
+        resolveMethod(this.mHostView.getContext(), this.mMethodName);
+      }
+      try
+      {
+        this.mResolvedMethod.invoke(this.mResolvedContext, new Object[] { paramView });
+        return;
+      }
+      catch (IllegalAccessException paramView)
+      {
+        throw new IllegalStateException("Could not execute non-public method for android:onClick", paramView);
+      }
+      catch (InvocationTargetException paramView)
+      {
+        throw new IllegalStateException("Could not execute method for android:onClick", paramView);
       }
     }
   }

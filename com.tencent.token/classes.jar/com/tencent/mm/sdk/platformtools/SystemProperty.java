@@ -4,7 +4,7 @@ import java.util.HashMap;
 
 public final class SystemProperty
 {
-  private static final HashMap bl = new HashMap();
+  private static final HashMap<String, String> bl = new HashMap();
   
   public static String getProperty(String paramString)
   {

@@ -40,32 +40,32 @@ public class MenuBuilder
   private static final String PRESENTER_KEY = "android:menu:presenters";
   private static final String TAG = "MenuBuilder";
   private static final int[] sCategoryToOrder = { 1, 4, 5, 3, 2, 0 };
-  private ArrayList mActionItems;
-  private MenuBuilder.Callback mCallback;
+  private ArrayList<MenuItemImpl> mActionItems;
+  private Callback mCallback;
   private final Context mContext;
   private ContextMenu.ContextMenuInfo mCurrentMenuInfo;
   private int mDefaultShowAsAction = 0;
   private MenuItemImpl mExpandedItem;
-  private SparseArray mFrozenViewStates;
+  private SparseArray<Parcelable> mFrozenViewStates;
   Drawable mHeaderIcon;
   CharSequence mHeaderTitle;
   View mHeaderView;
   private boolean mIsActionItemsStale;
   private boolean mIsClosing = false;
   private boolean mIsVisibleItemsStale;
-  private ArrayList mItems;
+  private ArrayList<MenuItemImpl> mItems;
   private boolean mItemsChangedWhileDispatchPrevented = false;
-  private ArrayList mNonActionItems;
+  private ArrayList<MenuItemImpl> mNonActionItems;
   private boolean mOptionalIconsVisible = false;
   private boolean mOverrideVisibleItems;
-  private CopyOnWriteArrayList mPresenters = new CopyOnWriteArrayList();
+  private CopyOnWriteArrayList<WeakReference<MenuPresenter>> mPresenters = new CopyOnWriteArrayList();
   private boolean mPreventDispatchingItemsChanged = false;
   private boolean mQwertyMode;
   private final Resources mResources;
   private boolean mShortcutsVisible;
   private boolean mStructureChangedWhileDispatchPrevented = false;
-  private ArrayList mTempShortcutItemList = new ArrayList();
-  private ArrayList mVisibleItems;
+  private ArrayList<MenuItemImpl> mTempShortcutItemList = new ArrayList();
+  private ArrayList<MenuItemImpl> mVisibleItems;
   
   public MenuBuilder(Context paramContext)
   {
@@ -197,7 +197,7 @@ public class MenuBuilder
     }
   }
   
-  private static int findInsertIndex(ArrayList paramArrayList, int paramInt)
+  private static int findInsertIndex(ArrayList<MenuItemImpl> paramArrayList, int paramInt)
   {
     int i = paramArrayList.size() - 1;
     while (i >= 0)
@@ -641,7 +641,7 @@ public class MenuBuilder
     return null;
   }
   
-  void findItemsWithShortcutForKey(List paramList, int paramInt, KeyEvent paramKeyEvent)
+  void findItemsWithShortcutForKey(List<MenuItemImpl> paramList, int paramInt, KeyEvent paramKeyEvent)
   {
     boolean bool = isQwertyMode();
     int m = paramKeyEvent.getModifiers();
@@ -743,7 +743,7 @@ public class MenuBuilder
     this.mIsActionItemsStale = false;
   }
   
-  public ArrayList getActionItems()
+  public ArrayList<MenuItemImpl> getActionItems()
   {
     flagActionItems();
     return this.mActionItems;
@@ -784,7 +784,7 @@ public class MenuBuilder
     return (MenuItem)this.mItems.get(paramInt);
   }
   
-  public ArrayList getNonActionItems()
+  public ArrayList<MenuItemImpl> getNonActionItems()
   {
     flagActionItems();
     return this.mNonActionItems;
@@ -806,7 +806,7 @@ public class MenuBuilder
   }
   
   @NonNull
-  public ArrayList getVisibleItems()
+  public ArrayList<MenuItemImpl> getVisibleItems()
   {
     if (!this.mIsVisibleItemsStale) {
       return this.mVisibleItems;
@@ -1088,7 +1088,7 @@ public class MenuBuilder
     dispatchSaveInstanceState(paramBundle);
   }
   
-  public void setCallback(MenuBuilder.Callback paramCallback)
+  public void setCallback(Callback paramCallback)
   {
     this.mCallback = paramCallback;
   }
@@ -1262,6 +1262,20 @@ public class MenuBuilder
       this.mItemsChangedWhileDispatchPrevented = false;
       this.mStructureChangedWhileDispatchPrevented = false;
     }
+  }
+  
+  @RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
+  public static abstract interface Callback
+  {
+    public abstract boolean onMenuItemSelected(MenuBuilder paramMenuBuilder, MenuItem paramMenuItem);
+    
+    public abstract void onMenuModeChange(MenuBuilder paramMenuBuilder);
+  }
+  
+  @RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
+  public static abstract interface ItemInvoker
+  {
+    public abstract boolean invokeItem(MenuItemImpl paramMenuItemImpl);
   }
 }
 

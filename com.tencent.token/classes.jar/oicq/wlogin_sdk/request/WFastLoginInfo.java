@@ -8,7 +8,7 @@ import java.io.Serializable;
 public class WFastLoginInfo
   implements Parcelable, Serializable
 {
-  public static final Parcelable.Creator CREATOR = new WFastLoginInfo.1();
+  public static final Parcelable.Creator<WFastLoginInfo> CREATOR = new WFastLoginInfo.1();
   private static final long serialVersionUID = 1L;
   public byte[] _outA1 = new byte[0];
   public String adUrl = "";

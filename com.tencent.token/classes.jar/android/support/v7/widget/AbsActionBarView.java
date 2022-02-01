@@ -6,6 +6,7 @@ import android.content.res.Resources.Theme;
 import android.content.res.TypedArray;
 import android.support.v4.view.ViewCompat;
 import android.support.v4.view.ViewPropertyAnimatorCompat;
+import android.support.v4.view.ViewPropertyAnimatorListener;
 import android.support.v7.appcompat.R.attr;
 import android.support.v7.appcompat.R.styleable;
 import android.util.AttributeSet;
@@ -26,7 +27,7 @@ abstract class AbsActionBarView
   private boolean mEatingTouch;
   protected ActionMenuView mMenuView;
   protected final Context mPopupContext;
-  protected final AbsActionBarView.VisibilityAnimListener mVisAnimListener = new AbsActionBarView.VisibilityAnimListener(this);
+  protected final VisibilityAnimListener mVisAnimListener = new VisibilityAnimListener();
   protected ViewPropertyAnimatorCompat mVisibilityAnim;
   
   AbsActionBarView(Context paramContext)
@@ -194,7 +195,13 @@ abstract class AbsActionBarView
   
   public void postShowOverflowMenu()
   {
-    post(new AbsActionBarView.1(this));
+    post(new Runnable()
+    {
+      public void run()
+      {
+        AbsActionBarView.this.showOverflowMenu();
+      }
+    });
   }
   
   public void setContentHeight(int paramInt)
@@ -241,6 +248,42 @@ abstract class AbsActionBarView
       return this.mActionMenuPresenter.showOverflowMenu();
     }
     return false;
+  }
+  
+  protected class VisibilityAnimListener
+    implements ViewPropertyAnimatorListener
+  {
+    private boolean mCanceled = false;
+    int mFinalVisibility;
+    
+    protected VisibilityAnimListener() {}
+    
+    public void onAnimationCancel(View paramView)
+    {
+      this.mCanceled = true;
+    }
+    
+    public void onAnimationEnd(View paramView)
+    {
+      if (this.mCanceled) {
+        return;
+      }
+      AbsActionBarView.this.mVisibilityAnim = null;
+      AbsActionBarView.this.setVisibility(this.mFinalVisibility);
+    }
+    
+    public void onAnimationStart(View paramView)
+    {
+      AbsActionBarView.this.setVisibility(0);
+      this.mCanceled = false;
+    }
+    
+    public VisibilityAnimListener withFinalVisibility(ViewPropertyAnimatorCompat paramViewPropertyAnimatorCompat, int paramInt)
+    {
+      AbsActionBarView.this.mVisibilityAnim = paramViewPropertyAnimatorCompat;
+      this.mFinalVisibility = paramInt;
+      return this;
+    }
   }
 }
 

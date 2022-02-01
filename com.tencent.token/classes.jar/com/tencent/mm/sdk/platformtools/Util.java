@@ -224,7 +224,7 @@ public final class Util
     return 0;
   }
   
-  private static void a(Map paramMap, String paramString, Node paramNode, int paramInt)
+  private static void a(Map<String, String> paramMap, String paramString, Node paramNode, int paramInt)
   {
     int i = 0;
     if (paramNode.getNodeName().equals("#text")) {
@@ -724,7 +724,7 @@ public final class Util
     return new SimpleDateFormat("[yy-MM-dd HH:mm:ss]").format(new java.util.Date(1000L * paramLong));
   }
   
-  public static void freeBitmapMap(Map paramMap)
+  public static void freeBitmapMap(Map<String, Bitmap> paramMap)
   {
     Iterator localIterator = paramMap.entrySet().iterator();
     while (localIterator.hasNext())
@@ -1425,7 +1425,7 @@ public final class Util
     return true;
   }
   
-  public static String listToString(List paramList, String paramString)
+  public static String listToString(List<String> paramList, String paramString)
   {
     if (paramList == null) {
       return "";
@@ -1447,7 +1447,7 @@ public final class Util
     return localStringBuilder.toString();
   }
   
-  public static String mapToXml(String paramString, LinkedHashMap paramLinkedHashMap)
+  public static String mapToXml(String paramString, LinkedHashMap<String, String> paramLinkedHashMap)
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("<key>");
@@ -1574,7 +1574,7 @@ public final class Util
     return paramBoolean.booleanValue();
   }
   
-  public static Map parseIni(String paramString)
+  public static Map<String, String> parseIni(String paramString)
   {
     if ((paramString == null) || (paramString.length() <= 0))
     {
@@ -1608,7 +1608,7 @@ public final class Util
     }
   }
   
-  public static Map parseXml(String paramString1, String paramString2, String paramString3)
+  public static Map<String, String> parseXml(String paramString1, String paramString2, String paramString3)
   {
     if ((paramString1 == null) || (paramString1.length() <= 0)) {
       return null;
@@ -1751,11 +1751,11 @@ public final class Util
   {
     // Byte code:
     //   0: aload_0
-    //   1: invokestatic 510	com/tencent/mm/sdk/platformtools/Util:isNullOrNil	(Ljava/lang/String;)Z
+    //   1: invokestatic 512	com/tencent/mm/sdk/platformtools/Util:isNullOrNil	(Ljava/lang/String;)Z
     //   4: ifeq +14 -> 18
-    //   7: ldc_w 390
-    //   10: ldc_w 1382
-    //   13: invokestatic 1153	com/tencent/mm/sdk/platformtools/Log:w	(Ljava/lang/String;Ljava/lang/String;)V
+    //   7: ldc_w 392
+    //   10: ldc_w 1389
+    //   13: invokestatic 1156	com/tencent/mm/sdk/platformtools/Log:w	(Ljava/lang/String;Ljava/lang/String;)V
     //   16: aconst_null
     //   17: areturn
     //   18: new 209	java/io/File
@@ -1764,27 +1764,27 @@ public final class Util
     //   23: invokespecial 223	java/io/File:<init>	(Ljava/lang/String;)V
     //   26: astore_3
     //   27: aload_3
-    //   28: invokevirtual 513	java/io/File:exists	()Z
+    //   28: invokevirtual 515	java/io/File:exists	()Z
     //   31: ifne +22 -> 53
-    //   34: ldc_w 390
-    //   37: ldc_w 1384
+    //   34: ldc_w 392
+    //   37: ldc_w 1391
     //   40: iconst_1
     //   41: anewarray 4	java/lang/Object
     //   44: dup
     //   45: iconst_0
     //   46: aload_0
     //   47: aastore
-    //   48: invokestatic 1387	com/tencent/mm/sdk/platformtools/Log:w	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   48: invokestatic 1394	com/tencent/mm/sdk/platformtools/Log:w	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   51: aconst_null
     //   52: areturn
     //   53: aload_3
-    //   54: invokevirtual 1389	java/io/File:length	()J
+    //   54: invokevirtual 1396	java/io/File:length	()J
     //   57: l2i
     //   58: istore_1
     //   59: new 181	java/io/FileInputStream
     //   62: dup
     //   63: aload_3
-    //   64: invokespecial 1390	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   64: invokespecial 1397	java/io/FileInputStream:<init>	(Ljava/io/File;)V
     //   67: astore 4
     //   69: aload 4
     //   71: astore_3
@@ -1795,15 +1795,15 @@ public final class Util
     //   79: astore_3
     //   80: aload 4
     //   82: aload 5
-    //   84: invokevirtual 1391	java/io/FileInputStream:read	([B)I
+    //   84: invokevirtual 1398	java/io/FileInputStream:read	([B)I
     //   87: istore_2
     //   88: iload_2
     //   89: iload_1
     //   90: if_icmpeq +51 -> 141
     //   93: aload 4
     //   95: astore_3
-    //   96: ldc_w 390
-    //   99: ldc_w 1393
+    //   96: ldc_w 392
+    //   99: ldc_w 1400
     //   102: iconst_3
     //   103: anewarray 4	java/lang/Object
     //   106: dup
@@ -1820,9 +1820,9 @@ public final class Util
     //   119: iload_2
     //   120: invokestatic 295	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   123: aastore
-    //   124: invokestatic 1387	com/tencent/mm/sdk/platformtools/Log:w	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   124: invokestatic 1394	com/tencent/mm/sdk/platformtools/Log:w	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   127: aload 4
-    //   129: invokevirtual 1394	java/io/FileInputStream:close	()V
+    //   129: invokevirtual 1401	java/io/FileInputStream:close	()V
     //   132: aconst_null
     //   133: areturn
     //   134: astore_0
@@ -1832,11 +1832,11 @@ public final class Util
     //   140: areturn
     //   141: aload 4
     //   143: astore_3
-    //   144: ldc_w 390
-    //   147: ldc_w 1396
-    //   150: invokestatic 396	com/tencent/mm/sdk/platformtools/Log:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   144: ldc_w 392
+    //   147: ldc_w 1403
+    //   150: invokestatic 398	com/tencent/mm/sdk/platformtools/Log:d	(Ljava/lang/String;Ljava/lang/String;)V
     //   153: aload 4
-    //   155: invokevirtual 1394	java/io/FileInputStream:close	()V
+    //   155: invokevirtual 1401	java/io/FileInputStream:close	()V
     //   158: aload 5
     //   160: areturn
     //   161: astore_0
@@ -1849,11 +1849,11 @@ public final class Util
     //   173: aload_0
     //   174: astore_3
     //   175: aload 5
-    //   177: invokevirtual 363	java/lang/Exception:printStackTrace	()V
+    //   177: invokevirtual 365	java/lang/Exception:printStackTrace	()V
     //   180: aload_0
     //   181: ifnull -165 -> 16
     //   184: aload_0
-    //   185: invokevirtual 1394	java/io/FileInputStream:close	()V
+    //   185: invokevirtual 1401	java/io/FileInputStream:close	()V
     //   188: aconst_null
     //   189: areturn
     //   190: astore_0
@@ -1867,7 +1867,7 @@ public final class Util
     //   200: aload_3
     //   201: ifnull +7 -> 208
     //   204: aload_3
-    //   205: invokevirtual 1394	java/io/FileInputStream:close	()V
+    //   205: invokevirtual 1401	java/io/FileInputStream:close	()V
     //   208: aload_0
     //   209: athrow
     //   210: astore_3
@@ -1938,21 +1938,21 @@ public final class Util
   {
     // Byte code:
     //   0: aload_3
-    //   1: invokestatic 510	com/tencent/mm/sdk/platformtools/Util:isNullOrNil	(Ljava/lang/String;)Z
+    //   1: invokestatic 512	com/tencent/mm/sdk/platformtools/Util:isNullOrNil	(Ljava/lang/String;)Z
     //   4: ifne +84 -> 88
     //   7: iconst_1
     //   8: istore 4
     //   10: iload 4
-    //   12: invokestatic 725	junit/framework/Assert:assertTrue	(Z)V
-    //   15: ldc_w 390
+    //   12: invokestatic 728	junit/framework/Assert:assertTrue	(Z)V
+    //   15: ldc_w 392
     //   18: new 211	java/lang/StringBuilder
     //   21: dup
-    //   22: ldc_w 1400
-    //   25: invokespecial 433	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   22: ldc_w 1407
+    //   25: invokespecial 435	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   28: aload_3
     //   29: invokevirtual 216	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   32: invokevirtual 222	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   35: invokestatic 396	com/tencent/mm/sdk/platformtools/Log:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   35: invokestatic 398	com/tencent/mm/sdk/platformtools/Log:d	(Ljava/lang/String;Ljava/lang/String;)V
     //   38: new 209	java/io/File
     //   41: dup
     //   42: aload_3
@@ -1972,7 +1972,7 @@ public final class Util
     //   66: aload_2
     //   67: iload_1
     //   68: aload 5
-    //   70: invokevirtual 354	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
+    //   70: invokevirtual 356	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
     //   73: pop
     //   74: aload 5
     //   76: astore_3
@@ -2102,7 +2102,7 @@ public final class Util
     return localObject;
   }
   
-  public static List stringsToList(String[] paramArrayOfString)
+  public static List<String> stringsToList(String[] paramArrayOfString)
   {
     if ((paramArrayOfString == null) || (paramArrayOfString.length == 0)) {
       return null;
@@ -2166,35 +2166,35 @@ public final class Util
   {
     // Byte code:
     //   0: aload_0
-    //   1: invokestatic 510	com/tencent/mm/sdk/platformtools/Util:isNullOrNil	(Ljava/lang/String;)Z
+    //   1: invokestatic 512	com/tencent/mm/sdk/platformtools/Util:isNullOrNil	(Ljava/lang/String;)Z
     //   4: ifne +10 -> 14
     //   7: aload_1
-    //   8: invokestatic 1474	com/tencent/mm/sdk/platformtools/Util:isNullOrNil	([B)Z
+    //   8: invokestatic 1482	com/tencent/mm/sdk/platformtools/Util:isNullOrNil	([B)Z
     //   11: ifeq +14 -> 25
-    //   14: ldc_w 390
-    //   17: ldc_w 1476
-    //   20: invokestatic 1153	com/tencent/mm/sdk/platformtools/Log:w	(Ljava/lang/String;Ljava/lang/String;)V
+    //   14: ldc_w 392
+    //   17: ldc_w 1484
+    //   20: invokestatic 1156	com/tencent/mm/sdk/platformtools/Log:w	(Ljava/lang/String;Ljava/lang/String;)V
     //   23: iconst_0
     //   24: ireturn
     //   25: new 234	java/io/FileOutputStream
     //   28: dup
     //   29: aload_0
-    //   30: invokespecial 1477	java/io/FileOutputStream:<init>	(Ljava/lang/String;)V
+    //   30: invokespecial 1485	java/io/FileOutputStream:<init>	(Ljava/lang/String;)V
     //   33: astore_2
     //   34: aload_2
     //   35: astore_0
     //   36: aload_2
     //   37: aload_1
-    //   38: invokevirtual 1471	java/io/FileOutputStream:write	([B)V
+    //   38: invokevirtual 1479	java/io/FileOutputStream:write	([B)V
     //   41: aload_2
     //   42: astore_0
     //   43: aload_2
     //   44: invokevirtual 248	java/io/FileOutputStream:flush	()V
     //   47: aload_2
     //   48: invokevirtual 252	java/io/FileOutputStream:close	()V
-    //   51: ldc_w 390
-    //   54: ldc_w 1479
-    //   57: invokestatic 396	com/tencent/mm/sdk/platformtools/Log:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   51: ldc_w 392
+    //   54: ldc_w 1487
+    //   57: invokestatic 398	com/tencent/mm/sdk/platformtools/Log:d	(Ljava/lang/String;Ljava/lang/String;)V
     //   60: iconst_1
     //   61: ireturn
     //   62: astore_0
@@ -2207,12 +2207,12 @@ public final class Util
     //   73: aload_1
     //   74: astore_0
     //   75: aload_3
-    //   76: invokevirtual 363	java/lang/Exception:printStackTrace	()V
+    //   76: invokevirtual 365	java/lang/Exception:printStackTrace	()V
     //   79: aload_1
     //   80: astore_0
-    //   81: ldc_w 390
-    //   84: ldc_w 1481
-    //   87: invokestatic 1153	com/tencent/mm/sdk/platformtools/Log:w	(Ljava/lang/String;Ljava/lang/String;)V
+    //   81: ldc_w 392
+    //   84: ldc_w 1489
+    //   87: invokestatic 1156	com/tencent/mm/sdk/platformtools/Log:w	(Ljava/lang/String;Ljava/lang/String;)V
     //   90: aload_1
     //   91: ifnull -68 -> 23
     //   94: aload_1

@@ -1,11 +1,18 @@
 package taiji;
 
 public class aq
-  extends aw
 {
-  public z a()
+  private final String a;
+  private final String b;
+  
+  public String a()
   {
-    return new z(this.a);
+    return this.a;
+  }
+  
+  public String b()
+  {
+    return this.b;
   }
 }
 

@@ -1,121 +1,124 @@
 package okio;
 
-import java.io.EOFException;
-import java.io.IOException;
-import java.util.zip.DataFormatException;
-import java.util.zip.Inflater;
+import javax.annotation.Nullable;
 
-public final class n
-  implements y
+final class n
 {
-  private final i a;
-  private final Inflater b;
-  private int c;
-  private boolean d;
+  final byte[] a;
+  int b;
+  int c;
+  boolean d;
+  boolean e;
+  n f;
+  n g;
   
-  n(i parami, Inflater paramInflater)
+  n()
   {
-    if (parami == null) {
-      throw new IllegalArgumentException("source == null");
-    }
-    if (paramInflater == null) {
-      throw new IllegalArgumentException("inflater == null");
-    }
-    this.a = parami;
-    this.b = paramInflater;
+    this.a = new byte[8192];
+    this.e = true;
+    this.d = false;
   }
   
-  private void c()
+  n(byte[] paramArrayOfByte, int paramInt1, int paramInt2, boolean paramBoolean1, boolean paramBoolean2)
   {
-    if (this.c == 0) {
-      return;
-    }
-    int i = this.c - this.b.getRemaining();
-    this.c -= i;
-    this.a.h(i);
+    this.a = paramArrayOfByte;
+    this.b = paramInt1;
+    this.c = paramInt2;
+    this.d = paramBoolean1;
+    this.e = paramBoolean2;
   }
   
-  public long a(f paramf, long paramLong)
+  n a()
   {
-    if (paramLong < 0L) {
-      throw new IllegalArgumentException("byteCount < 0: " + paramLong);
+    this.d = true;
+    return new n(this.a, this.b, this.c, true, false);
+  }
+  
+  public n a(int paramInt)
+  {
+    if ((paramInt <= 0) || (paramInt > this.c - this.b)) {
+      throw new IllegalArgumentException();
     }
-    if (this.d) {
-      throw new IllegalStateException("closed");
-    }
-    if (paramLong == 0L) {
-      return 0L;
+    n localn;
+    if (paramInt >= 1024) {
+      localn = a();
     }
     for (;;)
     {
-      boolean bool = b();
-      try
-      {
-        v localv = paramf.e(1);
-        int i = (int)Math.min(paramLong, 8192 - localv.c);
-        i = this.b.inflate(localv.a, localv.c, i);
-        if (i > 0)
-        {
-          localv.c += i;
-          paramf.b += i;
-          return i;
-        }
-        if ((this.b.finished()) || (this.b.needsDictionary()))
-        {
-          c();
-          if (localv.b == localv.c)
-          {
-            paramf.a = localv.b();
-            w.a(localv);
-          }
-        }
-        else
-        {
-          if (!bool) {
-            continue;
-          }
-          throw new EOFException("source exhausted prematurely");
-        }
+      localn.c = (localn.b + paramInt);
+      this.b += paramInt;
+      this.g.a(localn);
+      return localn;
+      localn = o.a();
+      System.arraycopy(this.a, this.b, localn.a, 0, paramInt);
+    }
+  }
+  
+  public n a(n paramn)
+  {
+    paramn.g = this;
+    paramn.f = this.f;
+    this.f.g = paramn;
+    this.f = paramn;
+    return paramn;
+  }
+  
+  public void a(n paramn, int paramInt)
+  {
+    if (!paramn.e) {
+      throw new IllegalArgumentException();
+    }
+    if (paramn.c + paramInt > 8192)
+    {
+      if (paramn.d) {
+        throw new IllegalArgumentException();
       }
-      catch (DataFormatException paramf)
-      {
-        throw new IOException(paramf);
+      if (paramn.c + paramInt - paramn.b > 8192) {
+        throw new IllegalArgumentException();
       }
+      System.arraycopy(paramn.a, paramn.b, paramn.a, 0, paramn.c - paramn.b);
+      paramn.c -= paramn.b;
+      paramn.b = 0;
     }
-    return -1L;
+    System.arraycopy(this.a, this.b, paramn.a, paramn.c, paramInt);
+    paramn.c += paramInt;
+    this.b += paramInt;
   }
   
-  public z a()
+  @Nullable
+  public n b()
   {
-    return this.a.a();
+    if (this.f != this) {}
+    for (n localn = this.f;; localn = null)
+    {
+      this.g.f = this.f;
+      this.f.g = this.g;
+      this.f = null;
+      this.g = null;
+      return localn;
+    }
   }
   
-  public boolean b()
+  public void c()
   {
-    if (!this.b.needsInput()) {
-      return false;
+    if (this.g == this) {
+      throw new IllegalStateException();
     }
-    c();
-    if (this.b.getRemaining() != 0) {
-      throw new IllegalStateException("?");
-    }
-    if (this.a.e()) {
-      return true;
-    }
-    v localv = this.a.c().a;
-    this.c = (localv.c - localv.b);
-    this.b.setInput(localv.a, localv.b, this.c);
-    return false;
-  }
-  
-  public void close()
-  {
-    if (this.d) {
+    if (!this.g.e) {}
+    for (;;)
+    {
       return;
+      int j = this.c - this.b;
+      int k = this.g.c;
+      if (this.g.d) {}
+      for (int i = 0; j <= i + (8192 - k); i = this.g.b)
+      {
+        a(this.g, j);
+        b();
+        o.a(this);
+        return;
+      }
     }
-    this.b.end();
-    this.d = true;
-    this.a.close();
   }
 }
 

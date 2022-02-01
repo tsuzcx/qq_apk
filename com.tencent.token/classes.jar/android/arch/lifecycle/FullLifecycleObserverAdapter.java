@@ -12,7 +12,7 @@ class FullLifecycleObserverAdapter
   
   public void onStateChanged(LifecycleOwner paramLifecycleOwner, Lifecycle.Event paramEvent)
   {
-    switch (FullLifecycleObserverAdapter.1.$SwitchMap$android$arch$lifecycle$Lifecycle$Event[paramEvent.ordinal()])
+    switch (1.$SwitchMap$android$arch$lifecycle$Lifecycle$Event[paramEvent.ordinal()])
     {
     default: 
       return;

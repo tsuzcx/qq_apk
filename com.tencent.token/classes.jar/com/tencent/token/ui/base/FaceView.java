@@ -16,9 +16,9 @@ import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.view.View;
 import com.tencent.jni.LiveRectInfo;
-import com.tencent.token.global.h;
+import com.tencent.token.global.g;
 import com.tencent.token.ui.IndexActivity;
-import com.tencent.token.ui.gx;
+import com.tencent.token.ui.h;
 
 public class FaceView
   extends View
@@ -96,7 +96,7 @@ public class FaceView
     paramContext = paramContext.getResources().getDisplayMetrics();
     this.f = paramContext.widthPixels;
     this.g = (paramContext.heightPixels - IndexActivity.S_STATUS_HEIGHT);
-    h.c("changescreenWidth=" + this.f + ",screenHeight=" + this.g + ",scale=" + this.e);
+    g.c("changescreenWidth=" + this.f + ",screenHeight=" + this.g + ",scale=" + this.e);
     this.j = new Rect(0, 0, this.f, this.g);
     this.r = (this.f / 2);
     this.s = ((this.g - 40.0F * this.e) / 2.0F);
@@ -135,7 +135,7 @@ public class FaceView
   
   public void a(int paramInt1, int paramInt2)
   {
-    h.c("changescreenwidth=" + paramInt1 + ", screenheight=" + paramInt2 + ", titleheight=" + IndexActivity.S_STATUS_HEIGHT);
+    g.c("changescreenwidth=" + paramInt1 + ", screenheight=" + paramInt2 + ", titleheight=" + IndexActivity.S_STATUS_HEIGHT);
     if (paramInt2 != this.g)
     {
       this.f = paramInt1;
@@ -246,7 +246,7 @@ public class FaceView
     super.onDraw(paramCanvas);
     if (this.j == null)
     {
-      h.a("rect=null");
+      g.a("rect=null");
       return;
     }
     this.x.setAlpha(255);
@@ -521,13 +521,13 @@ public class FaceView
       this.h = 8;
       invalidate();
       return;
-      this.u = (this.s - this.m * this.U / gx.h);
+      this.u = (this.s - this.m * this.U / h.h);
       continue;
-      this.u = (this.s + this.m * this.U / gx.h);
+      this.u = (this.s + this.m * this.U / h.h);
       continue;
-      this.t = (this.r - this.m * this.U / gx.h);
+      this.t = (this.r - this.m * this.U / h.h);
       continue;
-      this.t = (this.r + this.m * this.U / gx.h);
+      this.t = (this.r + this.m * this.U / h.h);
     }
   }
   

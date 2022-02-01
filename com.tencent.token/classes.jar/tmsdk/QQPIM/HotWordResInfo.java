@@ -10,8 +10,8 @@ public final class HotWordResInfo
   extends JceStruct
   implements Cloneable
 {
-  static ArrayList eA;
-  public ArrayList hotwords = null;
+  static ArrayList<HotwordInfo> eA;
+  public ArrayList<HotwordInfo> hotwords = null;
   public int totalnum = 0;
   
   static
@@ -30,7 +30,7 @@ public final class HotWordResInfo
     setHotwords(this.hotwords);
   }
   
-  public HotWordResInfo(int paramInt, ArrayList paramArrayList)
+  public HotWordResInfo(int paramInt, ArrayList<HotwordInfo> paramArrayList)
   {
     setTotalnum(paramInt);
     setHotwords(paramArrayList);
@@ -73,7 +73,7 @@ public final class HotWordResInfo
     return "tmsdk.QQPIM.HotWordResInfo";
   }
   
-  public ArrayList getHotwords()
+  public ArrayList<HotwordInfo> getHotwords()
   {
     return this.hotwords;
   }
@@ -108,7 +108,7 @@ public final class HotWordResInfo
     setHotwords((ArrayList)paramJceInputStream.read(eA, 1, true));
   }
   
-  public void setHotwords(ArrayList paramArrayList)
+  public void setHotwords(ArrayList<HotwordInfo> paramArrayList)
   {
     this.hotwords = paramArrayList;
   }

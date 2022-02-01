@@ -1,6 +1,9 @@
 package btmsdkobf;
 
+import android.content.ComponentName;
 import android.content.Context;
+import android.content.ServiceConnection;
+import android.os.IBinder;
 import android.text.TextUtils;
 import java.util.concurrent.atomic.AtomicReference;
 
@@ -12,57 +15,57 @@ public class ev
   private static int pd = -1;
   
   /* Error */
-  private static int a(Context paramContext, AtomicReference paramAtomicReference1, AtomicReference paramAtomicReference2)
+  private static int a(Context paramContext, AtomicReference<IBinder> paramAtomicReference, final AtomicReference<ServiceConnection> paramAtomicReference1)
   {
     // Byte code:
-    //   0: invokestatic 38	java/lang/System:currentTimeMillis	()J
+    //   0: invokestatic 42	java/lang/System:currentTimeMillis	()J
     //   3: lstore_3
     //   4: new 4	java/lang/Object
     //   7: dup
-    //   8: invokespecial 41	java/lang/Object:<init>	()V
+    //   8: invokespecial 45	java/lang/Object:<init>	()V
     //   11: astore 5
-    //   13: new 43	android/content/Intent
+    //   13: new 47	android/content/Intent
     //   16: dup
-    //   17: invokespecial 44	android/content/Intent:<init>	()V
+    //   17: invokespecial 48	android/content/Intent:<init>	()V
     //   20: astore 6
     //   22: aload 6
-    //   24: new 46	android/content/ComponentName
+    //   24: new 50	android/content/ComponentName
     //   27: dup
-    //   28: ldc 48
-    //   30: ldc 50
-    //   32: invokespecial 53	android/content/ComponentName:<init>	(Ljava/lang/String;Ljava/lang/String;)V
-    //   35: invokevirtual 57	android/content/Intent:setComponent	(Landroid/content/ComponentName;)Landroid/content/Intent;
+    //   28: ldc 52
+    //   30: ldc 54
+    //   32: invokespecial 57	android/content/ComponentName:<init>	(Ljava/lang/String;Ljava/lang/String;)V
+    //   35: invokevirtual 61	android/content/Intent:setComponent	(Landroid/content/ComponentName;)Landroid/content/Intent;
     //   38: pop
     //   39: aload 6
-    //   41: ldc 59
-    //   43: invokevirtual 63	android/content/Intent:setAction	(Ljava/lang/String;)Landroid/content/Intent;
+    //   41: ldc 63
+    //   43: invokevirtual 67	android/content/Intent:setAction	(Ljava/lang/String;)Landroid/content/Intent;
     //   46: pop
     //   47: aload_0
     //   48: aload 6
-    //   50: new 65	btmsdkobf/iz
+    //   50: new 6	btmsdkobf/ev$1
     //   53: dup
     //   54: lload_3
     //   55: aload_1
     //   56: aload_2
     //   57: aload 5
-    //   59: invokespecial 68	btmsdkobf/iz:<init>	(JLjava/util/concurrent/atomic/AtomicReference;Ljava/util/concurrent/atomic/AtomicReference;Ljava/lang/Object;)V
+    //   59: invokespecial 70	btmsdkobf/ev$1:<init>	(JLjava/util/concurrent/atomic/AtomicReference;Ljava/util/concurrent/atomic/AtomicReference;Ljava/lang/Object;)V
     //   62: iconst_1
-    //   63: invokevirtual 74	android/content/Context:bindService	(Landroid/content/Intent;Landroid/content/ServiceConnection;I)Z
+    //   63: invokevirtual 76	android/content/Context:bindService	(Landroid/content/Intent;Landroid/content/ServiceConnection;I)Z
     //   66: ifne +7 -> 73
     //   69: sipush -400
     //   72: ireturn
     //   73: aload_1
-    //   74: invokevirtual 80	java/util/concurrent/atomic/AtomicReference:get	()Ljava/lang/Object;
+    //   74: invokevirtual 82	java/util/concurrent/atomic/AtomicReference:get	()Ljava/lang/Object;
     //   77: ifnonnull +17 -> 94
     //   80: aload 5
     //   82: monitorenter
     //   83: aload 5
-    //   85: ldc2_w 81
-    //   88: invokevirtual 86	java/lang/Object:wait	(J)V
+    //   85: ldc2_w 83
+    //   88: invokevirtual 88	java/lang/Object:wait	(J)V
     //   91: aload 5
     //   93: monitorexit
     //   94: aload_1
-    //   95: invokevirtual 80	java/util/concurrent/atomic/AtomicReference:get	()Ljava/lang/Object;
+    //   95: invokevirtual 82	java/util/concurrent/atomic/AtomicReference:get	()Ljava/lang/Object;
     //   98: ifnonnull +13 -> 111
     //   101: sipush -405
     //   104: ireturn
@@ -78,8 +81,8 @@ public class ev
     // Local variable table:
     //   start	length	slot	name	signature
     //   0	117	0	paramContext	Context
-    //   0	117	1	paramAtomicReference1	AtomicReference
-    //   0	117	2	paramAtomicReference2	AtomicReference
+    //   0	117	1	paramAtomicReference	AtomicReference<IBinder>
+    //   0	117	2	paramAtomicReference1	AtomicReference<ServiceConnection>
     //   3	52	3	l	long
     //   11	96	5	localObject	Object
     //   20	29	6	localIntent	android.content.Intent
@@ -105,45 +108,45 @@ public class ev
   }
   
   /* Error */
-  private static int b(Context paramContext, AtomicReference paramAtomicReference1, AtomicReference paramAtomicReference2)
+  private static int b(final Context paramContext, AtomicReference<IBinder> paramAtomicReference, final AtomicReference<ServiceConnection> paramAtomicReference1)
   {
     // Byte code:
     //   0: new 4	java/lang/Object
     //   3: dup
-    //   4: invokespecial 41	java/lang/Object:<init>	()V
+    //   4: invokespecial 45	java/lang/Object:<init>	()V
     //   7: astore 5
-    //   9: new 76	java/util/concurrent/atomic/AtomicReference
+    //   9: new 78	java/util/concurrent/atomic/AtomicReference
     //   12: dup
     //   13: iconst_0
-    //   14: invokestatic 107	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   17: invokespecial 110	java/util/concurrent/atomic/AtomicReference:<init>	(Ljava/lang/Object;)V
+    //   14: invokestatic 111	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   17: invokespecial 114	java/util/concurrent/atomic/AtomicReference:<init>	(Ljava/lang/Object;)V
     //   20: astore 6
-    //   22: invokestatic 38	java/lang/System:currentTimeMillis	()J
+    //   22: invokestatic 42	java/lang/System:currentTimeMillis	()J
     //   25: lstore_3
-    //   26: new 112	btmsdkobf/ja
+    //   26: new 8	btmsdkobf/ev$2
     //   29: dup
     //   30: aload_1
     //   31: aload 6
     //   33: aload_0
     //   34: aload_2
     //   35: aload 5
-    //   37: invokespecial 115	btmsdkobf/ja:<init>	(Ljava/util/concurrent/atomic/AtomicReference;Ljava/util/concurrent/atomic/AtomicReference;Landroid/content/Context;Ljava/util/concurrent/atomic/AtomicReference;Ljava/lang/Object;)V
-    //   40: invokevirtual 118	btmsdkobf/ja:start	()V
+    //   37: invokespecial 117	btmsdkobf/ev$2:<init>	(Ljava/util/concurrent/atomic/AtomicReference;Ljava/util/concurrent/atomic/AtomicReference;Landroid/content/Context;Ljava/util/concurrent/atomic/AtomicReference;Ljava/lang/Object;)V
+    //   40: invokevirtual 120	btmsdkobf/ev$2:start	()V
     //   43: aload 5
     //   45: monitorenter
     //   46: aload 5
-    //   48: ldc2_w 81
-    //   51: invokevirtual 86	java/lang/Object:wait	(J)V
+    //   48: ldc2_w 83
+    //   51: invokevirtual 88	java/lang/Object:wait	(J)V
     //   54: aload 5
     //   56: monitorexit
-    //   57: invokestatic 38	java/lang/System:currentTimeMillis	()J
+    //   57: invokestatic 42	java/lang/System:currentTimeMillis	()J
     //   60: lload_3
     //   61: lsub
-    //   62: putstatic 23	btmsdkobf/ev:pc	J
+    //   62: putstatic 27	btmsdkobf/ev:pc	J
     //   65: aload 6
-    //   67: invokevirtual 80	java/util/concurrent/atomic/AtomicReference:get	()Ljava/lang/Object;
-    //   70: checkcast 103	java/lang/Integer
-    //   73: invokevirtual 122	java/lang/Integer:intValue	()I
+    //   67: invokevirtual 82	java/util/concurrent/atomic/AtomicReference:get	()Ljava/lang/Object;
+    //   70: checkcast 107	java/lang/Integer
+    //   73: invokevirtual 124	java/lang/Integer:intValue	()I
     //   76: ireturn
     //   77: astore_0
     //   78: aload 5
@@ -155,8 +158,8 @@ public class ev
     // Local variable table:
     //   start	length	slot	name	signature
     //   0	87	0	paramContext	Context
-    //   0	87	1	paramAtomicReference1	AtomicReference
-    //   0	87	2	paramAtomicReference2	AtomicReference
+    //   0	87	1	paramAtomicReference	AtomicReference<IBinder>
+    //   0	87	2	paramAtomicReference1	AtomicReference<ServiceConnection>
     //   25	36	3	l	long
     //   7	72	5	localObject	Object
     //   20	46	6	localAtomicReference	AtomicReference

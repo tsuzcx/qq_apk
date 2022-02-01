@@ -1,112 +1,385 @@
 package com.tencent.token;
 
 import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.halley.common.h;
-import com.tencent.halley.scheduler.c.c;
-import com.tencent.halley.scheduler.c.i;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
+import android.net.wifi.WifiInfo;
+import android.net.wifi.WifiManager;
+import android.telephony.TelephonyManager;
+import com.tencent.halley.common.b;
 
-public final class bp
+public class bp
 {
-  public int a;
-  public int b;
-  public int c;
-  public int d;
-  public int e;
-  public i f;
+  public static String a;
+  public static String b = "";
+  private static final String c = bp.class.getSimpleName();
+  private static String d = "cmwap";
+  private static String e = "3gwap";
+  private static String f = "uniwap";
+  private static String g = "ctwap";
+  private static String h;
+  private static Context i;
+  private static volatile boolean j;
+  private static String k = "";
+  private static String l = "";
+  private static volatile int m = 0;
+  private static int n = 0;
+  private static volatile boolean o = false;
+  private static String p = "";
   
-  public bp() {}
-  
-  public bp(c paramc)
+  static
   {
-    this.a = paramc.a;
-    this.b = paramc.b;
-    this.c = paramc.c;
-    this.d = paramc.d;
-    this.e = paramc.e;
-    this.f = paramc.f;
+    a = "nonetwork";
+    h = "wifi";
+    j = true;
   }
   
-  private void c()
+  public static String a()
   {
-    if ((this.a < 10000) || (this.a > 60000)) {
-      this.a = 20000;
-    }
-    if ((this.b < 10000) || (this.b > 60000)) {
-      this.b = 20000;
-    }
-    if ((this.c < 3) || (this.c > 15)) {
-      this.c = 8;
-    }
-    if ((this.d <= 0) || (this.d > 5)) {
-      this.d = 2;
-    }
-    if ((this.e < 5) || (this.e > 2160)) {
-      this.e = 120;
-    }
-  }
-  
-  public final void a()
-  {
-    i locali = null;
-    Object localObject = h.a().getSharedPreferences("Access_Preferences", 0);
-    this.a = ((SharedPreferences)localObject).getInt("connectTimeout", 15000);
-    this.b = ((SharedPreferences)localObject).getInt("readTimeout", 15000);
-    this.c = ((SharedPreferences)localObject).getInt("apnCachedNum", 8);
-    this.d = ((SharedPreferences)localObject).getInt("parallelNum", 2);
-    this.e = ((SharedPreferences)localObject).getInt("expireTime", 120);
-    localObject = ((SharedPreferences)localObject).getString("samplingInfo", null);
-    if (localObject != null)
+    for (;;)
     {
-      localObject = ((String)localObject).split(";");
-      locali = new i();
-      HashMap localHashMap = new HashMap();
-      int i = 0;
-      while (i < localObject.length - 1)
+      try
       {
-        String[] arrayOfString = localObject[i].split(",");
-        localHashMap.put(Integer.valueOf(Integer.parseInt(arrayOfString[0])), Byte.valueOf(Byte.parseByte(arrayOfString[1])));
-        i += 1;
+        switch (m)
+        {
+        case 1: 
+          str = "unknown";
+          return str;
+        }
       }
-      locali.a = localHashMap;
-      locali.b = Byte.parseByte(localObject[(localObject.length - 1)]);
+      finally {}
+      String str = "ssid_" + k + l;
+      continue;
+      str = "apn_" + b;
+      continue;
+      str = "4Gapn_" + b;
     }
-    this.f = locali;
-    c();
   }
   
-  public final void b()
+  public static void a(Context paramContext)
   {
-    Object localObject = h.a().getSharedPreferences("Access_Preferences", 0);
-    c();
-    ((SharedPreferences)localObject).edit().putInt("connectTimeout", this.a).commit();
-    ((SharedPreferences)localObject).edit().putInt("readTimeout", this.b).commit();
-    ((SharedPreferences)localObject).edit().putInt("apnCachedNum", this.c).commit();
-    ((SharedPreferences)localObject).edit().putInt("parallelNum", this.d).commit();
-    ((SharedPreferences)localObject).edit().putInt("expireTime", this.e).commit();
-    SharedPreferences.Editor localEditor = ((SharedPreferences)localObject).edit();
-    localObject = this.f;
-    StringBuilder localStringBuilder = new StringBuilder();
-    if (((i)localObject).a != null)
+    try
     {
-      Iterator localIterator = ((i)localObject).a.entrySet().iterator();
-      while (localIterator.hasNext())
-      {
-        Map.Entry localEntry = (Map.Entry)localIterator.next();
-        localStringBuilder.append(localEntry.getKey() + "," + localEntry.getValue() + ";");
-      }
-      localStringBuilder.append(((i)localObject).b);
-    }
-    for (localObject = localStringBuilder.toString();; localObject = null)
-    {
-      localEditor.putString("samplingInfo", (String)localObject).commit();
+      i = paramContext;
+      b();
+      g();
       return;
+    }
+    catch (Throwable paramContext) {}
+  }
+  
+  /* Error */
+  public static boolean a(Integer paramInteger)
+  {
+    // Byte code:
+    //   0: iconst_1
+    //   1: istore_3
+    //   2: ldc 2
+    //   4: monitorenter
+    //   5: iload_3
+    //   6: istore_2
+    //   7: aload_0
+    //   8: invokevirtual 116	java/lang/Integer:intValue	()I
+    //   11: iconst_1
+    //   12: if_icmpeq +25 -> 37
+    //   15: iload_3
+    //   16: istore_2
+    //   17: aload_0
+    //   18: invokevirtual 116	java/lang/Integer:intValue	()I
+    //   21: iconst_2
+    //   22: if_icmpeq +15 -> 37
+    //   25: aload_0
+    //   26: invokevirtual 116	java/lang/Integer:intValue	()I
+    //   29: istore_1
+    //   30: iload_1
+    //   31: iconst_3
+    //   32: if_icmpne +10 -> 42
+    //   35: iload_3
+    //   36: istore_2
+    //   37: ldc 2
+    //   39: monitorexit
+    //   40: iload_2
+    //   41: ireturn
+    //   42: iconst_0
+    //   43: istore_2
+    //   44: goto -7 -> 37
+    //   47: astore_0
+    //   48: ldc 2
+    //   50: monitorexit
+    //   51: aload_0
+    //   52: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	53	0	paramInteger	Integer
+    //   29	4	1	i1	int
+    //   6	38	2	bool1	boolean
+    //   1	35	3	bool2	boolean
+    // Exception table:
+    //   from	to	target	type
+    //   7	15	47	finally
+    //   17	30	47	finally
+  }
+  
+  public static void b()
+  {
+    for (;;)
+    {
+      int i1;
+      try
+      {
+        b.b(c, "updateApn");
+        localObject1 = ((ConnectivityManager)i.getSystemService("connectivity")).getActiveNetworkInfo();
+        if (localObject1 != null) {
+          continue;
+        }
+        b = "";
+        m = 0;
+        o = false;
+        p = "";
+        j = false;
+        b = a;
+      }
+      catch (Throwable localThrowable)
+      {
+        Object localObject1;
+        localThrowable.printStackTrace();
+        continue;
+      }
+      finally {}
+      return;
+      if ((((NetworkInfo)localObject1).isAvailable()) && (((NetworkInfo)localObject1).isConnected()))
+      {
+        j = true;
+        i1 = ((NetworkInfo)localObject1).getType();
+        if (i1 == 1)
+        {
+          m = 1;
+          o = false;
+          p = "";
+          localObject1 = ((WifiManager)i.getSystemService("wifi")).getConnectionInfo();
+          k = ((WifiInfo)localObject1).getSSID();
+          l = ((WifiInfo)localObject1).getBSSID();
+          b = h;
+        }
+      }
+      else
+      {
+        j = false;
+        b = a;
+        continue;
+      }
+      String str = localObject2.getExtraInfo();
+      if (str == null)
+      {
+        b = "";
+        m = 0;
+        o = false;
+        p = "";
+      }
+      else
+      {
+        b = str.trim().toLowerCase();
+        if (i1 == 0)
+        {
+          i1 = localObject2.getSubtype();
+          if ((i1 != 1) && (i1 != 2) && (i1 != 4)) {
+            break label269;
+          }
+          m = 2;
+        }
+        for (;;)
+        {
+          n = h().intValue();
+          if (!b.contains(e)) {
+            break label289;
+          }
+          o = true;
+          p = "10.0.0.172";
+          break;
+          label269:
+          if (i1 == 13) {
+            m = 4;
+          } else {
+            m = 3;
+          }
+        }
+        label289:
+        if (b.contains(d))
+        {
+          o = true;
+          p = "10.0.0.172";
+        }
+        else if (b.contains(f))
+        {
+          o = true;
+          p = "10.0.0.172";
+        }
+        else if (b.contains(g))
+        {
+          o = true;
+          p = "10.0.0.200";
+        }
+        else
+        {
+          o = false;
+          p = "";
+        }
+      }
+    }
+  }
+  
+  public static boolean c()
+  {
+    return m == 1;
+  }
+  
+  public static int d()
+  {
+    try
+    {
+      int i1 = m;
+      return i1;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  public static int e()
+  {
+    try
+    {
+      int i1 = n;
+      return i1;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  public static boolean f()
+  {
+    return j;
+  }
+  
+  private static void g()
+  {
+    try
+    {
+      b.b(c, "showApnInfo... Apn:" + b + ",sIsNetworkOk:" + j + ",sNetType:" + m + ",sIsProxy:" + o + ",sProxyAddress:" + p);
+      return;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  private static Integer h()
+  {
+    int i3 = 3;
+    int i2 = 2;
+    int i1 = 1;
+    for (;;)
+    {
+      Object localObject4;
+      try
+      {
+        if (m == 1)
+        {
+          localObject1 = k;
+          if ((localObject1 == null) || (((String)localObject1).length() <= 0))
+          {
+            localObject1 = Integer.valueOf(0);
+            n = ((Integer)localObject1).intValue();
+            i1 = n;
+            return Integer.valueOf(i1);
+          }
+          localObject1 = ((String)localObject1).toLowerCase();
+          if (!((String)localObject1).contains("cmcc")) {
+            break label366;
+          }
+          if (!((String)localObject1).contains("chinanet")) {
+            break label363;
+          }
+          i1 = i3;
+          if (!((String)localObject1).contains("chinaunicom")) {
+            break label360;
+          }
+          i1 = i2;
+          localObject1 = Integer.valueOf(i1);
+          continue;
+        }
+        if ((m != 2) && (m != 3)) {
+          break label353;
+        }
+        localObject4 = i;
+        Object localObject1 = b;
+        localObject4 = (TelephonyManager)((Context)localObject4).getSystemService("phone");
+        if ((localObject4 == null) || (((TelephonyManager)localObject4).getSimState() != 5)) {
+          break label240;
+        }
+        localObject4 = ((TelephonyManager)localObject4).getSimOperator();
+        if (((String)localObject4).length() <= 0) {
+          break label240;
+        }
+        if ((((String)localObject4).equals("46000")) || (((String)localObject4).equals("46002")))
+        {
+          localObject1 = Integer.valueOf(1);
+          n = ((Integer)localObject1).intValue();
+          continue;
+        }
+        if (!((String)localObject4).equals("46001")) {
+          break label222;
+        }
+      }
+      finally {}
+      Object localObject3 = Integer.valueOf(2);
+      continue;
+      label222:
+      if (((String)localObject4).equals("46003"))
+      {
+        localObject3 = Integer.valueOf(3);
+      }
+      else
+      {
+        label240:
+        if (localObject3 != null)
+        {
+          localObject3 = ((String)localObject3).toLowerCase();
+          if ((((String)localObject3).contains("cmnet")) || (((String)localObject3).contains("cmwap")))
+          {
+            localObject3 = Integer.valueOf(1);
+            continue;
+          }
+          if ((((String)localObject3).contains("uninet")) || (((String)localObject3).contains("uniwap")) || (((String)localObject3).contains("3gnet")) || (((String)localObject3).contains("3gwap")))
+          {
+            localObject3 = Integer.valueOf(2);
+            continue;
+          }
+          if ((((String)localObject3).contains("ctnet")) || (((String)localObject3).contains("ctwap")))
+          {
+            localObject3 = Integer.valueOf(3);
+            continue;
+          }
+        }
+        localObject3 = Integer.valueOf(0);
+        continue;
+        label353:
+        n = 0;
+        continue;
+        label360:
+        continue;
+        label363:
+        continue;
+        label366:
+        i1 = 0;
+      }
     }
   }
 }

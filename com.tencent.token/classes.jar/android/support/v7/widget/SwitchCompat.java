@@ -45,7 +45,18 @@ public class SwitchCompat
   private static final int SANS = 1;
   private static final int SERIF = 2;
   private static final int THUMB_ANIMATION_DURATION = 250;
-  private static final Property THUMB_POS = new SwitchCompat.1(Float.class, "thumbPos");
+  private static final Property<SwitchCompat, Float> THUMB_POS = new Property(Float.class, "thumbPos")
+  {
+    public Float get(SwitchCompat paramAnonymousSwitchCompat)
+    {
+      return Float.valueOf(paramAnonymousSwitchCompat.mThumbPosition);
+    }
+    
+    public void set(SwitchCompat paramAnonymousSwitchCompat, Float paramAnonymousFloat)
+    {
+      paramAnonymousSwitchCompat.setThumbPosition(paramAnonymousFloat.floatValue());
+    }
+  };
   private static final int TOUCH_MODE_DOWN = 1;
   private static final int TOUCH_MODE_DRAGGING = 2;
   private static final int TOUCH_MODE_IDLE = 0;

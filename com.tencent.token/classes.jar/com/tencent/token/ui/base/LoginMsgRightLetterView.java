@@ -8,12 +8,12 @@ import android.graphics.Typeface;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
-import com.tencent.token.cg;
+import com.tencent.token.bt;
 
 public class LoginMsgRightLetterView
   extends View
 {
-  bw a;
+  a a;
   Paint b = new Paint();
   private int c = -1;
   private float d;
@@ -29,7 +29,7 @@ public class LoginMsgRightLetterView
   {
     super(paramContext, paramAttributeSet);
     this.d = paramContext.getResources().getDimension(2131296400);
-    this.e = cg.a().f;
+    this.e = bt.a().f;
     this.b.setTypeface(Typeface.DEFAULT_BOLD);
     this.b.setAntiAlias(true);
     this.b.setTextSize(this.d);
@@ -94,9 +94,14 @@ public class LoginMsgRightLetterView
     return super.onTouchEvent(paramMotionEvent);
   }
   
-  public void setOnTouchingLetterChangedListener(bw parambw)
+  public void setOnTouchingLetterChangedListener(a parama)
   {
-    this.a = parambw;
+    this.a = parama;
+  }
+  
+  public static abstract interface a
+  {
+    public abstract void a(int paramInt);
   }
 }
 

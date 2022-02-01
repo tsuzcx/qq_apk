@@ -33,7 +33,7 @@ class NotificationCompatJellybean
   private static final String KEY_RESULT_KEY = "resultKey";
   private static final String KEY_TITLE = "title";
   public static final String TAG = "NotificationCompat";
-  private static Class sActionClass;
+  private static Class<?> sActionClass;
   private static Field sActionIconField;
   private static Field sActionIntentField;
   private static Field sActionTitleField;
@@ -44,7 +44,7 @@ class NotificationCompatJellybean
   private static boolean sExtrasFieldAccessFailed;
   private static final Object sExtrasLock = new Object();
   
-  public static SparseArray buildActionExtrasMap(List paramList)
+  public static SparseArray<Bundle> buildActionExtrasMap(List<Bundle> paramList)
   {
     Object localObject1 = null;
     int j = paramList.size();

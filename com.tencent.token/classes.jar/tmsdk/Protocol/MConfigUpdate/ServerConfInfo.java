@@ -11,11 +11,11 @@ public final class ServerConfInfo
 {
   static byte[] bE;
   static byte[] bF;
-  static Map bG;
+  static Map<String, String> bG;
   static byte[] bx = (byte[])new byte[1];
   public byte[] confData = null;
   public int downloadflag = 0;
-  public Map extmap = null;
+  public Map<String, String> extmap = null;
   public int fileId = 0;
   public int fileSize = 0;
   public boolean isIncreUpdate = false;

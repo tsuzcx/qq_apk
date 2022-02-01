@@ -2,21 +2,21 @@ package com.tencent.token.core.protocolcenter.protocol;
 
 import android.graphics.Bitmap;
 import com.tencent.token.core.bean.ConfigResult;
-import com.tencent.token.core.protocolcenter.e;
-import com.tencent.token.ev;
-import com.tencent.token.global.f;
-import com.tencent.token.utils.x;
+import com.tencent.token.core.protocolcenter.d;
+import com.tencent.token.dn;
+import com.tencent.token.global.e;
+import com.tencent.token.utils.m;
 import java.util.HashMap;
 import org.json.JSONObject;
 
 public class ProtoGetStartUpImg
-  extends e
+  extends d
 {
   private ConfigResult d;
   
-  public static void a(ev paramev, ConfigResult paramConfigResult)
+  public static void a(dn paramdn, ConfigResult paramConfigResult)
   {
-    paramev.c.put("param.startup.img.result", paramConfigResult);
+    paramdn.c.put("param.startup.img.result", paramConfigResult);
   }
   
   protected String a()
@@ -27,9 +27,9 @@ public class ProtoGetStartUpImg
     return this.d.mStartUpImgUrl;
   }
   
-  protected void a(ev paramev)
+  protected void a(dn paramdn)
   {
-    this.d = ((ConfigResult)paramev.c.get("param.startup.img.result"));
+    this.d = ((ConfigResult)paramdn.c.get("param.startup.img.result"));
   }
   
   protected void a(JSONObject paramJSONObject)
@@ -41,7 +41,7 @@ public class ProtoGetStartUpImg
       return;
     }
     this.a.c();
-    x.a(this.d);
+    m.a(this.d);
   }
 }
 

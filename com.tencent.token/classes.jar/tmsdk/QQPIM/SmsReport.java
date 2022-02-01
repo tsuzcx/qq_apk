@@ -10,8 +10,8 @@ public final class SmsReport
   extends JceStruct
   implements Cloneable
 {
-  static ArrayList eV;
-  static ArrayList eW;
+  static ArrayList<RuleTypeID> eV;
+  static ArrayList<UserActionTime> eW;
   public String comment = "";
   public int matchTime = 0;
   public int product = 0;
@@ -22,8 +22,8 @@ public final class SmsReport
   public int ucActionReason = 0;
   public int ucContentType = 0;
   public int ucMinusMark = 0;
-  public ArrayList vecHitRule = null;
-  public ArrayList vecUserAction = null;
+  public ArrayList<RuleTypeID> vecHitRule = null;
+  public ArrayList<UserActionTime> vecUserAction = null;
   
   static
   {
@@ -51,7 +51,7 @@ public final class SmsReport
     setProduct(this.product);
   }
   
-  public SmsReport(String paramString1, String paramString2, int paramInt1, int paramInt2, int paramInt3, int paramInt4, ArrayList paramArrayList1, int paramInt5, ArrayList paramArrayList2, String paramString3, int paramInt6, int paramInt7)
+  public SmsReport(String paramString1, String paramString2, int paramInt1, int paramInt2, int paramInt3, int paramInt4, ArrayList<RuleTypeID> paramArrayList, int paramInt5, ArrayList<UserActionTime> paramArrayList1, String paramString3, int paramInt6, int paramInt7)
   {
     setSender(paramString1);
     setSms(paramString2);
@@ -59,9 +59,9 @@ public final class SmsReport
     setUcAction(paramInt2);
     setUcActionReason(paramInt3);
     setUcContentType(paramInt4);
-    setVecHitRule(paramArrayList1);
+    setVecHitRule(paramArrayList);
     setUcMinusMark(paramInt5);
-    setVecUserAction(paramArrayList2);
+    setVecUserAction(paramArrayList1);
     setComment(paramString3);
     setSmsType(paramInt6);
     setProduct(paramInt7);
@@ -154,12 +154,12 @@ public final class SmsReport
     return this.ucMinusMark;
   }
   
-  public ArrayList getVecHitRule()
+  public ArrayList<RuleTypeID> getVecHitRule()
   {
     return this.vecHitRule;
   }
   
-  public ArrayList getVecUserAction()
+  public ArrayList<UserActionTime> getVecUserAction()
   {
     return this.vecUserAction;
   }
@@ -256,12 +256,12 @@ public final class SmsReport
     this.ucMinusMark = paramInt;
   }
   
-  public void setVecHitRule(ArrayList paramArrayList)
+  public void setVecHitRule(ArrayList<RuleTypeID> paramArrayList)
   {
     this.vecHitRule = paramArrayList;
   }
   
-  public void setVecUserAction(ArrayList paramArrayList)
+  public void setVecUserAction(ArrayList<UserActionTime> paramArrayList)
   {
     this.vecUserAction = paramArrayList;
   }

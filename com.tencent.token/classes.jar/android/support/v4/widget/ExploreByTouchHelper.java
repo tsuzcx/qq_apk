@@ -29,14 +29,31 @@ public abstract class ExploreByTouchHelper
   public static final int HOST_ID = -1;
   public static final int INVALID_ID = -2147483648;
   private static final Rect INVALID_PARENT_BOUNDS = new Rect(2147483647, 2147483647, -2147483648, -2147483648);
-  private static final FocusStrategy.BoundsAdapter NODE_ADAPTER = new ExploreByTouchHelper.1();
-  private static final FocusStrategy.CollectionAdapter SPARSE_VALUES_ADAPTER = new ExploreByTouchHelper.2();
+  private static final FocusStrategy.BoundsAdapter<AccessibilityNodeInfoCompat> NODE_ADAPTER = new FocusStrategy.BoundsAdapter()
+  {
+    public void obtainBounds(AccessibilityNodeInfoCompat paramAnonymousAccessibilityNodeInfoCompat, Rect paramAnonymousRect)
+    {
+      paramAnonymousAccessibilityNodeInfoCompat.getBoundsInParent(paramAnonymousRect);
+    }
+  };
+  private static final FocusStrategy.CollectionAdapter<SparseArrayCompat<AccessibilityNodeInfoCompat>, AccessibilityNodeInfoCompat> SPARSE_VALUES_ADAPTER = new FocusStrategy.CollectionAdapter()
+  {
+    public AccessibilityNodeInfoCompat get(SparseArrayCompat<AccessibilityNodeInfoCompat> paramAnonymousSparseArrayCompat, int paramAnonymousInt)
+    {
+      return (AccessibilityNodeInfoCompat)paramAnonymousSparseArrayCompat.valueAt(paramAnonymousInt);
+    }
+    
+    public int size(SparseArrayCompat<AccessibilityNodeInfoCompat> paramAnonymousSparseArrayCompat)
+    {
+      return paramAnonymousSparseArrayCompat.size();
+    }
+  };
   private int mAccessibilityFocusedVirtualViewId = -2147483648;
   private final View mHost;
   private int mHoveredVirtualViewId = -2147483648;
   private int mKeyboardFocusedVirtualViewId = -2147483648;
   private final AccessibilityManager mManager;
-  private ExploreByTouchHelper.MyNodeProvider mNodeProvider;
+  private MyNodeProvider mNodeProvider;
   private final int[] mTempGlobalRect = new int[2];
   private final Rect mTempParentRect = new Rect();
   private final Rect mTempScreenRect = new Rect();
@@ -222,7 +239,7 @@ public abstract class ExploreByTouchHelper
     return localAccessibilityNodeInfoCompat;
   }
   
-  private SparseArrayCompat getAllNodes()
+  private SparseArrayCompat<AccessibilityNodeInfoCompat> getAllNodes()
   {
     ArrayList localArrayList = new ArrayList();
     getVisibleVirtualViews(localArrayList);
@@ -493,7 +510,7 @@ public abstract class ExploreByTouchHelper
   public AccessibilityNodeProviderCompat getAccessibilityNodeProvider(View paramView)
   {
     if (this.mNodeProvider == null) {
-      this.mNodeProvider = new ExploreByTouchHelper.MyNodeProvider(this);
+      this.mNodeProvider = new MyNodeProvider();
     }
     return this.mNodeProvider;
   }
@@ -511,7 +528,7 @@ public abstract class ExploreByTouchHelper
   
   protected abstract int getVirtualViewAt(float paramFloat1, float paramFloat2);
   
-  protected abstract void getVisibleVirtualViews(List paramList);
+  protected abstract void getVisibleVirtualViews(List<Integer> paramList);
   
   public final void invalidateRoot()
   {
@@ -616,6 +633,31 @@ public abstract class ExploreByTouchHelper
     } while (localViewParent == null);
     AccessibilityEvent localAccessibilityEvent = createEvent(paramInt1, paramInt2);
     return ViewParentCompat.requestSendAccessibilityEvent(localViewParent, this.mHost, localAccessibilityEvent);
+  }
+  
+  private class MyNodeProvider
+    extends AccessibilityNodeProviderCompat
+  {
+    MyNodeProvider() {}
+    
+    public AccessibilityNodeInfoCompat createAccessibilityNodeInfo(int paramInt)
+    {
+      return AccessibilityNodeInfoCompat.obtain(ExploreByTouchHelper.this.obtainAccessibilityNodeInfo(paramInt));
+    }
+    
+    public AccessibilityNodeInfoCompat findFocus(int paramInt)
+    {
+      if (paramInt == 2) {}
+      for (paramInt = ExploreByTouchHelper.this.mAccessibilityFocusedVirtualViewId; paramInt == -2147483648; paramInt = ExploreByTouchHelper.this.mKeyboardFocusedVirtualViewId) {
+        return null;
+      }
+      return createAccessibilityNodeInfo(paramInt);
+    }
+    
+    public boolean performAction(int paramInt1, int paramInt2, Bundle paramBundle)
+    {
+      return ExploreByTouchHelper.this.performAction(paramInt1, paramInt2, paramBundle);
+    }
   }
 }
 

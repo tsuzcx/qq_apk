@@ -34,9 +34,16 @@ public class ViewDragHelper
   public static final int STATE_IDLE = 0;
   public static final int STATE_SETTLING = 2;
   private static final String TAG = "ViewDragHelper";
-  private static final Interpolator sInterpolator = new ViewDragHelper.1();
+  private static final Interpolator sInterpolator = new Interpolator()
+  {
+    public float getInterpolation(float paramAnonymousFloat)
+    {
+      paramAnonymousFloat -= 1.0F;
+      return paramAnonymousFloat * (paramAnonymousFloat * paramAnonymousFloat * paramAnonymousFloat * paramAnonymousFloat) + 1.0F;
+    }
+  };
   private int mActivePointerId = -1;
-  private final ViewDragHelper.Callback mCallback;
+  private final Callback mCallback;
   private View mCapturedView;
   private int mDragState;
   private int[] mEdgeDragsInProgress;
@@ -53,12 +60,18 @@ public class ViewDragHelper
   private int mPointersDown;
   private boolean mReleaseInProgress;
   private OverScroller mScroller;
-  private final Runnable mSetIdleRunnable = new ViewDragHelper.2(this);
+  private final Runnable mSetIdleRunnable = new Runnable()
+  {
+    public void run()
+    {
+      ViewDragHelper.this.setDragState(0);
+    }
+  };
   private int mTouchSlop;
   private int mTrackingEdges;
   private VelocityTracker mVelocityTracker;
   
-  private ViewDragHelper(@NonNull Context paramContext, @NonNull ViewGroup paramViewGroup, @NonNull ViewDragHelper.Callback paramCallback)
+  private ViewDragHelper(@NonNull Context paramContext, @NonNull ViewGroup paramViewGroup, @NonNull Callback paramCallback)
   {
     if (paramViewGroup == null) {
       throw new IllegalArgumentException("Parent view may not be null");
@@ -256,14 +269,14 @@ public class ViewDragHelper
     }
   }
   
-  public static ViewDragHelper create(@NonNull ViewGroup paramViewGroup, float paramFloat, @NonNull ViewDragHelper.Callback paramCallback)
+  public static ViewDragHelper create(@NonNull ViewGroup paramViewGroup, float paramFloat, @NonNull Callback paramCallback)
   {
     paramViewGroup = create(paramViewGroup, paramCallback);
     paramViewGroup.mTouchSlop = ((int)(paramViewGroup.mTouchSlop * (1.0F / paramFloat)));
     return paramViewGroup;
   }
   
-  public static ViewDragHelper create(@NonNull ViewGroup paramViewGroup, @NonNull ViewDragHelper.Callback paramCallback)
+  public static ViewDragHelper create(@NonNull ViewGroup paramViewGroup, @NonNull Callback paramCallback)
   {
     return new ViewDragHelper(paramViewGroup.getContext(), paramViewGroup, paramCallback);
   }
@@ -1045,6 +1058,53 @@ public class ViewDragHelper
       return true;
     }
     return false;
+  }
+  
+  public static abstract class Callback
+  {
+    public int clampViewPositionHorizontal(@NonNull View paramView, int paramInt1, int paramInt2)
+    {
+      return 0;
+    }
+    
+    public int clampViewPositionVertical(@NonNull View paramView, int paramInt1, int paramInt2)
+    {
+      return 0;
+    }
+    
+    public int getOrderedChildIndex(int paramInt)
+    {
+      return paramInt;
+    }
+    
+    public int getViewHorizontalDragRange(@NonNull View paramView)
+    {
+      return 0;
+    }
+    
+    public int getViewVerticalDragRange(@NonNull View paramView)
+    {
+      return 0;
+    }
+    
+    public void onEdgeDragStarted(int paramInt1, int paramInt2) {}
+    
+    public boolean onEdgeLock(int paramInt)
+    {
+      return false;
+    }
+    
+    public void onEdgeTouched(int paramInt1, int paramInt2) {}
+    
+    public void onViewCaptured(@NonNull View paramView, int paramInt) {}
+    
+    public void onViewDragStateChanged(int paramInt) {}
+    
+    public void onViewPositionChanged(@NonNull View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4) {}
+    
+    public void onViewReleased(@NonNull View paramView, float paramFloat1, float paramFloat2) {}
+    
+    public abstract boolean tryCaptureView(@NonNull View paramView, int paramInt);
   }
 }
 

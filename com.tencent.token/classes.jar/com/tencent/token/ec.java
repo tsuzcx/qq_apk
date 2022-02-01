@@ -1,67 +1,91 @@
 package com.tencent.token;
 
-import java.io.Closeable;
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.RandomAccessFile;
-import okhttp3.at;
-import okhttp3.av;
-import okhttp3.g;
-import okhttp3.h;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.service.a.a;
+import com.tencent.token.global.RqdApplication;
 
-class ec
-  implements h
+public class ec
 {
-  ec(ea paramea, long paramLong1, RandomAccessFile paramRandomAccessFile, File paramFile, int paramInt, long paramLong2) {}
-  
-  public void a(g paramg, IOException paramIOException)
+  private static SharedPreferences a()
   {
-    ea.a(this.f, false);
+    try
+    {
+      SharedPreferences localSharedPreferences = RqdApplication.l().getSharedPreferences("com.tencent.token.com", 0);
+      return localSharedPreferences;
+    }
+    catch (Exception localException) {}
+    return null;
   }
   
-  public void a(g paramg, at paramat)
+  public static a.a a(String paramString1, String paramString2)
   {
-    if (paramat.b() != 206)
+    a.a locala = new a.a();
+    locala.a = "com.tencent.qqpimsecure";
+    locala.c = paramString2;
+    locala.d = (paramString2.hashCode() + paramString1 + ".apk");
+    return locala;
+  }
+  
+  public static void a(String paramString, int paramInt)
+  {
+    Object localObject = a();
+    if (localObject != null)
     {
-      ea.a(this.f);
-      return;
+      localObject = ((SharedPreferences)localObject).edit();
+      ((SharedPreferences.Editor)localObject).putInt(paramString, paramInt);
+      ((SharedPreferences.Editor)localObject).commit();
     }
-    paramg = paramat.e().b();
-    RandomAccessFile localRandomAccessFile = new RandomAccessFile(ea.c(this.f), "rw");
-    localRandomAccessFile.seek(this.a);
-    byte[] arrayOfByte = new byte[4096];
-    int i = 0;
-    for (;;)
+  }
+  
+  public static void a(String paramString, long paramLong)
+  {
+    Object localObject = a();
+    if (localObject != null)
     {
-      int j = paramg.read(arrayOfByte);
-      if (j <= 0) {
-        break;
-      }
-      if (ea.e(this.f))
-      {
-        ea.a(this.f, new Closeable[] { this.b, paramg, paramat.e() });
-        ea.a(this.f, new File[] { this.c });
-        this.f.sendEmptyMessage(4);
-        return;
-      }
-      if (ea.f(this.f))
-      {
-        ea.a(this.f, new Closeable[] { this.b, paramg, paramat.e() });
-        this.f.sendEmptyMessage(3);
-        return;
-      }
-      localRandomAccessFile.write(arrayOfByte, 0, j);
-      i += j;
-      long l = this.a + i;
-      this.b.seek(0L);
-      this.b.write((l + "").getBytes("UTF-8"));
-      ea.g(this.f)[this.d] = (l - this.e);
-      this.f.sendEmptyMessage(1);
+      localObject = ((SharedPreferences)localObject).edit();
+      ((SharedPreferences.Editor)localObject).putLong(paramString, paramLong);
+      ((SharedPreferences.Editor)localObject).commit();
     }
-    ea.a(this.f, new Closeable[] { this.b, paramg, paramat.e() });
-    ea.a(this.f, new File[] { this.c });
-    this.f.sendEmptyMessage(2);
+  }
+  
+  public static int b(String paramString, int paramInt)
+  {
+    SharedPreferences localSharedPreferences = a();
+    if (localSharedPreferences != null) {
+      return localSharedPreferences.getInt(paramString, paramInt);
+    }
+    return -1;
+  }
+  
+  public static long b(String paramString, long paramLong)
+  {
+    SharedPreferences localSharedPreferences = a();
+    if (localSharedPreferences != null) {
+      return localSharedPreferences.getLong(paramString, paramLong);
+    }
+    return -1L;
+  }
+  
+  public static void b(String paramString1, String paramString2)
+  {
+    Object localObject = a();
+    if (localObject != null)
+    {
+      localObject = ((SharedPreferences)localObject).edit();
+      ((SharedPreferences.Editor)localObject).putString(paramString1, paramString2);
+      ((SharedPreferences.Editor)localObject).commit();
+    }
+  }
+  
+  public static String c(String paramString1, String paramString2)
+  {
+    SharedPreferences localSharedPreferences = a();
+    if (localSharedPreferences != null) {
+      return localSharedPreferences.getString(paramString1, paramString2);
+    }
+    return null;
   }
 }
 

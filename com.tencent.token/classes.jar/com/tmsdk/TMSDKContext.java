@@ -1,9 +1,15 @@
 package com.tmsdk;
 
 import android.content.Context;
+import android.text.TextUtils;
 import com.qq.taf.jce.JceStruct;
+import com.tencent.token.global.k;
+import com.tencent.token.utils.j;
+import com.tencent.token.utils.l;
+import com.tmsdk.base.AbsTMSBaseConfig;
 import com.tmsdk.base.ISharkCallBackOut;
 import com.tmsdk.base.TMSDKBaseContext;
+import com.tmsdk.common.util.ReleaseSetting;
 import com.tmsdk.common.util.TmsLog;
 
 public class TMSDKContext
@@ -14,7 +20,7 @@ public class TMSDKContext
   public static final int ELANG_NONE = 0;
   private static final int EP_QQMobileToken = 115;
   private static final boolean IS_IPLIST = true;
-  private static final String LC = "QQTOKEN20190910";
+  private static final String LC = "C1D4CD9B6187E99C";
   private static final String LIB_TMS_COMMON = "Tcc-1.0.1";
   private static final int PRODUCT_ID = 115;
   private static final String SDK_VERSION = "2.0.0";
@@ -78,27 +84,27 @@ public class TMSDKContext
     // Byte code:
     //   0: ldc 2
     //   2: monitorenter
-    //   3: ldc 47
-    //   5: new 67	java/lang/StringBuilder
+    //   3: ldc 51
+    //   5: new 71	java/lang/StringBuilder
     //   8: dup
-    //   9: invokespecial 68	java/lang/StringBuilder:<init>	()V
-    //   12: ldc 121
-    //   14: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   9: invokespecial 72	java/lang/StringBuilder:<init>	()V
+    //   12: ldc 125
+    //   14: invokevirtual 78	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   17: aload_0
-    //   18: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   21: ldc 126
-    //   23: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   18: invokevirtual 128	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   21: ldc 130
+    //   23: invokevirtual 78	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   26: aload_1
-    //   27: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   30: ldc 81
-    //   32: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   35: invokevirtual 85	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   38: invokestatic 91	com/tmsdk/common/util/TmsLog:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   27: invokevirtual 128	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   30: ldc 85
+    //   32: invokevirtual 78	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   35: invokevirtual 89	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   38: invokestatic 95	com/tmsdk/common/util/TmsLog:d	(Ljava/lang/String;Ljava/lang/String;)V
     //   41: aload_0
     //   42: ifnonnull +17 -> 59
-    //   45: ldc 47
-    //   47: ldc 128
-    //   49: invokestatic 131	com/tmsdk/common/util/TmsLog:w	(Ljava/lang/String;Ljava/lang/String;)V
+    //   45: ldc 51
+    //   47: ldc 132
+    //   49: invokestatic 135	com/tmsdk/common/util/TmsLog:w	(Ljava/lang/String;Ljava/lang/String;)V
     //   52: iconst_0
     //   53: istore_2
     //   54: ldc 2
@@ -108,19 +114,19 @@ public class TMSDKContext
     //   59: aload_1
     //   60: ifnull +23 -> 83
     //   63: aload_1
-    //   64: putstatic 59	com/tmsdk/TMSDKContext:sAbsTMSConfig	Lcom/tmsdk/AbsTMSConfig;
+    //   64: putstatic 63	com/tmsdk/TMSDKContext:sAbsTMSConfig	Lcom/tmsdk/AbsTMSConfig;
     //   67: aload_0
-    //   68: new 133	com/tmsdk/TMSDKContext$2
+    //   68: new 8	com/tmsdk/TMSDKContext$2
     //   71: dup
     //   72: aload_0
-    //   73: invokespecial 136	com/tmsdk/TMSDKContext$2:<init>	(Landroid/content/Context;)V
-    //   76: invokestatic 139	com/tmsdk/base/TMSDKBaseContext:init	(Landroid/content/Context;Lcom/tmsdk/base/AbsTMSBaseConfig;)Z
+    //   73: invokespecial 138	com/tmsdk/TMSDKContext$2:<init>	(Landroid/content/Context;)V
+    //   76: invokestatic 141	com/tmsdk/base/TMSDKBaseContext:init	(Landroid/content/Context;Lcom/tmsdk/base/AbsTMSBaseConfig;)Z
     //   79: istore_2
     //   80: goto -26 -> 54
-    //   83: new 141	com/tmsdk/TMSDKContext$1
+    //   83: new 6	com/tmsdk/TMSDKContext$1
     //   86: dup
     //   87: invokespecial 142	com/tmsdk/TMSDKContext$1:<init>	()V
-    //   90: putstatic 59	com/tmsdk/TMSDKContext:sAbsTMSConfig	Lcom/tmsdk/AbsTMSConfig;
+    //   90: putstatic 63	com/tmsdk/TMSDKContext:sAbsTMSConfig	Lcom/tmsdk/AbsTMSConfig;
     //   93: goto -26 -> 67
     //   96: astore_0
     //   97: ldc 2

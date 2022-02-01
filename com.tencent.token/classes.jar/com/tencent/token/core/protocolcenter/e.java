@@ -1,186 +1,410 @@
 package com.tencent.token.core.protocolcenter;
 
-import android.content.Context;
-import android.text.TextUtils;
-import com.tencent.token.em;
-import com.tencent.token.ev;
-import com.tencent.token.ew;
-import com.tencent.token.gk;
-import com.tencent.token.global.c;
-import com.tencent.token.global.f;
-import com.tencent.token.global.h;
-import com.tencent.token.utils.x;
-import java.io.Serializable;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.os.Handler;
+import android.os.HandlerThread;
+import android.os.Message;
+import android.os.SystemClock;
+import android.view.MotionEvent;
+import com.tencent.token.bx;
+import com.tencent.token.dn;
+import com.tencent.token.do;
+import com.tencent.token.upload.useraction.a;
+import com.tencent.token.utils.l;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+import java.util.concurrent.Callable;
+import java.util.concurrent.CancellationException;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
 
-public abstract class e
-  implements em
+public class e
 {
-  protected f a = new f();
-  protected ev b;
-  protected int c;
-  
-  public ew a(Serializable paramSerializable)
+  private ExecutorService a = Executors.newFixedThreadPool(5);
+  private b b = new b("");
+  private a c = new a()
   {
-    return null;
-  }
-  
-  public Serializable a(ew paramew)
-  {
-    return null;
-  }
-  
-  protected abstract String a();
-  
-  protected void a(int paramInt, String paramString)
-  {
-    if (paramString != null) {
-      this.a.a(paramInt, paramString, paramString);
-    }
-    for (;;)
+    public void a(dn paramAnonymousdn)
     {
-      c();
-      return;
-      this.a.b(paramInt);
-    }
-  }
-  
-  protected abstract void a(ev paramev);
-  
-  protected abstract void a(JSONObject paramJSONObject);
-  
-  public ev b(ev paramev)
-  {
-    return paramev;
-  }
-  
-  protected void b()
-  {
-    h.b("------------------------------\nhandler:" + this.b.d);
-  }
-  
-  public f c(ev paramev)
-  {
-    Object localObject2 = null;
-    this.b = paramev;
-    a(paramev);
-    String str = a();
-    if (str == null)
-    {
-      c();
-      return this.a;
-    }
-    Object localObject3 = new gk();
-    h.c("cmd:" + paramev.a);
-    if (paramev.m == 0) {
-      paramev = ((gk)localObject3).a(str);
-    }
-    for (;;)
-    {
-      Object localObject1;
-      if (paramev == null)
+      MotionEvent localMotionEvent = a.a().b();
+      if (localMotionEvent != null)
       {
-        this.a.a(((gk)localObject3).a());
-        c();
-        return this.a;
-        if (paramev.m == 1)
+        com.tencent.token.global.g.c("cginame:" + paramAnonymousdn.a);
+        com.tencent.token.global.g.c("pagename:" + paramAnonymousdn.i);
+        com.tencent.token.global.g.c("getRawX:" + localMotionEvent.getRawX());
+        com.tencent.token.global.g.c("getRawY:" + localMotionEvent.getRawY());
+        long l = System.currentTimeMillis() - (SystemClock.uptimeMillis() - localMotionEvent.getDownTime());
+        com.tencent.token.global.g.c("eventStartTime:" + l);
+        int i = a.a().c();
+        com.tencent.token.global.g.c("touch_type:" + i);
+        a.a().a(i, paramAnonymousdn.a, paramAnonymousdn.i, "", "", "", (int)localMotionEvent.getRawX(), (int)localMotionEvent.getRawY(), l);
+        a.a().d();
+      }
+    }
+    
+    public void a(dn paramAnonymousdn, com.tencent.token.global.e paramAnonymouse)
+    {
+      if (paramAnonymouse.b())
+      {
+        bx.a().a(System.currentTimeMillis(), 0, paramAnonymousdn.a, 0, "", l.k());
+        if (!paramAnonymousdn.e)
         {
-          if (paramev.n != null)
-          {
-            localObject1 = paramev;
-            if (paramev.k) {
-              localObject1 = b(paramev);
-            }
-            paramev = ((gk)localObject3).a(str, ((ev)localObject1).n);
-          }
-        }
-        else if (paramev.m == 2)
-        {
-          if ((paramev.o != null) && (!TextUtils.isEmpty(paramev.p))) {
-            paramev = ((gk)localObject3).a(str, paramev.o, paramev.n, paramev.p);
-          }
-        }
-        else if ((paramev.m == 3) && (paramev.q != null) && (!TextUtils.isEmpty(paramev.p))) {
-          paramev = ((gk)localObject3).a(str, paramev.q, paramev.n, paramev.p);
+          paramAnonymouse = paramAnonymousdn.d.obtainMessage(paramAnonymousdn.f);
+          paramAnonymouse.arg1 = 0;
+          paramAnonymouse.sendToTarget();
+          paramAnonymousdn.e = true;
         }
       }
-      else
+      label175:
+      for (;;)
       {
+        e.a(e.this).b(paramAnonymousdn);
+        return;
+        if (paramAnonymouse.a < 10000) {
+          bx.a().a(System.currentTimeMillis(), 0, paramAnonymousdn.a, 0, "", l.k());
+        }
         for (;;)
         {
-          try
-          {
-            if (!this.b.a.equals("token.getstartupimg")) {
-              continue;
-            }
-            h.a(this + "device config" + paramev);
-            localObject3 = new JSONObject();
-            ((JSONObject)localObject3).put("startup_img", x.a(paramev));
-            localObject1 = localObject2;
-            paramev = (ev)localObject3;
+          if (paramAnonymousdn.e) {
+            break label175;
           }
-          catch (JSONException paramev)
-          {
-            h.c(this + "\nPARSE JSON FAILED: \n" + paramev.toString());
-            this.a.a(10020, "JSONException:" + paramev.toString(), c.g().getString(2131230963));
-            c();
-            continue;
-            localObject1 = new String(paramev);
-            h.a(this + "--responseString--" + (String)localObject1);
-            paramev = new JSONObject((String)localObject1);
-            continue;
-          }
-          catch (Exception paramev)
-          {
-            paramev.printStackTrace();
-            h.c(this + "\nE X C E P T I O N: \n" + paramev.toString());
-            this.a.a(10000, "Exception:" + paramev.toString(), c.g().getString(2131230963));
-            c();
-            continue;
-            if (localObject1 == null) {
-              continue;
-            }
-            h.a(this + "\nR E S P O N S E: \n" + (String)localObject1);
-            b();
-            continue;
-          }
-          a(paramev);
-          if (this.a.b()) {
-            continue;
-          }
-          if (localObject1 != null) {
-            h.c(this + "\nR E S P O N S E: \n" + (String)localObject1);
-          }
-          c();
-          return this.a;
-          if (!this.b.a.equals("token.getcommonimg")) {
-            continue;
-          }
-          h.a(this + "device config" + paramev);
-          localObject1 = new JSONObject();
-          ((JSONObject)localObject1).put("img", x.a(paramev));
-          paramev = (ev)localObject1;
-          localObject1 = localObject2;
+          Message localMessage = paramAnonymousdn.d.obtainMessage(paramAnonymousdn.f);
+          localMessage.arg1 = paramAnonymouse.a;
+          localMessage.obj = paramAnonymouse;
+          localMessage.sendToTarget();
+          paramAnonymousdn.e = true;
+          break;
+          bx.a().a(System.currentTimeMillis(), bx.a(paramAnonymouse.a), paramAnonymousdn.a, 1, paramAnonymouse.b, l.k());
         }
       }
-      paramev = null;
     }
+  };
+  
+  public int a(dn paramdn)
+  {
+    paramdn.l = this.c;
+    this.b.a(paramdn);
+    return 0;
   }
   
-  protected void c()
+  public int a(String paramString)
   {
-    h.c("------------------------------\nhandler:" + this.b.d + "    \nError=" + this.a.a + "    \nstrdebug:" + this.a.b + "    \nstruser:" + this.a.c);
+    this.b.a(paramString);
+    return 0;
   }
   
-  public ew d(ev paramev)
+  public do b(dn paramdn)
   {
-    return null;
+    d locald = b.a(paramdn.a);
+    if (locald == null) {
+      return null;
+    }
+    return locald.d(paramdn);
   }
   
-  public String d()
+  public static abstract interface a
   {
-    return null;
+    public abstract void a(dn paramdn);
+    
+    public abstract void a(dn paramdn, com.tencent.token.global.e parame);
+  }
+  
+  class b
+    extends HandlerThread
+  {
+    private Handler b = new Handler();
+    private Map<dn, Future<com.tencent.token.global.e>> c = Collections.synchronizedMap(new HashMap());
+    
+    public b(String paramString)
+    {
+      super();
+    }
+    
+    public void a(final dn paramdn)
+    {
+      paramdn.l.a(paramdn);
+      this.b.post(new Runnable()
+      {
+        public void run()
+        {
+          Object localObject = null;
+          switch (paramdn.b)
+          {
+          }
+          for (;;)
+          {
+            if (localObject != null)
+            {
+              localObject = e.b(e.this).submit((Callable)localObject);
+              e.b.a(e.b.this).put(paramdn, localObject);
+            }
+            return;
+            localObject = h.a(paramdn);
+            continue;
+            localObject = g.a(paramdn);
+            continue;
+            localObject = c.a(paramdn);
+          }
+        }
+      });
+      this.b.postDelayed(new Runnable()
+      {
+        public void run()
+        {
+          Object localObject2 = (Future)e.b.a(e.b.this).remove(paramdn);
+          if (localObject2 == null) {}
+          for (;;)
+          {
+            return;
+            ((Future)localObject2).cancel(true);
+            Object localObject1 = new com.tencent.token.global.e();
+            try
+            {
+              localObject2 = (com.tencent.token.global.e)((Future)localObject2).get();
+              try
+              {
+                if ((paramdn.e) || (paramdn.d == null)) {
+                  continue;
+                }
+                localObject1 = paramdn.d.obtainMessage(paramdn.f);
+                ((Message)localObject1).arg1 = ((com.tencent.token.global.e)localObject2).a;
+                ((Message)localObject1).obj = localObject2;
+                ((Message)localObject1).sendToTarget();
+                paramdn.e = true;
+                return;
+              }
+              catch (Exception localException1)
+              {
+                return;
+              }
+            }
+            catch (InterruptedException localInterruptedException)
+            {
+              localInterruptedException = localInterruptedException;
+              com.tencent.token.global.g.b("task interrupted because timeout, tag=" + paramdn.i);
+              localException1.b(200);
+              try
+              {
+                if ((paramdn.e) || (paramdn.d == null)) {
+                  continue;
+                }
+                Message localMessage1 = paramdn.d.obtainMessage(paramdn.f);
+                localMessage1.arg1 = localException1.a;
+                localMessage1.obj = localException1;
+                localMessage1.sendToTarget();
+                paramdn.e = true;
+                return;
+              }
+              catch (Exception localException2)
+              {
+                return;
+              }
+            }
+            catch (ExecutionException localExecutionException)
+            {
+              localExecutionException = localExecutionException;
+              com.tencent.token.global.g.b("task interrupted because local bug, tag=" + paramdn.i);
+              localException2.a(10000, "Exception:" + localExecutionException.toString());
+              try
+              {
+                if ((paramdn.e) || (paramdn.d == null)) {
+                  continue;
+                }
+                Message localMessage2 = paramdn.d.obtainMessage(paramdn.f);
+                localMessage2.arg1 = localException2.a;
+                localMessage2.obj = localException2;
+                localMessage2.sendToTarget();
+                paramdn.e = true;
+                return;
+              }
+              catch (Exception localException3)
+              {
+                return;
+              }
+            }
+            catch (CancellationException localCancellationException)
+            {
+              localCancellationException = localCancellationException;
+              com.tencent.token.global.g.b("task cancelled because timeout, tag=" + paramdn.i);
+              localException3.b(200);
+              try
+              {
+                if ((paramdn.e) || (paramdn.d == null)) {
+                  continue;
+                }
+                Message localMessage3 = paramdn.d.obtainMessage(paramdn.f);
+                localMessage3.arg1 = localException3.a;
+                localMessage3.obj = localException3;
+                localMessage3.sendToTarget();
+                paramdn.e = true;
+                return;
+              }
+              catch (Exception localException4)
+              {
+                return;
+              }
+            }
+            catch (Exception localException7)
+            {
+              localException7 = localException7;
+              com.tencent.token.global.g.b("task interrupted because local bug, tag=" + paramdn.i);
+              localException4.a(10000, "Exception:" + localException7.toString());
+              try
+              {
+                if ((paramdn.e) || (paramdn.d == null)) {
+                  continue;
+                }
+                Message localMessage4 = paramdn.d.obtainMessage(paramdn.f);
+                localMessage4.arg1 = localException4.a;
+                localMessage4.obj = localException4;
+                localMessage4.sendToTarget();
+                paramdn.e = true;
+                return;
+              }
+              catch (Exception localException5)
+              {
+                return;
+              }
+            }
+            finally {}
+            try
+            {
+              if (!paramdn.e)
+              {
+                if (paramdn.d == null) {
+                  continue;
+                }
+                Message localMessage5 = paramdn.d.obtainMessage(paramdn.f);
+                localMessage5.arg1 = localException5.a;
+                localMessage5.obj = localException5;
+                localMessage5.sendToTarget();
+                paramdn.e = true;
+              }
+              label633:
+              throw localObject3;
+            }
+            catch (Exception localException6)
+            {
+              break label633;
+            }
+          }
+        }
+      }, paramdn.h);
+    }
+    
+    public void a(final String paramString)
+    {
+      this.b.post(new Runnable()
+      {
+        public void run()
+        {
+          Iterator localIterator = e.b.a(e.b.this).entrySet().iterator();
+          while (localIterator.hasNext())
+          {
+            Object localObject1 = (Map.Entry)localIterator.next();
+            Object localObject4 = (Future)((Map.Entry)localObject1).getValue();
+            localObject1 = (dn)((Map.Entry)localObject1).getKey();
+            if ((((dn)localObject1).i != null) && (paramString != null) && (((dn)localObject1).i.contains(paramString)))
+            {
+              localIterator.remove();
+              ((Future)localObject4).cancel(true);
+              Object localObject3 = new com.tencent.token.global.e();
+              try
+              {
+                localObject4 = (com.tencent.token.global.e)((Future)localObject4).get();
+                if (!((dn)localObject1).e)
+                {
+                  localObject3 = ((dn)localObject1).d.obtainMessage(2002);
+                  ((Message)localObject3).arg1 = ((com.tencent.token.global.e)localObject4).a;
+                  ((Message)localObject3).obj = localObject4;
+                  ((Message)localObject3).sendToTarget();
+                  ((dn)localObject1).e = true;
+                }
+              }
+              catch (InterruptedException localInterruptedException)
+              {
+                com.tencent.token.global.g.b("task interrupted because cancel, tag=" + ((dn)localObject1).i);
+                ((com.tencent.token.global.e)localObject3).b(10024);
+                if (!((dn)localObject1).e)
+                {
+                  Message localMessage1 = ((dn)localObject1).d.obtainMessage(2002);
+                  localMessage1.arg1 = ((com.tencent.token.global.e)localObject3).a;
+                  localMessage1.obj = localObject3;
+                  localMessage1.sendToTarget();
+                  ((dn)localObject1).e = true;
+                }
+              }
+              catch (ExecutionException localExecutionException)
+              {
+                ((com.tencent.token.global.e)localObject3).a(10000, "Exception:" + localExecutionException.toString());
+                if (!((dn)localObject1).e)
+                {
+                  Message localMessage2 = ((dn)localObject1).d.obtainMessage(2002);
+                  localMessage2.arg1 = ((com.tencent.token.global.e)localObject3).a;
+                  localMessage2.obj = localObject3;
+                  localMessage2.sendToTarget();
+                  ((dn)localObject1).e = true;
+                }
+              }
+              catch (CancellationException localCancellationException)
+              {
+                com.tencent.token.global.g.b("task cancelled because cancel, tag=" + ((dn)localObject1).i);
+                ((com.tencent.token.global.e)localObject3).b(10024);
+                if (!((dn)localObject1).e)
+                {
+                  Message localMessage3 = ((dn)localObject1).d.obtainMessage(2002);
+                  localMessage3.arg1 = ((com.tencent.token.global.e)localObject3).a;
+                  localMessage3.obj = localObject3;
+                  localMessage3.sendToTarget();
+                  ((dn)localObject1).e = true;
+                }
+              }
+              catch (Exception localException)
+              {
+                ((com.tencent.token.global.e)localObject3).a(10000, "Exception:" + localException.toString());
+                if (!((dn)localObject1).e)
+                {
+                  localMessage4 = ((dn)localObject1).d.obtainMessage(2002);
+                  localMessage4.arg1 = ((com.tencent.token.global.e)localObject3).a;
+                  localMessage4.obj = localObject3;
+                  localMessage4.sendToTarget();
+                  ((dn)localObject1).e = true;
+                }
+              }
+              finally
+              {
+                Message localMessage4;
+                if (!((dn)localObject1).e)
+                {
+                  localMessage4 = ((dn)localObject1).d.obtainMessage(2002);
+                  localMessage4.arg1 = ((com.tencent.token.global.e)localObject3).a;
+                  localMessage4.obj = localObject3;
+                  localMessage4.sendToTarget();
+                  ((dn)localObject1).e = true;
+                }
+              }
+            }
+          }
+        }
+      });
+    }
+    
+    public void b(final dn paramdn)
+    {
+      this.b.post(new Runnable()
+      {
+        public void run()
+        {
+          e.b.a(e.b.this).remove(paramdn);
+          paramdn.a();
+        }
+      });
+    }
   }
 }
 

@@ -1,15 +1,46 @@
 package taiji;
 
-import android.graphics.Rect;
-import java.util.Collections;
-import uilib.doraemon.a;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 
 public class bk
 {
-  public static cs a(a parama)
+  private static final char[] a = "0123456789abcdef".toCharArray();
+  
+  public static byte[] a(byte[] paramArrayOfByte)
   {
-    Rect localRect = parama.b();
-    return new cs(Collections.emptyList(), parama, "root", -1L, cs.b.a, -1L, null, Collections.emptyList(), au.a(), 0, 0, 0, 0.0F, 0.0F, localRect.width(), localRect.height(), null, null, Collections.emptyList(), cs.c.a, null, null);
+    try
+    {
+      MessageDigest localMessageDigest = MessageDigest.getInstance("MD5");
+      localMessageDigest.update(paramArrayOfByte);
+      paramArrayOfByte = localMessageDigest.digest();
+      return paramArrayOfByte;
+    }
+    catch (NoSuchAlgorithmException paramArrayOfByte)
+    {
+      paramArrayOfByte.printStackTrace();
+    }
+    return null;
+  }
+  
+  public static String b(byte[] paramArrayOfByte)
+  {
+    StringBuilder localStringBuilder = new StringBuilder(paramArrayOfByte.length * 3);
+    int j = paramArrayOfByte.length;
+    int i = 0;
+    while (i < j)
+    {
+      int k = paramArrayOfByte[i] & 0xFF;
+      localStringBuilder.append(a[(k >> 4)]);
+      localStringBuilder.append(a[(k & 0xF)]);
+      i += 1;
+    }
+    return localStringBuilder.toString().toUpperCase();
+  }
+  
+  public static String c(byte[] paramArrayOfByte)
+  {
+    return b(a(paramArrayOfByte));
   }
 }
 

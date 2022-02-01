@@ -1,13 +1,13 @@
 package com.tencent.token.core.protocolcenter;
 
-import com.tencent.token.global.h;
+import com.tencent.token.global.g;
 import java.lang.reflect.Field;
 import java.util.HashMap;
 
 public class b
 {
   private static b b;
-  private HashMap a = new HashMap();
+  private HashMap<String, Class<? extends d>> a = new HashMap();
   
   private b()
   {
@@ -22,12 +22,12 @@ public class b
     return b;
   }
   
-  public static e a(String paramString)
+  public static d a(String paramString)
   {
     return a().b(paramString);
   }
   
-  private void a(Class paramClass)
+  private void a(Class<?> paramClass)
   {
     paramClass = paramClass.getDeclaredFields();
     if (paramClass == null) {}
@@ -46,13 +46,13 @@ public class b
             break label135;
           }
           localObject1 = (String)localObject1;
-          localObject2 = (n)((Field)localObject2).getAnnotation(n.class);
+          localObject2 = (f)((Field)localObject2).getAnnotation(f.class);
           if ((localObject1 == null) || (localObject2 == null)) {
             break label135;
           }
-          localObject2 = ((n)localObject2).a();
+          localObject2 = ((f)localObject2).a();
           if (localObject2 == null) {
-            h.c("protocol mapping definition in ProtocolConstant is error:" + (String)localObject1);
+            g.c("protocol mapping definition in ProtocolConstant is error:" + (String)localObject1);
           }
         }
         catch (Exception localException)
@@ -66,13 +66,13 @@ public class b
     }
   }
   
-  private e b(String paramString)
+  private d b(String paramString)
   {
     paramString = (Class)this.a.get(paramString);
     if (paramString != null) {
       try
       {
-        paramString = (e)paramString.newInstance();
+        paramString = (d)paramString.newInstance();
         return paramString;
       }
       catch (Exception paramString)

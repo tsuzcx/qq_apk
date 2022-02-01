@@ -8,8 +8,8 @@ import java.util.ArrayList;
 public final class x
   extends JceStruct
 {
-  static ArrayList aX = new ArrayList();
-  public ArrayList aW = null;
+  static ArrayList<ab> aX = new ArrayList();
+  public ArrayList<ab> aW = null;
   
   static
   {

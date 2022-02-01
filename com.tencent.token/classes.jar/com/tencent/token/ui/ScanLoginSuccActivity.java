@@ -2,6 +2,7 @@ package com.tencent.token.ui;
 
 import android.os.Bundle;
 import android.view.View;
+import android.view.View.OnClickListener;
 
 public class ScanLoginSuccActivity
   extends BaseActivity
@@ -10,7 +11,13 @@ public class ScanLoginSuccActivity
   {
     super.onCreate(paramBundle);
     setContentView(2130968749);
-    findViewById(2131558910).setOnClickListener(new ys(this));
+    findViewById(2131558911).setOnClickListener(new View.OnClickListener()
+    {
+      public void onClick(View paramAnonymousView)
+      {
+        ScanLoginSuccActivity.this.finish();
+      }
+    });
   }
 }
 

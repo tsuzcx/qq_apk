@@ -1,109 +1,83 @@
 package okhttp3;
 
-import com.tencent.token.gn;
-import java.util.Arrays;
+import com.tencent.token.fb;
+import java.io.IOException;
+import java.security.cert.Certificate;
+import java.util.Collections;
 import java.util.List;
 import javax.annotation.Nullable;
-import javax.net.ssl.SSLSocket;
+import javax.net.ssl.SSLPeerUnverifiedException;
+import javax.net.ssl.SSLSession;
 
 public final class q
 {
-  public static final q a = new r(true).a(i).a(new TlsVersion[] { TlsVersion.TLS_1_2 }).a(true).a();
-  public static final q b = new r(true).a(j).a(new TlsVersion[] { TlsVersion.TLS_1_2, TlsVersion.TLS_1_1, TlsVersion.TLS_1_0 }).a(true).a();
-  public static final q c = new r(b).a(new TlsVersion[] { TlsVersion.TLS_1_0 }).a(true).a();
-  public static final q d = new r(false).a();
-  private static final l[] i = { l.aX, l.bb, l.aY, l.bc, l.bi, l.bh };
-  private static final l[] j = { l.aX, l.bb, l.aY, l.bc, l.bi, l.bh, l.aI, l.aJ, l.ag, l.ah, l.E, l.I, l.i };
-  final boolean e;
-  final boolean f;
-  @Nullable
-  final String[] g;
-  @Nullable
-  final String[] h;
+  private final TlsVersion a;
+  private final h b;
+  private final List<Certificate> c;
+  private final List<Certificate> d;
   
-  q(r paramr)
+  private q(TlsVersion paramTlsVersion, h paramh, List<Certificate> paramList1, List<Certificate> paramList2)
   {
-    this.e = paramr.a;
-    this.g = paramr.b;
-    this.h = paramr.c;
-    this.f = paramr.d;
+    this.a = paramTlsVersion;
+    this.b = paramh;
+    this.c = paramList1;
+    this.d = paramList2;
   }
   
-  private q b(SSLSocket paramSSLSocket, boolean paramBoolean)
+  public static q a(SSLSession paramSSLSession)
   {
-    String[] arrayOfString1;
-    if (this.g != null)
-    {
-      arrayOfString1 = gn.a(l.a, paramSSLSocket.getEnabledCipherSuites(), this.g);
-      if (this.h == null) {
-        break label118;
-      }
+    Object localObject = paramSSLSession.getCipherSuite();
+    if (localObject == null) {
+      throw new IllegalStateException("cipherSuite == null");
     }
-    label118:
-    for (String[] arrayOfString2 = gn.a(gn.h, paramSSLSocket.getEnabledProtocols(), this.h);; arrayOfString2 = paramSSLSocket.getEnabledProtocols())
+    if ("SSL_NULL_WITH_NULL_NULL".equals(localObject)) {
+      throw new IOException("cipherSuite == SSL_NULL_WITH_NULL_NULL");
+    }
+    h localh = h.a((String)localObject);
+    localObject = paramSSLSession.getProtocol();
+    if (localObject == null) {
+      throw new IllegalStateException("tlsVersion == null");
+    }
+    if ("NONE".equals(localObject)) {
+      throw new IOException("tlsVersion == NONE");
+    }
+    TlsVersion localTlsVersion = TlsVersion.a((String)localObject);
+    try
     {
-      String[] arrayOfString3 = paramSSLSocket.getSupportedCipherSuites();
-      int k = gn.a(l.a, arrayOfString3, "TLS_FALLBACK_SCSV");
-      paramSSLSocket = arrayOfString1;
-      if (paramBoolean)
+      localObject = paramSSLSession.getPeerCertificates();
+      if (localObject != null)
       {
-        paramSSLSocket = arrayOfString1;
-        if (k != -1) {
-          paramSSLSocket = gn.a(arrayOfString1, arrayOfString3[k]);
+        localObject = fb.a((Object[])localObject);
+        paramSSLSession = paramSSLSession.getLocalCertificates();
+        if (paramSSLSession == null) {
+          break label147;
         }
+        paramSSLSession = fb.a(paramSSLSession);
+        return new q(localTlsVersion, localh, (List)localObject, paramSSLSession);
       }
-      return new r(this).a(paramSSLSocket).b(arrayOfString2).a();
-      arrayOfString1 = paramSSLSocket.getEnabledCipherSuites();
-      break;
+    }
+    catch (SSLPeerUnverifiedException localSSLPeerUnverifiedException)
+    {
+      for (;;)
+      {
+        List localList = null;
+        continue;
+        localList = Collections.emptyList();
+        continue;
+        label147:
+        paramSSLSession = Collections.emptyList();
+      }
     }
   }
   
-  void a(SSLSocket paramSSLSocket, boolean paramBoolean)
+  public h a()
   {
-    q localq = b(paramSSLSocket, paramBoolean);
-    if (localq.h != null) {
-      paramSSLSocket.setEnabledProtocols(localq.h);
-    }
-    if (localq.g != null) {
-      paramSSLSocket.setEnabledCipherSuites(localq.g);
-    }
+    return this.b;
   }
   
-  public boolean a()
+  public List<Certificate> b()
   {
-    return this.e;
-  }
-  
-  public boolean a(SSLSocket paramSSLSocket)
-  {
-    if (!this.e) {}
-    while (((this.h != null) && (!gn.b(gn.h, this.h, paramSSLSocket.getEnabledProtocols()))) || ((this.g != null) && (!gn.b(l.a, this.g, paramSSLSocket.getEnabledCipherSuites())))) {
-      return false;
-    }
-    return true;
-  }
-  
-  @Nullable
-  public List b()
-  {
-    if (this.g != null) {
-      return l.a(this.g);
-    }
-    return null;
-  }
-  
-  @Nullable
-  public List c()
-  {
-    if (this.h != null) {
-      return TlsVersion.a(this.h);
-    }
-    return null;
-  }
-  
-  public boolean d()
-  {
-    return this.f;
+    return this.c;
   }
   
   public boolean equals(@Nullable Object paramObject)
@@ -112,55 +86,14 @@ public final class q
     do
     {
       return false;
-      if (paramObject == this) {
-        return true;
-      }
       paramObject = (q)paramObject;
-    } while ((this.e != paramObject.e) || ((this.e) && ((!Arrays.equals(this.g, paramObject.g)) || (!Arrays.equals(this.h, paramObject.h)) || (this.f != paramObject.f))));
+    } while ((!this.a.equals(paramObject.a)) || (!this.b.equals(paramObject.b)) || (!this.c.equals(paramObject.c)) || (!this.d.equals(paramObject.d)));
     return true;
   }
   
   public int hashCode()
   {
-    int k = 17;
-    int m;
-    int n;
-    if (this.e)
-    {
-      m = Arrays.hashCode(this.g);
-      n = Arrays.hashCode(this.h);
-      if (!this.f) {
-        break label53;
-      }
-    }
-    label53:
-    for (k = 0;; k = 1)
-    {
-      k += ((m + 527) * 31 + n) * 31;
-      return k;
-    }
-  }
-  
-  public String toString()
-  {
-    if (!this.e) {
-      return "ConnectionSpec()";
-    }
-    String str1;
-    if (this.g != null)
-    {
-      str1 = b().toString();
-      if (this.h == null) {
-        break label92;
-      }
-    }
-    label92:
-    for (String str2 = c().toString();; str2 = "[all enabled]")
-    {
-      return "ConnectionSpec(cipherSuites=" + str1 + ", tlsVersions=" + str2 + ", supportsTlsExtensions=" + this.f + ")";
-      str1 = "[all enabled]";
-      break;
-    }
+    return (((this.a.hashCode() + 527) * 31 + this.b.hashCode()) * 31 + this.c.hashCode()) * 31 + this.d.hashCode();
   }
 }
 

@@ -18,7 +18,7 @@ public class SQLiteQueryBuilder
   private static final Pattern sLimitPattern = Pattern.compile("\\s*\\d+\\s*(,\\s*\\d+\\s*)?");
   private boolean mDistinct = false;
   private SQLiteDatabase.CursorFactory mFactory = null;
-  private Map mProjectionMap = null;
+  private Map<String, String> mProjectionMap = null;
   private boolean mStrict;
   private String mTables = "";
   private StringBuilder mWhereClause = null;
@@ -219,7 +219,7 @@ public class SQLiteQueryBuilder
     return localStringBuilder.toString();
   }
   
-  public String buildUnionSubQuery(String paramString1, String[] paramArrayOfString, Set paramSet, int paramInt, String paramString2, String paramString3, String paramString4, String paramString5)
+  public String buildUnionSubQuery(String paramString1, String[] paramArrayOfString, Set<String> paramSet, int paramInt, String paramString2, String paramString3, String paramString4, String paramString5)
   {
     int j = paramArrayOfString.length;
     String[] arrayOfString = new String[j];
@@ -245,7 +245,7 @@ public class SQLiteQueryBuilder
   }
   
   @Deprecated
-  public String buildUnionSubQuery(String paramString1, String[] paramArrayOfString1, Set paramSet, int paramInt, String paramString2, String paramString3, String[] paramArrayOfString2, String paramString4, String paramString5)
+  public String buildUnionSubQuery(String paramString1, String[] paramArrayOfString1, Set<String> paramSet, int paramInt, String paramString2, String paramString3, String[] paramArrayOfString2, String paramString4, String paramString5)
   {
     return buildUnionSubQuery(paramString1, paramArrayOfString1, paramSet, paramInt, paramString2, paramString3, paramString4, paramString5);
   }
@@ -288,7 +288,7 @@ public class SQLiteQueryBuilder
     this.mDistinct = paramBoolean;
   }
   
-  public void setProjectionMap(Map paramMap)
+  public void setProjectionMap(Map<String, String> paramMap)
   {
     this.mProjectionMap = paramMap;
   }

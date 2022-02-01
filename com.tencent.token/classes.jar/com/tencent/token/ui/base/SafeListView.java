@@ -5,7 +5,7 @@ import android.graphics.Canvas;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.widget.ListView;
-import com.tencent.token.global.h;
+import com.tencent.token.global.g;
 
 public class SafeListView
   extends ListView
@@ -34,7 +34,7 @@ public class SafeListView
     }
     catch (IndexOutOfBoundsException paramCanvas)
     {
-      h.c("SafeListView dispatchDraw" + paramCanvas.toString());
+      g.c("SafeListView dispatchDraw" + paramCanvas.toString());
     }
   }
   
@@ -47,12 +47,12 @@ public class SafeListView
     }
     catch (IndexOutOfBoundsException paramMotionEvent)
     {
-      h.c("SafeListView dispatchTouchEvent" + paramMotionEvent.toString());
+      g.c("SafeListView dispatchTouchEvent" + paramMotionEvent.toString());
       return false;
     }
     catch (Exception paramMotionEvent)
     {
-      h.c("SafeListView dispatchTouchEvent" + paramMotionEvent.toString());
+      g.c("SafeListView dispatchTouchEvent" + paramMotionEvent.toString());
     }
     return false;
   }
@@ -66,13 +66,13 @@ public class SafeListView
     }
     catch (IndexOutOfBoundsException localIndexOutOfBoundsException)
     {
-      h.c("SafeListView onLayout" + localIndexOutOfBoundsException.toString());
+      g.c("SafeListView onLayout" + localIndexOutOfBoundsException.toString());
       localIndexOutOfBoundsException.printStackTrace();
       return;
     }
     catch (Exception localException)
     {
-      h.c("SafeListView onLayout" + localException.toString());
+      g.c("SafeListView onLayout" + localException.toString());
       localException.printStackTrace();
     }
   }

@@ -1,29 +1,30 @@
 package com.tencent.token;
 
-import android.text.TextUtils;
-import com.tencent.halley.common.j;
+import java.util.concurrent.Future;
 
-public final class ah
+public class ah
 {
-  private long a;
-  private int b;
-  private String c;
+  private Future a;
   
-  public ah(long paramLong, int paramInt, String paramString)
+  public ah(Future paramFuture)
   {
-    this.a = paramLong;
-    this.b = paramInt;
-    if (TextUtils.isEmpty(paramString))
-    {
-      this.c = "";
-      return;
-    }
-    this.c = j.b(paramString);
+    this.a = paramFuture;
   }
   
-  public final String a()
+  public boolean a()
   {
-    return this.a + "," + this.b + "," + this.c;
+    boolean bool = false;
+    if (this.a != null) {}
+    try
+    {
+      bool = this.a.cancel(false);
+      return bool;
+    }
+    catch (Throwable localThrowable)
+    {
+      localThrowable.printStackTrace();
+    }
+    return false;
   }
 }
 

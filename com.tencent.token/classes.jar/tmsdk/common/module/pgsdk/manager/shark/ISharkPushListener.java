@@ -4,7 +4,7 @@ import com.qq.taf.jce.JceStruct;
 
 public abstract interface ISharkPushListener
 {
-  public abstract Triple onRecvPush(int paramInt1, long paramLong, int paramInt2, JceStruct paramJceStruct);
+  public abstract Triple<Long, Integer, JceStruct> onRecvPush(int paramInt1, long paramLong, int paramInt2, JceStruct paramJceStruct);
 }
 
 

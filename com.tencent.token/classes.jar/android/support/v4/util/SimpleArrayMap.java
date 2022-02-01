@@ -3,7 +3,7 @@ package android.support.v4.util;
 import java.util.ConcurrentModificationException;
 import java.util.Map;
 
-public class SimpleArrayMap
+public class SimpleArrayMap<K, V>
 {
   private static final int BASE_SIZE = 4;
   private static final int CACHE_SIZE = 10;
@@ -40,7 +40,7 @@ public class SimpleArrayMap
     }
   }
   
-  public SimpleArrayMap(SimpleArrayMap paramSimpleArrayMap)
+  public SimpleArrayMap(SimpleArrayMap<K, V> paramSimpleArrayMap)
   {
     this();
     if (paramSimpleArrayMap != null) {
@@ -313,7 +313,7 @@ public class SimpleArrayMap
     return false;
   }
   
-  public Object get(Object paramObject)
+  public V get(Object paramObject)
   {
     int i = indexOfKey(paramObject);
     if (i >= 0) {
@@ -471,18 +471,18 @@ public class SimpleArrayMap
     return this.mSize <= 0;
   }
   
-  public Object keyAt(int paramInt)
+  public K keyAt(int paramInt)
   {
     return this.mArray[(paramInt << 1)];
   }
   
-  public Object put(Object paramObject1, Object paramObject2)
+  public V put(K paramK, V paramV)
   {
     int k = 8;
     int m = this.mSize;
     int i;
     int j;
-    if (paramObject1 == null)
+    if (paramK == null)
     {
       i = indexOfNull();
       j = 0;
@@ -490,11 +490,11 @@ public class SimpleArrayMap
     while (i >= 0)
     {
       i = (i << 1) + 1;
-      paramObject1 = this.mArray[i];
-      this.mArray[i] = paramObject2;
-      return paramObject1;
-      j = paramObject1.hashCode();
-      i = indexOf(paramObject1, j);
+      paramK = this.mArray[i];
+      this.mArray[i] = paramV;
+      return paramK;
+      j = paramK.hashCode();
+      i = indexOf(paramK, j);
     }
     int n = i ^ 0xFFFFFFFF;
     if (m >= this.mHashes.length)
@@ -534,13 +534,13 @@ public class SimpleArrayMap
       throw new ConcurrentModificationException();
     }
     this.mHashes[n] = j;
-    this.mArray[(n << 1)] = paramObject1;
-    this.mArray[((n << 1) + 1)] = paramObject2;
+    this.mArray[(n << 1)] = paramK;
+    this.mArray[((n << 1) + 1)] = paramV;
     this.mSize += 1;
     return null;
   }
   
-  public void putAll(SimpleArrayMap paramSimpleArrayMap)
+  public void putAll(SimpleArrayMap<? extends K, ? extends V> paramSimpleArrayMap)
   {
     int i = 0;
     int j = paramSimpleArrayMap.mSize;
@@ -564,7 +564,7 @@ public class SimpleArrayMap
     }
   }
   
-  public Object remove(Object paramObject)
+  public V remove(Object paramObject)
   {
     int i = indexOfKey(paramObject);
     if (i >= 0) {
@@ -573,7 +573,7 @@ public class SimpleArrayMap
     return null;
   }
   
-  public Object removeAt(int paramInt)
+  public V removeAt(int paramInt)
   {
     int j = 8;
     Object localObject = this.mArray[((paramInt << 1) + 1)];
@@ -628,11 +628,11 @@ public class SimpleArrayMap
     return localObject;
   }
   
-  public Object setValueAt(int paramInt, Object paramObject)
+  public V setValueAt(int paramInt, V paramV)
   {
     paramInt = (paramInt << 1) + 1;
     Object localObject = this.mArray[paramInt];
-    this.mArray[paramInt] = paramObject;
+    this.mArray[paramInt] = paramV;
     return localObject;
   }
   
@@ -680,7 +680,7 @@ public class SimpleArrayMap
     return localStringBuilder.toString();
   }
   
-  public Object valueAt(int paramInt)
+  public V valueAt(int paramInt)
   {
     return this.mArray[((paramInt << 1) + 1)];
   }

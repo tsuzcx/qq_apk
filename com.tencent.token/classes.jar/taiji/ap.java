@@ -1,26 +1,39 @@
 package taiji;
 
-import android.graphics.Path;
-import com.tencent.token.it;
+import java.util.Arrays;
+import java.util.List;
+import uilib.doraemon.e;
 
 public class ap
-  extends aw
+  implements an
 {
-  private final Path c;
+  private final String a;
+  private final List<an> b;
   
-  Path a(az paramaz)
+  public ap(String paramString, List<an> paramList)
   {
-    this.c.reset();
-    it.a(paramaz, this.c);
-    return this.c;
+    this.a = paramString;
+    this.b = paramList;
   }
   
-  public n c()
+  public String a()
   {
-    if (!b()) {
-      return new y(a((az)this.b));
-    }
-    return new x(this.a);
+    return this.a;
+  }
+  
+  public br a(e parame, ar paramar)
+  {
+    return new bs(parame, paramar, this);
+  }
+  
+  public List<an> b()
+  {
+    return this.b;
+  }
+  
+  public String toString()
+  {
+    return "ShapeGroup{name='" + this.a + "' Shapes: " + Arrays.toString(this.b.toArray()) + '}';
   }
 }
 

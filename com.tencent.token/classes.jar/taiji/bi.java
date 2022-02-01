@@ -1,63 +1,80 @@
 package taiji;
 
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.graphics.ColorFilter;
-import android.graphics.Matrix;
-import android.graphics.Paint;
-import android.graphics.Rect;
-import android.graphics.RectF;
-import uilib.doraemon.e;
+import android.text.TextUtils;
+import java.util.Iterator;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
-class bi
-  extends bd
+public class bi
 {
-  private final Paint e = new Paint(3);
-  private final Rect f = new Rect();
-  private final Rect g = new Rect();
-  private final float h;
-  
-  bi(e parame, cs paramcs, float paramFloat)
+  public static Object a(JSONArray paramJSONArray, int paramInt)
   {
-    super(parame, paramcs);
-    this.h = paramFloat;
-  }
-  
-  private Bitmap f()
-  {
-    String str = this.c.g();
-    return this.b.b(str);
-  }
-  
-  public void a(RectF paramRectF, Matrix paramMatrix)
-  {
-    super.a(paramRectF, paramMatrix);
-    paramMatrix = f();
-    if (paramMatrix != null)
+    if ((paramJSONArray == null) || (paramInt < 0) || (paramInt >= paramJSONArray.length())) {
+      return null;
+    }
+    try
     {
-      paramRectF.set(paramRectF.left, paramRectF.top, Math.min(paramRectF.right, paramMatrix.getWidth()), Math.min(paramRectF.bottom, paramMatrix.getHeight()));
-      this.a.mapRect(paramRectF);
+      paramJSONArray = paramJSONArray.get(paramInt);
+      return paramJSONArray;
     }
+    catch (Throwable paramJSONArray)
+    {
+      paramJSONArray.printStackTrace();
+    }
+    return null;
   }
   
-  public void a(String paramString1, String paramString2, ColorFilter paramColorFilter)
+  public static Object a(JSONObject paramJSONObject, String paramString)
   {
-    this.e.setColorFilter(paramColorFilter);
+    if ((paramJSONObject == null) || (TextUtils.isEmpty(paramString))) {
+      return null;
+    }
+    try
+    {
+      paramJSONObject = paramJSONObject.get(paramString);
+      return paramJSONObject;
+    }
+    catch (Throwable paramJSONObject)
+    {
+      paramJSONObject.printStackTrace();
+    }
+    return null;
   }
   
-  public void b(Canvas paramCanvas, Matrix paramMatrix, int paramInt)
+  public static String b(JSONObject paramJSONObject, String paramString)
   {
-    Bitmap localBitmap = f();
-    if (localBitmap == null) {
-      return;
+    if ((paramJSONObject == null) || (TextUtils.isEmpty(paramString))) {
+      return null;
     }
-    this.e.setAlpha(paramInt);
-    paramCanvas.save();
-    paramCanvas.concat(paramMatrix);
-    this.f.set(0, 0, localBitmap.getWidth(), localBitmap.getHeight());
-    this.g.set(0, 0, (int)(localBitmap.getWidth() * this.h), (int)(localBitmap.getHeight() * this.h));
-    paramCanvas.drawBitmap(localBitmap, this.f, this.g, this.e);
-    paramCanvas.restore();
+    try
+    {
+      paramJSONObject = paramJSONObject.getString(paramString);
+      return paramJSONObject;
+    }
+    catch (Throwable paramJSONObject)
+    {
+      paramJSONObject.printStackTrace();
+    }
+    return null;
+  }
+  
+  public static Object c(JSONObject paramJSONObject, String paramString)
+  {
+    if ((paramJSONObject == null) || (TextUtils.isEmpty(paramString))) {
+      return null;
+    }
+    Iterator localIterator = paramJSONObject.keys();
+    if (localIterator == null) {
+      return null;
+    }
+    while (localIterator.hasNext())
+    {
+      String str = (String)localIterator.next();
+      if (paramString.equalsIgnoreCase(str)) {
+        return a(paramJSONObject, str);
+      }
+    }
+    return null;
   }
 }
 

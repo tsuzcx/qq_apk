@@ -1,63 +1,101 @@
 package taiji;
 
+import android.graphics.Paint.Cap;
+import android.graphics.Paint.Join;
 import java.util.List;
 import uilib.doraemon.e;
 
 public class cm
-  implements ay
+  implements an
 {
   private final String a;
-  private final af b;
-  private final List c;
-  private final ae d;
-  private final ai e;
-  private final af f;
-  private final cm.b g;
-  private final cm.c h;
+  private final ac b;
+  private final List<ac> c;
+  private final ab d;
+  private final ad e;
+  private final ac f;
+  private final b g;
+  private final c h;
   
   public String a()
   {
     return this.a;
   }
   
-  public cx a(e parame, bd parambd)
+  public br a(e parame, ar paramar)
   {
-    return new l(parame, parambd, this);
+    return new j(parame, paramar, this);
   }
   
-  public ae b()
+  public ab b()
   {
     return this.d;
   }
   
-  public ai c()
+  public ad c()
   {
     return this.e;
   }
   
-  public af d()
+  public ac d()
   {
     return this.f;
   }
   
-  public List e()
+  public List<ac> e()
   {
     return this.c;
   }
   
-  public af f()
+  public ac f()
   {
     return this.b;
   }
   
-  public cm.b g()
+  public b g()
   {
     return this.g;
   }
   
-  public cm.c h()
+  public c h()
   {
     return this.h;
+  }
+  
+  public static enum b
+  {
+    private b() {}
+    
+    public Paint.Cap a()
+    {
+      switch (cm.1.a[ordinal()])
+      {
+      default: 
+        return Paint.Cap.SQUARE;
+      case 1: 
+        return Paint.Cap.BUTT;
+      }
+      return Paint.Cap.ROUND;
+    }
+  }
+  
+  public static enum c
+  {
+    private c() {}
+    
+    public Paint.Join a()
+    {
+      switch (cm.1.b[ordinal()])
+      {
+      default: 
+        return null;
+      case 1: 
+        return Paint.Join.BEVEL;
+      case 2: 
+        return Paint.Join.MITER;
+      }
+      return Paint.Join.ROUND;
+    }
   }
 }
 

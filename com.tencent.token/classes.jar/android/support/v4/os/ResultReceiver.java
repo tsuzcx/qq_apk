@@ -12,7 +12,18 @@ import android.support.annotation.RestrictTo;
 public class ResultReceiver
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new ResultReceiver.1();
+  public static final Parcelable.Creator<ResultReceiver> CREATOR = new Parcelable.Creator()
+  {
+    public ResultReceiver createFromParcel(Parcel paramAnonymousParcel)
+    {
+      return new ResultReceiver(paramAnonymousParcel);
+    }
+    
+    public ResultReceiver[] newArray(int paramAnonymousInt)
+    {
+      return new ResultReceiver[paramAnonymousInt];
+    }
+  };
   final Handler mHandler;
   final boolean mLocal;
   IResultReceiver mReceiver;
@@ -41,7 +52,7 @@ public class ResultReceiver
   {
     if (this.mLocal) {
       if (this.mHandler != null) {
-        this.mHandler.post(new ResultReceiver.MyRunnable(this, paramInt, paramBundle));
+        this.mHandler.post(new MyRunnable(paramInt, paramBundle));
       }
     }
     while (this.mReceiver == null)
@@ -63,12 +74,46 @@ public class ResultReceiver
     try
     {
       if (this.mReceiver == null) {
-        this.mReceiver = new ResultReceiver.MyResultReceiver(this);
+        this.mReceiver = new MyResultReceiver();
       }
       paramParcel.writeStrongBinder(this.mReceiver.asBinder());
       return;
     }
     finally {}
+  }
+  
+  class MyResultReceiver
+    extends IResultReceiver.Stub
+  {
+    MyResultReceiver() {}
+    
+    public void send(int paramInt, Bundle paramBundle)
+    {
+      if (ResultReceiver.this.mHandler != null)
+      {
+        ResultReceiver.this.mHandler.post(new ResultReceiver.MyRunnable(ResultReceiver.this, paramInt, paramBundle));
+        return;
+      }
+      ResultReceiver.this.onReceiveResult(paramInt, paramBundle);
+    }
+  }
+  
+  class MyRunnable
+    implements Runnable
+  {
+    final int mResultCode;
+    final Bundle mResultData;
+    
+    MyRunnable(int paramInt, Bundle paramBundle)
+    {
+      this.mResultCode = paramInt;
+      this.mResultData = paramBundle;
+    }
+    
+    public void run()
+    {
+      ResultReceiver.this.onReceiveResult(this.mResultCode, this.mResultData);
+    }
   }
 }
 

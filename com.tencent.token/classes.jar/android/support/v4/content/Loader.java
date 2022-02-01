@@ -1,6 +1,8 @@
 package android.support.v4.content;
 
 import android.content.Context;
+import android.database.ContentObserver;
+import android.os.Handler;
 import android.support.annotation.MainThread;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -8,14 +10,14 @@ import android.support.v4.util.DebugUtils;
 import java.io.FileDescriptor;
 import java.io.PrintWriter;
 
-public class Loader
+public class Loader<D>
 {
   boolean mAbandoned = false;
   boolean mContentChanged = false;
   Context mContext;
   int mId;
-  Loader.OnLoadCompleteListener mListener;
-  Loader.OnLoadCanceledListener mOnLoadCanceledListener;
+  OnLoadCompleteListener<D> mListener;
+  OnLoadCanceledListener<D> mOnLoadCanceledListener;
   boolean mProcessingChange = false;
   boolean mReset = true;
   boolean mStarted = false;
@@ -44,10 +46,10 @@ public class Loader
   }
   
   @NonNull
-  public String dataToString(@Nullable Object paramObject)
+  public String dataToString(@Nullable D paramD)
   {
     StringBuilder localStringBuilder = new StringBuilder(64);
-    DebugUtils.buildShortClassTag(paramObject, localStringBuilder);
+    DebugUtils.buildShortClassTag(paramD, localStringBuilder);
     localStringBuilder.append("}");
     return localStringBuilder.toString();
   }
@@ -61,10 +63,10 @@ public class Loader
   }
   
   @MainThread
-  public void deliverResult(@Nullable Object paramObject)
+  public void deliverResult(@Nullable D paramD)
   {
     if (this.mListener != null) {
-      this.mListener.onLoadComplete(this, paramObject);
+      this.mListener.onLoadComplete(this, paramD);
     }
   }
   
@@ -160,7 +162,7 @@ public class Loader
   protected void onStopLoading() {}
   
   @MainThread
-  public void registerListener(int paramInt, @NonNull Loader.OnLoadCompleteListener paramOnLoadCompleteListener)
+  public void registerListener(int paramInt, @NonNull OnLoadCompleteListener<D> paramOnLoadCompleteListener)
   {
     if (this.mListener != null) {
       throw new IllegalStateException("There is already a listener registered");
@@ -170,7 +172,7 @@ public class Loader
   }
   
   @MainThread
-  public void registerOnLoadCanceledListener(@NonNull Loader.OnLoadCanceledListener paramOnLoadCanceledListener)
+  public void registerOnLoadCanceledListener(@NonNull OnLoadCanceledListener<D> paramOnLoadCanceledListener)
   {
     if (this.mOnLoadCanceledListener != null) {
       throw new IllegalStateException("There is already a listener registered");
@@ -231,7 +233,7 @@ public class Loader
   }
   
   @MainThread
-  public void unregisterListener(@NonNull Loader.OnLoadCompleteListener paramOnLoadCompleteListener)
+  public void unregisterListener(@NonNull OnLoadCompleteListener<D> paramOnLoadCompleteListener)
   {
     if (this.mListener == null) {
       throw new IllegalStateException("No listener register");
@@ -243,7 +245,7 @@ public class Loader
   }
   
   @MainThread
-  public void unregisterOnLoadCanceledListener(@NonNull Loader.OnLoadCanceledListener paramOnLoadCanceledListener)
+  public void unregisterOnLoadCanceledListener(@NonNull OnLoadCanceledListener<D> paramOnLoadCanceledListener)
   {
     if (this.mOnLoadCanceledListener == null) {
       throw new IllegalStateException("No listener register");
@@ -252,6 +254,35 @@ public class Loader
       throw new IllegalArgumentException("Attempting to unregister the wrong listener");
     }
     this.mOnLoadCanceledListener = null;
+  }
+  
+  public final class ForceLoadContentObserver
+    extends ContentObserver
+  {
+    public ForceLoadContentObserver()
+    {
+      super();
+    }
+    
+    public boolean deliverSelfNotifications()
+    {
+      return true;
+    }
+    
+    public void onChange(boolean paramBoolean)
+    {
+      Loader.this.onContentChanged();
+    }
+  }
+  
+  public static abstract interface OnLoadCanceledListener<D>
+  {
+    public abstract void onLoadCanceled(@NonNull Loader<D> paramLoader);
+  }
+  
+  public static abstract interface OnLoadCompleteListener<D>
+  {
+    public abstract void onLoadComplete(@NonNull Loader<D> paramLoader, @Nullable D paramD);
   }
 }
 

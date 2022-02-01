@@ -1,8 +1,8 @@
 package com.tencent.halley.scheduler.c;
 
 import com.tencent.halley.common.b.a;
+import com.tencent.halley.common.b.b;
 import com.tencent.halley.common.b.c;
-import com.tencent.halley.common.b.d;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -24,10 +24,10 @@ public final class i
     this.b = parama.a(this.b, 1, true);
   }
   
-  public final void a(d paramd)
+  public final void a(b paramb)
   {
-    paramd.a(this.a, 0);
-    paramd.a(this.b, 1);
+    paramb.a(this.a, 0);
+    paramb.a(this.b, 1);
   }
 }
 

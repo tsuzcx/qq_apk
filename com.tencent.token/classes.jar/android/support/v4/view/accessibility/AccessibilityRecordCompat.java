@@ -182,7 +182,7 @@ public class AccessibilityRecordCompat
   }
   
   @Deprecated
-  public List getText()
+  public List<CharSequence> getText()
   {
     return this.mRecord.getText();
   }

@@ -15,7 +15,7 @@ import android.util.DisplayMetrics;
 import android.view.SurfaceHolder;
 import android.view.SurfaceHolder.Callback;
 import android.view.SurfaceView;
-import com.tencent.token.global.h;
+import com.tencent.token.global.g;
 import java.lang.reflect.Method;
 import java.util.Collection;
 import java.util.List;
@@ -49,10 +49,10 @@ public class RealNameTakeIDPhotoPreview
       this.g = paramContext.heightPixels;
       this.h = paramContext.widthPixels;
     }
-    h.b("screenWidth =" + this.g + ",screenHeight=" + this.h);
+    g.b("screenWidth =" + this.g + ",screenHeight=" + this.h);
   }
   
-  private static String a(Collection paramCollection, String... paramVarArgs)
+  private static String a(Collection<String> paramCollection, String... paramVarArgs)
   {
     int m;
     String str;
@@ -68,7 +68,7 @@ public class RealNameTakeIDPhotoPreview
     }
     for (paramCollection = str;; paramCollection = null)
     {
-      h.b("resolution Settable value: " + paramCollection);
+      g.b("resolution Settable value: " + paramCollection);
       return paramCollection;
       m += 1;
       break;
@@ -108,7 +108,7 @@ public class RealNameTakeIDPhotoPreview
         {
           for (;;)
           {
-            h.c("CameraOpen camera=" + this.a);
+            g.c("CameraOpen camera=" + this.a);
             localRuntimeException.printStackTrace();
           }
         }
@@ -116,7 +116,7 @@ public class RealNameTakeIDPhotoPreview
     }
     if (this.a == null)
     {
-      h.c("CameraOpen camera=" + this.a);
+      g.c("CameraOpen camera=" + this.a);
       localObject = this.k.obtainMessage(0);
       ((Message)localObject).what = 2;
       ((Message)localObject).sendToTarget();
@@ -137,7 +137,7 @@ public class RealNameTakeIDPhotoPreview
     }
   }
   
-  private void setBestDisplay(List paramList)
+  private void setBestDisplay(List<Camera.Size> paramList)
   {
     this.c = ((Camera.Size)paramList.get(0)).width;
     this.e = ((Camera.Size)paramList.get(0)).height;
@@ -158,10 +158,10 @@ public class RealNameTakeIDPhotoPreview
       }
       m += 1;
     }
-    h.c("debug------------bestPreviewWidth=" + this.c + ",bestPreviewHeight=" + this.e + ", screenWidth=" + this.g + ",screenHeight=" + this.h);
+    g.c("debug------------bestPreviewWidth=" + this.c + ",bestPreviewHeight=" + this.e + ", screenWidth=" + this.g + ",screenHeight=" + this.h);
   }
   
-  private void setBestResult(List paramList)
+  private void setBestResult(List<Camera.Size> paramList)
   {
     this.d = ((Camera.Size)paramList.get(0)).width;
     this.f = ((Camera.Size)paramList.get(0)).height;
@@ -182,7 +182,7 @@ public class RealNameTakeIDPhotoPreview
       }
       m += 1;
     }
-    h.c("debug------------mPictureWidth=" + this.d + ",mPictureHeight=" + this.f);
+    g.c("debug------------mPictureWidth=" + this.d + ",mPictureHeight=" + this.f);
   }
   
   public void a()
@@ -212,7 +212,7 @@ public class RealNameTakeIDPhotoPreview
       this.g = paramContext.heightPixels;
       this.h = paramContext.widthPixels;
     }
-    h.b("screenWidth =" + this.g + ",screenHeight=" + this.h);
+    g.b("screenWidth =" + this.g + ",screenHeight=" + this.h);
   }
   
   public void b()
@@ -228,20 +228,28 @@ public class RealNameTakeIDPhotoPreview
     catch (RuntimeException localRuntimeException)
     {
       localRuntimeException.printStackTrace();
-      h.d("camera auto focus " + localRuntimeException.toString());
+      g.d("camera auto focus " + localRuntimeException.toString());
       return;
     }
     catch (Exception localException)
     {
       localException.printStackTrace();
-      h.d("camera auto focus " + localException.toString());
+      g.d("camera auto focus " + localException.toString());
     }
   }
   
   public void c()
   {
     this.i = new Timer(false);
-    this.j = new ya(this);
+    this.j = new TimerTask()
+    {
+      public void run()
+      {
+        Message localMessage = RealNameTakeIDPhotoPreview.a(RealNameTakeIDPhotoPreview.this).obtainMessage(0);
+        localMessage.what = 3;
+        localMessage.sendToTarget();
+      }
+    };
     this.i.schedule(this.j, 500L, 2000L);
   }
   
@@ -257,7 +265,7 @@ public class RealNameTakeIDPhotoPreview
       try
       {
         this.a.stopPreview();
-        h.b("width =" + paramInt2 + ",height=" + paramInt3);
+        g.b("width =" + paramInt2 + ",height=" + paramInt3);
         if (this.a == null) {
           continue;
         }
@@ -279,7 +287,7 @@ public class RealNameTakeIDPhotoPreview
             while (paramInt1 < ((List)localObject1).size())
             {
               localObject2 = (Camera.Size)((List)localObject1).get(paramInt1);
-              h.b("picSizes,width: " + ((Camera.Size)localObject2).width + " height" + ((Camera.Size)localObject2).height);
+              g.b("picSizes,width: " + ((Camera.Size)localObject2).width + " height" + ((Camera.Size)localObject2).height);
               paramInt1 += 1;
             }
             paramSurfaceHolder = paramSurfaceHolder;
@@ -292,7 +300,7 @@ public class RealNameTakeIDPhotoPreview
             while (paramInt1 < ((List)localObject2).size())
             {
               Camera.Size localSize = (Camera.Size)((List)localObject2).get(paramInt1);
-              h.b("presize,width: " + localSize.width + " height" + localSize.height);
+              g.b("presize,width: " + localSize.width + " height" + localSize.height);
               paramInt1 += 1;
             }
           }
@@ -304,10 +312,10 @@ public class RealNameTakeIDPhotoPreview
             setBestResult((List)localObject1);
             paramSurfaceHolder.setPreviewSize(this.c, this.e);
             paramSurfaceHolder.setPictureSize(this.d, this.f);
-            h.c("mPreviewWidth!" + this.c);
-            h.c("mPreviewHeight!" + this.e);
-            h.c("mPictureWidth!" + this.d);
-            h.c("mPictureHeight!" + this.f);
+            g.c("mPreviewWidth!" + this.c);
+            g.c("mPreviewHeight!" + this.e);
+            g.c("mPictureWidth!" + this.d);
+            g.c("mPictureHeight!" + this.f);
             localObject1 = a(paramSurfaceHolder.getSupportedFocusModes(), new String[] { "continuous-video" });
             if (localObject1 == null) {
               break label534;
@@ -359,7 +367,7 @@ public class RealNameTakeIDPhotoPreview
   
   public void surfaceDestroyed(SurfaceHolder paramSurfaceHolder)
   {
-    h.c("surfaceDestroyed!");
+    g.c("surfaceDestroyed!");
     a();
   }
 }

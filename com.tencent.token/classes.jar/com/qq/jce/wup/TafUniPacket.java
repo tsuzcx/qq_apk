@@ -25,7 +25,7 @@ public class TafUniPacket
     return this._package.sBuffer;
   }
   
-  public Map getTafContext()
+  public Map<String, String> getTafContext()
   {
     return this._package.context;
   }
@@ -58,7 +58,7 @@ public class TafUniPacket
     return "";
   }
   
-  public Map getTafStatus()
+  public Map<String, String> getTafStatus()
   {
     return this._package.status;
   }
@@ -78,7 +78,7 @@ public class TafUniPacket
     this._package.sBuffer = paramArrayOfByte;
   }
   
-  public void setTafContext(Map paramMap)
+  public void setTafContext(Map<String, String> paramMap)
   {
     this._package.context = paramMap;
   }
@@ -93,7 +93,7 @@ public class TafUniPacket
     this._package.cPacketType = paramByte;
   }
   
-  public void setTafStatus(Map paramMap)
+  public void setTafStatus(Map<String, String> paramMap)
   {
     this._package.status = paramMap;
   }

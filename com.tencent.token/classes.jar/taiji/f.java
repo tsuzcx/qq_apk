@@ -1,22 +1,22 @@
 package taiji;
 
-import com.tencent.token.it;
+import com.tencent.token.gm;
 import java.util.List;
 
 public class f
-  extends s
+  extends p<Integer>
 {
-  public f(List paramList)
+  public f(List<o<Integer>> paramList)
   {
     super(paramList);
   }
   
-  public Integer a(r paramr, float paramFloat)
+  public Integer a(o<Integer> paramo, float paramFloat)
   {
-    if ((paramr.a == null) || (paramr.b == null)) {
+    if ((paramo.a == null) || (paramo.b == null)) {
       throw new IllegalStateException("Missing values for keyframe.");
     }
-    return Integer.valueOf(it.a(((Integer)paramr.a).intValue(), ((Integer)paramr.b).intValue(), paramFloat));
+    return Integer.valueOf(gm.a(((Integer)paramo.a).intValue(), ((Integer)paramo.b).intValue(), paramFloat));
   }
 }
 

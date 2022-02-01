@@ -1,24 +1,18 @@
 package taiji;
 
-import com.tencent.token.it;
 import java.util.List;
 
 public class w
-  extends s
+  extends p<am>
 {
-  public w(List paramList)
+  public w(List<? extends o<am>> paramList)
   {
     super(paramList);
   }
   
-  public bs a(r paramr, float paramFloat)
+  public am a(o<am> paramo, float paramFloat)
   {
-    if ((paramr.a == null) || (paramr.b == null)) {
-      throw new IllegalStateException("Missing values for keyframe.");
-    }
-    bs localbs = (bs)paramr.a;
-    paramr = (bs)paramr.b;
-    return new bs(it.a(localbs.a(), paramr.a(), paramFloat), it.a(localbs.b(), paramr.b(), paramFloat));
+    return (am)paramo.a;
   }
 }
 

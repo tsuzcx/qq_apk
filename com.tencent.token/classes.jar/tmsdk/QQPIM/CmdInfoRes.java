@@ -10,8 +10,8 @@ public final class CmdInfoRes
   extends JceStruct
   implements Cloneable
 {
-  static ArrayList dW;
-  public ArrayList infores = null;
+  static ArrayList<CloudInfoRes> dW;
+  public ArrayList<CloudInfoRes> infores = null;
   
   static
   {
@@ -28,7 +28,7 @@ public final class CmdInfoRes
     setInfores(this.infores);
   }
   
-  public CmdInfoRes(ArrayList paramArrayList)
+  public CmdInfoRes(ArrayList<CloudInfoRes> paramArrayList)
   {
     setInfores(paramArrayList);
   }
@@ -68,7 +68,7 @@ public final class CmdInfoRes
     return "tmsdk.QQPIM.CmdInfoRes";
   }
   
-  public ArrayList getInfores()
+  public ArrayList<CloudInfoRes> getInfores()
   {
     return this.infores;
   }
@@ -97,7 +97,7 @@ public final class CmdInfoRes
     setInfores((ArrayList)paramJceInputStream.read(dW, 1, true));
   }
   
-  public void setInfores(ArrayList paramArrayList)
+  public void setInfores(ArrayList<CloudInfoRes> paramArrayList)
   {
     this.infores = paramArrayList;
   }

@@ -14,6 +14,7 @@ import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.MeasureSpec;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup.LayoutParams;
 import android.view.ViewGroup.MarginLayoutParams;
 import android.view.accessibility.AccessibilityEvent;
@@ -154,7 +155,7 @@ public class ActionBarContextView
     return false;
   }
   
-  public void initForMode(ActionMode paramActionMode)
+  public void initForMode(final ActionMode paramActionMode)
   {
     if (this.mClose == null)
     {
@@ -163,7 +164,13 @@ public class ActionBarContextView
     }
     for (;;)
     {
-      this.mClose.findViewById(R.id.action_mode_close_button).setOnClickListener(new ActionBarContextView.1(this, paramActionMode));
+      this.mClose.findViewById(R.id.action_mode_close_button).setOnClickListener(new View.OnClickListener()
+      {
+        public void onClick(View paramAnonymousView)
+        {
+          paramActionMode.finish();
+        }
+      });
       paramActionMode = (MenuBuilder)paramActionMode.getMenu();
       if (this.mActionMenuPresenter != null) {
         this.mActionMenuPresenter.dismissPopupMenus();

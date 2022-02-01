@@ -8,7 +8,7 @@ import java.io.Serializable;
 public class PlugInInfo
   implements Parcelable, Serializable
 {
-  public static final Parcelable.Creator CREATOR = new PlugInInfo.1();
+  public static final Parcelable.Creator<PlugInInfo> CREATOR = new Parcelable.Creator() {};
   private static final long serialVersionUID = 1L;
   public final String plugInId;
   public final String plugInUUID;

@@ -1,32 +1,50 @@
 package com.tencent.token.global.taiji;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.concurrent.locks.ReentrantReadWriteLock;
-import java.util.concurrent.locks.ReentrantReadWriteLock.WriteLock;
-
-class f
-  implements Runnable
+public class f
+  extends Thread
 {
-  f(d paramd, i parami) {}
+  private a a;
+  private Runnable b;
+  private long c;
+  
+  public f(ThreadGroup paramThreadGroup, Runnable paramRunnable, String paramString, long paramLong)
+  {
+    super(paramThreadGroup, paramRunnable, paramString);
+    this.b = paramRunnable;
+    this.c = paramLong;
+  }
   
   public void run()
   {
-    d.a(this.b).writeLock().lock();
+    if (this.a != null) {
+      this.a.b(this, this.b);
+    }
+    super.run();
+    if (this.a != null) {
+      this.a.c(this, this.b);
+    }
+  }
+  
+  public void start()
+  {
     try
     {
-      Iterator localIterator = d.b(this.b).iterator();
-      while (localIterator.hasNext()) {
-        ((r)localIterator.next()).b(this.a.a());
+      if (this.a != null) {
+        this.a.a(this, this.b);
       }
+      super.start();
+      return;
     }
-    finally
-    {
-      d.a(this.b).writeLock().unlock();
-    }
-    if (this.b.e.getActiveCount() + 4 <= d.c(this.b)) {
-      d.a(this.b, true);
-    }
+    finally {}
+  }
+  
+  public static abstract interface a
+  {
+    public abstract void a(Thread paramThread, Runnable paramRunnable);
+    
+    public abstract void b(Thread paramThread, Runnable paramRunnable);
+    
+    public abstract void c(Thread paramThread, Runnable paramRunnable);
   }
 }
 

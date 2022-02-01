@@ -3,40 +3,40 @@ package taiji;
 import uilib.doraemon.e;
 
 public class cn
-  implements ay
+  implements an
 {
   private final String a;
-  private final cn.b b;
-  private final af c;
-  private final af d;
-  private final af e;
+  private final b b;
+  private final ac c;
+  private final ac d;
+  private final ac e;
   
   public String a()
   {
     return this.a;
   }
   
-  public cx a(e parame, bd parambd)
+  public br a(e parame, ar paramar)
   {
-    return new m(parambd, this);
+    return new k(paramar, this);
   }
   
-  public cn.b b()
+  public b b()
   {
     return this.b;
   }
   
-  public af c()
+  public ac c()
   {
     return this.d;
   }
   
-  public af d()
+  public ac d()
   {
     return this.c;
   }
   
-  public af e()
+  public ac e()
   {
     return this.e;
   }
@@ -44,6 +44,11 @@ public class cn
   public String toString()
   {
     return "Trim Path: {start: " + this.c + ", end: " + this.d + ", offset: " + this.e + "}";
+  }
+  
+  public static enum b
+  {
+    private b() {}
   }
 }
 

@@ -41,7 +41,7 @@ public class QbarNative
   public static final int UPC_A = 14;
   public static final int UPC_E = 15;
   public static final int UPC_EAN_EXTENSION = 16;
-  public static QbarNative.QbarArea area = new QbarNative.QbarArea();
+  public static QbarArea area = new QbarArea();
   public static byte[] charset = new byte[100];
   public static byte[] data;
   public static int height;
@@ -133,7 +133,7 @@ public class QbarNative
   
   private static native int GetOneResult(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, int[] paramArrayOfInt);
   
-  private static native int GetResults(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, Point[] paramArrayOfPoint, int[] paramArrayOfInt, QbarNative.QbarArea paramQbarArea);
+  private static native int GetResults(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, Point[] paramArrayOfPoint, int[] paramArrayOfInt, QbarArea paramQbarArea);
   
   public static native String GetVersion();
   
@@ -144,6 +144,15 @@ public class QbarNative
   public static native int ScanImage(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3);
   
   public static native int SetReaders(int[] paramArrayOfInt, int paramInt);
+  
+  private static class QbarArea
+  {
+    public int height = 0;
+    public int typeID = 0;
+    public int width = 0;
+    public int x = 0;
+    public int y = 0;
+  }
 }
 
 

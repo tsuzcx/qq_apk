@@ -10,7 +10,7 @@ public class SemiXml
 {
   public static final String MAGIC_HEAD = "~SEMI_XML~";
   
-  public static Map decode(String paramString)
+  public static Map<String, String> decode(String paramString)
   {
     if ((paramString == null) || (!paramString.startsWith("~SEMI_XML~")))
     {
@@ -48,7 +48,7 @@ public class SemiXml
     return localHashMap;
   }
   
-  public static String encode(Map paramMap)
+  public static String encode(Map<String, String> paramMap)
   {
     if (paramMap == null) {
       return null;

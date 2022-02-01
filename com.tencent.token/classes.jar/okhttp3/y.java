@@ -1,59 +1,51 @@
 package okhttp3;
 
-import java.io.IOException;
-import java.net.InetSocketAddress;
-import java.net.Proxy;
-import java.util.List;
+import com.tencent.token.fb;
 import javax.annotation.Nullable;
+import okio.d;
 
 public abstract class y
 {
-  public static final y a = new z();
-  
-  static ab a(y paramy)
+  public static y a(@Nullable u paramu, byte[] paramArrayOfByte)
   {
-    return new aa(paramy);
+    return a(paramu, paramArrayOfByte, 0, paramArrayOfByte.length);
   }
   
-  public void a(g paramg) {}
+  public static y a(@Nullable u paramu, final byte[] paramArrayOfByte, final int paramInt1, final int paramInt2)
+  {
+    if (paramArrayOfByte == null) {
+      throw new NullPointerException("content == null");
+    }
+    fb.a(paramArrayOfByte.length, paramInt1, paramInt2);
+    new y()
+    {
+      @Nullable
+      public u a()
+      {
+        return y.this;
+      }
+      
+      public void a(d paramAnonymousd)
+      {
+        paramAnonymousd.c(paramArrayOfByte, paramInt1, paramInt2);
+      }
+      
+      public long b()
+      {
+        return paramInt2;
+      }
+    };
+  }
   
-  public void a(g paramg, long paramLong) {}
+  @Nullable
+  public abstract u a();
   
-  public void a(g paramg, IOException paramIOException) {}
+  public abstract void a(d paramd);
   
-  public void a(g paramg, String paramString) {}
-  
-  public void a(g paramg, String paramString, List paramList) {}
-  
-  public void a(g paramg, InetSocketAddress paramInetSocketAddress, Proxy paramProxy) {}
-  
-  public void a(g paramg, InetSocketAddress paramInetSocketAddress, Proxy paramProxy, @Nullable Protocol paramProtocol) {}
-  
-  public void a(g paramg, InetSocketAddress paramInetSocketAddress, Proxy paramProxy, @Nullable Protocol paramProtocol, IOException paramIOException) {}
-  
-  public void a(g paramg, @Nullable ac paramac) {}
-  
-  public void a(g paramg, ap paramap) {}
-  
-  public void a(g paramg, at paramat) {}
-  
-  public void a(g paramg, n paramn) {}
-  
-  public void b(g paramg) {}
-  
-  public void b(g paramg, long paramLong) {}
-  
-  public void b(g paramg, n paramn) {}
-  
-  public void c(g paramg) {}
-  
-  public void d(g paramg) {}
-  
-  public void e(g paramg) {}
-  
-  public void f(g paramg) {}
-  
-  public void g(g paramg) {}
+  public long b()
+  {
+    return -1L;
+  }
 }
 
 

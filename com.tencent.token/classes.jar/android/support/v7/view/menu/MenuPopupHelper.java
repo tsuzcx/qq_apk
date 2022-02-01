@@ -30,7 +30,13 @@ public class MenuPopupHelper
   private final Context mContext;
   private int mDropDownGravity = 8388611;
   private boolean mForceShowIcon;
-  private final PopupWindow.OnDismissListener mInternalOnDismissListener = new MenuPopupHelper.1(this);
+  private final PopupWindow.OnDismissListener mInternalOnDismissListener = new PopupWindow.OnDismissListener()
+  {
+    public void onDismiss()
+    {
+      MenuPopupHelper.this.onDismiss();
+    }
+  };
   private final MenuBuilder mMenu;
   private PopupWindow.OnDismissListener mOnDismissListener;
   private final boolean mOverflowOnly;

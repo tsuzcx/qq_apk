@@ -72,7 +72,7 @@ public class AppCompatActivity
     return super.dispatchKeyEvent(paramKeyEvent);
   }
   
-  public View findViewById(@IdRes int paramInt)
+  public <T extends View> T findViewById(@IdRes int paramInt)
   {
     return getDelegate().findViewById(paramInt);
   }

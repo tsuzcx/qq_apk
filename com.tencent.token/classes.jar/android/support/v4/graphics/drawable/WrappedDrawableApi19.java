@@ -3,6 +3,7 @@ package android.support.v4.graphics.drawable;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
 
 @RequiresApi(19)
@@ -27,12 +28,27 @@ class WrappedDrawableApi19
   @NonNull
   WrappedDrawableApi14.DrawableWrapperState mutateConstantState()
   {
-    return new WrappedDrawableApi19.DrawableWrapperStateKitKat(this.mState, null);
+    return new DrawableWrapperStateKitKat(this.mState, null);
   }
   
   public void setAutoMirrored(boolean paramBoolean)
   {
     this.mDrawable.setAutoMirrored(paramBoolean);
+  }
+  
+  private static class DrawableWrapperStateKitKat
+    extends WrappedDrawableApi14.DrawableWrapperState
+  {
+    DrawableWrapperStateKitKat(@Nullable WrappedDrawableApi14.DrawableWrapperState paramDrawableWrapperState, @Nullable Resources paramResources)
+    {
+      super(paramResources);
+    }
+    
+    @NonNull
+    public Drawable newDrawable(@Nullable Resources paramResources)
+    {
+      return new WrappedDrawableApi19(this, paramResources);
+    }
   }
 }
 

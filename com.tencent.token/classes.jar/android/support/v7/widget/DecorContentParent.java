@@ -1,6 +1,7 @@
 package android.support.v7.widget;
 
 import android.graphics.drawable.Drawable;
+import android.os.Parcelable;
 import android.support.annotation.RestrictTo;
 import android.support.v7.view.menu.MenuPresenter.Callback;
 import android.util.SparseArray;
@@ -28,9 +29,9 @@ public abstract interface DecorContentParent
   
   public abstract boolean isOverflowMenuShowing();
   
-  public abstract void restoreToolbarHierarchyState(SparseArray paramSparseArray);
+  public abstract void restoreToolbarHierarchyState(SparseArray<Parcelable> paramSparseArray);
   
-  public abstract void saveToolbarHierarchyState(SparseArray paramSparseArray);
+  public abstract void saveToolbarHierarchyState(SparseArray<Parcelable> paramSparseArray);
   
   public abstract void setIcon(int paramInt);
   

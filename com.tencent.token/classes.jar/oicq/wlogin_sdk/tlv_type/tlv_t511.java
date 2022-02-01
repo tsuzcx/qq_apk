@@ -13,7 +13,7 @@ public class tlv_t511
     this._cmd = 1297;
   }
   
-  public byte[] get_tlv_511(List paramList)
+  public byte[] get_tlv_511(List<String> paramList)
   {
     Object localObject2 = new ArrayList();
     paramList = paramList.iterator();

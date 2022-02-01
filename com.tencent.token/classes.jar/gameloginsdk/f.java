@@ -1,7 +1,7 @@
 package gameloginsdk;
 
 import b.a.h;
-import com.tencent.token.fo;
+import com.tencent.token.ef;
 import tmsdk.common.c.a.d;
 
 class f

@@ -2,6 +2,7 @@ package android.support.graphics.drawable;
 
 import android.animation.Animator;
 import android.animation.Animator.AnimatorListener;
+import android.animation.AnimatorListenerAdapter;
 import android.animation.AnimatorSet;
 import android.animation.ArgbEvaluator;
 import android.animation.ObjectAnimator;
@@ -45,12 +46,28 @@ public class AnimatedVectorDrawableCompat
   private static final boolean DBG_ANIMATION_VECTOR_DRAWABLE = false;
   private static final String LOGTAG = "AnimatedVDCompat";
   private static final String TARGET = "target";
-  private AnimatedVectorDrawableCompat.AnimatedVectorDrawableCompatState mAnimatedVectorState;
-  private ArrayList mAnimationCallbacks = null;
+  private AnimatedVectorDrawableCompatState mAnimatedVectorState;
+  private ArrayList<Animatable2Compat.AnimationCallback> mAnimationCallbacks = null;
   private Animator.AnimatorListener mAnimatorListener = null;
   private ArgbEvaluator mArgbEvaluator = null;
-  AnimatedVectorDrawableCompat.AnimatedVectorDrawableDelegateState mCachedConstantStateDelegate;
-  final Drawable.Callback mCallback = new AnimatedVectorDrawableCompat.1(this);
+  AnimatedVectorDrawableDelegateState mCachedConstantStateDelegate;
+  final Drawable.Callback mCallback = new Drawable.Callback()
+  {
+    public void invalidateDrawable(Drawable paramAnonymousDrawable)
+    {
+      AnimatedVectorDrawableCompat.this.invalidateSelf();
+    }
+    
+    public void scheduleDrawable(Drawable paramAnonymousDrawable, Runnable paramAnonymousRunnable, long paramAnonymousLong)
+    {
+      AnimatedVectorDrawableCompat.this.scheduleSelf(paramAnonymousRunnable, paramAnonymousLong);
+    }
+    
+    public void unscheduleDrawable(Drawable paramAnonymousDrawable, Runnable paramAnonymousRunnable)
+    {
+      AnimatedVectorDrawableCompat.this.unscheduleSelf(paramAnonymousRunnable);
+    }
+  };
   private Context mContext;
   
   AnimatedVectorDrawableCompat()
@@ -63,7 +80,7 @@ public class AnimatedVectorDrawableCompat
     this(paramContext, null, null);
   }
   
-  private AnimatedVectorDrawableCompat(@Nullable Context paramContext, @Nullable AnimatedVectorDrawableCompat.AnimatedVectorDrawableCompatState paramAnimatedVectorDrawableCompatState, @Nullable Resources paramResources)
+  private AnimatedVectorDrawableCompat(@Nullable Context paramContext, @Nullable AnimatedVectorDrawableCompatState paramAnimatedVectorDrawableCompatState, @Nullable Resources paramResources)
   {
     this.mContext = paramContext;
     if (paramAnimatedVectorDrawableCompatState != null)
@@ -71,7 +88,7 @@ public class AnimatedVectorDrawableCompat
       this.mAnimatedVectorState = paramAnimatedVectorDrawableCompatState;
       return;
     }
-    this.mAnimatedVectorState = new AnimatedVectorDrawableCompat.AnimatedVectorDrawableCompatState(paramContext, paramAnimatedVectorDrawableCompatState, this.mCallback, paramResources);
+    this.mAnimatedVectorState = new AnimatedVectorDrawableCompatState(paramContext, paramAnimatedVectorDrawableCompatState, this.mCallback, paramResources);
   }
   
   public static void clearAnimationCallbacks(Drawable paramDrawable)
@@ -95,7 +112,7 @@ public class AnimatedVectorDrawableCompat
       localObject = new AnimatedVectorDrawableCompat(paramContext);
       ((AnimatedVectorDrawableCompat)localObject).mDelegateDrawable = ResourcesCompat.getDrawable(paramContext.getResources(), paramInt, paramContext.getTheme());
       ((AnimatedVectorDrawableCompat)localObject).mDelegateDrawable.setCallback(((AnimatedVectorDrawableCompat)localObject).mCallback);
-      ((AnimatedVectorDrawableCompat)localObject).mCachedConstantStateDelegate = new AnimatedVectorDrawableCompat.AnimatedVectorDrawableDelegateState(((AnimatedVectorDrawableCompat)localObject).mDelegateDrawable.getConstantState());
+      ((AnimatedVectorDrawableCompat)localObject).mCachedConstantStateDelegate = new AnimatedVectorDrawableDelegateState(((AnimatedVectorDrawableCompat)localObject).mDelegateDrawable.getConstantState());
       return localObject;
     }
     Object localObject = paramContext.getResources();
@@ -170,12 +187,12 @@ public class AnimatedVectorDrawableCompat
     if (Build.VERSION.SDK_INT < 21) {
       setupColorAnimator(paramAnimator);
     }
-    if (AnimatedVectorDrawableCompat.AnimatedVectorDrawableCompatState.access$000(this.mAnimatedVectorState) == null)
+    if (this.mAnimatedVectorState.mAnimators == null)
     {
-      AnimatedVectorDrawableCompat.AnimatedVectorDrawableCompatState.access$002(this.mAnimatedVectorState, new ArrayList());
+      AnimatedVectorDrawableCompatState.access$002(this.mAnimatedVectorState, new ArrayList());
       this.mAnimatedVectorState.mTargetNameMap = new ArrayMap();
     }
-    AnimatedVectorDrawableCompat.AnimatedVectorDrawableCompatState.access$000(this.mAnimatedVectorState).add(paramAnimator);
+    this.mAnimatedVectorState.mAnimators.add(paramAnimator);
     this.mAnimatedVectorState.mTargetNameMap.put(paramAnimator, paramString);
   }
   
@@ -287,7 +304,7 @@ public class AnimatedVectorDrawableCompat
   public Drawable.ConstantState getConstantState()
   {
     if ((this.mDelegateDrawable != null) && (Build.VERSION.SDK_INT >= 24)) {
-      return new AnimatedVectorDrawableCompat.AnimatedVectorDrawableDelegateState(this.mDelegateDrawable.getConstantState());
+      return new AnimatedVectorDrawableDelegateState(this.mDelegateDrawable.getConstantState());
     }
     return null;
   }
@@ -456,7 +473,32 @@ public class AnimatedVectorDrawableCompat
     } while (this.mAnimationCallbacks.contains(paramAnimationCallback));
     this.mAnimationCallbacks.add(paramAnimationCallback);
     if (this.mAnimatorListener == null) {
-      this.mAnimatorListener = new AnimatedVectorDrawableCompat.2(this);
+      this.mAnimatorListener = new AnimatorListenerAdapter()
+      {
+        public void onAnimationEnd(Animator paramAnonymousAnimator)
+        {
+          paramAnonymousAnimator = new ArrayList(AnimatedVectorDrawableCompat.this.mAnimationCallbacks);
+          int j = paramAnonymousAnimator.size();
+          int i = 0;
+          while (i < j)
+          {
+            ((Animatable2Compat.AnimationCallback)paramAnonymousAnimator.get(i)).onAnimationEnd(AnimatedVectorDrawableCompat.this);
+            i += 1;
+          }
+        }
+        
+        public void onAnimationStart(Animator paramAnonymousAnimator)
+        {
+          paramAnonymousAnimator = new ArrayList(AnimatedVectorDrawableCompat.this.mAnimationCallbacks);
+          int j = paramAnonymousAnimator.size();
+          int i = 0;
+          while (i < j)
+          {
+            ((Animatable2Compat.AnimationCallback)paramAnonymousAnimator.get(i)).onAnimationStart(AnimatedVectorDrawableCompat.this);
+            i += 1;
+          }
+        }
+      };
     }
     this.mAnimatedVectorState.mAnimatorSet.addListener(this.mAnimatorListener);
   }
@@ -570,6 +612,125 @@ public class AnimatedVectorDrawableCompat
     } while (this.mAnimationCallbacks.size() != 0);
     removeAnimatorSetListener();
     return bool2;
+  }
+  
+  private static class AnimatedVectorDrawableCompatState
+    extends Drawable.ConstantState
+  {
+    AnimatorSet mAnimatorSet;
+    private ArrayList<Animator> mAnimators;
+    int mChangingConfigurations;
+    ArrayMap<Animator, String> mTargetNameMap;
+    VectorDrawableCompat mVectorDrawable;
+    
+    public AnimatedVectorDrawableCompatState(Context paramContext, AnimatedVectorDrawableCompatState paramAnimatedVectorDrawableCompatState, Drawable.Callback paramCallback, Resources paramResources)
+    {
+      if (paramAnimatedVectorDrawableCompatState != null)
+      {
+        this.mChangingConfigurations = paramAnimatedVectorDrawableCompatState.mChangingConfigurations;
+        if (paramAnimatedVectorDrawableCompatState.mVectorDrawable != null)
+        {
+          paramContext = paramAnimatedVectorDrawableCompatState.mVectorDrawable.getConstantState();
+          if (paramResources == null) {
+            break label215;
+          }
+        }
+        label215:
+        for (this.mVectorDrawable = ((VectorDrawableCompat)paramContext.newDrawable(paramResources));; this.mVectorDrawable = ((VectorDrawableCompat)paramContext.newDrawable()))
+        {
+          this.mVectorDrawable = ((VectorDrawableCompat)this.mVectorDrawable.mutate());
+          this.mVectorDrawable.setCallback(paramCallback);
+          this.mVectorDrawable.setBounds(paramAnimatedVectorDrawableCompatState.mVectorDrawable.getBounds());
+          this.mVectorDrawable.setAllowCaching(false);
+          if (paramAnimatedVectorDrawableCompatState.mAnimators == null) {
+            return;
+          }
+          int j = paramAnimatedVectorDrawableCompatState.mAnimators.size();
+          this.mAnimators = new ArrayList(j);
+          this.mTargetNameMap = new ArrayMap(j);
+          while (i < j)
+          {
+            paramCallback = (Animator)paramAnimatedVectorDrawableCompatState.mAnimators.get(i);
+            paramContext = paramCallback.clone();
+            paramCallback = (String)paramAnimatedVectorDrawableCompatState.mTargetNameMap.get(paramCallback);
+            paramContext.setTarget(this.mVectorDrawable.getTargetByName(paramCallback));
+            this.mAnimators.add(paramContext);
+            this.mTargetNameMap.put(paramContext, paramCallback);
+            i += 1;
+          }
+        }
+        setupAnimatorSet();
+      }
+    }
+    
+    public int getChangingConfigurations()
+    {
+      return this.mChangingConfigurations;
+    }
+    
+    public Drawable newDrawable()
+    {
+      throw new IllegalStateException("No constant state support for SDK < 24.");
+    }
+    
+    public Drawable newDrawable(Resources paramResources)
+    {
+      throw new IllegalStateException("No constant state support for SDK < 24.");
+    }
+    
+    public void setupAnimatorSet()
+    {
+      if (this.mAnimatorSet == null) {
+        this.mAnimatorSet = new AnimatorSet();
+      }
+      this.mAnimatorSet.playTogether(this.mAnimators);
+    }
+  }
+  
+  @RequiresApi(24)
+  private static class AnimatedVectorDrawableDelegateState
+    extends Drawable.ConstantState
+  {
+    private final Drawable.ConstantState mDelegateState;
+    
+    public AnimatedVectorDrawableDelegateState(Drawable.ConstantState paramConstantState)
+    {
+      this.mDelegateState = paramConstantState;
+    }
+    
+    public boolean canApplyTheme()
+    {
+      return this.mDelegateState.canApplyTheme();
+    }
+    
+    public int getChangingConfigurations()
+    {
+      return this.mDelegateState.getChangingConfigurations();
+    }
+    
+    public Drawable newDrawable()
+    {
+      AnimatedVectorDrawableCompat localAnimatedVectorDrawableCompat = new AnimatedVectorDrawableCompat();
+      localAnimatedVectorDrawableCompat.mDelegateDrawable = this.mDelegateState.newDrawable();
+      localAnimatedVectorDrawableCompat.mDelegateDrawable.setCallback(localAnimatedVectorDrawableCompat.mCallback);
+      return localAnimatedVectorDrawableCompat;
+    }
+    
+    public Drawable newDrawable(Resources paramResources)
+    {
+      AnimatedVectorDrawableCompat localAnimatedVectorDrawableCompat = new AnimatedVectorDrawableCompat();
+      localAnimatedVectorDrawableCompat.mDelegateDrawable = this.mDelegateState.newDrawable(paramResources);
+      localAnimatedVectorDrawableCompat.mDelegateDrawable.setCallback(localAnimatedVectorDrawableCompat.mCallback);
+      return localAnimatedVectorDrawableCompat;
+    }
+    
+    public Drawable newDrawable(Resources paramResources, Resources.Theme paramTheme)
+    {
+      AnimatedVectorDrawableCompat localAnimatedVectorDrawableCompat = new AnimatedVectorDrawableCompat();
+      localAnimatedVectorDrawableCompat.mDelegateDrawable = this.mDelegateState.newDrawable(paramResources, paramTheme);
+      localAnimatedVectorDrawableCompat.mDelegateDrawable.setCallback(localAnimatedVectorDrawableCompat.mCallback);
+      return localAnimatedVectorDrawableCompat;
+    }
   }
 }
 

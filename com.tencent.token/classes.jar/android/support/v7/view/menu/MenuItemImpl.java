@@ -11,6 +11,7 @@ import android.support.annotation.Nullable;
 import android.support.annotation.RestrictTo;
 import android.support.v4.graphics.drawable.DrawableCompat;
 import android.support.v4.internal.view.SupportMenuItem;
+import android.support.v4.view.ActionProvider.VisibilityListener;
 import android.support.v7.content.res.AppCompatResources;
 import android.util.Log;
 import android.view.ContextMenu.ContextMenuInfo;
@@ -693,7 +694,13 @@ public final class MenuItemImpl
     this.mActionProvider = paramActionProvider;
     this.mMenu.onItemsChanged(true);
     if (this.mActionProvider != null) {
-      this.mActionProvider.setVisibilityListener(new MenuItemImpl.1(this));
+      this.mActionProvider.setVisibilityListener(new ActionProvider.VisibilityListener()
+      {
+        public void onActionProviderVisibilityChanged(boolean paramAnonymousBoolean)
+        {
+          MenuItemImpl.this.mMenu.onItemVisibleChanged(MenuItemImpl.this);
+        }
+      });
     }
     return this;
   }

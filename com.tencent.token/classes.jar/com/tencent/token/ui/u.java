@@ -1,123 +1,202 @@
 package com.tencent.token.ui;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Handler;
-import android.util.Log;
-import com.tencent.token.fk;
+import com.tencent.token.ca;
+import com.tencent.token.core.bean.DeterminVerifyFactorsResult;
+import com.tencent.token.core.bean.DeterminVerifyFactorsResult.VerifyTypeItem;
+import com.tencent.token.core.bean.QQUser;
+import com.tencent.token.cq;
 import com.tmsdk.TMSDKContext;
-import tmsdk.common.module.pgsdk.PermissionGuide;
+import java.util.List;
 
-class u
-  implements Runnable
+public class u
 {
-  u(AccountPageActivity paramAccountPageActivity) {}
+  private static u a = null;
+  private Activity b;
+  private Handler c = new Handler();
+  private QQUser d = new QQUser();
   
-  public void run()
+  public static u a()
   {
-    boolean bool5 = true;
-    if (fk.a("guide_qqpimsecure_tips_main_last_show_time"))
-    {
-      this.a.mHandler.post(new v(this));
-      fk.a("guide_qqpimsecure_tips_main_last_show_time", System.currentTimeMillis());
+    if (a == null) {
+      a = new u();
     }
+    return a;
+  }
+  
+  private void a(Activity paramActivity, DeterminVerifyFactorsResult paramDeterminVerifyFactorsResult, QQUser paramQQUser, DeterminVerifyFactorsResult.VerifyTypeItem paramVerifyTypeItem, int paramInt, boolean paramBoolean, Handler paramHandler)
+  {
+    switch (paramInt)
+    {
+    default: 
+      paramHandler = new Intent(paramActivity, NetActiveVryOtherListActivity.class);
+      paramHandler.putExtra("intent.qquser", paramQQUser);
+      paramHandler.putExtra("intent.determin_factors_result", paramDeterminVerifyFactorsResult);
+      paramHandler.putExtra("intent.determin_verify_type", paramVerifyTypeItem);
+      paramActivity.startActivity(paramHandler);
+      return;
+    case 1: 
+      if (paramDeterminVerifyFactorsResult.b())
+      {
+        ca.a().b(paramQQUser.mRealUin, paramVerifyTypeItem.a(), "", "", paramHandler);
+        this.b = null;
+        return;
+      }
+      a(paramDeterminVerifyFactorsResult, paramQQUser, paramVerifyTypeItem, 1, paramBoolean, paramActivity, NetActiveSetDirBySeqActivity.class);
+      return;
+    case 2: 
+      a(paramDeterminVerifyFactorsResult, paramQQUser, paramVerifyTypeItem, 2, paramBoolean, paramActivity, VerifyMobilePhoneActivity.class);
+      return;
+    case 3: 
+      if (paramDeterminVerifyFactorsResult.i())
+      {
+        a(paramDeterminVerifyFactorsResult, paramQQUser, paramVerifyTypeItem, 3, paramBoolean, paramActivity, NetActiveVryMobileNoSmsActivity.class);
+        return;
+      }
+      if (paramDeterminVerifyFactorsResult.j())
+      {
+        a(paramDeterminVerifyFactorsResult, paramQQUser, paramVerifyTypeItem, 3, paramBoolean, paramActivity, GeneralVerifyMobileUpActivity.class);
+        return;
+      }
+      a(paramDeterminVerifyFactorsResult, paramQQUser, paramVerifyTypeItem, 3, paramBoolean, paramActivity, NetActiveVryMobileNoSmsActivity.class);
+      return;
+    case 4: 
+      a(paramDeterminVerifyFactorsResult, paramQQUser, paramVerifyTypeItem, 4, paramBoolean, paramActivity, NetActiveVryQQTokenActivity.class);
+      return;
+    case 5: 
+      a(paramDeterminVerifyFactorsResult, paramQQUser, paramVerifyTypeItem, 5, paramBoolean, paramActivity, FaceRecognitionCameraActivity.class);
+      return;
+    case 6: 
+      a(paramDeterminVerifyFactorsResult, paramQQUser, paramVerifyTypeItem, 6, paramBoolean, paramActivity, RealNameFindActivity.class);
+      return;
+    }
+    a(paramDeterminVerifyFactorsResult, paramQQUser, paramVerifyTypeItem, 7, paramBoolean, paramActivity, NetActiveVryQuesActivity.class);
+  }
+  
+  private void a(final DeterminVerifyFactorsResult paramDeterminVerifyFactorsResult, final QQUser paramQQUser, final DeterminVerifyFactorsResult.VerifyTypeItem paramVerifyTypeItem, final int paramInt, final boolean paramBoolean, final Activity paramActivity, final Class paramClass)
+  {
+    if ((paramActivity instanceof NetActiveVryOtherListActivity))
+    {
+      paramActivity.setResult(112);
+      paramActivity.finish();
+    }
+    this.c.postDelayed(new Runnable()
+    {
+      public void run()
+      {
+        Intent localIntent = new Intent(paramActivity, paramClass);
+        localIntent.putExtra("intent.qquser", paramQQUser);
+        localIntent.putExtra("intent.determin_factors_result", paramDeterminVerifyFactorsResult);
+        localIntent.putExtra("intent.determin_verify_type", paramVerifyTypeItem);
+        localIntent.putExtra("intent.determin_verify_factor_id", paramInt);
+        localIntent.putExtra("intent.determin_first_verify_factor", paramBoolean);
+        boolean bool = false;
+        if ((paramActivity instanceof NetActiveVryOtherListActivity)) {
+          bool = true;
+        }
+        localIntent.putExtra("intent.determin_from_list", bool);
+        paramActivity.startActivity(localIntent);
+      }
+    }, 10L);
+  }
+  
+  public static void c() {}
+  
+  public Intent a(Activity paramActivity)
+  {
+    if (this.b != null) {}
+    for (Intent localIntent = new Intent(paramActivity, this.b.getClass());; localIntent = new Intent(paramActivity, IndexActivity.class))
+    {
+      if (((this.b instanceof UtilsActivity)) || ((this.b instanceof AccountPageActivity))) {
+        localIntent = new Intent(paramActivity, IndexActivity.class);
+      }
+      localIntent.addFlags(67108864);
+      return localIntent;
+    }
+  }
+  
+  public void a(Activity paramActivity, DeterminVerifyFactorsResult paramDeterminVerifyFactorsResult, Handler paramHandler)
+  {
+    if ((paramActivity.isFinishing()) || (paramDeterminVerifyFactorsResult == null)) {}
+    do
+    {
+      return;
+      this.b = paramActivity;
+      localObject1 = cq.a().e();
+      if (paramDeterminVerifyFactorsResult.c() == 2) {
+        localObject1 = this.d;
+      }
+    } while (localObject1 == null);
+    Object localObject2 = null;
+    Object localObject1 = localObject2;
+    if (paramDeterminVerifyFactorsResult.l() != null)
+    {
+      localObject1 = localObject2;
+      if (paramDeterminVerifyFactorsResult.l().size() > 0) {
+        localObject1 = (DeterminVerifyFactorsResult.VerifyTypeItem)paramDeterminVerifyFactorsResult.l().get(0);
+      }
+    }
+    a(paramActivity, paramDeterminVerifyFactorsResult, (DeterminVerifyFactorsResult.VerifyTypeItem)localObject1, paramHandler);
+  }
+  
+  public void a(Activity paramActivity, DeterminVerifyFactorsResult paramDeterminVerifyFactorsResult, DeterminVerifyFactorsResult.VerifyTypeItem paramVerifyTypeItem, int paramInt, boolean paramBoolean, Handler paramHandler)
+  {
+    if ((paramActivity.isFinishing()) || (paramDeterminVerifyFactorsResult == null)) {}
+    QQUser localQQUser;
+    do
+    {
+      return;
+      localQQUser = cq.a().e();
+      if (paramDeterminVerifyFactorsResult.c() == 2) {
+        localQQUser = this.d;
+      }
+    } while (localQQUser == null);
+    a(paramActivity, paramDeterminVerifyFactorsResult, localQQUser, paramVerifyTypeItem, paramInt, paramBoolean, paramHandler);
+  }
+  
+  public void a(Activity paramActivity, DeterminVerifyFactorsResult paramDeterminVerifyFactorsResult, DeterminVerifyFactorsResult.VerifyTypeItem paramVerifyTypeItem, Handler paramHandler)
+  {
+    if ((paramActivity.isFinishing()) || (paramDeterminVerifyFactorsResult == null)) {}
     for (;;)
     {
-      boolean bool1;
-      boolean bool3;
-      try
+      return;
+      QQUser localQQUser = cq.a().e();
+      if (paramDeterminVerifyFactorsResult.c() == 2) {
+        localQQUser = this.d;
+      }
+      while (localQQUser != null)
       {
-        Log.i("permission_test", "开始判断存活、自启权限.");
-        int[] arrayOfInt = PermissionGuide.checkPermissions(new int[] { 3, 4 });
-        Log.i("permission_test", "判断结果：[存活] " + arrayOfInt[0] + " [自启] " + arrayOfInt[1]);
-        long l = fk.b("permission_guide_click_time", 0L);
-        if (System.currentTimeMillis() - l <= 604800000L) {
-          break label422;
-        }
-        bool2 = true;
-        Log.i("permission_test", "距离上次点击引导的时间是否超过一周: " + bool2);
-        if (arrayOfInt[0] != 0)
+        int j = -1;
+        int i = j;
+        if (paramVerifyTypeItem != null)
         {
-          TMSDKContext.saveActionData(1150113);
-          if (arrayOfInt[0] != -1) {
-            break label427;
-          }
-          bool1 = true;
-          if (arrayOfInt[1] != 0)
+          List localList = paramVerifyTypeItem.c();
+          i = j;
+          if (localList != null)
           {
-            TMSDKContext.saveActionData(1150111);
-            if (arrayOfInt[1] != -1) {
-              break label449;
+            i = j;
+            if (localList.size() > 0) {
+              i = ((Integer)localList.get(0)).intValue();
             }
-            bool2 = true;
-            Log.i("permission_test", "从时间和结果上判断是否应引导：[存活] " + bool1 + " [自启] " + bool2);
-            if (PermissionGuide.hasAdapterSolution(3) == 0) {
-              continue;
-            }
-            bool4 = true;
-            if (PermissionGuide.hasAdapterSolution(4) == 0) {
-              continue;
-            }
-            bool3 = true;
-            Log.i("permission_test", "是否有引导方案：[存活] " + bool4 + " [自启] " + bool3);
-            if ((!bool1) || (!bool4)) {
-              continue;
-            }
-            bool1 = true;
-            break label407;
-            Log.i("permission_test", "是否引导的最终判断（结合时间、结果以及是否有方案）：[存活] " + bool1 + " [自启] " + bool2);
-            if ((!bool1) && (!bool2)) {
-              break label421;
-            }
-            this.a.mHandler.post(new w(this, bool1, bool2));
           }
         }
-        else
-        {
-          TMSDKContext.saveActionData(1150112);
-          break label444;
-        }
-        TMSDKContext.saveActionData(1150110);
-        bool2 = false;
-        continue;
-        boolean bool4 = false;
-        continue;
-        bool3 = false;
-        continue;
-        bool1 = false;
-      }
-      catch (Throwable localThrowable)
-      {
-        localThrowable.printStackTrace();
+        a(paramActivity, paramDeterminVerifyFactorsResult, paramVerifyTypeItem, i, true, paramHandler);
+        TMSDKContext.SaveStringData(1150089, localQQUser.mRealUin + "");
         return;
-      }
-      boolean bool2 = false;
-      continue;
-      label407:
-      if ((bool2) && (bool3))
-      {
-        bool2 = bool5;
-        continue;
-        label421:
-        return;
-        label422:
-        bool2 = false;
-        continue;
-        label427:
-        if ((localThrowable[0] == 2) && (bool2))
-        {
-          bool1 = true;
-        }
-        else
-        {
-          label444:
-          bool1 = false;
-          continue;
-          label449:
-          if ((localThrowable[1] == 2) && (bool2)) {
-            bool2 = true;
-          }
-        }
       }
     }
+  }
+  
+  public void a(QQUser paramQQUser)
+  {
+    this.d = paramQQUser;
+  }
+  
+  public Activity b()
+  {
+    return this.b;
   }
 }
 

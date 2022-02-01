@@ -1,23 +1,23 @@
 package com.tencent.turingfd.sdk.base;
 
 public final class try
-  extends float
+  extends break
 {
-  public String B = "";
+  public String u = "";
   
-  public float a()
+  public break a()
   {
     return new try();
   }
   
-  public void a(dp paramdp)
+  public void a(cy paramcy)
   {
-    this.B = paramdp.a(0, true);
+    this.u = paramcy.a(0, true);
   }
   
-  public void a(dv paramdv)
+  public void a(db paramdb)
   {
-    paramdv.a(this.B, 0);
+    paramdb.a(this.u, 0);
   }
 }
 

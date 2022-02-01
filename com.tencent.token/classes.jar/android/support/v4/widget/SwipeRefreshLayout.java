@@ -27,6 +27,7 @@ import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.Animation.AnimationListener;
 import android.view.animation.DecelerateInterpolator;
+import android.view.animation.Transformation;
 import android.widget.AbsListView;
 import android.widget.ListView;
 
@@ -57,9 +58,30 @@ public class SwipeRefreshLayout
   private int mActivePointerId = -1;
   private Animation mAlphaMaxAnimation;
   private Animation mAlphaStartAnimation;
-  private final Animation mAnimateToCorrectPosition = new SwipeRefreshLayout.6(this);
-  private final Animation mAnimateToStartPosition = new SwipeRefreshLayout.7(this);
-  private SwipeRefreshLayout.OnChildScrollUpCallback mChildScrollUpCallback;
+  private final Animation mAnimateToCorrectPosition = new Animation()
+  {
+    public void applyTransformation(float paramAnonymousFloat, Transformation paramAnonymousTransformation)
+    {
+      if (!SwipeRefreshLayout.this.mUsingCustomStart) {}
+      for (int i = SwipeRefreshLayout.this.mSpinnerOffsetEnd - Math.abs(SwipeRefreshLayout.this.mOriginalOffsetTop);; i = SwipeRefreshLayout.this.mSpinnerOffsetEnd)
+      {
+        int j = SwipeRefreshLayout.this.mFrom;
+        i = (int)((i - SwipeRefreshLayout.this.mFrom) * paramAnonymousFloat);
+        int k = SwipeRefreshLayout.this.mCircleView.getTop();
+        SwipeRefreshLayout.this.setTargetOffsetTopAndBottom(i + j - k);
+        SwipeRefreshLayout.this.mProgress.setArrowScale(1.0F - paramAnonymousFloat);
+        return;
+      }
+    }
+  };
+  private final Animation mAnimateToStartPosition = new Animation()
+  {
+    public void applyTransformation(float paramAnonymousFloat, Transformation paramAnonymousTransformation)
+    {
+      SwipeRefreshLayout.this.moveToStart(paramAnonymousFloat);
+    }
+  };
+  private OnChildScrollUpCallback mChildScrollUpCallback;
   private int mCircleDiameter;
   CircleImageView mCircleView;
   private int mCircleViewIndex = -1;
@@ -69,7 +91,7 @@ public class SwipeRefreshLayout
   private float mInitialDownY;
   private float mInitialMotionY;
   private boolean mIsBeingDragged;
-  SwipeRefreshLayout.OnRefreshListener mListener;
+  OnRefreshListener mListener;
   private int mMediumAnimationDuration;
   private boolean mNestedScrollInProgress;
   private final NestedScrollingChildHelper mNestedScrollingChildHelper;
@@ -79,7 +101,27 @@ public class SwipeRefreshLayout
   private final int[] mParentOffsetInWindow = new int[2];
   private final int[] mParentScrollConsumed = new int[2];
   CircularProgressDrawable mProgress;
-  private Animation.AnimationListener mRefreshListener = new SwipeRefreshLayout.1(this);
+  private Animation.AnimationListener mRefreshListener = new Animation.AnimationListener()
+  {
+    public void onAnimationEnd(Animation paramAnonymousAnimation)
+    {
+      if (SwipeRefreshLayout.this.mRefreshing)
+      {
+        SwipeRefreshLayout.this.mProgress.setAlpha(255);
+        SwipeRefreshLayout.this.mProgress.start();
+        if ((SwipeRefreshLayout.this.mNotify) && (SwipeRefreshLayout.this.mListener != null)) {
+          SwipeRefreshLayout.this.mListener.onRefresh();
+        }
+        SwipeRefreshLayout.this.mCurrentTargetOffsetTop = SwipeRefreshLayout.this.mCircleView.getTop();
+        return;
+      }
+      SwipeRefreshLayout.this.reset();
+    }
+    
+    public void onAnimationRepeat(Animation paramAnonymousAnimation) {}
+    
+    public void onAnimationStart(Animation paramAnonymousAnimation) {}
+  };
   boolean mRefreshing = false;
   private boolean mReturningToStart;
   boolean mScale;
@@ -197,9 +239,21 @@ public class SwipeRefreshLayout
     }
     this.mRefreshing = false;
     this.mProgress.setStartEndTrim(0.0F, 0.0F);
-    SwipeRefreshLayout.5 local5 = null;
+    Animation.AnimationListener local5 = null;
     if (!this.mScale) {
-      local5 = new SwipeRefreshLayout.5(this);
+      local5 = new Animation.AnimationListener()
+      {
+        public void onAnimationEnd(Animation paramAnonymousAnimation)
+        {
+          if (!SwipeRefreshLayout.this.mScale) {
+            SwipeRefreshLayout.this.startScaleDownAnimation(null);
+          }
+        }
+        
+        public void onAnimationRepeat(Animation paramAnonymousAnimation) {}
+        
+        public void onAnimationStart(Animation paramAnonymousAnimation) {}
+      };
     }
     animateOffsetToStartPosition(this.mCurrentTargetOffsetTop, local5);
     this.mProgress.setArrowEnabled(false);
@@ -301,9 +355,15 @@ public class SwipeRefreshLayout
     startScaleDownAnimation(this.mRefreshListener);
   }
   
-  private Animation startAlphaAnimation(int paramInt1, int paramInt2)
+  private Animation startAlphaAnimation(final int paramInt1, final int paramInt2)
   {
-    SwipeRefreshLayout.4 local4 = new SwipeRefreshLayout.4(this, paramInt1, paramInt2);
+    Animation local4 = new Animation()
+    {
+      public void applyTransformation(float paramAnonymousFloat, Transformation paramAnonymousTransformation)
+      {
+        SwipeRefreshLayout.this.mProgress.setAlpha((int)(paramInt1 + (paramInt2 - paramInt1) * paramAnonymousFloat));
+      }
+    };
     local4.setDuration(300L);
     this.mCircleView.setAnimationListener(null);
     this.mCircleView.clearAnimation();
@@ -335,7 +395,16 @@ public class SwipeRefreshLayout
   {
     this.mFrom = paramInt;
     this.mStartingScale = this.mCircleView.getScaleX();
-    this.mScaleDownToStartAnimation = new SwipeRefreshLayout.8(this);
+    this.mScaleDownToStartAnimation = new Animation()
+    {
+      public void applyTransformation(float paramAnonymousFloat, Transformation paramAnonymousTransformation)
+      {
+        float f1 = SwipeRefreshLayout.this.mStartingScale;
+        float f2 = -SwipeRefreshLayout.this.mStartingScale;
+        SwipeRefreshLayout.this.setAnimationProgress(f1 + f2 * paramAnonymousFloat);
+        SwipeRefreshLayout.this.moveToStart(paramAnonymousFloat);
+      }
+    };
     this.mScaleDownToStartAnimation.setDuration(150L);
     if (paramAnimationListener != null) {
       this.mCircleView.setAnimationListener(paramAnimationListener);
@@ -348,7 +417,13 @@ public class SwipeRefreshLayout
   {
     this.mCircleView.setVisibility(0);
     this.mProgress.setAlpha(255);
-    this.mScaleAnimation = new SwipeRefreshLayout.2(this);
+    this.mScaleAnimation = new Animation()
+    {
+      public void applyTransformation(float paramAnonymousFloat, Transformation paramAnonymousTransformation)
+      {
+        SwipeRefreshLayout.this.setAnimationProgress(paramAnonymousFloat);
+      }
+    };
     this.mScaleAnimation.setDuration(this.mMediumAnimationDuration);
     if (paramAnimationListener != null) {
       this.mCircleView.setAnimationListener(paramAnimationListener);
@@ -758,12 +833,12 @@ public class SwipeRefreshLayout
     this.mNestedScrollingChildHelper.setNestedScrollingEnabled(paramBoolean);
   }
   
-  public void setOnChildScrollUpCallback(@Nullable SwipeRefreshLayout.OnChildScrollUpCallback paramOnChildScrollUpCallback)
+  public void setOnChildScrollUpCallback(@Nullable OnChildScrollUpCallback paramOnChildScrollUpCallback)
   {
     this.mChildScrollUpCallback = paramOnChildScrollUpCallback;
   }
   
-  public void setOnRefreshListener(@Nullable SwipeRefreshLayout.OnRefreshListener paramOnRefreshListener)
+  public void setOnRefreshListener(@Nullable OnRefreshListener paramOnRefreshListener)
   {
     this.mListener = paramOnRefreshListener;
   }
@@ -848,7 +923,13 @@ public class SwipeRefreshLayout
   
   void startScaleDownAnimation(Animation.AnimationListener paramAnimationListener)
   {
-    this.mScaleDownAnimation = new SwipeRefreshLayout.3(this);
+    this.mScaleDownAnimation = new Animation()
+    {
+      public void applyTransformation(float paramAnonymousFloat, Transformation paramAnonymousTransformation)
+      {
+        SwipeRefreshLayout.this.setAnimationProgress(1.0F - paramAnonymousFloat);
+      }
+    };
     this.mScaleDownAnimation.setDuration(150L);
     this.mCircleView.setAnimationListener(paramAnimationListener);
     this.mCircleView.clearAnimation();
@@ -858,6 +939,16 @@ public class SwipeRefreshLayout
   public void stopNestedScroll()
   {
     this.mNestedScrollingChildHelper.stopNestedScroll();
+  }
+  
+  public static abstract interface OnChildScrollUpCallback
+  {
+    public abstract boolean canChildScrollUp(@NonNull SwipeRefreshLayout paramSwipeRefreshLayout, @Nullable View paramView);
+  }
+  
+  public static abstract interface OnRefreshListener
+  {
+    public abstract void onRefresh();
   }
 }
 

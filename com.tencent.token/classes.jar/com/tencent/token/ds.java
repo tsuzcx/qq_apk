@@ -1,44 +1,141 @@
 package com.tencent.token;
 
-import android.os.Handler;
-import com.tencent.token.core.bean.OnlineDeviceResult;
-import com.tencent.token.global.RqdApplication;
-import com.tencent.token.utils.w;
-
-public class ds
+abstract class ds
   extends dt
 {
-  static ds a = null;
-  public OnlineDeviceResult b;
+  static final byte[] c = new byte[''];
+  final byte[] a;
+  long b;
+  private final String d;
+  private final int e;
+  private final int f;
+  private int g;
   
-  private ds()
+  static
   {
-    super("tbl_login_log");
+    c[0] = -128;
   }
   
-  public static ds a()
+  ds(ds paramds)
   {
-    if (a == null) {
-      a = new ds();
+    this.d = paramds.d;
+    this.e = paramds.e;
+    this.f = paramds.f;
+    if (paramds.a == null) {
+      this.a = null;
     }
-    return a;
+    for (;;)
+    {
+      this.g = paramds.g;
+      this.b = paramds.b;
+      return;
+      this.a = new byte[paramds.a.length];
+      System.arraycopy(paramds.a, 0, this.a, 0, this.a.length);
+    }
   }
   
-  public static void b()
+  ds(String paramString, int paramInt1, int paramInt2)
   {
-    a = null;
+    this.d = paramString;
+    this.e = paramInt1;
+    this.f = paramInt2;
+    this.a = new byte[paramInt2];
   }
   
-  public void a(byte paramByte, String paramString, Handler paramHandler)
+  protected final void a()
   {
+    if (this.b == 0L) {
+      return;
+    }
     c();
-    cw.a().a(0L, paramByte, 0, w.a(cp.a(RqdApplication.l()).b()), 523005419, 1, "com.tencent.token", paramString, paramHandler);
+    this.g = 0;
+    this.b = 0L;
   }
   
-  public void c()
+  abstract void a(byte[] paramArrayOfByte, int paramInt);
+  
+  protected final void a(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
-    a(0);
+    if (paramInt2 == 0) {}
+    int i;
+    int j;
+    do
+    {
+      return;
+      if ((paramInt1 < 0) || (paramInt2 < 0) || (paramInt1 > paramArrayOfByte.length - paramInt2)) {
+        throw new ArrayIndexOutOfBoundsException();
+      }
+      if (this.b < 0L) {
+        a();
+      }
+      this.b += paramInt2;
+      i = paramInt1;
+      j = paramInt2;
+      if (this.g != 0)
+      {
+        i = Math.min(paramInt2, this.f - this.g);
+        System.arraycopy(paramArrayOfByte, paramInt1, this.a, this.g, i);
+        this.g += i;
+        paramInt1 += i;
+        paramInt2 -= i;
+        i = paramInt1;
+        j = paramInt2;
+        if (this.g >= this.f)
+        {
+          a(this.a, 0);
+          this.g = 0;
+          j = paramInt2;
+          i = paramInt1;
+        }
+      }
+      while (j >= this.f)
+      {
+        a(paramArrayOfByte, i);
+        j -= this.f;
+        i += this.f;
+      }
+    } while (j <= 0);
+    System.arraycopy(paramArrayOfByte, i, this.a, 0, j);
+    this.g = j;
   }
+  
+  public byte[] a(byte[] paramArrayOfByte)
+  {
+    a(paramArrayOfByte, 0, paramArrayOfByte.length);
+    return b();
+  }
+  
+  protected final int b(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  {
+    if (paramInt2 < this.e) {
+      throw new Exception("Length must be at least " + this.e + " for " + this.d + "digests");
+    }
+    if ((paramInt1 < 0) || (paramInt2 < 0) || (paramInt1 > paramArrayOfByte.length - paramInt2)) {
+      throw new Exception("Buffer too short to store digest");
+    }
+    if (this.b < 0L) {
+      a();
+    }
+    b(paramArrayOfByte, paramInt1);
+    this.b = -1L;
+    return this.e;
+  }
+  
+  abstract void b(byte[] paramArrayOfByte, int paramInt);
+  
+  protected final byte[] b()
+  {
+    byte[] arrayOfByte = new byte[this.e];
+    try
+    {
+      b(arrayOfByte, 0, arrayOfByte.length);
+      return arrayOfByte;
+    }
+    catch (Exception localException) {}
+    return null;
+  }
+  
+  abstract void c();
 }
 
 

@@ -1,6 +1,7 @@
 package com.tencent.mm.sdk.plugin;
 
 import android.content.Context;
+import android.content.Intent;
 import com.tencent.mm.sdk.openapi.BaseReq;
 import com.tencent.mm.sdk.openapi.IWXAPI;
 import com.tencent.mm.sdk.openapi.SendMessageToWX.Req;
@@ -76,6 +77,60 @@ public class MMPluginMsg
       return -3L;
     }
     return localMMPluginMsg.msgClientId;
+  }
+  
+  public static class ReceiverHelper
+  {
+    Intent intent;
+    int type;
+    
+    public ReceiverHelper(Intent paramIntent)
+    {
+      this.type = paramIntent.getIntExtra("type", 0);
+      this.intent = paramIntent;
+    }
+    
+    public String getMsgContent()
+    {
+      if (isRecvNew()) {
+        return this.intent.getStringExtra("recv_msg");
+      }
+      return null;
+    }
+    
+    public Integer getSendErrCode()
+    {
+      if (isSendRet()) {
+        return Integer.valueOf(this.intent.getIntExtra("send_err_code", 0));
+      }
+      return null;
+    }
+    
+    public Integer getSendErrType()
+    {
+      if (isSendRet()) {
+        return Integer.valueOf(this.intent.getIntExtra("send_err_type", 0));
+      }
+      return null;
+    }
+    
+    public Long getSendMsgId()
+    {
+      if (isSendRet()) {
+        return Long.valueOf(this.intent.getLongExtra("send_id", 0L));
+      }
+      return null;
+    }
+    
+    public boolean isRecvNew()
+    {
+      return this.type == 2;
+    }
+    
+    public boolean isSendRet()
+    {
+      return this.type == 1;
+    }
   }
 }
 

@@ -1,21 +1,24 @@
 package taiji;
 
-import android.graphics.PointF;
-import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
-public class al
-  implements av
+abstract class al<V, O>
+  implements ak<O>
 {
-  private final List a = new ArrayList();
-  private PointF b = new PointF(0.0F, 0.0F);
+  final List<o<V>> a;
+  final V b;
   
-  public s a()
+  al(V paramV)
   {
-    if (!b()) {
-      return new y(this.b);
-    }
-    return new v(this.a);
+    this(Collections.emptyList(), paramV);
+  }
+  
+  al(List<o<V>> paramList, V paramV)
+  {
+    this.a = paramList;
+    this.b = paramV;
   }
   
   public boolean b()
@@ -25,7 +28,12 @@ public class al
   
   public String toString()
   {
-    return "initialPoint=" + this.b;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("parseInitialValue=").append(this.b);
+    if (!this.a.isEmpty()) {
+      localStringBuilder.append(", values=").append(Arrays.toString(this.a.toArray()));
+    }
+    return localStringBuilder.toString();
   }
 }
 

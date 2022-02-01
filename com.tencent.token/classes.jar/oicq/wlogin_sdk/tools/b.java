@@ -5,7 +5,7 @@ import oicq.wlogin_sdk.tlv_type.tlv_t;
 
 public class b
 {
-  public static int a(int paramInt1, byte[] paramArrayOfByte, int paramInt2, int paramInt3, Map paramMap)
+  public static int a(int paramInt1, byte[] paramArrayOfByte, int paramInt2, int paramInt3, Map<Integer, tlv_t> paramMap)
   {
     int k = 0;
     if (paramArrayOfByte.length != paramInt2 + paramInt3)

@@ -11,7 +11,7 @@ import android.view.Display;
 import android.view.View;
 import android.view.View.MeasureSpec;
 import android.view.WindowManager;
-import com.tencent.token.utils.x;
+import com.tencent.token.utils.m;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -19,7 +19,7 @@ import java.util.List;
 
 public class LockPatternSmallView
   extends View
-  implements bu
+  implements LockPatternView.b
 {
   LockPatternView a;
   public int b = 1;
@@ -34,7 +34,7 @@ public class LockPatternSmallView
   private Bitmap k;
   private int l;
   private int m;
-  private ArrayList n;
+  private ArrayList<LockPatternView.a> n;
   private Activity o;
   private int p;
   
@@ -52,10 +52,10 @@ public class LockPatternSmallView
     this.o.getWindowManager().getDefaultDisplay().getMetrics(paramContext);
     this.p = paramContext.widthPixels;
     int i1 = this.p * 14 / 320;
-    this.h = x.a(getResources(), 2130837990, i1);
-    this.i = x.a(getResources(), 2130837989, i1);
-    this.j = x.a(getResources(), 2130837991, i1);
-    this.k = x.a(getResources(), 2130837992, i1);
+    this.h = m.a(getResources(), 2130837990, i1);
+    this.i = m.a(getResources(), 2130837989, i1);
+    this.j = m.a(getResources(), 2130837991, i1);
+    this.k = m.a(getResources(), 2130837992, i1);
     this.l = this.h.getWidth();
     this.m = this.h.getHeight();
   }
@@ -127,7 +127,7 @@ public class LockPatternSmallView
     paramLockPatternView.a(this);
   }
   
-  public void a(List paramList)
+  public void a(List<LockPatternView.a> paramList)
   {
     if (this.b != 1) {
       return;
@@ -147,7 +147,7 @@ public class LockPatternSmallView
     invalidate();
   }
   
-  public void b(List paramList)
+  public void b(List<LockPatternView.a> paramList)
   {
     if (this.b == 2) {
       return;
@@ -170,8 +170,8 @@ public class LockPatternSmallView
     localObject = ((ArrayList)localObject).iterator();
     while (((Iterator)localObject).hasNext())
     {
-      bt localbt = (bt)((Iterator)localObject).next();
-      this.d[localbt.a()][localbt.b()] = 1;
+      LockPatternView.a locala = (LockPatternView.a)((Iterator)localObject).next();
+      this.d[locala.a()][locala.b()] = 1;
     }
     int i3 = getPaddingTop();
     int i4 = getPaddingLeft();

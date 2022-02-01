@@ -2,7 +2,7 @@ package tmsdk.common.module.pgsdk.manager;
 
 import android.content.Context;
 import taiji.b;
-import taiji.cq;
+import taiji.bp.a;
 
 public abstract interface IAccessFactory
 {
@@ -10,7 +10,7 @@ public abstract interface IAccessFactory
   
   public abstract void cancelPlay();
   
-  public abstract void startPlay(Context paramContext, b paramb, cq paramcq);
+  public abstract void startPlay(Context paramContext, b paramb, bp.a parama);
 }
 
 

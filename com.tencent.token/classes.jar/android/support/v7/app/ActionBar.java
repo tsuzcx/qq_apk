@@ -2,16 +2,26 @@ package android.support.v7.app;
 
 import android.content.Context;
 import android.content.res.Configuration;
+import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
 import android.support.annotation.DrawableRes;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.annotation.RestrictTo;
 import android.support.annotation.StringRes;
+import android.support.v4.app.FragmentTransaction;
+import android.support.v7.appcompat.R.styleable;
 import android.support.v7.view.ActionMode;
 import android.support.v7.view.ActionMode.Callback;
+import android.util.AttributeSet;
 import android.view.KeyEvent;
 import android.view.View;
+import android.view.ViewGroup.LayoutParams;
+import android.view.ViewGroup.MarginLayoutParams;
 import android.widget.SpinnerAdapter;
+import java.lang.annotation.Annotation;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
 
 public abstract class ActionBar
 {
@@ -27,19 +37,19 @@ public abstract class ActionBar
   @Deprecated
   public static final int NAVIGATION_MODE_TABS = 2;
   
-  public abstract void addOnMenuVisibilityListener(ActionBar.OnMenuVisibilityListener paramOnMenuVisibilityListener);
+  public abstract void addOnMenuVisibilityListener(OnMenuVisibilityListener paramOnMenuVisibilityListener);
   
   @Deprecated
-  public abstract void addTab(ActionBar.Tab paramTab);
+  public abstract void addTab(Tab paramTab);
   
   @Deprecated
-  public abstract void addTab(ActionBar.Tab paramTab, int paramInt);
+  public abstract void addTab(Tab paramTab, int paramInt);
   
   @Deprecated
-  public abstract void addTab(ActionBar.Tab paramTab, int paramInt, boolean paramBoolean);
+  public abstract void addTab(Tab paramTab, int paramInt, boolean paramBoolean);
   
   @Deprecated
-  public abstract void addTab(ActionBar.Tab paramTab, boolean paramBoolean);
+  public abstract void addTab(Tab paramTab, boolean paramBoolean);
   
   @RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
   public boolean closeOptionsMenu()
@@ -83,13 +93,13 @@ public abstract class ActionBar
   
   @Deprecated
   @Nullable
-  public abstract ActionBar.Tab getSelectedTab();
+  public abstract Tab getSelectedTab();
   
   @Nullable
   public abstract CharSequence getSubtitle();
   
   @Deprecated
-  public abstract ActionBar.Tab getTabAt(int paramInt);
+  public abstract Tab getTabAt(int paramInt);
   
   @Deprecated
   public abstract int getTabCount();
@@ -124,7 +134,7 @@ public abstract class ActionBar
   }
   
   @Deprecated
-  public abstract ActionBar.Tab newTab();
+  public abstract Tab newTab();
   
   @RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
   public void onConfigurationChanged(Configuration paramConfiguration) {}
@@ -152,10 +162,10 @@ public abstract class ActionBar
   @Deprecated
   public abstract void removeAllTabs();
   
-  public abstract void removeOnMenuVisibilityListener(ActionBar.OnMenuVisibilityListener paramOnMenuVisibilityListener);
+  public abstract void removeOnMenuVisibilityListener(OnMenuVisibilityListener paramOnMenuVisibilityListener);
   
   @Deprecated
-  public abstract void removeTab(ActionBar.Tab paramTab);
+  public abstract void removeTab(Tab paramTab);
   
   @Deprecated
   public abstract void removeTabAt(int paramInt);
@@ -167,7 +177,7 @@ public abstract class ActionBar
   }
   
   @Deprecated
-  public abstract void selectTab(ActionBar.Tab paramTab);
+  public abstract void selectTab(Tab paramTab);
   
   public abstract void setBackgroundDrawable(@Nullable Drawable paramDrawable);
   
@@ -175,7 +185,7 @@ public abstract class ActionBar
   
   public abstract void setCustomView(View paramView);
   
-  public abstract void setCustomView(View paramView, ActionBar.LayoutParams paramLayoutParams);
+  public abstract void setCustomView(View paramView, LayoutParams paramLayoutParams);
   
   @RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
   public void setDefaultDisplayHomeAsUpEnabled(boolean paramBoolean) {}
@@ -230,7 +240,7 @@ public abstract class ActionBar
   public abstract void setIcon(Drawable paramDrawable);
   
   @Deprecated
-  public abstract void setListNavigationCallbacks(SpinnerAdapter paramSpinnerAdapter, ActionBar.OnNavigationListener paramOnNavigationListener);
+  public abstract void setListNavigationCallbacks(SpinnerAdapter paramSpinnerAdapter, OnNavigationListener paramOnNavigationListener);
   
   public abstract void setLogo(@DrawableRes int paramInt);
   
@@ -266,6 +276,117 @@ public abstract class ActionBar
   public ActionMode startActionMode(ActionMode.Callback paramCallback)
   {
     return null;
+  }
+  
+  @Retention(RetentionPolicy.SOURCE)
+  @RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
+  public static @interface DisplayOptions {}
+  
+  public static class LayoutParams
+    extends ViewGroup.MarginLayoutParams
+  {
+    public int gravity = 0;
+    
+    public LayoutParams(int paramInt)
+    {
+      this(-2, -1, paramInt);
+    }
+    
+    public LayoutParams(int paramInt1, int paramInt2)
+    {
+      super(paramInt2);
+      this.gravity = 8388627;
+    }
+    
+    public LayoutParams(int paramInt1, int paramInt2, int paramInt3)
+    {
+      super(paramInt2);
+      this.gravity = paramInt3;
+    }
+    
+    public LayoutParams(@NonNull Context paramContext, AttributeSet paramAttributeSet)
+    {
+      super(paramAttributeSet);
+      paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.ActionBarLayout);
+      this.gravity = paramContext.getInt(R.styleable.ActionBarLayout_android_layout_gravity, 0);
+      paramContext.recycle();
+    }
+    
+    public LayoutParams(LayoutParams paramLayoutParams)
+    {
+      super();
+      this.gravity = paramLayoutParams.gravity;
+    }
+    
+    public LayoutParams(ViewGroup.LayoutParams paramLayoutParams)
+    {
+      super();
+    }
+  }
+  
+  @Retention(RetentionPolicy.SOURCE)
+  @RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
+  public static @interface NavigationMode {}
+  
+  public static abstract interface OnMenuVisibilityListener
+  {
+    public abstract void onMenuVisibilityChanged(boolean paramBoolean);
+  }
+  
+  @Deprecated
+  public static abstract interface OnNavigationListener
+  {
+    public abstract boolean onNavigationItemSelected(int paramInt, long paramLong);
+  }
+  
+  @Deprecated
+  public static abstract class Tab
+  {
+    public static final int INVALID_POSITION = -1;
+    
+    public abstract CharSequence getContentDescription();
+    
+    public abstract View getCustomView();
+    
+    public abstract Drawable getIcon();
+    
+    public abstract int getPosition();
+    
+    public abstract Object getTag();
+    
+    public abstract CharSequence getText();
+    
+    public abstract void select();
+    
+    public abstract Tab setContentDescription(@StringRes int paramInt);
+    
+    public abstract Tab setContentDescription(CharSequence paramCharSequence);
+    
+    public abstract Tab setCustomView(int paramInt);
+    
+    public abstract Tab setCustomView(View paramView);
+    
+    public abstract Tab setIcon(@DrawableRes int paramInt);
+    
+    public abstract Tab setIcon(Drawable paramDrawable);
+    
+    public abstract Tab setTabListener(ActionBar.TabListener paramTabListener);
+    
+    public abstract Tab setTag(Object paramObject);
+    
+    public abstract Tab setText(int paramInt);
+    
+    public abstract Tab setText(CharSequence paramCharSequence);
+  }
+  
+  @Deprecated
+  public static abstract interface TabListener
+  {
+    public abstract void onTabReselected(ActionBar.Tab paramTab, FragmentTransaction paramFragmentTransaction);
+    
+    public abstract void onTabSelected(ActionBar.Tab paramTab, FragmentTransaction paramFragmentTransaction);
+    
+    public abstract void onTabUnselected(ActionBar.Tab paramTab, FragmentTransaction paramFragmentTransaction);
   }
 }
 

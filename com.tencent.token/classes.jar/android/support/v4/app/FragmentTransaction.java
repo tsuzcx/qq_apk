@@ -4,9 +4,13 @@ import android.support.annotation.AnimRes;
 import android.support.annotation.AnimatorRes;
 import android.support.annotation.IdRes;
 import android.support.annotation.Nullable;
+import android.support.annotation.RestrictTo;
 import android.support.annotation.StringRes;
 import android.support.annotation.StyleRes;
 import android.view.View;
+import java.lang.annotation.Annotation;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
 
 public abstract class FragmentTransaction
 {
@@ -80,6 +84,10 @@ public abstract class FragmentTransaction
   public abstract FragmentTransaction setTransitionStyle(@StyleRes int paramInt);
   
   public abstract FragmentTransaction show(Fragment paramFragment);
+  
+  @Retention(RetentionPolicy.SOURCE)
+  @RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
+  private static @interface Transit {}
 }
 
 

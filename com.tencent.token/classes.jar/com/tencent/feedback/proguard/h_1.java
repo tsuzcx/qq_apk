@@ -91,7 +91,7 @@ public final class h
     return 1;
   }
   
-  private Map a(Map paramMap1, Map paramMap2, int paramInt, boolean paramBoolean)
+  private <K, V> Map<K, V> a(Map<K, V> paramMap1, Map<K, V> paramMap2, int paramInt, boolean paramBoolean)
   {
     if ((paramMap2 == null) || (paramMap2.isEmpty())) {
       paramMap2 = new HashMap();
@@ -242,15 +242,15 @@ public final class h
     catch (BufferUnderflowException localBufferUnderflowException) {}
   }
   
-  private Object[] a(Object[] paramArrayOfObject, int paramInt, boolean paramBoolean)
+  private <T> T[] a(T[] paramArrayOfT, int paramInt, boolean paramBoolean)
   {
-    if ((paramArrayOfObject == null) || (paramArrayOfObject.length == 0)) {
+    if ((paramArrayOfT == null) || (paramArrayOfT.length == 0)) {
       throw new g("unable to get type of key and value.");
     }
-    return b(paramArrayOfObject[0], paramInt, paramBoolean);
+    return b(paramArrayOfT[0], paramInt, paramBoolean);
   }
   
-  private Object[] b(Object paramObject, int paramInt, boolean paramBoolean)
+  private <T> T[] b(T paramT, int paramInt, boolean paramBoolean)
   {
     if (a(paramInt))
     {
@@ -265,7 +265,7 @@ public final class h
       if (i < 0) {
         throw new g("size invalid: " + i);
       }
-      Object[] arrayOfObject = (Object[])Array.newInstance(paramObject.getClass(), i);
+      Object[] arrayOfObject = (Object[])Array.newInstance(paramT.getClass(), i);
       paramInt = 0;
       for (;;)
       {
@@ -273,7 +273,7 @@ public final class h
         if (paramInt >= i) {
           break;
         }
-        arrayOfObject[paramInt] = a(paramObject, 0, true);
+        arrayOfObject[paramInt] = a(paramT, 0, true);
         paramInt += 1;
       }
     }
@@ -600,94 +600,94 @@ public final class h
     throw new g("require field not exist.");
   }
   
-  public final Object a(Object paramObject, int paramInt, boolean paramBoolean)
+  public final <T> Object a(T paramT, int paramInt, boolean paramBoolean)
   {
     int i = 0;
     boolean bool = false;
-    if ((paramObject instanceof Byte)) {
+    if ((paramT instanceof Byte)) {
       return Byte.valueOf(a((byte)0, paramInt, paramBoolean));
     }
-    if ((paramObject instanceof Boolean))
+    if ((paramT instanceof Boolean))
     {
       if (a((byte)0, paramInt, paramBoolean) != 0) {
         bool = true;
       }
       return Boolean.valueOf(bool);
     }
-    if ((paramObject instanceof Short)) {
+    if ((paramT instanceof Short)) {
       return Short.valueOf(a((short)0, paramInt, paramBoolean));
     }
-    if ((paramObject instanceof Integer)) {
+    if ((paramT instanceof Integer)) {
       return Integer.valueOf(a(0, paramInt, paramBoolean));
     }
-    if ((paramObject instanceof Long)) {
+    if ((paramT instanceof Long)) {
       return Long.valueOf(a(0L, paramInt, paramBoolean));
     }
-    if ((paramObject instanceof Float)) {
+    if ((paramT instanceof Float)) {
       return Float.valueOf(a(0.0F, paramInt, paramBoolean));
     }
-    if ((paramObject instanceof Double)) {
+    if ((paramT instanceof Double)) {
       return Double.valueOf(a(0.0D, paramInt, paramBoolean));
     }
-    if ((paramObject instanceof String)) {
+    if ((paramT instanceof String)) {
       return String.valueOf(b(paramInt, paramBoolean));
     }
-    if ((paramObject instanceof Map))
+    if ((paramT instanceof Map))
     {
-      paramObject = (Map)paramObject;
-      return (HashMap)a(new HashMap(), paramObject, paramInt, paramBoolean);
+      paramT = (Map)paramT;
+      return (HashMap)a(new HashMap(), paramT, paramInt, paramBoolean);
     }
-    if ((paramObject instanceof List))
+    if ((paramT instanceof List))
     {
-      paramObject = (List)paramObject;
-      if ((paramObject == null) || (paramObject.isEmpty())) {
+      paramT = (List)paramT;
+      if ((paramT == null) || (paramT.isEmpty())) {
         return new ArrayList();
       }
-      paramObject = b(paramObject.get(0), paramInt, paramBoolean);
-      if (paramObject == null) {
+      paramT = b(paramT.get(0), paramInt, paramBoolean);
+      if (paramT == null) {
         return null;
       }
       ArrayList localArrayList = new ArrayList();
       paramInt = i;
-      while (paramInt < paramObject.length)
+      while (paramInt < paramT.length)
       {
-        localArrayList.add(paramObject[paramInt]);
+        localArrayList.add(paramT[paramInt]);
         paramInt += 1;
       }
       return localArrayList;
     }
-    if ((paramObject instanceof j)) {
-      return a((j)paramObject, paramInt, paramBoolean);
+    if ((paramT instanceof j)) {
+      return a((j)paramT, paramInt, paramBoolean);
     }
-    if (paramObject.getClass().isArray())
+    if (paramT.getClass().isArray())
     {
-      if (((paramObject instanceof byte[])) || ((paramObject instanceof Byte[]))) {
+      if (((paramT instanceof byte[])) || ((paramT instanceof Byte[]))) {
         return c(paramInt, paramBoolean);
       }
-      if ((paramObject instanceof boolean[])) {
+      if ((paramT instanceof boolean[])) {
         return d(paramInt, paramBoolean);
       }
-      if ((paramObject instanceof short[])) {
+      if ((paramT instanceof short[])) {
         return e(paramInt, paramBoolean);
       }
-      if ((paramObject instanceof int[])) {
+      if ((paramT instanceof int[])) {
         return f(paramInt, paramBoolean);
       }
-      if ((paramObject instanceof long[])) {
+      if ((paramT instanceof long[])) {
         return g(paramInt, paramBoolean);
       }
-      if ((paramObject instanceof float[])) {
+      if ((paramT instanceof float[])) {
         return h(paramInt, paramBoolean);
       }
-      if ((paramObject instanceof double[])) {
+      if ((paramT instanceof double[])) {
         return i(paramInt, paramBoolean);
       }
-      return a((Object[])paramObject, paramInt, paramBoolean);
+      return a((Object[])paramT, paramInt, paramBoolean);
     }
     throw new g("read object error: unsupport type.");
   }
   
-  public final HashMap a(Map paramMap, int paramInt, boolean paramBoolean)
+  public final <K, V> HashMap<K, V> a(Map<K, V> paramMap, int paramInt, boolean paramBoolean)
   {
     return (HashMap)a(new HashMap(), paramMap, paramInt, paramBoolean);
   }

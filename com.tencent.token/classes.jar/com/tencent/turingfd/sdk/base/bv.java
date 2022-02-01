@@ -1,18 +1,37 @@
 package com.tencent.turingfd.sdk.base;
 
-import android.view.Window.Callback;
+import java.io.PrintWriter;
+import java.io.StringWriter;
 
-public class bv
-  extends bl
+public final class bv
 {
-  public bt b;
-  public String c;
+  public static bx a = new bx();
   
-  public bv(Window.Callback paramCallback, bt parambt, String paramString)
+  public static String a(Object paramObject)
   {
-    super(paramCallback);
-    this.b = parambt;
-    this.c = paramString;
+    if (paramObject == null) {
+      return null;
+    }
+    if ((paramObject instanceof String)) {
+      return (String)paramObject;
+    }
+    if ((paramObject instanceof Throwable))
+    {
+      Object localObject = (Throwable)paramObject;
+      StringWriter localStringWriter = new StringWriter();
+      paramObject = new PrintWriter(localStringWriter);
+      ((Throwable)localObject).printStackTrace(paramObject);
+      paramObject.flush();
+      localObject = localStringWriter.toString();
+      paramObject.close();
+      return localObject;
+    }
+    return paramObject.toString();
+  }
+  
+  public static void a(String paramString, Object paramObject)
+  {
+    a.a(6, paramString, a(paramObject));
   }
 }
 

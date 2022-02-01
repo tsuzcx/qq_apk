@@ -1,25 +1,25 @@
 package com.tencent.turingfd.sdk.base;
 
 public final class for
-  extends float
+  extends break
 {
-  public long Za = 0L;
+  public long Wa = 0L;
   
-  public float a()
+  public break a()
   {
     return new for();
   }
   
-  public void a(dp paramdp)
+  public void a(cy paramcy)
   {
-    this.Za = paramdp.a(this.Za, 0, false);
+    this.Wa = paramcy.a(this.Wa, 0, false);
   }
   
-  public void a(dv paramdv)
+  public void a(db paramdb)
   {
-    long l = this.Za;
+    long l = this.Wa;
     if (l != 0L) {
-      paramdv.a(l, 0);
+      paramdb.a(l, 0);
     }
   }
 }

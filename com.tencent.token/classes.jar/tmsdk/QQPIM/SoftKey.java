@@ -7,7 +7,7 @@ import com.qq.taf.jce.JceUtil;
 
 public final class SoftKey
   extends JceStruct
-  implements Comparable
+  implements Comparable<SoftKey>
 {
   public String apkFileMd5 = "";
   public int appid = 0;

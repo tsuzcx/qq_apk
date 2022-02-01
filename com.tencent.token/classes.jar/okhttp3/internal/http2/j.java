@@ -1,28 +1,38 @@
 package okhttp3.internal.http2;
 
-import com.tencent.token.gm;
-import java.io.IOException;
+import java.util.List;
+import okio.e;
 
-class j
-  extends gm
+public abstract interface j
 {
-  j(h paramh, String paramString, Object[] paramArrayOfObject, int paramInt, long paramVarArgs)
+  public static final j a = new j()
   {
-    super(paramString, paramArrayOfObject);
-  }
+    public void a(int paramAnonymousInt, ErrorCode paramAnonymousErrorCode) {}
+    
+    public boolean a(int paramAnonymousInt, List<a> paramAnonymousList)
+    {
+      return true;
+    }
+    
+    public boolean a(int paramAnonymousInt, List<a> paramAnonymousList, boolean paramAnonymousBoolean)
+    {
+      return true;
+    }
+    
+    public boolean a(int paramAnonymousInt1, e paramAnonymouse, int paramAnonymousInt2, boolean paramAnonymousBoolean)
+    {
+      paramAnonymouse.h(paramAnonymousInt2);
+      return true;
+    }
+  };
   
-  public void c()
-  {
-    try
-    {
-      this.d.o.a(this.a, this.c);
-      return;
-    }
-    catch (IOException localIOException)
-    {
-      h.a(this.d);
-    }
-  }
+  public abstract void a(int paramInt, ErrorCode paramErrorCode);
+  
+  public abstract boolean a(int paramInt, List<a> paramList);
+  
+  public abstract boolean a(int paramInt, List<a> paramList, boolean paramBoolean);
+  
+  public abstract boolean a(int paramInt1, e parame, int paramInt2, boolean paramBoolean);
 }
 
 

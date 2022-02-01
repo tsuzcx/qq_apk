@@ -10,7 +10,7 @@ public final class PhoneUtil
   public static final String CELL_GSM = "gsm";
   private static final int aI = 17;
   
-  public static List getCellInfoList(Context paramContext)
+  public static List<CellInfo> getCellInfoList(Context paramContext)
   {
     if (Build.VERSION.SDK_INT >= 5) {
       return new PhoneUtil20Impl().getCellInfoList(paramContext);
@@ -18,7 +18,7 @@ public final class PhoneUtil
     return new PhoneUtil16Impl().getCellInfoList(paramContext);
   }
   
-  public static String getCellXml(List paramList)
+  public static String getCellXml(List<CellInfo> paramList)
   {
     Object localObject;
     if ((paramList == null) || (paramList.size() <= 0))
@@ -35,22 +35,22 @@ public final class PhoneUtil
         break;
       }
       str = str + "<cell ";
-      str = str + "mcc=\"" + ((PhoneUtil.CellInfo)paramList.get(i)).mcc + "\" ";
-      str = str + "mnc=\"" + ((PhoneUtil.CellInfo)paramList.get(i)).mnc + "\" ";
-      str = str + "lac=\"" + ((PhoneUtil.CellInfo)paramList.get(i)).lac + "\" ";
-      str = str + "type=\"" + ((PhoneUtil.CellInfo)paramList.get(i)).type + "\" ";
-      str = str + "stationId=\"" + ((PhoneUtil.CellInfo)paramList.get(i)).stationId + "\" ";
-      str = str + "networkId=\"" + ((PhoneUtil.CellInfo)paramList.get(i)).networkId + "\" ";
-      str = str + "systemId=\"" + ((PhoneUtil.CellInfo)paramList.get(i)).systemId + "\" ";
-      str = str + "dbm=\"" + ((PhoneUtil.CellInfo)paramList.get(i)).dbm + "\" ";
+      str = str + "mcc=\"" + ((CellInfo)paramList.get(i)).mcc + "\" ";
+      str = str + "mnc=\"" + ((CellInfo)paramList.get(i)).mnc + "\" ";
+      str = str + "lac=\"" + ((CellInfo)paramList.get(i)).lac + "\" ";
+      str = str + "type=\"" + ((CellInfo)paramList.get(i)).type + "\" ";
+      str = str + "stationId=\"" + ((CellInfo)paramList.get(i)).stationId + "\" ";
+      str = str + "networkId=\"" + ((CellInfo)paramList.get(i)).networkId + "\" ";
+      str = str + "systemId=\"" + ((CellInfo)paramList.get(i)).systemId + "\" ";
+      str = str + "dbm=\"" + ((CellInfo)paramList.get(i)).dbm + "\" ";
       str = str + " >";
-      str = str + ((PhoneUtil.CellInfo)paramList.get(i)).cellid;
+      str = str + ((CellInfo)paramList.get(i)).cellid;
       str = str + "</cell>";
       i += 1;
     }
   }
   
-  public static String getMacXml(List paramList)
+  public static String getMacXml(List<MacInfo> paramList)
   {
     String str1 = "";
     String str2;
@@ -64,12 +64,12 @@ public final class PhoneUtil
       i = 0;
       str2 = str1;
     } while (i >= paramList.size());
-    if ((paramList.get(i) != null) && (((PhoneUtil.MacInfo)paramList.get(i)).mac.length() == aI))
+    if ((paramList.get(i) != null) && (((MacInfo)paramList.get(i)).mac.length() == aI))
     {
       str1 = str1 + "<mac ";
-      str1 = str1 + "macDbm=\"" + ((PhoneUtil.MacInfo)paramList.get(i)).dbm + "\"";
+      str1 = str1 + "macDbm=\"" + ((MacInfo)paramList.get(i)).dbm + "\"";
       str1 = str1 + ">";
-      str1 = str1 + ((PhoneUtil.MacInfo)paramList.get(i)).mac;
+      str1 = str1 + ((MacInfo)paramList.get(i)).mac;
       str1 = str1 + "</mac>";
     }
     for (;;)
@@ -87,6 +87,46 @@ public final class PhoneUtil
       return;
     }
     new PhoneUtil16Impl().getSignalStrength(paramContext);
+  }
+  
+  public static class CellInfo
+  {
+    public static final int MAX_CID = 65535;
+    public static final int MAX_LAC = 65535;
+    public String cellid;
+    public String dbm;
+    public String lac;
+    public String mcc;
+    public String mnc;
+    public String networkId;
+    public String stationId;
+    public String systemId;
+    public String type;
+    
+    public CellInfo(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, String paramString9)
+    {
+      this.mcc = paramString1;
+      this.mnc = paramString2;
+      this.lac = paramString3;
+      this.type = paramString6;
+      this.cellid = paramString4;
+      this.stationId = paramString7;
+      this.networkId = paramString8;
+      this.systemId = paramString9;
+      this.dbm = paramString5;
+    }
+  }
+  
+  public static class MacInfo
+  {
+    public String dbm;
+    public String mac;
+    
+    public MacInfo(String paramString1, String paramString2)
+    {
+      this.mac = paramString1;
+      this.dbm = paramString2;
+    }
   }
 }
 

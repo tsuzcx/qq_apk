@@ -1,13 +1,26 @@
 package com.tencent.wcdb.database;
 
 import com.tencent.wcdb.AbstractCursor;
+import com.tencent.wcdb.Cursor;
 import com.tencent.wcdb.CursorIndexOutOfBoundsException;
 import com.tencent.wcdb.StaleDataException;
+import com.tencent.wcdb.support.CancellationSignal;
 
 public class SQLiteAsyncCursor
   extends AbstractCursor
 {
-  public static final SQLiteDatabase.CursorFactory FACTORY = new SQLiteAsyncCursor.1();
+  public static final SQLiteDatabase.CursorFactory FACTORY = new SQLiteDatabase.CursorFactory()
+  {
+    public Cursor newCursor(SQLiteDatabase paramAnonymousSQLiteDatabase, SQLiteCursorDriver paramAnonymousSQLiteCursorDriver, String paramAnonymousString, SQLiteProgram paramAnonymousSQLiteProgram)
+    {
+      return new SQLiteAsyncCursor(paramAnonymousSQLiteCursorDriver, paramAnonymousString, (SQLiteAsyncQuery)paramAnonymousSQLiteProgram);
+    }
+    
+    public SQLiteProgram newQuery(SQLiteDatabase paramAnonymousSQLiteDatabase, String paramAnonymousString, Object[] paramAnonymousArrayOfObject, CancellationSignal paramAnonymousCancellationSignal)
+    {
+      return new SQLiteAsyncQuery(paramAnonymousSQLiteDatabase, paramAnonymousString, paramAnonymousArrayOfObject, paramAnonymousCancellationSignal);
+    }
+  };
   private static final int MAX_KEEP_CHUNKS = 32;
   private static final int MAX_PREFETCH = 256;
   private static final int MIN_FETCH_ROWS = 32;
@@ -17,7 +30,7 @@ public class SQLiteAsyncCursor
   private long mCurrentRow;
   private final SQLiteCursorDriver mDriver;
   private final SQLiteAsyncQuery mQuery;
-  private SQLiteAsyncCursor.QueryThread mQueryThread;
+  private QueryThread mQueryThread;
   private final Object mWaitLock;
   private ChunkedCursorWindow mWindow;
   
@@ -32,7 +45,7 @@ public class SQLiteAsyncCursor
     this.mCount = -1;
     this.mWaitLock = new Object();
     this.mWindow = new ChunkedCursorWindow(16777216);
-    this.mQueryThread = new SQLiteAsyncCursor.QueryThread(this);
+    this.mQueryThread = new QueryThread();
     this.mQueryThread.start();
   }
   
@@ -241,6 +254,78 @@ public class SQLiteAsyncCursor
     catch (InterruptedException localInterruptedException)
     {
       break label46;
+    }
+  }
+  
+  private class QueryThread
+    extends Thread
+  {
+    private int mFetchPos = 0;
+    private int mMinPos = 0;
+    private volatile int mRequestPos = 0;
+    
+    QueryThread()
+    {
+      super();
+    }
+    
+    void quit()
+    {
+      interrupt();
+    }
+    
+    void requestPos(int paramInt)
+    {
+      try
+      {
+        this.mRequestPos = paramInt;
+        notifyAll();
+        return;
+      }
+      finally {}
+    }
+    
+    public void run()
+    {
+      for (;;)
+      {
+        int i;
+        try
+        {
+          i = SQLiteAsyncCursor.this.mQuery.getCount();
+          i = this.mRequestPos;
+        }
+        catch (InterruptedException localInterruptedException) {}finally
+        {
+          SQLiteAsyncCursor.this.mQuery.release();
+        }
+        if (i < this.mMinPos)
+        {
+          SQLiteAsyncCursor.this.mQuery.reset();
+          this.mFetchPos = 0;
+          SQLiteAsyncCursor.this.mWindow.clear();
+          this.mMinPos = 0;
+        }
+        if (this.mFetchPos < i + 256)
+        {
+          if (SQLiteAsyncCursor.this.mWindow.getNumChunks() > 32)
+          {
+            long l = SQLiteAsyncCursor.this.mWindow.removeChunk(this.mMinPos);
+            if (l != -1L) {
+              this.mMinPos = ((int)l);
+            }
+          }
+          synchronized (SQLiteAsyncCursor.this.mWaitLock)
+          {
+            int j = SQLiteAsyncCursor.this.mQuery.fillRows(SQLiteAsyncCursor.this.mWindow, this.mFetchPos, 32);
+            if ((this.mFetchPos <= i) && (this.mFetchPos + j > i)) {
+              SQLiteAsyncCursor.this.mWaitLock.notifyAll();
+            }
+            this.mFetchPos += j;
+          }
+        }
+      }
+      SQLiteAsyncCursor.this.mQuery.release();
     }
   }
 }

@@ -12,6 +12,7 @@ import android.content.res.Configuration;
 import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Message;
 import android.os.Parcelable;
 import android.support.annotation.CallSuper;
 import android.support.annotation.NonNull;
@@ -20,9 +21,12 @@ import android.support.annotation.RestrictTo;
 import android.support.v4.util.SparseArrayCompat;
 import android.util.AttributeSet;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager.LayoutParams;
 import java.io.FileDescriptor;
 import java.io.PrintWriter;
 import java.util.Collection;
@@ -41,11 +45,30 @@ public class FragmentActivity
   static final String REQUEST_FRAGMENT_WHO_TAG = "android:support:request_fragment_who";
   private static final String TAG = "FragmentActivity";
   boolean mCreated;
-  final FragmentController mFragments = FragmentController.createController(new FragmentActivity.HostCallbacks(this));
-  final Handler mHandler = new FragmentActivity.1(this);
+  final FragmentController mFragments = FragmentController.createController(new HostCallbacks());
+  final Handler mHandler = new Handler()
+  {
+    public void handleMessage(Message paramAnonymousMessage)
+    {
+      switch (paramAnonymousMessage.what)
+      {
+      default: 
+        super.handleMessage(paramAnonymousMessage);
+      case 1: 
+        do
+        {
+          return;
+        } while (!FragmentActivity.this.mStopped);
+        FragmentActivity.this.doReallyStop(false);
+        return;
+      }
+      FragmentActivity.this.onResumeFragments();
+      FragmentActivity.this.mFragments.execPendingActions();
+    }
+  };
   LoaderManager mLoaderManager;
   int mNextCandidateRequestIndex;
-  SparseArrayCompat mPendingFragmentActivityResults;
+  SparseArrayCompat<String> mPendingFragmentActivityResults;
   boolean mReallyStopped = true;
   boolean mRequestedPermissionsFromFragment;
   boolean mResumed;
@@ -142,7 +165,7 @@ public class FragmentActivity
   
   public Object getLastCustomNonConfigurationInstance()
   {
-    FragmentActivity.NonConfigurationInstances localNonConfigurationInstances = (FragmentActivity.NonConfigurationInstances)getLastNonConfigurationInstance();
+    NonConfigurationInstances localNonConfigurationInstances = (NonConfigurationInstances)getLastNonConfigurationInstance();
     if (localNonConfigurationInstances != null) {
       return localNonConfigurationInstances.custom;
     }
@@ -234,9 +257,9 @@ public class FragmentActivity
   {
     this.mFragments.attachHost(null);
     super.onCreate(paramBundle);
-    Object localObject = (FragmentActivity.NonConfigurationInstances)getLastNonConfigurationInstance();
+    Object localObject = (NonConfigurationInstances)getLastNonConfigurationInstance();
     if (localObject != null) {
-      this.mViewModelStore = ((FragmentActivity.NonConfigurationInstances)localObject).viewModelStore;
+      this.mViewModelStore = ((NonConfigurationInstances)localObject).viewModelStore;
     }
     if (paramBundle != null)
     {
@@ -245,7 +268,7 @@ public class FragmentActivity
       if (localObject == null) {
         break label156;
       }
-      localObject = ((FragmentActivity.NonConfigurationInstances)localObject).fragments;
+      localObject = ((NonConfigurationInstances)localObject).fragments;
       localFragmentController.restoreAllState(localParcelable, (FragmentManagerNonConfig)localObject);
       if (paramBundle.containsKey("android:support:next_request_index"))
       {
@@ -445,7 +468,7 @@ public class FragmentActivity
     if ((localFragmentManagerNonConfig == null) && (this.mViewModelStore == null) && (localObject == null)) {
       return null;
     }
-    FragmentActivity.NonConfigurationInstances localNonConfigurationInstances = new FragmentActivity.NonConfigurationInstances();
+    NonConfigurationInstances localNonConfigurationInstances = new NonConfigurationInstances();
     localNonConfigurationInstances.custom = localObject;
     localNonConfigurationInstances.viewModelStore = this.mViewModelStore;
     localNonConfigurationInstances.fragments = localFragmentManagerNonConfig;
@@ -612,6 +635,103 @@ public class FragmentActivity
     if ((!this.mRequestedPermissionsFromFragment) && (paramInt != -1)) {
       checkForValidRequestCode(paramInt);
     }
+  }
+  
+  class HostCallbacks
+    extends FragmentHostCallback<FragmentActivity>
+  {
+    public HostCallbacks()
+    {
+      super();
+    }
+    
+    public void onAttachFragment(Fragment paramFragment)
+    {
+      FragmentActivity.this.onAttachFragment(paramFragment);
+    }
+    
+    public void onDump(String paramString, FileDescriptor paramFileDescriptor, PrintWriter paramPrintWriter, String[] paramArrayOfString)
+    {
+      FragmentActivity.this.dump(paramString, paramFileDescriptor, paramPrintWriter, paramArrayOfString);
+    }
+    
+    @Nullable
+    public View onFindViewById(int paramInt)
+    {
+      return FragmentActivity.this.findViewById(paramInt);
+    }
+    
+    public FragmentActivity onGetHost()
+    {
+      return FragmentActivity.this;
+    }
+    
+    public LayoutInflater onGetLayoutInflater()
+    {
+      return FragmentActivity.this.getLayoutInflater().cloneInContext(FragmentActivity.this);
+    }
+    
+    public int onGetWindowAnimations()
+    {
+      Window localWindow = FragmentActivity.this.getWindow();
+      if (localWindow == null) {
+        return 0;
+      }
+      return localWindow.getAttributes().windowAnimations;
+    }
+    
+    public boolean onHasView()
+    {
+      Window localWindow = FragmentActivity.this.getWindow();
+      return (localWindow != null) && (localWindow.peekDecorView() != null);
+    }
+    
+    public boolean onHasWindowAnimations()
+    {
+      return FragmentActivity.this.getWindow() != null;
+    }
+    
+    public void onRequestPermissionsFromFragment(@NonNull Fragment paramFragment, @NonNull String[] paramArrayOfString, int paramInt)
+    {
+      FragmentActivity.this.requestPermissionsFromFragment(paramFragment, paramArrayOfString, paramInt);
+    }
+    
+    public boolean onShouldSaveFragmentState(Fragment paramFragment)
+    {
+      return !FragmentActivity.this.isFinishing();
+    }
+    
+    public boolean onShouldShowRequestPermissionRationale(@NonNull String paramString)
+    {
+      return ActivityCompat.shouldShowRequestPermissionRationale(FragmentActivity.this, paramString);
+    }
+    
+    public void onStartActivityFromFragment(Fragment paramFragment, Intent paramIntent, int paramInt)
+    {
+      FragmentActivity.this.startActivityFromFragment(paramFragment, paramIntent, paramInt);
+    }
+    
+    public void onStartActivityFromFragment(Fragment paramFragment, Intent paramIntent, int paramInt, @Nullable Bundle paramBundle)
+    {
+      FragmentActivity.this.startActivityFromFragment(paramFragment, paramIntent, paramInt, paramBundle);
+    }
+    
+    public void onStartIntentSenderFromFragment(Fragment paramFragment, IntentSender paramIntentSender, int paramInt1, @Nullable Intent paramIntent, int paramInt2, int paramInt3, int paramInt4, Bundle paramBundle)
+    {
+      FragmentActivity.this.startIntentSenderFromFragment(paramFragment, paramIntentSender, paramInt1, paramIntent, paramInt2, paramInt3, paramInt4, paramBundle);
+    }
+    
+    public void onSupportInvalidateOptionsMenu()
+    {
+      FragmentActivity.this.supportInvalidateOptionsMenu();
+    }
+  }
+  
+  static final class NonConfigurationInstances
+  {
+    Object custom;
+    FragmentManagerNonConfig fragments;
+    ViewModelStore viewModelStore;
   }
 }
 

@@ -1,8 +1,10 @@
 package btmsdkobf;
 
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
+import android.os.IBinder;
 import android.os.RemoteException;
 import android.util.Log;
 
@@ -12,7 +14,7 @@ public class m
   private static boolean aj = false;
   private l ai;
   private ServiceConnection ak;
-  private m.a al = null;
+  private a al = null;
   private Context mContext = null;
   
   private void h(String paramString)
@@ -29,14 +31,35 @@ public class m
     }
   }
   
-  public int a(Context paramContext, m.a parama)
+  public int a(Context paramContext, a<String> parama)
   {
     if (paramContext == null) {
       throw new NullPointerException("Context can not be null.");
     }
     this.mContext = paramContext;
     this.al = parama;
-    this.ak = new je(this);
+    this.ak = new ServiceConnection()
+    {
+      public void onServiceConnected(ComponentName paramAnonymousComponentName, IBinder paramAnonymousIBinder)
+      {
+        try
+        {
+          m.a(m.this, l.a.b(paramAnonymousIBinder));
+          if (m.a(m.this) != null) {
+            m.a(m.this).a("Deviceid Service Connected", m.this);
+          }
+          m.a(m.this, "Service onServiceConnected");
+          return;
+        }
+        finally {}
+      }
+      
+      public void onServiceDisconnected(ComponentName paramAnonymousComponentName)
+      {
+        m.a(m.this, null);
+        m.a(m.this, "Service onServiceDisconnected");
+      }
+    };
     paramContext = new Intent();
     paramContext.setClassName("com.zui.deviceidservice", "com.zui.deviceidservice.DeviceidService");
     if (this.mContext.bindService(paramContext, this.ak, 1))
@@ -69,6 +92,11 @@ public class m
       localRemoteException.printStackTrace();
     }
     return null;
+  }
+  
+  public static abstract interface a<T>
+  {
+    public abstract void a(T paramT, m paramm);
   }
 }
 

@@ -1,12 +1,8 @@
 package com.tencent.turingfd.sdk.base;
 
-import android.content.Context;
-
-public abstract interface bx
+public class bx
 {
-  public abstract cc a(Context paramContext);
-  
-  public abstract void b(Context paramContext);
+  public void a(int paramInt, String paramString1, String paramString2) {}
 }
 
 

@@ -6,6 +6,7 @@ import android.graphics.Rect;
 import android.os.Build.VERSION;
 import android.os.Handler;
 import android.os.Parcelable;
+import android.os.SystemClock;
 import android.support.annotation.AttrRes;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -32,6 +33,9 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.PopupWindow.OnDismissListener;
 import android.widget.TextView;
+import java.lang.annotation.Annotation;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -44,26 +48,113 @@ final class CascadingMenuPopup
   static final int HORIZ_POSITION_RIGHT = 1;
   static final int SUBMENU_TIMEOUT_MS = 200;
   private View mAnchorView;
-  private final View.OnAttachStateChangeListener mAttachStateChangeListener = new CascadingMenuPopup.2(this);
+  private final View.OnAttachStateChangeListener mAttachStateChangeListener = new View.OnAttachStateChangeListener()
+  {
+    public void onViewAttachedToWindow(View paramAnonymousView) {}
+    
+    public void onViewDetachedFromWindow(View paramAnonymousView)
+    {
+      if (CascadingMenuPopup.this.mTreeObserver != null)
+      {
+        if (!CascadingMenuPopup.this.mTreeObserver.isAlive()) {
+          CascadingMenuPopup.access$002(CascadingMenuPopup.this, paramAnonymousView.getViewTreeObserver());
+        }
+        CascadingMenuPopup.this.mTreeObserver.removeGlobalOnLayoutListener(CascadingMenuPopup.this.mGlobalLayoutListener);
+      }
+      paramAnonymousView.removeOnAttachStateChangeListener(this);
+    }
+  };
   private final Context mContext;
   private int mDropDownGravity = 0;
   private boolean mForceShowIcon;
-  private final ViewTreeObserver.OnGlobalLayoutListener mGlobalLayoutListener = new CascadingMenuPopup.1(this);
+  private final ViewTreeObserver.OnGlobalLayoutListener mGlobalLayoutListener = new ViewTreeObserver.OnGlobalLayoutListener()
+  {
+    public void onGlobalLayout()
+    {
+      Object localObject;
+      if ((CascadingMenuPopup.this.isShowing()) && (CascadingMenuPopup.this.mShowingMenus.size() > 0) && (!((CascadingMenuPopup.CascadingMenuInfo)CascadingMenuPopup.this.mShowingMenus.get(0)).window.isModal()))
+      {
+        localObject = CascadingMenuPopup.this.mShownAnchorView;
+        if ((localObject != null) && (((View)localObject).isShown())) {
+          break label77;
+        }
+        CascadingMenuPopup.this.dismiss();
+      }
+      for (;;)
+      {
+        return;
+        label77:
+        localObject = CascadingMenuPopup.this.mShowingMenus.iterator();
+        while (((Iterator)localObject).hasNext()) {
+          ((CascadingMenuPopup.CascadingMenuInfo)((Iterator)localObject).next()).window.show();
+        }
+      }
+    }
+  };
   private boolean mHasXOffset;
   private boolean mHasYOffset;
   private int mLastPosition;
-  private final MenuItemHoverListener mMenuItemHoverListener = new CascadingMenuPopup.3(this);
+  private final MenuItemHoverListener mMenuItemHoverListener = new MenuItemHoverListener()
+  {
+    public void onItemHoverEnter(@NonNull final MenuBuilder paramAnonymousMenuBuilder, @NonNull final MenuItem paramAnonymousMenuItem)
+    {
+      CascadingMenuPopup.this.mSubMenuHoverHandler.removeCallbacksAndMessages(null);
+      int i = 0;
+      int j = CascadingMenuPopup.this.mShowingMenus.size();
+      if (i < j) {
+        if (paramAnonymousMenuBuilder != ((CascadingMenuPopup.CascadingMenuInfo)CascadingMenuPopup.this.mShowingMenus.get(i)).menu) {}
+      }
+      for (;;)
+      {
+        if (i == -1)
+        {
+          return;
+          i += 1;
+          break;
+        }
+        i += 1;
+        if (i < CascadingMenuPopup.this.mShowingMenus.size()) {}
+        for (final CascadingMenuPopup.CascadingMenuInfo localCascadingMenuInfo = (CascadingMenuPopup.CascadingMenuInfo)CascadingMenuPopup.this.mShowingMenus.get(i);; localCascadingMenuInfo = null)
+        {
+          paramAnonymousMenuItem = new Runnable()
+          {
+            public void run()
+            {
+              if (localCascadingMenuInfo != null)
+              {
+                CascadingMenuPopup.this.mShouldCloseImmediately = true;
+                localCascadingMenuInfo.menu.close(false);
+                CascadingMenuPopup.this.mShouldCloseImmediately = false;
+              }
+              if ((paramAnonymousMenuItem.isEnabled()) && (paramAnonymousMenuItem.hasSubMenu())) {
+                paramAnonymousMenuBuilder.performItemAction(paramAnonymousMenuItem, 4);
+              }
+            }
+          };
+          long l = SystemClock.uptimeMillis();
+          CascadingMenuPopup.this.mSubMenuHoverHandler.postAtTime(paramAnonymousMenuItem, paramAnonymousMenuBuilder, l + 200L);
+          return;
+        }
+        i = -1;
+      }
+    }
+    
+    public void onItemHoverExit(@NonNull MenuBuilder paramAnonymousMenuBuilder, @NonNull MenuItem paramAnonymousMenuItem)
+    {
+      CascadingMenuPopup.this.mSubMenuHoverHandler.removeCallbacksAndMessages(paramAnonymousMenuBuilder);
+    }
+  };
   private final int mMenuMaxWidth;
   private PopupWindow.OnDismissListener mOnDismissListener;
   private final boolean mOverflowOnly;
-  private final List mPendingMenus = new ArrayList();
+  private final List<MenuBuilder> mPendingMenus = new ArrayList();
   private final int mPopupStyleAttr;
   private final int mPopupStyleRes;
   private MenuPresenter.Callback mPresenterCallback;
   private int mRawDropDownGravity = 0;
   boolean mShouldCloseImmediately;
   private boolean mShowTitle;
-  final List mShowingMenus = new ArrayList();
+  final List<CascadingMenuInfo> mShowingMenus = new ArrayList();
   View mShownAnchorView;
   final Handler mSubMenuHoverHandler;
   private ViewTreeObserver mTreeObserver;
@@ -103,7 +194,7 @@ final class CascadingMenuPopup
     int j = this.mShowingMenus.size();
     while (i < j)
     {
-      if (paramMenuBuilder == ((CascadingMenuPopup.CascadingMenuInfo)this.mShowingMenus.get(i)).menu) {
+      if (paramMenuBuilder == ((CascadingMenuInfo)this.mShowingMenus.get(i)).menu) {
         return i;
       }
       i += 1;
@@ -127,7 +218,7 @@ final class CascadingMenuPopup
   }
   
   @Nullable
-  private View findParentViewForSubmenu(@NonNull CascadingMenuPopup.CascadingMenuInfo paramCascadingMenuInfo, @NonNull MenuBuilder paramMenuBuilder)
+  private View findParentViewForSubmenu(@NonNull CascadingMenuInfo paramCascadingMenuInfo, @NonNull MenuBuilder paramMenuBuilder)
   {
     int i = 0;
     paramMenuBuilder = findMenuItemForSubmenu(paramCascadingMenuInfo.menu, paramMenuBuilder);
@@ -184,7 +275,7 @@ final class CascadingMenuPopup
   
   private int getNextMenuPosition(int paramInt)
   {
-    ListView localListView = ((CascadingMenuPopup.CascadingMenuInfo)this.mShowingMenus.get(this.mShowingMenus.size() - 1)).getListView();
+    ListView localListView = ((CascadingMenuInfo)this.mShowingMenus.get(this.mShowingMenus.size() - 1)).getListView();
     int[] arrayOfInt = new int[2];
     localListView.getLocationOnScreen(arrayOfInt);
     Rect localRect = new Rect();
@@ -226,8 +317,8 @@ final class CascadingMenuPopup
       if (this.mShowingMenus.size() <= 0) {
         break label373;
       }
-      localObject1 = (CascadingMenuPopup.CascadingMenuInfo)this.mShowingMenus.get(this.mShowingMenus.size() - 1);
-      localObject2 = findParentViewForSubmenu((CascadingMenuPopup.CascadingMenuInfo)localObject1, paramMenuBuilder);
+      localObject1 = (CascadingMenuInfo)this.mShowingMenus.get(this.mShowingMenus.size() - 1);
+      localObject2 = findParentViewForSubmenu((CascadingMenuInfo)localObject1, paramMenuBuilder);
       if (localObject2 == null) {
         break label515;
       }
@@ -260,7 +351,7 @@ final class CascadingMenuPopup
     }
     for (;;)
     {
-      localObject2 = new CascadingMenuPopup.CascadingMenuInfo(localMenuPopupWindow, paramMenuBuilder, this.mLastPosition);
+      localObject2 = new CascadingMenuInfo(localMenuPopupWindow, paramMenuBuilder, this.mLastPosition);
       this.mShowingMenus.add(localObject2);
       localMenuPopupWindow.show();
       localObject2 = localMenuPopupWindow.getListView();
@@ -343,11 +434,11 @@ final class CascadingMenuPopup
     int i = this.mShowingMenus.size();
     if (i > 0)
     {
-      CascadingMenuPopup.CascadingMenuInfo[] arrayOfCascadingMenuInfo = (CascadingMenuPopup.CascadingMenuInfo[])this.mShowingMenus.toArray(new CascadingMenuPopup.CascadingMenuInfo[i]);
+      CascadingMenuInfo[] arrayOfCascadingMenuInfo = (CascadingMenuInfo[])this.mShowingMenus.toArray(new CascadingMenuInfo[i]);
       i -= 1;
       while (i >= 0)
       {
-        CascadingMenuPopup.CascadingMenuInfo localCascadingMenuInfo = arrayOfCascadingMenuInfo[i];
+        CascadingMenuInfo localCascadingMenuInfo = arrayOfCascadingMenuInfo[i];
         if (localCascadingMenuInfo.window.isShowing()) {
           localCascadingMenuInfo.window.dismiss();
         }
@@ -366,12 +457,12 @@ final class CascadingMenuPopup
     if (this.mShowingMenus.isEmpty()) {
       return null;
     }
-    return ((CascadingMenuPopup.CascadingMenuInfo)this.mShowingMenus.get(this.mShowingMenus.size() - 1)).getListView();
+    return ((CascadingMenuInfo)this.mShowingMenus.get(this.mShowingMenus.size() - 1)).getListView();
   }
   
   public boolean isShowing()
   {
-    return (this.mShowingMenus.size() > 0) && (((CascadingMenuPopup.CascadingMenuInfo)this.mShowingMenus.get(0)).window.isShowing());
+    return (this.mShowingMenus.size() > 0) && (((CascadingMenuInfo)this.mShowingMenus.get(0)).window.isShowing());
   }
   
   public void onCloseMenu(MenuBuilder paramMenuBuilder, boolean paramBoolean)
@@ -383,9 +474,9 @@ final class CascadingMenuPopup
       return;
       int j = i + 1;
       if (j < this.mShowingMenus.size()) {
-        ((CascadingMenuPopup.CascadingMenuInfo)this.mShowingMenus.get(j)).menu.close(false);
+        ((CascadingMenuInfo)this.mShowingMenus.get(j)).menu.close(false);
       }
-      CascadingMenuPopup.CascadingMenuInfo localCascadingMenuInfo = (CascadingMenuPopup.CascadingMenuInfo)this.mShowingMenus.remove(i);
+      CascadingMenuInfo localCascadingMenuInfo = (CascadingMenuInfo)this.mShowingMenus.remove(i);
       localCascadingMenuInfo.menu.removeMenuPresenter(this);
       if (this.mShouldCloseImmediately)
       {
@@ -395,7 +486,7 @@ final class CascadingMenuPopup
       localCascadingMenuInfo.window.dismiss();
       i = this.mShowingMenus.size();
       if (i > 0) {}
-      for (this.mLastPosition = ((CascadingMenuPopup.CascadingMenuInfo)this.mShowingMenus.get(i - 1)).position; i == 0; this.mLastPosition = getInitialMenuPosition())
+      for (this.mLastPosition = ((CascadingMenuInfo)this.mShowingMenus.get(i - 1)).position; i == 0; this.mLastPosition = getInitialMenuPosition())
       {
         dismiss();
         if (this.mPresenterCallback != null) {
@@ -413,17 +504,17 @@ final class CascadingMenuPopup
         return;
       }
     } while (!paramBoolean);
-    ((CascadingMenuPopup.CascadingMenuInfo)this.mShowingMenus.get(0)).menu.close(false);
+    ((CascadingMenuInfo)this.mShowingMenus.get(0)).menu.close(false);
   }
   
   public void onDismiss()
   {
     int j = this.mShowingMenus.size();
     int i = 0;
-    CascadingMenuPopup.CascadingMenuInfo localCascadingMenuInfo;
+    CascadingMenuInfo localCascadingMenuInfo;
     if (i < j)
     {
-      localCascadingMenuInfo = (CascadingMenuPopup.CascadingMenuInfo)this.mShowingMenus.get(i);
+      localCascadingMenuInfo = (CascadingMenuInfo)this.mShowingMenus.get(i);
       if (localCascadingMenuInfo.window.isShowing()) {}
     }
     for (;;)
@@ -460,7 +551,7 @@ final class CascadingMenuPopup
     Iterator localIterator = this.mShowingMenus.iterator();
     while (localIterator.hasNext())
     {
-      CascadingMenuPopup.CascadingMenuInfo localCascadingMenuInfo = (CascadingMenuPopup.CascadingMenuInfo)localIterator.next();
+      CascadingMenuInfo localCascadingMenuInfo = (CascadingMenuInfo)localIterator.next();
       if (paramSubMenuBuilder == localCascadingMenuInfo.menu)
       {
         localCascadingMenuInfo.getListView().requestFocus();
@@ -557,9 +648,31 @@ final class CascadingMenuPopup
   {
     Iterator localIterator = this.mShowingMenus.iterator();
     while (localIterator.hasNext()) {
-      toMenuAdapter(((CascadingMenuPopup.CascadingMenuInfo)localIterator.next()).getListView().getAdapter()).notifyDataSetChanged();
+      toMenuAdapter(((CascadingMenuInfo)localIterator.next()).getListView().getAdapter()).notifyDataSetChanged();
     }
   }
+  
+  private static class CascadingMenuInfo
+  {
+    public final MenuBuilder menu;
+    public final int position;
+    public final MenuPopupWindow window;
+    
+    public CascadingMenuInfo(@NonNull MenuPopupWindow paramMenuPopupWindow, @NonNull MenuBuilder paramMenuBuilder, int paramInt)
+    {
+      this.window = paramMenuPopupWindow;
+      this.menu = paramMenuBuilder;
+      this.position = paramInt;
+    }
+    
+    public ListView getListView()
+    {
+      return this.window.getListView();
+    }
+  }
+  
+  @Retention(RetentionPolicy.SOURCE)
+  public static @interface HorizPosition {}
 }
 
 

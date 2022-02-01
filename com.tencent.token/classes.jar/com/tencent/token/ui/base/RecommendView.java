@@ -11,8 +11,8 @@ import android.graphics.RectF;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.View.MeasureSpec;
-import com.tencent.token.ce;
-import com.tencent.token.global.h;
+import com.tencent.token.br.a;
+import com.tencent.token.global.g;
 
 public class RecommendView
   extends View
@@ -31,7 +31,14 @@ public class RecommendView
   private boolean l = false;
   private boolean m = false;
   private int n;
-  private Runnable o = new ci(this);
+  private Runnable o = new Runnable()
+  {
+    public void run()
+    {
+      g.c("stopBlink");
+      RecommendView.this.b();
+    }
+  };
   
   public RecommendView(Context paramContext)
   {
@@ -47,7 +54,7 @@ public class RecommendView
   {
     super(paramContext, paramAttributeSet, paramInt);
     this.e.setStyle(Paint.Style.FILL);
-    paramContext = paramContext.getTheme().obtainStyledAttributes(paramAttributeSet, ce.RecommendView, 0, 0);
+    paramContext = paramContext.getTheme().obtainStyledAttributes(paramAttributeSet, br.a.RecommendView, 0, 0);
     try
     {
       this.b = paramContext.getDimension(0, this.a);
@@ -104,7 +111,7 @@ public class RecommendView
   
   public void a()
   {
-    h.c("startBlink");
+    g.c("startBlink");
     this.l = true;
     if (this.l) {
       postDelayed(this.o, this.n);

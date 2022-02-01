@@ -1,39 +1,31 @@
 package taiji;
 
-import java.util.Arrays;
-import java.util.List;
-import uilib.doraemon.e;
+import android.content.Context;
+import android.os.Build;
+import java.util.Locale;
+import tmsdk.common.module.pgsdk.IPermissionChecker;
 
 public class ba
-  implements ay
 {
-  private final String a;
-  private final List b;
+  static IPermissionChecker a;
   
-  public ba(String paramString, List paramList)
+  public static IPermissionChecker a(Context paramContext, IPermissionChecker paramIPermissionChecker)
   {
-    this.a = paramString;
-    this.b = paramList;
-  }
-  
-  public String a()
-  {
-    return this.a;
-  }
-  
-  public cx a(e parame, bd parambd)
-  {
-    return new cy(parame, parambd, this);
-  }
-  
-  public List b()
-  {
-    return this.b;
-  }
-  
-  public String toString()
-  {
-    return "ShapeGroup{name='" + this.a + "' Shapes: " + Arrays.toString(this.b.toArray()) + '}';
+    a = paramIPermissionChecker;
+    paramIPermissionChecker = Build.MANUFACTURER.toLowerCase(Locale.getDefault());
+    if (paramIPermissionChecker.contains("huawei")) {
+      return new bc(paramContext);
+    }
+    if (paramIPermissionChecker.contains("oppo")) {
+      return new be(paramContext);
+    }
+    if (paramIPermissionChecker.contains("vivo")) {
+      return new bf(paramContext);
+    }
+    if (paramIPermissionChecker.contains("xiaomi")) {
+      return new bd(paramContext);
+    }
+    return new bb(paramContext);
   }
 }
 

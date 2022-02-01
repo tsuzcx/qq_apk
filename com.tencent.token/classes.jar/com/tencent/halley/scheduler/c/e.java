@@ -1,7 +1,7 @@
 package com.tencent.halley.scheduler.c;
 
 import com.tencent.halley.common.b.a;
-import com.tencent.halley.common.b.d;
+import com.tencent.halley.common.b.b;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -57,22 +57,22 @@ public final class e
     this.e = ((Map)parama.a(l, 6, false));
   }
   
-  public final void a(d paramd)
+  public final void a(b paramb)
   {
-    paramd.a(this.f, 0);
-    paramd.a(this.g, 1);
-    paramd.a(this.a, 2);
+    paramb.a(this.f, 0);
+    paramb.a(this.g, 1);
+    paramb.a(this.a, 2);
     if (this.b != null) {
-      paramd.a(this.b, 3);
+      paramb.a(this.b, 3);
     }
     if (this.c != null) {
-      paramd.a(this.c, 4);
+      paramb.a(this.c, 4);
     }
     if (this.d != null) {
-      paramd.a(this.d, 5);
+      paramb.a(this.d, 5);
     }
     if (this.e != null) {
-      paramd.a(this.e, 6);
+      paramb.a(this.e, 6);
     }
   }
 }

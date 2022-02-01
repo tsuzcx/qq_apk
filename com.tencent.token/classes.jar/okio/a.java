@@ -6,7 +6,7 @@ import java.util.concurrent.TimeUnit;
 import javax.annotation.Nullable;
 
 public class a
-  extends z
+  extends r
 {
   private static final long a = TimeUnit.SECONDS.toMillis(60L);
   @Nullable
@@ -26,7 +26,7 @@ public class a
         if (b == null)
         {
           b = new a();
-          new d().start();
+          new a().start();
         }
         long l = System.nanoTime();
         if ((paramLong != 0L) && (paramBoolean))
@@ -69,21 +69,21 @@ public class a
     // Byte code:
     //   0: ldc 2
     //   2: monitorenter
-    //   3: getstatic 45	okio/a:b	Lokio/a;
+    //   3: getstatic 51	okio/a:b	Lokio/a;
     //   6: astore_2
     //   7: aload_2
     //   8: ifnull +39 -> 47
     //   11: aload_2
-    //   12: getfield 72	okio/a:f	Lokio/a;
+    //   12: getfield 76	okio/a:f	Lokio/a;
     //   15: aload_0
     //   16: if_acmpne +23 -> 39
     //   19: aload_2
     //   20: aload_0
-    //   21: getfield 72	okio/a:f	Lokio/a;
-    //   24: putfield 72	okio/a:f	Lokio/a;
+    //   21: getfield 76	okio/a:f	Lokio/a;
+    //   24: putfield 76	okio/a:f	Lokio/a;
     //   27: aload_0
     //   28: aconst_null
-    //   29: putfield 72	okio/a:f	Lokio/a;
+    //   29: putfield 76	okio/a:f	Lokio/a;
     //   32: iconst_0
     //   33: istore_1
     //   34: ldc 2
@@ -91,7 +91,7 @@ public class a
     //   37: iload_1
     //   38: ireturn
     //   39: aload_2
-    //   40: getfield 72	okio/a:f	Lokio/a;
+    //   40: getfield 76	okio/a:f	Lokio/a;
     //   43: astore_2
     //   44: goto -37 -> 7
     //   47: iconst_1
@@ -159,14 +159,155 @@ public class a
     return localInterruptedIOException;
   }
   
-  public final x a(x paramx)
+  public final p a(final p paramp)
   {
-    return new b(this, paramx);
+    new p()
+    {
+      public r a()
+      {
+        return a.this;
+      }
+      
+      public void a_(c paramAnonymousc, long paramAnonymousLong)
+      {
+        s.a(paramAnonymousc.b, 0L, paramAnonymousLong);
+        if (paramAnonymousLong > 0L)
+        {
+          n localn = paramAnonymousc.a;
+          long l1 = 0L;
+          for (;;)
+          {
+            for (;;)
+            {
+              long l2 = l1;
+              if (l1 < 65536L)
+              {
+                l1 = localn.c - localn.b + l1;
+                if (l1 >= paramAnonymousLong) {
+                  l2 = paramAnonymousLong;
+                }
+              }
+              else
+              {
+                a.this.c();
+              }
+              try
+              {
+                paramp.a_(paramAnonymousc, l2);
+                paramAnonymousLong -= l2;
+                a.this.a(true);
+                break;
+              }
+              catch (IOException paramAnonymousc)
+              {
+                throw a.this.b(paramAnonymousc);
+              }
+              finally
+              {
+                a.this.a(false);
+              }
+            }
+            localn = localn.f;
+          }
+        }
+      }
+      
+      public void close()
+      {
+        a.this.c();
+        try
+        {
+          paramp.close();
+          a.this.a(true);
+          return;
+        }
+        catch (IOException localIOException)
+        {
+          throw a.this.b(localIOException);
+        }
+        finally
+        {
+          a.this.a(false);
+        }
+      }
+      
+      public void flush()
+      {
+        a.this.c();
+        try
+        {
+          paramp.flush();
+          a.this.a(true);
+          return;
+        }
+        catch (IOException localIOException)
+        {
+          throw a.this.b(localIOException);
+        }
+        finally
+        {
+          a.this.a(false);
+        }
+      }
+      
+      public String toString()
+      {
+        return "AsyncTimeout.sink(" + paramp + ")";
+      }
+    };
   }
   
-  public final y a(y paramy)
+  public final q a(final q paramq)
   {
-    return new c(this, paramy);
+    new q()
+    {
+      public long a(c paramAnonymousc, long paramAnonymousLong)
+      {
+        a.this.c();
+        try
+        {
+          paramAnonymousLong = paramq.a(paramAnonymousc, paramAnonymousLong);
+          a.this.a(true);
+          return paramAnonymousLong;
+        }
+        catch (IOException paramAnonymousc)
+        {
+          throw a.this.b(paramAnonymousc);
+        }
+        finally
+        {
+          a.this.a(false);
+        }
+      }
+      
+      public r a()
+      {
+        return a.this;
+      }
+      
+      public void close()
+      {
+        try
+        {
+          paramq.close();
+          a.this.a(true);
+          return;
+        }
+        catch (IOException localIOException)
+        {
+          throw a.this.b(localIOException);
+        }
+        finally
+        {
+          a.this.a(false);
+        }
+      }
+      
+      public String toString()
+      {
+        return "AsyncTimeout.source(" + paramq + ")";
+      }
+    };
   }
   
   protected void a() {}
@@ -207,6 +348,44 @@ public class a
     }
     this.e = true;
     a(this, l, bool);
+  }
+  
+  private static final class a
+    extends Thread
+  {
+    a()
+    {
+      super();
+      setDaemon(true);
+    }
+    
+    public void run()
+    {
+      for (;;)
+      {
+        try
+        {
+          try
+          {
+            a locala = a.e();
+            if (locala != null) {
+              break label27;
+            }
+            continue;
+          }
+          finally {}
+          continue;
+        }
+        catch (InterruptedException localInterruptedException) {}
+        label27:
+        if (localInterruptedException == a.b)
+        {
+          a.b = null;
+          return;
+        }
+        localInterruptedException.a();
+      }
+    }
   }
 }
 

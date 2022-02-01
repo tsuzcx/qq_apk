@@ -3,7 +3,6 @@ package com.tencent.feedback.proguard;
 import android.content.Context;
 import android.util.SparseArray;
 import com.tencent.feedback.common.b;
-import com.tencent.feedback.common.e;
 import com.tencent.feedback.upload.d;
 import java.util.ArrayList;
 import java.util.List;
@@ -16,9 +15,9 @@ public final class t
   private int d = 0;
   private d e = null;
   private Runnable f = null;
-  private List g = new ArrayList(5);
-  private SparseArray h = new SparseArray(5);
-  private List i = new ArrayList(5);
+  private List<s> g = new ArrayList(5);
+  private SparseArray<com.tencent.feedback.upload.e> h = new SparseArray(5);
+  private List<x> i = new ArrayList(5);
   
   private t(Context paramContext)
   {
@@ -46,10 +45,10 @@ public final class t
     // Byte code:
     //   0: ldc 2
     //   2: monitorenter
-    //   3: getstatic 25	com/tencent/feedback/proguard/t:a	Lcom/tencent/feedback/proguard/t;
+    //   3: getstatic 32	com/tencent/feedback/proguard/t:a	Lcom/tencent/feedback/proguard/t;
     //   6: ifnull +15 -> 21
-    //   9: getstatic 25	com/tencent/feedback/proguard/t:a	Lcom/tencent/feedback/proguard/t;
-    //   12: invokespecial 77	com/tencent/feedback/proguard/t:f	()Lcom/tencent/feedback/upload/e;
+    //   9: getstatic 32	com/tencent/feedback/proguard/t:a	Lcom/tencent/feedback/proguard/t;
+    //   12: invokespecial 84	com/tencent/feedback/proguard/t:f	()Lcom/tencent/feedback/upload/e;
     //   15: astore_0
     //   16: ldc 2
     //   18: monitorexit
@@ -79,17 +78,17 @@ public final class t
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 52	com/tencent/feedback/proguard/t:h	Landroid/util/SparseArray;
+    //   3: getfield 59	com/tencent/feedback/proguard/t:h	Landroid/util/SparseArray;
     //   6: ifnull +29 -> 35
     //   9: aload_0
-    //   10: getfield 52	com/tencent/feedback/proguard/t:h	Landroid/util/SparseArray;
-    //   13: invokevirtual 81	android/util/SparseArray:size	()I
+    //   10: getfield 59	com/tencent/feedback/proguard/t:h	Landroid/util/SparseArray;
+    //   13: invokevirtual 88	android/util/SparseArray:size	()I
     //   16: ifle +19 -> 35
     //   19: aload_0
-    //   20: getfield 52	com/tencent/feedback/proguard/t:h	Landroid/util/SparseArray;
+    //   20: getfield 59	com/tencent/feedback/proguard/t:h	Landroid/util/SparseArray;
     //   23: iconst_0
-    //   24: invokevirtual 85	android/util/SparseArray:valueAt	(I)Ljava/lang/Object;
-    //   27: checkcast 87	com/tencent/feedback/upload/e
+    //   24: invokevirtual 92	android/util/SparseArray:valueAt	(I)Ljava/lang/Object;
+    //   27: checkcast 94	com/tencent/feedback/upload/e
     //   30: astore_1
     //   31: aload_0
     //   32: monitorexit
@@ -134,18 +133,18 @@ public final class t
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 54	com/tencent/feedback/proguard/t:i	Ljava/util/List;
+    //   3: getfield 61	com/tencent/feedback/proguard/t:i	Ljava/util/List;
     //   6: ifnull +36 -> 42
     //   9: aload_0
-    //   10: getfield 54	com/tencent/feedback/proguard/t:i	Ljava/util/List;
-    //   13: invokeinterface 92 1 0
+    //   10: getfield 61	com/tencent/feedback/proguard/t:i	Ljava/util/List;
+    //   13: invokeinterface 99 1 0
     //   18: ifle +24 -> 42
     //   21: aload_0
-    //   22: getfield 54	com/tencent/feedback/proguard/t:i	Ljava/util/List;
+    //   22: getfield 61	com/tencent/feedback/proguard/t:i	Ljava/util/List;
     //   25: iconst_0
-    //   26: anewarray 94	com/tencent/feedback/proguard/x
-    //   29: invokeinterface 98 2 0
-    //   34: checkcast 100	[Lcom/tencent/feedback/proguard/x;
+    //   26: anewarray 101	com/tencent/feedback/proguard/x
+    //   29: invokeinterface 105 2 0
+    //   34: checkcast 107	[Lcom/tencent/feedback/proguard/x;
     //   37: astore_1
     //   38: aload_0
     //   39: monitorexit
@@ -174,7 +173,7 @@ public final class t
     try
     {
       this.d = paramInt;
-      e.b("rqdp{  step }%d", new Object[] { Integer.valueOf(paramInt) });
+      com.tencent.feedback.common.e.b("rqdp{  step }%d", new Object[] { Integer.valueOf(paramInt) });
       return;
     }
     finally
@@ -191,26 +190,26 @@ public final class t
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 52	com/tencent/feedback/proguard/t:h	Landroid/util/SparseArray;
+    //   3: getfield 59	com/tencent/feedback/proguard/t:h	Landroid/util/SparseArray;
     //   6: ifnull +15 -> 21
     //   9: aload_2
     //   10: ifnonnull +14 -> 24
     //   13: aload_0
-    //   14: getfield 52	com/tencent/feedback/proguard/t:h	Landroid/util/SparseArray;
+    //   14: getfield 59	com/tencent/feedback/proguard/t:h	Landroid/util/SparseArray;
     //   17: iload_1
-    //   18: invokevirtual 117	android/util/SparseArray:remove	(I)V
+    //   18: invokevirtual 124	android/util/SparseArray:remove	(I)V
     //   21: aload_0
     //   22: monitorexit
     //   23: return
     //   24: aload_0
-    //   25: getfield 52	com/tencent/feedback/proguard/t:h	Landroid/util/SparseArray;
+    //   25: getfield 59	com/tencent/feedback/proguard/t:h	Landroid/util/SparseArray;
     //   28: iload_1
     //   29: aload_2
-    //   30: invokevirtual 121	android/util/SparseArray:put	(ILjava/lang/Object;)V
+    //   30: invokevirtual 128	android/util/SparseArray:put	(ILjava/lang/Object;)V
     //   33: aload_2
     //   34: aload_0
-    //   35: invokevirtual 124	com/tencent/feedback/proguard/t:c	()Lcom/tencent/feedback/upload/d;
-    //   38: invokeinterface 127 2 0
+    //   35: invokevirtual 131	com/tencent/feedback/proguard/t:c	()Lcom/tencent/feedback/upload/d;
+    //   38: invokeinterface 134 2 0
     //   43: pop
     //   44: goto -23 -> 21
     //   47: astore_2
@@ -230,7 +229,7 @@ public final class t
     //   24	44	47	finally
   }
   
-  public final void a(s params)
+  public final void a(final s params)
   {
     if (params == null) {}
     for (;;)
@@ -245,17 +244,34 @@ public final class t
           continue;
         }
         this.g.add(params);
-        int j = e();
+        final int j = e();
         if (g())
         {
-          e.b("rqdp{  add listener should notify app first run! }%s", new Object[] { params.toString() });
-          b.b().a(new t.1(this, params));
+          com.tencent.feedback.common.e.b("rqdp{  add listener should notify app first run! }%s", new Object[] { params.toString() });
+          b.b().a(new Runnable()
+          {
+            public final void run()
+            {
+              params.f();
+            }
+          });
         }
         if (j < 2) {
           continue;
         }
-        e.b("rqdp{  add listener should notify app start query!} %s", new Object[] { params.toString() });
-        b.b().a(new t.2(this, params, j));
+        com.tencent.feedback.common.e.b("rqdp{  add listener should notify app start query!} %s", new Object[] { params.toString() });
+        b.b().a(new Runnable()
+        {
+          public final void run()
+          {
+            params.d();
+            if (j >= 3)
+            {
+              com.tencent.feedback.common.e.b("rqdp{  query finished should notify}", new Object[0]);
+              params.e();
+            }
+          }
+        });
       }
       finally {}
     }
@@ -282,10 +298,10 @@ public final class t
           {
             for (;;)
             {
-              if (!e.a(localThrowable)) {
+              if (!com.tencent.feedback.common.e.a(localThrowable)) {
                 localThrowable.printStackTrace();
               }
-              e.d("rqdp{  com strategy changed error }%s", new Object[] { localThrowable.toString() });
+              com.tencent.feedback.common.e.d("rqdp{  com strategy changed error }%s", new Object[] { localThrowable.toString() });
             }
           }
         }
@@ -315,7 +331,7 @@ public final class t
     try
     {
       this.c = true;
-      e.b("rqdp{  isFirst }%b", new Object[] { Boolean.valueOf(true) });
+      com.tencent.feedback.common.e.b("rqdp{  isFirst }%b", new Object[] { Boolean.valueOf(true) });
       return;
     }
     finally
@@ -346,7 +362,7 @@ public final class t
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 47	com/tencent/feedback/proguard/t:g	Ljava/util/List;
+    //   3: getfield 54	com/tencent/feedback/proguard/t:g	Ljava/util/List;
     //   6: astore_2
     //   7: aload_2
     //   8: ifnull +7 -> 15
@@ -356,14 +372,14 @@ public final class t
     //   16: monitorexit
     //   17: return
     //   18: aload_0
-    //   19: getfield 47	com/tencent/feedback/proguard/t:g	Ljava/util/List;
+    //   19: getfield 54	com/tencent/feedback/proguard/t:g	Ljava/util/List;
     //   22: aload_1
-    //   23: invokeinterface 133 2 0
+    //   23: invokeinterface 140 2 0
     //   28: ifeq -13 -> 15
     //   31: aload_0
-    //   32: getfield 47	com/tencent/feedback/proguard/t:g	Ljava/util/List;
+    //   32: getfield 54	com/tencent/feedback/proguard/t:g	Ljava/util/List;
     //   35: aload_1
-    //   36: invokeinterface 188 2 0
+    //   36: invokeinterface 191 2 0
     //   41: pop
     //   42: goto -27 -> 15
     //   45: astore_1
@@ -403,18 +419,18 @@ public final class t
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 47	com/tencent/feedback/proguard/t:g	Ljava/util/List;
+    //   3: getfield 54	com/tencent/feedback/proguard/t:g	Ljava/util/List;
     //   6: ifnull +36 -> 42
     //   9: aload_0
-    //   10: getfield 47	com/tencent/feedback/proguard/t:g	Ljava/util/List;
-    //   13: invokeinterface 92 1 0
+    //   10: getfield 54	com/tencent/feedback/proguard/t:g	Ljava/util/List;
+    //   13: invokeinterface 99 1 0
     //   18: ifle +24 -> 42
     //   21: aload_0
-    //   22: getfield 47	com/tencent/feedback/proguard/t:g	Ljava/util/List;
+    //   22: getfield 54	com/tencent/feedback/proguard/t:g	Ljava/util/List;
     //   25: iconst_0
-    //   26: anewarray 191	com/tencent/feedback/proguard/s
-    //   29: invokeinterface 98 2 0
-    //   34: checkcast 193	[Lcom/tencent/feedback/proguard/s;
+    //   26: anewarray 194	com/tencent/feedback/proguard/s
+    //   29: invokeinterface 105 2 0
+    //   34: checkcast 196	[Lcom/tencent/feedback/proguard/s;
     //   37: astore_1
     //   38: aload_0
     //   39: monitorexit

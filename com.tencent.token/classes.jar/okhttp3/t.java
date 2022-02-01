@@ -1,14 +1,21 @@
 package okhttp3;
 
-import java.util.List;
-
 public abstract interface t
 {
-  public static final t a = new u();
+  public abstract z a(a parama);
   
-  public abstract List a(af paramaf);
-  
-  public abstract void a(af paramaf, List paramList);
+  public static abstract interface a
+  {
+    public abstract x a();
+    
+    public abstract z a(x paramx);
+    
+    public abstract int b();
+    
+    public abstract int c();
+    
+    public abstract int d();
+  }
 }
 
 

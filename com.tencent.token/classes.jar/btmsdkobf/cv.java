@@ -4,15 +4,19 @@ import android.os.PowerManager;
 import android.text.TextUtils;
 import java.util.BitSet;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
 
 public class cv
 {
   private static cv iA = null;
   private cl he = null;
   private PowerManager iB = null;
-  public Map iC = new HashMap();
-  private cc iz = new cc(200);
+  public Map<Byte, Integer> iC = new HashMap();
+  private cc<Integer, a> iz = new cc(200);
   
   public static cv by()
   {
@@ -50,38 +54,38 @@ public class cv
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
-    //   2: new 71	btmsdkobf/cv$a
+    //   2: new 8	btmsdkobf/cv$a
     //   5: dup
-    //   6: invokespecial 72	btmsdkobf/cv$a:<init>	()V
+    //   6: invokespecial 76	btmsdkobf/cv$a:<init>	()V
     //   9: astore 5
     //   11: aload 5
     //   13: aload 4
-    //   15: putfield 76	btmsdkobf/cv$a:iF	Ljava/lang/String;
+    //   15: putfield 80	btmsdkobf/cv$a:iF	Ljava/lang/String;
     //   18: aload 5
     //   20: lload_2
-    //   21: putfield 80	btmsdkobf/cv$a:iJ	J
+    //   21: putfield 84	btmsdkobf/cv$a:iJ	J
     //   24: aload 5
-    //   26: invokestatic 86	btmsdkobf/cr:bq	()Lbtmsdkobf/cr;
+    //   26: invokestatic 90	btmsdkobf/cr:bq	()Lbtmsdkobf/cr;
     //   29: iconst_0
     //   30: iconst_0
-    //   31: invokevirtual 90	btmsdkobf/cr:b	(ZZ)I
-    //   34: putfield 94	btmsdkobf/cv$a:iG	I
+    //   31: invokevirtual 94	btmsdkobf/cr:b	(ZZ)I
+    //   34: putfield 98	btmsdkobf/cv$a:iG	I
     //   37: aload_0
-    //   38: getfield 33	btmsdkobf/cv:iB	Landroid/os/PowerManager;
+    //   38: getfield 40	btmsdkobf/cv:iB	Landroid/os/PowerManager;
     //   41: astore 4
     //   43: aload 4
     //   45: ifnull +15 -> 60
     //   48: aload 5
     //   50: aload_0
-    //   51: getfield 33	btmsdkobf/cv:iB	Landroid/os/PowerManager;
-    //   54: invokevirtual 100	android/os/PowerManager:isScreenOn	()Z
-    //   57: putfield 104	btmsdkobf/cv$a:iH	Z
+    //   51: getfield 40	btmsdkobf/cv:iB	Landroid/os/PowerManager;
+    //   54: invokevirtual 104	android/os/PowerManager:isScreenOn	()Z
+    //   57: putfield 108	btmsdkobf/cv$a:iH	Z
     //   60: aload_0
-    //   61: getfield 29	btmsdkobf/cv:iz	Lbtmsdkobf/cc;
+    //   61: getfield 36	btmsdkobf/cv:iz	Lbtmsdkobf/cc;
     //   64: iload_1
-    //   65: invokestatic 62	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   65: invokestatic 68	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   68: aload 5
-    //   70: invokevirtual 105	btmsdkobf/cc:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   70: invokevirtual 109	btmsdkobf/cc:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   73: pop
     //   74: aload_0
     //   75: monitorexit
@@ -99,7 +103,7 @@ public class cv
     //   0	89	1	paramInt	int
     //   0	89	2	paramLong	long
     //   0	89	4	paramString	String
-    //   9	60	5	locala	cv.a
+    //   9	60	5	locala	a
     // Exception table:
     //   from	to	target	type
     //   2	43	77	finally
@@ -129,7 +133,7 @@ public class cv
       label229:
       try
       {
-        paramas = (cv.a)this.iz.get(Integer.valueOf(paramInt2));
+        paramas = (a)this.iz.get(Integer.valueOf(paramInt2));
         if (paramas == null) {
           return;
         }
@@ -192,7 +196,7 @@ public class cv
     {
       try
       {
-        paramba = (cv.a)this.iz.get(Integer.valueOf(paramInt2));
+        paramba = (a)this.iz.get(Integer.valueOf(paramInt2));
         if (paramba == null) {
           return;
         }
@@ -227,7 +231,7 @@ public class cv
   {
     for (;;)
     {
-      cv.a locala;
+      a locala;
       boolean bool;
       int j;
       int k;
@@ -235,7 +239,7 @@ public class cv
       StringBuilder localStringBuilder;
       try
       {
-        locala = (cv.a)this.iz.get(Integer.valueOf(paramInt));
+        locala = (a)this.iz.get(Integer.valueOf(paramInt));
         if (locala == null)
         {
           paramBoolean = false;
@@ -245,7 +249,7 @@ public class cv
         bool = locala.iE.get(15);
         j = locala.df;
         if (j == 0) {
-          break label684;
+          break label686;
         }
         k = bz.o(j);
         i = locala.iG;
@@ -264,7 +268,7 @@ public class cv
           }
           localStringBuilder.append("|channel|");
           if (!bool) {
-            break label745;
+            break label747;
           }
           String str1 = "http";
           localStringBuilder.append(str1);
@@ -293,74 +297,74 @@ public class cv
             localStringBuilder.append("|recFlow|");
             localStringBuilder.append(locala.iP);
             if (locala.df != 0) {
-              break label585;
+              break label587;
             }
             eh.e("SharkFunnelModel", "[shark_funnel]" + localStringBuilder.toString());
             if (this.he == null) {
-              break label690;
+              break label692;
             }
             if (locala.bM <= 10000) {
-              break label653;
+              break label655;
             }
             paramInt = locala.bM - 10000;
             if ((paramInt == 999) || (paramInt == 794) || (paramInt == 797) || (paramInt == 782)) {
-              break label690;
+              break label692;
             }
             if (i != 0) {
-              break label662;
+              break label664;
             }
             this.he.i(paramInt, i);
-            break label690;
+            break label692;
           }
         }
         else
         {
           if (k != -50000) {
-            break label684;
+            break label686;
           }
           if (!locala.iI) {
-            break label707;
+            break label709;
           }
           i = -550000;
-          break label696;
+          break label698;
         }
         localStringBuilder.append(locala.df).append("->").append(i);
         continue;
         if (!paramBoolean) {
-          break label621;
+          break label623;
         }
       }
       finally {}
-      label585:
+      label587:
       eh.h("SharkFunnelModel", "xxxxxxxxxxxx [shark_funnel]" + localStringBuilder.toString());
       continue;
-      label621:
+      label623:
       eh.h("SharkFunnelModel", "tttt [shark_funnel]" + localStringBuilder.toString());
       continue;
-      label653:
+      label655:
       paramInt = locala.bM;
       continue;
-      label662:
+      label664:
       if (paramBoolean)
       {
         this.he.i(paramInt, i);
-        break label690;
-        label678:
+        break label692;
+        label680:
         i = k;
-        break label696;
-        label684:
+        break label698;
+        label686:
         i = j;
         continue;
       }
-      label690:
+      label692:
       paramBoolean = bool;
       continue;
       for (;;)
       {
-        label696:
+        label698:
         i += j - k;
         break;
-        label707:
+        label709:
         if (i == -4)
         {
           i = -530000;
@@ -372,12 +376,12 @@ public class cv
         else
         {
           if (i != -3) {
-            break label678;
+            break label680;
           }
           i = -540000;
         }
       }
-      label745:
+      label747:
       String str2 = "tcp";
     }
   }
@@ -404,19 +408,19 @@ public class cv
     //   1: monitorenter
     //   2: aload_0
     //   3: aload_1
-    //   4: putfield 31	btmsdkobf/cv:he	Lbtmsdkobf/cl;
+    //   4: putfield 38	btmsdkobf/cv:he	Lbtmsdkobf/cl;
     //   7: aload_0
-    //   8: invokestatic 300	btmsdkobf/bc:n	()Landroid/content/Context;
-    //   11: ldc_w 302
-    //   14: invokevirtual 308	android/content/Context:getSystemService	(Ljava/lang/String;)Ljava/lang/Object;
-    //   17: checkcast 96	android/os/PowerManager
-    //   20: putfield 33	btmsdkobf/cv:iB	Landroid/os/PowerManager;
-    //   23: invokestatic 314	btmsdkobf/cz:bS	()Lbtmsdkobf/cz;
-    //   26: new 316	btmsdkobf/fw
+    //   8: invokestatic 304	btmsdkobf/bc:n	()Landroid/content/Context;
+    //   11: ldc_w 306
+    //   14: invokevirtual 312	android/content/Context:getSystemService	(Ljava/lang/String;)Ljava/lang/Object;
+    //   17: checkcast 100	android/os/PowerManager
+    //   20: putfield 40	btmsdkobf/cv:iB	Landroid/os/PowerManager;
+    //   23: invokestatic 318	btmsdkobf/cz:bS	()Lbtmsdkobf/cz;
+    //   26: new 6	btmsdkobf/cv$1
     //   29: dup
     //   30: aload_0
-    //   31: invokespecial 319	btmsdkobf/fw:<init>	(Lbtmsdkobf/cv;)V
-    //   34: invokevirtual 322	btmsdkobf/cz:a	(Lbtmsdkobf/cz$b;)V
+    //   31: invokespecial 321	btmsdkobf/cv$1:<init>	(Lbtmsdkobf/cv;)V
+    //   34: invokevirtual 324	btmsdkobf/cz:a	(Lbtmsdkobf/cz$b;)V
     //   37: aload_0
     //   38: monitorexit
     //   39: return
@@ -465,6 +469,24 @@ public class cv
       localObject = finally;
       throw localObject;
     }
+  }
+  
+  public static class a
+  {
+    public int bM = 0;
+    public int df = 0;
+    public BitSet iE = new BitSet();
+    public String iF = "";
+    public int iG = 0;
+    public boolean iH = false;
+    public boolean iI = false;
+    public long iJ = 0L;
+    public int iK = 0;
+    public int iL = 0;
+    public long iM = System.currentTimeMillis();
+    public long iN = System.currentTimeMillis();
+    public String iO = "";
+    public String iP = "";
   }
 }
 

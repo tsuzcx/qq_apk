@@ -2,6 +2,7 @@ package android.support.v4.widget;
 
 import android.content.Context;
 import android.content.res.Resources;
+import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.PorterDuff.Mode;
@@ -9,13 +10,20 @@ import android.graphics.PorterDuffColorFilter;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 import android.os.Build.VERSION;
+import android.os.Parcel;
 import android.os.Parcelable;
+import android.os.Parcelable.ClassLoaderCreator;
+import android.os.Parcelable.Creator;
 import android.support.annotation.ColorInt;
 import android.support.annotation.DrawableRes;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.annotation.RequiresApi;
 import android.support.v4.content.ContextCompat;
+import android.support.v4.view.AbsSavedState;
+import android.support.v4.view.AccessibilityDelegateCompat;
 import android.support.v4.view.ViewCompat;
+import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.util.Log;
@@ -25,6 +33,9 @@ import android.view.View.MeasureSpec;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.view.ViewGroup.MarginLayoutParams;
+import android.view.accessibility.AccessibilityEvent;
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 
 public class SlidingPaneLayout
@@ -32,7 +43,7 @@ public class SlidingPaneLayout
 {
   private static final int DEFAULT_FADE_COLOR = -858993460;
   private static final int DEFAULT_OVERHANG_SIZE = 32;
-  static final SlidingPaneLayout.SlidingPanelLayoutImpl IMPL = new SlidingPaneLayout.SlidingPanelLayoutImplBase();
+  static final SlidingPanelLayoutImpl IMPL = new SlidingPanelLayoutImplBase();
   private static final int MIN_FLING_VELOCITY = 400;
   private static final String TAG = "SlidingPaneLayout";
   private boolean mCanSlide;
@@ -43,10 +54,10 @@ public class SlidingPaneLayout
   private float mInitialMotionY;
   boolean mIsUnableToDrag;
   private final int mOverhangSize;
-  private SlidingPaneLayout.PanelSlideListener mPanelSlideListener;
+  private PanelSlideListener mPanelSlideListener;
   private int mParallaxBy;
   private float mParallaxOffset;
-  final ArrayList mPostedRunnables = new ArrayList();
+  final ArrayList<DisableLayerRunnable> mPostedRunnables = new ArrayList();
   boolean mPreservedOpenState;
   private Drawable mShadowDrawableLeft;
   private Drawable mShadowDrawableRight;
@@ -60,12 +71,12 @@ public class SlidingPaneLayout
   {
     if (Build.VERSION.SDK_INT >= 17)
     {
-      IMPL = new SlidingPaneLayout.SlidingPanelLayoutImplJBMR1();
+      IMPL = new SlidingPanelLayoutImplJBMR1();
       return;
     }
     if (Build.VERSION.SDK_INT >= 16)
     {
-      IMPL = new SlidingPaneLayout.SlidingPanelLayoutImplJB();
+      IMPL = new SlidingPanelLayoutImplJB();
       return;
     }
   }
@@ -86,9 +97,9 @@ public class SlidingPaneLayout
     float f = paramContext.getResources().getDisplayMetrics().density;
     this.mOverhangSize = ((int)(32.0F * f + 0.5F));
     setWillNotDraw(false);
-    ViewCompat.setAccessibilityDelegate(this, new SlidingPaneLayout.AccessibilityDelegate(this));
+    ViewCompat.setAccessibilityDelegate(this, new AccessibilityDelegate());
     ViewCompat.setImportantForAccessibility(this, 1);
-    this.mDragHelper = ViewDragHelper.create(this, 0.5F, new SlidingPaneLayout.DragHelperCallback(this));
+    this.mDragHelper = ViewDragHelper.create(this, 0.5F, new DragHelperCallback());
     this.mDragHelper.setMinVelocity(f * 400.0F);
   }
   
@@ -105,7 +116,7 @@ public class SlidingPaneLayout
   
   private void dimChildView(View paramView, float paramFloat, int paramInt)
   {
-    SlidingPaneLayout.LayoutParams localLayoutParams = (SlidingPaneLayout.LayoutParams)paramView.getLayoutParams();
+    LayoutParams localLayoutParams = (LayoutParams)paramView.getLayoutParams();
     if ((paramFloat > 0.0F) && (paramInt != 0))
     {
       i = (int)(((0xFF000000 & paramInt) >>> 24) * paramFloat);
@@ -126,7 +137,7 @@ public class SlidingPaneLayout
     if (localLayoutParams.dimPaint != null) {
       localLayoutParams.dimPaint.setColorFilter(null);
     }
-    paramView = new SlidingPaneLayout.DisableLayerRunnable(this, paramView);
+    paramView = new DisableLayerRunnable(paramView);
     this.mPostedRunnables.add(paramView);
     ViewCompat.postOnAnimation(this, paramView);
   }
@@ -144,14 +155,14 @@ public class SlidingPaneLayout
   private void parallaxOtherViews(float paramFloat)
   {
     boolean bool = isLayoutRtlSupport();
-    Object localObject = (SlidingPaneLayout.LayoutParams)this.mSlideableView.getLayoutParams();
+    Object localObject = (LayoutParams)this.mSlideableView.getLayoutParams();
     int i;
     label43:
     int j;
-    if (((SlidingPaneLayout.LayoutParams)localObject).dimWhenOffset) {
+    if (((LayoutParams)localObject).dimWhenOffset) {
       if (bool)
       {
-        i = ((SlidingPaneLayout.LayoutParams)localObject).rightMargin;
+        i = ((LayoutParams)localObject).rightMargin;
         if (i > 0) {
           break label94;
         }
@@ -174,7 +185,7 @@ public class SlidingPaneLayout
     {
       j += 1;
       break label52;
-      i = ((SlidingPaneLayout.LayoutParams)localObject).leftMargin;
+      i = ((LayoutParams)localObject).leftMargin;
       break;
       i = 0;
       break label43;
@@ -255,7 +266,7 @@ public class SlidingPaneLayout
   
   protected boolean checkLayoutParams(ViewGroup.LayoutParams paramLayoutParams)
   {
-    return ((paramLayoutParams instanceof SlidingPaneLayout.LayoutParams)) && (super.checkLayoutParams(paramLayoutParams));
+    return ((paramLayoutParams instanceof LayoutParams)) && (super.checkLayoutParams(paramLayoutParams));
   }
   
   public boolean closePane()
@@ -344,7 +355,7 @@ public class SlidingPaneLayout
   
   protected boolean drawChild(Canvas paramCanvas, View paramView, long paramLong)
   {
-    SlidingPaneLayout.LayoutParams localLayoutParams = (SlidingPaneLayout.LayoutParams)paramView.getLayoutParams();
+    LayoutParams localLayoutParams = (LayoutParams)paramView.getLayoutParams();
     int i = paramCanvas.save();
     if ((this.mCanSlide) && (!localLayoutParams.slideable) && (this.mSlideableView != null))
     {
@@ -367,20 +378,20 @@ public class SlidingPaneLayout
   
   protected ViewGroup.LayoutParams generateDefaultLayoutParams()
   {
-    return new SlidingPaneLayout.LayoutParams();
+    return new LayoutParams();
   }
   
   public ViewGroup.LayoutParams generateLayoutParams(AttributeSet paramAttributeSet)
   {
-    return new SlidingPaneLayout.LayoutParams(getContext(), paramAttributeSet);
+    return new LayoutParams(getContext(), paramAttributeSet);
   }
   
   protected ViewGroup.LayoutParams generateLayoutParams(ViewGroup.LayoutParams paramLayoutParams)
   {
     if ((paramLayoutParams instanceof ViewGroup.MarginLayoutParams)) {
-      return new SlidingPaneLayout.LayoutParams((ViewGroup.MarginLayoutParams)paramLayoutParams);
+      return new LayoutParams((ViewGroup.MarginLayoutParams)paramLayoutParams);
     }
-    return new SlidingPaneLayout.LayoutParams(paramLayoutParams);
+    return new LayoutParams(paramLayoutParams);
   }
   
   @ColorInt
@@ -410,7 +421,7 @@ public class SlidingPaneLayout
     if (paramView == null) {
       return false;
     }
-    paramView = (SlidingPaneLayout.LayoutParams)paramView.getLayoutParams();
+    paramView = (LayoutParams)paramView.getLayoutParams();
     if ((this.mCanSlide) && (paramView.dimWhenOffset) && (this.mSlideOffset > 0.0F)) {}
     for (boolean bool = true;; bool = false) {
       return bool;
@@ -446,7 +457,7 @@ public class SlidingPaneLayout
     int i = 0;
     while (i < j)
     {
-      ((SlidingPaneLayout.DisableLayerRunnable)this.mPostedRunnables.get(i)).run();
+      ((DisableLayerRunnable)this.mPostedRunnables.get(i)).run();
       i += 1;
     }
     this.mPostedRunnables.clear();
@@ -577,7 +588,7 @@ public class SlidingPaneLayout
       paramInt4 = getPaddingRight();
       break label46;
     }
-    SlidingPaneLayout.LayoutParams localLayoutParams = (SlidingPaneLayout.LayoutParams)localView.getLayoutParams();
+    LayoutParams localLayoutParams = (LayoutParams)localView.getLayoutParams();
     int i1 = localView.getMeasuredWidth();
     int j;
     if (localLayoutParams.slideable)
@@ -642,7 +653,7 @@ public class SlidingPaneLayout
       if (this.mParallaxBy != 0) {
         parallaxOtherViews(this.mSlideOffset);
       }
-      if (((SlidingPaneLayout.LayoutParams)this.mSlideableView.getLayoutParams()).dimWhenOffset) {
+      if (((LayoutParams)this.mSlideableView.getLayoutParams()).dimWhenOffset) {
         dimChildView(this.mSlideableView, this.mSlideOffset, this.mSliderFadeColor);
       }
     }
@@ -686,7 +697,7 @@ public class SlidingPaneLayout
       float f1;
       label136:
       View localView;
-      SlidingPaneLayout.LayoutParams localLayoutParams;
+      LayoutParams localLayoutParams;
       switch (i)
       {
       default: 
@@ -706,7 +717,7 @@ public class SlidingPaneLayout
           break label617;
         }
         localView = getChildAt(i1);
-        localLayoutParams = (SlidingPaneLayout.LayoutParams)localView.getLayoutParams();
+        localLayoutParams = (LayoutParams)localView.getLayoutParams();
         if (localView.getVisibility() == 8)
         {
           localLayoutParams.dimWhenOffset = false;
@@ -837,7 +848,7 @@ public class SlidingPaneLayout
           {
             m += 1;
             break;
-            localLayoutParams = (SlidingPaneLayout.LayoutParams)localView.getLayoutParams();
+            localLayoutParams = (LayoutParams)localView.getLayoutParams();
             if (localView.getVisibility() != 8)
             {
               if ((localLayoutParams.width == 0) && (localLayoutParams.weight > 0.0F))
@@ -945,7 +956,7 @@ public class SlidingPaneLayout
       return;
     }
     boolean bool = isLayoutRtlSupport();
-    SlidingPaneLayout.LayoutParams localLayoutParams = (SlidingPaneLayout.LayoutParams)this.mSlideableView.getLayoutParams();
+    LayoutParams localLayoutParams = (LayoutParams)this.mSlideableView.getLayoutParams();
     int j = this.mSlideableView.getWidth();
     int i = paramInt;
     if (bool) {
@@ -977,12 +988,12 @@ public class SlidingPaneLayout
   
   protected void onRestoreInstanceState(Parcelable paramParcelable)
   {
-    if (!(paramParcelable instanceof SlidingPaneLayout.SavedState))
+    if (!(paramParcelable instanceof SavedState))
     {
       super.onRestoreInstanceState(paramParcelable);
       return;
     }
-    paramParcelable = (SlidingPaneLayout.SavedState)paramParcelable;
+    paramParcelable = (SavedState)paramParcelable;
     super.onRestoreInstanceState(paramParcelable.getSuperState());
     if (paramParcelable.isOpen) {
       openPane();
@@ -997,7 +1008,7 @@ public class SlidingPaneLayout
   
   protected Parcelable onSaveInstanceState()
   {
-    SlidingPaneLayout.SavedState localSavedState = new SlidingPaneLayout.SavedState(super.onSaveInstanceState());
+    SavedState localSavedState = new SavedState(super.onSaveInstanceState());
     if (isSlideable()) {}
     for (boolean bool = isOpen();; bool = this.mPreservedOpenState)
     {
@@ -1101,7 +1112,7 @@ public class SlidingPaneLayout
     this.mCoveredFadeColor = paramInt;
   }
   
-  public void setPanelSlideListener(@Nullable SlidingPaneLayout.PanelSlideListener paramPanelSlideListener)
+  public void setPanelSlideListener(@Nullable PanelSlideListener paramPanelSlideListener)
   {
     this.mPanelSlideListener = paramPanelSlideListener;
   }
@@ -1167,7 +1178,7 @@ public class SlidingPaneLayout
       return false;
     }
     boolean bool = isLayoutRtlSupport();
-    SlidingPaneLayout.LayoutParams localLayoutParams = (SlidingPaneLayout.LayoutParams)this.mSlideableView.getLayoutParams();
+    LayoutParams localLayoutParams = (LayoutParams)this.mSlideableView.getLayoutParams();
     int i;
     int j;
     if (bool)
@@ -1278,6 +1289,417 @@ public class SlidingPaneLayout
       break label178;
       i3 = j;
       break label210;
+    }
+  }
+  
+  class AccessibilityDelegate
+    extends AccessibilityDelegateCompat
+  {
+    private final Rect mTmpRect = new Rect();
+    
+    AccessibilityDelegate() {}
+    
+    private void copyNodeInfoNoChildren(AccessibilityNodeInfoCompat paramAccessibilityNodeInfoCompat1, AccessibilityNodeInfoCompat paramAccessibilityNodeInfoCompat2)
+    {
+      Rect localRect = this.mTmpRect;
+      paramAccessibilityNodeInfoCompat2.getBoundsInParent(localRect);
+      paramAccessibilityNodeInfoCompat1.setBoundsInParent(localRect);
+      paramAccessibilityNodeInfoCompat2.getBoundsInScreen(localRect);
+      paramAccessibilityNodeInfoCompat1.setBoundsInScreen(localRect);
+      paramAccessibilityNodeInfoCompat1.setVisibleToUser(paramAccessibilityNodeInfoCompat2.isVisibleToUser());
+      paramAccessibilityNodeInfoCompat1.setPackageName(paramAccessibilityNodeInfoCompat2.getPackageName());
+      paramAccessibilityNodeInfoCompat1.setClassName(paramAccessibilityNodeInfoCompat2.getClassName());
+      paramAccessibilityNodeInfoCompat1.setContentDescription(paramAccessibilityNodeInfoCompat2.getContentDescription());
+      paramAccessibilityNodeInfoCompat1.setEnabled(paramAccessibilityNodeInfoCompat2.isEnabled());
+      paramAccessibilityNodeInfoCompat1.setClickable(paramAccessibilityNodeInfoCompat2.isClickable());
+      paramAccessibilityNodeInfoCompat1.setFocusable(paramAccessibilityNodeInfoCompat2.isFocusable());
+      paramAccessibilityNodeInfoCompat1.setFocused(paramAccessibilityNodeInfoCompat2.isFocused());
+      paramAccessibilityNodeInfoCompat1.setAccessibilityFocused(paramAccessibilityNodeInfoCompat2.isAccessibilityFocused());
+      paramAccessibilityNodeInfoCompat1.setSelected(paramAccessibilityNodeInfoCompat2.isSelected());
+      paramAccessibilityNodeInfoCompat1.setLongClickable(paramAccessibilityNodeInfoCompat2.isLongClickable());
+      paramAccessibilityNodeInfoCompat1.addAction(paramAccessibilityNodeInfoCompat2.getActions());
+      paramAccessibilityNodeInfoCompat1.setMovementGranularities(paramAccessibilityNodeInfoCompat2.getMovementGranularities());
+    }
+    
+    public boolean filter(View paramView)
+    {
+      return SlidingPaneLayout.this.isDimmed(paramView);
+    }
+    
+    public void onInitializeAccessibilityEvent(View paramView, AccessibilityEvent paramAccessibilityEvent)
+    {
+      super.onInitializeAccessibilityEvent(paramView, paramAccessibilityEvent);
+      paramAccessibilityEvent.setClassName(SlidingPaneLayout.class.getName());
+    }
+    
+    public void onInitializeAccessibilityNodeInfo(View paramView, AccessibilityNodeInfoCompat paramAccessibilityNodeInfoCompat)
+    {
+      AccessibilityNodeInfoCompat localAccessibilityNodeInfoCompat = AccessibilityNodeInfoCompat.obtain(paramAccessibilityNodeInfoCompat);
+      super.onInitializeAccessibilityNodeInfo(paramView, localAccessibilityNodeInfoCompat);
+      copyNodeInfoNoChildren(paramAccessibilityNodeInfoCompat, localAccessibilityNodeInfoCompat);
+      localAccessibilityNodeInfoCompat.recycle();
+      paramAccessibilityNodeInfoCompat.setClassName(SlidingPaneLayout.class.getName());
+      paramAccessibilityNodeInfoCompat.setSource(paramView);
+      paramView = ViewCompat.getParentForAccessibility(paramView);
+      if ((paramView instanceof View)) {
+        paramAccessibilityNodeInfoCompat.setParent((View)paramView);
+      }
+      int j = SlidingPaneLayout.this.getChildCount();
+      int i = 0;
+      while (i < j)
+      {
+        paramView = SlidingPaneLayout.this.getChildAt(i);
+        if ((!filter(paramView)) && (paramView.getVisibility() == 0))
+        {
+          ViewCompat.setImportantForAccessibility(paramView, 1);
+          paramAccessibilityNodeInfoCompat.addChild(paramView);
+        }
+        i += 1;
+      }
+    }
+    
+    public boolean onRequestSendAccessibilityEvent(ViewGroup paramViewGroup, View paramView, AccessibilityEvent paramAccessibilityEvent)
+    {
+      if (!filter(paramView)) {
+        return super.onRequestSendAccessibilityEvent(paramViewGroup, paramView, paramAccessibilityEvent);
+      }
+      return false;
+    }
+  }
+  
+  private class DisableLayerRunnable
+    implements Runnable
+  {
+    final View mChildView;
+    
+    DisableLayerRunnable(View paramView)
+    {
+      this.mChildView = paramView;
+    }
+    
+    public void run()
+    {
+      if (this.mChildView.getParent() == SlidingPaneLayout.this)
+      {
+        this.mChildView.setLayerType(0, null);
+        SlidingPaneLayout.this.invalidateChildRegion(this.mChildView);
+      }
+      SlidingPaneLayout.this.mPostedRunnables.remove(this);
+    }
+  }
+  
+  private class DragHelperCallback
+    extends ViewDragHelper.Callback
+  {
+    DragHelperCallback() {}
+    
+    public int clampViewPositionHorizontal(View paramView, int paramInt1, int paramInt2)
+    {
+      paramView = (SlidingPaneLayout.LayoutParams)SlidingPaneLayout.this.mSlideableView.getLayoutParams();
+      if (SlidingPaneLayout.this.isLayoutRtlSupport())
+      {
+        paramInt2 = SlidingPaneLayout.this.getWidth();
+        i = SlidingPaneLayout.this.getPaddingRight();
+        paramInt2 -= paramView.rightMargin + i + SlidingPaneLayout.this.mSlideableView.getWidth();
+        i = SlidingPaneLayout.this.mSlideRange;
+        return Math.max(Math.min(paramInt1, paramInt2), paramInt2 - i);
+      }
+      paramInt2 = SlidingPaneLayout.this.getPaddingLeft();
+      paramInt2 = paramView.leftMargin + paramInt2;
+      int i = SlidingPaneLayout.this.mSlideRange;
+      return Math.min(Math.max(paramInt1, paramInt2), i + paramInt2);
+    }
+    
+    public int clampViewPositionVertical(View paramView, int paramInt1, int paramInt2)
+    {
+      return paramView.getTop();
+    }
+    
+    public int getViewHorizontalDragRange(View paramView)
+    {
+      return SlidingPaneLayout.this.mSlideRange;
+    }
+    
+    public void onEdgeDragStarted(int paramInt1, int paramInt2)
+    {
+      SlidingPaneLayout.this.mDragHelper.captureChildView(SlidingPaneLayout.this.mSlideableView, paramInt2);
+    }
+    
+    public void onViewCaptured(View paramView, int paramInt)
+    {
+      SlidingPaneLayout.this.setAllChildrenVisible();
+    }
+    
+    public void onViewDragStateChanged(int paramInt)
+    {
+      if (SlidingPaneLayout.this.mDragHelper.getViewDragState() == 0)
+      {
+        if (SlidingPaneLayout.this.mSlideOffset == 0.0F)
+        {
+          SlidingPaneLayout.this.updateObscuredViewsVisibility(SlidingPaneLayout.this.mSlideableView);
+          SlidingPaneLayout.this.dispatchOnPanelClosed(SlidingPaneLayout.this.mSlideableView);
+          SlidingPaneLayout.this.mPreservedOpenState = false;
+        }
+      }
+      else {
+        return;
+      }
+      SlidingPaneLayout.this.dispatchOnPanelOpened(SlidingPaneLayout.this.mSlideableView);
+      SlidingPaneLayout.this.mPreservedOpenState = true;
+    }
+    
+    public void onViewPositionChanged(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+    {
+      SlidingPaneLayout.this.onPanelDragged(paramInt1);
+      SlidingPaneLayout.this.invalidate();
+    }
+    
+    public void onViewReleased(View paramView, float paramFloat1, float paramFloat2)
+    {
+      SlidingPaneLayout.LayoutParams localLayoutParams = (SlidingPaneLayout.LayoutParams)paramView.getLayoutParams();
+      int i;
+      int j;
+      if (SlidingPaneLayout.this.isLayoutRtlSupport())
+      {
+        i = SlidingPaneLayout.this.getPaddingRight();
+        j = localLayoutParams.rightMargin + i;
+        if (paramFloat1 >= 0.0F)
+        {
+          i = j;
+          if (paramFloat1 == 0.0F)
+          {
+            i = j;
+            if (SlidingPaneLayout.this.mSlideOffset <= 0.5F) {}
+          }
+        }
+        else
+        {
+          i = j + SlidingPaneLayout.this.mSlideRange;
+        }
+        j = SlidingPaneLayout.this.mSlideableView.getWidth();
+        i = SlidingPaneLayout.this.getWidth() - i - j;
+      }
+      for (;;)
+      {
+        SlidingPaneLayout.this.mDragHelper.settleCapturedViewAt(i, paramView.getTop());
+        SlidingPaneLayout.this.invalidate();
+        return;
+        i = SlidingPaneLayout.this.getPaddingLeft();
+        j = localLayoutParams.leftMargin + i;
+        if (paramFloat1 <= 0.0F)
+        {
+          i = j;
+          if (paramFloat1 == 0.0F)
+          {
+            i = j;
+            if (SlidingPaneLayout.this.mSlideOffset <= 0.5F) {}
+          }
+        }
+        else
+        {
+          i = j + SlidingPaneLayout.this.mSlideRange;
+        }
+      }
+    }
+    
+    public boolean tryCaptureView(View paramView, int paramInt)
+    {
+      if (SlidingPaneLayout.this.mIsUnableToDrag) {
+        return false;
+      }
+      return ((SlidingPaneLayout.LayoutParams)paramView.getLayoutParams()).slideable;
+    }
+  }
+  
+  public static class LayoutParams
+    extends ViewGroup.MarginLayoutParams
+  {
+    private static final int[] ATTRS = { 16843137 };
+    Paint dimPaint;
+    boolean dimWhenOffset;
+    boolean slideable;
+    public float weight = 0.0F;
+    
+    public LayoutParams()
+    {
+      super(-1);
+    }
+    
+    public LayoutParams(int paramInt1, int paramInt2)
+    {
+      super(paramInt2);
+    }
+    
+    public LayoutParams(@NonNull Context paramContext, @Nullable AttributeSet paramAttributeSet)
+    {
+      super(paramAttributeSet);
+      paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, ATTRS);
+      this.weight = paramContext.getFloat(0, 0.0F);
+      paramContext.recycle();
+    }
+    
+    public LayoutParams(@NonNull LayoutParams paramLayoutParams)
+    {
+      super();
+      this.weight = paramLayoutParams.weight;
+    }
+    
+    public LayoutParams(@NonNull ViewGroup.LayoutParams paramLayoutParams)
+    {
+      super();
+    }
+    
+    public LayoutParams(@NonNull ViewGroup.MarginLayoutParams paramMarginLayoutParams)
+    {
+      super();
+    }
+  }
+  
+  public static abstract interface PanelSlideListener
+  {
+    public abstract void onPanelClosed(@NonNull View paramView);
+    
+    public abstract void onPanelOpened(@NonNull View paramView);
+    
+    public abstract void onPanelSlide(@NonNull View paramView, float paramFloat);
+  }
+  
+  static class SavedState
+    extends AbsSavedState
+  {
+    public static final Parcelable.Creator<SavedState> CREATOR = new Parcelable.ClassLoaderCreator()
+    {
+      public SlidingPaneLayout.SavedState createFromParcel(Parcel paramAnonymousParcel)
+      {
+        return new SlidingPaneLayout.SavedState(paramAnonymousParcel, null);
+      }
+      
+      public SlidingPaneLayout.SavedState createFromParcel(Parcel paramAnonymousParcel, ClassLoader paramAnonymousClassLoader)
+      {
+        return new SlidingPaneLayout.SavedState(paramAnonymousParcel, null);
+      }
+      
+      public SlidingPaneLayout.SavedState[] newArray(int paramAnonymousInt)
+      {
+        return new SlidingPaneLayout.SavedState[paramAnonymousInt];
+      }
+    };
+    boolean isOpen;
+    
+    SavedState(Parcel paramParcel, ClassLoader paramClassLoader)
+    {
+      super(paramClassLoader);
+      if (paramParcel.readInt() != 0) {}
+      for (boolean bool = true;; bool = false)
+      {
+        this.isOpen = bool;
+        return;
+      }
+    }
+    
+    SavedState(Parcelable paramParcelable)
+    {
+      super();
+    }
+    
+    public void writeToParcel(Parcel paramParcel, int paramInt)
+    {
+      super.writeToParcel(paramParcel, paramInt);
+      if (this.isOpen) {}
+      for (paramInt = 1;; paramInt = 0)
+      {
+        paramParcel.writeInt(paramInt);
+        return;
+      }
+    }
+  }
+  
+  public static class SimplePanelSlideListener
+    implements SlidingPaneLayout.PanelSlideListener
+  {
+    public void onPanelClosed(View paramView) {}
+    
+    public void onPanelOpened(View paramView) {}
+    
+    public void onPanelSlide(View paramView, float paramFloat) {}
+  }
+  
+  static abstract interface SlidingPanelLayoutImpl
+  {
+    public abstract void invalidateChildRegion(SlidingPaneLayout paramSlidingPaneLayout, View paramView);
+  }
+  
+  static class SlidingPanelLayoutImplBase
+    implements SlidingPaneLayout.SlidingPanelLayoutImpl
+  {
+    public void invalidateChildRegion(SlidingPaneLayout paramSlidingPaneLayout, View paramView)
+    {
+      ViewCompat.postInvalidateOnAnimation(paramSlidingPaneLayout, paramView.getLeft(), paramView.getTop(), paramView.getRight(), paramView.getBottom());
+    }
+  }
+  
+  @RequiresApi(16)
+  static class SlidingPanelLayoutImplJB
+    extends SlidingPaneLayout.SlidingPanelLayoutImplBase
+  {
+    private Method mGetDisplayList;
+    private Field mRecreateDisplayList;
+    
+    SlidingPanelLayoutImplJB()
+    {
+      try
+      {
+        this.mGetDisplayList = View.class.getDeclaredMethod("getDisplayList", (Class[])null);
+      }
+      catch (NoSuchMethodException localNoSuchMethodException)
+      {
+        for (;;)
+        {
+          try
+          {
+            this.mRecreateDisplayList = View.class.getDeclaredField("mRecreateDisplayList");
+            this.mRecreateDisplayList.setAccessible(true);
+            return;
+          }
+          catch (NoSuchFieldException localNoSuchFieldException)
+          {
+            Log.e("SlidingPaneLayout", "Couldn't fetch mRecreateDisplayList field; dimming will be slow.", localNoSuchFieldException);
+          }
+          localNoSuchMethodException = localNoSuchMethodException;
+          Log.e("SlidingPaneLayout", "Couldn't fetch getDisplayList method; dimming won't work right.", localNoSuchMethodException);
+        }
+      }
+    }
+    
+    public void invalidateChildRegion(SlidingPaneLayout paramSlidingPaneLayout, View paramView)
+    {
+      if ((this.mGetDisplayList != null) && (this.mRecreateDisplayList != null)) {
+        try
+        {
+          this.mRecreateDisplayList.setBoolean(paramView, true);
+          this.mGetDisplayList.invoke(paramView, (Object[])null);
+          super.invalidateChildRegion(paramSlidingPaneLayout, paramView);
+          return;
+        }
+        catch (Exception localException)
+        {
+          for (;;)
+          {
+            Log.e("SlidingPaneLayout", "Error refreshing display list state", localException);
+          }
+        }
+      }
+      paramView.invalidate();
+    }
+  }
+  
+  @RequiresApi(17)
+  static class SlidingPanelLayoutImplJBMR1
+    extends SlidingPaneLayout.SlidingPanelLayoutImplBase
+  {
+    public void invalidateChildRegion(SlidingPaneLayout paramSlidingPaneLayout, View paramView)
+    {
+      ViewCompat.setLayerPaint(paramView, ((SlidingPaneLayout.LayoutParams)paramView.getLayoutParams()).dimPaint);
     }
   }
 }

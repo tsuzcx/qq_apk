@@ -1,48 +1,130 @@
 package com.tencent.token.upload;
 
-import android.os.Handler;
-import android.os.HandlerThread;
-import android.os.Message;
-import com.tencent.token.global.f;
-import com.tencent.token.global.h;
-import org.json.JSONArray;
+import android.content.Context;
+import android.os.PowerManager;
+import android.util.DisplayMetrics;
+import android.view.Display;
+import android.view.WindowManager;
 
-class j
-  extends Handler
+public class j
 {
-  j(NetInfoService paramNetInfoService) {}
-  
-  public void handleMessage(Message paramMessage)
+  public static int a(Context paramContext)
   {
-    super.handleMessage(paramMessage);
-    switch (paramMessage.what)
-    {
-    }
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-        } while (paramMessage.arg1 == 0);
-        paramMessage = (f)paramMessage.obj;
-        h.c("K_MSG_DEVICE_INFO_REPORT" + paramMessage.c);
-        return;
-      } while (paramMessage.arg1 != 0);
-      paramMessage = (JSONArray)paramMessage.obj;
-    } while ((paramMessage == null) || (paramMessage.length() <= 0));
     try
     {
-      HandlerThread localHandlerThread = new HandlerThread("dynamicdomainreport", 1);
-      localHandlerThread.start();
-      new Handler(localHandlerThread.getLooper()).postDelayed(new k(this, paramMessage), 1000L);
-      return;
+      paramContext = (WindowManager)paramContext.getSystemService("window");
+      DisplayMetrics localDisplayMetrics = new DisplayMetrics();
+      if (paramContext != null)
+      {
+        paramContext.getDefaultDisplay().getMetrics(localDisplayMetrics);
+        int i = localDisplayMetrics.heightPixels;
+        return i;
+      }
     }
-    catch (Exception paramMessage)
+    catch (Exception paramContext)
     {
-      paramMessage.printStackTrace();
+      paramContext.printStackTrace();
     }
+    return f.b;
+  }
+  
+  public static int b(Context paramContext)
+  {
+    try
+    {
+      paramContext = (WindowManager)paramContext.getSystemService("window");
+      DisplayMetrics localDisplayMetrics = new DisplayMetrics();
+      if (paramContext != null)
+      {
+        paramContext.getDefaultDisplay().getMetrics(localDisplayMetrics);
+        int i = localDisplayMetrics.widthPixels;
+        return i;
+      }
+    }
+    catch (Exception paramContext)
+    {
+      paramContext.printStackTrace();
+    }
+    return f.b;
+  }
+  
+  public static int c(Context paramContext)
+  {
+    try
+    {
+      paramContext = (WindowManager)paramContext.getSystemService("window");
+      DisplayMetrics localDisplayMetrics = new DisplayMetrics();
+      if (paramContext != null)
+      {
+        paramContext.getDefaultDisplay().getMetrics(localDisplayMetrics);
+        int i = localDisplayMetrics.densityDpi;
+        return i;
+      }
+    }
+    catch (Exception paramContext)
+    {
+      paramContext.printStackTrace();
+    }
+    return f.b;
+  }
+  
+  public static int d(Context paramContext)
+  {
+    try
+    {
+      paramContext = ((WindowManager)paramContext.getSystemService("window")).getDefaultDisplay();
+      if (paramContext != null)
+      {
+        int i = paramContext.getWidth();
+        return i;
+      }
+      return 0;
+    }
+    catch (Exception paramContext)
+    {
+      paramContext.printStackTrace();
+    }
+    return f.b;
+  }
+  
+  public static String e(Context paramContext)
+  {
+    StringBuffer localStringBuffer = new StringBuffer();
+    localStringBuffer.append(d(paramContext)).append(" * ").append(f(paramContext));
+    return localStringBuffer.toString();
+  }
+  
+  public static int f(Context paramContext)
+  {
+    try
+    {
+      paramContext = ((WindowManager)paramContext.getSystemService("window")).getDefaultDisplay();
+      if (paramContext != null)
+      {
+        int i = paramContext.getHeight();
+        return i;
+      }
+      return 0;
+    }
+    catch (Exception paramContext)
+    {
+      paramContext.printStackTrace();
+    }
+    return f.b;
+  }
+  
+  public static boolean g(Context paramContext)
+  {
+    try
+    {
+      boolean bool = ((PowerManager)paramContext.getSystemService("power")).isScreenOn();
+      return bool;
+    }
+    catch (Exception paramContext)
+    {
+      paramContext.printStackTrace();
+    }
+    return false;
   }
 }
 

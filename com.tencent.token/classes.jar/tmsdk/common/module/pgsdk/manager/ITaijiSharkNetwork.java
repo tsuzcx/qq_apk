@@ -4,6 +4,7 @@ import com.qq.taf.jce.JceStruct;
 import java.lang.ref.WeakReference;
 import tmsdk.common.module.pgsdk.manager.shark.ISharkCallBack;
 import tmsdk.common.module.pgsdk.manager.shark.ISharkPushListener;
+import tmsdk.common.module.pgsdk.manager.shark.SharkHandler;
 
 public abstract interface ITaijiSharkNetwork
 {
@@ -11,7 +12,7 @@ public abstract interface ITaijiSharkNetwork
   
   public abstract void registerSharkPush(int paramInt1, JceStruct paramJceStruct, int paramInt2, ISharkPushListener paramISharkPushListener);
   
-  public abstract WeakReference sendShark(int paramInt1, JceStruct paramJceStruct1, JceStruct paramJceStruct2, int paramInt2, ISharkCallBack paramISharkCallBack);
+  public abstract WeakReference<SharkHandler> sendShark(int paramInt1, JceStruct paramJceStruct1, JceStruct paramJceStruct2, int paramInt2, ISharkCallBack paramISharkCallBack);
 }
 
 

@@ -22,7 +22,7 @@ public class UpgradeDeterminResult
   public String mMobileMask = "";
   public int mQqtokenAppear = 0;
   public int mQuesAppear = 0;
-  public List mQuesInfo = null;
+  public List<QuesInfoItem> mQuesInfo = null;
   public long mServerTime;
   public String mSmsPort;
   public String mSmsPrefix = "";
@@ -56,6 +56,15 @@ public class UpgradeDeterminResult
   public int f()
   {
     return this.bindType;
+  }
+  
+  public class QuesInfoItem
+    implements Serializable
+  {
+    private static final long serialVersionUID = -6303479941324604162L;
+    public String mContent;
+    public int mId;
+    public int mType;
   }
 }
 

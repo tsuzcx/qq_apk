@@ -1,6 +1,11 @@
 package android.support.v4.app;
 
 import android.arch.lifecycle.LifecycleOwner;
+import android.arch.lifecycle.MutableLiveData;
+import android.arch.lifecycle.Observer;
+import android.arch.lifecycle.ViewModel;
+import android.arch.lifecycle.ViewModelProvider;
+import android.arch.lifecycle.ViewModelProvider.Factory;
 import android.arch.lifecycle.ViewModelStore;
 import android.os.Bundle;
 import android.os.Looper;
@@ -8,7 +13,9 @@ import android.support.annotation.MainThread;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.content.Loader;
+import android.support.v4.content.Loader.OnLoadCompleteListener;
 import android.support.v4.util.DebugUtils;
+import android.support.v4.util.SparseArrayCompat;
 import android.util.Log;
 import java.io.FileDescriptor;
 import java.io.PrintWriter;
@@ -23,17 +30,17 @@ class LoaderManagerImpl
   @NonNull
   private final LifecycleOwner mLifecycleOwner;
   @NonNull
-  private final LoaderManagerImpl.LoaderViewModel mLoaderViewModel;
+  private final LoaderViewModel mLoaderViewModel;
   
   LoaderManagerImpl(@NonNull LifecycleOwner paramLifecycleOwner, @NonNull ViewModelStore paramViewModelStore)
   {
     this.mLifecycleOwner = paramLifecycleOwner;
-    this.mLoaderViewModel = LoaderManagerImpl.LoaderViewModel.getInstance(paramViewModelStore);
+    this.mLoaderViewModel = LoaderViewModel.getInstance(paramViewModelStore);
   }
   
   @MainThread
   @NonNull
-  private Loader createAndInstallLoader(int paramInt, @Nullable Bundle paramBundle, @NonNull LoaderManager.LoaderCallbacks paramLoaderCallbacks, @Nullable Loader paramLoader)
+  private <D> Loader<D> createAndInstallLoader(int paramInt, @Nullable Bundle paramBundle, @NonNull LoaderManager.LoaderCallbacks<D> paramLoaderCallbacks, @Nullable Loader<D> paramLoader)
   {
     Loader localLoader;
     try
@@ -48,7 +55,7 @@ class LoaderManagerImpl
     {
       this.mCreatingLoader = false;
     }
-    paramBundle = new LoaderManagerImpl.LoaderInfo(paramInt, paramBundle, localLoader, paramLoader);
+    paramBundle = new LoaderInfo(paramInt, paramBundle, localLoader, paramLoader);
     if (DEBUG) {
       Log.v("LoaderManager", "  Created new loader " + paramBundle);
     }
@@ -69,7 +76,7 @@ class LoaderManagerImpl
     if (DEBUG) {
       Log.v("LoaderManager", "destroyLoader in " + this + " of " + paramInt);
     }
-    LoaderManagerImpl.LoaderInfo localLoaderInfo = this.mLoaderViewModel.getLoader(paramInt);
+    LoaderInfo localLoaderInfo = this.mLoaderViewModel.getLoader(paramInt);
     if (localLoaderInfo != null)
     {
       localLoaderInfo.destroy(true);
@@ -83,12 +90,12 @@ class LoaderManagerImpl
   }
   
   @Nullable
-  public Loader getLoader(int paramInt)
+  public <D> Loader<D> getLoader(int paramInt)
   {
     if (this.mCreatingLoader) {
       throw new IllegalStateException("Called while creating a loader");
     }
-    LoaderManagerImpl.LoaderInfo localLoaderInfo = this.mLoaderViewModel.getLoader(paramInt);
+    LoaderInfo localLoaderInfo = this.mLoaderViewModel.getLoader(paramInt);
     if (localLoaderInfo != null) {
       return localLoaderInfo.getLoader();
     }
@@ -102,7 +109,7 @@ class LoaderManagerImpl
   
   @MainThread
   @NonNull
-  public Loader initLoader(int paramInt, @Nullable Bundle paramBundle, @NonNull LoaderManager.LoaderCallbacks paramLoaderCallbacks)
+  public <D> Loader<D> initLoader(int paramInt, @Nullable Bundle paramBundle, @NonNull LoaderManager.LoaderCallbacks<D> paramLoaderCallbacks)
   {
     if (this.mCreatingLoader) {
       throw new IllegalStateException("Called while creating a loader");
@@ -110,7 +117,7 @@ class LoaderManagerImpl
     if (Looper.getMainLooper() != Looper.myLooper()) {
       throw new IllegalStateException("initLoader must be called on the main thread");
     }
-    LoaderManagerImpl.LoaderInfo localLoaderInfo = this.mLoaderViewModel.getLoader(paramInt);
+    LoaderInfo localLoaderInfo = this.mLoaderViewModel.getLoader(paramInt);
     if (DEBUG) {
       Log.v("LoaderManager", "initLoader in " + this + ": args=" + paramBundle);
     }
@@ -130,7 +137,7 @@ class LoaderManagerImpl
   
   @MainThread
   @NonNull
-  public Loader restartLoader(int paramInt, @Nullable Bundle paramBundle, @NonNull LoaderManager.LoaderCallbacks paramLoaderCallbacks)
+  public <D> Loader<D> restartLoader(int paramInt, @Nullable Bundle paramBundle, @NonNull LoaderManager.LoaderCallbacks<D> paramLoaderCallbacks)
   {
     if (this.mCreatingLoader) {
       throw new IllegalStateException("Called while creating a loader");
@@ -141,7 +148,7 @@ class LoaderManagerImpl
     if (DEBUG) {
       Log.v("LoaderManager", "restartLoader in " + this + ": args=" + paramBundle);
     }
-    LoaderManagerImpl.LoaderInfo localLoaderInfo = this.mLoaderViewModel.getLoader(paramInt);
+    LoaderInfo localLoaderInfo = this.mLoaderViewModel.getLoader(paramInt);
     Loader localLoader = null;
     if (localLoaderInfo != null) {
       localLoader = localLoaderInfo.destroy(false);
@@ -158,6 +165,331 @@ class LoaderManagerImpl
     DebugUtils.buildShortClassTag(this.mLifecycleOwner, localStringBuilder);
     localStringBuilder.append("}}");
     return localStringBuilder.toString();
+  }
+  
+  public static class LoaderInfo<D>
+    extends MutableLiveData<D>
+    implements Loader.OnLoadCompleteListener<D>
+  {
+    @Nullable
+    private final Bundle mArgs;
+    private final int mId;
+    private LifecycleOwner mLifecycleOwner;
+    @NonNull
+    private final Loader<D> mLoader;
+    private LoaderManagerImpl.LoaderObserver<D> mObserver;
+    private Loader<D> mPriorLoader;
+    
+    LoaderInfo(int paramInt, @Nullable Bundle paramBundle, @NonNull Loader<D> paramLoader1, @Nullable Loader<D> paramLoader2)
+    {
+      this.mId = paramInt;
+      this.mArgs = paramBundle;
+      this.mLoader = paramLoader1;
+      this.mPriorLoader = paramLoader2;
+      this.mLoader.registerListener(paramInt, this);
+    }
+    
+    @MainThread
+    Loader<D> destroy(boolean paramBoolean)
+    {
+      if (LoaderManagerImpl.DEBUG) {
+        Log.v("LoaderManager", "  Destroying: " + this);
+      }
+      this.mLoader.cancelLoad();
+      this.mLoader.abandon();
+      LoaderManagerImpl.LoaderObserver localLoaderObserver = this.mObserver;
+      if (localLoaderObserver != null)
+      {
+        removeObserver(localLoaderObserver);
+        if (paramBoolean) {
+          localLoaderObserver.reset();
+        }
+      }
+      this.mLoader.unregisterListener(this);
+      if (((localLoaderObserver != null) && (!localLoaderObserver.hasDeliveredData())) || (paramBoolean))
+      {
+        this.mLoader.reset();
+        return this.mPriorLoader;
+      }
+      return this.mLoader;
+    }
+    
+    public void dump(String paramString, FileDescriptor paramFileDescriptor, PrintWriter paramPrintWriter, String[] paramArrayOfString)
+    {
+      paramPrintWriter.print(paramString);
+      paramPrintWriter.print("mId=");
+      paramPrintWriter.print(this.mId);
+      paramPrintWriter.print(" mArgs=");
+      paramPrintWriter.println(this.mArgs);
+      paramPrintWriter.print(paramString);
+      paramPrintWriter.print("mLoader=");
+      paramPrintWriter.println(this.mLoader);
+      this.mLoader.dump(paramString + "  ", paramFileDescriptor, paramPrintWriter, paramArrayOfString);
+      if (this.mObserver != null)
+      {
+        paramPrintWriter.print(paramString);
+        paramPrintWriter.print("mCallbacks=");
+        paramPrintWriter.println(this.mObserver);
+        this.mObserver.dump(paramString + "  ", paramPrintWriter);
+      }
+      paramPrintWriter.print(paramString);
+      paramPrintWriter.print("mData=");
+      paramPrintWriter.println(getLoader().dataToString(getValue()));
+      paramPrintWriter.print(paramString);
+      paramPrintWriter.print("mStarted=");
+      paramPrintWriter.println(hasActiveObservers());
+    }
+    
+    @NonNull
+    Loader<D> getLoader()
+    {
+      return this.mLoader;
+    }
+    
+    boolean isCallbackWaitingForData()
+    {
+      if (!hasActiveObservers()) {}
+      while ((this.mObserver == null) || (this.mObserver.hasDeliveredData())) {
+        return false;
+      }
+      return true;
+    }
+    
+    void markForRedelivery()
+    {
+      LifecycleOwner localLifecycleOwner = this.mLifecycleOwner;
+      LoaderManagerImpl.LoaderObserver localLoaderObserver = this.mObserver;
+      if ((localLifecycleOwner != null) && (localLoaderObserver != null))
+      {
+        super.removeObserver(localLoaderObserver);
+        observe(localLifecycleOwner, localLoaderObserver);
+      }
+    }
+    
+    protected void onActive()
+    {
+      if (LoaderManagerImpl.DEBUG) {
+        Log.v("LoaderManager", "  Starting: " + this);
+      }
+      this.mLoader.startLoading();
+    }
+    
+    protected void onInactive()
+    {
+      if (LoaderManagerImpl.DEBUG) {
+        Log.v("LoaderManager", "  Stopping: " + this);
+      }
+      this.mLoader.stopLoading();
+    }
+    
+    public void onLoadComplete(@NonNull Loader<D> paramLoader, @Nullable D paramD)
+    {
+      if (LoaderManagerImpl.DEBUG) {
+        Log.v("LoaderManager", "onLoadComplete: " + this);
+      }
+      if (Looper.myLooper() == Looper.getMainLooper())
+      {
+        setValue(paramD);
+        return;
+      }
+      if (LoaderManagerImpl.DEBUG) {
+        Log.w("LoaderManager", "onLoadComplete was incorrectly called on a background thread");
+      }
+      postValue(paramD);
+    }
+    
+    public void removeObserver(@NonNull Observer<D> paramObserver)
+    {
+      super.removeObserver(paramObserver);
+      this.mLifecycleOwner = null;
+      this.mObserver = null;
+    }
+    
+    @MainThread
+    @NonNull
+    Loader<D> setCallback(@NonNull LifecycleOwner paramLifecycleOwner, @NonNull LoaderManager.LoaderCallbacks<D> paramLoaderCallbacks)
+    {
+      paramLoaderCallbacks = new LoaderManagerImpl.LoaderObserver(this.mLoader, paramLoaderCallbacks);
+      observe(paramLifecycleOwner, paramLoaderCallbacks);
+      if (this.mObserver != null) {
+        removeObserver(this.mObserver);
+      }
+      this.mLifecycleOwner = paramLifecycleOwner;
+      this.mObserver = paramLoaderCallbacks;
+      return this.mLoader;
+    }
+    
+    public void setValue(D paramD)
+    {
+      super.setValue(paramD);
+      if (this.mPriorLoader != null)
+      {
+        this.mPriorLoader.reset();
+        this.mPriorLoader = null;
+      }
+    }
+    
+    public String toString()
+    {
+      StringBuilder localStringBuilder = new StringBuilder(64);
+      localStringBuilder.append("LoaderInfo{");
+      localStringBuilder.append(Integer.toHexString(System.identityHashCode(this)));
+      localStringBuilder.append(" #");
+      localStringBuilder.append(this.mId);
+      localStringBuilder.append(" : ");
+      DebugUtils.buildShortClassTag(this.mLoader, localStringBuilder);
+      localStringBuilder.append("}}");
+      return localStringBuilder.toString();
+    }
+  }
+  
+  static class LoaderObserver<D>
+    implements Observer<D>
+  {
+    @NonNull
+    private final LoaderManager.LoaderCallbacks<D> mCallback;
+    private boolean mDeliveredData = false;
+    @NonNull
+    private final Loader<D> mLoader;
+    
+    LoaderObserver(@NonNull Loader<D> paramLoader, @NonNull LoaderManager.LoaderCallbacks<D> paramLoaderCallbacks)
+    {
+      this.mLoader = paramLoader;
+      this.mCallback = paramLoaderCallbacks;
+    }
+    
+    public void dump(String paramString, PrintWriter paramPrintWriter)
+    {
+      paramPrintWriter.print(paramString);
+      paramPrintWriter.print("mDeliveredData=");
+      paramPrintWriter.println(this.mDeliveredData);
+    }
+    
+    boolean hasDeliveredData()
+    {
+      return this.mDeliveredData;
+    }
+    
+    public void onChanged(@Nullable D paramD)
+    {
+      if (LoaderManagerImpl.DEBUG) {
+        Log.v("LoaderManager", "  onLoadFinished in " + this.mLoader + ": " + this.mLoader.dataToString(paramD));
+      }
+      this.mCallback.onLoadFinished(this.mLoader, paramD);
+      this.mDeliveredData = true;
+    }
+    
+    @MainThread
+    void reset()
+    {
+      if (this.mDeliveredData)
+      {
+        if (LoaderManagerImpl.DEBUG) {
+          Log.v("LoaderManager", "  Resetting: " + this.mLoader);
+        }
+        this.mCallback.onLoaderReset(this.mLoader);
+      }
+    }
+    
+    public String toString()
+    {
+      return this.mCallback.toString();
+    }
+  }
+  
+  static class LoaderViewModel
+    extends ViewModel
+  {
+    private static final ViewModelProvider.Factory FACTORY = new ViewModelProvider.Factory()
+    {
+      @NonNull
+      public <T extends ViewModel> T create(@NonNull Class<T> paramAnonymousClass)
+      {
+        return new LoaderManagerImpl.LoaderViewModel();
+      }
+    };
+    private SparseArrayCompat<LoaderManagerImpl.LoaderInfo> mLoaders = new SparseArrayCompat();
+    
+    @NonNull
+    static LoaderViewModel getInstance(ViewModelStore paramViewModelStore)
+    {
+      return (LoaderViewModel)new ViewModelProvider(paramViewModelStore, FACTORY).get(LoaderViewModel.class);
+    }
+    
+    public void dump(String paramString, FileDescriptor paramFileDescriptor, PrintWriter paramPrintWriter, String[] paramArrayOfString)
+    {
+      if (this.mLoaders.size() > 0)
+      {
+        paramPrintWriter.print(paramString);
+        paramPrintWriter.println("Loaders:");
+        String str = paramString + "    ";
+        int i = 0;
+        while (i < this.mLoaders.size())
+        {
+          LoaderManagerImpl.LoaderInfo localLoaderInfo = (LoaderManagerImpl.LoaderInfo)this.mLoaders.valueAt(i);
+          paramPrintWriter.print(paramString);
+          paramPrintWriter.print("  #");
+          paramPrintWriter.print(this.mLoaders.keyAt(i));
+          paramPrintWriter.print(": ");
+          paramPrintWriter.println(localLoaderInfo.toString());
+          localLoaderInfo.dump(str, paramFileDescriptor, paramPrintWriter, paramArrayOfString);
+          i += 1;
+        }
+      }
+    }
+    
+    <D> LoaderManagerImpl.LoaderInfo<D> getLoader(int paramInt)
+    {
+      return (LoaderManagerImpl.LoaderInfo)this.mLoaders.get(paramInt);
+    }
+    
+    boolean hasRunningLoaders()
+    {
+      int j = this.mLoaders.size();
+      int i = 0;
+      while (i < j)
+      {
+        if (((LoaderManagerImpl.LoaderInfo)this.mLoaders.valueAt(i)).isCallbackWaitingForData()) {
+          return true;
+        }
+        i += 1;
+      }
+      return false;
+    }
+    
+    void markForRedelivery()
+    {
+      int j = this.mLoaders.size();
+      int i = 0;
+      while (i < j)
+      {
+        ((LoaderManagerImpl.LoaderInfo)this.mLoaders.valueAt(i)).markForRedelivery();
+        i += 1;
+      }
+    }
+    
+    protected void onCleared()
+    {
+      super.onCleared();
+      int j = this.mLoaders.size();
+      int i = 0;
+      while (i < j)
+      {
+        ((LoaderManagerImpl.LoaderInfo)this.mLoaders.valueAt(i)).destroy(true);
+        i += 1;
+      }
+      this.mLoaders.clear();
+    }
+    
+    void putLoader(int paramInt, @NonNull LoaderManagerImpl.LoaderInfo paramLoaderInfo)
+    {
+      this.mLoaders.put(paramInt, paramLoaderInfo);
+    }
+    
+    void removeLoader(int paramInt)
+    {
+      this.mLoaders.remove(paramInt);
+    }
   }
 }
 

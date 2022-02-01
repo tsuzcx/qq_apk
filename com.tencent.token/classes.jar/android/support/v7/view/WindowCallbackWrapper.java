@@ -5,6 +5,7 @@ import android.support.annotation.RestrictTo;
 import android.view.ActionMode;
 import android.view.ActionMode.Callback;
 import android.view.KeyEvent;
+import android.view.KeyboardShortcutGroup;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
@@ -121,7 +122,7 @@ public class WindowCallbackWrapper
   }
   
   @RequiresApi(24)
-  public void onProvideKeyboardShortcuts(List paramList, Menu paramMenu, int paramInt)
+  public void onProvideKeyboardShortcuts(List<KeyboardShortcutGroup> paramList, Menu paramMenu, int paramInt)
   {
     this.mWrapped.onProvideKeyboardShortcuts(paramList, paramMenu, paramInt);
   }

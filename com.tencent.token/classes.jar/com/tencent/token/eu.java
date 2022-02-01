@@ -1,32 +1,17 @@
 package com.tencent.token;
 
-import com.tencent.token.core.bean.QQUser;
-import com.tencent.token.core.bean.h;
-
 public class eu
 {
-  public h a = new h();
-  String b;
-  long c;
-  public boolean d;
+  private static ev a = null;
   
-  public void a(h paramh)
+  public static ev a()
   {
-    try
+    if (a == null)
     {
-      this.a = paramh;
-      do.a();
-      this.b = do.c;
-      if (do.a().e() != null) {
-        this.c = do.a().e().mUin;
-      }
-      return;
+      a = new ev(4, 20);
+      a.a();
     }
-    finally
-    {
-      paramh = finally;
-      throw paramh;
-    }
+    return a;
   }
 }
 

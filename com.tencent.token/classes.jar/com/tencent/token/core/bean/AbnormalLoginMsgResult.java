@@ -12,7 +12,7 @@ public class AbnormalLoginMsgResult
 {
   private static final long serialVersionUID = -5970917243977567223L;
   public int mCnt;
-  public List mMsgList = null;
+  public List<SafeMsgItem> mMsgList = null;
   
   public AbnormalLoginMsgResult(JSONObject paramJSONObject)
   {

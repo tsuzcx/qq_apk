@@ -26,7 +26,7 @@ public abstract interface ITaijiThreadPoolManager
   
   public abstract Looper getHandlerThreadLooper(String paramString);
   
-  public abstract List getRunningTasks();
+  public abstract List<TaskInfo> getRunningTasks();
   
   public abstract void interruptTask(Runnable paramRunnable);
   
@@ -45,6 +45,20 @@ public abstract interface ITaijiThreadPoolManager
   public abstract void removeWeakTask(Runnable paramRunnable);
   
   public abstract void removeWeakTaskOfObject(Object paramObject);
+  
+  public static class TaskInfo
+  {
+    public long addTime;
+    public long cpuTime;
+    public long ident;
+    public boolean isWeakTask;
+    public String name;
+    public Object owner;
+    public int priority;
+    public int taskType;
+    public Runnable trueTask;
+    public long usedTime;
+  }
 }
 
 

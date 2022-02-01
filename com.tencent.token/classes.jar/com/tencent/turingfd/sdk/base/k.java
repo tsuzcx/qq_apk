@@ -1,108 +1,121 @@
 package com.tencent.turingfd.sdk.base;
 
-import android.content.Context;
-import android.text.TextUtils;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
+import android.app.Activity;
+import android.os.Handler;
+import android.os.Looper;
+import android.view.View;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnPreDrawListener;
+import android.view.Window;
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
 
-public class k
+public final class k
+  implements ViewTreeObserver.OnPreDrawListener
 {
-  public static Map a = new HashMap();
-  public static Map b = new HashMap();
+  public k(Window paramWindow, String paramString, g paramg, Activity paramActivity) {}
   
-  static
+  public boolean onPreDraw()
   {
-    HashSet localHashSet = new HashSet();
-    localHashSet.add("18C867F0717AA67B2AB7347505BA07ED");
-    a.put(db.a(db.F), localHashSet);
-    localHashSet = new HashSet();
-    localHashSet.add("31223B0BDF1DEF1FE8252971ADA3B577");
-    localHashSet.add("CCD4AD38DC6669F875BC37E3F8840648");
-    localHashSet.add("AA3978F41FD96FF9914A669E186474C7");
-    localHashSet.add("775E696D09856872FDD8AB4F3F06B1E0");
-    localHashSet.add("A6B745BF24A2C277527716F6F36EB68D");
-    localHashSet.add("A01EECAB85E9E3BA2B0F6A158C855C29");
-    a.put(db.a(db.G), localHashSet);
-    b.put(db.a(db.F), Integer.valueOf(105118));
-    b.put(db.a(db.G), Integer.valueOf(105178));
-  }
-  
-  public static ArrayList a(Context paramContext)
-  {
-    ArrayList localArrayList1 = new ArrayList();
-    ArrayList localArrayList2 = new ArrayList();
-    String str = paramContext.getPackageName();
-    if (TextUtils.isEmpty(str))
+    Object localObject6 = null;
+    label177:
+    do
     {
-      localArrayList1.addAll(localArrayList2);
-      localArrayList2 = new ArrayList();
-      str = paramContext.getPackageName();
-      if (!TextUtils.isEmpty(str)) {
-        break label180;
-      }
-    }
-    label180:
-    label344:
-    for (;;)
-    {
-      localArrayList1.addAll(localArrayList2);
-      return localArrayList1;
-      Object localObject = b.get(str);
-      if ((localObject == null) || (((Integer)localObject).intValue() == 105678)) {
-        break;
-      }
-      localObject = ed.a(paramContext, str);
-      Fig localFig = new Fig();
-      localFig.vc = (dk.c + dk.d);
-      localFig.wc = (str + "_" + (String)localObject);
-      localArrayList2.add(localFig);
-      break;
-      localObject = (Set)a.get(str);
-      if ((localObject != null) && (((Set)localObject).size() != 0))
+      try
       {
-        paramContext = ed.a(paramContext, str);
-        if (!TextUtils.isEmpty(paramContext))
+        this.a.getDecorView().getViewTreeObserver().removeOnPreDrawListener(this);
+        Object localObject1 = this.a;
+        try
         {
-          localObject = ((Set)localObject).iterator();
-          do
+          localObject4 = localObject1.getClass();
+          localObject4 = ((Class)localObject4).getDeclaredMethod("getViewRootImpl", new Class[0]);
+          ((Method)localObject4).setAccessible(true);
+          localObject1 = ((Method)localObject4).invoke(localObject1, new Object[0]);
+        }
+        catch (Throwable localThrowable1)
+        {
+          for (;;)
           {
-            if (!((Iterator)localObject).hasNext()) {
-              break;
-            }
-          } while (!((String)((Iterator)localObject).next()).equals(paramContext));
-          for (int i = 1;; i = 0)
-          {
-            if (i != 0) {
-              break label344;
-            }
-            localObject = new Fig();
-            ((Fig)localObject).vc = (dk.c + dk.d);
-            ((Fig)localObject).wc = (str + "_" + paramContext);
-            localArrayList2.add(localObject);
-            break;
+            localObject2 = null;
           }
         }
+        if (localObject1 == null) {}
+        do
+        {
+          do
+          {
+            do
+            {
+              return true;
+              try
+              {
+                localObject4 = localObject2.getClass();
+                localObject4 = ((Class)localObject4).getDeclaredMethod("getAccessibilityInteractionController", new Class[0]);
+                ((Method)localObject4).setAccessible(true);
+                localObject2 = ((Method)localObject4).invoke(localObject2, new Object[0]);
+              }
+              catch (Throwable localThrowable3)
+              {
+                for (;;)
+                {
+                  Object localObject2;
+                  boolean bool;
+                  Object localObject7;
+                  Object localObject3 = null;
+                }
+              }
+            } while (localObject2 == null);
+            try
+            {
+              localObject4 = localObject2.getClass();
+              localObject4 = ((Class)localObject4).getDeclaredField("mHandler");
+              ((Field)localObject4).setAccessible(true);
+              localObject4 = ((Field)localObject4).get(localObject2);
+            }
+            catch (Throwable localThrowable5)
+            {
+              for (;;)
+              {
+                Object localObject5 = null;
+              }
+            }
+          } while (localObject4 == null);
+          bool = localObject4 instanceof l;
+        } while (bool);
       }
+      catch (Throwable localThrowable4)
+      {
+        Object localObject4;
+        localThrowable4.printStackTrace();
+        return true;
+      }
+      try
+      {
+        localObject7 = localObject4.getClass();
+        localObject7 = ((Class)localObject7).getMethod("getLooper", new Class[0]);
+        ((Method)localObject7).setAccessible(true);
+        localObject7 = ((Method)localObject7).invoke(localObject4, new Object[0]);
+        localObject6 = localObject7;
+      }
+      catch (Throwable localThrowable6)
+      {
+        break label177;
+      }
+      localObject6 = (Looper)localObject6;
+    } while (localObject6 == null);
+    localObject4 = new l((Handler)localObject4, this.a, (Looper)localObject6, this.b, this.c.getClass().getName());
+    try
+    {
+      localObject6 = localObject2.getClass();
+      localObject6 = ((Class)localObject6).getDeclaredField("mHandler");
+      ((Field)localObject6).setAccessible(true);
+      ((Field)localObject6).set(localObject2, localObject4);
+      return true;
     }
-  }
-  
-  public static ArrayList b(Context paramContext)
-  {
-    ArrayList localArrayList = new ArrayList();
-    String str = paramContext.getPackageName();
-    if (TextUtils.isEmpty(str)) {
-      return localArrayList;
+    catch (Throwable localThrowable2)
+    {
+      return true;
     }
-    paramContext = ed.a(paramContext, str);
-    Fig localFig = new Fig();
-    localFig.vc = (dk.c + dk.g);
-    localFig.wc = (str + "_" + paramContext);
-    localArrayList.add(localFig);
-    return localArrayList;
   }
 }
 

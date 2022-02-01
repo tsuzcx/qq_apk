@@ -10,8 +10,8 @@ import java.util.Map;
 public final class stChildInfo
   extends JceStruct
 {
-  static ArrayList bH = new ArrayList();
-  public ArrayList vecChild = null;
+  static ArrayList<Map<Integer, String>> bH = new ArrayList();
+  public ArrayList<Map<Integer, String>> vecChild = null;
   
   static
   {

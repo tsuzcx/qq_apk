@@ -3,19 +3,19 @@ package com.tencent.token.core.protocolcenter;
 import android.content.Context;
 import android.os.Handler;
 import android.os.Message;
-import com.tencent.token.cv;
-import com.tencent.token.cx;
-import com.tencent.token.ev;
+import com.tencent.token.bz;
+import com.tencent.token.cb;
+import com.tencent.token.dn;
 import com.tencent.token.global.RqdApplication;
 import com.tencent.token.global.c;
-import com.tencent.token.global.f;
-import com.tencent.token.global.h;
-import com.tencent.token.utils.w;
+import com.tencent.token.global.e;
+import com.tencent.token.global.g;
+import com.tencent.token.utils.l;
 import java.util.HashMap;
 import org.json.JSONObject;
 
 public class ProtoSetServiceStatusV2
-  extends e
+  extends d
 {
   private long d;
   private int[] e;
@@ -23,18 +23,18 @@ public class ProtoSetServiceStatusV2
   private String g;
   private int h;
   
-  public static void a(ev paramev, long paramLong, int[] paramArrayOfInt1, int[] paramArrayOfInt2, String paramString, int paramInt)
+  public static void a(dn paramdn, long paramLong, int[] paramArrayOfInt1, int[] paramArrayOfInt2, String paramString, int paramInt)
   {
-    paramev.c.put("param.uinhash", Long.valueOf(paramLong));
-    paramev.c.put("param.mbinfo.id", paramArrayOfInt1);
-    paramev.c.put("param.mbinfo.val", paramArrayOfInt2);
-    paramev.c.put("param.wtlogin.a2", paramString);
-    paramev.c.put("param.common.seq", Integer.valueOf(paramInt));
+    paramdn.c.put("param.uinhash", Long.valueOf(paramLong));
+    paramdn.c.put("param.mbinfo.id", paramArrayOfInt1);
+    paramdn.c.put("param.mbinfo.val", paramArrayOfInt2);
+    paramdn.c.put("param.wtlogin.a2", paramString);
+    paramdn.c.put("param.common.seq", Integer.valueOf(paramInt));
   }
   
   protected String a()
   {
-    String str = cv.a().b();
+    String str = bz.a().b();
     if (str == null)
     {
       this.a.b(10000);
@@ -55,9 +55,9 @@ public class ProtoSetServiceStatusV2
       }
       i += 1;
     }
-    localObject = "{\"conf_data\":[" + ((StringBuffer)localObject).toString() + "], \"A2\":\"" + this.g + "\", \"seq_id\":" + this.h + ", \"op_time\":" + (int)(cx.c().s() / 1000L) + ",\"uin\":" + this.d + "}";
-    h.a((String)localObject);
-    localObject = w.b(((String)localObject).getBytes());
+    localObject = "{\"conf_data\":[" + ((StringBuffer)localObject).toString() + "], \"A2\":\"" + this.g + "\", \"seq_id\":" + this.h + ", \"op_time\":" + (int)(cb.c().s() / 1000L) + ",\"uin\":" + this.d + "}";
+    g.a((String)localObject);
+    localObject = l.b(((String)localObject).getBytes());
     if (localObject == null)
     {
       this.a.b(10000);
@@ -67,13 +67,13 @@ public class ProtoSetServiceStatusV2
     return c.e() + "/cn/mbtoken3/mbtoken3_set_service_status_encrypt" + str;
   }
   
-  protected void a(ev paramev)
+  protected void a(dn paramdn)
   {
-    this.d = ((Long)paramev.c.get("param.uinhash")).longValue();
-    this.e = ((int[])paramev.c.get("param.mbinfo.id"));
-    this.f = ((int[])paramev.c.get("param.mbinfo.val"));
-    this.g = ((String)paramev.c.get("param.wtlogin.a2"));
-    this.h = ((Integer)paramev.c.get("param.common.seq")).intValue();
+    this.d = ((Long)paramdn.c.get("param.uinhash")).longValue();
+    this.e = ((int[])paramdn.c.get("param.mbinfo.id"));
+    this.f = ((int[])paramdn.c.get("param.mbinfo.val"));
+    this.g = ((String)paramdn.c.get("param.wtlogin.a2"));
+    this.h = ((Integer)paramdn.c.get("param.common.seq")).intValue();
   }
   
   protected void a(JSONObject paramJSONObject)
@@ -84,11 +84,11 @@ public class ProtoSetServiceStatusV2
       a(i, paramJSONObject.getString("info"));
       return;
     }
-    paramJSONObject = w.c(paramJSONObject.getString("data"));
+    paramJSONObject = l.c(paramJSONObject.getString("data"));
     if (paramJSONObject != null)
     {
       paramJSONObject = new JSONObject(new String(paramJSONObject));
-      h.b("ProtoSetServiceStatusV2:" + paramJSONObject);
+      g.b("ProtoSetServiceStatusV2:" + paramJSONObject);
       paramJSONObject.getLong("uin");
       if (paramJSONObject.getInt("seq_id") != this.h)
       {
@@ -98,7 +98,7 @@ public class ProtoSetServiceStatusV2
       this.a.c();
       return;
     }
-    h.c("parseJSON error decodeData=" + paramJSONObject);
+    g.c("parseJSON error decodeData=" + paramJSONObject);
     a(10022, RqdApplication.l().getString(2131230925));
   }
   

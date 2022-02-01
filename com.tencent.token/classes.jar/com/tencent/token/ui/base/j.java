@@ -1,32 +1,46 @@
 package com.tencent.token.ui.base;
 
-import com.tencent.token.ft;
-import com.tencent.token.global.f;
-import com.tencent.token.utils.UserTask;
+import android.graphics.Canvas;
+import android.graphics.ColorFilter;
+import android.graphics.Paint;
+import android.graphics.Paint.Style;
+import android.graphics.drawable.Drawable;
 
-class j
-  extends UserTask
+public class j
+  extends Drawable
 {
-  j(DualMsgShowDialog paramDualMsgShowDialog) {}
+  private int a;
+  private Paint b;
+  private float c;
+  private float d;
+  private float e;
   
-  public f a(String... paramVarArgs)
+  public j(int paramInt1, int paramInt2, float paramFloat1, float paramFloat2, float paramFloat3)
   {
-    try
-    {
-      ft.a("tbl_dual_msg");
-      ft.a("tbl_barcode_msg");
-      label10:
-      return null;
-    }
-    catch (Error paramVarArgs)
-    {
-      break label10;
-    }
-    catch (Exception paramVarArgs)
-    {
-      break label10;
-    }
+    this.a = paramInt1;
+    this.b = new Paint();
+    this.b.setColor(this.a);
+    this.b.setAlpha(paramInt2);
+    this.b.setAntiAlias(true);
+    this.b.setStyle(Paint.Style.FILL);
+    this.c = paramFloat1;
+    this.d = paramFloat2;
+    this.e = paramFloat3;
   }
+  
+  public void draw(Canvas paramCanvas)
+  {
+    paramCanvas.drawCircle(this.c, this.d, this.e, this.b);
+  }
+  
+  public int getOpacity()
+  {
+    return 0;
+  }
+  
+  public void setAlpha(int paramInt) {}
+  
+  public void setColorFilter(ColorFilter paramColorFilter) {}
 }
 
 

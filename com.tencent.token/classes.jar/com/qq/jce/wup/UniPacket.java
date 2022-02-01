@@ -11,8 +11,8 @@ public class UniPacket
   extends UniAttribute
 {
   public static final int UniPacketHeadSize = 4;
-  static HashMap cache__tempdata = null;
-  static HashMap newCache__tempdata = null;
+  static HashMap<String, HashMap<String, byte[]>> cache__tempdata = null;
+  static HashMap<String, byte[]> newCache__tempdata = null;
   protected RequestPacket _package = new RequestPacket();
   private int oldRespIret = 0;
   
@@ -215,12 +215,12 @@ public class UniPacket
     return this._package.sServantName;
   }
   
-  public void put(String paramString, Object paramObject)
+  public <T> void put(String paramString, T paramT)
   {
     if (paramString.startsWith(".")) {
       throw new IllegalArgumentException("put name can not startwith . , now is " + paramString);
     }
-    super.put(paramString, paramObject);
+    super.put(paramString, paramT);
   }
   
   public void readFrom(JceInputStream paramJceInputStream)

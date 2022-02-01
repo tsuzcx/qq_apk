@@ -8,8 +8,8 @@ import java.util.ArrayList;
 public final class ActivityCmdInfo
   extends JceStruct
 {
-  static ArrayList dx;
-  public ArrayList cloudinfos = null;
+  static ArrayList<CloudInfo> dx;
+  public ArrayList<CloudInfo> cloudinfos = null;
   
   public void readFrom(JceInputStream paramJceInputStream)
   {

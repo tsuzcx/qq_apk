@@ -12,12 +12,24 @@ public class DragStartHelper
   private boolean mDragging;
   private int mLastTouchX;
   private int mLastTouchY;
-  private final DragStartHelper.OnDragStartListener mListener;
-  private final View.OnLongClickListener mLongClickListener = new DragStartHelper.1(this);
-  private final View.OnTouchListener mTouchListener = new DragStartHelper.2(this);
+  private final OnDragStartListener mListener;
+  private final View.OnLongClickListener mLongClickListener = new View.OnLongClickListener()
+  {
+    public boolean onLongClick(View paramAnonymousView)
+    {
+      return DragStartHelper.this.onLongClick(paramAnonymousView);
+    }
+  };
+  private final View.OnTouchListener mTouchListener = new View.OnTouchListener()
+  {
+    public boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
+    {
+      return DragStartHelper.this.onTouch(paramAnonymousView, paramAnonymousMotionEvent);
+    }
+  };
   private final View mView;
   
-  public DragStartHelper(View paramView, DragStartHelper.OnDragStartListener paramOnDragStartListener)
+  public DragStartHelper(View paramView, OnDragStartListener paramOnDragStartListener)
   {
     this.mView = paramView;
     this.mListener = paramOnDragStartListener;
@@ -68,6 +80,11 @@ public class DragStartHelper
     }
     this.mDragging = false;
     return false;
+  }
+  
+  public static abstract interface OnDragStartListener
+  {
+    public abstract boolean onDragStart(View paramView, DragStartHelper paramDragStartHelper);
   }
 }
 

@@ -2,48 +2,48 @@ package com.tencent.service.update;
 
 import android.util.Log;
 import com.tencent.service.a;
-import com.tencent.service.d;
+import com.tencent.service.a.a;
 import java.util.ArrayList;
 import java.util.List;
 
 public class b
 {
   protected static boolean a = true;
-  protected List b = new ArrayList();
-  d c;
+  protected List<String> b = new ArrayList();
+  a.a c;
   
   b(String paramString)
   {
     this.b.add(paramString);
   }
   
-  public d a()
+  public a.a a()
   {
     if (this.c == null) {
-      this.c = k.a().b(false);
+      this.c = f.a().b(false);
     }
     return this.c;
   }
   
-  public d a(String paramString1, String paramString2)
+  public a.a a(String paramString1, String paramString2)
   {
-    d locald = a.a().a(paramString1);
-    if (locald != null) {
-      return locald;
+    a.a locala = a.a().a(paramString1);
+    if (locala != null) {
+      return locala;
     }
-    locald = new d();
-    locald.a = "com.tencent.token";
-    locald.c = paramString1;
-    locald.d = paramString2;
-    return locald;
+    locala = new a.a();
+    locala.a = "com.tencent.token";
+    locala.c = paramString1;
+    locala.d = paramString2;
+    return locala;
   }
   
-  public void a(d paramd)
+  public void a(a.a parama)
   {
     if (a) {
       Log.d("DownloadController", "invoke deleteDownloadTask");
     }
-    if (paramd == null) {
+    if (parama == null) {
       Log.e("DownloadController", "error when deleteDownloadTask, task is null!");
     }
   }

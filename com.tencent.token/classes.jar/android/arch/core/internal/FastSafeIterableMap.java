@@ -6,43 +6,43 @@ import java.util.HashMap;
 import java.util.Map.Entry;
 
 @RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
-public class FastSafeIterableMap
-  extends SafeIterableMap
+public class FastSafeIterableMap<K, V>
+  extends SafeIterableMap<K, V>
 {
-  private HashMap mHashMap = new HashMap();
+  private HashMap<K, SafeIterableMap.Entry<K, V>> mHashMap = new HashMap();
   
-  public Map.Entry ceil(Object paramObject)
+  public Map.Entry<K, V> ceil(K paramK)
   {
-    if (contains(paramObject)) {
-      return ((SafeIterableMap.Entry)this.mHashMap.get(paramObject)).mPrevious;
+    if (contains(paramK)) {
+      return ((SafeIterableMap.Entry)this.mHashMap.get(paramK)).mPrevious;
     }
     return null;
   }
   
-  public boolean contains(Object paramObject)
+  public boolean contains(K paramK)
   {
-    return this.mHashMap.containsKey(paramObject);
+    return this.mHashMap.containsKey(paramK);
   }
   
-  protected SafeIterableMap.Entry get(Object paramObject)
+  protected SafeIterableMap.Entry<K, V> get(K paramK)
   {
-    return (SafeIterableMap.Entry)this.mHashMap.get(paramObject);
+    return (SafeIterableMap.Entry)this.mHashMap.get(paramK);
   }
   
-  public Object putIfAbsent(@NonNull Object paramObject1, @NonNull Object paramObject2)
+  public V putIfAbsent(@NonNull K paramK, @NonNull V paramV)
   {
-    SafeIterableMap.Entry localEntry = get(paramObject1);
+    SafeIterableMap.Entry localEntry = get(paramK);
     if (localEntry != null) {
       return localEntry.mValue;
     }
-    this.mHashMap.put(paramObject1, put(paramObject1, paramObject2));
+    this.mHashMap.put(paramK, put(paramK, paramV));
     return null;
   }
   
-  public Object remove(@NonNull Object paramObject)
+  public V remove(@NonNull K paramK)
   {
-    Object localObject = super.remove(paramObject);
-    this.mHashMap.remove(paramObject);
+    Object localObject = super.remove(paramK);
+    this.mHashMap.remove(paramK);
     return localObject;
   }
 }

@@ -1,23 +1,6 @@
 package com.tencent.turingfd.sdk.base;
 
-public abstract class am
-  implements Runnable
-{
-  public am(String paramString) {}
-  
-  public abstract void a();
-  
-  public void run()
-  {
-    try
-    {
-      System.currentTimeMillis();
-      a();
-      return;
-    }
-    catch (Throwable localThrowable) {}
-  }
-}
+public abstract interface am {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.token\classes.jar

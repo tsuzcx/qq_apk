@@ -1,46 +1,46 @@
 package com.tencent.token.core.protocolcenter.protocol;
 
 import android.content.Context;
-import com.tencent.token.core.protocolcenter.e;
-import com.tencent.token.cv;
-import com.tencent.token.cw;
-import com.tencent.token.cx;
-import com.tencent.token.ev;
+import com.tencent.token.bz;
+import com.tencent.token.ca;
+import com.tencent.token.cb;
+import com.tencent.token.core.protocolcenter.d;
+import com.tencent.token.dn;
 import com.tencent.token.global.RqdApplication;
 import com.tencent.token.global.c;
-import com.tencent.token.global.f;
-import com.tencent.token.global.h;
-import com.tencent.token.utils.w;
+import com.tencent.token.global.e;
+import com.tencent.token.global.g;
+import com.tencent.token.utils.l;
 import java.util.HashMap;
 import org.json.JSONObject;
 
 public class ProtoModifyQQPwd
-  extends e
+  extends d
 {
   public String d;
   public long e;
   public int f;
   
-  public static void a(ev paramev, long paramLong, String paramString, int paramInt)
+  public static void a(dn paramdn, long paramLong, String paramString, int paramInt)
   {
-    paramev.c.put("param.uinhash", Long.valueOf(paramLong));
-    paramev.c.put("param.qqpwd", paramString);
-    paramev.c.put("param.scene.id", Integer.valueOf(paramInt));
+    paramdn.c.put("param.uinhash", Long.valueOf(paramLong));
+    paramdn.c.put("param.qqpwd", paramString);
+    paramdn.c.put("param.scene.id", Integer.valueOf(paramInt));
   }
   
   protected String a()
   {
-    String str2 = cv.a().b();
+    String str2 = bz.a().b();
     if (str2 == null)
     {
       this.a.b(104);
       return null;
     }
-    int i = cw.a + 1;
-    cw.a = i;
+    int i = ca.a + 1;
+    ca.a = i;
     this.c = i;
     if (this.f == 0) {}
-    for (String str1 = w.a(new Object[] { "uin", Long.valueOf(this.e), "seq_id", Integer.valueOf(this.c), "pwd", this.d, "op_time", Long.valueOf(cx.c().s() / 1000L) }); str1 == null; str1 = w.a(new Object[] { "uin", Long.valueOf(this.e), "seq_id", Integer.valueOf(this.c), "pwd", this.d, "op_time", Long.valueOf(cx.c().s() / 1000L), "scene_id", Integer.valueOf(this.f) }))
+    for (String str1 = l.a(new Object[] { "uin", Long.valueOf(this.e), "seq_id", Integer.valueOf(this.c), "pwd", this.d, "op_time", Long.valueOf(cb.c().s() / 1000L) }); str1 == null; str1 = l.a(new Object[] { "uin", Long.valueOf(this.e), "seq_id", Integer.valueOf(this.c), "pwd", this.d, "op_time", Long.valueOf(cb.c().s() / 1000L), "scene_id", Integer.valueOf(this.f) }))
     {
       this.a.a(10000, "encrypt qqtoken code failed");
       return null;
@@ -49,11 +49,11 @@ public class ProtoModifyQQPwd
     return c.e() + "/cn/mbtoken3/mbtoken3_modify_pwd_encrypt" + str1;
   }
   
-  protected void a(ev paramev)
+  protected void a(dn paramdn)
   {
-    this.e = ((Long)paramev.c.get("param.uinhash")).longValue();
-    this.d = ((String)paramev.c.get("param.qqpwd"));
-    this.f = ((Integer)paramev.c.get("param.scene.id")).intValue();
+    this.e = ((Long)paramdn.c.get("param.uinhash")).longValue();
+    this.d = ((String)paramdn.c.get("param.qqpwd"));
+    this.f = ((Integer)paramdn.c.get("param.scene.id")).intValue();
   }
   
   protected void a(JSONObject paramJSONObject)
@@ -64,14 +64,14 @@ public class ProtoModifyQQPwd
       a(i, paramJSONObject.getString("info"));
       return;
     }
-    paramJSONObject = w.c(paramJSONObject.getString("data"));
+    paramJSONObject = l.c(paramJSONObject.getString("data"));
     if (paramJSONObject != null)
     {
       i = new JSONObject(new String(paramJSONObject)).getInt("seq_id");
       if (this.c != i)
       {
         this.a.b(10030);
-        h.c("parseJSON error seq is wrong seq=" + i + ",right = " + this.c);
+        g.c("parseJSON error seq is wrong seq=" + i + ",right = " + this.c);
         return;
       }
       this.a.c();

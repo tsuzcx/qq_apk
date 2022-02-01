@@ -1,39 +1,39 @@
 package com.tencent.token.core.protocolcenter.protocol;
 
 import android.content.Context;
-import com.tencent.token.core.protocolcenter.e;
-import com.tencent.token.cv;
-import com.tencent.token.cw;
-import com.tencent.token.cx;
-import com.tencent.token.dr;
-import com.tencent.token.ef;
-import com.tencent.token.ev;
+import com.tencent.token.bz;
+import com.tencent.token.ca;
+import com.tencent.token.cb;
+import com.tencent.token.core.protocolcenter.d;
+import com.tencent.token.cr;
+import com.tencent.token.db;
+import com.tencent.token.dn;
 import com.tencent.token.global.RqdApplication;
 import com.tencent.token.global.c;
-import com.tencent.token.global.f;
-import com.tencent.token.global.h;
-import com.tencent.token.utils.w;
+import com.tencent.token.global.e;
+import com.tencent.token.global.g;
+import com.tencent.token.utils.l;
 import java.util.HashMap;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class ProtoGetAccountLockStatus
-  extends e
+  extends d
 {
   private long d;
   private int e;
-  private dr f = dr.a();
+  private cr f = cr.a();
   
-  public static void a(ev paramev, long paramLong)
+  public static void a(dn paramdn, long paramLong)
   {
-    paramev.c.put("param.uinhash", Long.valueOf(paramLong));
+    paramdn.c.put("param.uinhash", Long.valueOf(paramLong));
   }
   
   protected String a()
   {
     Object localObject1 = null;
-    String str = cv.a().b();
+    String str = bz.a().b();
     if (str == null)
     {
       this.a.b(104);
@@ -43,30 +43,30 @@ public class ProtoGetAccountLockStatus
     {
       Object localObject2 = new JSONObject();
       ((JSONObject)localObject2).put("uin", this.d);
-      int i = cw.a + 1;
-      cw.a = i;
+      int i = ca.a + 1;
+      ca.a = i;
       this.e = i;
       ((JSONObject)localObject2).put("seq_id", this.e);
-      ((JSONObject)localObject2).put("op_time", cx.c().s() / 1000L);
+      ((JSONObject)localObject2).put("op_time", cb.c().s() / 1000L);
       localObject2 = ((JSONObject)localObject2).toString();
-      h.a("plain:" + (String)localObject2);
-      localObject2 = w.b(((String)localObject2).getBytes());
+      g.a("plain:" + (String)localObject2);
+      localObject2 = l.b(((String)localObject2).getBytes());
       localObject1 = localObject2;
     }
     catch (JSONException localJSONException)
     {
       for (;;)
       {
-        h.c("JSONException:" + localJSONException.getMessage());
+        g.c("JSONException:" + localJSONException.getMessage());
       }
     }
     localObject1 = "?aq_base_sid=" + str + "&data=" + (String)localObject1;
     return c.e() + "/cn/mbtoken3/mbtoken3_get_ac_lock_status_v2" + (String)localObject1;
   }
   
-  protected void a(ev paramev)
+  protected void a(dn paramdn)
   {
-    this.d = ((Long)paramev.c.get("param.uinhash")).longValue();
+    this.d = ((Long)paramdn.c.get("param.uinhash")).longValue();
   }
   
   protected void a(JSONObject paramJSONObject)
@@ -77,7 +77,7 @@ public class ProtoGetAccountLockStatus
       a(i, null);
       return;
     }
-    Object localObject = w.c(paramJSONObject.getString("data"));
+    Object localObject = l.c(paramJSONObject.getString("data"));
     if (localObject != null)
     {
       localObject = new JSONObject(new String((byte[])localObject));
@@ -85,7 +85,7 @@ public class ProtoGetAccountLockStatus
       if (i != this.e)
       {
         this.a.b(10030);
-        h.c("parseJSON error seq is wrong seq=" + i + ",right = " + cw.a().b());
+        g.c("parseJSON error seq is wrong seq=" + i + ",right = " + ca.a().b());
         return;
       }
       long l = ((JSONObject)localObject).getLong("uin");
@@ -106,7 +106,7 @@ public class ProtoGetAccountLockStatus
       this.a.c();
       return;
     }
-    h.c("parseJSON error decodeData=" + localObject);
+    g.c("parseJSON error decodeData=" + localObject);
     a(10022, RqdApplication.l().getString(2131230925));
   }
 }

@@ -4,8 +4,8 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.LinkedList;
 
-public final class a
-  extends LinkedList
+public final class a<E>
+  extends LinkedList<E>
 {
   private int a = -1;
   
@@ -16,28 +16,28 @@ public final class a
     this.a = paramInt;
   }
   
-  public final void add(int paramInt, Object paramObject)
+  public final void add(int paramInt, E paramE)
   {
     if (size() == this.a) {
       removeFirst();
     }
-    super.add(paramInt, paramObject);
+    super.add(paramInt, paramE);
   }
   
-  public final boolean add(Object paramObject)
+  public final boolean add(E paramE)
   {
     if (size() == this.a) {
       removeFirst();
     }
-    return super.add(paramObject);
+    return super.add(paramE);
   }
   
-  public final boolean addAll(int paramInt, Collection paramCollection)
+  public final boolean addAll(int paramInt, Collection<? extends E> paramCollection)
   {
     throw new UnsupportedOperationException();
   }
   
-  public final boolean addAll(Collection paramCollection)
+  public final boolean addAll(Collection<? extends E> paramCollection)
   {
     int i = size() + paramCollection.size() - this.a;
     if (i > 0) {
@@ -46,14 +46,14 @@ public final class a
     return super.addAll(paramCollection);
   }
   
-  public final void addFirst(Object paramObject)
+  public final void addFirst(E paramE)
   {
     throw new UnsupportedOperationException();
   }
   
-  public final void addLast(Object paramObject)
+  public final void addLast(E paramE)
   {
-    add(paramObject);
+    add(paramE);
   }
   
   public final String toString()

@@ -27,11 +27,43 @@ final class StandardMenuPopup
 {
   private final MenuAdapter mAdapter;
   private View mAnchorView;
-  private final View.OnAttachStateChangeListener mAttachStateChangeListener = new StandardMenuPopup.2(this);
+  private final View.OnAttachStateChangeListener mAttachStateChangeListener = new View.OnAttachStateChangeListener()
+  {
+    public void onViewAttachedToWindow(View paramAnonymousView) {}
+    
+    public void onViewDetachedFromWindow(View paramAnonymousView)
+    {
+      if (StandardMenuPopup.this.mTreeObserver != null)
+      {
+        if (!StandardMenuPopup.this.mTreeObserver.isAlive()) {
+          StandardMenuPopup.access$002(StandardMenuPopup.this, paramAnonymousView.getViewTreeObserver());
+        }
+        StandardMenuPopup.this.mTreeObserver.removeGlobalOnLayoutListener(StandardMenuPopup.this.mGlobalLayoutListener);
+      }
+      paramAnonymousView.removeOnAttachStateChangeListener(this);
+    }
+  };
   private int mContentWidth;
   private final Context mContext;
   private int mDropDownGravity = 0;
-  private final ViewTreeObserver.OnGlobalLayoutListener mGlobalLayoutListener = new StandardMenuPopup.1(this);
+  private final ViewTreeObserver.OnGlobalLayoutListener mGlobalLayoutListener = new ViewTreeObserver.OnGlobalLayoutListener()
+  {
+    public void onGlobalLayout()
+    {
+      if ((StandardMenuPopup.this.isShowing()) && (!StandardMenuPopup.this.mPopup.isModal()))
+      {
+        View localView = StandardMenuPopup.this.mShownAnchorView;
+        if ((localView == null) || (!localView.isShown())) {
+          StandardMenuPopup.this.dismiss();
+        }
+      }
+      else
+      {
+        return;
+      }
+      StandardMenuPopup.this.mPopup.show();
+    }
+  };
   private boolean mHasContentWidth;
   private final MenuBuilder mMenu;
   private PopupWindow.OnDismissListener mOnDismissListener;

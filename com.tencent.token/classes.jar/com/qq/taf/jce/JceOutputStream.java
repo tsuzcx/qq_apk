@@ -308,7 +308,7 @@ public class JceOutputStream
     }
   }
   
-  public void write(Collection paramCollection, int paramInt)
+  public <T> void write(Collection<T> paramCollection, int paramInt)
   {
     reserve(8);
     writeHead((byte)9, paramInt);
@@ -326,7 +326,7 @@ public class JceOutputStream
     }
   }
   
-  public void write(Map paramMap, int paramInt)
+  public <K, V> void write(Map<K, V> paramMap, int paramInt)
   {
     reserve(8);
     writeHead((byte)8, paramInt);
@@ -434,9 +434,9 @@ public class JceOutputStream
     }
   }
   
-  public void write(Object[] paramArrayOfObject, int paramInt)
+  public <T> void write(T[] paramArrayOfT, int paramInt)
   {
-    writeArray(paramArrayOfObject, paramInt);
+    writeArray(paramArrayOfT, paramInt);
   }
   
   public void write(short[] paramArrayOfShort, int paramInt)

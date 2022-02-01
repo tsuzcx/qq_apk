@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public abstract interface ITaijiReportManager
 {
-  public abstract void reportString(int paramInt, ArrayList paramArrayList);
+  public abstract void reportString(int paramInt, ArrayList<String> paramArrayList);
 }
 
 

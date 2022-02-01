@@ -6,8 +6,8 @@ public final class M
   extends j
   implements Cloneable
 {
-  private static ArrayList b;
-  public ArrayList a = null;
+  private static ArrayList<L> b;
+  public ArrayList<L> a = null;
   
   public final void a(h paramh)
   {

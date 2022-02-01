@@ -1,10 +1,11 @@
 package taiji;
 
-public final class ah
+public class ah
+  extends al<am, am>
 {
-  public static af a()
+  public w a()
   {
-    return new af(null);
+    return new w(this.a);
   }
 }
 

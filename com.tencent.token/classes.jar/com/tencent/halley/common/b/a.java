@@ -34,9 +34,9 @@ public final class a
   {
     if (a(paramInt))
     {
-      localb = new b();
-      a(localb, this.a);
-      switch (localb.a)
+      locala = new a();
+      a(locala, this.a);
+      switch (locala.a)
       {
       default: 
         throw new RuntimeException("type mismatch.");
@@ -46,7 +46,7 @@ public final class a
     }
     while (!paramBoolean)
     {
-      b localb;
+      a locala;
       return paramDouble;
       return this.a.getFloat();
       return this.a.getDouble();
@@ -58,9 +58,9 @@ public final class a
   {
     if (a(paramInt))
     {
-      localb = new b();
-      a(localb, this.a);
-      switch (localb.a)
+      locala = new a();
+      a(locala, this.a);
+      switch (locala.a)
       {
       default: 
         throw new RuntimeException("type mismatch.");
@@ -70,21 +70,21 @@ public final class a
     }
     while (!paramBoolean)
     {
-      b localb;
+      a locala;
       return paramFloat;
       return this.a.getFloat();
     }
     throw new RuntimeException("require field not exist.");
   }
   
-  private static int a(b paramb, ByteBuffer paramByteBuffer)
+  private static int a(a parama, ByteBuffer paramByteBuffer)
   {
     int i = paramByteBuffer.get();
-    paramb.a = ((byte)(i & 0xF));
-    paramb.b = ((i & 0xF0) >> 4);
-    if (paramb.b == 15)
+    parama.a = ((byte)(i & 0xF));
+    parama.b = ((i & 0xF0) >> 4);
+    if (parama.b == 15)
     {
-      paramb.b = (paramByteBuffer.get() & 0xFF);
+      parama.b = (paramByteBuffer.get() & 0xFF);
       return 2;
     }
     return 1;
@@ -103,7 +103,7 @@ public final class a
       Object localObject2 = paramMap2.getValue();
       if (a(paramInt))
       {
-        paramMap2 = new b();
+        paramMap2 = new a();
         a(paramMap2, this.a);
         switch (paramMap2.a)
         {
@@ -132,19 +132,19 @@ public final class a
   
   private void a()
   {
-    b localb = new b();
+    a locala = new a();
     do
     {
-      a(localb, this.a);
-      a(localb.a);
-    } while (localb.a != 11);
+      a(locala, this.a);
+      a(locala.a);
+    } while (locala.a != 11);
   }
   
   private void a(byte paramByte)
   {
     byte b2 = 0;
     byte b1 = 0;
-    b localb;
+    a locala;
     switch (paramByte)
     {
     default: 
@@ -186,9 +186,9 @@ public final class a
       paramByte = b1;
       while (paramByte < b2 << 1)
       {
-        localb = new b();
-        a(localb, this.a);
-        a(localb.a);
+        locala = new a();
+        a(locala, this.a);
+        a(locala.a);
         paramByte += 1;
       }
     case 9: 
@@ -196,16 +196,16 @@ public final class a
       paramByte = b2;
       while (paramByte < b1)
       {
-        localb = new b();
-        a(localb, this.a);
-        a(localb.a);
+        locala = new a();
+        a(locala, this.a);
+        a(locala.a);
         paramByte += 1;
       }
     case 13: 
-      localb = new b();
-      a(localb, this.a);
-      if (localb.a != 0) {
-        throw new RuntimeException("skipField with invalid type, type value: " + paramByte + ", " + localb.a);
+      locala = new a();
+      a(locala, this.a);
+      if (locala.a != 0) {
+        throw new RuntimeException("skipField with invalid type, type value: " + paramByte + ", " + locala.a);
       }
       paramByte = a(0, 0, true);
       this.a.position(paramByte + this.a.position());
@@ -218,22 +218,22 @@ public final class a
   {
     try
     {
-      b localb = new b();
+      a locala = new a();
       for (;;)
       {
-        int i = a(localb, this.a.duplicate());
-        if (localb.a == 11) {
+        int i = a(locala, this.a.duplicate());
+        if (locala.a == 11) {
           return false;
         }
-        if (paramInt <= localb.b)
+        if (paramInt <= locala.b)
         {
-          if (paramInt != localb.b) {
+          if (paramInt != locala.b) {
             break;
           }
           return true;
         }
         this.a.position(i + this.a.position());
-        a(localb.a);
+        a(locala.a);
       }
       return false;
     }
@@ -248,9 +248,9 @@ public final class a
   {
     if (a(paramInt))
     {
-      localObject = new b();
-      a((b)localObject, this.a);
-      switch (((b)localObject).a)
+      localObject = new a();
+      a((a)localObject, this.a);
+      switch (((a)localObject).a)
       {
       default: 
         throw new RuntimeException("type mismatch.");
@@ -283,9 +283,9 @@ public final class a
     Object localObject = null;
     if (a(paramInt))
     {
-      localObject = new b();
-      a((b)localObject, this.a);
-      switch (((b)localObject).a)
+      localObject = new a();
+      a((a)localObject, this.a);
+      switch (((a)localObject).a)
       {
       default: 
         throw new RuntimeException("type mismatch.");
@@ -320,9 +320,9 @@ public final class a
     Object localObject = null;
     if (a(paramInt))
     {
-      localObject = new b();
-      a((b)localObject, this.a);
-      switch (((b)localObject).a)
+      localObject = new a();
+      a((a)localObject, this.a);
+      switch (((a)localObject).a)
       {
       default: 
         throw new RuntimeException("type mismatch.");
@@ -354,9 +354,9 @@ public final class a
     Object localObject = null;
     if (a(paramInt))
     {
-      localObject = new b();
-      a((b)localObject, this.a);
-      switch (((b)localObject).a)
+      localObject = new a();
+      a((a)localObject, this.a);
+      switch (((a)localObject).a)
       {
       default: 
         throw new RuntimeException("type mismatch.");
@@ -388,9 +388,9 @@ public final class a
     Object localObject = null;
     if (a(paramInt))
     {
-      localObject = new b();
-      a((b)localObject, this.a);
-      switch (((b)localObject).a)
+      localObject = new a();
+      a((a)localObject, this.a);
+      switch (((a)localObject).a)
       {
       default: 
         throw new RuntimeException("type mismatch.");
@@ -422,9 +422,9 @@ public final class a
     Object localObject = null;
     if (a(paramInt))
     {
-      localObject = new b();
-      a((b)localObject, this.a);
-      switch (((b)localObject).a)
+      localObject = new a();
+      a((a)localObject, this.a);
+      switch (((a)localObject).a)
       {
       default: 
         throw new RuntimeException("type mismatch.");
@@ -456,9 +456,9 @@ public final class a
     Object localObject = null;
     if (a(paramInt))
     {
-      localObject = new b();
-      a((b)localObject, this.a);
-      switch (((b)localObject).a)
+      localObject = new a();
+      a((a)localObject, this.a);
+      switch (((a)localObject).a)
       {
       default: 
         throw new RuntimeException("type mismatch.");
@@ -489,9 +489,9 @@ public final class a
   {
     if (a(paramInt))
     {
-      localb = new b();
-      a(localb, this.a);
-      switch (localb.a)
+      locala = new a();
+      a(locala, this.a);
+      switch (locala.a)
       {
       default: 
         throw new RuntimeException("type mismatch.");
@@ -501,7 +501,7 @@ public final class a
     }
     while (!paramBoolean)
     {
-      b localb;
+      a locala;
       return paramByte;
       return this.a.get();
     }
@@ -512,9 +512,9 @@ public final class a
   {
     if (a(paramInt2))
     {
-      localb = new b();
-      a(localb, this.a);
-      switch (localb.a)
+      locala = new a();
+      a(locala, this.a);
+      switch (locala.a)
       {
       default: 
         throw new RuntimeException("type mismatch.");
@@ -524,7 +524,7 @@ public final class a
     }
     while (!paramBoolean)
     {
-      b localb;
+      a locala;
       return paramInt1;
       return this.a.get();
       return this.a.getShort();
@@ -543,9 +543,9 @@ public final class a
   {
     if (a(paramInt))
     {
-      localb = new b();
-      a(localb, this.a);
-      switch (localb.a)
+      locala = new a();
+      a(locala, this.a);
+      switch (locala.a)
       {
       default: 
         throw new RuntimeException("type mismatch.");
@@ -555,7 +555,7 @@ public final class a
     }
     while (!paramBoolean)
     {
-      b localb;
+      a locala;
       return paramLong;
       return this.a.get();
       return this.a.getShort();
@@ -567,15 +567,15 @@ public final class a
   
   public final c a(c paramc, int paramInt, boolean paramBoolean)
   {
-    b localb = null;
+    a locala = null;
     if (a(paramInt))
     {
       try
       {
         paramc = (c)paramc.getClass().newInstance();
-        localb = new b();
-        a(localb, this.a);
-        if (localb.a != 10) {
+        locala = new a();
+        a(locala, this.a);
+        if (locala.a != 10) {
           throw new RuntimeException("type mismatch.");
         }
       }
@@ -589,7 +589,7 @@ public final class a
     do
     {
       return paramc;
-      paramc = localb;
+      paramc = locala;
     } while (!paramBoolean);
     throw new RuntimeException("require field not exist.");
   }
@@ -690,9 +690,9 @@ public final class a
     Object localObject1 = null;
     if (a(paramInt))
     {
-      localObject1 = new b();
-      a((b)localObject1, this.a);
-      switch (((b)localObject1).a)
+      localObject1 = new a();
+      a((a)localObject1, this.a);
+      switch (((a)localObject1).a)
       {
       default: 
         throw new RuntimeException("type mismatch.");
@@ -747,9 +747,9 @@ public final class a
   {
     if (a(paramInt))
     {
-      localb = new b();
-      a(localb, this.a);
-      switch (localb.a)
+      locala = new a();
+      a(locala, this.a);
+      switch (locala.a)
       {
       default: 
         throw new RuntimeException("type mismatch.");
@@ -759,7 +759,7 @@ public final class a
     }
     while (!paramBoolean)
     {
-      b localb;
+      a locala;
       return paramShort;
       return (short)this.a.get();
       return this.a.getShort();
@@ -777,21 +777,21 @@ public final class a
     Object localObject1 = null;
     if (a(paramInt))
     {
-      localObject1 = new b();
-      a((b)localObject1, this.a);
-      switch (((b)localObject1).a)
+      localObject1 = new a();
+      a((a)localObject1, this.a);
+      switch (((a)localObject1).a)
       {
       default: 
         throw new RuntimeException("type mismatch.");
       case 13: 
-        localObject2 = new b();
-        a((b)localObject2, this.a);
-        if (((b)localObject2).a != 0) {
-          throw new RuntimeException("type mismatch, tag: " + paramInt + ", type: " + ((b)localObject1).a + ", " + ((b)localObject2).a);
+        localObject2 = new a();
+        a((a)localObject2, this.a);
+        if (((a)localObject2).a != 0) {
+          throw new RuntimeException("type mismatch, tag: " + paramInt + ", type: " + ((a)localObject1).a + ", " + ((a)localObject2).a);
         }
         i = a(0, 0, true);
         if ((i < 0) || (i > this.a.capacity())) {
-          throw new RuntimeException("invalid size, tag: " + paramInt + ", type: " + ((b)localObject1).a + ", " + ((b)localObject2).a + ", size: " + i);
+          throw new RuntimeException("invalid size, tag: " + paramInt + ", type: " + ((a)localObject1).a + ", " + ((a)localObject2).a + ", size: " + i);
         }
         localObject1 = new byte[i];
         this.a.get((byte[])localObject1);
@@ -817,6 +817,12 @@ public final class a
       }
     }
     throw new RuntimeException("require field not exist.");
+  }
+  
+  public static final class a
+  {
+    public byte a;
+    public int b;
   }
 }
 

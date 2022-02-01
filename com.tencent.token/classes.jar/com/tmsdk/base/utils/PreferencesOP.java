@@ -22,7 +22,7 @@ public class PreferencesOP
     this.O.clear();
   }
   
-  public Map getAll()
+  public Map<String, ?> getAll()
   {
     return this.O.getAll();
   }

@@ -2,17 +2,17 @@ package com.tencent.token.upload.useraction;
 
 import android.content.ContentValues;
 import android.view.MotionEvent;
+import com.tencent.token.ca;
+import com.tencent.token.cb;
 import com.tencent.token.core.bean.QQUser;
-import com.tencent.token.cw;
-import com.tencent.token.cx;
-import com.tencent.token.do;
-import com.tencent.token.gk;
+import com.tencent.token.cq;
+import com.tencent.token.ey;
 import com.tencent.token.global.RqdApplication;
 import com.tencent.token.global.c;
-import com.tencent.token.global.f;
-import com.tencent.token.global.h;
+import com.tencent.token.global.e;
+import com.tencent.token.global.g;
 import com.tencent.token.utils.UserTask;
-import com.tencent.token.utils.w;
+import com.tencent.token.utils.l;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -37,40 +37,40 @@ public class a
   private boolean o = false;
   private QQUser q = null;
   private boolean r;
-  private UserTask s = null;
+  private UserTask<String, String, e> s = null;
   private MotionEvent t;
   private int u = b;
   
-  private f a(String paramString)
+  private e a(String paramString)
   {
-    f localf = new f();
-    if (!do.a().o())
+    e locale = new e();
+    if (!cq.a().o())
     {
       if (this.r) {
         e();
       }
-      localf.b(30001);
+      locale.b(30001);
     }
     for (;;)
     {
-      return localf;
-      h.a("useraction data=" + paramString);
-      Object localObject = w.b(paramString.getBytes());
+      return locale;
+      g.a("useraction data=" + paramString);
+      Object localObject = l.b(paramString.getBytes());
       paramString = c.e() + "/cn/mbtoken3/mbtoken3_user_action_report_encrypt";
       ContentValues localContentValues = new ContentValues(3);
-      localContentValues.put("aq_base_sid", do.c);
+      localContentValues.put("aq_base_sid", cq.c);
       localContentValues.put("data", (String)localObject);
-      h.a("useraction aq_base_sid=" + do.c);
-      h.a("useraction data=" + (String)localObject);
-      localObject = new gk();
-      paramString = ((gk)localObject).a(paramString, localContentValues);
+      g.a("useraction aq_base_sid=" + cq.c);
+      g.a("useraction data=" + (String)localObject);
+      localObject = new ey();
+      paramString = ((ey)localObject).a(paramString, localContentValues);
       if (paramString == null)
       {
         if (this.r) {
           e();
         }
-        localf.a(((gk)localObject).a());
-        return localf;
+        locale.a(((ey)localObject).a());
+        return locale;
       }
       try
       {
@@ -79,12 +79,12 @@ public class a
         if (i1 != 0)
         {
           paramString = paramString.getString("info");
-          localf.a(i1, paramString, paramString);
+          locale.a(i1, paramString, paramString);
         }
         for (;;)
         {
-          return localf;
-          localf.c();
+          return locale;
+          locale.c();
           if (this.g.length() <= k) {
             break;
           }
@@ -99,9 +99,9 @@ public class a
       {
         for (;;)
         {
-          h.c("parse json failed: " + paramString.toString());
-          localf.a(10020, "JSONException:" + paramString.toString());
-          return localf;
+          g.c("parse json failed: " + paramString.toString());
+          locale.a(10020, "JSONException:" + paramString.toString());
+          return locale;
           int i1 = this.g.length();
           continue;
           paramString = new JSONArray();
@@ -116,9 +116,9 @@ public class a
       catch (Exception paramString)
       {
         label389:
-        h.c("unknown err: " + paramString.toString());
-        localf.a(10021, "JSONException:" + paramString.toString());
-        return localf;
+        g.c("unknown err: " + paramString.toString());
+        locale.a(10021, "JSONException:" + paramString.toString());
+        return locale;
       }
       finally
       {
@@ -160,7 +160,7 @@ public class a
         try
         {
           localJSONObject = new JSONObject();
-          this.q = do.a().e();
+          this.q = cq.a().e();
           if (this.q != null)
           {
             localJSONObject.put("real_uin", this.q.b());
@@ -209,40 +209,40 @@ public class a
   public boolean a(android.content.Context paramContext)
   {
     // Byte code:
-    //   0: invokestatic 217	com/tencent/token/global/c:l	()Z
+    //   0: invokestatic 220	com/tencent/token/global/c:l	()Z
     //   3: ifeq +5 -> 8
     //   6: iconst_0
     //   7: ireturn
     //   8: aload_0
-    //   9: getfield 76	com/tencent/token/upload/useraction/a:g	Lorg/json/JSONArray;
+    //   9: getfield 79	com/tencent/token/upload/useraction/a:g	Lorg/json/JSONArray;
     //   12: ifnull -6 -> 6
     //   15: iconst_0
-    //   16: putstatic 57	com/tencent/token/upload/useraction/a:p	Z
+    //   16: putstatic 60	com/tencent/token/upload/useraction/a:p	Z
     //   19: aload_0
-    //   20: getfield 63	com/tencent/token/upload/useraction/a:a	Z
+    //   20: getfield 66	com/tencent/token/upload/useraction/a:a	Z
     //   23: ifne +5 -> 28
     //   26: iconst_1
     //   27: ireturn
     //   28: aload_1
-    //   29: ldc_w 273
+    //   29: ldc_w 276
     //   32: iconst_0
-    //   33: invokevirtual 279	android/content/Context:openFileOutput	(Ljava/lang/String;I)Ljava/io/FileOutputStream;
+    //   33: invokevirtual 282	android/content/Context:openFileOutput	(Ljava/lang/String;I)Ljava/io/FileOutputStream;
     //   36: astore_1
     //   37: aload_1
     //   38: ifnull -32 -> 6
     //   41: aload_1
     //   42: aload_0
-    //   43: getfield 76	com/tencent/token/upload/useraction/a:g	Lorg/json/JSONArray;
-    //   46: invokevirtual 280	org/json/JSONArray:toString	()Ljava/lang/String;
-    //   49: invokevirtual 126	java/lang/String:getBytes	()[B
-    //   52: invokevirtual 285	java/io/FileOutputStream:write	([B)V
+    //   43: getfield 79	com/tencent/token/upload/useraction/a:g	Lorg/json/JSONArray;
+    //   46: invokevirtual 283	org/json/JSONArray:toString	()Ljava/lang/String;
+    //   49: invokevirtual 129	java/lang/String:getBytes	()[B
+    //   52: invokevirtual 288	java/io/FileOutputStream:write	([B)V
     //   55: aload_1
-    //   56: invokevirtual 288	java/io/FileOutputStream:close	()V
+    //   56: invokevirtual 291	java/io/FileOutputStream:close	()V
     //   59: iconst_1
     //   60: ireturn
     //   61: astore_2
     //   62: aload_1
-    //   63: invokevirtual 288	java/io/FileOutputStream:close	()V
+    //   63: invokevirtual 291	java/io/FileOutputStream:close	()V
     //   66: iconst_0
     //   67: ireturn
     //   68: astore_1
@@ -279,8 +279,8 @@ public class a
       return;
       this.r = paramBoolean;
     } while ((this.o) || (!this.a) || (this.g.length() == 0));
-    int i1 = cw.a + 1;
-    cw.a = i1;
+    int i1 = ca.a + 1;
+    ca.a = i1;
     this.i = i1;
     this.o = true;
     JSONArray localJSONArray = new JSONArray();
@@ -307,12 +307,12 @@ public class a
       JSONObject localJSONObject = new JSONObject();
       try
       {
-        if (do.a().e() != null) {
-          localJSONObject.put("uin", do.a().e().mUin);
+        if (cq.a().e() != null) {
+          localJSONObject.put("uin", cq.a().e().mUin);
         }
         localJSONObject.put("seq_id", this.i);
-        localJSONObject.put("op_time", (int)(cx.c().s() / 1000L));
-        localJSONObject.put("token_seq", cx.c().k());
+        localJSONObject.put("op_time", (int)(cb.c().s() / 1000L));
+        localJSONObject.put("token_seq", cb.c().k());
         localJSONObject.put("action_list", localJSONArray);
       }
       catch (Exception localException1)
@@ -320,11 +320,46 @@ public class a
         for (;;)
         {
           localException1.printStackTrace();
-          h.c("JSONException:" + localException1.getMessage());
+          g.c("JSONException:" + localException1.getMessage());
         }
       }
       this.h = localJSONObject.toString();
-      this.s = new b(this);
+      this.s = new UserTask()
+      {
+        public e a(String... paramAnonymousVarArgs)
+        {
+          return a.a(a.this, a.this.h);
+        }
+        
+        public void a()
+        {
+          a.a(a.this, false);
+        }
+        
+        public void a(e paramAnonymouse)
+        {
+          if (paramAnonymouse.b()) {
+            a.b(a.g());
+          }
+          for (;;)
+          {
+            a.a(a.this, false);
+            return;
+            g.c("post click flow msg failed:" + paramAnonymouse.a + "-" + paramAnonymouse.b);
+            if (a.h() < a.i()) {}
+            try
+            {
+              a.b(a.i());
+            }
+            catch (Exception paramAnonymouse)
+            {
+              continue;
+              a.b(a.g());
+            }
+            catch (Error paramAnonymouse) {}
+          }
+        }
+      };
       this.s.c(new String[0]);
       return;
     }
@@ -354,18 +389,18 @@ public class a
   public boolean f()
   {
     // Byte code:
-    //   0: invokestatic 217	com/tencent/token/global/c:l	()Z
+    //   0: invokestatic 220	com/tencent/token/global/c:l	()Z
     //   3: ifeq +5 -> 8
     //   6: iconst_0
     //   7: ireturn
     //   8: aload_0
-    //   9: getfield 63	com/tencent/token/upload/useraction/a:a	Z
+    //   9: getfield 66	com/tencent/token/upload/useraction/a:a	Z
     //   12: ifne +5 -> 17
     //   15: iconst_1
     //   16: ireturn
-    //   17: invokestatic 344	com/tencent/token/global/RqdApplication:l	()Landroid/content/Context;
-    //   20: ldc_w 273
-    //   23: invokevirtual 350	android/content/Context:openFileInput	(Ljava/lang/String;)Ljava/io/FileInputStream;
+    //   17: invokestatic 345	com/tencent/token/global/RqdApplication:l	()Landroid/content/Context;
+    //   20: ldc_w 276
+    //   23: invokevirtual 351	android/content/Context:openFileInput	(Ljava/lang/String;)Ljava/io/FileInputStream;
     //   26: astore_1
     //   27: aload_1
     //   28: ifnull -22 -> 6
@@ -374,24 +409,24 @@ public class a
     //   36: astore_2
     //   37: aload_1
     //   38: aload_2
-    //   39: invokevirtual 356	java/io/FileInputStream:read	([B)I
+    //   39: invokevirtual 357	java/io/FileInputStream:read	([B)I
     //   42: pop
     //   43: aload_0
-    //   44: new 73	org/json/JSONArray
+    //   44: new 76	org/json/JSONArray
     //   47: dup
-    //   48: new 122	java/lang/String
+    //   48: new 125	java/lang/String
     //   51: dup
     //   52: aload_2
-    //   53: invokespecial 170	java/lang/String:<init>	([B)V
-    //   56: invokespecial 357	org/json/JSONArray:<init>	(Ljava/lang/String;)V
-    //   59: putfield 76	com/tencent/token/upload/useraction/a:g	Lorg/json/JSONArray;
+    //   53: invokespecial 173	java/lang/String:<init>	([B)V
+    //   56: invokespecial 358	org/json/JSONArray:<init>	(Ljava/lang/String;)V
+    //   59: putfield 79	com/tencent/token/upload/useraction/a:g	Lorg/json/JSONArray;
     //   62: aload_1
-    //   63: invokevirtual 358	java/io/FileInputStream:close	()V
+    //   63: invokevirtual 359	java/io/FileInputStream:close	()V
     //   66: iconst_1
     //   67: ireturn
     //   68: astore_2
     //   69: aload_1
-    //   70: invokevirtual 358	java/io/FileInputStream:close	()V
+    //   70: invokevirtual 359	java/io/FileInputStream:close	()V
     //   73: iconst_0
     //   74: ireturn
     //   75: astore_1

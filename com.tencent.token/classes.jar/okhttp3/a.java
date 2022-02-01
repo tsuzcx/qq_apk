@@ -1,6 +1,6 @@
 package okhttp3;
 
-import com.tencent.token.gn;
+import com.tencent.token.fb;
 import java.net.Proxy;
 import java.net.ProxySelector;
 import java.util.List;
@@ -11,12 +11,12 @@ import javax.net.ssl.SSLSocketFactory;
 
 public final class a
 {
-  final af a;
-  final w b;
+  final s a;
+  final o b;
   final SocketFactory c;
   final b d;
-  final List e;
-  final List f;
+  final List<Protocol> e;
+  final List<k> f;
   final ProxySelector g;
   @Nullable
   final Proxy h;
@@ -25,21 +25,21 @@ public final class a
   @Nullable
   final HostnameVerifier j;
   @Nullable
-  final i k;
+  final g k;
   
-  public a(String paramString, int paramInt, w paramw, SocketFactory paramSocketFactory, @Nullable SSLSocketFactory paramSSLSocketFactory, @Nullable HostnameVerifier paramHostnameVerifier, @Nullable i parami, b paramb, @Nullable Proxy paramProxy, List paramList1, List paramList2, ProxySelector paramProxySelector)
+  public a(String paramString, int paramInt, o paramo, SocketFactory paramSocketFactory, @Nullable SSLSocketFactory paramSSLSocketFactory, @Nullable HostnameVerifier paramHostnameVerifier, @Nullable g paramg, b paramb, @Nullable Proxy paramProxy, List<Protocol> paramList, List<k> paramList1, ProxySelector paramProxySelector)
   {
-    ag localag = new ag();
+    s.a locala = new s.a();
     if (paramSSLSocketFactory != null) {}
     for (String str = "https";; str = "http")
     {
-      this.a = localag.a(str).d(paramString).a(paramInt).c();
-      if (paramw != null) {
+      this.a = locala.a(str).d(paramString).a(paramInt).c();
+      if (paramo != null) {
         break;
       }
       throw new NullPointerException("dns == null");
     }
-    this.b = paramw;
+    this.b = paramo;
     if (paramSocketFactory == null) {
       throw new NullPointerException("socketFactory == null");
     }
@@ -48,14 +48,14 @@ public final class a
       throw new NullPointerException("proxyAuthenticator == null");
     }
     this.d = paramb;
-    if (paramList1 == null) {
+    if (paramList == null) {
       throw new NullPointerException("protocols == null");
     }
-    this.e = gn.a(paramList1);
-    if (paramList2 == null) {
+    this.e = fb.a(paramList);
+    if (paramList1 == null) {
       throw new NullPointerException("connectionSpecs == null");
     }
-    this.f = gn.a(paramList2);
+    this.f = fb.a(paramList1);
     if (paramProxySelector == null) {
       throw new NullPointerException("proxySelector == null");
     }
@@ -63,20 +63,20 @@ public final class a
     this.h = paramProxy;
     this.i = paramSSLSocketFactory;
     this.j = paramHostnameVerifier;
-    this.k = parami;
+    this.k = paramg;
   }
   
-  public af a()
+  public s a()
   {
     return this.a;
   }
   
   boolean a(a parama)
   {
-    return (this.b.equals(parama.b)) && (this.d.equals(parama.d)) && (this.e.equals(parama.e)) && (this.f.equals(parama.f)) && (this.g.equals(parama.g)) && (gn.a(this.h, parama.h)) && (gn.a(this.i, parama.i)) && (gn.a(this.j, parama.j)) && (gn.a(this.k, parama.k)) && (a().g() == parama.a().g());
+    return (this.b.equals(parama.b)) && (this.d.equals(parama.d)) && (this.e.equals(parama.e)) && (this.f.equals(parama.f)) && (this.g.equals(parama.g)) && (fb.a(this.h, parama.h)) && (fb.a(this.i, parama.i)) && (fb.a(this.j, parama.j)) && (fb.a(this.k, parama.k)) && (a().g() == parama.a().g());
   }
   
-  public w b()
+  public o b()
   {
     return this.b;
   }
@@ -91,7 +91,7 @@ public final class a
     return this.d;
   }
   
-  public List e()
+  public List<Protocol> e()
   {
     return this.e;
   }
@@ -101,7 +101,7 @@ public final class a
     return ((paramObject instanceof a)) && (this.a.equals(((a)paramObject).a)) && (a((a)paramObject));
   }
   
-  public List f()
+  public List<k> f()
   {
     return this.f;
   }
@@ -168,7 +168,7 @@ public final class a
   }
   
   @Nullable
-  public i k()
+  public g k()
   {
     return this.k;
   }

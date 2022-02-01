@@ -8,25 +8,27 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import oicq.wlogin_sdk.sharemem.WloginSigInfo;
+import oicq.wlogin_sdk.tlv_type.RegTLV;
+import oicq.wlogin_sdk.tlv_type.tlv_t;
 import oicq.wlogin_sdk.tools.util;
 
 public class WUserSigInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new WUserSigInfo.1();
-  public List _domains = new ArrayList();
+  public static final Parcelable.Creator<WUserSigInfo> CREATOR = new WUserSigInfo.1();
+  public List<String> _domains = new ArrayList();
   public byte[] _fastLoginBuf;
   public byte[] _in_ksid;
   public int _login_bitmap = 0;
   public byte[] _reserveData;
   public long _seqence = 0L;
   public int _source_type = 0;
-  public List _tickets = new ArrayList();
-  public HashMap extraLoginTLVMap = new HashMap();
-  public HashMap extraRegTLVMap = new HashMap();
-  public HashMap loginResultTLVMap = new HashMap();
-  public HashMap loginTLVMap = new HashMap();
-  public HashMap regTLVMap = new HashMap();
+  public List<Ticket> _tickets = new ArrayList();
+  public HashMap<Integer, tlv_t> extraLoginTLVMap = new HashMap();
+  public HashMap<Integer, RegTLV> extraRegTLVMap = new HashMap();
+  public HashMap<Integer, tlv_t> loginResultTLVMap = new HashMap();
+  public HashMap<Integer, tlv_t> loginTLVMap = new HashMap();
+  public HashMap<Integer, tlv_t> regTLVMap = new HashMap();
   public byte[][] stList;
   public String uin = "";
   public long userSeq = 0L;

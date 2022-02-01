@@ -14,11 +14,11 @@ public class TCaptchaDialog
   private Context a;
   private String b;
   private float c;
-  private e d;
+  private b d;
   private String e;
   private RelativeLayout f;
-  private g g;
-  private l h;
+  private d g;
+  private d.a h;
   
   public void dismiss()
   {
@@ -51,14 +51,14 @@ public class TCaptchaDialog
   {
     super.onCreate(paramBundle);
     requestWindowFeature(1);
-    setContentView(c.tcaptcha_popup);
+    setContentView(a.b.tcaptcha_popup);
     this.c = this.a.getResources().getDisplayMetrics().density;
-    paramBundle = (RelativeLayout)findViewById(b.tcaptcha_container);
-    this.d = new e(this.a);
+    paramBundle = (RelativeLayout)findViewById(a.a.tcaptcha_container);
+    this.d = new b(this.a);
     this.d.setLayerType(1, null);
-    this.f = ((RelativeLayout)findViewById(b.tcaptcha_indicator_layout));
-    int i = f.a(this.a, getWindow(), paramBundle, this.f, this.d);
-    this.g = new g(this.a, this.h, this.b, this.d, this.e, i);
+    this.f = ((RelativeLayout)findViewById(a.a.tcaptcha_indicator_layout));
+    int i = c.a(this.a, getWindow(), paramBundle, this.f, this.d);
+    this.g = new d(this.a, this.h, this.b, this.d, this.e, i);
   }
 }
 

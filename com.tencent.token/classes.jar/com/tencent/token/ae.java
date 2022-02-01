@@ -1,21 +1,68 @@
 package com.tencent.token;
 
-import com.tencent.halley.common.g;
-import com.tencent.halley.downloader.c.d.a;
+import android.text.TextUtils;
+import com.tencent.halley.common.h;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-public abstract interface ae
+public final class ae
 {
-  public abstract g a(af paramaf, a parama, String paramString1, long paramLong, boolean paramBoolean, String paramString2, String paramString3, String paramString4, String paramString5);
+  private List a = new ArrayList();
   
-  public abstract ad a(af paramaf);
+  public final String a()
+  {
+    synchronized (this.a)
+    {
+      if (this.a.size() == 0) {
+        return "";
+      }
+      StringBuilder localStringBuilder = new StringBuilder();
+      Iterator localIterator = this.a.iterator();
+      if (localIterator.hasNext())
+      {
+        localStringBuilder.append(((a)localIterator.next()).a());
+        localStringBuilder.append(";");
+      }
+    }
+    String str = localObject.toString();
+    return str;
+  }
   
-  public abstract boolean a();
+  public final void a(a parama)
+  {
+    synchronized (this.a)
+    {
+      if (this.a.size() < 20) {
+        this.a.add(parama);
+      }
+      return;
+    }
+  }
   
-  public abstract boolean a(af paramaf, long paramLong, byte[] paramArrayOfByte, int paramInt, boolean paramBoolean);
-  
-  public abstract void b(af paramaf);
-  
-  public abstract void c(af paramaf);
+  public static final class a
+  {
+    private long a;
+    private int b;
+    private String c;
+    
+    public a(long paramLong, int paramInt, String paramString)
+    {
+      this.a = paramLong;
+      this.b = paramInt;
+      if (TextUtils.isEmpty(paramString))
+      {
+        this.c = "";
+        return;
+      }
+      this.c = h.b(paramString);
+    }
+    
+    public final String a()
+    {
+      return this.a + "," + this.b + "," + this.c;
+    }
+  }
 }
 
 

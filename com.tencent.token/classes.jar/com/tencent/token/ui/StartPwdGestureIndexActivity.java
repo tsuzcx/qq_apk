@@ -1,17 +1,20 @@
 package com.tencent.token.ui;
 
+import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Message;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
+import com.tencent.token.ca;
+import com.tencent.token.cc;
 import com.tencent.token.core.bean.QQUser;
-import com.tencent.token.cw;
-import com.tencent.token.cy;
-import com.tencent.token.do;
-import com.tencent.token.utils.w;
-import com.tencent.token.utils.x;
+import com.tencent.token.cq;
+import com.tencent.token.global.e;
+import com.tencent.token.utils.l;
+import com.tencent.token.utils.m;
 
 public class StartPwdGestureIndexActivity
   extends BaseActivity
@@ -21,34 +24,77 @@ public class StartPwdGestureIndexActivity
   private View mFacePwdView;
   private TextView mGesturePwdTxt;
   private View mGesturePwdView;
-  private Handler mHandler = new zx(this);
-  private View.OnClickListener mManageGesturePwdListener = new zv(this);
-  private View.OnClickListener mNewGesturePwdListener = new zw(this);
+  private Handler mHandler = new Handler()
+  {
+    public void handleMessage(Message paramAnonymousMessage)
+    {
+      if (StartPwdGestureIndexActivity.this.isFinishing()) {
+        return;
+      }
+      switch (paramAnonymousMessage.what)
+      {
+      default: 
+        return;
+      }
+      if (paramAnonymousMessage.arg1 == 0)
+      {
+        StartPwdGestureIndexActivity.this.refreshFacePwd();
+        return;
+      }
+      StartPwdGestureIndexActivity.this.dismissDialog();
+      paramAnonymousMessage = (e)paramAnonymousMessage.obj;
+      e.a(StartPwdGestureIndexActivity.this.getResources(), paramAnonymousMessage);
+      StartPwdGestureIndexActivity.this.showUserDialog(2131230767, paramAnonymousMessage.c, 2131230897, null);
+    }
+  };
+  private View.OnClickListener mManageGesturePwdListener = new View.OnClickListener()
+  {
+    public void onClick(View paramAnonymousView)
+    {
+      paramAnonymousView = new Intent(StartPwdGestureIndexActivity.this, StartPwdGestureSelActivity.class);
+      StartPwdGestureIndexActivity.this.startActivity(paramAnonymousView);
+    }
+  };
+  private View.OnClickListener mNewGesturePwdListener = new View.OnClickListener()
+  {
+    public void onClick(View paramAnonymousView)
+    {
+      paramAnonymousView = new Intent(StartPwdGestureIndexActivity.this, StartPwdUpdateInfoActivity.class);
+      StartPwdGestureIndexActivity.this.startActivity(paramAnonymousView);
+    }
+  };
   
   private void initUI()
   {
-    this.mGesturePwdView = findViewById(2131559280);
-    this.mFacePwdView = findViewById(2131558833);
-    this.mDividerView = findViewById(2131558836);
-    this.mGesturePwdTxt = ((TextView)findViewById(2131559281));
-    this.mFacePwdTxt = ((TextView)findViewById(2131559282));
-    this.mFacePwdView.setOnClickListener(new zy(this));
-    if (do.a().e() == null) {
+    this.mGesturePwdView = findViewById(2131559281);
+    this.mFacePwdView = findViewById(2131558834);
+    this.mDividerView = findViewById(2131558837);
+    this.mGesturePwdTxt = ((TextView)findViewById(2131559282));
+    this.mFacePwdTxt = ((TextView)findViewById(2131559283));
+    this.mFacePwdView.setOnClickListener(new View.OnClickListener()
+    {
+      public void onClick(View paramAnonymousView)
+      {
+        paramAnonymousView = new Intent(StartPwdGestureIndexActivity.this, FacePwdIndexActivity.class);
+        StartPwdGestureIndexActivity.this.startActivity(paramAnonymousView);
+      }
+    });
+    if (cq.a().e() == null) {
       this.mFacePwdView.setVisibility(8);
     }
   }
   
   private void refreshFacePwd()
   {
-    if (do.a().h())
+    if (cq.a().h())
     {
-      QQUser localQQUser = x.f();
+      QQUser localQQUser = m.f();
       if ((localQQUser != null) && (localQQUser.mIsRegisterFacePwd))
       {
-        this.mFacePwdTxt.setText(localQQUser.mNickName + "(" + w.e(localQQUser.mRealUin) + ")");
+        this.mFacePwdTxt.setText(localQQUser.mNickName + "(" + l.e(localQQUser.mRealUin) + ")");
         this.mFacePwdTxt.setTextColor(getResources().getColor(2131492937));
       }
-      while (x.n())
+      while (m.n())
       {
         this.mFacePwdView.setVisibility(0);
         this.mDividerView.setVisibility(0);
@@ -74,17 +120,17 @@ public class StartPwdGestureIndexActivity
   public void onResume()
   {
     super.onResume();
-    if (do.a().k) {
+    if (cq.a().k) {
       refreshFacePwd();
     }
-    while (cy.a().c())
+    while (cc.a().c())
     {
       this.mGesturePwdTxt.setText(2131231443);
       this.mGesturePwdTxt.setTextColor(getResources().getColor(2131492937));
       this.mGesturePwdView.setOnClickListener(this.mManageGesturePwdListener);
       return;
-      if (do.a().e() != null) {
-        cw.a().b(this.mHandler);
+      if (cq.a().e() != null) {
+        ca.a().b(this.mHandler);
       }
     }
     this.mGesturePwdTxt.setText(2131231442);

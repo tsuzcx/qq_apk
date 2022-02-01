@@ -6,9 +6,9 @@ public final class J
   extends j
   implements Cloneable
 {
-  private static ArrayList c;
+  private static ArrayList<String> c;
   private String a = "";
-  private ArrayList b = null;
+  private ArrayList<String> b = null;
   
   public final void a(h paramh)
   {

@@ -1,33 +1,70 @@
 package okhttp3;
 
-class p
-  implements Runnable
+import java.io.IOException;
+import java.net.InetAddress;
+import java.net.InetSocketAddress;
+import java.net.Proxy;
+import java.util.List;
+import javax.annotation.Nullable;
+
+public abstract class p
 {
-  p(o paramo) {}
+  public static final p a = new p() {};
   
-  public void run()
+  static a a(p paramp)
   {
-    long l1;
-    do
+    new a()
     {
-      l1 = this.a.a(System.nanoTime());
-      if (l1 == -1L) {
-        return;
-      }
-    } while (l1 <= 0L);
-    long l2 = l1 / 1000000L;
-    try
-    {
-      label57:
-      synchronized (this.a)
+      public p a(e paramAnonymouse)
       {
-        this.a.wait(l2, (int)(l1 - l2 * 1000000L));
+        return p.this;
       }
-    }
-    catch (InterruptedException localInterruptedException)
-    {
-      break label57;
-    }
+    };
+  }
+  
+  public void a(e parame) {}
+  
+  public void a(e parame, long paramLong) {}
+  
+  public void a(e parame, IOException paramIOException) {}
+  
+  public void a(e parame, String paramString) {}
+  
+  public void a(e parame, String paramString, List<InetAddress> paramList) {}
+  
+  public void a(e parame, InetSocketAddress paramInetSocketAddress, Proxy paramProxy) {}
+  
+  public void a(e parame, InetSocketAddress paramInetSocketAddress, Proxy paramProxy, @Nullable Protocol paramProtocol) {}
+  
+  public void a(e parame, InetSocketAddress paramInetSocketAddress, Proxy paramProxy, @Nullable Protocol paramProtocol, IOException paramIOException) {}
+  
+  public void a(e parame, i parami) {}
+  
+  public void a(e parame, @Nullable q paramq) {}
+  
+  public void a(e parame, x paramx) {}
+  
+  public void a(e parame, z paramz) {}
+  
+  public void b(e parame) {}
+  
+  public void b(e parame, long paramLong) {}
+  
+  public void b(e parame, i parami) {}
+  
+  public void c(e parame) {}
+  
+  public void d(e parame) {}
+  
+  public void e(e parame) {}
+  
+  public void f(e parame) {}
+  
+  public void g(e parame) {}
+  
+  public static abstract interface a
+  {
+    public abstract p a(e parame);
   }
 }
 

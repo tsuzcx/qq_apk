@@ -1,20 +1,11 @@
 package taiji;
 
 public class ai
-  extends aw
 {
-  private ai()
-  {
-    super(Integer.valueOf(100));
-  }
-  
-  public s a()
-  {
-    if (!b()) {
-      return new y(this.b);
-    }
-    return new f(this.a);
-  }
+  public final ab a;
+  public final ab b;
+  public final ac c;
+  public final ac d;
 }
 
 

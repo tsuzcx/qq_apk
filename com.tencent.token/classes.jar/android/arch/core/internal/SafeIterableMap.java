@@ -8,22 +8,22 @@ import java.util.Set;
 import java.util.WeakHashMap;
 
 @RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
-public class SafeIterableMap
-  implements Iterable
+public class SafeIterableMap<K, V>
+  implements Iterable<Map.Entry<K, V>>
 {
-  private SafeIterableMap.Entry mEnd;
-  private WeakHashMap mIterators = new WeakHashMap();
+  private Entry<K, V> mEnd;
+  private WeakHashMap<SupportRemove<K, V>, Boolean> mIterators = new WeakHashMap();
   private int mSize = 0;
-  private SafeIterableMap.Entry mStart;
+  private Entry<K, V> mStart;
   
-  public Iterator descendingIterator()
+  public Iterator<Map.Entry<K, V>> descendingIterator()
   {
-    SafeIterableMap.DescendingIterator localDescendingIterator = new SafeIterableMap.DescendingIterator(this.mEnd, this.mStart);
+    DescendingIterator localDescendingIterator = new DescendingIterator(this.mEnd, this.mStart);
     this.mIterators.put(localDescendingIterator, Boolean.valueOf(false));
     return localDescendingIterator;
   }
   
-  public Map.Entry eldest()
+  public Map.Entry<K, V> eldest()
   {
     return this.mStart;
   }
@@ -70,65 +70,65 @@ public class SafeIterableMap
     }
   }
   
-  protected SafeIterableMap.Entry get(Object paramObject)
+  protected Entry<K, V> get(K paramK)
   {
-    for (SafeIterableMap.Entry localEntry = this.mStart;; localEntry = localEntry.mNext) {
-      if ((localEntry == null) || (localEntry.mKey.equals(paramObject))) {
+    for (Entry localEntry = this.mStart;; localEntry = localEntry.mNext) {
+      if ((localEntry == null) || (localEntry.mKey.equals(paramK))) {
         return localEntry;
       }
     }
   }
   
   @NonNull
-  public Iterator iterator()
+  public Iterator<Map.Entry<K, V>> iterator()
   {
-    SafeIterableMap.AscendingIterator localAscendingIterator = new SafeIterableMap.AscendingIterator(this.mStart, this.mEnd);
+    AscendingIterator localAscendingIterator = new AscendingIterator(this.mStart, this.mEnd);
     this.mIterators.put(localAscendingIterator, Boolean.valueOf(false));
     return localAscendingIterator;
   }
   
-  public SafeIterableMap.IteratorWithAdditions iteratorWithAdditions()
+  public SafeIterableMap<K, V>.IteratorWithAdditions iteratorWithAdditions()
   {
-    SafeIterableMap.IteratorWithAdditions localIteratorWithAdditions = new SafeIterableMap.IteratorWithAdditions(this, null);
+    IteratorWithAdditions localIteratorWithAdditions = new IteratorWithAdditions(null);
     this.mIterators.put(localIteratorWithAdditions, Boolean.valueOf(false));
     return localIteratorWithAdditions;
   }
   
-  public Map.Entry newest()
+  public Map.Entry<K, V> newest()
   {
     return this.mEnd;
   }
   
-  protected SafeIterableMap.Entry put(@NonNull Object paramObject1, @NonNull Object paramObject2)
+  protected Entry<K, V> put(@NonNull K paramK, @NonNull V paramV)
   {
-    paramObject1 = new SafeIterableMap.Entry(paramObject1, paramObject2);
+    paramK = new Entry(paramK, paramV);
     this.mSize += 1;
     if (this.mEnd == null)
     {
-      this.mStart = paramObject1;
+      this.mStart = paramK;
       this.mEnd = this.mStart;
-      return paramObject1;
+      return paramK;
     }
-    this.mEnd.mNext = paramObject1;
-    paramObject1.mPrevious = this.mEnd;
-    this.mEnd = paramObject1;
-    return paramObject1;
+    this.mEnd.mNext = paramK;
+    paramK.mPrevious = this.mEnd;
+    this.mEnd = paramK;
+    return paramK;
   }
   
-  public Object putIfAbsent(@NonNull Object paramObject1, @NonNull Object paramObject2)
+  public V putIfAbsent(@NonNull K paramK, @NonNull V paramV)
   {
-    SafeIterableMap.Entry localEntry = get(paramObject1);
+    Entry localEntry = get(paramK);
     if (localEntry != null) {
       return localEntry.mValue;
     }
-    put(paramObject1, paramObject2);
+    put(paramK, paramV);
     return null;
   }
   
-  public Object remove(@NonNull Object paramObject)
+  public V remove(@NonNull K paramK)
   {
-    paramObject = get(paramObject);
-    if (paramObject == null) {
+    paramK = get(paramK);
+    if (paramK == null) {
       return null;
     }
     this.mSize -= 1;
@@ -136,26 +136,26 @@ public class SafeIterableMap
     {
       Iterator localIterator = this.mIterators.keySet().iterator();
       while (localIterator.hasNext()) {
-        ((SafeIterableMap.SupportRemove)localIterator.next()).supportRemove(paramObject);
+        ((SupportRemove)localIterator.next()).supportRemove(paramK);
       }
     }
-    if (paramObject.mPrevious != null)
+    if (paramK.mPrevious != null)
     {
-      paramObject.mPrevious.mNext = paramObject.mNext;
-      if (paramObject.mNext == null) {
+      paramK.mPrevious.mNext = paramK.mNext;
+      if (paramK.mNext == null) {
         break label134;
       }
-      paramObject.mNext.mPrevious = paramObject.mPrevious;
+      paramK.mNext.mPrevious = paramK.mPrevious;
     }
     for (;;)
     {
-      paramObject.mNext = null;
-      paramObject.mPrevious = null;
-      return paramObject.mValue;
-      this.mStart = paramObject.mNext;
+      paramK.mNext = null;
+      paramK.mPrevious = null;
+      return paramK.mValue;
+      this.mStart = paramK.mNext;
       break;
       label134:
-      this.mEnd = paramObject.mPrevious;
+      this.mEnd = paramK.mPrevious;
     }
   }
   
@@ -178,6 +178,209 @@ public class SafeIterableMap
     }
     localStringBuilder.append("]");
     return localStringBuilder.toString();
+  }
+  
+  static class AscendingIterator<K, V>
+    extends SafeIterableMap.ListIterator<K, V>
+  {
+    AscendingIterator(SafeIterableMap.Entry<K, V> paramEntry1, SafeIterableMap.Entry<K, V> paramEntry2)
+    {
+      super(paramEntry2);
+    }
+    
+    SafeIterableMap.Entry<K, V> backward(SafeIterableMap.Entry<K, V> paramEntry)
+    {
+      return paramEntry.mPrevious;
+    }
+    
+    SafeIterableMap.Entry<K, V> forward(SafeIterableMap.Entry<K, V> paramEntry)
+    {
+      return paramEntry.mNext;
+    }
+  }
+  
+  private static class DescendingIterator<K, V>
+    extends SafeIterableMap.ListIterator<K, V>
+  {
+    DescendingIterator(SafeIterableMap.Entry<K, V> paramEntry1, SafeIterableMap.Entry<K, V> paramEntry2)
+    {
+      super(paramEntry2);
+    }
+    
+    SafeIterableMap.Entry<K, V> backward(SafeIterableMap.Entry<K, V> paramEntry)
+    {
+      return paramEntry.mNext;
+    }
+    
+    SafeIterableMap.Entry<K, V> forward(SafeIterableMap.Entry<K, V> paramEntry)
+    {
+      return paramEntry.mPrevious;
+    }
+  }
+  
+  static class Entry<K, V>
+    implements Map.Entry<K, V>
+  {
+    @NonNull
+    final K mKey;
+    Entry<K, V> mNext;
+    Entry<K, V> mPrevious;
+    @NonNull
+    final V mValue;
+    
+    Entry(@NonNull K paramK, @NonNull V paramV)
+    {
+      this.mKey = paramK;
+      this.mValue = paramV;
+    }
+    
+    public boolean equals(Object paramObject)
+    {
+      if (paramObject == this) {}
+      do
+      {
+        return true;
+        if (!(paramObject instanceof Entry)) {
+          return false;
+        }
+        paramObject = (Entry)paramObject;
+      } while ((this.mKey.equals(paramObject.mKey)) && (this.mValue.equals(paramObject.mValue)));
+      return false;
+    }
+    
+    @NonNull
+    public K getKey()
+    {
+      return this.mKey;
+    }
+    
+    @NonNull
+    public V getValue()
+    {
+      return this.mValue;
+    }
+    
+    public V setValue(V paramV)
+    {
+      throw new UnsupportedOperationException("An entry modification is not supported");
+    }
+    
+    public String toString()
+    {
+      return this.mKey + "=" + this.mValue;
+    }
+  }
+  
+  private class IteratorWithAdditions
+    implements SafeIterableMap.SupportRemove<K, V>, Iterator<Map.Entry<K, V>>
+  {
+    private boolean mBeforeStart = true;
+    private SafeIterableMap.Entry<K, V> mCurrent;
+    
+    private IteratorWithAdditions() {}
+    
+    public boolean hasNext()
+    {
+      if (this.mBeforeStart) {
+        if (SafeIterableMap.this.mStart == null) {}
+      }
+      while ((this.mCurrent != null) && (this.mCurrent.mNext != null))
+      {
+        return true;
+        return false;
+      }
+      return false;
+    }
+    
+    public Map.Entry<K, V> next()
+    {
+      if (this.mBeforeStart)
+      {
+        this.mBeforeStart = false;
+        this.mCurrent = SafeIterableMap.this.mStart;
+        return this.mCurrent;
+      }
+      if (this.mCurrent != null) {}
+      for (SafeIterableMap.Entry localEntry = this.mCurrent.mNext;; localEntry = null)
+      {
+        this.mCurrent = localEntry;
+        break;
+      }
+    }
+    
+    public void supportRemove(@NonNull SafeIterableMap.Entry<K, V> paramEntry)
+    {
+      if (paramEntry == this.mCurrent)
+      {
+        this.mCurrent = this.mCurrent.mPrevious;
+        if (this.mCurrent != null) {
+          break label34;
+        }
+      }
+      label34:
+      for (boolean bool = true;; bool = false)
+      {
+        this.mBeforeStart = bool;
+        return;
+      }
+    }
+  }
+  
+  private static abstract class ListIterator<K, V>
+    implements SafeIterableMap.SupportRemove<K, V>, Iterator<Map.Entry<K, V>>
+  {
+    SafeIterableMap.Entry<K, V> mExpectedEnd;
+    SafeIterableMap.Entry<K, V> mNext;
+    
+    ListIterator(SafeIterableMap.Entry<K, V> paramEntry1, SafeIterableMap.Entry<K, V> paramEntry2)
+    {
+      this.mExpectedEnd = paramEntry2;
+      this.mNext = paramEntry1;
+    }
+    
+    private SafeIterableMap.Entry<K, V> nextNode()
+    {
+      if ((this.mNext == this.mExpectedEnd) || (this.mExpectedEnd == null)) {
+        return null;
+      }
+      return forward(this.mNext);
+    }
+    
+    abstract SafeIterableMap.Entry<K, V> backward(SafeIterableMap.Entry<K, V> paramEntry);
+    
+    abstract SafeIterableMap.Entry<K, V> forward(SafeIterableMap.Entry<K, V> paramEntry);
+    
+    public boolean hasNext()
+    {
+      return this.mNext != null;
+    }
+    
+    public Map.Entry<K, V> next()
+    {
+      SafeIterableMap.Entry localEntry = this.mNext;
+      this.mNext = nextNode();
+      return localEntry;
+    }
+    
+    public void supportRemove(@NonNull SafeIterableMap.Entry<K, V> paramEntry)
+    {
+      if ((this.mExpectedEnd == paramEntry) && (paramEntry == this.mNext))
+      {
+        this.mNext = null;
+        this.mExpectedEnd = null;
+      }
+      if (this.mExpectedEnd == paramEntry) {
+        this.mExpectedEnd = backward(this.mExpectedEnd);
+      }
+      if (this.mNext == paramEntry) {
+        this.mNext = nextNode();
+      }
+    }
+  }
+  
+  static abstract interface SupportRemove<K, V>
+  {
+    public abstract void supportRemove(@NonNull SafeIterableMap.Entry<K, V> paramEntry);
   }
 }
 

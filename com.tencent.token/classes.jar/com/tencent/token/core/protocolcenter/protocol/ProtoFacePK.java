@@ -4,32 +4,32 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.os.Handler;
 import android.os.Message;
-import com.tencent.token.core.protocolcenter.e;
-import com.tencent.token.cv;
-import com.tencent.token.cx;
-import com.tencent.token.ev;
+import com.tencent.token.bz;
+import com.tencent.token.cb;
+import com.tencent.token.core.protocolcenter.d;
+import com.tencent.token.dn;
 import com.tencent.token.global.RqdApplication;
 import com.tencent.token.global.c;
-import com.tencent.token.global.f;
-import com.tencent.token.global.h;
+import com.tencent.token.global.e;
+import com.tencent.token.global.g;
 import com.tencent.token.utils.b;
-import com.tencent.token.utils.w;
-import com.tencent.token.utils.x;
+import com.tencent.token.utils.l;
+import com.tencent.token.utils.m;
 import java.util.HashMap;
 import org.json.JSONObject;
 
 public class ProtoFacePK
-  extends e
+  extends d
 {
   public long d;
   public int e;
   public String f;
   private byte[] g;
-  private a h = new a(this);
+  private a h = new a();
   
   protected String a()
   {
-    if (cv.a().b() == null)
+    if (bz.a().b() == null)
     {
       this.a.b(104);
       return null;
@@ -37,20 +37,20 @@ public class ProtoFacePK
     return c.e() + "/cn/mbtoken3/mbtoken3_face_pk";
   }
   
-  protected void a(ev paramev)
+  protected void a(dn paramdn)
   {
-    this.d = ((Long)paramev.c.get("param.uinhash")).longValue();
-    this.e = paramev.j;
-    this.g = ((byte[])paramev.c.get("param.facedata"));
-    paramev = paramev.c.get("param.videopath");
-    if (paramev != null) {
-      this.f = paramev.toString();
+    this.d = ((Long)paramdn.c.get("param.uinhash")).longValue();
+    this.e = paramdn.j;
+    this.g = ((byte[])paramdn.c.get("param.facedata"));
+    paramdn = paramdn.c.get("param.videopath");
+    if (paramdn != null) {
+      this.f = paramdn.toString();
     }
   }
   
   protected void a(JSONObject paramJSONObject)
   {
-    paramJSONObject = w.c(paramJSONObject.getString("data"));
+    paramJSONObject = l.c(paramJSONObject.getString("data"));
     if (paramJSONObject != null)
     {
       paramJSONObject = new JSONObject(new String(paramJSONObject));
@@ -58,7 +58,7 @@ public class ProtoFacePK
       if (i != this.e)
       {
         this.a.b(10030);
-        h.c("parseJSON error seq is wrong seq=" + i + ",right = " + this.e);
+        g.c("parseJSON error seq is wrong seq=" + i + ",right = " + this.e);
         return;
       }
       i = paramJSONObject.getInt("err");
@@ -73,28 +73,28 @@ public class ProtoFacePK
       this.a.c();
       return;
     }
-    h.c("parseJSON error decodeData=" + paramJSONObject);
+    g.c("parseJSON error decodeData=" + paramJSONObject);
     a(10022, RqdApplication.l().getString(2131230925));
   }
   
-  public ev b(ev paramev)
+  public dn b(dn paramdn)
   {
-    int i = paramev.j;
-    paramev.m = 1;
-    paramev.n = new ContentValues(3);
-    paramev.n.put("aq_base_sid", cv.a().b());
-    paramev.n.put("uin", Long.valueOf(this.d));
-    String str = b.a(w.c(this.g)).replace('+', '-').replace('=', '_');
-    paramev.n.put("img_data", str);
-    paramev.n.put("op_time", Integer.valueOf((int)(cx.c().s() / 1000L)));
-    paramev.n.put("seq_id", Integer.valueOf(i));
+    int i = paramdn.j;
+    paramdn.m = 1;
+    paramdn.n = new ContentValues(3);
+    paramdn.n.put("aq_base_sid", bz.a().b());
+    paramdn.n.put("uin", Long.valueOf(this.d));
+    String str = b.a(l.c(this.g)).replace('+', '-').replace('=', '_');
+    paramdn.n.put("img_data", str);
+    paramdn.n.put("op_time", Integer.valueOf((int)(cb.c().s() / 1000L)));
+    paramdn.n.put("seq_id", Integer.valueOf(i));
     if (this.f != null)
     {
-      str = b.a(w.c(x.a(this.f))).replace('+', '-').replace('=', '_');
-      paramev.n.put("live_video_data", str);
+      str = b.a(l.c(m.a(this.f))).replace('+', '-').replace('=', '_');
+      paramdn.n.put("live_video_data", str);
     }
     this.g = null;
-    return paramev;
+    return paramdn;
   }
   
   protected void b()
@@ -106,6 +106,15 @@ public class ProtoFacePK
       localMessage.sendToTarget();
       this.b.e = true;
     }
+  }
+  
+  public class a
+  {
+    public String a;
+    public String b;
+    public String c;
+    
+    public a() {}
   }
 }
 

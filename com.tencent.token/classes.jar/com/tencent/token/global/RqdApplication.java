@@ -12,15 +12,15 @@ import com.tencent.feedback.anr.ANRReport;
 import com.tencent.feedback.eup.CrashReport;
 import com.tencent.feedback.eup.CrashStrategyBean;
 import com.tencent.service.a;
+import com.tencent.token.cc;
 import com.tencent.token.core.bean.QQUser;
-import com.tencent.token.cy;
-import com.tencent.token.do;
-import com.tencent.token.eg;
-import com.tencent.token.ei;
-import com.tencent.token.fe;
-import com.tencent.token.ga;
-import com.tencent.token.utils.w;
-import com.tencent.token.utils.x;
+import com.tencent.token.cq;
+import com.tencent.token.dc;
+import com.tencent.token.dd;
+import com.tencent.token.dw;
+import com.tencent.token.eq;
+import com.tencent.token.utils.l;
+import com.tencent.token.utils.m;
 import com.tmsdk.TMSDKContext;
 import java.io.File;
 import tmsdk.common.module.pgsdk.PermissionGuide;
@@ -34,10 +34,10 @@ public class RqdApplication
   public static volatile int d = 60;
   public static String e;
   public static boolean f;
-  public static final boolean g = com.tencent.token.utils.u.d;
+  public static final boolean g = com.tencent.token.utils.j.d;
   public static boolean h = false;
   private static Context i;
-  private static eg j;
+  private static dc j;
   private static int k = -1;
   
   public static void a()
@@ -89,11 +89,11 @@ public class RqdApplication
   {
     int n = 1;
     Object localObject = "testUserId";
-    if ((do.a().e() != null) && (do.a().e().mRealUin != 0L)) {
-      return "" + do.a().e().mRealUin;
+    if ((cq.a().e() != null) && (cq.a().e().mRealUin != 0L)) {
+      return "" + cq.a().e().mRealUin;
     }
-    String str1 = w.b(i);
-    String str2 = w.c(i);
+    String str1 = l.b(i);
+    String str2 = l.c(i);
     int m;
     if (str1 == null)
     {
@@ -112,7 +112,7 @@ public class RqdApplication
     }
     for (;;)
     {
-      h.c("RqdApplication: userId =" + (String)localObject);
+      g.c("RqdApplication: userId =" + (String)localObject);
       return localObject;
       m = 0;
       break;
@@ -137,10 +137,10 @@ public class RqdApplication
   public static void e()
   {
     a = 0;
-    if ((cy.a().c()) && (cy.a().e() == 2)) {
+    if ((cc.a().c()) && (cc.a().e() == 2)) {
       a |= 0x1;
     }
-    if (x.e() != 0L) {
+    if (m.e() != 0L) {
       a |= 0x2;
     }
   }
@@ -172,9 +172,9 @@ public class RqdApplication
   
   public static boolean h()
   {
-    do localdo = do.a();
-    if ((localdo == null) || (localdo.e() == null)) {
-      x.b(0L);
+    cq localcq = cq.a();
+    if ((localcq == null) || (localcq.e() == null)) {
+      m.b(0L);
     }
     while ((a & 0x2) != 2) {
       return false;
@@ -202,12 +202,12 @@ public class RqdApplication
     return localObject1;
   }
   
-  public static eg k()
+  public static dc k()
   {
     if (j != null) {
       return j;
     }
-    j = new ei(l());
+    j = new dd(l());
     return j;
   }
   
@@ -234,13 +234,13 @@ public class RqdApplication
   protected void attachBaseContext(Context paramContext)
   {
     super.attachBaseContext(paramContext);
-    com.tencent.token.upload.f.b = System.currentTimeMillis();
+    com.tencent.token.upload.e.b = System.currentTimeMillis();
   }
   
   protected CrashStrategyBean m()
   {
     CrashStrategyBean localCrashStrategyBean = new CrashStrategyBean();
-    localCrashStrategyBean.setStoreCrashSdcard(com.tencent.token.utils.u.o);
+    localCrashStrategyBean.setStoreCrashSdcard(com.tencent.token.utils.j.o);
     localCrashStrategyBean.setCrashSdcardMaxSize(5000);
     localCrashStrategyBean.setMaxStoredNum(10);
     localCrashStrategyBean.setMaxUploadNum_GPRS(2);
@@ -256,34 +256,73 @@ public class RqdApplication
     super.onCreate();
     i = getApplicationContext();
     c.a(getApplicationContext());
-    ga.a(getApplicationContext());
-    CrashReport.setLogAble(com.tencent.token.utils.u.l, com.tencent.token.utils.u.m);
+    eq.a(getApplicationContext());
+    CrashReport.setLogAble(com.tencent.token.utils.j.l, com.tencent.token.utils.j.m);
     CrashReport.setUserId(i, "testUserId");
     Object localObject = m();
     CrashReport.initCrashReport(i, null, null, true, (CrashStrategyBean)localObject);
-    localObject = fe.b().getAbsolutePath();
-    CrashReport.initNativeCrashReport(i, (String)localObject, com.tencent.token.utils.u.p);
-    if (com.tencent.token.utils.u.n) {
+    localObject = dw.b().getAbsolutePath();
+    CrashReport.initNativeCrashReport(i, (String)localObject, com.tencent.token.utils.j.p);
+    if (com.tencent.token.utils.j.n) {
       ANRReport.startANRMonitor(i);
     }
     CrashReport.setUserId(l(), c());
-    TMSDKContext.setTMSDKLogEnable(true);
+    TMSDKContext.setTMSDKLogEnable(false);
     h = TMSDKContext.init(this, null);
     TMSDKContext.setAutoConnectionSwitch(this, true);
-    n.a();
-    PermissionGuide.init(this, new com.tencent.token.global.taiji.u());
+    k.a();
+    PermissionGuide.init(this, new com.tencent.token.global.taiji.j());
     PermissionGuide.pullAdapterSolution();
     a.a().a(this);
     n();
-    boolean bool = x.c();
+    boolean bool = m.c();
     if (!bool) {
       e();
     }
     if (bool) {
-      x.a(false);
+      m.a(false);
     }
-    new i(this).start();
-    h.a("rqd start");
+    new Thread()
+    {
+      public void run()
+      {
+        for (;;)
+        {
+          try
+          {
+            if ((!cc.a().d()) && (m.e() == 0L)) {
+              break label82;
+            }
+            if (RqdApplication.d < 60)
+            {
+              RqdApplication.c = 1;
+              Thread.sleep(60000L);
+              RqdApplication.d = 60;
+              continue;
+            }
+            Thread.sleep(1000L);
+          }
+          catch (Exception localException)
+          {
+            g.b(localException.toString());
+            localException.printStackTrace();
+            return;
+          }
+          if (l.d())
+          {
+            RqdApplication.c = 1;
+          }
+          else
+          {
+            RqdApplication.c = 0;
+            continue;
+            label82:
+            Thread.sleep(60000L);
+          }
+        }
+      }
+    }.start();
+    g.a("rqd start");
   }
 }
 

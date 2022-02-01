@@ -8,10 +8,10 @@ import java.util.ArrayList;
 public final class MDoraemonRes
   extends JceStruct
 {
-  static ArrayList a = new ArrayList();
+  static ArrayList<String> a = new ArrayList();
   public String mDoraemonText = "";
   public int mDoraemonType = 0;
-  public ArrayList mFileList = null;
+  public ArrayList<String> mFileList = null;
   
   static
   {

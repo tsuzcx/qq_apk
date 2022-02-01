@@ -1,150 +1,73 @@
 package com.tencent.token;
 
-import com.tencent.token.core.bean.DeviceInfo;
-import com.tencent.token.core.bean.QQUser;
-import com.tencent.token.core.bean.h;
-import java.util.ArrayList;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import android.content.ContentValues;
+import com.tencent.wcdb.Cursor;
+import com.tencent.wcdb.database.SQLiteDatabase;
 
 public class et
+  implements es
 {
-  public h a = new h();
-  public ArrayList b;
-  String c;
-  long d;
+  public final String a = "token_conf";
+  public long b = 1L;
+  public int c = 1;
+  public byte[] d = null;
+  private int e = 11;
   
-  public void a(h paramh)
+  public es a(Cursor paramCursor)
   {
-    try
-    {
-      this.a = paramh;
-      do.a();
-      this.c = do.c;
-      if (do.a().e() != null) {
-        this.d = do.a().e().mUin;
-      }
-      return;
-    }
-    finally
-    {
-      paramh = finally;
-      throw paramh;
-    }
+    et localet = new et();
+    localet.b = paramCursor.getLong(paramCursor.getColumnIndex("plusTime"));
+    localet.c = paramCursor.getInt(paramCursor.getColumnIndex("tokenIntVTime"));
+    localet.d = paramCursor.getBlob(paramCursor.getColumnIndex("data"));
+    return localet;
   }
   
-  public boolean a(JSONArray paramJSONArray)
+  public void a(long paramLong, int paramInt, byte[] paramArrayOfByte)
   {
-    h localh = new h();
-    if (paramJSONArray != null) {}
-    for (;;)
-    {
-      int i;
-      try
-      {
-        if (paramJSONArray.length() > 0)
-        {
-          i = 0;
-          if (i < paramJSONArray.length())
-          {
-            Object localObject = paramJSONArray.getJSONObject(i);
-            localh.a = ((JSONObject)localObject).getInt("id");
-            localh.b = ((JSONObject)localObject).getString("name");
-            if (((JSONObject)localObject).getInt("value") == 0) {
-              break label267;
-            }
-            bool = true;
-            localh.c = bool;
-            localObject = ((JSONObject)localObject).getJSONArray("list");
-            if (((JSONArray)localObject).length() > 0)
-            {
-              this.b = new ArrayList();
-              int j = 0;
-              if (j >= ((JSONArray)localObject).length()) {
-                break label273;
-              }
-              JSONObject localJSONObject = ((JSONArray)localObject).getJSONObject(j);
-              DeviceInfo localDeviceInfo = new DeviceInfo();
-              localDeviceInfo.dguid = localJSONObject.getString("dguid");
-              localDeviceInfo.dname = localJSONObject.getString("dname");
-              localDeviceInfo.dtype = localJSONObject.getString("dtype");
-              localDeviceInfo.ddes = localJSONObject.getString("ddes");
-              localDeviceInfo.dappid = localJSONObject.getInt("dappid");
-              localDeviceInfo.dsubappid = localJSONObject.getInt("dsubappid");
-              localDeviceInfo.dappname = localJSONObject.getString("dappname");
-              this.b.add(localDeviceInfo);
-              j += 1;
-              continue;
-            }
-            this.b = new ArrayList();
-            break label273;
-          }
-        }
-        a(localh);
-        return true;
-      }
-      catch (Exception paramJSONArray)
-      {
-        paramJSONArray.printStackTrace();
-        return false;
-      }
-      label267:
-      boolean bool = false;
-      continue;
-      label273:
-      i += 1;
-    }
+    ContentValues localContentValues = new ContentValues();
+    localContentValues.put("plusTime", Long.valueOf(paramLong));
+    localContentValues.put("tokenIntVTime", Integer.valueOf(paramInt));
+    localContentValues.put("data", paramArrayOfByte);
+    eq.a(this, "token_conf", localContentValues, "key=?", new String[] { String.valueOf(this.e) });
   }
   
-  public boolean a(JSONObject paramJSONObject)
+  public void a(SQLiteDatabase paramSQLiteDatabase)
   {
-    h localh = new h();
-    for (;;)
-    {
-      try
-      {
-        localh.a = paramJSONObject.getInt("id");
-        localh.b = paramJSONObject.getString("name");
-        if (paramJSONObject.getInt("value") != 0)
-        {
-          bool = true;
-          localh.c = bool;
-          paramJSONObject = paramJSONObject.getJSONArray("list");
-          if (paramJSONObject.length() > 0)
-          {
-            this.b = new ArrayList();
-            int i = 0;
-            if (i < paramJSONObject.length())
-            {
-              JSONObject localJSONObject = paramJSONObject.getJSONObject(i);
-              DeviceInfo localDeviceInfo = new DeviceInfo();
-              localDeviceInfo.dguid = localJSONObject.getString("dguid");
-              localDeviceInfo.dname = localJSONObject.getString("dname");
-              localDeviceInfo.dtype = localJSONObject.getString("dtype");
-              localDeviceInfo.ddes = localJSONObject.getString("ddes");
-              localDeviceInfo.dappid = localJSONObject.getInt("dappid");
-              localDeviceInfo.dsubappid = localJSONObject.getInt("dsubappid");
-              localDeviceInfo.dappname = localJSONObject.getString("dappname");
-              this.b.add(localDeviceInfo);
-              i += 1;
-              continue;
-            }
-          }
-          else
-          {
-            this.b = new ArrayList();
-          }
-          a(localh);
-          return true;
-        }
-      }
-      catch (Exception paramJSONObject)
-      {
-        paramJSONObject.printStackTrace();
-        return false;
-      }
-      boolean bool = false;
+    paramSQLiteDatabase.execSQL("CREATE TABLE IF NOT EXISTS token_conf(_ID INTEGER PRIMARY KEY autoincrement,key INTEGER,plusTime INTEGER,tokenIntVTime INTEGER,data BLOB);");
+  }
+  
+  public boolean a()
+  {
+    et localet = (et)eq.a(this, "token_conf", new String[] { "plusTime", "tokenIntVTime", "data" }, null, null);
+    if (localet == null) {
+      return false;
     }
+    this.b = localet.b;
+    this.c = localet.c;
+    this.d = localet.d;
+    return true;
+  }
+  
+  public long b(SQLiteDatabase paramSQLiteDatabase)
+  {
+    a(paramSQLiteDatabase);
+    new ContentValues();
+    ContentValues localContentValues = new ContentValues();
+    localContentValues.put("key", Integer.valueOf(this.e));
+    localContentValues.put("plusTime", Long.valueOf(this.b));
+    localContentValues.put("tokenIntVTime", Integer.valueOf(this.c));
+    localContentValues.put("data", this.d);
+    return paramSQLiteDatabase.insert("token_conf", null, localContentValues);
+  }
+  
+  public String b()
+  {
+    return "token_conf";
+  }
+  
+  public ContentValues c()
+  {
+    return null;
   }
 }
 

@@ -8,11 +8,11 @@ import java.util.ArrayList;
 public final class o
   extends JceStruct
 {
-  static ArrayList av;
-  static ArrayList aw;
+  static ArrayList<Integer> av;
+  static ArrayList<String> aw;
   public int ar = 0;
-  public ArrayList as = null;
-  public ArrayList at = null;
+  public ArrayList<Integer> as = null;
+  public ArrayList<String> at = null;
   public int au = 0;
   public int count = 1;
   public int pluginId = 0;

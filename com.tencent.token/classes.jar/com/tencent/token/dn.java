@@ -1,79 +1,50 @@
 package com.tencent.token;
 
-import com.tencent.token.core.push.b;
-import com.tencent.token.global.c;
-import com.tencent.token.global.f;
-import com.tencent.token.global.h;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.content.ContentValues;
+import android.os.Handler;
+import com.tencent.token.core.protocolcenter.e.a;
+import java.io.File;
+import java.util.HashMap;
 
 public class dn
 {
-  private static dn a = null;
-  private String b = "/cn/mbtoken3/mbtoken3_asec_push_getconn";
+  public String a;
+  public int b;
+  public HashMap<String, Object> c = new HashMap();
+  public Handler d;
+  public boolean e = false;
+  public int f;
+  public boolean g = false;
+  public int h = 90000;
+  public String i;
+  public int j;
+  public boolean k;
+  public e.a l;
+  public int m = 0;
+  public ContentValues n;
+  public File o;
+  public String p;
+  public byte[] q;
   
-  public static dn a()
+  public dn() {}
+  
+  public dn(String paramString, int paramInt1, Handler paramHandler, int paramInt2)
   {
-    if (a == null) {
-      a = new dn();
+    this.a = paramString;
+    this.b = paramInt1;
+    this.d = paramHandler;
+    this.f = paramInt2;
+    if (paramHandler != null) {
+      this.i = paramHandler.getClass().getName();
     }
-    return a;
   }
   
-  public f b()
+  public void a()
   {
-    f localf = new f();
-    Object localObject1 = new gk();
-    Object localObject2 = c.e() + this.b;
-    Object localObject3 = ((gk)localObject1).a((String)localObject2);
-    if (localObject3 == null)
-    {
-      localf.a(((gk)localObject1).a());
-      h.c("client request url: " + (String)localObject2 + " failed, reason: " + localf.a + ":" + localf.b);
-      return localf;
-    }
-    try
-    {
-      localObject1 = new JSONObject(new String((byte[])localObject3));
-      int i = ((JSONObject)localObject1).getInt("err");
-      if (i != 0)
-      {
-        h.c("error" + ((JSONObject)localObject1).toString());
-        localObject1 = ((JSONObject)localObject1).getString("info");
-        localf.a(i, (String)localObject1, (String)localObject1);
-      }
-      else
-      {
-        int j = ((JSONObject)localObject1).getInt("retry_cnt");
-        int k = ((JSONObject)localObject1).getInt("retry_time");
-        int m = ((JSONObject)localObject1).getInt("hb_time");
-        localObject1 = ((JSONObject)localObject1).getJSONArray("conn");
-        localObject2 = new String[((JSONArray)localObject1).length()];
-        localObject3 = new int[((JSONArray)localObject1).length()];
-        i = 0;
-        while (i < ((JSONArray)localObject1).length())
-        {
-          JSONObject localJSONObject = ((JSONArray)localObject1).getJSONObject(i);
-          localObject2[i] = localJSONObject.getString("ip");
-          localObject3[i] = localJSONObject.getInt("port");
-          i += 1;
-        }
-        b.a().a((String[])localObject2, (int[])localObject3, j, k * 1000, m * 1000);
-        localf.c();
-      }
-    }
-    catch (JSONException localJSONException)
-    {
-      h.c("parse json failed: " + localJSONException.toString());
-      localf.a(10020, "JSONException:" + localJSONException.toString());
-    }
-    catch (Exception localException)
-    {
-      h.c("unknown err: " + localException.toString());
-      localf.a(10021, "JSONException:" + localException.toString());
-    }
-    return localf;
+    this.d = null;
+    this.l = null;
+    this.c.clear();
+    this.c = null;
   }
 }
 

@@ -3,51 +3,51 @@ package com.tencent.token.core.protocolcenter.protocol;
 import android.content.Context;
 import android.os.Handler;
 import android.os.Message;
-import com.tencent.token.core.protocolcenter.e;
-import com.tencent.token.cv;
-import com.tencent.token.eg;
-import com.tencent.token.eh;
-import com.tencent.token.ev;
-import com.tencent.token.ew;
+import com.tencent.token.bz;
+import com.tencent.token.core.protocolcenter.d;
+import com.tencent.token.dc;
+import com.tencent.token.dc.a;
+import com.tencent.token.dn;
+import com.tencent.token.do;
 import com.tencent.token.global.RqdApplication;
 import com.tencent.token.global.c;
-import com.tencent.token.global.f;
-import com.tencent.token.global.h;
-import com.tencent.token.utils.w;
+import com.tencent.token.global.e;
+import com.tencent.token.global.g;
+import com.tencent.token.utils.l;
 import java.io.Serializable;
 import org.json.JSONObject;
 
 public class ProtoGetStrConfig
-  extends e
+  extends d
 {
   private String d;
   
-  private ew e()
+  private do e()
   {
-    eh localeh = RqdApplication.k().a(this);
-    if (localeh == null) {
+    dc.a locala = RqdApplication.k().a(this);
+    if (locala == null) {
       return null;
     }
-    return localeh.b;
+    return locala.b;
   }
   
-  public static void e(ev paramev) {}
+  public static void e(dn paramdn) {}
   
-  public ew a(Serializable paramSerializable)
+  public do a(Serializable paramSerializable)
   {
-    ew localew = new ew();
-    localew.a = paramSerializable;
-    return localew;
+    do localdo = new do();
+    localdo.a = paramSerializable;
+    return localdo;
   }
   
-  public Serializable a(ew paramew)
+  public Serializable a(do paramdo)
   {
-    return (String)paramew.a;
+    return (String)paramdo.a;
   }
   
   protected String a()
   {
-    String str = cv.a().b();
+    String str = bz.a().b();
     if (str == null)
     {
       this.a.b(104);
@@ -57,7 +57,7 @@ public class ProtoGetStrConfig
     return c.e() + "/cn/mbtoken3/mbtoken3_get_key_value_conf_v2" + str;
   }
   
-  protected void a(ev paramev) {}
+  protected void a(dn paramdn) {}
   
   protected void a(JSONObject paramJSONObject)
   {
@@ -67,18 +67,18 @@ public class ProtoGetStrConfig
       a(i, paramJSONObject.getString("info"));
       return;
     }
-    paramJSONObject = w.c(paramJSONObject.getString("data"));
+    paramJSONObject = l.c(paramJSONObject.getString("data"));
     if (paramJSONObject != null)
     {
       paramJSONObject = new JSONObject(new String(paramJSONObject));
-      ew localew = new ew();
-      localew.a = paramJSONObject.toString();
-      RqdApplication.k().a(this, localew, null);
+      do localdo = new do();
+      localdo.a = paramJSONObject.toString();
+      RqdApplication.k().a(this, localdo, null);
       this.d = paramJSONObject.getJSONObject("data").toString();
       this.a.c();
       return;
     }
-    h.c("parseJSON error decodeData=" + paramJSONObject);
+    g.c("parseJSON error decodeData=" + paramJSONObject);
     a(10022, RqdApplication.l().getString(2131230925));
   }
   
@@ -94,7 +94,7 @@ public class ProtoGetStrConfig
     }
   }
   
-  public ew d(ev paramev)
+  public do d(dn paramdn)
   {
     return e();
   }

@@ -1,106 +1,152 @@
 package com.tencent.token;
 
-import android.content.Context;
-import android.os.Handler;
-import com.tencent.token.global.h;
-import com.tencent.token.utils.w;
-import gameloginsdk.CallbackPushStruct;
-import gameloginsdk.GameLogin;
+import com.tencent.token.global.g;
 
 public class cj
+  implements ex
 {
-  private static cj c;
-  private static boolean j = false;
-  GameLogin a;
-  Handler b = new ck(this);
-  private boolean d = false;
-  private boolean e = false;
-  private CallbackPushStruct f;
-  private int g;
-  private Handler h;
-  private long i = 0L;
+  private ev a = null;
+  private ck b = null;
+  private int c = 0;
+  private ce d = null;
   
-  private cj(Context paramContext, String paramString, int paramInt)
+  public cj(ce paramce)
   {
-    if (this.a == null) {
-      this.a = new GameLogin();
-    }
-    j = this.a.init(paramContext, 34, paramString, paramInt);
-    if (!j) {
-      return;
-    }
-    this.a.setRespLimitTime(60000L);
-    this.a.setWaitPushTime(180000L);
-    this.a.setNetworkCallback(new cl(this));
+    this.d = paramce;
+    this.b = new ck();
   }
   
-  public static cj a(Context paramContext)
+  private String a()
   {
-    if ((c == null) || (!j)) {
-      c = new cj(paramContext, w.l(), 1);
+    return cb.a() + "/cn/manage/token/gprs_get_svr_time_req";
+  }
+  
+  private String a(cg paramcg)
+  {
+    if ((paramcg.c != null) && (paramcg.c.length() != 0))
+    {
+      str = paramcg.c;
+      return str;
     }
-    return c;
+    String str = "其它错误：" + paramcg.b;
+    switch (paramcg.b)
+    {
+    case 0: 
+    default: 
+      g.b("其它错误：" + paramcg.b);
+      return "其它错误：" + paramcg.b;
+    case 1: 
+      g.b("短信没有到达");
+      return "短信没有到达";
+    case 2: 
+      g.b("六位验证码验证错误");
+      return "六位验证码验证错误";
+    case 3: 
+      g.b("该号码已经绑定令牌");
+      return "该号码已经绑定令牌";
+    case 4: 
+      g.b("解除绑定时该号码还没有绑定qq");
+      return "解除绑定时该号码还没有绑定qq";
+    case 5: 
+      g.b("密保手机不正确");
+      return "密保手机不正确";
+    case 6: 
+      g.b("还没有密保手机");
+      return "还没有密保手机";
+    case 7: 
+      g.b("客户端输入错误");
+      return "客户端输入错误";
+    case 8: 
+      g.b("令牌序列号不存在");
+      return "令牌序列号不存在";
+    case 9: 
+      g.b("已经到令牌的最大绑定个数");
+      return "已经到令牌的最大绑定个数";
+    case 100: 
+      g.b("预留的错误码，如果客户端收到该错误码则无条件终止，并提示错误");
+      return "预留的错误码，如果客户端收到该错误码则无条件终止，并提示错误";
+    }
+    g.b("如果客户端收到此错误，测等待一段时间重新尝试请求。");
+    return "如果客户端收到此错误，测等待一段时间重新尝试请求。";
   }
   
   public void a(long paramLong)
   {
-    if (!j) {
+    Object localObject = this.b.a(paramLong, this.c);
+    localObject = new ew(a(), (byte[])localObject, this, true);
+    ((ew)localObject).a("POST");
+    this.a.a((ew)localObject);
+    this.c += 1;
+  }
+  
+  public void a(ev paramev)
+  {
+    this.a = paramev;
+  }
+  
+  public void a(ew paramew, String paramString)
+  {
+    this.d.c();
+  }
+  
+  public void a(ew paramew, byte[] paramArrayOfByte)
+  {
+    int i = this.b.a(paramArrayOfByte);
+    if (i == -1) {
       return;
     }
-    this.d = false;
-    this.e = false;
-    h.a("game login get flow type appid=" + paramLong);
-    this.a.sendGetFlowType(paramLong);
-  }
-  
-  public void a(String paramString, byte[] paramArrayOfByte, int paramInt, Handler paramHandler)
-  {
-    if (!j) {
+    paramew = new cg();
+    switch (i)
+    {
+    case 103: 
+    case 104: 
+    default: 
+      return;
+    case 101: 
+      this.b.a(paramew, paramArrayOfByte);
+      if (paramew.b == 0)
+      {
+        g.b("服务器时间:" + paramew.d);
+        this.d.a(paramew.d);
+        return;
+      }
+      this.d.a(a(paramew));
+      return;
+    case 102: 
+      paramew = new cf();
+      this.b.a(paramew, paramArrayOfByte);
+      this.b.a(paramew);
+      if (paramew.b == 0)
+      {
+        this.d.b(paramew.a);
+        return;
+      }
+      this.d.c(a(paramew));
+      return;
+    case 105: 
+      this.b.a(paramew, paramArrayOfByte);
+      if (paramew.b == 0)
+      {
+        cq.a().n();
+        this.d.a();
+        return;
+      }
+      this.d.a(paramew.b, a(paramew));
       return;
     }
-    this.g = paramInt;
-    this.h = paramHandler;
-    h.b("game login confirm send: " + paramString + "|" + paramArrayOfByte + "|" + paramInt);
-    this.a.sendGameConfirm(paramString, paramArrayOfByte, paramInt);
-  }
-  
-  public void a(String paramString1, byte[] paramArrayOfByte, String paramString2)
-  {
-    if (!j) {}
-    while ((!this.e) || (!this.d)) {
+    this.b.a(paramew, paramArrayOfByte);
+    if (paramew.b == 0)
+    {
+      cq.a().n();
+      this.d.b();
       return;
     }
-    h.c("game login info uin=" + paramString1 + ", guid=" + paramArrayOfByte + ", qrcode=" + paramString2);
-    this.a.sendGameLoginInfo(paramString1, paramArrayOfByte, paramString2);
+    this.d.b(paramew.b, a(paramew));
   }
   
-  public boolean a()
+  public boolean a(ew paramew, int paramInt)
   {
-    return (this.e) && (this.d);
-  }
-  
-  public boolean b()
-  {
-    return (this.f == null) || (this.i <= 0L) || (cx.c().s() - this.i >= this.f.expirtTime * 1000);
-  }
-  
-  public int c()
-  {
-    if ((this.f != null) && (this.i > 0L)) {
-      return (int)((cx.c().s() - this.i) / 1000L);
-    }
-    return 0;
-  }
-  
-  public CallbackPushStruct d()
-  {
-    return this.f;
-  }
-  
-  public void e()
-  {
-    this.f = null;
-    this.i = 0L;
+    return false;
   }
 }
 

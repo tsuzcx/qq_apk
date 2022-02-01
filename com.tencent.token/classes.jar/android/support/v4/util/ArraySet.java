@@ -6,10 +6,11 @@ import android.support.annotation.RestrictTo;
 import java.lang.reflect.Array;
 import java.util.Collection;
 import java.util.Iterator;
+import java.util.Map;
 import java.util.Set;
 
-public final class ArraySet
-  implements Collection, Set
+public final class ArraySet<E>
+  implements Collection<E>, Set<E>
 {
   private static final int BASE_SIZE = 4;
   private static final int CACHE_SIZE = 10;
@@ -22,7 +23,7 @@ public final class ArraySet
   private static Object[] sTwiceBaseCache;
   private static int sTwiceBaseCacheSize;
   private Object[] mArray;
-  private MapCollections mCollections;
+  private MapCollections<E, E> mCollections;
   private int[] mHashes;
   private int mSize;
   
@@ -46,7 +47,7 @@ public final class ArraySet
     }
   }
   
-  public ArraySet(@Nullable ArraySet paramArraySet)
+  public ArraySet(@Nullable ArraySet<E> paramArraySet)
   {
     this();
     if (paramArraySet != null) {
@@ -54,7 +55,7 @@ public final class ArraySet
     }
   }
   
-  public ArraySet(@Nullable Collection paramCollection)
+  public ArraySet(@Nullable Collection<E> paramCollection)
   {
     this();
     if (paramCollection != null) {
@@ -161,10 +162,56 @@ public final class ArraySet
     }
   }
   
-  private MapCollections getCollection()
+  private MapCollections<E, E> getCollection()
   {
     if (this.mCollections == null) {
-      this.mCollections = new ArraySet.1(this);
+      this.mCollections = new MapCollections()
+      {
+        protected void colClear()
+        {
+          ArraySet.this.clear();
+        }
+        
+        protected Object colGetEntry(int paramAnonymousInt1, int paramAnonymousInt2)
+        {
+          return ArraySet.this.mArray[paramAnonymousInt1];
+        }
+        
+        protected Map<E, E> colGetMap()
+        {
+          throw new UnsupportedOperationException("not a map");
+        }
+        
+        protected int colGetSize()
+        {
+          return ArraySet.this.mSize;
+        }
+        
+        protected int colIndexOfKey(Object paramAnonymousObject)
+        {
+          return ArraySet.this.indexOf(paramAnonymousObject);
+        }
+        
+        protected int colIndexOfValue(Object paramAnonymousObject)
+        {
+          return ArraySet.this.indexOf(paramAnonymousObject);
+        }
+        
+        protected void colPut(E paramAnonymousE1, E paramAnonymousE2)
+        {
+          ArraySet.this.add(paramAnonymousE1);
+        }
+        
+        protected void colRemoveAt(int paramAnonymousInt)
+        {
+          ArraySet.this.removeAt(paramAnonymousInt);
+        }
+        
+        protected E colSetValue(int paramAnonymousInt, E paramAnonymousE)
+        {
+          throw new UnsupportedOperationException("not a map");
+        }
+      };
     }
     return this.mCollections;
   }
@@ -253,12 +300,12 @@ public final class ArraySet
     return k ^ 0xFFFFFFFF;
   }
   
-  public boolean add(@Nullable Object paramObject)
+  public boolean add(@Nullable E paramE)
   {
     int k = 8;
     int i;
     int j;
-    if (paramObject == null)
+    if (paramE == null)
     {
       i = indexOfNull();
       j = 0;
@@ -266,8 +313,8 @@ public final class ArraySet
     while (i >= 0)
     {
       return false;
-      j = paramObject.hashCode();
-      i = indexOf(paramObject, j);
+      j = paramE.hashCode();
+      i = indexOf(paramE, j);
     }
     int m = i ^ 0xFFFFFFFF;
     if (this.mSize >= this.mHashes.length)
@@ -294,7 +341,7 @@ public final class ArraySet
         System.arraycopy(this.mArray, m, this.mArray, m + 1, this.mSize - m);
       }
       this.mHashes[m] = j;
-      this.mArray[m] = paramObject;
+      this.mArray[m] = paramE;
       this.mSize += 1;
       return true;
       label223:
@@ -305,7 +352,7 @@ public final class ArraySet
     }
   }
   
-  public void addAll(@NonNull ArraySet paramArraySet)
+  public void addAll(@NonNull ArraySet<? extends E> paramArraySet)
   {
     int i = 0;
     int j = paramArraySet.mSize;
@@ -329,7 +376,7 @@ public final class ArraySet
     }
   }
   
-  public boolean addAll(@NonNull Collection paramCollection)
+  public boolean addAll(@NonNull Collection<? extends E> paramCollection)
   {
     ensureCapacity(this.mSize + paramCollection.size());
     boolean bool = false;
@@ -341,21 +388,21 @@ public final class ArraySet
   }
   
   @RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
-  public void append(Object paramObject)
+  public void append(E paramE)
   {
     int j = this.mSize;
-    if (paramObject == null) {}
-    for (int i = 0; j >= this.mHashes.length; i = paramObject.hashCode()) {
+    if (paramE == null) {}
+    for (int i = 0; j >= this.mHashes.length; i = paramE.hashCode()) {
       throw new IllegalStateException("Array is full");
     }
     if ((j > 0) && (this.mHashes[(j - 1)] > i))
     {
-      add(paramObject);
+      add(paramE);
       return;
     }
     this.mSize = (j + 1);
     this.mHashes[j] = i;
-    this.mArray[j] = paramObject;
+    this.mArray[j] = paramE;
   }
   
   public void clear()
@@ -374,7 +421,7 @@ public final class ArraySet
     return indexOf(paramObject) >= 0;
   }
   
-  public boolean containsAll(@NonNull Collection paramCollection)
+  public boolean containsAll(@NonNull Collection<?> paramCollection)
   {
     paramCollection = paramCollection.iterator();
     while (paramCollection.hasNext()) {
@@ -465,7 +512,7 @@ public final class ArraySet
     return this.mSize <= 0;
   }
   
-  public Iterator iterator()
+  public Iterator<E> iterator()
   {
     return getCollection().getKeySet().iterator();
   }
@@ -481,7 +528,7 @@ public final class ArraySet
     return false;
   }
   
-  public boolean removeAll(ArraySet paramArraySet)
+  public boolean removeAll(ArraySet<? extends E> paramArraySet)
   {
     boolean bool = false;
     int j = paramArraySet.mSize;
@@ -498,7 +545,7 @@ public final class ArraySet
     return bool;
   }
   
-  public boolean removeAll(@NonNull Collection paramCollection)
+  public boolean removeAll(@NonNull Collection<?> paramCollection)
   {
     boolean bool = false;
     paramCollection = paramCollection.iterator();
@@ -508,7 +555,7 @@ public final class ArraySet
     return bool;
   }
   
-  public Object removeAt(int paramInt)
+  public E removeAt(int paramInt)
   {
     int i = 8;
     Object localObject = this.mArray[paramInt];
@@ -553,7 +600,7 @@ public final class ArraySet
     return localObject;
   }
   
-  public boolean retainAll(@NonNull Collection paramCollection)
+  public boolean retainAll(@NonNull Collection<?> paramCollection)
   {
     int i = this.mSize;
     boolean bool = false;
@@ -584,18 +631,18 @@ public final class ArraySet
   }
   
   @NonNull
-  public Object[] toArray(@NonNull Object[] paramArrayOfObject)
+  public <T> T[] toArray(@NonNull T[] paramArrayOfT)
   {
-    if (paramArrayOfObject.length < this.mSize) {
-      paramArrayOfObject = (Object[])Array.newInstance(paramArrayOfObject.getClass().getComponentType(), this.mSize);
+    if (paramArrayOfT.length < this.mSize) {
+      paramArrayOfT = (Object[])Array.newInstance(paramArrayOfT.getClass().getComponentType(), this.mSize);
     }
     for (;;)
     {
-      System.arraycopy(this.mArray, 0, paramArrayOfObject, 0, this.mSize);
-      if (paramArrayOfObject.length > this.mSize) {
-        paramArrayOfObject[this.mSize] = null;
+      System.arraycopy(this.mArray, 0, paramArrayOfT, 0, this.mSize);
+      if (paramArrayOfT.length > this.mSize) {
+        paramArrayOfT[this.mSize] = null;
       }
-      return paramArrayOfObject;
+      return paramArrayOfT;
     }
   }
   
@@ -628,7 +675,7 @@ public final class ArraySet
   }
   
   @Nullable
-  public Object valueAt(int paramInt)
+  public E valueAt(int paramInt)
   {
     return this.mArray[paramInt];
   }

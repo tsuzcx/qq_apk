@@ -3,21 +3,22 @@ package android.support.v4.graphics;
 import android.graphics.Bitmap;
 import android.os.Build.VERSION;
 import android.support.annotation.NonNull;
+import android.support.annotation.RequiresApi;
 
 public final class BitmapCompat
 {
-  static final BitmapCompat.BitmapCompatBaseImpl IMPL = new BitmapCompat.BitmapCompatBaseImpl();
+  static final BitmapCompatBaseImpl IMPL = new BitmapCompatBaseImpl();
   
   static
   {
     if (Build.VERSION.SDK_INT >= 19)
     {
-      IMPL = new BitmapCompat.BitmapCompatApi19Impl();
+      IMPL = new BitmapCompatApi19Impl();
       return;
     }
     if (Build.VERSION.SDK_INT >= 18)
     {
-      IMPL = new BitmapCompat.BitmapCompatApi18Impl();
+      IMPL = new BitmapCompatApi18Impl();
       return;
     }
   }
@@ -35,6 +36,46 @@ public final class BitmapCompat
   public static void setHasMipMap(@NonNull Bitmap paramBitmap, boolean paramBoolean)
   {
     IMPL.setHasMipMap(paramBitmap, paramBoolean);
+  }
+  
+  @RequiresApi(18)
+  static class BitmapCompatApi18Impl
+    extends BitmapCompat.BitmapCompatBaseImpl
+  {
+    public boolean hasMipMap(Bitmap paramBitmap)
+    {
+      return paramBitmap.hasMipMap();
+    }
+    
+    public void setHasMipMap(Bitmap paramBitmap, boolean paramBoolean)
+    {
+      paramBitmap.setHasMipMap(paramBoolean);
+    }
+  }
+  
+  @RequiresApi(19)
+  static class BitmapCompatApi19Impl
+    extends BitmapCompat.BitmapCompatApi18Impl
+  {
+    public int getAllocationByteCount(Bitmap paramBitmap)
+    {
+      return paramBitmap.getAllocationByteCount();
+    }
+  }
+  
+  static class BitmapCompatBaseImpl
+  {
+    public int getAllocationByteCount(Bitmap paramBitmap)
+    {
+      return paramBitmap.getByteCount();
+    }
+    
+    public boolean hasMipMap(Bitmap paramBitmap)
+    {
+      return false;
+    }
+    
+    public void setHasMipMap(Bitmap paramBitmap, boolean paramBoolean) {}
   }
 }
 

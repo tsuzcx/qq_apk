@@ -10,16 +10,16 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
 
-abstract class BaseMenuWrapper
-  extends BaseWrapper
+abstract class BaseMenuWrapper<T>
+  extends BaseWrapper<T>
 {
   final Context mContext;
-  private Map mMenuItems;
-  private Map mSubMenus;
+  private Map<SupportMenuItem, MenuItem> mMenuItems;
+  private Map<SupportSubMenu, SubMenu> mSubMenus;
   
-  BaseMenuWrapper(Context paramContext, Object paramObject)
+  BaseMenuWrapper(Context paramContext, T paramT)
   {
-    super(paramObject);
+    super(paramT);
     this.mContext = paramContext;
   }
   

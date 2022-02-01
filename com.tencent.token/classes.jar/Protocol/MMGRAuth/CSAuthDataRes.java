@@ -8,8 +8,8 @@ import java.util.ArrayList;
 public final class CSAuthDataRes
   extends JceStruct
 {
-  static ArrayList a = new ArrayList();
-  public ArrayList resList = null;
+  static ArrayList<AuthDataRes> a = new ArrayList();
+  public ArrayList<AuthDataRes> resList = null;
   
   static
   {

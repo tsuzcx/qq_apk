@@ -10,8 +10,8 @@ public final class ChannelInfo
   extends JceStruct
   implements Cloneable
 {
-  static ArrayList dN;
-  public ArrayList checksoft = null;
+  static ArrayList<SoftKey> dN;
+  public ArrayList<SoftKey> checksoft = null;
   public String id = "";
   public int isbuildin = 0;
   public int product = EProduct.EP_None.value();
@@ -36,7 +36,7 @@ public final class ChannelInfo
     setChecksoft(this.checksoft);
   }
   
-  public ChannelInfo(String paramString1, int paramInt1, int paramInt2, String paramString2, ArrayList paramArrayList)
+  public ChannelInfo(String paramString1, int paramInt1, int paramInt2, String paramString2, ArrayList<SoftKey> paramArrayList)
   {
     setId(paramString1);
     setProduct(paramInt1);
@@ -82,7 +82,7 @@ public final class ChannelInfo
     return "tmsdk.QQPIM.ChannelInfo";
   }
   
-  public ArrayList getChecksoft()
+  public ArrayList<SoftKey> getChecksoft()
   {
     return this.checksoft;
   }
@@ -135,7 +135,7 @@ public final class ChannelInfo
     setChecksoft((ArrayList)paramJceInputStream.read(dN, 4, false));
   }
   
-  public void setChecksoft(ArrayList paramArrayList)
+  public void setChecksoft(ArrayList<SoftKey> paramArrayList)
   {
     this.checksoft = paramArrayList;
   }

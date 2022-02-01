@@ -6,8 +6,8 @@ import java.util.HashMap;
 public final class d
   extends c
 {
-  private static HashMap f = null;
-  private static HashMap g = null;
+  private static HashMap<String, byte[]> f = null;
+  private static HashMap<String, HashMap<String, byte[]>> g = null;
   private f e = new f();
   
   public d()
@@ -20,12 +20,12 @@ public final class d
     this.e.b = 1;
   }
   
-  public final void a(String paramString, Object paramObject)
+  public final <T> void a(String paramString, T paramT)
   {
     if (paramString.startsWith(".")) {
       throw new IllegalArgumentException("put name can not startwith . , now is " + paramString);
     }
-    super.a(paramString, paramObject);
+    super.a(paramString, paramT);
   }
   
   public final void a(byte[] paramArrayOfByte)

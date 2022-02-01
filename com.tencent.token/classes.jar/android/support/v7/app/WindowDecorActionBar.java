@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.content.res.Resources.Theme;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
@@ -14,14 +15,21 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewCompat;
 import android.support.v4.view.ViewPropertyAnimatorCompat;
 import android.support.v4.view.ViewPropertyAnimatorListener;
+import android.support.v4.view.ViewPropertyAnimatorListenerAdapter;
 import android.support.v4.view.ViewPropertyAnimatorUpdateListener;
 import android.support.v7.appcompat.R.attr;
 import android.support.v7.appcompat.R.id;
 import android.support.v7.appcompat.R.styleable;
+import android.support.v7.content.res.AppCompatResources;
 import android.support.v7.view.ActionBarPolicy;
 import android.support.v7.view.ActionMode;
 import android.support.v7.view.ActionMode.Callback;
+import android.support.v7.view.SupportMenuInflater;
 import android.support.v7.view.ViewPropertyAnimatorCompatSet;
+import android.support.v7.view.menu.MenuBuilder;
+import android.support.v7.view.menu.MenuBuilder.Callback;
+import android.support.v7.view.menu.MenuPopupHelper;
+import android.support.v7.view.menu.SubMenuBuilder;
 import android.support.v7.widget.ActionBarContainer;
 import android.support.v7.widget.ActionBarContextView;
 import android.support.v7.widget.ActionBarOverlayLayout;
@@ -35,6 +43,8 @@ import android.view.KeyCharacterMap;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
@@ -42,6 +52,7 @@ import android.view.animation.AccelerateInterpolator;
 import android.view.animation.DecelerateInterpolator;
 import android.view.animation.Interpolator;
 import android.widget.SpinnerAdapter;
+import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 
 @RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
@@ -55,7 +66,7 @@ public class WindowDecorActionBar
   private static final String TAG = "WindowDecorActionBar";
   private static final Interpolator sHideInterpolator;
   private static final Interpolator sShowInterpolator;
-  WindowDecorActionBar.ActionModeImpl mActionMode;
+  ActionModeImpl mActionMode;
   private Activity mActivity;
   ActionBarContainer mContainerView;
   boolean mContentAnimations = true;
@@ -72,21 +83,51 @@ public class WindowDecorActionBar
   private boolean mHasEmbeddedTabs;
   boolean mHiddenByApp;
   boolean mHiddenBySystem;
-  final ViewPropertyAnimatorListener mHideListener = new WindowDecorActionBar.1(this);
+  final ViewPropertyAnimatorListener mHideListener = new ViewPropertyAnimatorListenerAdapter()
+  {
+    public void onAnimationEnd(View paramAnonymousView)
+    {
+      if ((WindowDecorActionBar.this.mContentAnimations) && (WindowDecorActionBar.this.mContentView != null))
+      {
+        WindowDecorActionBar.this.mContentView.setTranslationY(0.0F);
+        WindowDecorActionBar.this.mContainerView.setTranslationY(0.0F);
+      }
+      WindowDecorActionBar.this.mContainerView.setVisibility(8);
+      WindowDecorActionBar.this.mContainerView.setTransitioning(false);
+      WindowDecorActionBar.this.mCurrentShowAnim = null;
+      WindowDecorActionBar.this.completeDeferredDestroyActionMode();
+      if (WindowDecorActionBar.this.mOverlayLayout != null) {
+        ViewCompat.requestApplyInsets(WindowDecorActionBar.this.mOverlayLayout);
+      }
+    }
+  };
   boolean mHideOnContentScroll;
   private boolean mLastMenuVisibility;
-  private ArrayList mMenuVisibilityListeners = new ArrayList();
+  private ArrayList<ActionBar.OnMenuVisibilityListener> mMenuVisibilityListeners = new ArrayList();
   private boolean mNowShowing = true;
   ActionBarOverlayLayout mOverlayLayout;
   private int mSavedTabPosition = -1;
-  private WindowDecorActionBar.TabImpl mSelectedTab;
+  private TabImpl mSelectedTab;
   private boolean mShowHideAnimationEnabled;
-  final ViewPropertyAnimatorListener mShowListener = new WindowDecorActionBar.2(this);
+  final ViewPropertyAnimatorListener mShowListener = new ViewPropertyAnimatorListenerAdapter()
+  {
+    public void onAnimationEnd(View paramAnonymousView)
+    {
+      WindowDecorActionBar.this.mCurrentShowAnim = null;
+      WindowDecorActionBar.this.mContainerView.requestLayout();
+    }
+  };
   private boolean mShowingForMode;
   ScrollingTabContainerView mTabScrollView;
-  private ArrayList mTabs = new ArrayList();
+  private ArrayList<TabImpl> mTabs = new ArrayList();
   private Context mThemedContext;
-  final ViewPropertyAnimatorUpdateListener mUpdateListener = new WindowDecorActionBar.3(this);
+  final ViewPropertyAnimatorUpdateListener mUpdateListener = new ViewPropertyAnimatorUpdateListener()
+  {
+    public void onAnimationUpdate(View paramAnonymousView)
+    {
+      ((View)WindowDecorActionBar.this.mContainerView.getParent()).invalidate();
+    }
+  };
   
   static
   {
@@ -146,7 +187,7 @@ public class WindowDecorActionBar
   
   private void configureTab(ActionBar.Tab paramTab, int paramInt)
   {
-    paramTab = (WindowDecorActionBar.TabImpl)paramTab;
+    paramTab = (TabImpl)paramTab;
     if (paramTab.getCallback() == null) {
       throw new IllegalStateException("Action Bar Tab must have a Callback");
     }
@@ -156,7 +197,7 @@ public class WindowDecorActionBar
     paramInt += 1;
     while (paramInt < i)
     {
-      ((WindowDecorActionBar.TabImpl)this.mTabs.get(paramInt)).setPosition(paramInt);
+      ((TabImpl)this.mTabs.get(paramInt)).setPosition(paramInt);
       paramInt += 1;
     }
   }
@@ -705,7 +746,7 @@ public class WindowDecorActionBar
   
   public ActionBar.Tab newTab()
   {
-    return new WindowDecorActionBar.TabImpl(this);
+    return new TabImpl();
   }
   
   public void onConfigurationChanged(Configuration paramConfiguration)
@@ -782,7 +823,7 @@ public class WindowDecorActionBar
       for (i = this.mSelectedTab.getPosition();; i = this.mSavedTabPosition)
       {
         this.mTabScrollView.removeTabAt(paramInt);
-        localTabImpl = (WindowDecorActionBar.TabImpl)this.mTabs.remove(paramInt);
+        localTabImpl = (TabImpl)this.mTabs.remove(paramInt);
         if (localTabImpl != null) {
           localTabImpl.setPosition(-1);
         }
@@ -790,13 +831,13 @@ public class WindowDecorActionBar
         int j = paramInt;
         while (j < k)
         {
-          ((WindowDecorActionBar.TabImpl)this.mTabs.get(j)).setPosition(j);
+          ((TabImpl)this.mTabs.get(j)).setPosition(j);
           j += 1;
         }
       }
     } while (i != paramInt);
     if (this.mTabs.isEmpty()) {}
-    for (WindowDecorActionBar.TabImpl localTabImpl = null;; localTabImpl = (WindowDecorActionBar.TabImpl)this.mTabs.get(Math.max(0, paramInt - 1)))
+    for (TabImpl localTabImpl = null;; localTabImpl = (TabImpl)this.mTabs.get(Math.max(0, paramInt - 1)))
     {
       selectTab(localTabImpl);
       return;
@@ -861,7 +902,7 @@ public class WindowDecorActionBar
         if (this.mSelectedTab != null) {
           this.mSelectedTab.getCallback().onTabUnselected(this.mSelectedTab, localFragmentTransaction);
         }
-        this.mSelectedTab = ((WindowDecorActionBar.TabImpl)paramTab);
+        this.mSelectedTab = ((TabImpl)paramTab);
         if (this.mSelectedTab != null) {
           this.mSelectedTab.getCallback().onTabSelected(this.mSelectedTab, localFragmentTransaction);
         }
@@ -1167,7 +1208,7 @@ public class WindowDecorActionBar
     }
     this.mOverlayLayout.setHideOnContentScrollEnabled(false);
     this.mContextView.killMode();
-    paramCallback = new WindowDecorActionBar.ActionModeImpl(this, this.mContextView.getContext(), paramCallback);
+    paramCallback = new ActionModeImpl(this.mContextView.getContext(), paramCallback);
     if (paramCallback.dispatchOnCreate())
     {
       this.mActionMode = paramCallback;
@@ -1178,6 +1219,306 @@ public class WindowDecorActionBar
       return paramCallback;
     }
     return null;
+  }
+  
+  @RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
+  public class ActionModeImpl
+    extends ActionMode
+    implements MenuBuilder.Callback
+  {
+    private final Context mActionModeContext;
+    private ActionMode.Callback mCallback;
+    private WeakReference<View> mCustomView;
+    private final MenuBuilder mMenu;
+    
+    public ActionModeImpl(Context paramContext, ActionMode.Callback paramCallback)
+    {
+      this.mActionModeContext = paramContext;
+      this.mCallback = paramCallback;
+      this.mMenu = new MenuBuilder(paramContext).setDefaultShowAsAction(1);
+      this.mMenu.setCallback(this);
+    }
+    
+    public boolean dispatchOnCreate()
+    {
+      this.mMenu.stopDispatchingItemsChanged();
+      try
+      {
+        boolean bool = this.mCallback.onCreateActionMode(this, this.mMenu);
+        return bool;
+      }
+      finally
+      {
+        this.mMenu.startDispatchingItemsChanged();
+      }
+    }
+    
+    public void finish()
+    {
+      if (WindowDecorActionBar.this.mActionMode != this) {
+        return;
+      }
+      if (!WindowDecorActionBar.checkShowingFlags(WindowDecorActionBar.this.mHiddenByApp, WindowDecorActionBar.this.mHiddenBySystem, false))
+      {
+        WindowDecorActionBar.this.mDeferredDestroyActionMode = this;
+        WindowDecorActionBar.this.mDeferredModeDestroyCallback = this.mCallback;
+      }
+      for (;;)
+      {
+        this.mCallback = null;
+        WindowDecorActionBar.this.animateToMode(false);
+        WindowDecorActionBar.this.mContextView.closeMode();
+        WindowDecorActionBar.this.mDecorToolbar.getViewGroup().sendAccessibilityEvent(32);
+        WindowDecorActionBar.this.mOverlayLayout.setHideOnContentScrollEnabled(WindowDecorActionBar.this.mHideOnContentScroll);
+        WindowDecorActionBar.this.mActionMode = null;
+        return;
+        this.mCallback.onDestroyActionMode(this);
+      }
+    }
+    
+    public View getCustomView()
+    {
+      if (this.mCustomView != null) {
+        return (View)this.mCustomView.get();
+      }
+      return null;
+    }
+    
+    public Menu getMenu()
+    {
+      return this.mMenu;
+    }
+    
+    public MenuInflater getMenuInflater()
+    {
+      return new SupportMenuInflater(this.mActionModeContext);
+    }
+    
+    public CharSequence getSubtitle()
+    {
+      return WindowDecorActionBar.this.mContextView.getSubtitle();
+    }
+    
+    public CharSequence getTitle()
+    {
+      return WindowDecorActionBar.this.mContextView.getTitle();
+    }
+    
+    public void invalidate()
+    {
+      if (WindowDecorActionBar.this.mActionMode != this) {
+        return;
+      }
+      this.mMenu.stopDispatchingItemsChanged();
+      try
+      {
+        this.mCallback.onPrepareActionMode(this, this.mMenu);
+        return;
+      }
+      finally
+      {
+        this.mMenu.startDispatchingItemsChanged();
+      }
+    }
+    
+    public boolean isTitleOptional()
+    {
+      return WindowDecorActionBar.this.mContextView.isTitleOptional();
+    }
+    
+    public void onCloseMenu(MenuBuilder paramMenuBuilder, boolean paramBoolean) {}
+    
+    public void onCloseSubMenu(SubMenuBuilder paramSubMenuBuilder) {}
+    
+    public boolean onMenuItemSelected(MenuBuilder paramMenuBuilder, MenuItem paramMenuItem)
+    {
+      if (this.mCallback != null) {
+        return this.mCallback.onActionItemClicked(this, paramMenuItem);
+      }
+      return false;
+    }
+    
+    public void onMenuModeChange(MenuBuilder paramMenuBuilder)
+    {
+      if (this.mCallback == null) {
+        return;
+      }
+      invalidate();
+      WindowDecorActionBar.this.mContextView.showOverflowMenu();
+    }
+    
+    public boolean onSubMenuSelected(SubMenuBuilder paramSubMenuBuilder)
+    {
+      boolean bool = true;
+      if (this.mCallback == null) {
+        bool = false;
+      }
+      while (!paramSubMenuBuilder.hasVisibleItems()) {
+        return bool;
+      }
+      new MenuPopupHelper(WindowDecorActionBar.this.getThemedContext(), paramSubMenuBuilder).show();
+      return true;
+    }
+    
+    public void setCustomView(View paramView)
+    {
+      WindowDecorActionBar.this.mContextView.setCustomView(paramView);
+      this.mCustomView = new WeakReference(paramView);
+    }
+    
+    public void setSubtitle(int paramInt)
+    {
+      setSubtitle(WindowDecorActionBar.this.mContext.getResources().getString(paramInt));
+    }
+    
+    public void setSubtitle(CharSequence paramCharSequence)
+    {
+      WindowDecorActionBar.this.mContextView.setSubtitle(paramCharSequence);
+    }
+    
+    public void setTitle(int paramInt)
+    {
+      setTitle(WindowDecorActionBar.this.mContext.getResources().getString(paramInt));
+    }
+    
+    public void setTitle(CharSequence paramCharSequence)
+    {
+      WindowDecorActionBar.this.mContextView.setTitle(paramCharSequence);
+    }
+    
+    public void setTitleOptionalHint(boolean paramBoolean)
+    {
+      super.setTitleOptionalHint(paramBoolean);
+      WindowDecorActionBar.this.mContextView.setTitleOptional(paramBoolean);
+    }
+  }
+  
+  @RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
+  public class TabImpl
+    extends ActionBar.Tab
+  {
+    private ActionBar.TabListener mCallback;
+    private CharSequence mContentDesc;
+    private View mCustomView;
+    private Drawable mIcon;
+    private int mPosition = -1;
+    private Object mTag;
+    private CharSequence mText;
+    
+    public TabImpl() {}
+    
+    public ActionBar.TabListener getCallback()
+    {
+      return this.mCallback;
+    }
+    
+    public CharSequence getContentDescription()
+    {
+      return this.mContentDesc;
+    }
+    
+    public View getCustomView()
+    {
+      return this.mCustomView;
+    }
+    
+    public Drawable getIcon()
+    {
+      return this.mIcon;
+    }
+    
+    public int getPosition()
+    {
+      return this.mPosition;
+    }
+    
+    public Object getTag()
+    {
+      return this.mTag;
+    }
+    
+    public CharSequence getText()
+    {
+      return this.mText;
+    }
+    
+    public void select()
+    {
+      WindowDecorActionBar.this.selectTab(this);
+    }
+    
+    public ActionBar.Tab setContentDescription(int paramInt)
+    {
+      return setContentDescription(WindowDecorActionBar.this.mContext.getResources().getText(paramInt));
+    }
+    
+    public ActionBar.Tab setContentDescription(CharSequence paramCharSequence)
+    {
+      this.mContentDesc = paramCharSequence;
+      if (this.mPosition >= 0) {
+        WindowDecorActionBar.this.mTabScrollView.updateTab(this.mPosition);
+      }
+      return this;
+    }
+    
+    public ActionBar.Tab setCustomView(int paramInt)
+    {
+      return setCustomView(LayoutInflater.from(WindowDecorActionBar.this.getThemedContext()).inflate(paramInt, null));
+    }
+    
+    public ActionBar.Tab setCustomView(View paramView)
+    {
+      this.mCustomView = paramView;
+      if (this.mPosition >= 0) {
+        WindowDecorActionBar.this.mTabScrollView.updateTab(this.mPosition);
+      }
+      return this;
+    }
+    
+    public ActionBar.Tab setIcon(int paramInt)
+    {
+      return setIcon(AppCompatResources.getDrawable(WindowDecorActionBar.this.mContext, paramInt));
+    }
+    
+    public ActionBar.Tab setIcon(Drawable paramDrawable)
+    {
+      this.mIcon = paramDrawable;
+      if (this.mPosition >= 0) {
+        WindowDecorActionBar.this.mTabScrollView.updateTab(this.mPosition);
+      }
+      return this;
+    }
+    
+    public void setPosition(int paramInt)
+    {
+      this.mPosition = paramInt;
+    }
+    
+    public ActionBar.Tab setTabListener(ActionBar.TabListener paramTabListener)
+    {
+      this.mCallback = paramTabListener;
+      return this;
+    }
+    
+    public ActionBar.Tab setTag(Object paramObject)
+    {
+      this.mTag = paramObject;
+      return this;
+    }
+    
+    public ActionBar.Tab setText(int paramInt)
+    {
+      return setText(WindowDecorActionBar.this.mContext.getResources().getText(paramInt));
+    }
+    
+    public ActionBar.Tab setText(CharSequence paramCharSequence)
+    {
+      this.mText = paramCharSequence;
+      if (this.mPosition >= 0) {
+        WindowDecorActionBar.this.mTabScrollView.updateTab(this.mPosition);
+      }
+      return this;
+    }
   }
 }
 

@@ -9,9 +9,9 @@ public final class SCUpdateVirusInfos
   extends JceStruct
 {
   static VirusServerInfo eI = new VirusServerInfo();
-  static ArrayList eJ = new ArrayList();
+  static ArrayList<VirusInfo> eJ = new ArrayList();
   public VirusServerInfo serverinfo = null;
-  public ArrayList virusinfos = null;
+  public ArrayList<VirusInfo> virusinfos = null;
   
   static
   {

@@ -5,7 +5,7 @@ import android.os.AsyncTask;
 import android.widget.ImageView;
 
 public final class a
-  extends AsyncTask
+  extends AsyncTask<String, Integer, Uri>
 {
   private ImageView a;
   
@@ -18,7 +18,7 @@ public final class a
   {
     try
     {
-      paramVarArgs = j.a(paramVarArgs[0]);
+      paramVarArgs = f.a(paramVarArgs[0]);
       return paramVarArgs;
     }
     catch (Exception paramVarArgs)

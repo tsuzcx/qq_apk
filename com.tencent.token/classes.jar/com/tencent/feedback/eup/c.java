@@ -28,7 +28,7 @@ public final class c
     }
   }
   
-  private int a(List paramList, int paramInt, boolean paramBoolean)
+  private int a(List<e> paramList, int paramInt, boolean paramBoolean)
   {
     Context localContext = this.b;
     if ((paramList == null) || (paramInt <= 0)) {
@@ -74,28 +74,28 @@ public final class c
     //   2: aload_0
     //   3: getfield 23	com/tencent/feedback/eup/c:a	Ljava/lang/Thread$UncaughtExceptionHandler;
     //   6: ifnull +27 -> 33
-    //   9: ldc 86
+    //   9: ldc 88
     //   11: iconst_0
     //   12: anewarray 4	java/lang/Object
-    //   15: invokestatic 91	com/tencent/feedback/common/e:b	(Ljava/lang/String;[Ljava/lang/Object;)Z
+    //   15: invokestatic 93	com/tencent/feedback/common/e:b	(Ljava/lang/String;[Ljava/lang/Object;)Z
     //   18: pop
     //   19: aload_0
     //   20: getfield 23	com/tencent/feedback/eup/c:a	Ljava/lang/Thread$UncaughtExceptionHandler;
     //   23: aload_1
     //   24: aload_2
-    //   25: invokeinterface 94 3 0
+    //   25: invokeinterface 96 3 0
     //   30: aload_0
     //   31: monitorexit
     //   32: return
-    //   33: ldc 96
+    //   33: ldc 98
     //   35: iconst_0
     //   36: anewarray 4	java/lang/Object
-    //   39: invokestatic 91	com/tencent/feedback/common/e:b	(Ljava/lang/String;[Ljava/lang/Object;)Z
+    //   39: invokestatic 93	com/tencent/feedback/common/e:b	(Ljava/lang/String;[Ljava/lang/Object;)Z
     //   42: pop
-    //   43: invokestatic 101	android/os/Process:myPid	()I
-    //   46: invokestatic 105	android/os/Process:killProcess	(I)V
+    //   43: invokestatic 103	android/os/Process:myPid	()I
+    //   46: invokestatic 107	android/os/Process:killProcess	(I)V
     //   49: iconst_1
-    //   50: invokestatic 110	java/lang/System:exit	(I)V
+    //   50: invokestatic 112	java/lang/System:exit	(I)V
     //   53: goto -23 -> 30
     //   56: astore_1
     //   57: aload_0
@@ -294,43 +294,43 @@ public final class c
     // Byte code:
     //   0: aload_0
     //   1: getfield 25	com/tencent/feedback/eup/c:b	Landroid/content/Context;
-    //   4: invokestatic 352	com/tencent/feedback/common/c:a	(Landroid/content/Context;)Lcom/tencent/feedback/common/c;
-    //   7: invokevirtual 355	com/tencent/feedback/common/c:E	()Ljava/lang/String;
+    //   4: invokestatic 354	com/tencent/feedback/common/c:a	(Landroid/content/Context;)Lcom/tencent/feedback/common/c;
+    //   7: invokevirtual 357	com/tencent/feedback/common/c:E	()Ljava/lang/String;
     //   10: astore 16
-    //   12: ldc_w 258
+    //   12: ldc_w 260
     //   15: astore 15
-    //   17: ldc_w 258
+    //   17: ldc_w 260
     //   20: astore 11
     //   22: aload_2
     //   23: ifnull +463 -> 486
     //   26: aload_2
-    //   27: invokevirtual 358	java/lang/Throwable:getMessage	()Ljava/lang/String;
+    //   27: invokevirtual 360	java/lang/Throwable:getMessage	()Ljava/lang/String;
     //   30: astore 12
     //   32: aload_2
     //   33: ifnull +461 -> 494
     //   36: aload_2
-    //   37: invokevirtual 362	java/lang/Object:getClass	()Ljava/lang/Class;
-    //   40: invokevirtual 367	java/lang/Class:getName	()Ljava/lang/String;
+    //   37: invokevirtual 364	java/lang/Object:getClass	()Ljava/lang/Class;
+    //   40: invokevirtual 369	java/lang/Class:getName	()Ljava/lang/String;
     //   43: astore 10
-    //   45: invokestatic 372	com/tencent/feedback/eup/f:l	()Lcom/tencent/feedback/eup/f;
+    //   45: invokestatic 374	com/tencent/feedback/eup/f:l	()Lcom/tencent/feedback/eup/f;
     //   48: astore 13
     //   50: aload 13
     //   52: ifnonnull +450 -> 502
-    //   55: ldc_w 374
+    //   55: ldc_w 376
     //   58: iconst_0
     //   59: anewarray 4	java/lang/Object
-    //   62: invokestatic 155	com/tencent/feedback/common/e:c	(Ljava/lang/String;[Ljava/lang/Object;)Z
+    //   62: invokestatic 157	com/tencent/feedback/common/e:c	(Ljava/lang/String;[Ljava/lang/Object;)Z
     //   65: pop
     //   66: aconst_null
     //   67: astore 13
-    //   69: new 376	java/util/Date
+    //   69: new 378	java/util/Date
     //   72: dup
-    //   73: invokespecial 377	java/util/Date:<init>	()V
-    //   76: invokevirtual 380	java/util/Date:getTime	()J
+    //   73: invokespecial 379	java/util/Date:<init>	()V
+    //   76: invokevirtual 382	java/util/Date:getTime	()J
     //   79: lstore 8
     //   81: aload_2
-    //   82: invokestatic 386	com/tencent/feedback/eup/CrashReport:getCrashRuntimeStrategy	()Lcom/tencent/feedback/eup/CrashStrategyBean;
-    //   85: invokestatic 389	com/tencent/feedback/eup/b:a	(Ljava/lang/Throwable;Lcom/tencent/feedback/eup/CrashStrategyBean;)Ljava/lang/String;
+    //   82: invokestatic 388	com/tencent/feedback/eup/CrashReport:getCrashRuntimeStrategy	()Lcom/tencent/feedback/eup/CrashStrategyBean;
+    //   85: invokestatic 391	com/tencent/feedback/eup/b:a	(Ljava/lang/Throwable;Lcom/tencent/feedback/eup/CrashStrategyBean;)Ljava/lang/String;
     //   88: astore 14
     //   90: aload 11
     //   92: astore 15
@@ -339,24 +339,24 @@ public final class c
     //   99: aload 11
     //   101: astore 15
     //   103: aload 14
-    //   105: ldc 185
-    //   107: invokevirtual 248	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
+    //   105: ldc 187
+    //   107: invokevirtual 250	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
     //   110: ifeq +18 -> 128
     //   113: aload 14
     //   115: iconst_0
     //   116: aload 14
-    //   118: ldc 185
-    //   120: invokevirtual 393	java/lang/String:indexOf	(Ljava/lang/String;)I
-    //   123: invokevirtual 397	java/lang/String:substring	(II)Ljava/lang/String;
+    //   118: ldc 187
+    //   120: invokevirtual 395	java/lang/String:indexOf	(Ljava/lang/String;)I
+    //   123: invokevirtual 399	java/lang/String:substring	(II)Ljava/lang/String;
     //   126: astore 15
-    //   128: ldc_w 399
+    //   128: ldc_w 401
     //   131: iconst_1
     //   132: anewarray 4	java/lang/Object
     //   135: dup
     //   136: iconst_0
     //   137: aload 14
     //   139: aastore
-    //   140: invokestatic 91	com/tencent/feedback/common/e:b	(Ljava/lang/String;[Ljava/lang/Object;)Z
+    //   140: invokestatic 93	com/tencent/feedback/common/e:b	(Ljava/lang/String;[Ljava/lang/Object;)Z
     //   143: pop
     //   144: aload_3
     //   145: astore 11
@@ -366,19 +366,19 @@ public final class c
     //   153: astore 11
     //   155: aload 13
     //   157: ifnull +466 -> 623
-    //   160: ldc_w 401
+    //   160: ldc_w 403
     //   163: iconst_0
     //   164: anewarray 4	java/lang/Object
-    //   167: invokestatic 91	com/tencent/feedback/common/e:b	(Ljava/lang/String;[Ljava/lang/Object;)Z
+    //   167: invokestatic 93	com/tencent/feedback/common/e:b	(Ljava/lang/String;[Ljava/lang/Object;)Z
     //   170: pop
     //   171: aload_3
     //   172: astore_2
     //   173: aload 13
     //   175: ifnull +34 -> 209
-    //   178: ldc_w 403
+    //   178: ldc_w 405
     //   181: iconst_0
     //   182: anewarray 4	java/lang/Object
-    //   185: invokestatic 142	com/tencent/feedback/common/e:a	(Ljava/lang/String;[Ljava/lang/Object;)Z
+    //   185: invokestatic 144	com/tencent/feedback/common/e:a	(Ljava/lang/String;[Ljava/lang/Object;)Z
     //   188: pop
     //   189: aload 13
     //   191: iconst_0
@@ -387,16 +387,16 @@ public final class c
     //   196: aload 14
     //   198: sipush -10000
     //   201: lload 8
-    //   203: invokeinterface 409 8 0
+    //   203: invokeinterface 411 8 0
     //   208: astore_2
     //   209: aload_2
     //   210: astore 11
     //   212: aload 13
     //   214: ifnull +409 -> 623
-    //   217: ldc_w 411
+    //   217: ldc_w 413
     //   220: iconst_0
     //   221: anewarray 4	java/lang/Object
-    //   224: invokestatic 142	com/tencent/feedback/common/e:a	(Ljava/lang/String;[Ljava/lang/Object;)Z
+    //   224: invokestatic 144	com/tencent/feedback/common/e:a	(Ljava/lang/String;[Ljava/lang/Object;)Z
     //   227: pop
     //   228: aload 13
     //   230: iconst_0
@@ -405,22 +405,22 @@ public final class c
     //   235: aload 14
     //   237: sipush -10000
     //   240: lload 8
-    //   242: invokeinterface 415 8 0
+    //   242: invokeinterface 417 8 0
     //   247: astore_3
     //   248: aload_0
     //   249: getfield 25	com/tencent/feedback/eup/c:b	Landroid/content/Context;
-    //   252: invokestatic 352	com/tencent/feedback/common/c:a	(Landroid/content/Context;)Lcom/tencent/feedback/common/c;
+    //   252: invokestatic 354	com/tencent/feedback/common/c:a	(Landroid/content/Context;)Lcom/tencent/feedback/common/c;
     //   255: astore 4
     //   257: aload_0
     //   258: getfield 25	com/tencent/feedback/eup/c:b	Landroid/content/Context;
     //   261: aload 4
-    //   263: invokevirtual 417	com/tencent/feedback/common/c:g	()Ljava/lang/String;
+    //   263: invokevirtual 419	com/tencent/feedback/common/c:g	()Ljava/lang/String;
     //   266: aload 4
-    //   268: invokevirtual 418	com/tencent/feedback/common/c:h	()Ljava/lang/String;
+    //   268: invokevirtual 420	com/tencent/feedback/common/c:h	()Ljava/lang/String;
     //   271: aload 4
-    //   273: invokevirtual 420	com/tencent/feedback/common/c:j	()J
+    //   273: invokevirtual 422	com/tencent/feedback/common/c:j	()J
     //   276: aload 4
-    //   278: invokevirtual 424	com/tencent/feedback/common/c:y	()Ljava/util/Map;
+    //   278: invokevirtual 426	com/tencent/feedback/common/c:y	()Ljava/util/Map;
     //   281: aload 16
     //   283: aload_1
     //   284: aload 15
@@ -430,7 +430,7 @@ public final class c
     //   292: lload 8
     //   294: aload_2
     //   295: aload_3
-    //   296: invokestatic 427	com/tencent/feedback/eup/b:a	(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;JLjava/util/Map;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;JLjava/lang/String;[B)Lcom/tencent/feedback/eup/e;
+    //   296: invokestatic 429	com/tencent/feedback/eup/b:a	(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;JLjava/util/Map;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;JLjava/lang/String;[B)Lcom/tencent/feedback/eup/e;
     //   299: astore_2
     //   300: iload 5
     //   302: ifeq +330 -> 632
@@ -438,34 +438,34 @@ public final class c
     //   306: istore 6
     //   308: aload_2
     //   309: iload 6
-    //   311: invokevirtual 430	com/tencent/feedback/eup/e:a	(B)V
-    //   314: invokestatic 432	com/tencent/feedback/proguard/a:b	()Ljava/util/Map;
+    //   311: invokevirtual 432	com/tencent/feedback/eup/e:a	(B)V
+    //   314: invokestatic 434	com/tencent/feedback/proguard/a:b	()Ljava/util/Map;
     //   317: astore_3
     //   318: aload_3
     //   319: ifnull +38 -> 357
     //   322: aload_2
-    //   323: invokevirtual 435	com/tencent/feedback/eup/e:C	()Ljava/util/Map;
+    //   323: invokevirtual 437	com/tencent/feedback/eup/e:C	()Ljava/util/Map;
     //   326: aload_3
-    //   327: invokeinterface 441 2 0
+    //   327: invokeinterface 443 2 0
     //   332: aload_1
     //   333: ifnull +24 -> 357
     //   336: aload_1
-    //   337: invokevirtual 444	java/lang/String:trim	()Ljava/lang/String;
-    //   340: invokevirtual 447	java/lang/String:length	()I
+    //   337: invokevirtual 446	java/lang/String:trim	()Ljava/lang/String;
+    //   340: invokevirtual 449	java/lang/String:length	()I
     //   343: ifle +14 -> 357
     //   346: aload_2
-    //   347: invokevirtual 435	com/tencent/feedback/eup/e:C	()Ljava/util/Map;
+    //   347: invokevirtual 437	com/tencent/feedback/eup/e:C	()Ljava/util/Map;
     //   350: aload_1
-    //   351: invokeinterface 450 2 0
+    //   351: invokeinterface 452 2 0
     //   356: pop
     //   357: iload 5
     //   359: ifeq +335 -> 694
     //   362: aload 13
     //   364: ifnull +330 -> 694
-    //   367: ldc_w 452
+    //   367: ldc_w 454
     //   370: iconst_0
     //   371: anewarray 4	java/lang/Object
-    //   374: invokestatic 142	com/tencent/feedback/common/e:a	(Ljava/lang/String;[Ljava/lang/Object;)Z
+    //   374: invokestatic 144	com/tencent/feedback/common/e:a	(Ljava/lang/String;[Ljava/lang/Object;)Z
     //   377: pop
     //   378: aload 10
     //   380: astore_1
@@ -474,19 +474,19 @@ public final class c
     //   386: aload 10
     //   388: astore_1
     //   389: aload 12
-    //   391: invokevirtual 444	java/lang/String:trim	()Ljava/lang/String;
-    //   394: invokevirtual 447	java/lang/String:length	()I
+    //   391: invokevirtual 446	java/lang/String:trim	()Ljava/lang/String;
+    //   394: invokevirtual 449	java/lang/String:length	()I
     //   397: ifle +30 -> 427
-    //   400: new 174	java/lang/StringBuilder
+    //   400: new 176	java/lang/StringBuilder
     //   403: dup
-    //   404: invokespecial 175	java/lang/StringBuilder:<init>	()V
+    //   404: invokespecial 177	java/lang/StringBuilder:<init>	()V
     //   407: aload 10
-    //   409: invokevirtual 188	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   412: ldc_w 454
-    //   415: invokevirtual 188	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   409: invokevirtual 190	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   412: ldc_w 456
+    //   415: invokevirtual 190	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   418: aload 12
-    //   420: invokevirtual 188	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   423: invokevirtual 198	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   420: invokevirtual 190	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   423: invokevirtual 200	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   426: astore_1
     //   427: aload 13
     //   429: iconst_0
@@ -496,91 +496,91 @@ public final class c
     //   435: sipush -10000
     //   438: lload 8
     //   440: aload_2
-    //   441: invokevirtual 457	com/tencent/feedback/eup/e:k	()Ljava/lang/String;
+    //   441: invokevirtual 459	com/tencent/feedback/eup/e:k	()Ljava/lang/String;
     //   444: aload_2
-    //   445: invokevirtual 460	com/tencent/feedback/eup/e:D	()Ljava/lang/String;
+    //   445: invokevirtual 462	com/tencent/feedback/eup/e:D	()Ljava/lang/String;
     //   448: aload_2
-    //   449: invokevirtual 463	com/tencent/feedback/eup/e:v	()Ljava/lang/String;
-    //   452: invokeinterface 467 11 0
+    //   449: invokevirtual 465	com/tencent/feedback/eup/e:v	()Ljava/lang/String;
+    //   452: invokeinterface 469 11 0
     //   457: istore 7
     //   459: iload 5
     //   461: ifeq +11 -> 472
     //   464: aload_0
     //   465: getfield 25	com/tencent/feedback/eup/c:b	Landroid/content/Context;
     //   468: aload_2
-    //   469: invokestatic 473	com/tencent/feedback/eup/BuglyBroadcastRecevier:brocastCrash	(Landroid/content/Context;Lcom/tencent/feedback/eup/e;)V
+    //   469: invokestatic 475	com/tencent/feedback/eup/BuglyBroadcastRecevier:brocastCrash	(Landroid/content/Context;Lcom/tencent/feedback/eup/e;)V
     //   472: iload 7
     //   474: ifeq +226 -> 700
     //   477: aload_0
     //   478: aload_2
-    //   479: invokestatic 386	com/tencent/feedback/eup/CrashReport:getCrashRuntimeStrategy	()Lcom/tencent/feedback/eup/CrashStrategyBean;
-    //   482: invokevirtual 475	com/tencent/feedback/eup/c:a	(Lcom/tencent/feedback/eup/e;Lcom/tencent/feedback/eup/CrashStrategyBean;)Z
+    //   479: invokestatic 388	com/tencent/feedback/eup/CrashReport:getCrashRuntimeStrategy	()Lcom/tencent/feedback/eup/CrashStrategyBean;
+    //   482: invokevirtual 477	com/tencent/feedback/eup/c:a	(Lcom/tencent/feedback/eup/e;Lcom/tencent/feedback/eup/CrashStrategyBean;)Z
     //   485: ireturn
-    //   486: ldc_w 258
+    //   486: ldc_w 260
     //   489: astore 12
     //   491: goto -459 -> 32
-    //   494: ldc_w 258
+    //   494: ldc_w 260
     //   497: astore 10
     //   499: goto -454 -> 45
     //   502: aload 13
-    //   504: invokevirtual 479	com/tencent/feedback/eup/f:r	()Lcom/tencent/feedback/eup/CrashHandleListener;
+    //   504: invokevirtual 481	com/tencent/feedback/eup/f:r	()Lcom/tencent/feedback/eup/CrashHandleListener;
     //   507: astore 13
     //   509: goto -440 -> 69
     //   512: astore_2
-    //   513: ldc_w 481
+    //   513: ldc_w 483
     //   516: iconst_0
     //   517: anewarray 4	java/lang/Object
-    //   520: invokestatic 484	com/tencent/feedback/common/e:d	(Ljava/lang/String;[Ljava/lang/Object;)Z
+    //   520: invokestatic 486	com/tencent/feedback/common/e:d	(Ljava/lang/String;[Ljava/lang/Object;)Z
     //   523: pop
     //   524: aload 15
     //   526: astore 14
     //   528: aload_2
-    //   529: invokestatic 135	com/tencent/feedback/common/e:a	(Ljava/lang/Throwable;)Z
+    //   529: invokestatic 137	com/tencent/feedback/common/e:a	(Ljava/lang/Throwable;)Z
     //   532: ifne -442 -> 90
     //   535: aload_2
-    //   536: invokevirtual 485	java/lang/Throwable:printStackTrace	()V
+    //   536: invokevirtual 487	java/lang/Throwable:printStackTrace	()V
     //   539: aload 15
     //   541: astore 14
     //   543: goto -453 -> 90
     //   546: astore 11
-    //   548: ldc_w 487
+    //   548: ldc_w 489
     //   551: iconst_1
     //   552: anewarray 4	java/lang/Object
     //   555: dup
     //   556: iconst_0
     //   557: aload 11
-    //   559: invokevirtual 488	java/lang/Throwable:toString	()Ljava/lang/String;
+    //   559: invokevirtual 490	java/lang/Throwable:toString	()Ljava/lang/String;
     //   562: aastore
-    //   563: invokestatic 484	com/tencent/feedback/common/e:d	(Ljava/lang/String;[Ljava/lang/Object;)Z
+    //   563: invokestatic 486	com/tencent/feedback/common/e:d	(Ljava/lang/String;[Ljava/lang/Object;)Z
     //   566: pop
     //   567: aload_3
     //   568: astore_2
     //   569: aload 11
-    //   571: invokestatic 135	com/tencent/feedback/common/e:a	(Ljava/lang/Throwable;)Z
+    //   571: invokestatic 137	com/tencent/feedback/common/e:a	(Ljava/lang/Throwable;)Z
     //   574: ifne -365 -> 209
     //   577: aload 11
-    //   579: invokevirtual 485	java/lang/Throwable:printStackTrace	()V
+    //   579: invokevirtual 487	java/lang/Throwable:printStackTrace	()V
     //   582: aload_3
     //   583: astore_2
     //   584: goto -375 -> 209
     //   587: astore_3
-    //   588: ldc_w 487
+    //   588: ldc_w 489
     //   591: iconst_1
     //   592: anewarray 4	java/lang/Object
     //   595: dup
     //   596: iconst_0
     //   597: aload_3
-    //   598: invokevirtual 488	java/lang/Throwable:toString	()Ljava/lang/String;
+    //   598: invokevirtual 490	java/lang/Throwable:toString	()Ljava/lang/String;
     //   601: aastore
-    //   602: invokestatic 484	com/tencent/feedback/common/e:d	(Ljava/lang/String;[Ljava/lang/Object;)Z
+    //   602: invokestatic 486	com/tencent/feedback/common/e:d	(Ljava/lang/String;[Ljava/lang/Object;)Z
     //   605: pop
     //   606: aload_2
     //   607: astore 11
     //   609: aload_3
-    //   610: invokestatic 135	com/tencent/feedback/common/e:a	(Ljava/lang/Throwable;)Z
+    //   610: invokestatic 137	com/tencent/feedback/common/e:a	(Ljava/lang/Throwable;)Z
     //   613: ifne +10 -> 623
     //   616: aload_3
-    //   617: invokevirtual 485	java/lang/Throwable:printStackTrace	()V
+    //   617: invokevirtual 487	java/lang/Throwable:printStackTrace	()V
     //   620: aload_2
     //   621: astore 11
     //   623: aload 4
@@ -592,40 +592,40 @@ public final class c
     //   633: istore 6
     //   635: goto -327 -> 308
     //   638: astore_1
-    //   639: ldc_w 490
+    //   639: ldc_w 492
     //   642: iconst_0
     //   643: anewarray 4	java/lang/Object
-    //   646: invokestatic 484	com/tencent/feedback/common/e:d	(Ljava/lang/String;[Ljava/lang/Object;)Z
+    //   646: invokestatic 486	com/tencent/feedback/common/e:d	(Ljava/lang/String;[Ljava/lang/Object;)Z
     //   649: pop
     //   650: aload_1
-    //   651: invokestatic 135	com/tencent/feedback/common/e:a	(Ljava/lang/Throwable;)Z
+    //   651: invokestatic 137	com/tencent/feedback/common/e:a	(Ljava/lang/Throwable;)Z
     //   654: ifne -297 -> 357
     //   657: aload_1
-    //   658: invokevirtual 485	java/lang/Throwable:printStackTrace	()V
+    //   658: invokevirtual 487	java/lang/Throwable:printStackTrace	()V
     //   661: goto -304 -> 357
     //   664: astore_1
-    //   665: ldc_w 487
+    //   665: ldc_w 489
     //   668: iconst_1
     //   669: anewarray 4	java/lang/Object
     //   672: dup
     //   673: iconst_0
     //   674: aload_1
-    //   675: invokevirtual 488	java/lang/Throwable:toString	()Ljava/lang/String;
+    //   675: invokevirtual 490	java/lang/Throwable:toString	()Ljava/lang/String;
     //   678: aastore
-    //   679: invokestatic 484	com/tencent/feedback/common/e:d	(Ljava/lang/String;[Ljava/lang/Object;)Z
+    //   679: invokestatic 486	com/tencent/feedback/common/e:d	(Ljava/lang/String;[Ljava/lang/Object;)Z
     //   682: pop
     //   683: aload_1
-    //   684: invokestatic 135	com/tencent/feedback/common/e:a	(Ljava/lang/Throwable;)Z
+    //   684: invokestatic 137	com/tencent/feedback/common/e:a	(Ljava/lang/Throwable;)Z
     //   687: ifne +7 -> 694
     //   690: aload_1
-    //   691: invokevirtual 485	java/lang/Throwable:printStackTrace	()V
+    //   691: invokevirtual 487	java/lang/Throwable:printStackTrace	()V
     //   694: iconst_1
     //   695: istore 7
     //   697: goto -238 -> 459
-    //   700: ldc_w 492
+    //   700: ldc_w 494
     //   703: iconst_0
     //   704: anewarray 4	java/lang/Object
-    //   707: invokestatic 155	com/tencent/feedback/common/e:c	(Ljava/lang/String;[Ljava/lang/Object;)Z
+    //   707: invokestatic 157	com/tencent/feedback/common/e:c	(Ljava/lang/String;[Ljava/lang/Object;)Z
     //   710: pop
     //   711: iconst_0
     //   712: ireturn

@@ -6,7 +6,7 @@ import java.util.Iterator;
 
 public class dg
 {
-  private static cc mw = new cc(50);
+  private static cc<Integer, dg> mw = new cc(50);
   public int errorCode = 0;
   public String mi = "";
   public String mj = "";
@@ -52,7 +52,7 @@ public class dg
     }
   }
   
-  private HashMap cr()
+  private HashMap<String, String> cr()
   {
     HashMap localHashMap = new HashMap();
     localHashMap.put("B4", this.ml);
@@ -90,7 +90,7 @@ public class dg
   
   public void f(cl paramcl) {}
   
-  public void f(ArrayList paramArrayList)
+  public void f(ArrayList<String> paramArrayList)
   {
     if ((paramArrayList == null) || (paramArrayList.size() <= 0)) {}
     for (;;)

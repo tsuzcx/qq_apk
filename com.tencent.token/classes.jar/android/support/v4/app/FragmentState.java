@@ -11,7 +11,18 @@ import android.util.Log;
 final class FragmentState
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new FragmentState.1();
+  public static final Parcelable.Creator<FragmentState> CREATOR = new Parcelable.Creator()
+  {
+    public FragmentState createFromParcel(Parcel paramAnonymousParcel)
+    {
+      return new FragmentState(paramAnonymousParcel);
+    }
+    
+    public FragmentState[] newArray(int paramAnonymousInt)
+    {
+      return new FragmentState[paramAnonymousInt];
+    }
+  };
   final Bundle mArguments;
   final String mClassName;
   final int mContainerId;

@@ -1,38 +1,68 @@
 package taiji;
 
-import android.graphics.Canvas;
-import android.graphics.ColorFilter;
-import android.graphics.Matrix;
-import android.graphics.RectF;
-import java.util.Collections;
-import uilib.doraemon.e;
+import android.content.Context;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.text.TextUtils;
 
 public class bm
-  extends bd
 {
-  private final cy e;
-  
-  bm(e parame, cs paramcs)
+  public static boolean a(Context paramContext, String paramString)
   {
-    super(parame, paramcs);
-    this.e = new cy(parame, this, new ba(paramcs.f(), paramcs.n()));
-    this.e.a(Collections.emptyList(), Collections.emptyList());
+    if ((paramContext == null) || (TextUtils.isEmpty(paramString))) {}
+    for (;;)
+    {
+      return false;
+      try
+      {
+        paramContext = paramContext.getPackageManager().getPackageInfo(paramString, 0);
+        if (paramContext != null) {
+          return true;
+        }
+      }
+      catch (Throwable paramContext) {}
+    }
+    return false;
   }
   
-  public void a(RectF paramRectF, Matrix paramMatrix)
+  public static String b(Context paramContext, String paramString)
   {
-    super.a(paramRectF, paramMatrix);
-    this.e.a(paramRectF, this.a);
+    if ((paramContext == null) || (TextUtils.isEmpty(paramString))) {}
+    for (;;)
+    {
+      return null;
+      try
+      {
+        paramContext = paramContext.getPackageManager().getPackageInfo(paramString, 0);
+        if (paramContext != null)
+        {
+          paramContext = paramContext.versionName;
+          return paramContext;
+        }
+      }
+      catch (Throwable paramContext) {}
+    }
+    return null;
   }
   
-  public void a(String paramString1, String paramString2, ColorFilter paramColorFilter)
+  public static int c(Context paramContext, String paramString)
   {
-    this.e.a(paramString1, paramString2, paramColorFilter);
-  }
-  
-  void b(Canvas paramCanvas, Matrix paramMatrix, int paramInt)
-  {
-    this.e.a(paramCanvas, paramMatrix, paramInt);
+    if ((paramContext == null) || (TextUtils.isEmpty(paramString))) {}
+    for (;;)
+    {
+      return 0;
+      try
+      {
+        paramContext = paramContext.getPackageManager().getPackageInfo(paramString, 0);
+        if (paramContext != null)
+        {
+          int i = paramContext.versionCode;
+          return i;
+        }
+      }
+      catch (Throwable paramContext) {}
+    }
+    return 0;
   }
 }
 

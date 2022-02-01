@@ -16,7 +16,7 @@ public class SensorController
   private static float ba = 0.5F;
   private SensorManager aY;
   private float aZ;
-  private SensorController.SensorEventCallBack bb;
+  private SensorEventCallBack bb;
   private Sensor bc;
   private final boolean bd;
   private boolean be = false;
@@ -100,7 +100,7 @@ public class SensorController
     this.bb = null;
   }
   
-  public void setSensorCallBack(SensorController.SensorEventCallBack paramSensorEventCallBack)
+  public void setSensorCallBack(SensorEventCallBack paramSensorEventCallBack)
   {
     Log.v("MicroMsg.SensorController", "sensor callback set");
     if (!this.bf)
@@ -109,6 +109,11 @@ public class SensorController
       this.bf = true;
     }
     this.bb = paramSensorEventCallBack;
+  }
+  
+  public static abstract interface SensorEventCallBack
+  {
+    public abstract void onSensorEvent(boolean paramBoolean);
   }
 }
 

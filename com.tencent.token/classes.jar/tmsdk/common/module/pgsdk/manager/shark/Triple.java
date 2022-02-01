@@ -1,16 +1,16 @@
 package tmsdk.common.module.pgsdk.manager.shark;
 
-public class Triple
+public class Triple<F, S, T>
 {
-  public Object first;
-  public Object second;
-  public Object third;
+  public F first;
+  public S second;
+  public T third;
   
-  public Triple(Object paramObject1, Object paramObject2, Object paramObject3)
+  public Triple(F paramF, S paramS, T paramT)
   {
-    this.first = paramObject1;
-    this.second = paramObject2;
-    this.third = paramObject3;
+    this.first = paramF;
+    this.second = paramS;
+    this.third = paramT;
   }
 }
 

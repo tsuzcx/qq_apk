@@ -9,11 +9,18 @@ import android.content.pm.ResolveInfo;
 import android.database.DataSetObservable;
 import android.os.AsyncTask;
 import android.text.TextUtils;
+import android.util.Log;
+import android.util.Xml;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import org.xmlpull.v1.XmlSerializer;
 
 class ActivityChooserModel
   extends DataSetObservable
@@ -31,14 +38,14 @@ class ActivityChooserModel
   static final String LOG_TAG = ActivityChooserModel.class.getSimpleName();
   static final String TAG_HISTORICAL_RECORD = "historical-record";
   static final String TAG_HISTORICAL_RECORDS = "historical-records";
-  private static final Map sDataModelRegistry = new HashMap();
+  private static final Map<String, ActivityChooserModel> sDataModelRegistry = new HashMap();
   private static final Object sRegistryLock = new Object();
-  private final List mActivities = new ArrayList();
-  private ActivityChooserModel.OnChooseActivityListener mActivityChoserModelPolicy;
-  private ActivityChooserModel.ActivitySorter mActivitySorter = new ActivityChooserModel.DefaultSorter();
+  private final List<ActivityResolveInfo> mActivities = new ArrayList();
+  private OnChooseActivityListener mActivityChoserModelPolicy;
+  private ActivitySorter mActivitySorter = new DefaultSorter();
   boolean mCanReadHistoricalData = true;
   final Context mContext;
-  private final List mHistoricalRecords = new ArrayList();
+  private final List<HistoricalRecord> mHistoricalRecords = new ArrayList();
   private boolean mHistoricalRecordsChanged = true;
   final String mHistoryFileName;
   private int mHistoryMaxSize = 50;
@@ -58,7 +65,7 @@ class ActivityChooserModel
     this.mHistoryFileName = paramString;
   }
   
-  private boolean addHistoricalRecord(ActivityChooserModel.HistoricalRecord paramHistoricalRecord)
+  private boolean addHistoricalRecord(HistoricalRecord paramHistoricalRecord)
   {
     boolean bool = this.mHistoricalRecords.add(paramHistoricalRecord);
     if (bool)
@@ -116,7 +123,7 @@ class ActivityChooserModel
         while (i < j)
         {
           ResolveInfo localResolveInfo = (ResolveInfo)localList.get(i);
-          this.mActivities.add(new ActivityChooserModel.ActivityResolveInfo(localResolveInfo));
+          this.mActivities.add(new ActivityResolveInfo(localResolveInfo));
           i += 1;
         }
         bool1 = true;
@@ -136,7 +143,7 @@ class ActivityChooserModel
       return;
       this.mHistoricalRecordsChanged = false;
     } while (TextUtils.isEmpty(this.mHistoryFileName));
-    new ActivityChooserModel.PersistHistoryAsyncTask(this).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, new Object[] { new ArrayList(this.mHistoricalRecords), this.mHistoryFileName });
+    new PersistHistoryAsyncTask().executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, new Object[] { new ArrayList(this.mHistoricalRecords), this.mHistoryFileName });
   }
   
   private void pruneExcessiveHistoricalRecordsIfNeeded()
@@ -150,7 +157,7 @@ class ActivityChooserModel
       int i = 0;
       while (i < j)
       {
-        ActivityChooserModel.HistoricalRecord localHistoricalRecord = (ActivityChooserModel.HistoricalRecord)this.mHistoricalRecords.remove(0);
+        HistoricalRecord localHistoricalRecord = (HistoricalRecord)this.mHistoricalRecords.remove(0);
         i += 1;
       }
     }
@@ -173,17 +180,17 @@ class ActivityChooserModel
   {
     // Byte code:
     //   0: aload_0
-    //   1: getfield 119	android/support/v7/widget/ActivityChooserModel:mContext	Landroid/content/Context;
+    //   1: getfield 141	android/support/v7/widget/ActivityChooserModel:mContext	Landroid/content/Context;
     //   4: aload_0
-    //   5: getfield 143	android/support/v7/widget/ActivityChooserModel:mHistoryFileName	Ljava/lang/String;
-    //   8: invokevirtual 256	android/content/Context:openFileInput	(Ljava/lang/String;)Ljava/io/FileInputStream;
+    //   5: getfield 165	android/support/v7/widget/ActivityChooserModel:mHistoryFileName	Ljava/lang/String;
+    //   8: invokevirtual 272	android/content/Context:openFileInput	(Ljava/lang/String;)Ljava/io/FileInputStream;
     //   11: astore_2
-    //   12: invokestatic 262	android/util/Xml:newPullParser	()Lorg/xmlpull/v1/XmlPullParser;
+    //   12: invokestatic 278	android/util/Xml:newPullParser	()Lorg/xmlpull/v1/XmlPullParser;
     //   15: astore_3
     //   16: aload_3
     //   17: aload_2
-    //   18: ldc_w 264
-    //   21: invokeinterface 270 3 0
+    //   18: ldc_w 280
+    //   21: invokeinterface 286 3 0
     //   26: iconst_0
     //   27: istore_1
     //   28: iload_1
@@ -193,45 +200,45 @@ class ActivityChooserModel
     //   34: iconst_2
     //   35: if_icmpeq +13 -> 48
     //   38: aload_3
-    //   39: invokeinterface 273 1 0
+    //   39: invokeinterface 289 1 0
     //   44: istore_1
     //   45: goto -17 -> 28
-    //   48: ldc 40
+    //   48: ldc 61
     //   50: aload_3
-    //   51: invokeinterface 276 1 0
-    //   56: invokevirtual 279	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   51: invokeinterface 292 1 0
+    //   56: invokevirtual 295	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   59: ifne +55 -> 114
-    //   62: new 250	org/xmlpull/v1/XmlPullParserException
+    //   62: new 266	org/xmlpull/v1/XmlPullParserException
     //   65: dup
-    //   66: ldc_w 281
-    //   69: invokespecial 282	org/xmlpull/v1/XmlPullParserException:<init>	(Ljava/lang/String;)V
+    //   66: ldc_w 297
+    //   69: invokespecial 298	org/xmlpull/v1/XmlPullParserException:<init>	(Ljava/lang/String;)V
     //   72: athrow
     //   73: astore_3
-    //   74: getstatic 72	android/support/v7/widget/ActivityChooserModel:LOG_TAG	Ljava/lang/String;
-    //   77: new 133	java/lang/StringBuilder
+    //   74: getstatic 96	android/support/v7/widget/ActivityChooserModel:LOG_TAG	Ljava/lang/String;
+    //   77: new 155	java/lang/StringBuilder
     //   80: dup
-    //   81: invokespecial 134	java/lang/StringBuilder:<init>	()V
-    //   84: ldc_w 284
-    //   87: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   81: invokespecial 156	java/lang/StringBuilder:<init>	()V
+    //   84: ldc_w 300
+    //   87: invokevirtual 160	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   90: aload_0
-    //   91: getfield 143	android/support/v7/widget/ActivityChooserModel:mHistoryFileName	Ljava/lang/String;
-    //   94: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   97: invokevirtual 141	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   91: getfield 165	android/support/v7/widget/ActivityChooserModel:mHistoryFileName	Ljava/lang/String;
+    //   94: invokevirtual 160	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   97: invokevirtual 163	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   100: aload_3
-    //   101: invokestatic 290	android/util/Log:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
+    //   101: invokestatic 306	android/util/Log:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
     //   104: pop
     //   105: aload_2
     //   106: ifnull +7 -> 113
     //   109: aload_2
-    //   110: invokevirtual 295	java/io/FileInputStream:close	()V
+    //   110: invokevirtual 311	java/io/FileInputStream:close	()V
     //   113: return
     //   114: aload_0
-    //   115: getfield 96	android/support/v7/widget/ActivityChooserModel:mHistoricalRecords	Ljava/util/List;
+    //   115: getfield 120	android/support/v7/widget/ActivityChooserModel:mHistoricalRecords	Ljava/util/List;
     //   118: astore 4
     //   120: aload 4
-    //   122: invokeinterface 189 1 0
+    //   122: invokeinterface 211 1 0
     //   127: aload_3
-    //   128: invokeinterface 273 1 0
+    //   128: invokeinterface 289 1 0
     //   133: istore_1
     //   134: iload_1
     //   135: iconst_1
@@ -239,7 +246,7 @@ class ActivityChooserModel
     //   139: aload_2
     //   140: ifnull -27 -> 113
     //   143: aload_2
-    //   144: invokevirtual 295	java/io/FileInputStream:close	()V
+    //   144: invokevirtual 311	java/io/FileInputStream:close	()V
     //   147: return
     //   148: astore_2
     //   149: return
@@ -249,63 +256,63 @@ class ActivityChooserModel
     //   155: iload_1
     //   156: iconst_4
     //   157: if_icmpeq -30 -> 127
-    //   160: ldc 37
+    //   160: ldc 58
     //   162: aload_3
-    //   163: invokeinterface 276 1 0
-    //   168: invokevirtual 279	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   163: invokeinterface 292 1 0
+    //   168: invokevirtual 295	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   171: ifne +57 -> 228
-    //   174: new 250	org/xmlpull/v1/XmlPullParserException
+    //   174: new 266	org/xmlpull/v1/XmlPullParserException
     //   177: dup
-    //   178: ldc_w 297
-    //   181: invokespecial 282	org/xmlpull/v1/XmlPullParserException:<init>	(Ljava/lang/String;)V
+    //   178: ldc_w 313
+    //   181: invokespecial 298	org/xmlpull/v1/XmlPullParserException:<init>	(Ljava/lang/String;)V
     //   184: athrow
     //   185: astore_3
-    //   186: getstatic 72	android/support/v7/widget/ActivityChooserModel:LOG_TAG	Ljava/lang/String;
-    //   189: new 133	java/lang/StringBuilder
+    //   186: getstatic 96	android/support/v7/widget/ActivityChooserModel:LOG_TAG	Ljava/lang/String;
+    //   189: new 155	java/lang/StringBuilder
     //   192: dup
-    //   193: invokespecial 134	java/lang/StringBuilder:<init>	()V
-    //   196: ldc_w 284
-    //   199: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   193: invokespecial 156	java/lang/StringBuilder:<init>	()V
+    //   196: ldc_w 300
+    //   199: invokevirtual 160	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   202: aload_0
-    //   203: getfield 143	android/support/v7/widget/ActivityChooserModel:mHistoryFileName	Ljava/lang/String;
-    //   206: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   209: invokevirtual 141	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   203: getfield 165	android/support/v7/widget/ActivityChooserModel:mHistoryFileName	Ljava/lang/String;
+    //   206: invokevirtual 160	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   209: invokevirtual 163	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   212: aload_3
-    //   213: invokestatic 290	android/util/Log:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
+    //   213: invokestatic 306	android/util/Log:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
     //   216: pop
     //   217: aload_2
     //   218: ifnull -105 -> 113
     //   221: aload_2
-    //   222: invokevirtual 295	java/io/FileInputStream:close	()V
+    //   222: invokevirtual 311	java/io/FileInputStream:close	()V
     //   225: return
     //   226: astore_2
     //   227: return
     //   228: aload 4
-    //   230: new 243	android/support/v7/widget/ActivityChooserModel$HistoricalRecord
+    //   230: new 18	android/support/v7/widget/ActivityChooserModel$HistoricalRecord
     //   233: dup
     //   234: aload_3
     //   235: aconst_null
-    //   236: ldc 8
-    //   238: invokeinterface 301 3 0
+    //   236: ldc 29
+    //   238: invokeinterface 317 3 0
     //   243: aload_3
     //   244: aconst_null
-    //   245: ldc 11
-    //   247: invokeinterface 301 3 0
-    //   252: invokestatic 307	java/lang/Long:parseLong	(Ljava/lang/String;)J
+    //   245: ldc 32
+    //   247: invokeinterface 317 3 0
+    //   252: invokestatic 323	java/lang/Long:parseLong	(Ljava/lang/String;)J
     //   255: aload_3
     //   256: aconst_null
-    //   257: ldc 14
-    //   259: invokeinterface 301 3 0
-    //   264: invokestatic 313	java/lang/Float:parseFloat	(Ljava/lang/String;)F
-    //   267: invokespecial 316	android/support/v7/widget/ActivityChooserModel$HistoricalRecord:<init>	(Ljava/lang/String;JF)V
-    //   270: invokeinterface 151 2 0
+    //   257: ldc 35
+    //   259: invokeinterface 317 3 0
+    //   264: invokestatic 329	java/lang/Float:parseFloat	(Ljava/lang/String;)F
+    //   267: invokespecial 332	android/support/v7/widget/ActivityChooserModel$HistoricalRecord:<init>	(Ljava/lang/String;JF)V
+    //   270: invokeinterface 173 2 0
     //   275: pop
     //   276: goto -149 -> 127
     //   279: astore_3
     //   280: aload_2
     //   281: ifnull +7 -> 288
     //   284: aload_2
-    //   285: invokevirtual 295	java/io/FileInputStream:close	()V
+    //   285: invokevirtual 311	java/io/FileInputStream:close	()V
     //   288: aload_3
     //   289: athrow
     //   290: astore_2
@@ -319,14 +326,14 @@ class ActivityChooserModel
     //   0	298	0	this	ActivityChooserModel
     //   27	131	1	i	int
     //   11	133	2	localFileInputStream	java.io.FileInputStream
-    //   148	74	2	localIOException1	java.io.IOException
-    //   226	59	2	localIOException2	java.io.IOException
-    //   290	1	2	localIOException3	java.io.IOException
-    //   292	1	2	localIOException4	java.io.IOException
-    //   296	1	2	localFileNotFoundException	java.io.FileNotFoundException
+    //   148	74	2	localIOException1	IOException
+    //   226	59	2	localIOException2	IOException
+    //   290	1	2	localIOException3	IOException
+    //   292	1	2	localIOException4	IOException
+    //   296	1	2	localFileNotFoundException	FileNotFoundException
     //   15	36	3	localXmlPullParser	org.xmlpull.v1.XmlPullParser
     //   73	90	3	localXmlPullParserException	org.xmlpull.v1.XmlPullParserException
-    //   185	71	3	localIOException5	java.io.IOException
+    //   185	71	3	localIOException5	IOException
     //   279	10	3	localObject	Object
     //   118	111	4	localList	List
     // Exception table:
@@ -379,8 +386,8 @@ class ActivityChooserModel
         return null;
       }
       ensureConsistentState();
-      Object localObject2 = (ActivityChooserModel.ActivityResolveInfo)this.mActivities.get(paramInt);
-      localObject2 = new ComponentName(((ActivityChooserModel.ActivityResolveInfo)localObject2).resolveInfo.activityInfo.packageName, ((ActivityChooserModel.ActivityResolveInfo)localObject2).resolveInfo.activityInfo.name);
+      Object localObject2 = (ActivityResolveInfo)this.mActivities.get(paramInt);
+      localObject2 = new ComponentName(((ActivityResolveInfo)localObject2).resolveInfo.activityInfo.packageName, ((ActivityResolveInfo)localObject2).resolveInfo.activityInfo.name);
       Intent localIntent1 = new Intent(this.mIntent);
       localIntent1.setComponent((ComponentName)localObject2);
       if (this.mActivityChoserModelPolicy != null)
@@ -390,7 +397,7 @@ class ActivityChooserModel
           return null;
         }
       }
-      addHistoricalRecord(new ActivityChooserModel.HistoricalRecord((ComponentName)localObject2, System.currentTimeMillis(), 1.0F));
+      addHistoricalRecord(new HistoricalRecord((ComponentName)localObject2, System.currentTimeMillis(), 1.0F));
       return localIntent1;
     }
   }
@@ -400,7 +407,7 @@ class ActivityChooserModel
     synchronized (this.mInstanceLock)
     {
       ensureConsistentState();
-      ResolveInfo localResolveInfo = ((ActivityChooserModel.ActivityResolveInfo)this.mActivities.get(paramInt)).resolveInfo;
+      ResolveInfo localResolveInfo = ((ActivityResolveInfo)this.mActivities.get(paramInt)).resolveInfo;
       return localResolveInfo;
     }
   }
@@ -428,7 +435,7 @@ class ActivityChooserModel
         i = 0;
         if (i < j)
         {
-          if (((ActivityChooserModel.ActivityResolveInfo)localList.get(i)).resolveInfo == paramResolveInfo) {
+          if (((ActivityResolveInfo)localList.get(i)).resolveInfo == paramResolveInfo) {
             return i;
           }
         }
@@ -447,7 +454,7 @@ class ActivityChooserModel
       ensureConsistentState();
       if (!this.mActivities.isEmpty())
       {
-        ResolveInfo localResolveInfo = ((ActivityChooserModel.ActivityResolveInfo)this.mActivities.get(0)).resolveInfo;
+        ResolveInfo localResolveInfo = ((ActivityResolveInfo)this.mActivities.get(0)).resolveInfo;
         return localResolveInfo;
       }
       return null;
@@ -482,7 +489,7 @@ class ActivityChooserModel
     }
   }
   
-  public void setActivitySorter(ActivityChooserModel.ActivitySorter paramActivitySorter)
+  public void setActivitySorter(ActivitySorter paramActivitySorter)
   {
     synchronized (this.mInstanceLock)
     {
@@ -504,12 +511,12 @@ class ActivityChooserModel
       synchronized (this.mInstanceLock)
       {
         ensureConsistentState();
-        ActivityChooserModel.ActivityResolveInfo localActivityResolveInfo1 = (ActivityChooserModel.ActivityResolveInfo)this.mActivities.get(paramInt);
-        ActivityChooserModel.ActivityResolveInfo localActivityResolveInfo2 = (ActivityChooserModel.ActivityResolveInfo)this.mActivities.get(0);
+        ActivityResolveInfo localActivityResolveInfo1 = (ActivityResolveInfo)this.mActivities.get(paramInt);
+        ActivityResolveInfo localActivityResolveInfo2 = (ActivityResolveInfo)this.mActivities.get(0);
         if (localActivityResolveInfo2 != null)
         {
           f = localActivityResolveInfo2.weight - localActivityResolveInfo1.weight + 5.0F;
-          addHistoricalRecord(new ActivityChooserModel.HistoricalRecord(new ComponentName(localActivityResolveInfo1.resolveInfo.activityInfo.packageName, localActivityResolveInfo1.resolveInfo.activityInfo.name), System.currentTimeMillis(), f));
+          addHistoricalRecord(new HistoricalRecord(new ComponentName(localActivityResolveInfo1.resolveInfo.activityInfo.packageName, localActivityResolveInfo1.resolveInfo.activityInfo.name), System.currentTimeMillis(), f));
           return;
         }
       }
@@ -547,12 +554,318 @@ class ActivityChooserModel
     }
   }
   
-  public void setOnChooseActivityListener(ActivityChooserModel.OnChooseActivityListener paramOnChooseActivityListener)
+  public void setOnChooseActivityListener(OnChooseActivityListener paramOnChooseActivityListener)
   {
     synchronized (this.mInstanceLock)
     {
       this.mActivityChoserModelPolicy = paramOnChooseActivityListener;
       return;
+    }
+  }
+  
+  public static abstract interface ActivityChooserModelClient
+  {
+    public abstract void setActivityChooserModel(ActivityChooserModel paramActivityChooserModel);
+  }
+  
+  public static final class ActivityResolveInfo
+    implements Comparable<ActivityResolveInfo>
+  {
+    public final ResolveInfo resolveInfo;
+    public float weight;
+    
+    public ActivityResolveInfo(ResolveInfo paramResolveInfo)
+    {
+      this.resolveInfo = paramResolveInfo;
+    }
+    
+    public int compareTo(ActivityResolveInfo paramActivityResolveInfo)
+    {
+      return Float.floatToIntBits(paramActivityResolveInfo.weight) - Float.floatToIntBits(this.weight);
+    }
+    
+    public boolean equals(Object paramObject)
+    {
+      if (this == paramObject) {}
+      do
+      {
+        return true;
+        if (paramObject == null) {
+          return false;
+        }
+        if (getClass() != paramObject.getClass()) {
+          return false;
+        }
+        paramObject = (ActivityResolveInfo)paramObject;
+      } while (Float.floatToIntBits(this.weight) == Float.floatToIntBits(paramObject.weight));
+      return false;
+    }
+    
+    public int hashCode()
+    {
+      return Float.floatToIntBits(this.weight) + 31;
+    }
+    
+    public String toString()
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("[");
+      localStringBuilder.append("resolveInfo:").append(this.resolveInfo.toString());
+      localStringBuilder.append("; weight:").append(new BigDecimal(this.weight));
+      localStringBuilder.append("]");
+      return localStringBuilder.toString();
+    }
+  }
+  
+  public static abstract interface ActivitySorter
+  {
+    public abstract void sort(Intent paramIntent, List<ActivityChooserModel.ActivityResolveInfo> paramList, List<ActivityChooserModel.HistoricalRecord> paramList1);
+  }
+  
+  private static final class DefaultSorter
+    implements ActivityChooserModel.ActivitySorter
+  {
+    private static final float WEIGHT_DECAY_COEFFICIENT = 0.95F;
+    private final Map<ComponentName, ActivityChooserModel.ActivityResolveInfo> mPackageNameToActivityMap = new HashMap();
+    
+    public void sort(Intent paramIntent, List<ActivityChooserModel.ActivityResolveInfo> paramList, List<ActivityChooserModel.HistoricalRecord> paramList1)
+    {
+      paramIntent = this.mPackageNameToActivityMap;
+      paramIntent.clear();
+      int j = paramList.size();
+      int i = 0;
+      Object localObject;
+      while (i < j)
+      {
+        localObject = (ActivityChooserModel.ActivityResolveInfo)paramList.get(i);
+        ((ActivityChooserModel.ActivityResolveInfo)localObject).weight = 0.0F;
+        paramIntent.put(new ComponentName(((ActivityChooserModel.ActivityResolveInfo)localObject).resolveInfo.activityInfo.packageName, ((ActivityChooserModel.ActivityResolveInfo)localObject).resolveInfo.activityInfo.name), localObject);
+        i += 1;
+      }
+      i = paramList1.size();
+      float f1 = 1.0F;
+      i -= 1;
+      if (i >= 0)
+      {
+        localObject = (ActivityChooserModel.HistoricalRecord)paramList1.get(i);
+        ActivityChooserModel.ActivityResolveInfo localActivityResolveInfo = (ActivityChooserModel.ActivityResolveInfo)paramIntent.get(((ActivityChooserModel.HistoricalRecord)localObject).activity);
+        if (localActivityResolveInfo == null) {
+          break label195;
+        }
+        float f2 = localActivityResolveInfo.weight;
+        localActivityResolveInfo.weight = (((ActivityChooserModel.HistoricalRecord)localObject).weight * f1 + f2);
+        f1 = 0.95F * f1;
+      }
+      label195:
+      for (;;)
+      {
+        i -= 1;
+        break;
+        Collections.sort(paramList);
+        return;
+      }
+    }
+  }
+  
+  public static final class HistoricalRecord
+  {
+    public final ComponentName activity;
+    public final long time;
+    public final float weight;
+    
+    public HistoricalRecord(ComponentName paramComponentName, long paramLong, float paramFloat)
+    {
+      this.activity = paramComponentName;
+      this.time = paramLong;
+      this.weight = paramFloat;
+    }
+    
+    public HistoricalRecord(String paramString, long paramLong, float paramFloat)
+    {
+      this(ComponentName.unflattenFromString(paramString), paramLong, paramFloat);
+    }
+    
+    public boolean equals(Object paramObject)
+    {
+      if (this == paramObject) {}
+      do
+      {
+        return true;
+        if (paramObject == null) {
+          return false;
+        }
+        if (getClass() != paramObject.getClass()) {
+          return false;
+        }
+        paramObject = (HistoricalRecord)paramObject;
+        if (this.activity == null)
+        {
+          if (paramObject.activity != null) {
+            return false;
+          }
+        }
+        else if (!this.activity.equals(paramObject.activity)) {
+          return false;
+        }
+        if (this.time != paramObject.time) {
+          return false;
+        }
+      } while (Float.floatToIntBits(this.weight) == Float.floatToIntBits(paramObject.weight));
+      return false;
+    }
+    
+    public int hashCode()
+    {
+      if (this.activity == null) {}
+      for (int i = 0;; i = this.activity.hashCode()) {
+        return ((i + 31) * 31 + (int)(this.time ^ this.time >>> 32)) * 31 + Float.floatToIntBits(this.weight);
+      }
+    }
+    
+    public String toString()
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("[");
+      localStringBuilder.append("; activity:").append(this.activity);
+      localStringBuilder.append("; time:").append(this.time);
+      localStringBuilder.append("; weight:").append(new BigDecimal(this.weight));
+      localStringBuilder.append("]");
+      return localStringBuilder.toString();
+    }
+  }
+  
+  public static abstract interface OnChooseActivityListener
+  {
+    public abstract boolean onChooseActivity(ActivityChooserModel paramActivityChooserModel, Intent paramIntent);
+  }
+  
+  private final class PersistHistoryAsyncTask
+    extends AsyncTask<Object, Void, Void>
+  {
+    PersistHistoryAsyncTask() {}
+    
+    public Void doInBackground(Object... paramVarArgs)
+    {
+      int i = 0;
+      List localList = (List)paramVarArgs[0];
+      Object localObject2 = (String)paramVarArgs[1];
+      for (;;)
+      {
+        try
+        {
+          paramVarArgs = ActivityChooserModel.this.mContext.openFileOutput((String)localObject2, 0);
+          localObject2 = Xml.newSerializer();
+          int j;
+          ActivityChooserModel.HistoricalRecord localHistoricalRecord;
+          ((XmlSerializer)localObject2).endTag(null, "historical-records");
+        }
+        catch (FileNotFoundException paramVarArgs)
+        {
+          try
+          {
+            ((XmlSerializer)localObject2).setOutput(paramVarArgs, null);
+            ((XmlSerializer)localObject2).startDocument("UTF-8", Boolean.valueOf(true));
+            ((XmlSerializer)localObject2).startTag(null, "historical-records");
+            j = localList.size();
+            if (i >= j) {
+              break label213;
+            }
+            localHistoricalRecord = (ActivityChooserModel.HistoricalRecord)localList.remove(0);
+            ((XmlSerializer)localObject2).startTag(null, "historical-record");
+            ((XmlSerializer)localObject2).attribute(null, "activity", localHistoricalRecord.activity.flattenToString());
+            ((XmlSerializer)localObject2).attribute(null, "time", String.valueOf(localHistoricalRecord.time));
+            ((XmlSerializer)localObject2).attribute(null, "weight", String.valueOf(localHistoricalRecord.weight));
+            ((XmlSerializer)localObject2).endTag(null, "historical-record");
+            i += 1;
+            continue;
+            paramVarArgs = paramVarArgs;
+            Log.e(ActivityChooserModel.LOG_TAG, "Error writing historical record file: " + (String)localObject2, paramVarArgs);
+          }
+          catch (IllegalArgumentException localIllegalArgumentException)
+          {
+            Log.e(ActivityChooserModel.LOG_TAG, "Error writing historical record file: " + ActivityChooserModel.this.mHistoryFileName, localIllegalArgumentException);
+            ActivityChooserModel.this.mCanReadHistoricalData = true;
+            if (paramVarArgs == null) {
+              continue;
+            }
+            try
+            {
+              paramVarArgs.close();
+              return null;
+            }
+            catch (IOException paramVarArgs)
+            {
+              return null;
+            }
+          }
+          catch (IllegalStateException localIllegalStateException)
+          {
+            Log.e(ActivityChooserModel.LOG_TAG, "Error writing historical record file: " + ActivityChooserModel.this.mHistoryFileName, localIllegalStateException);
+            ActivityChooserModel.this.mCanReadHistoricalData = true;
+            if (paramVarArgs == null) {
+              continue;
+            }
+            try
+            {
+              paramVarArgs.close();
+              return null;
+            }
+            catch (IOException paramVarArgs)
+            {
+              return null;
+            }
+          }
+          catch (IOException localIOException)
+          {
+            Log.e(ActivityChooserModel.LOG_TAG, "Error writing historical record file: " + ActivityChooserModel.this.mHistoryFileName, localIOException);
+            ActivityChooserModel.this.mCanReadHistoricalData = true;
+            if (paramVarArgs == null) {
+              continue;
+            }
+            try
+            {
+              paramVarArgs.close();
+              return null;
+            }
+            catch (IOException paramVarArgs)
+            {
+              return null;
+            }
+          }
+          finally
+          {
+            ActivityChooserModel.this.mCanReadHistoricalData = true;
+            if (paramVarArgs == null) {
+              break label441;
+            }
+          }
+          return null;
+        }
+        label213:
+        ((XmlSerializer)localObject2).endDocument();
+        ActivityChooserModel.this.mCanReadHistoricalData = true;
+        if (paramVarArgs != null) {
+          try
+          {
+            paramVarArgs.close();
+            return null;
+          }
+          catch (IOException paramVarArgs)
+          {
+            return null;
+          }
+        }
+      }
+      try
+      {
+        paramVarArgs.close();
+        label441:
+        throw localObject1;
+      }
+      catch (IOException paramVarArgs)
+      {
+        break label441;
+      }
     }
   }
 }

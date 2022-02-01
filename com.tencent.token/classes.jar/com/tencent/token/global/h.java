@@ -1,103 +1,165 @@
 package com.tencent.token.global;
 
-import android.util.Log;
-import com.tencent.token.fe;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 
 public class h
 {
-  private static void a(int paramInt, String paramString1, String paramString2)
+  public static void a() {}
+  
+  public static void a(int paramInt, boolean paramBoolean)
   {
-    fe.a().a(paramInt, paramString1, paramString2, null);
+    try
+    {
+      SharedPreferences.Editor localEditor = RqdApplication.l().getSharedPreferences("sp_name_global", 0).edit();
+      if (paramInt == 0) {
+        localEditor.putBoolean("scan_tip_next_show", paramBoolean);
+      }
+      for (;;)
+      {
+        localEditor.commit();
+        return;
+        localEditor.putBoolean("scan_tip_next_show_2", paramBoolean);
+      }
+      return;
+    }
+    catch (Exception localException)
+    {
+      g.c("SharedPreferences msg " + localException.getMessage());
+    }
   }
   
-  public static void a(String paramString)
+  public static void a(String paramString1, String paramString2)
   {
-    String str = paramString;
-    if (b())
+    boolean bool = false;
+    try
     {
-      str = c();
-      str = str + paramString;
+      Object localObject = RqdApplication.l().getSharedPreferences("safe_conf_list", 0);
+      if (localObject != null) {
+        bool = true;
+      }
+      g.a(bool);
+      localObject = ((SharedPreferences)localObject).edit();
+      ((SharedPreferences.Editor)localObject).remove("JSON_LIST");
+      if ((paramString1 != null) && (paramString2 != null)) {
+        ((SharedPreferences.Editor)localObject).putString(paramString1, paramString2);
+      }
+      ((SharedPreferences.Editor)localObject).putInt("conf_type", 2);
+      ((SharedPreferences.Editor)localObject).commit();
+      return;
     }
-    if (a()) {
-      Log.d("TokenLog", str);
+    catch (Exception paramString1)
+    {
+      g.c("getSharedPreferences error=" + paramString1.toString());
     }
-    a(2, "TokenLog", str);
   }
   
   public static void a(boolean paramBoolean)
   {
-    if (!paramBoolean)
+    try
     {
-      if (!b()) {
-        break label56;
-      }
-      str = c();
-    }
-    label56:
-    for (String str = str + "assert failed";; str = "assert failed")
-    {
-      if (a()) {
-        Log.e("TokenLog", str);
-      }
-      a(16, "TokenLog", str);
+      SharedPreferences.Editor localEditor = RqdApplication.l().getSharedPreferences("sp_name_global", 0).edit();
+      localEditor.putBoolean("utils_red_dot_show", paramBoolean);
+      localEditor.commit();
       return;
     }
-  }
-  
-  public static boolean a()
-  {
-    return fe.a().f();
-  }
-  
-  public static void b(String paramString)
-  {
-    String str = paramString;
-    if (b())
+    catch (Exception localException)
     {
-      str = c();
-      str = str + paramString;
+      g.c("SharedPreferences msg " + localException.getMessage());
     }
-    if (a()) {
-      Log.i("TokenLog", str);
-    }
-    a(4, "TokenLog", str);
   }
   
-  public static boolean b()
+  public static boolean a(int paramInt)
   {
-    return fe.a().g();
-  }
-  
-  private static String c()
-  {
-    String str = "";
-    Object localObject = new Throwable().getStackTrace();
-    if (localObject.length > 2)
+    try
     {
-      str = localObject[2];
-      localObject = "" + "[" + str.getFileName() + ":" + str.getLineNumber() + "|";
-      str = (String)localObject + str.getMethodName() + "()] ";
+      SharedPreferences localSharedPreferences = RqdApplication.l().getSharedPreferences("sp_name_global", 0);
+      if (paramInt == 0) {
+        return localSharedPreferences.getBoolean("scan_tip_next_show", true);
+      }
+      boolean bool = localSharedPreferences.getBoolean("scan_tip_next_show_2", true);
+      return bool;
     }
-    return str;
-  }
-  
-  public static void c(String paramString)
-  {
-    String str = paramString;
-    if (b())
+    catch (Exception localException)
     {
-      str = c();
-      str = str + paramString;
+      g.c("SharedPreferences msg " + localException.getMessage());
     }
-    if (a()) {
-      Log.e("TokenLog", str);
-    }
-    a(16, "TokenLog", str);
+    return true;
   }
   
-  public static void d(String paramString)
+  public static void b() {}
+  
+  public static void b(int paramInt)
   {
-    c(paramString);
+    try
+    {
+      SharedPreferences.Editor localEditor = RqdApplication.l().getSharedPreferences("sp_name_global", 0).edit();
+      localEditor.putInt("exchangeky_conf_ver", paramInt);
+      localEditor.commit();
+      return;
+    }
+    catch (Exception localException)
+    {
+      g.c("SharedPreferences msg " + localException.getMessage());
+    }
+  }
+  
+  public static void b(boolean paramBoolean)
+  {
+    try
+    {
+      SharedPreferences.Editor localEditor = RqdApplication.l().getSharedPreferences("sp_name_global", 0).edit();
+      localEditor.putBoolean("utils_account_lock_tip", paramBoolean);
+      localEditor.commit();
+      return;
+    }
+    catch (Exception localException)
+    {
+      g.c("SharedPreferences msg " + localException.getMessage());
+    }
+  }
+  
+  public static int c()
+  {
+    try
+    {
+      int i = RqdApplication.l().getSharedPreferences("sp_name_global", 0).getInt("exchangeky_conf_ver", 0);
+      return i;
+    }
+    catch (Exception localException)
+    {
+      g.c("SharedPreferences msg " + localException.getMessage());
+    }
+    return 0;
+  }
+  
+  public static boolean d()
+  {
+    try
+    {
+      boolean bool = RqdApplication.l().getSharedPreferences("sp_name_global", 0).getBoolean("utils_red_dot_show", false);
+      return bool;
+    }
+    catch (Exception localException)
+    {
+      g.c("SharedPreferences msg " + localException.getMessage());
+    }
+    return false;
+  }
+  
+  public static boolean e()
+  {
+    try
+    {
+      boolean bool = RqdApplication.l().getSharedPreferences("sp_name_global", 0).getBoolean("utils_account_lock_tip", false);
+      return bool;
+    }
+    catch (Exception localException)
+    {
+      g.c("SharedPreferences msg " + localException.getMessage());
+    }
+    return false;
   }
 }
 

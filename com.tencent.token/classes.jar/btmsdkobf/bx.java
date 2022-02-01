@@ -74,7 +74,13 @@ public class bx
     if (!this.gU)
     {
       this.gU = true;
-      ee.cT().addUrgentTask(new fk(this), "init SharkProtocolQueue async");
+      ee.cT().addUrgentTask(new Runnable()
+      {
+        public void run()
+        {
+          db.bZ().at();
+        }
+      }, "init SharkProtocolQueue async");
     }
   }
   

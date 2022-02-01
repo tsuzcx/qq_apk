@@ -1,265 +1,147 @@
 package okhttp3.internal.http2;
 
+import com.tencent.token.fb;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 import okio.ByteString;
-import okio.i;
-import okio.o;
-import okio.y;
 
-final class c
+public final class c
 {
-  a[] a = new a[8];
-  int b = this.a.length - 1;
-  int c = 0;
-  int d = 0;
-  private final List e = new ArrayList();
-  private final i f;
-  private final int g;
-  private int h;
+  static final ByteString a;
+  static final String[] b;
+  static final String[] c;
+  private static final String[] d;
   
-  c(int paramInt1, int paramInt2, y paramy)
+  static
   {
-    this.g = paramInt1;
-    this.h = paramInt2;
-    this.f = o.a(paramy);
-  }
-  
-  c(int paramInt, y paramy)
-  {
-    this(paramInt, paramInt, paramy);
-  }
-  
-  private int a(int paramInt)
-  {
-    int i = 0;
     int k = 0;
-    if (paramInt > 0)
+    a = ByteString.a("PRI * HTTP/2.0\r\n\r\nSM\r\n\r\n");
+    d = new String[] { "DATA", "HEADERS", "PRIORITY", "RST_STREAM", "SETTINGS", "PUSH_PROMISE", "PING", "GOAWAY", "WINDOW_UPDATE", "CONTINUATION" };
+    b = new String[64];
+    c = new String[256];
+    int i = 0;
+    while (i < c.length)
     {
-      i = this.a.length - 1;
-      int j = paramInt;
-      paramInt = k;
-      while ((i >= this.b) && (j > 0))
-      {
-        j -= this.a[i].i;
-        this.d -= this.a[i].i;
-        this.c -= 1;
-        paramInt += 1;
-        i -= 1;
-      }
-      System.arraycopy(this.a, this.b + 1, this.a, this.b + 1 + paramInt, this.c);
-      this.b += paramInt;
-      i = paramInt;
+      c[i] = fb.a("%8s", new Object[] { Integer.toBinaryString(i) }).replace(' ', '0');
+      i += 1;
     }
-    return i;
-  }
-  
-  private void a(int paramInt, a parama)
-  {
-    this.e.add(parama);
-    int j = parama.i;
-    int i = j;
-    if (paramInt != -1) {
-      i = j - this.a[c(paramInt)].i;
-    }
-    if (i > this.h)
+    b[0] = "";
+    b[1] = "END_STREAM";
+    int[] arrayOfInt1 = new int[1];
+    arrayOfInt1[0] = 1;
+    b[8] = "PADDED";
+    int j = arrayOfInt1.length;
+    i = 0;
+    while (i < j)
     {
-      e();
-      return;
+      m = arrayOfInt1[i];
+      b[(m | 0x8)] = (b[m] + "|PADDED");
+      i += 1;
     }
-    j = a(this.d + i - this.h);
-    if (paramInt == -1)
-    {
-      if (this.c + 1 > this.a.length)
-      {
-        a[] arrayOfa = new a[this.a.length * 2];
-        System.arraycopy(this.a, 0, arrayOfa, this.a.length, this.a.length);
-        this.b = (this.a.length - 1);
-        this.a = arrayOfa;
-      }
-      paramInt = this.b;
-      this.b = (paramInt - 1);
-      this.a[paramInt] = parama;
-      this.c += 1;
-    }
+    b[4] = "END_HEADERS";
+    b[32] = "PRIORITY";
+    b[36] = "END_HEADERS|PRIORITY";
+    int[] arrayOfInt2 = new int[3];
+    int[] tmp250_248 = arrayOfInt2;
+    tmp250_248[0] = 4;
+    int[] tmp254_250 = tmp250_248;
+    tmp254_250[1] = 32;
+    int[] tmp259_254 = tmp254_250;
+    tmp259_254[2] = 36;
+    tmp259_254;
+    int m = arrayOfInt2.length;
+    i = 0;
     for (;;)
     {
-      this.d = (i + this.d);
-      return;
-      int k = c(paramInt);
-      this.a[(j + k + paramInt)] = parama;
-    }
-  }
-  
-  private void b(int paramInt)
-  {
-    if (g(paramInt))
-    {
-      a locala = b.a[paramInt];
-      this.e.add(locala);
-      return;
-    }
-    int i = c(paramInt - b.a.length);
-    if ((i < 0) || (i >= this.a.length)) {
-      throw new IOException("Header index too large " + (paramInt + 1));
-    }
-    this.e.add(this.a[i]);
-  }
-  
-  private int c(int paramInt)
-  {
-    return this.b + 1 + paramInt;
-  }
-  
-  private void d()
-  {
-    if (this.h < this.d)
-    {
-      if (this.h == 0) {
-        e();
-      }
-    }
-    else {
-      return;
-    }
-    a(this.d - this.h);
-  }
-  
-  private void d(int paramInt)
-  {
-    ByteString localByteString1 = f(paramInt);
-    ByteString localByteString2 = c();
-    this.e.add(new a(localByteString1, localByteString2));
-  }
-  
-  private void e()
-  {
-    Arrays.fill(this.a, null);
-    this.b = (this.a.length - 1);
-    this.c = 0;
-    this.d = 0;
-  }
-  
-  private void e(int paramInt)
-  {
-    a(-1, new a(f(paramInt), c()));
-  }
-  
-  private ByteString f(int paramInt)
-  {
-    if (g(paramInt)) {
-      return b.a[paramInt].g;
-    }
-    int i = c(paramInt - b.a.length);
-    if ((i < 0) || (i >= this.a.length)) {
-      throw new IOException("Header index too large " + (paramInt + 1));
-    }
-    return this.a[i].g;
-  }
-  
-  private void f()
-  {
-    ByteString localByteString1 = b.a(c());
-    ByteString localByteString2 = c();
-    this.e.add(new a(localByteString1, localByteString2));
-  }
-  
-  private void g()
-  {
-    a(-1, new a(b.a(c()), c()));
-  }
-  
-  private boolean g(int paramInt)
-  {
-    return (paramInt >= 0) && (paramInt <= b.a.length - 1);
-  }
-  
-  private int h()
-  {
-    return this.f.h() & 0xFF;
-  }
-  
-  int a(int paramInt1, int paramInt2)
-  {
-    paramInt1 &= paramInt2;
-    if (paramInt1 < paramInt2) {
-      return paramInt1;
-    }
-    paramInt1 = 0;
-    int i;
-    for (;;)
-    {
-      i = h();
-      if ((i & 0x80) == 0) {
+      j = k;
+      if (i >= m) {
         break;
       }
-      paramInt2 += ((i & 0x7F) << paramInt1);
-      paramInt1 += 7;
+      int n = arrayOfInt2[i];
+      int i1 = arrayOfInt1.length;
+      j = 0;
+      while (j < i1)
+      {
+        int i2 = arrayOfInt1[j];
+        b[(i2 | n)] = (b[i2] + '|' + b[n]);
+        b[(i2 | n | 0x8)] = (b[i2] + '|' + b[n] + "|PADDED");
+        j += 1;
+      }
+      i += 1;
     }
-    return (i << paramInt1) + paramInt2;
+    while (j < b.length)
+    {
+      if (b[j] == null) {
+        b[j] = c[j];
+      }
+      j += 1;
+    }
   }
   
-  void a()
+  static IllegalArgumentException a(String paramString, Object... paramVarArgs)
   {
-    while (!this.f.e())
+    throw new IllegalArgumentException(fb.a(paramString, paramVarArgs));
+  }
+  
+  static String a(byte paramByte1, byte paramByte2)
+  {
+    Object localObject;
+    if (paramByte2 == 0) {
+      localObject = "";
+    }
+    String str;
+    do
     {
-      int i = this.f.h() & 0xFF;
-      if (i == 128) {
-        throw new IOException("index == 0");
-      }
-      if ((i & 0x80) == 128)
+      do
       {
-        b(a(i, 127) - 1);
-      }
-      else if (i == 64)
-      {
-        g();
-      }
-      else if ((i & 0x40) == 64)
-      {
-        e(a(i, 63) - 1);
-      }
-      else if ((i & 0x20) == 32)
-      {
-        this.h = a(i, 31);
-        if ((this.h < 0) || (this.h > this.g)) {
-          throw new IOException("Invalid dynamic table size update " + this.h);
+        return localObject;
+        switch (paramByte1)
+        {
+        case 5: 
+        default: 
+          if (paramByte2 >= b.length) {
+            break;
+          }
         }
-        d();
-      }
-      else if ((i == 16) || (i == 0))
-      {
-        f();
-      }
-      else
-      {
-        d(a(i, 15) - 1);
-      }
-    }
+        for (str = b[paramByte2]; (paramByte1 == 5) && ((paramByte2 & 0x4) != 0); str = c[paramByte2])
+        {
+          return str.replace("HEADERS", "PUSH_PROMISE");
+          if (paramByte2 == 1) {
+            return "ACK";
+          }
+          return c[paramByte2];
+          return c[paramByte2];
+        }
+        localObject = str;
+      } while (paramByte1 != 0);
+      localObject = str;
+    } while ((paramByte2 & 0x20) == 0);
+    return str.replace("PRIORITY", "COMPRESSED");
   }
   
-  public List b()
+  static String a(boolean paramBoolean, int paramInt1, int paramInt2, byte paramByte1, byte paramByte2)
   {
-    ArrayList localArrayList = new ArrayList(this.e);
-    this.e.clear();
-    return localArrayList;
-  }
-  
-  ByteString c()
-  {
-    int j = h();
-    if ((j & 0x80) == 128) {}
-    for (int i = 1;; i = 0)
+    String str1;
+    String str3;
+    if (paramByte1 < d.length)
     {
-      j = a(j, 127);
-      if (i == 0) {
-        break;
+      str1 = d[paramByte1];
+      str3 = a(paramByte1, paramByte2);
+      if (!paramBoolean) {
+        break label91;
       }
-      return ByteString.a(ae.a().a(this.f.g(j)));
     }
-    return this.f.c(j);
+    label91:
+    for (String str2 = "<<";; str2 = ">>")
+    {
+      return fb.a("%s 0x%08x %5d %-13s %s", new Object[] { str2, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), str1, str3 });
+      str1 = fb.a("0x%02x", new Object[] { Byte.valueOf(paramByte1) });
+      break;
+    }
+  }
+  
+  static IOException b(String paramString, Object... paramVarArgs)
+  {
+    throw new IOException(fb.a(paramString, paramVarArgs));
   }
 }
 

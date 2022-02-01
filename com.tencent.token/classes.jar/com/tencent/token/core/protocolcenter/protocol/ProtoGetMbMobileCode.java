@@ -3,22 +3,22 @@ package com.tencent.token.core.protocolcenter.protocol;
 import android.content.Context;
 import android.os.Handler;
 import android.os.Message;
-import com.tencent.token.core.protocolcenter.e;
-import com.tencent.token.cv;
-import com.tencent.token.cw;
-import com.tencent.token.cx;
-import com.tencent.token.ev;
+import com.tencent.token.bz;
+import com.tencent.token.ca;
+import com.tencent.token.cb;
+import com.tencent.token.core.protocolcenter.d;
+import com.tencent.token.dn;
 import com.tencent.token.global.RqdApplication;
 import com.tencent.token.global.c;
-import com.tencent.token.global.f;
-import com.tencent.token.global.h;
-import com.tencent.token.utils.w;
+import com.tencent.token.global.e;
+import com.tencent.token.global.g;
+import com.tencent.token.utils.l;
 import java.util.HashMap;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class ProtoGetMbMobileCode
-  extends e
+  extends d
 {
   private long d;
   private String e = "";
@@ -26,17 +26,17 @@ public class ProtoGetMbMobileCode
   private String g;
   private String h;
   
-  public static void a(ev paramev, long paramLong, int paramInt, String paramString1, String paramString2)
+  public static void a(dn paramdn, long paramLong, int paramInt, String paramString1, String paramString2)
   {
-    paramev.c.put("param.uinhash", Long.valueOf(paramLong));
-    paramev.c.put("param.mbmobile.getcode", Integer.valueOf(paramInt));
-    paramev.c.put("param.mbmobile.mobile", paramString1);
-    paramev.c.put("param.mbmoible.areacode", paramString2);
+    paramdn.c.put("param.uinhash", Long.valueOf(paramLong));
+    paramdn.c.put("param.mbmobile.getcode", Integer.valueOf(paramInt));
+    paramdn.c.put("param.mbmobile.mobile", paramString1);
+    paramdn.c.put("param.mbmoible.areacode", paramString2);
   }
   
   protected String a()
   {
-    String str1 = cv.a().b();
+    String str1 = bz.a().b();
     if (str1 == null)
     {
       this.a.b(104);
@@ -46,15 +46,15 @@ public class ProtoGetMbMobileCode
     try
     {
       ((JSONObject)localObject).put("uin", this.d);
-      int i = cw.a + 1;
-      cw.a = i;
+      int i = ca.a + 1;
+      ca.a = i;
       this.c = i;
       ((JSONObject)localObject).put("seq_id", this.c);
-      ((JSONObject)localObject).put("op_time", (int)(cx.c().s() / 1000L));
+      ((JSONObject)localObject).put("op_time", (int)(cb.c().s() / 1000L));
       ((JSONObject)localObject).put("new_mobile", this.g);
       ((JSONObject)localObject).put("op_type", this.f);
       ((JSONObject)localObject).put("area_code", this.h);
-      localObject = w.b(((JSONObject)localObject).toString().getBytes());
+      localObject = l.b(((JSONObject)localObject).toString().getBytes());
       if (localObject == null)
       {
         this.a.b(10000);
@@ -69,7 +69,7 @@ public class ProtoGetMbMobileCode
     }
     finally
     {
-      if (w.b(((JSONObject)localObject).toString().getBytes()) == null)
+      if (l.b(((JSONObject)localObject).toString().getBytes()) == null)
       {
         this.a.b(10000);
         return null;
@@ -79,12 +79,12 @@ public class ProtoGetMbMobileCode
     return c.e() + "/cn/mbtoken3/mbtoken3_mbop_get_mobile_code_encrypt" + (String)localObject;
   }
   
-  protected void a(ev paramev)
+  protected void a(dn paramdn)
   {
-    this.d = ((Long)paramev.c.get("param.uinhash")).longValue();
-    this.f = ((Integer)paramev.c.get("param.mbmobile.getcode")).intValue();
-    this.g = ((String)paramev.c.get("param.mbmobile.mobile"));
-    this.h = ((String)paramev.c.get("param.mbmoible.areacode"));
+    this.d = ((Long)paramdn.c.get("param.uinhash")).longValue();
+    this.f = ((Integer)paramdn.c.get("param.mbmobile.getcode")).intValue();
+    this.g = ((String)paramdn.c.get("param.mbmobile.mobile"));
+    this.h = ((String)paramdn.c.get("param.mbmoible.areacode"));
   }
   
   protected void a(JSONObject paramJSONObject)
@@ -95,7 +95,7 @@ public class ProtoGetMbMobileCode
       a(i, paramJSONObject.getString("info"));
       return;
     }
-    paramJSONObject = w.c(paramJSONObject.getString("data"));
+    paramJSONObject = l.c(paramJSONObject.getString("data"));
     if (paramJSONObject != null)
     {
       paramJSONObject = new JSONObject(new String(paramJSONObject));
@@ -103,7 +103,7 @@ public class ProtoGetMbMobileCode
       if (this.c != i)
       {
         this.a.b(10030);
-        h.c("parseJSON error seq is wrong seq=" + i + ",right = " + this.c);
+        g.c("parseJSON error seq is wrong seq=" + i + ",right = " + this.c);
         return;
       }
       this.e = paramJSONObject.getString("sms_prefix");

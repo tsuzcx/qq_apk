@@ -21,7 +21,7 @@ public abstract class LoaderManager
   public abstract void dump(String paramString, FileDescriptor paramFileDescriptor, PrintWriter paramPrintWriter, String[] paramArrayOfString);
   
   @Nullable
-  public abstract Loader getLoader(int paramInt);
+  public abstract <D> Loader<D> getLoader(int paramInt);
   
   public boolean hasRunningLoaders()
   {
@@ -30,11 +30,24 @@ public abstract class LoaderManager
   
   @MainThread
   @NonNull
-  public abstract Loader initLoader(int paramInt, @Nullable Bundle paramBundle, @NonNull LoaderManager.LoaderCallbacks paramLoaderCallbacks);
+  public abstract <D> Loader<D> initLoader(int paramInt, @Nullable Bundle paramBundle, @NonNull LoaderCallbacks<D> paramLoaderCallbacks);
   
   @MainThread
   @NonNull
-  public abstract Loader restartLoader(int paramInt, @Nullable Bundle paramBundle, @NonNull LoaderManager.LoaderCallbacks paramLoaderCallbacks);
+  public abstract <D> Loader<D> restartLoader(int paramInt, @Nullable Bundle paramBundle, @NonNull LoaderCallbacks<D> paramLoaderCallbacks);
+  
+  public static abstract interface LoaderCallbacks<D>
+  {
+    @MainThread
+    @NonNull
+    public abstract Loader<D> onCreateLoader(int paramInt, @Nullable Bundle paramBundle);
+    
+    @MainThread
+    public abstract void onLoadFinished(@NonNull Loader<D> paramLoader, D paramD);
+    
+    @MainThread
+    public abstract void onLoaderReset(@NonNull Loader<D> paramLoader);
+  }
 }
 
 

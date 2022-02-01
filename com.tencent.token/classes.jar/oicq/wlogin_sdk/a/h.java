@@ -1,6 +1,7 @@
 package oicq.wlogin_sdk.a;
 
 import java.util.HashMap;
+import oicq.wlogin_sdk.tlv_type.tlv_t;
 
 public class h
 {
@@ -9,7 +10,7 @@ public class h
   public static long y;
   public static String z = "";
   public byte[] A = new byte[0];
-  public HashMap B = new HashMap();
+  public HashMap<Integer, tlv_t> B = new HashMap();
   public String b = "";
   public String c = "";
   public int d;

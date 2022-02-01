@@ -12,7 +12,7 @@ import android.view.SubMenu;
 
 @RequiresApi(14)
 class MenuWrapperICS
-  extends BaseMenuWrapper
+  extends BaseMenuWrapper<SupportMenu>
   implements Menu
 {
   MenuWrapperICS(Context paramContext, SupportMenu paramSupportMenu)

@@ -1,82 +1,228 @@
 package com.tencent.token;
 
-import com.tencent.token.global.c;
+import com.tencent.token.core.bean.NewConfigureCacheItem;
+import com.tencent.token.core.bean.QQUser;
+import com.tencent.token.core.bean.f;
+import com.tencent.token.global.g;
+import com.tencent.token.global.h;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.List;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class df
 {
-  public byte[] f = null;
-  public long g;
-  public short h;
-  public byte i = 1;
-  public short j = 0;
-  public short k = 0;
-  public int l;
-  public int m;
-  public short n;
-  public short o = c.b();
-  public short p = c.c();
-  public short q = c.d();
-  public String r = "";
-  public byte[] s = new byte[32];
-  public byte[] t = new byte[32];
+  List<f> a = Collections.synchronizedList(new ArrayList());
+  NewConfigureCacheItem b;
+  String c;
+  long d;
+  public boolean e;
+  public boolean f = false;
   
-  public void a(long paramLong, int paramInt1, int paramInt2, short paramShort)
+  public f a(int paramInt)
   {
-    this.g = paramLong;
-    this.l = paramInt1;
-    this.m = paramInt2;
-    this.n = paramShort;
+    if ((paramInt < 0) || (paramInt >= c())) {}
+    List localList;
+    do
+    {
+      return null;
+      localList = a();
+    } while (localList == null);
+    return (f)localList.get(paramInt);
   }
   
-  public byte[] a()
+  public List<f> a()
   {
-    this.o = c.b();
-    this.p = c.c();
-    this.q = c.d();
-    byte[] arrayOfByte1 = this.r.getBytes();
-    int i3 = arrayOfByte1.length;
-    if ((this.f != null) && (this.f.length > 0)) {}
-    for (int i1 = this.f.length;; i1 = 0)
+    return this.a;
+  }
+  
+  public void a(String paramString)
+  {
+    h.a("game_lock", paramString);
+  }
+  
+  public void a(List<f> paramList)
+  {
+    try
     {
-      int i2 = this.t.length + 92 + i1 + 32 + 1;
-      this.h = ((short)i2);
-      byte[] arrayOfByte2 = new byte[i2];
-      arrayOfByte2[0] = 2;
-      dg.a(arrayOfByte2, 1, this.g);
-      dg.a(arrayOfByte2, 5, this.h);
-      arrayOfByte2[7] = this.i;
-      dg.a(arrayOfByte2, 8, this.j);
-      dg.a(arrayOfByte2, 10, this.k);
-      dg.a(arrayOfByte2, 12, this.l);
-      dg.a(arrayOfByte2, 16, this.m);
-      dg.a(arrayOfByte2, 20, this.n);
-      dg.a(arrayOfByte2, 22, this.o);
-      dg.a(arrayOfByte2, 24, this.p);
-      dg.a(arrayOfByte2, 26, this.q);
-      byte[] arrayOfByte3 = new byte[64];
-      if (i3 > 0)
-      {
-        i2 = i3;
-        if (i3 > 64) {
-          i2 = 64;
-        }
-        dg.a(arrayOfByte3, 0, arrayOfByte1, 0, i2);
+      if (this.b == null) {
+        this.b = cr.a().h.a("game_lock");
       }
-      dg.a(arrayOfByte2, 28, arrayOfByte3, 0, 64);
-      dg.a(arrayOfByte2, 92, this.t, 0, this.t.length);
-      i2 = this.t.length + 92;
-      if (i1 > 0)
+      if ((this.b.mClientVersion > this.b.mClickVersion) && (this.b.mClickVersion == -1) && (this.b.mConfIDs != null))
       {
-        dg.a(arrayOfByte2, i2, this.f, 0, i1);
-        i1 += i2;
+        Iterator localIterator1 = this.b.mConfIDs.iterator();
+        while (localIterator1.hasNext())
+        {
+          int i = ((Integer)localIterator1.next()).intValue();
+          Iterator localIterator2 = paramList.iterator();
+          while (localIterator2.hasNext())
+          {
+            f localf = (f)localIterator2.next();
+            if (i == localf.a) {
+              localf.f = true;
+            }
+          }
+        }
+      }
+      this.a.clear();
+    }
+    finally {}
+    this.a.addAll(paramList);
+    this.c = cq.c;
+    if (cq.a().e() != null) {
+      this.d = cq.a().e().mUin;
+    }
+  }
+  
+  public boolean a(JSONArray paramJSONArray)
+  {
+    boolean bool;
+    ArrayList localArrayList1;
+    ArrayList localArrayList2;
+    if (paramJSONArray != null)
+    {
+      bool = true;
+      g.a(bool);
+      localArrayList1 = new ArrayList();
+      localArrayList2 = new ArrayList();
+      if (paramJSONArray == null) {}
+    }
+    for (;;)
+    {
+      try
+      {
+        if (paramJSONArray.length() > 0)
+        {
+          i = 0;
+          if (i >= paramJSONArray.length()) {
+            break label234;
+          }
+          JSONObject localJSONObject = paramJSONArray.getJSONObject(i);
+          if (localJSONObject == null) {
+            break label229;
+          }
+          bool = true;
+          g.a(bool);
+          f localf = new f();
+          if (!localf.c(localJSONObject)) {
+            g.c("object item parse failed: " + i);
+          }
+          localArrayList1.add(localf);
+          i += 1;
+          continue;
+          if (i >= localArrayList1.size()) {
+            break label246;
+          }
+          paramJSONArray = (f)localArrayList1.get(i);
+          if (paramJSONArray.g) {
+            break label239;
+          }
+          localArrayList2.add(paramJSONArray);
+          break label239;
+          if (i < localArrayList1.size())
+          {
+            paramJSONArray = (f)localArrayList1.get(i);
+            if (paramJSONArray.g) {
+              localArrayList2.add(paramJSONArray);
+            }
+            i += 1;
+            continue;
+          }
+        }
+        a(localArrayList2);
+        return true;
+      }
+      catch (JSONException paramJSONArray)
+      {
+        return false;
+      }
+      bool = false;
+      break;
+      label229:
+      bool = false;
+      continue;
+      label234:
+      int i = 0;
+      continue;
+      label239:
+      i += 1;
+      continue;
+      label246:
+      i = 0;
+    }
+  }
+  
+  public int b(int paramInt)
+  {
+    Iterator localIterator = this.a.iterator();
+    int i = 0;
+    while (localIterator.hasNext())
+    {
+      f localf = (f)localIterator.next();
+      int j = i + 1;
+      i = j;
+      if (localf.a == paramInt) {
+        return j;
+      }
+    }
+    return -1;
+  }
+  
+  public boolean b()
+  {
+    QQUser localQQUser = cq.a().e();
+    if ((this.c == null) || (localQQUser == null)) {}
+    while ((!this.c.equals(cq.c)) || (this.d != cq.a().e().mUin) || (!this.e)) {
+      return false;
+    }
+    return true;
+  }
+  
+  public int c()
+  {
+    List localList = a();
+    if (localList == null) {
+      return 0;
+    }
+    return localList.size();
+  }
+  
+  public int d()
+  {
+    int i = 0;
+    int k = 0;
+    try
+    {
+      List localList = a();
+      if (localList == null) {}
+      int j;
+      do
+      {
+        return k;
+        j = 0;
+        k = i;
+      } while (j >= localList.size());
+      boolean bool = ((f)localList.get(j)).g;
+      if (!bool) {
+        i += 1;
       }
       for (;;)
       {
-        dg.a(arrayOfByte2, i1, this.s, 0, this.s.length);
-        arrayOfByte2[(i1 + this.s.length)] = 3;
-        return arrayOfByte2;
-        i1 = i2;
+        j += 1;
+        break;
       }
+    }
+    finally {}
+  }
+  
+  public void e()
+  {
+    Iterator localIterator = this.a.iterator();
+    while (localIterator.hasNext()) {
+      ((f)localIterator.next()).f = false;
     }
   }
 }

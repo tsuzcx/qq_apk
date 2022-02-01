@@ -6,7 +6,7 @@ public abstract interface SQLiteTrace
 {
   public abstract void onConnectionObtained(SQLiteDatabase paramSQLiteDatabase, String paramString, long paramLong, boolean paramBoolean);
   
-  public abstract void onConnectionPoolBusy(SQLiteDatabase paramSQLiteDatabase, String paramString1, List paramList, String paramString2);
+  public abstract void onConnectionPoolBusy(SQLiteDatabase paramSQLiteDatabase, String paramString1, List<String> paramList, String paramString2);
   
   public abstract void onDatabaseCorrupted(SQLiteDatabase paramSQLiteDatabase);
   

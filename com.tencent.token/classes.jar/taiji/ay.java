@@ -1,10 +1,34 @@
 package taiji;
 
-import uilib.doraemon.e;
+import java.util.List;
 
-public abstract interface ay
+public class ay
 {
-  public abstract cx a(e parame, bd parambd);
+  private final List<ap> a;
+  private final char b;
+  private final double c;
+  private final String d;
+  private final String e;
+  
+  public static int a(char paramChar, String paramString1, String paramString2)
+  {
+    return ((paramChar + '\000') * 31 + paramString1.hashCode()) * 31 + paramString2.hashCode();
+  }
+  
+  public List<ap> a()
+  {
+    return this.a;
+  }
+  
+  public double b()
+  {
+    return this.c;
+  }
+  
+  public int hashCode()
+  {
+    return a(this.b, this.e, this.d);
+  }
 }
 
 

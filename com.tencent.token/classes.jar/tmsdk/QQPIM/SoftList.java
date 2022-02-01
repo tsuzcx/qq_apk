@@ -11,10 +11,10 @@ public final class SoftList
   extends JceStruct
   implements Cloneable
 {
-  static ArrayList fd;
+  static ArrayList<SoftElementInfo> fd;
   static SoftListInfo fe;
   public SoftListInfo softListInfo = null;
-  public ArrayList vctSofts = null;
+  public ArrayList<SoftElementInfo> vctSofts = null;
   
   static
   {
@@ -28,7 +28,7 @@ public final class SoftList
   
   public SoftList() {}
   
-  public SoftList(ArrayList paramArrayList, SoftListInfo paramSoftListInfo)
+  public SoftList(ArrayList<SoftElementInfo> paramArrayList, SoftListInfo paramSoftListInfo)
   {
     this.vctSofts = paramArrayList;
     this.softListInfo = paramSoftListInfo;
@@ -83,7 +83,7 @@ public final class SoftList
     return this.softListInfo;
   }
   
-  public ArrayList getVctSofts()
+  public ArrayList<SoftElementInfo> getVctSofts()
   {
     return this.vctSofts;
   }
@@ -121,7 +121,7 @@ public final class SoftList
     this.softListInfo = paramSoftListInfo;
   }
   
-  public void setVctSofts(ArrayList paramArrayList)
+  public void setVctSofts(ArrayList<SoftElementInfo> paramArrayList)
   {
     this.vctSofts = paramArrayList;
   }

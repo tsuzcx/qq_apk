@@ -1,20 +1,41 @@
 package com.tencent.token;
 
-import java.util.concurrent.atomic.AtomicInteger;
+import java.net.Proxy.Type;
+import okhttp3.s;
+import okhttp3.x;
 
-public class fq
+public final class fq
 {
-  boolean a = false;
-  AtomicInteger b = new AtomicInteger();
-  
-  public void a(int paramInt)
+  public static String a(s params)
   {
-    this.b.set(paramInt);
+    String str1 = params.h();
+    String str2 = params.j();
+    params = str1;
+    if (str2 != null) {
+      params = str1 + '?' + str2;
+    }
+    return params;
   }
   
-  public boolean a()
+  public static String a(x paramx, Proxy.Type paramType)
   {
-    return this.a;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramx.b());
+    localStringBuilder.append(' ');
+    if (b(paramx, paramType)) {
+      localStringBuilder.append(paramx.a());
+    }
+    for (;;)
+    {
+      localStringBuilder.append(" HTTP/1.1");
+      return localStringBuilder.toString();
+      localStringBuilder.append(a(paramx.a()));
+    }
+  }
+  
+  private static boolean b(x paramx, Proxy.Type paramType)
+  {
+    return (!paramx.g()) && (paramType == Proxy.Type.HTTP);
   }
 }
 

@@ -202,7 +202,7 @@ public class AppInfoUtil
     //   50	54	59	java/lang/Throwable
   }
   
-  public static ArrayList extractPkgCertMd5s(String paramString, int paramInt)
+  public static ArrayList<String> extractPkgCertMd5s(String paramString, int paramInt)
   {
     if (TextUtils.isEmpty(paramString)) {
       return null;
@@ -274,7 +274,7 @@ public class AppInfoUtil
     }
   }
   
-  public static List getInstalledAppList(boolean paramBoolean)
+  public static List<AppInfo> getInstalledAppList(boolean paramBoolean)
   {
     int i = 0;
     localArrayList = new ArrayList();

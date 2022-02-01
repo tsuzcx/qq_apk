@@ -1,14 +1,82 @@
 package com.tencent.token.ui.base;
 
-import android.os.Handler;
-import android.os.Message;
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.token.global.h;
 
-class m
-  extends Handler
+public class m
+  extends RelativeLayout
 {
-  m(DualMsgView paramDualMsgView) {}
+  private Context a;
+  private LayoutInflater b;
+  private View c;
+  private CheckBox d;
+  private a e;
   
-  public void handleMessage(Message paramMessage) {}
+  public m(Context paramContext, int paramInt)
+  {
+    super(paramContext);
+    this.a = paramContext;
+    a(paramInt);
+  }
+  
+  private void a(final int paramInt)
+  {
+    this.b = ((LayoutInflater)this.a.getSystemService("layout_inflater"));
+    if (paramInt == 0)
+    {
+      this.c = this.b.inflate(2130968741, null);
+      addView(this.c, new RelativeLayout.LayoutParams(-1, -1));
+      this.d = ((CheckBox)findViewById(2131559200));
+      h.a(paramInt, false);
+      this.d.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
+      {
+        public void onCheckedChanged(CompoundButton paramAnonymousCompoundButton, boolean paramAnonymousBoolean)
+        {
+          int i = paramInt;
+          if (!paramAnonymousBoolean) {}
+          for (paramAnonymousBoolean = true;; paramAnonymousBoolean = false)
+          {
+            h.a(i, paramAnonymousBoolean);
+            return;
+          }
+        }
+      });
+    }
+    for (;;)
+    {
+      findViewById(2131559199).setOnClickListener(new View.OnClickListener()
+      {
+        public void onClick(View paramAnonymousView)
+        {
+          m.this.setVisibility(8);
+          if (m.a(m.this) != null) {
+            m.a(m.this).a();
+          }
+        }
+      });
+      return;
+      this.c = this.b.inflate(2130968742, null);
+      addView(this.c, new RelativeLayout.LayoutParams(-1, -1));
+    }
+  }
+  
+  public void setViewListener(a parama)
+  {
+    this.e = parama;
+  }
+  
+  public static abstract interface a
+  {
+    public abstract void a();
+  }
 }
 
 

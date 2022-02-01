@@ -1,68 +1,79 @@
 package taiji;
 
+import android.graphics.PointF;
 import uilib.doraemon.e;
 
 public class ce
-  implements ay
+  implements an
 {
   private final String a;
-  private final ce.b b;
-  private final af c;
-  private final av d;
-  private final af e;
-  private final af f;
-  private final af g;
-  private final af h;
-  private final af i;
+  private final b b;
+  private final ac c;
+  private final ak<PointF> d;
+  private final ac e;
+  private final ac f;
+  private final ac g;
+  private final ac h;
+  private final ac i;
   
   public String a()
   {
     return this.a;
   }
   
-  public cx a(e parame, bd parambd)
+  public br a(e parame, ar paramar)
   {
-    return new j(parame, parambd, this);
+    return new i(parame, paramar, this);
   }
   
-  public ce.b b()
+  public b b()
   {
     return this.b;
   }
   
-  public af c()
+  public ac c()
   {
     return this.c;
   }
   
-  public av d()
+  public ak<PointF> d()
   {
     return this.d;
   }
   
-  public af e()
+  public ac e()
   {
     return this.e;
   }
   
-  public af f()
+  public ac f()
   {
     return this.f;
   }
   
-  public af g()
+  public ac g()
   {
     return this.g;
   }
   
-  public af h()
+  public ac h()
   {
     return this.h;
   }
   
-  public af i()
+  public ac i()
   {
     return this.i;
+  }
+  
+  public static enum b
+  {
+    private final int c;
+    
+    private b(int paramInt)
+    {
+      this.c = paramInt;
+    }
   }
 }
 

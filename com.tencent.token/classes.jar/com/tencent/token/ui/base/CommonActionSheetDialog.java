@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -13,16 +15,16 @@ public class CommonActionSheetDialog
   extends Dialog
 {
   private Context a;
-  private e b;
+  private a b;
   private LinearLayout c;
   private String[] d;
   
-  public CommonActionSheetDialog(Activity paramActivity, int paramInt, e parame, String[] paramArrayOfString)
+  public CommonActionSheetDialog(Activity paramActivity, int paramInt, a parama, String[] paramArrayOfString)
   {
     super(paramActivity, paramInt);
     this.a = paramActivity;
     this.d = paramArrayOfString;
-    this.b = parame;
+    this.b = parama;
   }
   
   private void a()
@@ -30,13 +32,25 @@ public class CommonActionSheetDialog
     if ((this.d == null) || (this.d.length < 2)) {
       return;
     }
-    Button localButton1 = (Button)findViewById(2131558782);
+    Button localButton1 = (Button)findViewById(2131558783);
     localButton1.setText(this.d[0]);
-    localButton1.setOnClickListener(new b(this));
-    localButton1 = (Button)findViewById(2131558783);
+    localButton1.setOnClickListener(new View.OnClickListener()
+    {
+      public void onClick(View paramAnonymousView)
+      {
+        CommonActionSheetDialog.a(CommonActionSheetDialog.this).a(0);
+      }
+    });
+    localButton1 = (Button)findViewById(2131558784);
     localButton1.setText(this.d[1]);
-    localButton1.setOnClickListener(new c(this));
-    int i = 2;
+    localButton1.setOnClickListener(new View.OnClickListener()
+    {
+      public void onClick(View paramAnonymousView)
+      {
+        CommonActionSheetDialog.a(CommonActionSheetDialog.this).a(1);
+      }
+    });
+    final int i = 2;
     while (i < this.d.length)
     {
       LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)localButton1.getLayoutParams();
@@ -44,7 +58,13 @@ public class CommonActionSheetDialog
       localButton2.setLayoutParams(localLayoutParams);
       localButton2.setTextAppearance(this.a, 2131362186);
       localButton2.setText(this.d[i]);
-      localButton2.setOnClickListener(new d(this, i));
+      localButton2.setOnClickListener(new View.OnClickListener()
+      {
+        public void onClick(View paramAnonymousView)
+        {
+          CommonActionSheetDialog.a(CommonActionSheetDialog.this).a(i);
+        }
+      });
       this.c.addView(localButton2);
       i += 1;
     }
@@ -55,7 +75,7 @@ public class CommonActionSheetDialog
   {
     super.onCreate(paramBundle);
     setContentView(2130968635);
-    this.c = ((LinearLayout)findViewById(2131558781));
+    this.c = ((LinearLayout)findViewById(2131558782));
     setCanceledOnTouchOutside(true);
     paramBundle = getWindow();
     paramBundle.setBackgroundDrawableResource(2130837730);
@@ -67,6 +87,11 @@ public class CommonActionSheetDialog
   public void show()
   {
     super.show();
+  }
+  
+  public static abstract interface a
+  {
+    public abstract void a(int paramInt);
   }
 }
 

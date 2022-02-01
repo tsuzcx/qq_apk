@@ -1,18 +1,18 @@
 package com.tencent.token.core.protocolcenter.protocol;
 
+import com.tencent.token.bz;
+import com.tencent.token.ca;
+import com.tencent.token.cb;
 import com.tencent.token.core.bean.QQUser;
-import com.tencent.token.core.protocolcenter.e;
-import com.tencent.token.cv;
-import com.tencent.token.cw;
-import com.tencent.token.cx;
-import com.tencent.token.do;
-import com.tencent.token.ev;
+import com.tencent.token.core.protocolcenter.d;
+import com.tencent.token.cq;
+import com.tencent.token.dn;
 import com.tencent.token.global.RqdApplication;
 import com.tencent.token.global.c;
-import com.tencent.token.global.f;
-import com.tencent.token.upload.o;
-import com.tencent.token.utils.w;
-import com.tencent.token.utils.x;
+import com.tencent.token.global.e;
+import com.tencent.token.upload.i;
+import com.tencent.token.utils.l;
+import com.tencent.token.utils.m;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -22,20 +22,20 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 public class ProtoReportDnsInfo
-  extends e
+  extends d
 {
   private JSONArray d;
   private int e;
   
-  public static void a(ev paramev, JSONArray paramJSONArray)
+  public static void a(dn paramdn, JSONArray paramJSONArray)
   {
-    paramev.c.put("param.reportdns.domain", paramJSONArray);
+    paramdn.c.put("param.reportdns.domain", paramJSONArray);
   }
   
   protected String a()
   {
     int j = 0;
-    String str1 = cv.a().b();
+    String str1 = bz.a().b();
     if (str1 == null)
     {
       this.a.b(104);
@@ -68,15 +68,15 @@ public class ProtoReportDnsInfo
         i += 1;
       }
       long l = 0L;
-      Object localObject3 = do.a().e();
+      Object localObject3 = cq.a().e();
       if (localObject3 == null) {
         break label239;
       }
       l = ((QQUser)localObject3).mRealUin;
-      i = cw.a + 1;
-      cw.a = i;
+      i = ca.a + 1;
+      ca.a = i;
       this.e = i;
-      localObject1 = w.a(new Object[] { "seq_id", Integer.valueOf(this.e), "op_time", Long.valueOf(cx.c().s() / 1000L), "uin", Long.valueOf(l), "dns_ip1", localObject1[0], "dns_ip2", localObject1[1], "domain_list", this.d, "ret_ip_list", localObject2, "MNC", o.l(RqdApplication.l()), "MCC", o.k(RqdApplication.l()), "net_type", w.k() });
+      localObject1 = l.a(new Object[] { "seq_id", Integer.valueOf(this.e), "op_time", Long.valueOf(cb.c().s() / 1000L), "uin", Long.valueOf(l), "dns_ip1", localObject1[0], "dns_ip2", localObject1[1], "domain_list", this.d, "ret_ip_list", localObject2, "MNC", i.l(RqdApplication.l()), "MCC", i.k(RqdApplication.l()), "net_type", l.k() });
       if (localObject1 != null) {
         break label439;
       }
@@ -108,9 +108,9 @@ public class ProtoReportDnsInfo
     return str2;
   }
   
-  protected void a(ev paramev)
+  protected void a(dn paramdn)
   {
-    this.d = ((JSONArray)paramev.c.get("param.reportdns.domain"));
+    this.d = ((JSONArray)paramdn.c.get("param.reportdns.domain"));
   }
   
   protected void a(JSONObject paramJSONObject)
@@ -121,7 +121,7 @@ public class ProtoReportDnsInfo
       a(i, paramJSONObject.getString("info"));
       return;
     }
-    x.a(System.currentTimeMillis() / 1000L);
+    m.a(System.currentTimeMillis() / 1000L);
     this.a.c();
   }
 }

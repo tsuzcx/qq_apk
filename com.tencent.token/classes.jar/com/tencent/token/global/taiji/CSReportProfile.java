@@ -8,12 +8,12 @@ import java.util.ArrayList;
 public final class CSReportProfile
   extends JceStruct
 {
-  static ArrayList cache_param = new ArrayList();
+  static ArrayList<byte[]> cache_param = new ArrayList();
   public int actionID = 0;
   public long getTime = 0L;
   public boolean isCheckKey = false;
   public int lastVerifyKey = 0;
-  public ArrayList param = null;
+  public ArrayList<byte[]> param = null;
   public int presentVerifyKey = 0;
   public int profileID = 0;
   public int profileSource = 0;

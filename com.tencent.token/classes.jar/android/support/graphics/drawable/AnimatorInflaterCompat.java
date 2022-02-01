@@ -247,7 +247,7 @@ public class AnimatorInflaterCompat
         }
         if (arrayOfPathDataNode1 != null)
         {
-          AnimatorInflaterCompat.PathDataEvaluator localPathDataEvaluator = new AnimatorInflaterCompat.PathDataEvaluator(null);
+          PathDataEvaluator localPathDataEvaluator = new PathDataEvaluator(null);
           if (arrayOfPathDataNode2 != null)
           {
             if (!PathParser.canMorph(arrayOfPathDataNode1, arrayOfPathDataNode2))
@@ -279,7 +279,7 @@ public class AnimatorInflaterCompat
         if (arrayOfPathDataNode2 == null) {
           break label692;
         }
-        return PropertyValuesHolder.ofObject(paramString, new AnimatorInflaterCompat.PathDataEvaluator(null), new Object[] { arrayOfPathDataNode2 });
+        return PropertyValuesHolder.ofObject(paramString, new PathDataEvaluator(null), new Object[] { arrayOfPathDataNode2 });
       }
     }
     localObject = null;
@@ -494,7 +494,7 @@ public class AnimatorInflaterCompat
     //   7: astore 6
     //   9: aload_1
     //   10: iload_3
-    //   11: invokevirtual 360	android/content/res/Resources:getAnimation	(I)Landroid/content/res/XmlResourceParser;
+    //   11: invokevirtual 363	android/content/res/Resources:getAnimation	(I)Landroid/content/res/XmlResourceParser;
     //   14: astore 8
     //   16: aload 8
     //   18: astore 6
@@ -507,35 +507,35 @@ public class AnimatorInflaterCompat
     //   30: aload_2
     //   31: aload 8
     //   33: fload 4
-    //   35: invokestatic 362	android/support/graphics/drawable/AnimatorInflaterCompat:createAnimatorFromXml	(Landroid/content/Context;Landroid/content/res/Resources;Landroid/content/res/Resources$Theme;Lorg/xmlpull/v1/XmlPullParser;F)Landroid/animation/Animator;
+    //   35: invokestatic 365	android/support/graphics/drawable/AnimatorInflaterCompat:createAnimatorFromXml	(Landroid/content/Context;Landroid/content/res/Resources;Landroid/content/res/Resources$Theme;Lorg/xmlpull/v1/XmlPullParser;F)Landroid/animation/Animator;
     //   38: astore_0
     //   39: aload 8
     //   41: ifnull +10 -> 51
     //   44: aload 8
-    //   46: invokeinterface 367 1 0
+    //   46: invokeinterface 370 1 0
     //   51: aload_0
     //   52: areturn
     //   53: astore_0
     //   54: aload 6
     //   56: astore 5
-    //   58: new 369	android/content/res/Resources$NotFoundException
+    //   58: new 372	android/content/res/Resources$NotFoundException
     //   61: dup
-    //   62: new 125	java/lang/StringBuilder
+    //   62: new 130	java/lang/StringBuilder
     //   65: dup
-    //   66: invokespecial 126	java/lang/StringBuilder:<init>	()V
-    //   69: ldc_w 371
-    //   72: invokevirtual 132	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   66: invokespecial 131	java/lang/StringBuilder:<init>	()V
+    //   69: ldc_w 374
+    //   72: invokevirtual 137	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   75: iload_3
-    //   76: invokestatic 374	java/lang/Integer:toHexString	(I)Ljava/lang/String;
-    //   79: invokevirtual 132	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   82: invokevirtual 135	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   85: invokespecial 375	android/content/res/Resources$NotFoundException:<init>	(Ljava/lang/String;)V
+    //   76: invokestatic 377	java/lang/Integer:toHexString	(I)Ljava/lang/String;
+    //   79: invokevirtual 137	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   82: invokevirtual 140	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   85: invokespecial 378	android/content/res/Resources$NotFoundException:<init>	(Ljava/lang/String;)V
     //   88: astore_1
     //   89: aload 6
     //   91: astore 5
     //   93: aload_1
     //   94: aload_0
-    //   95: invokevirtual 379	android/content/res/Resources$NotFoundException:initCause	(Ljava/lang/Throwable;)Ljava/lang/Throwable;
+    //   95: invokevirtual 382	android/content/res/Resources$NotFoundException:initCause	(Ljava/lang/Throwable;)Ljava/lang/Throwable;
     //   98: pop
     //   99: aload 6
     //   101: astore 5
@@ -545,30 +545,30 @@ public class AnimatorInflaterCompat
     //   106: aload 5
     //   108: ifnull +10 -> 118
     //   111: aload 5
-    //   113: invokeinterface 367 1 0
+    //   113: invokeinterface 370 1 0
     //   118: aload_0
     //   119: athrow
     //   120: astore_0
     //   121: aload 7
     //   123: astore 5
-    //   125: new 369	android/content/res/Resources$NotFoundException
+    //   125: new 372	android/content/res/Resources$NotFoundException
     //   128: dup
-    //   129: new 125	java/lang/StringBuilder
+    //   129: new 130	java/lang/StringBuilder
     //   132: dup
-    //   133: invokespecial 126	java/lang/StringBuilder:<init>	()V
-    //   136: ldc_w 371
-    //   139: invokevirtual 132	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   133: invokespecial 131	java/lang/StringBuilder:<init>	()V
+    //   136: ldc_w 374
+    //   139: invokevirtual 137	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   142: iload_3
-    //   143: invokestatic 374	java/lang/Integer:toHexString	(I)Ljava/lang/String;
-    //   146: invokevirtual 132	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   149: invokevirtual 135	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   152: invokespecial 375	android/content/res/Resources$NotFoundException:<init>	(Ljava/lang/String;)V
+    //   143: invokestatic 377	java/lang/Integer:toHexString	(I)Ljava/lang/String;
+    //   146: invokevirtual 137	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   149: invokevirtual 140	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   152: invokespecial 378	android/content/res/Resources$NotFoundException:<init>	(Ljava/lang/String;)V
     //   155: astore_1
     //   156: aload 7
     //   158: astore 5
     //   160: aload_1
     //   161: aload_0
-    //   162: invokevirtual 379	android/content/res/Resources$NotFoundException:initCause	(Ljava/lang/Throwable;)Ljava/lang/Throwable;
+    //   162: invokevirtual 382	android/content/res/Resources$NotFoundException:initCause	(Ljava/lang/Throwable;)Ljava/lang/Throwable;
     //   165: pop
     //   166: aload 7
     //   168: astore 5
@@ -979,6 +979,36 @@ public class AnimatorInflaterCompat
       }
       paramObjectAnimator.setValues(new PropertyValuesHolder[] { paramPath, paramString1 });
       return;
+    }
+  }
+  
+  private static class PathDataEvaluator
+    implements TypeEvaluator<PathParser.PathDataNode[]>
+  {
+    private PathParser.PathDataNode[] mNodeArray;
+    
+    private PathDataEvaluator() {}
+    
+    PathDataEvaluator(PathParser.PathDataNode[] paramArrayOfPathDataNode)
+    {
+      this.mNodeArray = paramArrayOfPathDataNode;
+    }
+    
+    public PathParser.PathDataNode[] evaluate(float paramFloat, PathParser.PathDataNode[] paramArrayOfPathDataNode1, PathParser.PathDataNode[] paramArrayOfPathDataNode2)
+    {
+      if (!PathParser.canMorph(paramArrayOfPathDataNode1, paramArrayOfPathDataNode2)) {
+        throw new IllegalArgumentException("Can't interpolate between two incompatible pathData");
+      }
+      if ((this.mNodeArray == null) || (!PathParser.canMorph(this.mNodeArray, paramArrayOfPathDataNode1))) {
+        this.mNodeArray = PathParser.deepCopyNodes(paramArrayOfPathDataNode1);
+      }
+      int i = 0;
+      while (i < paramArrayOfPathDataNode1.length)
+      {
+        this.mNodeArray[i].interpolatePathDataNode(paramArrayOfPathDataNode1[i], paramArrayOfPathDataNode2[i], paramFloat);
+        i += 1;
+      }
+      return this.mNodeArray;
     }
   }
 }

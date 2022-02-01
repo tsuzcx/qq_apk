@@ -22,12 +22,12 @@ public class ActivityOptionsCompat
   private static ActivityOptionsCompat createImpl(ActivityOptions paramActivityOptions)
   {
     if (Build.VERSION.SDK_INT >= 24) {
-      return new ActivityOptionsCompat.ActivityOptionsCompatApi24Impl(paramActivityOptions);
+      return new ActivityOptionsCompatApi24Impl(paramActivityOptions);
     }
     if (Build.VERSION.SDK_INT >= 23) {
-      return new ActivityOptionsCompat.ActivityOptionsCompatApi23Impl(paramActivityOptions);
+      return new ActivityOptionsCompatApi23Impl(paramActivityOptions);
     }
-    return new ActivityOptionsCompat.ActivityOptionsCompatApi16Impl(paramActivityOptions);
+    return new ActivityOptionsCompatApi16Impl(paramActivityOptions);
   }
   
   @NonNull
@@ -76,7 +76,7 @@ public class ActivityOptionsCompat
   }
   
   @NonNull
-  public static ActivityOptionsCompat makeSceneTransitionAnimation(@NonNull Activity paramActivity, android.support.v4.util.Pair... paramVarArgs)
+  public static ActivityOptionsCompat makeSceneTransitionAnimation(@NonNull Activity paramActivity, android.support.v4.util.Pair<View, String>... paramVarArgs)
   {
     if (Build.VERSION.SDK_INT >= 21)
     {
@@ -135,6 +135,67 @@ public class ActivityOptionsCompat
   }
   
   public void update(@NonNull ActivityOptionsCompat paramActivityOptionsCompat) {}
+  
+  @RequiresApi(16)
+  private static class ActivityOptionsCompatApi16Impl
+    extends ActivityOptionsCompat
+  {
+    protected final ActivityOptions mActivityOptions;
+    
+    ActivityOptionsCompatApi16Impl(ActivityOptions paramActivityOptions)
+    {
+      this.mActivityOptions = paramActivityOptions;
+    }
+    
+    public Bundle toBundle()
+    {
+      return this.mActivityOptions.toBundle();
+    }
+    
+    public void update(ActivityOptionsCompat paramActivityOptionsCompat)
+    {
+      if ((paramActivityOptionsCompat instanceof ActivityOptionsCompatApi16Impl))
+      {
+        paramActivityOptionsCompat = (ActivityOptionsCompatApi16Impl)paramActivityOptionsCompat;
+        this.mActivityOptions.update(paramActivityOptionsCompat.mActivityOptions);
+      }
+    }
+  }
+  
+  @RequiresApi(23)
+  private static class ActivityOptionsCompatApi23Impl
+    extends ActivityOptionsCompat.ActivityOptionsCompatApi16Impl
+  {
+    ActivityOptionsCompatApi23Impl(ActivityOptions paramActivityOptions)
+    {
+      super();
+    }
+    
+    public void requestUsageTimeReport(PendingIntent paramPendingIntent)
+    {
+      this.mActivityOptions.requestUsageTimeReport(paramPendingIntent);
+    }
+  }
+  
+  @RequiresApi(24)
+  private static class ActivityOptionsCompatApi24Impl
+    extends ActivityOptionsCompat.ActivityOptionsCompatApi23Impl
+  {
+    ActivityOptionsCompatApi24Impl(ActivityOptions paramActivityOptions)
+    {
+      super();
+    }
+    
+    public Rect getLaunchBounds()
+    {
+      return this.mActivityOptions.getLaunchBounds();
+    }
+    
+    public ActivityOptionsCompat setLaunchBounds(@Nullable Rect paramRect)
+    {
+      return new ActivityOptionsCompatApi24Impl(this.mActivityOptions.setLaunchBounds(paramRect));
+    }
+  }
 }
 
 

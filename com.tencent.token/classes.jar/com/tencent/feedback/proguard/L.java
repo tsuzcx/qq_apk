@@ -8,14 +8,14 @@ public final class L
   extends j
   implements Cloneable
 {
-  private static Map A;
-  private static Map t;
+  private static Map<String, String> A;
+  private static Map<String, String> t;
   private static J u;
   private static I v;
-  private static ArrayList w;
-  private static ArrayList x;
-  private static ArrayList y;
-  private static Map z;
+  private static ArrayList<I> w;
+  private static ArrayList<I> x;
+  private static ArrayList<K> y;
+  private static Map<String, String> z;
   public String a = "";
   public long b = 0L;
   public String c = "";
@@ -23,18 +23,18 @@ public final class L
   public String e = "";
   public String f = "";
   public String g = "";
-  public Map h = null;
+  public Map<String, String> h = null;
   public String i = "";
   public int j = 0;
   public String k = "";
   public String l = "";
-  public ArrayList m = null;
-  public ArrayList n = null;
-  public ArrayList o = null;
-  public Map p = null;
+  public ArrayList<I> m = null;
+  public ArrayList<I> n = null;
+  public ArrayList<K> o = null;
+  public Map<String, String> p = null;
   private J q = null;
   private I r = null;
-  private Map s = null;
+  private Map<String, String> s = null;
   
   public final void a(h paramh)
   {

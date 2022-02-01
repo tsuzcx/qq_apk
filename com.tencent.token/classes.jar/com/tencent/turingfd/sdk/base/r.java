@@ -1,11 +1,18 @@
 package com.tencent.turingfd.sdk.base;
 
-public final class r
-  extends dj
+import android.view.Window.Callback;
+
+public class r
+  extends n
 {
-  public Object a()
+  public q b;
+  public String c;
+  
+  public r(Window.Callback paramCallback, q paramq, String paramString)
   {
-    return new x();
+    super(paramCallback);
+    this.b = paramq;
+    this.c = paramString;
   }
 }
 

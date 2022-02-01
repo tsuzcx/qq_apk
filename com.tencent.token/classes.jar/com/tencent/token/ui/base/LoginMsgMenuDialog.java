@@ -18,8 +18,8 @@ public class LoginMsgMenuDialog
   
   private void a()
   {
-    this.b = ((Button)findViewById(2131558983));
-    this.c = ((Button)findViewById(2131558984));
+    this.b = ((Button)findViewById(2131558984));
+    this.c = ((Button)findViewById(2131558985));
     this.b.setOnClickListener(this.e);
     this.c.setOnClickListener(this.d);
   }
@@ -40,6 +40,8 @@ public class LoginMsgMenuDialog
     paramBundle.getAttributes().width = -1;
     paramBundle.setGravity(80);
   }
+  
+  public static abstract interface a {}
 }
 
 

@@ -1,11 +1,16 @@
 package android.support.v7.app;
 
+import android.app.ActionBar;
 import android.app.Activity;
+import android.content.Context;
 import android.content.res.Configuration;
 import android.content.res.Resources;
+import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
 import android.os.Build.VERSION;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.support.annotation.RequiresApi;
 import android.support.annotation.StringRes;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v4.widget.DrawerLayout.DrawerListener;
@@ -19,7 +24,7 @@ import android.view.View.OnClickListener;
 public class ActionBarDrawerToggle
   implements DrawerLayout.DrawerListener
 {
-  private final ActionBarDrawerToggle.Delegate mActivityImpl;
+  private final Delegate mActivityImpl;
   private final int mCloseDrawerContentDescRes;
   boolean mDrawerIndicatorEnabled = true;
   private final DrawerLayout mDrawerLayout;
@@ -45,8 +50,20 @@ public class ActionBarDrawerToggle
   {
     if (paramToolbar != null)
     {
-      this.mActivityImpl = new ActionBarDrawerToggle.ToolbarCompatDelegate(paramToolbar);
-      paramToolbar.setNavigationOnClickListener(new ActionBarDrawerToggle.1(this));
+      this.mActivityImpl = new ToolbarCompatDelegate(paramToolbar);
+      paramToolbar.setNavigationOnClickListener(new View.OnClickListener()
+      {
+        public void onClick(View paramAnonymousView)
+        {
+          if (ActionBarDrawerToggle.this.mDrawerIndicatorEnabled) {
+            ActionBarDrawerToggle.this.toggle();
+          }
+          while (ActionBarDrawerToggle.this.mToolbarNavigationClickListener == null) {
+            return;
+          }
+          ActionBarDrawerToggle.this.mToolbarNavigationClickListener.onClick(paramAnonymousView);
+        }
+      });
       this.mDrawerLayout = paramDrawerLayout;
       this.mOpenDrawerContentDescRes = paramInt1;
       this.mCloseDrawerContentDescRes = paramInt2;
@@ -59,17 +76,17 @@ public class ActionBarDrawerToggle
     {
       this.mHomeAsUpIndicator = getThemeUpIndicator();
       return;
-      if ((paramActivity instanceof ActionBarDrawerToggle.DelegateProvider))
+      if ((paramActivity instanceof DelegateProvider))
       {
-        this.mActivityImpl = ((ActionBarDrawerToggle.DelegateProvider)paramActivity).getDrawerToggleDelegate();
+        this.mActivityImpl = ((DelegateProvider)paramActivity).getDrawerToggleDelegate();
         break;
       }
       if (Build.VERSION.SDK_INT >= 18)
       {
-        this.mActivityImpl = new ActionBarDrawerToggle.JellybeanMr2Delegate(paramActivity);
+        this.mActivityImpl = new JellybeanMr2Delegate(paramActivity);
         break;
       }
-      this.mActivityImpl = new ActionBarDrawerToggle.IcsDelegate(paramActivity);
+      this.mActivityImpl = new IcsDelegate(paramActivity);
       break;
     }
   }
@@ -280,6 +297,172 @@ public class ActionBarDrawerToggle
       return;
     }
     this.mDrawerLayout.openDrawer(8388611);
+  }
+  
+  public static abstract interface Delegate
+  {
+    public abstract Context getActionBarThemedContext();
+    
+    public abstract Drawable getThemeUpIndicator();
+    
+    public abstract boolean isNavigationVisible();
+    
+    public abstract void setActionBarDescription(@StringRes int paramInt);
+    
+    public abstract void setActionBarUpIndicator(Drawable paramDrawable, @StringRes int paramInt);
+  }
+  
+  public static abstract interface DelegateProvider
+  {
+    @Nullable
+    public abstract ActionBarDrawerToggle.Delegate getDrawerToggleDelegate();
+  }
+  
+  private static class IcsDelegate
+    implements ActionBarDrawerToggle.Delegate
+  {
+    final Activity mActivity;
+    ActionBarDrawerToggleHoneycomb.SetIndicatorInfo mSetIndicatorInfo;
+    
+    IcsDelegate(Activity paramActivity)
+    {
+      this.mActivity = paramActivity;
+    }
+    
+    public Context getActionBarThemedContext()
+    {
+      ActionBar localActionBar = this.mActivity.getActionBar();
+      if (localActionBar != null) {
+        return localActionBar.getThemedContext();
+      }
+      return this.mActivity;
+    }
+    
+    public Drawable getThemeUpIndicator()
+    {
+      return ActionBarDrawerToggleHoneycomb.getThemeUpIndicator(this.mActivity);
+    }
+    
+    public boolean isNavigationVisible()
+    {
+      ActionBar localActionBar = this.mActivity.getActionBar();
+      return (localActionBar != null) && ((localActionBar.getDisplayOptions() & 0x4) != 0);
+    }
+    
+    public void setActionBarDescription(int paramInt)
+    {
+      this.mSetIndicatorInfo = ActionBarDrawerToggleHoneycomb.setActionBarDescription(this.mSetIndicatorInfo, this.mActivity, paramInt);
+    }
+    
+    public void setActionBarUpIndicator(Drawable paramDrawable, int paramInt)
+    {
+      ActionBar localActionBar = this.mActivity.getActionBar();
+      if (localActionBar != null)
+      {
+        localActionBar.setDisplayShowHomeEnabled(true);
+        this.mSetIndicatorInfo = ActionBarDrawerToggleHoneycomb.setActionBarUpIndicator(this.mSetIndicatorInfo, this.mActivity, paramDrawable, paramInt);
+        localActionBar.setDisplayShowHomeEnabled(false);
+      }
+    }
+  }
+  
+  @RequiresApi(18)
+  private static class JellybeanMr2Delegate
+    implements ActionBarDrawerToggle.Delegate
+  {
+    final Activity mActivity;
+    
+    JellybeanMr2Delegate(Activity paramActivity)
+    {
+      this.mActivity = paramActivity;
+    }
+    
+    public Context getActionBarThemedContext()
+    {
+      ActionBar localActionBar = this.mActivity.getActionBar();
+      if (localActionBar != null) {
+        return localActionBar.getThemedContext();
+      }
+      return this.mActivity;
+    }
+    
+    public Drawable getThemeUpIndicator()
+    {
+      TypedArray localTypedArray = getActionBarThemedContext().obtainStyledAttributes(null, new int[] { 16843531 }, 16843470, 0);
+      Drawable localDrawable = localTypedArray.getDrawable(0);
+      localTypedArray.recycle();
+      return localDrawable;
+    }
+    
+    public boolean isNavigationVisible()
+    {
+      ActionBar localActionBar = this.mActivity.getActionBar();
+      return (localActionBar != null) && ((localActionBar.getDisplayOptions() & 0x4) != 0);
+    }
+    
+    public void setActionBarDescription(int paramInt)
+    {
+      ActionBar localActionBar = this.mActivity.getActionBar();
+      if (localActionBar != null) {
+        localActionBar.setHomeActionContentDescription(paramInt);
+      }
+    }
+    
+    public void setActionBarUpIndicator(Drawable paramDrawable, int paramInt)
+    {
+      ActionBar localActionBar = this.mActivity.getActionBar();
+      if (localActionBar != null)
+      {
+        localActionBar.setHomeAsUpIndicator(paramDrawable);
+        localActionBar.setHomeActionContentDescription(paramInt);
+      }
+    }
+  }
+  
+  static class ToolbarCompatDelegate
+    implements ActionBarDrawerToggle.Delegate
+  {
+    final CharSequence mDefaultContentDescription;
+    final Drawable mDefaultUpIndicator;
+    final Toolbar mToolbar;
+    
+    ToolbarCompatDelegate(Toolbar paramToolbar)
+    {
+      this.mToolbar = paramToolbar;
+      this.mDefaultUpIndicator = paramToolbar.getNavigationIcon();
+      this.mDefaultContentDescription = paramToolbar.getNavigationContentDescription();
+    }
+    
+    public Context getActionBarThemedContext()
+    {
+      return this.mToolbar.getContext();
+    }
+    
+    public Drawable getThemeUpIndicator()
+    {
+      return this.mDefaultUpIndicator;
+    }
+    
+    public boolean isNavigationVisible()
+    {
+      return true;
+    }
+    
+    public void setActionBarDescription(@StringRes int paramInt)
+    {
+      if (paramInt == 0)
+      {
+        this.mToolbar.setNavigationContentDescription(this.mDefaultContentDescription);
+        return;
+      }
+      this.mToolbar.setNavigationContentDescription(paramInt);
+    }
+    
+    public void setActionBarUpIndicator(Drawable paramDrawable, @StringRes int paramInt)
+    {
+      this.mToolbar.setNavigationIcon(paramDrawable);
+      setActionBarDescription(paramInt);
+    }
   }
 }
 

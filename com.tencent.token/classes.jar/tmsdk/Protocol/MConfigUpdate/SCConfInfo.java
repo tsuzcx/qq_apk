@@ -13,12 +13,12 @@ public final class SCConfInfo
   static TimeCtrl bA = new TimeCtrl();
   static TipsInfo bB = new TipsInfo();
   static TipsInfo bC = new TipsInfo();
-  static ArrayList bD = new ArrayList();
+  static ArrayList<ServerConfInfo> bD = new ArrayList();
   public TipsInfo extTips = null;
   public String taskId = "";
   public TimeCtrl timeCtrl = null;
   public TipsInfo tips = null;
-  public ArrayList vecConfInfo = null;
+  public ArrayList<ServerConfInfo> vecConfInfo = null;
   
   static
   {

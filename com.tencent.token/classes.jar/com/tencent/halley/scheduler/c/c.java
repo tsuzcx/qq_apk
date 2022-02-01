@@ -1,7 +1,7 @@
 package com.tencent.halley.scheduler.c;
 
 import com.tencent.halley.common.b.a;
-import com.tencent.halley.common.b.d;
+import com.tencent.halley.common.b.b;
 
 public final class c
   extends com.tencent.halley.common.b.c
@@ -27,15 +27,15 @@ public final class c
     this.f = ((i)parama.a(g, 5, false));
   }
   
-  public final void a(d paramd)
+  public final void a(b paramb)
   {
-    paramd.a(this.a, 0);
-    paramd.a(this.b, 1);
-    paramd.a(this.c, 2);
-    paramd.a(this.d, 3);
-    paramd.a(this.e, 4);
+    paramb.a(this.a, 0);
+    paramb.a(this.b, 1);
+    paramb.a(this.c, 2);
+    paramb.a(this.d, 3);
+    paramb.a(this.e, 4);
     if (this.f != null) {
-      paramd.a(this.f, 5);
+      paramb.a(this.f, 5);
     }
   }
 }

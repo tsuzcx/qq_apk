@@ -1,16 +1,75 @@
 package com.tencent.token.ui.base;
 
 import android.view.View;
-import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.TextView;
+import com.tencent.token.core.bean.f;
 
-class l
-  implements View.OnClickListener
+public class l
 {
-  l(DualMsgView paramDualMsgView) {}
+  View a;
+  TextView b;
+  ProgressBar c;
+  SwitchButton d;
+  ImageView e;
+  ImageView f;
+  ImageView g;
+  f h;
   
-  public void onClick(View paramView)
+  public l(View paramView, f paramf)
   {
-    DualMsgView.a(this.a).a(3);
+    this.a = paramView;
+    if (this.a == null) {
+      return;
+    }
+    this.h = paramf;
+    this.d = ((SwitchButton)this.a.findViewById(2131559357));
+    this.b = ((TextView)this.a.findViewById(2131559354));
+    this.c = ((ProgressBar)this.a.findViewById(2131559358));
+    this.e = ((ImageView)this.a.findViewById(2131559356));
+    this.f = ((ImageView)this.a.findViewById(2131559359));
+    this.g = ((ImageView)this.a.findViewById(2131559355));
+  }
+  
+  public f a()
+  {
+    return this.h;
+  }
+  
+  public SwitchButton b()
+  {
+    return this.d;
+  }
+  
+  public TextView c()
+  {
+    return this.b;
+  }
+  
+  public ProgressBar d()
+  {
+    return this.c;
+  }
+  
+  public ImageView e()
+  {
+    return this.e;
+  }
+  
+  public ImageView f()
+  {
+    return this.f;
+  }
+  
+  public ImageView g()
+  {
+    return this.g;
+  }
+  
+  public View h()
+  {
+    return this.a;
   }
 }
 

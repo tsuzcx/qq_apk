@@ -10,7 +10,7 @@ public final class Category
   extends JceStruct
   implements Cloneable
 {
-  static ArrayList dL;
+  static ArrayList<String> dL;
   static byte[] dM;
   public int autoalert = 0;
   public int categorytype = 0;
@@ -25,7 +25,7 @@ public final class Category
   public int sign = 0;
   public int source = 1;
   public int state = 0;
-  public ArrayList vecSubtitle = null;
+  public ArrayList<String> vecSubtitle = null;
   public int viewtimes = 0;
   public String welcome = "";
   
@@ -59,7 +59,7 @@ public final class Category
     setRank(this.rank);
   }
   
-  public Category(int paramInt1, String paramString1, String paramString2, int paramInt2, String paramString3, int paramInt3, int paramInt4, int paramInt5, int paramInt6, ArrayList paramArrayList, String paramString4, int paramInt7, int paramInt8, int paramInt9, byte[] paramArrayOfByte, int paramInt10)
+  public Category(int paramInt1, String paramString1, String paramString2, int paramInt2, String paramString3, int paramInt3, int paramInt4, int paramInt5, int paramInt6, ArrayList<String> paramArrayList, String paramString4, int paramInt7, int paramInt8, int paramInt9, byte[] paramArrayOfByte, int paramInt10)
   {
     setId(paramInt1);
     setName(paramString1);
@@ -181,7 +181,7 @@ public final class Category
     return this.state;
   }
   
-  public ArrayList getVecSubtitle()
+  public ArrayList<String> getVecSubtitle()
   {
     return this.vecSubtitle;
   }
@@ -304,7 +304,7 @@ public final class Category
     this.state = paramInt;
   }
   
-  public void setVecSubtitle(ArrayList paramArrayList)
+  public void setVecSubtitle(ArrayList<String> paramArrayList)
   {
     this.vecSubtitle = paramArrayList;
   }

@@ -18,8 +18,8 @@ public final class f
   implements e
 {
   private static f a = null;
-  private List b = new ArrayList(2);
-  private List c = new ArrayList(5);
+  private List<d> b = new ArrayList(2);
+  private List<UploadHandleListener> c = new ArrayList(5);
   private c d;
   private Context e = null;
   private boolean f = true;
@@ -170,7 +170,7 @@ public final class f
     }
   }
   
-  private static void a(List paramList, int paramInt, byte[] paramArrayOfByte)
+  private static void a(List<d> paramList, int paramInt, byte[] paramArrayOfByte)
   {
     if ((paramList == null) || (paramArrayOfByte == null)) {}
     for (;;)
@@ -250,18 +250,18 @@ public final class f
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 37	com/tencent/feedback/upload/f:c	Ljava/util/List;
+    //   3: getfield 39	com/tencent/feedback/upload/f:c	Ljava/util/List;
     //   6: ifnull +36 -> 42
     //   9: aload_0
-    //   10: getfield 37	com/tencent/feedback/upload/f:c	Ljava/util/List;
-    //   13: invokeinterface 237 1 0
+    //   10: getfield 39	com/tencent/feedback/upload/f:c	Ljava/util/List;
+    //   13: invokeinterface 241 1 0
     //   18: ifle +24 -> 42
     //   21: aload_0
-    //   22: getfield 37	com/tencent/feedback/upload/f:c	Ljava/util/List;
+    //   22: getfield 39	com/tencent/feedback/upload/f:c	Ljava/util/List;
     //   25: iconst_0
-    //   26: anewarray 164	com/tencent/feedback/upload/UploadHandleListener
-    //   29: invokeinterface 241 2 0
-    //   34: checkcast 243	[Lcom/tencent/feedback/upload/UploadHandleListener;
+    //   26: anewarray 166	com/tencent/feedback/upload/UploadHandleListener
+    //   29: invokeinterface 245 2 0
+    //   34: checkcast 247	[Lcom/tencent/feedback/upload/UploadHandleListener;
     //   37: astore_1
     //   38: aload_0
     //   39: monitorexit
@@ -300,23 +300,23 @@ public final class f
   }
   
   /* Error */
-  private List d()
+  private List<d> d()
   {
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 35	com/tencent/feedback/upload/f:b	Ljava/util/List;
+    //   3: getfield 37	com/tencent/feedback/upload/f:b	Ljava/util/List;
     //   6: ifnull +31 -> 37
     //   9: aload_0
-    //   10: getfield 35	com/tencent/feedback/upload/f:b	Ljava/util/List;
-    //   13: invokeinterface 237 1 0
+    //   10: getfield 37	com/tencent/feedback/upload/f:b	Ljava/util/List;
+    //   13: invokeinterface 241 1 0
     //   18: ifle +19 -> 37
-    //   21: new 30	java/util/ArrayList
+    //   21: new 32	java/util/ArrayList
     //   24: dup
     //   25: aload_0
-    //   26: getfield 35	com/tencent/feedback/upload/f:b	Ljava/util/List;
-    //   29: invokespecial 248	java/util/ArrayList:<init>	(Ljava/util/Collection;)V
+    //   26: getfield 37	com/tencent/feedback/upload/f:b	Ljava/util/List;
+    //   29: invokespecial 252	java/util/ArrayList:<init>	(Ljava/util/Collection;)V
     //   32: astore_1
     //   33: aload_0
     //   34: monitorexit
@@ -544,7 +544,7 @@ public final class f
         localObject1 = a((byte[])localObject1);
         k = j;
         if (localObject1 == null) {
-          break label1029;
+          break label1030;
         }
         bool2 = bool4;
         i = j;

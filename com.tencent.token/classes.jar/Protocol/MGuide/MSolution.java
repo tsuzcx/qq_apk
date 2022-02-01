@@ -11,24 +11,24 @@ public final class MSolution
   extends JceStruct
 {
   static MIntent a = new MIntent();
-  static Map b = new HashMap();
-  static ArrayList c;
-  static ArrayList d;
-  static ArrayList e;
-  static ArrayList f;
+  static Map<Integer, String> b = new HashMap();
+  static ArrayList<String> c;
+  static ArrayList<MSolution> d;
+  static ArrayList<String> e;
+  static ArrayList<MDoraemonRes> f;
   static MDoraemonZip g = new MDoraemonZip();
-  public ArrayList mBackupList = null;
+  public ArrayList<MSolution> mBackupList = null;
   public int mHelpAnimation = 0;
-  public ArrayList mHelpDoraemonResList = null;
+  public ArrayList<MDoraemonRes> mHelpDoraemonResList = null;
   public MDoraemonZip mHelpDoraemonZip = null;
   public long mHelpDuration = 0L;
-  public ArrayList mHelpImageList = null;
+  public ArrayList<String> mHelpImageList = null;
   public boolean mHelpImageLocal = true;
   public String mHelpInfo = "";
-  public Map mHelpInfoAdapter = null;
+  public Map<Integer, String> mHelpInfoAdapter = null;
   public int mHelpStyle = 0;
   public int mHelpTech = 0;
-  public ArrayList mHelpTextList = null;
+  public ArrayList<String> mHelpTextList = null;
   public int mIntentCheck = 0;
   public MIntent mJumpIntent = null;
   public boolean mNoTrustAll = true;

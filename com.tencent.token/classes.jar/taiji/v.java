@@ -1,37 +1,29 @@
 package taiji;
 
-import android.graphics.Path;
-import android.graphics.PathMeasure;
-import android.graphics.PointF;
-import java.util.List;
+import java.util.Collections;
 
-public class v
-  extends s
+public class v<T>
+  extends p<T>
 {
-  private final PointF b = new PointF();
-  private final float[] c = new float[2];
-  private u d;
-  private PathMeasure e;
+  private final T b;
   
-  public v(List paramList)
+  public v(T paramT)
   {
-    super(paramList);
+    super(Collections.emptyList());
+    this.b = paramT;
   }
   
-  public PointF a(r paramr, float paramFloat)
+  public void a(float paramFloat) {}
+  
+  public void a(l.a parama) {}
+  
+  public T b()
   {
-    u localu = (u)paramr;
-    Path localPath = localu.d();
-    if (localPath == null) {
-      return (PointF)paramr.a;
-    }
-    if (this.d != localu)
-    {
-      this.e = new PathMeasure(localPath, false);
-      this.d = localu;
-    }
-    this.e.getPosTan(this.e.getLength() * paramFloat, this.c, null);
-    this.b.set(this.c[0], this.c[1]);
+    return this.b;
+  }
+  
+  public T b(o<T> paramo, float paramFloat)
+  {
     return this.b;
   }
 }

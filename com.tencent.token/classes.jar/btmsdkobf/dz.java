@@ -5,6 +5,8 @@ import android.net.Uri;
 import android.os.Environment;
 import android.text.TextUtils;
 import com.qq.jce.wup.UniAttribute;
+import com.qq.taf.jce.JceStruct;
+import com.tmsdk.base.ISharkCallBackOut;
 import com.tmsdk.base.TMSDKBaseContext;
 import com.tmsdk.base.utils.ConvertUtil;
 import com.tmsdk.base.utils.FileOP.CheckResult;
@@ -12,6 +14,10 @@ import com.tmsdk.base.utils.HttpGetFile;
 import com.tmsdk.base.utils.MD5Util;
 import java.io.File;
 import java.io.FileInputStream;
+import java.util.ArrayList;
+import java.util.Iterator;
+import tmsdk.Protocol.MConfigUpdate.SCConfInfo;
+import tmsdk.Protocol.MConfigUpdate.ServerConfInfo;
 import tmsdk.QQPIM.CommList;
 import tmsdk.common.tcc.b;
 
@@ -23,23 +29,23 @@ public class dz
     // Byte code:
     //   0: aconst_null
     //   1: astore 4
-    //   3: new 10	java/io/FileInputStream
+    //   3: new 12	java/io/FileInputStream
     //   6: dup
     //   7: aload_0
-    //   8: invokespecial 14	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
+    //   8: invokespecial 16	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
     //   11: astore_2
-    //   12: new 16	java/io/ByteArrayOutputStream
+    //   12: new 18	java/io/ByteArrayOutputStream
     //   15: dup
     //   16: aload_2
-    //   17: invokevirtual 20	java/io/FileInputStream:available	()I
-    //   20: invokespecial 23	java/io/ByteArrayOutputStream:<init>	(I)V
+    //   17: invokevirtual 22	java/io/FileInputStream:available	()I
+    //   20: invokespecial 25	java/io/ByteArrayOutputStream:<init>	(I)V
     //   23: astore_3
     //   24: sipush 1024
     //   27: newarray byte
     //   29: astore_0
     //   30: aload_2
     //   31: aload_0
-    //   32: invokevirtual 27	java/io/FileInputStream:read	([B)I
+    //   32: invokevirtual 29	java/io/FileInputStream:read	([B)I
     //   35: istore_1
     //   36: iload_1
     //   37: iflt +40 -> 77
@@ -47,7 +53,7 @@ public class dz
     //   41: aload_0
     //   42: iconst_0
     //   43: iload_1
-    //   44: invokevirtual 31	java/io/ByteArrayOutputStream:write	([BII)V
+    //   44: invokevirtual 33	java/io/ByteArrayOutputStream:write	([BII)V
     //   47: goto -17 -> 30
     //   50: astore_0
     //   51: aload_3
@@ -55,11 +61,11 @@ public class dz
     //   53: aload_0
     //   54: ifnull +7 -> 61
     //   57: aload_0
-    //   58: invokevirtual 35	java/io/ByteArrayOutputStream:close	()V
+    //   58: invokevirtual 37	java/io/ByteArrayOutputStream:close	()V
     //   61: aload_2
     //   62: ifnull +120 -> 182
     //   65: aload_2
-    //   66: invokevirtual 36	java/io/FileInputStream:close	()V
+    //   66: invokevirtual 38	java/io/FileInputStream:close	()V
     //   69: aconst_null
     //   70: astore_0
     //   71: aload_0
@@ -67,16 +73,16 @@ public class dz
     //   75: aload_0
     //   76: areturn
     //   77: aload_3
-    //   78: invokevirtual 40	java/io/ByteArrayOutputStream:toByteArray	()[B
+    //   78: invokevirtual 42	java/io/ByteArrayOutputStream:toByteArray	()[B
     //   81: astore_0
     //   82: aload_3
     //   83: ifnull +7 -> 90
     //   86: aload_3
-    //   87: invokevirtual 35	java/io/ByteArrayOutputStream:close	()V
+    //   87: invokevirtual 37	java/io/ByteArrayOutputStream:close	()V
     //   90: aload_2
     //   91: ifnull +96 -> 187
     //   94: aload_2
-    //   95: invokevirtual 36	java/io/FileInputStream:close	()V
+    //   95: invokevirtual 38	java/io/FileInputStream:close	()V
     //   98: goto -27 -> 71
     //   101: astore_2
     //   102: goto -31 -> 71
@@ -92,15 +98,15 @@ public class dz
     //   117: aload_3
     //   118: ifnull +7 -> 125
     //   121: aload_3
-    //   122: invokevirtual 35	java/io/ByteArrayOutputStream:close	()V
+    //   122: invokevirtual 37	java/io/ByteArrayOutputStream:close	()V
     //   125: aload_2
     //   126: ifnull +7 -> 133
     //   129: aload_2
-    //   130: invokevirtual 36	java/io/FileInputStream:close	()V
+    //   130: invokevirtual 38	java/io/FileInputStream:close	()V
     //   133: aload_0
     //   134: athrow
-    //   135: ldc 42
-    //   137: invokevirtual 47	java/lang/String:getBytes	()[B
+    //   135: ldc 44
+    //   137: invokevirtual 49	java/lang/String:getBytes	()[B
     //   140: areturn
     //   141: astore_3
     //   142: goto -52 -> 90
@@ -247,45 +253,45 @@ public class dz
     //   12: astore 4
     //   14: aload 5
     //   16: astore_3
-    //   17: new 52	java/io/File
+    //   17: new 54	java/io/File
     //   20: dup
     //   21: aload_1
-    //   22: invokespecial 72	java/io/File:<init>	(Ljava/lang/String;)V
+    //   22: invokespecial 74	java/io/File:<init>	(Ljava/lang/String;)V
     //   25: astore_1
     //   26: aload 5
     //   28: astore_3
     //   29: aload_1
-    //   30: invokevirtual 76	java/io/File:exists	()Z
+    //   30: invokevirtual 78	java/io/File:exists	()Z
     //   33: ifne +25 -> 58
     //   36: aload 5
     //   38: astore_3
     //   39: aload_1
-    //   40: invokevirtual 111	java/io/File:getAbsoluteFile	()Ljava/io/File;
-    //   43: invokevirtual 114	java/io/File:getParentFile	()Ljava/io/File;
-    //   46: invokevirtual 117	java/io/File:mkdirs	()Z
+    //   40: invokevirtual 113	java/io/File:getAbsoluteFile	()Ljava/io/File;
+    //   43: invokevirtual 116	java/io/File:getParentFile	()Ljava/io/File;
+    //   46: invokevirtual 119	java/io/File:mkdirs	()Z
     //   49: pop
     //   50: aload 5
     //   52: astore_3
     //   53: aload_1
-    //   54: invokevirtual 120	java/io/File:createNewFile	()Z
+    //   54: invokevirtual 122	java/io/File:createNewFile	()Z
     //   57: pop
     //   58: aload 5
     //   60: astore_3
-    //   61: new 122	java/io/FileOutputStream
+    //   61: new 124	java/io/FileOutputStream
     //   64: dup
     //   65: aload_1
     //   66: iconst_0
-    //   67: invokespecial 125	java/io/FileOutputStream:<init>	(Ljava/io/File;Z)V
+    //   67: invokespecial 127	java/io/FileOutputStream:<init>	(Ljava/io/File;Z)V
     //   70: astore_1
     //   71: aload_1
     //   72: aload_0
-    //   73: invokevirtual 128	java/io/FileOutputStream:write	([B)V
+    //   73: invokevirtual 130	java/io/FileOutputStream:write	([B)V
     //   76: iconst_1
     //   77: istore_2
     //   78: aload_1
     //   79: ifnull -73 -> 6
     //   82: aload_1
-    //   83: invokevirtual 129	java/io/FileOutputStream:close	()V
+    //   83: invokevirtual 131	java/io/FileOutputStream:close	()V
     //   86: iconst_1
     //   87: ireturn
     //   88: astore_0
@@ -296,21 +302,21 @@ public class dz
     //   94: astore_0
     //   95: aload_0
     //   96: astore_3
-    //   97: ldc 131
-    //   99: new 61	java/lang/StringBuilder
+    //   97: ldc 133
+    //   99: new 63	java/lang/StringBuilder
     //   102: dup
-    //   103: invokespecial 63	java/lang/StringBuilder:<init>	()V
-    //   106: ldc 133
-    //   108: invokevirtual 67	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   103: invokespecial 65	java/lang/StringBuilder:<init>	()V
+    //   106: ldc 135
+    //   108: invokevirtual 69	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   111: aload_1
-    //   112: invokevirtual 134	java/lang/Throwable:toString	()Ljava/lang/String;
-    //   115: invokevirtual 67	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   118: invokevirtual 71	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   121: invokestatic 140	btmsdkobf/eg:g	(Ljava/lang/String;Ljava/lang/String;)V
+    //   112: invokevirtual 136	java/lang/Throwable:toString	()Ljava/lang/String;
+    //   115: invokevirtual 69	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   118: invokevirtual 73	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   121: invokestatic 142	btmsdkobf/eg:g	(Ljava/lang/String;Ljava/lang/String;)V
     //   124: aload_0
     //   125: ifnull -119 -> 6
     //   128: aload_0
-    //   129: invokevirtual 129	java/io/FileOutputStream:close	()V
+    //   129: invokevirtual 131	java/io/FileOutputStream:close	()V
     //   132: iconst_0
     //   133: ireturn
     //   134: astore_0
@@ -320,7 +326,7 @@ public class dz
     //   138: aload_3
     //   139: ifnull +7 -> 146
     //   142: aload_3
-    //   143: invokevirtual 129	java/io/FileOutputStream:close	()V
+    //   143: invokevirtual 131	java/io/FileOutputStream:close	()V
     //   146: aload_0
     //   147: athrow
     //   148: astore_1
@@ -374,15 +380,15 @@ public class dz
     //   3: astore 4
     //   5: aload_0
     //   6: ifnull +61 -> 67
-    //   9: ldc 142
-    //   11: invokestatic 148	java/security/MessageDigest:getInstance	(Ljava/lang/String;)Ljava/security/MessageDigest;
+    //   9: ldc 144
+    //   11: invokestatic 150	java/security/MessageDigest:getInstance	(Ljava/lang/String;)Ljava/security/MessageDigest;
     //   14: astore_2
     //   15: sipush 8192
     //   18: newarray byte
     //   20: astore_3
     //   21: aload_0
     //   22: aload_3
-    //   23: invokevirtual 151	java/io/InputStream:read	([B)I
+    //   23: invokevirtual 153	java/io/InputStream:read	([B)I
     //   26: istore_1
     //   27: iload_1
     //   28: iconst_m1
@@ -391,7 +397,7 @@ public class dz
     //   33: aload_3
     //   34: iconst_0
     //   35: iload_1
-    //   36: invokevirtual 154	java/security/MessageDigest:update	([BII)V
+    //   36: invokevirtual 156	java/security/MessageDigest:update	([BII)V
     //   39: goto -18 -> 21
     //   42: astore_2
     //   43: aload 4
@@ -399,21 +405,21 @@ public class dz
     //   46: aload_0
     //   47: ifnull +10 -> 57
     //   50: aload_0
-    //   51: invokevirtual 155	java/io/InputStream:close	()V
+    //   51: invokevirtual 157	java/io/InputStream:close	()V
     //   54: aload 4
     //   56: astore_3
     //   57: aload_3
     //   58: areturn
     //   59: aload_2
-    //   60: invokevirtual 158	java/security/MessageDigest:digest	()[B
-    //   63: invokestatic 162	btmsdkobf/dz:bytesToString	([B)Ljava/lang/String;
+    //   60: invokevirtual 160	java/security/MessageDigest:digest	()[B
+    //   63: invokestatic 164	btmsdkobf/dz:bytesToString	([B)Ljava/lang/String;
     //   66: astore_2
     //   67: aload_2
     //   68: astore_3
     //   69: aload_0
     //   70: ifnull -13 -> 57
     //   73: aload_0
-    //   74: invokevirtual 155	java/io/InputStream:close	()V
+    //   74: invokevirtual 157	java/io/InputStream:close	()V
     //   77: aload_2
     //   78: areturn
     //   79: astore_0
@@ -423,7 +429,7 @@ public class dz
     //   83: aload_0
     //   84: ifnull +7 -> 91
     //   87: aload_0
-    //   88: invokevirtual 155	java/io/InputStream:close	()V
+    //   88: invokevirtual 157	java/io/InputStream:close	()V
     //   91: aload_2
     //   92: athrow
     //   93: astore_0
@@ -520,69 +526,69 @@ public class dz
   }
   
   /* Error */
-  public static FileOP.CheckResult check(int paramInt1, String paramString, int paramInt2, int paramInt3, byte[] paramArrayOfByte, int paramInt4)
+  public static FileOP.CheckResult check(int paramInt1, final String paramString, int paramInt2, int paramInt3, byte[] paramArrayOfByte, int paramInt4)
   {
     // Byte code:
-    //   0: new 197	com/tmsdk/base/utils/FileOP$CheckResult
+    //   0: new 199	com/tmsdk/base/utils/FileOP$CheckResult
     //   3: dup
-    //   4: invokespecial 198	com/tmsdk/base/utils/FileOP$CheckResult:<init>	()V
+    //   4: invokespecial 200	com/tmsdk/base/utils/FileOP$CheckResult:<init>	()V
     //   7: astore 6
     //   9: aload 6
     //   11: aload_1
-    //   12: putfield 201	com/tmsdk/base/utils/FileOP$CheckResult:mFileName	Ljava/lang/String;
-    //   15: new 203	java/util/ArrayList
+    //   12: putfield 203	com/tmsdk/base/utils/FileOP$CheckResult:mFileName	Ljava/lang/String;
+    //   15: new 205	java/util/ArrayList
     //   18: dup
-    //   19: invokespecial 204	java/util/ArrayList:<init>	()V
+    //   19: invokespecial 206	java/util/ArrayList:<init>	()V
     //   22: astore 7
-    //   24: new 206	tmsdk/Protocol/MConfigUpdate/ClientConfInfo
+    //   24: new 208	tmsdk/Protocol/MConfigUpdate/ClientConfInfo
     //   27: dup
-    //   28: invokespecial 207	tmsdk/Protocol/MConfigUpdate/ClientConfInfo:<init>	()V
+    //   28: invokespecial 209	tmsdk/Protocol/MConfigUpdate/ClientConfInfo:<init>	()V
     //   31: astore 8
     //   33: aload 8
     //   35: iload_0
-    //   36: putfield 211	tmsdk/Protocol/MConfigUpdate/ClientConfInfo:fileId	I
+    //   36: putfield 213	tmsdk/Protocol/MConfigUpdate/ClientConfInfo:fileId	I
     //   39: aload 7
     //   41: aload 8
-    //   43: invokevirtual 214	java/util/ArrayList:add	(Ljava/lang/Object;)Z
+    //   43: invokevirtual 216	java/util/ArrayList:add	(Ljava/lang/Object;)Z
     //   46: pop
     //   47: iload_3
     //   48: ifle +95 -> 143
     //   51: aload 8
     //   53: iload_2
-    //   54: putfield 217	tmsdk/Protocol/MConfigUpdate/ClientConfInfo:version	I
+    //   54: putfield 219	tmsdk/Protocol/MConfigUpdate/ClientConfInfo:version	I
     //   57: aload 8
     //   59: iload_3
-    //   60: putfield 220	tmsdk/Protocol/MConfigUpdate/ClientConfInfo:timestamp	I
+    //   60: putfield 222	tmsdk/Protocol/MConfigUpdate/ClientConfInfo:timestamp	I
     //   63: aload 8
     //   65: aload 4
-    //   67: putfield 224	tmsdk/Protocol/MConfigUpdate/ClientConfInfo:md5Bin	[B
-    //   70: new 226	tmsdk/Protocol/MConfigUpdate/CSConfInfo
+    //   67: putfield 226	tmsdk/Protocol/MConfigUpdate/ClientConfInfo:md5Bin	[B
+    //   70: new 228	tmsdk/Protocol/MConfigUpdate/CSConfInfo
     //   73: dup
-    //   74: invokespecial 227	tmsdk/Protocol/MConfigUpdate/CSConfInfo:<init>	()V
+    //   74: invokespecial 229	tmsdk/Protocol/MConfigUpdate/CSConfInfo:<init>	()V
     //   77: astore 4
     //   79: aload 4
     //   81: aload 7
-    //   83: putfield 231	tmsdk/Protocol/MConfigUpdate/CSConfInfo:vecInfo	Ljava/util/ArrayList;
+    //   83: putfield 233	tmsdk/Protocol/MConfigUpdate/CSConfInfo:vecInfo	Ljava/util/ArrayList;
     //   86: aload 4
     //   88: iconst_1
-    //   89: putfield 234	tmsdk/Protocol/MConfigUpdate/CSConfInfo:updatetype	I
+    //   89: putfield 236	tmsdk/Protocol/MConfigUpdate/CSConfInfo:updatetype	I
     //   92: new 4	java/lang/Object
     //   95: dup
-    //   96: invokespecial 235	java/lang/Object:<init>	()V
+    //   96: invokespecial 237	java/lang/Object:<init>	()V
     //   99: astore_1
-    //   100: invokestatic 241	java/lang/System:currentTimeMillis	()J
+    //   100: invokestatic 243	java/lang/System:currentTimeMillis	()J
     //   103: pop2
     //   104: bipush 108
     //   106: aload 4
-    //   108: new 243	tmsdk/Protocol/MConfigUpdate/SCConfInfo
+    //   108: new 245	tmsdk/Protocol/MConfigUpdate/SCConfInfo
     //   111: dup
-    //   112: invokespecial 244	tmsdk/Protocol/MConfigUpdate/SCConfInfo:<init>	()V
+    //   112: invokespecial 246	tmsdk/Protocol/MConfigUpdate/SCConfInfo:<init>	()V
     //   115: iconst_0
-    //   116: new 246	btmsdkobf/ir
+    //   116: new 6	btmsdkobf/dz$1
     //   119: dup
     //   120: aload 6
     //   122: aload_1
-    //   123: invokespecial 249	btmsdkobf/ir:<init>	(Lcom/tmsdk/base/utils/FileOP$CheckResult;Ljava/lang/Object;)V
+    //   123: invokespecial 249	btmsdkobf/dz$1:<init>	(Lcom/tmsdk/base/utils/FileOP$CheckResult;Ljava/lang/Object;)V
     //   126: iload 5
     //   128: i2l
     //   129: invokestatic 255	com/tmsdk/base/TMSDKBaseContext:sendShark	(ILcom/qq/taf/jce/JceStruct;Lcom/qq/taf/jce/JceStruct;ILcom/tmsdk/base/ISharkCallBackOut;J)V
@@ -594,56 +600,56 @@ public class dz
     //   139: monitorexit
     //   140: aload 6
     //   142: areturn
-    //   143: new 52	java/io/File
+    //   143: new 54	java/io/File
     //   146: dup
     //   147: aload_1
     //   148: iconst_1
     //   149: invokestatic 264	com/tmsdk/base/utils/FileOP:getAssetWupFile	(Ljava/lang/String;Z)Ljava/lang/String;
-    //   152: invokespecial 72	java/io/File:<init>	(Ljava/lang/String;)V
+    //   152: invokespecial 74	java/io/File:<init>	(Ljava/lang/String;)V
     //   155: astore_1
     //   156: aload_1
-    //   157: invokevirtual 76	java/io/File:exists	()Z
+    //   157: invokevirtual 78	java/io/File:exists	()Z
     //   160: ifeq +120 -> 280
     //   163: aconst_null
     //   164: astore 4
-    //   166: new 10	java/io/FileInputStream
+    //   166: new 12	java/io/FileInputStream
     //   169: dup
     //   170: aload_1
-    //   171: invokespecial 102	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   171: invokespecial 104	java/io/FileInputStream:<init>	(Ljava/io/File;)V
     //   174: astore_1
     //   175: iconst_4
     //   176: newarray byte
     //   178: astore 4
     //   180: aload_1
     //   181: aload 4
-    //   183: invokevirtual 27	java/io/FileInputStream:read	([B)I
+    //   183: invokevirtual 29	java/io/FileInputStream:read	([B)I
     //   186: pop
     //   187: aload 8
     //   189: aload 4
     //   191: invokestatic 269	com/tmsdk/base/utils/ConvertUtil:bytesToInt	([B)I
-    //   194: putfield 217	tmsdk/Protocol/MConfigUpdate/ClientConfInfo:version	I
+    //   194: putfield 219	tmsdk/Protocol/MConfigUpdate/ClientConfInfo:version	I
     //   197: aload_1
     //   198: aload 4
-    //   200: invokevirtual 27	java/io/FileInputStream:read	([B)I
+    //   200: invokevirtual 29	java/io/FileInputStream:read	([B)I
     //   203: pop
     //   204: aload 8
     //   206: aload 4
     //   208: invokestatic 269	com/tmsdk/base/utils/ConvertUtil:bytesToInt	([B)I
-    //   211: putfield 220	tmsdk/Protocol/MConfigUpdate/ClientConfInfo:timestamp	I
+    //   211: putfield 222	tmsdk/Protocol/MConfigUpdate/ClientConfInfo:timestamp	I
     //   214: bipush 16
     //   216: newarray byte
     //   218: astore 4
     //   220: aload_1
     //   221: aload 4
-    //   223: invokevirtual 27	java/io/FileInputStream:read	([B)I
+    //   223: invokevirtual 29	java/io/FileInputStream:read	([B)I
     //   226: pop
     //   227: aload 8
     //   229: aload 4
-    //   231: putfield 224	tmsdk/Protocol/MConfigUpdate/ClientConfInfo:md5Bin	[B
+    //   231: putfield 226	tmsdk/Protocol/MConfigUpdate/ClientConfInfo:md5Bin	[B
     //   234: aload_1
     //   235: ifnull -165 -> 70
     //   238: aload_1
-    //   239: invokevirtual 36	java/io/FileInputStream:close	()V
+    //   239: invokevirtual 38	java/io/FileInputStream:close	()V
     //   242: goto -172 -> 70
     //   245: astore_1
     //   246: goto -176 -> 70
@@ -653,7 +659,7 @@ public class dz
     //   252: aload_1
     //   253: ifnull -183 -> 70
     //   256: aload_1
-    //   257: invokevirtual 36	java/io/FileInputStream:close	()V
+    //   257: invokevirtual 38	java/io/FileInputStream:close	()V
     //   260: goto -190 -> 70
     //   263: astore_1
     //   264: goto -194 -> 70
@@ -661,19 +667,19 @@ public class dz
     //   268: aload 4
     //   270: ifnull +8 -> 278
     //   273: aload 4
-    //   275: invokevirtual 36	java/io/FileInputStream:close	()V
+    //   275: invokevirtual 38	java/io/FileInputStream:close	()V
     //   278: aload_1
     //   279: athrow
     //   280: aload 8
     //   282: iconst_0
-    //   283: putfield 217	tmsdk/Protocol/MConfigUpdate/ClientConfInfo:version	I
+    //   283: putfield 219	tmsdk/Protocol/MConfigUpdate/ClientConfInfo:version	I
     //   286: aload 8
     //   288: iconst_0
-    //   289: putfield 220	tmsdk/Protocol/MConfigUpdate/ClientConfInfo:timestamp	I
+    //   289: putfield 222	tmsdk/Protocol/MConfigUpdate/ClientConfInfo:timestamp	I
     //   292: aload 8
     //   294: iconst_0
     //   295: newarray byte
-    //   297: putfield 224	tmsdk/Protocol/MConfigUpdate/ClientConfInfo:md5Bin	[B
+    //   297: putfield 226	tmsdk/Protocol/MConfigUpdate/ClientConfInfo:md5Bin	[B
     //   300: goto -230 -> 70
     //   303: astore 4
     //   305: aload_1
@@ -702,7 +708,7 @@ public class dz
     //   0	336	5	paramInt4	int
     //   7	134	6	localCheckResult	FileOP.CheckResult
     //   320	6	6	localObject	Object
-    //   22	60	7	localArrayList	java.util.ArrayList
+    //   22	60	7	localArrayList	ArrayList
     //   31	262	8	localClientConfInfo	tmsdk.Protocol.MConfigUpdate.ClientConfInfo
     // Exception table:
     //   from	to	target	type
@@ -730,14 +736,14 @@ public class dz
     //   5: aconst_null
     //   6: astore 5
     //   8: aload_0
-    //   9: invokevirtual 86	java/io/File:isFile	()Z
+    //   9: invokevirtual 88	java/io/File:isFile	()Z
     //   12: ifeq +212 -> 224
-    //   15: new 10	java/io/FileInputStream
+    //   15: new 12	java/io/FileInputStream
     //   18: dup
     //   19: aload_0
-    //   20: invokespecial 102	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   20: invokespecial 104	java/io/FileInputStream:<init>	(Ljava/io/File;)V
     //   23: astore_0
-    //   24: new 122	java/io/FileOutputStream
+    //   24: new 124	java/io/FileOutputStream
     //   27: dup
     //   28: aload_1
     //   29: invokespecial 274	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
@@ -786,7 +792,7 @@ public class dz
     //   108: aload_3
     //   109: ifnull +7 -> 116
     //   112: aload_3
-    //   113: invokevirtual 155	java/io/InputStream:close	()V
+    //   113: invokevirtual 157	java/io/InputStream:close	()V
     //   116: aload_1
     //   117: ifnull +7 -> 124
     //   120: aload_1
@@ -806,7 +812,7 @@ public class dz
     //   151: aload_0
     //   152: ifnull +7 -> 159
     //   155: aload_0
-    //   156: invokevirtual 155	java/io/InputStream:close	()V
+    //   156: invokevirtual 157	java/io/InputStream:close	()V
     //   159: aload_3
     //   160: ifnull -36 -> 124
     //   163: aload_3
@@ -834,7 +840,7 @@ public class dz
     //   206: aload_0
     //   207: ifnull +7 -> 214
     //   210: aload_0
-    //   211: invokevirtual 155	java/io/InputStream:close	()V
+    //   211: invokevirtual 157	java/io/InputStream:close	()V
     //   214: aload_3
     //   215: ifnull +7 -> 222
     //   218: aload_3
@@ -842,10 +848,10 @@ public class dz
     //   222: aload_1
     //   223: athrow
     //   224: aload_0
-    //   225: invokevirtual 79	java/io/File:isDirectory	()Z
+    //   225: invokevirtual 81	java/io/File:isDirectory	()Z
     //   228: ifeq -104 -> 124
     //   231: aload_0
-    //   232: invokevirtual 83	java/io/File:listFiles	()[Ljava/io/File;
+    //   232: invokevirtual 85	java/io/File:listFiles	()[Ljava/io/File;
     //   235: astore_0
     //   236: aload_1
     //   237: invokevirtual 297	java/io/File:mkdir	()Z
@@ -859,24 +865,24 @@ public class dz
     //   251: aload_0
     //   252: iload_2
     //   253: aaload
-    //   254: invokevirtual 111	java/io/File:getAbsoluteFile	()Ljava/io/File;
-    //   257: new 52	java/io/File
+    //   254: invokevirtual 113	java/io/File:getAbsoluteFile	()Ljava/io/File;
+    //   257: new 54	java/io/File
     //   260: dup
-    //   261: new 61	java/lang/StringBuilder
+    //   261: new 63	java/lang/StringBuilder
     //   264: dup
-    //   265: invokespecial 63	java/lang/StringBuilder:<init>	()V
+    //   265: invokespecial 65	java/lang/StringBuilder:<init>	()V
     //   268: aload_1
-    //   269: invokevirtual 111	java/io/File:getAbsoluteFile	()Ljava/io/File;
+    //   269: invokevirtual 113	java/io/File:getAbsoluteFile	()Ljava/io/File;
     //   272: invokevirtual 300	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   275: getstatic 56	java/io/File:separator	Ljava/lang/String;
-    //   278: invokevirtual 67	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   275: getstatic 58	java/io/File:separator	Ljava/lang/String;
+    //   278: invokevirtual 69	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   281: aload_0
     //   282: iload_2
     //   283: aaload
     //   284: invokevirtual 303	java/io/File:getName	()Ljava/lang/String;
-    //   287: invokevirtual 67	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   290: invokevirtual 71	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   293: invokespecial 72	java/io/File:<init>	(Ljava/lang/String;)V
+    //   287: invokevirtual 69	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   290: invokevirtual 73	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   293: invokespecial 74	java/io/File:<init>	(Ljava/lang/String;)V
     //   296: invokestatic 305	btmsdkobf/dz:copyFile	(Ljava/io/File;Ljava/io/File;)Z
     //   299: pop
     //   300: iload_2
@@ -1113,32 +1119,32 @@ public class dz
     //   11: aload_0
     //   12: invokestatic 355	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   15: ifeq +10 -> 25
-    //   18: ldc 42
+    //   18: ldc 44
     //   20: astore 6
     //   22: aload 6
     //   24: areturn
     //   25: invokestatic 361	btmsdkobf/bc:n	()Landroid/content/Context;
     //   28: astore 11
-    //   30: new 61	java/lang/StringBuilder
+    //   30: new 63	java/lang/StringBuilder
     //   33: dup
-    //   34: invokespecial 63	java/lang/StringBuilder:<init>	()V
+    //   34: invokespecial 65	java/lang/StringBuilder:<init>	()V
     //   37: aload 11
     //   39: invokevirtual 366	android/content/Context:getFilesDir	()Ljava/io/File;
     //   42: invokevirtual 367	java/io/File:toString	()Ljava/lang/String;
-    //   45: invokevirtual 67	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   48: getstatic 56	java/io/File:separator	Ljava/lang/String;
-    //   51: invokevirtual 67	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   45: invokevirtual 69	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   48: getstatic 58	java/io/File:separator	Ljava/lang/String;
+    //   51: invokevirtual 69	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   54: aload_0
-    //   55: invokevirtual 67	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   58: invokevirtual 71	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   55: invokevirtual 69	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   58: invokevirtual 73	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   61: astore 7
-    //   63: new 52	java/io/File
+    //   63: new 54	java/io/File
     //   66: dup
     //   67: aload 7
-    //   69: invokespecial 72	java/io/File:<init>	(Ljava/lang/String;)V
+    //   69: invokespecial 74	java/io/File:<init>	(Ljava/lang/String;)V
     //   72: astore 10
     //   74: aload 10
-    //   76: invokevirtual 76	java/io/File:exists	()Z
+    //   76: invokevirtual 78	java/io/File:exists	()Z
     //   79: istore 4
     //   81: iload 4
     //   83: ifeq +730 -> 813
@@ -1155,11 +1161,11 @@ public class dz
     //   105: astore 12
     //   107: aload 5
     //   109: aload 12
-    //   111: invokevirtual 151	java/io/InputStream:read	([B)I
+    //   111: invokevirtual 153	java/io/InputStream:read	([B)I
     //   114: pop
     //   115: aload 5
     //   117: aload 12
-    //   119: invokevirtual 151	java/io/InputStream:read	([B)I
+    //   119: invokevirtual 153	java/io/InputStream:read	([B)I
     //   122: pop
     //   123: aload 12
     //   125: invokestatic 269	com/tmsdk/base/utils/ConvertUtil:bytesToInt	([B)I
@@ -1167,22 +1173,22 @@ public class dz
     //   129: aload 5
     //   131: ifnull +8 -> 139
     //   134: aload 5
-    //   136: invokevirtual 155	java/io/InputStream:close	()V
-    //   139: new 10	java/io/FileInputStream
+    //   136: invokevirtual 157	java/io/InputStream:close	()V
+    //   139: new 12	java/io/FileInputStream
     //   142: dup
     //   143: aload 10
-    //   145: invokespecial 102	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   145: invokespecial 104	java/io/FileInputStream:<init>	(Ljava/io/File;)V
     //   148: astore 5
     //   150: iconst_4
     //   151: newarray byte
     //   153: astore 12
     //   155: aload 5
     //   157: aload 12
-    //   159: invokevirtual 27	java/io/FileInputStream:read	([B)I
+    //   159: invokevirtual 29	java/io/FileInputStream:read	([B)I
     //   162: pop
     //   163: aload 5
     //   165: aload 12
-    //   167: invokevirtual 27	java/io/FileInputStream:read	([B)I
+    //   167: invokevirtual 29	java/io/FileInputStream:read	([B)I
     //   170: pop
     //   171: aload 12
     //   173: invokestatic 269	com/tmsdk/base/utils/ConvertUtil:bytesToInt	([B)I
@@ -1190,7 +1196,7 @@ public class dz
     //   177: aload 5
     //   179: ifnull +631 -> 810
     //   182: aload 5
-    //   184: invokevirtual 36	java/io/FileInputStream:close	()V
+    //   184: invokevirtual 38	java/io/FileInputStream:close	()V
     //   187: iload_1
     //   188: ifeq +18 -> 206
     //   191: iload 4
@@ -1203,7 +1209,7 @@ public class dz
     //   206: iload 4
     //   208: ifeq +9 -> 217
     //   211: aload 10
-    //   213: invokevirtual 95	java/io/File:delete	()Z
+    //   213: invokevirtual 97	java/io/File:delete	()Z
     //   216: pop
     //   217: aload 11
     //   219: invokevirtual 381	android/content/Context:getResources	()Landroid/content/res/Resources;
@@ -1212,7 +1218,7 @@ public class dz
     //   226: iconst_1
     //   227: invokevirtual 377	android/content/res/AssetManager:open	(Ljava/lang/String;I)Ljava/io/InputStream;
     //   230: astore_0
-    //   231: new 122	java/io/FileOutputStream
+    //   231: new 124	java/io/FileOutputStream
     //   234: dup
     //   235: aload 10
     //   237: invokespecial 274	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
@@ -1222,7 +1228,7 @@ public class dz
     //   247: astore 6
     //   249: aload_0
     //   250: aload 6
-    //   252: invokevirtual 151	java/io/InputStream:read	([B)I
+    //   252: invokevirtual 153	java/io/InputStream:read	([B)I
     //   255: istore_2
     //   256: iload_2
     //   257: ifle +403 -> 660
@@ -1236,13 +1242,13 @@ public class dz
     //   274: aload_0
     //   275: ifnull +7 -> 282
     //   278: aload_0
-    //   279: invokevirtual 155	java/io/InputStream:close	()V
+    //   279: invokevirtual 157	java/io/InputStream:close	()V
     //   282: aload 7
     //   284: astore 6
     //   286: aload 5
     //   288: ifnull -266 -> 22
     //   291: aload 5
-    //   293: invokevirtual 129	java/io/FileOutputStream:close	()V
+    //   293: invokevirtual 131	java/io/FileOutputStream:close	()V
     //   296: aload 7
     //   298: areturn
     //   299: astore_0
@@ -1272,7 +1278,7 @@ public class dz
     //   340: aload 5
     //   342: ifnull +8 -> 350
     //   345: aload 5
-    //   347: invokevirtual 155	java/io/InputStream:close	()V
+    //   347: invokevirtual 157	java/io/InputStream:close	()V
     //   350: iconst_0
     //   351: ifeq +11 -> 362
     //   354: new 387	java/lang/NullPointerException
@@ -1314,7 +1320,7 @@ public class dz
     //   419: aload 5
     //   421: ifnull +8 -> 429
     //   424: aload 5
-    //   426: invokevirtual 155	java/io/InputStream:close	()V
+    //   426: invokevirtual 157	java/io/InputStream:close	()V
     //   429: aload_0
     //   430: athrow
     //   431: astore_0
@@ -1365,7 +1371,7 @@ public class dz
     //   511: aload 5
     //   513: ifnull +8 -> 521
     //   516: aload 5
-    //   518: invokevirtual 36	java/io/FileInputStream:close	()V
+    //   518: invokevirtual 38	java/io/FileInputStream:close	()V
     //   521: iconst_0
     //   522: ifeq +11 -> 533
     //   525: new 387	java/lang/NullPointerException
@@ -1407,7 +1413,7 @@ public class dz
     //   590: aload 5
     //   592: ifnull +8 -> 600
     //   595: aload 5
-    //   597: invokevirtual 36	java/io/FileInputStream:close	()V
+    //   597: invokevirtual 38	java/io/FileInputStream:close	()V
     //   600: aload_0
     //   601: athrow
     //   602: astore 5
@@ -1416,11 +1422,11 @@ public class dz
     //   606: aload_0
     //   607: ifnull +7 -> 614
     //   610: aload_0
-    //   611: invokevirtual 155	java/io/InputStream:close	()V
+    //   611: invokevirtual 157	java/io/InputStream:close	()V
     //   614: aload 6
     //   616: ifnull +8 -> 624
     //   619: aload 6
-    //   621: invokevirtual 129	java/io/FileOutputStream:close	()V
+    //   621: invokevirtual 131	java/io/FileOutputStream:close	()V
     //   624: aload 5
     //   626: athrow
     //   627: astore_0
@@ -1454,13 +1460,13 @@ public class dz
     //   680: aload 6
     //   682: ifnull +8 -> 690
     //   685: aload 6
-    //   687: invokevirtual 155	java/io/InputStream:close	()V
+    //   687: invokevirtual 157	java/io/InputStream:close	()V
     //   690: aload 7
     //   692: astore 6
     //   694: aload_0
     //   695: ifnull -673 -> 22
     //   698: aload_0
-    //   699: invokevirtual 129	java/io/FileOutputStream:close	()V
+    //   699: invokevirtual 131	java/io/FileOutputStream:close	()V
     //   702: aload 7
     //   704: areturn
     //   705: astore_0

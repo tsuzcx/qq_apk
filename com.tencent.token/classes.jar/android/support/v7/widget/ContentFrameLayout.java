@@ -15,7 +15,7 @@ import android.widget.FrameLayout;
 public class ContentFrameLayout
   extends FrameLayout
 {
-  private ContentFrameLayout.OnAttachListener mAttachListener;
+  private OnAttachListener mAttachListener;
   private final Rect mDecorPadding = new Rect();
   private TypedValue mFixedHeightMajor;
   private TypedValue mFixedHeightMinor;
@@ -258,7 +258,7 @@ public class ContentFrameLayout
     }
   }
   
-  public void setAttachListener(ContentFrameLayout.OnAttachListener paramOnAttachListener)
+  public void setAttachListener(OnAttachListener paramOnAttachListener)
   {
     this.mAttachListener = paramOnAttachListener;
   }
@@ -270,6 +270,13 @@ public class ContentFrameLayout
     if (ViewCompat.isLaidOut(this)) {
       requestLayout();
     }
+  }
+  
+  public static abstract interface OnAttachListener
+  {
+    public abstract void onAttachedFromWindow();
+    
+    public abstract void onDetachedFromWindow();
   }
 }
 

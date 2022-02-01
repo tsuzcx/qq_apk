@@ -3,44 +3,44 @@ package com.tencent.turingfd.sdk.base;
 import java.util.ArrayList;
 
 public final class char
-  extends float
+  extends break
 {
-  public static ArrayList _a = new ArrayList();
-  public int cb = 0;
-  public ArrayList data = null;
-  public int db = 0;
+  public static ArrayList<case> Xa = new ArrayList();
+  public int _a = 0;
+  public int ab = 0;
+  public ArrayList<case> data = null;
   
   static
   {
     case localcase = new case();
-    _a.add(localcase);
+    Xa.add(localcase);
   }
   
-  public float a()
+  public break a()
   {
     return new char();
   }
   
-  public void a(dp paramdp)
+  public void a(cy paramcy)
   {
-    this.cb = paramdp.a(this.cb, 0, false);
-    this.db = paramdp.a(this.db, 1, false);
-    this.data = ((ArrayList)paramdp.a(_a, 2, false));
+    this._a = paramcy.a(this._a, 0, false);
+    this.ab = paramcy.a(this.ab, 1, false);
+    this.data = ((ArrayList)paramcy.a(Xa, 2, false));
   }
   
-  public void a(dv paramdv)
+  public void a(db paramdb)
   {
-    int i = this.cb;
+    int i = this._a;
     if (i != 0) {
-      paramdv.a(i, 0);
+      paramdb.a(i, 0);
     }
-    i = this.db;
+    i = this.ab;
     if (i != 0) {
-      paramdv.a(i, 1);
+      paramdb.a(i, 1);
     }
     ArrayList localArrayList = this.data;
     if (localArrayList != null) {
-      paramdv.a(localArrayList, 2);
+      paramdb.a(localArrayList, 2);
     }
   }
 }

@@ -1,12 +1,25 @@
 package com.tencent.wcdb.database;
 
 import com.tencent.wcdb.AbstractCursor;
+import com.tencent.wcdb.Cursor;
+import com.tencent.wcdb.support.CancellationSignal;
 import com.tencent.wcdb.support.Log;
 
 public class SQLiteDirectCursor
   extends AbstractCursor
 {
-  public static final SQLiteDatabase.CursorFactory FACTORY = new SQLiteDirectCursor.1();
+  public static final SQLiteDatabase.CursorFactory FACTORY = new SQLiteDatabase.CursorFactory()
+  {
+    public Cursor newCursor(SQLiteDatabase paramAnonymousSQLiteDatabase, SQLiteCursorDriver paramAnonymousSQLiteCursorDriver, String paramAnonymousString, SQLiteProgram paramAnonymousSQLiteProgram)
+    {
+      return new SQLiteDirectCursor(paramAnonymousSQLiteCursorDriver, paramAnonymousString, (SQLiteDirectQuery)paramAnonymousSQLiteProgram);
+    }
+    
+    public SQLiteProgram newQuery(SQLiteDatabase paramAnonymousSQLiteDatabase, String paramAnonymousString, Object[] paramAnonymousArrayOfObject, CancellationSignal paramAnonymousCancellationSignal)
+    {
+      return new SQLiteDirectQuery(paramAnonymousSQLiteDatabase, paramAnonymousString, paramAnonymousArrayOfObject, paramAnonymousCancellationSignal);
+    }
+  };
   private static final String TAG = "WCDB.SQLiteDirectCursor";
   private final String[] mColumns;
   private int mCount;

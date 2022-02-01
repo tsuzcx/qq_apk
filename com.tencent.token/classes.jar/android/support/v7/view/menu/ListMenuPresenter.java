@@ -12,7 +12,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.BaseAdapter;
 import android.widget.ListAdapter;
+import java.util.ArrayList;
 
 @RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
 public class ListMenuPresenter
@@ -20,7 +22,7 @@ public class ListMenuPresenter
 {
   private static final String TAG = "ListMenuPresenter";
   public static final String VIEWS_TAG = "android:menu:list";
-  ListMenuPresenter.MenuAdapter mAdapter;
+  MenuAdapter mAdapter;
   private MenuPresenter.Callback mCallback;
   Context mContext;
   private int mId;
@@ -62,7 +64,7 @@ public class ListMenuPresenter
   public ListAdapter getAdapter()
   {
     if (this.mAdapter == null) {
-      this.mAdapter = new ListMenuPresenter.MenuAdapter(this);
+      this.mAdapter = new MenuAdapter();
     }
     return this.mAdapter;
   }
@@ -83,7 +85,7 @@ public class ListMenuPresenter
     {
       this.mMenuView = ((ExpandedMenuView)this.mInflater.inflate(R.layout.abc_expanded_menu_layout, paramViewGroup, false));
       if (this.mAdapter == null) {
-        this.mAdapter = new ListMenuPresenter.MenuAdapter(this);
+        this.mAdapter = new MenuAdapter();
       }
       this.mMenuView.setAdapter(this.mAdapter);
       this.mMenuView.setOnItemClickListener(this);
@@ -122,7 +124,7 @@ public class ListMenuPresenter
     }
   }
   
-  public void onItemClick(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
     this.mMenu.performItemAction(this.mAdapter.getItem(paramInt), this, 0);
   }
@@ -193,6 +195,85 @@ public class ListMenuPresenter
   {
     if (this.mAdapter != null) {
       this.mAdapter.notifyDataSetChanged();
+    }
+  }
+  
+  private class MenuAdapter
+    extends BaseAdapter
+  {
+    private int mExpandedIndex = -1;
+    
+    public MenuAdapter()
+    {
+      findExpandedIndex();
+    }
+    
+    void findExpandedIndex()
+    {
+      MenuItemImpl localMenuItemImpl = ListMenuPresenter.this.mMenu.getExpandedItem();
+      if (localMenuItemImpl != null)
+      {
+        ArrayList localArrayList = ListMenuPresenter.this.mMenu.getNonActionItems();
+        int j = localArrayList.size();
+        int i = 0;
+        while (i < j)
+        {
+          if ((MenuItemImpl)localArrayList.get(i) == localMenuItemImpl)
+          {
+            this.mExpandedIndex = i;
+            return;
+          }
+          i += 1;
+        }
+      }
+      this.mExpandedIndex = -1;
+    }
+    
+    public int getCount()
+    {
+      int i = ListMenuPresenter.this.mMenu.getNonActionItems().size() - ListMenuPresenter.this.mItemIndexOffset;
+      if (this.mExpandedIndex < 0) {
+        return i;
+      }
+      return i - 1;
+    }
+    
+    public MenuItemImpl getItem(int paramInt)
+    {
+      ArrayList localArrayList = ListMenuPresenter.this.mMenu.getNonActionItems();
+      int i = ListMenuPresenter.this.mItemIndexOffset + paramInt;
+      paramInt = i;
+      if (this.mExpandedIndex >= 0)
+      {
+        paramInt = i;
+        if (i >= this.mExpandedIndex) {
+          paramInt = i + 1;
+        }
+      }
+      return (MenuItemImpl)localArrayList.get(paramInt);
+    }
+    
+    public long getItemId(int paramInt)
+    {
+      return paramInt;
+    }
+    
+    public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+    {
+      if (paramView == null) {
+        paramView = ListMenuPresenter.this.mInflater.inflate(ListMenuPresenter.this.mItemLayoutRes, paramViewGroup, false);
+      }
+      for (;;)
+      {
+        ((MenuView.ItemView)paramView).initialize(getItem(paramInt), 0);
+        return paramView;
+      }
+    }
+    
+    public void notifyDataSetChanged()
+    {
+      findExpandedIndex();
+      super.notifyDataSetChanged();
     }
   }
 }

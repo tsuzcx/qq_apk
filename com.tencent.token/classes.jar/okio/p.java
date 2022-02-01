@@ -1,53 +1,18 @@
 package okio;
 
-import java.io.OutputStream;
+import java.io.Closeable;
+import java.io.Flushable;
 
-final class p
-  implements x
+public abstract interface p
+  extends Closeable, Flushable
 {
-  p(z paramz, OutputStream paramOutputStream) {}
+  public abstract r a();
   
-  public z a()
-  {
-    return this.a;
-  }
+  public abstract void a_(c paramc, long paramLong);
   
-  public void a_(f paramf, long paramLong)
-  {
-    ab.a(paramf.b, 0L, paramLong);
-    while (paramLong > 0L)
-    {
-      this.a.g();
-      v localv = paramf.a;
-      int i = (int)Math.min(paramLong, localv.c - localv.b);
-      this.b.write(localv.a, localv.b, i);
-      localv.b += i;
-      long l = paramLong - i;
-      paramf.b -= i;
-      paramLong = l;
-      if (localv.b == localv.c)
-      {
-        paramf.a = localv.b();
-        w.a(localv);
-        paramLong = l;
-      }
-    }
-  }
+  public abstract void close();
   
-  public void close()
-  {
-    this.b.close();
-  }
-  
-  public void flush()
-  {
-    this.b.flush();
-  }
-  
-  public String toString()
-  {
-    return "sink(" + this.b + ")";
-  }
+  public abstract void flush();
 }
 
 

@@ -1,6 +1,6 @@
 package com.tencent.token.core.bean;
 
-import com.tencent.token.global.h;
+import com.tencent.token.global.g;
 import java.io.Serializable;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -25,10 +25,10 @@ public class SafeMsgItem
   public static final int QQ_MSG_TYPE_B_QB_INT = 1;
   public static final int QQ_MSG_TYPE_B_WTLOGIN = 11;
   private static final long serialVersionUID = -7664964646815479758L;
-  public SafeMsgItem.MsgAction mAction;
+  public MsgAction mAction;
   public String mContent;
   public String mDetail;
-  public SafeMsgItem.MsgAction mFeedBack;
+  public MsgAction mFeedBack;
   public int mFlag;
   public String mIP;
   public long mId;
@@ -104,7 +104,7 @@ public class SafeMsgItem
       localJSONObject = paramJSONObject.getJSONObject("action");
       if (localJSONObject != null)
       {
-        this.mAction = new SafeMsgItem.MsgAction(this);
+        this.mAction = new MsgAction();
         this.mAction.mActionType = localJSONObject.getString("action_type");
         this.mAction.mButtonText = localJSONObject.getString("btn_text");
         this.mAction.mTargetUrl = localJSONObject.getString("target");
@@ -112,7 +112,7 @@ public class SafeMsgItem
       localJSONObject = paramJSONObject.getJSONObject("feedback");
       if (localJSONObject != null)
       {
-        this.mFeedBack = new SafeMsgItem.MsgAction(this);
+        this.mFeedBack = new MsgAction();
         this.mFeedBack.mActionType = localJSONObject.getString("type");
         this.mFeedBack.mButtonText = localJSONObject.getString("btn_text");
         this.mFeedBack.mTargetUrl = localJSONObject.getString("target");
@@ -136,7 +136,7 @@ public class SafeMsgItem
     }
     catch (JSONException paramJSONObject)
     {
-      h.c("JSONException: " + paramJSONObject.getMessage());
+      g.c("JSONException: " + paramJSONObject.getMessage());
     }
     return false;
   }
@@ -259,6 +259,17 @@ public class SafeMsgItem
   public boolean s()
   {
     return (this.mFlag & 0x1) == 1;
+  }
+  
+  public class MsgAction
+    implements Serializable
+  {
+    private static final long serialVersionUID = -179518061041549637L;
+    public String mActionType;
+    public String mButtonText;
+    public String mTargetUrl;
+    
+    public MsgAction() {}
   }
 }
 

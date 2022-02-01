@@ -4,18 +4,19 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.os.Build.VERSION;
 import android.support.annotation.NonNull;
+import android.support.annotation.RequiresApi;
 import android.widget.EdgeEffect;
 
 public final class EdgeEffectCompat
 {
-  private static final EdgeEffectCompat.EdgeEffectBaseImpl IMPL = new EdgeEffectCompat.EdgeEffectBaseImpl();
+  private static final EdgeEffectBaseImpl IMPL = new EdgeEffectBaseImpl();
   private EdgeEffect mEdgeEffect;
   
   static
   {
     if (Build.VERSION.SDK_INT >= 21)
     {
-      IMPL = new EdgeEffectCompat.EdgeEffectApi21Impl();
+      IMPL = new EdgeEffectApi21Impl();
       return;
     }
   }
@@ -81,6 +82,24 @@ public final class EdgeEffectCompat
   public void setSize(int paramInt1, int paramInt2)
   {
     this.mEdgeEffect.setSize(paramInt1, paramInt2);
+  }
+  
+  @RequiresApi(21)
+  static class EdgeEffectApi21Impl
+    extends EdgeEffectCompat.EdgeEffectBaseImpl
+  {
+    public void onPull(EdgeEffect paramEdgeEffect, float paramFloat1, float paramFloat2)
+    {
+      paramEdgeEffect.onPull(paramFloat1, paramFloat2);
+    }
+  }
+  
+  static class EdgeEffectBaseImpl
+  {
+    public void onPull(EdgeEffect paramEdgeEffect, float paramFloat1, float paramFloat2)
+    {
+      paramEdgeEffect.onPull(paramFloat1);
+    }
   }
 }
 

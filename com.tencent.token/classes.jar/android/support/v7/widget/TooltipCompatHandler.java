@@ -27,9 +27,21 @@ class TooltipCompatHandler
   private int mAnchorX;
   private int mAnchorY;
   private boolean mFromTouch;
-  private final Runnable mHideRunnable = new TooltipCompatHandler.2(this);
+  private final Runnable mHideRunnable = new Runnable()
+  {
+    public void run()
+    {
+      TooltipCompatHandler.this.hide();
+    }
+  };
   private TooltipPopup mPopup;
-  private final Runnable mShowRunnable = new TooltipCompatHandler.1(this);
+  private final Runnable mShowRunnable = new Runnable()
+  {
+    public void run()
+    {
+      TooltipCompatHandler.this.show(false);
+    }
+  };
   private final CharSequence mTooltipText;
   
   private TooltipCompatHandler(View paramView, CharSequence paramCharSequence)

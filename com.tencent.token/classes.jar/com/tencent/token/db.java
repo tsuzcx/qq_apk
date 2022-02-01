@@ -1,61 +1,217 @@
 package com.tencent.token;
 
-import android.media.SoundPool;
-import android.os.AsyncTask;
-import android.os.Handler;
-import android.os.Message;
+import com.tencent.token.core.bean.NewConfigureCacheItem;
+import com.tencent.token.core.bean.QQUser;
+import com.tencent.token.core.bean.f;
+import com.tencent.token.global.g;
 import com.tencent.token.global.h;
-import java.util.HashMap;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Set;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class db
-  extends AsyncTask
+public class db
 {
-  private int c = 0;
+  List<f> a = Collections.synchronizedList(new ArrayList());
+  List<f> b = Collections.synchronizedList(new ArrayList());
+  NewConfigureCacheItem c;
+  String d;
+  long e;
+  public boolean f;
+  public boolean g = false;
   
-  db(cz paramcz, int[] paramArrayOfInt) {}
-  
-  public String a(String... paramVarArgs)
+  public f a(int paramInt, boolean paramBoolean)
   {
-    try
+    if ((paramInt < 0) || (paramInt >= b(paramBoolean))) {}
+    List localList;
+    do
     {
-      if (paramVarArgs.length > 0) {
-        this.c = Integer.parseInt(paramVarArgs[0]);
-      }
-      h.a("start play token3");
-      int i = 0;
-      while (i < this.a.length)
-      {
-        paramVarArgs = (Integer)cz.a(this.b).get(Integer.valueOf(this.a[i] + 1));
-        if (paramVarArgs == null)
-        {
-          h.c("token number index=" + i + ",value=" + this.a[i] + " get sound error");
-          return "";
-        }
-        int j = this.b.a(paramVarArgs.intValue());
-        Thread.sleep(600L);
-        cz.b(this.b).stop(j);
-        i += 1;
-      }
-      cz.a(this.b, false);
+      return null;
+      localList = a(paramBoolean);
+    } while (localList == null);
+    return (f)localList.get(paramInt);
+  }
+  
+  public List<f> a(boolean paramBoolean)
+  {
+    if (paramBoolean) {
+      return this.a;
     }
-    catch (Exception paramVarArgs)
-    {
-      for (;;)
-      {
-        paramVarArgs.printStackTrace();
-        h.c("run exception msg=" + paramVarArgs.getMessage());
-      }
-    }
-    return "";
+    return this.b;
   }
   
   public void a(String paramString)
   {
-    if ((cz.c(this.b) != null) && (1 == this.c))
+    h.a("account_lock", paramString);
+  }
+  
+  public void a(List<f> paramList, boolean paramBoolean)
+  {
+    Object localObject;
+    f localf;
+    try
     {
-      paramString = new Message();
-      paramString.what = 200;
-      cz.c(this.b).sendMessage(paramString);
+      if (this.c == null) {
+        this.c = cr.a().h.a("account_lock");
+      }
+      if (this.c.mClientVersion <= this.c.mClickVersion) {
+        break label317;
+      }
+      if (this.c.mClickVersion == -1)
+      {
+        if (this.c.mConfIDs == null) {
+          break label317;
+        }
+        localObject = this.c.mConfIDs.iterator();
+        while (((Iterator)localObject).hasNext())
+        {
+          int i = ((Integer)((Iterator)localObject).next()).intValue();
+          localIterator = paramList.iterator();
+          while (localIterator.hasNext())
+          {
+            localf = (f)localIterator.next();
+            if (i == localf.a) {
+              localf.f = true;
+            }
+          }
+        }
+      }
+      localObject = new HashSet();
+    }
+    finally {}
+    if (paramBoolean)
+    {
+      localIterator = this.a.iterator();
+      while (localIterator.hasNext()) {
+        ((Set)localObject).add(Integer.valueOf(((f)localIterator.next()).a));
+      }
+    }
+    Iterator localIterator = this.b.iterator();
+    while (localIterator.hasNext()) {
+      ((Set)localObject).add(Integer.valueOf(((f)localIterator.next()).a));
+    }
+    localIterator = paramList.iterator();
+    while (localIterator.hasNext())
+    {
+      localf = (f)localIterator.next();
+      if (!((Set)localObject).contains(Integer.valueOf(localf.a))) {
+        localf.f = true;
+      }
+    }
+    label317:
+    if (paramBoolean)
+    {
+      this.a.clear();
+      this.a.addAll(paramList);
+    }
+    for (;;)
+    {
+      this.d = cq.c;
+      if (cq.a().e() != null) {
+        this.e = cq.a().e().mUin;
+      }
+      return;
+      this.b.clear();
+      this.b.addAll(paramList);
+    }
+  }
+  
+  public boolean a()
+  {
+    QQUser localQQUser = cq.a().e();
+    if ((this.d == null) || (localQQUser == null)) {}
+    while ((!this.d.equals(cq.c)) || (this.e != localQQUser.mUin) || (!this.f)) {
+      return false;
+    }
+    return true;
+  }
+  
+  public boolean a(JSONArray paramJSONArray)
+  {
+    if (paramJSONArray.length() < 2) {
+      return false;
+    }
+    if (paramJSONArray != null) {}
+    for (boolean bool = true;; bool = false) {
+      for (;;)
+      {
+        g.a(bool);
+        try
+        {
+          if (!a(paramJSONArray.getJSONArray(0), true)) {
+            break;
+          }
+          bool = a(paramJSONArray.getJSONArray(1), false);
+          if (!bool) {
+            break;
+          }
+          return true;
+        }
+        catch (JSONException paramJSONArray)
+        {
+          paramJSONArray.printStackTrace();
+        }
+      }
+    }
+    return false;
+  }
+  
+  public boolean a(JSONArray paramJSONArray, boolean paramBoolean)
+  {
+    ArrayList localArrayList = new ArrayList();
+    if (paramJSONArray != null) {}
+    try
+    {
+      if (paramJSONArray.length() > 0)
+      {
+        int i = 0;
+        if (i < paramJSONArray.length())
+        {
+          JSONObject localJSONObject = paramJSONArray.getJSONObject(i);
+          if (localJSONObject != null) {}
+          for (boolean bool = true;; bool = false)
+          {
+            g.a(bool);
+            f localf = new f();
+            if (!localf.b(localJSONObject)) {
+              g.c("object item parse failed: " + i);
+            }
+            localArrayList.add(localf);
+            i += 1;
+            break;
+          }
+        }
+      }
+      a(localArrayList, paramBoolean);
+      return true;
+    }
+    catch (JSONException paramJSONArray) {}
+    return false;
+  }
+  
+  public int b(boolean paramBoolean)
+  {
+    List localList = a(paramBoolean);
+    if (localList == null) {
+      return 0;
+    }
+    return localList.size();
+  }
+  
+  public void b()
+  {
+    Iterator localIterator = this.a.iterator();
+    while (localIterator.hasNext()) {
+      ((f)localIterator.next()).f = false;
+    }
+    localIterator = this.b.iterator();
+    while (localIterator.hasNext()) {
+      ((f)localIterator.next()).f = false;
     }
   }
 }

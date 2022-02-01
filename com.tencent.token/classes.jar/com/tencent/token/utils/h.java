@@ -1,16 +1,38 @@
 package com.tencent.token.utils;
 
-import java.io.File;
-import java.util.Comparator;
+import com.tencent.token.ui.base.LockPatternView.a;
+import java.util.List;
 
-class h
-  implements Comparator
+public class h
 {
-  h(e parame) {}
-  
-  public int a(File paramFile1, File paramFile2)
+  public static String a(List<LockPatternView.a> paramList)
   {
-    return e.d(paramFile1) - e.d(paramFile2);
+    if (paramList == null) {
+      return "";
+    }
+    int j = paramList.size();
+    byte[] arrayOfByte = new byte[j];
+    int i = 0;
+    while (i < j)
+    {
+      LockPatternView.a locala = (LockPatternView.a)paramList.get(i);
+      int k = locala.a();
+      arrayOfByte[i] = ((byte)(locala.b() + k * 3));
+      i += 1;
+    }
+    return a(arrayOfByte);
+  }
+  
+  public static final String a(byte[] paramArrayOfByte)
+  {
+    StringBuffer localStringBuffer = new StringBuffer();
+    int i = 0;
+    while (i < paramArrayOfByte.length)
+    {
+      localStringBuffer.append(paramArrayOfByte[i]);
+      i += 1;
+    }
+    return localStringBuffer.toString();
   }
 }
 

@@ -6,10 +6,10 @@ import android.os.Looper;
 import android.text.TextUtils;
 import android.util.Pair;
 import com.qq.taf.jce.JceStruct;
-import com.tencent.token.fn;
-import com.tencent.token.fo;
-import com.tencent.token.fp;
-import com.tencent.token.fq;
+import com.tencent.token.ee;
+import com.tencent.token.ef;
+import com.tencent.token.eg;
+import com.tencent.token.eh;
 import com.tencent.token.g;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -87,7 +87,7 @@ class u
     if (paramt.f == null) {
       return;
     }
-    switch (fp.a(paramt.e))
+    switch (eg.a(paramt.e))
     {
     default: 
       com.tencent.token.f.a().b(new w(this, paramt, paramInteger1, paramInteger2), "shark callback");
@@ -248,7 +248,7 @@ class u
                   break label876;
                 }
                 localObject1 = b.a(r.e(this.b), r.d(this.b).b().b.getBytes(), ((a.e.f)???).f, (JceStruct)((Pair)localObject6).first);
-                localObject1 = ((fo)((Pair)localObject6).second).a(((a.e.f)???).b, ((a.e.f)???).a, (JceStruct)localObject1);
+                localObject1 = ((ef)((Pair)localObject6).second).a(((a.e.f)???).b, ((a.e.f)???).a, (JceStruct)localObject1);
                 if (localObject1 != null)
                 {
                   localObject1 = new t(this.b, -1L, ((Integer)((Pair)localObject1).first).intValue(), (JceStruct)((Pair)localObject1).second, null, 1073741824, null);

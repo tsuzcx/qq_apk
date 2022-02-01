@@ -8,9 +8,9 @@ import java.util.ArrayList;
 public final class CSConfInfo
   extends JceStruct
 {
-  static ArrayList bu = new ArrayList();
+  static ArrayList<ClientConfInfo> bu = new ArrayList();
   public int updatetype = 0;
-  public ArrayList vecInfo = null;
+  public ArrayList<ClientConfInfo> vecInfo = null;
   
   static
   {

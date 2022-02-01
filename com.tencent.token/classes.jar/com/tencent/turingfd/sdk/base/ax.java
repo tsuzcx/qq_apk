@@ -1,24 +1,43 @@
 package com.tencent.turingfd.sdk.base;
 
-import android.os.Handler;
-import android.os.Message;
-import android.view.MotionEvent;
-
-public final class ax
-  implements bt
+public class ax
 {
-  public void a(String paramString, MotionEvent paramMotionEvent)
+  public String a = "";
+  public boolean b = false;
+  public long c = 0L;
+  public long d = 0L;
+  
+  public ax(String paramString)
   {
-    bc localbc = bc.a();
-    localbc.m = paramString;
-    localbc.f = paramMotionEvent.getAction();
-    localbc.g = paramMotionEvent.getDeviceId();
-    localbc.h = paramMotionEvent.getToolType(0);
-    localbc.i = paramMotionEvent.getRawX();
-    localbc.j = paramMotionEvent.getRawY();
-    localbc.k = paramMotionEvent.getPressure();
-    localbc.l = paramMotionEvent.getSize();
-    ba.b.obtainMessage(1, localbc).sendToTarget();
+    this.a = paramString;
+    paramString = paramString.split(":");
+    if ((paramString == null) || (paramString.length < 4)) {
+      return;
+    }
+    for (;;)
+    {
+      try
+      {
+        Integer.valueOf(paramString[0]).intValue();
+        this.c = Long.valueOf(paramString[1]).longValue();
+        this.d = Long.valueOf(paramString[2]).longValue();
+        if (Integer.valueOf(paramString[3]).intValue() == 0)
+        {
+          this.b = bool;
+          return;
+        }
+      }
+      catch (Throwable paramString)
+      {
+        return;
+      }
+      bool = true;
+    }
+  }
+  
+  public String toString()
+  {
+    return this.a;
   }
 }
 

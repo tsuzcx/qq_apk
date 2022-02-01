@@ -2,16 +2,22 @@ package android.support.v7.app;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.res.Resources.NotFoundException;
+import android.graphics.drawable.Drawable;
 import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.support.annotation.RequiresApi;
+import android.support.v7.appcompat.R.attr;
 import android.support.v7.view.ActionMode;
 import android.support.v7.view.ActionMode.Callback;
 import android.support.v7.view.SupportMenuInflater;
+import android.support.v7.view.WindowCallbackWrapper;
+import android.support.v7.view.menu.MenuBuilder;
 import android.support.v7.widget.TintTypedArray;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.View;
 import android.view.Window;
 import android.view.Window.Callback;
 
@@ -49,7 +55,44 @@ abstract class AppCompatDelegateImplBase
       SHOULD_INSTALL_EXCEPTION_HANDLER = bool;
       if ((SHOULD_INSTALL_EXCEPTION_HANDLER) && (!sInstalledExceptionHandler))
       {
-        Thread.setDefaultUncaughtExceptionHandler(new AppCompatDelegateImplBase.1(Thread.getDefaultUncaughtExceptionHandler()));
+        Thread.setDefaultUncaughtExceptionHandler(new Thread.UncaughtExceptionHandler()
+        {
+          private boolean shouldWrapException(Throwable paramAnonymousThrowable)
+          {
+            boolean bool2 = false;
+            boolean bool1 = bool2;
+            if ((paramAnonymousThrowable instanceof Resources.NotFoundException))
+            {
+              paramAnonymousThrowable = paramAnonymousThrowable.getMessage();
+              bool1 = bool2;
+              if (paramAnonymousThrowable != null) {
+                if (!paramAnonymousThrowable.contains("drawable"))
+                {
+                  bool1 = bool2;
+                  if (!paramAnonymousThrowable.contains("Drawable")) {}
+                }
+                else
+                {
+                  bool1 = true;
+                }
+              }
+            }
+            return bool1;
+          }
+          
+          public void uncaughtException(Thread paramAnonymousThread, Throwable paramAnonymousThrowable)
+          {
+            if (shouldWrapException(paramAnonymousThrowable))
+            {
+              Resources.NotFoundException localNotFoundException = new Resources.NotFoundException(paramAnonymousThrowable.getMessage() + ". If the resource you are trying to use is a vector resource, you may be referencing it in an unsupported way. See AppCompatDelegate.setCompatVectorFromResourcesEnabled() for more info.");
+              localNotFoundException.initCause(paramAnonymousThrowable.getCause());
+              localNotFoundException.setStackTrace(paramAnonymousThrowable.getStackTrace());
+              this.val$defHandler.uncaughtException(paramAnonymousThread, localNotFoundException);
+              return;
+            }
+            this.val$defHandler.uncaughtException(paramAnonymousThread, paramAnonymousThrowable);
+          }
+        });
         sInstalledExceptionHandler = true;
       }
       sWindowBackgroundStyleable = new int[] { 16842836 };
@@ -63,7 +106,7 @@ abstract class AppCompatDelegateImplBase
     this.mWindow = paramWindow;
     this.mAppCompatCallback = paramAppCompatCallback;
     this.mOriginalWindowCallback = this.mWindow.getCallback();
-    if ((this.mOriginalWindowCallback instanceof AppCompatDelegateImplBase.AppCompatWindowCallbackBase)) {
+    if ((this.mOriginalWindowCallback instanceof AppCompatWindowCallbackBase)) {
       throw new IllegalStateException("AppCompat has already installed itself into the Window");
     }
     this.mAppCompatWindowCallback = wrapWindowCallback(this.mOriginalWindowCallback);
@@ -99,7 +142,7 @@ abstract class AppCompatDelegateImplBase
   
   public final ActionBarDrawerToggle.Delegate getDrawerToggleDelegate()
   {
-    return new AppCompatDelegateImplBase.ActionBarDrawableToggleImpl(this);
+    return new ActionBarDrawableToggleImpl();
   }
   
   public MenuInflater getMenuInflater()
@@ -199,7 +242,121 @@ abstract class AppCompatDelegateImplBase
   
   Window.Callback wrapWindowCallback(Window.Callback paramCallback)
   {
-    return new AppCompatDelegateImplBase.AppCompatWindowCallbackBase(this, paramCallback);
+    return new AppCompatWindowCallbackBase(paramCallback);
+  }
+  
+  private class ActionBarDrawableToggleImpl
+    implements ActionBarDrawerToggle.Delegate
+  {
+    ActionBarDrawableToggleImpl() {}
+    
+    public Context getActionBarThemedContext()
+    {
+      return AppCompatDelegateImplBase.this.getActionBarThemedContext();
+    }
+    
+    public Drawable getThemeUpIndicator()
+    {
+      TintTypedArray localTintTypedArray = TintTypedArray.obtainStyledAttributes(getActionBarThemedContext(), null, new int[] { R.attr.homeAsUpIndicator });
+      Drawable localDrawable = localTintTypedArray.getDrawable(0);
+      localTintTypedArray.recycle();
+      return localDrawable;
+    }
+    
+    public boolean isNavigationVisible()
+    {
+      ActionBar localActionBar = AppCompatDelegateImplBase.this.getSupportActionBar();
+      return (localActionBar != null) && ((localActionBar.getDisplayOptions() & 0x4) != 0);
+    }
+    
+    public void setActionBarDescription(int paramInt)
+    {
+      ActionBar localActionBar = AppCompatDelegateImplBase.this.getSupportActionBar();
+      if (localActionBar != null) {
+        localActionBar.setHomeActionContentDescription(paramInt);
+      }
+    }
+    
+    public void setActionBarUpIndicator(Drawable paramDrawable, int paramInt)
+    {
+      ActionBar localActionBar = AppCompatDelegateImplBase.this.getSupportActionBar();
+      if (localActionBar != null)
+      {
+        localActionBar.setHomeAsUpIndicator(paramDrawable);
+        localActionBar.setHomeActionContentDescription(paramInt);
+      }
+    }
+  }
+  
+  class AppCompatWindowCallbackBase
+    extends WindowCallbackWrapper
+  {
+    AppCompatWindowCallbackBase(Window.Callback paramCallback)
+    {
+      super();
+    }
+    
+    public boolean dispatchKeyEvent(KeyEvent paramKeyEvent)
+    {
+      return (AppCompatDelegateImplBase.this.dispatchKeyEvent(paramKeyEvent)) || (super.dispatchKeyEvent(paramKeyEvent));
+    }
+    
+    public boolean dispatchKeyShortcutEvent(KeyEvent paramKeyEvent)
+    {
+      return (super.dispatchKeyShortcutEvent(paramKeyEvent)) || (AppCompatDelegateImplBase.this.onKeyShortcut(paramKeyEvent.getKeyCode(), paramKeyEvent));
+    }
+    
+    public void onContentChanged() {}
+    
+    public boolean onCreatePanelMenu(int paramInt, Menu paramMenu)
+    {
+      if ((paramInt == 0) && (!(paramMenu instanceof MenuBuilder))) {
+        return false;
+      }
+      return super.onCreatePanelMenu(paramInt, paramMenu);
+    }
+    
+    public boolean onMenuOpened(int paramInt, Menu paramMenu)
+    {
+      super.onMenuOpened(paramInt, paramMenu);
+      AppCompatDelegateImplBase.this.onMenuOpened(paramInt, paramMenu);
+      return true;
+    }
+    
+    public void onPanelClosed(int paramInt, Menu paramMenu)
+    {
+      super.onPanelClosed(paramInt, paramMenu);
+      AppCompatDelegateImplBase.this.onPanelClosed(paramInt, paramMenu);
+    }
+    
+    public boolean onPreparePanel(int paramInt, View paramView, Menu paramMenu)
+    {
+      MenuBuilder localMenuBuilder;
+      boolean bool1;
+      if ((paramMenu instanceof MenuBuilder))
+      {
+        localMenuBuilder = (MenuBuilder)paramMenu;
+        if ((paramInt != 0) || (localMenuBuilder != null)) {
+          break label34;
+        }
+        bool1 = false;
+      }
+      label34:
+      boolean bool2;
+      do
+      {
+        return bool1;
+        localMenuBuilder = null;
+        break;
+        if (localMenuBuilder != null) {
+          localMenuBuilder.setOverrideVisibleItems(true);
+        }
+        bool2 = super.onPreparePanel(paramInt, paramView, paramMenu);
+        bool1 = bool2;
+      } while (localMenuBuilder == null);
+      localMenuBuilder.setOverrideVisibleItems(false);
+      return bool2;
+    }
   }
 }
 

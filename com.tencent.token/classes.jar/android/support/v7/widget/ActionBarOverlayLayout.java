@@ -1,5 +1,6 @@
 package android.support.v7.widget;
 
+import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.content.Context;
 import android.content.pm.ApplicationInfo;
@@ -10,6 +11,7 @@ import android.graphics.Canvas;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 import android.os.Build.VERSION;
+import android.os.Parcelable;
 import android.support.annotation.RestrictTo;
 import android.support.v4.view.NestedScrollingParent;
 import android.support.v4.view.NestedScrollingParentHelper;
@@ -23,6 +25,7 @@ import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
+import android.view.ViewGroup.MarginLayoutParams;
 import android.view.ViewPropertyAnimator;
 import android.view.Window.Callback;
 import android.widget.OverScroller;
@@ -37,8 +40,15 @@ public class ActionBarOverlayLayout
   private final int ACTION_BAR_ANIMATE_DELAY = 600;
   private int mActionBarHeight;
   ActionBarContainer mActionBarTop;
-  private ActionBarOverlayLayout.ActionBarVisibilityCallback mActionBarVisibilityCallback;
-  private final Runnable mAddActionBarHideOffset = new ActionBarOverlayLayout.3(this);
+  private ActionBarVisibilityCallback mActionBarVisibilityCallback;
+  private final Runnable mAddActionBarHideOffset = new Runnable()
+  {
+    public void run()
+    {
+      ActionBarOverlayLayout.this.haltActionBarHideOffsetAnimations();
+      ActionBarOverlayLayout.this.mCurrentActionBarTopAnimator = ActionBarOverlayLayout.this.mActionBarTop.animate().translationY(-ActionBarOverlayLayout.this.mActionBarTop.getHeight()).setListener(ActionBarOverlayLayout.this.mTopAnimatorListener);
+    }
+  };
   boolean mAnimatingForFling;
   private final Rect mBaseContentInsets = new Rect();
   private final Rect mBaseInnerInsets = new Rect();
@@ -58,8 +68,28 @@ public class ActionBarOverlayLayout
   private int mLastSystemUiVisibility;
   private boolean mOverlayMode;
   private final NestedScrollingParentHelper mParentHelper;
-  private final Runnable mRemoveActionBarHideOffset = new ActionBarOverlayLayout.2(this);
-  final AnimatorListenerAdapter mTopAnimatorListener = new ActionBarOverlayLayout.1(this);
+  private final Runnable mRemoveActionBarHideOffset = new Runnable()
+  {
+    public void run()
+    {
+      ActionBarOverlayLayout.this.haltActionBarHideOffsetAnimations();
+      ActionBarOverlayLayout.this.mCurrentActionBarTopAnimator = ActionBarOverlayLayout.this.mActionBarTop.animate().translationY(0.0F).setListener(ActionBarOverlayLayout.this.mTopAnimatorListener);
+    }
+  };
+  final AnimatorListenerAdapter mTopAnimatorListener = new AnimatorListenerAdapter()
+  {
+    public void onAnimationCancel(Animator paramAnonymousAnimator)
+    {
+      ActionBarOverlayLayout.this.mCurrentActionBarTopAnimator = null;
+      ActionBarOverlayLayout.this.mAnimatingForFling = false;
+    }
+    
+    public void onAnimationEnd(Animator paramAnonymousAnimator)
+    {
+      ActionBarOverlayLayout.this.mCurrentActionBarTopAnimator = null;
+      ActionBarOverlayLayout.this.mAnimatingForFling = false;
+    }
+  };
   private Drawable mWindowContentOverlay;
   private int mWindowVisibility = 0;
   
@@ -84,7 +114,7 @@ public class ActionBarOverlayLayout
   private boolean applyInsets(View paramView, Rect paramRect, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4)
   {
     boolean bool2 = false;
-    paramView = (ActionBarOverlayLayout.LayoutParams)paramView.getLayoutParams();
+    paramView = (LayoutParams)paramView.getLayoutParams();
     boolean bool1 = bool2;
     if (paramBoolean1)
     {
@@ -196,7 +226,7 @@ public class ActionBarOverlayLayout
   
   protected boolean checkLayoutParams(ViewGroup.LayoutParams paramLayoutParams)
   {
-    return paramLayoutParams instanceof ActionBarOverlayLayout.LayoutParams;
+    return paramLayoutParams instanceof LayoutParams;
   }
   
   public void dismissPopups()
@@ -245,19 +275,19 @@ public class ActionBarOverlayLayout
     return true;
   }
   
-  protected ActionBarOverlayLayout.LayoutParams generateDefaultLayoutParams()
+  protected LayoutParams generateDefaultLayoutParams()
   {
-    return new ActionBarOverlayLayout.LayoutParams(-1, -1);
+    return new LayoutParams(-1, -1);
   }
   
-  public ActionBarOverlayLayout.LayoutParams generateLayoutParams(AttributeSet paramAttributeSet)
+  public LayoutParams generateLayoutParams(AttributeSet paramAttributeSet)
   {
-    return new ActionBarOverlayLayout.LayoutParams(getContext(), paramAttributeSet);
+    return new LayoutParams(getContext(), paramAttributeSet);
   }
   
   protected ViewGroup.LayoutParams generateLayoutParams(ViewGroup.LayoutParams paramLayoutParams)
   {
-    return new ActionBarOverlayLayout.LayoutParams(paramLayoutParams);
+    return new LayoutParams(paramLayoutParams);
   }
   
   public int getActionBarHideOffset()
@@ -371,7 +401,7 @@ public class ActionBarOverlayLayout
       View localView = getChildAt(paramInt1);
       if (localView.getVisibility() != 8)
       {
-        ActionBarOverlayLayout.LayoutParams localLayoutParams = (ActionBarOverlayLayout.LayoutParams)localView.getLayoutParams();
+        LayoutParams localLayoutParams = (LayoutParams)localView.getLayoutParams();
         int i = localView.getMeasuredWidth();
         int j = localView.getMeasuredHeight();
         int k = localLayoutParams.leftMargin + paramInt3;
@@ -386,11 +416,11 @@ public class ActionBarOverlayLayout
   {
     pullChildren();
     measureChildWithMargins(this.mActionBarTop, paramInt1, 0, paramInt2, 0);
-    Object localObject = (ActionBarOverlayLayout.LayoutParams)this.mActionBarTop.getLayoutParams();
-    int i1 = Math.max(0, this.mActionBarTop.getMeasuredWidth() + ((ActionBarOverlayLayout.LayoutParams)localObject).leftMargin + ((ActionBarOverlayLayout.LayoutParams)localObject).rightMargin);
+    Object localObject = (LayoutParams)this.mActionBarTop.getLayoutParams();
+    int i1 = Math.max(0, this.mActionBarTop.getMeasuredWidth() + ((LayoutParams)localObject).leftMargin + ((LayoutParams)localObject).rightMargin);
     int i = this.mActionBarTop.getMeasuredHeight();
-    int j = ((ActionBarOverlayLayout.LayoutParams)localObject).topMargin;
-    int n = Math.max(0, ((ActionBarOverlayLayout.LayoutParams)localObject).bottomMargin + (i + j));
+    int j = ((LayoutParams)localObject).topMargin;
+    int n = Math.max(0, ((LayoutParams)localObject).bottomMargin + (i + j));
     int m = View.combineMeasuredStates(0, this.mActionBarTop.getMeasuredState());
     int k;
     if ((ViewCompat.getWindowSystemUiVisibility(this) & 0x100) != 0)
@@ -429,11 +459,11 @@ public class ActionBarOverlayLayout
           this.mContent.dispatchFitSystemWindows(this.mInnerInsets);
         }
         measureChildWithMargins(this.mContent, paramInt1, 0, paramInt2, 0);
-        localObject = (ActionBarOverlayLayout.LayoutParams)this.mContent.getLayoutParams();
-        i = Math.max(i1, this.mContent.getMeasuredWidth() + ((ActionBarOverlayLayout.LayoutParams)localObject).leftMargin + ((ActionBarOverlayLayout.LayoutParams)localObject).rightMargin);
+        localObject = (LayoutParams)this.mContent.getLayoutParams();
+        i = Math.max(i1, this.mContent.getMeasuredWidth() + ((LayoutParams)localObject).leftMargin + ((LayoutParams)localObject).rightMargin);
         j = this.mContent.getMeasuredHeight();
-        k = ((ActionBarOverlayLayout.LayoutParams)localObject).topMargin;
-        j = Math.max(n, ((ActionBarOverlayLayout.LayoutParams)localObject).bottomMargin + (j + k));
+        k = ((LayoutParams)localObject).topMargin;
+        j = Math.max(n, ((LayoutParams)localObject).bottomMargin + (j + k));
         k = View.combineMeasuredStates(m, this.mContent.getMeasuredState());
         m = getPaddingLeft();
         n = getPaddingRight();
@@ -545,7 +575,7 @@ public class ActionBarOverlayLayout
       label49:
       if (this.mActionBarVisibilityCallback != null)
       {
-        ActionBarOverlayLayout.ActionBarVisibilityCallback localActionBarVisibilityCallback = this.mActionBarVisibilityCallback;
+        ActionBarVisibilityCallback localActionBarVisibilityCallback = this.mActionBarVisibilityCallback;
         if (j != 0) {
           break label125;
         }
@@ -595,13 +625,13 @@ public class ActionBarOverlayLayout
     }
   }
   
-  public void restoreToolbarHierarchyState(SparseArray paramSparseArray)
+  public void restoreToolbarHierarchyState(SparseArray<Parcelable> paramSparseArray)
   {
     pullChildren();
     this.mDecorToolbar.restoreHierarchyState(paramSparseArray);
   }
   
-  public void saveToolbarHierarchyState(SparseArray paramSparseArray)
+  public void saveToolbarHierarchyState(SparseArray<Parcelable> paramSparseArray)
   {
     pullChildren();
     this.mDecorToolbar.saveHierarchyState(paramSparseArray);
@@ -614,7 +644,7 @@ public class ActionBarOverlayLayout
     this.mActionBarTop.setTranslationY(-paramInt);
   }
   
-  public void setActionBarVisibilityCallback(ActionBarOverlayLayout.ActionBarVisibilityCallback paramActionBarVisibilityCallback)
+  public void setActionBarVisibilityCallback(ActionBarVisibilityCallback paramActionBarVisibilityCallback)
   {
     this.mActionBarVisibilityCallback = paramActionBarVisibilityCallback;
     if (getWindowToken() != null)
@@ -712,6 +742,45 @@ public class ActionBarOverlayLayout
   {
     pullChildren();
     return this.mDecorToolbar.showOverflowMenu();
+  }
+  
+  public static abstract interface ActionBarVisibilityCallback
+  {
+    public abstract void enableContentAnimations(boolean paramBoolean);
+    
+    public abstract void hideForSystem();
+    
+    public abstract void onContentScrollStarted();
+    
+    public abstract void onContentScrollStopped();
+    
+    public abstract void onWindowVisibilityChanged(int paramInt);
+    
+    public abstract void showForSystem();
+  }
+  
+  public static class LayoutParams
+    extends ViewGroup.MarginLayoutParams
+  {
+    public LayoutParams(int paramInt1, int paramInt2)
+    {
+      super(paramInt2);
+    }
+    
+    public LayoutParams(Context paramContext, AttributeSet paramAttributeSet)
+    {
+      super(paramAttributeSet);
+    }
+    
+    public LayoutParams(ViewGroup.LayoutParams paramLayoutParams)
+    {
+      super();
+    }
+    
+    public LayoutParams(ViewGroup.MarginLayoutParams paramMarginLayoutParams)
+    {
+      super();
+    }
   }
 }
 

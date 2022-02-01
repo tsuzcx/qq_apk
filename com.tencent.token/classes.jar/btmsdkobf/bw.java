@@ -62,7 +62,7 @@ public class bw
     finally {}
   }
   
-  private LinkedHashMap ap()
+  private LinkedHashMap<String, cg.a> ap()
   {
     LinkedHashMap localLinkedHashMap = new LinkedHashMap();
     Object localObject = dx.F(this.O.getString("key_hips", ""));
@@ -153,7 +153,7 @@ public class bw
     eh.f("SharkDao", "[shark_conf]setSharkConf() succ");
   }
   
-  public void a(String paramString, long paramLong, List paramList)
+  public void a(String paramString, long paramLong, List<String> paramList)
   {
     if (paramString == null)
     {

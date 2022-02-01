@@ -110,7 +110,7 @@ public class oicq_request
   protected String v = "";
   byte w;
   public t x;
-  protected oicq_request.EncryptionMethod y = oicq_request.EncryptionMethod.EM_ECDH;
+  protected EncryptionMethod y = EncryptionMethod.EM_ECDH;
   protected boolean z = false;
   
   private void a(int paramInt1, int paramInt2, long paramLong, int paramInt3, int paramInt4, int paramInt5, int paramInt6)
@@ -470,14 +470,14 @@ public class oicq_request
     a(this.i, this.t, paramLong, this.m, t.w, this.p, paramArrayOfByte);
   }
   
-  public void a(long paramLong, byte[] paramArrayOfByte, oicq_request.EncryptionMethod paramEncryptionMethod)
+  public void a(long paramLong, byte[] paramArrayOfByte, EncryptionMethod paramEncryptionMethod)
   {
-    if (paramEncryptionMethod == oicq_request.EncryptionMethod.EM_ST)
+    if (paramEncryptionMethod == EncryptionMethod.EM_ST)
     {
       b(paramLong, paramArrayOfByte);
       return;
     }
-    if (paramEncryptionMethod == oicq_request.EncryptionMethod.EM_ECDH)
+    if (paramEncryptionMethod == EncryptionMethod.EM_ECDH)
     {
       a(paramLong, paramArrayOfByte);
       return;
@@ -594,12 +594,12 @@ public class oicq_request
     return arrayOfByte;
   }
   
-  protected byte[] a(byte[] paramArrayOfByte1, oicq_request.EncryptionMethod paramEncryptionMethod, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3)
+  protected byte[] a(byte[] paramArrayOfByte1, EncryptionMethod paramEncryptionMethod, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3)
   {
-    if (oicq_request.EncryptionMethod.EM_ST == paramEncryptionMethod) {
+    if (EncryptionMethod.EM_ST == paramEncryptionMethod) {
       return b(paramArrayOfByte1, paramArrayOfByte2, paramArrayOfByte3);
     }
-    if (oicq_request.EncryptionMethod.EM_ECDH == paramEncryptionMethod) {
+    if (EncryptionMethod.EM_ECDH == paramEncryptionMethod) {
       return a(paramArrayOfByte1);
     }
     util.LOGI("encryptBody unknown encryption method " + paramEncryptionMethod, "");
@@ -674,7 +674,7 @@ public class oicq_request
     this.g = (i1 - this.f - 2);
     i1 = util.buf_to_int16(this.h, 13);
     util.LOGI("enrypt method " + this.y + " rsp flag " + i1, "");
-    if ((this.y == oicq_request.EncryptionMethod.EM_ECDH) && (i1 == 0)) {
+    if ((this.y == EncryptionMethod.EM_ECDH) && (i1 == 0)) {
       if (this.x.m == 0)
       {
         i2 = a(this.h, this.f + 1, this.g, this.x.p);
@@ -707,7 +707,7 @@ public class oicq_request
         i1 = i2;
         continue;
         Object localObject;
-        if ((this.y == oicq_request.EncryptionMethod.EM_ST) && (3 == i1))
+        if ((this.y == EncryptionMethod.EM_ST) && (3 == i1))
         {
           i2 = a(this.h, this.f + 1, this.g, this.B);
           i1 = i2;
@@ -722,7 +722,7 @@ public class oicq_request
             i1 = -1025;
           }
         }
-        else if ((this.y == oicq_request.EncryptionMethod.EM_ECDH) && (true == this.z) && (4 == i1))
+        else if ((this.y == EncryptionMethod.EM_ECDH) && (true == this.z) && (4 == i1))
         {
           localObject = cryptor.decrypt(this.h, this.f + 1, this.g, this.x.p);
           if (localObject == null)
@@ -775,209 +775,209 @@ public class oicq_request
   public int b(String paramString, boolean paramBoolean, WUserSigInfo paramWUserSigInfo)
   {
     // Byte code:
-    //   0: new 416	java/lang/StringBuilder
+    //   0: new 417	java/lang/StringBuilder
     //   3: dup
-    //   4: invokespecial 417	java/lang/StringBuilder:<init>	()V
+    //   4: invokespecial 418	java/lang/StringBuilder:<init>	()V
     //   7: aload_0
-    //   8: invokevirtual 633	java/lang/Object:getClass	()Ljava/lang/Class;
-    //   11: invokevirtual 638	java/lang/Class:getName	()Ljava/lang/String;
-    //   14: invokevirtual 423	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   17: ldc_w 640
-    //   20: invokevirtual 423	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   23: invokevirtual 435	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   26: new 416	java/lang/StringBuilder
+    //   8: invokevirtual 634	java/lang/Object:getClass	()Ljava/lang/Class;
+    //   11: invokevirtual 639	java/lang/Class:getName	()Ljava/lang/String;
+    //   14: invokevirtual 424	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   17: ldc_w 641
+    //   20: invokevirtual 424	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   23: invokevirtual 436	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   26: new 417	java/lang/StringBuilder
     //   29: dup
-    //   30: invokespecial 417	java/lang/StringBuilder:<init>	()V
-    //   33: ldc 97
-    //   35: invokevirtual 423	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   30: invokespecial 418	java/lang/StringBuilder:<init>	()V
+    //   33: ldc 100
+    //   35: invokevirtual 424	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   38: aload_0
-    //   39: getfield 278	oicq/wlogin_sdk/request/oicq_request:x	Loicq/wlogin_sdk/request/t;
-    //   42: getfield 437	oicq/wlogin_sdk/request/t:f	J
-    //   45: invokevirtual 440	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   48: invokevirtual 435	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   51: invokestatic 350	oicq/wlogin_sdk/tools/util:LOGI	(Ljava/lang/String;Ljava/lang/String;)V
+    //   39: getfield 279	oicq/wlogin_sdk/request/oicq_request:x	Loicq/wlogin_sdk/request/t;
+    //   42: getfield 438	oicq/wlogin_sdk/request/t:f	J
+    //   45: invokevirtual 441	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   48: invokevirtual 436	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   51: invokestatic 351	oicq/wlogin_sdk/tools/util:LOGI	(Ljava/lang/String;Ljava/lang/String;)V
     //   54: aload_0
-    //   55: getfield 278	oicq/wlogin_sdk/request/oicq_request:x	Loicq/wlogin_sdk/request/t;
-    //   58: getfield 641	oicq/wlogin_sdk/request/t:l	I
+    //   55: getfield 279	oicq/wlogin_sdk/request/oicq_request:x	Loicq/wlogin_sdk/request/t;
+    //   58: getfield 642	oicq/wlogin_sdk/request/t:l	I
     //   61: istore 4
     //   63: aload_0
-    //   64: invokevirtual 643	oicq/wlogin_sdk/request/oicq_request:c	()[B
+    //   64: invokevirtual 644	oicq/wlogin_sdk/request/oicq_request:c	()[B
     //   67: astore 7
-    //   69: invokestatic 205	java/lang/System:currentTimeMillis	()J
+    //   69: invokestatic 206	java/lang/System:currentTimeMillis	()J
     //   72: lstore 5
-    //   74: new 416	java/lang/StringBuilder
+    //   74: new 417	java/lang/StringBuilder
     //   77: dup
-    //   78: invokespecial 417	java/lang/StringBuilder:<init>	()V
-    //   81: ldc_w 645
-    //   84: invokevirtual 423	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   78: invokespecial 418	java/lang/StringBuilder:<init>	()V
+    //   81: ldc_w 646
+    //   84: invokevirtual 424	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   87: aload_1
-    //   88: invokevirtual 423	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   91: ldc_w 647
-    //   94: invokevirtual 423	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   88: invokevirtual 424	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   91: ldc_w 648
+    //   94: invokevirtual 424	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   97: aload_0
-    //   98: getfield 147	oicq/wlogin_sdk/request/oicq_request:v	Ljava/lang/String;
-    //   101: invokevirtual 423	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   104: ldc_w 649
-    //   107: invokevirtual 423	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   98: getfield 150	oicq/wlogin_sdk/request/oicq_request:v	Ljava/lang/String;
+    //   101: invokevirtual 424	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   104: ldc_w 650
+    //   107: invokevirtual 424	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   110: iload 4
-    //   112: invokevirtual 426	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   115: ldc_w 651
-    //   118: invokevirtual 423	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   112: invokevirtual 427	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   115: ldc_w 652
+    //   118: invokevirtual 424	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   121: iload_2
-    //   122: invokevirtual 654	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   125: invokevirtual 435	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   128: new 416	java/lang/StringBuilder
+    //   122: invokevirtual 655	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   125: invokevirtual 436	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   128: new 417	java/lang/StringBuilder
     //   131: dup
-    //   132: invokespecial 417	java/lang/StringBuilder:<init>	()V
-    //   135: ldc 97
-    //   137: invokevirtual 423	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   132: invokespecial 418	java/lang/StringBuilder:<init>	()V
+    //   135: ldc 100
+    //   137: invokevirtual 424	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   140: aload_0
-    //   141: getfield 278	oicq/wlogin_sdk/request/oicq_request:x	Loicq/wlogin_sdk/request/t;
-    //   144: getfield 437	oicq/wlogin_sdk/request/t:f	J
-    //   147: invokevirtual 440	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   150: invokevirtual 435	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   153: invokestatic 350	oicq/wlogin_sdk/tools/util:LOGI	(Ljava/lang/String;Ljava/lang/String;)V
-    //   156: new 656	oicq/wlogin_sdk/request/WtloginMsfListener
+    //   141: getfield 279	oicq/wlogin_sdk/request/oicq_request:x	Loicq/wlogin_sdk/request/t;
+    //   144: getfield 438	oicq/wlogin_sdk/request/t:f	J
+    //   147: invokevirtual 441	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   150: invokevirtual 436	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   153: invokestatic 351	oicq/wlogin_sdk/tools/util:LOGI	(Ljava/lang/String;Ljava/lang/String;)V
+    //   156: new 657	oicq/wlogin_sdk/request/WtloginMsfListener
     //   159: dup
     //   160: aload_1
     //   161: aload_0
-    //   162: getfield 147	oicq/wlogin_sdk/request/oicq_request:v	Ljava/lang/String;
+    //   162: getfield 150	oicq/wlogin_sdk/request/oicq_request:v	Ljava/lang/String;
     //   165: aload 7
     //   167: iload 4
     //   169: iload_2
     //   170: aload_3
-    //   171: invokespecial 659	oicq/wlogin_sdk/request/WtloginMsfListener:<init>	(Ljava/lang/String;Ljava/lang/String;[BIZLoicq/wlogin_sdk/request/WUserSigInfo;)V
+    //   171: invokespecial 660	oicq/wlogin_sdk/request/WtloginMsfListener:<init>	(Ljava/lang/String;Ljava/lang/String;[BIZLoicq/wlogin_sdk/request/WUserSigInfo;)V
     //   174: astore_3
-    //   175: new 661	java/lang/Thread
+    //   175: new 662	java/lang/Thread
     //   178: dup
     //   179: aload_3
-    //   180: invokespecial 664	java/lang/Thread:<init>	(Ljava/lang/Runnable;)V
+    //   180: invokespecial 665	java/lang/Thread:<init>	(Ljava/lang/Runnable;)V
     //   183: astore_1
     //   184: aload_1
-    //   185: invokevirtual 665	java/lang/Thread:start	()V
+    //   185: invokevirtual 666	java/lang/Thread:start	()V
     //   188: aload_1
     //   189: iload 4
     //   191: i2l
-    //   192: invokevirtual 669	java/lang/Thread:join	(J)V
+    //   192: invokevirtual 670	java/lang/Thread:join	(J)V
     //   195: aload_3
-    //   196: invokevirtual 672	oicq/wlogin_sdk/request/WtloginMsfListener:getRetData	()[B
+    //   196: invokevirtual 673	oicq/wlogin_sdk/request/WtloginMsfListener:getRetData	()[B
     //   199: astore_1
     //   200: aload_1
     //   201: ifnonnull +240 -> 441
-    //   204: new 416	java/lang/StringBuilder
+    //   204: new 417	java/lang/StringBuilder
     //   207: dup
-    //   208: invokespecial 417	java/lang/StringBuilder:<init>	()V
-    //   211: ldc_w 674
-    //   214: invokevirtual 423	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   208: invokespecial 418	java/lang/StringBuilder:<init>	()V
+    //   211: ldc_w 675
+    //   214: invokevirtual 424	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   217: aload_3
-    //   218: invokevirtual 677	oicq/wlogin_sdk/request/WtloginMsfListener:getRet	()I
-    //   221: invokevirtual 426	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   224: invokevirtual 435	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   227: new 416	java/lang/StringBuilder
+    //   218: invokevirtual 678	oicq/wlogin_sdk/request/WtloginMsfListener:getRet	()I
+    //   221: invokevirtual 427	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   224: invokevirtual 436	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   227: new 417	java/lang/StringBuilder
     //   230: dup
-    //   231: invokespecial 417	java/lang/StringBuilder:<init>	()V
-    //   234: ldc 97
-    //   236: invokevirtual 423	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   231: invokespecial 418	java/lang/StringBuilder:<init>	()V
+    //   234: ldc 100
+    //   236: invokevirtual 424	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   239: aload_0
-    //   240: getfield 278	oicq/wlogin_sdk/request/oicq_request:x	Loicq/wlogin_sdk/request/t;
-    //   243: getfield 437	oicq/wlogin_sdk/request/t:f	J
-    //   246: invokevirtual 440	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   249: invokevirtual 435	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   252: invokestatic 350	oicq/wlogin_sdk/tools/util:LOGI	(Ljava/lang/String;Ljava/lang/String;)V
+    //   240: getfield 279	oicq/wlogin_sdk/request/oicq_request:x	Loicq/wlogin_sdk/request/t;
+    //   243: getfield 438	oicq/wlogin_sdk/request/t:f	J
+    //   246: invokevirtual 441	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   249: invokevirtual 436	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   252: invokestatic 351	oicq/wlogin_sdk/tools/util:LOGI	(Ljava/lang/String;Ljava/lang/String;)V
     //   255: sipush -1000
     //   258: istore 4
     //   260: aload_0
-    //   261: getfield 143	oicq/wlogin_sdk/request/oicq_request:t	I
+    //   261: getfield 146	oicq/wlogin_sdk/request/oicq_request:t	I
     //   264: sipush 2066
     //   267: if_icmpeq +112 -> 379
-    //   270: new 189	oicq/wlogin_sdk/report/report_t3
+    //   270: new 190	oicq/wlogin_sdk/report/report_t3
     //   273: dup
-    //   274: invokespecial 190	oicq/wlogin_sdk/report/report_t3:<init>	()V
+    //   274: invokespecial 191	oicq/wlogin_sdk/report/report_t3:<init>	()V
     //   277: astore_3
     //   278: aload_3
     //   279: aload_0
-    //   280: getfield 143	oicq/wlogin_sdk/request/oicq_request:t	I
-    //   283: putfield 193	oicq/wlogin_sdk/report/report_t3:_cmd	I
+    //   280: getfield 146	oicq/wlogin_sdk/request/oicq_request:t	I
+    //   283: putfield 194	oicq/wlogin_sdk/report/report_t3:_cmd	I
     //   286: aload_3
     //   287: aload_0
-    //   288: getfield 145	oicq/wlogin_sdk/request/oicq_request:u	I
-    //   291: putfield 196	oicq/wlogin_sdk/report/report_t3:_sub	I
+    //   288: getfield 148	oicq/wlogin_sdk/request/oicq_request:u	I
+    //   291: putfield 197	oicq/wlogin_sdk/report/report_t3:_sub	I
     //   294: aload_3
     //   295: iload 4
-    //   297: putfield 199	oicq/wlogin_sdk/report/report_t3:_rst2	I
+    //   297: putfield 200	oicq/wlogin_sdk/report/report_t3:_rst2	I
     //   300: aload_3
-    //   301: invokestatic 205	java/lang/System:currentTimeMillis	()J
+    //   301: invokestatic 206	java/lang/System:currentTimeMillis	()J
     //   304: lload 5
     //   306: lsub
     //   307: l2i
-    //   308: putfield 208	oicq/wlogin_sdk/report/report_t3:_used	I
+    //   308: putfield 209	oicq/wlogin_sdk/report/report_t3:_used	I
     //   311: aload_3
     //   312: iconst_0
-    //   313: putfield 211	oicq/wlogin_sdk/report/report_t3:_try	I
+    //   313: putfield 212	oicq/wlogin_sdk/report/report_t3:_try	I
     //   316: aload_3
-    //   317: ldc 97
-    //   319: putfield 214	oicq/wlogin_sdk/report/report_t3:_host	Ljava/lang/String;
+    //   317: ldc 100
+    //   319: putfield 215	oicq/wlogin_sdk/report/report_t3:_host	Ljava/lang/String;
     //   322: aload_3
-    //   323: ldc 97
-    //   325: putfield 217	oicq/wlogin_sdk/report/report_t3:_ip	Ljava/lang/String;
+    //   323: ldc 100
+    //   325: putfield 218	oicq/wlogin_sdk/report/report_t3:_ip	Ljava/lang/String;
     //   328: aload_3
     //   329: iconst_0
-    //   330: putfield 223	oicq/wlogin_sdk/report/report_t3:_port	I
+    //   330: putfield 224	oicq/wlogin_sdk/report/report_t3:_port	I
     //   333: aload_3
     //   334: iconst_0
-    //   335: putfield 226	oicq/wlogin_sdk/report/report_t3:_conn	I
+    //   335: putfield 227	oicq/wlogin_sdk/report/report_t3:_conn	I
     //   338: aload_3
     //   339: iconst_0
-    //   340: putfield 233	oicq/wlogin_sdk/report/report_t3:_net	I
+    //   340: putfield 234	oicq/wlogin_sdk/report/report_t3:_net	I
     //   343: aload_3
-    //   344: ldc 97
-    //   346: putfield 236	oicq/wlogin_sdk/report/report_t3:_str	Ljava/lang/String;
+    //   344: ldc 100
+    //   346: putfield 237	oicq/wlogin_sdk/report/report_t3:_str	Ljava/lang/String;
     //   349: iload 4
     //   351: ifne +143 -> 494
     //   354: aload_3
     //   355: aload 7
     //   357: arraylength
-    //   358: putfield 239	oicq/wlogin_sdk/report/report_t3:_slen	I
+    //   358: putfield 240	oicq/wlogin_sdk/report/report_t3:_slen	I
     //   361: aload_3
     //   362: aload_1
     //   363: arraylength
-    //   364: putfield 242	oicq/wlogin_sdk/report/report_t3:_rlen	I
+    //   364: putfield 243	oicq/wlogin_sdk/report/report_t3:_rlen	I
     //   367: aload_3
     //   368: iconst_3
-    //   369: putfield 245	oicq/wlogin_sdk/report/report_t3:_wap	I
-    //   372: getstatic 249	oicq/wlogin_sdk/request/t:an	Loicq/wlogin_sdk/report/Reporter;
+    //   369: putfield 246	oicq/wlogin_sdk/report/report_t3:_wap	I
+    //   372: getstatic 250	oicq/wlogin_sdk/request/t:an	Loicq/wlogin_sdk/report/Reporter;
     //   375: aload_3
-    //   376: invokevirtual 255	oicq/wlogin_sdk/report/Reporter:add_t3	(Loicq/wlogin_sdk/report/report_t3;)V
-    //   379: new 416	java/lang/StringBuilder
+    //   376: invokevirtual 256	oicq/wlogin_sdk/report/Reporter:add_t3	(Loicq/wlogin_sdk/report/report_t3;)V
+    //   379: new 417	java/lang/StringBuilder
     //   382: dup
-    //   383: invokespecial 417	java/lang/StringBuilder:<init>	()V
+    //   383: invokespecial 418	java/lang/StringBuilder:<init>	()V
     //   386: aload_0
-    //   387: invokevirtual 633	java/lang/Object:getClass	()Ljava/lang/Class;
-    //   390: invokevirtual 638	java/lang/Class:getName	()Ljava/lang/String;
-    //   393: invokevirtual 423	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   396: ldc_w 679
-    //   399: invokevirtual 423	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   387: invokevirtual 634	java/lang/Object:getClass	()Ljava/lang/Class;
+    //   390: invokevirtual 639	java/lang/Class:getName	()Ljava/lang/String;
+    //   393: invokevirtual 424	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   396: ldc_w 680
+    //   399: invokevirtual 424	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   402: iload 4
-    //   404: invokevirtual 426	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   407: invokevirtual 435	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   410: new 416	java/lang/StringBuilder
+    //   404: invokevirtual 427	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   407: invokevirtual 436	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   410: new 417	java/lang/StringBuilder
     //   413: dup
-    //   414: invokespecial 417	java/lang/StringBuilder:<init>	()V
-    //   417: ldc 97
-    //   419: invokevirtual 423	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   414: invokespecial 418	java/lang/StringBuilder:<init>	()V
+    //   417: ldc 100
+    //   419: invokevirtual 424	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   422: aload_0
-    //   423: getfield 278	oicq/wlogin_sdk/request/oicq_request:x	Loicq/wlogin_sdk/request/t;
-    //   426: getfield 437	oicq/wlogin_sdk/request/t:f	J
-    //   429: invokevirtual 440	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   432: invokevirtual 435	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   435: invokestatic 350	oicq/wlogin_sdk/tools/util:LOGI	(Ljava/lang/String;Ljava/lang/String;)V
+    //   423: getfield 279	oicq/wlogin_sdk/request/oicq_request:x	Loicq/wlogin_sdk/request/t;
+    //   426: getfield 438	oicq/wlogin_sdk/request/t:f	J
+    //   429: invokevirtual 441	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   432: invokevirtual 436	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   435: invokestatic 351	oicq/wlogin_sdk/tools/util:LOGI	(Ljava/lang/String;Ljava/lang/String;)V
     //   438: iload 4
     //   440: ireturn
     //   441: aload_0
     //   442: aload_1
     //   443: aload_1
     //   444: arraylength
-    //   445: invokevirtual 681	oicq/wlogin_sdk/request/oicq_request:b	([BI)V
+    //   445: invokevirtual 682	oicq/wlogin_sdk/request/oicq_request:b	([BI)V
     //   448: iconst_0
     //   449: istore 4
     //   451: goto -191 -> 260
@@ -985,26 +985,26 @@ public class oicq_request
     //   455: aconst_null
     //   456: astore_1
     //   457: aload_3
-    //   458: new 416	java/lang/StringBuilder
+    //   458: new 417	java/lang/StringBuilder
     //   461: dup
-    //   462: invokespecial 417	java/lang/StringBuilder:<init>	()V
-    //   465: ldc 97
-    //   467: invokevirtual 423	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   462: invokespecial 418	java/lang/StringBuilder:<init>	()V
+    //   465: ldc 100
+    //   467: invokevirtual 424	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   470: aload_0
-    //   471: getfield 278	oicq/wlogin_sdk/request/oicq_request:x	Loicq/wlogin_sdk/request/t;
-    //   474: getfield 437	oicq/wlogin_sdk/request/t:f	J
-    //   477: invokevirtual 440	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   480: invokevirtual 435	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   483: invokestatic 685	oicq/wlogin_sdk/tools/util:printException	(Ljava/lang/Exception;Ljava/lang/String;)V
+    //   471: getfield 279	oicq/wlogin_sdk/request/oicq_request:x	Loicq/wlogin_sdk/request/t;
+    //   474: getfield 438	oicq/wlogin_sdk/request/t:f	J
+    //   477: invokevirtual 441	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   480: invokevirtual 436	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   483: invokestatic 686	oicq/wlogin_sdk/tools/util:printException	(Ljava/lang/Exception;Ljava/lang/String;)V
     //   486: sipush -1000
     //   489: istore 4
     //   491: goto -231 -> 260
     //   494: aload_3
     //   495: iconst_0
-    //   496: putfield 239	oicq/wlogin_sdk/report/report_t3:_slen	I
+    //   496: putfield 240	oicq/wlogin_sdk/report/report_t3:_slen	I
     //   499: aload_3
     //   500: iconst_0
-    //   501: putfield 242	oicq/wlogin_sdk/report/report_t3:_rlen	I
+    //   501: putfield 243	oicq/wlogin_sdk/report/report_t3:_rlen	I
     //   504: goto -137 -> 367
     //   507: astore_3
     //   508: goto -51 -> 457
@@ -1958,29 +1958,29 @@ public class oicq_request
   public int e()
   {
     // Byte code:
-    //   0: new 416	java/lang/StringBuilder
+    //   0: new 417	java/lang/StringBuilder
     //   3: dup
-    //   4: invokespecial 417	java/lang/StringBuilder:<init>	()V
+    //   4: invokespecial 418	java/lang/StringBuilder:<init>	()V
     //   7: aload_0
-    //   8: invokevirtual 633	java/lang/Object:getClass	()Ljava/lang/Class;
-    //   11: invokevirtual 638	java/lang/Class:getName	()Ljava/lang/String;
-    //   14: invokevirtual 423	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   17: ldc_w 1516
-    //   20: invokevirtual 423	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   23: invokevirtual 435	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   26: new 416	java/lang/StringBuilder
+    //   8: invokevirtual 634	java/lang/Object:getClass	()Ljava/lang/Class;
+    //   11: invokevirtual 639	java/lang/Class:getName	()Ljava/lang/String;
+    //   14: invokevirtual 424	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   17: ldc_w 1517
+    //   20: invokevirtual 424	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   23: invokevirtual 436	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   26: new 417	java/lang/StringBuilder
     //   29: dup
-    //   30: invokespecial 417	java/lang/StringBuilder:<init>	()V
-    //   33: ldc 97
-    //   35: invokevirtual 423	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   30: invokespecial 418	java/lang/StringBuilder:<init>	()V
+    //   33: ldc 100
+    //   35: invokevirtual 424	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   38: aload_0
-    //   39: getfield 278	oicq/wlogin_sdk/request/oicq_request:x	Loicq/wlogin_sdk/request/t;
-    //   42: getfield 437	oicq/wlogin_sdk/request/t:f	J
-    //   45: invokevirtual 440	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   48: invokevirtual 435	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   51: invokestatic 350	oicq/wlogin_sdk/tools/util:LOGI	(Ljava/lang/String;Ljava/lang/String;)V
+    //   39: getfield 279	oicq/wlogin_sdk/request/oicq_request:x	Loicq/wlogin_sdk/request/t;
+    //   42: getfield 438	oicq/wlogin_sdk/request/t:f	J
+    //   45: invokevirtual 441	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   48: invokevirtual 436	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   51: invokestatic 351	oicq/wlogin_sdk/tools/util:LOGI	(Ljava/lang/String;Ljava/lang/String;)V
     //   54: aload_0
-    //   55: invokevirtual 643	oicq/wlogin_sdk/request/oicq_request:c	()[B
+    //   55: invokevirtual 644	oicq/wlogin_sdk/request/oicq_request:c	()[B
     //   58: astore 22
     //   60: iconst_0
     //   61: istore_3
@@ -1989,7 +1989,7 @@ public class oicq_request
     //   64: iconst_0
     //   65: istore_2
     //   66: aload_0
-    //   67: invokevirtual 1518	oicq/wlogin_sdk/request/oicq_request:d	()Ljava/net/Socket;
+    //   67: invokevirtual 1519	oicq/wlogin_sdk/request/oicq_request:d	()Ljava/net/Socket;
     //   70: astore 15
     //   72: iconst_0
     //   73: istore 9
@@ -1997,9 +1997,9 @@ public class oicq_request
     //   76: istore 8
     //   78: iconst_0
     //   79: istore 4
-    //   81: ldc 97
+    //   81: ldc 100
     //   83: astore 16
-    //   85: ldc 97
+    //   85: ldc 100
     //   87: astore 14
     //   89: lconst_0
     //   90: lstore 12
@@ -2008,18 +2008,18 @@ public class oicq_request
     //   95: if_icmpge +2903 -> 2998
     //   98: iload_2
     //   99: ifeq +9 -> 108
-    //   102: getstatic 374	oicq/wlogin_sdk/request/t:t	Landroid/content/Context;
-    //   105: invokestatic 1521	oicq/wlogin_sdk/tools/util:chg_retry_type	(Landroid/content/Context;)V
-    //   108: getstatic 374	oicq/wlogin_sdk/request/t:t	Landroid/content/Context;
-    //   111: invokestatic 1525	oicq/wlogin_sdk/tools/util:is_wap_retry	(Landroid/content/Context;)Z
+    //   102: getstatic 375	oicq/wlogin_sdk/request/t:t	Landroid/content/Context;
+    //   105: invokestatic 1522	oicq/wlogin_sdk/tools/util:chg_retry_type	(Landroid/content/Context;)V
+    //   108: getstatic 375	oicq/wlogin_sdk/request/t:t	Landroid/content/Context;
+    //   111: invokestatic 1526	oicq/wlogin_sdk/tools/util:is_wap_retry	(Landroid/content/Context;)Z
     //   114: istore 11
     //   116: aload_0
     //   117: aconst_null
-    //   118: putfield 137	oicq/wlogin_sdk/request/oicq_request:q	Ljava/net/InetSocketAddress;
+    //   118: putfield 140	oicq/wlogin_sdk/request/oicq_request:q	Ljava/net/InetSocketAddress;
     //   121: iload_2
     //   122: ifeq +27 -> 149
     //   125: aload_0
-    //   126: getfield 143	oicq/wlogin_sdk/request/oicq_request:t	I
+    //   126: getfield 146	oicq/wlogin_sdk/request/oicq_request:t	I
     //   129: sipush 2066
     //   132: if_icmpeq +17 -> 149
     //   135: aload_0
@@ -2029,43 +2029,43 @@ public class oicq_request
     //   141: iload_2
     //   142: iload 11
     //   144: iload 8
-    //   146: invokespecial 1527	oicq/wlogin_sdk/request/oicq_request:a	(IJIIZZ)V
-    //   149: invokestatic 205	java/lang/System:currentTimeMillis	()J
+    //   146: invokespecial 1528	oicq/wlogin_sdk/request/oicq_request:a	(IJIIZZ)V
+    //   149: invokestatic 206	java/lang/System:currentTimeMillis	()J
     //   152: lstore 12
     //   154: iload 11
     //   156: ifeq +1198 -> 1354
-    //   159: new 416	java/lang/StringBuilder
+    //   159: new 417	java/lang/StringBuilder
     //   162: dup
-    //   163: invokespecial 417	java/lang/StringBuilder:<init>	()V
-    //   166: ldc_w 1529
-    //   169: invokevirtual 423	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   163: invokespecial 418	java/lang/StringBuilder:<init>	()V
+    //   166: ldc_w 1530
+    //   169: invokevirtual 424	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   172: iload_2
-    //   173: invokevirtual 426	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   176: ldc_w 1531
-    //   179: invokevirtual 423	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   182: invokevirtual 435	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   185: new 416	java/lang/StringBuilder
+    //   173: invokevirtual 427	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   176: ldc_w 1532
+    //   179: invokevirtual 424	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   182: invokevirtual 436	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   185: new 417	java/lang/StringBuilder
     //   188: dup
-    //   189: invokespecial 417	java/lang/StringBuilder:<init>	()V
-    //   192: ldc 97
-    //   194: invokevirtual 423	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   189: invokespecial 418	java/lang/StringBuilder:<init>	()V
+    //   192: ldc 100
+    //   194: invokevirtual 424	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   197: aload_0
-    //   198: getfield 278	oicq/wlogin_sdk/request/oicq_request:x	Loicq/wlogin_sdk/request/t;
-    //   201: getfield 437	oicq/wlogin_sdk/request/t:f	J
-    //   204: invokevirtual 440	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   207: invokevirtual 435	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   210: invokestatic 350	oicq/wlogin_sdk/tools/util:LOGI	(Ljava/lang/String;Ljava/lang/String;)V
+    //   198: getfield 279	oicq/wlogin_sdk/request/oicq_request:x	Loicq/wlogin_sdk/request/t;
+    //   201: getfield 438	oicq/wlogin_sdk/request/t:f	J
+    //   204: invokevirtual 441	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   207: invokevirtual 436	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   210: invokestatic 351	oicq/wlogin_sdk/tools/util:LOGI	(Ljava/lang/String;Ljava/lang/String;)V
     //   213: aload_0
     //   214: iload_2
     //   215: iload 11
-    //   217: invokevirtual 1533	oicq/wlogin_sdk/request/oicq_request:a	(IZ)Ljava/lang/String;
+    //   217: invokevirtual 1534	oicq/wlogin_sdk/request/oicq_request:a	(IZ)Ljava/lang/String;
     //   220: astore 21
     //   222: iload 8
     //   224: istore 9
     //   226: iload 8
     //   228: istore 10
-    //   230: getstatic 374	oicq/wlogin_sdk/request/t:t	Landroid/content/Context;
-    //   233: invokestatic 1536	oicq/wlogin_sdk/tools/util:is_wap_proxy_retry	(Landroid/content/Context;)Z
+    //   230: getstatic 375	oicq/wlogin_sdk/request/t:t	Landroid/content/Context;
+    //   233: invokestatic 1537	oicq/wlogin_sdk/tools/util:is_wap_proxy_retry	(Landroid/content/Context;)Z
     //   236: istore 8
     //   238: iload 8
     //   240: ifeq +2749 -> 2989
@@ -2073,13 +2073,13 @@ public class oicq_request
     //   245: istore 9
     //   247: iload 8
     //   249: istore 10
-    //   251: invokestatic 1539	oicq/wlogin_sdk/tools/util:get_proxy_ip	()Ljava/lang/String;
+    //   251: invokestatic 1540	oicq/wlogin_sdk/tools/util:get_proxy_ip	()Ljava/lang/String;
     //   254: astore 17
     //   256: iload 8
     //   258: istore 9
     //   260: iload 8
     //   262: istore 10
-    //   264: invokestatic 1542	oicq/wlogin_sdk/tools/util:get_proxy_port	()I
+    //   264: invokestatic 1543	oicq/wlogin_sdk/tools/util:get_proxy_port	()I
     //   267: istore 5
     //   269: aload 17
     //   271: ifnull +25 -> 296
@@ -2088,7 +2088,7 @@ public class oicq_request
     //   278: iload 8
     //   280: istore 10
     //   282: aload 17
-    //   284: invokevirtual 372	java/lang/String:length	()I
+    //   284: invokevirtual 373	java/lang/String:length	()I
     //   287: ifle +9 -> 296
     //   290: iload 5
     //   292: iconst_m1
@@ -2099,33 +2099,33 @@ public class oicq_request
     //   300: istore 8
     //   302: iconst_0
     //   303: istore 9
-    //   305: new 416	java/lang/StringBuilder
+    //   305: new 417	java/lang/StringBuilder
     //   308: dup
-    //   309: invokespecial 417	java/lang/StringBuilder:<init>	()V
-    //   312: ldc_w 1544
-    //   315: invokevirtual 423	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   309: invokespecial 418	java/lang/StringBuilder:<init>	()V
+    //   312: ldc_w 1545
+    //   315: invokevirtual 424	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   318: aload 17
-    //   320: invokevirtual 423	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   323: ldc_w 1546
-    //   326: invokevirtual 423	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   320: invokevirtual 424	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   323: ldc_w 1547
+    //   326: invokevirtual 424	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   329: iload 5
-    //   331: invokevirtual 426	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   334: ldc_w 1548
-    //   337: invokevirtual 423	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   331: invokevirtual 427	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   334: ldc_w 1549
+    //   337: invokevirtual 424	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   340: iconst_0
-    //   341: invokevirtual 654	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   344: invokevirtual 435	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   347: new 416	java/lang/StringBuilder
+    //   341: invokevirtual 655	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   344: invokevirtual 436	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   347: new 417	java/lang/StringBuilder
     //   350: dup
-    //   351: invokespecial 417	java/lang/StringBuilder:<init>	()V
-    //   354: ldc 97
-    //   356: invokevirtual 423	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   351: invokespecial 418	java/lang/StringBuilder:<init>	()V
+    //   354: ldc 100
+    //   356: invokevirtual 424	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   359: aload_0
-    //   360: getfield 278	oicq/wlogin_sdk/request/oicq_request:x	Loicq/wlogin_sdk/request/t;
-    //   363: getfield 437	oicq/wlogin_sdk/request/t:f	J
-    //   366: invokevirtual 440	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   369: invokevirtual 435	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   372: invokestatic 350	oicq/wlogin_sdk/tools/util:LOGI	(Ljava/lang/String;Ljava/lang/String;)V
+    //   360: getfield 279	oicq/wlogin_sdk/request/oicq_request:x	Loicq/wlogin_sdk/request/t;
+    //   363: getfield 438	oicq/wlogin_sdk/request/t:f	J
+    //   366: invokevirtual 441	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   369: invokevirtual 436	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   372: invokestatic 351	oicq/wlogin_sdk/tools/util:LOGI	(Ljava/lang/String;Ljava/lang/String;)V
     //   375: goto +2629 -> 3004
     //   378: iload 8
     //   380: ifeq +383 -> 763
@@ -2133,153 +2133,153 @@ public class oicq_request
     //   385: istore 9
     //   387: iload 8
     //   389: istore 10
-    //   391: new 1550	java/net/URL
+    //   391: new 1551	java/net/URL
     //   394: dup
-    //   395: new 416	java/lang/StringBuilder
+    //   395: new 417	java/lang/StringBuilder
     //   398: dup
-    //   399: invokespecial 417	java/lang/StringBuilder:<init>	()V
-    //   402: ldc_w 1552
-    //   405: invokevirtual 423	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   399: invokespecial 418	java/lang/StringBuilder:<init>	()V
+    //   402: ldc_w 1553
+    //   405: invokevirtual 424	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   408: aload 17
-    //   410: invokevirtual 423	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   413: ldc_w 1554
-    //   416: invokevirtual 423	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   410: invokevirtual 424	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   413: ldc_w 1555
+    //   416: invokevirtual 424	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   419: iload 5
-    //   421: invokevirtual 426	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   424: ldc_w 1556
-    //   427: invokevirtual 423	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   430: invokevirtual 435	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   433: invokespecial 1558	java/net/URL:<init>	(Ljava/lang/String;)V
+    //   421: invokevirtual 427	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   424: ldc_w 1557
+    //   427: invokevirtual 424	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   430: invokevirtual 436	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   433: invokespecial 1559	java/net/URL:<init>	(Ljava/lang/String;)V
     //   436: astore 17
     //   438: iload_1
     //   439: istore 5
-    //   441: new 416	java/lang/StringBuilder
+    //   441: new 417	java/lang/StringBuilder
     //   444: dup
-    //   445: invokespecial 417	java/lang/StringBuilder:<init>	()V
-    //   448: ldc_w 1560
-    //   451: invokevirtual 423	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   445: invokespecial 418	java/lang/StringBuilder:<init>	()V
+    //   448: ldc_w 1561
+    //   451: invokevirtual 424	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   454: iload 8
-    //   456: invokevirtual 654	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   459: ldc_w 1562
-    //   462: invokevirtual 423	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   456: invokevirtual 655	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   459: ldc_w 1563
+    //   462: invokevirtual 424	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   465: aload 17
-    //   467: invokevirtual 467	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   470: ldc_w 1564
-    //   473: invokevirtual 423	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   467: invokevirtual 468	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   470: ldc_w 1565
+    //   473: invokevirtual 424	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   476: aload 21
-    //   478: invokevirtual 423	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   481: invokevirtual 435	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   484: new 416	java/lang/StringBuilder
+    //   478: invokevirtual 424	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   481: invokevirtual 436	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   484: new 417	java/lang/StringBuilder
     //   487: dup
-    //   488: invokespecial 417	java/lang/StringBuilder:<init>	()V
-    //   491: ldc 97
-    //   493: invokevirtual 423	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   488: invokespecial 418	java/lang/StringBuilder:<init>	()V
+    //   491: ldc 100
+    //   493: invokevirtual 424	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   496: aload_0
-    //   497: getfield 278	oicq/wlogin_sdk/request/oicq_request:x	Loicq/wlogin_sdk/request/t;
-    //   500: getfield 437	oicq/wlogin_sdk/request/t:f	J
-    //   503: invokevirtual 440	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   506: invokevirtual 435	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   509: invokestatic 350	oicq/wlogin_sdk/tools/util:LOGI	(Ljava/lang/String;Ljava/lang/String;)V
+    //   497: getfield 279	oicq/wlogin_sdk/request/oicq_request:x	Loicq/wlogin_sdk/request/t;
+    //   500: getfield 438	oicq/wlogin_sdk/request/t:f	J
+    //   503: invokevirtual 441	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   506: invokevirtual 436	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   509: invokestatic 351	oicq/wlogin_sdk/tools/util:LOGI	(Ljava/lang/String;Ljava/lang/String;)V
     //   512: iload_1
     //   513: istore 5
     //   515: aload 17
-    //   517: invokevirtual 1568	java/net/URL:openConnection	()Ljava/net/URLConnection;
-    //   520: checkcast 1570	java/net/HttpURLConnection
+    //   517: invokevirtual 1569	java/net/URL:openConnection	()Ljava/net/URLConnection;
+    //   520: checkcast 1571	java/net/HttpURLConnection
     //   523: astore 17
     //   525: iload_1
     //   526: istore 5
     //   528: aload 17
-    //   530: ldc_w 1572
-    //   533: invokevirtual 1575	java/net/HttpURLConnection:setRequestMethod	(Ljava/lang/String;)V
+    //   530: ldc_w 1573
+    //   533: invokevirtual 1576	java/net/HttpURLConnection:setRequestMethod	(Ljava/lang/String;)V
     //   536: iload 8
     //   538: ifeq +16 -> 554
     //   541: iload_1
     //   542: istore 5
     //   544: aload 17
-    //   546: ldc_w 1577
+    //   546: ldc_w 1578
     //   549: aload 21
-    //   551: invokevirtual 1580	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
+    //   551: invokevirtual 1581	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
     //   554: iload_1
     //   555: istore 5
     //   557: aload 17
-    //   559: ldc_w 1582
-    //   562: ldc_w 1584
-    //   565: invokevirtual 1580	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
+    //   559: ldc_w 1583
+    //   562: ldc_w 1585
+    //   565: invokevirtual 1581	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
     //   568: iload_1
     //   569: istore 5
     //   571: aload 17
-    //   573: ldc_w 1586
-    //   576: ldc_w 1588
-    //   579: invokevirtual 1580	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
+    //   573: ldc_w 1587
+    //   576: ldc_w 1589
+    //   579: invokevirtual 1581	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
     //   582: iload_1
     //   583: istore 5
     //   585: aload 17
-    //   587: ldc_w 1590
+    //   587: ldc_w 1591
     //   590: aload 22
     //   592: arraylength
-    //   593: invokestatic 1592	java/lang/String:valueOf	(I)Ljava/lang/String;
-    //   596: invokevirtual 1580	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
+    //   593: invokestatic 1593	java/lang/String:valueOf	(I)Ljava/lang/String;
+    //   596: invokevirtual 1581	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
     //   599: iload_1
     //   600: istore 5
     //   602: aload 17
     //   604: aload_0
-    //   605: getfield 278	oicq/wlogin_sdk/request/oicq_request:x	Loicq/wlogin_sdk/request/t;
-    //   608: getfield 641	oicq/wlogin_sdk/request/t:l	I
-    //   611: invokevirtual 1595	java/net/HttpURLConnection:setConnectTimeout	(I)V
+    //   605: getfield 279	oicq/wlogin_sdk/request/oicq_request:x	Loicq/wlogin_sdk/request/t;
+    //   608: getfield 642	oicq/wlogin_sdk/request/t:l	I
+    //   611: invokevirtual 1596	java/net/HttpURLConnection:setConnectTimeout	(I)V
     //   614: iload_1
     //   615: istore 5
     //   617: aload 17
     //   619: aload_0
-    //   620: getfield 278	oicq/wlogin_sdk/request/oicq_request:x	Loicq/wlogin_sdk/request/t;
-    //   623: getfield 641	oicq/wlogin_sdk/request/t:l	I
-    //   626: invokevirtual 1598	java/net/HttpURLConnection:setReadTimeout	(I)V
+    //   620: getfield 279	oicq/wlogin_sdk/request/oicq_request:x	Loicq/wlogin_sdk/request/t;
+    //   623: getfield 642	oicq/wlogin_sdk/request/t:l	I
+    //   626: invokevirtual 1599	java/net/HttpURLConnection:setReadTimeout	(I)V
     //   629: iload_1
     //   630: istore 5
     //   632: aload 17
     //   634: iconst_1
-    //   635: invokevirtual 1602	java/net/HttpURLConnection:setDoOutput	(Z)V
+    //   635: invokevirtual 1603	java/net/HttpURLConnection:setDoOutput	(Z)V
     //   638: iload_1
     //   639: istore 5
     //   641: aload 17
     //   643: iconst_1
-    //   644: invokevirtual 1605	java/net/HttpURLConnection:setDoInput	(Z)V
+    //   644: invokevirtual 1606	java/net/HttpURLConnection:setDoInput	(Z)V
     //   647: iload_1
     //   648: istore 5
-    //   650: ldc_w 1607
-    //   653: new 416	java/lang/StringBuilder
+    //   650: ldc_w 1608
+    //   653: new 417	java/lang/StringBuilder
     //   656: dup
-    //   657: invokespecial 417	java/lang/StringBuilder:<init>	()V
-    //   660: ldc 97
-    //   662: invokevirtual 423	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   657: invokespecial 418	java/lang/StringBuilder:<init>	()V
+    //   660: ldc 100
+    //   662: invokevirtual 424	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   665: aload_0
-    //   666: getfield 278	oicq/wlogin_sdk/request/oicq_request:x	Loicq/wlogin_sdk/request/t;
-    //   669: getfield 437	oicq/wlogin_sdk/request/t:f	J
-    //   672: invokevirtual 440	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   675: invokevirtual 435	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   678: invokestatic 350	oicq/wlogin_sdk/tools/util:LOGI	(Ljava/lang/String;Ljava/lang/String;)V
+    //   666: getfield 279	oicq/wlogin_sdk/request/oicq_request:x	Loicq/wlogin_sdk/request/t;
+    //   669: getfield 438	oicq/wlogin_sdk/request/t:f	J
+    //   672: invokevirtual 441	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   675: invokevirtual 436	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   678: invokestatic 351	oicq/wlogin_sdk/tools/util:LOGI	(Ljava/lang/String;Ljava/lang/String;)V
     //   681: iload_1
     //   682: istore 5
     //   684: aload 17
     //   686: aload_0
-    //   687: getfield 278	oicq/wlogin_sdk/request/oicq_request:x	Loicq/wlogin_sdk/request/t;
-    //   690: getfield 641	oicq/wlogin_sdk/request/t:l	I
+    //   687: getfield 279	oicq/wlogin_sdk/request/oicq_request:x	Loicq/wlogin_sdk/request/t;
+    //   690: getfield 642	oicq/wlogin_sdk/request/t:l	I
     //   693: i2l
-    //   694: invokestatic 1612	oicq/wlogin_sdk/request/j:a	(Ljava/net/HttpURLConnection;J)Z
+    //   694: invokestatic 1613	oicq/wlogin_sdk/request/j:a	(Ljava/net/HttpURLConnection;J)Z
     //   697: ifne +271 -> 968
     //   700: iload_1
     //   701: istore 5
-    //   703: ldc_w 1614
-    //   706: new 416	java/lang/StringBuilder
+    //   703: ldc_w 1615
+    //   706: new 417	java/lang/StringBuilder
     //   709: dup
-    //   710: invokespecial 417	java/lang/StringBuilder:<init>	()V
-    //   713: ldc 97
-    //   715: invokevirtual 423	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   710: invokespecial 418	java/lang/StringBuilder:<init>	()V
+    //   713: ldc 100
+    //   715: invokevirtual 424	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   718: aload_0
-    //   719: getfield 278	oicq/wlogin_sdk/request/oicq_request:x	Loicq/wlogin_sdk/request/t;
-    //   722: getfield 437	oicq/wlogin_sdk/request/t:f	J
-    //   725: invokevirtual 440	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   728: invokevirtual 435	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   731: invokestatic 350	oicq/wlogin_sdk/tools/util:LOGI	(Ljava/lang/String;Ljava/lang/String;)V
+    //   719: getfield 279	oicq/wlogin_sdk/request/oicq_request:x	Loicq/wlogin_sdk/request/t;
+    //   722: getfield 438	oicq/wlogin_sdk/request/t:f	J
+    //   725: invokevirtual 441	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   728: invokevirtual 436	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   731: invokestatic 351	oicq/wlogin_sdk/tools/util:LOGI	(Ljava/lang/String;Ljava/lang/String;)V
     //   734: iload_1
     //   735: istore 5
     //   737: sipush -1026
@@ -2304,26 +2304,26 @@ public class oicq_request
     //   772: aload 21
     //   774: iconst_0
     //   775: aload_0
-    //   776: getfield 278	oicq/wlogin_sdk/request/oicq_request:x	Loicq/wlogin_sdk/request/t;
-    //   779: getfield 641	oicq/wlogin_sdk/request/t:l	I
+    //   776: getfield 279	oicq/wlogin_sdk/request/oicq_request:x	Loicq/wlogin_sdk/request/t;
+    //   779: getfield 642	oicq/wlogin_sdk/request/t:l	I
     //   782: i2l
-    //   783: invokestatic 1619	oicq/wlogin_sdk/request/a:a	(Ljava/lang/String;IJ)Ljava/net/InetSocketAddress;
-    //   786: putfield 137	oicq/wlogin_sdk/request/oicq_request:q	Ljava/net/InetSocketAddress;
+    //   783: invokestatic 1620	oicq/wlogin_sdk/request/a:a	(Ljava/lang/String;IJ)Ljava/net/InetSocketAddress;
+    //   786: putfield 140	oicq/wlogin_sdk/request/oicq_request:q	Ljava/net/InetSocketAddress;
     //   789: iload 8
     //   791: istore 9
     //   793: iload 8
     //   795: istore 10
     //   797: aload_0
-    //   798: getfield 137	oicq/wlogin_sdk/request/oicq_request:q	Ljava/net/InetSocketAddress;
+    //   798: getfield 140	oicq/wlogin_sdk/request/oicq_request:q	Ljava/net/InetSocketAddress;
     //   801: ifnull +2181 -> 2982
     //   804: iload 8
     //   806: istore 9
     //   808: iload 8
     //   810: istore 10
     //   812: aload_0
-    //   813: getfield 137	oicq/wlogin_sdk/request/oicq_request:q	Ljava/net/InetSocketAddress;
-    //   816: invokevirtual 261	java/net/InetSocketAddress:getAddress	()Ljava/net/InetAddress;
-    //   819: invokevirtual 267	java/net/InetAddress:getHostAddress	()Ljava/lang/String;
+    //   813: getfield 140	oicq/wlogin_sdk/request/oicq_request:q	Ljava/net/InetSocketAddress;
+    //   816: invokevirtual 262	java/net/InetSocketAddress:getAddress	()Ljava/net/InetAddress;
+    //   819: invokevirtual 268	java/net/InetAddress:getHostAddress	()Ljava/lang/String;
     //   822: astore 17
     //   824: iload 8
     //   826: istore 9
@@ -2331,23 +2331,23 @@ public class oicq_request
     //   830: istore 10
     //   832: aload 14
     //   834: aload 17
-    //   836: invokevirtual 1623	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   836: invokevirtual 1624	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   839: ifeq +61 -> 900
     //   842: iload 8
     //   844: istore 9
     //   846: iload 8
     //   848: istore 10
-    //   850: new 492	java/lang/Exception
+    //   850: new 493	java/lang/Exception
     //   853: dup
-    //   854: new 416	java/lang/StringBuilder
+    //   854: new 417	java/lang/StringBuilder
     //   857: dup
-    //   858: invokespecial 417	java/lang/StringBuilder:<init>	()V
-    //   861: ldc_w 1625
-    //   864: invokevirtual 423	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   858: invokespecial 418	java/lang/StringBuilder:<init>	()V
+    //   861: ldc_w 1626
+    //   864: invokevirtual 424	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   867: aload 14
-    //   869: invokevirtual 423	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   872: invokevirtual 435	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   875: invokespecial 1626	java/lang/Exception:<init>	(Ljava/lang/String;)V
+    //   869: invokevirtual 424	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   872: invokevirtual 436	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   875: invokespecial 1627	java/lang/Exception:<init>	(Ljava/lang/String;)V
     //   878: athrow
     //   879: astore 17
     //   881: iload 9
@@ -2367,7 +2367,7 @@ public class oicq_request
     //   906: astore 19
     //   908: aload_0
     //   909: aconst_null
-    //   910: putfield 137	oicq/wlogin_sdk/request/oicq_request:q	Ljava/net/InetSocketAddress;
+    //   910: putfield 140	oicq/wlogin_sdk/request/oicq_request:q	Ljava/net/InetSocketAddress;
     //   913: aload 17
     //   915: astore 20
     //   917: aload 17
@@ -2376,39 +2376,39 @@ public class oicq_request
     //   923: astore 18
     //   925: aload 14
     //   927: astore 19
-    //   929: new 1550	java/net/URL
+    //   929: new 1551	java/net/URL
     //   932: dup
-    //   933: new 416	java/lang/StringBuilder
+    //   933: new 417	java/lang/StringBuilder
     //   936: dup
-    //   937: invokespecial 417	java/lang/StringBuilder:<init>	()V
-    //   940: ldc_w 1552
-    //   943: invokevirtual 423	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   937: invokespecial 418	java/lang/StringBuilder:<init>	()V
+    //   940: ldc_w 1553
+    //   943: invokevirtual 424	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   946: aload 20
-    //   948: invokevirtual 423	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   951: ldc_w 1556
-    //   954: invokevirtual 423	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   957: invokevirtual 435	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   960: invokespecial 1558	java/net/URL:<init>	(Ljava/lang/String;)V
+    //   948: invokevirtual 424	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   951: ldc_w 1557
+    //   954: invokevirtual 424	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   957: invokevirtual 436	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   960: invokespecial 1559	java/net/URL:<init>	(Ljava/lang/String;)V
     //   963: astore 17
     //   965: goto -527 -> 438
     //   968: iload_1
     //   969: istore 5
-    //   971: ldc_w 1628
-    //   974: new 416	java/lang/StringBuilder
+    //   971: ldc_w 1629
+    //   974: new 417	java/lang/StringBuilder
     //   977: dup
-    //   978: invokespecial 417	java/lang/StringBuilder:<init>	()V
-    //   981: ldc 97
-    //   983: invokevirtual 423	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   978: invokespecial 418	java/lang/StringBuilder:<init>	()V
+    //   981: ldc 100
+    //   983: invokevirtual 424	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   986: aload_0
-    //   987: getfield 278	oicq/wlogin_sdk/request/oicq_request:x	Loicq/wlogin_sdk/request/t;
-    //   990: getfield 437	oicq/wlogin_sdk/request/t:f	J
-    //   993: invokevirtual 440	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   996: invokevirtual 435	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   999: invokestatic 350	oicq/wlogin_sdk/tools/util:LOGI	(Ljava/lang/String;Ljava/lang/String;)V
+    //   987: getfield 279	oicq/wlogin_sdk/request/oicq_request:x	Loicq/wlogin_sdk/request/t;
+    //   990: getfield 438	oicq/wlogin_sdk/request/t:f	J
+    //   993: invokevirtual 441	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   996: invokevirtual 436	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   999: invokestatic 351	oicq/wlogin_sdk/tools/util:LOGI	(Ljava/lang/String;Ljava/lang/String;)V
     //   1002: iload_1
     //   1003: istore 5
     //   1005: aload 17
-    //   1007: invokevirtual 1632	java/net/HttpURLConnection:getOutputStream	()Ljava/io/OutputStream;
+    //   1007: invokevirtual 1633	java/net/HttpURLConnection:getOutputStream	()Ljava/io/OutputStream;
     //   1010: astore 18
     //   1012: iload_1
     //   1013: istore 5
@@ -2417,37 +2417,37 @@ public class oicq_request
     //   1019: iconst_0
     //   1020: aload 22
     //   1022: arraylength
-    //   1023: invokevirtual 1637	java/io/OutputStream:write	([BII)V
+    //   1023: invokevirtual 1638	java/io/OutputStream:write	([BII)V
     //   1026: iload_1
     //   1027: istore 5
     //   1029: aload 18
-    //   1031: invokevirtual 1640	java/io/OutputStream:flush	()V
+    //   1031: invokevirtual 1641	java/io/OutputStream:flush	()V
     //   1034: iload_1
     //   1035: istore 5
     //   1037: aload 17
-    //   1039: invokevirtual 1643	java/net/HttpURLConnection:getResponseCode	()I
+    //   1039: invokevirtual 1644	java/net/HttpURLConnection:getResponseCode	()I
     //   1042: istore_1
     //   1043: iload_1
     //   1044: istore 5
-    //   1046: new 416	java/lang/StringBuilder
+    //   1046: new 417	java/lang/StringBuilder
     //   1049: dup
-    //   1050: invokespecial 417	java/lang/StringBuilder:<init>	()V
-    //   1053: ldc_w 1645
-    //   1056: invokevirtual 423	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1050: invokespecial 418	java/lang/StringBuilder:<init>	()V
+    //   1053: ldc_w 1646
+    //   1056: invokevirtual 424	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1059: iload_1
-    //   1060: invokevirtual 426	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   1063: invokevirtual 435	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1066: new 416	java/lang/StringBuilder
+    //   1060: invokevirtual 427	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   1063: invokevirtual 436	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1066: new 417	java/lang/StringBuilder
     //   1069: dup
-    //   1070: invokespecial 417	java/lang/StringBuilder:<init>	()V
-    //   1073: ldc 97
-    //   1075: invokevirtual 423	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1070: invokespecial 418	java/lang/StringBuilder:<init>	()V
+    //   1073: ldc 100
+    //   1075: invokevirtual 424	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1078: aload_0
-    //   1079: getfield 278	oicq/wlogin_sdk/request/oicq_request:x	Loicq/wlogin_sdk/request/t;
-    //   1082: getfield 437	oicq/wlogin_sdk/request/t:f	J
-    //   1085: invokevirtual 440	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   1088: invokevirtual 435	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1091: invokestatic 350	oicq/wlogin_sdk/tools/util:LOGI	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1079: getfield 279	oicq/wlogin_sdk/request/oicq_request:x	Loicq/wlogin_sdk/request/t;
+    //   1082: getfield 438	oicq/wlogin_sdk/request/t:f	J
+    //   1085: invokevirtual 441	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   1088: invokevirtual 436	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1091: invokestatic 351	oicq/wlogin_sdk/tools/util:LOGI	(Ljava/lang/String;Ljava/lang/String;)V
     //   1094: sipush 200
     //   1097: iload_1
     //   1098: if_icmpeq +18 -> 1116
@@ -2463,7 +2463,7 @@ public class oicq_request
     //   1116: iload_1
     //   1117: istore 5
     //   1119: aload 17
-    //   1121: invokevirtual 1649	java/net/HttpURLConnection:getInputStream	()Ljava/io/InputStream;
+    //   1121: invokevirtual 1650	java/net/HttpURLConnection:getInputStream	()Ljava/io/InputStream;
     //   1124: astore 18
     //   1126: aload 15
     //   1128: astore 19
@@ -2477,18 +2477,18 @@ public class oicq_request
     //   1144: astore 16
     //   1146: iload_2
     //   1147: istore_1
-    //   1148: ldc_w 1651
-    //   1151: new 416	java/lang/StringBuilder
+    //   1148: ldc_w 1652
+    //   1151: new 417	java/lang/StringBuilder
     //   1154: dup
-    //   1155: invokespecial 417	java/lang/StringBuilder:<init>	()V
-    //   1158: ldc 97
-    //   1160: invokevirtual 423	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1155: invokespecial 418	java/lang/StringBuilder:<init>	()V
+    //   1158: ldc 100
+    //   1160: invokevirtual 424	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1163: aload_0
-    //   1164: getfield 278	oicq/wlogin_sdk/request/oicq_request:x	Loicq/wlogin_sdk/request/t;
-    //   1167: getfield 437	oicq/wlogin_sdk/request/t:f	J
-    //   1170: invokevirtual 440	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   1173: invokevirtual 435	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1176: invokestatic 350	oicq/wlogin_sdk/tools/util:LOGI	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1164: getfield 279	oicq/wlogin_sdk/request/oicq_request:x	Loicq/wlogin_sdk/request/t;
+    //   1167: getfield 438	oicq/wlogin_sdk/request/t:f	J
+    //   1170: invokevirtual 441	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   1173: invokevirtual 436	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1176: invokestatic 351	oicq/wlogin_sdk/tools/util:LOGI	(Ljava/lang/String;Ljava/lang/String;)V
     //   1179: iconst_0
     //   1180: istore 5
     //   1182: iconst_0
@@ -2499,7 +2499,7 @@ public class oicq_request
     //   1190: istore_1
     //   1191: iload 6
     //   1193: aload_0
-    //   1194: getfield 115	oicq/wlogin_sdk/request/oicq_request:f	I
+    //   1194: getfield 118	oicq/wlogin_sdk/request/oicq_request:f	I
     //   1197: iconst_1
     //   1198: iadd
     //   1199: if_icmpge +36 -> 1235
@@ -2509,15 +2509,15 @@ public class oicq_request
     //   1207: istore_1
     //   1208: aload 18
     //   1210: aload_0
-    //   1211: getfield 141	oicq/wlogin_sdk/request/oicq_request:s	[B
+    //   1211: getfield 144	oicq/wlogin_sdk/request/oicq_request:s	[B
     //   1214: iload 6
     //   1216: aload_0
-    //   1217: getfield 115	oicq/wlogin_sdk/request/oicq_request:f	I
+    //   1217: getfield 118	oicq/wlogin_sdk/request/oicq_request:f	I
     //   1220: iconst_1
     //   1221: iadd
     //   1222: iload 6
     //   1224: isub
-    //   1225: invokevirtual 1656	java/io/InputStream:read	([BII)I
+    //   1225: invokevirtual 1657	java/io/InputStream:read	([BII)I
     //   1228: istore 5
     //   1230: iload 5
     //   1232: ifge +982 -> 2214
@@ -2538,14 +2538,14 @@ public class oicq_request
     //   1262: iload_2
     //   1263: istore_1
     //   1264: aload 14
-    //   1266: invokevirtual 1661	java/net/Socket:close	()V
+    //   1266: invokevirtual 1662	java/net/Socket:close	()V
     //   1269: aload 14
     //   1271: astore 16
     //   1273: iload_2
     //   1274: istore_1
     //   1275: aload_0
     //   1276: aconst_null
-    //   1277: putfield 137	oicq/wlogin_sdk/request/oicq_request:q	Ljava/net/InetSocketAddress;
+    //   1277: putfield 140	oicq/wlogin_sdk/request/oicq_request:q	Ljava/net/InetSocketAddress;
     //   1280: aconst_null
     //   1281: astore 16
     //   1283: aconst_null
@@ -2554,7 +2554,7 @@ public class oicq_request
     //   1287: istore_1
     //   1288: aload_0
     //   1289: aconst_null
-    //   1290: invokevirtual 1663	oicq/wlogin_sdk/request/oicq_request:a	(Ljava/net/Socket;)V
+    //   1290: invokevirtual 1664	oicq/wlogin_sdk/request/oicq_request:a	(Ljava/net/Socket;)V
     //   1293: aload 14
     //   1295: astore 16
     //   1297: aload 15
@@ -2587,102 +2587,102 @@ public class oicq_request
     //   1347: iload 11
     //   1349: istore 9
     //   1351: goto -1259 -> 92
-    //   1354: new 416	java/lang/StringBuilder
+    //   1354: new 417	java/lang/StringBuilder
     //   1357: dup
-    //   1358: invokespecial 417	java/lang/StringBuilder:<init>	()V
-    //   1361: ldc_w 1665
-    //   1364: invokevirtual 423	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1358: invokespecial 418	java/lang/StringBuilder:<init>	()V
+    //   1361: ldc_w 1666
+    //   1364: invokevirtual 424	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1367: iload_2
-    //   1368: invokevirtual 426	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   1371: ldc_w 1531
-    //   1374: invokevirtual 423	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1377: invokevirtual 435	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1380: new 416	java/lang/StringBuilder
+    //   1368: invokevirtual 427	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   1371: ldc_w 1532
+    //   1374: invokevirtual 424	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1377: invokevirtual 436	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1380: new 417	java/lang/StringBuilder
     //   1383: dup
-    //   1384: invokespecial 417	java/lang/StringBuilder:<init>	()V
-    //   1387: ldc 97
-    //   1389: invokevirtual 423	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1384: invokespecial 418	java/lang/StringBuilder:<init>	()V
+    //   1387: ldc 100
+    //   1389: invokevirtual 424	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1392: aload_0
-    //   1393: getfield 278	oicq/wlogin_sdk/request/oicq_request:x	Loicq/wlogin_sdk/request/t;
-    //   1396: getfield 437	oicq/wlogin_sdk/request/t:f	J
-    //   1399: invokevirtual 440	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   1402: invokevirtual 435	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1405: invokestatic 350	oicq/wlogin_sdk/tools/util:LOGI	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1393: getfield 279	oicq/wlogin_sdk/request/oicq_request:x	Loicq/wlogin_sdk/request/t;
+    //   1396: getfield 438	oicq/wlogin_sdk/request/t:f	J
+    //   1399: invokevirtual 441	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   1402: invokevirtual 436	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1405: invokestatic 351	oicq/wlogin_sdk/tools/util:LOGI	(Ljava/lang/String;Ljava/lang/String;)V
     //   1408: aload 15
     //   1410: ifnonnull +1569 -> 2979
-    //   1413: ldc 97
+    //   1413: ldc 100
     //   1415: astore 17
     //   1417: iconst_1
     //   1418: istore 4
     //   1420: iconst_1
     //   1421: istore 5
     //   1423: aload_0
-    //   1424: getfield 137	oicq/wlogin_sdk/request/oicq_request:q	Ljava/net/InetSocketAddress;
+    //   1424: getfield 140	oicq/wlogin_sdk/request/oicq_request:q	Ljava/net/InetSocketAddress;
     //   1427: ifnonnull +98 -> 1525
     //   1430: aload_0
     //   1431: iload_2
     //   1432: iload 11
-    //   1434: invokevirtual 1533	oicq/wlogin_sdk/request/oicq_request:a	(IZ)Ljava/lang/String;
+    //   1434: invokevirtual 1534	oicq/wlogin_sdk/request/oicq_request:a	(IZ)Ljava/lang/String;
     //   1437: astore 17
-    //   1439: new 416	java/lang/StringBuilder
+    //   1439: new 417	java/lang/StringBuilder
     //   1442: dup
-    //   1443: invokespecial 417	java/lang/StringBuilder:<init>	()V
-    //   1446: ldc_w 1667
-    //   1449: invokevirtual 423	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1443: invokespecial 418	java/lang/StringBuilder:<init>	()V
+    //   1446: ldc_w 1668
+    //   1449: invokevirtual 424	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1452: aload 17
-    //   1454: invokevirtual 423	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1457: ldc_w 1669
-    //   1460: invokevirtual 423	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1463: invokevirtual 435	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1466: new 416	java/lang/StringBuilder
+    //   1454: invokevirtual 424	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1457: ldc_w 1670
+    //   1460: invokevirtual 424	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1463: invokevirtual 436	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1466: new 417	java/lang/StringBuilder
     //   1469: dup
-    //   1470: invokespecial 417	java/lang/StringBuilder:<init>	()V
-    //   1473: ldc 97
-    //   1475: invokevirtual 423	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1470: invokespecial 418	java/lang/StringBuilder:<init>	()V
+    //   1473: ldc 100
+    //   1475: invokevirtual 424	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1478: aload_0
-    //   1479: getfield 278	oicq/wlogin_sdk/request/oicq_request:x	Loicq/wlogin_sdk/request/t;
-    //   1482: getfield 437	oicq/wlogin_sdk/request/t:f	J
-    //   1485: invokevirtual 440	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   1488: invokevirtual 435	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1491: invokestatic 350	oicq/wlogin_sdk/tools/util:LOGI	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1479: getfield 279	oicq/wlogin_sdk/request/oicq_request:x	Loicq/wlogin_sdk/request/t;
+    //   1482: getfield 438	oicq/wlogin_sdk/request/t:f	J
+    //   1485: invokevirtual 441	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   1488: invokevirtual 436	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1491: invokestatic 351	oicq/wlogin_sdk/tools/util:LOGI	(Ljava/lang/String;Ljava/lang/String;)V
     //   1494: aload_0
     //   1495: aload_0
     //   1496: iload 11
-    //   1498: invokevirtual 220	oicq/wlogin_sdk/request/oicq_request:c	(Z)I
-    //   1501: putfield 139	oicq/wlogin_sdk/request/oicq_request:r	I
+    //   1498: invokevirtual 221	oicq/wlogin_sdk/request/oicq_request:c	(Z)I
+    //   1501: putfield 142	oicq/wlogin_sdk/request/oicq_request:r	I
     //   1504: aload_0
     //   1505: aload 17
     //   1507: aload_0
-    //   1508: getfield 139	oicq/wlogin_sdk/request/oicq_request:r	I
+    //   1508: getfield 142	oicq/wlogin_sdk/request/oicq_request:r	I
     //   1511: aload_0
-    //   1512: getfield 278	oicq/wlogin_sdk/request/oicq_request:x	Loicq/wlogin_sdk/request/t;
-    //   1515: getfield 641	oicq/wlogin_sdk/request/t:l	I
+    //   1512: getfield 279	oicq/wlogin_sdk/request/oicq_request:x	Loicq/wlogin_sdk/request/t;
+    //   1515: getfield 642	oicq/wlogin_sdk/request/t:l	I
     //   1518: i2l
-    //   1519: invokestatic 1619	oicq/wlogin_sdk/request/a:a	(Ljava/lang/String;IJ)Ljava/net/InetSocketAddress;
-    //   1522: putfield 137	oicq/wlogin_sdk/request/oicq_request:q	Ljava/net/InetSocketAddress;
+    //   1519: invokestatic 1620	oicq/wlogin_sdk/request/a:a	(Ljava/lang/String;IJ)Ljava/net/InetSocketAddress;
+    //   1522: putfield 140	oicq/wlogin_sdk/request/oicq_request:q	Ljava/net/InetSocketAddress;
     //   1525: aload_0
-    //   1526: getfield 137	oicq/wlogin_sdk/request/oicq_request:q	Ljava/net/InetSocketAddress;
+    //   1526: getfield 140	oicq/wlogin_sdk/request/oicq_request:q	Ljava/net/InetSocketAddress;
     //   1529: ifnull +86 -> 1615
     //   1532: aload_0
-    //   1533: getfield 137	oicq/wlogin_sdk/request/oicq_request:q	Ljava/net/InetSocketAddress;
-    //   1536: invokevirtual 261	java/net/InetSocketAddress:getAddress	()Ljava/net/InetAddress;
+    //   1533: getfield 140	oicq/wlogin_sdk/request/oicq_request:q	Ljava/net/InetSocketAddress;
+    //   1536: invokevirtual 262	java/net/InetSocketAddress:getAddress	()Ljava/net/InetAddress;
     //   1539: ifnonnull +76 -> 1615
     //   1542: aload_0
-    //   1543: getfield 137	oicq/wlogin_sdk/request/oicq_request:q	Ljava/net/InetSocketAddress;
-    //   1546: invokevirtual 261	java/net/InetSocketAddress:getAddress	()Ljava/net/InetAddress;
+    //   1543: getfield 140	oicq/wlogin_sdk/request/oicq_request:q	Ljava/net/InetSocketAddress;
+    //   1546: invokevirtual 262	java/net/InetSocketAddress:getAddress	()Ljava/net/InetAddress;
     //   1549: ifnonnull +34 -> 1583
-    //   1552: ldc_w 1671
-    //   1555: new 416	java/lang/StringBuilder
+    //   1552: ldc_w 1672
+    //   1555: new 417	java/lang/StringBuilder
     //   1558: dup
-    //   1559: invokespecial 417	java/lang/StringBuilder:<init>	()V
-    //   1562: ldc 97
-    //   1564: invokevirtual 423	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1559: invokespecial 418	java/lang/StringBuilder:<init>	()V
+    //   1562: ldc 100
+    //   1564: invokevirtual 424	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1567: aload_0
-    //   1568: getfield 278	oicq/wlogin_sdk/request/oicq_request:x	Loicq/wlogin_sdk/request/t;
-    //   1571: getfield 437	oicq/wlogin_sdk/request/t:f	J
-    //   1574: invokevirtual 440	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   1577: invokevirtual 435	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1580: invokestatic 350	oicq/wlogin_sdk/tools/util:LOGI	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1568: getfield 279	oicq/wlogin_sdk/request/oicq_request:x	Loicq/wlogin_sdk/request/t;
+    //   1571: getfield 438	oicq/wlogin_sdk/request/t:f	J
+    //   1574: invokevirtual 441	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   1577: invokevirtual 436	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1580: invokestatic 351	oicq/wlogin_sdk/tools/util:LOGI	(Ljava/lang/String;Ljava/lang/String;)V
     //   1583: sipush -1007
     //   1586: istore_1
     //   1587: iload_2
@@ -2691,51 +2691,51 @@ public class oicq_request
     //   1590: istore_2
     //   1591: aload_0
     //   1592: aconst_null
-    //   1593: putfield 137	oicq/wlogin_sdk/request/oicq_request:q	Ljava/net/InetSocketAddress;
+    //   1593: putfield 140	oicq/wlogin_sdk/request/oicq_request:q	Ljava/net/InetSocketAddress;
     //   1596: aconst_null
     //   1597: astore 15
     //   1599: aload_0
     //   1600: aconst_null
-    //   1601: invokevirtual 1663	oicq/wlogin_sdk/request/oicq_request:a	(Ljava/net/Socket;)V
+    //   1601: invokevirtual 1664	oicq/wlogin_sdk/request/oicq_request:a	(Ljava/net/Socket;)V
     //   1604: iload 5
     //   1606: istore 4
     //   1608: iload 11
     //   1610: istore 9
     //   1612: goto -1520 -> 92
     //   1615: aload_0
-    //   1616: getfield 137	oicq/wlogin_sdk/request/oicq_request:q	Ljava/net/InetSocketAddress;
+    //   1616: getfield 140	oicq/wlogin_sdk/request/oicq_request:q	Ljava/net/InetSocketAddress;
     //   1619: ifnull +21 -> 1640
     //   1622: aload 16
     //   1624: aload_0
-    //   1625: getfield 137	oicq/wlogin_sdk/request/oicq_request:q	Ljava/net/InetSocketAddress;
-    //   1628: invokevirtual 261	java/net/InetSocketAddress:getAddress	()Ljava/net/InetAddress;
-    //   1631: invokevirtual 267	java/net/InetAddress:getHostAddress	()Ljava/lang/String;
-    //   1634: invokevirtual 1623	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   1625: getfield 140	oicq/wlogin_sdk/request/oicq_request:q	Ljava/net/InetSocketAddress;
+    //   1628: invokevirtual 262	java/net/InetSocketAddress:getAddress	()Ljava/net/InetAddress;
+    //   1631: invokevirtual 268	java/net/InetAddress:getHostAddress	()Ljava/lang/String;
+    //   1634: invokevirtual 1624	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   1637: ifeq +168 -> 1805
     //   1640: aload_0
-    //   1641: getfield 137	oicq/wlogin_sdk/request/oicq_request:q	Ljava/net/InetSocketAddress;
+    //   1641: getfield 140	oicq/wlogin_sdk/request/oicq_request:q	Ljava/net/InetSocketAddress;
     //   1644: ifnonnull +94 -> 1738
-    //   1647: new 416	java/lang/StringBuilder
+    //   1647: new 417	java/lang/StringBuilder
     //   1650: dup
-    //   1651: invokespecial 417	java/lang/StringBuilder:<init>	()V
-    //   1654: ldc_w 1667
-    //   1657: invokevirtual 423	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1651: invokespecial 418	java/lang/StringBuilder:<init>	()V
+    //   1654: ldc_w 1668
+    //   1657: invokevirtual 424	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1660: aload 17
-    //   1662: invokevirtual 423	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1665: ldc_w 1673
-    //   1668: invokevirtual 423	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1671: invokevirtual 435	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1674: new 416	java/lang/StringBuilder
+    //   1662: invokevirtual 424	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1665: ldc_w 1674
+    //   1668: invokevirtual 424	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1671: invokevirtual 436	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1674: new 417	java/lang/StringBuilder
     //   1677: dup
-    //   1678: invokespecial 417	java/lang/StringBuilder:<init>	()V
-    //   1681: ldc 97
-    //   1683: invokevirtual 423	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1678: invokespecial 418	java/lang/StringBuilder:<init>	()V
+    //   1681: ldc 100
+    //   1683: invokevirtual 424	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1686: aload_0
-    //   1687: getfield 278	oicq/wlogin_sdk/request/oicq_request:x	Loicq/wlogin_sdk/request/t;
-    //   1690: getfield 437	oicq/wlogin_sdk/request/t:f	J
-    //   1693: invokevirtual 440	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   1696: invokevirtual 435	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1699: invokestatic 350	oicq/wlogin_sdk/tools/util:LOGI	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1687: getfield 279	oicq/wlogin_sdk/request/oicq_request:x	Loicq/wlogin_sdk/request/t;
+    //   1690: getfield 438	oicq/wlogin_sdk/request/t:f	J
+    //   1693: invokevirtual 441	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   1696: invokevirtual 436	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1699: invokestatic 351	oicq/wlogin_sdk/tools/util:LOGI	(Ljava/lang/String;Ljava/lang/String;)V
     //   1702: sipush -1007
     //   1705: istore 4
     //   1707: iload_2
@@ -2744,12 +2744,12 @@ public class oicq_request
     //   1710: istore_2
     //   1711: aload_0
     //   1712: aconst_null
-    //   1713: putfield 137	oicq/wlogin_sdk/request/oicq_request:q	Ljava/net/InetSocketAddress;
+    //   1713: putfield 140	oicq/wlogin_sdk/request/oicq_request:q	Ljava/net/InetSocketAddress;
     //   1716: aconst_null
     //   1717: astore 15
     //   1719: aload_0
     //   1720: aconst_null
-    //   1721: invokevirtual 1663	oicq/wlogin_sdk/request/oicq_request:a	(Ljava/net/Socket;)V
+    //   1721: invokevirtual 1664	oicq/wlogin_sdk/request/oicq_request:a	(Ljava/net/Socket;)V
     //   1724: iload 4
     //   1726: istore_1
     //   1727: iload 5
@@ -2757,25 +2757,25 @@ public class oicq_request
     //   1731: iload 11
     //   1733: istore 9
     //   1735: goto -1643 -> 92
-    //   1738: new 416	java/lang/StringBuilder
+    //   1738: new 417	java/lang/StringBuilder
     //   1741: dup
-    //   1742: invokespecial 417	java/lang/StringBuilder:<init>	()V
-    //   1745: ldc_w 1675
-    //   1748: invokevirtual 423	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1742: invokespecial 418	java/lang/StringBuilder:<init>	()V
+    //   1745: ldc_w 1676
+    //   1748: invokevirtual 424	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1751: aload 16
-    //   1753: invokevirtual 423	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1756: invokevirtual 435	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1759: new 416	java/lang/StringBuilder
+    //   1753: invokevirtual 424	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1756: invokevirtual 436	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1759: new 417	java/lang/StringBuilder
     //   1762: dup
-    //   1763: invokespecial 417	java/lang/StringBuilder:<init>	()V
-    //   1766: ldc 97
-    //   1768: invokevirtual 423	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1763: invokespecial 418	java/lang/StringBuilder:<init>	()V
+    //   1766: ldc 100
+    //   1768: invokevirtual 424	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1771: aload_0
-    //   1772: getfield 278	oicq/wlogin_sdk/request/oicq_request:x	Loicq/wlogin_sdk/request/t;
-    //   1775: getfield 437	oicq/wlogin_sdk/request/t:f	J
-    //   1778: invokevirtual 440	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   1781: invokevirtual 435	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1784: invokestatic 350	oicq/wlogin_sdk/tools/util:LOGI	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1772: getfield 279	oicq/wlogin_sdk/request/oicq_request:x	Loicq/wlogin_sdk/request/t;
+    //   1775: getfield 438	oicq/wlogin_sdk/request/t:f	J
+    //   1778: invokevirtual 441	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   1781: invokevirtual 436	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1784: invokestatic 351	oicq/wlogin_sdk/tools/util:LOGI	(Ljava/lang/String;Ljava/lang/String;)V
     //   1787: iload_1
     //   1788: istore 4
     //   1790: sipush -1026
@@ -2785,132 +2785,132 @@ public class oicq_request
     //   1800: istore 4
     //   1802: goto -95 -> 1707
     //   1805: aload_0
-    //   1806: getfield 137	oicq/wlogin_sdk/request/oicq_request:q	Ljava/net/InetSocketAddress;
-    //   1809: invokevirtual 261	java/net/InetSocketAddress:getAddress	()Ljava/net/InetAddress;
-    //   1812: invokevirtual 267	java/net/InetAddress:getHostAddress	()Ljava/lang/String;
+    //   1806: getfield 140	oicq/wlogin_sdk/request/oicq_request:q	Ljava/net/InetSocketAddress;
+    //   1809: invokevirtual 262	java/net/InetSocketAddress:getAddress	()Ljava/net/InetAddress;
+    //   1812: invokevirtual 268	java/net/InetAddress:getHostAddress	()Ljava/lang/String;
     //   1815: astore 16
-    //   1817: new 416	java/lang/StringBuilder
+    //   1817: new 417	java/lang/StringBuilder
     //   1820: dup
-    //   1821: invokespecial 417	java/lang/StringBuilder:<init>	()V
-    //   1824: ldc_w 1667
-    //   1827: invokevirtual 423	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1821: invokespecial 418	java/lang/StringBuilder:<init>	()V
+    //   1824: ldc_w 1668
+    //   1827: invokevirtual 424	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1830: aload 17
-    //   1832: invokevirtual 423	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1835: ldc_w 1677
-    //   1838: invokevirtual 423	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1832: invokevirtual 424	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1835: ldc_w 1678
+    //   1838: invokevirtual 424	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1841: aload_0
-    //   1842: getfield 137	oicq/wlogin_sdk/request/oicq_request:q	Ljava/net/InetSocketAddress;
-    //   1845: invokevirtual 1678	java/net/InetSocketAddress:toString	()Ljava/lang/String;
-    //   1848: invokevirtual 423	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1851: ldc_w 1680
-    //   1854: invokevirtual 423	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1857: invokevirtual 435	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1860: new 416	java/lang/StringBuilder
+    //   1842: getfield 140	oicq/wlogin_sdk/request/oicq_request:q	Ljava/net/InetSocketAddress;
+    //   1845: invokevirtual 1679	java/net/InetSocketAddress:toString	()Ljava/lang/String;
+    //   1848: invokevirtual 424	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1851: ldc_w 1681
+    //   1854: invokevirtual 424	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1857: invokevirtual 436	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1860: new 417	java/lang/StringBuilder
     //   1863: dup
-    //   1864: invokespecial 417	java/lang/StringBuilder:<init>	()V
-    //   1867: ldc 97
-    //   1869: invokevirtual 423	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1864: invokespecial 418	java/lang/StringBuilder:<init>	()V
+    //   1867: ldc 100
+    //   1869: invokevirtual 424	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1872: aload_0
-    //   1873: getfield 278	oicq/wlogin_sdk/request/oicq_request:x	Loicq/wlogin_sdk/request/t;
-    //   1876: getfield 437	oicq/wlogin_sdk/request/t:f	J
-    //   1879: invokevirtual 440	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   1882: invokevirtual 435	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1885: invokestatic 350	oicq/wlogin_sdk/tools/util:LOGI	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1873: getfield 279	oicq/wlogin_sdk/request/oicq_request:x	Loicq/wlogin_sdk/request/t;
+    //   1876: getfield 438	oicq/wlogin_sdk/request/t:f	J
+    //   1879: invokevirtual 441	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   1882: invokevirtual 436	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1885: invokestatic 351	oicq/wlogin_sdk/tools/util:LOGI	(Ljava/lang/String;Ljava/lang/String;)V
     //   1888: aload 15
     //   1890: ifnonnull +1086 -> 2976
-    //   1893: new 416	java/lang/StringBuilder
+    //   1893: new 417	java/lang/StringBuilder
     //   1896: dup
-    //   1897: invokespecial 417	java/lang/StringBuilder:<init>	()V
-    //   1900: ldc_w 1682
-    //   1903: invokevirtual 423	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1897: invokespecial 418	java/lang/StringBuilder:<init>	()V
+    //   1900: ldc_w 1683
+    //   1903: invokevirtual 424	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1906: aload_0
-    //   1907: getfield 137	oicq/wlogin_sdk/request/oicq_request:q	Ljava/net/InetSocketAddress;
-    //   1910: invokevirtual 467	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   1913: ldc_w 1669
-    //   1916: invokevirtual 423	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1919: invokevirtual 435	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1922: new 416	java/lang/StringBuilder
+    //   1907: getfield 140	oicq/wlogin_sdk/request/oicq_request:q	Ljava/net/InetSocketAddress;
+    //   1910: invokevirtual 468	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   1913: ldc_w 1670
+    //   1916: invokevirtual 424	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1919: invokevirtual 436	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1922: new 417	java/lang/StringBuilder
     //   1925: dup
-    //   1926: invokespecial 417	java/lang/StringBuilder:<init>	()V
-    //   1929: ldc 97
-    //   1931: invokevirtual 423	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1926: invokespecial 418	java/lang/StringBuilder:<init>	()V
+    //   1929: ldc 100
+    //   1931: invokevirtual 424	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1934: aload_0
-    //   1935: getfield 278	oicq/wlogin_sdk/request/oicq_request:x	Loicq/wlogin_sdk/request/t;
-    //   1938: getfield 437	oicq/wlogin_sdk/request/t:f	J
-    //   1941: invokevirtual 440	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   1944: invokevirtual 435	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1947: invokestatic 350	oicq/wlogin_sdk/tools/util:LOGI	(Ljava/lang/String;Ljava/lang/String;)V
-    //   1950: new 1658	java/net/Socket
+    //   1935: getfield 279	oicq/wlogin_sdk/request/oicq_request:x	Loicq/wlogin_sdk/request/t;
+    //   1938: getfield 438	oicq/wlogin_sdk/request/t:f	J
+    //   1941: invokevirtual 441	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   1944: invokevirtual 436	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1947: invokestatic 351	oicq/wlogin_sdk/tools/util:LOGI	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1950: new 1659	java/net/Socket
     //   1953: dup
-    //   1954: invokespecial 1683	java/net/Socket:<init>	()V
+    //   1954: invokespecial 1684	java/net/Socket:<init>	()V
     //   1957: astore 15
     //   1959: aload_0
     //   1960: aload 15
-    //   1962: invokevirtual 1663	oicq/wlogin_sdk/request/oicq_request:a	(Ljava/net/Socket;)V
+    //   1962: invokevirtual 1664	oicq/wlogin_sdk/request/oicq_request:a	(Ljava/net/Socket;)V
     //   1965: aload 15
     //   1967: aload_0
-    //   1968: getfield 137	oicq/wlogin_sdk/request/oicq_request:q	Ljava/net/InetSocketAddress;
+    //   1968: getfield 140	oicq/wlogin_sdk/request/oicq_request:q	Ljava/net/InetSocketAddress;
     //   1971: aload_0
-    //   1972: getfield 278	oicq/wlogin_sdk/request/oicq_request:x	Loicq/wlogin_sdk/request/t;
-    //   1975: getfield 641	oicq/wlogin_sdk/request/t:l	I
-    //   1978: invokevirtual 1687	java/net/Socket:connect	(Ljava/net/SocketAddress;I)V
+    //   1972: getfield 279	oicq/wlogin_sdk/request/oicq_request:x	Loicq/wlogin_sdk/request/t;
+    //   1975: getfield 642	oicq/wlogin_sdk/request/t:l	I
+    //   1978: invokevirtual 1688	java/net/Socket:connect	(Ljava/net/SocketAddress;I)V
     //   1981: aload 15
     //   1983: aload_0
-    //   1984: getfield 278	oicq/wlogin_sdk/request/oicq_request:x	Loicq/wlogin_sdk/request/t;
-    //   1987: getfield 641	oicq/wlogin_sdk/request/t:l	I
-    //   1990: invokevirtual 1690	java/net/Socket:setSoTimeout	(I)V
+    //   1984: getfield 279	oicq/wlogin_sdk/request/oicq_request:x	Loicq/wlogin_sdk/request/t;
+    //   1987: getfield 642	oicq/wlogin_sdk/request/t:l	I
+    //   1990: invokevirtual 1691	java/net/Socket:setSoTimeout	(I)V
     //   1993: aload 15
     //   1995: aload_0
-    //   1996: getfield 141	oicq/wlogin_sdk/request/oicq_request:s	[B
+    //   1996: getfield 144	oicq/wlogin_sdk/request/oicq_request:s	[B
     //   1999: arraylength
-    //   2000: invokevirtual 1693	java/net/Socket:setReceiveBufferSize	(I)V
-    //   2003: new 416	java/lang/StringBuilder
+    //   2000: invokevirtual 1694	java/net/Socket:setReceiveBufferSize	(I)V
+    //   2003: new 417	java/lang/StringBuilder
     //   2006: dup
-    //   2007: invokespecial 417	java/lang/StringBuilder:<init>	()V
-    //   2010: ldc_w 1682
-    //   2013: invokevirtual 423	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2007: invokespecial 418	java/lang/StringBuilder:<init>	()V
+    //   2010: ldc_w 1683
+    //   2013: invokevirtual 424	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   2016: aload_0
-    //   2017: getfield 137	oicq/wlogin_sdk/request/oicq_request:q	Ljava/net/InetSocketAddress;
-    //   2020: invokevirtual 467	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   2023: ldc_w 1695
-    //   2026: invokevirtual 423	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2029: invokevirtual 435	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   2032: new 416	java/lang/StringBuilder
+    //   2017: getfield 140	oicq/wlogin_sdk/request/oicq_request:q	Ljava/net/InetSocketAddress;
+    //   2020: invokevirtual 468	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   2023: ldc_w 1696
+    //   2026: invokevirtual 424	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2029: invokevirtual 436	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   2032: new 417	java/lang/StringBuilder
     //   2035: dup
-    //   2036: invokespecial 417	java/lang/StringBuilder:<init>	()V
-    //   2039: ldc 97
-    //   2041: invokevirtual 423	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2036: invokespecial 418	java/lang/StringBuilder:<init>	()V
+    //   2039: ldc 100
+    //   2041: invokevirtual 424	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   2044: aload_0
-    //   2045: getfield 278	oicq/wlogin_sdk/request/oicq_request:x	Loicq/wlogin_sdk/request/t;
-    //   2048: getfield 437	oicq/wlogin_sdk/request/t:f	J
-    //   2051: invokevirtual 440	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   2054: invokevirtual 435	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   2057: invokestatic 350	oicq/wlogin_sdk/tools/util:LOGI	(Ljava/lang/String;Ljava/lang/String;)V
-    //   2060: ldc_w 1697
-    //   2063: new 416	java/lang/StringBuilder
+    //   2045: getfield 279	oicq/wlogin_sdk/request/oicq_request:x	Loicq/wlogin_sdk/request/t;
+    //   2048: getfield 438	oicq/wlogin_sdk/request/t:f	J
+    //   2051: invokevirtual 441	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   2054: invokevirtual 436	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   2057: invokestatic 351	oicq/wlogin_sdk/tools/util:LOGI	(Ljava/lang/String;Ljava/lang/String;)V
+    //   2060: ldc_w 1698
+    //   2063: new 417	java/lang/StringBuilder
     //   2066: dup
-    //   2067: invokespecial 417	java/lang/StringBuilder:<init>	()V
-    //   2070: ldc 97
-    //   2072: invokevirtual 423	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2067: invokespecial 418	java/lang/StringBuilder:<init>	()V
+    //   2070: ldc 100
+    //   2072: invokevirtual 424	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   2075: aload_0
-    //   2076: getfield 278	oicq/wlogin_sdk/request/oicq_request:x	Loicq/wlogin_sdk/request/t;
-    //   2079: getfield 437	oicq/wlogin_sdk/request/t:f	J
-    //   2082: invokevirtual 440	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   2085: invokevirtual 435	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   2088: invokestatic 350	oicq/wlogin_sdk/tools/util:LOGI	(Ljava/lang/String;Ljava/lang/String;)V
+    //   2076: getfield 279	oicq/wlogin_sdk/request/oicq_request:x	Loicq/wlogin_sdk/request/t;
+    //   2079: getfield 438	oicq/wlogin_sdk/request/t:f	J
+    //   2082: invokevirtual 441	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   2085: invokevirtual 436	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   2088: invokestatic 351	oicq/wlogin_sdk/tools/util:LOGI	(Ljava/lang/String;Ljava/lang/String;)V
     //   2091: aload 15
-    //   2093: invokevirtual 1698	java/net/Socket:getOutputStream	()Ljava/io/OutputStream;
+    //   2093: invokevirtual 1699	java/net/Socket:getOutputStream	()Ljava/io/OutputStream;
     //   2096: astore 17
     //   2098: aload 17
     //   2100: aload 22
     //   2102: iconst_0
     //   2103: aload 22
     //   2105: arraylength
-    //   2106: invokevirtual 1637	java/io/OutputStream:write	([BII)V
+    //   2106: invokevirtual 1638	java/io/OutputStream:write	([BII)V
     //   2109: aload 17
-    //   2111: invokevirtual 1640	java/io/OutputStream:flush	()V
+    //   2111: invokevirtual 1641	java/io/OutputStream:flush	()V
     //   2114: aload 15
-    //   2116: invokevirtual 1699	java/net/Socket:getInputStream	()Ljava/io/InputStream;
+    //   2116: invokevirtual 1700	java/net/Socket:getInputStream	()Ljava/io/InputStream;
     //   2119: astore 18
     //   2121: aload 14
     //   2123: astore 17
@@ -2930,12 +2930,12 @@ public class oicq_request
     //   2149: istore_2
     //   2150: aload_0
     //   2151: aconst_null
-    //   2152: putfield 137	oicq/wlogin_sdk/request/oicq_request:q	Ljava/net/InetSocketAddress;
+    //   2152: putfield 140	oicq/wlogin_sdk/request/oicq_request:q	Ljava/net/InetSocketAddress;
     //   2155: aconst_null
     //   2156: astore 15
     //   2158: aload_0
     //   2159: aconst_null
-    //   2160: invokevirtual 1663	oicq/wlogin_sdk/request/oicq_request:a	(Ljava/net/Socket;)V
+    //   2160: invokevirtual 1664	oicq/wlogin_sdk/request/oicq_request:a	(Ljava/net/Socket;)V
     //   2163: iload 11
     //   2165: istore 9
     //   2167: goto -2075 -> 92
@@ -2953,12 +2953,12 @@ public class oicq_request
     //   2190: istore_2
     //   2191: aload_0
     //   2192: aconst_null
-    //   2193: putfield 137	oicq/wlogin_sdk/request/oicq_request:q	Ljava/net/InetSocketAddress;
+    //   2193: putfield 140	oicq/wlogin_sdk/request/oicq_request:q	Ljava/net/InetSocketAddress;
     //   2196: aconst_null
     //   2197: astore 15
     //   2199: aload_0
     //   2200: aconst_null
-    //   2201: invokevirtual 1663	oicq/wlogin_sdk/request/oicq_request:a	(Ljava/net/Socket;)V
+    //   2201: invokevirtual 1664	oicq/wlogin_sdk/request/oicq_request:a	(Ljava/net/Socket;)V
     //   2204: iload 5
     //   2206: istore_1
     //   2207: iload 11
@@ -2975,8 +2975,8 @@ public class oicq_request
     //   2229: istore_1
     //   2230: aload_0
     //   2231: aload_0
-    //   2232: getfield 141	oicq/wlogin_sdk/request/oicq_request:s	[B
-    //   2235: invokevirtual 1701	oicq/wlogin_sdk/request/oicq_request:b	([B)I
+    //   2232: getfield 144	oicq/wlogin_sdk/request/oicq_request:s	[B
+    //   2235: invokevirtual 1702	oicq/wlogin_sdk/request/oicq_request:b	([B)I
     //   2238: istore 6
     //   2240: iload 6
     //   2242: istore_1
@@ -2986,7 +2986,7 @@ public class oicq_request
     //   2248: istore_3
     //   2249: iload_1
     //   2250: aload_0
-    //   2251: getfield 115	oicq/wlogin_sdk/request/oicq_request:f	I
+    //   2251: getfield 118	oicq/wlogin_sdk/request/oicq_request:f	I
     //   2254: iconst_1
     //   2255: iadd
     //   2256: if_icmpgt +58 -> 2314
@@ -3003,14 +3003,14 @@ public class oicq_request
     //   2276: iload_2
     //   2277: istore_3
     //   2278: aload 14
-    //   2280: invokevirtual 1661	java/net/Socket:close	()V
+    //   2280: invokevirtual 1662	java/net/Socket:close	()V
     //   2283: aload 14
     //   2285: astore 16
     //   2287: iload_2
     //   2288: istore_3
     //   2289: aload_0
     //   2290: aconst_null
-    //   2291: putfield 137	oicq/wlogin_sdk/request/oicq_request:q	Ljava/net/InetSocketAddress;
+    //   2291: putfield 140	oicq/wlogin_sdk/request/oicq_request:q	Ljava/net/InetSocketAddress;
     //   2294: aconst_null
     //   2295: astore 14
     //   2297: aconst_null
@@ -3019,7 +3019,7 @@ public class oicq_request
     //   2301: istore_3
     //   2302: aload_0
     //   2303: aconst_null
-    //   2304: invokevirtual 1663	oicq/wlogin_sdk/request/oicq_request:a	(Ljava/net/Socket;)V
+    //   2304: invokevirtual 1664	oicq/wlogin_sdk/request/oicq_request:a	(Ljava/net/Socket;)V
     //   2307: aload 14
     //   2309: astore 16
     //   2311: goto +696 -> 3007
@@ -3029,7 +3029,7 @@ public class oicq_request
     //   2319: istore_3
     //   2320: iload_1
     //   2321: aload_0
-    //   2322: getfield 141	oicq/wlogin_sdk/request/oicq_request:s	[B
+    //   2322: getfield 144	oicq/wlogin_sdk/request/oicq_request:s	[B
     //   2325: arraylength
     //   2326: if_icmplt +58 -> 2384
     //   2329: iload_2
@@ -3045,14 +3045,14 @@ public class oicq_request
     //   2346: iload_2
     //   2347: istore_3
     //   2348: aload 14
-    //   2350: invokevirtual 1661	java/net/Socket:close	()V
+    //   2350: invokevirtual 1662	java/net/Socket:close	()V
     //   2353: aload 14
     //   2355: astore 16
     //   2357: iload_2
     //   2358: istore_3
     //   2359: aload_0
     //   2360: aconst_null
-    //   2361: putfield 137	oicq/wlogin_sdk/request/oicq_request:q	Ljava/net/InetSocketAddress;
+    //   2361: putfield 140	oicq/wlogin_sdk/request/oicq_request:q	Ljava/net/InetSocketAddress;
     //   2364: aconst_null
     //   2365: astore 14
     //   2367: aconst_null
@@ -3061,7 +3061,7 @@ public class oicq_request
     //   2371: istore_3
     //   2372: aload_0
     //   2373: aconst_null
-    //   2374: invokevirtual 1663	oicq/wlogin_sdk/request/oicq_request:a	(Ljava/net/Socket;)V
+    //   2374: invokevirtual 1664	oicq/wlogin_sdk/request/oicq_request:a	(Ljava/net/Socket;)V
     //   2377: aload 14
     //   2379: astore 16
     //   2381: goto +651 -> 3032
@@ -3070,7 +3070,7 @@ public class oicq_request
     //   2388: iload_2
     //   2389: istore_3
     //   2390: aload_0
-    //   2391: getfield 115	oicq/wlogin_sdk/request/oicq_request:f	I
+    //   2391: getfield 118	oicq/wlogin_sdk/request/oicq_request:f	I
     //   2394: iconst_1
     //   2395: iadd
     //   2396: istore 7
@@ -3086,10 +3086,10 @@ public class oicq_request
     //   2414: istore_3
     //   2415: aload 18
     //   2417: aload_0
-    //   2418: getfield 141	oicq/wlogin_sdk/request/oicq_request:s	[B
+    //   2418: getfield 144	oicq/wlogin_sdk/request/oicq_request:s	[B
     //   2421: iload 7
     //   2423: iload 6
-    //   2425: invokevirtual 1656	java/io/InputStream:read	([BII)I
+    //   2425: invokevirtual 1657	java/io/InputStream:read	([BII)I
     //   2428: istore 5
     //   2430: iload 5
     //   2432: iconst_m1
@@ -3110,14 +3110,14 @@ public class oicq_request
     //   2459: iload_2
     //   2460: istore_3
     //   2461: aload 14
-    //   2463: invokevirtual 1661	java/net/Socket:close	()V
+    //   2463: invokevirtual 1662	java/net/Socket:close	()V
     //   2466: aload 14
     //   2468: astore 16
     //   2470: iload_2
     //   2471: istore_3
     //   2472: aload_0
     //   2473: aconst_null
-    //   2474: putfield 137	oicq/wlogin_sdk/request/oicq_request:q	Ljava/net/InetSocketAddress;
+    //   2474: putfield 140	oicq/wlogin_sdk/request/oicq_request:q	Ljava/net/InetSocketAddress;
     //   2477: aconst_null
     //   2478: astore 16
     //   2480: aconst_null
@@ -3126,7 +3126,7 @@ public class oicq_request
     //   2484: istore_3
     //   2485: aload_0
     //   2486: aconst_null
-    //   2487: invokevirtual 1663	oicq/wlogin_sdk/request/oicq_request:a	(Ljava/net/Socket;)V
+    //   2487: invokevirtual 1664	oicq/wlogin_sdk/request/oicq_request:a	(Ljava/net/Socket;)V
     //   2490: aload 14
     //   2492: astore 16
     //   2494: aload 15
@@ -3173,107 +3173,107 @@ public class oicq_request
     //   2568: ifne +13 -> 2581
     //   2571: aload_0
     //   2572: aload_0
-    //   2573: getfield 141	oicq/wlogin_sdk/request/oicq_request:s	[B
+    //   2573: getfield 144	oicq/wlogin_sdk/request/oicq_request:s	[B
     //   2576: iload 5
-    //   2578: invokevirtual 681	oicq/wlogin_sdk/request/oicq_request:b	([BI)V
+    //   2578: invokevirtual 682	oicq/wlogin_sdk/request/oicq_request:b	([BI)V
     //   2581: iload_3
     //   2582: ifne +171 -> 2753
     //   2585: aload_0
-    //   2586: getfield 143	oicq/wlogin_sdk/request/oicq_request:t	I
+    //   2586: getfield 146	oicq/wlogin_sdk/request/oicq_request:t	I
     //   2589: sipush 2066
     //   2592: if_icmpeq +161 -> 2753
-    //   2595: new 189	oicq/wlogin_sdk/report/report_t3
+    //   2595: new 190	oicq/wlogin_sdk/report/report_t3
     //   2598: dup
-    //   2599: invokespecial 190	oicq/wlogin_sdk/report/report_t3:<init>	()V
+    //   2599: invokespecial 191	oicq/wlogin_sdk/report/report_t3:<init>	()V
     //   2602: astore 14
     //   2604: aload 14
     //   2606: aload_0
-    //   2607: getfield 143	oicq/wlogin_sdk/request/oicq_request:t	I
-    //   2610: putfield 193	oicq/wlogin_sdk/report/report_t3:_cmd	I
+    //   2607: getfield 146	oicq/wlogin_sdk/request/oicq_request:t	I
+    //   2610: putfield 194	oicq/wlogin_sdk/report/report_t3:_cmd	I
     //   2613: aload 14
     //   2615: aload_0
-    //   2616: getfield 145	oicq/wlogin_sdk/request/oicq_request:u	I
-    //   2619: putfield 196	oicq/wlogin_sdk/report/report_t3:_sub	I
+    //   2616: getfield 148	oicq/wlogin_sdk/request/oicq_request:u	I
+    //   2619: putfield 197	oicq/wlogin_sdk/report/report_t3:_sub	I
     //   2622: aload 14
     //   2624: iload_3
-    //   2625: putfield 199	oicq/wlogin_sdk/report/report_t3:_rst2	I
+    //   2625: putfield 200	oicq/wlogin_sdk/report/report_t3:_rst2	I
     //   2628: aload 14
-    //   2630: invokestatic 205	java/lang/System:currentTimeMillis	()J
+    //   2630: invokestatic 206	java/lang/System:currentTimeMillis	()J
     //   2633: lload 12
     //   2635: lsub
     //   2636: l2i
-    //   2637: putfield 208	oicq/wlogin_sdk/report/report_t3:_used	I
+    //   2637: putfield 209	oicq/wlogin_sdk/report/report_t3:_used	I
     //   2640: aload 14
     //   2642: iload_2
-    //   2643: putfield 211	oicq/wlogin_sdk/report/report_t3:_try	I
+    //   2643: putfield 212	oicq/wlogin_sdk/report/report_t3:_try	I
     //   2646: aload 14
-    //   2648: getstatic 101	oicq/wlogin_sdk/request/oicq_request:H	Ljava/lang/String;
-    //   2651: putfield 214	oicq/wlogin_sdk/report/report_t3:_host	Ljava/lang/String;
+    //   2648: getstatic 104	oicq/wlogin_sdk/request/oicq_request:H	Ljava/lang/String;
+    //   2651: putfield 215	oicq/wlogin_sdk/report/report_t3:_host	Ljava/lang/String;
     //   2654: aload 14
-    //   2656: getfield 214	oicq/wlogin_sdk/report/report_t3:_host	Ljava/lang/String;
+    //   2656: getfield 215	oicq/wlogin_sdk/report/report_t3:_host	Ljava/lang/String;
     //   2659: ifnonnull +10 -> 2669
     //   2662: aload 14
-    //   2664: ldc 97
-    //   2666: putfield 214	oicq/wlogin_sdk/report/report_t3:_host	Ljava/lang/String;
+    //   2664: ldc 100
+    //   2666: putfield 215	oicq/wlogin_sdk/report/report_t3:_host	Ljava/lang/String;
     //   2669: aload_0
-    //   2670: getfield 137	oicq/wlogin_sdk/request/oicq_request:q	Ljava/net/InetSocketAddress;
+    //   2670: getfield 140	oicq/wlogin_sdk/request/oicq_request:q	Ljava/net/InetSocketAddress;
     //   2673: ifnonnull +219 -> 2892
     //   2676: aload 14
-    //   2678: ldc 97
-    //   2680: putfield 217	oicq/wlogin_sdk/report/report_t3:_ip	Ljava/lang/String;
+    //   2678: ldc 100
+    //   2680: putfield 218	oicq/wlogin_sdk/report/report_t3:_ip	Ljava/lang/String;
     //   2683: aload 14
     //   2685: aload_0
-    //   2686: getfield 139	oicq/wlogin_sdk/request/oicq_request:r	I
-    //   2689: putfield 223	oicq/wlogin_sdk/report/report_t3:_port	I
+    //   2686: getfield 142	oicq/wlogin_sdk/request/oicq_request:r	I
+    //   2689: putfield 224	oicq/wlogin_sdk/report/report_t3:_port	I
     //   2692: aload 14
     //   2694: iload 4
-    //   2696: putfield 226	oicq/wlogin_sdk/report/report_t3:_conn	I
+    //   2696: putfield 227	oicq/wlogin_sdk/report/report_t3:_conn	I
     //   2699: aload 14
-    //   2701: getstatic 230	oicq/wlogin_sdk/request/t:D	I
-    //   2704: putfield 233	oicq/wlogin_sdk/report/report_t3:_net	I
+    //   2701: getstatic 231	oicq/wlogin_sdk/request/t:D	I
+    //   2704: putfield 234	oicq/wlogin_sdk/report/report_t3:_net	I
     //   2707: aload 14
-    //   2709: ldc 97
-    //   2711: putfield 236	oicq/wlogin_sdk/report/report_t3:_str	Ljava/lang/String;
+    //   2709: ldc 100
+    //   2711: putfield 237	oicq/wlogin_sdk/report/report_t3:_str	Ljava/lang/String;
     //   2714: aload 14
     //   2716: aload 22
     //   2718: arraylength
-    //   2719: putfield 239	oicq/wlogin_sdk/report/report_t3:_slen	I
+    //   2719: putfield 240	oicq/wlogin_sdk/report/report_t3:_slen	I
     //   2722: aload 14
     //   2724: iload 5
-    //   2726: putfield 242	oicq/wlogin_sdk/report/report_t3:_rlen	I
+    //   2726: putfield 243	oicq/wlogin_sdk/report/report_t3:_rlen	I
     //   2729: iload 9
     //   2731: ifeq +188 -> 2919
     //   2734: iload 8
     //   2736: ifeq +174 -> 2910
     //   2739: aload 14
     //   2741: iconst_2
-    //   2742: putfield 245	oicq/wlogin_sdk/report/report_t3:_wap	I
-    //   2745: getstatic 249	oicq/wlogin_sdk/request/t:an	Loicq/wlogin_sdk/report/Reporter;
+    //   2742: putfield 246	oicq/wlogin_sdk/report/report_t3:_wap	I
+    //   2745: getstatic 250	oicq/wlogin_sdk/request/t:an	Loicq/wlogin_sdk/report/Reporter;
     //   2748: aload 14
-    //   2750: invokevirtual 255	oicq/wlogin_sdk/report/Reporter:add_t3	(Loicq/wlogin_sdk/report/report_t3;)V
-    //   2753: new 416	java/lang/StringBuilder
+    //   2750: invokevirtual 256	oicq/wlogin_sdk/report/Reporter:add_t3	(Loicq/wlogin_sdk/report/report_t3;)V
+    //   2753: new 417	java/lang/StringBuilder
     //   2756: dup
-    //   2757: invokespecial 417	java/lang/StringBuilder:<init>	()V
+    //   2757: invokespecial 418	java/lang/StringBuilder:<init>	()V
     //   2760: aload_0
-    //   2761: invokevirtual 633	java/lang/Object:getClass	()Ljava/lang/Class;
-    //   2764: invokevirtual 638	java/lang/Class:getName	()Ljava/lang/String;
-    //   2767: invokevirtual 423	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   2770: ldc_w 1703
-    //   2773: invokevirtual 423	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2761: invokevirtual 634	java/lang/Object:getClass	()Ljava/lang/Class;
+    //   2764: invokevirtual 639	java/lang/Class:getName	()Ljava/lang/String;
+    //   2767: invokevirtual 424	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2770: ldc_w 1704
+    //   2773: invokevirtual 424	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   2776: iload_3
-    //   2777: invokevirtual 426	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   2780: invokevirtual 435	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   2783: new 416	java/lang/StringBuilder
+    //   2777: invokevirtual 427	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   2780: invokevirtual 436	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   2783: new 417	java/lang/StringBuilder
     //   2786: dup
-    //   2787: invokespecial 417	java/lang/StringBuilder:<init>	()V
-    //   2790: ldc 97
-    //   2792: invokevirtual 423	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   2787: invokespecial 418	java/lang/StringBuilder:<init>	()V
+    //   2790: ldc 100
+    //   2792: invokevirtual 424	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   2795: aload_0
-    //   2796: getfield 278	oicq/wlogin_sdk/request/oicq_request:x	Loicq/wlogin_sdk/request/t;
-    //   2799: getfield 437	oicq/wlogin_sdk/request/t:f	J
-    //   2802: invokevirtual 440	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   2805: invokevirtual 435	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   2808: invokestatic 350	oicq/wlogin_sdk/tools/util:LOGI	(Ljava/lang/String;Ljava/lang/String;)V
+    //   2796: getfield 279	oicq/wlogin_sdk/request/oicq_request:x	Loicq/wlogin_sdk/request/t;
+    //   2799: getfield 438	oicq/wlogin_sdk/request/t:f	J
+    //   2802: invokevirtual 441	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   2805: invokevirtual 436	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   2808: invokestatic 351	oicq/wlogin_sdk/tools/util:LOGI	(Ljava/lang/String;Ljava/lang/String;)V
     //   2811: iload_3
     //   2812: ireturn
     //   2813: astore 14
@@ -3290,18 +3290,18 @@ public class oicq_request
     //   2827: iload 11
     //   2829: ifne +29 -> 2858
     //   2832: aload 16
-    //   2834: invokevirtual 1706	java/net/Socket:isConnected	()Z
+    //   2834: invokevirtual 1707	java/net/Socket:isConnected	()Z
     //   2837: ifeq +8 -> 2845
     //   2840: aload 16
-    //   2842: invokevirtual 1661	java/net/Socket:close	()V
+    //   2842: invokevirtual 1662	java/net/Socket:close	()V
     //   2845: aload_0
     //   2846: aconst_null
-    //   2847: putfield 137	oicq/wlogin_sdk/request/oicq_request:q	Ljava/net/InetSocketAddress;
+    //   2847: putfield 140	oicq/wlogin_sdk/request/oicq_request:q	Ljava/net/InetSocketAddress;
     //   2850: aconst_null
     //   2851: astore 14
     //   2853: aload_0
     //   2854: aconst_null
-    //   2855: invokevirtual 1663	oicq/wlogin_sdk/request/oicq_request:a	(Ljava/net/Socket;)V
+    //   2855: invokevirtual 1664	oicq/wlogin_sdk/request/oicq_request:a	(Ljava/net/Socket;)V
     //   2858: iload_1
     //   2859: istore_3
     //   2860: sipush -1000
@@ -3322,18 +3322,18 @@ public class oicq_request
     //   2889: goto -322 -> 2567
     //   2892: aload 14
     //   2894: aload_0
-    //   2895: getfield 137	oicq/wlogin_sdk/request/oicq_request:q	Ljava/net/InetSocketAddress;
-    //   2898: invokevirtual 261	java/net/InetSocketAddress:getAddress	()Ljava/net/InetAddress;
-    //   2901: invokevirtual 267	java/net/InetAddress:getHostAddress	()Ljava/lang/String;
-    //   2904: putfield 217	oicq/wlogin_sdk/report/report_t3:_ip	Ljava/lang/String;
+    //   2895: getfield 140	oicq/wlogin_sdk/request/oicq_request:q	Ljava/net/InetSocketAddress;
+    //   2898: invokevirtual 262	java/net/InetSocketAddress:getAddress	()Ljava/net/InetAddress;
+    //   2901: invokevirtual 268	java/net/InetAddress:getHostAddress	()Ljava/lang/String;
+    //   2904: putfield 218	oicq/wlogin_sdk/report/report_t3:_ip	Ljava/lang/String;
     //   2907: goto -224 -> 2683
     //   2910: aload 14
     //   2912: iconst_1
-    //   2913: putfield 245	oicq/wlogin_sdk/report/report_t3:_wap	I
+    //   2913: putfield 246	oicq/wlogin_sdk/report/report_t3:_wap	I
     //   2916: goto -171 -> 2745
     //   2919: aload 14
     //   2921: iconst_0
-    //   2922: putfield 245	oicq/wlogin_sdk/report/report_t3:_wap	I
+    //   2922: putfield 246	oicq/wlogin_sdk/report/report_t3:_wap	I
     //   2925: goto -180 -> 2745
     //   2928: astore 14
     //   2930: goto -85 -> 2845
@@ -3547,6 +3547,13 @@ public class oicq_request
   public void g()
   {
     this.z = true;
+  }
+  
+  public static enum EncryptionMethod
+  {
+    EM_ECDH,  EM_ST;
+    
+    private EncryptionMethod() {}
   }
 }
 

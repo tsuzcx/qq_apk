@@ -10,10 +10,22 @@ public class ArchTaskExecutor
   extends TaskExecutor
 {
   @NonNull
-  private static final Executor sIOThreadExecutor = new ArchTaskExecutor.2();
+  private static final Executor sIOThreadExecutor = new Executor()
+  {
+    public void execute(Runnable paramAnonymousRunnable)
+    {
+      ArchTaskExecutor.getInstance().executeOnDiskIO(paramAnonymousRunnable);
+    }
+  };
   private static volatile ArchTaskExecutor sInstance;
   @NonNull
-  private static final Executor sMainThreadExecutor = new ArchTaskExecutor.1();
+  private static final Executor sMainThreadExecutor = new Executor()
+  {
+    public void execute(Runnable paramAnonymousRunnable)
+    {
+      ArchTaskExecutor.getInstance().postToMainThread(paramAnonymousRunnable);
+    }
+  };
   @NonNull
   private TaskExecutor mDefaultTaskExecutor = new DefaultTaskExecutor();
   @NonNull

@@ -1,19 +1,9 @@
 package com.tencent.turingfd.sdk.base;
 
-import android.os.Handler;
-import android.os.HandlerThread;
-
 public class ap
+  implements ba
 {
-  public static final dj a = new ao();
-  public Handler b;
-  
-  public ap()
-  {
-    HandlerThread localHandlerThread = new HandlerThread("TuringMMWorker");
-    localHandlerThread.start();
-    this.b = new Handler(localHandlerThread.getLooper());
-  }
+  public ap(as paramas) {}
 }
 
 

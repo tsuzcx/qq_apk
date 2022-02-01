@@ -9,6 +9,7 @@ import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.os.Build.VERSION;
 import android.os.Handler;
+import android.os.Looper;
 import android.support.annotation.ColorInt;
 import android.support.annotation.ColorRes;
 import android.support.annotation.DrawableRes;
@@ -76,7 +77,7 @@ public final class ResourcesCompat
   }
   
   @RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
-  public static Typeface getFont(@NonNull Context paramContext, @FontRes int paramInt1, TypedValue paramTypedValue, int paramInt2, @Nullable ResourcesCompat.FontCallback paramFontCallback)
+  public static Typeface getFont(@NonNull Context paramContext, @FontRes int paramInt1, TypedValue paramTypedValue, int paramInt2, @Nullable FontCallback paramFontCallback)
   {
     if (paramContext.isRestricted()) {
       return null;
@@ -84,7 +85,7 @@ public final class ResourcesCompat
     return loadFont(paramContext, paramInt1, paramTypedValue, paramInt2, paramFontCallback, null, true);
   }
   
-  public static void getFont(@NonNull Context paramContext, @FontRes int paramInt, @NonNull ResourcesCompat.FontCallback paramFontCallback, @Nullable Handler paramHandler)
+  public static void getFont(@NonNull Context paramContext, @FontRes int paramInt, @NonNull FontCallback paramFontCallback, @Nullable Handler paramHandler)
   {
     Preconditions.checkNotNull(paramFontCallback);
     if (paramContext.isRestricted())
@@ -95,7 +96,7 @@ public final class ResourcesCompat
     loadFont(paramContext, paramInt, new TypedValue(), 0, paramFontCallback, paramHandler, false);
   }
   
-  private static Typeface loadFont(@NonNull Context paramContext, int paramInt1, TypedValue paramTypedValue, int paramInt2, @Nullable ResourcesCompat.FontCallback paramFontCallback, @Nullable Handler paramHandler, boolean paramBoolean)
+  private static Typeface loadFont(@NonNull Context paramContext, int paramInt1, TypedValue paramTypedValue, int paramInt2, @Nullable FontCallback paramFontCallback, @Nullable Handler paramHandler, boolean paramBoolean)
   {
     Resources localResources = paramContext.getResources();
     localResources.getValue(paramInt1, paramTypedValue, true);
@@ -106,7 +107,7 @@ public final class ResourcesCompat
     return paramContext;
   }
   
-  private static Typeface loadFont(@NonNull Context paramContext, Resources paramResources, TypedValue paramTypedValue, int paramInt1, int paramInt2, @Nullable ResourcesCompat.FontCallback paramFontCallback, @Nullable Handler paramHandler, boolean paramBoolean)
+  private static Typeface loadFont(@NonNull Context paramContext, Resources paramResources, TypedValue paramTypedValue, int paramInt1, int paramInt2, @Nullable FontCallback paramFontCallback, @Nullable Handler paramHandler, boolean paramBoolean)
   {
     if (paramTypedValue.string == null) {
       throw new Resources.NotFoundException("Resource \"" + paramResources.getResourceName(paramInt1) + "\" (" + Integer.toHexString(paramInt1) + ") is not a Font: " + paramTypedValue);
@@ -185,6 +186,45 @@ public final class ResourcesCompat
       }
     }
     return null;
+  }
+  
+  public static abstract class FontCallback
+  {
+    @RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
+    public final void callbackFailAsync(final int paramInt, @Nullable Handler paramHandler)
+    {
+      Handler localHandler = paramHandler;
+      if (paramHandler == null) {
+        localHandler = new Handler(Looper.getMainLooper());
+      }
+      localHandler.post(new Runnable()
+      {
+        public void run()
+        {
+          ResourcesCompat.FontCallback.this.onFontRetrievalFailed(paramInt);
+        }
+      });
+    }
+    
+    @RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
+    public final void callbackSuccessAsync(final Typeface paramTypeface, @Nullable Handler paramHandler)
+    {
+      Handler localHandler = paramHandler;
+      if (paramHandler == null) {
+        localHandler = new Handler(Looper.getMainLooper());
+      }
+      localHandler.post(new Runnable()
+      {
+        public void run()
+        {
+          ResourcesCompat.FontCallback.this.onFontRetrieved(paramTypeface);
+        }
+      });
+    }
+    
+    public abstract void onFontRetrievalFailed(int paramInt);
+    
+    public abstract void onFontRetrieved(@NonNull Typeface paramTypeface);
   }
 }
 

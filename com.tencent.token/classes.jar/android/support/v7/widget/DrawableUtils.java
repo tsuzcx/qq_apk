@@ -25,7 +25,7 @@ public class DrawableUtils
   public static final Rect INSETS_NONE = new Rect();
   private static final String TAG = "DrawableUtils";
   private static final String VECTOR_DRAWABLE_CLAZZ_NAME = "android.graphics.drawable.VectorDrawable";
-  private static Class sInsetsClazz;
+  private static Class<?> sInsetsClazz;
   
   static
   {

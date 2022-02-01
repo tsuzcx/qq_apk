@@ -9,8 +9,8 @@ public final class SoftFeature
   extends JceStruct
 {
   static FeatureKey dB;
-  static ArrayList eX;
-  static ArrayList eY;
+  static ArrayList<FeatureItem> eX;
+  static ArrayList<Integer> eY;
   public int appid = 0;
   public int category = 0;
   public String dexSha1 = "";
@@ -20,22 +20,22 @@ public final class SoftFeature
   public int localSafeType = 0;
   public int localVirusID = 0;
   public String localVirusName = "";
-  public ArrayList pluginIds = null;
+  public ArrayList<Integer> pluginIds = null;
   public int position = 0;
   public int requestType = 0;
   public int softDescTimestamp = 0;
-  public ArrayList vecFeatureItem = null;
+  public ArrayList<FeatureItem> vecFeatureItem = null;
   public int virusDescTimestamp = 0;
   public int virusVersion = 0;
   
   public SoftFeature() {}
   
-  public SoftFeature(FeatureKey paramFeatureKey, int paramInt1, int paramInt2, ArrayList paramArrayList1, int paramInt3, boolean paramBoolean, int paramInt4, int paramInt5, int paramInt6, int paramInt7, String paramString1, int paramInt8, int paramInt9, int paramInt10, String paramString2, ArrayList paramArrayList2)
+  public SoftFeature(FeatureKey paramFeatureKey, int paramInt1, int paramInt2, ArrayList<FeatureItem> paramArrayList, int paramInt3, boolean paramBoolean, int paramInt4, int paramInt5, int paramInt6, int paramInt7, String paramString1, int paramInt8, int paramInt9, int paramInt10, String paramString2, ArrayList<Integer> paramArrayList1)
   {
     this.featureKey = paramFeatureKey;
     this.softDescTimestamp = paramInt1;
     this.virusDescTimestamp = paramInt2;
-    this.vecFeatureItem = paramArrayList1;
+    this.vecFeatureItem = paramArrayList;
     this.requestType = paramInt3;
     this.isBuildIn = paramBoolean;
     this.category = paramInt4;
@@ -47,7 +47,7 @@ public final class SoftFeature
     this.appid = paramInt9;
     this.virusVersion = paramInt10;
     this.dexSha1 = paramString2;
-    this.pluginIds = paramArrayList2;
+    this.pluginIds = paramArrayList1;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)

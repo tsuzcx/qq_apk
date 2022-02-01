@@ -1,72 +1,176 @@
 package com.tencent.token.core.protocolcenter;
 
+import android.content.ContentValues;
 import android.os.Handler;
-import android.os.Message;
-import android.os.SystemClock;
-import android.view.MotionEvent;
-import com.tencent.token.cn;
-import com.tencent.token.ev;
-import com.tencent.token.upload.useraction.a;
-import com.tencent.token.utils.w;
+import android.os.Looper;
+import com.tencent.token.bz;
+import com.tencent.token.cb;
+import com.tencent.token.core.protocolcenter.protocol.ProtoModSeed;
+import com.tencent.token.core.protocolcenter.protocol.ProtoQueryCaptcha;
+import com.tencent.token.cq;
+import com.tencent.token.dn;
+import com.tencent.token.global.e;
+import com.tmsdk.common.util.TmsLog;
+import java.util.concurrent.Callable;
 
-class g
-  implements h
+public class g
 {
-  g(f paramf) {}
-  
-  public void a(ev paramev)
+  static e a()
   {
-    MotionEvent localMotionEvent = a.a().b();
-    if (localMotionEvent != null)
+    Object localObject = b.a("mbtoken3_query_captcha");
+    dn localdn = new dn("mbtoken3_query_captcha", 2, new Handler(Looper.getMainLooper()), -1);
+    ProtoQueryCaptcha.a(localdn, 0L, 3);
+    localObject = ((d)localObject).c(localdn);
+    if (!((e)localObject).b())
     {
-      com.tencent.token.global.h.c("cginame:" + paramev.a);
-      com.tencent.token.global.h.c("pagename:" + paramev.i);
-      com.tencent.token.global.h.c("getRawX:" + localMotionEvent.getRawX());
-      com.tencent.token.global.h.c("getRawY:" + localMotionEvent.getRawY());
-      long l = System.currentTimeMillis() - (SystemClock.uptimeMillis() - localMotionEvent.getDownTime());
-      com.tencent.token.global.h.c("eventStartTime:" + l);
-      int i = a.a().c();
-      com.tencent.token.global.h.c("touch_type:" + i);
-      a.a().a(i, paramev.a, paramev.i, "", "", "", (int)localMotionEvent.getRawX(), (int)localMotionEvent.getRawY(), l);
-      a.a().d();
+      TmsLog.i("session_test", "@doRefreshSession CMD_QUERY_CAPTCHA err: " + ((e)localObject).a);
+      return localObject;
+    }
+    TmsLog.i("session_test", "@doRefreshSession CMD_QUERY_CAPTCHA success.");
+    return b.a("mbtoken3_activate_token").c(localdn);
+  }
+  
+  public static e a(dn paramdn, String paramString)
+  {
+    boolean bool = true;
+    com.tencent.token.global.g.c(paramString);
+    if (paramdn.m == 1) {
+      paramdn.m = 0;
+    }
+    for (;;)
+    {
+      TmsLog.i("session_test", "@doRefreshSession call exchangeKey.");
+      e locale = b.a("mbtoken3_exchange_key_v3").c(paramdn);
+      if (!locale.b()) {
+        return locale;
+      }
+      if (ProtoModSeed.e()) {
+        locale = a();
+      }
+      if (!locale.b())
+      {
+        TmsLog.i("session_test", "@doRefreshSession CMD_DO_ACTIVETOKEN err: " + locale.a);
+        return locale;
+      }
+      if (cb.c().t())
+      {
+        TmsLog.i("session_test", "@doRefreshSession seed is expired, start mod_seed.");
+        locale = b.a("mbtoken3_mod_seed").c(paramdn);
+        if (!locale.b())
+        {
+          TmsLog.i("session_test", "@doRefreshSession mod_seed err: " + locale.a);
+          return locale;
+        }
+        TmsLog.i("session_test", "@doRefreshSession mod_seed success.");
+        return a(paramdn, paramString, bool);
+      }
+      TmsLog.i("session_test", "@doRefreshSession seed is valid.");
+      return a(paramdn, paramString, bool);
+      bool = false;
     }
   }
   
-  public void a(ev paramev, com.tencent.token.global.f paramf)
+  static e a(dn paramdn, String paramString, boolean paramBoolean)
   {
-    if (paramf.b())
+    Object localObject = b.a("mbtoken3_get_uin_list_v2").c(paramdn);
+    if (!((e)localObject).b()) {}
+    do
     {
-      cn.a().a(System.currentTimeMillis(), 0, paramev.a, 0, "", w.k());
-      if (!paramev.e)
+      e locale;
+      do
       {
-        paramf = paramev.d.obtainMessage(paramev.f);
-        paramf.arg1 = 0;
-        paramf.sendToTarget();
-        paramev.e = true;
-      }
-    }
-    label175:
-    for (;;)
-    {
-      f.a(this.a).b(paramev);
-      return;
-      if (paramf.a < 10000) {
-        cn.a().a(System.currentTimeMillis(), 0, paramev.a, 0, "", w.k());
-      }
-      for (;;)
-      {
-        if (paramev.e) {
-          break label175;
+        return localObject;
+        if (paramString == "mbtoken3_get_uin_list_v2") {
+          return localObject;
         }
-        Message localMessage = paramev.d.obtainMessage(paramev.f);
-        localMessage.arg1 = paramf.a;
-        localMessage.obj = paramf;
-        localMessage.sendToTarget();
-        paramev.e = true;
+        if (paramString != "mbtoken3_face_reg_v2") {
+          break;
+        }
+        com.tencent.token.global.g.a("CMD_FACERECOGNITION");
+        long l = ((Long)paramdn.n.get("uin")).longValue();
+        com.tencent.token.global.g.a("uinhash" + l);
+        if (cq.a().c(l) != null) {
+          break;
+        }
+        com.tencent.token.global.g.a("CMD_QRY_BIND_NOTIFY_MSG");
+        localObject = b.a("mbtoken3_qry_bind_notify_msg");
+        paramdn.e = true;
+        locale = ((d)localObject).c(paramdn);
+        paramdn.e = false;
+        localObject = locale;
+      } while (!locale.b());
+      localObject = locale;
+      if (locale.c != null)
+      {
+        localObject = locale;
+        if (!locale.c.isEmpty())
+        {
+          locale.a(222, null, locale.c);
+          return locale;
+        }
+      }
+      paramString = b.a(paramString);
+      if (paramString == null) {
         break;
-        cn.a().a(System.currentTimeMillis(), cn.a(paramf.a), paramev.a, 1, paramf.b, w.k());
+      }
+      if (paramBoolean)
+      {
+        paramdn.m = 1;
+        paramdn.k = true;
+      }
+      paramdn = paramString.c(paramdn);
+      localObject = paramdn;
+    } while (!paramdn.b());
+    bz.a().c();
+    return paramdn;
+    ((e)localObject).b(10000);
+    return localObject;
+  }
+  
+  public static Callable<e> a(dn paramdn)
+  {
+    new Callable()
+    {
+      public e a()
+      {
+        e locale = g.b(this.a, this.a.a);
+        this.a.l.a(this.a, locale);
+        return locale;
+      }
+    };
+  }
+  
+  public static e b(dn paramdn, String paramString)
+  {
+    e locale = new e();
+    try
+    {
+      if (bz.a().b() == null)
+      {
+        paramdn = a(paramdn, paramString);
+        return paramdn;
+      }
+      d locald = b.a(paramString);
+      if (locald != null)
+      {
+        locale = locald.c(paramdn);
+        if (!locale.b()) {
+          break label82;
+        }
+        bz.a().c();
+        return locale;
       }
     }
+    finally {}
+    locale.b(10000);
+    return locale;
+    label82:
+    if (locale.a == 104)
+    {
+      paramdn = a(paramdn, paramString);
+      return paramdn;
+    }
+    return locale;
   }
 }
 

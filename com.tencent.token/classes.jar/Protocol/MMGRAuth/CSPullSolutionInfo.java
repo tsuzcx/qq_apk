@@ -8,8 +8,8 @@ import java.util.ArrayList;
 public final class CSPullSolutionInfo
   extends JceStruct
 {
-  static ArrayList a = new ArrayList();
-  public ArrayList adapterIdList = null;
+  static ArrayList<Integer> a = new ArrayList();
+  public ArrayList<Integer> adapterIdList = null;
   public int pullType = 0;
   
   static

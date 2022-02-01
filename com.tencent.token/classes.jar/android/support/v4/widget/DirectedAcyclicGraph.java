@@ -11,23 +11,23 @@ import java.util.HashSet;
 import java.util.List;
 
 @RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY})
-public final class DirectedAcyclicGraph
+public final class DirectedAcyclicGraph<T>
 {
-  private final SimpleArrayMap mGraph = new SimpleArrayMap();
-  private final Pools.Pool mListPool = new Pools.SimplePool(10);
-  private final ArrayList mSortResult = new ArrayList();
-  private final HashSet mSortTmpMarked = new HashSet();
+  private final SimpleArrayMap<T, ArrayList<T>> mGraph = new SimpleArrayMap();
+  private final Pools.Pool<ArrayList<T>> mListPool = new Pools.SimplePool(10);
+  private final ArrayList<T> mSortResult = new ArrayList();
+  private final HashSet<T> mSortTmpMarked = new HashSet();
   
-  private void dfs(Object paramObject, ArrayList paramArrayList, HashSet paramHashSet)
+  private void dfs(T paramT, ArrayList<T> paramArrayList, HashSet<T> paramHashSet)
   {
-    if (paramArrayList.contains(paramObject)) {
+    if (paramArrayList.contains(paramT)) {
       return;
     }
-    if (paramHashSet.contains(paramObject)) {
+    if (paramHashSet.contains(paramT)) {
       throw new RuntimeException("This graph contains cyclic dependencies");
     }
-    paramHashSet.add(paramObject);
-    ArrayList localArrayList = (ArrayList)this.mGraph.get(paramObject);
+    paramHashSet.add(paramT);
+    ArrayList localArrayList = (ArrayList)this.mGraph.get(paramT);
     if (localArrayList != null)
     {
       int i = 0;
@@ -38,12 +38,12 @@ public final class DirectedAcyclicGraph
         i += 1;
       }
     }
-    paramHashSet.remove(paramObject);
-    paramArrayList.add(paramObject);
+    paramHashSet.remove(paramT);
+    paramArrayList.add(paramT);
   }
   
   @NonNull
-  private ArrayList getEmptyList()
+  private ArrayList<T> getEmptyList()
   {
     ArrayList localArrayList2 = (ArrayList)this.mListPool.acquire();
     ArrayList localArrayList1 = localArrayList2;
@@ -53,31 +53,31 @@ public final class DirectedAcyclicGraph
     return localArrayList1;
   }
   
-  private void poolList(@NonNull ArrayList paramArrayList)
+  private void poolList(@NonNull ArrayList<T> paramArrayList)
   {
     paramArrayList.clear();
     this.mListPool.release(paramArrayList);
   }
   
-  public void addEdge(@NonNull Object paramObject1, @NonNull Object paramObject2)
+  public void addEdge(@NonNull T paramT1, @NonNull T paramT2)
   {
-    if ((!this.mGraph.containsKey(paramObject1)) || (!this.mGraph.containsKey(paramObject2))) {
+    if ((!this.mGraph.containsKey(paramT1)) || (!this.mGraph.containsKey(paramT2))) {
       throw new IllegalArgumentException("All nodes must be present in the graph before being added as an edge");
     }
-    ArrayList localArrayList2 = (ArrayList)this.mGraph.get(paramObject1);
+    ArrayList localArrayList2 = (ArrayList)this.mGraph.get(paramT1);
     ArrayList localArrayList1 = localArrayList2;
     if (localArrayList2 == null)
     {
       localArrayList1 = getEmptyList();
-      this.mGraph.put(paramObject1, localArrayList1);
+      this.mGraph.put(paramT1, localArrayList1);
     }
-    localArrayList1.add(paramObject2);
+    localArrayList1.add(paramT2);
   }
   
-  public void addNode(@NonNull Object paramObject)
+  public void addNode(@NonNull T paramT)
   {
-    if (!this.mGraph.containsKey(paramObject)) {
-      this.mGraph.put(paramObject, null);
+    if (!this.mGraph.containsKey(paramT)) {
+      this.mGraph.put(paramT, null);
     }
   }
   
@@ -96,19 +96,19 @@ public final class DirectedAcyclicGraph
     this.mGraph.clear();
   }
   
-  public boolean contains(@NonNull Object paramObject)
+  public boolean contains(@NonNull T paramT)
   {
-    return this.mGraph.containsKey(paramObject);
+    return this.mGraph.containsKey(paramT);
   }
   
   @Nullable
-  public List getIncomingEdges(@NonNull Object paramObject)
+  public List getIncomingEdges(@NonNull T paramT)
   {
-    return (List)this.mGraph.get(paramObject);
+    return (List)this.mGraph.get(paramT);
   }
   
   @Nullable
-  public List getOutgoingEdges(@NonNull Object paramObject)
+  public List<T> getOutgoingEdges(@NonNull T paramT)
   {
     Object localObject1 = null;
     int j = this.mGraph.size();
@@ -121,7 +121,7 @@ public final class DirectedAcyclicGraph
       if (localArrayList != null)
       {
         localObject2 = localObject1;
-        if (localArrayList.contains(paramObject))
+        if (localArrayList.contains(paramT))
         {
           if (localObject1 != null) {
             break label99;
@@ -143,7 +143,7 @@ public final class DirectedAcyclicGraph
   }
   
   @NonNull
-  public ArrayList getSortedList()
+  public ArrayList<T> getSortedList()
   {
     this.mSortResult.clear();
     this.mSortTmpMarked.clear();
@@ -157,14 +157,14 @@ public final class DirectedAcyclicGraph
     return this.mSortResult;
   }
   
-  public boolean hasOutgoingEdges(@NonNull Object paramObject)
+  public boolean hasOutgoingEdges(@NonNull T paramT)
   {
     int j = this.mGraph.size();
     int i = 0;
     while (i < j)
     {
       ArrayList localArrayList = (ArrayList)this.mGraph.valueAt(i);
-      if ((localArrayList != null) && (localArrayList.contains(paramObject))) {
+      if ((localArrayList != null) && (localArrayList.contains(paramT))) {
         return true;
       }
       i += 1;

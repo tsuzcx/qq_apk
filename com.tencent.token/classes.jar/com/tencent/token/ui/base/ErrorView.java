@@ -17,7 +17,20 @@ public class ErrorView
   private View.OnClickListener d;
   private int e = 0;
   private boolean f = false;
-  private View.OnClickListener g = new x(this);
+  private View.OnClickListener g = new View.OnClickListener()
+  {
+    public void onClick(View paramAnonymousView)
+    {
+      if (ErrorView.a(ErrorView.this) != null)
+      {
+        paramAnonymousView.setTag(ErrorView.this.getTag());
+        ErrorView.a(ErrorView.this).onClick(paramAnonymousView);
+        ErrorView.this.setVisibility(8);
+        return;
+      }
+      ErrorView.this.setVisibility(8);
+    }
+  };
   
   public ErrorView(Context paramContext)
   {

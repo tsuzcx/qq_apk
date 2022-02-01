@@ -22,15 +22,26 @@ class TypefaceCompatBaseImpl
   
   private FontResourcesParserCompat.FontFileResourceEntry findBestEntry(FontResourcesParserCompat.FontFamilyFilesResourceEntry paramFontFamilyFilesResourceEntry, int paramInt)
   {
-    return (FontResourcesParserCompat.FontFileResourceEntry)findBestFont(paramFontFamilyFilesResourceEntry.getEntries(), paramInt, new TypefaceCompatBaseImpl.2(this));
+    (FontResourcesParserCompat.FontFileResourceEntry)findBestFont(paramFontFamilyFilesResourceEntry.getEntries(), paramInt, new StyleExtractor()
+    {
+      public int getWeight(FontResourcesParserCompat.FontFileResourceEntry paramAnonymousFontFileResourceEntry)
+      {
+        return paramAnonymousFontFileResourceEntry.getWeight();
+      }
+      
+      public boolean isItalic(FontResourcesParserCompat.FontFileResourceEntry paramAnonymousFontFileResourceEntry)
+      {
+        return paramAnonymousFontFileResourceEntry.isItalic();
+      }
+    });
   }
   
-  private static Object findBestFont(Object[] paramArrayOfObject, int paramInt, TypefaceCompatBaseImpl.StyleExtractor paramStyleExtractor)
+  private static <T> T findBestFont(T[] paramArrayOfT, int paramInt, StyleExtractor<T> paramStyleExtractor)
   {
     int i;
     int i1;
     label19:
-    Object localObject1;
+    Object localObject;
     label32:
     int k;
     if ((paramInt & 0x1) == 0)
@@ -40,26 +51,26 @@ class TypefaceCompatBaseImpl
         break label117;
       }
       i1 = 1;
-      localObject1 = null;
+      localObject = null;
       int j = 2147483647;
-      int m = paramArrayOfObject.length;
+      int m = paramArrayOfT.length;
       paramInt = 0;
       if (paramInt >= m) {
         break label129;
       }
-      Object localObject2 = paramArrayOfObject[paramInt];
-      int n = Math.abs(paramStyleExtractor.getWeight(localObject2) - i);
-      if (paramStyleExtractor.isItalic(localObject2) != i1) {
+      T ? = paramArrayOfT[paramInt];
+      int n = Math.abs(paramStyleExtractor.getWeight(?) - i);
+      if (paramStyleExtractor.isItalic(?) != i1) {
         break label123;
       }
       k = 0;
       label74:
       k += n * 2;
-      if ((localObject1 != null) && (j <= k)) {
+      if ((localObject != null) && (j <= k)) {
         break label132;
       }
       j = k;
-      localObject1 = localObject2;
+      localObject = ?;
     }
     label129:
     label132:
@@ -75,7 +86,7 @@ class TypefaceCompatBaseImpl
       label123:
       k = 1;
       break label74;
-      return localObject1;
+      return localObject;
     }
   }
   
@@ -102,35 +113,35 @@ class TypefaceCompatBaseImpl
     //   8: aload_0
     //   9: aload_3
     //   10: iload 4
-    //   12: invokevirtual 89	android/support/v4/graphics/TypefaceCompatBaseImpl:findBestInfo	([Landroid/support/v4/provider/FontsContractCompat$FontInfo;I)Landroid/support/v4/provider/FontsContractCompat$FontInfo;
+    //   12: invokevirtual 94	android/support/v4/graphics/TypefaceCompatBaseImpl:findBestInfo	([Landroid/support/v4/provider/FontsContractCompat$FontInfo;I)Landroid/support/v4/provider/FontsContractCompat$FontInfo;
     //   15: astore_2
     //   16: aload_1
-    //   17: invokevirtual 95	android/content/Context:getContentResolver	()Landroid/content/ContentResolver;
+    //   17: invokevirtual 100	android/content/Context:getContentResolver	()Landroid/content/ContentResolver;
     //   20: aload_2
-    //   21: invokevirtual 101	android/support/v4/provider/FontsContractCompat$FontInfo:getUri	()Landroid/net/Uri;
-    //   24: invokevirtual 107	android/content/ContentResolver:openInputStream	(Landroid/net/Uri;)Ljava/io/InputStream;
+    //   21: invokevirtual 106	android/support/v4/provider/FontsContractCompat$FontInfo:getUri	()Landroid/net/Uri;
+    //   24: invokevirtual 112	android/content/ContentResolver:openInputStream	(Landroid/net/Uri;)Ljava/io/InputStream;
     //   27: astore_2
     //   28: aload_0
     //   29: aload_1
     //   30: aload_2
-    //   31: invokevirtual 111	android/support/v4/graphics/TypefaceCompatBaseImpl:createFromInputStream	(Landroid/content/Context;Ljava/io/InputStream;)Landroid/graphics/Typeface;
+    //   31: invokevirtual 116	android/support/v4/graphics/TypefaceCompatBaseImpl:createFromInputStream	(Landroid/content/Context;Ljava/io/InputStream;)Landroid/graphics/Typeface;
     //   34: astore_1
     //   35: aload_2
-    //   36: invokestatic 117	android/support/v4/graphics/TypefaceCompatUtil:closeQuietly	(Ljava/io/Closeable;)V
+    //   36: invokestatic 122	android/support/v4/graphics/TypefaceCompatUtil:closeQuietly	(Ljava/io/Closeable;)V
     //   39: aload_1
     //   40: areturn
     //   41: astore_1
     //   42: aconst_null
     //   43: astore_2
     //   44: aload_2
-    //   45: invokestatic 117	android/support/v4/graphics/TypefaceCompatUtil:closeQuietly	(Ljava/io/Closeable;)V
+    //   45: invokestatic 122	android/support/v4/graphics/TypefaceCompatUtil:closeQuietly	(Ljava/io/Closeable;)V
     //   48: aconst_null
     //   49: areturn
     //   50: astore_1
     //   51: aconst_null
     //   52: astore_2
     //   53: aload_2
-    //   54: invokestatic 117	android/support/v4/graphics/TypefaceCompatUtil:closeQuietly	(Ljava/io/Closeable;)V
+    //   54: invokestatic 122	android/support/v4/graphics/TypefaceCompatUtil:closeQuietly	(Ljava/io/Closeable;)V
     //   57: aload_1
     //   58: athrow
     //   59: astore_1
@@ -205,7 +216,25 @@ class TypefaceCompatBaseImpl
   
   protected FontsContractCompat.FontInfo findBestInfo(FontsContractCompat.FontInfo[] paramArrayOfFontInfo, int paramInt)
   {
-    return (FontsContractCompat.FontInfo)findBestFont(paramArrayOfFontInfo, paramInt, new TypefaceCompatBaseImpl.1(this));
+    (FontsContractCompat.FontInfo)findBestFont(paramArrayOfFontInfo, paramInt, new StyleExtractor()
+    {
+      public int getWeight(FontsContractCompat.FontInfo paramAnonymousFontInfo)
+      {
+        return paramAnonymousFontInfo.getWeight();
+      }
+      
+      public boolean isItalic(FontsContractCompat.FontInfo paramAnonymousFontInfo)
+      {
+        return paramAnonymousFontInfo.isItalic();
+      }
+    });
+  }
+  
+  private static abstract interface StyleExtractor<T>
+  {
+    public abstract int getWeight(T paramT);
+    
+    public abstract boolean isItalic(T paramT);
   }
 }
 

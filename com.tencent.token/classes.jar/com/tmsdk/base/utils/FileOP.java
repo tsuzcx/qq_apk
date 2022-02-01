@@ -13,7 +13,7 @@ import tmsdk.QQPIM.CommList;
 
 public class FileOP
 {
-  public static FileOP.CheckResult check(int paramInt1, String paramString, int paramInt2, int paramInt3, byte[] paramArrayOfByte, int paramInt4)
+  public static CheckResult check(int paramInt1, String paramString, int paramInt2, int paramInt3, byte[] paramArrayOfByte, int paramInt4)
   {
     if (paramInt4 < 2000) {
       paramInt4 = 0;
@@ -44,7 +44,7 @@ public class FileOP
     return dz.getAssetWupFile(paramString, paramBoolean);
   }
   
-  public static List getStoragePathList()
+  public static List<String> getStoragePathList()
   {
     StorageManager localStorageManager = (StorageManager)TMSDKBaseContext.getApplicationContext().getSystemService("storage");
     localArrayList = new ArrayList();
@@ -78,7 +78,7 @@ public class FileOP
     return dz.loadWupObjectFromFile(paramString1, paramString2);
   }
   
-  public static boolean traverseFolder(String paramString, FileFilter paramFileFilter, FileOP.IFoundListener paramIFoundListener)
+  public static boolean traverseFolder(String paramString, FileFilter paramFileFilter, IFoundListener paramIFoundListener)
   {
     boolean bool2 = true;
     paramString = new File(paramString);
@@ -116,9 +116,21 @@ public class FileOP
     return false;
   }
   
-  public static int update(FileOP.CheckResult paramCheckResult)
+  public static int update(CheckResult paramCheckResult)
   {
     return dz.update(paramCheckResult);
+  }
+  
+  public static class CheckResult
+  {
+    public String mFileName = "";
+    public int mStatusCode = 0;
+    public String mUrl = "";
+  }
+  
+  public static abstract interface IFoundListener
+  {
+    public abstract boolean onFound(File paramFile);
   }
 }
 

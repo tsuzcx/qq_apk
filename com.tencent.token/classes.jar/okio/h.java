@@ -1,31 +1,73 @@
 package okio;
 
-import java.nio.channels.WritableByteChannel;
+import java.util.concurrent.TimeUnit;
 
-public abstract interface h
-  extends WritableByteChannel, x
+public class h
+  extends r
 {
-  public abstract h b(String paramString);
+  private r a;
   
-  public abstract f c();
+  public h(r paramr)
+  {
+    if (paramr == null) {
+      throw new IllegalArgumentException("delegate == null");
+    }
+    this.a = paramr;
+  }
   
-  public abstract h c(byte[] paramArrayOfByte);
+  public final h a(r paramr)
+  {
+    if (paramr == null) {
+      throw new IllegalArgumentException("delegate == null");
+    }
+    this.a = paramr;
+    return this;
+  }
   
-  public abstract h c(byte[] paramArrayOfByte, int paramInt1, int paramInt2);
+  public final r a()
+  {
+    return this.a;
+  }
   
-  public abstract void flush();
+  public r a(long paramLong)
+  {
+    return this.a.a(paramLong);
+  }
   
-  public abstract h g(int paramInt);
+  public r a(long paramLong, TimeUnit paramTimeUnit)
+  {
+    return this.a.a(paramLong, paramTimeUnit);
+  }
   
-  public abstract h h(int paramInt);
+  public long c_()
+  {
+    return this.a.c_();
+  }
   
-  public abstract h i(int paramInt);
+  public long d()
+  {
+    return this.a.d();
+  }
   
-  public abstract h k(long paramLong);
+  public boolean d_()
+  {
+    return this.a.d_();
+  }
   
-  public abstract h l(long paramLong);
+  public r e_()
+  {
+    return this.a.e_();
+  }
   
-  public abstract h u();
+  public r f()
+  {
+    return this.a.f();
+  }
+  
+  public void g()
+  {
+    this.a.g();
+  }
 }
 
 

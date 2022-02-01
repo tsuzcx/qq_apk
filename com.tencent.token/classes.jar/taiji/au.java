@@ -1,11 +1,25 @@
 package taiji;
 
-public class au
+import android.graphics.Canvas;
+import android.graphics.Matrix;
+import android.graphics.RectF;
+import uilib.doraemon.e;
+
+class au
+  extends ar
 {
-  public static as a()
+  au(e parame, cs paramcs)
   {
-    return new as(new al(), new al(), ao.a(), ah.a(), ak.a(), ah.a(), ah.a(), null);
+    super(parame, paramcs);
   }
+  
+  public void a(RectF paramRectF, Matrix paramMatrix)
+  {
+    super.a(paramRectF, paramMatrix);
+    paramRectF.set(0.0F, 0.0F, 0.0F, 0.0F);
+  }
+  
+  void b(Canvas paramCanvas, Matrix paramMatrix, int paramInt) {}
 }
 
 

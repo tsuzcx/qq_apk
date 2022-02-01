@@ -1,83 +1,29 @@
 package com.tencent.turingfd.sdk.base;
 
-import java.util.ArrayList;
-import java.util.Collection;
-
 public final class Foxnut
-  extends float
+  extends break
 {
-  public static ArrayList Bc;
-  public static ArrayList Cc;
-  public int Dc = 0;
-  public float Ec = 0.0F;
-  public String Fc = "";
-  public String Gc = "";
-  public ArrayList Hc = null;
-  public int Ic = 0;
-  public ArrayList Jc = null;
-  public long Mb = 0L;
-  public String Nb = "";
-  public String Yb = "";
-  public int ca = 0;
+  public int uc = 0;
+  public long vc = 0L;
+  public long wc = 0L;
   
-  public void a(dp paramdp)
+  public void a(cy paramcy)
   {
-    this.Nb = paramdp.a(0, true);
-    this.Dc = paramdp.a(this.Dc, 1, true);
-    this.Ec = paramdp.a(this.Ec, 2, true);
-    this.Yb = paramdp.a(3, false);
-    this.Fc = paramdp.a(4, false);
-    this.Gc = paramdp.a(5, false);
-    this.Mb = paramdp.a(this.Mb, 6, false);
-    this.ca = paramdp.a(this.ca, 7, false);
-    if (Bc == null)
-    {
-      Bc = new ArrayList();
-      Bc.add(Integer.valueOf(0));
-    }
-    this.Hc = ((ArrayList)paramdp.a(Bc, 8, false));
-    this.Ic = paramdp.a(this.Ic, 9, false);
-    if (Cc == null)
-    {
-      Cc = new ArrayList();
-      Cc.add(Integer.valueOf(0));
-    }
-    this.Jc = ((ArrayList)paramdp.a(Cc, 10, false));
+    this.uc = paramcy.a(this.uc, 0, true);
+    this.vc = paramcy.a(this.vc, 1, false);
+    this.wc = paramcy.a(this.wc, 2, false);
   }
   
-  public void a(dv paramdv)
+  public void a(db paramdb)
   {
-    paramdv.a(this.Nb, 0);
-    paramdv.a(this.Dc, 1);
-    paramdv.a(this.Ec, 2);
-    Object localObject = this.Yb;
-    if (localObject != null) {
-      paramdv.a((String)localObject, 3);
-    }
-    localObject = this.Fc;
-    if (localObject != null) {
-      paramdv.a((String)localObject, 4);
-    }
-    localObject = this.Gc;
-    if (localObject != null) {
-      paramdv.a((String)localObject, 5);
-    }
-    long l = this.Mb;
+    paramdb.a(this.uc, 0);
+    long l = this.vc;
     if (l != 0L) {
-      paramdv.a(l, 6);
+      paramdb.a(l, 1);
     }
-    paramdv.a(this.ca, 7);
-    localObject = this.Hc;
-    if (localObject != null) {
-      paramdv.a((Collection)localObject, 8);
-    }
-    int i = this.Ic;
-    if (i != 0) {
-      paramdv.a(i, 9);
-    }
-    localObject = this.Jc;
-    if (localObject != null) {
-      paramdv.a((Collection)localObject, 10);
+    l = this.wc;
+    if (l != 0L) {
+      paramdb.a(l, 2);
     }
   }
 }

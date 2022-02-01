@@ -4,10 +4,16 @@ import javax.annotation.Nullable;
 
 public abstract interface b
 {
-  public static final b a = new c();
+  public static final b a = new b()
+  {
+    public x a(ab paramAnonymousab, z paramAnonymousz)
+    {
+      return null;
+    }
+  };
   
   @Nullable
-  public abstract ap a(ax paramax, at paramat);
+  public abstract x a(ab paramab, z paramz);
 }
 
 

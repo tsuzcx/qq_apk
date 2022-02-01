@@ -1,5 +1,6 @@
 package com.qq.jce.wup;
 
+import TT;;
 import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceUtil;
@@ -13,8 +14,8 @@ public class UniAttribute
   extends OldUniAttribute
 {
   JceInputStream _is = new JceInputStream();
-  protected HashMap _newData = null;
-  private HashMap cachedData = new HashMap();
+  protected HashMap<String, byte[]> _newData = null;
+  private HashMap<String, Object> cachedData = new HashMap();
   
   private Object decodeData(byte[] paramArrayOfByte, Object paramObject)
   {
@@ -84,15 +85,15 @@ public class UniAttribute
     return super.encode();
   }
   
-  public Object get(String paramString, Object paramObject1, Object paramObject2)
+  public <T> T get(String paramString, T paramT, Object paramObject)
   {
     if (!this._newData.containsKey(paramString)) {
-      return paramObject2;
+      return paramObject;
     }
-    return getByClass(paramString, paramObject1);
+    return getByClass(paramString, paramT);
   }
   
-  public Object getByClass(String paramString, Object paramObject)
+  public <T> T getByClass(String paramString, T paramT)
   {
     Object localObject = null;
     if (this._newData != null) {
@@ -108,12 +109,12 @@ public class UniAttribute
         localObject = (byte[])this._newData.get(paramString);
         try
         {
-          paramObject = decodeData((byte[])localObject, paramObject);
-          localObject = paramObject;
-          if (paramObject != null)
+          paramT = decodeData((byte[])localObject, paramT);
+          localObject = paramT;
+          if (paramT != null)
           {
-            saveDataCache(paramString, paramObject);
-            return paramObject;
+            saveDataCache(paramString, paramT);
+            return paramT;
           }
         }
         catch (Exception paramString)
@@ -136,9 +137,9 @@ public class UniAttribute
       {
         this._is.wrap((byte[])localObject);
         this._is.setServerEncoding(this.encodeName);
-        paramObject = this._is.read(paramObject, 0, true);
-        saveDataCache(paramString, paramObject);
-        return paramObject;
+        paramT = this._is.read(paramT, 0, true);
+        saveDataCache(paramString, paramT);
+        return paramT;
       }
       catch (Exception paramString)
       {
@@ -147,7 +148,7 @@ public class UniAttribute
     }
   }
   
-  public Object getByClass(String paramString, Object paramObject1, Object paramObject2)
+  public <T> T getByClass(String paramString, T paramT1, T paramT2)
   {
     if (this._newData != null) {
       if (this._newData.containsKey(paramString)) {}
@@ -155,19 +156,19 @@ public class UniAttribute
     while (!this._data.containsKey(paramString)) {
       for (;;)
       {
-        return paramObject2;
+        return paramT2;
         if (this.cachedData.containsKey(paramString)) {
           return this.cachedData.get(paramString);
         }
-        paramObject2 = (byte[])this._newData.get(paramString);
+        paramT2 = (byte[])this._newData.get(paramString);
         try
         {
-          paramObject1 = decodeData(paramObject2, paramObject1);
-          paramObject2 = paramObject1;
-          if (paramObject1 != null)
+          paramT1 = decodeData(paramT2, paramT1);
+          paramT2 = paramT1;
+          if (paramT1 != null)
           {
-            saveDataCache(paramString, paramObject1);
-            return paramObject1;
+            saveDataCache(paramString, paramT1);
+            return paramT1;
           }
         }
         catch (Exception paramString)
@@ -179,20 +180,20 @@ public class UniAttribute
     if (this.cachedData.containsKey(paramString)) {
       return this.cachedData.get(paramString);
     }
-    paramObject2 = ((HashMap)this._data.get(paramString)).entrySet().iterator();
-    if (paramObject2.hasNext())
+    paramT2 = ((HashMap)this._data.get(paramString)).entrySet().iterator();
+    if (paramT2.hasNext())
     {
-      paramObject2 = (Map.Entry)paramObject2.next();
-      String str = (String)paramObject2.getKey();
+      paramT2 = (Map.Entry)paramT2.next();
+      String str = (String)paramT2.getKey();
     }
-    for (paramObject2 = (byte[])paramObject2.getValue();; paramObject2 = new byte[0]) {
+    for (paramT2 = (byte[])paramT2.getValue();; paramT2 = new byte[0]) {
       try
       {
-        this._is.wrap(paramObject2);
+        this._is.wrap(paramT2);
         this._is.setServerEncoding(this.encodeName);
-        paramObject1 = this._is.read(paramObject1, 0, true);
-        saveDataCache(paramString, paramObject1);
-        return paramObject1;
+        paramT1 = this._is.read(paramT1, 0, true);
+        saveDataCache(paramString, paramT1);
+        return paramT1;
       }
       catch (Exception paramString)
       {
@@ -201,22 +202,22 @@ public class UniAttribute
     }
   }
   
-  public Object getJceStruct(String paramString, Object paramObject)
+  public <T> T getJceStruct(String paramString, T paramT)
   {
     if (!this._newData.containsKey(paramString)) {
-      paramObject = null;
+      paramT = null;
     }
     for (;;)
     {
-      return paramObject;
+      return paramT;
       if (this.cachedData.containsKey(paramString)) {
         return this.cachedData.get(paramString);
       }
       Object localObject = (byte[])this._newData.get(paramString);
       try
       {
-        localObject = decodeData((byte[])localObject, paramObject);
-        paramObject = localObject;
+        localObject = decodeData((byte[])localObject, paramT);
+        paramT = (TT)localObject;
         if (localObject == null) {
           continue;
         }
@@ -230,7 +231,7 @@ public class UniAttribute
     }
   }
   
-  public Set getKeySet()
+  public Set<String> getKeySet()
   {
     if (this._newData != null) {
       return Collections.unmodifiableSet(this._newData.keySet());
@@ -246,30 +247,30 @@ public class UniAttribute
     return this._data.isEmpty();
   }
   
-  public void put(String paramString, Object paramObject)
+  public <T> void put(String paramString, T paramT)
   {
     if (this._newData != null)
     {
       if (paramString == null) {
         throw new IllegalArgumentException("put key can not is null");
       }
-      if (paramObject == null) {
+      if (paramT == null) {
         throw new IllegalArgumentException("put value can not is null");
       }
-      if ((paramObject instanceof Set)) {
+      if ((paramT instanceof Set)) {
         throw new IllegalArgumentException("can not support Set");
       }
       JceOutputStream localJceOutputStream = new JceOutputStream();
       localJceOutputStream.setServerEncoding(this.encodeName);
-      localJceOutputStream.write(paramObject, 0);
-      paramObject = JceUtil.getJceBufArray(localJceOutputStream.getByteBuffer());
-      this._newData.put(paramString, paramObject);
+      localJceOutputStream.write(paramT, 0);
+      paramT = JceUtil.getJceBufArray(localJceOutputStream.getByteBuffer());
+      this._newData.put(paramString, paramT);
       return;
     }
-    super.put(paramString, paramObject);
+    super.put(paramString, paramT);
   }
   
-  public Object remove(String paramString)
+  public <T> T remove(String paramString)
   {
     if (this._newData != null)
     {
@@ -282,13 +283,13 @@ public class UniAttribute
     return super.remove(paramString);
   }
   
-  public Object remove(String paramString, Object paramObject)
+  public <T> T remove(String paramString, T paramT)
   {
     if (!this._newData.containsKey(paramString)) {
       return null;
     }
-    if (paramObject != null) {
-      return decodeData((byte[])this._newData.remove(paramString), paramObject);
+    if (paramT != null) {
+      return decodeData((byte[])this._newData.remove(paramString), paramT);
     }
     this._newData.remove(paramString);
     return null;

@@ -1,18 +1,17 @@
 package com.tencent.turingfd.sdk.base;
 
-import android.view.View;
-import java.util.Iterator;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
-public final class az
-  implements av
+public class az
 {
-  public void a(String paramString, View paramView)
+  public Dew a;
+  public List<String> b = new ArrayList();
+  
+  public az(Dew paramDew, List<String> paramList)
   {
-    Iterator localIterator = ba.d.iterator();
-    while (localIterator.hasNext()) {
-      ((av)localIterator.next()).a(paramString, paramView);
-    }
+    this.a = paramDew;
+    this.b.addAll(paramList);
   }
 }
 

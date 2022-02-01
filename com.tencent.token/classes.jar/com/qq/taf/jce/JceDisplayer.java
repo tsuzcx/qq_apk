@@ -92,106 +92,106 @@ public final class JceDisplayer
     }
   }
   
-  public JceDisplayer display(Object paramObject, String paramString)
+  public <T> JceDisplayer display(T paramT, String paramString)
   {
-    if (paramObject == null)
+    if (paramT == null)
     {
       this.sb.append("null").append('\n');
       return this;
     }
-    if ((paramObject instanceof Byte))
+    if ((paramT instanceof Byte))
     {
-      display(((Byte)paramObject).byteValue(), paramString);
+      display(((Byte)paramT).byteValue(), paramString);
       return this;
     }
-    if ((paramObject instanceof Boolean))
+    if ((paramT instanceof Boolean))
     {
-      display(((Boolean)paramObject).booleanValue(), paramString);
+      display(((Boolean)paramT).booleanValue(), paramString);
       return this;
     }
-    if ((paramObject instanceof Short))
+    if ((paramT instanceof Short))
     {
-      display(((Short)paramObject).shortValue(), paramString);
+      display(((Short)paramT).shortValue(), paramString);
       return this;
     }
-    if ((paramObject instanceof Integer))
+    if ((paramT instanceof Integer))
     {
-      display(((Integer)paramObject).intValue(), paramString);
+      display(((Integer)paramT).intValue(), paramString);
       return this;
     }
-    if ((paramObject instanceof Long))
+    if ((paramT instanceof Long))
     {
-      display(((Long)paramObject).longValue(), paramString);
+      display(((Long)paramT).longValue(), paramString);
       return this;
     }
-    if ((paramObject instanceof Float))
+    if ((paramT instanceof Float))
     {
-      display(((Float)paramObject).floatValue(), paramString);
+      display(((Float)paramT).floatValue(), paramString);
       return this;
     }
-    if ((paramObject instanceof Double))
+    if ((paramT instanceof Double))
     {
-      display(((Double)paramObject).doubleValue(), paramString);
+      display(((Double)paramT).doubleValue(), paramString);
       return this;
     }
-    if ((paramObject instanceof String))
+    if ((paramT instanceof String))
     {
-      display((String)paramObject, paramString);
+      display((String)paramT, paramString);
       return this;
     }
-    if ((paramObject instanceof Map))
+    if ((paramT instanceof Map))
     {
-      display((Map)paramObject, paramString);
+      display((Map)paramT, paramString);
       return this;
     }
-    if ((paramObject instanceof List))
+    if ((paramT instanceof List))
     {
-      display((List)paramObject, paramString);
+      display((List)paramT, paramString);
       return this;
     }
-    if ((paramObject instanceof JceStruct))
+    if ((paramT instanceof JceStruct))
     {
-      display((JceStruct)paramObject, paramString);
+      display((JceStruct)paramT, paramString);
       return this;
     }
-    if ((paramObject instanceof byte[]))
+    if ((paramT instanceof byte[]))
     {
-      display((byte[])paramObject, paramString);
+      display((byte[])paramT, paramString);
       return this;
     }
-    if ((paramObject instanceof boolean[]))
+    if ((paramT instanceof boolean[]))
     {
-      display((boolean[])paramObject, paramString);
+      display((boolean[])paramT, paramString);
       return this;
     }
-    if ((paramObject instanceof short[]))
+    if ((paramT instanceof short[]))
     {
-      display((short[])paramObject, paramString);
+      display((short[])paramT, paramString);
       return this;
     }
-    if ((paramObject instanceof int[]))
+    if ((paramT instanceof int[]))
     {
-      display((int[])paramObject, paramString);
+      display((int[])paramT, paramString);
       return this;
     }
-    if ((paramObject instanceof long[]))
+    if ((paramT instanceof long[]))
     {
-      display((long[])paramObject, paramString);
+      display((long[])paramT, paramString);
       return this;
     }
-    if ((paramObject instanceof float[]))
+    if ((paramT instanceof float[]))
     {
-      display((float[])paramObject, paramString);
+      display((float[])paramT, paramString);
       return this;
     }
-    if ((paramObject instanceof double[]))
+    if ((paramT instanceof double[]))
     {
-      display((double[])paramObject, paramString);
+      display((double[])paramT, paramString);
       return this;
     }
-    if (paramObject.getClass().isArray())
+    if (paramT.getClass().isArray())
     {
-      display((Object[])paramObject, paramString);
+      display((Object[])paramT, paramString);
       return this;
     }
     throw new JceEncodeException("write object error: unsupport type.");
@@ -209,7 +209,7 @@ public final class JceDisplayer
     return this;
   }
   
-  public JceDisplayer display(Collection paramCollection, String paramString)
+  public <T> JceDisplayer display(Collection<T> paramCollection, String paramString)
   {
     if (paramCollection == null)
     {
@@ -220,7 +220,7 @@ public final class JceDisplayer
     return display(paramCollection.toArray(), paramString);
   }
   
-  public JceDisplayer display(Map paramMap, String paramString)
+  public <K, V> JceDisplayer display(Map<K, V> paramMap, String paramString)
   {
     ps(paramString);
     if (paramMap == null)
@@ -424,26 +424,26 @@ public final class JceDisplayer
     return this;
   }
   
-  public JceDisplayer display(Object[] paramArrayOfObject, String paramString)
+  public <T> JceDisplayer display(T[] paramArrayOfT, String paramString)
   {
     ps(paramString);
-    if (paramArrayOfObject == null)
+    if (paramArrayOfT == null)
     {
       this.sb.append("null").append('\n');
       return this;
     }
-    if (paramArrayOfObject.length == 0)
+    if (paramArrayOfT.length == 0)
     {
-      this.sb.append(paramArrayOfObject.length).append(", []").append('\n');
+      this.sb.append(paramArrayOfT.length).append(", []").append('\n');
       return this;
     }
-    this.sb.append(paramArrayOfObject.length).append(", [").append('\n');
+    this.sb.append(paramArrayOfT.length).append(", [").append('\n');
     paramString = new JceDisplayer(this.sb, this._level + 1);
-    int j = paramArrayOfObject.length;
+    int j = paramArrayOfT.length;
     int i = 0;
     while (i < j)
     {
-      paramString.display(paramArrayOfObject[i], null);
+      paramString.display(paramArrayOfT[i], null);
       i += 1;
     }
     display(']', null);
@@ -547,106 +547,106 @@ public final class JceDisplayer
     }
   }
   
-  public JceDisplayer displaySimple(Object paramObject, boolean paramBoolean)
+  public <T> JceDisplayer displaySimple(T paramT, boolean paramBoolean)
   {
-    if (paramObject == null)
+    if (paramT == null)
     {
       this.sb.append("null").append('\n');
       return this;
     }
-    if ((paramObject instanceof Byte))
+    if ((paramT instanceof Byte))
     {
-      displaySimple(((Byte)paramObject).byteValue(), paramBoolean);
+      displaySimple(((Byte)paramT).byteValue(), paramBoolean);
       return this;
     }
-    if ((paramObject instanceof Boolean))
+    if ((paramT instanceof Boolean))
     {
-      displaySimple(((Boolean)paramObject).booleanValue(), paramBoolean);
+      displaySimple(((Boolean)paramT).booleanValue(), paramBoolean);
       return this;
     }
-    if ((paramObject instanceof Short))
+    if ((paramT instanceof Short))
     {
-      displaySimple(((Short)paramObject).shortValue(), paramBoolean);
+      displaySimple(((Short)paramT).shortValue(), paramBoolean);
       return this;
     }
-    if ((paramObject instanceof Integer))
+    if ((paramT instanceof Integer))
     {
-      displaySimple(((Integer)paramObject).intValue(), paramBoolean);
+      displaySimple(((Integer)paramT).intValue(), paramBoolean);
       return this;
     }
-    if ((paramObject instanceof Long))
+    if ((paramT instanceof Long))
     {
-      displaySimple(((Long)paramObject).longValue(), paramBoolean);
+      displaySimple(((Long)paramT).longValue(), paramBoolean);
       return this;
     }
-    if ((paramObject instanceof Float))
+    if ((paramT instanceof Float))
     {
-      displaySimple(((Float)paramObject).floatValue(), paramBoolean);
+      displaySimple(((Float)paramT).floatValue(), paramBoolean);
       return this;
     }
-    if ((paramObject instanceof Double))
+    if ((paramT instanceof Double))
     {
-      displaySimple(((Double)paramObject).doubleValue(), paramBoolean);
+      displaySimple(((Double)paramT).doubleValue(), paramBoolean);
       return this;
     }
-    if ((paramObject instanceof String))
+    if ((paramT instanceof String))
     {
-      displaySimple((String)paramObject, paramBoolean);
+      displaySimple((String)paramT, paramBoolean);
       return this;
     }
-    if ((paramObject instanceof Map))
+    if ((paramT instanceof Map))
     {
-      displaySimple((Map)paramObject, paramBoolean);
+      displaySimple((Map)paramT, paramBoolean);
       return this;
     }
-    if ((paramObject instanceof List))
+    if ((paramT instanceof List))
     {
-      displaySimple((List)paramObject, paramBoolean);
+      displaySimple((List)paramT, paramBoolean);
       return this;
     }
-    if ((paramObject instanceof JceStruct))
+    if ((paramT instanceof JceStruct))
     {
-      displaySimple((JceStruct)paramObject, paramBoolean);
+      displaySimple((JceStruct)paramT, paramBoolean);
       return this;
     }
-    if ((paramObject instanceof byte[]))
+    if ((paramT instanceof byte[]))
     {
-      displaySimple((byte[])paramObject, paramBoolean);
+      displaySimple((byte[])paramT, paramBoolean);
       return this;
     }
-    if ((paramObject instanceof boolean[]))
+    if ((paramT instanceof boolean[]))
     {
-      displaySimple((boolean[])paramObject, paramBoolean);
+      displaySimple((boolean[])paramT, paramBoolean);
       return this;
     }
-    if ((paramObject instanceof short[]))
+    if ((paramT instanceof short[]))
     {
-      displaySimple((short[])paramObject, paramBoolean);
+      displaySimple((short[])paramT, paramBoolean);
       return this;
     }
-    if ((paramObject instanceof int[]))
+    if ((paramT instanceof int[]))
     {
-      displaySimple((int[])paramObject, paramBoolean);
+      displaySimple((int[])paramT, paramBoolean);
       return this;
     }
-    if ((paramObject instanceof long[]))
+    if ((paramT instanceof long[]))
     {
-      displaySimple((long[])paramObject, paramBoolean);
+      displaySimple((long[])paramT, paramBoolean);
       return this;
     }
-    if ((paramObject instanceof float[]))
+    if ((paramT instanceof float[]))
     {
-      displaySimple((float[])paramObject, paramBoolean);
+      displaySimple((float[])paramT, paramBoolean);
       return this;
     }
-    if ((paramObject instanceof double[]))
+    if ((paramT instanceof double[]))
     {
-      displaySimple((double[])paramObject, paramBoolean);
+      displaySimple((double[])paramT, paramBoolean);
       return this;
     }
-    if (paramObject.getClass().isArray())
+    if (paramT.getClass().isArray())
     {
-      displaySimple((Object[])paramObject, paramBoolean);
+      displaySimple((Object[])paramT, paramBoolean);
       return this;
     }
     throw new JceEncodeException("write object error: unsupport type.");
@@ -667,7 +667,7 @@ public final class JceDisplayer
     }
   }
   
-  public JceDisplayer displaySimple(Collection paramCollection, boolean paramBoolean)
+  public <T> JceDisplayer displaySimple(Collection<T> paramCollection, boolean paramBoolean)
   {
     if (paramCollection == null)
     {
@@ -680,7 +680,7 @@ public final class JceDisplayer
     return displaySimple(paramCollection.toArray(), paramBoolean);
   }
   
-  public JceDisplayer displaySimple(Map paramMap, boolean paramBoolean)
+  public <K, V> JceDisplayer displaySimple(Map<K, V> paramMap, boolean paramBoolean)
   {
     if ((paramMap == null) || (paramMap.isEmpty()))
     {
@@ -885,9 +885,9 @@ public final class JceDisplayer
     return this;
   }
   
-  public JceDisplayer displaySimple(Object[] paramArrayOfObject, boolean paramBoolean)
+  public <T> JceDisplayer displaySimple(T[] paramArrayOfT, boolean paramBoolean)
   {
-    if ((paramArrayOfObject == null) || (paramArrayOfObject.length == 0))
+    if ((paramArrayOfT == null) || (paramArrayOfT.length == 0))
     {
       this.sb.append("[]");
       if (paramBoolean) {
@@ -900,13 +900,13 @@ public final class JceDisplayer
       this.sb.append("[");
       JceDisplayer localJceDisplayer = new JceDisplayer(this.sb, this._level + 1);
       int i = 0;
-      while (i < paramArrayOfObject.length)
+      while (i < paramArrayOfT.length)
       {
-        Object localObject = paramArrayOfObject[i];
+        T ? = paramArrayOfT[i];
         if (i != 0) {
           this.sb.append("|");
         }
-        localJceDisplayer.displaySimple(localObject, false);
+        localJceDisplayer.displaySimple(?, false);
         i += 1;
       }
       this.sb.append("]");

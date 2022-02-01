@@ -1,5 +1,9 @@
 package android.support.v4.view;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
 import android.os.Build.VERSION;
 import android.view.View;
 import android.view.ViewPropertyAnimator;
@@ -13,18 +17,34 @@ public final class ViewPropertyAnimatorCompat
   Runnable mEndAction = null;
   int mOldLayerType = -1;
   Runnable mStartAction = null;
-  private WeakReference mView;
+  private WeakReference<View> mView;
   
   ViewPropertyAnimatorCompat(View paramView)
   {
     this.mView = new WeakReference(paramView);
   }
   
-  private void setListenerInternal(View paramView, ViewPropertyAnimatorListener paramViewPropertyAnimatorListener)
+  private void setListenerInternal(final View paramView, final ViewPropertyAnimatorListener paramViewPropertyAnimatorListener)
   {
     if (paramViewPropertyAnimatorListener != null)
     {
-      paramView.animate().setListener(new ViewPropertyAnimatorCompat.1(this, paramViewPropertyAnimatorListener, paramView));
+      paramView.animate().setListener(new AnimatorListenerAdapter()
+      {
+        public void onAnimationCancel(Animator paramAnonymousAnimator)
+        {
+          paramViewPropertyAnimatorListener.onAnimationCancel(paramView);
+        }
+        
+        public void onAnimationEnd(Animator paramAnonymousAnimator)
+        {
+          paramViewPropertyAnimatorListener.onAnimationEnd(paramView);
+        }
+        
+        public void onAnimationStart(Animator paramAnonymousAnimator)
+        {
+          paramViewPropertyAnimatorListener.onAnimationStart(paramView);
+        }
+      });
       return;
     }
     paramView.animate().setListener(null);
@@ -204,7 +224,7 @@ public final class ViewPropertyAnimatorCompat
       return this;
     }
     localView.setTag(2113929216, paramViewPropertyAnimatorListener);
-    setListenerInternal(localView, new ViewPropertyAnimatorCompat.ViewPropertyAnimatorListenerApi14(this));
+    setListenerInternal(localView, new ViewPropertyAnimatorListenerApi14(this));
     return this;
   }
   
@@ -217,14 +237,20 @@ public final class ViewPropertyAnimatorCompat
     return this;
   }
   
-  public ViewPropertyAnimatorCompat setUpdateListener(ViewPropertyAnimatorUpdateListener paramViewPropertyAnimatorUpdateListener)
+  public ViewPropertyAnimatorCompat setUpdateListener(final ViewPropertyAnimatorUpdateListener paramViewPropertyAnimatorUpdateListener)
   {
-    View localView = (View)this.mView.get();
+    final View localView = (View)this.mView.get();
     if ((localView != null) && (Build.VERSION.SDK_INT >= 19))
     {
-      ViewPropertyAnimatorCompat.2 local2 = null;
+      ValueAnimator.AnimatorUpdateListener local2 = null;
       if (paramViewPropertyAnimatorUpdateListener != null) {
-        local2 = new ViewPropertyAnimatorCompat.2(this, paramViewPropertyAnimatorUpdateListener, localView);
+        local2 = new ValueAnimator.AnimatorUpdateListener()
+        {
+          public void onAnimationUpdate(ValueAnimator paramAnonymousValueAnimator)
+          {
+            paramViewPropertyAnimatorUpdateListener.onAnimationUpdate(localView);
+          }
+        };
       }
       localView.animate().setUpdateListener(local2);
     }
@@ -305,7 +331,7 @@ public final class ViewPropertyAnimatorCompat
     else {
       return this;
     }
-    setListenerInternal(localView, new ViewPropertyAnimatorCompat.ViewPropertyAnimatorListenerApi14(this));
+    setListenerInternal(localView, new ViewPropertyAnimatorListenerApi14(this));
     this.mEndAction = paramRunnable;
     return this;
   }
@@ -323,7 +349,7 @@ public final class ViewPropertyAnimatorCompat
       return this;
     }
     this.mOldLayerType = localView.getLayerType();
-    setListenerInternal(localView, new ViewPropertyAnimatorCompat.ViewPropertyAnimatorListenerApi14(this));
+    setListenerInternal(localView, new ViewPropertyAnimatorListenerApi14(this));
     return this;
   }
   
@@ -339,7 +365,7 @@ public final class ViewPropertyAnimatorCompat
     else {
       return this;
     }
-    setListenerInternal(localView, new ViewPropertyAnimatorCompat.ViewPropertyAnimatorListenerApi14(this));
+    setListenerInternal(localView, new ViewPropertyAnimatorListenerApi14(this));
     this.mStartAction = paramRunnable;
     return this;
   }
@@ -396,6 +422,85 @@ public final class ViewPropertyAnimatorCompat
       localView.animate().zBy(paramFloat);
     }
     return this;
+  }
+  
+  static class ViewPropertyAnimatorListenerApi14
+    implements ViewPropertyAnimatorListener
+  {
+    boolean mAnimEndCalled;
+    ViewPropertyAnimatorCompat mVpa;
+    
+    ViewPropertyAnimatorListenerApi14(ViewPropertyAnimatorCompat paramViewPropertyAnimatorCompat)
+    {
+      this.mVpa = paramViewPropertyAnimatorCompat;
+    }
+    
+    public void onAnimationCancel(View paramView)
+    {
+      Object localObject = paramView.getTag(2113929216);
+      if ((localObject instanceof ViewPropertyAnimatorListener)) {}
+      for (localObject = (ViewPropertyAnimatorListener)localObject;; localObject = null)
+      {
+        if (localObject != null) {
+          ((ViewPropertyAnimatorListener)localObject).onAnimationCancel(paramView);
+        }
+        return;
+      }
+    }
+    
+    public void onAnimationEnd(View paramView)
+    {
+      if (this.mVpa.mOldLayerType > -1)
+      {
+        paramView.setLayerType(this.mVpa.mOldLayerType, null);
+        this.mVpa.mOldLayerType = -1;
+      }
+      if ((Build.VERSION.SDK_INT >= 16) || (!this.mAnimEndCalled))
+      {
+        if (this.mVpa.mEndAction != null)
+        {
+          localObject = this.mVpa.mEndAction;
+          this.mVpa.mEndAction = null;
+          ((Runnable)localObject).run();
+        }
+        localObject = paramView.getTag(2113929216);
+        if (!(localObject instanceof ViewPropertyAnimatorListener)) {
+          break label114;
+        }
+      }
+      label114:
+      for (Object localObject = (ViewPropertyAnimatorListener)localObject;; localObject = null)
+      {
+        if (localObject != null) {
+          ((ViewPropertyAnimatorListener)localObject).onAnimationEnd(paramView);
+        }
+        this.mAnimEndCalled = true;
+        return;
+      }
+    }
+    
+    public void onAnimationStart(View paramView)
+    {
+      this.mAnimEndCalled = false;
+      if (this.mVpa.mOldLayerType > -1) {
+        paramView.setLayerType(2, null);
+      }
+      if (this.mVpa.mStartAction != null)
+      {
+        localObject = this.mVpa.mStartAction;
+        this.mVpa.mStartAction = null;
+        ((Runnable)localObject).run();
+      }
+      Object localObject = paramView.getTag(2113929216);
+      if ((localObject instanceof ViewPropertyAnimatorListener)) {}
+      for (localObject = (ViewPropertyAnimatorListener)localObject;; localObject = null)
+      {
+        if (localObject != null) {
+          ((ViewPropertyAnimatorListener)localObject).onAnimationStart(paramView);
+        }
+        return;
+      }
+    }
   }
 }
 

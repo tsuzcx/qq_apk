@@ -1,77 +1,77 @@
 package com.tencent.turingfd.sdk.base;
 
 public final class int
-  extends float
+  extends break
 {
-  public static byte[] _a = new byte[1];
-  public static for ab = new for();
-  public int bb = 0;
+  public static byte[] Xa = new byte[1];
+  public static for Ya = new for();
+  public int Za = 0;
+  public int _a = 0;
+  public int ab = 0;
+  public long bb = 0L;
   public int cb = 0;
   public byte[] data = null;
   public int db = 0;
-  public long eb = 0L;
+  public for eb = null;
   public int fb = 0;
-  public int gb = 0;
-  public for hb = null;
-  public int ib = 0;
   
   static
   {
-    _a[0] = 0;
+    Xa[0] = 0;
   }
   
-  public float a()
+  public break a()
   {
     return new int();
   }
   
-  public void a(dp paramdp)
+  public void a(cy paramcy)
   {
-    this.bb = paramdp.a(this.bb, 0, true);
-    this.cb = paramdp.a(this.cb, 1, false);
-    this.db = paramdp.a(this.db, 2, false);
-    this.data = paramdp.a(_a, 3, false);
-    this.eb = paramdp.a(this.eb, 4, false);
-    this.fb = paramdp.a(this.fb, 5, false);
-    this.gb = paramdp.a(this.gb, 6, false);
-    this.hb = ((for)paramdp.a(ab, 7, false));
-    this.ib = paramdp.a(this.ib, 8, false);
+    this.Za = paramcy.a(this.Za, 0, true);
+    this._a = paramcy.a(this._a, 1, false);
+    this.ab = paramcy.a(this.ab, 2, false);
+    this.data = paramcy.a(Xa, 3, false);
+    this.bb = paramcy.a(this.bb, 4, false);
+    this.cb = paramcy.a(this.cb, 5, false);
+    this.db = paramcy.a(this.db, 6, false);
+    this.eb = ((for)paramcy.a(Ya, 7, false));
+    this.fb = paramcy.a(this.fb, 8, false);
   }
   
-  public void a(dv paramdv)
+  public void a(db paramdb)
   {
-    paramdv.a(this.bb, 0);
-    int i = this.cb;
+    paramdb.a(this.Za, 0);
+    int i = this._a;
     if (i != 0) {
-      paramdv.a(i, 1);
+      paramdb.a(i, 1);
     }
-    i = this.db;
+    i = this.ab;
     if (i != 0) {
-      paramdv.a(i, 2);
+      paramdb.a(i, 2);
     }
     Object localObject = this.data;
     if (localObject != null) {
-      paramdv.a((byte[])localObject, 3);
+      paramdb.a((byte[])localObject, 3);
     }
-    long l = this.eb;
+    long l = this.bb;
     if (l != 0L) {
-      paramdv.a(l, 4);
+      paramdb.a(l, 4);
+    }
+    i = this.cb;
+    if (i != 0) {
+      paramdb.a(i, 5);
+    }
+    i = this.db;
+    if (i != 0) {
+      paramdb.a(i, 6);
+    }
+    localObject = this.eb;
+    if (localObject != null) {
+      paramdb.a((break)localObject, 7);
     }
     i = this.fb;
     if (i != 0) {
-      paramdv.a(i, 5);
-    }
-    i = this.gb;
-    if (i != 0) {
-      paramdv.a(i, 6);
-    }
-    localObject = this.hb;
-    if (localObject != null) {
-      paramdv.a((float)localObject, 7);
-    }
-    i = this.ib;
-    if (i != 0) {
-      paramdv.a(i, 8);
+      paramdb.a(i, 8);
     }
   }
 }

@@ -4,9 +4,14 @@ public abstract interface ExecuteHelperCallback
 {
   public abstract void onProcessHelper(int paramInt);
   
-  public abstract void onStartHelper(ExecuteHelperCallback.HelperAbortCallback paramHelperAbortCallback);
+  public abstract void onStartHelper(HelperAbortCallback paramHelperAbortCallback);
   
   public abstract void onStopHelper();
+  
+  public static abstract interface HelperAbortCallback
+  {
+    public abstract void onCallback();
+  }
 }
 
 

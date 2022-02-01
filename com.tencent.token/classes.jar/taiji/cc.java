@@ -2,23 +2,28 @@ package taiji;
 
 public class cc
 {
-  private final cc.b a;
-  private final ap b;
-  private final ai c;
+  private final b a;
+  private final ag b;
+  private final ad c;
   
-  public cc.b a()
+  public b a()
   {
     return this.a;
   }
   
-  public ap b()
+  public ag b()
   {
     return this.b;
   }
   
-  public ai c()
+  public ad c()
   {
     return this.c;
+  }
+  
+  public static enum b
+  {
+    private b() {}
   }
 }
 

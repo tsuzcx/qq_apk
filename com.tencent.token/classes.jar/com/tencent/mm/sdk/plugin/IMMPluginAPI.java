@@ -40,7 +40,7 @@ public abstract interface IMMPluginAPI
   
   public abstract void release();
   
-  public abstract boolean sendMsgNotify(String paramString1, String paramString2, int paramInt, String paramString3, Class paramClass);
+  public abstract boolean sendMsgNotify(String paramString1, String paramString2, int paramInt, String paramString3, Class<?> paramClass);
   
   public abstract boolean unregisterAutoMsg(String paramString1, String paramString2);
 }

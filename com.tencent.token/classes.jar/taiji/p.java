@@ -1,22 +1,13 @@
 package taiji;
 
-import com.tencent.token.ir;
 import java.util.List;
 
-public class p
-  extends s
+public abstract class p<T>
+  extends l<T, T>
 {
-  public p(List paramList)
+  public p(List<? extends o<T>> paramList)
   {
     super(paramList);
-  }
-  
-  public Integer a(r paramr, float paramFloat)
-  {
-    if ((paramr.a == null) || (paramr.b == null)) {
-      throw new IllegalStateException("Missing values for keyframe.");
-    }
-    return Integer.valueOf(ir.a(paramFloat, ((Integer)paramr.a).intValue(), ((Integer)paramr.b).intValue()));
   }
 }
 

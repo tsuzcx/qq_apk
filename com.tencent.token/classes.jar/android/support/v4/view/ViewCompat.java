@@ -1,6 +1,9 @@
 package android.support.v4.view;
 
+import android.animation.ValueAnimator;
+import android.annotation.TargetApi;
 import android.content.ClipData;
+import android.content.Context;
 import android.content.res.ColorStateList;
 import android.graphics.Matrix;
 import android.graphics.Paint;
@@ -13,22 +16,37 @@ import android.support.annotation.FloatRange;
 import android.support.annotation.IdRes;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.annotation.RequiresApi;
+import android.support.annotation.RestrictTo;
 import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat;
 import android.support.v4.view.accessibility.AccessibilityNodeProviderCompat;
+import android.util.Log;
 import android.view.Display;
+import android.view.PointerIcon;
 import android.view.View;
 import android.view.View.DragShadowBuilder;
+import android.view.View.OnApplyWindowInsetsListener;
 import android.view.ViewGroup;
 import android.view.ViewParent;
+import android.view.WindowInsets;
+import android.view.WindowManager;
 import android.view.accessibility.AccessibilityEvent;
+import java.lang.annotation.Annotation;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.Collection;
+import java.util.WeakHashMap;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class ViewCompat
 {
   public static final int ACCESSIBILITY_LIVE_REGION_ASSERTIVE = 2;
   public static final int ACCESSIBILITY_LIVE_REGION_NONE = 0;
   public static final int ACCESSIBILITY_LIVE_REGION_POLITE = 1;
-  static final ViewCompat.ViewCompatBaseImpl IMPL = new ViewCompat.ViewCompatBaseImpl();
+  static final ViewCompatBaseImpl IMPL = new ViewCompatBaseImpl();
   public static final int IMPORTANT_FOR_ACCESSIBILITY_AUTO = 0;
   public static final int IMPORTANT_FOR_ACCESSIBILITY_NO = 2;
   public static final int IMPORTANT_FOR_ACCESSIBILITY_NO_HIDE_DESCENDANTS = 4;
@@ -74,52 +92,52 @@ public class ViewCompat
   {
     if (Build.VERSION.SDK_INT >= 26)
     {
-      IMPL = new ViewCompat.ViewCompatApi26Impl();
+      IMPL = new ViewCompatApi26Impl();
       return;
     }
     if (Build.VERSION.SDK_INT >= 24)
     {
-      IMPL = new ViewCompat.ViewCompatApi24Impl();
+      IMPL = new ViewCompatApi24Impl();
       return;
     }
     if (Build.VERSION.SDK_INT >= 23)
     {
-      IMPL = new ViewCompat.ViewCompatApi23Impl();
+      IMPL = new ViewCompatApi23Impl();
       return;
     }
     if (Build.VERSION.SDK_INT >= 21)
     {
-      IMPL = new ViewCompat.ViewCompatApi21Impl();
+      IMPL = new ViewCompatApi21Impl();
       return;
     }
     if (Build.VERSION.SDK_INT >= 19)
     {
-      IMPL = new ViewCompat.ViewCompatApi19Impl();
+      IMPL = new ViewCompatApi19Impl();
       return;
     }
     if (Build.VERSION.SDK_INT >= 18)
     {
-      IMPL = new ViewCompat.ViewCompatApi18Impl();
+      IMPL = new ViewCompatApi18Impl();
       return;
     }
     if (Build.VERSION.SDK_INT >= 17)
     {
-      IMPL = new ViewCompat.ViewCompatApi17Impl();
+      IMPL = new ViewCompatApi17Impl();
       return;
     }
     if (Build.VERSION.SDK_INT >= 16)
     {
-      IMPL = new ViewCompat.ViewCompatApi16Impl();
+      IMPL = new ViewCompatApi16Impl();
       return;
     }
     if (Build.VERSION.SDK_INT >= 15)
     {
-      IMPL = new ViewCompat.ViewCompatApi15Impl();
+      IMPL = new ViewCompatApi15Impl();
       return;
     }
   }
   
-  public static void addKeyboardNavigationClusters(@NonNull View paramView, @NonNull Collection paramCollection, int paramInt)
+  public static void addKeyboardNavigationClusters(@NonNull View paramView, @NonNull Collection<View> paramCollection, int paramInt)
   {
     IMPL.addKeyboardNavigationClusters(paramView, paramCollection, paramInt);
   }
@@ -609,7 +627,7 @@ public class ViewCompat
   }
   
   @NonNull
-  public static View requireViewById(@NonNull View paramView, @IdRes int paramInt)
+  public static <T extends View> T requireViewById(@NonNull View paramView, @IdRes int paramInt)
   {
     paramView = paramView.findViewById(paramInt);
     if (paramView == null) {
@@ -912,6 +930,1381 @@ public class ViewCompat
   public static void updateDragShadow(View paramView, View.DragShadowBuilder paramDragShadowBuilder)
   {
     IMPL.updateDragShadow(paramView, paramDragShadowBuilder);
+  }
+  
+  @Retention(RetentionPolicy.SOURCE)
+  private static @interface AccessibilityLiveRegion {}
+  
+  @Retention(RetentionPolicy.SOURCE)
+  @TargetApi(26)
+  private static @interface AutofillImportance {}
+  
+  @Retention(RetentionPolicy.SOURCE)
+  @RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
+  public static @interface FocusDirection {}
+  
+  @Retention(RetentionPolicy.SOURCE)
+  @RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
+  public static @interface FocusRealDirection {}
+  
+  @Retention(RetentionPolicy.SOURCE)
+  @RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
+  public static @interface FocusRelativeDirection {}
+  
+  @Retention(RetentionPolicy.SOURCE)
+  private static @interface ImportantForAccessibility {}
+  
+  @Retention(RetentionPolicy.SOURCE)
+  private static @interface LayerType {}
+  
+  @Retention(RetentionPolicy.SOURCE)
+  private static @interface LayoutDirectionMode {}
+  
+  @Retention(RetentionPolicy.SOURCE)
+  @RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
+  public static @interface NestedScrollType {}
+  
+  @Retention(RetentionPolicy.SOURCE)
+  private static @interface OverScroll {}
+  
+  @Retention(RetentionPolicy.SOURCE)
+  private static @interface ResolvedLayoutDirectionMode {}
+  
+  @Retention(RetentionPolicy.SOURCE)
+  @RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
+  public static @interface ScrollAxis {}
+  
+  @Retention(RetentionPolicy.SOURCE)
+  @RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
+  public static @interface ScrollIndicators {}
+  
+  @RequiresApi(15)
+  static class ViewCompatApi15Impl
+    extends ViewCompat.ViewCompatBaseImpl
+  {
+    public boolean hasOnClickListeners(View paramView)
+    {
+      return paramView.hasOnClickListeners();
+    }
+  }
+  
+  @RequiresApi(16)
+  static class ViewCompatApi16Impl
+    extends ViewCompat.ViewCompatApi15Impl
+  {
+    public AccessibilityNodeProviderCompat getAccessibilityNodeProvider(View paramView)
+    {
+      paramView = paramView.getAccessibilityNodeProvider();
+      if (paramView != null) {
+        return new AccessibilityNodeProviderCompat(paramView);
+      }
+      return null;
+    }
+    
+    public boolean getFitsSystemWindows(View paramView)
+    {
+      return paramView.getFitsSystemWindows();
+    }
+    
+    public int getImportantForAccessibility(View paramView)
+    {
+      return paramView.getImportantForAccessibility();
+    }
+    
+    public int getMinimumHeight(View paramView)
+    {
+      return paramView.getMinimumHeight();
+    }
+    
+    public int getMinimumWidth(View paramView)
+    {
+      return paramView.getMinimumWidth();
+    }
+    
+    public ViewParent getParentForAccessibility(View paramView)
+    {
+      return paramView.getParentForAccessibility();
+    }
+    
+    public boolean hasOverlappingRendering(View paramView)
+    {
+      return paramView.hasOverlappingRendering();
+    }
+    
+    public boolean hasTransientState(View paramView)
+    {
+      return paramView.hasTransientState();
+    }
+    
+    public boolean performAccessibilityAction(View paramView, int paramInt, Bundle paramBundle)
+    {
+      return paramView.performAccessibilityAction(paramInt, paramBundle);
+    }
+    
+    public void postInvalidateOnAnimation(View paramView)
+    {
+      paramView.postInvalidateOnAnimation();
+    }
+    
+    public void postInvalidateOnAnimation(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+    {
+      paramView.postInvalidateOnAnimation(paramInt1, paramInt2, paramInt3, paramInt4);
+    }
+    
+    public void postOnAnimation(View paramView, Runnable paramRunnable)
+    {
+      paramView.postOnAnimation(paramRunnable);
+    }
+    
+    public void postOnAnimationDelayed(View paramView, Runnable paramRunnable, long paramLong)
+    {
+      paramView.postOnAnimationDelayed(paramRunnable, paramLong);
+    }
+    
+    public void requestApplyInsets(View paramView)
+    {
+      paramView.requestFitSystemWindows();
+    }
+    
+    public void setBackground(View paramView, Drawable paramDrawable)
+    {
+      paramView.setBackground(paramDrawable);
+    }
+    
+    public void setHasTransientState(View paramView, boolean paramBoolean)
+    {
+      paramView.setHasTransientState(paramBoolean);
+    }
+    
+    public void setImportantForAccessibility(View paramView, int paramInt)
+    {
+      int i = paramInt;
+      if (paramInt == 4) {
+        i = 2;
+      }
+      paramView.setImportantForAccessibility(i);
+    }
+  }
+  
+  @RequiresApi(17)
+  static class ViewCompatApi17Impl
+    extends ViewCompat.ViewCompatApi16Impl
+  {
+    public int generateViewId()
+    {
+      return View.generateViewId();
+    }
+    
+    public Display getDisplay(View paramView)
+    {
+      return paramView.getDisplay();
+    }
+    
+    public int getLabelFor(View paramView)
+    {
+      return paramView.getLabelFor();
+    }
+    
+    public int getLayoutDirection(View paramView)
+    {
+      return paramView.getLayoutDirection();
+    }
+    
+    public int getPaddingEnd(View paramView)
+    {
+      return paramView.getPaddingEnd();
+    }
+    
+    public int getPaddingStart(View paramView)
+    {
+      return paramView.getPaddingStart();
+    }
+    
+    public int getWindowSystemUiVisibility(View paramView)
+    {
+      return paramView.getWindowSystemUiVisibility();
+    }
+    
+    public boolean isPaddingRelative(View paramView)
+    {
+      return paramView.isPaddingRelative();
+    }
+    
+    public void setLabelFor(View paramView, int paramInt)
+    {
+      paramView.setLabelFor(paramInt);
+    }
+    
+    public void setLayerPaint(View paramView, Paint paramPaint)
+    {
+      paramView.setLayerPaint(paramPaint);
+    }
+    
+    public void setLayoutDirection(View paramView, int paramInt)
+    {
+      paramView.setLayoutDirection(paramInt);
+    }
+    
+    public void setPaddingRelative(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+    {
+      paramView.setPaddingRelative(paramInt1, paramInt2, paramInt3, paramInt4);
+    }
+  }
+  
+  @RequiresApi(18)
+  static class ViewCompatApi18Impl
+    extends ViewCompat.ViewCompatApi17Impl
+  {
+    public Rect getClipBounds(View paramView)
+    {
+      return paramView.getClipBounds();
+    }
+    
+    public boolean isInLayout(View paramView)
+    {
+      return paramView.isInLayout();
+    }
+    
+    public void setClipBounds(View paramView, Rect paramRect)
+    {
+      paramView.setClipBounds(paramRect);
+    }
+  }
+  
+  @RequiresApi(19)
+  static class ViewCompatApi19Impl
+    extends ViewCompat.ViewCompatApi18Impl
+  {
+    public int getAccessibilityLiveRegion(View paramView)
+    {
+      return paramView.getAccessibilityLiveRegion();
+    }
+    
+    public boolean isAttachedToWindow(View paramView)
+    {
+      return paramView.isAttachedToWindow();
+    }
+    
+    public boolean isLaidOut(View paramView)
+    {
+      return paramView.isLaidOut();
+    }
+    
+    public boolean isLayoutDirectionResolved(View paramView)
+    {
+      return paramView.isLayoutDirectionResolved();
+    }
+    
+    public void setAccessibilityLiveRegion(View paramView, int paramInt)
+    {
+      paramView.setAccessibilityLiveRegion(paramInt);
+    }
+    
+    public void setImportantForAccessibility(View paramView, int paramInt)
+    {
+      paramView.setImportantForAccessibility(paramInt);
+    }
+  }
+  
+  @RequiresApi(21)
+  static class ViewCompatApi21Impl
+    extends ViewCompat.ViewCompatApi19Impl
+  {
+    private static ThreadLocal<Rect> sThreadLocalRect;
+    
+    private static Rect getEmptyTempRect()
+    {
+      if (sThreadLocalRect == null) {
+        sThreadLocalRect = new ThreadLocal();
+      }
+      Rect localRect2 = (Rect)sThreadLocalRect.get();
+      Rect localRect1 = localRect2;
+      if (localRect2 == null)
+      {
+        localRect1 = new Rect();
+        sThreadLocalRect.set(localRect1);
+      }
+      localRect1.setEmpty();
+      return localRect1;
+    }
+    
+    public WindowInsetsCompat dispatchApplyWindowInsets(View paramView, WindowInsetsCompat paramWindowInsetsCompat)
+    {
+      paramWindowInsetsCompat = (WindowInsets)WindowInsetsCompat.unwrap(paramWindowInsetsCompat);
+      WindowInsets localWindowInsets = paramView.dispatchApplyWindowInsets(paramWindowInsetsCompat);
+      paramView = paramWindowInsetsCompat;
+      if (localWindowInsets != paramWindowInsetsCompat) {
+        paramView = new WindowInsets(localWindowInsets);
+      }
+      return WindowInsetsCompat.wrap(paramView);
+    }
+    
+    public boolean dispatchNestedFling(View paramView, float paramFloat1, float paramFloat2, boolean paramBoolean)
+    {
+      return paramView.dispatchNestedFling(paramFloat1, paramFloat2, paramBoolean);
+    }
+    
+    public boolean dispatchNestedPreFling(View paramView, float paramFloat1, float paramFloat2)
+    {
+      return paramView.dispatchNestedPreFling(paramFloat1, paramFloat2);
+    }
+    
+    public boolean dispatchNestedPreScroll(View paramView, int paramInt1, int paramInt2, int[] paramArrayOfInt1, int[] paramArrayOfInt2)
+    {
+      return paramView.dispatchNestedPreScroll(paramInt1, paramInt2, paramArrayOfInt1, paramArrayOfInt2);
+    }
+    
+    public boolean dispatchNestedScroll(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int[] paramArrayOfInt)
+    {
+      return paramView.dispatchNestedScroll(paramInt1, paramInt2, paramInt3, paramInt4, paramArrayOfInt);
+    }
+    
+    public ColorStateList getBackgroundTintList(View paramView)
+    {
+      return paramView.getBackgroundTintList();
+    }
+    
+    public PorterDuff.Mode getBackgroundTintMode(View paramView)
+    {
+      return paramView.getBackgroundTintMode();
+    }
+    
+    public float getElevation(View paramView)
+    {
+      return paramView.getElevation();
+    }
+    
+    public String getTransitionName(View paramView)
+    {
+      return paramView.getTransitionName();
+    }
+    
+    public float getTranslationZ(View paramView)
+    {
+      return paramView.getTranslationZ();
+    }
+    
+    public float getZ(View paramView)
+    {
+      return paramView.getZ();
+    }
+    
+    public boolean hasNestedScrollingParent(View paramView)
+    {
+      return paramView.hasNestedScrollingParent();
+    }
+    
+    public boolean isImportantForAccessibility(View paramView)
+    {
+      return paramView.isImportantForAccessibility();
+    }
+    
+    public boolean isNestedScrollingEnabled(View paramView)
+    {
+      return paramView.isNestedScrollingEnabled();
+    }
+    
+    public void offsetLeftAndRight(View paramView, int paramInt)
+    {
+      Rect localRect = getEmptyTempRect();
+      ViewParent localViewParent = paramView.getParent();
+      int i;
+      if ((localViewParent instanceof View))
+      {
+        View localView = (View)localViewParent;
+        localRect.set(localView.getLeft(), localView.getTop(), localView.getRight(), localView.getBottom());
+        if (!localRect.intersects(paramView.getLeft(), paramView.getTop(), paramView.getRight(), paramView.getBottom())) {
+          i = 1;
+        }
+      }
+      for (;;)
+      {
+        super.offsetLeftAndRight(paramView, paramInt);
+        if ((i != 0) && (localRect.intersect(paramView.getLeft(), paramView.getTop(), paramView.getRight(), paramView.getBottom()))) {
+          ((View)localViewParent).invalidate(localRect);
+        }
+        return;
+        i = 0;
+        continue;
+        i = 0;
+      }
+    }
+    
+    public void offsetTopAndBottom(View paramView, int paramInt)
+    {
+      Rect localRect = getEmptyTempRect();
+      ViewParent localViewParent = paramView.getParent();
+      int i;
+      if ((localViewParent instanceof View))
+      {
+        View localView = (View)localViewParent;
+        localRect.set(localView.getLeft(), localView.getTop(), localView.getRight(), localView.getBottom());
+        if (!localRect.intersects(paramView.getLeft(), paramView.getTop(), paramView.getRight(), paramView.getBottom())) {
+          i = 1;
+        }
+      }
+      for (;;)
+      {
+        super.offsetTopAndBottom(paramView, paramInt);
+        if ((i != 0) && (localRect.intersect(paramView.getLeft(), paramView.getTop(), paramView.getRight(), paramView.getBottom()))) {
+          ((View)localViewParent).invalidate(localRect);
+        }
+        return;
+        i = 0;
+        continue;
+        i = 0;
+      }
+    }
+    
+    public WindowInsetsCompat onApplyWindowInsets(View paramView, WindowInsetsCompat paramWindowInsetsCompat)
+    {
+      paramWindowInsetsCompat = (WindowInsets)WindowInsetsCompat.unwrap(paramWindowInsetsCompat);
+      WindowInsets localWindowInsets = paramView.onApplyWindowInsets(paramWindowInsetsCompat);
+      paramView = paramWindowInsetsCompat;
+      if (localWindowInsets != paramWindowInsetsCompat) {
+        paramView = new WindowInsets(localWindowInsets);
+      }
+      return WindowInsetsCompat.wrap(paramView);
+    }
+    
+    public void requestApplyInsets(View paramView)
+    {
+      paramView.requestApplyInsets();
+    }
+    
+    public void setBackgroundTintList(View paramView, ColorStateList paramColorStateList)
+    {
+      paramView.setBackgroundTintList(paramColorStateList);
+      if (Build.VERSION.SDK_INT == 21)
+      {
+        paramColorStateList = paramView.getBackground();
+        if ((paramView.getBackgroundTintList() == null) && (paramView.getBackgroundTintMode() == null)) {
+          break label64;
+        }
+      }
+      label64:
+      for (int i = 1;; i = 0)
+      {
+        if ((paramColorStateList != null) && (i != 0))
+        {
+          if (paramColorStateList.isStateful()) {
+            paramColorStateList.setState(paramView.getDrawableState());
+          }
+          paramView.setBackground(paramColorStateList);
+        }
+        return;
+      }
+    }
+    
+    public void setBackgroundTintMode(View paramView, PorterDuff.Mode paramMode)
+    {
+      paramView.setBackgroundTintMode(paramMode);
+      if (Build.VERSION.SDK_INT == 21)
+      {
+        paramMode = paramView.getBackground();
+        if ((paramView.getBackgroundTintList() == null) && (paramView.getBackgroundTintMode() == null)) {
+          break label64;
+        }
+      }
+      label64:
+      for (int i = 1;; i = 0)
+      {
+        if ((paramMode != null) && (i != 0))
+        {
+          if (paramMode.isStateful()) {
+            paramMode.setState(paramView.getDrawableState());
+          }
+          paramView.setBackground(paramMode);
+        }
+        return;
+      }
+    }
+    
+    public void setElevation(View paramView, float paramFloat)
+    {
+      paramView.setElevation(paramFloat);
+    }
+    
+    public void setNestedScrollingEnabled(View paramView, boolean paramBoolean)
+    {
+      paramView.setNestedScrollingEnabled(paramBoolean);
+    }
+    
+    public void setOnApplyWindowInsetsListener(View paramView, final OnApplyWindowInsetsListener paramOnApplyWindowInsetsListener)
+    {
+      if (paramOnApplyWindowInsetsListener == null)
+      {
+        paramView.setOnApplyWindowInsetsListener(null);
+        return;
+      }
+      paramView.setOnApplyWindowInsetsListener(new View.OnApplyWindowInsetsListener()
+      {
+        public WindowInsets onApplyWindowInsets(View paramAnonymousView, WindowInsets paramAnonymousWindowInsets)
+        {
+          paramAnonymousWindowInsets = WindowInsetsCompat.wrap(paramAnonymousWindowInsets);
+          return (WindowInsets)WindowInsetsCompat.unwrap(paramOnApplyWindowInsetsListener.onApplyWindowInsets(paramAnonymousView, paramAnonymousWindowInsets));
+        }
+      });
+    }
+    
+    public void setTransitionName(View paramView, String paramString)
+    {
+      paramView.setTransitionName(paramString);
+    }
+    
+    public void setTranslationZ(View paramView, float paramFloat)
+    {
+      paramView.setTranslationZ(paramFloat);
+    }
+    
+    public void setZ(View paramView, float paramFloat)
+    {
+      paramView.setZ(paramFloat);
+    }
+    
+    public boolean startNestedScroll(View paramView, int paramInt)
+    {
+      return paramView.startNestedScroll(paramInt);
+    }
+    
+    public void stopNestedScroll(View paramView)
+    {
+      paramView.stopNestedScroll();
+    }
+  }
+  
+  @RequiresApi(23)
+  static class ViewCompatApi23Impl
+    extends ViewCompat.ViewCompatApi21Impl
+  {
+    public int getScrollIndicators(View paramView)
+    {
+      return paramView.getScrollIndicators();
+    }
+    
+    public void offsetLeftAndRight(View paramView, int paramInt)
+    {
+      paramView.offsetLeftAndRight(paramInt);
+    }
+    
+    public void offsetTopAndBottom(View paramView, int paramInt)
+    {
+      paramView.offsetTopAndBottom(paramInt);
+    }
+    
+    public void setScrollIndicators(View paramView, int paramInt)
+    {
+      paramView.setScrollIndicators(paramInt);
+    }
+    
+    public void setScrollIndicators(View paramView, int paramInt1, int paramInt2)
+    {
+      paramView.setScrollIndicators(paramInt1, paramInt2);
+    }
+  }
+  
+  @RequiresApi(24)
+  static class ViewCompatApi24Impl
+    extends ViewCompat.ViewCompatApi23Impl
+  {
+    public void cancelDragAndDrop(View paramView)
+    {
+      paramView.cancelDragAndDrop();
+    }
+    
+    public void dispatchFinishTemporaryDetach(View paramView)
+    {
+      paramView.dispatchFinishTemporaryDetach();
+    }
+    
+    public void dispatchStartTemporaryDetach(View paramView)
+    {
+      paramView.dispatchStartTemporaryDetach();
+    }
+    
+    public void setPointerIcon(View paramView, PointerIconCompat paramPointerIconCompat)
+    {
+      if (paramPointerIconCompat != null) {}
+      for (paramPointerIconCompat = paramPointerIconCompat.getPointerIcon();; paramPointerIconCompat = null)
+      {
+        paramView.setPointerIcon((PointerIcon)paramPointerIconCompat);
+        return;
+      }
+    }
+    
+    public boolean startDragAndDrop(View paramView, ClipData paramClipData, View.DragShadowBuilder paramDragShadowBuilder, Object paramObject, int paramInt)
+    {
+      return paramView.startDragAndDrop(paramClipData, paramDragShadowBuilder, paramObject, paramInt);
+    }
+    
+    public void updateDragShadow(View paramView, View.DragShadowBuilder paramDragShadowBuilder)
+    {
+      paramView.updateDragShadow(paramDragShadowBuilder);
+    }
+  }
+  
+  @RequiresApi(26)
+  static class ViewCompatApi26Impl
+    extends ViewCompat.ViewCompatApi24Impl
+  {
+    public void addKeyboardNavigationClusters(@NonNull View paramView, @NonNull Collection<View> paramCollection, int paramInt)
+    {
+      paramView.addKeyboardNavigationClusters(paramCollection, paramInt);
+    }
+    
+    public int getImportantForAutofill(@NonNull View paramView)
+    {
+      return paramView.getImportantForAutofill();
+    }
+    
+    public int getNextClusterForwardId(@NonNull View paramView)
+    {
+      return paramView.getNextClusterForwardId();
+    }
+    
+    public boolean hasExplicitFocusable(@NonNull View paramView)
+    {
+      return paramView.hasExplicitFocusable();
+    }
+    
+    public boolean isFocusedByDefault(@NonNull View paramView)
+    {
+      return paramView.isFocusedByDefault();
+    }
+    
+    public boolean isImportantForAutofill(@NonNull View paramView)
+    {
+      return paramView.isImportantForAutofill();
+    }
+    
+    public boolean isKeyboardNavigationCluster(@NonNull View paramView)
+    {
+      return paramView.isKeyboardNavigationCluster();
+    }
+    
+    public View keyboardNavigationClusterSearch(@NonNull View paramView1, View paramView2, int paramInt)
+    {
+      return paramView1.keyboardNavigationClusterSearch(paramView2, paramInt);
+    }
+    
+    public boolean restoreDefaultFocus(@NonNull View paramView)
+    {
+      return paramView.restoreDefaultFocus();
+    }
+    
+    public void setAutofillHints(@NonNull View paramView, @Nullable String... paramVarArgs)
+    {
+      paramView.setAutofillHints(paramVarArgs);
+    }
+    
+    public void setFocusedByDefault(@NonNull View paramView, boolean paramBoolean)
+    {
+      paramView.setFocusedByDefault(paramBoolean);
+    }
+    
+    public void setImportantForAutofill(@NonNull View paramView, int paramInt)
+    {
+      paramView.setImportantForAutofill(paramInt);
+    }
+    
+    public void setKeyboardNavigationCluster(@NonNull View paramView, boolean paramBoolean)
+    {
+      paramView.setKeyboardNavigationCluster(paramBoolean);
+    }
+    
+    public void setNextClusterForwardId(@NonNull View paramView, int paramInt)
+    {
+      paramView.setNextClusterForwardId(paramInt);
+    }
+    
+    public void setTooltipText(View paramView, CharSequence paramCharSequence)
+    {
+      paramView.setTooltipText(paramCharSequence);
+    }
+  }
+  
+  static class ViewCompatBaseImpl
+  {
+    static boolean sAccessibilityDelegateCheckFailed = false;
+    static Field sAccessibilityDelegateField;
+    private static Method sChildrenDrawingOrderMethod;
+    private static Field sMinHeightField;
+    private static boolean sMinHeightFieldFetched;
+    private static Field sMinWidthField;
+    private static boolean sMinWidthFieldFetched;
+    private static final AtomicInteger sNextGeneratedId = new AtomicInteger(1);
+    private static WeakHashMap<View, String> sTransitionNameMap;
+    private Method mDispatchFinishTemporaryDetach;
+    private Method mDispatchStartTemporaryDetach;
+    private boolean mTempDetachBound;
+    WeakHashMap<View, ViewPropertyAnimatorCompat> mViewPropertyAnimatorCompatMap = null;
+    
+    private void bindTempDetach()
+    {
+      try
+      {
+        this.mDispatchStartTemporaryDetach = View.class.getDeclaredMethod("dispatchStartTemporaryDetach", new Class[0]);
+        this.mDispatchFinishTemporaryDetach = View.class.getDeclaredMethod("dispatchFinishTemporaryDetach", new Class[0]);
+        this.mTempDetachBound = true;
+        return;
+      }
+      catch (NoSuchMethodException localNoSuchMethodException)
+      {
+        for (;;)
+        {
+          Log.e("ViewCompat", "Couldn't find method", localNoSuchMethodException);
+        }
+      }
+    }
+    
+    private static void tickleInvalidationFlag(View paramView)
+    {
+      float f = paramView.getTranslationY();
+      paramView.setTranslationY(1.0F + f);
+      paramView.setTranslationY(f);
+    }
+    
+    public void addKeyboardNavigationClusters(@NonNull View paramView, @NonNull Collection<View> paramCollection, int paramInt) {}
+    
+    public ViewPropertyAnimatorCompat animate(View paramView)
+    {
+      if (this.mViewPropertyAnimatorCompatMap == null) {
+        this.mViewPropertyAnimatorCompatMap = new WeakHashMap();
+      }
+      ViewPropertyAnimatorCompat localViewPropertyAnimatorCompat2 = (ViewPropertyAnimatorCompat)this.mViewPropertyAnimatorCompatMap.get(paramView);
+      ViewPropertyAnimatorCompat localViewPropertyAnimatorCompat1 = localViewPropertyAnimatorCompat2;
+      if (localViewPropertyAnimatorCompat2 == null)
+      {
+        localViewPropertyAnimatorCompat1 = new ViewPropertyAnimatorCompat(paramView);
+        this.mViewPropertyAnimatorCompatMap.put(paramView, localViewPropertyAnimatorCompat1);
+      }
+      return localViewPropertyAnimatorCompat1;
+    }
+    
+    public void cancelDragAndDrop(View paramView) {}
+    
+    public WindowInsetsCompat dispatchApplyWindowInsets(View paramView, WindowInsetsCompat paramWindowInsetsCompat)
+    {
+      return paramWindowInsetsCompat;
+    }
+    
+    public void dispatchFinishTemporaryDetach(View paramView)
+    {
+      if (!this.mTempDetachBound) {
+        bindTempDetach();
+      }
+      if (this.mDispatchFinishTemporaryDetach != null) {
+        try
+        {
+          this.mDispatchFinishTemporaryDetach.invoke(paramView, new Object[0]);
+          return;
+        }
+        catch (Exception paramView)
+        {
+          Log.d("ViewCompat", "Error calling dispatchFinishTemporaryDetach", paramView);
+          return;
+        }
+      }
+      paramView.onFinishTemporaryDetach();
+    }
+    
+    public boolean dispatchNestedFling(View paramView, float paramFloat1, float paramFloat2, boolean paramBoolean)
+    {
+      if ((paramView instanceof NestedScrollingChild)) {
+        return ((NestedScrollingChild)paramView).dispatchNestedFling(paramFloat1, paramFloat2, paramBoolean);
+      }
+      return false;
+    }
+    
+    public boolean dispatchNestedPreFling(View paramView, float paramFloat1, float paramFloat2)
+    {
+      if ((paramView instanceof NestedScrollingChild)) {
+        return ((NestedScrollingChild)paramView).dispatchNestedPreFling(paramFloat1, paramFloat2);
+      }
+      return false;
+    }
+    
+    public boolean dispatchNestedPreScroll(View paramView, int paramInt1, int paramInt2, int[] paramArrayOfInt1, int[] paramArrayOfInt2)
+    {
+      if ((paramView instanceof NestedScrollingChild)) {
+        return ((NestedScrollingChild)paramView).dispatchNestedPreScroll(paramInt1, paramInt2, paramArrayOfInt1, paramArrayOfInt2);
+      }
+      return false;
+    }
+    
+    public boolean dispatchNestedScroll(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int[] paramArrayOfInt)
+    {
+      if ((paramView instanceof NestedScrollingChild)) {
+        return ((NestedScrollingChild)paramView).dispatchNestedScroll(paramInt1, paramInt2, paramInt3, paramInt4, paramArrayOfInt);
+      }
+      return false;
+    }
+    
+    public void dispatchStartTemporaryDetach(View paramView)
+    {
+      if (!this.mTempDetachBound) {
+        bindTempDetach();
+      }
+      if (this.mDispatchStartTemporaryDetach != null) {
+        try
+        {
+          this.mDispatchStartTemporaryDetach.invoke(paramView, new Object[0]);
+          return;
+        }
+        catch (Exception paramView)
+        {
+          Log.d("ViewCompat", "Error calling dispatchStartTemporaryDetach", paramView);
+          return;
+        }
+      }
+      paramView.onStartTemporaryDetach();
+    }
+    
+    public int generateViewId()
+    {
+      int k;
+      int i;
+      do
+      {
+        k = sNextGeneratedId.get();
+        int j = k + 1;
+        i = j;
+        if (j > 16777215) {
+          i = 1;
+        }
+      } while (!sNextGeneratedId.compareAndSet(k, i));
+      return k;
+    }
+    
+    public int getAccessibilityLiveRegion(View paramView)
+    {
+      return 0;
+    }
+    
+    public AccessibilityNodeProviderCompat getAccessibilityNodeProvider(View paramView)
+    {
+      return null;
+    }
+    
+    public ColorStateList getBackgroundTintList(View paramView)
+    {
+      if ((paramView instanceof TintableBackgroundView)) {
+        return ((TintableBackgroundView)paramView).getSupportBackgroundTintList();
+      }
+      return null;
+    }
+    
+    public PorterDuff.Mode getBackgroundTintMode(View paramView)
+    {
+      if ((paramView instanceof TintableBackgroundView)) {
+        return ((TintableBackgroundView)paramView).getSupportBackgroundTintMode();
+      }
+      return null;
+    }
+    
+    public Rect getClipBounds(View paramView)
+    {
+      return null;
+    }
+    
+    public Display getDisplay(View paramView)
+    {
+      if (isAttachedToWindow(paramView)) {
+        return ((WindowManager)paramView.getContext().getSystemService("window")).getDefaultDisplay();
+      }
+      return null;
+    }
+    
+    public float getElevation(View paramView)
+    {
+      return 0.0F;
+    }
+    
+    public boolean getFitsSystemWindows(View paramView)
+    {
+      return false;
+    }
+    
+    long getFrameTime()
+    {
+      return ValueAnimator.getFrameDelay();
+    }
+    
+    public int getImportantForAccessibility(View paramView)
+    {
+      return 0;
+    }
+    
+    @TargetApi(26)
+    public int getImportantForAutofill(@NonNull View paramView)
+    {
+      return 0;
+    }
+    
+    public int getLabelFor(View paramView)
+    {
+      return 0;
+    }
+    
+    public int getLayoutDirection(View paramView)
+    {
+      return 0;
+    }
+    
+    public int getMinimumHeight(View paramView)
+    {
+      if (!sMinHeightFieldFetched) {}
+      try
+      {
+        sMinHeightField = View.class.getDeclaredField("mMinHeight");
+        sMinHeightField.setAccessible(true);
+        label23:
+        sMinHeightFieldFetched = true;
+        if (sMinHeightField != null) {
+          try
+          {
+            int i = ((Integer)sMinHeightField.get(paramView)).intValue();
+            return i;
+          }
+          catch (Exception paramView) {}
+        }
+        return 0;
+      }
+      catch (NoSuchFieldException localNoSuchFieldException)
+      {
+        break label23;
+      }
+    }
+    
+    public int getMinimumWidth(View paramView)
+    {
+      if (!sMinWidthFieldFetched) {}
+      try
+      {
+        sMinWidthField = View.class.getDeclaredField("mMinWidth");
+        sMinWidthField.setAccessible(true);
+        label24:
+        sMinWidthFieldFetched = true;
+        if (sMinWidthField != null) {
+          try
+          {
+            int i = ((Integer)sMinWidthField.get(paramView)).intValue();
+            return i;
+          }
+          catch (Exception paramView) {}
+        }
+        return 0;
+      }
+      catch (NoSuchFieldException localNoSuchFieldException)
+      {
+        break label24;
+      }
+    }
+    
+    public int getNextClusterForwardId(@NonNull View paramView)
+    {
+      return -1;
+    }
+    
+    public int getPaddingEnd(View paramView)
+    {
+      return paramView.getPaddingRight();
+    }
+    
+    public int getPaddingStart(View paramView)
+    {
+      return paramView.getPaddingLeft();
+    }
+    
+    public ViewParent getParentForAccessibility(View paramView)
+    {
+      return paramView.getParent();
+    }
+    
+    public int getScrollIndicators(View paramView)
+    {
+      return 0;
+    }
+    
+    public String getTransitionName(View paramView)
+    {
+      if (sTransitionNameMap == null) {
+        return null;
+      }
+      return (String)sTransitionNameMap.get(paramView);
+    }
+    
+    public float getTranslationZ(View paramView)
+    {
+      return 0.0F;
+    }
+    
+    public int getWindowSystemUiVisibility(View paramView)
+    {
+      return 0;
+    }
+    
+    public float getZ(View paramView)
+    {
+      return getTranslationZ(paramView) + getElevation(paramView);
+    }
+    
+    /* Error */
+    public boolean hasAccessibilityDelegate(View paramView)
+    {
+      // Byte code:
+      //   0: iconst_1
+      //   1: istore_2
+      //   2: getstatic 39	android/support/v4/view/ViewCompat$ViewCompatBaseImpl:sAccessibilityDelegateCheckFailed	Z
+      //   5: ifeq +5 -> 10
+      //   8: iconst_0
+      //   9: ireturn
+      //   10: getstatic 293	android/support/v4/view/ViewCompat$ViewCompatBaseImpl:sAccessibilityDelegateField	Ljava/lang/reflect/Field;
+      //   13: ifnonnull +21 -> 34
+      //   16: ldc 49
+      //   18: ldc_w 295
+      //   21: invokevirtual 238	java/lang/Class:getDeclaredField	(Ljava/lang/String;)Ljava/lang/reflect/Field;
+      //   24: putstatic 293	android/support/v4/view/ViewCompat$ViewCompatBaseImpl:sAccessibilityDelegateField	Ljava/lang/reflect/Field;
+      //   27: getstatic 293	android/support/v4/view/ViewCompat$ViewCompatBaseImpl:sAccessibilityDelegateField	Ljava/lang/reflect/Field;
+      //   30: iconst_1
+      //   31: invokevirtual 246	java/lang/reflect/Field:setAccessible	(Z)V
+      //   34: getstatic 293	android/support/v4/view/ViewCompat$ViewCompatBaseImpl:sAccessibilityDelegateField	Ljava/lang/reflect/Field;
+      //   37: aload_1
+      //   38: invokevirtual 247	java/lang/reflect/Field:get	(Ljava/lang/Object;)Ljava/lang/Object;
+      //   41: astore_1
+      //   42: aload_1
+      //   43: ifnull +12 -> 55
+      //   46: iload_2
+      //   47: ireturn
+      //   48: astore_1
+      //   49: iconst_1
+      //   50: putstatic 39	android/support/v4/view/ViewCompat$ViewCompatBaseImpl:sAccessibilityDelegateCheckFailed	Z
+      //   53: iconst_0
+      //   54: ireturn
+      //   55: iconst_0
+      //   56: istore_2
+      //   57: goto -11 -> 46
+      //   60: astore_1
+      //   61: iconst_1
+      //   62: putstatic 39	android/support/v4/view/ViewCompat$ViewCompatBaseImpl:sAccessibilityDelegateCheckFailed	Z
+      //   65: iconst_0
+      //   66: ireturn
+      // Local variable table:
+      //   start	length	slot	name	signature
+      //   0	67	0	this	ViewCompatBaseImpl
+      //   0	67	1	paramView	View
+      //   1	56	2	bool	boolean
+      // Exception table:
+      //   from	to	target	type
+      //   16	34	48	java/lang/Throwable
+      //   34	42	60	java/lang/Throwable
+    }
+    
+    public boolean hasExplicitFocusable(@NonNull View paramView)
+    {
+      return paramView.hasFocusable();
+    }
+    
+    public boolean hasNestedScrollingParent(View paramView)
+    {
+      if ((paramView instanceof NestedScrollingChild)) {
+        return ((NestedScrollingChild)paramView).hasNestedScrollingParent();
+      }
+      return false;
+    }
+    
+    public boolean hasOnClickListeners(View paramView)
+    {
+      return false;
+    }
+    
+    public boolean hasOverlappingRendering(View paramView)
+    {
+      return true;
+    }
+    
+    public boolean hasTransientState(View paramView)
+    {
+      return false;
+    }
+    
+    public boolean isAttachedToWindow(View paramView)
+    {
+      return paramView.getWindowToken() != null;
+    }
+    
+    public boolean isFocusedByDefault(@NonNull View paramView)
+    {
+      return false;
+    }
+    
+    public boolean isImportantForAccessibility(View paramView)
+    {
+      return true;
+    }
+    
+    public boolean isImportantForAutofill(@NonNull View paramView)
+    {
+      return true;
+    }
+    
+    public boolean isInLayout(View paramView)
+    {
+      return false;
+    }
+    
+    public boolean isKeyboardNavigationCluster(@NonNull View paramView)
+    {
+      return false;
+    }
+    
+    public boolean isLaidOut(View paramView)
+    {
+      return (paramView.getWidth() > 0) && (paramView.getHeight() > 0);
+    }
+    
+    public boolean isLayoutDirectionResolved(View paramView)
+    {
+      return false;
+    }
+    
+    public boolean isNestedScrollingEnabled(View paramView)
+    {
+      if ((paramView instanceof NestedScrollingChild)) {
+        return ((NestedScrollingChild)paramView).isNestedScrollingEnabled();
+      }
+      return false;
+    }
+    
+    public boolean isPaddingRelative(View paramView)
+    {
+      return false;
+    }
+    
+    public View keyboardNavigationClusterSearch(@NonNull View paramView1, View paramView2, int paramInt)
+    {
+      return null;
+    }
+    
+    public void offsetLeftAndRight(View paramView, int paramInt)
+    {
+      paramView.offsetLeftAndRight(paramInt);
+      if (paramView.getVisibility() == 0)
+      {
+        tickleInvalidationFlag(paramView);
+        paramView = paramView.getParent();
+        if ((paramView instanceof View)) {
+          tickleInvalidationFlag((View)paramView);
+        }
+      }
+    }
+    
+    public void offsetTopAndBottom(View paramView, int paramInt)
+    {
+      paramView.offsetTopAndBottom(paramInt);
+      if (paramView.getVisibility() == 0)
+      {
+        tickleInvalidationFlag(paramView);
+        paramView = paramView.getParent();
+        if ((paramView instanceof View)) {
+          tickleInvalidationFlag((View)paramView);
+        }
+      }
+    }
+    
+    public WindowInsetsCompat onApplyWindowInsets(View paramView, WindowInsetsCompat paramWindowInsetsCompat)
+    {
+      return paramWindowInsetsCompat;
+    }
+    
+    public void onInitializeAccessibilityNodeInfo(View paramView, AccessibilityNodeInfoCompat paramAccessibilityNodeInfoCompat)
+    {
+      paramView.onInitializeAccessibilityNodeInfo(paramAccessibilityNodeInfoCompat.unwrap());
+    }
+    
+    public boolean performAccessibilityAction(View paramView, int paramInt, Bundle paramBundle)
+    {
+      return false;
+    }
+    
+    public void postInvalidateOnAnimation(View paramView)
+    {
+      paramView.postInvalidate();
+    }
+    
+    public void postInvalidateOnAnimation(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+    {
+      paramView.postInvalidate(paramInt1, paramInt2, paramInt3, paramInt4);
+    }
+    
+    public void postOnAnimation(View paramView, Runnable paramRunnable)
+    {
+      paramView.postDelayed(paramRunnable, getFrameTime());
+    }
+    
+    public void postOnAnimationDelayed(View paramView, Runnable paramRunnable, long paramLong)
+    {
+      paramView.postDelayed(paramRunnable, getFrameTime() + paramLong);
+    }
+    
+    public void requestApplyInsets(View paramView) {}
+    
+    public boolean restoreDefaultFocus(@NonNull View paramView)
+    {
+      return paramView.requestFocus();
+    }
+    
+    public void setAccessibilityDelegate(View paramView, @Nullable AccessibilityDelegateCompat paramAccessibilityDelegateCompat)
+    {
+      if (paramAccessibilityDelegateCompat == null) {}
+      for (paramAccessibilityDelegateCompat = null;; paramAccessibilityDelegateCompat = paramAccessibilityDelegateCompat.getBridge())
+      {
+        paramView.setAccessibilityDelegate(paramAccessibilityDelegateCompat);
+        return;
+      }
+    }
+    
+    public void setAccessibilityLiveRegion(View paramView, int paramInt) {}
+    
+    public void setAutofillHints(@NonNull View paramView, @Nullable String... paramVarArgs) {}
+    
+    public void setBackground(View paramView, Drawable paramDrawable)
+    {
+      paramView.setBackgroundDrawable(paramDrawable);
+    }
+    
+    public void setBackgroundTintList(View paramView, ColorStateList paramColorStateList)
+    {
+      if ((paramView instanceof TintableBackgroundView)) {
+        ((TintableBackgroundView)paramView).setSupportBackgroundTintList(paramColorStateList);
+      }
+    }
+    
+    public void setBackgroundTintMode(View paramView, PorterDuff.Mode paramMode)
+    {
+      if ((paramView instanceof TintableBackgroundView)) {
+        ((TintableBackgroundView)paramView).setSupportBackgroundTintMode(paramMode);
+      }
+    }
+    
+    public void setChildrenDrawingOrderEnabled(ViewGroup paramViewGroup, boolean paramBoolean)
+    {
+      if (sChildrenDrawingOrderMethod == null) {}
+      try
+      {
+        sChildrenDrawingOrderMethod = ViewGroup.class.getDeclaredMethod("setChildrenDrawingOrderEnabled", new Class[] { Boolean.TYPE });
+        sChildrenDrawingOrderMethod.setAccessible(true);
+      }
+      catch (NoSuchMethodException localNoSuchMethodException)
+      {
+        for (;;)
+        {
+          try
+          {
+            sChildrenDrawingOrderMethod.invoke(paramViewGroup, new Object[] { Boolean.valueOf(paramBoolean) });
+            return;
+          }
+          catch (IllegalAccessException paramViewGroup)
+          {
+            Log.e("ViewCompat", "Unable to invoke childrenDrawingOrderEnabled", paramViewGroup);
+            return;
+          }
+          catch (IllegalArgumentException paramViewGroup)
+          {
+            Log.e("ViewCompat", "Unable to invoke childrenDrawingOrderEnabled", paramViewGroup);
+            return;
+          }
+          catch (InvocationTargetException paramViewGroup)
+          {
+            Log.e("ViewCompat", "Unable to invoke childrenDrawingOrderEnabled", paramViewGroup);
+          }
+          localNoSuchMethodException = localNoSuchMethodException;
+          Log.e("ViewCompat", "Unable to find childrenDrawingOrderEnabled", localNoSuchMethodException);
+        }
+      }
+    }
+    
+    public void setClipBounds(View paramView, Rect paramRect) {}
+    
+    public void setElevation(View paramView, float paramFloat) {}
+    
+    public void setFocusedByDefault(@NonNull View paramView, boolean paramBoolean) {}
+    
+    public void setHasTransientState(View paramView, boolean paramBoolean) {}
+    
+    public void setImportantForAccessibility(View paramView, int paramInt) {}
+    
+    public void setImportantForAutofill(@NonNull View paramView, int paramInt) {}
+    
+    public void setKeyboardNavigationCluster(@NonNull View paramView, boolean paramBoolean) {}
+    
+    public void setLabelFor(View paramView, int paramInt) {}
+    
+    public void setLayerPaint(View paramView, Paint paramPaint)
+    {
+      paramView.setLayerType(paramView.getLayerType(), paramPaint);
+      paramView.invalidate();
+    }
+    
+    public void setLayoutDirection(View paramView, int paramInt) {}
+    
+    public void setNestedScrollingEnabled(View paramView, boolean paramBoolean)
+    {
+      if ((paramView instanceof NestedScrollingChild)) {
+        ((NestedScrollingChild)paramView).setNestedScrollingEnabled(paramBoolean);
+      }
+    }
+    
+    public void setNextClusterForwardId(@NonNull View paramView, int paramInt) {}
+    
+    public void setOnApplyWindowInsetsListener(View paramView, OnApplyWindowInsetsListener paramOnApplyWindowInsetsListener) {}
+    
+    public void setPaddingRelative(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+    {
+      paramView.setPadding(paramInt1, paramInt2, paramInt3, paramInt4);
+    }
+    
+    public void setPointerIcon(View paramView, PointerIconCompat paramPointerIconCompat) {}
+    
+    public void setScrollIndicators(View paramView, int paramInt) {}
+    
+    public void setScrollIndicators(View paramView, int paramInt1, int paramInt2) {}
+    
+    public void setTooltipText(View paramView, CharSequence paramCharSequence) {}
+    
+    public void setTransitionName(View paramView, String paramString)
+    {
+      if (sTransitionNameMap == null) {
+        sTransitionNameMap = new WeakHashMap();
+      }
+      sTransitionNameMap.put(paramView, paramString);
+    }
+    
+    public void setTranslationZ(View paramView, float paramFloat) {}
+    
+    public void setZ(View paramView, float paramFloat) {}
+    
+    public boolean startDragAndDrop(View paramView, ClipData paramClipData, View.DragShadowBuilder paramDragShadowBuilder, Object paramObject, int paramInt)
+    {
+      return paramView.startDrag(paramClipData, paramDragShadowBuilder, paramObject, paramInt);
+    }
+    
+    public boolean startNestedScroll(View paramView, int paramInt)
+    {
+      if ((paramView instanceof NestedScrollingChild)) {
+        return ((NestedScrollingChild)paramView).startNestedScroll(paramInt);
+      }
+      return false;
+    }
+    
+    public void stopNestedScroll(View paramView)
+    {
+      if ((paramView instanceof NestedScrollingChild)) {
+        ((NestedScrollingChild)paramView).stopNestedScroll();
+      }
+    }
+    
+    public void updateDragShadow(View paramView, View.DragShadowBuilder paramDragShadowBuilder) {}
   }
 }
 

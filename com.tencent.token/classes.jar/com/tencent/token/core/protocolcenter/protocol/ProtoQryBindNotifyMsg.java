@@ -2,25 +2,25 @@ package com.tencent.token.core.protocolcenter.protocol;
 
 import android.os.Handler;
 import android.os.Message;
-import com.tencent.token.core.protocolcenter.e;
-import com.tencent.token.cv;
-import com.tencent.token.cw;
-import com.tencent.token.cx;
-import com.tencent.token.ev;
+import com.tencent.token.bz;
+import com.tencent.token.ca;
+import com.tencent.token.cb;
+import com.tencent.token.core.protocolcenter.d;
+import com.tencent.token.dn;
 import com.tencent.token.global.c;
-import com.tencent.token.global.f;
-import com.tencent.token.utils.w;
+import com.tencent.token.global.e;
+import com.tencent.token.utils.l;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class ProtoQryBindNotifyMsg
-  extends e
+  extends d
 {
-  private b d;
+  private a d;
   
   protected String a()
   {
-    String str = cv.a().b();
+    String str = bz.a().b();
     if (str == null)
     {
       this.a.b(104);
@@ -30,12 +30,12 @@ public class ProtoQryBindNotifyMsg
     try
     {
       Object localObject2 = new JSONObject();
-      int i = cw.a + 1;
-      cw.a = i;
+      int i = ca.a + 1;
+      ca.a = i;
       this.c = i;
       ((JSONObject)localObject2).put("seq_id", this.c);
-      ((JSONObject)localObject2).put("op_time", (int)(cx.c().s() / 1000L));
-      localObject2 = w.b(((JSONObject)localObject2).toString().getBytes());
+      ((JSONObject)localObject2).put("op_time", (int)(cb.c().s() / 1000L));
+      localObject2 = l.b(((JSONObject)localObject2).toString().getBytes());
       localObject1 = localObject2;
     }
     catch (JSONException localJSONException)
@@ -49,7 +49,7 @@ public class ProtoQryBindNotifyMsg
     return c.e() + "/cn/mbtoken3/mbtoken3_qry_bind_notify_msg_encrypt" + (String)localObject1;
   }
   
-  protected void a(ev paramev) {}
+  protected void a(dn paramdn) {}
   
   protected void a(JSONObject paramJSONObject)
   {
@@ -60,7 +60,7 @@ public class ProtoQryBindNotifyMsg
     do
     {
       return;
-      paramJSONObject = w.c(paramJSONObject.getString("data"));
+      paramJSONObject = l.c(paramJSONObject.getString("data"));
     } while (paramJSONObject == null);
     paramJSONObject = new JSONObject(new String(paramJSONObject));
     i = paramJSONObject.getInt("seq_id");
@@ -69,7 +69,7 @@ public class ProtoQryBindNotifyMsg
       this.a.b(10030);
       return;
     }
-    this.d = new b(this);
+    this.d = new a();
     this.d.a = paramJSONObject.getInt("is_have_msg");
     if (this.d.a == 1)
     {
@@ -89,6 +89,15 @@ public class ProtoQryBindNotifyMsg
       localMessage.sendToTarget();
       this.b.e = true;
     }
+  }
+  
+  public class a
+  {
+    public int a;
+    public String b;
+    public long c;
+    
+    public a() {}
   }
 }
 

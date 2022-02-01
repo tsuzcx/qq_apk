@@ -4,14 +4,14 @@ import android.graphics.Bitmap;
 import android.os.Handler;
 import android.os.Message;
 import com.tencent.token.core.bean.CommonImgResult;
-import com.tencent.token.core.protocolcenter.e;
-import com.tencent.token.ev;
-import com.tencent.token.global.f;
+import com.tencent.token.core.protocolcenter.d;
+import com.tencent.token.dn;
+import com.tencent.token.global.e;
 import java.util.HashMap;
 import org.json.JSONObject;
 
 public class ProtoGetBmpByUrl
-  extends e
+  extends d
 {
   private String d;
   private CommonImgResult e;
@@ -21,9 +21,9 @@ public class ProtoGetBmpByUrl
     return this.d;
   }
   
-  protected void a(ev paramev)
+  protected void a(dn paramdn)
   {
-    this.d = ((String)paramev.c.get("param.common.img.url"));
+    this.d = ((String)paramdn.c.get("param.common.img.url"));
   }
   
   protected void a(JSONObject paramJSONObject)

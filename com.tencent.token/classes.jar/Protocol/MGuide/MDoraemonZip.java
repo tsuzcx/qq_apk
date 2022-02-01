@@ -8,8 +8,8 @@ import java.util.ArrayList;
 public final class MDoraemonZip
   extends JceStruct
 {
-  static ArrayList a = new ArrayList();
-  public ArrayList mDoraemonResList = null;
+  static ArrayList<MDoraemonRes> a = new ArrayList();
+  public ArrayList<MDoraemonRes> mDoraemonResList = null;
   public String mDoraemonZipUrl = "";
   
   static

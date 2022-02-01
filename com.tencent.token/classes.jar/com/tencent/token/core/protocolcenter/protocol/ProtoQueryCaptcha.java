@@ -3,54 +3,54 @@ package com.tencent.token.core.protocolcenter.protocol;
 import android.content.Context;
 import android.os.Handler;
 import android.os.Message;
+import com.tencent.token.bz;
 import com.tencent.token.core.bean.QueryCaptchaResult;
-import com.tencent.token.core.protocolcenter.e;
-import com.tencent.token.cv;
-import com.tencent.token.ev;
+import com.tencent.token.core.protocolcenter.d;
+import com.tencent.token.dn;
 import com.tencent.token.global.RqdApplication;
 import com.tencent.token.global.c;
-import com.tencent.token.global.f;
-import com.tencent.token.global.h;
-import com.tencent.token.utils.w;
+import com.tencent.token.global.e;
+import com.tencent.token.global.g;
+import com.tencent.token.utils.l;
 import java.util.HashMap;
 import org.json.JSONObject;
 
 public class ProtoQueryCaptcha
-  extends e
+  extends d
 {
   QueryCaptchaResult d;
   private long e;
   private int f;
   
-  public static void a(ev paramev, long paramLong, int paramInt)
+  public static void a(dn paramdn, long paramLong, int paramInt)
   {
-    paramev.c.put("param.realuin", Long.valueOf(paramLong));
-    paramev.c.put("param.scene.id", Integer.valueOf(paramInt));
+    paramdn.c.put("param.realuin", Long.valueOf(paramLong));
+    paramdn.c.put("param.scene.id", Integer.valueOf(paramInt));
   }
   
   protected String a()
   {
-    String str1 = cv.a().b();
+    String str1 = bz.a().b();
     if (str1 == null)
     {
       this.a.b(104);
       return null;
     }
-    String str2 = w.a(new Object[] { "uin", Long.valueOf(this.e), "scenario_id", Integer.valueOf(this.f) });
+    String str2 = l.a(new Object[] { "uin", Long.valueOf(this.e), "scenario_id", Integer.valueOf(this.f) });
     if (str2 == null)
     {
       this.a.a(10000, "encrypt  failed");
       return null;
     }
     str1 = "?data=" + str2 + "&aq_base_sid=" + str1;
-    h.c("params: " + str1);
+    g.c("params: " + str1);
     return c.e() + "/cn/mbtoken3/mbtoken3_query_captcha_v3" + str1;
   }
   
-  protected void a(ev paramev)
+  protected void a(dn paramdn)
   {
-    this.e = ((Long)paramev.c.get("param.realuin")).longValue();
-    this.f = ((Integer)paramev.c.get("param.scene.id")).intValue();
+    this.e = ((Long)paramdn.c.get("param.realuin")).longValue();
+    this.f = ((Integer)paramdn.c.get("param.scene.id")).intValue();
   }
   
   protected void a(JSONObject paramJSONObject)
@@ -61,7 +61,7 @@ public class ProtoQueryCaptcha
       a(i, paramJSONObject.getString("info"));
       return;
     }
-    paramJSONObject = w.c(paramJSONObject.getString("data"));
+    paramJSONObject = l.c(paramJSONObject.getString("data"));
     if (paramJSONObject != null)
     {
       this.d = new QueryCaptchaResult(new JSONObject(new String(paramJSONObject)));
@@ -70,7 +70,7 @@ public class ProtoQueryCaptcha
       this.a.c();
       return;
     }
-    h.c("parseJSON error decodeData=" + paramJSONObject);
+    g.c("parseJSON error decodeData=" + paramJSONObject);
     a(10022, RqdApplication.l().getString(2131230925));
   }
   

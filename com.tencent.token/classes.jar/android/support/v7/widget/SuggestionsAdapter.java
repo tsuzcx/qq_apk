@@ -54,7 +54,7 @@ class SuggestionsAdapter
   private int mFlagsCol = -1;
   private int mIconName1Col = -1;
   private int mIconName2Col = -1;
-  private final WeakHashMap mOutsideDrawablesCache;
+  private final WeakHashMap<String, Drawable.ConstantState> mOutsideDrawablesCache;
   private final Context mProviderContext;
   private int mQueryRefinement = 1;
   private final SearchManager mSearchManager = (SearchManager)this.mContext.getSystemService("search");
@@ -65,7 +65,7 @@ class SuggestionsAdapter
   private int mText2UrlCol = -1;
   private ColorStateList mUrlColor;
   
-  public SuggestionsAdapter(Context paramContext, SearchView paramSearchView, SearchableInfo paramSearchableInfo, WeakHashMap paramWeakHashMap)
+  public SuggestionsAdapter(Context paramContext, SearchView paramSearchView, SearchableInfo paramSearchableInfo, WeakHashMap<String, Drawable.ConstantState> paramWeakHashMap)
   {
     super(paramContext, paramSearchView.getSuggestionRowLayout(), null, true);
     this.mSearchView = paramSearchView;
@@ -340,7 +340,7 @@ class SuggestionsAdapter
   
   public void bindView(View paramView, Context paramContext, Cursor paramCursor)
   {
-    paramContext = (SuggestionsAdapter.ChildViewCache)paramView.getTag();
+    paramContext = (ChildViewCache)paramView.getTag();
     if (this.mFlagsCol != -1) {}
     for (int i = paramCursor.getInt(this.mFlagsCol);; i = 0)
     {
@@ -518,7 +518,7 @@ class SuggestionsAdapter
       Log.w("SuggestionsAdapter", "Search suggestions cursor threw exception.", paramView);
       paramViewGroup = newDropDownView(this.mContext, this.mCursor, paramViewGroup);
       if (paramViewGroup != null) {
-        ((SuggestionsAdapter.ChildViewCache)paramViewGroup.getTag()).mText1.setText(paramView.toString());
+        ((ChildViewCache)paramViewGroup.getTag()).mText1.setText(paramView.toString());
       }
     }
     return paramViewGroup;
@@ -573,7 +573,7 @@ class SuggestionsAdapter
       Log.w("SuggestionsAdapter", "Search suggestions cursor threw exception.", paramView);
       paramViewGroup = newView(this.mContext, this.mCursor, paramViewGroup);
       if (paramViewGroup != null) {
-        ((SuggestionsAdapter.ChildViewCache)paramViewGroup.getTag()).mText1.setText(paramView.toString());
+        ((ChildViewCache)paramViewGroup.getTag()).mText1.setText(paramView.toString());
       }
     }
     return paramViewGroup;
@@ -587,7 +587,7 @@ class SuggestionsAdapter
   public View newView(Context paramContext, Cursor paramCursor, ViewGroup paramViewGroup)
   {
     paramContext = super.newView(paramContext, paramCursor, paramViewGroup);
-    paramContext.setTag(new SuggestionsAdapter.ChildViewCache(paramContext));
+    paramContext.setTag(new ChildViewCache(paramContext));
     ((ImageView)paramContext.findViewById(R.id.edit_query)).setImageResource(this.mCommitIconResId);
     return paramContext;
   }
@@ -637,6 +637,24 @@ class SuggestionsAdapter
   public void setQueryRefinement(int paramInt)
   {
     this.mQueryRefinement = paramInt;
+  }
+  
+  private static final class ChildViewCache
+  {
+    public final ImageView mIcon1;
+    public final ImageView mIcon2;
+    public final ImageView mIconRefine;
+    public final TextView mText1;
+    public final TextView mText2;
+    
+    public ChildViewCache(View paramView)
+    {
+      this.mText1 = ((TextView)paramView.findViewById(16908308));
+      this.mText2 = ((TextView)paramView.findViewById(16908309));
+      this.mIcon1 = ((ImageView)paramView.findViewById(16908295));
+      this.mIcon2 = ((ImageView)paramView.findViewById(16908296));
+      this.mIconRefine = ((ImageView)paramView.findViewById(R.id.edit_query));
+    }
   }
 }
 

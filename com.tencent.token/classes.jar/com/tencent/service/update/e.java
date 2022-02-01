@@ -70,7 +70,7 @@ public class e
   
   public void a(long paramLong)
   {
-    this.b.b("qqpim_download_position_show", paramLong);
+    this.b.b("meri_update_start_time", paramLong);
   }
   
   public void a(long paramLong1, long paramLong2, int paramInt1, int paramInt2)
@@ -88,7 +88,7 @@ public class e
     this.b.a();
     h(paramInt);
     e(paramString);
-    c(paramLong);
+    b(paramLong);
     b(paramSoftUpdateInfo.newVersion.pversion);
     c(paramSoftUpdateInfo.newVersion.cversion);
     d(paramSoftUpdateInfo.newVersion.hotfix);
@@ -98,7 +98,7 @@ public class e
     c(paramSoftUpdateInfo.url);
     a(paramSoftUpdateInfo.urlType);
     a(paramSoftUpdateInfo.market);
-    e(paramSoftUpdateInfo.noticeInterval * 24 * 60 * 60 * 1000);
+    d(paramSoftUpdateInfo.noticeInterval * 24 * 60 * 60 * 1000);
     g(paramSoftUpdateInfo.newPkgSize << 10);
     if (paramSoftUpdateInfo.silentDownloadInfo != null)
     {
@@ -124,7 +124,7 @@ public class e
   
   public long b()
   {
-    return this.b.a("qqpim_download_position_show", 0L);
+    return this.b.a("meri_update_end_time", 0L);
   }
   
   public void b(int paramInt)
@@ -134,7 +134,7 @@ public class e
   
   public void b(long paramLong)
   {
-    this.b.b("meri_update_start_time", paramLong);
+    this.b.b("meri_update_end_time", paramLong);
   }
   
   public void b(String paramString)
@@ -147,9 +147,9 @@ public class e
     this.b.b("meri_silent_update", paramBoolean);
   }
   
-  public long c()
+  public int c()
   {
-    return this.b.a("meri_update_end_time", 0L);
+    return this.b.a("meri_update_url_type", 0);
   }
   
   public void c(int paramInt)
@@ -159,7 +159,7 @@ public class e
   
   public void c(long paramLong)
   {
-    this.b.b("meri_update_end_time", paramLong);
+    this.b.b("conch_update_cloud_task_for_active", paramLong);
   }
   
   public void c(String paramString)
@@ -174,7 +174,7 @@ public class e
   
   public int d()
   {
-    return this.b.a("meri_update_url_type", 0);
+    return this.b.a("meri_lastest_version_p", 0);
   }
   
   public void d(int paramInt)
@@ -184,7 +184,7 @@ public class e
   
   public void d(long paramLong)
   {
-    this.b.b("conch_update_cloud_task_for_active", paramLong);
+    this.b.b("meri_update_cycle_time", paramLong);
   }
   
   public void d(String paramString)
@@ -199,7 +199,7 @@ public class e
   
   public int e()
   {
-    return this.b.a("meri_lastest_version_p", 0);
+    return this.b.a("meri_lastest_version_c", 0);
   }
   
   public void e(int paramInt)
@@ -209,7 +209,16 @@ public class e
   
   public void e(long paramLong)
   {
-    this.b.b("meri_update_cycle_time", paramLong);
+    Log.i("updatemanager", "setMeriUpdateRemindTime");
+    try
+    {
+      throw new Exception();
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+      this.b.b("meri_update_remind_time", paramLong);
+    }
   }
   
   public void e(String paramString)
@@ -224,26 +233,12 @@ public class e
   
   public int f()
   {
-    return this.b.a("meri_lastest_version_c", 0);
+    return this.b.a("meri_lastest_version_h", 0);
   }
   
   public void f(int paramInt)
   {
     this.b.b("meri_lastest_version_code", paramInt);
-  }
-  
-  public void f(long paramLong)
-  {
-    Log.i("updatemanager", "setMeriUpdateRemindTime");
-    try
-    {
-      throw new Exception();
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-      this.b.b("meri_update_remind_time", paramLong);
-    }
   }
   
   public void f(String paramString)
@@ -258,7 +253,7 @@ public class e
   
   public int g()
   {
-    return this.b.a("meri_lastest_version_h", 0);
+    return this.b.a("meri_lastest_build", 0);
   }
   
   public void g(int paramInt)
@@ -271,9 +266,9 @@ public class e
     this.b.b("meri_silent_update_msg_title", paramString);
   }
   
-  public int h()
+  public String h()
   {
-    return this.b.a("meri_lastest_build", 0);
+    return this.b.a("meri_lastest_featrue", "");
   }
   
   public void h(int paramInt)
@@ -286,9 +281,9 @@ public class e
     this.b.b("meri_silent_update_msg", paramString);
   }
   
-  public String i()
+  public int i()
   {
-    return this.b.a("meri_lastest_featrue", "");
+    return this.b.a("meri_lastest_size", -1);
   }
   
   public void i(int paramInt)
@@ -296,9 +291,9 @@ public class e
     this.b.b("meri_silent_update_msg_type", paramInt);
   }
   
-  public int j()
+  public String j()
   {
-    return this.b.a("meri_lastest_size", -1);
+    return this.b.a("meri_lastest_url", "");
   }
   
   public void j(int paramInt)
@@ -306,9 +301,9 @@ public class e
     this.b.b("meri_silent_update_msg_ask_type", paramInt);
   }
   
-  public String k()
+  public long k()
   {
-    return this.b.a("meri_lastest_url", "");
+    return this.b.a("conch_update_cloud_task_id", 0L);
   }
   
   public void k(int paramInt)
@@ -316,23 +311,13 @@ public class e
     this.b.b("meri_update_process", paramInt);
   }
   
-  public long l()
-  {
-    return this.b.a("conch_update_cloud_task_id", 0L);
-  }
-  
-  public void l(int paramInt)
-  {
-    this.b.b("meri_update_show_dialog_count", paramInt);
-  }
-  
-  public void m()
+  public void l()
   {
     this.b.a();
     h(0);
     e("");
+    a(0L);
     b(0L);
-    c(0L);
     b(0);
     c(0);
     d(0);
@@ -344,8 +329,8 @@ public class e
     a("");
     d("");
     g(0);
+    d(0L);
     e(0L);
-    f(0L);
     l(0);
     b(false);
     f("");
@@ -357,57 +342,62 @@ public class e
     this.b.b();
   }
   
-  public boolean n()
+  public void l(int paramInt)
+  {
+    this.b.b("meri_update_show_dialog_count", paramInt);
+  }
+  
+  public boolean m()
   {
     return this.b.a("meri_silent_update_switch_user", true);
   }
   
-  public boolean o()
+  public boolean n()
   {
     return this.b.a("meri_silent_update_switch_cloud", true);
   }
   
-  public int p()
+  public int o()
   {
     return this.b.b("meri_update_msg_type");
   }
   
-  public String q()
+  public String p()
   {
     return this.b.a("meri_update_msg_title", "");
   }
   
-  public boolean r()
+  public boolean q()
   {
     return this.b.a("meri_silent_update", false);
   }
   
-  public String s()
+  public String r()
   {
     return this.b.a("meri_silent_update_url");
   }
   
-  public boolean t()
+  public boolean s()
   {
     return this.b.a("meri_silent_update_show_insatll_dlg", false);
   }
   
-  public boolean u()
+  public boolean t()
   {
     return this.b.a("meri_silent_update_show_insatll_notice", false);
   }
   
-  public long v()
+  public long u()
   {
     return this.b.a("meri_update_cycle_time", 604800000L);
   }
   
-  public long w()
+  public long v()
   {
     return this.b.a("meri_update_remind_time", 0L);
   }
   
-  public String x()
+  public String w()
   {
     return this.b.a("silent_download_time_control", "0;19,23,100");
   }

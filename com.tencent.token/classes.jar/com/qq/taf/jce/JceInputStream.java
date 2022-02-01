@@ -38,19 +38,19 @@ public final class JceInputStream
   
   public static void main(String[] paramArrayOfString) {}
   
-  private int peakHead(JceInputStream.HeadData paramHeadData)
+  private int peakHead(HeadData paramHeadData)
   {
     return readHead(paramHeadData, this.bs.duplicate());
   }
   
-  private Object[] readArrayImpl(Object paramObject, int paramInt, boolean paramBoolean)
+  private <T> T[] readArrayImpl(T paramT, int paramInt, boolean paramBoolean)
   {
     if (skipToTag(paramInt))
     {
-      localObject = new JceInputStream.HeadData();
-      readHead((JceInputStream.HeadData)localObject);
+      localObject = new HeadData();
+      readHead((HeadData)localObject);
     }
-    switch (((JceInputStream.HeadData)localObject).type)
+    switch (((HeadData)localObject).type)
     {
     case 10: 
     default: 
@@ -60,7 +60,7 @@ public final class JceInputStream
       if (i < 0) {
         throw new JceDecodeException("size invalid: " + i);
       }
-      Object[] arrayOfObject = (Object[])Array.newInstance(paramObject.getClass(), i);
+      Object[] arrayOfObject = (Object[])Array.newInstance(paramT.getClass(), i);
       paramInt = 0;
       for (;;)
       {
@@ -68,7 +68,7 @@ public final class JceInputStream
         if (paramInt >= i) {
           break;
         }
-        arrayOfObject[paramInt] = read(paramObject, 0, true);
+        arrayOfObject[paramInt] = read(paramT, 0, true);
         paramInt += 1;
       }
       if (paramBoolean) {
@@ -80,7 +80,7 @@ public final class JceInputStream
     return localObject;
   }
   
-  public static int readHead(JceInputStream.HeadData paramHeadData, ByteBuffer paramByteBuffer)
+  public static int readHead(HeadData paramHeadData, ByteBuffer paramByteBuffer)
   {
     int i = paramByteBuffer.get();
     paramHeadData.type = ((byte)(i & 0xF));
@@ -93,7 +93,7 @@ public final class JceInputStream
     return 1;
   }
   
-  private Map readMap(Map paramMap1, Map paramMap2, int paramInt, boolean paramBoolean)
+  private <K, V> Map<K, V> readMap(Map<K, V> paramMap1, Map<K, V> paramMap2, int paramInt, boolean paramBoolean)
   {
     if ((paramMap2 == null) || (paramMap2.isEmpty())) {
       paramMap2 = new HashMap();
@@ -106,7 +106,7 @@ public final class JceInputStream
       Object localObject2 = paramMap2.getValue();
       if (skipToTag(paramInt))
       {
-        JceInputStream.HeadData localHeadData = new JceInputStream.HeadData();
+        HeadData localHeadData = new HeadData();
         readHead(localHeadData);
         paramMap2 = paramMap1;
         switch (localHeadData.type)
@@ -144,7 +144,7 @@ public final class JceInputStream
   
   private void skipField()
   {
-    JceInputStream.HeadData localHeadData = new JceInputStream.HeadData();
+    HeadData localHeadData = new HeadData();
     readHead(localHeadData);
     skipField(localHeadData.type);
   }
@@ -205,7 +205,7 @@ public final class JceInputStream
         paramByte += 1;
       }
     case 13: 
-      JceInputStream.HeadData localHeadData = new JceInputStream.HeadData();
+      HeadData localHeadData = new HeadData();
       readHead(localHeadData);
       if (localHeadData.type != 0) {
         throw new JceDecodeException("skipField with invalid type, type value: " + paramByte + ", " + localHeadData.type);
@@ -218,13 +218,13 @@ public final class JceInputStream
   
   public JceStruct directRead(JceStruct paramJceStruct, int paramInt, boolean paramBoolean)
   {
-    JceInputStream.HeadData localHeadData = null;
+    HeadData localHeadData = null;
     if (skipToTag(paramInt))
     {
       try
       {
         paramJceStruct = paramJceStruct.newInit();
-        localHeadData = new JceInputStream.HeadData();
+        localHeadData = new HeadData();
         readHead(localHeadData);
         if (localHeadData.type != 10) {
           throw new JceDecodeException("type mismatch.");
@@ -254,7 +254,7 @@ public final class JceInputStream
   {
     if (skipToTag(paramInt))
     {
-      localHeadData = new JceInputStream.HeadData();
+      localHeadData = new HeadData();
       readHead(localHeadData);
       switch (localHeadData.type)
       {
@@ -266,7 +266,7 @@ public final class JceInputStream
     }
     while (!paramBoolean)
     {
-      JceInputStream.HeadData localHeadData;
+      HeadData localHeadData;
       return paramByte;
       return this.bs.get();
     }
@@ -277,7 +277,7 @@ public final class JceInputStream
   {
     if (skipToTag(paramInt))
     {
-      localHeadData = new JceInputStream.HeadData();
+      localHeadData = new HeadData();
       readHead(localHeadData);
       switch (localHeadData.type)
       {
@@ -294,7 +294,7 @@ public final class JceInputStream
     }
     while (!paramBoolean)
     {
-      JceInputStream.HeadData localHeadData;
+      HeadData localHeadData;
       return paramDouble;
       return this.bs.getFloat();
       return this.bs.getDouble();
@@ -306,7 +306,7 @@ public final class JceInputStream
   {
     if (skipToTag(paramInt))
     {
-      localHeadData = new JceInputStream.HeadData();
+      localHeadData = new HeadData();
       readHead(localHeadData);
       switch (localHeadData.type)
       {
@@ -318,7 +318,7 @@ public final class JceInputStream
     }
     while (!paramBoolean)
     {
-      JceInputStream.HeadData localHeadData;
+      HeadData localHeadData;
       return paramFloat;
       return this.bs.getFloat();
     }
@@ -329,7 +329,7 @@ public final class JceInputStream
   {
     if (skipToTag(paramInt2))
     {
-      localHeadData = new JceInputStream.HeadData();
+      localHeadData = new HeadData();
       readHead(localHeadData);
       switch (localHeadData.type)
       {
@@ -341,7 +341,7 @@ public final class JceInputStream
     }
     while (!paramBoolean)
     {
-      JceInputStream.HeadData localHeadData;
+      HeadData localHeadData;
       return paramInt1;
       return this.bs.get();
       return this.bs.getShort();
@@ -354,7 +354,7 @@ public final class JceInputStream
   {
     if (skipToTag(paramInt))
     {
-      localHeadData = new JceInputStream.HeadData();
+      localHeadData = new HeadData();
       readHead(localHeadData);
       switch (localHeadData.type)
       {
@@ -373,7 +373,7 @@ public final class JceInputStream
     }
     while (!paramBoolean)
     {
-      JceInputStream.HeadData localHeadData;
+      HeadData localHeadData;
       return paramLong;
       return this.bs.get();
       return this.bs.getShort();
@@ -385,13 +385,13 @@ public final class JceInputStream
   
   public JceStruct read(JceStruct paramJceStruct, int paramInt, boolean paramBoolean)
   {
-    JceInputStream.HeadData localHeadData = null;
+    HeadData localHeadData = null;
     if (skipToTag(paramInt))
     {
       try
       {
         paramJceStruct = (JceStruct)paramJceStruct.getClass().newInstance();
-        localHeadData = new JceInputStream.HeadData();
+        localHeadData = new HeadData();
         readHead(localHeadData);
         if (localHeadData.type != 10) {
           throw new JceDecodeException("type mismatch.");
@@ -412,65 +412,65 @@ public final class JceInputStream
     throw new JceDecodeException("require field not exist.");
   }
   
-  public Object read(Object paramObject, int paramInt, boolean paramBoolean)
+  public <T> Object read(T paramT, int paramInt, boolean paramBoolean)
   {
-    if ((paramObject instanceof Byte)) {
+    if ((paramT instanceof Byte)) {
       return Byte.valueOf(read((byte)0, paramInt, paramBoolean));
     }
-    if ((paramObject instanceof Boolean)) {
+    if ((paramT instanceof Boolean)) {
       return Boolean.valueOf(read(false, paramInt, paramBoolean));
     }
-    if ((paramObject instanceof Short)) {
+    if ((paramT instanceof Short)) {
       return Short.valueOf(read((short)0, paramInt, paramBoolean));
     }
-    if ((paramObject instanceof Integer)) {
+    if ((paramT instanceof Integer)) {
       return Integer.valueOf(read(0, paramInt, paramBoolean));
     }
-    if ((paramObject instanceof Long)) {
+    if ((paramT instanceof Long)) {
       return Long.valueOf(read(0L, paramInt, paramBoolean));
     }
-    if ((paramObject instanceof Float)) {
+    if ((paramT instanceof Float)) {
       return Float.valueOf(read(0.0F, paramInt, paramBoolean));
     }
-    if ((paramObject instanceof Double)) {
+    if ((paramT instanceof Double)) {
       return Double.valueOf(read(0.0D, paramInt, paramBoolean));
     }
-    if ((paramObject instanceof String)) {
+    if ((paramT instanceof String)) {
       return readString(paramInt, paramBoolean);
     }
-    if ((paramObject instanceof Map)) {
-      return readMap((Map)paramObject, paramInt, paramBoolean);
+    if ((paramT instanceof Map)) {
+      return readMap((Map)paramT, paramInt, paramBoolean);
     }
-    if ((paramObject instanceof List)) {
-      return readArray((List)paramObject, paramInt, paramBoolean);
+    if ((paramT instanceof List)) {
+      return readArray((List)paramT, paramInt, paramBoolean);
     }
-    if ((paramObject instanceof JceStruct)) {
-      return read((JceStruct)paramObject, paramInt, paramBoolean);
+    if ((paramT instanceof JceStruct)) {
+      return read((JceStruct)paramT, paramInt, paramBoolean);
     }
-    if (paramObject.getClass().isArray())
+    if (paramT.getClass().isArray())
     {
-      if (((paramObject instanceof byte[])) || ((paramObject instanceof Byte[]))) {
+      if (((paramT instanceof byte[])) || ((paramT instanceof Byte[]))) {
         return read((byte[])null, paramInt, paramBoolean);
       }
-      if ((paramObject instanceof boolean[])) {
+      if ((paramT instanceof boolean[])) {
         return read((boolean[])null, paramInt, paramBoolean);
       }
-      if ((paramObject instanceof short[])) {
+      if ((paramT instanceof short[])) {
         return read((short[])null, paramInt, paramBoolean);
       }
-      if ((paramObject instanceof int[])) {
+      if ((paramT instanceof int[])) {
         return read((int[])null, paramInt, paramBoolean);
       }
-      if ((paramObject instanceof long[])) {
+      if ((paramT instanceof long[])) {
         return read((long[])null, paramInt, paramBoolean);
       }
-      if ((paramObject instanceof float[])) {
+      if ((paramT instanceof float[])) {
         return read((float[])null, paramInt, paramBoolean);
       }
-      if ((paramObject instanceof double[])) {
+      if ((paramT instanceof double[])) {
         return read((double[])null, paramInt, paramBoolean);
       }
-      return readArray((Object[])paramObject, paramInt, paramBoolean);
+      return readArray((Object[])paramT, paramInt, paramBoolean);
     }
     throw new JceDecodeException("read object error: unsupport type.");
   }
@@ -479,9 +479,9 @@ public final class JceInputStream
   {
     if (skipToTag(paramInt))
     {
-      Object localObject = new JceInputStream.HeadData();
-      readHead((JceInputStream.HeadData)localObject);
-      switch (((JceInputStream.HeadData)localObject).type)
+      Object localObject = new HeadData();
+      readHead((HeadData)localObject);
+      switch (((HeadData)localObject).type)
       {
       case 8: 
       case 9: 
@@ -534,7 +534,7 @@ public final class JceInputStream
   {
     if (skipToTag(paramInt))
     {
-      localHeadData = new JceInputStream.HeadData();
+      localHeadData = new HeadData();
       readHead(localHeadData);
       switch (localHeadData.type)
       {
@@ -546,7 +546,7 @@ public final class JceInputStream
     }
     while (!paramBoolean)
     {
-      JceInputStream.HeadData localHeadData;
+      HeadData localHeadData;
       return paramShort;
       return (short)this.bs.get();
       return this.bs.getShort();
@@ -568,23 +568,23 @@ public final class JceInputStream
     paramArrayOfByte = null;
     if (skipToTag(paramInt))
     {
-      localObject = new JceInputStream.HeadData();
-      readHead((JceInputStream.HeadData)localObject);
-      switch (((JceInputStream.HeadData)localObject).type)
+      localObject = new HeadData();
+      readHead((HeadData)localObject);
+      switch (((HeadData)localObject).type)
       {
       case 10: 
       case 12: 
       default: 
         throw new JceDecodeException("type mismatch.");
       case 13: 
-        paramArrayOfByte = new JceInputStream.HeadData();
+        paramArrayOfByte = new HeadData();
         readHead(paramArrayOfByte);
         if (paramArrayOfByte.type != 0) {
-          throw new JceDecodeException("type mismatch, tag: " + paramInt + ", type: " + ((JceInputStream.HeadData)localObject).type + ", " + paramArrayOfByte.type);
+          throw new JceDecodeException("type mismatch, tag: " + paramInt + ", type: " + ((HeadData)localObject).type + ", " + paramArrayOfByte.type);
         }
         i = read(0, 0, true);
         if (i < 0) {
-          throw new JceDecodeException("invalid size, tag: " + paramInt + ", type: " + ((JceInputStream.HeadData)localObject).type + ", " + paramArrayOfByte.type + ", size: " + i);
+          throw new JceDecodeException("invalid size, tag: " + paramInt + ", type: " + ((HeadData)localObject).type + ", " + paramArrayOfByte.type + ", size: " + i);
         }
         paramArrayOfByte = new byte[i];
         this.bs.get(paramArrayOfByte);
@@ -618,10 +618,10 @@ public final class JceInputStream
     Object localObject;
     if (skipToTag(paramInt))
     {
-      localObject = new JceInputStream.HeadData();
-      readHead((JceInputStream.HeadData)localObject);
+      localObject = new HeadData();
+      readHead((HeadData)localObject);
     }
-    switch (((JceInputStream.HeadData)localObject).type)
+    switch (((HeadData)localObject).type)
     {
     case 10: 
     default: 
@@ -656,10 +656,10 @@ public final class JceInputStream
     Object localObject;
     if (skipToTag(paramInt))
     {
-      localObject = new JceInputStream.HeadData();
-      readHead((JceInputStream.HeadData)localObject);
+      localObject = new HeadData();
+      readHead((HeadData)localObject);
     }
-    switch (((JceInputStream.HeadData)localObject).type)
+    switch (((HeadData)localObject).type)
     {
     case 10: 
     default: 
@@ -694,10 +694,10 @@ public final class JceInputStream
     Object localObject;
     if (skipToTag(paramInt))
     {
-      localObject = new JceInputStream.HeadData();
-      readHead((JceInputStream.HeadData)localObject);
+      localObject = new HeadData();
+      readHead((HeadData)localObject);
     }
-    switch (((JceInputStream.HeadData)localObject).type)
+    switch (((HeadData)localObject).type)
     {
     case 10: 
     default: 
@@ -732,10 +732,10 @@ public final class JceInputStream
     Object localObject;
     if (skipToTag(paramInt))
     {
-      localObject = new JceInputStream.HeadData();
-      readHead((JceInputStream.HeadData)localObject);
+      localObject = new HeadData();
+      readHead((HeadData)localObject);
     }
-    switch (((JceInputStream.HeadData)localObject).type)
+    switch (((HeadData)localObject).type)
     {
     case 10: 
     default: 
@@ -780,10 +780,10 @@ public final class JceInputStream
     Object localObject;
     if (skipToTag(paramInt))
     {
-      localObject = new JceInputStream.HeadData();
-      readHead((JceInputStream.HeadData)localObject);
+      localObject = new HeadData();
+      readHead((HeadData)localObject);
     }
-    switch (((JceInputStream.HeadData)localObject).type)
+    switch (((HeadData)localObject).type)
     {
     case 10: 
     default: 
@@ -818,10 +818,10 @@ public final class JceInputStream
     Object localObject;
     if (skipToTag(paramInt))
     {
-      localObject = new JceInputStream.HeadData();
-      readHead((JceInputStream.HeadData)localObject);
+      localObject = new HeadData();
+      readHead((HeadData)localObject);
     }
-    switch (((JceInputStream.HeadData)localObject).type)
+    switch (((HeadData)localObject).type)
     {
     case 10: 
     default: 
@@ -850,7 +850,7 @@ public final class JceInputStream
     return paramArrayOfBoolean;
   }
   
-  public List readArray(List paramList, int paramInt, boolean paramBoolean)
+  public <T> List<T> readArray(List<T> paramList, int paramInt, boolean paramBoolean)
   {
     int i = 0;
     if ((paramList == null) || (paramList.isEmpty())) {
@@ -870,19 +870,19 @@ public final class JceInputStream
     return localArrayList;
   }
   
-  public Object[] readArray(Object[] paramArrayOfObject, int paramInt, boolean paramBoolean)
+  public <T> T[] readArray(T[] paramArrayOfT, int paramInt, boolean paramBoolean)
   {
-    if ((paramArrayOfObject == null) || (paramArrayOfObject.length == 0)) {
+    if ((paramArrayOfT == null) || (paramArrayOfT.length == 0)) {
       throw new JceDecodeException("unable to get type of key and value.");
     }
-    return readArrayImpl(paramArrayOfObject[0], paramInt, paramBoolean);
+    return readArrayImpl(paramArrayOfT[0], paramInt, paramBoolean);
   }
   
   public String readByteString(String paramString, int paramInt, boolean paramBoolean)
   {
     if (skipToTag(paramInt))
     {
-      localHeadData = new JceInputStream.HeadData();
+      localHeadData = new HeadData();
       readHead(localHeadData);
       switch (localHeadData.type)
       {
@@ -904,7 +904,7 @@ public final class JceInputStream
     }
     while (!paramBoolean)
     {
-      JceInputStream.HeadData localHeadData;
+      HeadData localHeadData;
       int i;
       return paramString;
       paramInt = this.bs.getInt();
@@ -918,7 +918,7 @@ public final class JceInputStream
     throw new JceDecodeException("require field not exist.");
   }
   
-  public void readHead(JceInputStream.HeadData paramHeadData)
+  public void readHead(HeadData paramHeadData)
   {
     readHead(paramHeadData, this.bs);
   }
@@ -928,9 +928,9 @@ public final class JceInputStream
     ArrayList localArrayList = new ArrayList();
     if (skipToTag(paramInt))
     {
-      Object localObject = new JceInputStream.HeadData();
-      readHead((JceInputStream.HeadData)localObject);
-      switch (((JceInputStream.HeadData)localObject).type)
+      Object localObject = new HeadData();
+      readHead((HeadData)localObject);
+      switch (((HeadData)localObject).type)
       {
       default: 
         throw new JceDecodeException("type mismatch.");
@@ -942,9 +942,9 @@ public final class JceInputStream
       paramInt = 0;
       if (paramInt < k)
       {
-        localObject = new JceInputStream.HeadData();
-        readHead((JceInputStream.HeadData)localObject);
-        switch (((JceInputStream.HeadData)localObject).type)
+        localObject = new HeadData();
+        readHead((HeadData)localObject);
+        switch (((HeadData)localObject).type)
         {
         default: 
           throw new JceDecodeException("type mismatch.");
@@ -997,7 +997,7 @@ public final class JceInputStream
     return localException;
   }
   
-  public HashMap readMap(Map paramMap, int paramInt, boolean paramBoolean)
+  public <K, V> HashMap<K, V> readMap(Map<K, V> paramMap, int paramInt, boolean paramBoolean)
   {
     return (HashMap)readMap(new HashMap(), paramMap, paramInt, paramBoolean);
   }
@@ -1007,9 +1007,9 @@ public final class JceInputStream
     String str = null;
     if (skipToTag(paramInt))
     {
-      localObject = new JceInputStream.HeadData();
-      readHead((JceInputStream.HeadData)localObject);
-      switch (((JceInputStream.HeadData)localObject).type)
+      localObject = new HeadData();
+      readHead((HeadData)localObject);
+      switch (((HeadData)localObject).type)
       {
       case 8: 
       case 9: 
@@ -1058,13 +1058,13 @@ public final class JceInputStream
     throw new JceDecodeException("require field not exist.");
   }
   
-  public Map readStringMap(int paramInt, boolean paramBoolean)
+  public Map<String, String> readStringMap(int paramInt, boolean paramBoolean)
   {
     HashMap localHashMap = new HashMap();
-    JceInputStream.HeadData localHeadData;
+    HeadData localHeadData;
     if (skipToTag(paramInt))
     {
-      localHeadData = new JceInputStream.HeadData();
+      localHeadData = new HeadData();
       readHead(localHeadData);
     }
     switch (localHeadData.type)
@@ -1100,7 +1100,7 @@ public final class JceInputStream
   
   public void skipToStructEnd()
   {
-    JceInputStream.HeadData localHeadData = new JceInputStream.HeadData();
+    HeadData localHeadData = new HeadData();
     do
     {
       if (this.bs.remaining() == 0) {
@@ -1115,7 +1115,7 @@ public final class JceInputStream
   {
     try
     {
-      JceInputStream.HeadData localHeadData = new JceInputStream.HeadData();
+      HeadData localHeadData = new HeadData();
       for (;;)
       {
         int i = peakHead(localHeadData);
@@ -1146,6 +1146,18 @@ public final class JceInputStream
   public void wrap(byte[] paramArrayOfByte)
   {
     this.bs = ByteBuffer.wrap(paramArrayOfByte);
+  }
+  
+  public static class HeadData
+  {
+    public int tag;
+    public byte type;
+    
+    public void clear()
+    {
+      this.type = 0;
+      this.tag = 0;
+    }
   }
 }
 

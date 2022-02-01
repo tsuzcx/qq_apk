@@ -1,388 +1,157 @@
 package taiji;
 
-import android.annotation.SuppressLint;
-import android.graphics.Canvas;
-import android.graphics.ColorFilter;
-import android.graphics.Matrix;
-import android.graphics.Paint;
-import android.graphics.Path;
-import android.graphics.Path.FillType;
-import android.graphics.PorterDuff.Mode;
-import android.graphics.PorterDuffXfermode;
-import android.graphics.RectF;
-import android.util.Log;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.List;
-import uilib.doraemon.a;
-import uilib.doraemon.e;
-import uilib.doraemon.m;
+import android.annotation.TargetApi;
+import android.app.AppOpsManager;
+import android.content.Context;
+import android.os.Build.VERSION;
+import android.os.Process;
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
 
-public abstract class bd
-  implements cz, o
+public class bd
+  extends bb
 {
-  final Matrix a = new Matrix();
-  final e b;
-  final cs c;
-  final aa d;
-  private final Path e = new Path();
-  private final Matrix f = new Matrix();
-  private final Paint g = new Paint(1);
-  private final Paint h = new Paint(1);
-  private final Paint i = new Paint(1);
-  private final Paint j = new Paint();
-  private final RectF k = new RectF();
-  private final RectF l = new RectF();
-  private final RectF m = new RectF();
-  private final RectF n = new RectF();
-  private final String o;
-  private t p;
-  private bd q;
-  private bd r;
-  private List s;
-  private final List t = new ArrayList();
-  private boolean u = true;
+  private int f;
+  private int g;
   
-  bd(e parame, cs paramcs)
+  bd(Context paramContext)
   {
-    this.b = parame;
-    this.c = paramcs;
-    this.o = (paramcs.f() + "#draw");
-    this.j.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.CLEAR));
-    this.h.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.DST_IN));
-    if (paramcs.l() == cs.c.c) {
-      this.i.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.DST_OUT));
-    }
-    for (;;)
+    super(paramContext);
+    try
     {
-      this.d = paramcs.o().h();
-      this.d.a(this);
-      this.d.a(this);
-      if ((paramcs.j() == null) || (paramcs.j().isEmpty())) {
-        break label416;
-      }
-      this.p = new t(paramcs.j());
-      parame = this.p.b().iterator();
-      while (parame.hasNext())
-      {
-        paramcs = (n)parame.next();
-        a(paramcs);
-        paramcs.a(this);
-      }
-      this.i.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.DST_IN));
+      this.f = this.d;
+      paramContext = AppOpsManager.class.getField("MODE_ASK");
+      paramContext.setAccessible(true);
+      this.g = paramContext.getInt(AppOpsManager.class);
+      return;
     }
-    parame = this.p.c().iterator();
-    while (parame.hasNext())
-    {
-      paramcs = (s)parame.next();
-      a(paramcs);
-      paramcs.a(this);
-    }
-    label416:
-    f();
+    catch (Throwable paramContext) {}
   }
   
-  static bd a(cs paramcs, e parame, a parama)
+  @TargetApi(19)
+  private int a(String paramString)
   {
-    switch (bf.a[paramcs.k().ordinal()])
+    if ((Build.VERSION.SDK_INT < 19) || (this.a == null) || (this.b == null) || (this.c == null)) {
+      return 0;
+    }
+    try
+    {
+      paramString = AppOpsManager.class.getField(paramString);
+      if (paramString != null)
+      {
+        paramString.setAccessible(true);
+        int i = paramString.getInt(AppOpsManager.class);
+        i = ((Integer)this.c.invoke(this.b, new Object[] { Integer.valueOf(i), Integer.valueOf(Process.myUid()), this.a.getPackageName() })).intValue();
+        if (i == this.g) {
+          return 1;
+        }
+        int j = this.f;
+        if (i != j) {
+          return -1;
+        }
+      }
+    }
+    catch (Throwable paramString)
+    {
+      return 0;
+    }
+    return 0;
+  }
+  
+  public int checkPermission(int paramInt)
+  {
+    int j = 0;
+    if (Build.VERSION.SDK_INT < 19) {
+      return 0;
+    }
+    int i = j;
+    switch (paramInt)
     {
     default: 
-      Log.w("Doraemon", "Unknown layer type " + paramcs.k());
-      return null;
-    case 1: 
-      return new bm(parame, paramcs);
-    case 2: 
-      return new bg(parame, paramcs, parama.a(paramcs.g()), parama);
+      i = j;
     case 3: 
-      return new bn(parame, paramcs);
-    case 4: 
-      return new bi(parame, paramcs, parama.j());
     case 5: 
-      return new bl(parame, paramcs);
-    }
-    return new bo(parame, paramcs);
-  }
-  
-  private void a(Canvas paramCanvas)
-  {
-    m.a("Layer#clearLayer");
-    paramCanvas.drawRect(this.k.left - 1.0F, this.k.top - 1.0F, this.k.right + 1.0F, 1.0F + this.k.bottom, this.j);
-    m.b("Layer#clearLayer");
-  }
-  
-  @SuppressLint({"WrongConstant"})
-  private void a(Canvas paramCanvas, Matrix paramMatrix)
-  {
-    m.a("Layer#drawMask");
-    m.a("Layer#saveLayer");
-    paramCanvas.saveLayer(this.k, this.h, 19);
-    m.b("Layer#saveLayer");
-    a(paramCanvas);
-    int i2 = this.p.a().size();
-    int i1 = 0;
-    if (i1 < i2)
-    {
-      Object localObject = (cc)this.p.a().get(i1);
-      Path localPath = (Path)((n)this.p.b().get(i1)).b();
-      this.e.set(localPath);
-      this.e.transform(paramMatrix);
-      switch (bf.b[localObject.a().ordinal()])
-      {
-      default: 
-        this.e.setFillType(Path.FillType.WINDING);
-      }
-      for (;;)
-      {
-        localObject = (s)this.p.c().get(i1);
-        int i3 = this.g.getAlpha();
-        this.g.setAlpha((int)(((Integer)((s)localObject).b()).intValue() * 2.55F));
-        paramCanvas.drawPath(this.e, this.g);
-        this.g.setAlpha(i3);
-        i1 += 1;
-        break;
-        this.e.setFillType(Path.FillType.INVERSE_WINDING);
-      }
-    }
-    m.a("Layer#restoreLayer");
-    paramCanvas.restore();
-    m.b("Layer#restoreLayer");
-    m.b("Layer#drawMask");
-  }
-  
-  private void a(boolean paramBoolean)
-  {
-    if (paramBoolean != this.u)
-    {
-      this.u = paramBoolean;
-      g();
-    }
-  }
-  
-  private void b(float paramFloat)
-  {
-    this.b.m().a().a(this.c.f(), paramFloat);
-  }
-  
-  private void b(RectF paramRectF, Matrix paramMatrix)
-  {
-    this.l.set(0.0F, 0.0F, 0.0F, 0.0F);
-    if (!e()) {
-      return;
-    }
-    int i2 = this.p.a().size();
-    int i1 = 0;
-    if (i1 < i2)
-    {
-      cc localcc = (cc)this.p.a().get(i1);
-      Path localPath = (Path)((n)this.p.b().get(i1)).b();
-      this.e.set(localPath);
-      this.e.transform(paramMatrix);
-      switch (bf.b[localcc.a().ordinal()])
+    case 6: 
+    case 7: 
+    case 8: 
+    case 25: 
+    case 33: 
+    case 34: 
+    case 36: 
+    case 37: 
+    case 38: 
+    case 39: 
+    case 40: 
+    case 41: 
+    case 43: 
+    case 44: 
+    case 45: 
+    case 46: 
+    case 47: 
+      switch (i)
       {
       }
-      this.e.computeBounds(this.n, false);
-      if (i1 == 0) {
-        this.l.set(this.n);
-      }
-      for (;;)
-      {
-        i1 += 1;
-        break;
-        this.l.set(Math.min(this.l.left, this.n.left), Math.min(this.l.top, this.n.top), Math.max(this.l.right, this.n.right), Math.max(this.l.bottom, this.n.bottom));
-      }
+      break;
     }
-    paramRectF.set(Math.max(paramRectF.left, this.l.left), Math.max(paramRectF.top, this.l.top), Math.min(paramRectF.right, this.l.right), Math.min(paramRectF.bottom, this.l.bottom));
-  }
-  
-  private void c(RectF paramRectF, Matrix paramMatrix)
-  {
-    if (!d()) {}
-    while (this.c.l() == cs.c.c) {
-      return;
-    }
-    this.q.a(this.m, paramMatrix);
-    paramRectF.set(Math.max(paramRectF.left, this.m.left), Math.max(paramRectF.top, this.m.top), Math.min(paramRectF.right, this.m.right), Math.min(paramRectF.bottom, this.m.bottom));
-  }
-  
-  private void f()
-  {
-    if (!this.c.d().isEmpty())
+    do
     {
-      q localq = new q(this.c.d());
-      localq.a();
-      localq.a(new be(this, localq));
-      if (((Float)localq.b()).floatValue() == 1.0F) {}
-      for (boolean bool = true;; bool = false)
-      {
-        a(bool);
-        a(localq);
-        return;
-      }
-    }
-    a(true);
-  }
-  
-  private void g()
-  {
-    this.b.invalidateSelf();
-  }
-  
-  private void h()
-  {
-    if (this.s != null) {}
-    for (;;)
-    {
-      return;
-      if (this.r == null)
-      {
-        this.s = Collections.emptyList();
-        return;
-      }
-      this.s = new ArrayList();
-      for (bd localbd = this.r; localbd != null; localbd = localbd.r) {
-        this.s.add(localbd);
-      }
-    }
-  }
-  
-  cs a()
-  {
-    return this.c;
-  }
-  
-  void a(float paramFloat)
-  {
-    float f1 = paramFloat;
-    if (this.c.b() != 0.0F) {
-      f1 = paramFloat / this.c.b();
-    }
-    if (this.q != null) {
-      this.q.a(f1);
-    }
-    int i1 = 0;
-    while (i1 < this.t.size())
-    {
-      ((n)this.t.get(i1)).a(f1);
-      i1 += 1;
-    }
-  }
-  
-  @SuppressLint({"WrongConstant"})
-  public void a(Canvas paramCanvas, Matrix paramMatrix, int paramInt)
-  {
-    m.a(this.o);
-    if (!this.u)
-    {
-      m.b(this.o);
-      return;
-    }
-    h();
-    m.a("Layer#parentMatrix");
-    this.f.reset();
-    this.f.set(paramMatrix);
-    int i1 = this.s.size() - 1;
-    while (i1 >= 0)
-    {
-      this.f.preConcat(((bd)this.s.get(i1)).d.b());
-      i1 -= 1;
-    }
-    m.b("Layer#parentMatrix");
-    float f1 = paramInt / 255.0F;
-    paramInt = (int)(((Integer)this.d.a().b()).intValue() * f1 / 100.0F * 255.0F);
-    if ((!d()) && (!e()))
-    {
-      this.f.preConcat(this.d.b());
-      m.a("Layer#drawLayer");
-      b(paramCanvas, this.f, paramInt);
-      m.b("Layer#drawLayer");
-      b(m.b(this.o));
-      return;
-    }
-    m.a("Layer#computeBounds");
-    this.k.set(0.0F, 0.0F, 0.0F, 0.0F);
-    a(this.k, this.f);
-    c(this.k, this.f);
-    this.f.preConcat(this.d.b());
-    b(this.k, this.f);
-    this.k.set(0.0F, 0.0F, paramCanvas.getWidth(), paramCanvas.getHeight());
-    m.b("Layer#computeBounds");
-    m.a("Layer#saveLayer");
-    paramCanvas.saveLayer(this.k, this.g, 31);
-    m.b("Layer#saveLayer");
-    a(paramCanvas);
-    m.a("Layer#drawLayer");
-    b(paramCanvas, this.f, paramInt);
-    m.b("Layer#drawLayer");
-    if (e()) {
-      a(paramCanvas, this.f);
-    }
-    if (d())
-    {
-      m.a("Layer#drawMatte");
-      m.a("Layer#saveLayer");
-      paramCanvas.saveLayer(this.k, this.i, 19);
-      m.b("Layer#saveLayer");
-      a(paramCanvas);
-      this.q.a(paramCanvas, paramMatrix, paramInt);
-      m.a("Layer#restoreLayer");
-      paramCanvas.restore();
-      m.b("Layer#restoreLayer");
-      m.b("Layer#drawMatte");
-    }
-    m.a("Layer#restoreLayer");
-    paramCanvas.restore();
-    m.b("Layer#restoreLayer");
-    b(m.b(this.o));
-  }
-  
-  public void a(RectF paramRectF, Matrix paramMatrix)
-  {
-    this.a.set(paramMatrix);
-    this.a.preConcat(this.d.b());
-  }
-  
-  public void a(String paramString1, String paramString2, ColorFilter paramColorFilter) {}
-  
-  public void a(List paramList1, List paramList2) {}
-  
-  void a(bd parambd)
-  {
-    this.q = parambd;
-  }
-  
-  public void a(n paramn)
-  {
-    if (!(paramn instanceof y)) {
-      this.t.add(paramn);
-    }
-  }
-  
-  public String b()
-  {
-    return this.c.f();
-  }
-  
-  abstract void b(Canvas paramCanvas, Matrix paramMatrix, int paramInt);
-  
-  void b(bd parambd)
-  {
-    this.r = parambd;
-  }
-  
-  public void c()
-  {
-    g();
-  }
-  
-  boolean d()
-  {
-    return this.q != null;
-  }
-  
-  boolean e()
-  {
-    return (this.p != null) && (!this.p.b().isEmpty());
+      return i;
+      i = a("OP_READ_PHONE_STATE");
+      break;
+      i = a("OP_WRITE_EXTERNAL_STORAGE");
+      break;
+      i = a("OP_PROCESS_OUTGOING_CALLS");
+      break;
+      i = a("OP_CALL_PHONE");
+      break;
+      i = a("OP_READ_CALL_LOG");
+      break;
+      i = a("OP_WRITE_CALL_LOG");
+      break;
+      i = a("OP_READ_SMS");
+      break;
+      i = a("OP_WRITE_SMS");
+      break;
+      i = a("OP_SEND_SMS");
+      break;
+      i = a("OP_READ_NOTIFICATION_SMS");
+      break;
+      i = a("OP_READ_MMS");
+      break;
+      i = a("OP_WRITE_MMS");
+      break;
+      i = a("OP_SEND_MMS");
+      break;
+      i = a("OP_READ_CONTACTS");
+      break;
+      i = a("OP_WRITE_CONTACTS");
+      break;
+      i = a("OP_DELETE_CONTACTS");
+      break;
+      i = a("OP_FINE_LOCATION");
+      break;
+      i = a("OP_INSTALL_SHORTCUT");
+      break;
+      i = a("OP_READ_CALENDAR");
+      break;
+      i = a("OP_WRITE_CALENDAR");
+      break;
+      i = a("OP_CAMERA");
+      break;
+      i = a("OP_RECORD_AUDIO");
+      break;
+      i = a("OP_WRITE_SETTINGS");
+      break;
+      i = a("OP_GET_ACCOUNTS");
+      break;
+      i = a("OP_BLUETOOTH_CHANGE");
+      break;
+      return a("OP_AUTO_START");
+      return a("OP_SHOW_WHEN_LOCKED");
+      return a("OP_BACKGROUND_START_ACTIVITY");
+      return super.checkPermission(paramInt);
+    } while (super.checkPermission(paramInt) != -1);
+    return -1;
   }
 }
 

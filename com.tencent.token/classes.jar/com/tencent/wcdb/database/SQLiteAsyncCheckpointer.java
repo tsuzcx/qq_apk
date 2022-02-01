@@ -21,7 +21,7 @@ public class SQLiteAsyncCheckpointer
   private Handler mHandler;
   private int mLastSyncMode;
   private Looper mLooper;
-  private final HashSet mPendingCheckpoints;
+  private final HashSet<Pair<SQLiteDatabase, String>> mPendingCheckpoints;
   private int mThreshold;
   private boolean mUseDefaultLooper;
   

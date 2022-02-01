@@ -8,31 +8,31 @@ import java.util.Set;
 public class c
   extends a
 {
-  protected HashMap d = null;
-  private HashMap e = new HashMap();
+  protected HashMap<String, byte[]> d = null;
+  private HashMap<String, Object> e = new HashMap();
   private h f = new h();
   
-  public void a(String paramString, Object paramObject)
+  public <T> void a(String paramString, T paramT)
   {
     if (this.d != null)
     {
       if (paramString == null) {
         throw new IllegalArgumentException("put key can not is null");
       }
-      if (paramObject == null) {
+      if (paramT == null) {
         throw new IllegalArgumentException("put value can not is null");
       }
-      if ((paramObject instanceof Set)) {
+      if ((paramT instanceof Set)) {
         throw new IllegalArgumentException("can not support Set");
       }
       i locali = new i();
       locali.a(this.b);
-      locali.a(paramObject, 0);
-      paramObject = k.a(locali.a());
-      this.d.put(paramString, paramObject);
+      locali.a(paramT, 0);
+      paramT = k.a(locali.a());
+      this.d.put(paramString, paramT);
       return;
     }
-    super.a(paramString, paramObject);
+    super.a(paramString, paramT);
   }
   
   public void a(byte[] paramArrayOfByte)
@@ -64,7 +64,7 @@ public class c
     return super.a();
   }
   
-  public final Object b(String paramString, Object paramObject)
+  public final <T> T b(String paramString, T paramT)
   {
     Object localObject = null;
     if (this.d != null) {
@@ -82,12 +82,12 @@ public class c
         {
           this.f.a((byte[])localObject);
           this.f.a(this.b);
-          paramObject = this.f.a(paramObject, 0, true);
-          localObject = paramObject;
-          if (paramObject != null)
+          paramT = this.f.a(paramT, 0, true);
+          localObject = paramT;
+          if (paramT != null)
           {
-            this.e.put(paramString, paramObject);
-            return paramObject;
+            this.e.put(paramString, paramT);
+            return paramT;
           }
         }
         catch (Exception paramString)
@@ -110,9 +110,9 @@ public class c
       {
         this.f.a((byte[])localObject);
         this.f.a(this.b);
-        paramObject = this.f.a(paramObject, 0, true);
-        this.e.put(paramString, paramObject);
-        return paramObject;
+        paramT = this.f.a(paramT, 0, true);
+        this.e.put(paramString, paramT);
+        return paramT;
       }
       catch (Exception paramString)
       {

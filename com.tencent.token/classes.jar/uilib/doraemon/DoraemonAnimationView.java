@@ -8,7 +8,8 @@ import android.provider.Settings.Global;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.widget.ImageView;
-import com.tencent.token.io;
+import com.tencent.token.gi;
+import java.lang.ref.WeakReference;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -16,10 +17,10 @@ public class DoraemonAnimationView
   extends ImageView
 {
   private static final String a = DoraemonAnimationView.class.getSimpleName();
-  private static final Map b = new HashMap();
-  private static final Map c = new HashMap();
+  private static final Map<String, a> b = new HashMap();
+  private static final Map<String, WeakReference<a>> c = new HashMap();
   private final e d = new e(this);
-  private DoraemonAnimationView.b e;
+  private b e;
   private boolean f = false;
   private boolean g = false;
   private boolean h = false;
@@ -39,7 +40,7 @@ public class DoraemonAnimationView
   
   private void a(AttributeSet paramAttributeSet)
   {
-    this.e = DoraemonAnimationView.b.b;
+    this.e = b.b;
     this.d.c(false);
     setProgress(0.0F);
     a(false);
@@ -106,7 +107,7 @@ public class DoraemonAnimationView
     return this.d.b();
   }
   
-  public n getPerformanceTracker()
+  public h getPerformanceTracker()
   {
     return this.d.d();
   }
@@ -150,7 +151,7 @@ public class DoraemonAnimationView
     super.onDetachedFromWindow();
   }
   
-  public void setAlign(DoraemonAnimationView.a parama)
+  public void setAlign(a parama)
   {
     this.d.a(parama);
   }
@@ -170,9 +171,9 @@ public class DoraemonAnimationView
     requestLayout();
   }
   
-  public void setFontAssetDelegate(l paraml)
+  public void setFontAssetDelegate(f paramf)
   {
-    this.d.a(paraml);
+    this.d.a(paramf);
   }
   
   public void setImageAssetDelegate(c paramc)
@@ -225,9 +226,9 @@ public class DoraemonAnimationView
     }
   }
   
-  public void setShapeStrokeDelegate(io paramio)
+  public void setShapeStrokeDelegate(gi paramgi)
   {
-    this.d.a(paramio);
+    this.d.a(paramgi);
   }
   
   public void setSpeed(float paramFloat)
@@ -238,6 +239,16 @@ public class DoraemonAnimationView
   public void setTextDelegate(d paramd)
   {
     this.d.a(paramd);
+  }
+  
+  public static enum a
+  {
+    private a() {}
+  }
+  
+  public static enum b
+  {
+    private b() {}
   }
 }
 

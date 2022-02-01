@@ -2,6 +2,7 @@ package android.support.v7.widget;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
+import android.os.Parcelable;
 import android.support.annotation.RestrictTo;
 import android.support.v4.view.ViewPropertyAnimatorCompat;
 import android.support.v7.view.menu.MenuBuilder.Callback;
@@ -69,9 +70,9 @@ public abstract interface DecorToolbar
   
   public abstract boolean isTitleTruncated();
   
-  public abstract void restoreHierarchyState(SparseArray paramSparseArray);
+  public abstract void restoreHierarchyState(SparseArray<Parcelable> paramSparseArray);
   
-  public abstract void saveHierarchyState(SparseArray paramSparseArray);
+  public abstract void saveHierarchyState(SparseArray<Parcelable> paramSparseArray);
   
   public abstract void setBackgroundDrawable(Drawable paramDrawable);
   

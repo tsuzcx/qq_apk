@@ -1,10 +1,61 @@
 package com.tencent.token;
 
-public abstract interface bd
+import android.content.Context;
+import android.content.SharedPreferences;
+import com.tencent.halley.common.b;
+import com.tencent.halley.common.f;
+
+public final class bd
 {
-  public abstract void a(at paramat, au paramau);
+  private static bd d;
+  public bf a;
+  public bg b = new bg();
+  public be c;
   
-  public abstract void b(at paramat, au paramau);
+  private bd()
+  {
+    this.b.a();
+    this.a = new bf();
+    this.a.a();
+    this.c = new be();
+    be localbe = this.c;
+    SharedPreferences localSharedPreferences = f.a().getSharedPreferences("Access_Preferences", 0);
+    localbe.a = localSharedPreferences.getString("detectTaskCode", "200001010101011234");
+    localbe.b = localSharedPreferences.getString("ipInfo", "DEFAULT");
+  }
+  
+  public static bd a()
+  {
+    try
+    {
+      if (d == null) {
+        d = new bd();
+      }
+      bd localbd = d;
+      return localbd;
+    }
+    finally {}
+  }
+  
+  public final void a(bg parambg)
+  {
+    if (parambg == null) {
+      return;
+    }
+    b.b("AccessSchedulerConfiguration", "updateSdkCfInfo...SdkCfgInfo:" + parambg);
+    if ((parambg.a < 2000) || (parambg.a > 60000))
+    {
+      b.c("AccessSchedulerConfiguration", "updateSdkCfInfo...connectTimeout:" + parambg.a + " is checked to 20s");
+      parambg.a = 20000;
+    }
+    if ((parambg.b < 2000) || (parambg.b > 60000))
+    {
+      b.c("AccessSchedulerConfiguration", "updateSdkCfInfo...readTimeout:" + parambg.b + " is checked to 20s");
+      parambg.b = 20000;
+    }
+    this.b = parambg;
+    this.b.b();
+  }
 }
 
 

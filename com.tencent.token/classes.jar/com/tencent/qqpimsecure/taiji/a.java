@@ -1,6 +1,8 @@
 package com.tencent.qqpimsecure.taiji;
 
+import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Build.VERSION;
 import android.text.TextUtils;
@@ -9,6 +11,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
+import taiji.bn;
 import tmsdk.common.module.pgsdk.manager.ITaijiPreferenceManager;
 
 public class a
@@ -24,10 +27,19 @@ public class a
     if (Build.VERSION.SDK_INT >= 11) {
       this.d = 4;
     }
-    this.b = f.a().a(this.c, "tj", this.d);
+    this.b = c.a().a(this.c, "tj", this.d);
     IntentFilter localIntentFilter = new IntentFilter();
     localIntentFilter.addAction("act_got_ads");
-    paramContext.registerReceiver(new b(this), localIntentFilter);
+    paramContext.registerReceiver(new BroadcastReceiver()
+    {
+      public void onReceive(Context paramAnonymousContext, Intent paramAnonymousIntent)
+      {
+        bn.b("TaijiDao", "on receive ACTION_ON_GOT_ADS");
+        if ("act_got_ads".equals(paramAnonymousIntent.getAction())) {
+          a.a(a.this, c.a().a(a.a(a.this), "tj", a.b(a.this)));
+        }
+      }
+    }, localIntentFilter);
   }
   
   public static a a(Context paramContext)
@@ -48,7 +60,7 @@ public class a
     return this.b.getString("ad_" + paramInt, "");
   }
   
-  public List a(List paramList)
+  public List<String> a(List<Integer> paramList)
   {
     if ((paramList == null) || (paramList.size() == 0)) {
       return null;
@@ -71,12 +83,12 @@ public class a
     this.b.clear();
   }
   
-  public void a(HashMap paramHashMap)
+  public void a(HashMap<Integer, String> paramHashMap)
   {
     a(paramHashMap, true);
   }
   
-  public void a(HashMap paramHashMap, boolean paramBoolean)
+  public void a(HashMap<Integer, String> paramHashMap, boolean paramBoolean)
   {
     if ((paramHashMap != null) && (paramHashMap.size() > 0))
     {

@@ -12,6 +12,7 @@ import android.support.v7.appcompat.R.string;
 import android.support.v7.content.res.AppCompatResources;
 import android.util.TypedValue;
 import android.view.MenuItem;
+import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.SubMenu;
 import android.view.View;
 
@@ -23,8 +24,8 @@ public class ShareActionProvider
   final Context mContext;
   private int mMaxShownActivityCount = 4;
   private ActivityChooserModel.OnChooseActivityListener mOnChooseActivityListener;
-  private final ShareActionProvider.ShareMenuItemOnMenuItemClickListener mOnMenuItemClickListener = new ShareActionProvider.ShareMenuItemOnMenuItemClickListener(this);
-  ShareActionProvider.OnShareTargetSelectedListener mOnShareTargetSelectedListener;
+  private final ShareMenuItemOnMenuItemClickListener mOnMenuItemClickListener = new ShareMenuItemOnMenuItemClickListener();
+  OnShareTargetSelectedListener mOnShareTargetSelectedListener;
   String mShareHistoryFileName = "share_history.xml";
   
   public ShareActionProvider(Context paramContext)
@@ -39,7 +40,7 @@ public class ShareActionProvider
       return;
     }
     if (this.mOnChooseActivityListener == null) {
-      this.mOnChooseActivityListener = new ShareActionProvider.ShareActivityChooserModelPolicy(this);
+      this.mOnChooseActivityListener = new ShareActivityChooserModelPolicy();
     }
     ActivityChooserModel.get(this.mContext, this.mShareHistoryFileName).setOnChooseActivityListener(this.mOnChooseActivityListener);
   }
@@ -92,7 +93,7 @@ public class ShareActionProvider
     }
   }
   
-  public void setOnShareTargetSelectedListener(ShareActionProvider.OnShareTargetSelectedListener paramOnShareTargetSelectedListener)
+  public void setOnShareTargetSelectedListener(OnShareTargetSelectedListener paramOnShareTargetSelectedListener)
   {
     this.mOnShareTargetSelectedListener = paramOnShareTargetSelectedListener;
     setActivityChooserPolicyIfNeeded();
@@ -124,6 +125,45 @@ public class ShareActionProvider
       return;
     }
     paramIntent.addFlags(524288);
+  }
+  
+  public static abstract interface OnShareTargetSelectedListener
+  {
+    public abstract boolean onShareTargetSelected(ShareActionProvider paramShareActionProvider, Intent paramIntent);
+  }
+  
+  private class ShareActivityChooserModelPolicy
+    implements ActivityChooserModel.OnChooseActivityListener
+  {
+    ShareActivityChooserModelPolicy() {}
+    
+    public boolean onChooseActivity(ActivityChooserModel paramActivityChooserModel, Intent paramIntent)
+    {
+      if (ShareActionProvider.this.mOnShareTargetSelectedListener != null) {
+        ShareActionProvider.this.mOnShareTargetSelectedListener.onShareTargetSelected(ShareActionProvider.this, paramIntent);
+      }
+      return false;
+    }
+  }
+  
+  private class ShareMenuItemOnMenuItemClickListener
+    implements MenuItem.OnMenuItemClickListener
+  {
+    ShareMenuItemOnMenuItemClickListener() {}
+    
+    public boolean onMenuItemClick(MenuItem paramMenuItem)
+    {
+      paramMenuItem = ActivityChooserModel.get(ShareActionProvider.this.mContext, ShareActionProvider.this.mShareHistoryFileName).chooseActivity(paramMenuItem.getItemId());
+      if (paramMenuItem != null)
+      {
+        String str = paramMenuItem.getAction();
+        if (("android.intent.action.SEND".equals(str)) || ("android.intent.action.SEND_MULTIPLE".equals(str))) {
+          ShareActionProvider.this.updateIntent(paramMenuItem);
+        }
+        ShareActionProvider.this.mContext.startActivity(paramMenuItem);
+      }
+      return true;
+    }
   }
 }
 

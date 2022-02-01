@@ -8,9 +8,9 @@ import java.util.ArrayList;
 public final class n
   extends JceStruct
 {
-  static ArrayList ap;
+  static ArrayList<o> ap;
   static p aq;
-  public ArrayList an = null;
+  public ArrayList<o> an = null;
   public p ao = null;
   
   public void readFrom(JceInputStream paramJceInputStream)

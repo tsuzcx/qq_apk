@@ -1,21 +1,24 @@
 package com.tencent.turingfd.sdk.base;
 
 public final class Fig
-  extends float
+  extends break
 {
-  public String vc = "";
-  public String wc = "";
+  public int mc = 0;
+  public long nc = 0L;
+  public int oc = 0;
   
-  public void a(dp paramdp)
+  public void a(cy paramcy)
   {
-    this.vc = paramdp.a(0, true);
-    this.wc = paramdp.a(1, true);
+    this.mc = paramcy.a(this.mc, 0, true);
+    this.nc = paramcy.a(this.nc, 1, true);
+    this.oc = paramcy.a(this.oc, 2, true);
   }
   
-  public void a(dv paramdv)
+  public void a(db paramdb)
   {
-    paramdv.a(this.vc, 0);
-    paramdv.a(this.wc, 1);
+    paramdb.a(this.mc, 0);
+    paramdb.a(this.nc, 1);
+    paramdb.a(this.oc, 2);
   }
 }
 

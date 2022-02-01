@@ -1,32 +1,18 @@
 package taiji;
 
-import android.content.Context;
-import android.os.Build;
-import java.util.Locale;
-import tmsdk.common.module.pgsdk.IPermissionChecker;
+import android.graphics.Canvas;
+import android.graphics.ColorFilter;
+import android.graphics.Matrix;
+import android.graphics.RectF;
 
-public class bt
+public abstract interface bt
+  extends br
 {
-  static IPermissionChecker a;
+  public abstract void a(Canvas paramCanvas, Matrix paramMatrix, int paramInt);
   
-  public static IPermissionChecker a(Context paramContext, IPermissionChecker paramIPermissionChecker)
-  {
-    a = paramIPermissionChecker;
-    paramIPermissionChecker = Build.MANUFACTURER.toLowerCase(Locale.getDefault());
-    if (paramIPermissionChecker.contains("huawei")) {
-      return new bv(paramContext);
-    }
-    if (paramIPermissionChecker.contains("oppo")) {
-      return new bx(paramContext);
-    }
-    if (paramIPermissionChecker.contains("vivo")) {
-      return new bz(paramContext);
-    }
-    if (paramIPermissionChecker.contains("xiaomi")) {
-      return new bw(paramContext);
-    }
-    return new bu(paramContext);
-  }
+  public abstract void a(RectF paramRectF, Matrix paramMatrix);
+  
+  public abstract void a(String paramString1, String paramString2, ColorFilter paramColorFilter);
 }
 
 

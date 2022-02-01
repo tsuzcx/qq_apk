@@ -242,7 +242,13 @@ public class i
             if (j != 0)
             {
               e.b("rqdp{  asyn up module} %d", new Object[] { Integer.valueOf(this.b) });
-              b.b().a(new i.1(this));
+              b.b().a(new Runnable()
+              {
+                public final void run()
+                {
+                  i.this.h();
+                }
+              });
             }
           }
           else
@@ -271,7 +277,13 @@ public class i
             break label359;
           }
           e.b("rqdp{  asyn query module }%d", new Object[] { Integer.valueOf(this.b) });
-          b.b().a(new i.2(this));
+          b.b().a(new Runnable()
+          {
+            public final void run()
+            {
+              i.this.j();
+            }
+          });
           return;
         }
       }

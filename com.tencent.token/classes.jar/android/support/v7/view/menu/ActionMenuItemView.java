@@ -36,7 +36,7 @@ public class ActionMenuItemView
   MenuBuilder.ItemInvoker mItemInvoker;
   private int mMaxIconSize;
   private int mMinWidth;
-  ActionMenuItemView.PopupCallback mPopupCallback;
+  PopupCallback mPopupCallback;
   private int mSavedPaddingLeft;
   private CharSequence mTitle;
   
@@ -165,7 +165,7 @@ public class ActionMenuItemView
       setVisibility(paramInt);
       setEnabled(paramMenuItemImpl.isEnabled());
       if ((paramMenuItemImpl.hasSubMenu()) && (this.mForwardingListener == null)) {
-        this.mForwardingListener = new ActionMenuItemView.ActionMenuItemForwardingListener(this);
+        this.mForwardingListener = new ActionMenuItemForwardingListener();
       }
       return;
     }
@@ -292,7 +292,7 @@ public class ActionMenuItemView
     super.setPadding(paramInt1, paramInt2, paramInt3, paramInt4);
   }
   
-  public void setPopupCallback(ActionMenuItemView.PopupCallback paramPopupCallback)
+  public void setPopupCallback(PopupCallback paramPopupCallback)
   {
     this.mPopupCallback = paramPopupCallback;
   }
@@ -308,6 +308,51 @@ public class ActionMenuItemView
   public boolean showsIcon()
   {
     return true;
+  }
+  
+  private class ActionMenuItemForwardingListener
+    extends ForwardingListener
+  {
+    public ActionMenuItemForwardingListener()
+    {
+      super();
+    }
+    
+    public ShowableListMenu getPopup()
+    {
+      if (ActionMenuItemView.this.mPopupCallback != null) {
+        return ActionMenuItemView.this.mPopupCallback.getPopup();
+      }
+      return null;
+    }
+    
+    protected boolean onForwardingStarted()
+    {
+      boolean bool2 = false;
+      boolean bool1 = bool2;
+      if (ActionMenuItemView.this.mItemInvoker != null)
+      {
+        bool1 = bool2;
+        if (ActionMenuItemView.this.mItemInvoker.invokeItem(ActionMenuItemView.this.mItemData))
+        {
+          ShowableListMenu localShowableListMenu = getPopup();
+          bool1 = bool2;
+          if (localShowableListMenu != null)
+          {
+            bool1 = bool2;
+            if (localShowableListMenu.isShowing()) {
+              bool1 = true;
+            }
+          }
+        }
+      }
+      return bool1;
+    }
+  }
+  
+  public static abstract class PopupCallback
+  {
+    public abstract ShowableListMenu getPopup();
   }
 }
 

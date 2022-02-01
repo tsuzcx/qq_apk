@@ -31,10 +31,10 @@ public class ds
   private Socket nq;
   private DataOutputStream nr;
   private DataInputStream ns;
-  private ds.a nt;
+  private a nt;
   private boolean nu = false;
   
-  public ds(Context paramContext, byte paramByte, boolean paramBoolean, ds.a parama, dp paramdp)
+  public ds(Context paramContext, byte paramByte, boolean paramBoolean, a parama, dp paramdp)
   {
     this.mContext = paramContext;
     this.nk = paramByte;
@@ -43,7 +43,7 @@ public class ds
     this.hf = paramdp;
   }
   
-  public ds(Context paramContext, ds.a parama, dp paramdp)
+  public ds(Context paramContext, a parama, dp paramdp)
   {
     this(paramContext, (byte)0, false, parama, paramdp);
   }
@@ -115,7 +115,19 @@ public class ds
           if (j == 0) {
             break label417;
           }
-          ee.cT().addTask(new il(this, (dg)localObject2), "uploadConnectInfo");
+          ee.cT().addTask(new Runnable()
+          {
+            public void run()
+            {
+              this.a.ms = true;
+              this.a.mt = cx.z("tcp connect");
+              this.a.mp = "true";
+              db localdb = db.bZ();
+              if (localdb != null) {
+                this.a.d(localdb.bL());
+              }
+            }
+          }, "uploadConnectInfo");
         }
       }
       for (;;)
@@ -381,7 +393,15 @@ public class ds
   
   private void cD()
   {
-    this.no = new ij(this, "RcvThread");
+    this.no = new Thread("RcvThread")
+    {
+      public void run()
+      {
+        eh.e("TcpNetwork", "[tcp_control]RcvThread start...");
+        ds.a(ds.this);
+        eh.e("TcpNetwork", "[tcp_control]RcvThread end!");
+      }
+    };
     this.no.setPriority(10);
     this.no.start();
   }
@@ -484,37 +504,37 @@ public class ds
     // Byte code:
     //   0: iconst_0
     //   1: istore_1
-    //   2: ldc 61
-    //   4: ldc_w 583
-    //   7: invokestatic 128	btmsdkobf/eh:f	(Ljava/lang/String;Ljava/lang/String;)V
-    //   10: invokestatic 75	java/lang/System:currentTimeMillis	()J
+    //   2: ldc 69
+    //   4: ldc_w 585
+    //   7: invokestatic 136	btmsdkobf/eh:f	(Ljava/lang/String;Ljava/lang/String;)V
+    //   10: invokestatic 83	java/lang/System:currentTimeMillis	()J
     //   13: lstore_2
     //   14: aload_0
-    //   15: getfield 45	btmsdkobf/ds:np	Ljava/lang/Object;
+    //   15: getfield 54	btmsdkobf/ds:np	Ljava/lang/Object;
     //   18: astore 4
     //   20: aload 4
     //   22: monitorenter
     //   23: aload_0
-    //   24: getfield 300	btmsdkobf/ds:nq	Ljava/net/Socket;
+    //   24: getfield 306	btmsdkobf/ds:nq	Ljava/net/Socket;
     //   27: ifnonnull +16 -> 43
-    //   30: ldc 61
-    //   32: ldc_w 585
-    //   35: invokestatic 364	btmsdkobf/eh:g	(Ljava/lang/String;Ljava/lang/String;)V
+    //   30: ldc 69
+    //   32: ldc_w 587
+    //   35: invokestatic 368	btmsdkobf/eh:g	(Ljava/lang/String;Ljava/lang/String;)V
     //   38: aload 4
     //   40: monitorexit
     //   41: iconst_0
     //   42: ireturn
     //   43: aload 4
     //   45: monitorexit
-    //   46: ldc 61
-    //   48: ldc_w 587
-    //   51: invokestatic 128	btmsdkobf/eh:f	(Ljava/lang/String;Ljava/lang/String;)V
+    //   46: ldc 69
+    //   48: ldc_w 589
+    //   51: invokestatic 136	btmsdkobf/eh:f	(Ljava/lang/String;Ljava/lang/String;)V
     //   54: aload_0
-    //   55: invokespecial 281	btmsdkobf/ds:cG	()Z
+    //   55: invokespecial 287	btmsdkobf/ds:cG	()Z
     //   58: ifeq +21 -> 79
-    //   61: ldc 61
-    //   63: ldc_w 589
-    //   66: invokestatic 364	btmsdkobf/eh:g	(Ljava/lang/String;Ljava/lang/String;)V
+    //   61: ldc 69
+    //   63: ldc_w 591
+    //   66: invokestatic 368	btmsdkobf/eh:g	(Ljava/lang/String;Ljava/lang/String;)V
     //   69: iconst_0
     //   70: ireturn
     //   71: astore 5
@@ -522,104 +542,104 @@ public class ds
     //   75: monitorexit
     //   76: aload 5
     //   78: athrow
-    //   79: ldc 61
-    //   81: ldc_w 591
-    //   84: invokestatic 128	btmsdkobf/eh:f	(Ljava/lang/String;Ljava/lang/String;)V
+    //   79: ldc 69
+    //   81: ldc_w 593
+    //   84: invokestatic 136	btmsdkobf/eh:f	(Ljava/lang/String;Ljava/lang/String;)V
     //   87: aload_0
-    //   88: getfield 45	btmsdkobf/ds:np	Ljava/lang/Object;
+    //   88: getfield 54	btmsdkobf/ds:np	Ljava/lang/Object;
     //   91: astore 4
     //   93: aload 4
     //   95: monitorenter
-    //   96: ldc 61
-    //   98: ldc_w 593
-    //   101: invokestatic 128	btmsdkobf/eh:f	(Ljava/lang/String;Ljava/lang/String;)V
+    //   96: ldc 69
+    //   98: ldc_w 595
+    //   101: invokestatic 136	btmsdkobf/eh:f	(Ljava/lang/String;Ljava/lang/String;)V
     //   104: aload_0
-    //   105: getfield 300	btmsdkobf/ds:nq	Ljava/net/Socket;
-    //   108: invokevirtual 596	java/net/Socket:isInputShutdown	()Z
+    //   105: getfield 306	btmsdkobf/ds:nq	Ljava/net/Socket;
+    //   108: invokevirtual 598	java/net/Socket:isInputShutdown	()Z
     //   111: ifne +10 -> 121
     //   114: aload_0
-    //   115: getfield 300	btmsdkobf/ds:nq	Ljava/net/Socket;
-    //   118: invokevirtual 599	java/net/Socket:shutdownInput	()V
-    //   121: ldc 61
-    //   123: ldc_w 601
-    //   126: invokestatic 128	btmsdkobf/eh:f	(Ljava/lang/String;Ljava/lang/String;)V
+    //   115: getfield 306	btmsdkobf/ds:nq	Ljava/net/Socket;
+    //   118: invokevirtual 601	java/net/Socket:shutdownInput	()V
+    //   121: ldc 69
+    //   123: ldc_w 603
+    //   126: invokestatic 136	btmsdkobf/eh:f	(Ljava/lang/String;Ljava/lang/String;)V
     //   129: aload_0
-    //   130: getfield 331	btmsdkobf/ds:ns	Ljava/io/DataInputStream;
-    //   133: invokevirtual 604	java/io/DataInputStream:close	()V
-    //   136: ldc 61
-    //   138: ldc_w 606
-    //   141: invokestatic 128	btmsdkobf/eh:f	(Ljava/lang/String;Ljava/lang/String;)V
+    //   130: getfield 337	btmsdkobf/ds:ns	Ljava/io/DataInputStream;
+    //   133: invokevirtual 606	java/io/DataInputStream:close	()V
+    //   136: ldc 69
+    //   138: ldc_w 608
+    //   141: invokestatic 136	btmsdkobf/eh:f	(Ljava/lang/String;Ljava/lang/String;)V
     //   144: aload_0
-    //   145: getfield 300	btmsdkobf/ds:nq	Ljava/net/Socket;
-    //   148: invokevirtual 609	java/net/Socket:isOutputShutdown	()Z
+    //   145: getfield 306	btmsdkobf/ds:nq	Ljava/net/Socket;
+    //   148: invokevirtual 611	java/net/Socket:isOutputShutdown	()Z
     //   151: ifne +10 -> 161
     //   154: aload_0
-    //   155: getfield 300	btmsdkobf/ds:nq	Ljava/net/Socket;
-    //   158: invokevirtual 612	java/net/Socket:shutdownOutput	()V
-    //   161: ldc 61
-    //   163: ldc_w 614
-    //   166: invokestatic 128	btmsdkobf/eh:f	(Ljava/lang/String;Ljava/lang/String;)V
+    //   155: getfield 306	btmsdkobf/ds:nq	Ljava/net/Socket;
+    //   158: invokevirtual 614	java/net/Socket:shutdownOutput	()V
+    //   161: ldc 69
+    //   163: ldc_w 616
+    //   166: invokestatic 136	btmsdkobf/eh:f	(Ljava/lang/String;Ljava/lang/String;)V
     //   169: aload_0
-    //   170: getfield 318	btmsdkobf/ds:nr	Ljava/io/DataOutputStream;
-    //   173: invokevirtual 615	java/io/DataOutputStream:close	()V
+    //   170: getfield 324	btmsdkobf/ds:nr	Ljava/io/DataOutputStream;
+    //   173: invokevirtual 617	java/io/DataOutputStream:close	()V
     //   176: aload 4
     //   178: monitorexit
-    //   179: ldc 61
-    //   181: ldc_w 617
-    //   184: invokestatic 128	btmsdkobf/eh:f	(Ljava/lang/String;Ljava/lang/String;)V
+    //   179: ldc 69
+    //   181: ldc_w 619
+    //   184: invokestatic 136	btmsdkobf/eh:f	(Ljava/lang/String;Ljava/lang/String;)V
     //   187: aload_0
-    //   188: getfield 45	btmsdkobf/ds:np	Ljava/lang/Object;
+    //   188: getfield 54	btmsdkobf/ds:np	Ljava/lang/Object;
     //   191: astore 4
     //   193: aload 4
     //   195: monitorenter
-    //   196: ldc 61
-    //   198: ldc_w 619
-    //   201: invokestatic 128	btmsdkobf/eh:f	(Ljava/lang/String;Ljava/lang/String;)V
+    //   196: ldc 69
+    //   198: ldc_w 621
+    //   201: invokestatic 136	btmsdkobf/eh:f	(Ljava/lang/String;Ljava/lang/String;)V
     //   204: aload_0
-    //   205: getfield 300	btmsdkobf/ds:nq	Ljava/net/Socket;
-    //   208: invokevirtual 620	java/net/Socket:close	()V
+    //   205: getfield 306	btmsdkobf/ds:nq	Ljava/net/Socket;
+    //   208: invokevirtual 622	java/net/Socket:close	()V
     //   211: aload_0
     //   212: aconst_null
-    //   213: putfield 300	btmsdkobf/ds:nq	Ljava/net/Socket;
-    //   216: ldc 61
-    //   218: ldc_w 622
-    //   221: invokestatic 128	btmsdkobf/eh:f	(Ljava/lang/String;Ljava/lang/String;)V
+    //   213: putfield 306	btmsdkobf/ds:nq	Ljava/net/Socket;
+    //   216: ldc 69
+    //   218: ldc_w 624
+    //   221: invokestatic 136	btmsdkobf/eh:f	(Ljava/lang/String;Ljava/lang/String;)V
     //   224: aload 4
     //   226: monitorexit
-    //   227: ldc2_w 623
-    //   230: invokestatic 628	java/lang/Thread:sleep	(J)V
+    //   227: ldc2_w 625
+    //   230: invokestatic 630	java/lang/Thread:sleep	(J)V
     //   233: aload_0
-    //   234: ldc 39
-    //   236: putfield 41	btmsdkobf/ds:nm	Ljava/lang/String;
-    //   239: ldc 61
-    //   241: new 95	java/lang/StringBuilder
+    //   234: ldc 48
+    //   236: putfield 50	btmsdkobf/ds:nm	Ljava/lang/String;
+    //   239: ldc 69
+    //   241: new 103	java/lang/StringBuilder
     //   244: dup
-    //   245: invokespecial 96	java/lang/StringBuilder:<init>	()V
-    //   248: ldc_w 630
-    //   251: invokevirtual 102	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   245: invokespecial 104	java/lang/StringBuilder:<init>	()V
+    //   248: ldc_w 632
+    //   251: invokevirtual 110	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   254: iload_1
-    //   255: invokevirtual 122	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   258: ldc_w 632
-    //   261: invokevirtual 102	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   264: invokestatic 75	java/lang/System:currentTimeMillis	()J
+    //   255: invokevirtual 130	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   258: ldc_w 634
+    //   261: invokevirtual 110	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   264: invokestatic 83	java/lang/System:currentTimeMillis	()J
     //   267: lload_2
     //   268: lsub
-    //   269: invokevirtual 210	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   272: invokevirtual 125	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   275: invokestatic 128	btmsdkobf/eh:f	(Ljava/lang/String;Ljava/lang/String;)V
+    //   269: invokevirtual 216	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   272: invokevirtual 133	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   275: invokestatic 136	btmsdkobf/eh:f	(Ljava/lang/String;Ljava/lang/String;)V
     //   278: iload_1
     //   279: ireturn
     //   280: astore 5
-    //   282: ldc 61
-    //   284: new 95	java/lang/StringBuilder
+    //   282: ldc 69
+    //   284: new 103	java/lang/StringBuilder
     //   287: dup
-    //   288: invokespecial 96	java/lang/StringBuilder:<init>	()V
-    //   291: ldc_w 634
-    //   294: invokevirtual 102	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   288: invokespecial 104	java/lang/StringBuilder:<init>	()V
+    //   291: ldc_w 636
+    //   294: invokevirtual 110	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   297: aload 5
-    //   299: invokevirtual 250	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   302: invokevirtual 125	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   305: invokestatic 69	btmsdkobf/eh:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   299: invokevirtual 256	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   302: invokevirtual 133	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   305: invokestatic 77	btmsdkobf/eh:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   308: goto -187 -> 121
     //   311: astore 5
     //   313: aload 4
@@ -627,34 +647,34 @@ public class ds
     //   316: aload 5
     //   318: athrow
     //   319: astore 5
-    //   321: ldc 61
+    //   321: ldc 69
     //   323: aload 5
-    //   325: invokevirtual 637	java/lang/Throwable:getMessage	()Ljava/lang/String;
-    //   328: invokestatic 69	btmsdkobf/eh:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   325: invokevirtual 639	java/lang/Throwable:getMessage	()Ljava/lang/String;
+    //   328: invokestatic 77	btmsdkobf/eh:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   331: goto -195 -> 136
     //   334: astore 5
-    //   336: ldc 61
-    //   338: new 95	java/lang/StringBuilder
+    //   336: ldc 69
+    //   338: new 103	java/lang/StringBuilder
     //   341: dup
-    //   342: invokespecial 96	java/lang/StringBuilder:<init>	()V
-    //   345: ldc_w 639
-    //   348: invokevirtual 102	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   342: invokespecial 104	java/lang/StringBuilder:<init>	()V
+    //   345: ldc_w 641
+    //   348: invokevirtual 110	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   351: aload 5
-    //   353: invokevirtual 250	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   356: invokevirtual 125	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   359: invokestatic 69	btmsdkobf/eh:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   353: invokevirtual 256	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   356: invokevirtual 133	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   359: invokestatic 77	btmsdkobf/eh:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   362: goto -201 -> 161
     //   365: astore 5
-    //   367: ldc 61
-    //   369: new 95	java/lang/StringBuilder
+    //   367: ldc 69
+    //   369: new 103	java/lang/StringBuilder
     //   372: dup
-    //   373: invokespecial 96	java/lang/StringBuilder:<init>	()V
-    //   376: ldc_w 641
-    //   379: invokevirtual 102	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   373: invokespecial 104	java/lang/StringBuilder:<init>	()V
+    //   376: ldc_w 643
+    //   379: invokevirtual 110	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   382: aload 5
-    //   384: invokevirtual 250	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   387: invokevirtual 125	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   390: invokestatic 69	btmsdkobf/eh:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   384: invokevirtual 256	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   387: invokevirtual 133	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   390: invokestatic 77	btmsdkobf/eh:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   393: goto -217 -> 176
     //   396: astore 5
     //   398: aload 4
@@ -662,58 +682,58 @@ public class ds
     //   401: aload 5
     //   403: athrow
     //   404: astore 4
-    //   406: ldc_w 642
+    //   406: ldc_w 644
     //   409: istore_1
-    //   410: ldc 61
-    //   412: new 95	java/lang/StringBuilder
+    //   410: ldc 69
+    //   412: new 103	java/lang/StringBuilder
     //   415: dup
-    //   416: invokespecial 96	java/lang/StringBuilder:<init>	()V
-    //   419: ldc_w 644
-    //   422: invokevirtual 102	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   416: invokespecial 104	java/lang/StringBuilder:<init>	()V
+    //   419: ldc_w 646
+    //   422: invokevirtual 110	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   425: aload 4
-    //   427: invokevirtual 250	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   430: invokevirtual 125	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   433: invokestatic 69	btmsdkobf/eh:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   427: invokevirtual 256	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   430: invokevirtual 133	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   433: invokestatic 77	btmsdkobf/eh:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   436: aload_0
     //   437: aload 4
-    //   439: invokevirtual 645	java/lang/InterruptedException:toString	()Ljava/lang/String;
-    //   442: putfield 41	btmsdkobf/ds:nm	Ljava/lang/String;
+    //   439: invokevirtual 647	java/lang/InterruptedException:toString	()Ljava/lang/String;
+    //   442: putfield 50	btmsdkobf/ds:nm	Ljava/lang/String;
     //   445: goto -206 -> 239
     //   448: astore 4
-    //   450: ldc_w 646
+    //   450: ldc_w 648
     //   453: istore_1
-    //   454: ldc 61
-    //   456: new 95	java/lang/StringBuilder
+    //   454: ldc 69
+    //   456: new 103	java/lang/StringBuilder
     //   459: dup
-    //   460: invokespecial 96	java/lang/StringBuilder:<init>	()V
-    //   463: ldc_w 648
-    //   466: invokevirtual 102	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   460: invokespecial 104	java/lang/StringBuilder:<init>	()V
+    //   463: ldc_w 650
+    //   466: invokevirtual 110	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   469: aload 4
-    //   471: invokevirtual 250	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   474: invokevirtual 125	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   477: invokestatic 69	btmsdkobf/eh:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   471: invokevirtual 256	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   474: invokevirtual 133	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   477: invokestatic 77	btmsdkobf/eh:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   480: aload_0
     //   481: aload 4
-    //   483: invokevirtual 649	java/io/IOException:toString	()Ljava/lang/String;
-    //   486: putfield 41	btmsdkobf/ds:nm	Ljava/lang/String;
+    //   483: invokevirtual 651	java/io/IOException:toString	()Ljava/lang/String;
+    //   486: putfield 50	btmsdkobf/ds:nm	Ljava/lang/String;
     //   489: goto -250 -> 239
     //   492: astore 4
-    //   494: ldc_w 515
+    //   494: ldc_w 519
     //   497: istore_1
-    //   498: ldc 61
-    //   500: new 95	java/lang/StringBuilder
+    //   498: ldc 69
+    //   500: new 103	java/lang/StringBuilder
     //   503: dup
-    //   504: invokespecial 96	java/lang/StringBuilder:<init>	()V
-    //   507: ldc_w 651
-    //   510: invokevirtual 102	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   504: invokespecial 104	java/lang/StringBuilder:<init>	()V
+    //   507: ldc_w 653
+    //   510: invokevirtual 110	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   513: aload 4
-    //   515: invokevirtual 250	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   518: invokevirtual 125	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   521: invokestatic 69	btmsdkobf/eh:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   515: invokevirtual 256	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   518: invokevirtual 133	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   521: invokestatic 77	btmsdkobf/eh:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   524: aload_0
     //   525: aload 4
-    //   527: invokevirtual 461	java/lang/Throwable:toString	()Ljava/lang/String;
-    //   530: putfield 41	btmsdkobf/ds:nm	Ljava/lang/String;
+    //   527: invokevirtual 465	java/lang/Throwable:toString	()Ljava/lang/String;
+    //   530: putfield 50	btmsdkobf/ds:nm	Ljava/lang/String;
     //   533: goto -294 -> 239
     // Local variable table:
     //   start	length	slot	name	signature
@@ -860,10 +880,24 @@ public class ds
     }
   }
   
-  private void d(int paramInt, byte[] paramArrayOfByte)
+  private void d(final int paramInt, final byte[] paramArrayOfByte)
   {
     if (this.nt != null) {
-      ee.cT().addTask(new ik(this, paramInt, paramArrayOfByte), "shark-onreceive-callback");
+      ee.cT().addTask(new Runnable()
+      {
+        public void run()
+        {
+          try
+          {
+            ds.b(ds.this).c(paramInt, paramArrayOfByte);
+            return;
+          }
+          catch (Throwable localThrowable)
+          {
+            eh.h("TcpNetwork", localThrowable.getMessage());
+          }
+        }
+      }, "shark-onreceive-callback");
     }
   }
   
@@ -969,6 +1003,15 @@ public class ds
   public int stop()
   {
     return d(false, false);
+  }
+  
+  public static abstract interface a
+  {
+    public abstract void L(int paramInt);
+    
+    public abstract void a(int paramInt, Object paramObject);
+    
+    public abstract void c(int paramInt, byte[] paramArrayOfByte);
   }
 }
 

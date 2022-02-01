@@ -1,17 +1,17 @@
 package tmsdk.common.d.a.b;
 
 import com.qq.taf.jce.JceStruct;
-import com.tencent.token.fo;
+import com.tencent.token.ef;
 
 class i
 {
-  public fo a = null;
+  public ef a = null;
   public JceStruct b;
   public int c = 0;
   
-  public i(int paramInt, fo paramfo, JceStruct paramJceStruct)
+  public i(int paramInt, ef paramef, JceStruct paramJceStruct)
   {
-    this.a = paramfo;
+    this.a = paramef;
     this.b = paramJceStruct;
     this.c = paramInt;
   }

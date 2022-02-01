@@ -5,12 +5,14 @@ import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.token.core.bean.ZzbIntroItem;
 import com.tencent.token.ui.base.ScrollLayout;
-import com.tencent.token.utils.x;
+import com.tencent.token.ui.base.ScrollLayout.a;
+import com.tencent.token.utils.m;
 import java.util.ArrayList;
 
 public class RealNameDetailActivity
@@ -32,20 +34,20 @@ public class RealNameDetailActivity
   
   private String formatText(String paramString)
   {
-    return x.a(paramString, getResources().getDimension(2131296401), (int)(IndexActivity.S_RES_WIDTH * IndexActivity.S_DENSITY));
+    return m.a(paramString, getResources().getDimension(2131296401), (int)(IndexActivity.S_RES_WIDTH * IndexActivity.S_DENSITY));
   }
   
   private void initTextInfo()
   {
-    this.title1 = ((TextView)findViewById(2131559174).findViewById(2131558419));
-    this.title2 = ((TextView)findViewById(2131559175).findViewById(2131558419));
-    this.title3 = ((TextView)findViewById(2131559176).findViewById(2131558419));
-    this.title4 = ((TextView)findViewById(2131559177).findViewById(2131558419));
-    this.desc1 = ((TextView)findViewById(2131559174).findViewById(2131559178));
-    this.desc2 = ((TextView)findViewById(2131559175).findViewById(2131559178));
-    this.desc3 = ((TextView)findViewById(2131559176).findViewById(2131559178));
-    this.desc4 = ((TextView)findViewById(2131559177).findViewById(2131559178));
-    ArrayList localArrayList = x.l();
+    this.title1 = ((TextView)findViewById(2131559175).findViewById(2131558419));
+    this.title2 = ((TextView)findViewById(2131559176).findViewById(2131558419));
+    this.title3 = ((TextView)findViewById(2131559177).findViewById(2131558419));
+    this.title4 = ((TextView)findViewById(2131559178).findViewById(2131558419));
+    this.desc1 = ((TextView)findViewById(2131559175).findViewById(2131559179));
+    this.desc2 = ((TextView)findViewById(2131559176).findViewById(2131559179));
+    this.desc3 = ((TextView)findViewById(2131559177).findViewById(2131559179));
+    this.desc4 = ((TextView)findViewById(2131559178).findViewById(2131559179));
+    ArrayList localArrayList = m.l();
     if ((localArrayList != null) && (localArrayList.size() > 0)) {}
     try
     {
@@ -69,20 +71,50 @@ public class RealNameDetailActivity
   {
     setContentView(2130968731);
     initTextInfo();
-    Object localObject = (ScrollLayout)findViewById(2131559173);
+    Object localObject = (ScrollLayout)findViewById(2131559174);
     ((ScrollLayout)localObject).setToScreen(this.tab);
-    ((ScrollLayout)localObject).setOnScrollListner(new ug(this));
-    localObject = (Button)findViewById(2131559185);
-    this.iv1 = ((ImageView)findViewById(2131559181));
-    this.iv2 = ((ImageView)findViewById(2131559182));
-    this.iv3 = ((ImageView)findViewById(2131559183));
-    this.iv4 = ((ImageView)findViewById(2131559184));
+    ((ScrollLayout)localObject).setOnScrollListner(new ScrollLayout.a()
+    {
+      public void a(int paramAnonymousInt)
+      {
+        RealNameDetailActivity.this.iv1.setImageResource(2130837861);
+        RealNameDetailActivity.this.iv2.setImageResource(2130837861);
+        RealNameDetailActivity.this.iv3.setImageResource(2130837861);
+        RealNameDetailActivity.this.iv4.setImageResource(2130837861);
+        switch (paramAnonymousInt)
+        {
+        default: 
+          return;
+        case 0: 
+          RealNameDetailActivity.this.iv1.setImageResource(2130837862);
+          return;
+        case 1: 
+          RealNameDetailActivity.this.iv2.setImageResource(2130837862);
+          return;
+        case 2: 
+          RealNameDetailActivity.this.iv3.setImageResource(2130837862);
+          return;
+        }
+        RealNameDetailActivity.this.iv4.setImageResource(2130837862);
+      }
+    });
+    localObject = (Button)findViewById(2131559186);
+    this.iv1 = ((ImageView)findViewById(2131559182));
+    this.iv2 = ((ImageView)findViewById(2131559183));
+    this.iv3 = ((ImageView)findViewById(2131559184));
+    this.iv4 = ((ImageView)findViewById(2131559185));
     switch (this.tab)
     {
     }
     for (;;)
     {
-      ((Button)localObject).setOnClickListener(new uh(this));
+      ((Button)localObject).setOnClickListener(new View.OnClickListener()
+      {
+        public void onClick(View paramAnonymousView)
+        {
+          RealNameDetailActivity.this.finish();
+        }
+      });
       return;
       this.iv1.setImageResource(2130837862);
       continue;

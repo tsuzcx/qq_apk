@@ -1,5 +1,7 @@
 package taiji;
 
+import android.graphics.Rect;
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
@@ -8,15 +10,15 @@ import uilib.doraemon.a;
 public class cs
 {
   private static final String a = cs.class.getSimpleName();
-  private final List b;
+  private final List<an> b;
   private final a c;
   private final String d;
   private final long e;
-  private final cs.b f;
+  private final b f;
   private final long g;
   private final String h;
-  private final List i;
-  private final as j;
+  private final List<cc> i;
+  private final aj j;
   private final int k;
   private final int l;
   private final int m;
@@ -24,23 +26,23 @@ public class cs
   private final float o;
   private final int p;
   private final int q;
-  private final aq r;
-  private final ar s;
-  private final af t;
-  private final List u;
-  private final cs.c v;
+  private final ah r;
+  private final ai s;
+  private final ac t;
+  private final List<o<Float>> u;
+  private final c v;
   
-  private cs(List paramList1, a parama, String paramString1, long paramLong1, cs.b paramb, long paramLong2, String paramString2, List paramList2, as paramas, int paramInt1, int paramInt2, int paramInt3, float paramFloat1, float paramFloat2, int paramInt4, int paramInt5, aq paramaq, ar paramar, List paramList3, cs.c paramc, af paramaf)
+  private cs(List<an> paramList, a parama, String paramString1, long paramLong1, b paramb, long paramLong2, String paramString2, List<cc> paramList1, aj paramaj, int paramInt1, int paramInt2, int paramInt3, float paramFloat1, float paramFloat2, int paramInt4, int paramInt5, ah paramah, ai paramai, List<o<Float>> paramList2, c paramc, ac paramac)
   {
-    this.b = paramList1;
+    this.b = paramList;
     this.c = parama;
     this.d = paramString1;
     this.e = paramLong1;
     this.f = paramb;
     this.g = paramLong2;
     this.h = paramString2;
-    this.i = paramList2;
-    this.j = paramas;
+    this.i = paramList1;
+    this.j = paramaj;
     this.k = paramInt1;
     this.l = paramInt2;
     this.m = paramInt3;
@@ -48,11 +50,11 @@ public class cs
     this.o = paramFloat2;
     this.p = paramInt4;
     this.q = paramInt5;
-    this.r = paramaq;
-    this.s = paramar;
-    this.u = paramList3;
+    this.r = paramah;
+    this.s = paramai;
+    this.u = paramList2;
     this.v = paramc;
-    this.t = paramaf;
+    this.t = paramac;
   }
   
   public String a(String paramString)
@@ -102,7 +104,7 @@ public class cs
     return this.o;
   }
   
-  List d()
+  List<o<Float>> d()
   {
     return this.u;
   }
@@ -132,17 +134,17 @@ public class cs
     return this.q;
   }
   
-  List j()
+  List<cc> j()
   {
     return this.i;
   }
   
-  public cs.b k()
+  public b k()
   {
     return this.f;
   }
   
-  cs.c l()
+  c l()
   {
     return this.v;
   }
@@ -152,12 +154,12 @@ public class cs
     return this.g;
   }
   
-  List n()
+  List<an> n()
   {
     return this.b;
   }
   
-  as o()
+  aj o()
   {
     return this.j;
   }
@@ -177,12 +179,12 @@ public class cs
     return this.k;
   }
   
-  aq s()
+  ah s()
   {
     return this.r;
   }
   
-  ar t()
+  ai t()
   {
     return this.s;
   }
@@ -192,9 +194,28 @@ public class cs
     return a("");
   }
   
-  public af u()
+  public ac u()
   {
     return this.t;
+  }
+  
+  public static class a
+  {
+    public static cs a(a parama)
+    {
+      Rect localRect = parama.b();
+      return new cs(Collections.emptyList(), parama, "root", -1L, cs.b.a, -1L, null, Collections.emptyList(), aj.a.a(), 0, 0, 0, 0.0F, 0.0F, localRect.width(), localRect.height(), null, null, Collections.emptyList(), cs.c.a, null, null);
+    }
+  }
+  
+  public static enum b
+  {
+    private b() {}
+  }
+  
+  static enum c
+  {
+    private c() {}
   }
 }
 

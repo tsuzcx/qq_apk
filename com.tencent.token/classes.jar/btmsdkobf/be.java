@@ -1,6 +1,7 @@
 package btmsdkobf;
 
 import android.content.Context;
+import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Map;
@@ -25,7 +26,7 @@ public class be
     r().a(r().fy, paramInt, paramString, true);
   }
   
-  public static String a(ArrayList paramArrayList)
+  public static String a(ArrayList<bd> paramArrayList)
   {
     StringBuffer localStringBuffer = new StringBuffer();
     int i = 0;
@@ -183,7 +184,18 @@ public class be
     }
     localObject = bx.ar();
     eg.e("ActionStats", "sendShark, ECmd.Cmd_CSFeature");
-    ((bx)localObject).a(3651, localn, null, 2, new ex(localbe), 0L);
+    ((bx)localObject).a(3651, localn, null, 2, new cj()
+    {
+      public void onFinish(int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3, int paramAnonymousInt4, JceStruct paramAnonymousJceStruct)
+      {
+        eg.e("ActionStats", "sendShark, ECmd.Cmd_CSFeature, retCode:[" + paramAnonymousInt3 + "]dataRetCode:[" + paramAnonymousInt4 + "]");
+        if (paramAnonymousInt3 == 0)
+        {
+          this.a.s();
+          this.a.t();
+        }
+      }
+    }, 0L);
   }
   
   public static boolean x()
@@ -191,7 +203,7 @@ public class be
     return ec.cS().getBoolean("id", true);
   }
   
-  ArrayList a(ec paramec)
+  ArrayList<o> a(ec paramec)
   {
     ArrayList localArrayList = new ArrayList();
     paramec = paramec.getAll();
@@ -251,7 +263,7 @@ public class be
     }
   }
   
-  ArrayList a(ec paramec, String paramString)
+  ArrayList<o> a(ec paramec, String paramString)
   {
     paramString = null;
     if (paramec == null) {
@@ -289,17 +301,69 @@ public class be
     }
   }
   
-  void a(int paramInt1, int paramInt2)
+  void a(final int paramInt1, final int paramInt2)
   {
-    ee.cT().addTask(new cq(this, paramInt1, paramInt2), "doxxx");
+    ee.cT().addTask(new Runnable()
+    {
+      public void run()
+      {
+        String str1 = be.d(paramInt1);
+        long l = System.currentTimeMillis();
+        String str2 = be.a(be.this).getString(str1, null);
+        if ((str2 != null) && (str2.length() > 8192)) {}
+        Object localObject1;
+        do
+        {
+          return;
+          localObject1 = new ArrayList();
+          localObject2 = new bd();
+          ((bd)localObject2).fr = paramInt1;
+          ((bd)localObject2).ft = l;
+          ((bd)localObject2).fs = 1;
+          ((bd)localObject2).errorCode = paramInt2;
+          ((ArrayList)localObject1).add(localObject2);
+          localObject1 = be.a((ArrayList)localObject1);
+        } while (localObject1 == null);
+        Object localObject2 = new StringBuilder();
+        if (str2 != null) {
+          ((StringBuilder)localObject2).append(str2);
+        }
+        ((StringBuilder)localObject2).append((String)localObject1);
+        be.a(be.this).putString(str1, ((StringBuilder)localObject2).toString());
+      }
+    }, "doxxx");
   }
   
-  void a(ec paramec, int paramInt, String paramString, boolean paramBoolean)
+  void a(final ec paramec, final int paramInt, final String paramString, final boolean paramBoolean)
   {
-    ee.cT().addTask(new dh(this, paramString, paramInt, paramec, paramBoolean), "doxxx");
+    ee.cT().addTask(new Runnable()
+    {
+      public void run()
+      {
+        if ((paramString == null) || (paramString.length() <= 0)) {}
+        String str2;
+        StringBuilder localStringBuilder;
+        do
+        {
+          return;
+          str2 = be.d(paramInt);
+          String str1 = paramec.getString(str2, null);
+          if ((str1 == null) || (paramBoolean)) {
+            str1 = "";
+          }
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append(str1);
+          localStringBuilder.append(System.currentTimeMillis());
+          localStringBuilder.append("|");
+          localStringBuilder.append(paramString);
+          localStringBuilder.append("$");
+        } while (localStringBuilder.length() > 16384);
+        paramec.putString(str2, localStringBuilder.toString());
+      }
+    }, "doxxx");
   }
   
-  ArrayList b(ArrayList paramArrayList)
+  ArrayList<o> b(ArrayList<bd> paramArrayList)
   {
     if (paramArrayList == null) {
       return null;
@@ -326,12 +390,33 @@ public class be
     return localArrayList;
   }
   
-  void b(int paramInt1, int paramInt2)
+  void b(final int paramInt1, final int paramInt2)
   {
-    ee.cT().addTask(new ct(this, paramInt1, paramInt2), "doxxx");
+    ee.cT().addTask(new Runnable()
+    {
+      public void run()
+      {
+        String str = be.d(paramInt1);
+        long l = System.currentTimeMillis();
+        Object localObject1 = new ArrayList();
+        Object localObject2 = new bd();
+        ((bd)localObject2).fr = paramInt1;
+        ((bd)localObject2).ft = l;
+        ((bd)localObject2).fs = 1;
+        ((bd)localObject2).errorCode = paramInt2;
+        ((ArrayList)localObject1).add(localObject2);
+        localObject1 = be.a((ArrayList)localObject1);
+        if (localObject1 != null)
+        {
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append((String)localObject1);
+          be.a(be.this).putString(str, ((StringBuilder)localObject2).toString());
+        }
+      }
+    }, "doxxx");
   }
   
-  ArrayList d(int paramInt, String paramString)
+  ArrayList<bd> d(int paramInt, String paramString)
   {
     localArrayList = new ArrayList();
     String str1 = paramString;
@@ -388,12 +473,12 @@ public class be
     r().fy.clear();
   }
   
-  public ArrayList u()
+  public ArrayList<o> u()
   {
     return a(this.fx, "Action");
   }
   
-  public ArrayList v()
+  public ArrayList<o> v()
   {
     return a(r().fy);
   }

@@ -2,6 +2,7 @@ package btmsdkobf;
 
 import android.content.Context;
 import android.text.TextUtils;
+import com.qq.taf.jce.JceStruct;
 
 public class dk
 {
@@ -15,7 +16,7 @@ public class dk
     this.mV = this.hF.bL().aF();
   }
   
-  private dj a(long paramLong, int paramInt, av paramav)
+  private dj<Long, Integer, JceStruct> a(long paramLong, int paramInt, av paramav)
   {
     if (paramav == null) {}
     do
@@ -141,7 +142,32 @@ public class dk
     }
     this.hF.bL().aE();
     this.mW = true;
-    cx.bE().b(5006, cz(), new ax(), 0, new ie(this), 30000L);
+    cx.bE().b(5006, cz(), new ax(), 0, new cj()
+    {
+      public void onFinish(int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3, int paramAnonymousInt4, JceStruct paramAnonymousJceStruct)
+      {
+        if ((paramAnonymousInt3 != 0) || (paramAnonymousInt4 != 0) || (paramAnonymousJceStruct == null)) {
+          eh.g("VidCertifier", "[cu_vid]registerVidIfNeed()-onFinish(), seqNo: " + paramAnonymousInt1 + " retCode: " + paramAnonymousInt3 + " dataRetCode: " + paramAnonymousInt4 + " resp: " + paramAnonymousJceStruct);
+        }
+        for (;;)
+        {
+          dk.a(dk.this, false);
+          return;
+          paramAnonymousJceStruct = ((ax)paramAnonymousJceStruct).dr;
+          if (!TextUtils.isEmpty(paramAnonymousJceStruct))
+          {
+            eh.f("VidCertifier", "[cu_vid]registerVidIfNeed()-onFinish(), succ, vid: " + paramAnonymousJceStruct);
+            dk.a(dk.this, paramAnonymousJceStruct);
+            dk.a(dk.this).bL().c(paramAnonymousJceStruct, true);
+            dk.a(dk.this).bL().d(paramAnonymousJceStruct, true);
+          }
+          else
+          {
+            eh.g("VidCertifier", "[cu_vid]registerVidIfNeed()-onFinish(), seqNo: " + paramAnonymousInt1 + ", vid is empty: " + paramAnonymousJceStruct);
+          }
+        }
+      }
+    }, 30000L);
   }
   
   public void b(int paramInt, boolean paramBoolean)
@@ -153,13 +179,43 @@ public class dk
       return;
       localaq = c(paramInt, paramBoolean);
     } while (localaq == null);
-    cx.bE().b(5007, localaq, new ay(), 0, new if(this), 30000L);
+    cx.bE().b(5007, localaq, new ay(), 0, new cj()
+    {
+      public void onFinish(int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3, int paramAnonymousInt4, JceStruct paramAnonymousJceStruct)
+      {
+        if ((paramAnonymousInt3 != 0) || (paramAnonymousInt4 != 0) || (paramAnonymousJceStruct == null)) {}
+        do
+        {
+          return;
+          paramAnonymousJceStruct = ((ay)paramAnonymousJceStruct).dr;
+        } while (TextUtils.isEmpty(paramAnonymousJceStruct));
+        dk.a(dk.this, paramAnonymousJceStruct);
+        dk.a(dk.this).bL().c(paramAnonymousJceStruct, false);
+        dk.a(dk.this).bL().d(paramAnonymousJceStruct, false);
+      }
+    }, 30000L);
   }
   
   public void c(cy.d paramd)
   {
-    ig localig = new ig(this);
-    paramd.a(0L, 15020, new av(), 0, localig, false);
+    cm local3 = new cm()
+    {
+      public dj<Long, Integer, JceStruct> a(int paramAnonymousInt1, long paramAnonymousLong, int paramAnonymousInt2, JceStruct paramAnonymousJceStruct)
+      {
+        if (paramAnonymousJceStruct == null)
+        {
+          eh.h("VidCertifier", "onRecvPush() null == push");
+          return null;
+        }
+        switch (paramAnonymousInt2)
+        {
+        default: 
+          return null;
+        }
+        return dk.a(dk.this, paramAnonymousLong, paramAnonymousInt1, (av)paramAnonymousJceStruct);
+      }
+    };
+    paramd.a(0L, 15020, new av(), 0, local3, false);
   }
 }
 

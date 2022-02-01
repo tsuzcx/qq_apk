@@ -8,7 +8,7 @@ public final class N
   implements Cloneable
 {
   private static byte[] m;
-  private static Map n;
+  private static Map<String, String> n;
   public int a = 0;
   public String b = "";
   public String c = "";
@@ -19,7 +19,7 @@ public final class N
   public byte[] h = null;
   public String i = "";
   public String j = "";
-  private Map k = null;
+  private Map<String, String> k = null;
   private String l = "";
   
   public final void a(h paramh)

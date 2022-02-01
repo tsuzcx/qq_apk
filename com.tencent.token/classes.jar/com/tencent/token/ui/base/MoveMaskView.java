@@ -13,7 +13,7 @@ import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.MeasureSpec;
-import com.tencent.token.ce;
+import com.tencent.token.br.a;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,7 +22,7 @@ public class MoveMaskView
 {
   private int A;
   private boolean B = false;
-  private bx C;
+  private a C;
   int a = -1;
   private Context b;
   private Paint c;
@@ -35,7 +35,7 @@ public class MoveMaskView
   private float j = 60.0F;
   private float k = 20.0F;
   private char[] l = { 65, 66, 67, 68, 69, 70, 66, 67, 68, 69, 71, 72 };
-  private List m = new ArrayList();
+  private List<Integer> m = new ArrayList();
   private int n = -1;
   private int o = 4;
   private int p = 8;
@@ -59,7 +59,7 @@ public class MoveMaskView
   {
     super(paramContext, paramAttributeSet, paramInt);
     this.b = paramContext;
-    paramContext = paramContext.getTheme().obtainStyledAttributes(paramAttributeSet, ce.moveMaskView, 0, 0);
+    paramContext = paramContext.getTheme().obtainStyledAttributes(paramAttributeSet, br.a.moveMaskView, 0, 0);
     try
     {
       this.s = paramContext.getColor(0, 10526880);
@@ -107,7 +107,7 @@ public class MoveMaskView
     }
   }
   
-  private int a(int paramInt, List paramList)
+  private int a(int paramInt, List<Integer> paramList)
   {
     int i2;
     if ((paramList == null) || (paramList.size() == 0))
@@ -155,7 +155,7 @@ public class MoveMaskView
     return localStringBuilder.toString();
   }
   
-  private List a(int paramInt1, char[] paramArrayOfChar, int paramInt2)
+  private List<Integer> a(int paramInt1, char[] paramArrayOfChar, int paramInt2)
   {
     if ((paramArrayOfChar == null) || (paramArrayOfChar.length == 0)) {}
     while ((paramInt1 < 0) || (paramInt1 >= paramArrayOfChar.length)) {
@@ -221,7 +221,7 @@ public class MoveMaskView
     return localRect.height();
   }
   
-  public bx getListener()
+  public a getListener()
   {
     return this.C;
   }
@@ -412,9 +412,9 @@ public class MoveMaskView
     this.o = paramInt;
   }
   
-  public void setOnTouchFinishedListener(bx parambx)
+  public void setOnTouchFinishedListener(a parama)
   {
-    this.C = parambx;
+    this.C = parama;
   }
   
   public void setText(String paramString)
@@ -424,6 +424,11 @@ public class MoveMaskView
     }
     this.l = paramString.toCharArray();
     requestLayout();
+  }
+  
+  public static abstract interface a
+  {
+    public abstract void a(List<Integer> paramList, String paramString);
   }
 }
 

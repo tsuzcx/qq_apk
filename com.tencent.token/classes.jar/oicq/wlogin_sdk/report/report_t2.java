@@ -16,7 +16,7 @@ public class report_t2
   private static final long serialVersionUID = 1L;
   public long _app = 0L;
   public long[] _app_list = null;
-  public TreeMap _log = new TreeMap();
+  public TreeMap<Integer, report_t3> _log = new TreeMap();
   public String _name = new String("");
   public String _oper = new String("");
   public int _rlen = 0;

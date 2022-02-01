@@ -1,6 +1,6 @@
 package com.tencent.token.core.bean;
 
-import com.tencent.token.global.h;
+import com.tencent.token.global.g;
 import java.io.Serializable;
 import org.json.JSONObject;
 
@@ -42,7 +42,7 @@ public class RealNameStatusResult
   public RealNameStatusResult(JSONObject paramJSONObject)
   {
     this.mRealStatus = paramJSONObject.getInt("realname_status");
-    h.a("real_name_status_result: " + paramJSONObject);
+    g.a("real_name_status_result: " + paramJSONObject);
     try
     {
       this.mToastText = paramJSONObject.getString("top_toast_text");
@@ -50,7 +50,7 @@ public class RealNameStatusResult
       switch (this.mRealStatus)
       {
       default: 
-        h.b("realname_status=" + this.mRealStatus + ", mobile=" + this.mMaskMobile);
+        g.b("realname_status=" + this.mRealStatus + ", mobile=" + this.mMaskMobile);
         return;
       }
     }
@@ -58,7 +58,7 @@ public class RealNameStatusResult
     {
       for (;;)
       {
-        h.c("json parse error: mToastText,mToastUrl");
+        g.c("json parse error: mToastText,mToastUrl");
         continue;
         this.mMaskName = paramJSONObject.getString("masked_name");
         this.mMaskId = paramJSONObject.getString("masked_id");
@@ -99,7 +99,7 @@ public class RealNameStatusResult
         {
           for (;;)
           {
-            h.c("json parse error: apply_refused_time");
+            g.c("json parse error: apply_refused_time");
           }
         }
         this.subTitle = paramJSONObject.getString("subtitle_text");

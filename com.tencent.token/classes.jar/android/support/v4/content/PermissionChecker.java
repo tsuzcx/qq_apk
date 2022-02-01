@@ -6,7 +6,11 @@ import android.os.Binder;
 import android.os.Process;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.annotation.RestrictTo;
 import android.support.v4.app.AppOpsManagerCompat;
+import java.lang.annotation.Annotation;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
 
 public final class PermissionChecker
 {
@@ -58,6 +62,10 @@ public final class PermissionChecker
   {
     return checkPermission(paramContext, paramString, Process.myPid(), Process.myUid(), paramContext.getPackageName());
   }
+  
+  @Retention(RetentionPolicy.SOURCE)
+  @RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
+  public static @interface PermissionResult {}
 }
 
 

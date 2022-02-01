@@ -1,10 +1,21 @@
 package com.tencent.turingfd.sdk.base;
 
-import android.view.View;
-
-public abstract interface av
+public class av
 {
-  public abstract void a(String paramString, View paramView);
+  public static final byte[] a = new byte[0];
+  public int b;
+  public byte[] c;
+  
+  public av(int paramInt, byte[] paramArrayOfByte)
+  {
+    this.b = paramInt;
+    this.c = paramArrayOfByte;
+  }
+  
+  public byte[] a()
+  {
+    return this.c;
+  }
 }
 
 

@@ -5,16 +5,19 @@ import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Message;
 import android.text.TextUtils;
 import android.view.Display;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.Window;
 import android.view.WindowManager;
 import android.view.WindowManager.LayoutParams;
 import android.widget.Button;
 import android.widget.TextView;
 import com.tencent.service.a;
-import com.tencent.service.d;
+import com.tencent.service.a.a;
+import com.tencent.service.a.c;
 import com.tencent.token.ui.IndexActivity;
 import com.tmsdk.TMSDKContext;
 import com.tmsdk.Unit;
@@ -23,19 +26,48 @@ import java.io.File;
 public class UpdateDownloadDialog
   extends Dialog
 {
-  d a;
+  a.a a;
   Button b;
   TextView c;
   TextView d;
-  Handler e = new f(this);
-  com.tencent.service.f f = new i(this);
+  Handler e = new Handler()
+  {
+    public void handleMessage(Message paramAnonymousMessage)
+    {
+      if (paramAnonymousMessage.what == 99) {
+        UpdateDownloadDialog.this.b();
+      }
+    }
+  };
+  a.c f = new a.c()
+  {
+    public void a(a.a paramAnonymousa)
+    {
+      UpdateDownloadDialog.this.a(paramAnonymousa);
+    }
+    
+    public void b(a.a paramAnonymousa)
+    {
+      UpdateDownloadDialog.this.a(paramAnonymousa);
+    }
+    
+    public void c(a.a paramAnonymousa)
+    {
+      UpdateDownloadDialog.this.a(paramAnonymousa);
+    }
+    
+    public void d(a.a paramAnonymousa)
+    {
+      UpdateDownloadDialog.this.a(paramAnonymousa);
+    }
+  };
   private Context g;
   
-  public UpdateDownloadDialog(Context paramContext, int paramInt, d paramd)
+  public UpdateDownloadDialog(Context paramContext, int paramInt, a.a parama)
   {
     super(paramContext, paramInt);
     this.g = paramContext;
-    this.a = paramd;
+    this.a = parama;
   }
   
   void a()
@@ -43,7 +75,7 @@ public class UpdateDownloadDialog
     if (this.a == null) {
       return;
     }
-    switch (j.a[this.a.f.ordinal()])
+    switch (5.a[this.a.f.ordinal()])
     {
     default: 
       return;
@@ -67,9 +99,9 @@ public class UpdateDownloadDialog
     a.a().d(this.a);
   }
   
-  void a(d paramd)
+  void a(a.a parama)
   {
-    if (paramd == this.a)
+    if (parama == this.a)
     {
       this.e.removeMessages(99);
       this.e.sendEmptyMessage(99);
@@ -81,7 +113,7 @@ public class UpdateDownloadDialog
     if (this.a == null) {
       return;
     }
-    switch (j.a[this.a.f.ordinal()])
+    switch (5.a[this.a.f.ordinal()])
     {
     case 3: 
     default: 
@@ -131,23 +163,35 @@ public class UpdateDownloadDialog
     paramBundle.setAttributes((WindowManager.LayoutParams)localObject);
     this.b = ((Button)findViewById(2131558680));
     this.c = ((TextView)findViewById(2131558419));
-    this.d = ((TextView)findViewById(2131558795));
-    findViewById(2131558948).setOnClickListener(new g(this));
-    this.b.setOnClickListener(new h(this));
+    this.d = ((TextView)findViewById(2131558796));
+    findViewById(2131558949).setOnClickListener(new View.OnClickListener()
+    {
+      public void onClick(View paramAnonymousView)
+      {
+        UpdateDownloadDialog.this.c();
+      }
+    });
+    this.b.setOnClickListener(new View.OnClickListener()
+    {
+      public void onClick(View paramAnonymousView)
+      {
+        UpdateDownloadDialog.this.a();
+      }
+    });
     b();
     localObject = e.a();
-    paramBundle = String.format("新版本V%1$d.%2$d.%3$d", new Object[] { Integer.valueOf(((e)localObject).e()), Integer.valueOf(((e)localObject).f()), Integer.valueOf(((e)localObject).g()) });
-    if (!TextUtils.isEmpty(((e)localObject).q())) {
-      paramBundle = ((e)localObject).q();
+    paramBundle = String.format("新版本V%1$d.%2$d.%3$d", new Object[] { Integer.valueOf(((e)localObject).d()), Integer.valueOf(((e)localObject).e()), Integer.valueOf(((e)localObject).f()) });
+    if (!TextUtils.isEmpty(((e)localObject).p())) {
+      paramBundle = ((e)localObject).p();
     }
     this.c.setText(paramBundle);
     paramBundle = new StringBuffer();
-    paramBundle.append(((e)localObject).i());
-    if (((e)localObject).j() > 0)
+    paramBundle.append(((e)localObject).h());
+    if (((e)localObject).i() > 0)
     {
       paramBundle.append('\n');
       paramBundle.append("更新包：");
-      paramBundle.append(Unit.transformShortType(((e)localObject).j(), true));
+      paramBundle.append(Unit.transformShortType(((e)localObject).i(), true));
     }
     this.d.setText(paramBundle.toString());
   }

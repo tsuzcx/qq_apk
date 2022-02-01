@@ -1,25 +1,25 @@
 package com.tencent.token.core.protocolcenter.protocol;
 
 import android.content.Context;
-import com.tencent.token.core.bean.j;
-import com.tencent.token.core.protocolcenter.e;
-import com.tencent.token.cp;
-import com.tencent.token.cv;
-import com.tencent.token.cw;
-import com.tencent.token.dr;
-import com.tencent.token.es;
-import com.tencent.token.ev;
+import com.tencent.token.by;
+import com.tencent.token.bz;
+import com.tencent.token.ca;
+import com.tencent.token.core.bean.h;
+import com.tencent.token.core.protocolcenter.d;
+import com.tencent.token.cr;
+import com.tencent.token.dk;
+import com.tencent.token.dn;
 import com.tencent.token.global.RqdApplication;
 import com.tencent.token.global.c;
-import com.tencent.token.global.f;
-import com.tencent.token.global.h;
-import com.tencent.token.utils.w;
-import com.tencent.token.utils.x;
+import com.tencent.token.global.e;
+import com.tencent.token.global.g;
+import com.tencent.token.utils.l;
+import com.tencent.token.utils.m;
 import java.net.URLEncoder;
 import org.json.JSONObject;
 
 public class ProtoDoSessionInfo
-  extends e
+  extends d
 {
   protected String a()
   {
@@ -29,21 +29,21 @@ public class ProtoDoSessionInfo
     {
       JSONObject localJSONObject = new JSONObject();
       str1 = str2;
-      int i = cw.a + 1;
+      int i = ca.a + 1;
       str1 = str2;
-      cw.a = i;
+      ca.a = i;
       str1 = str2;
       localJSONObject.put("seq_id", i);
       str1 = str2;
-      Object localObject = j.b();
+      Object localObject = h.b();
       str1 = str2;
-      localJSONObject.put("rmd_ver", ((j)localObject).g);
+      localJSONObject.put("rmd_ver", ((h)localObject).g);
       str1 = str2;
-      localJSONObject.put("rmd_times", ((j)localObject).h);
+      localJSONObject.put("rmd_times", ((h)localObject).h);
       str1 = str2;
-      localJSONObject.put("rmd_last_time", ((j)localObject).i);
+      localJSONObject.put("rmd_last_time", ((h)localObject).i);
       str1 = str2;
-      localJSONObject.put("config_ver", dr.a().h.b);
+      localJSONObject.put("config_ver", cr.a().h.b);
       str1 = str2;
       localObject = RqdApplication.j();
       if (localObject != null)
@@ -52,17 +52,17 @@ public class ProtoDoSessionInfo
         localJSONObject.put("sec_sig", URLEncoder.encode((String)localObject));
       }
       str1 = str2;
-      localJSONObject.put("channel_id", w.m());
+      localJSONObject.put("channel_id", l.m());
       str1 = str2;
-      localJSONObject.put("wtsdk_guid", w.a(cp.a(RqdApplication.l()).b()));
+      localJSONObject.put("wtsdk_guid", l.a(by.a(RqdApplication.l()).b()));
       str1 = str2;
-      localJSONObject.put("device_name", URLEncoder.encode(x.x()));
+      localJSONObject.put("device_name", URLEncoder.encode(m.x()));
       str1 = str2;
       localJSONObject.put("release_tag", c.a);
       str1 = str2;
       str2 = localJSONObject.toString();
       str1 = str2;
-      str2 = w.b(str2.getBytes());
+      str2 = l.b(str2.getBytes());
       str1 = str2;
     }
     catch (Exception localException)
@@ -70,13 +70,13 @@ public class ProtoDoSessionInfo
       for (;;)
       {
         localException.printStackTrace();
-        h.c("JSONException:" + localException.getMessage());
+        g.c("JSONException:" + localException.getMessage());
       }
       str1 = "?aq_base_sid=" + localException + "&data=" + str1;
       str1 = c.e() + "/cn/mbtoken3/mbtoken3_session_info" + str1;
-      h.c("url:" + str1);
+      g.c("url:" + str1);
     }
-    str2 = cv.a().b();
+    str2 = bz.a().b();
     if (str2 == null)
     {
       this.a.b(104);
@@ -85,7 +85,7 @@ public class ProtoDoSessionInfo
     return str1;
   }
   
-  protected void a(ev paramev) {}
+  protected void a(dn paramdn) {}
   
   protected void a(JSONObject paramJSONObject)
   {
@@ -96,21 +96,21 @@ public class ProtoDoSessionInfo
       this.a.a(i, "server errcode=" + i + ":" + paramJSONObject, paramJSONObject);
       return;
     }
-    paramJSONObject = w.c(paramJSONObject.getString("data"));
+    paramJSONObject = l.c(paramJSONObject.getString("data"));
     if (paramJSONObject != null)
     {
       paramJSONObject = new JSONObject(new String(paramJSONObject));
-      h.c(paramJSONObject.toString());
+      g.c(paramJSONObject.toString());
       if (paramJSONObject.has("new_config"))
       {
         JSONObject localJSONObject = paramJSONObject.getJSONObject("new_config");
-        dr.a().h.a(localJSONObject);
+        cr.a().h.a(localJSONObject);
       }
-      if ((paramJSONObject.has("update")) && (!j.b().a(paramJSONObject.optJSONObject("update")))) {}
+      if ((paramJSONObject.has("update")) && (!h.b().a(paramJSONObject.optJSONObject("update")))) {}
       this.a.c();
       return;
     }
-    h.c("parseJSON error decodeData=" + paramJSONObject);
+    g.c("parseJSON error decodeData=" + paramJSONObject);
     a(10022, RqdApplication.l().getString(2131230925));
   }
 }

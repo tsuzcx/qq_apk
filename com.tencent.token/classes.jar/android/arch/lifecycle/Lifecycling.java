@@ -17,10 +17,10 @@ public class Lifecycling
 {
   private static final int GENERATED_CALLBACK = 2;
   private static final int REFLECTIVE_CALLBACK = 1;
-  private static Map sCallbackCache = new HashMap();
-  private static Map sClassToAdapters = new HashMap();
+  private static Map<Class, Integer> sCallbackCache = new HashMap();
+  private static Map<Class, List<Constructor<? extends GeneratedAdapter>>> sClassToAdapters = new HashMap();
   
-  private static GeneratedAdapter createGeneratedAdapter(Constructor paramConstructor, Object paramObject)
+  private static GeneratedAdapter createGeneratedAdapter(Constructor<? extends GeneratedAdapter> paramConstructor, Object paramObject)
   {
     try
     {
@@ -42,7 +42,7 @@ public class Lifecycling
   }
   
   @Nullable
-  private static Constructor generatedConstructor(Class paramClass)
+  private static Constructor<? extends GeneratedAdapter> generatedConstructor(Class<?> paramClass)
   {
     for (;;)
     {
@@ -123,7 +123,7 @@ public class Lifecycling
     return new ReflectiveGenericLifecycleObserver(paramObject);
   }
   
-  private static int getObserverConstructorType(Class paramClass)
+  private static int getObserverConstructorType(Class<?> paramClass)
   {
     if (sCallbackCache.containsKey(paramClass)) {
       return ((Integer)sCallbackCache.get(paramClass)).intValue();
@@ -133,12 +133,12 @@ public class Lifecycling
     return i;
   }
   
-  private static boolean isLifecycleParent(Class paramClass)
+  private static boolean isLifecycleParent(Class<?> paramClass)
   {
     return (paramClass != null) && (LifecycleObserver.class.isAssignableFrom(paramClass));
   }
   
-  private static int resolveObserverCallbackType(Class paramClass)
+  private static int resolveObserverCallbackType(Class<?> paramClass)
   {
     if (paramClass.getCanonicalName() == null) {
       return 1;

@@ -1,27 +1,21 @@
 package com.tencent.turingfd.sdk.base;
 
 public final class Flat
-  extends float
+  extends break
 {
-  public int Ac = 0;
-  public String Qb = "";
-  public String aa = "";
-  public String version = "";
+  public String sc = "";
+  public String tc = "";
   
-  public void a(dp paramdp)
+  public void a(cy paramcy)
   {
-    this.Qb = paramdp.a(0, true);
-    this.Ac = paramdp.a(this.Ac, 1, true);
-    this.version = paramdp.a(2, true);
-    this.aa = paramdp.a(3, true);
+    this.sc = paramcy.a(0, true);
+    this.tc = paramcy.a(1, true);
   }
   
-  public void a(dv paramdv)
+  public void a(db paramdb)
   {
-    paramdv.a(this.Qb, 0);
-    paramdv.a(this.Ac, 1);
-    paramdv.a(this.version, 2);
-    paramdv.a(this.aa, 3);
+    paramdb.a(this.sc, 0);
+    paramdb.a(this.tc, 1);
   }
 }
 

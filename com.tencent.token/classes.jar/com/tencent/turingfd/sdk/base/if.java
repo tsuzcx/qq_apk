@@ -1,18 +1,21 @@
 package com.tencent.turingfd.sdk.base;
 
 public final class if
-  extends float
+  extends break
 {
-  public int Aa = 0;
-  public int Ba = 0;
-  public boolean Ca = false;
-  public String Da = "";
-  public String Ea = "";
-  public int F = 0;
-  public String Fa = "";
-  public boolean Ga = false;
-  public boolean Ha = false;
-  public int Ia = 1;
+  public String Aa = "";
+  public int B = 0;
+  public String Ba = "";
+  public String Ca = "";
+  public boolean Da = false;
+  public boolean Ea = false;
+  public int Fa = 1;
+  public String Ga = "";
+  public String H = "";
+  public String Ha = "";
+  public String I = "";
+  public String Ia = "";
+  public String J = "";
   public String Ja = "";
   public String K = "";
   public String Ka = "";
@@ -20,339 +23,336 @@ public final class if
   public String Ma = "";
   public String Na = "";
   public String Oa = "";
-  public String Pa = "";
+  public long Pa = 0L;
   public String Q = "";
   public String Qa = "";
-  public String R = "";
+  public int R = 1;
   public String Ra = "";
   public String S = "";
-  public long Sa = 0L;
+  public int Sa = 0;
   public String Ta = "";
   public String U = "";
   public String Ua = "";
-  public int Va = 0;
-  public int W = 1;
-  public String Wa = "";
-  public String Xa = "";
-  public String Ya = "";
-  public String aa = "";
-  public String ba = "";
-  public int ca = 0;
-  public int da = 0;
-  public boolean ea = false;
+  public String Va = "";
+  public int W = 0;
+  public int aa = 0;
+  public boolean ba = false;
+  public String ca = "";
+  public String da = "";
+  public int ea = 0;
   public String fa = "";
-  public String ga = "";
+  public short ga = 0;
   public int ha = 0;
   public String ia = "";
-  public short ja = 0;
+  public String ja = "";
   public int ka = 0;
   public String la = "";
-  public String ma = "";
-  public int na = 0;
-  public String oa = "";
-  public long pa = 0L;
-  public long qa = 0L;
-  public long ra = 0L;
+  public long ma = 0L;
+  public long na = 0L;
+  public long oa = 0L;
+  public String pa = "";
+  public String qa = "";
+  public String ra = "";
   public String sa = "";
   public String ta = "";
   public String ua = "";
   public String va = "";
   public String version = "";
   public String wa = "";
-  public String xa = "";
-  public String ya = "";
-  public String za = "";
+  public int xa = 0;
+  public int ya = 0;
+  public boolean za = false;
   
-  public float a()
+  public break a()
   {
     return new if();
   }
   
-  public void a(dp paramdp)
+  public void a(cy paramcy)
   {
-    this.K = paramdp.a(0, true);
-    this.Q = paramdp.a(1, false);
-    this.R = paramdp.a(2, false);
-    this.S = paramdp.a(3, false);
-    this.U = paramdp.a(4, false);
-    this.W = paramdp.a(this.W, 5, false);
-    this.aa = paramdp.a(6, false);
-    this.F = paramdp.a(this.F, 7, false);
-    this.ba = paramdp.a(8, false);
-    this.ca = paramdp.a(this.ca, 9, false);
-    this.da = paramdp.a(this.da, 10, false);
-    this.ea = paramdp.a(this.ea, 11, false);
-    this.fa = paramdp.a(12, false);
-    this.ga = paramdp.a(13, false);
-    this.ha = paramdp.a(this.ha, 14, false);
-    this.ia = paramdp.a(15, false);
-    this.ja = paramdp.a(this.ja, 16, false);
-    this.ka = paramdp.a(this.ka, 17, false);
-    this.la = paramdp.a(18, false);
-    this.ma = paramdp.a(19, false);
-    this.na = paramdp.a(this.na, 20, false);
-    this.oa = paramdp.a(21, false);
-    this.pa = paramdp.a(this.pa, 22, false);
-    this.qa = paramdp.a(this.qa, 23, false);
-    this.ra = paramdp.a(this.ra, 24, false);
-    this.sa = paramdp.a(25, false);
-    this.ta = paramdp.a(26, false);
-    this.ua = paramdp.a(27, false);
-    this.va = paramdp.a(28, false);
-    this.wa = paramdp.a(29, false);
-    this.xa = paramdp.a(30, false);
-    this.ya = paramdp.a(31, false);
-    this.za = paramdp.a(32, false);
-    this.Aa = paramdp.a(this.Aa, 33, false);
-    this.Ba = paramdp.a(this.Ba, 34, false);
-    this.Ca = paramdp.a(this.Ca, 35, false);
-    this.Da = paramdp.a(36, false);
-    this.Ea = paramdp.a(37, false);
-    this.Fa = paramdp.a(38, false);
-    this.Ga = paramdp.a(this.Ga, 39, false);
-    this.Ha = paramdp.a(this.Ha, 40, false);
-    this.version = paramdp.a(41, false);
-    this.Ia = paramdp.a(this.Ia, 42, false);
-    this.Ja = paramdp.a(43, false);
-    this.Ka = paramdp.a(44, false);
-    this.La = paramdp.a(45, false);
-    this.Ma = paramdp.a(46, false);
-    this.Na = paramdp.a(47, false);
-    this.Oa = paramdp.a(48, false);
-    this.Pa = paramdp.a(49, false);
-    this.Qa = paramdp.a(50, false);
-    this.Ra = paramdp.a(51, false);
-    this.Sa = paramdp.a(this.Sa, 52, false);
-    this.Ta = paramdp.a(53, false);
-    this.Ua = paramdp.a(54, false);
-    this.Va = paramdp.a(this.Va, 55, false);
-    this.Wa = paramdp.a(56, false);
-    this.Xa = paramdp.a(57, false);
-    this.Ya = paramdp.a(58, false);
+    this.H = paramcy.a(0, true);
+    this.I = paramcy.a(1, false);
+    this.J = paramcy.a(2, false);
+    this.K = paramcy.a(3, false);
+    this.Q = paramcy.a(4, false);
+    this.R = paramcy.a(this.R, 5, false);
+    this.S = paramcy.a(6, false);
+    this.B = paramcy.a(this.B, 7, false);
+    this.U = paramcy.a(8, false);
+    this.W = paramcy.a(this.W, 9, false);
+    this.aa = paramcy.a(this.aa, 10, false);
+    this.ba = paramcy.a(this.ba, 11, false);
+    this.ca = paramcy.a(12, false);
+    this.da = paramcy.a(13, false);
+    this.ea = paramcy.a(this.ea, 14, false);
+    this.fa = paramcy.a(15, false);
+    this.ga = paramcy.a(this.ga, 16, false);
+    this.ha = paramcy.a(this.ha, 17, false);
+    this.ia = paramcy.a(18, false);
+    this.ja = paramcy.a(19, false);
+    this.ka = paramcy.a(this.ka, 20, false);
+    this.la = paramcy.a(21, false);
+    this.ma = paramcy.a(this.ma, 22, false);
+    this.na = paramcy.a(this.na, 23, false);
+    this.oa = paramcy.a(this.oa, 24, false);
+    this.pa = paramcy.a(25, false);
+    this.qa = paramcy.a(26, false);
+    this.ra = paramcy.a(27, false);
+    this.sa = paramcy.a(28, false);
+    this.ta = paramcy.a(29, false);
+    this.ua = paramcy.a(30, false);
+    this.va = paramcy.a(31, false);
+    this.wa = paramcy.a(32, false);
+    this.xa = paramcy.a(this.xa, 33, false);
+    this.ya = paramcy.a(this.ya, 34, false);
+    this.za = paramcy.a(this.za, 35, false);
+    this.Aa = paramcy.a(36, false);
+    this.Ba = paramcy.a(37, false);
+    this.Ca = paramcy.a(38, false);
+    this.Da = paramcy.a(this.Da, 39, false);
+    this.Ea = paramcy.a(this.Ea, 40, false);
+    this.version = paramcy.a(41, false);
+    this.Fa = paramcy.a(this.Fa, 42, false);
+    this.Ga = paramcy.a(43, false);
+    this.Ha = paramcy.a(44, false);
+    this.Ia = paramcy.a(45, false);
+    this.Ja = paramcy.a(46, false);
+    this.Ka = paramcy.a(47, false);
+    this.La = paramcy.a(48, false);
+    this.Ma = paramcy.a(49, false);
+    this.Na = paramcy.a(50, false);
+    this.Oa = paramcy.a(51, false);
+    this.Pa = paramcy.a(this.Pa, 52, false);
+    this.Qa = paramcy.a(53, false);
+    this.Ra = paramcy.a(54, false);
+    this.Sa = paramcy.a(this.Sa, 55, false);
+    this.Ta = paramcy.a(56, false);
+    this.Ua = paramcy.a(57, false);
+    this.Va = paramcy.a(58, false);
   }
   
-  public void a(dv paramdv)
+  public void a(db paramdb)
   {
-    paramdv.a(this.K, 0);
-    String str = this.Q;
+    paramdb.a(this.H, 0);
+    String str = this.I;
     if (str != null) {
-      paramdv.a(str, 1);
+      paramdb.a(str, 1);
     }
-    str = this.R;
+    str = this.J;
     if (str != null) {
-      paramdv.a(str, 2);
+      paramdb.a(str, 2);
+    }
+    str = this.K;
+    if (str != null) {
+      paramdb.a(str, 3);
+    }
+    str = this.Q;
+    if (str != null) {
+      paramdb.a(str, 4);
+    }
+    int i = this.R;
+    if (1 != i) {
+      paramdb.a(i, 5);
     }
     str = this.S;
     if (str != null) {
-      paramdv.a(str, 3);
+      paramdb.a(str, 6);
+    }
+    i = this.B;
+    if (i != 0) {
+      paramdb.a(i, 7);
     }
     str = this.U;
     if (str != null) {
-      paramdv.a(str, 4);
+      paramdb.a(str, 8);
     }
-    int i = this.W;
-    if (1 != i) {
-      paramdv.a(i, 5);
+    i = this.W;
+    if (i != 0) {
+      paramdb.a(i, 9);
     }
-    str = this.aa;
+    i = this.aa;
+    if (i != 0) {
+      paramdb.a(i, 10);
+    }
+    paramdb.a(this.ba, 11);
+    str = this.ca;
     if (str != null) {
-      paramdv.a(str, 6);
+      paramdb.a(str, 12);
     }
-    i = this.F;
-    if (i != 0) {
-      paramdv.a(i, 7);
-    }
-    str = this.ba;
+    str = this.da;
     if (str != null) {
-      paramdv.a(str, 8);
+      paramdb.a(str, 13);
     }
-    i = this.ca;
+    i = this.ea;
     if (i != 0) {
-      paramdv.a(i, 9);
+      paramdb.a(i, 14);
     }
-    i = this.da;
-    if (i != 0) {
-      paramdv.a(i, 10);
-    }
-    paramdv.a(this.ea, 11);
     str = this.fa;
     if (str != null) {
-      paramdv.a(str, 12);
+      paramdb.a(str, 15);
     }
-    str = this.ga;
-    if (str != null) {
-      paramdv.a(str, 13);
+    short s = this.ga;
+    if (s != 0) {
+      paramdb.a(s, 16);
     }
     i = this.ha;
     if (i != 0) {
-      paramdv.a(i, 14);
+      paramdb.a(i, 17);
     }
     str = this.ia;
     if (str != null) {
-      paramdv.a(str, 15);
+      paramdb.a(str, 18);
     }
-    short s = this.ja;
-    if (s != 0) {
-      paramdv.a(s, 16);
+    str = this.ja;
+    if (str != null) {
+      paramdb.a(str, 19);
     }
     i = this.ka;
     if (i != 0) {
-      paramdv.a(i, 17);
+      paramdb.a(i, 20);
     }
     str = this.la;
     if (str != null) {
-      paramdv.a(str, 18);
+      paramdb.a(str, 21);
     }
-    str = this.ma;
+    long l = this.ma;
+    if (l != 0L) {
+      paramdb.a(l, 22);
+    }
+    l = this.na;
+    if (l != 0L) {
+      paramdb.a(l, 23);
+    }
+    l = this.oa;
+    if (l != 0L) {
+      paramdb.a(l, 24);
+    }
+    str = this.pa;
     if (str != null) {
-      paramdv.a(str, 19);
+      paramdb.a(str, 25);
     }
-    i = this.na;
-    if (i != 0) {
-      paramdv.a(i, 20);
-    }
-    str = this.oa;
+    str = this.qa;
     if (str != null) {
-      paramdv.a(str, 21);
+      paramdb.a(str, 26);
     }
-    long l = this.pa;
-    if (l != 0L) {
-      paramdv.a(l, 22);
-    }
-    l = this.qa;
-    if (l != 0L) {
-      paramdv.a(l, 23);
-    }
-    l = this.ra;
-    if (l != 0L) {
-      paramdv.a(l, 24);
+    str = this.ra;
+    if (str != null) {
+      paramdb.a(str, 27);
     }
     str = this.sa;
     if (str != null) {
-      paramdv.a(str, 25);
+      paramdb.a(str, 28);
     }
     str = this.ta;
     if (str != null) {
-      paramdv.a(str, 26);
+      paramdb.a(str, 29);
     }
     str = this.ua;
     if (str != null) {
-      paramdv.a(str, 27);
+      paramdb.a(str, 30);
     }
     str = this.va;
     if (str != null) {
-      paramdv.a(str, 28);
+      paramdb.a(str, 31);
     }
     str = this.wa;
     if (str != null) {
-      paramdv.a(str, 29);
+      paramdb.a(str, 32);
     }
-    str = this.xa;
-    if (str != null) {
-      paramdv.a(str, 30);
-    }
-    str = this.ya;
-    if (str != null) {
-      paramdv.a(str, 31);
-    }
-    str = this.za;
-    if (str != null) {
-      paramdv.a(str, 32);
-    }
-    i = this.Aa;
+    i = this.xa;
     if (i != 0) {
-      paramdv.a(i, 33);
+      paramdb.a(i, 33);
     }
-    i = this.Ba;
+    i = this.ya;
     if (i != 0) {
-      paramdv.a(i, 34);
+      paramdb.a(i, 34);
     }
-    paramdv.a(this.Ca, 35);
-    str = this.Da;
+    paramdb.a(this.za, 35);
+    str = this.Aa;
     if (str != null) {
-      paramdv.a(str, 36);
+      paramdb.a(str, 36);
     }
-    str = this.Ea;
+    str = this.Ba;
     if (str != null) {
-      paramdv.a(str, 37);
+      paramdb.a(str, 37);
     }
-    str = this.Fa;
+    str = this.Ca;
     if (str != null) {
-      paramdv.a(str, 38);
+      paramdb.a(str, 38);
     }
-    paramdv.a(this.Ga, 39);
-    paramdv.a(this.Ha, 40);
+    paramdb.a(this.Da, 39);
+    paramdb.a(this.Ea, 40);
     str = this.version;
     if (str != null) {
-      paramdv.a(str, 41);
+      paramdb.a(str, 41);
     }
-    i = this.Ia;
+    i = this.Fa;
     if (i != 1) {
-      paramdv.a(i, 42);
+      paramdb.a(i, 42);
+    }
+    str = this.Ga;
+    if (str != null) {
+      paramdb.a(str, 43);
+    }
+    str = this.Ha;
+    if (str != null) {
+      paramdb.a(str, 44);
+    }
+    str = this.Ia;
+    if (str != null) {
+      paramdb.a(str, 45);
     }
     str = this.Ja;
     if (str != null) {
-      paramdv.a(str, 43);
+      paramdb.a(str, 46);
     }
     str = this.Ka;
     if (str != null) {
-      paramdv.a(str, 44);
+      paramdb.a(str, 47);
     }
     str = this.La;
     if (str != null) {
-      paramdv.a(str, 45);
+      paramdb.a(str, 48);
     }
     str = this.Ma;
     if (str != null) {
-      paramdv.a(str, 46);
+      paramdb.a(str, 49);
     }
     str = this.Na;
     if (str != null) {
-      paramdv.a(str, 47);
+      paramdb.a(str, 50);
     }
     str = this.Oa;
     if (str != null) {
-      paramdv.a(str, 48);
+      paramdb.a(str, 51);
     }
-    str = this.Pa;
-    if (str != null) {
-      paramdv.a(str, 49);
+    l = this.Pa;
+    if (l != 0L) {
+      paramdb.a(l, 52);
     }
     str = this.Qa;
     if (str != null) {
-      paramdv.a(str, 50);
+      paramdb.a(str, 53);
     }
     str = this.Ra;
     if (str != null) {
-      paramdv.a(str, 51);
+      paramdb.a(str, 54);
     }
-    l = this.Sa;
-    if (l != 0L) {
-      paramdv.a(l, 52);
+    i = this.Sa;
+    if (i != 0) {
+      paramdb.a(i, 55);
     }
     str = this.Ta;
     if (str != null) {
-      paramdv.a(str, 53);
+      paramdb.a(str, 56);
     }
     str = this.Ua;
     if (str != null) {
-      paramdv.a(str, 54);
+      paramdb.a(str, 57);
     }
-    i = this.Va;
-    if (i != 0) {
-      paramdv.a(i, 55);
-    }
-    str = this.Wa;
+    str = this.Va;
     if (str != null) {
-      paramdv.a(str, 56);
-    }
-    str = this.Xa;
-    if (str != null) {
-      paramdv.a(str, 57);
-    }
-    str = this.Ya;
-    if (str != null) {
-      paramdv.a(str, 58);
+      paramdb.a(str, 58);
     }
   }
 }

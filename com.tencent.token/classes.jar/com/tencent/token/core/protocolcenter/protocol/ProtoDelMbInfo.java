@@ -1,35 +1,35 @@
 package com.tencent.token.core.protocolcenter.protocol;
 
 import android.content.Context;
-import com.tencent.token.core.protocolcenter.e;
-import com.tencent.token.cv;
-import com.tencent.token.cw;
-import com.tencent.token.cx;
-import com.tencent.token.ev;
+import com.tencent.token.bz;
+import com.tencent.token.ca;
+import com.tencent.token.cb;
+import com.tencent.token.core.protocolcenter.d;
+import com.tencent.token.dn;
 import com.tencent.token.global.RqdApplication;
 import com.tencent.token.global.c;
-import com.tencent.token.global.f;
-import com.tencent.token.global.h;
-import com.tencent.token.utils.w;
+import com.tencent.token.global.e;
+import com.tencent.token.global.g;
+import com.tencent.token.utils.l;
 import java.util.HashMap;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class ProtoDelMbInfo
-  extends e
+  extends d
 {
   private long d;
   private int e;
   
-  public static void a(ev paramev, long paramLong, int paramInt)
+  public static void a(dn paramdn, long paramLong, int paramInt)
   {
-    paramev.c.put("param.uinhash", Long.valueOf(paramLong));
-    paramev.c.put("param.mbinfo.id", Integer.valueOf(paramInt));
+    paramdn.c.put("param.uinhash", Long.valueOf(paramLong));
+    paramdn.c.put("param.mbinfo.id", Integer.valueOf(paramInt));
   }
   
   protected String a()
   {
-    String str1 = cv.a().b();
+    String str1 = bz.a().b();
     if (str1 == null)
     {
       this.a.b(104);
@@ -40,12 +40,12 @@ public class ProtoDelMbInfo
     {
       ((JSONObject)localObject).put("uin", this.d);
       ((JSONObject)localObject).put("item_id", this.e);
-      int i = cw.a + 1;
-      cw.a = i;
+      int i = ca.a + 1;
+      ca.a = i;
       this.c = i;
       ((JSONObject)localObject).put("seq_id", this.c);
-      ((JSONObject)localObject).put("op_time", (int)(cx.c().s() / 1000L));
-      localObject = w.b(((JSONObject)localObject).toString().getBytes());
+      ((JSONObject)localObject).put("op_time", (int)(cb.c().s() / 1000L));
+      localObject = l.b(((JSONObject)localObject).toString().getBytes());
       if (localObject == null)
       {
         this.a.b(10000);
@@ -60,7 +60,7 @@ public class ProtoDelMbInfo
     }
     finally
     {
-      if (w.b(((JSONObject)localObject).toString().getBytes()) == null)
+      if (l.b(((JSONObject)localObject).toString().getBytes()) == null)
       {
         this.a.b(10000);
         return null;
@@ -70,10 +70,10 @@ public class ProtoDelMbInfo
     return c.e() + "/cn/mbtoken3/mbtoken3_del_mbitem_encrypt" + (String)localObject;
   }
   
-  protected void a(ev paramev)
+  protected void a(dn paramdn)
   {
-    this.d = ((Long)paramev.c.get("param.uinhash")).longValue();
-    this.e = ((Integer)paramev.c.get("param.mbinfo.id")).intValue();
+    this.d = ((Long)paramdn.c.get("param.uinhash")).longValue();
+    this.e = ((Integer)paramdn.c.get("param.mbinfo.id")).intValue();
   }
   
   protected void a(JSONObject paramJSONObject)
@@ -84,7 +84,7 @@ public class ProtoDelMbInfo
       a(i, paramJSONObject.getString("info"));
       return;
     }
-    paramJSONObject = w.c(paramJSONObject.getString("data"));
+    paramJSONObject = l.c(paramJSONObject.getString("data"));
     if (paramJSONObject != null)
     {
       i = new JSONObject(new String(paramJSONObject)).getInt("seq_id");
@@ -96,7 +96,7 @@ public class ProtoDelMbInfo
       this.a.c();
       return;
     }
-    h.c("parseJSON error decodeData=" + paramJSONObject);
+    g.c("parseJSON error decodeData=" + paramJSONObject);
     a(10022, RqdApplication.l().getString(2131230925));
   }
 }

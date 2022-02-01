@@ -1,9 +1,12 @@
 package com.tencent.mm.sdk.channel;
 
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import com.tencent.mm.sdk.platformtools.Log;
+import java.util.HashMap;
+import java.util.Map;
 
 public class MMessage
 {
@@ -32,6 +35,55 @@ public class MMessage
     paramContext.sendBroadcast(paramString2, paramString1);
     Log.d("MicroMsg.SDK.MMessage", "send mm message, intent=" + paramString2 + ", perm=" + paramString1);
     return true;
+  }
+  
+  public static abstract interface CallBack
+  {
+    public abstract void handleMessage(Intent paramIntent);
+  }
+  
+  public static final class Receiver
+    extends BroadcastReceiver
+  {
+    public static final Map<String, MMessage.CallBack> callbacks = new HashMap();
+    private final MMessage.CallBack o;
+    
+    public Receiver()
+    {
+      this(null);
+    }
+    
+    public Receiver(MMessage.CallBack paramCallBack)
+    {
+      this.o = paramCallBack;
+    }
+    
+    public static void registerCallBack(String paramString, MMessage.CallBack paramCallBack)
+    {
+      callbacks.put(paramString, paramCallBack);
+    }
+    
+    public static void unregisterCallBack(String paramString)
+    {
+      callbacks.remove(paramString);
+    }
+    
+    public final void onReceive(Context paramContext, Intent paramIntent)
+    {
+      Log.d("MicroMsg.SDK.MMessage", "receive intent=" + paramIntent);
+      if (this.o != null)
+      {
+        this.o.handleMessage(paramIntent);
+        Log.d("MicroMsg.SDK.MMessage", "mm message self-handled");
+      }
+      do
+      {
+        return;
+        paramContext = (MMessage.CallBack)callbacks.get(paramIntent.getAction());
+      } while (paramContext == null);
+      paramContext.handleMessage(paramIntent);
+      Log.d("MicroMsg.SDK.MMessage", "mm message handled");
+    }
   }
 }
 

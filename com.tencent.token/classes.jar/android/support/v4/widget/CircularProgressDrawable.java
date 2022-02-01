@@ -1,21 +1,32 @@
 package android.support.v4.widget;
 
 import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
 import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Canvas;
 import android.graphics.ColorFilter;
+import android.graphics.Paint;
 import android.graphics.Paint.Cap;
+import android.graphics.Paint.Style;
+import android.graphics.Path;
+import android.graphics.Path.FillType;
 import android.graphics.Rect;
+import android.graphics.RectF;
 import android.graphics.drawable.Animatable;
 import android.graphics.drawable.Drawable;
 import android.support.annotation.NonNull;
+import android.support.annotation.RestrictTo;
 import android.support.v4.util.Preconditions;
 import android.support.v4.view.animation.FastOutSlowInInterpolator;
 import android.util.DisplayMetrics;
 import android.view.animation.Interpolator;
 import android.view.animation.LinearInterpolator;
+import java.lang.annotation.Annotation;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
 
 public class CircularProgressDrawable
   extends Drawable
@@ -44,20 +55,20 @@ public class CircularProgressDrawable
   private Animator mAnimator;
   private boolean mFinishing;
   private Resources mResources;
-  private final CircularProgressDrawable.Ring mRing;
+  private final Ring mRing;
   private float mRotation;
   private float mRotationCount;
   
   public CircularProgressDrawable(@NonNull Context paramContext)
   {
     this.mResources = ((Context)Preconditions.checkNotNull(paramContext)).getResources();
-    this.mRing = new CircularProgressDrawable.Ring();
+    this.mRing = new Ring();
     this.mRing.setColors(COLORS);
     setStrokeWidth(2.5F);
     setupAnimators();
   }
   
-  private void applyFinishTranslation(float paramFloat, CircularProgressDrawable.Ring paramRing)
+  private void applyFinishTranslation(float paramFloat, Ring paramRing)
   {
     updateRingColor(paramFloat, paramRing);
     float f1 = (float)(Math.floor(paramRing.getStartingRotation() / 0.8F) + 1.0D);
@@ -67,7 +78,7 @@ public class CircularProgressDrawable
     paramRing.setRotation((f1 - paramRing.getStartingRotation()) * paramFloat + f2);
   }
   
-  private void applyTransformation(float paramFloat, CircularProgressDrawable.Ring paramRing, boolean paramBoolean)
+  private void applyTransformation(float paramFloat, Ring paramRing, boolean paramBoolean)
   {
     if (this.mFinishing) {
       applyFinishTranslation(paramFloat, paramRing);
@@ -119,7 +130,7 @@ public class CircularProgressDrawable
   
   private void setSizeParameters(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
   {
-    CircularProgressDrawable.Ring localRing = this.mRing;
+    Ring localRing = this.mRing;
     float f = this.mResources.getDisplayMetrics().density;
     localRing.setStrokeWidth(paramFloat2 * f);
     localRing.setCenterRadius(paramFloat1 * f);
@@ -129,17 +140,53 @@ public class CircularProgressDrawable
   
   private void setupAnimators()
   {
-    CircularProgressDrawable.Ring localRing = this.mRing;
+    final Ring localRing = this.mRing;
     ValueAnimator localValueAnimator = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F });
-    localValueAnimator.addUpdateListener(new CircularProgressDrawable.1(this, localRing));
+    localValueAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
+    {
+      public void onAnimationUpdate(ValueAnimator paramAnonymousValueAnimator)
+      {
+        float f = ((Float)paramAnonymousValueAnimator.getAnimatedValue()).floatValue();
+        CircularProgressDrawable.this.updateRingColor(f, localRing);
+        CircularProgressDrawable.this.applyTransformation(f, localRing, false);
+        CircularProgressDrawable.this.invalidateSelf();
+      }
+    });
     localValueAnimator.setRepeatCount(-1);
     localValueAnimator.setRepeatMode(1);
     localValueAnimator.setInterpolator(LINEAR_INTERPOLATOR);
-    localValueAnimator.addListener(new CircularProgressDrawable.2(this, localRing));
+    localValueAnimator.addListener(new Animator.AnimatorListener()
+    {
+      public void onAnimationCancel(Animator paramAnonymousAnimator) {}
+      
+      public void onAnimationEnd(Animator paramAnonymousAnimator) {}
+      
+      public void onAnimationRepeat(Animator paramAnonymousAnimator)
+      {
+        CircularProgressDrawable.this.applyTransformation(1.0F, localRing, true);
+        localRing.storeOriginals();
+        localRing.goToNextColor();
+        if (CircularProgressDrawable.this.mFinishing)
+        {
+          CircularProgressDrawable.access$302(CircularProgressDrawable.this, false);
+          paramAnonymousAnimator.cancel();
+          paramAnonymousAnimator.setDuration(1332L);
+          paramAnonymousAnimator.start();
+          localRing.setShowArrow(false);
+          return;
+        }
+        CircularProgressDrawable.access$202(CircularProgressDrawable.this, CircularProgressDrawable.this.mRotationCount + 1.0F);
+      }
+      
+      public void onAnimationStart(Animator paramAnonymousAnimator)
+      {
+        CircularProgressDrawable.access$202(CircularProgressDrawable.this, 0.0F);
+      }
+    });
     this.mAnimator = localValueAnimator;
   }
   
-  private void updateRingColor(float paramFloat, CircularProgressDrawable.Ring paramRing)
+  private void updateRingColor(float paramFloat, Ring paramRing)
   {
     if (paramFloat > 0.75F)
     {
@@ -347,6 +394,296 @@ public class CircularProgressDrawable
     this.mRing.setColorIndex(0);
     this.mRing.resetOriginals();
     invalidateSelf();
+  }
+  
+  @Retention(RetentionPolicy.SOURCE)
+  @RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
+  public static @interface ProgressDrawableSize {}
+  
+  private static class Ring
+  {
+    int mAlpha = 255;
+    Path mArrow;
+    int mArrowHeight;
+    final Paint mArrowPaint = new Paint();
+    float mArrowScale = 1.0F;
+    int mArrowWidth;
+    final Paint mCirclePaint = new Paint();
+    int mColorIndex;
+    int[] mColors;
+    int mCurrentColor;
+    float mEndTrim = 0.0F;
+    final Paint mPaint = new Paint();
+    float mRingCenterRadius;
+    float mRotation = 0.0F;
+    boolean mShowArrow;
+    float mStartTrim = 0.0F;
+    float mStartingEndTrim;
+    float mStartingRotation;
+    float mStartingStartTrim;
+    float mStrokeWidth = 5.0F;
+    final RectF mTempBounds = new RectF();
+    
+    Ring()
+    {
+      this.mPaint.setStrokeCap(Paint.Cap.SQUARE);
+      this.mPaint.setAntiAlias(true);
+      this.mPaint.setStyle(Paint.Style.STROKE);
+      this.mArrowPaint.setStyle(Paint.Style.FILL);
+      this.mArrowPaint.setAntiAlias(true);
+      this.mCirclePaint.setColor(0);
+    }
+    
+    void draw(Canvas paramCanvas, Rect paramRect)
+    {
+      RectF localRectF = this.mTempBounds;
+      float f1 = this.mRingCenterRadius + this.mStrokeWidth / 2.0F;
+      if (this.mRingCenterRadius <= 0.0F) {
+        f1 = Math.min(paramRect.width(), paramRect.height()) / 2.0F - Math.max(this.mArrowWidth * this.mArrowScale / 2.0F, this.mStrokeWidth / 2.0F);
+      }
+      localRectF.set(paramRect.centerX() - f1, paramRect.centerY() - f1, paramRect.centerX() + f1, f1 + paramRect.centerY());
+      f1 = (this.mStartTrim + this.mRotation) * 360.0F;
+      float f2 = (this.mEndTrim + this.mRotation) * 360.0F - f1;
+      this.mPaint.setColor(this.mCurrentColor);
+      this.mPaint.setAlpha(this.mAlpha);
+      float f3 = this.mStrokeWidth / 2.0F;
+      localRectF.inset(f3, f3);
+      paramCanvas.drawCircle(localRectF.centerX(), localRectF.centerY(), localRectF.width() / 2.0F, this.mCirclePaint);
+      localRectF.inset(-f3, -f3);
+      paramCanvas.drawArc(localRectF, f1, f2, false, this.mPaint);
+      drawTriangle(paramCanvas, f1, f2, localRectF);
+    }
+    
+    void drawTriangle(Canvas paramCanvas, float paramFloat1, float paramFloat2, RectF paramRectF)
+    {
+      if (this.mShowArrow)
+      {
+        if (this.mArrow != null) {
+          break label220;
+        }
+        this.mArrow = new Path();
+        this.mArrow.setFillType(Path.FillType.EVEN_ODD);
+      }
+      for (;;)
+      {
+        float f1 = Math.min(paramRectF.width(), paramRectF.height()) / 2.0F;
+        float f2 = this.mArrowWidth * this.mArrowScale / 2.0F;
+        this.mArrow.moveTo(0.0F, 0.0F);
+        this.mArrow.lineTo(this.mArrowWidth * this.mArrowScale, 0.0F);
+        this.mArrow.lineTo(this.mArrowWidth * this.mArrowScale / 2.0F, this.mArrowHeight * this.mArrowScale);
+        this.mArrow.offset(f1 + paramRectF.centerX() - f2, paramRectF.centerY() + this.mStrokeWidth / 2.0F);
+        this.mArrow.close();
+        this.mArrowPaint.setColor(this.mCurrentColor);
+        this.mArrowPaint.setAlpha(this.mAlpha);
+        paramCanvas.save();
+        paramCanvas.rotate(paramFloat1 + paramFloat2, paramRectF.centerX(), paramRectF.centerY());
+        paramCanvas.drawPath(this.mArrow, this.mArrowPaint);
+        paramCanvas.restore();
+        return;
+        label220:
+        this.mArrow.reset();
+      }
+    }
+    
+    int getAlpha()
+    {
+      return this.mAlpha;
+    }
+    
+    float getArrowHeight()
+    {
+      return this.mArrowHeight;
+    }
+    
+    float getArrowScale()
+    {
+      return this.mArrowScale;
+    }
+    
+    float getArrowWidth()
+    {
+      return this.mArrowWidth;
+    }
+    
+    int getBackgroundColor()
+    {
+      return this.mCirclePaint.getColor();
+    }
+    
+    float getCenterRadius()
+    {
+      return this.mRingCenterRadius;
+    }
+    
+    int[] getColors()
+    {
+      return this.mColors;
+    }
+    
+    float getEndTrim()
+    {
+      return this.mEndTrim;
+    }
+    
+    int getNextColor()
+    {
+      return this.mColors[getNextColorIndex()];
+    }
+    
+    int getNextColorIndex()
+    {
+      return (this.mColorIndex + 1) % this.mColors.length;
+    }
+    
+    float getRotation()
+    {
+      return this.mRotation;
+    }
+    
+    boolean getShowArrow()
+    {
+      return this.mShowArrow;
+    }
+    
+    float getStartTrim()
+    {
+      return this.mStartTrim;
+    }
+    
+    int getStartingColor()
+    {
+      return this.mColors[this.mColorIndex];
+    }
+    
+    float getStartingEndTrim()
+    {
+      return this.mStartingEndTrim;
+    }
+    
+    float getStartingRotation()
+    {
+      return this.mStartingRotation;
+    }
+    
+    float getStartingStartTrim()
+    {
+      return this.mStartingStartTrim;
+    }
+    
+    Paint.Cap getStrokeCap()
+    {
+      return this.mPaint.getStrokeCap();
+    }
+    
+    float getStrokeWidth()
+    {
+      return this.mStrokeWidth;
+    }
+    
+    void goToNextColor()
+    {
+      setColorIndex(getNextColorIndex());
+    }
+    
+    void resetOriginals()
+    {
+      this.mStartingStartTrim = 0.0F;
+      this.mStartingEndTrim = 0.0F;
+      this.mStartingRotation = 0.0F;
+      setStartTrim(0.0F);
+      setEndTrim(0.0F);
+      setRotation(0.0F);
+    }
+    
+    void setAlpha(int paramInt)
+    {
+      this.mAlpha = paramInt;
+    }
+    
+    void setArrowDimensions(float paramFloat1, float paramFloat2)
+    {
+      this.mArrowWidth = ((int)paramFloat1);
+      this.mArrowHeight = ((int)paramFloat2);
+    }
+    
+    void setArrowScale(float paramFloat)
+    {
+      if (paramFloat != this.mArrowScale) {
+        this.mArrowScale = paramFloat;
+      }
+    }
+    
+    void setBackgroundColor(int paramInt)
+    {
+      this.mCirclePaint.setColor(paramInt);
+    }
+    
+    void setCenterRadius(float paramFloat)
+    {
+      this.mRingCenterRadius = paramFloat;
+    }
+    
+    void setColor(int paramInt)
+    {
+      this.mCurrentColor = paramInt;
+    }
+    
+    void setColorFilter(ColorFilter paramColorFilter)
+    {
+      this.mPaint.setColorFilter(paramColorFilter);
+    }
+    
+    void setColorIndex(int paramInt)
+    {
+      this.mColorIndex = paramInt;
+      this.mCurrentColor = this.mColors[this.mColorIndex];
+    }
+    
+    void setColors(@NonNull int[] paramArrayOfInt)
+    {
+      this.mColors = paramArrayOfInt;
+      setColorIndex(0);
+    }
+    
+    void setEndTrim(float paramFloat)
+    {
+      this.mEndTrim = paramFloat;
+    }
+    
+    void setRotation(float paramFloat)
+    {
+      this.mRotation = paramFloat;
+    }
+    
+    void setShowArrow(boolean paramBoolean)
+    {
+      if (this.mShowArrow != paramBoolean) {
+        this.mShowArrow = paramBoolean;
+      }
+    }
+    
+    void setStartTrim(float paramFloat)
+    {
+      this.mStartTrim = paramFloat;
+    }
+    
+    void setStrokeCap(Paint.Cap paramCap)
+    {
+      this.mPaint.setStrokeCap(paramCap);
+    }
+    
+    void setStrokeWidth(float paramFloat)
+    {
+      this.mStrokeWidth = paramFloat;
+      this.mPaint.setStrokeWidth(paramFloat);
+    }
+    
+    void storeOriginals()
+    {
+      this.mStartingStartTrim = this.mStartTrim;
+      this.mStartingEndTrim = this.mEndTrim;
+      this.mStartingRotation = this.mRotation;
+    }
   }
 }
 

@@ -7,7 +7,7 @@ import java.util.concurrent.TimeUnit;
 public final class d
   extends LinkedBlockingQueue
 {
-  private h a = null;
+  private f a = null;
   private Integer b = null;
   
   public d() {}
@@ -26,9 +26,9 @@ public final class d
     return paramTimeUnit;
   }
   
-  public final void a(h paramh)
+  public final void a(f paramf)
   {
-    this.a = paramh;
+    this.a = paramf;
   }
   
   public final boolean a(Runnable paramRunnable, long paramLong, TimeUnit paramTimeUnit)

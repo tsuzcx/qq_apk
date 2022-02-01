@@ -44,7 +44,7 @@ public class by
     bw.ah().n(paramString);
   }
   
-  public void a(HashMap paramHashMap) {}
+  public void a(HashMap<String, String> paramHashMap) {}
   
   public void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
   {
@@ -161,7 +161,7 @@ public class by
     bw.ah().a(paramv);
   }
   
-  public void b(String paramString, long paramLong, List paramList)
+  public void b(String paramString, long paramLong, List<String> paramList)
   {
     bw.ah().a(paramString, paramLong, paramList);
   }
@@ -225,7 +225,7 @@ public class by
         i = PhoneInfoFetcher.getScreenWidth(localContext);
         j = PhoneInfoFetcher.getScreenHeight(localContext);
         if (i >= j) {
-          break label640;
+          break label642;
         }
         k = j;
         j = i;
@@ -258,7 +258,7 @@ public class by
         try
         {
           localan.pkgname = bc.n().getPackageName();
-          label444:
+          label445:
           localan.ua = Build.MODEL;
           localan.bT = SDKUtil.getSDKVersion();
           localan.lang = 2052;
@@ -285,10 +285,10 @@ public class by
         }
         catch (Throwable localThrowable)
         {
-          break label444;
+          break label445;
         }
       }
-      label640:
+      label642:
       k = i;
     }
   }

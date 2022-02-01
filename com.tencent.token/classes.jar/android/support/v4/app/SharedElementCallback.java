@@ -142,17 +142,22 @@ public abstract class SharedElementCallback
     }
   }
   
-  public void onMapSharedElements(List paramList, Map paramMap) {}
+  public void onMapSharedElements(List<String> paramList, Map<String, View> paramMap) {}
   
-  public void onRejectSharedElements(List paramList) {}
+  public void onRejectSharedElements(List<View> paramList) {}
   
-  public void onSharedElementEnd(List paramList1, List paramList2, List paramList3) {}
+  public void onSharedElementEnd(List<String> paramList, List<View> paramList1, List<View> paramList2) {}
   
-  public void onSharedElementStart(List paramList1, List paramList2, List paramList3) {}
+  public void onSharedElementStart(List<String> paramList, List<View> paramList1, List<View> paramList2) {}
   
-  public void onSharedElementsArrived(List paramList1, List paramList2, SharedElementCallback.OnSharedElementsReadyListener paramOnSharedElementsReadyListener)
+  public void onSharedElementsArrived(List<String> paramList, List<View> paramList1, OnSharedElementsReadyListener paramOnSharedElementsReadyListener)
   {
     paramOnSharedElementsReadyListener.onSharedElementsReady();
+  }
+  
+  public static abstract interface OnSharedElementsReadyListener
+  {
+    public abstract void onSharedElementsReady();
   }
 }
 

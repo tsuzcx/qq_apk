@@ -1,6 +1,6 @@
 package tmsdk.common.d.a.b;
 
-import com.tencent.token.fn;
+import com.tencent.token.ee;
 
 class w
   implements Runnable

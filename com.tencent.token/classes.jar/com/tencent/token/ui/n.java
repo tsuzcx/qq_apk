@@ -1,30 +1,100 @@
 package com.tencent.token.ui;
 
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.token.global.h;
-import com.tencent.token.ui.base.RecommendView;
+import android.content.Intent;
+import android.content.res.Resources;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.TextView;
+import com.tencent.token.core.bean.MbInfoResult;
+import com.tencent.token.core.bean.MbInfoResult.MbInfoItem;
+import com.tencent.token.core.bean.MbInfoResult.MbInfoItemDetail;
+import com.tencent.token.di;
+import java.util.ArrayList;
 
 class n
-  implements Animation.AnimationListener
+  extends BaseAdapter
 {
-  n(m paramm) {}
+  private UtilsMbInfoActivity a;
+  private LayoutInflater b;
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public n(UtilsMbInfoActivity paramUtilsMbInfoActivity)
   {
-    h.c("onAnimationEnd");
-    AccountPageActivity.access$3200(this.a.b).clearAnimation();
-    AccountPageActivity.access$3200(this.a.b).layout(this.a.a - (int)AccountPageActivity.access$3200(this.a.b).getViewWidth(), AccountPageActivity.access$3200(this.a.b).getTop(), this.a.a, AccountPageActivity.access$3200(this.a.b).getBottom());
-    h.c("w_screen---" + this.a.a + "\nw_screen - (int) mZzbRecomView.getViewWidth()---" + (this.a.a - (int)AccountPageActivity.access$3200(this.a.b).getViewWidth()));
-    AccountPageActivity.access$3200(this.a.b).setShowBink(true);
-    AccountPageActivity.access$3200(this.a.b).a();
+    this.a = paramUtilsMbInfoActivity;
+    this.b = LayoutInflater.from(paramUtilsMbInfoActivity);
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
+  private void a(View paramView, final int paramInt)
   {
-    AccountPageActivity.access$3200(this.a.b).setVisibility(0);
+    Object localObject = di.a().c();
+    if ((localObject == null) && (!this.a.mIsIniting)) {
+      this.a.getMbInfo();
+    }
+    while ((localObject == null) || (((MbInfoResult)localObject).mMbInfoItems == null) || (((MbInfoResult)localObject).mMbInfoItems.size() <= paramInt)) {
+      return;
+    }
+    localObject = (MbInfoResult.MbInfoItem)((MbInfoResult)localObject).mMbInfoItems.get(paramInt);
+    TextView localTextView1 = (TextView)paramView.findViewById(2131559409);
+    TextView localTextView2 = (TextView)paramView.findViewById(2131559410);
+    TextView localTextView3 = (TextView)paramView.findViewById(2131559412);
+    if (((MbInfoResult.MbInfoItem)localObject).mName != null) {
+      localTextView1.setText(((MbInfoResult.MbInfoItem)localObject).mName);
+    }
+    if (((MbInfoResult.MbInfoItem)localObject).mDesc != null) {
+      localTextView2.setText(((MbInfoResult.MbInfoItem)localObject).mDesc);
+    }
+    if (((MbInfoResult.MbInfoItem)localObject).mOpName != null) {
+      localTextView3.setText(((MbInfoResult.MbInfoItem)localObject).mOpName);
+    }
+    paramView.setOnClickListener(new View.OnClickListener()
+    {
+      public void onClick(View paramAnonymousView)
+      {
+        if ((this.a.mId == 51) && (this.a.mDetail.mBtnType == 1))
+        {
+          paramAnonymousView = new Intent(n.a(n.this), UtilsModSetMobileStep1Activity.class);
+          paramAnonymousView.putExtra("title", n.a(n.this).getResources().getString(2131231428) + this.a.mName);
+          paramAnonymousView.putExtra("op_type", 1);
+          paramAnonymousView.putExtra("position", paramInt);
+          n.a(n.this).startActivity(paramAnonymousView);
+          return;
+        }
+        paramAnonymousView = new Intent(n.a(n.this), UtilsMbInfoItemActivity.class);
+        paramAnonymousView.putExtra("position", paramInt);
+        n.a(n.this).startActivity(paramAnonymousView);
+      }
+    });
+  }
+  
+  public int getCount()
+  {
+    MbInfoResult localMbInfoResult = di.a().c();
+    if ((localMbInfoResult == null) || (localMbInfoResult.mMbInfoItems == null)) {
+      return 0;
+    }
+    return localMbInfoResult.mMbInfoItems.size();
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return Integer.valueOf(paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    View localView = paramView;
+    if (paramView == null) {
+      localView = this.b.inflate(2130968806, paramViewGroup, false);
+    }
+    a(localView, paramInt);
+    return localView;
   }
 }
 

@@ -1,30 +1,30 @@
 package com.tencent.turingfd.sdk.base;
 
+import java.util.ArrayList;
+
 public final class Date
-  extends float
+  extends break
 {
-  public int kc = 0;
-  public int lc = 0;
-  public int mc = 0;
-  public int nc = 0;
-  public int oc = 0;
+  public static ArrayList<Fig> xb;
+  public int yb = 0;
+  public ArrayList<Fig> zb = null;
   
-  public void a(dp paramdp)
+  public void a(cy paramcy)
   {
-    this.kc = paramdp.a(this.kc, 0, true);
-    this.lc = paramdp.a(this.lc, 1, true);
-    this.mc = paramdp.a(this.mc, 2, true);
-    this.nc = paramdp.a(this.nc, 3, true);
-    this.oc = paramdp.a(this.oc, 4, true);
+    this.yb = paramcy.a(this.yb, 0, true);
+    if (xb == null)
+    {
+      xb = new ArrayList();
+      Fig localFig = new Fig();
+      xb.add(localFig);
+    }
+    this.zb = ((ArrayList)paramcy.a(xb, 1, true));
   }
   
-  public void a(dv paramdv)
+  public void a(db paramdb)
   {
-    paramdv.a(this.kc, 0);
-    paramdv.a(this.lc, 1);
-    paramdv.a(this.mc, 2);
-    paramdv.a(this.nc, 3);
-    paramdv.a(this.oc, 4);
+    paramdb.a(this.yb, 0);
+    paramdb.a(this.zb, 1);
   }
 }
 

@@ -9,7 +9,7 @@ public final class f
   extends j
 {
   private static byte[] k;
-  private static Map l;
+  private static Map<String, String> l;
   public short a = 0;
   public int b = 0;
   public String c = null;
@@ -18,8 +18,8 @@ public final class f
   private byte f = 0;
   private int g = 0;
   private int h = 0;
-  private Map i;
-  private Map j;
+  private Map<String, String> i;
+  private Map<String, String> j;
   
   static
   {

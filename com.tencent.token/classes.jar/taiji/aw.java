@@ -1,39 +1,62 @@
 package taiji;
 
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.ColorFilter;
+import android.graphics.Matrix;
+import android.graphics.Paint;
+import android.graphics.Paint.Style;
+import android.graphics.RectF;
+import uilib.doraemon.e;
 
-abstract class aw
-  implements av
+public class aw
+  extends ar
 {
-  final List a;
-  final Object b;
+  private final RectF e = new RectF();
+  private final Paint f = new Paint();
+  private final cs g;
   
-  aw(Object paramObject)
+  aw(e parame, cs paramcs)
   {
-    this(Collections.emptyList(), paramObject);
+    super(parame, paramcs);
+    this.g = paramcs;
+    this.f.setAlpha(0);
+    this.f.setStyle(Paint.Style.FILL);
+    this.f.setColor(paramcs.p());
   }
   
-  aw(List paramList, Object paramObject)
+  private void a(Matrix paramMatrix)
   {
-    this.a = paramList;
-    this.b = paramObject;
+    this.e.set(0.0F, 0.0F, this.g.r(), this.g.q());
+    paramMatrix.mapRect(this.e);
   }
   
-  public boolean b()
+  public void a(RectF paramRectF, Matrix paramMatrix)
   {
-    return !this.a.isEmpty();
+    super.a(paramRectF, paramMatrix);
+    a(this.a);
+    paramRectF.set(this.e);
   }
   
-  public String toString()
+  public void a(String paramString1, String paramString2, ColorFilter paramColorFilter)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("parseInitialValue=").append(this.b);
-    if (!this.a.isEmpty()) {
-      localStringBuilder.append(", values=").append(Arrays.toString(this.a.toArray()));
-    }
-    return localStringBuilder.toString();
+    this.f.setColorFilter(paramColorFilter);
+  }
+  
+  public void b(Canvas paramCanvas, Matrix paramMatrix, int paramInt)
+  {
+    int i = Color.alpha(this.g.p());
+    if (i == 0) {}
+    do
+    {
+      return;
+      float f1 = paramInt / 255.0F;
+      float f2 = i / 255.0F;
+      paramInt = (int)(((Integer)this.d.a().b()).intValue() * f2 / 100.0F * f1 * 255.0F);
+      a(paramMatrix);
+      this.f.setAlpha(paramInt);
+    } while (paramInt <= 0);
+    paramCanvas.drawRect(this.e, this.f);
   }
 }
 

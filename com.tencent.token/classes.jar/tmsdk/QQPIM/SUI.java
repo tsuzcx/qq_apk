@@ -11,11 +11,11 @@ public final class SUI
   extends JceStruct
   implements Cloneable
 {
-  static ArrayList eR;
+  static ArrayList<Integer> eR;
   static PluginInfo eS;
   public String desc = "";
   public int id = 0;
-  public ArrayList ivalues = null;
+  public ArrayList<Integer> ivalues = null;
   public String paramvalues = "";
   public PluginInfo pluginInfo = null;
   public int time = 0;
@@ -40,7 +40,7 @@ public final class SUI
     setPluginInfo(this.pluginInfo);
   }
   
-  public SUI(int paramInt1, int paramInt2, String paramString1, ArrayList paramArrayList, String paramString2, PluginInfo paramPluginInfo)
+  public SUI(int paramInt1, int paramInt2, String paramString1, ArrayList<Integer> paramArrayList, String paramString2, PluginInfo paramPluginInfo)
   {
     setId(paramInt1);
     setTime(paramInt2);
@@ -108,7 +108,7 @@ public final class SUI
     return this.id;
   }
   
-  public ArrayList getIvalues()
+  public ArrayList<Integer> getIvalues()
   {
     return this.ivalues;
   }
@@ -169,7 +169,7 @@ public final class SUI
     this.id = paramInt;
   }
   
-  public void setIvalues(ArrayList paramArrayList)
+  public void setIvalues(ArrayList<Integer> paramArrayList)
   {
     this.ivalues = paramArrayList;
   }

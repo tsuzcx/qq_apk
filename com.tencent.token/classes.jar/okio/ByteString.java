@@ -6,7 +6,7 @@ import java.security.NoSuchAlgorithmException;
 import java.util.Arrays;
 
 public class ByteString
-  implements Serializable, Comparable
+  implements Serializable, Comparable<ByteString>
 {
   public static final ByteString EMPTY = a(new byte[0]);
   static final char[] HEX_DIGITS = { 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 97, 98, 99, 100, 101, 102 };
@@ -59,7 +59,7 @@ public class ByteString
     if (paramString == null) {
       throw new IllegalArgumentException("s == null");
     }
-    ByteString localByteString = new ByteString(paramString.getBytes(ab.a));
+    ByteString localByteString = new ByteString(paramString.getBytes(s.a));
     localByteString.utf8 = paramString;
     return localByteString;
   }
@@ -114,7 +114,7 @@ public class ByteString
     if (str != null) {
       return str;
     }
-    str = new String(this.data, ab.a);
+    str = new String(this.data, s.a);
     this.utf8 = str;
     return str;
   }
@@ -139,9 +139,9 @@ public class ByteString
     return new ByteString(arrayOfByte);
   }
   
-  void a(f paramf)
+  void a(c paramc)
   {
-    paramf.b(this.data, 0, this.data.length);
+    paramc.b(this.data, 0, this.data.length);
   }
   
   public boolean a(int paramInt1, ByteString paramByteString, int paramInt2, int paramInt3)
@@ -151,7 +151,7 @@ public class ByteString
   
   public boolean a(int paramInt1, byte[] paramArrayOfByte, int paramInt2, int paramInt3)
   {
-    return (paramInt1 >= 0) && (paramInt1 <= this.data.length - paramInt3) && (paramInt2 >= 0) && (paramInt2 <= paramArrayOfByte.length - paramInt3) && (ab.a(this.data, paramInt1, paramArrayOfByte, paramInt2, paramInt3));
+    return (paramInt1 >= 0) && (paramInt1 <= this.data.length - paramInt3) && (paramInt2 >= 0) && (paramInt2 <= paramArrayOfByte.length - paramInt3) && (s.a(this.data, paramInt1, paramArrayOfByte, paramInt2, paramInt3));
   }
   
   public final boolean a(ByteString paramByteString)
@@ -193,7 +193,7 @@ public class ByteString
   
   public String b()
   {
-    return e.a(this.data);
+    return b.a(this.data);
   }
   
   public ByteString c()

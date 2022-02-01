@@ -1,44 +1,28 @@
 package com.tencent.turingfd.sdk.base;
 
-import android.os.Handler;
+import java.util.HashMap;
 
 public class ci
-  extends am
 {
-  public ci(cr paramcr, String paramString)
+  public static String a(String paramString, int paramInt)
   {
-    super(paramString);
+    return paramString + paramInt;
   }
   
-  public void a()
+  public static String a(StringBuilder paramStringBuilder, String paramString1, String paramString2)
   {
-    synchronized (this.a)
-    {
-      if (!cr.c(this.a)) {
-        return;
-      }
-      if (cr.g(this.a) == null) {
-        return;
-      }
-    }
-    if (!cr.g(this.a).a(cr.a(this.a).b, cr.h(this.a))) {
-      return;
-    }
-    long l = cr.g(this.a).e.b;
-    cs localcs = cr.f(this.a);
-    int i = (int)(cr.a(this.a).b / dy.a);
-    localcs.a = 1;
-    localcs.b = i;
-    localcs.c = l;
-    l = l + dy.a - System.currentTimeMillis();
-    if (l > 0L) {
-      cr.d(this.a).postDelayed(cr.f(this.a), l);
-    }
-    for (;;)
-    {
-      return;
-      cr.d(this.a).post(cr.f(this.a));
-    }
+    return paramString1 + paramString2;
+  }
+  
+  public static StringBuilder a(String paramString)
+  {
+    return new StringBuilder().append(paramString);
+  }
+  
+  public static void a(HashMap paramHashMap, Object paramObject1, Object paramObject2, long paramLong, int paramInt)
+  {
+    paramHashMap.put(paramObject1, paramObject2);
+    bi.a(paramInt, System.currentTimeMillis() - paramLong);
   }
 }
 

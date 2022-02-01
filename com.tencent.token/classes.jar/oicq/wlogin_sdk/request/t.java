@@ -17,6 +17,7 @@ import java.util.List;
 import java.util.TreeMap;
 import oicq.wlogin_sdk.report.Reporter;
 import oicq.wlogin_sdk.report.report_t;
+import oicq.wlogin_sdk.sharemem.WloginLoginInfo;
 import oicq.wlogin_sdk.sharemem.WloginSigInfo;
 import oicq.wlogin_sdk.sharemem.WloginSimpleInfo;
 import oicq.wlogin_sdk.tlv_type.tlv_t150;
@@ -65,7 +66,7 @@ public class t
   protected static String am;
   public static Reporter an;
   public static long ao;
-  public static TreeMap ap;
+  public static TreeMap<Long, async_context> ap;
   public static boolean ar = false;
   public static boolean as = true;
   public static String at;
@@ -785,7 +786,7 @@ public class t
     }
   }
   
-  public List k()
+  public List<WloginLoginInfo> k()
   {
     try
     {

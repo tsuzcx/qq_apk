@@ -2,12 +2,14 @@ package com.tencent.token.ui.base;
 
 import android.app.Activity;
 import android.app.Dialog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 import android.os.Bundle;
 import android.view.Window;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
-import com.tencent.token.cw;
-import com.tencent.token.global.h;
+import com.tencent.token.ca;
+import com.tencent.token.global.g;
 
 public class ProDialog
   extends Dialog
@@ -30,9 +32,9 @@ public class ProDialog
   
   private void a()
   {
-    h.c("dismiss and cancel request");
+    g.c("dismiss and cancel request");
     if (this.a != null) {
-      cw.a().a(this.a.getClass().getName());
+      ca.a().a(this.a.getClass().getName());
     }
   }
   
@@ -46,8 +48,14 @@ public class ProDialog
     super.onCreate(paramBundle);
     setContentView(2130968717);
     getWindow().setBackgroundDrawableResource(2130837730);
-    ((ImageView)findViewById(2131559124)).startAnimation(AnimationUtils.loadAnimation(this.a, 2131034130));
-    setOnDismissListener(new ca(this));
+    ((ImageView)findViewById(2131559125)).startAnimation(AnimationUtils.loadAnimation(this.a, 2131034130));
+    setOnDismissListener(new DialogInterface.OnDismissListener()
+    {
+      public void onDismiss(DialogInterface paramAnonymousDialogInterface)
+      {
+        ProDialog.a(ProDialog.this);
+      }
+    });
   }
 }
 

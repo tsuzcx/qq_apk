@@ -7,7 +7,7 @@ import android.view.SurfaceHolder;
 import android.view.SurfaceHolder.Callback;
 import android.view.SurfaceView;
 import com.tencent.jni.FaceDetector.IdCardDirection;
-import com.tencent.token.global.h;
+import com.tencent.token.global.g;
 
 public class DetectIDPhotoPreview
   extends SurfaceView
@@ -15,7 +15,7 @@ public class DetectIDPhotoPreview
 {
   private Context a;
   private SurfaceHolder b;
-  private di c;
+  private e c;
   private Handler d;
   private FaceDetector.IdCardDirection e;
   
@@ -61,7 +61,7 @@ public class DetectIDPhotoPreview
     while (this.c != null) {
       return;
     }
-    this.c = new di(getContext(), paramSurfaceHolder, this.d, this.e);
+    this.c = new e(getContext(), paramSurfaceHolder, this.d, this.e);
     this.c.a();
   }
   
@@ -69,7 +69,7 @@ public class DetectIDPhotoPreview
   
   public void surfaceDestroyed(SurfaceHolder paramSurfaceHolder)
   {
-    h.c("surfaceDestroyed!");
+    g.c("surfaceDestroyed!");
     try
     {
       a();

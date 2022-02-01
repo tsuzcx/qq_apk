@@ -1,42 +1,24 @@
 package taiji;
 
-import java.util.ArrayList;
+import com.tencent.token.gm;
 import java.util.List;
 
 public class t
+  extends p<az>
 {
-  private final List a;
-  private final List b;
-  private final List c;
-  
-  public t(List paramList)
+  public t(List<o<az>> paramList)
   {
-    this.c = paramList;
-    this.a = new ArrayList(paramList.size());
-    this.b = new ArrayList(paramList.size());
-    int i = 0;
-    while (i < paramList.size())
-    {
-      this.a.add(((cc)paramList.get(i)).b().c());
-      ai localai = ((cc)paramList.get(i)).c();
-      this.b.add(localai.a());
-      i += 1;
+    super(paramList);
+  }
+  
+  public az a(o<az> paramo, float paramFloat)
+  {
+    if ((paramo.a == null) || (paramo.b == null)) {
+      throw new IllegalStateException("Missing values for keyframe.");
     }
-  }
-  
-  public List a()
-  {
-    return this.c;
-  }
-  
-  public List b()
-  {
-    return this.a;
-  }
-  
-  public List c()
-  {
-    return this.b;
+    az localaz = (az)paramo.a;
+    paramo = (az)paramo.b;
+    return new az(gm.a(localaz.a(), paramo.a(), paramFloat), gm.a(localaz.b(), paramo.b(), paramFloat));
   }
 }
 

@@ -3,6 +3,9 @@ package com.tencent.halley.downloader.d.a;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.Callable;
 import java.util.concurrent.Future;
+import java.util.concurrent.FutureTask;
+import java.util.concurrent.RejectedExecutionException;
+import java.util.concurrent.RejectedExecutionHandler;
 import java.util.concurrent.RunnableFuture;
 import java.util.concurrent.ThreadFactory;
 import java.util.concurrent.ThreadPoolExecutor;
@@ -20,7 +23,7 @@ public final class b
   
   public b(int paramInt1, int paramInt2, long paramLong, TimeUnit paramTimeUnit, BlockingQueue paramBlockingQueue, ThreadFactory paramThreadFactory)
   {
-    super(paramInt1, paramInt2, 60L, paramTimeUnit, paramBlockingQueue, paramThreadFactory, new e((byte)0));
+    super(paramInt1, paramInt2, 60L, paramTimeUnit, paramBlockingQueue, paramThreadFactory, new b((byte)0));
   }
   
   protected final void a()
@@ -30,7 +33,7 @@ public final class b
       long l = this.c.longValue();
       if ((this.d + l < System.currentTimeMillis()) && (this.c.compareAndSet(l, System.currentTimeMillis() + 1L)))
       {
-        Thread.currentThread().setUncaughtExceptionHandler(new f(this));
+        Thread.currentThread().setUncaughtExceptionHandler(new c(this));
         throw new RuntimeException("Stopping thread to avoid potential memory leaks after a context was stopped.");
       }
     }
@@ -46,7 +49,7 @@ public final class b
   
   protected final boolean b()
   {
-    return (this.d >= 0L) && ((Thread.currentThread() instanceof g)) && (((g)Thread.currentThread()).a() < this.b.longValue());
+    return (this.d >= 0L) && ((Thread.currentThread() instanceof e)) && (((e)Thread.currentThread()).a() < this.b.longValue());
   }
   
   public final int c()
@@ -56,7 +59,7 @@ public final class b
   
   public final void execute(Runnable paramRunnable)
   {
-    super.execute(new c(this, paramRunnable, null));
+    super.execute(new a(paramRunnable, null));
   }
   
   protected final RunnableFuture newTaskFor(Runnable paramRunnable, Object paramObject)
@@ -71,7 +74,29 @@ public final class b
   
   public final Future submit(Runnable paramRunnable)
   {
-    return super.submit(new c(this, paramRunnable, null));
+    return super.submit(new a(paramRunnable, null));
+  }
+  
+  public final class a
+    extends FutureTask
+    implements Comparable
+  {
+    private Object a;
+    
+    public a(Runnable paramRunnable, Object paramObject)
+    {
+      super(null);
+      this.a = paramRunnable;
+    }
+  }
+  
+  static final class b
+    implements RejectedExecutionHandler
+  {
+    public final void rejectedExecution(Runnable paramRunnable, ThreadPoolExecutor paramThreadPoolExecutor)
+    {
+      throw new RejectedExecutionException();
+    }
   }
 }
 

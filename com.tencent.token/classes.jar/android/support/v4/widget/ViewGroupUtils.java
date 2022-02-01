@@ -11,8 +11,8 @@ import android.view.ViewParent;
 @RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY})
 public class ViewGroupUtils
 {
-  private static final ThreadLocal sMatrix = new ThreadLocal();
-  private static final ThreadLocal sRectF = new ThreadLocal();
+  private static final ThreadLocal<Matrix> sMatrix = new ThreadLocal();
+  private static final ThreadLocal<RectF> sRectF = new ThreadLocal();
   
   public static void getDescendantRect(ViewGroup paramViewGroup, View paramView, Rect paramRect)
   {

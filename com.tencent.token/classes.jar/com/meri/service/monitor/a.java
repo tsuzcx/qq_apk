@@ -1,14 +1,24 @@
 package com.meri.service.monitor;
 
-import java.util.List;
-import taiji.cr;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.HandlerThread;
 
-class a
+public abstract interface a
 {
-  public taiji.a a;
-  public long b;
-  public cr c;
-  public List d;
+  public abstract boolean forceMonitorAllPkg();
+  
+  public abstract HandlerThread getHandlerThread(String paramString);
+  
+  public abstract Handler getMonitorCallbackHandler();
+  
+  public abstract void onAutoReturn();
+  
+  public abstract Bundle onConnected(Bundle paramBundle);
+  
+  public abstract void onCreate();
+  
+  public abstract void onException(Throwable paramThrowable);
 }
 
 

@@ -13,12 +13,14 @@ import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.view.animation.LinearInterpolator;
 import android.view.animation.RotateAnimation;
+import android.widget.AbsListView;
+import android.widget.AbsListView.OnScrollListener;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import com.tencent.token.global.h;
-import com.tencent.token.utils.w;
+import com.tencent.token.global.g;
+import com.tencent.token.utils.l;
 
 public class PullToRefreshListView
   extends ListView
@@ -33,7 +35,7 @@ public class PullToRefreshListView
   private RotateAnimation h;
   private int i;
   private Context j;
-  private cg k;
+  private a k;
   private int l;
   private int m = 0;
   private float n;
@@ -79,10 +81,10 @@ public class PullToRefreshListView
     }
     this.b.setPadding(0, -this.a, 0, 0);
     addHeaderView(this.b, null, false);
-    this.c = ((ImageView)this.b.findViewById(2131559030));
-    this.d = ((ProgressBar)this.b.findViewById(2131559031));
-    this.e = ((TextView)this.b.findViewById(2131559032));
-    this.f = ((TextView)this.b.findViewById(2131559033));
+    this.c = ((ImageView)this.b.findViewById(2131559031));
+    this.d = ((ProgressBar)this.b.findViewById(2131559032));
+    this.e = ((TextView)this.b.findViewById(2131559033));
+    this.f = ((TextView)this.b.findViewById(2131559034));
     this.c.setImageResource(2130837878);
     this.g = new RotateAnimation(0.0F, -180.0F, 1, 0.5F, 1, 0.5F);
     this.g.setInterpolator(new LinearInterpolator());
@@ -92,7 +94,7 @@ public class PullToRefreshListView
     this.h.setInterpolator(new LinearInterpolator());
     this.h.setDuration(250L);
     this.h.setFillAfter(true);
-    setOnScrollListener(new ch(this, null));
+    setOnScrollListener(new b(null));
   }
   
   public void a(String paramString)
@@ -106,7 +108,7 @@ public class PullToRefreshListView
     }
     catch (Exception paramString)
     {
-      h.c("SharedPreferences msg " + paramString.getMessage());
+      g.c("SharedPreferences msg " + paramString.getMessage());
     }
   }
   
@@ -119,7 +121,7 @@ public class PullToRefreshListView
     }
     catch (Exception paramString)
     {
-      h.c("SharedPreferences msg " + paramString.getMessage());
+      g.c("SharedPreferences msg " + paramString.getMessage());
     }
     return 0L;
   }
@@ -190,7 +192,7 @@ public class PullToRefreshListView
     }
     catch (IndexOutOfBoundsException paramCanvas)
     {
-      h.c("PullToRefreshListView dispatchDraw" + paramCanvas.toString());
+      g.c("PullToRefreshListView dispatchDraw" + paramCanvas.toString());
     }
   }
   
@@ -207,7 +209,7 @@ public class PullToRefreshListView
           if ((this.o) || (this.i != 0) || (this.m == 3)) {
             continue;
           }
-          h.b("DOWN " + paramMotionEvent.getY());
+          g.b("DOWN " + paramMotionEvent.getY());
           this.o = true;
           this.n = paramMotionEvent.getY();
           continue;
@@ -215,18 +217,18 @@ public class PullToRefreshListView
       }
       catch (IndexOutOfBoundsException paramMotionEvent)
       {
-        h.c("PullToRefreshListView dispatchTouchEvent" + paramMotionEvent.toString());
+        g.c("PullToRefreshListView dispatchTouchEvent" + paramMotionEvent.toString());
         return false;
         if ((!this.o) && (this.i == 0) && (this.m != 3))
         {
-          h.b("DOWN2 " + paramMotionEvent.getY());
+          g.b("DOWN2 " + paramMotionEvent.getY());
           this.o = true;
           this.n = paramMotionEvent.getY();
         }
         if ((!this.o) || (this.m == 3)) {
           continue;
         }
-        h.b("MOVE " + paramMotionEvent.getY());
+        g.b("MOVE " + paramMotionEvent.getY());
         float f1 = paramMotionEvent.getY() - this.n;
         if (f1 <= 0.0F) {
           continue;
@@ -240,14 +242,14 @@ public class PullToRefreshListView
       }
       catch (Exception paramMotionEvent)
       {
-        h.c("PullToRefreshListView dispatchTouchEvent" + paramMotionEvent.toString());
+        g.c("PullToRefreshListView dispatchTouchEvent" + paramMotionEvent.toString());
         return false;
       }
       b(1);
       continue;
       if ((this.o) && (this.m != 3))
       {
-        h.b("UP " + paramMotionEvent.getY());
+        g.b("UP " + paramMotionEvent.getY());
         this.o = false;
         if (this.m == 1) {
           b(3);
@@ -267,27 +269,45 @@ public class PullToRefreshListView
     }
     catch (IndexOutOfBoundsException localIndexOutOfBoundsException)
     {
-      h.c("PullToRefreshListView onLayout" + localIndexOutOfBoundsException.toString());
+      g.c("PullToRefreshListView onLayout" + localIndexOutOfBoundsException.toString());
       localIndexOutOfBoundsException.printStackTrace();
       return;
     }
     catch (Exception localException)
     {
-      h.c("PullToRefreshListView onLayout" + localException.toString());
+      g.c("PullToRefreshListView onLayout" + localException.toString());
       localException.printStackTrace();
     }
   }
   
-  public void setOnRefreshListener(cg paramcg)
+  public void setOnRefreshListener(a parama)
   {
-    this.k = paramcg;
+    this.k = parama;
   }
   
   public void setRefreshTime(long paramLong)
   {
     this.p = paramLong;
-    String str = w.a(paramLong, '-');
+    String str = l.a(paramLong, '-');
     this.f.setText(str);
+  }
+  
+  public static abstract interface a
+  {
+    public abstract void onRefresh();
+  }
+  
+  private class b
+    implements AbsListView.OnScrollListener
+  {
+    private b() {}
+    
+    public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+    {
+      PullToRefreshListView.a(PullToRefreshListView.this, paramInt1);
+    }
+    
+    public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt) {}
   }
 }
 

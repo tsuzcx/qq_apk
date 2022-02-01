@@ -8,21 +8,21 @@ import java.util.ArrayList;
 public final class VirusInfo
   extends JceStruct
 {
-  static ArrayList dP;
-  static ArrayList fk;
-  static ArrayList fl;
-  static ArrayList fm;
-  static ArrayList fn;
+  static ArrayList<Integer> dP;
+  static ArrayList<VirusFeature> fk;
+  static ArrayList<ClassifyFeature> fl;
+  static ArrayList<String> fm;
+  static ArrayList<String> fn;
   public int ad_action1 = 0;
   public int ad_action2 = 0;
-  public ArrayList ad_ip_list = null;
-  public ArrayList ad_url_list = null;
+  public ArrayList<String> ad_ip_list = null;
+  public ArrayList<String> ad_url_list = null;
   public int advice = 0;
   public int category = 0;
-  public ArrayList classify = null;
-  public ArrayList descIds = null;
+  public ArrayList<ClassifyFeature> classify = null;
+  public ArrayList<Integer> descIds = null;
   public String description = "";
-  public ArrayList features = null;
+  public ArrayList<VirusFeature> features = null;
   public int id = 0;
   public String label = "";
   public int level = 0;
@@ -40,14 +40,14 @@ public final class VirusInfo
   
   public VirusInfo() {}
   
-  public VirusInfo(int paramInt1, String paramString1, int paramInt2, byte paramByte, String paramString2, ArrayList paramArrayList1, int paramInt3, int paramInt4, String paramString3, int paramInt5, int paramInt6, int paramInt7, int paramInt8, String paramString4, int paramInt9, int paramInt10, ArrayList paramArrayList2, int paramInt11, int paramInt12, int paramInt13, ArrayList paramArrayList3, ArrayList paramArrayList4, ArrayList paramArrayList5, int paramInt14)
+  public VirusInfo(int paramInt1, String paramString1, int paramInt2, byte paramByte, String paramString2, ArrayList<VirusFeature> paramArrayList, int paramInt3, int paramInt4, String paramString3, int paramInt5, int paramInt6, int paramInt7, int paramInt8, String paramString4, int paramInt9, int paramInt10, ArrayList<ClassifyFeature> paramArrayList1, int paramInt11, int paramInt12, int paramInt13, ArrayList<String> paramArrayList2, ArrayList<String> paramArrayList3, ArrayList<Integer> paramArrayList4, int paramInt14)
   {
     this.id = paramInt1;
     this.name = paramString1;
     this.timestamp = paramInt2;
     this.ostype = paramByte;
     this.description = paramString2;
-    this.features = paramArrayList1;
+    this.features = paramArrayList;
     this.safetype = paramInt3;
     this.advice = paramInt4;
     this.label = paramString3;
@@ -58,13 +58,13 @@ public final class VirusInfo
     this.url = paramString4;
     this.pkgnum = paramInt9;
     this.safelevel = paramInt10;
-    this.classify = paramArrayList2;
+    this.classify = paramArrayList1;
     this.product = paramInt11;
     this.ad_action1 = paramInt12;
     this.ad_action2 = paramInt13;
-    this.ad_url_list = paramArrayList3;
-    this.ad_ip_list = paramArrayList4;
-    this.descIds = paramArrayList5;
+    this.ad_url_list = paramArrayList2;
+    this.ad_ip_list = paramArrayList3;
+    this.descIds = paramArrayList4;
     this.category = paramInt14;
   }
   

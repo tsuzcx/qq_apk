@@ -10,6 +10,7 @@ import android.support.v4.graphics.drawable.DrawableCompat;
 import android.support.v4.view.ViewPropertyAnimatorCompat;
 import android.support.v4.widget.ListViewAutoScrollHelper;
 import android.support.v7.appcompat.R.attr;
+import android.support.v7.graphics.drawable.DrawableWrapper;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.MeasureSpec;
@@ -30,13 +31,13 @@ class DropDownListView
   private Field mIsChildViewEnabled;
   private boolean mListSelectionHidden;
   private int mMotionPosition;
-  private DropDownListView.ResolveHoverRunnable mResolveHoverRunnable;
+  private ResolveHoverRunnable mResolveHoverRunnable;
   private ListViewAutoScrollHelper mScrollHelper;
   private int mSelectionBottomPadding = 0;
   private int mSelectionLeftPadding = 0;
   private int mSelectionRightPadding = 0;
   private int mSelectionTopPadding = 0;
-  private DropDownListView.GateKeeperDrawable mSelector;
+  private GateKeeperDrawable mSelector;
   private final Rect mSelectorRect = new Rect();
   
   DropDownListView(Context paramContext, boolean paramBoolean)
@@ -504,7 +505,7 @@ class DropDownListView
         i = paramMotionEvent.getActionMasked();
         if ((i == 10) && (this.mResolveHoverRunnable == null))
         {
-          this.mResolveHoverRunnable = new DropDownListView.ResolveHoverRunnable(this, null);
+          this.mResolveHoverRunnable = new ResolveHoverRunnable(null);
           this.mResolveHoverRunnable.post();
         }
         bool2 = super.onHoverEvent(paramMotionEvent);
@@ -549,9 +550,9 @@ class DropDownListView
   public void setSelector(Drawable paramDrawable)
   {
     if (paramDrawable != null) {}
-    for (Object localObject = new DropDownListView.GateKeeperDrawable(paramDrawable);; localObject = null)
+    for (Object localObject = new GateKeeperDrawable(paramDrawable);; localObject = null)
     {
-      this.mSelector = ((DropDownListView.GateKeeperDrawable)localObject);
+      this.mSelector = ((GateKeeperDrawable)localObject);
       super.setSelector(this.mSelector);
       localObject = new Rect();
       if (paramDrawable != null) {
@@ -562,6 +563,82 @@ class DropDownListView
       this.mSelectionRightPadding = ((Rect)localObject).right;
       this.mSelectionBottomPadding = ((Rect)localObject).bottom;
       return;
+    }
+  }
+  
+  private static class GateKeeperDrawable
+    extends DrawableWrapper
+  {
+    private boolean mEnabled = true;
+    
+    GateKeeperDrawable(Drawable paramDrawable)
+    {
+      super();
+    }
+    
+    public void draw(Canvas paramCanvas)
+    {
+      if (this.mEnabled) {
+        super.draw(paramCanvas);
+      }
+    }
+    
+    void setEnabled(boolean paramBoolean)
+    {
+      this.mEnabled = paramBoolean;
+    }
+    
+    public void setHotspot(float paramFloat1, float paramFloat2)
+    {
+      if (this.mEnabled) {
+        super.setHotspot(paramFloat1, paramFloat2);
+      }
+    }
+    
+    public void setHotspotBounds(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+    {
+      if (this.mEnabled) {
+        super.setHotspotBounds(paramInt1, paramInt2, paramInt3, paramInt4);
+      }
+    }
+    
+    public boolean setState(int[] paramArrayOfInt)
+    {
+      if (this.mEnabled) {
+        return super.setState(paramArrayOfInt);
+      }
+      return false;
+    }
+    
+    public boolean setVisible(boolean paramBoolean1, boolean paramBoolean2)
+    {
+      if (this.mEnabled) {
+        return super.setVisible(paramBoolean1, paramBoolean2);
+      }
+      return false;
+    }
+  }
+  
+  private class ResolveHoverRunnable
+    implements Runnable
+  {
+    private ResolveHoverRunnable() {}
+    
+    public void cancel()
+    {
+      DropDownListView.access$102(DropDownListView.this, null);
+      DropDownListView.this.removeCallbacks(this);
+    }
+    
+    public void post()
+    {
+      DropDownListView.this.post(this);
+    }
+    
+    public void run()
+    {
+      DropDownListView.access$102(DropDownListView.this, null);
+      DropDownListView.this.drawableStateChanged();
     }
   }
 }

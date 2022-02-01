@@ -1,178 +1,231 @@
 package com.tencent.token;
 
 import android.content.Context;
-import android.net.wifi.WifiInfo;
-import android.net.wifi.WifiManager;
-import android.telephony.TelephonyManager;
-import android.text.TextUtils;
-import android.util.Log;
-import com.tencent.halley.common.h;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.token.global.RqdApplication;
+import com.tencent.token.global.g;
 
-public final class cc
+public class cc
 {
-  private static String a = "";
-  private static String b = "";
+  private static cc b = null;
+  public int a = 0;
+  private Context c = null;
+  private String d = null;
   
-  public static String a(Context paramContext)
+  public static cc a()
   {
-    int i = 1;
-    if (paramContext == null) {
-      return null;
+    if (b == null) {
+      b = new cc();
+    }
+    b.d(RqdApplication.l());
+    return b;
+  }
+  
+  public static void b()
+  {
+    b = null;
+  }
+  
+  private String c(String paramString)
+  {
+    return com.tencent.token.utils.encrypt.c.c(com.tencent.token.utils.encrypt.c.a(paramString));
+  }
+  
+  private void d(Context paramContext)
+  {
+    if (this.c == paramContext) {}
+    label36:
+    label105:
+    label110:
+    label124:
+    for (;;)
+    {
+      return;
+      this.c = paramContext;
+      boolean bool;
+      if (paramContext != null)
+      {
+        bool = true;
+        g.a(bool);
+        paramContext = c(paramContext);
+        if (paramContext == null) {
+          break label105;
+        }
+        bool = true;
+        g.a(bool);
+        this.a = paramContext.getInt("pwd_type", 0);
+        if (this.a != 2) {
+          break label110;
+        }
+      }
+      for (this.d = paramContext.getString("pwd3g", null);; this.d = paramContext.getString("pwd", null))
+      {
+        if (this.a != 0) {
+          break label124;
+        }
+        a(this.c, this.d);
+        this.a = 1;
+        return;
+        bool = false;
+        break;
+        bool = false;
+        break label36;
+      }
+    }
+  }
+  
+  public void a(Context paramContext)
+  {
+    b(paramContext, null);
+    a(paramContext, 0L);
+  }
+  
+  public void a(Context paramContext, int paramInt)
+  {
+    paramContext = c(paramContext);
+    if (paramContext != null) {}
+    for (boolean bool = true;; bool = false)
+    {
+      g.a(bool);
+      paramContext = paramContext.edit();
+      paramContext.putInt("lock_time", paramInt);
+      paramContext.commit();
+      return;
+    }
+  }
+  
+  public void a(Context paramContext, long paramLong)
+  {
+    paramContext = c(paramContext);
+    if (paramContext != null) {}
+    for (boolean bool = true;; bool = false)
+    {
+      g.a(bool);
+      paramContext = paramContext.edit();
+      paramContext.putLong("last_lock", paramLong);
+      paramContext.commit();
+      return;
+    }
+  }
+  
+  public boolean a(Context paramContext, String paramString)
+  {
+    paramContext = c(paramContext);
+    boolean bool;
+    if (paramContext != null)
+    {
+      bool = true;
+      g.a(bool);
+      paramContext = paramContext.edit();
+      if ((paramString != null) && (paramString.length() > 0)) {
+        break label62;
+      }
+      this.d = null;
+      paramContext.remove("pwd");
     }
     for (;;)
     {
-      try
-      {
-        str = a;
-        if (str != null) {
-          continue;
-        }
-        if (i != 0)
-        {
-          paramContext = (TelephonyManager)paramContext.getSystemService("phone");
-          if (paramContext != null) {
-            a = paramContext.getDeviceId();
-          }
-        }
-      }
-      catch (Exception paramContext)
-      {
-        String str;
-        int j;
-        continue;
-      }
-      return a;
-      j = str.trim().length();
-      if (j != 0) {
-        i = 0;
-      }
-    }
-  }
-  
-  public static String a(Exception paramException)
-  {
-    String str = Log.getStackTraceString(paramException);
-    if (str != null)
-    {
-      if ((str.indexOf("\n") != -1) && (str.indexOf("\n") < 100)) {
-        paramException = str.substring(0, str.indexOf("\n"));
-      }
-      do
-      {
-        return paramException;
-        paramException = str;
-      } while (str.length() <= 100);
-      return str.substring(0, 100);
-    }
-    return "";
-  }
-  
-  public static boolean a(String paramString)
-  {
-    if (paramString == null) {}
-    while (paramString.trim().length() == 0) {
+      paramContext.commit();
       return true;
+      bool = false;
+      break;
+      label62:
+      this.d = c(paramString);
+      paramContext.putString("pwd", this.d);
+      paramContext.putInt("pwd_type", 1);
+      this.a = 1;
     }
-    return false;
   }
   
-  public static String b(Context paramContext)
+  public boolean a(String paramString)
   {
-    int i = 1;
-    if (paramContext == null) {
-      return null;
+    if ((paramString == null) || (this.d == null)) {}
+    while (1 > this.a) {
+      return false;
+    }
+    return this.d.equals(c(paramString));
+  }
+  
+  public int b(Context paramContext)
+  {
+    paramContext = c(paramContext);
+    if (paramContext != null) {}
+    for (boolean bool = true;; bool = false)
+    {
+      g.a(bool);
+      return paramContext.getInt("lock_time", 0);
+    }
+  }
+  
+  public void b(String paramString)
+  {
+    SharedPreferences.Editor localEditor = RqdApplication.l().getSharedPreferences("startpwd_gesture_new_tip", 0).edit();
+    localEditor.putBoolean(paramString, false);
+    localEditor.commit();
+  }
+  
+  public boolean b(Context paramContext, String paramString)
+  {
+    Object localObject = c(paramContext);
+    boolean bool;
+    if (localObject != null)
+    {
+      bool = true;
+      g.a(bool);
+      localObject = ((SharedPreferences)localObject).edit();
+      if ((paramString != null) && (paramString.length() > 0)) {
+        break label68;
+      }
+      this.d = null;
+      ((SharedPreferences.Editor)localObject).remove("pwd3g");
     }
     for (;;)
     {
-      try
-      {
-        str = b;
-        if (str != null) {
-          continue;
-        }
-        if (i != 0)
-        {
-          paramContext = (WifiManager)paramContext.getSystemService("wifi");
-          if (paramContext != null)
-          {
-            paramContext = paramContext.getConnectionInfo();
-            if (paramContext != null) {
-              b = paramContext.getMacAddress();
-            }
-          }
-        }
+      ((SharedPreferences.Editor)localObject).commit();
+      return true;
+      bool = false;
+      break;
+      label68:
+      if (this.a == 1) {
+        a(paramContext, null);
       }
-      catch (Exception paramContext)
-      {
-        String str;
-        int j;
-        continue;
-      }
-      return b;
-      j = str.trim().length();
-      if (j != 0) {
-        i = 0;
-      }
+      this.d = c(paramString);
+      this.a = 2;
+      ((SharedPreferences.Editor)localObject).putString("pwd3g", this.d);
+      ((SharedPreferences.Editor)localObject).putInt("pwd_type", 2);
     }
   }
   
-  public static String b(String paramString)
+  public SharedPreferences c(Context paramContext)
   {
-    Object localObject = h.a();
-    try
+    switch ()
     {
-      StringBuilder localStringBuilder = new StringBuilder("");
-      String str = a((Context)localObject);
-      if (!TextUtils.isEmpty(str)) {
-        localStringBuilder.append(str);
-      }
-      localObject = b((Context)localObject);
-      if (!TextUtils.isEmpty((CharSequence)localObject)) {
-        localStringBuilder.append((String)localObject);
-      }
-      localStringBuilder.append(System.currentTimeMillis());
-      localStringBuilder.append(paramString);
-      localStringBuilder.append((int)(Math.random() * 2147483647.0D));
-      paramString = c(localStringBuilder.toString());
-      return paramString;
+    default: 
+      return RqdApplication.l().getSharedPreferences("token_pwd_file", 0);
+    case 0: 
+      return RqdApplication.l().getSharedPreferences("token_pwd_file_test", 0);
+    case 1: 
+      return RqdApplication.l().getSharedPreferences("token_pwd_file", 0);
+    case 2: 
+      return RqdApplication.l().getSharedPreferences("token_pwd_file_exp", 0);
     }
-    catch (Exception paramString) {}
-    return "";
+    return RqdApplication.l().getSharedPreferences("token_pwd_file_gray", 0);
   }
   
-  private static String c(String paramString)
+  public boolean c()
   {
-    if ((paramString == null) || (paramString.length() == 0)) {
-      return null;
-    }
-    try
-    {
-      localObject = MessageDigest.getInstance("MD5");
-      ((MessageDigest)localObject).update(paramString.getBytes());
-      paramString = ((MessageDigest)localObject).digest();
-      if (paramString == null) {
-        return "";
-      }
-    }
-    catch (NoSuchAlgorithmException paramString)
-    {
-      paramString.printStackTrace();
-      return null;
-    }
-    Object localObject = new StringBuffer();
-    int i = 0;
-    while (i < paramString.length)
-    {
-      String str = Integer.toHexString(paramString[i] & 0xFF);
-      if (str.length() == 1) {
-        ((StringBuffer)localObject).append("0");
-      }
-      ((StringBuffer)localObject).append(str);
-      i += 1;
-    }
-    return ((StringBuffer)localObject).toString().toUpperCase();
+    return (this.d != null) && (this.d.length() > 0);
+  }
+  
+  public boolean d()
+  {
+    return (this.d != null) && (this.d.length() > 0) && (this.a == 2);
+  }
+  
+  public int e()
+  {
+    return this.a;
   }
 }
 

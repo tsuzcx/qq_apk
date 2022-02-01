@@ -1,84 +1,50 @@
 package okio;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.net.Socket;
-import java.util.logging.Logger;
+import javax.annotation.Nullable;
 
-public final class o
+final class o
 {
-  static final Logger a = Logger.getLogger(o.class.getName());
+  @Nullable
+  static n a;
+  static long b;
   
-  public static h a(x paramx)
+  static n a()
   {
-    return new s(paramx);
+    try
+    {
+      if (a != null)
+      {
+        n localn = a;
+        a = localn.f;
+        localn.f = null;
+        b -= 8192L;
+        return localn;
+      }
+      return new n();
+    }
+    finally {}
   }
   
-  public static i a(y paramy)
+  static void a(n paramn)
   {
-    return new t(paramy);
-  }
-  
-  private static x a(OutputStream paramOutputStream, z paramz)
-  {
-    if (paramOutputStream == null) {
-      throw new IllegalArgumentException("out == null");
+    if ((paramn.f != null) || (paramn.g != null)) {
+      throw new IllegalArgumentException();
     }
-    if (paramz == null) {
-      throw new IllegalArgumentException("timeout == null");
+    if (paramn.d) {
+      return;
     }
-    return new p(paramz, paramOutputStream);
-  }
-  
-  public static x a(Socket paramSocket)
-  {
-    if (paramSocket == null) {
-      throw new IllegalArgumentException("socket == null");
+    try
+    {
+      if (b + 8192L > 65536L) {
+        return;
+      }
     }
-    if (paramSocket.getOutputStream() == null) {
-      throw new IOException("socket's output stream == null");
-    }
-    a locala = c(paramSocket);
-    return locala.a(a(paramSocket.getOutputStream(), locala));
-  }
-  
-  public static y a(InputStream paramInputStream)
-  {
-    return a(paramInputStream, new z());
-  }
-  
-  private static y a(InputStream paramInputStream, z paramz)
-  {
-    if (paramInputStream == null) {
-      throw new IllegalArgumentException("in == null");
-    }
-    if (paramz == null) {
-      throw new IllegalArgumentException("timeout == null");
-    }
-    return new q(paramz, paramInputStream);
-  }
-  
-  static boolean a(AssertionError paramAssertionError)
-  {
-    return (paramAssertionError.getCause() != null) && (paramAssertionError.getMessage() != null) && (paramAssertionError.getMessage().contains("getsockname failed"));
-  }
-  
-  public static y b(Socket paramSocket)
-  {
-    if (paramSocket == null) {
-      throw new IllegalArgumentException("socket == null");
-    }
-    if (paramSocket.getInputStream() == null) {
-      throw new IOException("socket's input stream == null");
-    }
-    a locala = c(paramSocket);
-    return locala.a(a(paramSocket.getInputStream(), locala));
-  }
-  
-  private static a c(Socket paramSocket)
-  {
-    return new r(paramSocket);
+    finally {}
+    b += 8192L;
+    paramn.f = a;
+    paramn.c = 0;
+    paramn.b = 0;
+    a = paramn;
   }
 }
 

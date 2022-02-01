@@ -1,35 +1,41 @@
 package okio;
 
-import java.io.InputStream;
-
-class g
-  extends InputStream
+public abstract class g
+  implements q
 {
-  g(f paramf) {}
+  private final q a;
   
-  public int available()
+  public g(q paramq)
   {
-    return (int)Math.min(this.a.b, 2147483647L);
-  }
-  
-  public void close() {}
-  
-  public int read()
-  {
-    if (this.a.b > 0L) {
-      return this.a.h() & 0xFF;
+    if (paramq == null) {
+      throw new IllegalArgumentException("delegate == null");
     }
-    return -1;
+    this.a = paramq;
   }
   
-  public int read(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  public long a(c paramc, long paramLong)
   {
-    return this.a.a(paramArrayOfByte, paramInt1, paramInt2);
+    return this.a.a(paramc, paramLong);
+  }
+  
+  public r a()
+  {
+    return this.a.a();
+  }
+  
+  public final q b()
+  {
+    return this.a;
+  }
+  
+  public void close()
+  {
+    this.a.close();
   }
   
   public String toString()
   {
-    return this.a + ".inputStream()";
+    return getClass().getSimpleName() + "(" + this.a.toString() + ")";
   }
 }
 

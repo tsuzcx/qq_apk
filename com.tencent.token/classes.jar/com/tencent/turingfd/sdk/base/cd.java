@@ -1,35 +1,16 @@
 package com.tencent.turingfd.sdk.base;
 
-import android.content.ComponentName;
-import android.content.ServiceConnection;
-import android.os.IBinder;
-import java.util.concurrent.atomic.AtomicReference;
-
-public class cd
-  implements ServiceConnection
+public final class cd
 {
-  public cd(cj paramcj, AtomicReference paramAtomicReference1, AtomicReference paramAtomicReference2, Object paramObject) {}
-  
-  public void onServiceConnected(ComponentName arg1, IBinder paramIBinder)
+  static
   {
-    this.a.set(paramIBinder);
-    this.b.set(this);
-    try
-    {
-      synchronized (this.c)
-      {
-        this.c.notifyAll();
-        label30:
-        return;
-      }
-    }
-    catch (Throwable paramIBinder)
-    {
-      break label30;
-    }
+    new String(cm.d("414553"));
   }
   
-  public void onServiceDisconnected(ComponentName paramComponentName) {}
+  public static byte[] a(byte[] paramArrayOfByte)
+  {
+    return cm.d(paramArrayOfByte).getBytes();
+  }
 }
 
 

@@ -1,36 +1,27 @@
 package com.tencent.turingfd.sdk.base;
 
 public final class Haw
-  extends float
+  extends break
 {
-  public int ed = 0;
-  public float gd = 0.0F;
-  public float radius = 0.0F;
+  public long Rc = 0L;
   public float x = 0.0F;
   public float y = 0.0F;
+  public float z = 0.0F;
   
-  public void a(dp paramdp)
+  public void a(cy paramcy)
   {
-    this.ed = paramdp.a(this.ed, 0, true);
-    this.x = paramdp.a(this.x, 1, true);
-    this.y = paramdp.a(this.y, 2, true);
-    this.gd = paramdp.a(this.gd, 3, false);
-    this.radius = paramdp.a(this.radius, 4, false);
+    this.Rc = paramcy.a(this.Rc, 0, true);
+    this.x = paramcy.a(this.x, 1, true);
+    this.y = paramcy.a(this.y, 2, true);
+    this.z = paramcy.a(this.z, 3, true);
   }
   
-  public void a(dv paramdv)
+  public void a(db paramdb)
   {
-    paramdv.a(this.ed, 0);
-    paramdv.a(this.x, 1);
-    paramdv.a(this.y, 2);
-    float f = this.gd;
-    if (f != 0.0F) {
-      paramdv.a(f, 3);
-    }
-    f = this.radius;
-    if (f != 0.0F) {
-      paramdv.a(f, 4);
-    }
+    paramdb.a(this.Rc, 0);
+    paramdb.a(this.x, 1);
+    paramdb.a(this.y, 2);
+    paramdb.a(this.z, 3);
   }
 }
 

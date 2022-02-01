@@ -1,38 +1,23 @@
 package okhttp3;
 
-import java.util.Comparator;
+import java.util.Collections;
+import java.util.List;
 
-class m
-  implements Comparator
+public abstract interface m
 {
-  public int a(String paramString1, String paramString2)
+  public static final m a = new m()
   {
-    int i = 4;
-    int j = Math.min(paramString1.length(), paramString2.length());
-    if (i < j)
+    public List<l> a(s paramAnonymouss)
     {
-      int k = paramString1.charAt(i);
-      int m = paramString2.charAt(i);
-      if (k != m) {
-        if (k >= m) {}
-      }
+      return Collections.emptyList();
     }
-    do
-    {
-      return -1;
-      return 1;
-      i += 1;
-      break;
-      i = paramString1.length();
-      j = paramString2.length();
-      if (i == j) {
-        break label85;
-      }
-    } while (i < j);
-    return 1;
-    label85:
-    return 0;
-  }
+    
+    public void a(s paramAnonymouss, List<l> paramAnonymousList) {}
+  };
+  
+  public abstract List<l> a(s params);
+  
+  public abstract void a(s params, List<l> paramList);
 }
 
 

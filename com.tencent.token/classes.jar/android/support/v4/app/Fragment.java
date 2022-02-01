@@ -17,7 +17,9 @@ import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
+import android.os.Parcel;
 import android.os.Parcelable;
+import android.os.Parcelable.Creator;
 import android.support.annotation.CallSuper;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -53,9 +55,9 @@ public class Fragment
   static final int STARTED = 4;
   static final int STOPPED = 3;
   static final Object USE_DEFAULT_TRANSITION = new Object();
-  private static final SimpleArrayMap sClassMap = new SimpleArrayMap();
+  private static final SimpleArrayMap<String, Class<?>> sClassMap = new SimpleArrayMap();
   boolean mAdded;
-  Fragment.AnimationInfo mAnimationInfo;
+  AnimationInfo mAnimationInfo;
   Bundle mArguments;
   int mBackStackNesting;
   boolean mCalled;
@@ -91,7 +93,7 @@ public class Fragment
   Bundle mSavedFragmentState;
   @Nullable
   Boolean mSavedUserVisibleHint;
-  SparseArray mSavedViewState;
+  SparseArray<Parcelable> mSavedViewState;
   int mState = 0;
   String mTag;
   Fragment mTarget;
@@ -104,7 +106,7 @@ public class Fragment
   
   private void callStartTransitionListener()
   {
-    Fragment.OnStartEnterTransitionListener localOnStartEnterTransitionListener = null;
+    OnStartEnterTransitionListener localOnStartEnterTransitionListener = null;
     if (this.mAnimationInfo == null) {}
     for (;;)
     {
@@ -118,10 +120,10 @@ public class Fragment
     }
   }
   
-  private Fragment.AnimationInfo ensureAnimationInfo()
+  private AnimationInfo ensureAnimationInfo()
   {
     if (this.mAnimationInfo == null) {
-      this.mAnimationInfo = new Fragment.AnimationInfo();
+      this.mAnimationInfo = new AnimationInfo();
     }
     return this.mAnimationInfo;
   }
@@ -152,23 +154,23 @@ public class Fragment
     }
     catch (ClassNotFoundException paramContext)
     {
-      throw new Fragment.InstantiationException("Unable to instantiate fragment " + paramString + ": make sure class name exists, is public, and has an" + " empty constructor that is public", paramContext);
+      throw new InstantiationException("Unable to instantiate fragment " + paramString + ": make sure class name exists, is public, and has an" + " empty constructor that is public", paramContext);
     }
     catch (InstantiationException paramContext)
     {
-      throw new Fragment.InstantiationException("Unable to instantiate fragment " + paramString + ": make sure class name exists, is public, and has an" + " empty constructor that is public", paramContext);
+      throw new InstantiationException("Unable to instantiate fragment " + paramString + ": make sure class name exists, is public, and has an" + " empty constructor that is public", paramContext);
     }
     catch (IllegalAccessException paramContext)
     {
-      throw new Fragment.InstantiationException("Unable to instantiate fragment " + paramString + ": make sure class name exists, is public, and has an" + " empty constructor that is public", paramContext);
+      throw new InstantiationException("Unable to instantiate fragment " + paramString + ": make sure class name exists, is public, and has an" + " empty constructor that is public", paramContext);
     }
     catch (NoSuchMethodException paramContext)
     {
-      throw new Fragment.InstantiationException("Unable to instantiate fragment " + paramString + ": could not find Fragment constructor", paramContext);
+      throw new InstantiationException("Unable to instantiate fragment " + paramString + ": could not find Fragment constructor", paramContext);
     }
     catch (InvocationTargetException paramContext)
     {
-      throw new Fragment.InstantiationException("Unable to instantiate fragment " + paramString + ": calling Fragment constructor caused an exception", paramContext);
+      throw new InstantiationException("Unable to instantiate fragment " + paramString + ": calling Fragment constructor caused an exception", paramContext);
     }
   }
   
@@ -351,18 +353,18 @@ public class Fragment
   
   public boolean getAllowEnterTransitionOverlap()
   {
-    if ((this.mAnimationInfo == null) || (Fragment.AnimationInfo.access$600(this.mAnimationInfo) == null)) {
+    if ((this.mAnimationInfo == null) || (this.mAnimationInfo.mAllowEnterTransitionOverlap == null)) {
       return true;
     }
-    return Fragment.AnimationInfo.access$600(this.mAnimationInfo).booleanValue();
+    return this.mAnimationInfo.mAllowEnterTransitionOverlap.booleanValue();
   }
   
   public boolean getAllowReturnTransitionOverlap()
   {
-    if ((this.mAnimationInfo == null) || (Fragment.AnimationInfo.access$700(this.mAnimationInfo) == null)) {
+    if ((this.mAnimationInfo == null) || (this.mAnimationInfo.mAllowReturnTransitionOverlap == null)) {
       return true;
     }
-    return Fragment.AnimationInfo.access$700(this.mAnimationInfo).booleanValue();
+    return this.mAnimationInfo.mAllowReturnTransitionOverlap.booleanValue();
   }
   
   View getAnimatingAway()
@@ -427,7 +429,7 @@ public class Fragment
     if (this.mAnimationInfo == null) {
       return null;
     }
-    return Fragment.AnimationInfo.access$000(this.mAnimationInfo);
+    return this.mAnimationInfo.mEnterTransition;
   }
   
   SharedElementCallback getEnterTransitionCallback()
@@ -444,7 +446,7 @@ public class Fragment
     if (this.mAnimationInfo == null) {
       return null;
     }
-    return Fragment.AnimationInfo.access$200(this.mAnimationInfo);
+    return this.mAnimationInfo.mExitTransition;
   }
   
   SharedElementCallback getExitTransitionCallback()
@@ -546,10 +548,10 @@ public class Fragment
     if (this.mAnimationInfo == null) {
       return null;
     }
-    if (Fragment.AnimationInfo.access$300(this.mAnimationInfo) == USE_DEFAULT_TRANSITION) {
+    if (this.mAnimationInfo.mReenterTransition == USE_DEFAULT_TRANSITION) {
       return getExitTransition();
     }
-    return Fragment.AnimationInfo.access$300(this.mAnimationInfo);
+    return this.mAnimationInfo.mReenterTransition;
   }
   
   @NonNull
@@ -569,10 +571,10 @@ public class Fragment
     if (this.mAnimationInfo == null) {
       return null;
     }
-    if (Fragment.AnimationInfo.access$100(this.mAnimationInfo) == USE_DEFAULT_TRANSITION) {
+    if (this.mAnimationInfo.mReturnTransition == USE_DEFAULT_TRANSITION) {
       return getEnterTransition();
     }
-    return Fragment.AnimationInfo.access$100(this.mAnimationInfo);
+    return this.mAnimationInfo.mReturnTransition;
   }
   
   @Nullable
@@ -581,7 +583,7 @@ public class Fragment
     if (this.mAnimationInfo == null) {
       return null;
     }
-    return Fragment.AnimationInfo.access$400(this.mAnimationInfo);
+    return this.mAnimationInfo.mSharedElementEnterTransition;
   }
   
   @Nullable
@@ -590,10 +592,10 @@ public class Fragment
     if (this.mAnimationInfo == null) {
       return null;
     }
-    if (Fragment.AnimationInfo.access$500(this.mAnimationInfo) == USE_DEFAULT_TRANSITION) {
+    if (this.mAnimationInfo.mSharedElementReturnTransition == USE_DEFAULT_TRANSITION) {
       return getSharedElementEnterTransition();
     }
-    return Fragment.AnimationInfo.access$500(this.mAnimationInfo);
+    return this.mAnimationInfo.mSharedElementReturnTransition;
   }
   
   int getStateAfterAnimating()
@@ -700,7 +702,27 @@ public class Fragment
       throw new IllegalStateException("Fragment has not been attached yet.");
     }
     this.mChildFragmentManager = new FragmentManagerImpl();
-    this.mChildFragmentManager.attachController(this.mHost, new Fragment.2(this), this);
+    this.mChildFragmentManager.attachController(this.mHost, new FragmentContainer()
+    {
+      public Fragment instantiate(Context paramAnonymousContext, String paramAnonymousString, Bundle paramAnonymousBundle)
+      {
+        return Fragment.this.mHost.instantiate(paramAnonymousContext, paramAnonymousString, paramAnonymousBundle);
+      }
+      
+      @Nullable
+      public View onFindViewById(int paramAnonymousInt)
+      {
+        if (Fragment.this.mView == null) {
+          throw new IllegalStateException("Fragment does not have a view");
+        }
+        return Fragment.this.mView.findViewById(paramAnonymousInt);
+      }
+      
+      public boolean onHasView()
+      {
+        return Fragment.this.mView != null;
+      }
+    }, this);
   }
   
   public final boolean isAdded()
@@ -1366,12 +1388,12 @@ public class Fragment
   
   public void setAllowEnterTransitionOverlap(boolean paramBoolean)
   {
-    Fragment.AnimationInfo.access$602(ensureAnimationInfo(), Boolean.valueOf(paramBoolean));
+    AnimationInfo.access$602(ensureAnimationInfo(), Boolean.valueOf(paramBoolean));
   }
   
   public void setAllowReturnTransitionOverlap(boolean paramBoolean)
   {
-    Fragment.AnimationInfo.access$702(ensureAnimationInfo(), Boolean.valueOf(paramBoolean));
+    AnimationInfo.access$702(ensureAnimationInfo(), Boolean.valueOf(paramBoolean));
   }
   
   void setAnimatingAway(View paramView)
@@ -1399,7 +1421,7 @@ public class Fragment
   
   public void setEnterTransition(@Nullable Object paramObject)
   {
-    Fragment.AnimationInfo.access$002(ensureAnimationInfo(), paramObject);
+    AnimationInfo.access$002(ensureAnimationInfo(), paramObject);
   }
   
   public void setExitSharedElementCallback(SharedElementCallback paramSharedElementCallback)
@@ -1409,7 +1431,7 @@ public class Fragment
   
   public void setExitTransition(@Nullable Object paramObject)
   {
-    Fragment.AnimationInfo.access$202(ensureAnimationInfo(), paramObject);
+    AnimationInfo.access$202(ensureAnimationInfo(), paramObject);
   }
   
   public void setHasOptionsMenu(boolean paramBoolean)
@@ -1439,7 +1461,7 @@ public class Fragment
     this.mWho = ("android:fragment:" + this.mIndex);
   }
   
-  public void setInitialSavedState(@Nullable Fragment.SavedState paramSavedState)
+  public void setInitialSavedState(@Nullable SavedState paramSavedState)
   {
     if (this.mIndex >= 0) {
       throw new IllegalStateException("Fragment already active");
@@ -1481,7 +1503,7 @@ public class Fragment
     this.mAnimationInfo.mNextTransitionStyle = paramInt2;
   }
   
-  void setOnStartEnterTransitionListener(Fragment.OnStartEnterTransitionListener paramOnStartEnterTransitionListener)
+  void setOnStartEnterTransitionListener(OnStartEnterTransitionListener paramOnStartEnterTransitionListener)
   {
     ensureAnimationInfo();
     if (paramOnStartEnterTransitionListener == this.mAnimationInfo.mStartEnterTransitionListener) {}
@@ -1500,7 +1522,7 @@ public class Fragment
   
   public void setReenterTransition(@Nullable Object paramObject)
   {
-    Fragment.AnimationInfo.access$302(ensureAnimationInfo(), paramObject);
+    AnimationInfo.access$302(ensureAnimationInfo(), paramObject);
   }
   
   public void setRetainInstance(boolean paramBoolean)
@@ -1510,17 +1532,17 @@ public class Fragment
   
   public void setReturnTransition(@Nullable Object paramObject)
   {
-    Fragment.AnimationInfo.access$102(ensureAnimationInfo(), paramObject);
+    AnimationInfo.access$102(ensureAnimationInfo(), paramObject);
   }
   
   public void setSharedElementEnterTransition(@Nullable Object paramObject)
   {
-    Fragment.AnimationInfo.access$402(ensureAnimationInfo(), paramObject);
+    AnimationInfo.access$402(ensureAnimationInfo(), paramObject);
   }
   
   public void setSharedElementReturnTransition(@Nullable Object paramObject)
   {
-    Fragment.AnimationInfo.access$502(ensureAnimationInfo(), paramObject);
+    AnimationInfo.access$502(ensureAnimationInfo(), paramObject);
   }
   
   void setStateAfterAnimating(int paramInt)
@@ -1612,7 +1634,13 @@ public class Fragment
     }
     if (Looper.myLooper() != this.mFragmentManager.mHost.getHandler().getLooper())
     {
-      this.mFragmentManager.mHost.getHandler().postAtFrontOfQueue(new Fragment.1(this));
+      this.mFragmentManager.mHost.getHandler().postAtFrontOfQueue(new Runnable()
+      {
+        public void run()
+        {
+          Fragment.this.callStartTransitionListener();
+        }
+      });
       return;
     }
     callStartTransitionListener();
@@ -1644,6 +1672,86 @@ public class Fragment
   public void unregisterForContextMenu(View paramView)
   {
     paramView.setOnCreateContextMenuListener(null);
+  }
+  
+  static class AnimationInfo
+  {
+    private Boolean mAllowEnterTransitionOverlap;
+    private Boolean mAllowReturnTransitionOverlap;
+    View mAnimatingAway;
+    Animator mAnimator;
+    private Object mEnterTransition = null;
+    SharedElementCallback mEnterTransitionCallback = null;
+    boolean mEnterTransitionPostponed;
+    private Object mExitTransition = null;
+    SharedElementCallback mExitTransitionCallback = null;
+    boolean mIsHideReplaced;
+    int mNextAnim;
+    int mNextTransition;
+    int mNextTransitionStyle;
+    private Object mReenterTransition = Fragment.USE_DEFAULT_TRANSITION;
+    private Object mReturnTransition = Fragment.USE_DEFAULT_TRANSITION;
+    private Object mSharedElementEnterTransition = null;
+    private Object mSharedElementReturnTransition = Fragment.USE_DEFAULT_TRANSITION;
+    Fragment.OnStartEnterTransitionListener mStartEnterTransitionListener;
+    int mStateAfterAnimating;
+  }
+  
+  public static class InstantiationException
+    extends RuntimeException
+  {
+    public InstantiationException(String paramString, Exception paramException)
+    {
+      super(paramException);
+    }
+  }
+  
+  static abstract interface OnStartEnterTransitionListener
+  {
+    public abstract void onStartEnterTransition();
+    
+    public abstract void startListening();
+  }
+  
+  public static class SavedState
+    implements Parcelable
+  {
+    public static final Parcelable.Creator<SavedState> CREATOR = new Parcelable.Creator()
+    {
+      public Fragment.SavedState createFromParcel(Parcel paramAnonymousParcel)
+      {
+        return new Fragment.SavedState(paramAnonymousParcel, null);
+      }
+      
+      public Fragment.SavedState[] newArray(int paramAnonymousInt)
+      {
+        return new Fragment.SavedState[paramAnonymousInt];
+      }
+    };
+    final Bundle mState;
+    
+    SavedState(Bundle paramBundle)
+    {
+      this.mState = paramBundle;
+    }
+    
+    SavedState(Parcel paramParcel, ClassLoader paramClassLoader)
+    {
+      this.mState = paramParcel.readBundle();
+      if ((paramClassLoader != null) && (this.mState != null)) {
+        this.mState.setClassLoader(paramClassLoader);
+      }
+    }
+    
+    public int describeContents()
+    {
+      return 0;
+    }
+    
+    public void writeToParcel(Parcel paramParcel, int paramInt)
+    {
+      paramParcel.writeBundle(this.mState);
+    }
   }
 }
 

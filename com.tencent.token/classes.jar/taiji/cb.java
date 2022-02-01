@@ -1,6 +1,9 @@
 package taiji;
 
-public enum cb {}
+public enum cb
+{
+  private cb() {}
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.token\classes.jar

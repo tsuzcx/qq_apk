@@ -3,6 +3,7 @@ package android.support.v7.widget;
 import android.content.Context;
 import android.content.res.ColorStateList;
 import android.content.res.Resources;
+import android.content.res.Resources.Theme;
 import android.content.res.XmlResourceParser;
 import android.graphics.PorterDuff.Mode;
 import android.graphics.PorterDuffColorFilter;
@@ -13,13 +14,17 @@ import android.os.Build.VERSION;
 import android.support.annotation.ColorInt;
 import android.support.annotation.DrawableRes;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.support.annotation.RequiresApi;
 import android.support.annotation.RestrictTo;
+import android.support.graphics.drawable.AnimatedVectorDrawableCompat;
 import android.support.graphics.drawable.VectorDrawableCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.graphics.ColorUtils;
 import android.support.v4.graphics.drawable.DrawableCompat;
 import android.support.v4.util.ArrayMap;
 import android.support.v4.util.LongSparseArray;
+import android.support.v4.util.LruCache;
 import android.support.v4.util.SparseArrayCompat;
 import android.support.v7.appcompat.R.attr;
 import android.support.v7.appcompat.R.color;
@@ -40,7 +45,7 @@ public final class AppCompatDrawableManager
   private static final int[] COLORFILTER_COLOR_BACKGROUND_MULTIPLY;
   private static final int[] COLORFILTER_COLOR_CONTROL_ACTIVATED;
   private static final int[] COLORFILTER_TINT_COLOR_CONTROL_NORMAL;
-  private static final AppCompatDrawableManager.ColorFilterLruCache COLOR_FILTER_CACHE;
+  private static final ColorFilterLruCache COLOR_FILTER_CACHE;
   private static final boolean DEBUG = false;
   private static final PorterDuff.Mode DEFAULT_MODE = PorterDuff.Mode.SRC_IN;
   private static AppCompatDrawableManager INSTANCE;
@@ -50,17 +55,17 @@ public final class AppCompatDrawableManager
   private static final int[] TINT_CHECKABLE_BUTTON_LIST = { R.drawable.abc_btn_check_material, R.drawable.abc_btn_radio_material };
   private static final int[] TINT_COLOR_CONTROL_NORMAL;
   private static final int[] TINT_COLOR_CONTROL_STATE_LIST;
-  private ArrayMap mDelegates;
+  private ArrayMap<String, InflateDelegate> mDelegates;
   private final Object mDrawableCacheLock = new Object();
-  private final WeakHashMap mDrawableCaches = new WeakHashMap(0);
+  private final WeakHashMap<Context, LongSparseArray<WeakReference<Drawable.ConstantState>>> mDrawableCaches = new WeakHashMap(0);
   private boolean mHasCheckedVectorDrawableSetup;
-  private SparseArrayCompat mKnownDrawableIdTags;
-  private WeakHashMap mTintLists;
+  private SparseArrayCompat<String> mKnownDrawableIdTags;
+  private WeakHashMap<Context, SparseArrayCompat<ColorStateList>> mTintLists;
   private TypedValue mTypedValue;
   
   static
   {
-    COLOR_FILTER_CACHE = new AppCompatDrawableManager.ColorFilterLruCache(6);
+    COLOR_FILTER_CACHE = new ColorFilterLruCache(6);
     COLORFILTER_TINT_COLOR_CONTROL_NORMAL = new int[] { R.drawable.abc_textfield_search_default_mtrl_alpha, R.drawable.abc_textfield_default_mtrl_alpha, R.drawable.abc_ab_share_pack_mtrl_alpha };
     TINT_COLOR_CONTROL_NORMAL = new int[] { R.drawable.abc_ic_commit_search_api_mtrl_alpha, R.drawable.abc_seekbar_tick_mark_material, R.drawable.abc_ic_menu_share_mtrl_alpha, R.drawable.abc_ic_menu_copy_mtrl_am_alpha, R.drawable.abc_ic_menu_cut_mtrl_alpha, R.drawable.abc_ic_menu_selectall_mtrl_alpha, R.drawable.abc_ic_menu_paste_mtrl_am_alpha };
     COLORFILTER_COLOR_CONTROL_ACTIVATED = new int[] { R.drawable.abc_textfield_activated_mtrl_alpha, R.drawable.abc_textfield_search_activated_mtrl_alpha, R.drawable.abc_cab_background_top_mtrl_alpha, R.drawable.abc_text_cursor_material, R.drawable.abc_text_select_handle_left_mtrl_dark, R.drawable.abc_text_select_handle_middle_mtrl_dark, R.drawable.abc_text_select_handle_right_mtrl_dark, R.drawable.abc_text_select_handle_left_mtrl_light, R.drawable.abc_text_select_handle_middle_mtrl_light, R.drawable.abc_text_select_handle_right_mtrl_light };
@@ -68,7 +73,7 @@ public final class AppCompatDrawableManager
     TINT_COLOR_CONTROL_STATE_LIST = new int[] { R.drawable.abc_tab_indicator_material, R.drawable.abc_textfield_search_material };
   }
   
-  private void addDelegate(@NonNull String paramString, @NonNull AppCompatDrawableManager.InflateDelegate paramInflateDelegate)
+  private void addDelegate(@NonNull String paramString, @NonNull InflateDelegate paramInflateDelegate)
   {
     if (this.mDelegates == null) {
       this.mDelegates = new ArrayMap();
@@ -310,8 +315,8 @@ public final class AppCompatDrawableManager
   {
     if (Build.VERSION.SDK_INT < 24)
     {
-      paramAppCompatDrawableManager.addDelegate("vector", new AppCompatDrawableManager.VdcInflateDelegate());
-      paramAppCompatDrawableManager.addDelegate("animated-vector", new AppCompatDrawableManager.AvdcInflateDelegate());
+      paramAppCompatDrawableManager.addDelegate("vector", new VdcInflateDelegate());
+      paramAppCompatDrawableManager.addDelegate("animated-vector", new AvdcInflateDelegate());
     }
   }
   
@@ -393,7 +398,7 @@ public final class AppCompatDrawableManager
         localObject2 = localDrawable;
         this.mKnownDrawableIdTags.append(paramInt, localObject1);
         localObject2 = localDrawable;
-        AppCompatDrawableManager.InflateDelegate localInflateDelegate = (AppCompatDrawableManager.InflateDelegate)this.mDelegates.get(localObject1);
+        InflateDelegate localInflateDelegate = (InflateDelegate)this.mDelegates.get(localObject1);
         localObject1 = localDrawable;
         if (localInflateDelegate != null)
         {
@@ -413,7 +418,7 @@ public final class AppCompatDrawableManager
     return null;
   }
   
-  private void removeDelegate(@NonNull String paramString, @NonNull AppCompatDrawableManager.InflateDelegate paramInflateDelegate)
+  private void removeDelegate(@NonNull String paramString, @NonNull InflateDelegate paramInflateDelegate)
   {
     if ((this.mDelegates != null) && (this.mDelegates.get(paramString) == paramInflateDelegate)) {
       this.mDelegates.remove(paramString);
@@ -677,6 +682,72 @@ public final class AppCompatDrawableManager
       return tintDrawable(paramContext, paramInt, false, localDrawable1);
     }
     return null;
+  }
+  
+  @RequiresApi(11)
+  private static class AvdcInflateDelegate
+    implements AppCompatDrawableManager.InflateDelegate
+  {
+    public Drawable createFromXmlInner(@NonNull Context paramContext, @NonNull XmlPullParser paramXmlPullParser, @NonNull AttributeSet paramAttributeSet, @Nullable Resources.Theme paramTheme)
+    {
+      try
+      {
+        paramContext = AnimatedVectorDrawableCompat.createFromXmlInner(paramContext, paramContext.getResources(), paramXmlPullParser, paramAttributeSet, paramTheme);
+        return paramContext;
+      }
+      catch (Exception paramContext)
+      {
+        Log.e("AvdcInflateDelegate", "Exception while inflating <animated-vector>", paramContext);
+      }
+      return null;
+    }
+  }
+  
+  private static class ColorFilterLruCache
+    extends LruCache<Integer, PorterDuffColorFilter>
+  {
+    public ColorFilterLruCache(int paramInt)
+    {
+      super();
+    }
+    
+    private static int generateCacheKey(int paramInt, PorterDuff.Mode paramMode)
+    {
+      return (paramInt + 31) * 31 + paramMode.hashCode();
+    }
+    
+    PorterDuffColorFilter get(int paramInt, PorterDuff.Mode paramMode)
+    {
+      return (PorterDuffColorFilter)get(Integer.valueOf(generateCacheKey(paramInt, paramMode)));
+    }
+    
+    PorterDuffColorFilter put(int paramInt, PorterDuff.Mode paramMode, PorterDuffColorFilter paramPorterDuffColorFilter)
+    {
+      return (PorterDuffColorFilter)put(Integer.valueOf(generateCacheKey(paramInt, paramMode)), paramPorterDuffColorFilter);
+    }
+  }
+  
+  private static abstract interface InflateDelegate
+  {
+    public abstract Drawable createFromXmlInner(@NonNull Context paramContext, @NonNull XmlPullParser paramXmlPullParser, @NonNull AttributeSet paramAttributeSet, @Nullable Resources.Theme paramTheme);
+  }
+  
+  private static class VdcInflateDelegate
+    implements AppCompatDrawableManager.InflateDelegate
+  {
+    public Drawable createFromXmlInner(@NonNull Context paramContext, @NonNull XmlPullParser paramXmlPullParser, @NonNull AttributeSet paramAttributeSet, @Nullable Resources.Theme paramTheme)
+    {
+      try
+      {
+        paramContext = VectorDrawableCompat.createFromXmlInner(paramContext.getResources(), paramXmlPullParser, paramAttributeSet, paramTheme);
+        return paramContext;
+      }
+      catch (Exception paramContext)
+      {
+        Log.e("VdcInflateDelegate", "Exception while inflating <vector>", paramContext);
+      }
+      return null;
+    }
   }
 }
 

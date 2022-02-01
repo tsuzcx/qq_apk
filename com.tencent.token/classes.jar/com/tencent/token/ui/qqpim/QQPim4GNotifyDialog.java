@@ -5,6 +5,8 @@ import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.Display;
+import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.Window;
 import android.view.WindowManager;
 import android.view.WindowManager.LayoutParams;
@@ -15,13 +17,13 @@ public class QQPim4GNotifyDialog
   extends Dialog
 {
   private Context a;
-  private d b = null;
+  private a b = null;
   
-  public QQPim4GNotifyDialog(Context paramContext, int paramInt, d paramd)
+  public QQPim4GNotifyDialog(Context paramContext, int paramInt, a parama)
   {
     super(paramContext, paramInt);
     this.a = paramContext;
-    this.b = paramd;
+    this.b = parama;
   }
   
   protected void onCreate(Bundle paramBundle)
@@ -34,9 +36,29 @@ public class QQPim4GNotifyDialog
       WindowManager.LayoutParams localLayoutParams = paramBundle.getAttributes();
       localLayoutParams.width = ((int)(((Activity)this.a).getWindowManager().getDefaultDisplay().getWidth() - 84.0F * IndexActivity.S_DENSITY));
       paramBundle.setAttributes(localLayoutParams);
-      ((TextView)findViewById(2131559129)).setOnClickListener(new b(this));
-      ((TextView)findViewById(2131559128)).setOnClickListener(new c(this));
+      ((TextView)findViewById(2131559130)).setOnClickListener(new View.OnClickListener()
+      {
+        public void onClick(View paramAnonymousView)
+        {
+          if (QQPim4GNotifyDialog.a(QQPim4GNotifyDialog.this) != null) {
+            QQPim4GNotifyDialog.a(QQPim4GNotifyDialog.this).a();
+          }
+          QQPim4GNotifyDialog.this.dismiss();
+        }
+      });
+      ((TextView)findViewById(2131559129)).setOnClickListener(new View.OnClickListener()
+      {
+        public void onClick(View paramAnonymousView)
+        {
+          QQPim4GNotifyDialog.this.dismiss();
+        }
+      });
     }
+  }
+  
+  static abstract interface a
+  {
+    public abstract void a();
   }
 }
 

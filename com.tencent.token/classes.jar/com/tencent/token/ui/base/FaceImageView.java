@@ -15,7 +15,7 @@ import android.os.SystemClock;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.view.View;
-import com.tencent.token.global.h;
+import com.tencent.token.global.g;
 
 public class FaceImageView
   extends View
@@ -61,7 +61,7 @@ public class FaceImageView
     paramAttributeSet = paramContext.getResources().getDisplayMetrics();
     this.j = paramAttributeSet.heightPixels;
     this.k = paramAttributeSet.widthPixels;
-    h.c("msg.arg1 screenWidth=" + this.j + ",screenHeight=" + this.k);
+    g.c("msg.arg1 screenWidth=" + this.j + ",screenHeight=" + this.k);
     this.q = (140.0F * this.i);
     this.r = (320.0F * this.i);
     this.c = BitmapFactory.decodeResource(paramContext.getResources(), 2130837703);
@@ -70,7 +70,7 @@ public class FaceImageView
     this.e = BitmapFactory.decodeResource(paramContext.getResources(), 2130837718);
     this.f = BitmapFactory.decodeResource(paramContext.getResources(), 2130837720);
     this.t = new RectF();
-    h.c("FaceImageView scale=" + this.i);
+    g.c("FaceImageView scale=" + this.i);
     this.p = (this.r / n);
   }
   

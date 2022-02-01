@@ -10,29 +10,31 @@ import android.graphics.Canvas;
 import android.graphics.Rect;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Message;
 import android.view.Display;
 import android.view.GestureDetector;
+import android.view.GestureDetector.OnGestureListener;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
-import com.tencent.token.cw;
-import com.tencent.token.cx;
-import com.tencent.token.do;
+import com.tencent.token.ca;
+import com.tencent.token.cb;
+import com.tencent.token.core.bean.QueryCaptchaResult;
+import com.tencent.token.cq;
 import com.tencent.token.global.c;
-import com.tencent.token.global.h;
+import com.tencent.token.global.e;
 import com.tencent.token.ui.base.ProDialogWithShutDown;
-import com.tencent.token.ui.base.by;
-import com.tencent.token.ui.base.bz;
+import com.tencent.token.ui.base.g.a;
 import com.tencent.token.utils.UserTask;
 import com.tencent.token.utils.UserTask.Status;
-import com.tencent.token.utils.x;
+import com.tencent.token.utils.m;
 
 public class WelcomeActivity
   extends Activity
-  implements bz
+  implements g.a
 {
   private static final int BTN_HEIGHT = 45;
   private static final int BTN_WIDTH = 200;
@@ -42,20 +44,113 @@ public class WelcomeActivity
   private int DOT_OFFSET_X;
   private int DOT_OFFSET_Y;
   private int DOT_SIZE;
-  private UserTask mActiveTask = null;
-  private GestureDetector mDetector = new GestureDetector(new afp(this));
+  private UserTask<String, String, e> mActiveTask = null;
+  private GestureDetector mDetector = new GestureDetector(new GestureDetector.OnGestureListener()
+  {
+    public boolean onDown(MotionEvent paramAnonymousMotionEvent)
+    {
+      return false;
+    }
+    
+    public boolean onFling(MotionEvent paramAnonymousMotionEvent1, MotionEvent paramAnonymousMotionEvent2, float paramAnonymousFloat1, float paramAnonymousFloat2)
+    {
+      try
+      {
+        if (paramAnonymousMotionEvent1.getX() - paramAnonymousMotionEvent2.getX() > 0.0F)
+        {
+          if (WelcomeActivity.this.mLevel >= WelcomeActivity.IMAGE_LEVEL_COUNT - 1) {
+            break label231;
+          }
+          paramAnonymousMotionEvent1 = m.a(WelcomeActivity.this, WelcomeActivity.mBitmapIds[WelcomeActivity.access$104(WelcomeActivity.this)], WelcomeActivity.this.mLowQuality);
+          if (paramAnonymousMotionEvent1 == null)
+          {
+            WelcomeActivity.this.doOutOfMemory();
+            return true;
+          }
+          WelcomeActivity.this.mPageCurlView.a(paramAnonymousMotionEvent1);
+          if ((WelcomeActivity.this.mLevel != WelcomeActivity.IMAGE_LEVEL_COUNT - 1) || (WelcomeActivity.this.mEndBtn == null)) {
+            break label231;
+          }
+          WelcomeActivity.this.mEndBtn.setVisibility(0);
+          return true;
+        }
+      }
+      catch (OutOfMemoryError paramAnonymousMotionEvent1)
+      {
+        paramAnonymousMotionEvent1.printStackTrace();
+        WelcomeActivity.this.doOutOfMemory();
+        return true;
+        if ((paramAnonymousMotionEvent2.getX() - paramAnonymousMotionEvent1.getX() <= 0.0F) || (WelcomeActivity.this.mLevel <= 0)) {
+          break label231;
+        }
+        paramAnonymousMotionEvent1 = m.a(WelcomeActivity.this, WelcomeActivity.mBitmapIds[WelcomeActivity.access$106(WelcomeActivity.this)], WelcomeActivity.this.mLowQuality);
+        if (paramAnonymousMotionEvent1 == null)
+        {
+          WelcomeActivity.this.doOutOfMemory();
+          return true;
+        }
+      }
+      catch (Exception paramAnonymousMotionEvent1)
+      {
+        paramAnonymousMotionEvent1.printStackTrace();
+        WelcomeActivity.this.doOutOfMemory();
+        return true;
+      }
+      WelcomeActivity.this.mPageCurlView.b(paramAnonymousMotionEvent1);
+      WelcomeActivity.this.mEndBtn.setVisibility(8);
+      label231:
+      return true;
+    }
+    
+    public void onLongPress(MotionEvent paramAnonymousMotionEvent) {}
+    
+    public boolean onScroll(MotionEvent paramAnonymousMotionEvent1, MotionEvent paramAnonymousMotionEvent2, float paramAnonymousFloat1, float paramAnonymousFloat2)
+    {
+      return false;
+    }
+    
+    public void onShowPress(MotionEvent paramAnonymousMotionEvent) {}
+    
+    public boolean onSingleTapUp(MotionEvent paramAnonymousMotionEvent)
+    {
+      return false;
+    }
+  });
   private Dialog mDialog;
   private Bitmap mDotEmpty;
   private Bitmap mDotFull;
   private Button mEndBtn;
   private boolean mFirstInstall = false;
-  private Handler mHandler = new afo(this);
+  private Handler mHandler = new Handler()
+  {
+    public void handleMessage(Message paramAnonymousMessage)
+    {
+      if ((WelcomeActivity.this == null) || ((WelcomeActivity.this != null) && (WelcomeActivity.this.isFinishing()))) {}
+      do
+      {
+        do
+        {
+          return;
+          switch (paramAnonymousMessage.what)
+          {
+          default: 
+            return;
+          }
+        } while (paramAnonymousMessage.arg1 != 0);
+        paramAnonymousMessage = cb.c();
+        paramAnonymousMessage.i();
+        paramAnonymousMessage.n();
+        return;
+      } while ((paramAnonymousMessage.arg1 != 0) || (((QueryCaptchaResult)paramAnonymousMessage.obj).mNeedCaptcha));
+      WelcomeActivity.this.sendActiveClient();
+    }
+  };
   private int mHeight;
   private int mLevel = 0;
   private boolean mLowQuality;
-  private by mPageCurlView;
+  private com.tencent.token.ui.base.g mPageCurlView;
   private ProDialogWithShutDown mProDialog;
-  private UserTask mSyncInitTask = null;
+  private UserTask<String, String, e> mSyncInitTask = null;
   private int mWidth;
   
   private void doOutOfMemory()
@@ -96,17 +191,30 @@ public class WelcomeActivity
   
   private void getSharedKey()
   {
-    this.mSyncInitTask = new afq(this);
+    this.mSyncInitTask = new UserTask()
+    {
+      public e a(String... paramAnonymousVarArgs)
+      {
+        return cq.a().s();
+      }
+      
+      public void a(e paramAnonymouse)
+      {
+        if (paramAnonymouse.b()) {
+          ca.a().d(0L, 3, WelcomeActivity.this.mHandler);
+        }
+      }
+    };
     this.mSyncInitTask.c(new String[] { "" });
   }
   
   private void init()
   {
-    cx.b(c.h());
+    cb.b(c.h());
     try
     {
-      h.b("totalMemory:" + Runtime.getRuntime().totalMemory() + " freeMemory:" + Runtime.getRuntime().freeMemory() + " maxMemory:" + Runtime.getRuntime().maxMemory());
-      if (x.b()) {}
+      com.tencent.token.global.g.b("totalMemory:" + Runtime.getRuntime().totalMemory() + " freeMemory:" + Runtime.getRuntime().freeMemory() + " maxMemory:" + Runtime.getRuntime().maxMemory());
+      if (m.b()) {}
       nextActivity();
       return;
     }
@@ -125,13 +233,13 @@ public class WelcomeActivity
   
   private void nextActivity()
   {
-    Object localObject = cx.c();
+    Object localObject = cb.c();
     if ((this.mActiveTask != null) && (this.mActiveTask.b() != UserTask.Status.FINISHED)) {
       this.mActiveTask.a(true);
     }
-    if (!((cx)localObject).g())
+    if (!((cb)localObject).g())
     {
-      if (do.a().d() == 0)
+      if (cq.a().d() == 0)
       {
         localObject = new Intent(this, IndexActivity.class);
         ((Intent)localObject).putExtra("index_from", 16);
@@ -142,8 +250,8 @@ public class WelcomeActivity
       localObject = new Intent(this, IndexActivity.class);
       if (this.mFirstInstall)
       {
-        if (do.a().e() == null) {
-          break label125;
+        if (cq.a().e() == null) {
+          break label127;
         }
         ((Intent)localObject).putExtra("index_from", 17);
       }
@@ -152,7 +260,7 @@ public class WelcomeActivity
         startActivity((Intent)localObject);
         finish();
         return;
-        label125:
+        label127:
         ((Intent)localObject).putExtra("index_from", 16);
       }
     }
@@ -164,7 +272,7 @@ public class WelcomeActivity
   
   private void sendActiveClient()
   {
-    cw.a().d(this.mHandler);
+    ca.a().d(this.mHandler);
   }
   
   public void dismissDialog()
@@ -189,7 +297,7 @@ public class WelcomeActivity
       }
       catch (Exception localException)
       {
-        h.b(localException.toString());
+        com.tencent.token.global.g.b(localException.toString());
       }
     }
   }
@@ -210,7 +318,7 @@ public class WelcomeActivity
       catch (Exception paramKeyEvent)
       {
         paramKeyEvent.printStackTrace();
-        h.d("dispatchKeyEvent exception " + this + paramKeyEvent.toString());
+        com.tencent.token.global.g.d("dispatchKeyEvent exception " + this + paramKeyEvent.toString());
         return true;
       }
       finish();
@@ -221,8 +329,8 @@ public class WelcomeActivity
   protected void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    h.b(this + ",task" + getTaskId());
-    h.a("width = " + getWindowManager().getDefaultDisplay().getWidth() + ", height = " + getWindowManager().getDefaultDisplay().getHeight());
+    com.tencent.token.global.g.b(this + ",task" + getTaskId());
+    com.tencent.token.global.g.a("width = " + getWindowManager().getDefaultDisplay().getWidth() + ", height = " + getWindowManager().getDefaultDisplay().getHeight());
     init();
   }
   
@@ -232,7 +340,7 @@ public class WelcomeActivity
       this.mPageCurlView.c();
     }
     this.mPageCurlView = null;
-    cw.a().a(getClass().getName());
+    ca.a().a(getClass().getName());
     super.onDestroy();
   }
   

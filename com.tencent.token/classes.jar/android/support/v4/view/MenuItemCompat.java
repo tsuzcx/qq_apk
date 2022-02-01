@@ -3,14 +3,16 @@ package android.support.v4.view;
 import android.content.res.ColorStateList;
 import android.graphics.PorterDuff.Mode;
 import android.os.Build.VERSION;
+import android.support.annotation.RequiresApi;
 import android.support.v4.internal.view.SupportMenuItem;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.MenuItem.OnActionExpandListener;
 import android.view.View;
 
 public final class MenuItemCompat
 {
-  static final MenuItemCompat.MenuVersionImpl IMPL = new MenuItemCompat.MenuItemCompatBaseImpl();
+  static final MenuVersionImpl IMPL = new MenuItemCompatBaseImpl();
   @Deprecated
   public static final int SHOW_AS_ACTION_ALWAYS = 2;
   @Deprecated
@@ -27,7 +29,7 @@ public final class MenuItemCompat
   {
     if (Build.VERSION.SDK_INT >= 26)
     {
-      IMPL = new MenuItemCompat.MenuItemCompatApi26Impl();
+      IMPL = new MenuItemCompatApi26Impl();
       return;
     }
   }
@@ -185,9 +187,20 @@ public final class MenuItemCompat
   }
   
   @Deprecated
-  public static MenuItem setOnActionExpandListener(MenuItem paramMenuItem, MenuItemCompat.OnActionExpandListener paramOnActionExpandListener)
+  public static MenuItem setOnActionExpandListener(MenuItem paramMenuItem, OnActionExpandListener paramOnActionExpandListener)
   {
-    return paramMenuItem.setOnActionExpandListener(new MenuItemCompat.1(paramOnActionExpandListener));
+    paramMenuItem.setOnActionExpandListener(new MenuItem.OnActionExpandListener()
+    {
+      public boolean onMenuItemActionCollapse(MenuItem paramAnonymousMenuItem)
+      {
+        return this.val$listener.onMenuItemActionCollapse(paramAnonymousMenuItem);
+      }
+      
+      public boolean onMenuItemActionExpand(MenuItem paramAnonymousMenuItem)
+      {
+        return this.val$listener.onMenuItemActionExpand(paramAnonymousMenuItem);
+      }
+    });
   }
   
   public static void setShortcut(MenuItem paramMenuItem, char paramChar1, char paramChar2, int paramInt1, int paramInt2)
@@ -214,6 +227,161 @@ public final class MenuItemCompat
       return;
     }
     IMPL.setTooltipText(paramMenuItem, paramCharSequence);
+  }
+  
+  @RequiresApi(26)
+  static class MenuItemCompatApi26Impl
+    extends MenuItemCompat.MenuItemCompatBaseImpl
+  {
+    public int getAlphabeticModifiers(MenuItem paramMenuItem)
+    {
+      return paramMenuItem.getAlphabeticModifiers();
+    }
+    
+    public CharSequence getContentDescription(MenuItem paramMenuItem)
+    {
+      return paramMenuItem.getContentDescription();
+    }
+    
+    public ColorStateList getIconTintList(MenuItem paramMenuItem)
+    {
+      return paramMenuItem.getIconTintList();
+    }
+    
+    public PorterDuff.Mode getIconTintMode(MenuItem paramMenuItem)
+    {
+      return paramMenuItem.getIconTintMode();
+    }
+    
+    public int getNumericModifiers(MenuItem paramMenuItem)
+    {
+      return paramMenuItem.getNumericModifiers();
+    }
+    
+    public CharSequence getTooltipText(MenuItem paramMenuItem)
+    {
+      return paramMenuItem.getTooltipText();
+    }
+    
+    public void setAlphabeticShortcut(MenuItem paramMenuItem, char paramChar, int paramInt)
+    {
+      paramMenuItem.setAlphabeticShortcut(paramChar, paramInt);
+    }
+    
+    public void setContentDescription(MenuItem paramMenuItem, CharSequence paramCharSequence)
+    {
+      paramMenuItem.setContentDescription(paramCharSequence);
+    }
+    
+    public void setIconTintList(MenuItem paramMenuItem, ColorStateList paramColorStateList)
+    {
+      paramMenuItem.setIconTintList(paramColorStateList);
+    }
+    
+    public void setIconTintMode(MenuItem paramMenuItem, PorterDuff.Mode paramMode)
+    {
+      paramMenuItem.setIconTintMode(paramMode);
+    }
+    
+    public void setNumericShortcut(MenuItem paramMenuItem, char paramChar, int paramInt)
+    {
+      paramMenuItem.setNumericShortcut(paramChar, paramInt);
+    }
+    
+    public void setShortcut(MenuItem paramMenuItem, char paramChar1, char paramChar2, int paramInt1, int paramInt2)
+    {
+      paramMenuItem.setShortcut(paramChar1, paramChar2, paramInt1, paramInt2);
+    }
+    
+    public void setTooltipText(MenuItem paramMenuItem, CharSequence paramCharSequence)
+    {
+      paramMenuItem.setTooltipText(paramCharSequence);
+    }
+  }
+  
+  static class MenuItemCompatBaseImpl
+    implements MenuItemCompat.MenuVersionImpl
+  {
+    public int getAlphabeticModifiers(MenuItem paramMenuItem)
+    {
+      return 0;
+    }
+    
+    public CharSequence getContentDescription(MenuItem paramMenuItem)
+    {
+      return null;
+    }
+    
+    public ColorStateList getIconTintList(MenuItem paramMenuItem)
+    {
+      return null;
+    }
+    
+    public PorterDuff.Mode getIconTintMode(MenuItem paramMenuItem)
+    {
+      return null;
+    }
+    
+    public int getNumericModifiers(MenuItem paramMenuItem)
+    {
+      return 0;
+    }
+    
+    public CharSequence getTooltipText(MenuItem paramMenuItem)
+    {
+      return null;
+    }
+    
+    public void setAlphabeticShortcut(MenuItem paramMenuItem, char paramChar, int paramInt) {}
+    
+    public void setContentDescription(MenuItem paramMenuItem, CharSequence paramCharSequence) {}
+    
+    public void setIconTintList(MenuItem paramMenuItem, ColorStateList paramColorStateList) {}
+    
+    public void setIconTintMode(MenuItem paramMenuItem, PorterDuff.Mode paramMode) {}
+    
+    public void setNumericShortcut(MenuItem paramMenuItem, char paramChar, int paramInt) {}
+    
+    public void setShortcut(MenuItem paramMenuItem, char paramChar1, char paramChar2, int paramInt1, int paramInt2) {}
+    
+    public void setTooltipText(MenuItem paramMenuItem, CharSequence paramCharSequence) {}
+  }
+  
+  static abstract interface MenuVersionImpl
+  {
+    public abstract int getAlphabeticModifiers(MenuItem paramMenuItem);
+    
+    public abstract CharSequence getContentDescription(MenuItem paramMenuItem);
+    
+    public abstract ColorStateList getIconTintList(MenuItem paramMenuItem);
+    
+    public abstract PorterDuff.Mode getIconTintMode(MenuItem paramMenuItem);
+    
+    public abstract int getNumericModifiers(MenuItem paramMenuItem);
+    
+    public abstract CharSequence getTooltipText(MenuItem paramMenuItem);
+    
+    public abstract void setAlphabeticShortcut(MenuItem paramMenuItem, char paramChar, int paramInt);
+    
+    public abstract void setContentDescription(MenuItem paramMenuItem, CharSequence paramCharSequence);
+    
+    public abstract void setIconTintList(MenuItem paramMenuItem, ColorStateList paramColorStateList);
+    
+    public abstract void setIconTintMode(MenuItem paramMenuItem, PorterDuff.Mode paramMode);
+    
+    public abstract void setNumericShortcut(MenuItem paramMenuItem, char paramChar, int paramInt);
+    
+    public abstract void setShortcut(MenuItem paramMenuItem, char paramChar1, char paramChar2, int paramInt1, int paramInt2);
+    
+    public abstract void setTooltipText(MenuItem paramMenuItem, CharSequence paramCharSequence);
+  }
+  
+  @Deprecated
+  public static abstract interface OnActionExpandListener
+  {
+    public abstract boolean onMenuItemActionCollapse(MenuItem paramMenuItem);
+    
+    public abstract boolean onMenuItemActionExpand(MenuItem paramMenuItem);
   }
 }
 

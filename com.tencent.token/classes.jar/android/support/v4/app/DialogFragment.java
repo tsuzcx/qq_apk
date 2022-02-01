@@ -14,6 +14,9 @@ import android.support.annotation.StyleRes;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
+import java.lang.annotation.Annotation;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
 
 public class DialogFragment
   extends Fragment
@@ -311,6 +314,10 @@ public class DialogFragment
     paramFragmentManager.add(this, paramString);
     paramFragmentManager.commitNow();
   }
+  
+  @Retention(RetentionPolicy.SOURCE)
+  @RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
+  private static @interface DialogStyle {}
 }
 
 

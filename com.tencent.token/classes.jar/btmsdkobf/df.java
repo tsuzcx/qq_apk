@@ -11,12 +11,12 @@ public class df
   private cy hF;
   private cl he;
   private boolean hi = false;
-  private df.a jv;
+  private a jv;
   private cb me;
   private di mf;
   private dp mg;
   
-  public df(boolean paramBoolean1, Context paramContext, cl paramcl, boolean paramBoolean2, df.a parama, di.d paramd, cy.d paramd1, cy paramcy, String paramString)
+  public df(boolean paramBoolean1, Context paramContext, cl paramcl, boolean paramBoolean2, a parama, di.d paramd, cy.d paramd1, cy paramcy, String paramString)
   {
     this.gW = paramBoolean1;
     this.jv = parama;
@@ -65,7 +65,7 @@ public class df
     }
   }
   
-  public void a(cy.f paramf, int paramInt)
+  public void a(final cy.f paramf, int paramInt)
   {
     boolean bool = true;
     if (paramf == null)
@@ -100,7 +100,19 @@ public class df
       return;
     }
     a(paramf, 15, 0, localObject.length);
-    this.me.a(paramf, (byte[])localObject, new hv(this, paramf));
+    this.me.a(paramf, (byte[])localObject, new ca.a()
+    {
+      public void a(int paramAnonymousInt, byte[] paramAnonymousArrayOfByte)
+      {
+        int i = paramAnonymousInt;
+        if (paramAnonymousInt != 0) {
+          i = paramAnonymousInt - 42000000;
+        }
+        eh.e("SharkWharf", "onSendTcpFailed(), retry with http, http errCode: " + i);
+        df.a(paramf, 16, i, 0);
+        df.a(df.this).a(false, i, paramAnonymousArrayOfByte, paramf);
+      }
+    });
   }
   
   public di bJ()
@@ -116,7 +128,7 @@ public class df
     return this.mg;
   }
   
-  public void d(cy.f paramf)
+  public void d(final cy.f paramf)
   {
     boolean bool3 = false;
     try
@@ -149,44 +161,44 @@ public class df
         break;
       }
       if (!paramf.jO) {
-        break label575;
+        break label576;
       }
       eh.g("SharkWharf", "[tcp_control][http_control]sendData(), cloudcmd not allow tcp and this is tcp vip, failed!");
       this.jv.b(true, -30000007, paramf);
     }
-    label255:
+    label256:
     boolean bool1;
-    label272:
-    label313:
+    label273:
+    label314:
     int j;
     if ((this.mf != null) && (!this.mf.cu()))
     {
       i = 1;
       if ((i == 0) || (paramf.jH == 1024)) {
-        break label590;
+        break label591;
       }
       bool1 = true;
       if ((!cx.ay()) && (paramf.jH != 2048) && (paramf.jH != 512) && (!paramf.jO))
       {
         if (!bool1) {
-          break label596;
+          break label597;
         }
-        break label580;
+        break label581;
         j = i;
         if (i != 0)
         {
           localObject = new StringBuilder().append("[tcp_control][http_control]sendData(), use http channel, for:  only http enable? false isSemiSendProcess? ").append(cx.ay()).append(" user select CHANNEL_LARGE_DATA ? ");
           if (paramf.jH != 2048) {
-            break label601;
+            break label602;
           }
         }
       }
     }
-    label575:
-    label580:
-    label590:
-    label596:
-    label601:
+    label576:
+    label581:
+    label591:
+    label597:
+    label602:
     for (boolean bool2 = true;; bool2 = false)
     {
       localObject = ((StringBuilder)localObject).append(bool2).append(" user select ONLY_HTTP ? ");
@@ -208,7 +220,19 @@ public class df
             break;
           }
           a(paramf, 15, 0, localObject.length);
-          this.me.a(paramf, (byte[])localObject, new hu(this, paramf));
+          this.me.a(paramf, (byte[])localObject, new ca.a()
+          {
+            public void a(int paramAnonymousInt, byte[] paramAnonymousArrayOfByte)
+            {
+              int i = paramAnonymousInt;
+              if (paramAnonymousInt != 0) {
+                i = paramAnonymousInt - 42000000;
+              }
+              df.a(paramf, 16, i, 0);
+              eh.e("SharkWharf", "[tcp_control][http_control]sendData(), http callback, errCode: " + i);
+              df.a(df.this).a(false, i, paramAnonymousArrayOfByte, paramf);
+            }
+          });
           break;
         }
         eh.f("SharkWharf", "[tcp_control][http_control]sendData(), use tcp channel");
@@ -227,14 +251,21 @@ public class df
         break;
       }
       i = 1;
-      break label313;
+      break label314;
       i = 0;
-      break label255;
+      break label256;
       bool1 = false;
-      break label272;
+      break label273;
       i = 0;
-      break label313;
+      break label314;
     }
+  }
+  
+  public static abstract interface a
+  {
+    public abstract void a(boolean paramBoolean, int paramInt, byte[] paramArrayOfByte, cy.f paramf);
+    
+    public abstract void b(boolean paramBoolean, int paramInt, cy.f paramf);
   }
 }
 

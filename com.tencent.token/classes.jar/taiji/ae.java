@@ -1,19 +1,31 @@
 package taiji;
 
+import android.graphics.PointF;
+import java.util.ArrayList;
+import java.util.List;
+
 public class ae
-  extends aw
+  implements ak<PointF>
 {
-  public s a()
+  private final List<r> a = new ArrayList();
+  private PointF b = new PointF(0.0F, 0.0F);
+  
+  public p<PointF> a()
   {
     if (!b()) {
-      return new y(this.b);
+      return new v(this.b);
     }
-    return new p(this.a);
+    return new s(this.a);
+  }
+  
+  public boolean b()
+  {
+    return !this.a.isEmpty();
   }
   
   public String toString()
   {
-    return "AnimatableColorValue{initialValue=" + this.b + '}';
+    return "initialPoint=" + this.b;
   }
 }
 

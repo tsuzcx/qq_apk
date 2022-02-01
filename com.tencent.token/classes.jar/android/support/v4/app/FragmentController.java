@@ -16,14 +16,14 @@ import java.util.List;
 
 public class FragmentController
 {
-  private final FragmentHostCallback mHost;
+  private final FragmentHostCallback<?> mHost;
   
-  private FragmentController(FragmentHostCallback paramFragmentHostCallback)
+  private FragmentController(FragmentHostCallback<?> paramFragmentHostCallback)
   {
     this.mHost = paramFragmentHostCallback;
   }
   
-  public static FragmentController createController(FragmentHostCallback paramFragmentHostCallback)
+  public static FragmentController createController(FragmentHostCallback<?> paramFragmentHostCallback)
   {
     return new FragmentController(paramFragmentHostCallback);
   }
@@ -149,7 +149,7 @@ public class FragmentController
     return this.mHost.mFragmentManager.findFragmentByWho(paramString);
   }
   
-  public List getActiveFragments(List paramList)
+  public List<Fragment> getActiveFragments(List<Fragment> paramList)
   {
     return this.mHost.mFragmentManager.getActiveFragments();
   }
@@ -189,16 +189,16 @@ public class FragmentController
   }
   
   @Deprecated
-  public void restoreAllState(Parcelable paramParcelable, List paramList)
+  public void restoreAllState(Parcelable paramParcelable, List<Fragment> paramList)
   {
     this.mHost.mFragmentManager.restoreAllState(paramParcelable, new FragmentManagerNonConfig(paramList, null, null));
   }
   
   @Deprecated
-  public void restoreLoaderNonConfig(SimpleArrayMap paramSimpleArrayMap) {}
+  public void restoreLoaderNonConfig(SimpleArrayMap<String, LoaderManager> paramSimpleArrayMap) {}
   
   @Deprecated
-  public SimpleArrayMap retainLoaderNonConfig()
+  public SimpleArrayMap<String, LoaderManager> retainLoaderNonConfig()
   {
     return null;
   }
@@ -209,7 +209,7 @@ public class FragmentController
   }
   
   @Deprecated
-  public List retainNonConfig()
+  public List<Fragment> retainNonConfig()
   {
     FragmentManagerNonConfig localFragmentManagerNonConfig = this.mHost.mFragmentManager.retainNonConfig();
     if (localFragmentManagerNonConfig != null) {

@@ -7,8 +7,10 @@ import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.view.ViewGroup.MarginLayoutParams;
 import android.view.Window;
@@ -17,9 +19,14 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import com.tencent.token.global.h;
-import com.tencent.token.utils.x;
+import android.widget.Toast;
+import com.tencent.token.global.RqdApplication;
+import com.tencent.token.global.g;
+import com.tencent.token.utils.m;
 import com.tmsdk.TMSDKContext;
+import tmsdk.common.module.pgsdk.PermissionGuide;
+import tmsdk.common.module.pgsdk.PermissionGuide.PermissionRequest;
+import tmsdk.common.module.pgsdk.RequestCallback;
 
 public class PermissionGuideSubActivity
   extends Activity
@@ -43,16 +50,16 @@ public class PermissionGuideSubActivity
   
   private void initControllers()
   {
-    this.mTitleBar = findViewById(2131558691);
-    this.mTitleText = ((TextView)findViewById(2131558692));
-    this.mTitleDivider = findViewById(2131558697);
+    this.mTitleBar = findViewById(2131558692);
+    this.mTitleText = ((TextView)findViewById(2131558693));
+    this.mTitleDivider = findViewById(2131558698);
     ViewGroup.MarginLayoutParams localMarginLayoutParams = (ViewGroup.MarginLayoutParams)this.mTitleBar.getLayoutParams();
     if (IndexActivity.S_RES_HEIGHT > 0) {
       localMarginLayoutParams.height = IndexActivity.S_TITLE_HEIGHT;
     }
-    this.mBackArrow = findViewById(2131558693);
-    this.mBackArrowImg = ((ImageView)findViewById(2131558694));
-    this.mRightOptionButton = ((Button)findViewById(2131559307));
+    this.mBackArrow = findViewById(2131558694);
+    this.mBackArrowImg = ((ImageView)findViewById(2131558695));
+    this.mRightOptionButton = ((Button)findViewById(2131559308));
     setDefaultTitle();
     setDefaultBackArrow();
   }
@@ -72,8 +79,8 @@ public class PermissionGuideSubActivity
     setContentView(2130968716);
     boolean bool1 = getIntent().getBooleanExtra("app_whitelist", false);
     boolean bool2 = getIntent().getBooleanExtra("auto_start", false);
-    this.mPer1Layout = ((RelativeLayout)findViewById(2131559122));
-    this.mPer2Layout = ((RelativeLayout)findViewById(2131559123));
+    this.mPer1Layout = ((RelativeLayout)findViewById(2131559123));
+    this.mPer2Layout = ((RelativeLayout)findViewById(2131559124));
     paramBundle = this.mPer1Layout;
     if (bool1)
     {
@@ -90,12 +97,58 @@ public class PermissionGuideSubActivity
       paramBundle.setVisibility(i);
       if (bool1)
       {
-        this.mPer1Layout.setOnClickListener(new ti(this));
+        this.mPer1Layout.setOnClickListener(new View.OnClickListener()
+        {
+          public void onClick(View paramAnonymousView)
+          {
+            PermissionGuide.build(new int[] { 3 }).request(new RequestCallback()
+            {
+              public void onCallback(int[] paramAnonymous2ArrayOfInt1, int[] paramAnonymous2ArrayOfInt2)
+              {
+                if (paramAnonymous2ArrayOfInt2[0] == 0) {}
+                for (boolean bool = true;; bool = false)
+                {
+                  Log.i("permission_test", "申请存活权限结果:" + bool);
+                  if (bool) {
+                    break;
+                  }
+                  Toast.makeText(RqdApplication.l(), "授权失败", 0).show();
+                  return;
+                }
+                TMSDKContext.saveActionData(1150121);
+              }
+            });
+            TMSDKContext.saveActionData(1150120);
+          }
+        });
         TMSDKContext.saveActionData(1150119);
       }
       if (bool2)
       {
-        this.mPer2Layout.setOnClickListener(new tk(this));
+        this.mPer2Layout.setOnClickListener(new View.OnClickListener()
+        {
+          public void onClick(View paramAnonymousView)
+          {
+            PermissionGuide.build(new int[] { 4 }).request(new RequestCallback()
+            {
+              public void onCallback(int[] paramAnonymous2ArrayOfInt1, int[] paramAnonymous2ArrayOfInt2)
+              {
+                if (paramAnonymous2ArrayOfInt2[0] == 0) {}
+                for (boolean bool = true;; bool = false)
+                {
+                  Log.i("permission_test", "申请自启权限结果:" + bool);
+                  if (bool) {
+                    break;
+                  }
+                  Toast.makeText(RqdApplication.l(), "授权失败", 0).show();
+                  return;
+                }
+                TMSDKContext.saveActionData(1150118);
+              }
+            });
+            TMSDKContext.saveActionData(1150117);
+          }
+        });
         TMSDKContext.saveActionData(1150116);
       }
       return;
@@ -113,18 +166,18 @@ public class PermissionGuideSubActivity
   {
     super.setContentView(2130968782);
     View localView = getLayoutInflater().inflate(paramInt, null);
-    ((RelativeLayout)findViewById(2131559316)).addView(localView, new RelativeLayout.LayoutParams(-1, -1));
+    ((RelativeLayout)findViewById(2131559317)).addView(localView, new RelativeLayout.LayoutParams(-1, -1));
     getContentView().setBackgroundDrawable(localView.getBackground());
-    this.animLayout = ((RelativeLayout)findViewById(2131559319));
-    this.lineImg = ((ImageView)findViewById(2131559320));
-    this.arcImg = ((ImageView)findViewById(2131559321));
+    this.animLayout = ((RelativeLayout)findViewById(2131559320));
+    this.lineImg = ((ImageView)findViewById(2131559321));
+    this.arcImg = ((ImageView)findViewById(2131559322));
     initControllers();
     if ((getClass().toString().contains("StartPwd")) && (!getClass().toString().contains("StartPwdGestureIndex")))
     {
-      x.a(this, this.mTitleBar, 2131493039);
+      m.a(this, this.mTitleBar, 2131493039);
       return;
     }
-    x.a(this, this.mTitleBar, 2131492909);
+    m.a(this, this.mTitleBar, 2131492909);
   }
   
   protected void setDefaultBackArrow()
@@ -132,7 +185,13 @@ public class PermissionGuideSubActivity
     if ((this.mTitleBar.getVisibility() == 0) && (this.mBackArrow != null))
     {
       this.mBackArrow.setVisibility(0);
-      this.mBackArrow.setOnClickListener(new tm(this));
+      this.mBackArrow.setOnClickListener(new View.OnClickListener()
+      {
+        public void onClick(View paramAnonymousView)
+        {
+          PermissionGuideSubActivity.this.finish();
+        }
+      });
     }
   }
   
@@ -155,7 +214,7 @@ public class PermissionGuideSubActivity
         for (;;)
         {
           localNameNotFoundException.printStackTrace();
-          h.c(localNameNotFoundException.toString());
+          g.c(localNameNotFoundException.toString());
           localObject = null;
         }
       } while ((this.mTitleBar == null) || (this.mTitleText == null));

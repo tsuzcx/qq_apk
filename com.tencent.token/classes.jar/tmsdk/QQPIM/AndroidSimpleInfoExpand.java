@@ -10,8 +10,8 @@ public final class AndroidSimpleInfoExpand
   extends JceStruct
   implements Cloneable
 {
-  static ArrayList dF;
-  public ArrayList picurls = null;
+  static ArrayList<String> dF;
+  public ArrayList<String> picurls = null;
   public String recommend = "";
   public int sign = 0;
   public String signature = "";
@@ -34,7 +34,7 @@ public final class AndroidSimpleInfoExpand
     setPicurls(this.picurls);
   }
   
-  public AndroidSimpleInfoExpand(String paramString1, int paramInt, String paramString2, ArrayList paramArrayList)
+  public AndroidSimpleInfoExpand(String paramString1, int paramInt, String paramString2, ArrayList<String> paramArrayList)
   {
     setRecommend(paramString1);
     setSign(paramInt);
@@ -79,7 +79,7 @@ public final class AndroidSimpleInfoExpand
     return "tmsdk.QQPIM.AndroidSimpleInfoExpand";
   }
   
-  public ArrayList getPicurls()
+  public ArrayList<String> getPicurls()
   {
     return this.picurls;
   }
@@ -125,7 +125,7 @@ public final class AndroidSimpleInfoExpand
     setPicurls((ArrayList)paramJceInputStream.read(dF, 3, false));
   }
   
-  public void setPicurls(ArrayList paramArrayList)
+  public void setPicurls(ArrayList<String> paramArrayList)
   {
     this.picurls = paramArrayList;
   }

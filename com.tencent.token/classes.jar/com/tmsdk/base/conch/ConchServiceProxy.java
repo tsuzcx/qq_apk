@@ -38,7 +38,7 @@ public class ConchServiceProxy
     bk.G().a(this.t, paramInt, paramIConchPushListener);
   }
   
-  public void registerConchPush(List paramList, ConchService.IConchPushListener paramIConchPushListener)
+  public void registerConchPush(List<Integer> paramList, ConchService.IConchPushListener paramIConchPushListener)
   {
     bk.G().a(this.t, paramList, paramIConchPushListener);
   }
@@ -63,7 +63,7 @@ public class ConchServiceProxy
     bk.G().a(this.t, paramInt);
   }
   
-  public void unRegisterConchPush(List paramList)
+  public void unRegisterConchPush(List<Integer> paramList)
   {
     bk.G().a(this.t, paramList);
   }

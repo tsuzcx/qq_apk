@@ -1,14 +1,23 @@
 package com.tencent.service;
 
-public abstract interface f
+public class f
 {
-  public abstract void a(d paramd);
+  protected byte[] a;
+  protected int b = 0;
+  protected int c;
+  protected int d = 0;
+  protected int[] e;
+  protected float[] f;
   
-  public abstract void b(d paramd);
-  
-  public abstract void c(d paramd);
-  
-  public abstract void d(d paramd);
+  public f(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3, int[] paramArrayOfInt, float[] paramArrayOfFloat)
+  {
+    this.a = paramArrayOfByte;
+    this.b = paramInt1;
+    this.c = paramInt2;
+    this.d = paramInt3;
+    this.e = paramArrayOfInt;
+    this.f = paramArrayOfFloat;
+  }
 }
 
 

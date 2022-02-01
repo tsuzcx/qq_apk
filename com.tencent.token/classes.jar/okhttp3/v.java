@@ -1,173 +1,391 @@
 package okhttp3;
 
-import com.tencent.token.gn;
-import java.util.ArrayDeque;
-import java.util.Deque;
+import com.tencent.token.ez;
+import com.tencent.token.fb;
+import com.tencent.token.fh;
+import com.tencent.token.gb;
+import com.tencent.token.gf;
+import com.tencent.token.gg;
+import java.net.Proxy;
+import java.net.ProxySelector;
+import java.net.Socket;
+import java.security.GeneralSecurityException;
+import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.SynchronousQueue;
-import java.util.concurrent.ThreadPoolExecutor;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 import javax.annotation.Nullable;
+import javax.net.SocketFactory;
+import javax.net.ssl.HostnameVerifier;
+import javax.net.ssl.SSLContext;
+import javax.net.ssl.SSLSocket;
+import javax.net.ssl.SSLSocketFactory;
+import javax.net.ssl.TrustManager;
+import javax.net.ssl.X509TrustManager;
+import okhttp3.internal.connection.d;
+import okhttp3.internal.connection.f;
 
-public final class v
+public class v
+  implements Cloneable
 {
-  private int a = 64;
-  private int b = 5;
+  static final List<Protocol> a = fb.a(new Protocol[] { Protocol.HTTP_2, Protocol.HTTP_1_1 });
+  static final List<k> b = fb.a(new k[] { k.b, k.d });
+  final int A;
+  final int B;
+  final int C;
+  final n c;
   @Nullable
-  private Runnable c;
+  final Proxy d;
+  final List<Protocol> e;
+  final List<k> f;
+  final List<t> g;
+  final List<t> h;
+  final p.a i;
+  final ProxySelector j;
+  final m k;
   @Nullable
-  private ExecutorService d;
-  private final Deque e = new ArrayDeque();
-  private final Deque f = new ArrayDeque();
-  private final Deque g = new ArrayDeque();
+  final c l;
+  @Nullable
+  final fh m;
+  final SocketFactory n;
+  @Nullable
+  final SSLSocketFactory o;
+  @Nullable
+  final gf p;
+  final HostnameVerifier q;
+  final g r;
+  final b s;
+  final b t;
+  final j u;
+  final o v;
+  final boolean w;
+  final boolean x;
+  final boolean y;
+  final int z;
   
-  private void a(Deque paramDeque, Object paramObject, boolean paramBoolean)
+  static
+  {
+    ez.a = new ez()
+    {
+      public int a(z.a paramAnonymousa)
+      {
+        return paramAnonymousa.c;
+      }
+      
+      public Socket a(j paramAnonymousj, a paramAnonymousa, f paramAnonymousf)
+      {
+        return paramAnonymousj.a(paramAnonymousa, paramAnonymousf);
+      }
+      
+      public okhttp3.internal.connection.c a(j paramAnonymousj, a paramAnonymousa, f paramAnonymousf, ab paramAnonymousab)
+      {
+        return paramAnonymousj.a(paramAnonymousa, paramAnonymousf, paramAnonymousab);
+      }
+      
+      public d a(j paramAnonymousj)
+      {
+        return paramAnonymousj.a;
+      }
+      
+      public void a(k paramAnonymousk, SSLSocket paramAnonymousSSLSocket, boolean paramAnonymousBoolean)
+      {
+        paramAnonymousk.a(paramAnonymousSSLSocket, paramAnonymousBoolean);
+      }
+      
+      public void a(r.a paramAnonymousa, String paramAnonymousString)
+      {
+        paramAnonymousa.a(paramAnonymousString);
+      }
+      
+      public void a(r.a paramAnonymousa, String paramAnonymousString1, String paramAnonymousString2)
+      {
+        paramAnonymousa.b(paramAnonymousString1, paramAnonymousString2);
+      }
+      
+      public boolean a(a paramAnonymousa1, a paramAnonymousa2)
+      {
+        return paramAnonymousa1.a(paramAnonymousa2);
+      }
+      
+      public boolean a(j paramAnonymousj, okhttp3.internal.connection.c paramAnonymousc)
+      {
+        return paramAnonymousj.b(paramAnonymousc);
+      }
+      
+      public void b(j paramAnonymousj, okhttp3.internal.connection.c paramAnonymousc)
+      {
+        paramAnonymousj.a(paramAnonymousc);
+      }
+    };
+  }
+  
+  public v()
+  {
+    this(new a());
+  }
+  
+  v(a parama)
+  {
+    this.c = parama.a;
+    this.d = parama.b;
+    this.e = parama.c;
+    this.f = parama.d;
+    this.g = fb.a(parama.e);
+    this.h = fb.a(parama.f);
+    this.i = parama.g;
+    this.j = parama.h;
+    this.k = parama.i;
+    this.l = parama.j;
+    this.m = parama.k;
+    this.n = parama.l;
+    Object localObject = this.f.iterator();
+    int i1 = 0;
+    if (((Iterator)localObject).hasNext())
+    {
+      k localk = (k)((Iterator)localObject).next();
+      if ((i1 != 0) || (localk.a())) {}
+      for (i1 = 1;; i1 = 0) {
+        break;
+      }
+    }
+    if ((parama.m != null) || (i1 == 0)) {
+      this.o = parama.m;
+    }
+    for (this.p = parama.n;; this.p = gf.a((X509TrustManager)localObject))
+    {
+      if (this.o != null) {
+        gb.c().a(this.o);
+      }
+      this.q = parama.o;
+      this.r = parama.p.a(this.p);
+      this.s = parama.q;
+      this.t = parama.r;
+      this.u = parama.s;
+      this.v = parama.t;
+      this.w = parama.u;
+      this.x = parama.v;
+      this.y = parama.w;
+      this.z = parama.x;
+      this.A = parama.y;
+      this.B = parama.z;
+      this.C = parama.A;
+      if (!this.g.contains(null)) {
+        break;
+      }
+      throw new IllegalStateException("Null interceptor: " + this.g);
+      localObject = fb.a();
+      this.o = a((X509TrustManager)localObject);
+    }
+    if (this.h.contains(null)) {
+      throw new IllegalStateException("Null network interceptor: " + this.h);
+    }
+  }
+  
+  private static SSLSocketFactory a(X509TrustManager paramX509TrustManager)
   {
     try
     {
-      if (!paramDeque.remove(paramObject)) {
-        throw new AssertionError("Call wasn't in-flight!");
-      }
+      SSLContext localSSLContext = gb.c().b();
+      localSSLContext.init(null, new TrustManager[] { paramX509TrustManager }, null);
+      paramX509TrustManager = localSSLContext.getSocketFactory();
+      return paramX509TrustManager;
     }
-    finally {}
-    if (paramBoolean) {
-      c();
-    }
-    int i = b();
-    paramDeque = this.c;
-    if ((i == 0) && (paramDeque != null)) {
-      paramDeque.run();
+    catch (GeneralSecurityException paramX509TrustManager)
+    {
+      throw fb.a("No System TLS", paramX509TrustManager);
     }
   }
   
-  private int c(ao paramao)
+  public int a()
   {
-    Iterator localIterator = this.f.iterator();
-    int i = 0;
-    while (localIterator.hasNext())
-    {
-      ao localao = (ao)localIterator.next();
-      if (!localao.b().d)
-      {
-        if (!localao.a().equals(paramao.a())) {
-          break label67;
-        }
-        i += 1;
-      }
-    }
-    label67:
-    for (;;)
-    {
-      break;
-      return i;
-    }
+    return this.z;
   }
   
-  private void c()
+  public e a(x paramx)
   {
-    if (this.f.size() >= this.a) {}
-    do
-    {
-      Iterator localIterator;
-      do
-      {
-        return;
-        while (this.e.isEmpty()) {}
-        localIterator = this.e.iterator();
-      } while (!localIterator.hasNext());
-      ao localao = (ao)localIterator.next();
-      if (c(localao) < this.b)
-      {
-        localIterator.remove();
-        this.f.add(localao);
-        a().execute(localao);
-      }
-    } while (this.f.size() < this.a);
-  }
-  
-  public ExecutorService a()
-  {
-    try
-    {
-      if (this.d == null) {
-        this.d = new ThreadPoolExecutor(0, 2147483647, 60L, TimeUnit.SECONDS, new SynchronousQueue(), gn.a("OkHttp Dispatcher", false));
-      }
-      ExecutorService localExecutorService = this.d;
-      return localExecutorService;
-    }
-    finally {}
-  }
-  
-  /* Error */
-  void a(ao paramao)
-  {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 31	okhttp3/v:f	Ljava/util/Deque;
-    //   6: invokeinterface 96 1 0
-    //   11: aload_0
-    //   12: getfield 22	okhttp3/v:a	I
-    //   15: if_icmpge +39 -> 54
-    //   18: aload_0
-    //   19: aload_1
-    //   20: invokespecial 101	okhttp3/v:c	(Lokhttp3/ao;)I
-    //   23: aload_0
-    //   24: getfield 24	okhttp3/v:b	I
-    //   27: if_icmpge +27 -> 54
-    //   30: aload_0
-    //   31: getfield 31	okhttp3/v:f	Ljava/util/Deque;
-    //   34: aload_1
-    //   35: invokeinterface 106 2 0
-    //   40: pop
-    //   41: aload_0
-    //   42: invokevirtual 109	okhttp3/v:a	()Ljava/util/concurrent/ExecutorService;
-    //   45: aload_1
-    //   46: invokeinterface 115 2 0
-    //   51: aload_0
-    //   52: monitorexit
-    //   53: return
-    //   54: aload_0
-    //   55: getfield 29	okhttp3/v:e	Ljava/util/Deque;
-    //   58: aload_1
-    //   59: invokeinterface 106 2 0
-    //   64: pop
-    //   65: goto -14 -> 51
-    //   68: astore_1
-    //   69: aload_0
-    //   70: monitorexit
-    //   71: aload_1
-    //   72: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	73	0	this	v
-    //   0	73	1	paramao	ao
-    // Exception table:
-    //   from	to	target	type
-    //   2	51	68	finally
-    //   54	65	68	finally
+    return w.a(this, paramx, false);
   }
   
   public int b()
   {
-    try
-    {
-      int i = this.f.size();
-      int j = this.g.size();
-      return i + j;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
+    return this.A;
   }
   
-  void b(ao paramao)
+  public int c()
   {
-    a(this.f, paramao, true);
+    return this.B;
+  }
+  
+  public int d()
+  {
+    return this.C;
+  }
+  
+  public Proxy e()
+  {
+    return this.d;
+  }
+  
+  public ProxySelector f()
+  {
+    return this.j;
+  }
+  
+  public m g()
+  {
+    return this.k;
+  }
+  
+  fh h()
+  {
+    if (this.l != null) {
+      return this.l.a;
+    }
+    return this.m;
+  }
+  
+  public o i()
+  {
+    return this.v;
+  }
+  
+  public SocketFactory j()
+  {
+    return this.n;
+  }
+  
+  public SSLSocketFactory k()
+  {
+    return this.o;
+  }
+  
+  public HostnameVerifier l()
+  {
+    return this.q;
+  }
+  
+  public g m()
+  {
+    return this.r;
+  }
+  
+  public b n()
+  {
+    return this.t;
+  }
+  
+  public b o()
+  {
+    return this.s;
+  }
+  
+  public j p()
+  {
+    return this.u;
+  }
+  
+  public boolean q()
+  {
+    return this.w;
+  }
+  
+  public boolean r()
+  {
+    return this.x;
+  }
+  
+  public boolean s()
+  {
+    return this.y;
+  }
+  
+  public n t()
+  {
+    return this.c;
+  }
+  
+  public List<Protocol> u()
+  {
+    return this.e;
+  }
+  
+  public List<k> v()
+  {
+    return this.f;
+  }
+  
+  public List<t> w()
+  {
+    return this.g;
+  }
+  
+  public List<t> x()
+  {
+    return this.h;
+  }
+  
+  public p.a y()
+  {
+    return this.i;
+  }
+  
+  public static final class a
+  {
+    int A = 0;
+    n a = new n();
+    @Nullable
+    Proxy b;
+    List<Protocol> c = v.a;
+    List<k> d = v.b;
+    final List<t> e = new ArrayList();
+    final List<t> f = new ArrayList();
+    p.a g = p.a(p.a);
+    ProxySelector h = ProxySelector.getDefault();
+    m i = m.a;
+    @Nullable
+    c j;
+    @Nullable
+    fh k;
+    SocketFactory l = SocketFactory.getDefault();
+    @Nullable
+    SSLSocketFactory m;
+    @Nullable
+    gf n;
+    HostnameVerifier o = gg.a;
+    g p = g.a;
+    b q = b.a;
+    b r = b.a;
+    j s = new j();
+    o t = o.a;
+    boolean u = true;
+    boolean v = true;
+    boolean w = true;
+    int x = 10000;
+    int y = 10000;
+    int z = 10000;
+    
+    public a a(long paramLong, TimeUnit paramTimeUnit)
+    {
+      this.x = fb.a("timeout", paramLong, paramTimeUnit);
+      return this;
+    }
+    
+    public v a()
+    {
+      return new v(this);
+    }
+    
+    public a b(long paramLong, TimeUnit paramTimeUnit)
+    {
+      this.y = fb.a("timeout", paramLong, paramTimeUnit);
+      return this;
+    }
+    
+    public a c(long paramLong, TimeUnit paramTimeUnit)
+    {
+      this.z = fb.a("timeout", paramLong, paramTimeUnit);
+      return this;
+    }
   }
 }
 

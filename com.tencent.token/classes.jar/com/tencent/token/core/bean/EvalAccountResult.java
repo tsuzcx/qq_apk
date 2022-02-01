@@ -1,6 +1,6 @@
 package com.tencent.token.core.bean;
 
-import com.tencent.token.global.h;
+import com.tencent.token.global.g;
 import java.io.Serializable;
 import java.util.ArrayList;
 import org.json.JSONArray;
@@ -34,7 +34,7 @@ public class EvalAccountResult
   public String mDesc;
   public String mMarketUrl;
   public boolean mOutOfDate;
-  public ArrayList mRecommends = new ArrayList();
+  public ArrayList<RecommendItem> mRecommends = new ArrayList();
   public int mStatus;
   public int mSubStatus;
   public String mSummary;
@@ -47,7 +47,7 @@ public class EvalAccountResult
   public EvalAccountResult(JSONObject paramJSONObject1, JSONObject paramJSONObject2)
   {
     JSONObject localJSONObject = paramJSONObject1.getJSONObject("check_result");
-    h.b("check_result:" + localJSONObject.toString());
+    g.b("check_result:" + localJSONObject.toString());
     this.mStatus = localJSONObject.getInt("status");
     this.mSubStatus = localJSONObject.getInt("sub_status");
     this.mTitle = localJSONObject.getString("title");
@@ -77,9 +77,58 @@ public class EvalAccountResult
       paramJSONObject1 = paramJSONObject1.getJSONArray("recommends");
       while (i < paramJSONObject1.length())
       {
-        h.b("一级推荐列表" + paramJSONObject1.getJSONObject(i).toString());
-        paramJSONObject2 = new EvalAccountResult.RecommendItem(paramJSONObject1.getJSONObject(i));
+        g.b("一级推荐列表" + paramJSONObject1.getJSONObject(i).toString());
+        paramJSONObject2 = new RecommendItem(paramJSONObject1.getJSONObject(i));
         this.mRecommends.add(paramJSONObject2);
+        i += 1;
+      }
+    }
+  }
+  
+  public static class DetailItem
+    implements Serializable
+  {
+    private static final long serialVersionUID = 5521091018833642724L;
+    public int mDegree;
+    public String mDesc;
+    public int mRecommendId;
+    public String mTitle;
+    
+    public DetailItem(JSONObject paramJSONObject)
+    {
+      g.b("DetailItem:" + paramJSONObject.toString());
+      this.mRecommendId = paramJSONObject.getInt("recommend_id");
+      this.mDegree = paramJSONObject.getInt("degree");
+      this.mTitle = paramJSONObject.getString("title");
+      this.mDesc = paramJSONObject.getString("desc");
+    }
+  }
+  
+  public static class RecommendItem
+    implements Serializable
+  {
+    private static final long serialVersionUID = -7344683138244993145L;
+    public int mDegree;
+    public String mDesc;
+    public ArrayList<EvalAccountResult.DetailItem> mDetails = new ArrayList();
+    public int mRecommendId;
+    public String mSubTitle;
+    public String mTitle;
+    
+    public RecommendItem(JSONObject paramJSONObject)
+    {
+      this.mRecommendId = paramJSONObject.getInt("recommend_id");
+      this.mDegree = paramJSONObject.getInt("degree");
+      this.mTitle = paramJSONObject.getString("title");
+      this.mSubTitle = paramJSONObject.getString("sub_title");
+      this.mDesc = paramJSONObject.getString("desc");
+      paramJSONObject = paramJSONObject.getJSONArray("detail_items");
+      int i = 0;
+      while (i < paramJSONObject.length())
+      {
+        g.b("二级推荐列表" + paramJSONObject.getJSONObject(i).toString());
+        EvalAccountResult.DetailItem localDetailItem = new EvalAccountResult.DetailItem(paramJSONObject.getJSONObject(i));
+        this.mDetails.add(localDetailItem);
         i += 1;
       }
     }

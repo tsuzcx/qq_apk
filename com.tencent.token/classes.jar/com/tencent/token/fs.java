@@ -1,101 +1,88 @@
 package com.tencent.token;
 
-import android.content.Context;
-import java.io.UnsupportedEncodingException;
-import tmsdk.common.e.a;
-import tmsdk.common.tcc.TccCryptor;
+import java.net.ProtocolException;
+import okhttp3.Protocol;
 
-public class fs
+public final class fs
 {
-  public static String a(Context paramContext, String paramString)
+  public final Protocol a;
+  public final int b;
+  public final String c;
+  
+  public fs(Protocol paramProtocol, int paramInt, String paramString)
   {
-    if (paramString == null) {
-      paramString = null;
-    }
-    for (;;)
+    this.a = paramProtocol;
+    this.b = paramInt;
+    this.c = paramString;
+  }
+  
+  public static fs a(String paramString)
+  {
+    int i = 9;
+    int j;
+    Protocol localProtocol;
+    if (paramString.startsWith("HTTP/1."))
     {
-      return paramString;
-      try
-      {
-        byte[] arrayOfByte = paramString.getBytes("gbk");
-        if (arrayOfByte == null) {
-          continue;
-        }
-        return a.b(TccCryptor.encrypt(paramContext, arrayOfByte, null), 0);
+      if ((paramString.length() < 9) || (paramString.charAt(8) != ' ')) {
+        throw new ProtocolException("Unexpected status line: " + paramString);
       }
-      catch (UnsupportedEncodingException localUnsupportedEncodingException)
+      j = paramString.charAt(7) - '0';
+      if (j == 0) {
+        localProtocol = Protocol.HTTP_1_0;
+      }
+    }
+    while (paramString.length() < i + 3)
+    {
+      throw new ProtocolException("Unexpected status line: " + paramString);
+      if (j == 1)
       {
-        for (;;)
+        localProtocol = Protocol.HTTP_1_1;
+      }
+      else
+      {
+        throw new ProtocolException("Unexpected status line: " + paramString);
+        if (paramString.startsWith("ICY "))
         {
-          localUnsupportedEncodingException.printStackTrace();
-          Object localObject = null;
+          localProtocol = Protocol.HTTP_1_0;
+          i = 4;
+        }
+        else
+        {
+          throw new ProtocolException("Unexpected status line: " + paramString);
         }
       }
+    }
+    try
+    {
+      j = Integer.parseInt(paramString.substring(i, i + 3));
+      if (paramString.length() > i + 3) {
+        if (paramString.charAt(i + 3) != ' ') {
+          throw new ProtocolException("Unexpected status line: " + paramString);
+        }
+      }
+    }
+    catch (NumberFormatException localNumberFormatException)
+    {
+      throw new ProtocolException("Unexpected status line: " + paramString);
+    }
+    for (paramString = paramString.substring(i + 4);; paramString = "") {
+      return new fs(localNumberFormatException, j, paramString);
     }
   }
   
-  /* Error */
-  public static String b(Context paramContext, String paramString)
+  public String toString()
   {
-    // Byte code:
-    //   0: aconst_null
-    //   1: astore_3
-    //   2: aload_1
-    //   3: invokestatic 41	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   6: ifeq +8 -> 14
-    //   9: ldc 43
-    //   11: astore_0
-    //   12: aload_0
-    //   13: areturn
-    //   14: aload_1
-    //   15: iconst_0
-    //   16: invokestatic 46	tmsdk/common/e/a:a	(Ljava/lang/String;I)[B
-    //   19: astore_2
-    //   20: aload_0
-    //   21: aload_2
-    //   22: aconst_null
-    //   23: invokestatic 49	tmsdk/common/tcc/TccCryptor:decrypt	(Landroid/content/Context;[B[B)[B
-    //   26: astore_2
-    //   27: aload_1
-    //   28: astore_0
-    //   29: aload_2
-    //   30: ifnull -18 -> 12
-    //   33: new 12	java/lang/String
-    //   36: dup
-    //   37: aload_2
-    //   38: ldc 10
-    //   40: invokespecial 53	java/lang/String:<init>	([BLjava/lang/String;)V
-    //   43: astore_2
-    //   44: aload_1
-    //   45: astore_0
-    //   46: aload_2
-    //   47: ifnull -35 -> 12
-    //   50: aload_2
-    //   51: areturn
-    //   52: astore_0
-    //   53: aconst_null
-    //   54: areturn
-    //   55: astore_0
-    //   56: aload_0
-    //   57: invokevirtual 54	java/lang/Exception:printStackTrace	()V
-    //   60: aconst_null
-    //   61: astore_2
-    //   62: goto -35 -> 27
-    //   65: astore_0
-    //   66: aload_3
-    //   67: astore_2
-    //   68: goto -24 -> 44
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	71	0	paramContext	Context
-    //   0	71	1	paramString	String
-    //   19	49	2	localObject1	Object
-    //   1	66	3	localObject2	Object
-    // Exception table:
-    //   from	to	target	type
-    //   14	20	52	java/lang/Exception
-    //   20	27	55	java/lang/Exception
-    //   33	44	65	java/io/UnsupportedEncodingException
+    StringBuilder localStringBuilder = new StringBuilder();
+    if (this.a == Protocol.HTTP_1_0) {}
+    for (String str = "HTTP/1.0";; str = "HTTP/1.1")
+    {
+      localStringBuilder.append(str);
+      localStringBuilder.append(' ').append(this.b);
+      if (this.c != null) {
+        localStringBuilder.append(' ').append(this.c);
+      }
+      return localStringBuilder.toString();
+    }
   }
 }
 

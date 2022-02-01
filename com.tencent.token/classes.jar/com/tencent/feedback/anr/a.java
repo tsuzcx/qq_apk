@@ -8,7 +8,7 @@ import java.util.regex.Pattern;
 public class a
 {
   public String a = null;
-  public Map b = null;
+  public Map<String, String> b = null;
   public long c = -1L;
   public String d = null;
   public String e = null;
@@ -74,147 +74,147 @@ public class a
     //   4: aload_1
     //   5: ifnonnull +4 -> 9
     //   8: return
-    //   9: new 99	java/io/File
+    //   9: new 100	java/io/File
     //   12: dup
     //   13: aload_0
-    //   14: invokespecial 102	java/io/File:<init>	(Ljava/lang/String;)V
+    //   14: invokespecial 103	java/io/File:<init>	(Ljava/lang/String;)V
     //   17: astore 7
     //   19: aload 7
-    //   21: invokevirtual 106	java/io/File:exists	()Z
+    //   21: invokevirtual 107	java/io/File:exists	()Z
     //   24: ifeq -16 -> 8
     //   27: aload 7
-    //   29: invokevirtual 110	java/io/File:lastModified	()J
+    //   29: invokevirtual 111	java/io/File:lastModified	()J
     //   32: pop2
     //   33: aload 7
-    //   35: invokevirtual 113	java/io/File:length	()J
+    //   35: invokevirtual 114	java/io/File:length	()J
     //   38: pop2
     //   39: aconst_null
     //   40: astore_0
-    //   41: new 84	java/io/BufferedReader
+    //   41: new 85	java/io/BufferedReader
     //   44: dup
-    //   45: new 115	java/io/FileReader
+    //   45: new 116	java/io/FileReader
     //   48: dup
     //   49: aload 7
-    //   51: invokespecial 118	java/io/FileReader:<init>	(Ljava/io/File;)V
-    //   54: invokespecial 121	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
+    //   51: invokespecial 119	java/io/FileReader:<init>	(Ljava/io/File;)V
+    //   54: invokespecial 122	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
     //   57: astore 7
-    //   59: ldc 123
-    //   61: invokestatic 129	java/util/regex/Pattern:compile	(Ljava/lang/String;)Ljava/util/regex/Pattern;
+    //   59: ldc 124
+    //   61: invokestatic 130	java/util/regex/Pattern:compile	(Ljava/lang/String;)Ljava/util/regex/Pattern;
     //   64: astore_0
-    //   65: ldc 131
-    //   67: invokestatic 129	java/util/regex/Pattern:compile	(Ljava/lang/String;)Ljava/util/regex/Pattern;
+    //   65: ldc 132
+    //   67: invokestatic 130	java/util/regex/Pattern:compile	(Ljava/lang/String;)Ljava/util/regex/Pattern;
     //   70: astore 8
-    //   72: ldc 133
-    //   74: invokestatic 129	java/util/regex/Pattern:compile	(Ljava/lang/String;)Ljava/util/regex/Pattern;
+    //   72: ldc 134
+    //   74: invokestatic 130	java/util/regex/Pattern:compile	(Ljava/lang/String;)Ljava/util/regex/Pattern;
     //   77: astore 9
-    //   79: ldc 135
-    //   81: invokestatic 129	java/util/regex/Pattern:compile	(Ljava/lang/String;)Ljava/util/regex/Pattern;
+    //   79: ldc 136
+    //   81: invokestatic 130	java/util/regex/Pattern:compile	(Ljava/lang/String;)Ljava/util/regex/Pattern;
     //   84: astore 10
-    //   86: new 137	java/text/SimpleDateFormat
+    //   86: new 138	java/text/SimpleDateFormat
     //   89: dup
-    //   90: ldc 139
-    //   92: getstatic 145	java/util/Locale:US	Ljava/util/Locale;
-    //   95: invokespecial 148	java/text/SimpleDateFormat:<init>	(Ljava/lang/String;Ljava/util/Locale;)V
+    //   90: ldc 140
+    //   92: getstatic 146	java/util/Locale:US	Ljava/util/Locale;
+    //   95: invokespecial 149	java/text/SimpleDateFormat:<init>	(Ljava/lang/String;Ljava/util/Locale;)V
     //   98: astore 11
     //   100: aload 7
     //   102: iconst_1
-    //   103: anewarray 125	java/util/regex/Pattern
+    //   103: anewarray 126	java/util/regex/Pattern
     //   106: dup
     //   107: iconst_0
     //   108: aload_0
     //   109: aastore
-    //   110: invokestatic 151	com/tencent/feedback/anr/a:a	(Ljava/io/BufferedReader;[Ljava/util/regex/Pattern;)[Ljava/lang/Object;
+    //   110: invokestatic 152	com/tencent/feedback/anr/a:a	(Ljava/io/BufferedReader;[Ljava/util/regex/Pattern;)[Ljava/lang/Object;
     //   113: astore 12
     //   115: aload 12
     //   117: ifnull +414 -> 531
     //   120: aload 12
     //   122: iconst_1
     //   123: aaload
-    //   124: invokevirtual 152	java/lang/Object:toString	()Ljava/lang/String;
-    //   127: ldc 154
-    //   129: invokevirtual 160	java/lang/String:split	(Ljava/lang/String;)[Ljava/lang/String;
+    //   124: invokevirtual 153	java/lang/Object:toString	()Ljava/lang/String;
+    //   127: ldc 155
+    //   129: invokevirtual 161	java/lang/String:split	(Ljava/lang/String;)[Ljava/lang/String;
     //   132: astore 12
     //   134: aload 12
     //   136: iconst_2
     //   137: aaload
-    //   138: invokestatic 166	java/lang/Long:parseLong	(Ljava/lang/String;)J
+    //   138: invokestatic 167	java/lang/Long:parseLong	(Ljava/lang/String;)J
     //   141: lstore_2
     //   142: aload 11
-    //   144: new 64	java/lang/StringBuilder
+    //   144: new 65	java/lang/StringBuilder
     //   147: dup
-    //   148: invokespecial 65	java/lang/StringBuilder:<init>	()V
+    //   148: invokespecial 66	java/lang/StringBuilder:<init>	()V
     //   151: aload 12
     //   153: iconst_4
     //   154: aaload
-    //   155: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   158: ldc 71
-    //   160: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   155: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   158: ldc 72
+    //   160: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   163: aload 12
     //   165: iconst_5
     //   166: aaload
-    //   167: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   170: invokevirtual 78	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   173: invokevirtual 170	java/text/SimpleDateFormat:parse	(Ljava/lang/String;)Ljava/util/Date;
-    //   176: invokevirtual 175	java/util/Date:getTime	()J
+    //   167: invokevirtual 75	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   170: invokevirtual 79	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   173: invokevirtual 171	java/text/SimpleDateFormat:parse	(Ljava/lang/String;)Ljava/util/Date;
+    //   176: invokevirtual 176	java/util/Date:getTime	()J
     //   179: lstore 4
     //   181: aload 7
     //   183: iconst_1
-    //   184: anewarray 125	java/util/regex/Pattern
+    //   184: anewarray 126	java/util/regex/Pattern
     //   187: dup
     //   188: iconst_0
     //   189: aload 9
     //   191: aastore
-    //   192: invokestatic 151	com/tencent/feedback/anr/a:a	(Ljava/io/BufferedReader;[Ljava/util/regex/Pattern;)[Ljava/lang/Object;
+    //   192: invokestatic 152	com/tencent/feedback/anr/a:a	(Ljava/io/BufferedReader;[Ljava/util/regex/Pattern;)[Ljava/lang/Object;
     //   195: astore 12
     //   197: aload 12
     //   199: ifnonnull +22 -> 221
     //   202: aload 7
-    //   204: invokevirtual 178	java/io/BufferedReader:close	()V
+    //   204: invokevirtual 179	java/io/BufferedReader:close	()V
     //   207: return
     //   208: astore_0
     //   209: aload_0
-    //   210: invokestatic 181	com/tencent/feedback/common/e:a	(Ljava/lang/Throwable;)Z
+    //   210: invokestatic 182	com/tencent/feedback/common/e:a	(Ljava/lang/Throwable;)Z
     //   213: ifne -205 -> 8
     //   216: aload_0
-    //   217: invokevirtual 184	java/io/IOException:printStackTrace	()V
+    //   217: invokevirtual 185	java/io/IOException:printStackTrace	()V
     //   220: return
     //   221: aload 9
     //   223: aload 12
     //   225: iconst_1
     //   226: aaload
-    //   227: invokevirtual 152	java/lang/Object:toString	()Ljava/lang/String;
-    //   230: invokevirtual 188	java/util/regex/Pattern:matcher	(Ljava/lang/CharSequence;)Ljava/util/regex/Matcher;
+    //   227: invokevirtual 153	java/lang/Object:toString	()Ljava/lang/String;
+    //   230: invokevirtual 189	java/util/regex/Pattern:matcher	(Ljava/lang/CharSequence;)Ljava/util/regex/Matcher;
     //   233: astore 12
     //   235: aload 12
-    //   237: invokevirtual 193	java/util/regex/Matcher:find	()Z
+    //   237: invokevirtual 194	java/util/regex/Matcher:find	()Z
     //   240: pop
     //   241: aload 12
     //   243: iconst_1
-    //   244: invokevirtual 197	java/util/regex/Matcher:group	(I)Ljava/lang/String;
+    //   244: invokevirtual 198	java/util/regex/Matcher:group	(I)Ljava/lang/String;
     //   247: pop
     //   248: aload_1
     //   249: lload_2
     //   250: lload 4
     //   252: aload 12
     //   254: iconst_1
-    //   255: invokevirtual 197	java/util/regex/Matcher:group	(I)Ljava/lang/String;
-    //   258: invokeinterface 202 6 0
+    //   255: invokevirtual 198	java/util/regex/Matcher:group	(I)Ljava/lang/String;
+    //   258: invokeinterface 203 6 0
     //   263: istore 6
     //   265: iload 6
     //   267: ifne +22 -> 289
     //   270: aload 7
-    //   272: invokevirtual 178	java/io/BufferedReader:close	()V
+    //   272: invokevirtual 179	java/io/BufferedReader:close	()V
     //   275: return
     //   276: astore_0
     //   277: aload_0
-    //   278: invokestatic 181	com/tencent/feedback/common/e:a	(Ljava/lang/Throwable;)Z
+    //   278: invokestatic 182	com/tencent/feedback/common/e:a	(Ljava/lang/Throwable;)Z
     //   281: ifne -273 -> 8
     //   284: aload_0
-    //   285: invokevirtual 184	java/io/IOException:printStackTrace	()V
+    //   285: invokevirtual 185	java/io/IOException:printStackTrace	()V
     //   288: return
     //   289: aload 7
     //   291: iconst_2
-    //   292: anewarray 125	java/util/regex/Pattern
+    //   292: anewarray 126	java/util/regex/Pattern
     //   295: dup
     //   296: iconst_0
     //   297: aload 10
@@ -223,7 +223,7 @@ public class a
     //   301: iconst_1
     //   302: aload 8
     //   304: aastore
-    //   305: invokestatic 151	com/tencent/feedback/anr/a:a	(Ljava/io/BufferedReader;[Ljava/util/regex/Pattern;)[Ljava/lang/Object;
+    //   305: invokestatic 152	com/tencent/feedback/anr/a:a	(Ljava/io/BufferedReader;[Ljava/util/regex/Pattern;)[Ljava/lang/Object;
     //   308: astore 12
     //   310: aload 12
     //   312: ifnull -212 -> 100
@@ -235,112 +235,112 @@ public class a
     //   324: aload 12
     //   326: iconst_1
     //   327: aaload
-    //   328: invokevirtual 152	java/lang/Object:toString	()Ljava/lang/String;
+    //   328: invokevirtual 153	java/lang/Object:toString	()Ljava/lang/String;
     //   331: astore 12
-    //   333: ldc 204
-    //   335: invokestatic 129	java/util/regex/Pattern:compile	(Ljava/lang/String;)Ljava/util/regex/Pattern;
+    //   333: ldc 205
+    //   335: invokestatic 130	java/util/regex/Pattern:compile	(Ljava/lang/String;)Ljava/util/regex/Pattern;
     //   338: aload 12
-    //   340: invokevirtual 188	java/util/regex/Pattern:matcher	(Ljava/lang/CharSequence;)Ljava/util/regex/Matcher;
+    //   340: invokevirtual 189	java/util/regex/Pattern:matcher	(Ljava/lang/CharSequence;)Ljava/util/regex/Matcher;
     //   343: astore 13
     //   345: aload 13
-    //   347: invokevirtual 193	java/util/regex/Matcher:find	()Z
+    //   347: invokevirtual 194	java/util/regex/Matcher:find	()Z
     //   350: pop
     //   351: aload 13
-    //   353: invokevirtual 206	java/util/regex/Matcher:group	()Ljava/lang/String;
+    //   353: invokevirtual 207	java/util/regex/Matcher:group	()Ljava/lang/String;
     //   356: astore 13
     //   358: aload 13
     //   360: iconst_1
     //   361: aload 13
-    //   363: invokevirtual 209	java/lang/String:length	()I
+    //   363: invokevirtual 210	java/lang/String:length	()I
     //   366: iconst_1
     //   367: isub
-    //   368: invokevirtual 213	java/lang/String:substring	(II)Ljava/lang/String;
+    //   368: invokevirtual 214	java/lang/String:substring	(II)Ljava/lang/String;
     //   371: astore 13
     //   373: aload 12
-    //   375: ldc 215
-    //   377: invokevirtual 219	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
+    //   375: ldc 216
+    //   377: invokevirtual 220	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
     //   380: pop
-    //   381: ldc 221
-    //   383: invokestatic 129	java/util/regex/Pattern:compile	(Ljava/lang/String;)Ljava/util/regex/Pattern;
+    //   381: ldc 222
+    //   383: invokestatic 130	java/util/regex/Pattern:compile	(Ljava/lang/String;)Ljava/util/regex/Pattern;
     //   386: aload 12
-    //   388: invokevirtual 188	java/util/regex/Pattern:matcher	(Ljava/lang/CharSequence;)Ljava/util/regex/Matcher;
+    //   388: invokevirtual 189	java/util/regex/Pattern:matcher	(Ljava/lang/CharSequence;)Ljava/util/regex/Matcher;
     //   391: astore 12
     //   393: aload 12
-    //   395: invokevirtual 193	java/util/regex/Matcher:find	()Z
+    //   395: invokevirtual 194	java/util/regex/Matcher:find	()Z
     //   398: pop
     //   399: aload 12
-    //   401: invokevirtual 206	java/util/regex/Matcher:group	()Ljava/lang/String;
+    //   401: invokevirtual 207	java/util/regex/Matcher:group	()Ljava/lang/String;
     //   404: astore 12
     //   406: aload_1
     //   407: aload 13
     //   409: aload 12
     //   411: aload 12
-    //   413: ldc 223
-    //   415: invokevirtual 227	java/lang/String:indexOf	(Ljava/lang/String;)I
+    //   413: ldc 224
+    //   415: invokevirtual 228	java/lang/String:indexOf	(Ljava/lang/String;)I
     //   418: iconst_1
     //   419: iadd
-    //   420: invokevirtual 229	java/lang/String:substring	(I)Ljava/lang/String;
-    //   423: invokestatic 234	java/lang/Integer:parseInt	(Ljava/lang/String;)I
+    //   420: invokevirtual 230	java/lang/String:substring	(I)Ljava/lang/String;
+    //   423: invokestatic 235	java/lang/Integer:parseInt	(Ljava/lang/String;)I
     //   426: aload 7
-    //   428: invokestatic 236	com/tencent/feedback/anr/a:a	(Ljava/io/BufferedReader;)Ljava/lang/String;
+    //   428: invokestatic 237	com/tencent/feedback/anr/a:a	(Ljava/io/BufferedReader;)Ljava/lang/String;
     //   431: aload 7
-    //   433: invokestatic 238	com/tencent/feedback/anr/a:b	(Ljava/io/BufferedReader;)Ljava/lang/String;
-    //   436: invokeinterface 241 5 0
+    //   433: invokestatic 239	com/tencent/feedback/anr/a:b	(Ljava/io/BufferedReader;)Ljava/lang/String;
+    //   436: invokeinterface 242 5 0
     //   441: pop
     //   442: goto -153 -> 289
     //   445: astore_1
     //   446: aload 7
     //   448: astore_0
     //   449: aload_1
-    //   450: invokestatic 181	com/tencent/feedback/common/e:a	(Ljava/lang/Throwable;)Z
+    //   450: invokestatic 182	com/tencent/feedback/common/e:a	(Ljava/lang/Throwable;)Z
     //   453: ifne +7 -> 460
     //   456: aload_1
-    //   457: invokevirtual 242	java/lang/Exception:printStackTrace	()V
+    //   457: invokevirtual 243	java/lang/Exception:printStackTrace	()V
     //   460: aload_0
     //   461: ifnull -453 -> 8
     //   464: aload_0
-    //   465: invokevirtual 178	java/io/BufferedReader:close	()V
+    //   465: invokevirtual 179	java/io/BufferedReader:close	()V
     //   468: return
     //   469: astore_0
     //   470: aload_0
-    //   471: invokestatic 181	com/tencent/feedback/common/e:a	(Ljava/lang/Throwable;)Z
+    //   471: invokestatic 182	com/tencent/feedback/common/e:a	(Ljava/lang/Throwable;)Z
     //   474: ifne -466 -> 8
     //   477: aload_0
-    //   478: invokevirtual 184	java/io/IOException:printStackTrace	()V
+    //   478: invokevirtual 185	java/io/IOException:printStackTrace	()V
     //   481: return
     //   482: aload_1
     //   483: aload 12
     //   485: iconst_1
     //   486: aaload
-    //   487: invokevirtual 152	java/lang/Object:toString	()Ljava/lang/String;
-    //   490: ldc 154
-    //   492: invokevirtual 160	java/lang/String:split	(Ljava/lang/String;)[Ljava/lang/String;
+    //   487: invokevirtual 153	java/lang/Object:toString	()Ljava/lang/String;
+    //   490: ldc 155
+    //   492: invokevirtual 161	java/lang/String:split	(Ljava/lang/String;)[Ljava/lang/String;
     //   495: iconst_2
     //   496: aaload
-    //   497: invokestatic 166	java/lang/Long:parseLong	(Ljava/lang/String;)J
-    //   500: invokeinterface 245 3 0
+    //   497: invokestatic 167	java/lang/Long:parseLong	(Ljava/lang/String;)J
+    //   500: invokeinterface 246 3 0
     //   505: istore 6
     //   507: iload 6
     //   509: ifne -409 -> 100
     //   512: aload 7
-    //   514: invokevirtual 178	java/io/BufferedReader:close	()V
+    //   514: invokevirtual 179	java/io/BufferedReader:close	()V
     //   517: return
     //   518: astore_0
     //   519: aload_0
-    //   520: invokestatic 181	com/tencent/feedback/common/e:a	(Ljava/lang/Throwable;)Z
+    //   520: invokestatic 182	com/tencent/feedback/common/e:a	(Ljava/lang/Throwable;)Z
     //   523: ifne -515 -> 8
     //   526: aload_0
-    //   527: invokevirtual 184	java/io/IOException:printStackTrace	()V
+    //   527: invokevirtual 185	java/io/IOException:printStackTrace	()V
     //   530: return
     //   531: aload 7
-    //   533: invokevirtual 178	java/io/BufferedReader:close	()V
+    //   533: invokevirtual 179	java/io/BufferedReader:close	()V
     //   536: return
     //   537: astore_0
     //   538: aload_0
-    //   539: invokestatic 181	com/tencent/feedback/common/e:a	(Ljava/lang/Throwable;)Z
+    //   539: invokestatic 182	com/tencent/feedback/common/e:a	(Ljava/lang/Throwable;)Z
     //   542: ifne -534 -> 8
     //   545: aload_0
-    //   546: invokevirtual 184	java/io/IOException:printStackTrace	()V
+    //   546: invokevirtual 185	java/io/IOException:printStackTrace	()V
     //   549: return
     //   550: astore_0
     //   551: aconst_null
@@ -348,15 +348,15 @@ public class a
     //   553: aload_1
     //   554: ifnull +7 -> 561
     //   557: aload_1
-    //   558: invokevirtual 178	java/io/BufferedReader:close	()V
+    //   558: invokevirtual 179	java/io/BufferedReader:close	()V
     //   561: aload_0
     //   562: athrow
     //   563: astore_1
     //   564: aload_1
-    //   565: invokestatic 181	com/tencent/feedback/common/e:a	(Ljava/lang/Throwable;)Z
+    //   565: invokestatic 182	com/tencent/feedback/common/e:a	(Ljava/lang/Throwable;)Z
     //   568: ifne -7 -> 561
     //   571: aload_1
-    //   572: invokevirtual 184	java/io/IOException:printStackTrace	()V
+    //   572: invokevirtual 185	java/io/IOException:printStackTrace	()V
     //   575: goto -14 -> 561
     //   578: astore_0
     //   579: aload 7

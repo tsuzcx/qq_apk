@@ -11,14 +11,14 @@ import java.util.Locale;
 
 public final class LocaleListCompat
 {
-  static final LocaleListInterface IMPL = new LocaleListCompat.LocaleListCompatBaseImpl();
+  static final LocaleListInterface IMPL = new LocaleListCompatBaseImpl();
   private static final LocaleListCompat sEmptyLocaleList = new LocaleListCompat();
   
   static
   {
     if (Build.VERSION.SDK_INT >= 24)
     {
-      IMPL = new LocaleListCompat.LocaleListCompatApi24Impl();
+      IMPL = new LocaleListCompatApi24Impl();
       return;
     }
   }
@@ -164,6 +164,141 @@ public final class LocaleListCompat
   public Object unwrap()
   {
     return IMPL.getLocaleList();
+  }
+  
+  @RequiresApi(24)
+  static class LocaleListCompatApi24Impl
+    implements LocaleListInterface
+  {
+    private LocaleList mLocaleList = new LocaleList(new Locale[0]);
+    
+    public boolean equals(Object paramObject)
+    {
+      return this.mLocaleList.equals(((LocaleListCompat)paramObject).unwrap());
+    }
+    
+    public Locale get(int paramInt)
+    {
+      return this.mLocaleList.get(paramInt);
+    }
+    
+    @Nullable
+    public Locale getFirstMatch(String[] paramArrayOfString)
+    {
+      if (this.mLocaleList != null) {
+        return this.mLocaleList.getFirstMatch(paramArrayOfString);
+      }
+      return null;
+    }
+    
+    public Object getLocaleList()
+    {
+      return this.mLocaleList;
+    }
+    
+    public int hashCode()
+    {
+      return this.mLocaleList.hashCode();
+    }
+    
+    @IntRange(from=-1L)
+    public int indexOf(Locale paramLocale)
+    {
+      return this.mLocaleList.indexOf(paramLocale);
+    }
+    
+    public boolean isEmpty()
+    {
+      return this.mLocaleList.isEmpty();
+    }
+    
+    public void setLocaleList(@NonNull Locale... paramVarArgs)
+    {
+      this.mLocaleList = new LocaleList(paramVarArgs);
+    }
+    
+    @IntRange(from=0L)
+    public int size()
+    {
+      return this.mLocaleList.size();
+    }
+    
+    public String toLanguageTags()
+    {
+      return this.mLocaleList.toLanguageTags();
+    }
+    
+    public String toString()
+    {
+      return this.mLocaleList.toString();
+    }
+  }
+  
+  static class LocaleListCompatBaseImpl
+    implements LocaleListInterface
+  {
+    private LocaleListHelper mLocaleList = new LocaleListHelper(new Locale[0]);
+    
+    public boolean equals(Object paramObject)
+    {
+      return this.mLocaleList.equals(((LocaleListCompat)paramObject).unwrap());
+    }
+    
+    public Locale get(int paramInt)
+    {
+      return this.mLocaleList.get(paramInt);
+    }
+    
+    @Nullable
+    public Locale getFirstMatch(String[] paramArrayOfString)
+    {
+      if (this.mLocaleList != null) {
+        return this.mLocaleList.getFirstMatch(paramArrayOfString);
+      }
+      return null;
+    }
+    
+    public Object getLocaleList()
+    {
+      return this.mLocaleList;
+    }
+    
+    public int hashCode()
+    {
+      return this.mLocaleList.hashCode();
+    }
+    
+    @IntRange(from=-1L)
+    public int indexOf(Locale paramLocale)
+    {
+      return this.mLocaleList.indexOf(paramLocale);
+    }
+    
+    public boolean isEmpty()
+    {
+      return this.mLocaleList.isEmpty();
+    }
+    
+    public void setLocaleList(@NonNull Locale... paramVarArgs)
+    {
+      this.mLocaleList = new LocaleListHelper(paramVarArgs);
+    }
+    
+    @IntRange(from=0L)
+    public int size()
+    {
+      return this.mLocaleList.size();
+    }
+    
+    public String toLanguageTags()
+    {
+      return this.mLocaleList.toLanguageTags();
+    }
+    
+    public String toString()
+    {
+      return this.mLocaleList.toString();
+    }
   }
 }
 

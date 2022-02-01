@@ -1,48 +1,81 @@
 package com.tencent.token;
 
-import android.content.ContentValues;
-import com.tencent.wcdb.Cursor;
-import com.tencent.wcdb.database.SQLiteDatabase;
+import java.security.NoSuchAlgorithmException;
+import java.security.Provider;
+import java.util.List;
+import javax.annotation.Nullable;
+import javax.net.ssl.SSLContext;
+import javax.net.ssl.SSLSocket;
+import javax.net.ssl.SSLSocketFactory;
+import okhttp3.Protocol;
+import org.conscrypt.Conscrypt;
+import org.conscrypt.OpenSSLProvider;
 
 public class fx
-  implements gd
+  extends gb
 {
-  public String a;
-  public String b;
-  
-  public gd a(Cursor paramCursor)
+  public static gb a()
   {
-    fx localfx = new fx();
-    localfx.a = paramCursor.getString(paramCursor.getColumnIndex("uinhash"));
-    localfx.b = paramCursor.getString(paramCursor.getColumnIndex("filename"));
-    return localfx;
+    try
+    {
+      Class.forName("org.conscrypt.ConscryptEngineSocket");
+      if (!Conscrypt.isAvailable()) {
+        return null;
+      }
+      fx localfx = new fx();
+      return localfx;
+    }
+    catch (ClassNotFoundException localClassNotFoundException) {}
+    return null;
   }
   
-  public void a(SQLiteDatabase paramSQLiteDatabase)
+  private Provider e()
   {
-    paramSQLiteDatabase.execSQL("CREATE TABLE IF NOT EXISTS qqface(uinhash TEXT PRIMARY KEY,filename TEXT);");
+    return new OpenSSLProvider();
   }
   
-  public long b(SQLiteDatabase paramSQLiteDatabase)
+  @Nullable
+  public String a(SSLSocket paramSSLSocket)
   {
-    a(paramSQLiteDatabase);
-    ContentValues localContentValues = new ContentValues();
-    localContentValues.put("uinhash", this.a);
-    localContentValues.put("filename", this.b);
-    return paramSQLiteDatabase.insert("qqface", null, localContentValues);
+    if (Conscrypt.isConscrypt(paramSSLSocket)) {
+      return Conscrypt.getApplicationProtocol(paramSSLSocket);
+    }
+    return super.a(paramSSLSocket);
   }
   
-  public String b()
+  public void a(SSLSocket paramSSLSocket, String paramString, List<Protocol> paramList)
   {
-    return "qqface";
+    if (Conscrypt.isConscrypt(paramSSLSocket))
+    {
+      if (paramString != null)
+      {
+        Conscrypt.setUseSessionTickets(paramSSLSocket, true);
+        Conscrypt.setHostname(paramSSLSocket, paramString);
+      }
+      Conscrypt.setApplicationProtocols(paramSSLSocket, (String[])gb.a(paramList).toArray(new String[0]));
+      return;
+    }
+    super.a(paramSSLSocket, paramString, paramList);
   }
   
-  public ContentValues c()
+  public void a(SSLSocketFactory paramSSLSocketFactory)
   {
-    ContentValues localContentValues = new ContentValues();
-    localContentValues.put("uinhash", this.a);
-    localContentValues.put("filename", this.b);
-    return localContentValues;
+    if (Conscrypt.isConscrypt(paramSSLSocketFactory)) {
+      Conscrypt.setUseEngineSocket(paramSSLSocketFactory, true);
+    }
+  }
+  
+  public SSLContext b()
+  {
+    try
+    {
+      SSLContext localSSLContext = SSLContext.getInstance("TLS", e());
+      return localSSLContext;
+    }
+    catch (NoSuchAlgorithmException localNoSuchAlgorithmException)
+    {
+      throw new IllegalStateException("No TLS provider", localNoSuchAlgorithmException);
+    }
   }
 }
 

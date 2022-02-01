@@ -21,9 +21,9 @@ import java.util.WeakHashMap;
 public final class AppCompatResources
 {
   private static final String LOG_TAG = "AppCompatResources";
-  private static final ThreadLocal TL_TYPED_VALUE = new ThreadLocal();
+  private static final ThreadLocal<TypedValue> TL_TYPED_VALUE = new ThreadLocal();
   private static final Object sColorStateCacheLock = new Object();
-  private static final WeakHashMap sColorStateCaches = new WeakHashMap(0);
+  private static final WeakHashMap<Context, SparseArray<ColorStateListCacheEntry>> sColorStateCaches = new WeakHashMap(0);
   
   private static void addColorStateListToCache(@NonNull Context paramContext, @ColorRes int paramInt, @NonNull ColorStateList paramColorStateList)
   {
@@ -36,7 +36,7 @@ public final class AppCompatResources
         localSparseArray1 = new SparseArray();
         sColorStateCaches.put(paramContext, localSparseArray1);
       }
-      localSparseArray1.append(paramInt, new AppCompatResources.ColorStateListCacheEntry(paramColorStateList, paramContext.getResources().getConfiguration()));
+      localSparseArray1.append(paramInt, new ColorStateListCacheEntry(paramColorStateList, paramContext.getResources().getConfiguration()));
       return;
     }
   }
@@ -49,7 +49,7 @@ public final class AppCompatResources
       SparseArray localSparseArray = (SparseArray)sColorStateCaches.get(paramContext);
       if ((localSparseArray != null) && (localSparseArray.size() > 0))
       {
-        AppCompatResources.ColorStateListCacheEntry localColorStateListCacheEntry = (AppCompatResources.ColorStateListCacheEntry)localSparseArray.get(paramInt);
+        ColorStateListCacheEntry localColorStateListCacheEntry = (ColorStateListCacheEntry)localSparseArray.get(paramInt);
         if (localColorStateListCacheEntry != null)
         {
           if (localColorStateListCacheEntry.configuration.equals(paramContext.getResources().getConfiguration()))
@@ -130,6 +130,18 @@ public final class AppCompatResources
     TypedValue localTypedValue = getTypedValue();
     paramContext.getValue(paramInt, localTypedValue, true);
     return (localTypedValue.type >= 28) && (localTypedValue.type <= 31);
+  }
+  
+  private static class ColorStateListCacheEntry
+  {
+    final Configuration configuration;
+    final ColorStateList value;
+    
+    ColorStateListCacheEntry(@NonNull ColorStateList paramColorStateList, @NonNull Configuration paramConfiguration)
+    {
+      this.value = paramColorStateList;
+      this.configuration = paramConfiguration;
+    }
   }
 }
 

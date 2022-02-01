@@ -10,13 +10,13 @@ import java.util.ListIterator;
 
 @TargetApi(19)
 public class g
-  implements e, i
+  implements e, h
 {
   private final Path a = new Path();
   private final Path b = new Path();
   private final Path c = new Path();
   private final String d;
-  private final List e = new ArrayList();
+  private final List<h> e = new ArrayList();
   private final cd f;
   
   public g(cd paramcd)
@@ -39,36 +39,36 @@ public class g
     Path localPath;
     while (i >= 1)
     {
-      locali = (i)this.e.get(i);
-      if ((locali instanceof cy))
+      localh = (h)this.e.get(i);
+      if ((localh instanceof bs))
       {
-        localList = ((cy)locali).d();
+        localList = ((bs)localh).d();
         int j = localList.size() - 1;
         while (j >= 0)
         {
-          localPath = ((i)localList.get(j)).a();
-          localPath.transform(((cy)locali).e());
+          localPath = ((h)localList.get(j)).a();
+          localPath.transform(((bs)localh).e());
           this.b.addPath(localPath);
           j -= 1;
         }
       }
-      this.b.addPath(locali.a());
+      this.b.addPath(localh.a());
       i -= 1;
     }
-    i locali = (i)this.e.get(0);
-    if ((locali instanceof cy))
+    h localh = (h)this.e.get(0);
+    if ((localh instanceof bs))
     {
-      localList = ((cy)locali).d();
+      localList = ((bs)localh).d();
       i = k;
       while (i < localList.size())
       {
-        localPath = ((i)localList.get(i)).a();
-        localPath.transform(((cy)locali).e());
+        localPath = ((h)localList.get(i)).a();
+        localPath.transform(((bs)localh).e());
         this.a.addPath(localPath);
         i += 1;
       }
     }
-    this.a.set(locali.a());
+    this.a.set(localh.a());
     this.c.op(this.a, this.b, paramOp);
   }
   
@@ -77,7 +77,7 @@ public class g
     int i = 0;
     while (i < this.e.size())
     {
-      this.c.addPath(((i)this.e.get(i)).a());
+      this.c.addPath(((h)this.e.get(i)).a());
       i += 1;
     }
   }
@@ -85,7 +85,7 @@ public class g
   public Path a()
   {
     this.c.reset();
-    switch (h.a[this.f.b().ordinal()])
+    switch (1.a[this.f.b().ordinal()])
     {
     }
     for (;;)
@@ -103,25 +103,25 @@ public class g
     }
   }
   
-  public void a(List paramList1, List paramList2)
+  public void a(List<br> paramList1, List<br> paramList2)
   {
     int i = 0;
     while (i < this.e.size())
     {
-      ((i)this.e.get(i)).a(paramList1, paramList2);
+      ((h)this.e.get(i)).a(paramList1, paramList2);
       i += 1;
     }
   }
   
-  public void a(ListIterator paramListIterator)
+  public void a(ListIterator<br> paramListIterator)
   {
     while ((paramListIterator.hasPrevious()) && (paramListIterator.previous() != this)) {}
     while (paramListIterator.hasPrevious())
     {
-      cx localcx = (cx)paramListIterator.previous();
-      if ((localcx instanceof i))
+      br localbr = (br)paramListIterator.previous();
+      if ((localbr instanceof h))
       {
-        this.e.add((i)localcx);
+        this.e.add((h)localbr);
         paramListIterator.remove();
       }
     }

@@ -12,6 +12,7 @@ import android.graphics.drawable.InsetDrawable;
 import android.graphics.drawable.RippleDrawable;
 import android.os.Build.VERSION;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
 import android.util.Log;
 import java.lang.reflect.Method;
@@ -99,7 +100,7 @@ class WrappedDrawableApi21
   @NonNull
   WrappedDrawableApi14.DrawableWrapperState mutateConstantState()
   {
-    return new WrappedDrawableApi21.DrawableWrapperStateLollipop(this.mState, null);
+    return new DrawableWrapperStateLollipop(this.mState, null);
   }
   
   public void setHotspot(float paramFloat1, float paramFloat2)
@@ -150,6 +151,21 @@ class WrappedDrawableApi21
       return;
     }
     this.mDrawable.setTintMode(paramMode);
+  }
+  
+  private static class DrawableWrapperStateLollipop
+    extends WrappedDrawableApi14.DrawableWrapperState
+  {
+    DrawableWrapperStateLollipop(@Nullable WrappedDrawableApi14.DrawableWrapperState paramDrawableWrapperState, @Nullable Resources paramResources)
+    {
+      super(paramResources);
+    }
+    
+    @NonNull
+    public Drawable newDrawable(@Nullable Resources paramResources)
+    {
+      return new WrappedDrawableApi21(this, paramResources);
+    }
   }
 }
 

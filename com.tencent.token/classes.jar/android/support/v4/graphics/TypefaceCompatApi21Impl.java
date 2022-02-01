@@ -46,12 +46,12 @@ class TypefaceCompatApi21Impl
     //   9: aload_3
     //   10: iload 4
     //   12: invokevirtual 83	android/support/v4/graphics/TypefaceCompatApi21Impl:findBestInfo	([Landroid/support/v4/provider/FontsContractCompat$FontInfo;I)Landroid/support/v4/provider/FontsContractCompat$FontInfo;
-    //   15: astore 5
-    //   17: aload_1
-    //   18: invokevirtual 89	android/content/Context:getContentResolver	()Landroid/content/ContentResolver;
-    //   21: astore_3
-    //   22: aload_3
-    //   23: aload 5
+    //   15: astore_3
+    //   16: aload_1
+    //   17: invokevirtual 89	android/content/Context:getContentResolver	()Landroid/content/ContentResolver;
+    //   20: astore 5
+    //   22: aload 5
+    //   24: aload_3
     //   25: invokevirtual 95	android/support/v4/provider/FontsContractCompat$FontInfo:getUri	()Landroid/net/Uri;
     //   28: ldc 97
     //   30: aload_2
@@ -184,7 +184,7 @@ class TypefaceCompatApi21Impl
     //   0	257	2	paramCancellationSignal	android.os.CancellationSignal
     //   0	257	3	paramArrayOfFontInfo	android.support.v4.provider.FontsContractCompat.FontInfo[]
     //   0	257	4	paramInt	int
-    //   15	160	5	localObject	java.lang.Object
+    //   20	155	5	localObject	java.lang.Object
     //   181	12	5	localThrowable	java.lang.Throwable
     // Exception table:
     //   from	to	target	type

@@ -232,6 +232,7 @@
     <item type="id" name="wording3" />
     <item type="id" name="process_btn" />
     <item type="id" name="gallery_back" />
+    <item type="id" name="page_title" />
     <item type="id" name="iv_gallery_show_protect" />
     <item type="id" name="tv_gallery_protect_des" />
     <item type="id" name="tv_gallery_protect_subdes" />

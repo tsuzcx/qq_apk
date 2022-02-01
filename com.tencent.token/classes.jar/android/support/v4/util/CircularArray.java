@@ -1,9 +1,9 @@
 package android.support.v4.util;
 
-public final class CircularArray
+public final class CircularArray<E>
 {
   private int mCapacityBitmask;
-  private Object[] mElements;
+  private E[] mElements;
   private int mHead;
   private int mTail;
   
@@ -45,18 +45,18 @@ public final class CircularArray
     this.mCapacityBitmask = (k - 1);
   }
   
-  public void addFirst(Object paramObject)
+  public void addFirst(E paramE)
   {
     this.mHead = (this.mHead - 1 & this.mCapacityBitmask);
-    this.mElements[this.mHead] = paramObject;
+    this.mElements[this.mHead] = paramE;
     if (this.mHead == this.mTail) {
       doubleCapacity();
     }
   }
   
-  public void addLast(Object paramObject)
+  public void addLast(E paramE)
   {
-    this.mElements[this.mTail] = paramObject;
+    this.mElements[this.mTail] = paramE;
     this.mTail = (this.mTail + 1 & this.mCapacityBitmask);
     if (this.mTail == this.mHead) {
       doubleCapacity();
@@ -68,7 +68,7 @@ public final class CircularArray
     removeFromStart(size());
   }
   
-  public Object get(int paramInt)
+  public E get(int paramInt)
   {
     if ((paramInt < 0) || (paramInt >= size())) {
       throw new ArrayIndexOutOfBoundsException();
@@ -76,7 +76,7 @@ public final class CircularArray
     return this.mElements[(this.mHead + paramInt & this.mCapacityBitmask)];
   }
   
-  public Object getFirst()
+  public E getFirst()
   {
     if (this.mHead == this.mTail) {
       throw new ArrayIndexOutOfBoundsException();
@@ -84,7 +84,7 @@ public final class CircularArray
     return this.mElements[this.mHead];
   }
   
-  public Object getLast()
+  public E getLast()
   {
     if (this.mHead == this.mTail) {
       throw new ArrayIndexOutOfBoundsException();
@@ -97,7 +97,7 @@ public final class CircularArray
     return this.mHead == this.mTail;
   }
   
-  public Object popFirst()
+  public E popFirst()
   {
     if (this.mHead == this.mTail) {
       throw new ArrayIndexOutOfBoundsException();
@@ -108,7 +108,7 @@ public final class CircularArray
     return localObject;
   }
   
-  public Object popLast()
+  public E popLast()
   {
     if (this.mHead == this.mTail) {
       throw new ArrayIndexOutOfBoundsException();

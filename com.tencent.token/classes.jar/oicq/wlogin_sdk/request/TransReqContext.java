@@ -8,7 +8,7 @@ import oicq.wlogin_sdk.sharemem.WloginSigInfo;
 public class TransReqContext
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new TransReqContext.1();
+  public static final Parcelable.Creator<TransReqContext> CREATOR = new TransReqContext.1();
   public byte[] _body;
   public int _subcmd = 0;
   public int _type = 0;

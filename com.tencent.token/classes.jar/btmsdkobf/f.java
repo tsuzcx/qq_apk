@@ -7,7 +7,7 @@ import java.lang.reflect.Method;
 public class f
 {
   private static Object l;
-  private static Class m;
+  private static Class<?> m;
   private static Method n = null;
   private static Method o = null;
   private static Method p = null;

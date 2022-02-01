@@ -1,6 +1,12 @@
 package taiji;
 
-class h {}
+import android.graphics.Path;
+
+abstract interface h
+  extends br
+{
+  public abstract Path a();
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.token\classes.jar

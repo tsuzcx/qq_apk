@@ -10,8 +10,8 @@ public final class DownInfo
   extends JceStruct
   implements Cloneable
 {
-  static ArrayList ed;
-  public ArrayList listDownSoftItems = null;
+  static ArrayList<DownSoftInfo> ed;
+  public ArrayList<DownSoftInfo> listDownSoftItems = null;
   public int nGUID = 0;
   public String sQUA = "";
   
@@ -32,7 +32,7 @@ public final class DownInfo
     setListDownSoftItems(this.listDownSoftItems);
   }
   
-  public DownInfo(String paramString, int paramInt, ArrayList paramArrayList)
+  public DownInfo(String paramString, int paramInt, ArrayList<DownSoftInfo> paramArrayList)
   {
     setSQUA(paramString);
     setNGUID(paramInt);
@@ -76,7 +76,7 @@ public final class DownInfo
     return "tmsdk.QQPIM.DownInfo";
   }
   
-  public ArrayList getListDownSoftItems()
+  public ArrayList<DownSoftInfo> getListDownSoftItems()
   {
     return this.listDownSoftItems;
   }
@@ -117,7 +117,7 @@ public final class DownInfo
     setListDownSoftItems((ArrayList)paramJceInputStream.read(ed, 2, true));
   }
   
-  public void setListDownSoftItems(ArrayList paramArrayList)
+  public void setListDownSoftItems(ArrayList<DownSoftInfo> paramArrayList)
   {
     this.listDownSoftItems = paramArrayList;
   }

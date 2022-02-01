@@ -1,5 +1,10 @@
 package btmsdkobf;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
+import com.tmsdk.base.TMSDKBaseContext;
 import com.tmsdk.base.TMSDKBaseContext.IReportListener;
 import com.tmsdk.base.utils.NetworkUtil;
 import java.util.Calendar;
@@ -11,8 +16,8 @@ public class bn
   static Object gh = new Object();
   static volatile long gi = -1L;
   static volatile boolean gj = false;
-  static ff gk = null;
-  private static LinkedList gl = new LinkedList();
+  static a gk = null;
+  private static LinkedList<TMSDKBaseContext.IReportListener> gl = new LinkedList();
   
   static boolean J()
   {
@@ -74,7 +79,20 @@ public class bn
         eg.e("ReportService", "checkPullReport, isNeedReport or isNetworkConnected [false]");
         return;
       }
-      ee.cT().addTask(new fe(), "xxx");
+      ee.cT().addTask(new Runnable()
+      {
+        public void run()
+        {
+          if (System.currentTimeMillis() - bn.gi < 600000L) {
+            return;
+          }
+          bn.gi = System.currentTimeMillis();
+          be.w();
+          bn.N();
+          ec.cS().putLong("rs_rt", System.currentTimeMillis());
+          bc.setAutoConnectionSwitch(bc.n(), true);
+        }
+      }, "xxx");
       return;
     }
   }
@@ -83,7 +101,7 @@ public class bn
   {
     if (gk == null)
     {
-      gk = new ff();
+      gk = new a();
       gk.a(bc.n());
     }
   }
@@ -94,32 +112,32 @@ public class bn
     // Byte code:
     //   0: ldc 2
     //   2: monitorenter
-    //   3: getstatic 34	btmsdkobf/bn:gl	Ljava/util/LinkedList;
+    //   3: getstatic 40	btmsdkobf/bn:gl	Ljava/util/LinkedList;
     //   6: astore_0
     //   7: aload_0
     //   8: monitorenter
-    //   9: getstatic 34	btmsdkobf/bn:gl	Ljava/util/LinkedList;
-    //   12: invokevirtual 155	java/util/LinkedList:clone	()Ljava/lang/Object;
-    //   15: checkcast 31	java/util/LinkedList
+    //   9: getstatic 40	btmsdkobf/bn:gl	Ljava/util/LinkedList;
+    //   12: invokevirtual 156	java/util/LinkedList:clone	()Ljava/lang/Object;
+    //   15: checkcast 37	java/util/LinkedList
     //   18: astore_1
     //   19: aload_0
     //   20: monitorexit
     //   21: aload_1
     //   22: ifnull +41 -> 63
     //   25: aload_1
-    //   26: invokevirtual 159	java/util/LinkedList:iterator	()Ljava/util/Iterator;
+    //   26: invokevirtual 160	java/util/LinkedList:iterator	()Ljava/util/Iterator;
     //   29: astore_0
     //   30: aload_0
-    //   31: invokeinterface 164 1 0
+    //   31: invokeinterface 165 1 0
     //   36: ifeq +27 -> 63
     //   39: aload_0
-    //   40: invokeinterface 167 1 0
-    //   45: checkcast 169	com/tmsdk/base/TMSDKBaseContext$IReportListener
+    //   40: invokeinterface 168 1 0
+    //   45: checkcast 170	com/tmsdk/base/TMSDKBaseContext$IReportListener
     //   48: astore_1
     //   49: aload_1
     //   50: ifnull -20 -> 30
     //   53: aload_1
-    //   54: invokeinterface 172 1 0
+    //   54: invokeinterface 173 1 0
     //   59: goto -29 -> 30
     //   62: astore_0
     //   63: ldc 2
@@ -183,6 +201,64 @@ public class bn
     {
       gl.remove(paramIReportListener);
       return;
+    }
+  }
+  
+  static class a
+    extends BroadcastReceiver
+    implements eb.a
+  {
+    public static boolean a = false;
+    
+    public void O()
+    {
+      if (bc.m())
+      {
+        bn.L();
+        if (NetworkUtil.isWifiConnected())
+        {
+          TMSDKBaseContext.aroundWifiReport();
+          TMSDKBaseContext.wifiConnectRetReport();
+        }
+      }
+    }
+    
+    public void P() {}
+    
+    public void a(Context paramContext)
+    {
+      try
+      {
+        if (!a)
+        {
+          IntentFilter localIntentFilter = new IntentFilter();
+          localIntentFilter.addAction("android.intent.action.USER_PRESENT");
+          localIntentFilter.setPriority(2147483647);
+          paramContext.registerReceiver(this, localIntentFilter);
+          paramContext = eb.k(paramContext);
+          if (paramContext != null) {
+            paramContext.a(this);
+          }
+          a = true;
+        }
+        return;
+      }
+      finally {}
+    }
+    
+    public void onReceive(Context paramContext, Intent paramIntent)
+    {
+      if (paramIntent == null) {}
+      for (;;)
+      {
+        return;
+        if ("android.intent.action.USER_PRESENT".equals(paramIntent.getAction())) {}
+        for (int i = 3; (i != -1) && (bc.m()); i = -1)
+        {
+          bn.L();
+          return;
+        }
+      }
     }
   }
 }

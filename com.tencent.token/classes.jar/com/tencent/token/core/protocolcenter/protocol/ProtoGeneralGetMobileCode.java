@@ -1,20 +1,20 @@
 package com.tencent.token.core.protocolcenter.protocol;
 
 import android.content.Context;
-import com.tencent.token.core.protocolcenter.e;
-import com.tencent.token.cv;
-import com.tencent.token.cx;
-import com.tencent.token.ev;
+import com.tencent.token.bz;
+import com.tencent.token.cb;
+import com.tencent.token.core.protocolcenter.d;
+import com.tencent.token.dn;
 import com.tencent.token.global.RqdApplication;
 import com.tencent.token.global.c;
-import com.tencent.token.global.f;
-import com.tencent.token.global.h;
-import com.tencent.token.utils.w;
+import com.tencent.token.global.e;
+import com.tencent.token.global.g;
+import com.tencent.token.utils.l;
 import java.util.HashMap;
 import org.json.JSONObject;
 
 public class ProtoGeneralGetMobileCode
-  extends e
+  extends d
 {
   public static String d;
   public static String e;
@@ -25,33 +25,33 @@ public class ProtoGeneralGetMobileCode
   private int j;
   private final String k = "/cn/mbtoken3/mbtoken3_general_get_mobile_code";
   
-  public static void a(ev paramev, long paramLong1, long paramLong2, int paramInt1, int paramInt2)
+  public static void a(dn paramdn, long paramLong1, long paramLong2, int paramInt1, int paramInt2)
   {
-    paramev.c.put("param.uinhash", Long.valueOf(paramLong1));
-    paramev.c.put("param.realuin", Long.valueOf(paramLong2));
-    paramev.c.put("param.general.mobilecode.sceneid", Integer.valueOf(paramInt1));
-    paramev.j = paramInt2;
+    paramdn.c.put("param.uinhash", Long.valueOf(paramLong1));
+    paramdn.c.put("param.realuin", Long.valueOf(paramLong2));
+    paramdn.c.put("param.general.mobilecode.sceneid", Integer.valueOf(paramInt1));
+    paramdn.j = paramInt2;
   }
   
   protected String a()
   {
-    String str1 = cv.a().b();
+    String str1 = bz.a().b();
     if (str1 == null)
     {
       this.a.b(104);
       return null;
     }
-    String str2 = w.a(new Object[] { "real_uin", Long.valueOf(this.h), "scene_id", Integer.valueOf(this.j), "seq_id", Integer.valueOf(this.i), "op_time", Long.valueOf(cx.c().s() / 1000L) });
+    String str2 = l.a(new Object[] { "real_uin", Long.valueOf(this.h), "scene_id", Integer.valueOf(this.j), "seq_id", Integer.valueOf(this.i), "op_time", Long.valueOf(cb.c().s() / 1000L) });
     str1 = "?uin=" + this.g + "&aq_base_sid=" + str1 + "&data=" + str2;
     return c.e() + "/cn/mbtoken3/mbtoken3_general_get_mobile_code" + str1;
   }
   
-  protected void a(ev paramev)
+  protected void a(dn paramdn)
   {
-    this.g = ((Long)paramev.c.get("param.uinhash")).longValue();
-    this.h = ((Long)paramev.c.get("param.realuin")).longValue();
-    this.j = ((Integer)paramev.c.get("param.general.mobilecode.sceneid")).intValue();
-    this.i = paramev.j;
+    this.g = ((Long)paramdn.c.get("param.uinhash")).longValue();
+    this.h = ((Long)paramdn.c.get("param.realuin")).longValue();
+    this.j = ((Integer)paramdn.c.get("param.general.mobilecode.sceneid")).intValue();
+    this.i = paramdn.j;
   }
   
   protected void a(JSONObject paramJSONObject)
@@ -62,7 +62,7 @@ public class ProtoGeneralGetMobileCode
       String str = paramJSONObject.getString("info");
       if (m == 124)
       {
-        paramJSONObject = w.c(paramJSONObject.getString("data"));
+        paramJSONObject = l.c(paramJSONObject.getString("data"));
         if (paramJSONObject != null)
         {
           paramJSONObject = new JSONObject(new String(paramJSONObject));
@@ -73,7 +73,7 @@ public class ProtoGeneralGetMobileCode
       try
       {
         f = paramJSONObject.getString("mobile_sms_prefix");
-        h.b("realname port=" + d + ", content=" + e);
+        g.b("realname port=" + d + ", content=" + e);
         a(m, str);
         return;
       }
@@ -85,15 +85,15 @@ public class ProtoGeneralGetMobileCode
         }
       }
     }
-    paramJSONObject = w.c(paramJSONObject.getString("data"));
+    paramJSONObject = l.c(paramJSONObject.getString("data"));
     if (paramJSONObject != null)
     {
       paramJSONObject = new JSONObject(new String(paramJSONObject));
-      h.a("json" + paramJSONObject.toString());
+      g.a("json" + paramJSONObject.toString());
       m = paramJSONObject.getInt("seq_id");
       if (m != this.i)
       {
-        h.c("parseJSON error seq is wrong seq=" + m + ",right = " + this.i);
+        g.c("parseJSON error seq is wrong seq=" + m + ",right = " + this.i);
         this.a.b(10030);
         return;
       }
@@ -102,7 +102,7 @@ public class ProtoGeneralGetMobileCode
       try
       {
         f = paramJSONObject.getString("mobile_sms_prefix");
-        h.b("realname port=" + d + ", content=" + e);
+        g.b("realname port=" + d + ", content=" + e);
         this.a.c();
         return;
       }
@@ -114,7 +114,7 @@ public class ProtoGeneralGetMobileCode
         }
       }
     }
-    h.c("parseJSON error decodeData=" + paramJSONObject);
+    g.c("parseJSON error decodeData=" + paramJSONObject);
     a(10022, RqdApplication.l().getString(2131230925));
   }
 }

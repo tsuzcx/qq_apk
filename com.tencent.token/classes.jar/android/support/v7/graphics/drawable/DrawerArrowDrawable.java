@@ -14,10 +14,14 @@ import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 import android.support.annotation.ColorInt;
 import android.support.annotation.FloatRange;
+import android.support.annotation.RestrictTo;
 import android.support.v4.graphics.drawable.DrawableCompat;
 import android.support.v7.appcompat.R.attr;
 import android.support.v7.appcompat.R.style;
 import android.support.v7.appcompat.R.styleable;
+import java.lang.annotation.Annotation;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
 
 public class DrawerArrowDrawable
   extends Drawable
@@ -327,6 +331,10 @@ public class DrawerArrowDrawable
       invalidateSelf();
     }
   }
+  
+  @Retention(RetentionPolicy.SOURCE)
+  @RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
+  public static @interface ArrowDirection {}
 }
 
 

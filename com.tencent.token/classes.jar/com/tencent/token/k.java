@@ -1,60 +1,145 @@
 package com.tencent.token;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.content.Context;
+import android.os.Environment;
+import android.text.TextUtils;
+import com.tencent.halley.common.f;
+import com.tencent.halley.common.h;
+import java.io.File;
 
 public final class k
 {
-  private List a = new ArrayList();
+  public static String a;
+  public static String b;
+  public static String c;
+  public static int d;
+  public static boolean e;
+  public static int f = 50;
+  private static int g = 2;
+  private static int h = 3;
+  private static String i;
+  private static volatile int j;
+  private static int k = 20000;
   
-  public final int a()
+  static
   {
-    return this.a.size();
+    a = "";
+    b = "";
+    c = "";
+    d = 5;
+    i = ".temp";
+    e = true;
+    j = 500;
   }
   
-  public final void a(j paramj)
+  public static int a()
   {
-    Iterator localIterator = this.a.iterator();
-    do
+    return g;
+  }
+  
+  public static String a(String paramString)
+  {
+    return paramString + ".bdcfg";
+  }
+  
+  public static void a(int paramInt)
+  {
+    g = Math.min(Math.max(paramInt, 1), 4);
+  }
+  
+  public static int b()
+  {
+    return h;
+  }
+  
+  public static String b(String paramString)
+  {
+    return paramString + i;
+  }
+  
+  public static void b(int paramInt)
+  {
+    h = Math.min(Math.max(paramInt, 1), 6);
+  }
+  
+  public static int c()
+  {
+    p.e();
+    return 20000;
+  }
+  
+  public static boolean c(String paramString)
+  {
+    return !h.a(paramString);
+  }
+  
+  public static int d()
+  {
+    p.e();
+    return 20000;
+  }
+  
+  public static int e()
+  {
+    switch ()
     {
-      if (!localIterator.hasNext()) {
-        break;
-      }
-    } while (!((j)localIterator.next()).equals(paramj));
-    for (int i = 1;; i = 0)
+    case 1: 
+    case 2: 
+    default: 
+      return 1048576;
+    }
+    return 524288;
+  }
+  
+  public static int f()
+  {
+    return 524288;
+  }
+  
+  public static String g()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    int m;
+    if ("mounted".equals(Environment.getExternalStorageState()))
     {
-      if (i == 0) {
-        this.a.add(paramj);
+      m = 1;
+      if (m == 0) {
+        break label98;
       }
-      return;
+      str1 = h.e();
+    }
+    label98:
+    for (String str1 = Environment.getExternalStorageDirectory().getAbsolutePath() + "/" + str1 + "/HalleyDownload";; str1 = "")
+    {
+      String str2 = str1;
+      if (TextUtils.isEmpty(str1)) {
+        str2 = f.a().getFilesDir().toString();
+      }
+      localStringBuilder.append(str2);
+      return localStringBuilder.toString();
+      m = 0;
+      break;
     }
   }
   
-  public final j b()
+  public static int h()
   {
-    if (this.a.size() == 0) {
-      return null;
-    }
-    return (j)this.a.get(0);
+    return j;
   }
   
-  public final String toString()
+  public static int i()
   {
-    StringBuilder localStringBuilder = new StringBuilder("bytes=");
-    Iterator localIterator = this.a.iterator();
-    while (localIterator.hasNext())
-    {
-      j localj = (j)localIterator.next();
-      localStringBuilder.append(localj.a);
-      localStringBuilder.append("-");
-      if (localj.b != -1L) {
-        localStringBuilder.append(localj.b);
-      }
-      localStringBuilder.append(",");
-    }
-    localStringBuilder.deleteCharAt(localStringBuilder.length() - 1);
-    return localStringBuilder.toString();
+    return 60000;
+  }
+  
+  public static int j()
+  {
+    return 20000;
+  }
+  
+  public static int k()
+  {
+    return k;
   }
 }
 

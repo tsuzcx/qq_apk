@@ -1,11 +1,8 @@
 package taiji;
 
-public final class ak
+public abstract interface ak<O>
 {
-  public static ai a()
-  {
-    return new ai(null);
-  }
+  public abstract l<?, O> c();
 }
 
 

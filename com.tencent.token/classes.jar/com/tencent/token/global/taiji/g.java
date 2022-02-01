@@ -1,30 +1,43 @@
 package com.tencent.token.global.taiji;
 
-import java.util.ArrayList;
-import java.util.Iterator;
+import java.util.HashMap;
+import java.util.concurrent.atomic.AtomicInteger;
 
-class g
-  implements Runnable
+public class g
+  implements f.a, h
 {
-  g(d paramd, i parami) {}
+  private final ThreadGroup b = new ThreadGroup("TMS_FREE_POOL_" + a.getAndIncrement());
+  private final AtomicInteger c = new AtomicInteger(1);
+  private HashMap<Thread, i.c> d = new HashMap();
   
-  public void run()
+  public Thread a(Runnable paramRunnable, String paramString, long paramLong)
   {
-    this.b.e.execute(this.a);
-    if ((this.b.e.getActiveCount() >= d.c(this.b)) && (this.b.e.getCorePoolSize() < 18))
+    String str;
+    if (paramString != null)
     {
-      this.b.e.setCorePoolSize(this.b.e.getCorePoolSize() + 1);
-      this.b.e.setMaximumPoolSize(this.b.e.getCorePoolSize() + 1);
+      str = paramString;
+      if (paramString.length() != 0) {}
     }
-    for (;;)
+    else
     {
-      Iterator localIterator = this.b.b().iterator();
-      while (localIterator.hasNext()) {
-        ((r)localIterator.next()).a(this.a.a(), this.b.e.getActiveCount());
-      }
-      d.a(this.b, false);
+      str = paramRunnable.getClass().getName();
     }
+    paramString = "FreeThread-" + this.c.getAndIncrement() + "-" + str;
+    paramRunnable = new f(this.b, paramRunnable, paramString, paramLong);
+    if (paramRunnable.isDaemon()) {
+      paramRunnable.setDaemon(false);
+    }
+    if (paramRunnable.getPriority() != 5) {
+      paramRunnable.setPriority(5);
+    }
+    return paramRunnable;
   }
+  
+  public void a(Thread paramThread, Runnable paramRunnable) {}
+  
+  public void b(Thread paramThread, Runnable paramRunnable) {}
+  
+  public void c(Thread paramThread, Runnable paramRunnable) {}
 }
 
 

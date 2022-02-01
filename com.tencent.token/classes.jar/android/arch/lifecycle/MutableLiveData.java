@@ -1,16 +1,16 @@
 package android.arch.lifecycle;
 
-public class MutableLiveData
-  extends LiveData
+public class MutableLiveData<T>
+  extends LiveData<T>
 {
-  public void postValue(Object paramObject)
+  public void postValue(T paramT)
   {
-    super.postValue(paramObject);
+    super.postValue(paramT);
   }
   
-  public void setValue(Object paramObject)
+  public void setValue(T paramT)
   {
-    super.setValue(paramObject);
+    super.setValue(paramT);
   }
 }
 

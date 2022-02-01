@@ -127,6 +127,83 @@ public class ShortcutInfoCompat
     }
     return localBuilder.build();
   }
+  
+  public static class Builder
+  {
+    private final ShortcutInfoCompat mInfo = new ShortcutInfoCompat(null);
+    
+    public Builder(@NonNull Context paramContext, @NonNull String paramString)
+    {
+      ShortcutInfoCompat.access$102(this.mInfo, paramContext);
+      ShortcutInfoCompat.access$202(this.mInfo, paramString);
+    }
+    
+    @NonNull
+    public ShortcutInfoCompat build()
+    {
+      if (TextUtils.isEmpty(this.mInfo.mLabel)) {
+        throw new IllegalArgumentException("Shortcut much have a non-empty label");
+      }
+      if ((this.mInfo.mIntents == null) || (this.mInfo.mIntents.length == 0)) {
+        throw new IllegalArgumentException("Shortcut much have an intent");
+      }
+      return this.mInfo;
+    }
+    
+    @NonNull
+    public Builder setActivity(@NonNull ComponentName paramComponentName)
+    {
+      ShortcutInfoCompat.access$802(this.mInfo, paramComponentName);
+      return this;
+    }
+    
+    public Builder setAlwaysBadged()
+    {
+      ShortcutInfoCompat.access$902(this.mInfo, true);
+      return this;
+    }
+    
+    @NonNull
+    public Builder setDisabledMessage(@NonNull CharSequence paramCharSequence)
+    {
+      ShortcutInfoCompat.access$502(this.mInfo, paramCharSequence);
+      return this;
+    }
+    
+    @NonNull
+    public Builder setIcon(IconCompat paramIconCompat)
+    {
+      ShortcutInfoCompat.access$702(this.mInfo, paramIconCompat);
+      return this;
+    }
+    
+    @NonNull
+    public Builder setIntent(@NonNull Intent paramIntent)
+    {
+      return setIntents(new Intent[] { paramIntent });
+    }
+    
+    @NonNull
+    public Builder setIntents(@NonNull Intent[] paramArrayOfIntent)
+    {
+      ShortcutInfoCompat.access$602(this.mInfo, paramArrayOfIntent);
+      return this;
+    }
+    
+    @NonNull
+    public Builder setLongLabel(@NonNull CharSequence paramCharSequence)
+    {
+      ShortcutInfoCompat.access$402(this.mInfo, paramCharSequence);
+      return this;
+    }
+    
+    @NonNull
+    public Builder setShortLabel(@NonNull CharSequence paramCharSequence)
+    {
+      ShortcutInfoCompat.access$302(this.mInfo, paramCharSequence);
+      return this;
+    }
+  }
 }
 
 

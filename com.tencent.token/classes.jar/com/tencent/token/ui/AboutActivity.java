@@ -1,14 +1,19 @@
 package com.tencent.token.ui;
 
+import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.View.OnLongClickListener;
 import android.widget.TextView;
-import com.tencent.token.global.h;
-import com.tencent.token.utils.u;
+import com.tencent.token.bu;
+import com.tencent.token.global.g;
+import com.tencent.token.utils.j;
+import com.tencent.token.utils.l;
 
 public class AboutActivity
   extends BaseActivity
@@ -21,7 +26,7 @@ public class AboutActivity
     super.onCreate(paramBundle);
     setContentView(2130968605);
     this.versionText = ((TextView)findViewById(2131558544));
-    paramBundle = u.b;
+    paramBundle = j.b;
     try
     {
       str = getPackageManager().getPackageInfo(getPackageName(), 16384).versionName;
@@ -32,22 +37,57 @@ public class AboutActivity
       for (;;)
       {
         String str;
-        h.c(localNameNotFoundException.getMessage());
+        g.c(localNameNotFoundException.getMessage());
       }
     }
     this.versionText.setText("V" + paramBundle);
     this.aboutInfoWithEnvir = ((TextView)findViewById(2131558543));
     str = getResources().getString(2131230753);
     paramBundle = str;
-    if (u.c == 2) {
+    if (j.c == 2) {
       paramBundle = str + "RDM(201)";
     }
     this.aboutInfoWithEnvir.setText(paramBundle);
-    findViewById(2131558548).setOnClickListener(new c(this));
-    findViewById(2131558548).setOnLongClickListener(new d(this));
-    findViewById(2131558550).setOnClickListener(new e(this));
-    findViewById(2131558552).setOnClickListener(new f(this));
-    findViewById(2131558545).setOnClickListener(new g(this));
+    findViewById(2131558548).setOnClickListener(new View.OnClickListener()
+    {
+      public void onClick(View paramAnonymousView)
+      {
+        bu.a().a(System.currentTimeMillis(), 44);
+        paramAnonymousView = new Intent(AboutActivity.this, HelpActivity.class);
+        AboutActivity.this.startActivity(paramAnonymousView);
+      }
+    });
+    findViewById(2131558548).setOnLongClickListener(new View.OnLongClickListener()
+    {
+      public boolean onLongClick(View paramAnonymousView)
+      {
+        paramAnonymousView = new Intent(AboutActivity.this, ShowLogActivity.class);
+        AboutActivity.this.startActivity(paramAnonymousView);
+        return true;
+      }
+    });
+    findViewById(2131558550).setOnClickListener(new View.OnClickListener()
+    {
+      public void onClick(View paramAnonymousView)
+      {
+        paramAnonymousView = new Intent(AboutActivity.this, SerialNumberActivity.class);
+        AboutActivity.this.startActivity(paramAnonymousView);
+      }
+    });
+    findViewById(2131558552).setOnClickListener(new View.OnClickListener()
+    {
+      public void onClick(View paramAnonymousView)
+      {
+        l.a(AboutActivity.this, AboutActivity.this.getString(2131231300));
+      }
+    });
+    findViewById(2131558545).setOnClickListener(new View.OnClickListener()
+    {
+      public void onClick(View paramAnonymousView)
+      {
+        l.a(AboutActivity.this, AboutActivity.this.getString(2131231204));
+      }
+    });
   }
 }
 

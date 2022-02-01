@@ -11,8 +11,8 @@ public final class ScanTypeInfoList
   extends JceStruct
   implements Cloneable
 {
-  static ArrayList eU;
-  public ArrayList vctscans = null;
+  static ArrayList<ScanTypeInfo> eU;
+  public ArrayList<ScanTypeInfo> vctscans = null;
   
   static
   {
@@ -26,7 +26,7 @@ public final class ScanTypeInfoList
   
   public ScanTypeInfoList() {}
   
-  public ScanTypeInfoList(ArrayList paramArrayList)
+  public ScanTypeInfoList(ArrayList<ScanTypeInfo> paramArrayList)
   {
     this.vctscans = paramArrayList;
   }
@@ -71,7 +71,7 @@ public final class ScanTypeInfoList
     return "tmsdk.QQPIM.ScanTypeInfoList";
   }
   
-  public ArrayList getVctscans()
+  public ArrayList<ScanTypeInfo> getVctscans()
   {
     return this.vctscans;
   }
@@ -100,7 +100,7 @@ public final class ScanTypeInfoList
     this.vctscans = ((ArrayList)paramJceInputStream.read(eU, 0, true));
   }
   
-  public void setVctscans(ArrayList paramArrayList)
+  public void setVctscans(ArrayList<ScanTypeInfo> paramArrayList)
   {
     this.vctscans = paramArrayList;
   }

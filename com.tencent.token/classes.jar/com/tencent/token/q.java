@@ -1,15 +1,16 @@
 package com.tencent.token;
 
-import android.telephony.PhoneStateListener;
-import android.telephony.SignalStrength;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
 
-public final class q
-  extends PhoneStateListener
+final class q
+  extends BroadcastReceiver
 {
-  public final void onSignalStrengthsChanged(SignalStrength paramSignalStrength)
+  public final void onReceive(Context paramContext, Intent paramIntent)
   {
-    super.onSignalStrengthsChanged(paramSignalStrength);
-    o.b = o.a(paramSignalStrength.getGsmSignalStrength() * 2 - 113);
+    p.b();
+    p.g();
   }
 }
 

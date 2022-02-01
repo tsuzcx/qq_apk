@@ -1,8 +1,8 @@
 package android.arch.core.util;
 
-public abstract interface Function
+public abstract interface Function<I, O>
 {
-  public abstract Object apply(Object paramObject);
+  public abstract O apply(I paramI);
 }
 
 

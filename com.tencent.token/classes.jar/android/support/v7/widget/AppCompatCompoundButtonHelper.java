@@ -121,6 +121,11 @@ class AppCompatCompoundButtonHelper
     this.mHasButtonTintMode = true;
     applyButtonTint();
   }
+  
+  static abstract interface DirectSetButtonDrawableInterface
+  {
+    public abstract void setButtonDrawable(Drawable paramDrawable);
+  }
 }
 
 

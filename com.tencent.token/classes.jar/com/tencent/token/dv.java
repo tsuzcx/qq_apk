@@ -1,56 +1,103 @@
 package com.tencent.token;
 
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.token.global.f;
-import com.tencent.token.utils.UserTask;
+import java.io.Writer;
+import java.util.Iterator;
+import java.util.concurrent.ConcurrentLinkedQueue;
+import java.util.concurrent.atomic.AtomicInteger;
 
-class dv
-  extends UserTask
+public class dv
+  implements Iterable<String>
 {
-  dv(du paramdu, byte paramByte, Handler paramHandler) {}
+  private ConcurrentLinkedQueue<String> a = null;
+  private AtomicInteger b = null;
   
-  public f a(String... paramVarArgs)
+  public int a()
   {
-    Object localObject = new f();
-    do localdo = do.a();
-    du localdu = du.a();
-    if (!localdo.o())
-    {
-      paramVarArgs = localdo.q();
-      localObject = paramVarArgs;
-      if (paramVarArgs.b()) {}
-    }
-    do
-    {
-      do
-      {
-        return paramVarArgs;
-        if (localdo.e() == null)
-        {
-          ((f)localObject).b(103);
-          return localObject;
-        }
-        if (localdo.k() != null) {
-          break;
-        }
-        localObject = localdo.r();
-        paramVarArgs = (String[])localObject;
-      } while (!((f)localObject).b());
-      localObject = localdu.a(this.a);
-      paramVarArgs = (String[])localObject;
-    } while (!((f)localObject).b());
-    ((f)localObject).c();
-    return localObject;
+    return this.b.get();
   }
   
-  public void a(f paramf)
+  public int a(String paramString)
   {
-    Message localMessage = this.b.obtainMessage();
-    localMessage.what = 1002;
-    localMessage.arg1 = paramf.a;
-    localMessage.obj = paramf;
-    localMessage.sendToTarget();
+    int i = paramString.length();
+    this.a.add(paramString);
+    return this.b.addAndGet(i);
+  }
+  
+  public void a(Writer paramWriter, char[] paramArrayOfChar)
+  {
+    if ((paramWriter == null) || (paramArrayOfChar == null) || (paramArrayOfChar.length == 0)) {
+      return;
+    }
+    int n = paramArrayOfChar.length;
+    for (;;)
+    {
+      int j;
+      int k;
+      int i1;
+      int i2;
+      try
+      {
+        Iterator localIterator = iterator();
+        j = 0;
+        i = n;
+        if (localIterator.hasNext())
+        {
+          String str = (String)localIterator.next();
+          k = str.length();
+          m = 0;
+          break label169;
+          str.getChars(m, m + i1, paramArrayOfChar, j);
+          i2 = i - i1;
+          k -= i1;
+          i = i1 + m;
+          if (i2 == 0)
+          {
+            paramWriter.write(paramArrayOfChar, 0, n);
+            i1 = 0;
+            j = n;
+            m = i;
+            i = j;
+            j = i1;
+            break label169;
+          }
+        }
+        else
+        {
+          if (j > 0) {
+            paramWriter.write(paramArrayOfChar, 0, j);
+          }
+          paramWriter.flush();
+          return;
+        }
+      }
+      catch (Exception paramWriter)
+      {
+        paramWriter.printStackTrace();
+        return;
+      }
+      j += i1;
+      int m = i;
+      int i = i2;
+      label169:
+      if (k > 0) {
+        if (i > k) {
+          i1 = k;
+        } else {
+          i1 = i;
+        }
+      }
+    }
+  }
+  
+  public void b()
+  {
+    this.a.clear();
+    this.b.set(0);
+  }
+  
+  public Iterator<String> iterator()
+  {
+    return this.a.iterator();
   }
 }
 

@@ -1,174 +1,452 @@
 package okhttp3.internal.http2;
 
-import com.tencent.token.gl;
-import com.tencent.token.gn;
-import com.tencent.token.hd;
-import com.tencent.token.hg;
-import com.tencent.token.hj;
-import com.tencent.token.hk;
-import com.tencent.token.hm;
-import java.net.ProtocolException;
-import java.util.ArrayList;
+import com.tencent.token.fb;
+import java.io.Closeable;
+import java.io.IOException;
 import java.util.List;
-import java.util.Locale;
-import java.util.concurrent.TimeUnit;
-import okhttp3.Protocol;
-import okhttp3.ad;
-import okhttp3.ae;
-import okhttp3.af;
-import okhttp3.ai;
-import okhttp3.ak;
-import okhttp3.ap;
-import okhttp3.at;
-import okhttp3.au;
-import okhttp3.av;
-import okhttp3.y;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import okio.ByteString;
-import okio.o;
-import okio.x;
+import okio.e;
+import okio.q;
+import okio.r;
 
-public final class f
-  implements hd
+final class f
+  implements Closeable
 {
-  private static final ByteString b = ByteString.a("connection");
-  private static final ByteString c = ByteString.a("host");
-  private static final ByteString d = ByteString.a("keep-alive");
-  private static final ByteString e = ByteString.a("proxy-connection");
-  private static final ByteString f = ByteString.a("transfer-encoding");
-  private static final ByteString g = ByteString.a("te");
-  private static final ByteString h = ByteString.a("encoding");
-  private static final ByteString i = ByteString.a("upgrade");
-  private static final List j = gn.a(new ByteString[] { b, c, d, e, g, f, h, i, a.c, a.d, a.e, a.f });
-  private static final List k = gn.a(new ByteString[] { b, c, d, e, g, f, h, i });
-  final okhttp3.internal.connection.g a;
-  private final ai l;
-  private final h m;
-  private z n;
-  private final Protocol o;
+  static final Logger a = Logger.getLogger(c.class.getName());
+  final b.a b;
+  private final e c;
+  private final a d;
+  private final boolean e;
   
-  public f(ak paramak, ai paramai, okhttp3.internal.connection.g paramg, h paramh)
+  f(e parame, boolean paramBoolean)
   {
-    this.l = paramai;
-    this.a = paramg;
-    this.m = paramh;
-    if (paramak.u().contains(Protocol.H2_PRIOR_KNOWLEDGE)) {}
-    for (paramak = Protocol.H2_PRIOR_KNOWLEDGE;; paramak = Protocol.HTTP_2)
-    {
-      this.o = paramak;
-      return;
-    }
+    this.c = parame;
+    this.e = paramBoolean;
+    this.d = new a(this.c);
+    this.b = new b.a(4096, this.d);
   }
   
-  public static au a(List paramList, Protocol paramProtocol)
+  static int a(int paramInt, byte paramByte, short paramShort)
   {
-    ae localae = new ae();
-    int i2 = paramList.size();
-    int i1 = 0;
-    hm localhm = null;
-    if (i1 < i2)
-    {
-      Object localObject = (a)paramList.get(i1);
-      if (localObject == null)
-      {
-        if ((localhm == null) || (localhm.b != 100)) {
-          break label161;
-        }
-        localae = new ae();
-        localhm = null;
-      }
-      label161:
-      for (;;)
-      {
-        i1 += 1;
-        break;
-        ByteString localByteString = ((a)localObject).g;
-        localObject = ((a)localObject).h.a();
-        if (localByteString.equals(a.b)) {
-          localhm = hm.a("HTTP/1.1 " + (String)localObject);
-        } else if (!k.contains(localByteString)) {
-          gl.a.a(localae, localByteString.a(), (String)localObject);
-        }
-      }
+    short s = paramInt;
+    if ((paramByte & 0x8) != 0) {
+      s = paramInt - 1;
     }
-    if (localhm == null) {
-      throw new ProtocolException("Expected ':status' header not present");
+    if (paramShort > s) {
+      throw c.b("PROTOCOL_ERROR padding %s > remaining length %s", new Object[] { Short.valueOf(paramShort), Integer.valueOf(s) });
     }
-    return new au().a(paramProtocol).a(localhm.b).a(localhm.c).a(localae.a());
+    return (short)(s - paramShort);
   }
   
-  public static List b(ap paramap)
+  static int a(e parame)
   {
-    ad localad = paramap.c();
-    ArrayList localArrayList = new ArrayList(localad.a() + 4);
-    localArrayList.add(new a(a.c, paramap.b()));
-    localArrayList.add(new a(a.d, hk.a(paramap.a())));
-    String str = paramap.a("Host");
-    if (str != null) {
-      localArrayList.add(new a(a.f, str));
-    }
-    localArrayList.add(new a(a.e, paramap.a().b()));
-    int i1 = 0;
-    int i2 = localad.a();
-    while (i1 < i2)
-    {
-      paramap = ByteString.a(localad.a(i1).toLowerCase(Locale.US));
-      if (!j.contains(paramap)) {
-        localArrayList.add(new a(paramap, localad.b(i1)));
-      }
-      i1 += 1;
-    }
-    return localArrayList;
+    return (parame.h() & 0xFF) << 16 | (parame.h() & 0xFF) << 8 | parame.h() & 0xFF;
   }
   
-  public au a(boolean paramBoolean)
+  private List<a> a(int paramInt1, short paramShort, byte paramByte, int paramInt2)
   {
-    au localau2 = a(this.n.d(), this.o);
-    au localau1 = localau2;
-    if (paramBoolean)
-    {
-      localau1 = localau2;
-      if (gl.a.a(localau2) == 100) {
-        localau1 = null;
-      }
-    }
-    return localau1;
+    a locala = this.d;
+    this.d.d = paramInt1;
+    locala.a = paramInt1;
+    this.d.e = paramShort;
+    this.d.b = paramByte;
+    this.d.c = paramInt2;
+    this.b.a();
+    return this.b.b();
   }
   
-  public av a(at paramat)
+  private void a(b paramb, int paramInt)
   {
-    this.a.c.f(this.a.b);
-    return new hj(paramat.a("Content-Type"), hg.a(paramat), o.a(new g(this, this.n.g())));
-  }
-  
-  public x a(ap paramap, long paramLong)
-  {
-    return this.n.h();
-  }
-  
-  public void a()
-  {
-    this.m.b();
-  }
-  
-  public void a(ap paramap)
-  {
-    if (this.n != null) {
-      return;
-    }
-    if (paramap.d() != null) {}
+    int i = this.c.j();
+    if ((0x80000000 & i) != 0) {}
     for (boolean bool = true;; bool = false)
     {
-      paramap = b(paramap);
-      this.n = this.m.a(paramap, bool);
-      this.n.e().a(this.l.c(), TimeUnit.MILLISECONDS);
-      this.n.f().a(this.l.d(), TimeUnit.MILLISECONDS);
+      paramb.a(paramInt, i & 0x7FFFFFFF, (this.c.h() & 0xFF) + 1, bool);
       return;
     }
   }
   
-  public void b()
+  private void a(b paramb, int paramInt1, byte paramByte, int paramInt2)
   {
-    this.n.h().close();
+    short s = 0;
+    if (paramInt2 == 0) {
+      throw c.b("PROTOCOL_ERROR: TYPE_HEADERS streamId == 0", new Object[0]);
+    }
+    if ((paramByte & 0x1) != 0) {}
+    for (boolean bool = true;; bool = false)
+    {
+      if ((paramByte & 0x8) != 0) {
+        s = (short)(this.c.h() & 0xFF);
+      }
+      int i = paramInt1;
+      if ((paramByte & 0x20) != 0)
+      {
+        a(paramb, paramInt2);
+        i = paramInt1 - 5;
+      }
+      paramb.a(bool, paramInt2, -1, a(a(i, paramByte, s), s, paramByte, paramInt2));
+      return;
+    }
+  }
+  
+  private void b(b paramb, int paramInt1, byte paramByte, int paramInt2)
+  {
+    int i = 1;
+    short s = 0;
+    if (paramInt2 == 0) {
+      throw c.b("PROTOCOL_ERROR: TYPE_DATA streamId == 0", new Object[0]);
+    }
+    boolean bool;
+    if ((paramByte & 0x1) != 0)
+    {
+      bool = true;
+      if ((paramByte & 0x20) == 0) {
+        break label58;
+      }
+    }
+    for (;;)
+    {
+      if (i == 0) {
+        break label64;
+      }
+      throw c.b("PROTOCOL_ERROR: FLAG_COMPRESSED without SETTINGS_COMPRESS_DATA", new Object[0]);
+      bool = false;
+      break;
+      label58:
+      i = 0;
+    }
+    label64:
+    if ((paramByte & 0x8) != 0) {
+      s = (short)(this.c.h() & 0xFF);
+    }
+    paramInt1 = a(paramInt1, paramByte, s);
+    paramb.a(bool, paramInt2, this.c, paramInt1);
+    this.c.h(s);
+  }
+  
+  private void c(b paramb, int paramInt1, byte paramByte, int paramInt2)
+  {
+    if (paramInt1 != 5) {
+      throw c.b("TYPE_PRIORITY length: %d != 5", new Object[] { Integer.valueOf(paramInt1) });
+    }
+    if (paramInt2 == 0) {
+      throw c.b("TYPE_PRIORITY streamId == 0", new Object[0]);
+    }
+    a(paramb, paramInt2);
+  }
+  
+  private void d(b paramb, int paramInt1, byte paramByte, int paramInt2)
+  {
+    if (paramInt1 != 4) {
+      throw c.b("TYPE_RST_STREAM length: %d != 4", new Object[] { Integer.valueOf(paramInt1) });
+    }
+    if (paramInt2 == 0) {
+      throw c.b("TYPE_RST_STREAM streamId == 0", new Object[0]);
+    }
+    paramInt1 = this.c.j();
+    ErrorCode localErrorCode = ErrorCode.a(paramInt1);
+    if (localErrorCode == null) {
+      throw c.b("TYPE_RST_STREAM unexpected error code: %d", new Object[] { Integer.valueOf(paramInt1) });
+    }
+    paramb.a(paramInt2, localErrorCode);
+  }
+  
+  private void e(b paramb, int paramInt1, byte paramByte, int paramInt2)
+  {
+    if (paramInt2 != 0) {
+      throw c.b("TYPE_SETTINGS streamId != 0", new Object[0]);
+    }
+    if ((paramByte & 0x1) != 0)
+    {
+      if (paramInt1 != 0) {
+        throw c.b("FRAME_SIZE_ERROR ack frame should be empty!", new Object[0]);
+      }
+      paramb.a();
+      return;
+    }
+    if (paramInt1 % 6 != 0) {
+      throw c.b("TYPE_SETTINGS length %% 6 != 0: %s", new Object[] { Integer.valueOf(paramInt1) });
+    }
+    k localk = new k();
+    paramInt2 = 0;
+    if (paramInt2 < paramInt1)
+    {
+      byte b1 = this.c.i() & 0xFFFF;
+      int i = this.c.j();
+      paramByte = b1;
+      switch (b1)
+      {
+      default: 
+        paramByte = b1;
+      }
+      do
+      {
+        do
+        {
+          for (;;)
+          {
+            localk.a(paramByte, i);
+            paramInt2 += 6;
+            break;
+            paramByte = b1;
+            if (i != 0)
+            {
+              paramByte = b1;
+              if (i != 1)
+              {
+                throw c.b("PROTOCOL_ERROR SETTINGS_ENABLE_PUSH != 0 or 1", new Object[0]);
+                paramByte = 4;
+              }
+            }
+          }
+          paramByte = 7;
+        } while (i >= 0);
+        throw c.b("PROTOCOL_ERROR SETTINGS_INITIAL_WINDOW_SIZE > 2^31 - 1", new Object[0]);
+        if (i < 16384) {
+          break label242;
+        }
+        paramByte = b1;
+      } while (i <= 16777215);
+      label242:
+      throw c.b("PROTOCOL_ERROR SETTINGS_MAX_FRAME_SIZE: %s", new Object[] { Integer.valueOf(i) });
+    }
+    paramb.a(false, localk);
+  }
+  
+  private void f(b paramb, int paramInt1, byte paramByte, int paramInt2)
+  {
+    short s = 0;
+    if (paramInt2 == 0) {
+      throw c.b("PROTOCOL_ERROR: TYPE_PUSH_PROMISE streamId == 0", new Object[0]);
+    }
+    if ((paramByte & 0x8) != 0) {
+      s = (short)(this.c.h() & 0xFF);
+    }
+    paramb.a(paramInt2, this.c.j() & 0x7FFFFFFF, a(a(paramInt1 - 4, paramByte, s), s, paramByte, paramInt2));
+  }
+  
+  private void g(b paramb, int paramInt1, byte paramByte, int paramInt2)
+  {
+    boolean bool = true;
+    if (paramInt1 != 8) {
+      throw c.b("TYPE_PING length != 8: %s", new Object[] { Integer.valueOf(paramInt1) });
+    }
+    if (paramInt2 != 0) {
+      throw c.b("TYPE_PING streamId != 0", new Object[0]);
+    }
+    paramInt1 = this.c.j();
+    paramInt2 = this.c.j();
+    if ((paramByte & 0x1) != 0) {}
+    for (;;)
+    {
+      paramb.a(bool, paramInt1, paramInt2);
+      return;
+      bool = false;
+    }
+  }
+  
+  private void h(b paramb, int paramInt1, byte paramByte, int paramInt2)
+  {
+    if (paramInt1 < 8) {
+      throw c.b("TYPE_GOAWAY length < 8: %s", new Object[] { Integer.valueOf(paramInt1) });
+    }
+    if (paramInt2 != 0) {
+      throw c.b("TYPE_GOAWAY streamId != 0", new Object[0]);
+    }
+    paramByte = this.c.j();
+    paramInt2 = this.c.j();
+    paramInt1 -= 8;
+    ErrorCode localErrorCode = ErrorCode.a(paramInt2);
+    if (localErrorCode == null) {
+      throw c.b("TYPE_GOAWAY unexpected error code: %d", new Object[] { Integer.valueOf(paramInt2) });
+    }
+    ByteString localByteString = ByteString.EMPTY;
+    if (paramInt1 > 0) {
+      localByteString = this.c.c(paramInt1);
+    }
+    paramb.a(paramByte, localErrorCode, localByteString);
+  }
+  
+  private void i(b paramb, int paramInt1, byte paramByte, int paramInt2)
+  {
+    if (paramInt1 != 4) {
+      throw c.b("TYPE_WINDOW_UPDATE length !=4: %s", new Object[] { Integer.valueOf(paramInt1) });
+    }
+    long l = this.c.j() & 0x7FFFFFFF;
+    if (l == 0L) {
+      throw c.b("windowSizeIncrement was 0", new Object[] { Long.valueOf(l) });
+    }
+    paramb.a(paramInt2, l);
+  }
+  
+  public void a(b paramb)
+  {
+    if (this.e)
+    {
+      if (!a(true, paramb)) {
+        throw c.b("Required SETTINGS preface not received", new Object[0]);
+      }
+    }
+    else
+    {
+      paramb = this.c.c(c.a.g());
+      if (a.isLoggable(Level.FINE)) {
+        a.fine(fb.a("<< CONNECTION %s", new Object[] { paramb.e() }));
+      }
+      if (!c.a.equals(paramb)) {
+        throw c.b("Expected a connection header but was %s", new Object[] { paramb.a() });
+      }
+    }
+  }
+  
+  public boolean a(boolean paramBoolean, b paramb)
+  {
+    int i;
+    try
+    {
+      this.c.a(9L);
+      i = a(this.c);
+      if ((i < 0) || (i > 16384)) {
+        throw c.b("FRAME_SIZE_ERROR: %s", new Object[] { Integer.valueOf(i) });
+      }
+    }
+    catch (IOException paramb)
+    {
+      return false;
+    }
+    byte b1 = (byte)(this.c.h() & 0xFF);
+    if ((paramBoolean) && (b1 != 4)) {
+      throw c.b("Expected a SETTINGS frame but was %s", new Object[] { Byte.valueOf(b1) });
+    }
+    byte b2 = (byte)(this.c.h() & 0xFF);
+    int j = this.c.j() & 0x7FFFFFFF;
+    if (a.isLoggable(Level.FINE)) {
+      a.fine(c.a(true, j, i, b1, b2));
+    }
+    switch (b1)
+    {
+    default: 
+      this.c.h(i);
+      return true;
+    case 0: 
+      b(paramb, i, b2, j);
+      return true;
+    case 1: 
+      a(paramb, i, b2, j);
+      return true;
+    case 2: 
+      c(paramb, i, b2, j);
+      return true;
+    case 3: 
+      d(paramb, i, b2, j);
+      return true;
+    case 4: 
+      e(paramb, i, b2, j);
+      return true;
+    case 5: 
+      f(paramb, i, b2, j);
+      return true;
+    case 6: 
+      g(paramb, i, b2, j);
+      return true;
+    case 7: 
+      h(paramb, i, b2, j);
+      return true;
+    }
+    i(paramb, i, b2, j);
+    return true;
+  }
+  
+  public void close()
+  {
+    this.c.close();
+  }
+  
+  static final class a
+    implements q
+  {
+    int a;
+    byte b;
+    int c;
+    int d;
+    short e;
+    private final e f;
+    
+    a(e parame)
+    {
+      this.f = parame;
+    }
+    
+    private void b()
+    {
+      int i = this.c;
+      int j = f.a(this.f);
+      this.d = j;
+      this.a = j;
+      byte b1 = (byte)(this.f.h() & 0xFF);
+      this.b = ((byte)(this.f.h() & 0xFF));
+      if (f.a.isLoggable(Level.FINE)) {
+        f.a.fine(c.a(true, this.c, this.a, b1, this.b));
+      }
+      this.c = (this.f.j() & 0x7FFFFFFF);
+      if (b1 != 9) {
+        throw c.b("%s != TYPE_CONTINUATION", new Object[] { Byte.valueOf(b1) });
+      }
+      if (this.c != i) {
+        throw c.b("TYPE_CONTINUATION streamId changed", new Object[0]);
+      }
+    }
+    
+    public long a(okio.c paramc, long paramLong)
+    {
+      if (this.d == 0)
+      {
+        this.f.h(this.e);
+        this.e = 0;
+        if ((this.b & 0x4) == 0) {}
+      }
+      do
+      {
+        return -1L;
+        b();
+        break;
+        paramLong = this.f.a(paramc, Math.min(paramLong, this.d));
+      } while (paramLong == -1L);
+      this.d = ((int)(this.d - paramLong));
+      return paramLong;
+    }
+    
+    public r a()
+    {
+      return this.f.a();
+    }
+    
+    public void close() {}
+  }
+  
+  static abstract interface b
+  {
+    public abstract void a();
+    
+    public abstract void a(int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean);
+    
+    public abstract void a(int paramInt1, int paramInt2, List<a> paramList);
+    
+    public abstract void a(int paramInt, long paramLong);
+    
+    public abstract void a(int paramInt, ErrorCode paramErrorCode);
+    
+    public abstract void a(int paramInt, ErrorCode paramErrorCode, ByteString paramByteString);
+    
+    public abstract void a(boolean paramBoolean, int paramInt1, int paramInt2);
+    
+    public abstract void a(boolean paramBoolean, int paramInt1, int paramInt2, List<a> paramList);
+    
+    public abstract void a(boolean paramBoolean, int paramInt1, e parame, int paramInt2);
+    
+    public abstract void a(boolean paramBoolean, k paramk);
   }
 }
 

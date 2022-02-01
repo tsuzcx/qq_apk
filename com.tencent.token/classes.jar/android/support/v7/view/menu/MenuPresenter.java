@@ -28,9 +28,16 @@ public abstract interface MenuPresenter
   
   public abstract boolean onSubMenuSelected(SubMenuBuilder paramSubMenuBuilder);
   
-  public abstract void setCallback(MenuPresenter.Callback paramCallback);
+  public abstract void setCallback(Callback paramCallback);
   
   public abstract void updateMenuView(boolean paramBoolean);
+  
+  public static abstract interface Callback
+  {
+    public abstract void onCloseMenu(MenuBuilder paramMenuBuilder, boolean paramBoolean);
+    
+    public abstract boolean onOpenSubMenu(MenuBuilder paramMenuBuilder);
+  }
 }
 
 

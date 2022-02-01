@@ -7,6 +7,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputConnection;
+import android.view.inputmethod.InputConnectionWrapper;
 import android.view.inputmethod.InputContentInfo;
 
 public final class InputConnectionCompat
@@ -51,7 +52,7 @@ public final class InputConnectionCompat
   }
   
   @NonNull
-  public static InputConnection createWrapper(@NonNull InputConnection paramInputConnection, @NonNull EditorInfo paramEditorInfo, @NonNull InputConnectionCompat.OnCommitContentListener paramOnCommitContentListener)
+  public static InputConnection createWrapper(@NonNull InputConnection paramInputConnection, @NonNull EditorInfo paramEditorInfo, @NonNull final OnCommitContentListener paramOnCommitContentListener)
   {
     if (paramInputConnection == null) {
       throw new IllegalArgumentException("inputConnection must be non-null");
@@ -64,67 +65,85 @@ public final class InputConnectionCompat
     }
     Object localObject;
     if (Build.VERSION.SDK_INT >= 25) {
-      localObject = new InputConnectionCompat.1(paramInputConnection, false, paramOnCommitContentListener);
+      localObject = new InputConnectionWrapper(paramInputConnection, false)
+      {
+        public boolean commitContent(InputContentInfo paramAnonymousInputContentInfo, int paramAnonymousInt, Bundle paramAnonymousBundle)
+        {
+          if (paramOnCommitContentListener.onCommitContent(InputContentInfoCompat.wrap(paramAnonymousInputContentInfo), paramAnonymousInt, paramAnonymousBundle)) {
+            return true;
+          }
+          return super.commitContent(paramAnonymousInputContentInfo, paramAnonymousInt, paramAnonymousBundle);
+        }
+      };
     }
     do
     {
       return localObject;
       localObject = paramInputConnection;
     } while (EditorInfoCompat.getContentMimeTypes(paramEditorInfo).length == 0);
-    return new InputConnectionCompat.2(paramInputConnection, false, paramOnCommitContentListener);
+    new InputConnectionWrapper(paramInputConnection, false)
+    {
+      public boolean performPrivateCommand(String paramAnonymousString, Bundle paramAnonymousBundle)
+      {
+        if (InputConnectionCompat.handlePerformPrivateCommand(paramAnonymousString, paramAnonymousBundle, paramOnCommitContentListener)) {
+          return true;
+        }
+        return super.performPrivateCommand(paramAnonymousString, paramAnonymousBundle);
+      }
+    };
   }
   
   /* Error */
-  static boolean handlePerformPrivateCommand(@Nullable String paramString, @NonNull Bundle paramBundle, @NonNull InputConnectionCompat.OnCommitContentListener paramOnCommitContentListener)
+  static boolean handlePerformPrivateCommand(@Nullable String paramString, @NonNull Bundle paramBundle, @NonNull OnCommitContentListener paramOnCommitContentListener)
   {
     // Byte code:
-    //   0: ldc 8
+    //   0: ldc 15
     //   2: aload_0
-    //   3: invokestatic 127	android/text/TextUtils:equals	(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Z
+    //   3: invokestatic 130	android/text/TextUtils:equals	(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Z
     //   6: ifne +5 -> 11
     //   9: iconst_0
     //   10: ireturn
     //   11: aload_1
     //   12: ifnull -3 -> 9
     //   15: aload_1
-    //   16: ldc 26
-    //   18: invokevirtual 131	android/os/Bundle:getParcelable	(Ljava/lang/String;)Landroid/os/Parcelable;
-    //   21: checkcast 133	android/os/ResultReceiver
+    //   16: ldc 33
+    //   18: invokevirtual 134	android/os/Bundle:getParcelable	(Ljava/lang/String;)Landroid/os/Parcelable;
+    //   21: checkcast 136	android/os/ResultReceiver
     //   24: astore_0
     //   25: aload_1
-    //   26: ldc 11
-    //   28: invokevirtual 131	android/os/Bundle:getParcelable	(Ljava/lang/String;)Landroid/os/Parcelable;
-    //   31: checkcast 135	android/net/Uri
+    //   26: ldc 18
+    //   28: invokevirtual 134	android/os/Bundle:getParcelable	(Ljava/lang/String;)Landroid/os/Parcelable;
+    //   31: checkcast 138	android/net/Uri
     //   34: astore 5
     //   36: aload_1
-    //   37: ldc 14
-    //   39: invokevirtual 131	android/os/Bundle:getParcelable	(Ljava/lang/String;)Landroid/os/Parcelable;
-    //   42: checkcast 54	android/content/ClipDescription
+    //   37: ldc 21
+    //   39: invokevirtual 134	android/os/Bundle:getParcelable	(Ljava/lang/String;)Landroid/os/Parcelable;
+    //   42: checkcast 61	android/content/ClipDescription
     //   45: astore 6
     //   47: aload_1
-    //   48: ldc 20
-    //   50: invokevirtual 131	android/os/Bundle:getParcelable	(Ljava/lang/String;)Landroid/os/Parcelable;
-    //   53: checkcast 135	android/net/Uri
+    //   48: ldc 27
+    //   50: invokevirtual 134	android/os/Bundle:getParcelable	(Ljava/lang/String;)Landroid/os/Parcelable;
+    //   53: checkcast 138	android/net/Uri
     //   56: astore 7
     //   58: aload_1
-    //   59: ldc 17
-    //   61: invokevirtual 139	android/os/Bundle:getInt	(Ljava/lang/String;)I
+    //   59: ldc 24
+    //   61: invokevirtual 142	android/os/Bundle:getInt	(Ljava/lang/String;)I
     //   64: istore_3
     //   65: aload_1
-    //   66: ldc 23
-    //   68: invokevirtual 131	android/os/Bundle:getParcelable	(Ljava/lang/String;)Landroid/os/Parcelable;
-    //   71: checkcast 76	android/os/Bundle
+    //   66: ldc 30
+    //   68: invokevirtual 134	android/os/Bundle:getParcelable	(Ljava/lang/String;)Landroid/os/Parcelable;
+    //   71: checkcast 83	android/os/Bundle
     //   74: astore_1
     //   75: aload_2
-    //   76: new 42	android/support/v13/view/inputmethod/InputContentInfoCompat
+    //   76: new 49	android/support/v13/view/inputmethod/InputContentInfoCompat
     //   79: dup
     //   80: aload 5
     //   82: aload 6
     //   84: aload 7
-    //   86: invokespecial 142	android/support/v13/view/inputmethod/InputContentInfoCompat:<init>	(Landroid/net/Uri;Landroid/content/ClipDescription;Landroid/net/Uri;)V
+    //   86: invokespecial 145	android/support/v13/view/inputmethod/InputContentInfoCompat:<init>	(Landroid/net/Uri;Landroid/content/ClipDescription;Landroid/net/Uri;)V
     //   89: iload_3
     //   90: aload_1
-    //   91: invokeinterface 148 4 0
+    //   91: invokeinterface 149 4 0
     //   96: istore 4
     //   98: aload_0
     //   99: ifnull +16 -> 115
@@ -135,7 +154,7 @@ public final class InputConnectionCompat
     //   109: aload_0
     //   110: iload_3
     //   111: aconst_null
-    //   112: invokevirtual 152	android/os/ResultReceiver:send	(ILandroid/os/Bundle;)V
+    //   112: invokevirtual 153	android/os/ResultReceiver:send	(ILandroid/os/Bundle;)V
     //   115: iload 4
     //   117: ireturn
     //   118: iconst_0
@@ -149,7 +168,7 @@ public final class InputConnectionCompat
     //   130: aload_0
     //   131: iconst_0
     //   132: aconst_null
-    //   133: invokevirtual 152	android/os/ResultReceiver:send	(ILandroid/os/Bundle;)V
+    //   133: invokevirtual 153	android/os/ResultReceiver:send	(ILandroid/os/Bundle;)V
     //   136: aload_1
     //   137: athrow
     //   138: astore_1
@@ -158,7 +177,7 @@ public final class InputConnectionCompat
     //   start	length	slot	name	signature
     //   0	142	0	paramString	String
     //   0	142	1	paramBundle	Bundle
-    //   0	142	2	paramOnCommitContentListener	InputConnectionCompat.OnCommitContentListener
+    //   0	142	2	paramOnCommitContentListener	OnCommitContentListener
     //   64	56	3	i	int
     //   96	20	4	bool	boolean
     //   34	47	5	localUri1	android.net.Uri
@@ -168,6 +187,11 @@ public final class InputConnectionCompat
     //   from	to	target	type
     //   15	25	123	finally
     //   25	98	138	finally
+  }
+  
+  public static abstract interface OnCommitContentListener
+  {
+    public abstract boolean onCommitContent(InputContentInfoCompat paramInputContentInfoCompat, int paramInt, Bundle paramBundle);
   }
 }
 

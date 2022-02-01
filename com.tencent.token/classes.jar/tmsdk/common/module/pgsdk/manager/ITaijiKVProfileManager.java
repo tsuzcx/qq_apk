@@ -4,7 +4,12 @@ import java.util.HashMap;
 
 public abstract interface ITaijiKVProfileManager
 {
-  public abstract void uploadKVProfile(HashMap paramHashMap1, HashMap paramHashMap2, ITaijiKVProfileManager.IProfileUploadCallback paramIProfileUploadCallback);
+  public abstract void uploadKVProfile(HashMap<Integer, String> paramHashMap, HashMap<Integer, Integer> paramHashMap1, IProfileUploadCallback paramIProfileUploadCallback);
+  
+  public static abstract interface IProfileUploadCallback
+  {
+    public abstract void onUploadSuccess();
+  }
 }
 
 

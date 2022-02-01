@@ -2,6 +2,7 @@ package btmsdkobf;
 
 import android.app.AlarmManager;
 import android.app.PendingIntent;
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
@@ -12,7 +13,7 @@ public class dv
   private static Object lock = new Object();
   private static dv nC = null;
   private static Object nD = new Object();
-  ConcurrentHashMap nB = new ConcurrentHashMap();
+  ConcurrentHashMap<String, a> nB = new ConcurrentHashMap();
   private Context ny = bc.n();
   
   public static dv cQ()
@@ -31,11 +32,11 @@ public class dv
   {
     synchronized (nD)
     {
-      im localim = (im)this.nB.remove(paramString);
-      if (localim != null)
+      a locala = (a)this.nB.remove(paramString);
+      if (locala != null)
       {
         dm.a(this.ny, paramString);
-        this.ny.unregisterReceiver(localim);
+        this.ny.unregisterReceiver(locala);
       }
       return;
     }
@@ -50,20 +51,48 @@ public class dv
     {
       synchronized (nD)
       {
-        im localim = new im(this);
-        this.ny.registerReceiver(localim, new IntentFilter(paramString));
-        localim.b = paramRunnable;
-        localim.a = paramString;
+        a locala = new a();
+        this.ny.registerReceiver(locala, new IntentFilter(paramString));
+        locala.b = paramRunnable;
+        locala.a = paramString;
         paramRunnable = new Intent(paramString);
         paramRunnable = PendingIntent.getBroadcast(this.ny, 0, paramRunnable, 0);
         AlarmManager localAlarmManager = (AlarmManager)this.ny.getSystemService("alarm");
-        this.nB.put(paramString, localim);
+        this.nB.put(paramString, locala);
         localAlarmManager.set(paramInt, System.currentTimeMillis() + paramLong, paramRunnable);
         return;
       }
       return;
     }
     catch (Throwable paramString) {}
+  }
+  
+  class a
+    extends BroadcastReceiver
+  {
+    public String a = null;
+    public Runnable b = null;
+    
+    a() {}
+    
+    public void onReceive(final Context paramContext, Intent paramIntent)
+    {
+      paramContext = paramIntent.getAction();
+      if (paramContext == null) {}
+      do
+      {
+        return;
+        eg.f("cccccc", "action:" + paramContext);
+      } while ((!this.a.equals(paramContext)) || (this.b == null));
+      ee.cT().addTask(new Runnable()
+      {
+        public void run()
+        {
+          dv.a.this.b.run();
+          dv.this.D(paramContext);
+        }
+      }, "AlarmerTaskReceiver");
+    }
   }
 }
 

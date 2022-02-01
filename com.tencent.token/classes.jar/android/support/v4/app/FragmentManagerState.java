@@ -7,7 +7,18 @@ import android.os.Parcelable.Creator;
 final class FragmentManagerState
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new FragmentManagerState.1();
+  public static final Parcelable.Creator<FragmentManagerState> CREATOR = new Parcelable.Creator()
+  {
+    public FragmentManagerState createFromParcel(Parcel paramAnonymousParcel)
+    {
+      return new FragmentManagerState(paramAnonymousParcel);
+    }
+    
+    public FragmentManagerState[] newArray(int paramAnonymousInt)
+    {
+      return new FragmentManagerState[paramAnonymousInt];
+    }
+  };
   FragmentState[] mActive;
   int[] mAdded;
   BackStackState[] mBackStack;

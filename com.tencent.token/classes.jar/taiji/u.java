@@ -1,15 +1,27 @@
 package taiji;
 
 import android.graphics.Path;
+import com.tencent.token.gm;
+import java.util.List;
 
 public class u
-  extends r
+  extends l<ao, Path>
 {
-  private Path f;
+  private final ao b = new ao();
+  private final Path c = new Path();
   
-  Path d()
+  public u(List<o<ao>> paramList)
   {
-    return this.f;
+    super(paramList);
+  }
+  
+  public Path a(o<ao> paramo, float paramFloat)
+  {
+    ao localao = (ao)paramo.a;
+    paramo = (ao)paramo.b;
+    this.b.a(localao, paramo, paramFloat);
+    gm.a(this.b, this.c);
+    return this.c;
   }
 }
 

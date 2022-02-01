@@ -1,17 +1,13 @@
 package com.tencent.halley.downloader.d.a;
 
-import java.util.concurrent.FutureTask;
-
-public final class c
-  extends FutureTask
-  implements Comparable
+final class c
+  implements Thread.UncaughtExceptionHandler
 {
-  private Object a;
+  c(b paramb) {}
   
-  public c(b paramb, Runnable paramRunnable, Object paramObject)
+  public final void uncaughtException(Thread paramThread, Throwable paramThrowable)
   {
-    super(paramRunnable, null);
-    this.a = paramRunnable;
+    paramThrowable.printStackTrace();
   }
 }
 

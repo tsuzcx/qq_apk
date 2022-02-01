@@ -1,58 +1,172 @@
 package com.tencent.turingfd.sdk.base;
 
-import android.content.Context;
-import android.content.Intent;
-import android.content.IntentFilter;
-import android.text.TextUtils;
+import android.app.Activity;
+import android.view.View;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 public class c
 {
-  public static int a = -1;
+  public static final cx<c> a = new a();
+  public Map<String, d> b = new HashMap();
+  public Map<String, b> c = new HashMap();
+  public f d;
   
-  public static int a(Context paramContext)
+  public final Lemon a(long paramLong1, long paramLong2, List<c> paramList)
   {
-    int i = 0;
-    int j = 100;
-    for (;;)
+    Lemon localLemon = new Lemon();
+    localLemon.duration = ((int)paramLong2);
+    localLemon.od = paramLong1;
+    ArrayList localArrayList = new ArrayList();
+    paramList = paramList.iterator();
+    if (paramList.hasNext())
     {
-      try
+      c localc = (c)paramList.next();
+      Lichee localLichee = new Lichee();
+      switch (localc.a)
       {
-        paramContext = paramContext.registerReceiver(null, new IntentFilter("android.intent.action.BATTERY_CHANGED"));
-        if (paramContext == null)
-        {
-          j = a;
-          return j;
-        }
-        if (!TextUtils.equals(paramContext.getAction(), "android.intent.action.BATTERY_CHANGED")) {
-          return a;
-        }
-        int k;
-        try
-        {
-          k = paramContext.getIntExtra("level", 0);
-          int m = paramContext.getIntExtra("scale", 100);
-          if (m == 0) {
-            return a;
-          }
-          k = k * 100 / m;
-          if (k < 0)
-          {
-            if (i > 100) {
-              continue;
-            }
-            return i;
-          }
-        }
-        catch (Throwable paramContext)
-        {
-          return a;
-        }
-        i = k;
+      default: 
+        localLichee.qd = 0;
       }
-      catch (Throwable paramContext)
+      for (;;)
       {
-        return a;
+        localLichee.x = localc.b;
+        localLichee.y = localc.c;
+        localLichee.rd = localc.d;
+        localLichee.radius = localc.e;
+        localArrayList.add(localLichee);
+        break;
+        localLichee.qd = 4;
+        continue;
+        localLichee.qd = 2;
+        continue;
+        localLichee.qd = 3;
+        continue;
+        localLichee.qd = 1;
       }
+    }
+    localLemon.pd = localArrayList;
+    return localLemon;
+  }
+  
+  public final List<c> a(List<c> paramList)
+  {
+    ArrayList localArrayList = new ArrayList();
+    if (paramList.size() <= 20)
+    {
+      localArrayList.addAll(paramList);
+      return localArrayList;
+    }
+    c localc1 = (c)paramList.get(0);
+    c localc2 = (c)paramList.get(paramList.size() - 1);
+    paramList.remove(localc1);
+    paramList.remove(localc2);
+    int j = (int)Math.ceil(paramList.size() / 18);
+    localArrayList.add(localc1);
+    int i = 1;
+    while (i < paramList.size())
+    {
+      localArrayList.add(paramList.get(i));
+      i += j;
+    }
+    localArrayList.add(localc2);
+    return localArrayList;
+  }
+  
+  public void a(Activity paramActivity)
+  {
+    paramActivity = paramActivity.getClass().getName();
+    Object localObject = (d)this.b.get(paramActivity);
+    i.c.remove(localObject);
+    this.b.remove(paramActivity);
+    localObject = (b)this.c.get(paramActivity);
+    i.d.remove(localObject);
+    this.c.remove(paramActivity);
+  }
+  
+  public void a(Activity paramActivity, int paramInt, f paramf)
+  {
+    paramActivity.getApplicationContext();
+    this.d = paramf;
+    paramf = paramActivity.getClass().getName();
+    paramActivity = new d(paramActivity.getClass().getName(), paramInt);
+    this.b.put(paramf, paramActivity);
+    i.c.add(paramActivity);
+    paramActivity = new b(paramInt);
+    this.c.put(paramf, paramActivity);
+    i.d.add(paramActivity);
+  }
+  
+  public static final class a
+    extends cx<c>
+  {
+    public Object a()
+    {
+      return new c(null);
+    }
+  }
+  
+  private final class b
+    implements g
+  {
+    public int a;
+    
+    public b(int paramInt)
+    {
+      this.a = paramInt;
+    }
+    
+    public void a(String paramString, View paramView)
+    {
+      c.a(c.this).a(paramString, this.a, 3, null);
+    }
+  }
+  
+  public class c
+  {
+    public final int a;
+    public final float b;
+    public final float c;
+    public final float d;
+    public final float e;
+    
+    public c(int paramInt, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
+    {
+      this.a = paramInt;
+      this.b = paramFloat1;
+      this.c = paramFloat2;
+      this.d = paramFloat3;
+      this.e = paramFloat4;
+    }
+  }
+  
+  private class d
+  {
+    public int a;
+    public long b = -1L;
+    public long c;
+    public List<c.c> d = new ArrayList();
+    public String e;
+    public boolean f = false;
+    public boolean g = false;
+    
+    public d(String paramString, int paramInt)
+    {
+      this.a = paramInt;
+      this.e = paramString;
+    }
+    
+    public final void a()
+    {
+      this.b = -1L;
+      this.c = 0L;
+      this.d.clear();
+      this.f = false;
+      this.g = false;
     }
   }
 }

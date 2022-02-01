@@ -13,7 +13,7 @@ public class bl
   public static final String KEY_SDCARDSTATUS = "key_sdcardstatus";
   public static final String KEY_SUCCESS = "key_success";
   public static final String KEY_TOTAL = "key_total";
-  protected bl.a gf = null;
+  protected a gf = null;
   
   /* Error */
   public static String getRelocationUrl(String paramString)
@@ -21,33 +21,33 @@ public class bl
     // Byte code:
     //   0: aconst_null
     //   1: astore_1
-    //   2: new 47	java/net/URL
+    //   2: new 50	java/net/URL
     //   5: dup
     //   6: aload_0
-    //   7: invokespecial 50	java/net/URL:<init>	(Ljava/lang/String;)V
-    //   10: invokevirtual 54	java/net/URL:openConnection	()Ljava/net/URLConnection;
-    //   13: checkcast 56	java/net/HttpURLConnection
+    //   7: invokespecial 53	java/net/URL:<init>	(Ljava/lang/String;)V
+    //   10: invokevirtual 57	java/net/URL:openConnection	()Ljava/net/URLConnection;
+    //   13: checkcast 59	java/net/HttpURLConnection
     //   16: astore_0
     //   17: aload_0
     //   18: sipush 30000
-    //   21: invokevirtual 60	java/net/HttpURLConnection:setConnectTimeout	(I)V
+    //   21: invokevirtual 63	java/net/HttpURLConnection:setConnectTimeout	(I)V
     //   24: aload_0
     //   25: sipush 30000
-    //   28: invokevirtual 63	java/net/HttpURLConnection:setReadTimeout	(I)V
+    //   28: invokevirtual 66	java/net/HttpURLConnection:setReadTimeout	(I)V
     //   31: aload_0
     //   32: iconst_1
-    //   33: invokevirtual 67	java/net/HttpURLConnection:setInstanceFollowRedirects	(Z)V
+    //   33: invokevirtual 70	java/net/HttpURLConnection:setInstanceFollowRedirects	(Z)V
     //   36: aload_0
-    //   37: invokevirtual 71	java/net/HttpURLConnection:getResponseCode	()I
+    //   37: invokevirtual 74	java/net/HttpURLConnection:getResponseCode	()I
     //   40: pop
     //   41: aload_0
-    //   42: invokevirtual 75	java/net/HttpURLConnection:getURL	()Ljava/net/URL;
-    //   45: invokevirtual 79	java/net/URL:toString	()Ljava/lang/String;
+    //   42: invokevirtual 78	java/net/HttpURLConnection:getURL	()Ljava/net/URL;
+    //   45: invokevirtual 82	java/net/URL:toString	()Ljava/lang/String;
     //   48: astore_1
     //   49: aload_0
     //   50: ifnull +47 -> 97
     //   53: aload_0
-    //   54: invokevirtual 82	java/net/HttpURLConnection:disconnect	()V
+    //   54: invokevirtual 85	java/net/HttpURLConnection:disconnect	()V
     //   57: aload_1
     //   58: areturn
     //   59: astore_0
@@ -56,7 +56,7 @@ public class bl
     //   62: aload_0
     //   63: ifnull +32 -> 95
     //   66: aload_0
-    //   67: invokevirtual 82	java/net/HttpURLConnection:disconnect	()V
+    //   67: invokevirtual 85	java/net/HttpURLConnection:disconnect	()V
     //   70: aconst_null
     //   71: areturn
     //   72: astore_2
@@ -67,7 +67,7 @@ public class bl
     //   77: aload_0
     //   78: ifnull +7 -> 85
     //   81: aload_0
-    //   82: invokevirtual 82	java/net/HttpURLConnection:disconnect	()V
+    //   82: invokevirtual 85	java/net/HttpURLConnection:disconnect	()V
     //   85: aload_1
     //   86: athrow
     //   87: astore_1
@@ -109,9 +109,16 @@ public class bl
     this.gf.b(paramBundle);
   }
   
-  public void setNetworkListener(bl.a parama)
+  public void setNetworkListener(a parama)
   {
     this.gf = parama;
+  }
+  
+  public static abstract interface a
+  {
+    public abstract void a(Bundle paramBundle);
+    
+    public abstract void b(Bundle paramBundle);
   }
 }
 

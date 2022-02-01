@@ -1,27 +1,32 @@
 package com.tencent.turingfd.sdk.base;
 
 public final class Ginkgo
-  extends float
+  extends break
 {
-  public static Foxnut Kc;
-  public Foxnut Lc = null;
-  public int kc = 0;
+  public String Nb = "";
+  public String S = "";
+  public String version = "";
+  public int xc = 0;
+  public String yc = "";
   
-  public void a(dp paramdp)
+  public void a(cy paramcy)
   {
-    this.kc = paramdp.a(this.kc, 0, true);
-    if (Kc == null) {
-      Kc = new Foxnut();
-    }
-    this.Lc = ((Foxnut)paramdp.a(Kc, 1, false));
+    this.Nb = paramcy.a(0, true);
+    this.xc = paramcy.a(this.xc, 1, true);
+    this.version = paramcy.a(2, true);
+    this.S = paramcy.a(3, true);
+    this.yc = paramcy.a(4, false);
   }
   
-  public void a(dv paramdv)
+  public void a(db paramdb)
   {
-    paramdv.a(this.kc, 0);
-    Foxnut localFoxnut = this.Lc;
-    if (localFoxnut != null) {
-      paramdv.a(localFoxnut, 1);
+    paramdb.a(this.Nb, 0);
+    paramdb.a(this.xc, 1);
+    paramdb.a(this.version, 2);
+    paramdb.a(this.S, 3);
+    String str = this.yc;
+    if (str != null) {
+      paramdb.a(str, 4);
     }
   }
 }

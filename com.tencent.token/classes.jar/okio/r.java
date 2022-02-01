@@ -1,47 +1,84 @@
 package okio;
 
-import java.io.IOException;
 import java.io.InterruptedIOException;
-import java.net.Socket;
-import java.net.SocketTimeoutException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.annotation.Nullable;
+import java.util.concurrent.TimeUnit;
 
-final class r
-  extends a
+public class r
 {
-  r(Socket paramSocket) {}
-  
-  protected IOException a(@Nullable IOException paramIOException)
+  public static final r c = new r()
   {
-    SocketTimeoutException localSocketTimeoutException = new SocketTimeoutException("timeout");
-    if (paramIOException != null) {
-      localSocketTimeoutException.initCause(paramIOException);
+    public r a(long paramAnonymousLong)
+    {
+      return this;
     }
-    return localSocketTimeoutException;
+    
+    public r a(long paramAnonymousLong, TimeUnit paramAnonymousTimeUnit)
+    {
+      return this;
+    }
+    
+    public void g() {}
+  };
+  private boolean a;
+  private long b;
+  private long d;
+  
+  public r a(long paramLong)
+  {
+    this.a = true;
+    this.b = paramLong;
+    return this;
   }
   
-  protected void a()
+  public r a(long paramLong, TimeUnit paramTimeUnit)
   {
-    try
-    {
-      this.a.close();
-      return;
+    if (paramLong < 0L) {
+      throw new IllegalArgumentException("timeout < 0: " + paramLong);
     }
-    catch (Exception localException)
-    {
-      o.a.log(Level.WARNING, "Failed to close timed out socket " + this.a, localException);
-      return;
+    if (paramTimeUnit == null) {
+      throw new IllegalArgumentException("unit == null");
     }
-    catch (AssertionError localAssertionError)
-    {
-      if (o.a(localAssertionError))
-      {
-        o.a.log(Level.WARNING, "Failed to close timed out socket " + this.a, localAssertionError);
-        return;
-      }
-      throw localAssertionError;
+    this.d = paramTimeUnit.toNanos(paramLong);
+    return this;
+  }
+  
+  public long c_()
+  {
+    return this.d;
+  }
+  
+  public long d()
+  {
+    if (!this.a) {
+      throw new IllegalStateException("No deadline");
+    }
+    return this.b;
+  }
+  
+  public boolean d_()
+  {
+    return this.a;
+  }
+  
+  public r e_()
+  {
+    this.d = 0L;
+    return this;
+  }
+  
+  public r f()
+  {
+    this.a = false;
+    return this;
+  }
+  
+  public void g()
+  {
+    if (Thread.interrupted()) {
+      throw new InterruptedIOException("thread interrupted");
+    }
+    if ((this.a) && (this.b - System.nanoTime() <= 0L)) {
+      throw new InterruptedIOException("deadline reached");
     }
   }
 }

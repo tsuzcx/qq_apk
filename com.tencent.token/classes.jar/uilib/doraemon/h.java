@@ -1,13 +1,48 @@
 package uilib.doraemon;
 
-class h
-  implements k
+import com.tencent.token.gl;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+
+public class h
 {
-  h(e parame, int paramInt) {}
+  private boolean a;
+  private final List<a> b;
+  private Map<String, gl> c;
   
-  public void a(a parama)
+  public void a(String paramString, float paramFloat)
   {
-    this.b.a(this.a / parama.i());
+    if (!this.a) {}
+    for (;;)
+    {
+      return;
+      gl localgl2 = (gl)this.c.get(paramString);
+      gl localgl1 = localgl2;
+      if (localgl2 == null)
+      {
+        localgl1 = new gl();
+        this.c.put(paramString, localgl1);
+      }
+      localgl1.a(paramFloat);
+      if (paramString.equals("root"))
+      {
+        paramString = this.b.iterator();
+        while (paramString.hasNext()) {
+          ((a)paramString.next()).a(paramFloat);
+        }
+      }
+    }
+  }
+  
+  void a(boolean paramBoolean)
+  {
+    this.a = paramBoolean;
+  }
+  
+  public static abstract interface a
+  {
+    public abstract void a(float paramFloat);
   }
 }
 

@@ -1,19 +1,29 @@
 package btmsdkobf;
 
+import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 
 public class do
 {
   private Context mContext = null;
-  private Handler mHandler = new ih(this, cx.getLooper());
+  private Handler mHandler = new Handler(cx.getLooper())
+  {
+    public void handleMessage(Message paramAnonymousMessage)
+    {
+      eh.e("HeartBeatPlot", "[h_b]handleMessage(), nodifyOnHeartBeat()");
+    }
+  };
   private boolean na = false;
-  private ii nb = null;
+  private a nb = null;
   private long nc = 0L;
-  private do.c nd = null;
-  private do.b ne = null;
+  private c nd = null;
+  private b ne = null;
   
-  public do(Context paramContext, do.c paramc, do.b paramb)
+  public do(Context paramContext, c paramc, b paramb)
   {
     this.mContext = paramContext;
     this.nd = paramc;
@@ -49,6 +59,16 @@ public class do
       throw localObject;
     }
   }
+  
+  private class a
+    extends BroadcastReceiver
+  {
+    public void onReceive(Context paramContext, Intent paramIntent) {}
+  }
+  
+  public static abstract interface b {}
+  
+  public static abstract interface c {}
 }
 
 

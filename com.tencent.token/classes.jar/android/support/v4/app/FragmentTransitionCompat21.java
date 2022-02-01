@@ -3,6 +3,8 @@ package android.support.v4.app;
 import android.graphics.Rect;
 import android.support.annotation.RequiresApi;
 import android.transition.Transition;
+import android.transition.Transition.EpicenterCallback;
+import android.transition.Transition.TransitionListener;
 import android.transition.TransitionManager;
 import android.transition.TransitionSet;
 import android.view.View;
@@ -26,7 +28,7 @@ class FragmentTransitionCompat21
     }
   }
   
-  public void addTargets(Object paramObject, ArrayList paramArrayList)
+  public void addTargets(Object paramObject, ArrayList<View> paramArrayList)
   {
     int i = 0;
     paramObject = (Transition)paramObject;
@@ -127,7 +129,7 @@ class FragmentTransitionCompat21
     }
   }
   
-  public void replaceTargets(Object paramObject, ArrayList paramArrayList1, ArrayList paramArrayList2)
+  public void replaceTargets(Object paramObject, ArrayList<View> paramArrayList1, ArrayList<View> paramArrayList2)
   {
     int i = 0;
     paramObject = (Transition)paramObject;
@@ -167,20 +169,73 @@ class FragmentTransitionCompat21
     }
   }
   
-  public void scheduleHideFragmentView(Object paramObject, View paramView, ArrayList paramArrayList)
+  public void scheduleHideFragmentView(Object paramObject, final View paramView, final ArrayList<View> paramArrayList)
   {
-    ((Transition)paramObject).addListener(new FragmentTransitionCompat21.2(this, paramView, paramArrayList));
+    ((Transition)paramObject).addListener(new Transition.TransitionListener()
+    {
+      public void onTransitionCancel(Transition paramAnonymousTransition) {}
+      
+      public void onTransitionEnd(Transition paramAnonymousTransition)
+      {
+        paramAnonymousTransition.removeListener(this);
+        paramView.setVisibility(8);
+        int j = paramArrayList.size();
+        int i = 0;
+        while (i < j)
+        {
+          ((View)paramArrayList.get(i)).setVisibility(0);
+          i += 1;
+        }
+      }
+      
+      public void onTransitionPause(Transition paramAnonymousTransition) {}
+      
+      public void onTransitionResume(Transition paramAnonymousTransition) {}
+      
+      public void onTransitionStart(Transition paramAnonymousTransition) {}
+    });
   }
   
-  public void scheduleRemoveTargets(Object paramObject1, Object paramObject2, ArrayList paramArrayList1, Object paramObject3, ArrayList paramArrayList2, Object paramObject4, ArrayList paramArrayList3)
+  public void scheduleRemoveTargets(Object paramObject1, final Object paramObject2, final ArrayList<View> paramArrayList1, final Object paramObject3, final ArrayList<View> paramArrayList2, final Object paramObject4, final ArrayList<View> paramArrayList3)
   {
-    ((Transition)paramObject1).addListener(new FragmentTransitionCompat21.3(this, paramObject2, paramArrayList1, paramObject3, paramArrayList2, paramObject4, paramArrayList3));
+    ((Transition)paramObject1).addListener(new Transition.TransitionListener()
+    {
+      public void onTransitionCancel(Transition paramAnonymousTransition) {}
+      
+      public void onTransitionEnd(Transition paramAnonymousTransition) {}
+      
+      public void onTransitionPause(Transition paramAnonymousTransition) {}
+      
+      public void onTransitionResume(Transition paramAnonymousTransition) {}
+      
+      public void onTransitionStart(Transition paramAnonymousTransition)
+      {
+        if (paramObject2 != null) {
+          FragmentTransitionCompat21.this.replaceTargets(paramObject2, paramArrayList1, null);
+        }
+        if (paramObject3 != null) {
+          FragmentTransitionCompat21.this.replaceTargets(paramObject3, paramArrayList2, null);
+        }
+        if (paramObject4 != null) {
+          FragmentTransitionCompat21.this.replaceTargets(paramObject4, paramArrayList3, null);
+        }
+      }
+    });
   }
   
-  public void setEpicenter(Object paramObject, Rect paramRect)
+  public void setEpicenter(Object paramObject, final Rect paramRect)
   {
     if (paramObject != null) {
-      ((Transition)paramObject).setEpicenterCallback(new FragmentTransitionCompat21.4(this, paramRect));
+      ((Transition)paramObject).setEpicenterCallback(new Transition.EpicenterCallback()
+      {
+        public Rect onGetEpicenter(Transition paramAnonymousTransition)
+        {
+          if ((paramRect == null) || (paramRect.isEmpty())) {
+            return null;
+          }
+          return paramRect;
+        }
+      });
     }
   }
   
@@ -189,13 +244,19 @@ class FragmentTransitionCompat21
     if (paramView != null)
     {
       paramObject = (Transition)paramObject;
-      Rect localRect = new Rect();
+      final Rect localRect = new Rect();
       getBoundsOnScreen(paramView, localRect);
-      paramObject.setEpicenterCallback(new FragmentTransitionCompat21.1(this, localRect));
+      paramObject.setEpicenterCallback(new Transition.EpicenterCallback()
+      {
+        public Rect onGetEpicenter(Transition paramAnonymousTransition)
+        {
+          return localRect;
+        }
+      });
     }
   }
   
-  public void setSharedElementTargets(Object paramObject, View paramView, ArrayList paramArrayList)
+  public void setSharedElementTargets(Object paramObject, View paramView, ArrayList<View> paramArrayList)
   {
     paramObject = (TransitionSet)paramObject;
     List localList = paramObject.getTargets();
@@ -212,7 +273,7 @@ class FragmentTransitionCompat21
     addTargets(paramObject, paramArrayList);
   }
   
-  public void swapSharedElementTargets(Object paramObject, ArrayList paramArrayList1, ArrayList paramArrayList2)
+  public void swapSharedElementTargets(Object paramObject, ArrayList<View> paramArrayList1, ArrayList<View> paramArrayList2)
   {
     paramObject = (TransitionSet)paramObject;
     if (paramObject != null)

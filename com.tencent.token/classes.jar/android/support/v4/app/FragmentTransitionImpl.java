@@ -16,7 +16,7 @@ import java.util.Set;
 @RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
 public abstract class FragmentTransitionImpl
 {
-  protected static void bfsAddViewChildren(List paramList, View paramView)
+  protected static void bfsAddViewChildren(List<View> paramList, View paramView)
   {
     int k = paramList.size();
     if (containedBeforeIndex(paramList, paramView, k)) {}
@@ -47,7 +47,7 @@ public abstract class FragmentTransitionImpl
     }
   }
   
-  private static boolean containedBeforeIndex(List paramList, View paramView, int paramInt)
+  private static boolean containedBeforeIndex(List<View> paramList, View paramView, int paramInt)
   {
     boolean bool2 = false;
     int i = 0;
@@ -67,7 +67,7 @@ public abstract class FragmentTransitionImpl
     }
   }
   
-  static String findKeyForValue(Map paramMap, String paramString)
+  static String findKeyForValue(Map<String, String> paramMap, String paramString)
   {
     paramMap = paramMap.entrySet().iterator();
     while (paramMap.hasNext())
@@ -87,13 +87,13 @@ public abstract class FragmentTransitionImpl
   
   public abstract void addTarget(Object paramObject, View paramView);
   
-  public abstract void addTargets(Object paramObject, ArrayList paramArrayList);
+  public abstract void addTargets(Object paramObject, ArrayList<View> paramArrayList);
   
   public abstract void beginDelayedTransition(ViewGroup paramViewGroup, Object paramObject);
   
   public abstract boolean canHandle(Object paramObject);
   
-  void captureTransitioningViews(ArrayList paramArrayList, View paramView)
+  void captureTransitioningViews(ArrayList<View> paramArrayList, View paramView)
   {
     if (paramView.getVisibility() == 0)
     {
@@ -124,7 +124,7 @@ public abstract class FragmentTransitionImpl
   
   public abstract Object cloneTransition(Object paramObject);
   
-  void findNamedViews(Map paramMap, View paramView)
+  void findNamedViews(Map<String, View> paramMap, View paramView)
   {
     if (paramView.getVisibility() == 0)
     {
@@ -157,7 +157,7 @@ public abstract class FragmentTransitionImpl
   
   public abstract Object mergeTransitionsTogether(Object paramObject1, Object paramObject2, Object paramObject3);
   
-  ArrayList prepareSetNameOverridesReordered(ArrayList paramArrayList)
+  ArrayList<String> prepareSetNameOverridesReordered(ArrayList<View> paramArrayList)
   {
     ArrayList localArrayList = new ArrayList();
     int j = paramArrayList.size();
@@ -174,30 +174,60 @@ public abstract class FragmentTransitionImpl
   
   public abstract void removeTarget(Object paramObject, View paramView);
   
-  public abstract void replaceTargets(Object paramObject, ArrayList paramArrayList1, ArrayList paramArrayList2);
+  public abstract void replaceTargets(Object paramObject, ArrayList<View> paramArrayList1, ArrayList<View> paramArrayList2);
   
-  public abstract void scheduleHideFragmentView(Object paramObject, View paramView, ArrayList paramArrayList);
+  public abstract void scheduleHideFragmentView(Object paramObject, View paramView, ArrayList<View> paramArrayList);
   
-  void scheduleNameReset(ViewGroup paramViewGroup, ArrayList paramArrayList, Map paramMap)
+  void scheduleNameReset(ViewGroup paramViewGroup, final ArrayList<View> paramArrayList, final Map<String, String> paramMap)
   {
-    OneShotPreDrawListener.add(paramViewGroup, new FragmentTransitionImpl.3(this, paramArrayList, paramMap));
+    OneShotPreDrawListener.add(paramViewGroup, new Runnable()
+    {
+      public void run()
+      {
+        int j = paramArrayList.size();
+        int i = 0;
+        while (i < j)
+        {
+          View localView = (View)paramArrayList.get(i);
+          String str = ViewCompat.getTransitionName(localView);
+          ViewCompat.setTransitionName(localView, (String)paramMap.get(str));
+          i += 1;
+        }
+      }
+    });
   }
   
-  public abstract void scheduleRemoveTargets(Object paramObject1, Object paramObject2, ArrayList paramArrayList1, Object paramObject3, ArrayList paramArrayList2, Object paramObject4, ArrayList paramArrayList3);
+  public abstract void scheduleRemoveTargets(Object paramObject1, Object paramObject2, ArrayList<View> paramArrayList1, Object paramObject3, ArrayList<View> paramArrayList2, Object paramObject4, ArrayList<View> paramArrayList3);
   
   public abstract void setEpicenter(Object paramObject, Rect paramRect);
   
   public abstract void setEpicenter(Object paramObject, View paramView);
   
-  void setNameOverridesOrdered(View paramView, ArrayList paramArrayList, Map paramMap)
+  void setNameOverridesOrdered(View paramView, final ArrayList<View> paramArrayList, final Map<String, String> paramMap)
   {
-    OneShotPreDrawListener.add(paramView, new FragmentTransitionImpl.2(this, paramArrayList, paramMap));
+    OneShotPreDrawListener.add(paramView, new Runnable()
+    {
+      public void run()
+      {
+        int j = paramArrayList.size();
+        int i = 0;
+        while (i < j)
+        {
+          View localView = (View)paramArrayList.get(i);
+          String str = ViewCompat.getTransitionName(localView);
+          if (str != null) {
+            ViewCompat.setTransitionName(localView, FragmentTransitionImpl.findKeyForValue(paramMap, str));
+          }
+          i += 1;
+        }
+      }
+    });
   }
   
-  void setNameOverridesReordered(View paramView, ArrayList paramArrayList1, ArrayList paramArrayList2, ArrayList paramArrayList3, Map paramMap)
+  void setNameOverridesReordered(View paramView, final ArrayList<View> paramArrayList1, final ArrayList<View> paramArrayList2, final ArrayList<String> paramArrayList, Map<String, String> paramMap)
   {
-    int k = paramArrayList2.size();
-    ArrayList localArrayList = new ArrayList();
+    final int k = paramArrayList2.size();
+    final ArrayList localArrayList = new ArrayList();
     int i = 0;
     if (i < k)
     {
@@ -218,7 +248,7 @@ public abstract class FragmentTransitionImpl
           if (j >= k) {
             break label134;
           }
-          if (((String)localObject).equals(paramArrayList3.get(j)))
+          if (((String)localObject).equals(paramArrayList.get(j)))
           {
             ViewCompat.setTransitionName((View)paramArrayList2.get(j), str);
             break;
@@ -227,12 +257,24 @@ public abstract class FragmentTransitionImpl
         }
       }
     }
-    OneShotPreDrawListener.add(paramView, new FragmentTransitionImpl.1(this, k, paramArrayList2, paramArrayList3, paramArrayList1, localArrayList));
+    OneShotPreDrawListener.add(paramView, new Runnable()
+    {
+      public void run()
+      {
+        int i = 0;
+        while (i < k)
+        {
+          ViewCompat.setTransitionName((View)paramArrayList2.get(i), (String)paramArrayList.get(i));
+          ViewCompat.setTransitionName((View)paramArrayList1.get(i), (String)localArrayList.get(i));
+          i += 1;
+        }
+      }
+    });
   }
   
-  public abstract void setSharedElementTargets(Object paramObject, View paramView, ArrayList paramArrayList);
+  public abstract void setSharedElementTargets(Object paramObject, View paramView, ArrayList<View> paramArrayList);
   
-  public abstract void swapSharedElementTargets(Object paramObject, ArrayList paramArrayList1, ArrayList paramArrayList2);
+  public abstract void swapSharedElementTargets(Object paramObject, ArrayList<View> paramArrayList1, ArrayList<View> paramArrayList2);
   
   public abstract Object wrapTransitionInSet(Object paramObject);
 }

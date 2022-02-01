@@ -1,15 +1,32 @@
 package com.tencent.token;
 
-public class fp
+import javax.annotation.Nullable;
+import okhttp3.aa;
+import okio.e;
+
+public final class fp
+  extends aa
 {
-  public static final int a(int paramInt)
+  @Nullable
+  private final String a;
+  private final long b;
+  private final e c;
+  
+  public fp(@Nullable String paramString, long paramLong, e parame)
   {
-    return paramInt & 0x18;
+    this.a = paramString;
+    this.b = paramLong;
+    this.c = parame;
   }
   
-  public static final int b(int paramInt)
+  public long a()
   {
-    return paramInt & 0x60;
+    return this.b;
+  }
+  
+  public e c()
+  {
+    return this.c;
   }
 }
 

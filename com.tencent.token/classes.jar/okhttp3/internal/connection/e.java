@@ -1,6 +1,6 @@
 package okhttp3.internal.connection;
 
-import com.tencent.token.gn;
+import com.tencent.token.fb;
 import java.io.IOException;
 import java.net.InetAddress;
 import java.net.InetSocketAddress;
@@ -14,29 +14,28 @@ import java.util.Collections;
 import java.util.List;
 import java.util.NoSuchElementException;
 import okhttp3.a;
-import okhttp3.af;
-import okhttp3.ax;
-import okhttp3.g;
-import okhttp3.w;
-import okhttp3.y;
+import okhttp3.ab;
+import okhttp3.o;
+import okhttp3.p;
+import okhttp3.s;
 
 public final class e
 {
   private final a a;
   private final d b;
-  private final g c;
-  private final y d;
-  private List e = Collections.emptyList();
+  private final okhttp3.e c;
+  private final p d;
+  private List<Proxy> e = Collections.emptyList();
   private int f;
-  private List g = Collections.emptyList();
-  private final List h = new ArrayList();
+  private List<InetSocketAddress> g = Collections.emptyList();
+  private final List<ab> h = new ArrayList();
   
-  public e(a parama, d paramd, g paramg, y paramy)
+  public e(a parama, d paramd, okhttp3.e parame, p paramp)
   {
     this.a = parama;
     this.b = paramd;
-    this.c = paramg;
-    this.d = paramy;
+    this.c = parame;
+    this.d = paramp;
     a(parama.a(), parama.h());
   }
   
@@ -90,7 +89,7 @@ public final class e
     }
   }
   
-  private void a(af paramaf, Proxy paramProxy)
+  private void a(s params, Proxy paramProxy)
   {
     if (paramProxy != null)
     {
@@ -98,11 +97,11 @@ public final class e
       this.f = 0;
       return;
     }
-    paramaf = this.a.g().select(paramaf.a());
-    if ((paramaf != null) && (!paramaf.isEmpty())) {}
-    for (paramaf = gn.a(paramaf);; paramaf = gn.a(new Proxy[] { Proxy.NO_PROXY }))
+    params = this.a.g().select(params.a());
+    if ((params != null) && (!params.isEmpty())) {}
+    for (params = fb.a(params);; params = fb.a(new Proxy[] { Proxy.NO_PROXY }))
     {
-      this.e = paramaf;
+      this.e = params;
       break;
     }
   }
@@ -125,12 +124,12 @@ public final class e
     return localObject;
   }
   
-  public void a(ax paramax, IOException paramIOException)
+  public void a(ab paramab, IOException paramIOException)
   {
-    if ((paramax.b().type() != Proxy.Type.DIRECT) && (this.a.g() != null)) {
-      this.a.g().connectFailed(this.a.a().a(), paramax.b().address(), paramIOException);
+    if ((paramab.b().type() != Proxy.Type.DIRECT) && (this.a.g() != null)) {
+      this.a.g().connectFailed(this.a.a().a(), paramab.b().address(), paramIOException);
     }
-    this.b.a(paramax);
+    this.b.a(paramab);
   }
   
   public boolean a()
@@ -138,7 +137,7 @@ public final class e
     return (c()) || (!this.h.isEmpty());
   }
   
-  public f b()
+  public a b()
   {
     if (!a()) {
       throw new NoSuchElementException();
@@ -154,15 +153,15 @@ public final class e
       int i = 0;
       if (i < j)
       {
-        ax localax = new ax(this.a, localProxy, (InetSocketAddress)this.g.get(i));
-        if (this.b.c(localax)) {
-          this.h.add(localax);
+        ab localab = new ab(this.a, localProxy, (InetSocketAddress)this.g.get(i));
+        if (this.b.c(localab)) {
+          this.h.add(localab);
         }
         for (;;)
         {
           i += 1;
           break;
-          localArrayList.add(localax);
+          localArrayList.add(localab);
         }
       }
     } while (localArrayList.isEmpty());
@@ -171,7 +170,39 @@ public final class e
       localArrayList.addAll(this.h);
       this.h.clear();
     }
-    return new f(localArrayList);
+    return new a(localArrayList);
+  }
+  
+  public static final class a
+  {
+    private final List<ab> a;
+    private int b = 0;
+    
+    a(List<ab> paramList)
+    {
+      this.a = paramList;
+    }
+    
+    public boolean a()
+    {
+      return this.b < this.a.size();
+    }
+    
+    public ab b()
+    {
+      if (!a()) {
+        throw new NoSuchElementException();
+      }
+      List localList = this.a;
+      int i = this.b;
+      this.b = (i + 1);
+      return (ab)localList.get(i);
+    }
+    
+    public List<ab> c()
+    {
+      return new ArrayList(this.a);
+    }
   }
 }
 

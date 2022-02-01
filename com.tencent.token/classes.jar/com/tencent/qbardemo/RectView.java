@@ -7,7 +7,7 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.view.View;
 import com.tencent.token.ui.IndexActivity;
-import com.tencent.token.utils.x;
+import com.tencent.token.utils.m;
 
 public class RectView
   extends View
@@ -60,7 +60,7 @@ public class RectView
     paramCanvas.drawRect(this.right + 1, this.top, i, this.bottom + 1, this.pen);
     paramCanvas.drawRect(0.0F, this.bottom + 1, i, j, this.pen);
     if (this.mScanLine == null) {
-      this.mScanLine = x.a(getResources(), 2130837945, this.width);
+      this.mScanLine = m.a(getResources(), 2130837945, this.width);
     }
     String str = getResources().getString(2131230859);
     this.pen.setColor(getResources().getColor(2131492933));

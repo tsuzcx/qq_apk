@@ -1,48 +1,12 @@
 package okhttp3;
 
-import java.util.concurrent.TimeUnit;
+import java.io.IOException;
 
-public final class f
+public abstract interface f
 {
-  boolean a;
-  boolean b;
-  int c = -1;
-  int d = -1;
-  int e = -1;
-  boolean f;
-  boolean g;
-  boolean h;
+  public abstract void a(e parame, IOException paramIOException);
   
-  public f a()
-  {
-    this.a = true;
-    return this;
-  }
-  
-  public f a(int paramInt, TimeUnit paramTimeUnit)
-  {
-    if (paramInt < 0) {
-      throw new IllegalArgumentException("maxStale < 0: " + paramInt);
-    }
-    long l = paramTimeUnit.toSeconds(paramInt);
-    if (l > 2147483647L) {}
-    for (paramInt = 2147483647;; paramInt = (int)l)
-    {
-      this.d = paramInt;
-      return this;
-    }
-  }
-  
-  public f b()
-  {
-    this.f = true;
-    return this;
-  }
-  
-  public e c()
-  {
-    return new e(this);
-  }
+  public abstract void a(e parame, z paramz);
 }
 
 

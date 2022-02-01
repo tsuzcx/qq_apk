@@ -4,7 +4,7 @@ import java.util.Map;
 
 public class d
 {
-  private final Map a;
+  private final Map<String, String> a;
   private boolean b;
   
   public String a(String paramString)

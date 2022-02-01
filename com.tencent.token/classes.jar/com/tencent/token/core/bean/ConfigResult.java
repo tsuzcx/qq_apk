@@ -2,10 +2,10 @@ package com.tencent.token.core.bean;
 
 import android.content.SharedPreferences.Editor;
 import android.graphics.Bitmap;
-import com.tencent.token.fe;
-import com.tencent.token.global.h;
+import com.tencent.token.dw;
+import com.tencent.token.global.g;
+import com.tencent.token.utils.e;
 import com.tencent.token.utils.i;
-import com.tencent.token.utils.t;
 import java.io.File;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -38,7 +38,7 @@ public class ConfigResult
   public int useFaceChpwd = 0;
   public int useFaceStart = 0;
   public int utilsShowFlag;
-  public ArrayList zzbIntroItemlist;
+  public ArrayList<ZzbIntroItem> zzbIntroItemlist;
   public JSONArray zzbIntroList;
   
   public ConfigResult() {}
@@ -51,7 +51,7 @@ public class ConfigResult
     this.schemaKey = paramJSONObject.getString("schema_key");
     this.schemaTimeout = paramJSONObject.getInt("schema_timeout");
     this.utilsShowFlag = paramJSONObject.getInt("icon_show_flag");
-    h.b("ConfigResult mStartUpImgUrl=" + this.mStartUpImgUrl + "mStartUpImgStartTime=" + this.mStartUpImgStartTime + "mStartUpImgEndTime=schemaKey=" + this.schemaKey + "schemaTimeout=" + this.schemaTimeout);
+    g.b("ConfigResult mStartUpImgUrl=" + this.mStartUpImgUrl + "mStartUpImgStartTime=" + this.mStartUpImgStartTime + "mStartUpImgEndTime=schemaKey=" + this.schemaKey + "schemaTimeout=" + this.schemaTimeout);
     this.so_param_ids = paramJSONObject.optString("so_param_ids");
     this.so_param_values = paramJSONObject.optString("so_param_values");
     this.mFaceRecognitionParamResult = new FaceRecognitionParamResult(paramJSONObject);
@@ -92,7 +92,7 @@ public class ConfigResult
               switch (this.logLevel)
               {
               case 0: 
-                fe.a(48);
+                dw.a(48);
               }
             }
             catch (Exception paramJSONObject)
@@ -105,11 +105,11 @@ public class ConfigResult
               this.uploadDate = paramJSONObject.getInt("upload_date");
               if (this.uploadDate >= 0)
               {
-                t.b("debug.file.uploadfiledate", this.uploadDate).commit();
-                h.a("log file upload date=" + this.uploadDate);
-                paramJSONObject = new File(fe.b(), "upload.file");
+                i.b("debug.file.uploadfiledate", this.uploadDate).commit();
+                g.a("log file upload date=" + this.uploadDate);
+                paramJSONObject = new File(dw.b(), "upload.file");
                 if (paramJSONObject.exists()) {
-                  i.a(paramJSONObject);
+                  e.a(paramJSONObject);
                 }
               }
               return;
@@ -119,11 +119,11 @@ public class ConfigResult
               paramJSONObject.printStackTrace();
               return;
             }
-            fe.a(63);
+            dw.a(63);
             continue;
-            fe.a(60);
+            dw.a(60);
             continue;
-            fe.a(48);
+            dw.a(48);
           }
         }
         catch (Exception localException1)

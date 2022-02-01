@@ -7,7 +7,7 @@ public abstract class c
 {
   public abstract void a(a parama);
   
-  public abstract void a(d paramd);
+  public abstract void a(b paramb);
 }
 
 

@@ -6,7 +6,7 @@ import java.util.Locale;
 public final class SQLiteDatabaseConfiguration
 {
   public static final String MEMORY_DB_PATH = ":memory:";
-  public final ArrayList customFunctions = new ArrayList();
+  public final ArrayList<SQLiteCustomFunction> customFunctions = new ArrayList();
   public boolean customWALHookEnabled;
   public boolean foreignKeyConstraintsEnabled;
   public final String label;

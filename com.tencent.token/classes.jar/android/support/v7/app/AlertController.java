@@ -1,9 +1,15 @@
 package android.support.v7.app;
 
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
 import android.content.DialogInterface.OnClickListener;
+import android.content.DialogInterface.OnDismissListener;
+import android.content.DialogInterface.OnKeyListener;
+import android.content.DialogInterface.OnMultiChoiceClickListener;
 import android.content.res.Resources.Theme;
 import android.content.res.TypedArray;
+import android.database.Cursor;
 import android.graphics.drawable.Drawable;
 import android.os.Build.VERSION;
 import android.os.Handler;
@@ -11,11 +17,13 @@ import android.os.Message;
 import android.support.annotation.Nullable;
 import android.support.v4.view.ViewCompat;
 import android.support.v4.widget.NestedScrollView;
+import android.support.v4.widget.NestedScrollView.OnScrollChangeListener;
 import android.support.v7.appcompat.R.attr;
 import android.support.v7.appcompat.R.id;
 import android.support.v7.appcompat.R.styleable;
 import android.support.v7.widget.LinearLayoutCompat.LayoutParams;
 import android.text.TextUtils;
+import android.util.AttributeSet;
 import android.util.TypedValue;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -26,19 +34,52 @@ import android.view.ViewGroup.LayoutParams;
 import android.view.ViewParent;
 import android.view.ViewStub;
 import android.view.Window;
+import android.widget.AbsListView;
+import android.widget.AbsListView.OnScrollListener;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.AdapterView.OnItemSelectedListener;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CheckedTextView;
+import android.widget.CursorAdapter;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
+import java.lang.ref.WeakReference;
 
 class AlertController
 {
   ListAdapter mAdapter;
   private int mAlertDialogLayout;
-  private final View.OnClickListener mButtonHandler = new AlertController.1(this);
+  private final View.OnClickListener mButtonHandler = new View.OnClickListener()
+  {
+    public void onClick(View paramAnonymousView)
+    {
+      if ((paramAnonymousView == AlertController.this.mButtonPositive) && (AlertController.this.mButtonPositiveMessage != null)) {
+        paramAnonymousView = Message.obtain(AlertController.this.mButtonPositiveMessage);
+      }
+      for (;;)
+      {
+        if (paramAnonymousView != null) {
+          paramAnonymousView.sendToTarget();
+        }
+        AlertController.this.mHandler.obtainMessage(1, AlertController.this.mDialog).sendToTarget();
+        return;
+        if ((paramAnonymousView == AlertController.this.mButtonNegative) && (AlertController.this.mButtonNegativeMessage != null)) {
+          paramAnonymousView = Message.obtain(AlertController.this.mButtonNegativeMessage);
+        } else if ((paramAnonymousView == AlertController.this.mButtonNeutral) && (AlertController.this.mButtonNeutralMessage != null)) {
+          paramAnonymousView = Message.obtain(AlertController.this.mButtonNeutralMessage);
+        } else {
+          paramAnonymousView = null;
+        }
+      }
+    }
+  };
   private final int mButtonIconDimen;
   Button mButtonNegative;
   private Drawable mButtonNegativeIcon;
@@ -87,7 +128,7 @@ class AlertController
     this.mContext = paramContext;
     this.mDialog = paramAppCompatDialog;
     this.mWindow = paramWindow;
-    this.mHandler = new AlertController.ButtonHandler(paramAppCompatDialog);
+    this.mHandler = new ButtonHandler(paramAppCompatDialog);
     paramContext = paramContext.obtainStyledAttributes(null, R.styleable.AlertDialog, R.attr.alertDialogStyle, 0);
     this.mAlertDialogLayout = paramContext.getResourceId(R.styleable.AlertDialog_android_layout, 0);
     this.mButtonPanelSideLayout = paramContext.getResourceId(R.styleable.AlertDialog_buttonPanelSideLayout, 0);
@@ -196,7 +237,7 @@ class AlertController
     return this.mAlertDialogLayout;
   }
   
-  private void setScrollIndicators(ViewGroup paramViewGroup, View paramView, int paramInt1, int paramInt2)
+  private void setScrollIndicators(ViewGroup paramViewGroup, final View paramView, int paramInt1, int paramInt2)
   {
     Object localObject = null;
     View localView2 = this.mWindow.findViewById(R.id.scrollIndicatorUp);
@@ -235,14 +276,40 @@ class AlertController
         }
         if (this.mMessage != null)
         {
-          this.mScrollView.setOnScrollChangeListener(new AlertController.2(this, paramView, (View)localObject));
-          this.mScrollView.post(new AlertController.3(this, paramView, (View)localObject));
+          this.mScrollView.setOnScrollChangeListener(new NestedScrollView.OnScrollChangeListener()
+          {
+            public void onScrollChange(NestedScrollView paramAnonymousNestedScrollView, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3, int paramAnonymousInt4)
+            {
+              AlertController.manageScrollIndicators(paramAnonymousNestedScrollView, paramView, this.val$bottom);
+            }
+          });
+          this.mScrollView.post(new Runnable()
+          {
+            public void run()
+            {
+              AlertController.manageScrollIndicators(AlertController.this.mScrollView, paramView, this.val$bottom);
+            }
+          });
           return;
         }
         if (this.mListView != null)
         {
-          this.mListView.setOnScrollListener(new AlertController.4(this, paramView, (View)localObject));
-          this.mListView.post(new AlertController.5(this, paramView, (View)localObject));
+          this.mListView.setOnScrollListener(new AbsListView.OnScrollListener()
+          {
+            public void onScroll(AbsListView paramAnonymousAbsListView, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3)
+            {
+              AlertController.manageScrollIndicators(paramAnonymousAbsListView, paramView, this.val$bottom);
+            }
+            
+            public void onScrollStateChanged(AbsListView paramAnonymousAbsListView, int paramAnonymousInt) {}
+          });
+          this.mListView.post(new Runnable()
+          {
+            public void run()
+            {
+              AlertController.manageScrollIndicators(AlertController.this.mListView, paramView, this.val$bottom);
+            }
+          });
           return;
         }
         if (paramView != null) {
@@ -501,8 +568,8 @@ class AlertController
         ((View)localObject1).setVisibility(0);
       }
       label279:
-      if ((this.mListView instanceof AlertController.RecycleListView)) {
-        ((AlertController.RecycleListView)this.mListView).setHasDecor(bool1, bool2);
+      if ((this.mListView instanceof RecycleListView)) {
+        ((RecycleListView)this.mListView).setHasDecor(bool1, bool2);
       }
       if (i == 0)
       {
@@ -732,6 +799,326 @@ class AlertController
     this.mViewSpacingTop = paramInt2;
     this.mViewSpacingRight = paramInt3;
     this.mViewSpacingBottom = paramInt4;
+  }
+  
+  public static class AlertParams
+  {
+    public ListAdapter mAdapter;
+    public boolean mCancelable;
+    public int mCheckedItem = -1;
+    public boolean[] mCheckedItems;
+    public final Context mContext;
+    public Cursor mCursor;
+    public View mCustomTitleView;
+    public boolean mForceInverseBackground;
+    public Drawable mIcon;
+    public int mIconAttrId = 0;
+    public int mIconId = 0;
+    public final LayoutInflater mInflater;
+    public String mIsCheckedColumn;
+    public boolean mIsMultiChoice;
+    public boolean mIsSingleChoice;
+    public CharSequence[] mItems;
+    public String mLabelColumn;
+    public CharSequence mMessage;
+    public Drawable mNegativeButtonIcon;
+    public DialogInterface.OnClickListener mNegativeButtonListener;
+    public CharSequence mNegativeButtonText;
+    public Drawable mNeutralButtonIcon;
+    public DialogInterface.OnClickListener mNeutralButtonListener;
+    public CharSequence mNeutralButtonText;
+    public DialogInterface.OnCancelListener mOnCancelListener;
+    public DialogInterface.OnMultiChoiceClickListener mOnCheckboxClickListener;
+    public DialogInterface.OnClickListener mOnClickListener;
+    public DialogInterface.OnDismissListener mOnDismissListener;
+    public AdapterView.OnItemSelectedListener mOnItemSelectedListener;
+    public DialogInterface.OnKeyListener mOnKeyListener;
+    public OnPrepareListViewListener mOnPrepareListViewListener;
+    public Drawable mPositiveButtonIcon;
+    public DialogInterface.OnClickListener mPositiveButtonListener;
+    public CharSequence mPositiveButtonText;
+    public boolean mRecycleOnMeasure = true;
+    public CharSequence mTitle;
+    public View mView;
+    public int mViewLayoutResId;
+    public int mViewSpacingBottom;
+    public int mViewSpacingLeft;
+    public int mViewSpacingRight;
+    public boolean mViewSpacingSpecified = false;
+    public int mViewSpacingTop;
+    
+    public AlertParams(Context paramContext)
+    {
+      this.mContext = paramContext;
+      this.mCancelable = true;
+      this.mInflater = ((LayoutInflater)paramContext.getSystemService("layout_inflater"));
+    }
+    
+    private void createListView(final AlertController paramAlertController)
+    {
+      final AlertController.RecycleListView localRecycleListView = (AlertController.RecycleListView)this.mInflater.inflate(paramAlertController.mListLayout, null);
+      Object localObject;
+      if (this.mIsMultiChoice) {
+        if (this.mCursor == null)
+        {
+          localObject = new ArrayAdapter(this.mContext, paramAlertController.mMultiChoiceItemLayout, 16908308, this.mItems)
+          {
+            public View getView(int paramAnonymousInt, View paramAnonymousView, ViewGroup paramAnonymousViewGroup)
+            {
+              paramAnonymousView = super.getView(paramAnonymousInt, paramAnonymousView, paramAnonymousViewGroup);
+              if ((AlertController.AlertParams.this.mCheckedItems != null) && (AlertController.AlertParams.this.mCheckedItems[paramAnonymousInt] != 0)) {
+                localRecycleListView.setItemChecked(paramAnonymousInt, true);
+              }
+              return paramAnonymousView;
+            }
+          };
+          if (this.mOnPrepareListViewListener != null) {
+            this.mOnPrepareListViewListener.onPrepareListView(localRecycleListView);
+          }
+          paramAlertController.mAdapter = ((ListAdapter)localObject);
+          paramAlertController.mCheckedItem = this.mCheckedItem;
+          if (this.mOnClickListener == null) {
+            break label271;
+          }
+          localRecycleListView.setOnItemClickListener(new AdapterView.OnItemClickListener()
+          {
+            public void onItemClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
+            {
+              AlertController.AlertParams.this.mOnClickListener.onClick(paramAlertController.mDialog, paramAnonymousInt);
+              if (!AlertController.AlertParams.this.mIsSingleChoice) {
+                paramAlertController.mDialog.dismiss();
+              }
+            }
+          });
+          label108:
+          if (this.mOnItemSelectedListener != null) {
+            localRecycleListView.setOnItemSelectedListener(this.mOnItemSelectedListener);
+          }
+          if (!this.mIsSingleChoice) {
+            break label297;
+          }
+          localRecycleListView.setChoiceMode(1);
+        }
+      }
+      for (;;)
+      {
+        paramAlertController.mListView = localRecycleListView;
+        return;
+        localObject = new CursorAdapter(this.mContext, this.mCursor, false)
+        {
+          private final int mIsCheckedIndex;
+          private final int mLabelIndex;
+          
+          public void bindView(View paramAnonymousView, Context paramAnonymousContext, Cursor paramAnonymousCursor)
+          {
+            ((CheckedTextView)paramAnonymousView.findViewById(16908308)).setText(paramAnonymousCursor.getString(this.mLabelIndex));
+            paramAnonymousView = localRecycleListView;
+            int i = paramAnonymousCursor.getPosition();
+            if (paramAnonymousCursor.getInt(this.mIsCheckedIndex) == 1) {}
+            for (boolean bool = true;; bool = false)
+            {
+              paramAnonymousView.setItemChecked(i, bool);
+              return;
+            }
+          }
+          
+          public View newView(Context paramAnonymousContext, Cursor paramAnonymousCursor, ViewGroup paramAnonymousViewGroup)
+          {
+            return AlertController.AlertParams.this.mInflater.inflate(paramAlertController.mMultiChoiceItemLayout, paramAnonymousViewGroup, false);
+          }
+        };
+        break;
+        if (this.mIsSingleChoice) {}
+        for (int i = paramAlertController.mSingleChoiceItemLayout;; i = paramAlertController.mListItemLayout)
+        {
+          if (this.mCursor == null) {
+            break label234;
+          }
+          localObject = new SimpleCursorAdapter(this.mContext, i, this.mCursor, new String[] { this.mLabelColumn }, new int[] { 16908308 });
+          break;
+        }
+        label234:
+        if (this.mAdapter != null)
+        {
+          localObject = this.mAdapter;
+          break;
+        }
+        localObject = new AlertController.CheckedItemAdapter(this.mContext, i, 16908308, this.mItems);
+        break;
+        label271:
+        if (this.mOnCheckboxClickListener == null) {
+          break label108;
+        }
+        localRecycleListView.setOnItemClickListener(new AdapterView.OnItemClickListener()
+        {
+          public void onItemClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
+          {
+            if (AlertController.AlertParams.this.mCheckedItems != null) {
+              AlertController.AlertParams.this.mCheckedItems[paramAnonymousInt] = localRecycleListView.isItemChecked(paramAnonymousInt);
+            }
+            AlertController.AlertParams.this.mOnCheckboxClickListener.onClick(paramAlertController.mDialog, paramAnonymousInt, localRecycleListView.isItemChecked(paramAnonymousInt));
+          }
+        });
+        break label108;
+        label297:
+        if (this.mIsMultiChoice) {
+          localRecycleListView.setChoiceMode(2);
+        }
+      }
+    }
+    
+    public void apply(AlertController paramAlertController)
+    {
+      if (this.mCustomTitleView != null)
+      {
+        paramAlertController.setCustomTitle(this.mCustomTitleView);
+        if (this.mMessage != null) {
+          paramAlertController.setMessage(this.mMessage);
+        }
+        if ((this.mPositiveButtonText != null) || (this.mPositiveButtonIcon != null)) {
+          paramAlertController.setButton(-1, this.mPositiveButtonText, this.mPositiveButtonListener, null, this.mPositiveButtonIcon);
+        }
+        if ((this.mNegativeButtonText != null) || (this.mNegativeButtonIcon != null)) {
+          paramAlertController.setButton(-2, this.mNegativeButtonText, this.mNegativeButtonListener, null, this.mNegativeButtonIcon);
+        }
+        if ((this.mNeutralButtonText != null) || (this.mNeutralButtonIcon != null)) {
+          paramAlertController.setButton(-3, this.mNeutralButtonText, this.mNeutralButtonListener, null, this.mNeutralButtonIcon);
+        }
+        if ((this.mItems != null) || (this.mCursor != null) || (this.mAdapter != null)) {
+          createListView(paramAlertController);
+        }
+        if (this.mView == null) {
+          break label269;
+        }
+        if (!this.mViewSpacingSpecified) {
+          break label260;
+        }
+        paramAlertController.setView(this.mView, this.mViewSpacingLeft, this.mViewSpacingTop, this.mViewSpacingRight, this.mViewSpacingBottom);
+      }
+      label260:
+      label269:
+      while (this.mViewLayoutResId == 0)
+      {
+        return;
+        if (this.mTitle != null) {
+          paramAlertController.setTitle(this.mTitle);
+        }
+        if (this.mIcon != null) {
+          paramAlertController.setIcon(this.mIcon);
+        }
+        if (this.mIconId != 0) {
+          paramAlertController.setIcon(this.mIconId);
+        }
+        if (this.mIconAttrId == 0) {
+          break;
+        }
+        paramAlertController.setIcon(paramAlertController.getIconAttributeResId(this.mIconAttrId));
+        break;
+        paramAlertController.setView(this.mView);
+        return;
+      }
+      paramAlertController.setView(this.mViewLayoutResId);
+    }
+    
+    public static abstract interface OnPrepareListViewListener
+    {
+      public abstract void onPrepareListView(ListView paramListView);
+    }
+  }
+  
+  private static final class ButtonHandler
+    extends Handler
+  {
+    private static final int MSG_DISMISS_DIALOG = 1;
+    private WeakReference<DialogInterface> mDialog;
+    
+    public ButtonHandler(DialogInterface paramDialogInterface)
+    {
+      this.mDialog = new WeakReference(paramDialogInterface);
+    }
+    
+    public void handleMessage(Message paramMessage)
+    {
+      switch (paramMessage.what)
+      {
+      case 0: 
+      default: 
+        return;
+      case -3: 
+      case -2: 
+      case -1: 
+        ((DialogInterface.OnClickListener)paramMessage.obj).onClick((DialogInterface)this.mDialog.get(), paramMessage.what);
+        return;
+      }
+      ((DialogInterface)paramMessage.obj).dismiss();
+    }
+  }
+  
+  private static class CheckedItemAdapter
+    extends ArrayAdapter<CharSequence>
+  {
+    public CheckedItemAdapter(Context paramContext, int paramInt1, int paramInt2, CharSequence[] paramArrayOfCharSequence)
+    {
+      super(paramInt1, paramInt2, paramArrayOfCharSequence);
+    }
+    
+    public long getItemId(int paramInt)
+    {
+      return paramInt;
+    }
+    
+    public boolean hasStableIds()
+    {
+      return true;
+    }
+  }
+  
+  public static class RecycleListView
+    extends ListView
+  {
+    private final int mPaddingBottomNoButtons;
+    private final int mPaddingTopNoTitle;
+    
+    public RecycleListView(Context paramContext)
+    {
+      this(paramContext, null);
+    }
+    
+    public RecycleListView(Context paramContext, AttributeSet paramAttributeSet)
+    {
+      super(paramAttributeSet);
+      paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.RecycleListView);
+      this.mPaddingBottomNoButtons = paramContext.getDimensionPixelOffset(R.styleable.RecycleListView_paddingBottomNoButtons, -1);
+      this.mPaddingTopNoTitle = paramContext.getDimensionPixelOffset(R.styleable.RecycleListView_paddingTopNoTitle, -1);
+    }
+    
+    public void setHasDecor(boolean paramBoolean1, boolean paramBoolean2)
+    {
+      int k;
+      int i;
+      int m;
+      if ((!paramBoolean2) || (!paramBoolean1))
+      {
+        k = getPaddingLeft();
+        if (!paramBoolean1) {
+          break label51;
+        }
+        i = getPaddingTop();
+        m = getPaddingRight();
+        if (!paramBoolean2) {
+          break label59;
+        }
+      }
+      label51:
+      label59:
+      for (int j = getPaddingBottom();; j = this.mPaddingBottomNoButtons)
+      {
+        setPadding(k, i, m, j);
+        return;
+        i = this.mPaddingTopNoTitle;
+        break;
+      }
+    }
   }
 }
 

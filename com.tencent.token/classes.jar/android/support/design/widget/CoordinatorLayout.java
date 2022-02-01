@@ -10,10 +10,15 @@ import android.graphics.Region.Op;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Build.VERSION;
+import android.os.Parcel;
 import android.os.Parcelable;
+import android.os.Parcelable.ClassLoaderCreator;
+import android.os.Parcelable.Creator;
 import android.os.SystemClock;
 import android.support.annotation.ColorInt;
 import android.support.annotation.DrawableRes;
+import android.support.annotation.FloatRange;
+import android.support.annotation.IdRes;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.annotation.RestrictTo;
@@ -27,6 +32,7 @@ import android.support.v4.math.MathUtils;
 import android.support.v4.util.ObjectsCompat;
 import android.support.v4.util.Pools.Pool;
 import android.support.v4.util.Pools.SynchronizedPool;
+import android.support.v4.view.AbsSavedState;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.view.NestedScrollingParent2;
 import android.support.v4.view.NestedScrollingParentHelper;
@@ -42,12 +48,18 @@ import android.util.Log;
 import android.util.SparseArray;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.View.BaseSavedState;
 import android.view.View.MeasureSpec;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.view.ViewGroup.MarginLayoutParams;
 import android.view.ViewGroup.OnHierarchyChangeListener;
+import android.view.ViewParent;
 import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnPreDrawListener;
+import java.lang.annotation.Annotation;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
 import java.lang.reflect.Constructor;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -60,21 +72,21 @@ public class CoordinatorLayout
   extends ViewGroup
   implements NestedScrollingParent2
 {
-  static final Class[] CONSTRUCTOR_PARAMS;
+  static final Class<?>[] CONSTRUCTOR_PARAMS;
   static final int EVENT_NESTED_SCROLL = 1;
   static final int EVENT_PRE_DRAW = 0;
   static final int EVENT_VIEW_REMOVED = 2;
   static final String TAG = "CoordinatorLayout";
-  static final Comparator TOP_SORTED_CHILDREN_COMPARATOR;
+  static final Comparator<View> TOP_SORTED_CHILDREN_COMPARATOR;
   private static final int TYPE_ON_INTERCEPT = 0;
   private static final int TYPE_ON_TOUCH = 1;
   static final String WIDGET_PACKAGE_NAME;
-  static final ThreadLocal sConstructors;
-  private static final Pools.Pool sRectPool;
+  static final ThreadLocal<Map<String, Constructor<Behavior>>> sConstructors;
+  private static final Pools.Pool<Rect> sRectPool;
   private OnApplyWindowInsetsListener mApplyWindowInsetsListener;
   private View mBehaviorTouchView;
-  private final DirectedAcyclicGraph mChildDag = new DirectedAcyclicGraph();
-  private final List mDependencySortedChildren = new ArrayList();
+  private final DirectedAcyclicGraph<View> mChildDag = new DirectedAcyclicGraph();
+  private final List<View> mDependencySortedChildren = new ArrayList();
   private boolean mDisallowInterceptReset;
   private boolean mDrawStatusBarBackground;
   private boolean mIsAttachedToWindow;
@@ -84,12 +96,12 @@ public class CoordinatorLayout
   private final NestedScrollingParentHelper mNestedScrollingParentHelper = new NestedScrollingParentHelper(this);
   private View mNestedScrollingTarget;
   ViewGroup.OnHierarchyChangeListener mOnHierarchyChangeListener;
-  private CoordinatorLayout.OnPreDrawListener mOnPreDrawListener;
+  private OnPreDrawListener mOnPreDrawListener;
   private Paint mScrimPaint;
   private Drawable mStatusBarBackground;
-  private final List mTempDependenciesList = new ArrayList();
+  private final List<View> mTempDependenciesList = new ArrayList();
   private final int[] mTempIntPair = new int[2];
-  private final List mTempList1 = new ArrayList();
+  private final List<View> mTempList1 = new ArrayList();
   
   static
   {
@@ -103,7 +115,7 @@ public class CoordinatorLayout
       }
     }
     label82:
-    for (TOP_SORTED_CHILDREN_COMPARATOR = new CoordinatorLayout.ViewElevationComparator();; TOP_SORTED_CHILDREN_COMPARATOR = null)
+    for (TOP_SORTED_CHILDREN_COMPARATOR = new ViewElevationComparator();; TOP_SORTED_CHILDREN_COMPARATOR = null)
     {
       CONSTRUCTOR_PARAMS = new Class[] { Context.class, AttributeSet.class };
       sConstructors = new ThreadLocal();
@@ -148,7 +160,7 @@ public class CoordinatorLayout
     this.mStatusBarBackground = paramAttributeSet.getDrawable(R.styleable.CoordinatorLayout_statusBarBackground);
     paramAttributeSet.recycle();
     setupForInsets();
-    super.setOnHierarchyChangeListener(new CoordinatorLayout.HierarchyChangeListener(this));
+    super.setOnHierarchyChangeListener(new HierarchyChangeListener());
   }
   
   @NonNull
@@ -162,7 +174,7 @@ public class CoordinatorLayout
     return localRect1;
   }
   
-  private void constrainChildRect(CoordinatorLayout.LayoutParams paramLayoutParams, Rect paramRect, int paramInt1, int paramInt2)
+  private void constrainChildRect(LayoutParams paramLayoutParams, Rect paramRect, int paramInt1, int paramInt2)
   {
     int j = getWidth();
     int i = getHeight();
@@ -184,7 +196,7 @@ public class CoordinatorLayout
       localObject = getChildAt(i);
       if (ViewCompat.getFitsSystemWindows((View)localObject))
       {
-        CoordinatorLayout.Behavior localBehavior = ((CoordinatorLayout.LayoutParams)((View)localObject).getLayoutParams()).getBehavior();
+        Behavior localBehavior = ((LayoutParams)((View)localObject).getLayoutParams()).getBehavior();
         if (localBehavior != null)
         {
           localObject = localBehavior.onApplyWindowInsets(this, (View)localObject, paramWindowInsetsCompat);
@@ -202,7 +214,7 @@ public class CoordinatorLayout
     }
   }
   
-  private void getDesiredAnchoredChildRectWithoutConstraints(View paramView, int paramInt1, Rect paramRect1, Rect paramRect2, CoordinatorLayout.LayoutParams paramLayoutParams, int paramInt2, int paramInt3)
+  private void getDesiredAnchoredChildRectWithoutConstraints(View paramView, int paramInt1, Rect paramRect1, Rect paramRect2, LayoutParams paramLayoutParams, int paramInt2, int paramInt3)
   {
     int k = GravityCompat.getAbsoluteGravity(resolveAnchoredChildGravity(paramLayoutParams.gravity), paramInt1);
     int i = GravityCompat.getAbsoluteGravity(resolveGravity(paramLayoutParams.anchorGravity), paramInt1);
@@ -266,7 +278,7 @@ public class CoordinatorLayout
     return this.mKeylines[paramInt];
   }
   
-  private void getTopSortedChildren(List paramList)
+  private void getTopSortedChildren(List<View> paramList)
   {
     paramList.clear();
     boolean bool = isChildrenDrawingOrderEnabled();
@@ -294,7 +306,7 @@ public class CoordinatorLayout
   
   private void layoutChild(View paramView, int paramInt)
   {
-    CoordinatorLayout.LayoutParams localLayoutParams = (CoordinatorLayout.LayoutParams)paramView.getLayoutParams();
+    LayoutParams localLayoutParams = (LayoutParams)paramView.getLayoutParams();
     Rect localRect1 = acquireTempRect();
     localRect1.set(getPaddingLeft() + localLayoutParams.leftMargin, getPaddingTop() + localLayoutParams.topMargin, getWidth() - getPaddingRight() - localLayoutParams.rightMargin, getHeight() - getPaddingBottom() - localLayoutParams.bottomMargin);
     if ((this.mLastInsets != null) && (ViewCompat.getFitsSystemWindows(this)) && (!ViewCompat.getFitsSystemWindows(paramView)))
@@ -313,7 +325,7 @@ public class CoordinatorLayout
   
   private void layoutChildWithAnchor(View paramView1, View paramView2, int paramInt)
   {
-    Object localObject = (CoordinatorLayout.LayoutParams)paramView1.getLayoutParams();
+    Object localObject = (LayoutParams)paramView1.getLayoutParams();
     localObject = acquireTempRect();
     Rect localRect = acquireTempRect();
     try
@@ -332,7 +344,7 @@ public class CoordinatorLayout
   
   private void layoutChildWithKeyline(View paramView, int paramInt1, int paramInt2)
   {
-    CoordinatorLayout.LayoutParams localLayoutParams = (CoordinatorLayout.LayoutParams)paramView.getLayoutParams();
+    LayoutParams localLayoutParams = (LayoutParams)paramView.getLayoutParams();
     int i1 = GravityCompat.getAbsoluteGravity(resolveKeylineGravity(localLayoutParams.gravity), paramInt2);
     int n = getWidth();
     int m = getHeight();
@@ -374,8 +386,8 @@ public class CoordinatorLayout
     while ((paramView.getWidth() <= 0) || (paramView.getHeight() <= 0)) {
       return;
     }
-    CoordinatorLayout.LayoutParams localLayoutParams = (CoordinatorLayout.LayoutParams)paramView.getLayoutParams();
-    CoordinatorLayout.Behavior localBehavior = localLayoutParams.getBehavior();
+    LayoutParams localLayoutParams = (LayoutParams)paramView.getLayoutParams();
+    Behavior localBehavior = localLayoutParams.getBehavior();
     Rect localRect1 = acquireTempRect();
     Rect localRect2 = acquireTempRect();
     localRect2.set(paramView.getLeft(), paramView.getTop(), paramView.getRight(), paramView.getBottom());
@@ -452,7 +464,7 @@ public class CoordinatorLayout
     }
   }
   
-  static CoordinatorLayout.Behavior parseBehavior(Context paramContext, AttributeSet paramAttributeSet, String paramString)
+  static Behavior parseBehavior(Context paramContext, AttributeSet paramAttributeSet, String paramString)
   {
     if (TextUtils.isEmpty(paramString)) {
       return null;
@@ -480,7 +492,7 @@ public class CoordinatorLayout
           localConstructor1.setAccessible(true);
           paramString.put(str, localConstructor1);
         }
-        paramContext = (CoordinatorLayout.Behavior)localConstructor1.newInstance(new Object[] { paramContext, paramAttributeSet });
+        paramContext = (Behavior)localConstructor1.newInstance(new Object[] { paramContext, paramAttributeSet });
         return paramContext;
       }
       catch (Exception paramContext)
@@ -509,11 +521,11 @@ public class CoordinatorLayout
     int m = localList.size();
     int j = 0;
     View localView;
-    CoordinatorLayout.Behavior localBehavior;
+    Behavior localBehavior;
     if (j < m)
     {
       localView = (View)localList.get(j);
-      CoordinatorLayout.LayoutParams localLayoutParams = (CoordinatorLayout.LayoutParams)localView.getLayoutParams();
+      LayoutParams localLayoutParams = (LayoutParams)localView.getLayoutParams();
       localBehavior = localLayoutParams.getBehavior();
       if (((bool1) || (i != 0)) && (k != 0))
       {
@@ -598,7 +610,7 @@ public class CoordinatorLayout
     while (i < k)
     {
       View localView1 = getChildAt(i);
-      CoordinatorLayout.LayoutParams localLayoutParams = getResolvedLayoutParams(localView1);
+      LayoutParams localLayoutParams = getResolvedLayoutParams(localView1);
       localLayoutParams.findAnchorView(this, localView1);
       this.mChildDag.addNode(localView1);
       int j = 0;
@@ -638,7 +650,7 @@ public class CoordinatorLayout
     if (i < j)
     {
       View localView = getChildAt(i);
-      CoordinatorLayout.Behavior localBehavior = ((CoordinatorLayout.LayoutParams)localView.getLayoutParams()).getBehavior();
+      Behavior localBehavior = ((LayoutParams)localView.getLayoutParams()).getBehavior();
       MotionEvent localMotionEvent;
       if (localBehavior != null)
       {
@@ -661,7 +673,7 @@ public class CoordinatorLayout
     i = 0;
     while (i < j)
     {
-      ((CoordinatorLayout.LayoutParams)getChildAt(i).getLayoutParams()).resetTouchBehaviorTracking();
+      ((LayoutParams)getChildAt(i).getLayoutParams()).resetTouchBehaviorTracking();
       i += 1;
     }
     this.mBehaviorTouchView = null;
@@ -703,7 +715,7 @@ public class CoordinatorLayout
   
   private void setInsetOffsetX(View paramView, int paramInt)
   {
-    CoordinatorLayout.LayoutParams localLayoutParams = (CoordinatorLayout.LayoutParams)paramView.getLayoutParams();
+    LayoutParams localLayoutParams = (LayoutParams)paramView.getLayoutParams();
     if (localLayoutParams.mInsetOffsetX != paramInt)
     {
       ViewCompat.offsetLeftAndRight(paramView, paramInt - localLayoutParams.mInsetOffsetX);
@@ -713,7 +725,7 @@ public class CoordinatorLayout
   
   private void setInsetOffsetY(View paramView, int paramInt)
   {
-    CoordinatorLayout.LayoutParams localLayoutParams = (CoordinatorLayout.LayoutParams)paramView.getLayoutParams();
+    LayoutParams localLayoutParams = (LayoutParams)paramView.getLayoutParams();
     if (localLayoutParams.mInsetOffsetY != paramInt)
     {
       ViewCompat.offsetTopAndBottom(paramView, paramInt - localLayoutParams.mInsetOffsetY);
@@ -729,7 +741,13 @@ public class CoordinatorLayout
     if (ViewCompat.getFitsSystemWindows(this))
     {
       if (this.mApplyWindowInsetsListener == null) {
-        this.mApplyWindowInsetsListener = new CoordinatorLayout.1(this);
+        this.mApplyWindowInsetsListener = new OnApplyWindowInsetsListener()
+        {
+          public WindowInsetsCompat onApplyWindowInsets(View paramAnonymousView, WindowInsetsCompat paramAnonymousWindowInsetsCompat)
+          {
+            return CoordinatorLayout.this.setWindowInsets(paramAnonymousWindowInsetsCompat);
+          }
+        };
       }
       ViewCompat.setOnApplyWindowInsetsListener(this, this.mApplyWindowInsetsListener);
       setSystemUiVisibility(1280);
@@ -743,7 +761,7 @@ public class CoordinatorLayout
     if (this.mIsAttachedToWindow)
     {
       if (this.mOnPreDrawListener == null) {
-        this.mOnPreDrawListener = new CoordinatorLayout.OnPreDrawListener(this);
+        this.mOnPreDrawListener = new OnPreDrawListener();
       }
       getViewTreeObserver().addOnPreDrawListener(this.mOnPreDrawListener);
     }
@@ -752,7 +770,7 @@ public class CoordinatorLayout
   
   protected boolean checkLayoutParams(ViewGroup.LayoutParams paramLayoutParams)
   {
-    return ((paramLayoutParams instanceof CoordinatorLayout.LayoutParams)) && (super.checkLayoutParams(paramLayoutParams));
+    return ((paramLayoutParams instanceof LayoutParams)) && (super.checkLayoutParams(paramLayoutParams));
   }
   
   public void dispatchDependentViewsChanged(View paramView)
@@ -764,7 +782,7 @@ public class CoordinatorLayout
       while (i < localList.size())
       {
         View localView = (View)localList.get(i);
-        CoordinatorLayout.Behavior localBehavior = ((CoordinatorLayout.LayoutParams)localView.getLayoutParams()).getBehavior();
+        Behavior localBehavior = ((LayoutParams)localView.getLayoutParams()).getBehavior();
         if (localBehavior != null) {
           localBehavior.onDependentViewChanged(this, localView, paramView);
         }
@@ -822,7 +840,7 @@ public class CoordinatorLayout
   
   protected boolean drawChild(Canvas paramCanvas, View paramView, long paramLong)
   {
-    CoordinatorLayout.LayoutParams localLayoutParams = (CoordinatorLayout.LayoutParams)paramView.getLayoutParams();
+    LayoutParams localLayoutParams = (LayoutParams)paramView.getLayoutParams();
     if (localLayoutParams.mBehavior != null)
     {
       float f = localLayoutParams.mBehavior.getScrimOpacity(this, paramView);
@@ -893,25 +911,25 @@ public class CoordinatorLayout
     removePreDrawListener();
   }
   
-  protected CoordinatorLayout.LayoutParams generateDefaultLayoutParams()
+  protected LayoutParams generateDefaultLayoutParams()
   {
-    return new CoordinatorLayout.LayoutParams(-2, -2);
+    return new LayoutParams(-2, -2);
   }
   
-  public CoordinatorLayout.LayoutParams generateLayoutParams(AttributeSet paramAttributeSet)
+  public LayoutParams generateLayoutParams(AttributeSet paramAttributeSet)
   {
-    return new CoordinatorLayout.LayoutParams(getContext(), paramAttributeSet);
+    return new LayoutParams(getContext(), paramAttributeSet);
   }
   
-  protected CoordinatorLayout.LayoutParams generateLayoutParams(ViewGroup.LayoutParams paramLayoutParams)
+  protected LayoutParams generateLayoutParams(ViewGroup.LayoutParams paramLayoutParams)
   {
-    if ((paramLayoutParams instanceof CoordinatorLayout.LayoutParams)) {
-      return new CoordinatorLayout.LayoutParams((CoordinatorLayout.LayoutParams)paramLayoutParams);
+    if ((paramLayoutParams instanceof LayoutParams)) {
+      return new LayoutParams((LayoutParams)paramLayoutParams);
     }
     if ((paramLayoutParams instanceof ViewGroup.MarginLayoutParams)) {
-      return new CoordinatorLayout.LayoutParams((ViewGroup.MarginLayoutParams)paramLayoutParams);
+      return new LayoutParams((ViewGroup.MarginLayoutParams)paramLayoutParams);
     }
-    return new CoordinatorLayout.LayoutParams(paramLayoutParams);
+    return new LayoutParams(paramLayoutParams);
   }
   
   void getChildRect(View paramView, boolean paramBoolean, Rect paramRect)
@@ -930,7 +948,7 @@ public class CoordinatorLayout
   }
   
   @NonNull
-  public List getDependencies(@NonNull View paramView)
+  public List<View> getDependencies(@NonNull View paramView)
   {
     paramView = this.mChildDag.getOutgoingEdges(paramView);
     this.mTempDependenciesList.clear();
@@ -941,14 +959,14 @@ public class CoordinatorLayout
   }
   
   @VisibleForTesting
-  final List getDependencySortedChildren()
+  final List<View> getDependencySortedChildren()
   {
     prepareChildren();
     return Collections.unmodifiableList(this.mDependencySortedChildren);
   }
   
   @NonNull
-  public List getDependents(@NonNull View paramView)
+  public List<View> getDependents(@NonNull View paramView)
   {
     paramView = this.mChildDag.getIncomingEdges(paramView);
     this.mTempDependenciesList.clear();
@@ -965,7 +983,7 @@ public class CoordinatorLayout
   
   void getDesiredAnchoredChildRect(View paramView, int paramInt, Rect paramRect1, Rect paramRect2)
   {
-    CoordinatorLayout.LayoutParams localLayoutParams = (CoordinatorLayout.LayoutParams)paramView.getLayoutParams();
+    LayoutParams localLayoutParams = (LayoutParams)paramView.getLayoutParams();
     int i = paramView.getMeasuredWidth();
     int j = paramView.getMeasuredHeight();
     getDesiredAnchoredChildRectWithoutConstraints(paramView, paramInt, paramRect1, paramRect2, localLayoutParams, i, j);
@@ -974,7 +992,7 @@ public class CoordinatorLayout
   
   void getLastChildRect(View paramView, Rect paramRect)
   {
-    paramRect.set(((CoordinatorLayout.LayoutParams)paramView.getLayoutParams()).getLastChildRect());
+    paramRect.set(((LayoutParams)paramView.getLayoutParams()).getLastChildRect());
   }
   
   @RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
@@ -988,14 +1006,14 @@ public class CoordinatorLayout
     return this.mNestedScrollingParentHelper.getNestedScrollAxes();
   }
   
-  CoordinatorLayout.LayoutParams getResolvedLayoutParams(View paramView)
+  LayoutParams getResolvedLayoutParams(View paramView)
   {
-    CoordinatorLayout.LayoutParams localLayoutParams = (CoordinatorLayout.LayoutParams)paramView.getLayoutParams();
+    LayoutParams localLayoutParams = (LayoutParams)paramView.getLayoutParams();
     if (!localLayoutParams.mBehaviorResolved)
     {
-      if ((paramView instanceof CoordinatorLayout.AttachedBehavior))
+      if ((paramView instanceof AttachedBehavior))
       {
-        paramView = ((CoordinatorLayout.AttachedBehavior)paramView).getBehavior();
+        paramView = ((AttachedBehavior)paramView).getBehavior();
         if (paramView == null) {
           Log.e("CoordinatorLayout", "Attached behavior class is null");
         }
@@ -1015,7 +1033,7 @@ public class CoordinatorLayout
       if (localClass == null) {
         break;
       }
-      paramView = (CoordinatorLayout.DefaultBehavior)localClass.getAnnotation(CoordinatorLayout.DefaultBehavior.class);
+      paramView = (DefaultBehavior)localClass.getAnnotation(DefaultBehavior.class);
       localView = paramView;
       if (paramView != null) {
         break;
@@ -1025,7 +1043,7 @@ public class CoordinatorLayout
     if (localView != null) {}
     try
     {
-      localLayoutParams.setBehavior((CoordinatorLayout.Behavior)localView.value().getDeclaredConstructor(new Class[0]).newInstance(new Object[0]));
+      localLayoutParams.setBehavior((Behavior)localView.value().getDeclaredConstructor(new Class[0]).newInstance(new Object[0]));
       localLayoutParams.mBehaviorResolved = true;
       return localLayoutParams;
     }
@@ -1071,7 +1089,7 @@ public class CoordinatorLayout
   
   void offsetChildToAnchor(View paramView, int paramInt)
   {
-    CoordinatorLayout.LayoutParams localLayoutParams = (CoordinatorLayout.LayoutParams)paramView.getLayoutParams();
+    LayoutParams localLayoutParams = (LayoutParams)paramView.getLayoutParams();
     Rect localRect1;
     Rect localRect2;
     Rect localRect3;
@@ -1105,7 +1123,7 @@ public class CoordinatorLayout
       }
       if (paramInt != 0)
       {
-        CoordinatorLayout.Behavior localBehavior = localLayoutParams.getBehavior();
+        Behavior localBehavior = localLayoutParams.getBehavior();
         if (localBehavior != null) {
           localBehavior.onDependentViewChanged(this, paramView, localLayoutParams.mAnchorView);
         }
@@ -1124,7 +1142,7 @@ public class CoordinatorLayout
     if (this.mNeedsPreDrawListener)
     {
       if (this.mOnPreDrawListener == null) {
-        this.mOnPreDrawListener = new CoordinatorLayout.OnPreDrawListener(this);
+        this.mOnPreDrawListener = new OnPreDrawListener();
       }
       getViewTreeObserver().addOnPreDrawListener(this.mOnPreDrawListener);
     }
@@ -1145,7 +1163,7 @@ public class CoordinatorLayout
     while (i < m)
     {
       View localView = (View)this.mDependencySortedChildren.get(i);
-      Object localObject1 = (CoordinatorLayout.LayoutParams)localView.getLayoutParams();
+      Object localObject1 = (LayoutParams)localView.getLayoutParams();
       if ((paramInt == 0) && (localView.getVisibility() == 8))
       {
         i += 1;
@@ -1157,15 +1175,15 @@ public class CoordinatorLayout
         while (j < i)
         {
           localObject2 = (View)this.mDependencySortedChildren.get(j);
-          if (((CoordinatorLayout.LayoutParams)localObject1).mAnchorDirectChild == localObject2) {
+          if (((LayoutParams)localObject1).mAnchorDirectChild == localObject2) {
             offsetChildToAnchor(localView, k);
           }
           j += 1;
         }
         getChildRect(localView, true, localRect2);
-        if ((((CoordinatorLayout.LayoutParams)localObject1).insetEdge != 0) && (!localRect2.isEmpty()))
+        if ((((LayoutParams)localObject1).insetEdge != 0) && (!localRect2.isEmpty()))
         {
-          j = GravityCompat.getAbsoluteGravity(((CoordinatorLayout.LayoutParams)localObject1).insetEdge, k);
+          j = GravityCompat.getAbsoluteGravity(((LayoutParams)localObject1).insetEdge, k);
           switch (j & 0x70)
           {
           default: 
@@ -1176,10 +1194,10 @@ public class CoordinatorLayout
             break;
           }
         }
-        CoordinatorLayout.Behavior localBehavior;
+        Behavior localBehavior;
         for (;;)
         {
-          if ((((CoordinatorLayout.LayoutParams)localObject1).dodgeInsetEdges != 0) && (localView.getVisibility() == 0)) {
+          if ((((LayoutParams)localObject1).dodgeInsetEdges != 0) && (localView.getVisibility() == 0)) {
             offsetChildByInset(localView, localRect1, k);
           }
           if (paramInt != 2)
@@ -1194,14 +1212,14 @@ public class CoordinatorLayout
           while (j < m)
           {
             localObject1 = (View)this.mDependencySortedChildren.get(j);
-            localObject2 = (CoordinatorLayout.LayoutParams)((View)localObject1).getLayoutParams();
-            localBehavior = ((CoordinatorLayout.LayoutParams)localObject2).getBehavior();
+            localObject2 = (LayoutParams)((View)localObject1).getLayoutParams();
+            localBehavior = ((LayoutParams)localObject2).getBehavior();
             if ((localBehavior != null) && (localBehavior.layoutDependsOn(this, (View)localObject1, localView)))
             {
-              if ((paramInt != 0) || (!((CoordinatorLayout.LayoutParams)localObject2).getChangedAfterNestedScroll())) {
+              if ((paramInt != 0) || (!((LayoutParams)localObject2).getChangedAfterNestedScroll())) {
                 break label467;
               }
-              ((CoordinatorLayout.LayoutParams)localObject2).resetChangedAfterNestedScroll();
+              ((LayoutParams)localObject2).resetChangedAfterNestedScroll();
             }
             j += 1;
           }
@@ -1219,7 +1237,7 @@ public class CoordinatorLayout
         }
         for (boolean bool = localBehavior.onDependentViewChanged(this, (View)localObject1, localView); paramInt == 1; bool = true)
         {
-          ((CoordinatorLayout.LayoutParams)localObject2).setChangedAfterNestedScroll(bool);
+          ((LayoutParams)localObject2).setChangedAfterNestedScroll(bool);
           break;
           localBehavior.onDependentViewRemoved(this, (View)localObject1, localView);
         }
@@ -1292,7 +1310,7 @@ public class CoordinatorLayout
       {
         paramInt1 += 1;
         break;
-        CoordinatorLayout.Behavior localBehavior = ((CoordinatorLayout.LayoutParams)localView.getLayoutParams()).getBehavior();
+        Behavior localBehavior = ((LayoutParams)localView.getLayoutParams()).getBehavior();
         if ((localBehavior == null) || (!localBehavior.onLayoutChild(this, localView, paramInt2))) {
           onLayoutChild(localView, paramInt2);
         }
@@ -1302,7 +1320,7 @@ public class CoordinatorLayout
   
   public void onLayoutChild(View paramView, int paramInt)
   {
-    CoordinatorLayout.LayoutParams localLayoutParams = (CoordinatorLayout.LayoutParams)paramView.getLayoutParams();
+    LayoutParams localLayoutParams = (LayoutParams)paramView.getLayoutParams();
     if (localLayoutParams.checkAnchorChanged()) {
       throw new IllegalStateException("An anchor may not be changed after CoordinatorLayout measurement begins before layout is complete.");
     }
@@ -1376,7 +1394,7 @@ public class CoordinatorLayout
       n = 0;
       break;
     }
-    CoordinatorLayout.LayoutParams localLayoutParams = (CoordinatorLayout.LayoutParams)localView.getLayoutParams();
+    LayoutParams localLayoutParams = (LayoutParams)localView.getLayoutParams();
     int i3 = 0;
     int m = i3;
     int i4;
@@ -1406,7 +1424,7 @@ public class CoordinatorLayout
     }
     for (;;)
     {
-      CoordinatorLayout.Behavior localBehavior = localLayoutParams.getBehavior();
+      Behavior localBehavior = localLayoutParams.getBehavior();
       if ((localBehavior == null) || (!localBehavior.onMeasureChild(this, localView, i3, m, i4, 0))) {
         onMeasureChild(localView, i3, m, i4, 0);
       }
@@ -1458,13 +1476,13 @@ public class CoordinatorLayout
     {
       i += 1;
       break;
-      Object localObject = (CoordinatorLayout.LayoutParams)localView.getLayoutParams();
-      if (((CoordinatorLayout.LayoutParams)localObject).isNestedScrollAccepted(0))
+      Object localObject = (LayoutParams)localView.getLayoutParams();
+      if (((LayoutParams)localObject).isNestedScrollAccepted(0))
       {
-        localObject = ((CoordinatorLayout.LayoutParams)localObject).getBehavior();
+        localObject = ((LayoutParams)localObject).getBehavior();
         if (localObject != null)
         {
-          bool = ((CoordinatorLayout.Behavior)localObject).onNestedFling(this, localView, paramView, paramFloat1, paramFloat2, paramBoolean) | bool;
+          bool = ((Behavior)localObject).onNestedFling(this, localView, paramView, paramFloat1, paramFloat2, paramBoolean) | bool;
           continue;
           if (bool) {
             onChildViewsChanged(1);
@@ -1490,13 +1508,13 @@ public class CoordinatorLayout
     {
       i += 1;
       break;
-      Object localObject = (CoordinatorLayout.LayoutParams)localView.getLayoutParams();
-      if (((CoordinatorLayout.LayoutParams)localObject).isNestedScrollAccepted(0))
+      Object localObject = (LayoutParams)localView.getLayoutParams();
+      if (((LayoutParams)localObject).isNestedScrollAccepted(0))
       {
-        localObject = ((CoordinatorLayout.LayoutParams)localObject).getBehavior();
+        localObject = ((LayoutParams)localObject).getBehavior();
         if (localObject != null)
         {
-          bool = ((CoordinatorLayout.Behavior)localObject).onNestedPreFling(this, localView, paramView, paramFloat1, paramFloat2) | bool;
+          bool = ((Behavior)localObject).onNestedPreFling(this, localView, paramView, paramFloat1, paramFloat2) | bool;
           continue;
           return bool;
         }
@@ -1538,8 +1556,8 @@ public class CoordinatorLayout
       j = m;
       m = n;
       break;
-      Object localObject = (CoordinatorLayout.LayoutParams)localView.getLayoutParams();
-      if (!((CoordinatorLayout.LayoutParams)localObject).isNestedScrollAccepted(paramInt3))
+      Object localObject = (LayoutParams)localView.getLayoutParams();
+      if (!((LayoutParams)localObject).isNestedScrollAccepted(paramInt3))
       {
         n = k;
         k = j;
@@ -1548,13 +1566,13 @@ public class CoordinatorLayout
       }
       else
       {
-        localObject = ((CoordinatorLayout.LayoutParams)localObject).getBehavior();
+        localObject = ((LayoutParams)localObject).getBehavior();
         if (localObject != null)
         {
           int[] arrayOfInt = this.mTempIntPair;
           this.mTempIntPair[1] = 0;
           arrayOfInt[0] = 0;
-          ((CoordinatorLayout.Behavior)localObject).onNestedPreScroll(this, localView, paramView, paramInt1, paramInt2, this.mTempIntPair, paramInt3);
+          ((Behavior)localObject).onNestedPreScroll(this, localView, paramView, paramInt1, paramInt2, this.mTempIntPair, paramInt3);
           if (paramInt1 > 0)
           {
             k = Math.max(j, this.mTempIntPair[0]);
@@ -1607,13 +1625,13 @@ public class CoordinatorLayout
     {
       j += 1;
       break;
-      Object localObject = (CoordinatorLayout.LayoutParams)localView.getLayoutParams();
-      if (((CoordinatorLayout.LayoutParams)localObject).isNestedScrollAccepted(paramInt5))
+      Object localObject = (LayoutParams)localView.getLayoutParams();
+      if (((LayoutParams)localObject).isNestedScrollAccepted(paramInt5))
       {
-        localObject = ((CoordinatorLayout.LayoutParams)localObject).getBehavior();
+        localObject = ((LayoutParams)localObject).getBehavior();
         if (localObject != null)
         {
-          ((CoordinatorLayout.Behavior)localObject).onNestedScroll(this, localView, paramView, paramInt1, paramInt2, paramInt3, paramInt4, paramInt5);
+          ((Behavior)localObject).onNestedScroll(this, localView, paramView, paramInt1, paramInt2, paramInt3, paramInt4, paramInt5);
           i = 1;
           continue;
           if (i != 0) {
@@ -1639,15 +1657,15 @@ public class CoordinatorLayout
     if (i < j)
     {
       View localView = getChildAt(i);
-      Object localObject = (CoordinatorLayout.LayoutParams)localView.getLayoutParams();
-      if (!((CoordinatorLayout.LayoutParams)localObject).isNestedScrollAccepted(paramInt2)) {}
+      Object localObject = (LayoutParams)localView.getLayoutParams();
+      if (!((LayoutParams)localObject).isNestedScrollAccepted(paramInt2)) {}
       for (;;)
       {
         i += 1;
         break;
-        localObject = ((CoordinatorLayout.LayoutParams)localObject).getBehavior();
+        localObject = ((LayoutParams)localObject).getBehavior();
         if (localObject != null) {
-          ((CoordinatorLayout.Behavior)localObject).onNestedScrollAccepted(this, localView, paramView1, paramView2, paramInt1, paramInt2);
+          ((Behavior)localObject).onNestedScrollAccepted(this, localView, paramView1, paramView2, paramInt1, paramInt2);
         }
       }
     }
@@ -1655,13 +1673,13 @@ public class CoordinatorLayout
   
   protected void onRestoreInstanceState(Parcelable paramParcelable)
   {
-    if (!(paramParcelable instanceof CoordinatorLayout.SavedState)) {
+    if (!(paramParcelable instanceof SavedState)) {
       super.onRestoreInstanceState(paramParcelable);
     }
     for (;;)
     {
       return;
-      paramParcelable = (CoordinatorLayout.SavedState)paramParcelable;
+      paramParcelable = (SavedState)paramParcelable;
       super.onRestoreInstanceState(paramParcelable.getSuperState());
       paramParcelable = paramParcelable.behaviorStates;
       int j = getChildCount();
@@ -1670,7 +1688,7 @@ public class CoordinatorLayout
       {
         View localView = getChildAt(i);
         int k = localView.getId();
-        CoordinatorLayout.Behavior localBehavior = getResolvedLayoutParams(localView).getBehavior();
+        Behavior localBehavior = getResolvedLayoutParams(localView).getBehavior();
         if ((k != -1) && (localBehavior != null))
         {
           Parcelable localParcelable = (Parcelable)paramParcelable.get(k);
@@ -1685,7 +1703,7 @@ public class CoordinatorLayout
   
   protected Parcelable onSaveInstanceState()
   {
-    CoordinatorLayout.SavedState localSavedState = new CoordinatorLayout.SavedState(super.onSaveInstanceState());
+    SavedState localSavedState = new SavedState(super.onSaveInstanceState());
     SparseArray localSparseArray = new SparseArray();
     int j = getChildCount();
     int i = 0;
@@ -1693,7 +1711,7 @@ public class CoordinatorLayout
     {
       Object localObject = getChildAt(i);
       int k = ((View)localObject).getId();
-      CoordinatorLayout.Behavior localBehavior = ((CoordinatorLayout.LayoutParams)((View)localObject).getLayoutParams()).getBehavior();
+      Behavior localBehavior = ((LayoutParams)((View)localObject).getLayoutParams()).getBehavior();
       if ((k != -1) && (localBehavior != null))
       {
         localObject = localBehavior.onSaveInstanceState(this, (View)localObject);
@@ -1725,8 +1743,8 @@ public class CoordinatorLayout
       {
         i += 1;
         break;
-        CoordinatorLayout.LayoutParams localLayoutParams = (CoordinatorLayout.LayoutParams)localView.getLayoutParams();
-        CoordinatorLayout.Behavior localBehavior = localLayoutParams.getBehavior();
+        LayoutParams localLayoutParams = (LayoutParams)localView.getLayoutParams();
+        Behavior localBehavior = localLayoutParams.getBehavior();
         if (localBehavior != null)
         {
           boolean bool2 = localBehavior.onStartNestedScroll(this, localView, paramView1, paramView2, paramInt1, paramInt2);
@@ -1755,13 +1773,13 @@ public class CoordinatorLayout
     if (i < j)
     {
       View localView = getChildAt(i);
-      CoordinatorLayout.LayoutParams localLayoutParams = (CoordinatorLayout.LayoutParams)localView.getLayoutParams();
+      LayoutParams localLayoutParams = (LayoutParams)localView.getLayoutParams();
       if (!localLayoutParams.isNestedScrollAccepted(paramInt)) {}
       for (;;)
       {
         i += 1;
         break;
-        CoordinatorLayout.Behavior localBehavior = localLayoutParams.getBehavior();
+        Behavior localBehavior = localLayoutParams.getBehavior();
         if (localBehavior != null) {
           localBehavior.onStopNestedScroll(this, localView, paramView, paramInt);
         }
@@ -1784,7 +1802,7 @@ public class CoordinatorLayout
     }
     for (;;)
     {
-      CoordinatorLayout.Behavior localBehavior = ((CoordinatorLayout.LayoutParams)this.mBehaviorTouchView.getLayoutParams()).getBehavior();
+      Behavior localBehavior = ((LayoutParams)this.mBehaviorTouchView.getLayoutParams()).getBehavior();
       boolean bool1;
       if (localBehavior != null) {
         bool1 = localBehavior.onTouchEvent(this, this.mBehaviorTouchView, paramMotionEvent);
@@ -1829,7 +1847,7 @@ public class CoordinatorLayout
   
   void recordLastChildRect(View paramView, Rect paramRect)
   {
-    ((CoordinatorLayout.LayoutParams)paramView.getLayoutParams()).setLastChildRect(paramRect);
+    ((LayoutParams)paramView.getLayoutParams()).setLastChildRect(paramRect);
   }
   
   void removePreDrawListener()
@@ -1842,7 +1860,7 @@ public class CoordinatorLayout
   
   public boolean requestChildRectangleOnScreen(View paramView, Rect paramRect, boolean paramBoolean)
   {
-    CoordinatorLayout.Behavior localBehavior = ((CoordinatorLayout.LayoutParams)paramView.getLayoutParams()).getBehavior();
+    Behavior localBehavior = ((LayoutParams)paramView.getLayoutParams()).getBehavior();
     if ((localBehavior != null) && (localBehavior.onRequestChildRectangleOnScreen(this, paramView, paramRect, paramBoolean))) {
       return true;
     }
@@ -1964,6 +1982,579 @@ public class CoordinatorLayout
   protected boolean verifyDrawable(Drawable paramDrawable)
   {
     return (super.verifyDrawable(paramDrawable)) || (paramDrawable == this.mStatusBarBackground);
+  }
+  
+  public static abstract interface AttachedBehavior
+  {
+    @NonNull
+    public abstract CoordinatorLayout.Behavior getBehavior();
+  }
+  
+  public static abstract class Behavior<V extends View>
+  {
+    public Behavior() {}
+    
+    public Behavior(Context paramContext, AttributeSet paramAttributeSet) {}
+    
+    public static Object getTag(View paramView)
+    {
+      return ((CoordinatorLayout.LayoutParams)paramView.getLayoutParams()).mBehaviorTag;
+    }
+    
+    public static void setTag(View paramView, Object paramObject)
+    {
+      ((CoordinatorLayout.LayoutParams)paramView.getLayoutParams()).mBehaviorTag = paramObject;
+    }
+    
+    public boolean blocksInteractionBelow(CoordinatorLayout paramCoordinatorLayout, V paramV)
+    {
+      return getScrimOpacity(paramCoordinatorLayout, paramV) > 0.0F;
+    }
+    
+    public boolean getInsetDodgeRect(@NonNull CoordinatorLayout paramCoordinatorLayout, @NonNull V paramV, @NonNull Rect paramRect)
+    {
+      return false;
+    }
+    
+    @ColorInt
+    public int getScrimColor(CoordinatorLayout paramCoordinatorLayout, V paramV)
+    {
+      return -16777216;
+    }
+    
+    @FloatRange(from=0.0D, to=1.0D)
+    public float getScrimOpacity(CoordinatorLayout paramCoordinatorLayout, V paramV)
+    {
+      return 0.0F;
+    }
+    
+    public boolean layoutDependsOn(CoordinatorLayout paramCoordinatorLayout, V paramV, View paramView)
+    {
+      return false;
+    }
+    
+    @NonNull
+    public WindowInsetsCompat onApplyWindowInsets(CoordinatorLayout paramCoordinatorLayout, V paramV, WindowInsetsCompat paramWindowInsetsCompat)
+    {
+      return paramWindowInsetsCompat;
+    }
+    
+    public void onAttachedToLayoutParams(@NonNull CoordinatorLayout.LayoutParams paramLayoutParams) {}
+    
+    public boolean onDependentViewChanged(CoordinatorLayout paramCoordinatorLayout, V paramV, View paramView)
+    {
+      return false;
+    }
+    
+    public void onDependentViewRemoved(CoordinatorLayout paramCoordinatorLayout, V paramV, View paramView) {}
+    
+    public void onDetachedFromLayoutParams() {}
+    
+    public boolean onInterceptTouchEvent(CoordinatorLayout paramCoordinatorLayout, V paramV, MotionEvent paramMotionEvent)
+    {
+      return false;
+    }
+    
+    public boolean onLayoutChild(CoordinatorLayout paramCoordinatorLayout, V paramV, int paramInt)
+    {
+      return false;
+    }
+    
+    public boolean onMeasureChild(CoordinatorLayout paramCoordinatorLayout, V paramV, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+    {
+      return false;
+    }
+    
+    public boolean onNestedFling(@NonNull CoordinatorLayout paramCoordinatorLayout, @NonNull V paramV, @NonNull View paramView, float paramFloat1, float paramFloat2, boolean paramBoolean)
+    {
+      return false;
+    }
+    
+    public boolean onNestedPreFling(@NonNull CoordinatorLayout paramCoordinatorLayout, @NonNull V paramV, @NonNull View paramView, float paramFloat1, float paramFloat2)
+    {
+      return false;
+    }
+    
+    @Deprecated
+    public void onNestedPreScroll(@NonNull CoordinatorLayout paramCoordinatorLayout, @NonNull V paramV, @NonNull View paramView, int paramInt1, int paramInt2, @NonNull int[] paramArrayOfInt) {}
+    
+    public void onNestedPreScroll(@NonNull CoordinatorLayout paramCoordinatorLayout, @NonNull V paramV, @NonNull View paramView, int paramInt1, int paramInt2, @NonNull int[] paramArrayOfInt, int paramInt3)
+    {
+      if (paramInt3 == 0) {
+        onNestedPreScroll(paramCoordinatorLayout, paramV, paramView, paramInt1, paramInt2, paramArrayOfInt);
+      }
+    }
+    
+    @Deprecated
+    public void onNestedScroll(@NonNull CoordinatorLayout paramCoordinatorLayout, @NonNull V paramV, @NonNull View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4) {}
+    
+    public void onNestedScroll(@NonNull CoordinatorLayout paramCoordinatorLayout, @NonNull V paramV, @NonNull View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
+    {
+      if (paramInt5 == 0) {
+        onNestedScroll(paramCoordinatorLayout, paramV, paramView, paramInt1, paramInt2, paramInt3, paramInt4);
+      }
+    }
+    
+    @Deprecated
+    public void onNestedScrollAccepted(@NonNull CoordinatorLayout paramCoordinatorLayout, @NonNull V paramV, @NonNull View paramView1, @NonNull View paramView2, int paramInt) {}
+    
+    public void onNestedScrollAccepted(@NonNull CoordinatorLayout paramCoordinatorLayout, @NonNull V paramV, @NonNull View paramView1, @NonNull View paramView2, int paramInt1, int paramInt2)
+    {
+      if (paramInt2 == 0) {
+        onNestedScrollAccepted(paramCoordinatorLayout, paramV, paramView1, paramView2, paramInt1);
+      }
+    }
+    
+    public boolean onRequestChildRectangleOnScreen(CoordinatorLayout paramCoordinatorLayout, V paramV, Rect paramRect, boolean paramBoolean)
+    {
+      return false;
+    }
+    
+    public void onRestoreInstanceState(CoordinatorLayout paramCoordinatorLayout, V paramV, Parcelable paramParcelable) {}
+    
+    public Parcelable onSaveInstanceState(CoordinatorLayout paramCoordinatorLayout, V paramV)
+    {
+      return View.BaseSavedState.EMPTY_STATE;
+    }
+    
+    @Deprecated
+    public boolean onStartNestedScroll(@NonNull CoordinatorLayout paramCoordinatorLayout, @NonNull V paramV, @NonNull View paramView1, @NonNull View paramView2, int paramInt)
+    {
+      return false;
+    }
+    
+    public boolean onStartNestedScroll(@NonNull CoordinatorLayout paramCoordinatorLayout, @NonNull V paramV, @NonNull View paramView1, @NonNull View paramView2, int paramInt1, int paramInt2)
+    {
+      if (paramInt2 == 0) {
+        return onStartNestedScroll(paramCoordinatorLayout, paramV, paramView1, paramView2, paramInt1);
+      }
+      return false;
+    }
+    
+    @Deprecated
+    public void onStopNestedScroll(@NonNull CoordinatorLayout paramCoordinatorLayout, @NonNull V paramV, @NonNull View paramView) {}
+    
+    public void onStopNestedScroll(@NonNull CoordinatorLayout paramCoordinatorLayout, @NonNull V paramV, @NonNull View paramView, int paramInt)
+    {
+      if (paramInt == 0) {
+        onStopNestedScroll(paramCoordinatorLayout, paramV, paramView);
+      }
+    }
+    
+    public boolean onTouchEvent(CoordinatorLayout paramCoordinatorLayout, V paramV, MotionEvent paramMotionEvent)
+    {
+      return false;
+    }
+  }
+  
+  @Deprecated
+  @Retention(RetentionPolicy.RUNTIME)
+  public static @interface DefaultBehavior
+  {
+    Class<? extends CoordinatorLayout.Behavior> value();
+  }
+  
+  @Retention(RetentionPolicy.SOURCE)
+  @RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
+  public static @interface DispatchChangeEvent {}
+  
+  private class HierarchyChangeListener
+    implements ViewGroup.OnHierarchyChangeListener
+  {
+    HierarchyChangeListener() {}
+    
+    public void onChildViewAdded(View paramView1, View paramView2)
+    {
+      if (CoordinatorLayout.this.mOnHierarchyChangeListener != null) {
+        CoordinatorLayout.this.mOnHierarchyChangeListener.onChildViewAdded(paramView1, paramView2);
+      }
+    }
+    
+    public void onChildViewRemoved(View paramView1, View paramView2)
+    {
+      CoordinatorLayout.this.onChildViewsChanged(2);
+      if (CoordinatorLayout.this.mOnHierarchyChangeListener != null) {
+        CoordinatorLayout.this.mOnHierarchyChangeListener.onChildViewRemoved(paramView1, paramView2);
+      }
+    }
+  }
+  
+  public static class LayoutParams
+    extends ViewGroup.MarginLayoutParams
+  {
+    public int anchorGravity = 0;
+    public int dodgeInsetEdges = 0;
+    public int gravity = 0;
+    public int insetEdge = 0;
+    public int keyline = -1;
+    View mAnchorDirectChild;
+    int mAnchorId = -1;
+    View mAnchorView;
+    CoordinatorLayout.Behavior mBehavior;
+    boolean mBehaviorResolved = false;
+    Object mBehaviorTag;
+    private boolean mDidAcceptNestedScrollNonTouch;
+    private boolean mDidAcceptNestedScrollTouch;
+    private boolean mDidBlockInteraction;
+    private boolean mDidChangeAfterNestedScroll;
+    int mInsetOffsetX;
+    int mInsetOffsetY;
+    final Rect mLastChildRect = new Rect();
+    
+    public LayoutParams(int paramInt1, int paramInt2)
+    {
+      super(paramInt2);
+    }
+    
+    LayoutParams(Context paramContext, AttributeSet paramAttributeSet)
+    {
+      super(paramAttributeSet);
+      TypedArray localTypedArray = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.CoordinatorLayout_Layout);
+      this.gravity = localTypedArray.getInteger(R.styleable.CoordinatorLayout_Layout_android_layout_gravity, 0);
+      this.mAnchorId = localTypedArray.getResourceId(R.styleable.CoordinatorLayout_Layout_layout_anchor, -1);
+      this.anchorGravity = localTypedArray.getInteger(R.styleable.CoordinatorLayout_Layout_layout_anchorGravity, 0);
+      this.keyline = localTypedArray.getInteger(R.styleable.CoordinatorLayout_Layout_layout_keyline, -1);
+      this.insetEdge = localTypedArray.getInt(R.styleable.CoordinatorLayout_Layout_layout_insetEdge, 0);
+      this.dodgeInsetEdges = localTypedArray.getInt(R.styleable.CoordinatorLayout_Layout_layout_dodgeInsetEdges, 0);
+      this.mBehaviorResolved = localTypedArray.hasValue(R.styleable.CoordinatorLayout_Layout_layout_behavior);
+      if (this.mBehaviorResolved) {
+        this.mBehavior = CoordinatorLayout.parseBehavior(paramContext, paramAttributeSet, localTypedArray.getString(R.styleable.CoordinatorLayout_Layout_layout_behavior));
+      }
+      localTypedArray.recycle();
+      if (this.mBehavior != null) {
+        this.mBehavior.onAttachedToLayoutParams(this);
+      }
+    }
+    
+    public LayoutParams(LayoutParams paramLayoutParams)
+    {
+      super();
+    }
+    
+    public LayoutParams(ViewGroup.LayoutParams paramLayoutParams)
+    {
+      super();
+    }
+    
+    public LayoutParams(ViewGroup.MarginLayoutParams paramMarginLayoutParams)
+    {
+      super();
+    }
+    
+    private void resolveAnchorView(View paramView, CoordinatorLayout paramCoordinatorLayout)
+    {
+      this.mAnchorView = paramCoordinatorLayout.findViewById(this.mAnchorId);
+      if (this.mAnchorView != null)
+      {
+        if (this.mAnchorView == paramCoordinatorLayout)
+        {
+          if (paramCoordinatorLayout.isInEditMode())
+          {
+            this.mAnchorDirectChild = null;
+            this.mAnchorView = null;
+            return;
+          }
+          throw new IllegalStateException("View can not be anchored to the the parent CoordinatorLayout");
+        }
+        View localView = this.mAnchorView;
+        for (ViewParent localViewParent = this.mAnchorView.getParent(); (localViewParent != paramCoordinatorLayout) && (localViewParent != null); localViewParent = localViewParent.getParent())
+        {
+          if (localViewParent == paramView)
+          {
+            if (paramCoordinatorLayout.isInEditMode())
+            {
+              this.mAnchorDirectChild = null;
+              this.mAnchorView = null;
+              return;
+            }
+            throw new IllegalStateException("Anchor must not be a descendant of the anchored view");
+          }
+          if ((localViewParent instanceof View)) {
+            localView = (View)localViewParent;
+          }
+        }
+        this.mAnchorDirectChild = localView;
+        return;
+      }
+      if (paramCoordinatorLayout.isInEditMode())
+      {
+        this.mAnchorDirectChild = null;
+        this.mAnchorView = null;
+        return;
+      }
+      throw new IllegalStateException("Could not find CoordinatorLayout descendant view with id " + paramCoordinatorLayout.getResources().getResourceName(this.mAnchorId) + " to anchor view " + paramView);
+    }
+    
+    private boolean shouldDodge(View paramView, int paramInt)
+    {
+      int i = GravityCompat.getAbsoluteGravity(((LayoutParams)paramView.getLayoutParams()).insetEdge, paramInt);
+      return (i != 0) && ((GravityCompat.getAbsoluteGravity(this.dodgeInsetEdges, paramInt) & i) == i);
+    }
+    
+    private boolean verifyAnchorView(View paramView, CoordinatorLayout paramCoordinatorLayout)
+    {
+      if (this.mAnchorView.getId() != this.mAnchorId) {
+        return false;
+      }
+      View localView = this.mAnchorView;
+      for (ViewParent localViewParent = this.mAnchorView.getParent(); localViewParent != paramCoordinatorLayout; localViewParent = localViewParent.getParent())
+      {
+        if ((localViewParent == null) || (localViewParent == paramView))
+        {
+          this.mAnchorDirectChild = null;
+          this.mAnchorView = null;
+          return false;
+        }
+        if ((localViewParent instanceof View)) {
+          localView = (View)localViewParent;
+        }
+      }
+      this.mAnchorDirectChild = localView;
+      return true;
+    }
+    
+    boolean checkAnchorChanged()
+    {
+      return (this.mAnchorView == null) && (this.mAnchorId != -1);
+    }
+    
+    boolean dependsOn(CoordinatorLayout paramCoordinatorLayout, View paramView1, View paramView2)
+    {
+      return (paramView2 == this.mAnchorDirectChild) || (shouldDodge(paramView2, ViewCompat.getLayoutDirection(paramCoordinatorLayout))) || ((this.mBehavior != null) && (this.mBehavior.layoutDependsOn(paramCoordinatorLayout, paramView1, paramView2)));
+    }
+    
+    boolean didBlockInteraction()
+    {
+      if (this.mBehavior == null) {
+        this.mDidBlockInteraction = false;
+      }
+      return this.mDidBlockInteraction;
+    }
+    
+    View findAnchorView(CoordinatorLayout paramCoordinatorLayout, View paramView)
+    {
+      if (this.mAnchorId == -1)
+      {
+        this.mAnchorDirectChild = null;
+        this.mAnchorView = null;
+        return null;
+      }
+      if ((this.mAnchorView == null) || (!verifyAnchorView(paramView, paramCoordinatorLayout))) {
+        resolveAnchorView(paramView, paramCoordinatorLayout);
+      }
+      return this.mAnchorView;
+    }
+    
+    @IdRes
+    public int getAnchorId()
+    {
+      return this.mAnchorId;
+    }
+    
+    @Nullable
+    public CoordinatorLayout.Behavior getBehavior()
+    {
+      return this.mBehavior;
+    }
+    
+    boolean getChangedAfterNestedScroll()
+    {
+      return this.mDidChangeAfterNestedScroll;
+    }
+    
+    Rect getLastChildRect()
+    {
+      return this.mLastChildRect;
+    }
+    
+    void invalidateAnchor()
+    {
+      this.mAnchorDirectChild = null;
+      this.mAnchorView = null;
+    }
+    
+    boolean isBlockingInteractionBelow(CoordinatorLayout paramCoordinatorLayout, View paramView)
+    {
+      if (this.mDidBlockInteraction) {
+        return true;
+      }
+      boolean bool2 = this.mDidBlockInteraction;
+      if (this.mBehavior != null) {}
+      for (boolean bool1 = this.mBehavior.blocksInteractionBelow(paramCoordinatorLayout, paramView);; bool1 = false)
+      {
+        bool1 |= bool2;
+        this.mDidBlockInteraction = bool1;
+        return bool1;
+      }
+    }
+    
+    boolean isNestedScrollAccepted(int paramInt)
+    {
+      switch (paramInt)
+      {
+      default: 
+        return false;
+      case 0: 
+        return this.mDidAcceptNestedScrollTouch;
+      }
+      return this.mDidAcceptNestedScrollNonTouch;
+    }
+    
+    void resetChangedAfterNestedScroll()
+    {
+      this.mDidChangeAfterNestedScroll = false;
+    }
+    
+    void resetNestedScroll(int paramInt)
+    {
+      setNestedScrollAccepted(paramInt, false);
+    }
+    
+    void resetTouchBehaviorTracking()
+    {
+      this.mDidBlockInteraction = false;
+    }
+    
+    public void setAnchorId(@IdRes int paramInt)
+    {
+      invalidateAnchor();
+      this.mAnchorId = paramInt;
+    }
+    
+    public void setBehavior(@Nullable CoordinatorLayout.Behavior paramBehavior)
+    {
+      if (this.mBehavior != paramBehavior)
+      {
+        if (this.mBehavior != null) {
+          this.mBehavior.onDetachedFromLayoutParams();
+        }
+        this.mBehavior = paramBehavior;
+        this.mBehaviorTag = null;
+        this.mBehaviorResolved = true;
+        if (paramBehavior != null) {
+          paramBehavior.onAttachedToLayoutParams(this);
+        }
+      }
+    }
+    
+    void setChangedAfterNestedScroll(boolean paramBoolean)
+    {
+      this.mDidChangeAfterNestedScroll = paramBoolean;
+    }
+    
+    void setLastChildRect(Rect paramRect)
+    {
+      this.mLastChildRect.set(paramRect);
+    }
+    
+    void setNestedScrollAccepted(int paramInt, boolean paramBoolean)
+    {
+      switch (paramInt)
+      {
+      default: 
+        return;
+      case 0: 
+        this.mDidAcceptNestedScrollTouch = paramBoolean;
+        return;
+      }
+      this.mDidAcceptNestedScrollNonTouch = paramBoolean;
+    }
+  }
+  
+  class OnPreDrawListener
+    implements ViewTreeObserver.OnPreDrawListener
+  {
+    OnPreDrawListener() {}
+    
+    public boolean onPreDraw()
+    {
+      CoordinatorLayout.this.onChildViewsChanged(0);
+      return true;
+    }
+  }
+  
+  protected static class SavedState
+    extends AbsSavedState
+  {
+    public static final Parcelable.Creator<SavedState> CREATOR = new Parcelable.ClassLoaderCreator()
+    {
+      public CoordinatorLayout.SavedState createFromParcel(Parcel paramAnonymousParcel)
+      {
+        return new CoordinatorLayout.SavedState(paramAnonymousParcel, null);
+      }
+      
+      public CoordinatorLayout.SavedState createFromParcel(Parcel paramAnonymousParcel, ClassLoader paramAnonymousClassLoader)
+      {
+        return new CoordinatorLayout.SavedState(paramAnonymousParcel, paramAnonymousClassLoader);
+      }
+      
+      public CoordinatorLayout.SavedState[] newArray(int paramAnonymousInt)
+      {
+        return new CoordinatorLayout.SavedState[paramAnonymousInt];
+      }
+    };
+    SparseArray<Parcelable> behaviorStates;
+    
+    public SavedState(Parcel paramParcel, ClassLoader paramClassLoader)
+    {
+      super(paramClassLoader);
+      int j = paramParcel.readInt();
+      int[] arrayOfInt = new int[j];
+      paramParcel.readIntArray(arrayOfInt);
+      paramParcel = paramParcel.readParcelableArray(paramClassLoader);
+      this.behaviorStates = new SparseArray(j);
+      int i = 0;
+      while (i < j)
+      {
+        this.behaviorStates.append(arrayOfInt[i], paramParcel[i]);
+        i += 1;
+      }
+    }
+    
+    public SavedState(Parcelable paramParcelable)
+    {
+      super();
+    }
+    
+    public void writeToParcel(Parcel paramParcel, int paramInt)
+    {
+      int j = 0;
+      super.writeToParcel(paramParcel, paramInt);
+      if (this.behaviorStates != null) {}
+      int[] arrayOfInt;
+      Parcelable[] arrayOfParcelable;
+      for (int i = this.behaviorStates.size();; i = 0)
+      {
+        paramParcel.writeInt(i);
+        arrayOfInt = new int[i];
+        arrayOfParcelable = new Parcelable[i];
+        while (j < i)
+        {
+          arrayOfInt[j] = this.behaviorStates.keyAt(j);
+          arrayOfParcelable[j] = ((Parcelable)this.behaviorStates.valueAt(j));
+          j += 1;
+        }
+      }
+      paramParcel.writeIntArray(arrayOfInt);
+      paramParcel.writeParcelableArray(arrayOfParcelable, paramInt);
+    }
+  }
+  
+  static class ViewElevationComparator
+    implements Comparator<View>
+  {
+    public int compare(View paramView1, View paramView2)
+    {
+      float f1 = ViewCompat.getZ(paramView1);
+      float f2 = ViewCompat.getZ(paramView2);
+      if (f1 > f2) {
+        return -1;
+      }
+      if (f1 < f2) {
+        return 1;
+      }
+      return 0;
+    }
   }
 }
 

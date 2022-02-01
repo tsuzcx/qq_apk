@@ -10,12 +10,12 @@ public final class at
   extends JceStruct
 {
   static Sharkfin jdField_do = new Sharkfin();
-  static ArrayList dp = new ArrayList();
+  static ArrayList<as> dp = new ArrayList();
   public int dc = 0;
   public int dd = 0;
   public int dl = 1;
   public Sharkfin dm = null;
-  public ArrayList dn = null;
+  public ArrayList<as> dn = null;
   
   static
   {

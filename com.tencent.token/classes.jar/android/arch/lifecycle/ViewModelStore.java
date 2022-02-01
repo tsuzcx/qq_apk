@@ -6,7 +6,7 @@ import java.util.Iterator;
 
 public class ViewModelStore
 {
-  private final HashMap mMap = new HashMap();
+  private final HashMap<String, ViewModel> mMap = new HashMap();
   
   public final void clear()
   {

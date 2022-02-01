@@ -9,11 +9,11 @@ public final class v
   extends JceStruct
 {
   static s aA = new s();
-  static ArrayList aU = new ArrayList();
-  static ArrayList aV;
+  static ArrayList<Integer> aU = new ArrayList();
+  static ArrayList<t> aV;
   public int aM = 0;
-  public ArrayList aN = null;
-  public ArrayList aO = null;
+  public ArrayList<Integer> aN = null;
+  public ArrayList<t> aO = null;
   public int aP = 0;
   public boolean aQ = true;
   public boolean aR = true;

@@ -10,7 +10,7 @@ public final class PaintCompat
 {
   private static final String EM_STRING = "m";
   private static final String TOFU_STRING = "󟿽";
-  private static final ThreadLocal sRectThreadLocal = new ThreadLocal();
+  private static final ThreadLocal<Pair<Rect, Rect>> sRectThreadLocal = new ThreadLocal();
   
   public static boolean hasGlyph(@NonNull Paint paramPaint, @NonNull String paramString)
   {
@@ -65,7 +65,7 @@ public final class PaintCompat
     }
   }
   
-  private static Pair obtainEmptyRects()
+  private static Pair<Rect, Rect> obtainEmptyRects()
   {
     Pair localPair = (Pair)sRectThreadLocal.get();
     if (localPair == null)

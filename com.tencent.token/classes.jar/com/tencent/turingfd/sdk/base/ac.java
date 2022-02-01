@@ -2,13 +2,8 @@ package com.tencent.turingfd.sdk.base;
 
 public class ac
 {
-  public final int a;
-  public final int b;
-  public final int c;
-  public final ae d;
-  public final float e;
-  public final byte[] f;
-  public final float g;
+  public int a = 0;
+  public int b = 0;
 }
 
 

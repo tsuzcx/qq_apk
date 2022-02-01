@@ -1,35 +1,138 @@
 package com.tencent.qqpimsecure.pg;
 
-import android.os.Handler;
+import Protocol.MMGRAuth.SolutionItem;
+import android.content.Context;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.text.TextUtils;
+import com.tencent.qqpimsecure.taiji.c;
+import com.tencent.qqpimsecure.taiji.g;
 import java.util.ArrayList;
-import taiji.cq;
+import taiji.bn;
+import tmsdk.common.module.pgsdk.manager.ITaijiReportManager;
 
-class a
-  extends cq
+public class a
 {
-  private String e;
-  private boolean f;
-  
-  a(PermissionGuideActivity paramPermissionGuideActivity, taiji.b paramb, int paramInt, ArrayList paramArrayList) {}
-  
-  public void a() {}
-  
-  public void a(int paramInt1, int paramInt2)
+  private static SolutionItem a(Context paramContext, int paramInt)
   {
-    taiji.a locala = (taiji.a)this.a.c.get(paramInt1);
-    if (locala.a == 1) {
-      this.e = locala.f;
-    }
-    if (paramInt2 == 2)
+    switch (paramInt)
     {
-      this.f = true;
-      f.a(this.d, this.a.b, 0, PermissionGuideActivity.a(this.d), paramInt1, this.e);
+    default: 
+      return null;
+    }
+    paramContext = new SolutionItem();
+    paramContext.commSoluId = (-paramInt);
+    paramContext.extSoluId = (-paramInt);
+    return paramContext;
+  }
+  
+  static void a(Context paramContext, int paramInt1, int paramInt2, int paramInt3)
+  {
+    SolutionItem localSolutionItem2 = g.a(paramContext).a(paramInt1);
+    SolutionItem localSolutionItem1;
+    if (localSolutionItem2 != null)
+    {
+      localSolutionItem1 = localSolutionItem2;
+      if (localSolutionItem2.soluInfo != null) {}
+    }
+    else
+    {
+      localSolutionItem2 = a(paramContext, paramInt1);
+      localSolutionItem1 = localSolutionItem2;
+      if (localSolutionItem2 != null) {}
+    }
+    long l;
+    do
+    {
+      return;
+      bn.b("AdapterSolutionMonitor", "adapterID:" + paramInt1 + " solutionID:" + localSolutionItem1.extSoluId + " validity:" + paramInt2 + " verCode:" + paramInt3);
+      l = System.currentTimeMillis();
+    } while (l - f.a(paramContext, localSolutionItem1.extSoluId) <= 86400000L);
+    f.a(paramContext, localSolutionItem1.extSoluId, l);
+    paramContext = new ArrayList();
+    paramContext.add(String.valueOf(localSolutionItem1.commSoluId));
+    if (paramInt2 == 0)
+    {
+      paramContext.add(String.valueOf(2));
+      if (paramInt3 != 0) {
+        break label219;
+      }
+      paramContext.add("");
+    }
+    for (;;)
+    {
+      paramContext.add(String.valueOf(localSolutionItem1.extSoluId));
+      c.a().e().reportString(265219, paramContext);
+      return;
+      paramContext.add(String.valueOf(1));
+      break;
+      label219:
+      paramContext.add(String.valueOf(paramInt3));
     }
   }
   
-  public void b()
+  static void a(Context paramContext, int paramInt1, int paramInt2, int paramInt3, int paramInt4, String paramString)
   {
-    PermissionGuideActivity.b(this.d).post(new b(this));
+    SolutionItem localSolutionItem2 = g.a(paramContext).a(paramInt1);
+    SolutionItem localSolutionItem1;
+    if (localSolutionItem2 != null)
+    {
+      localSolutionItem1 = localSolutionItem2;
+      if (localSolutionItem2.soluInfo != null) {}
+    }
+    else
+    {
+      localSolutionItem2 = a(paramContext, paramInt1);
+      localSolutionItem1 = localSolutionItem2;
+      if (localSolutionItem2 == null) {
+        return;
+      }
+    }
+    bn.b("AdapterSolutionMonitor", "adapterID:" + paramInt1 + " operation:" + paramInt2 + " source:" + paramInt3 + " errCode:" + paramInt4 + " pkgName:" + paramString);
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(String.valueOf(localSolutionItem1.commSoluId));
+    paramInt1 = 14;
+    switch (paramInt2)
+    {
+    default: 
+      localArrayList.add(String.valueOf(paramInt1 + (paramInt3 << 7) + (paramInt4 << 18)));
+      if (!TextUtils.isEmpty(paramString)) {
+        localSolutionItem2 = null;
+      }
+      break;
+    }
+    for (;;)
+    {
+      try
+      {
+        paramContext = paramContext.getPackageManager().getPackageInfo(paramString, 0);
+        if (paramContext != null)
+        {
+          paramInt1 = paramContext.versionCode;
+          if (paramInt1 == 0)
+          {
+            localArrayList.add("");
+            localArrayList.add(String.valueOf(localSolutionItem1.extSoluId));
+            c.a().e().reportString(265219, localArrayList);
+            return;
+            paramInt1 = 78;
+            break;
+            paramInt1 = 46;
+            break;
+            paramInt1 = 30;
+            break;
+          }
+          localArrayList.add(String.valueOf(paramInt1));
+          continue;
+        }
+      }
+      catch (Throwable paramContext)
+      {
+        paramContext = localSolutionItem2;
+        continue;
+      }
+      paramInt1 = 0;
+    }
   }
 }
 

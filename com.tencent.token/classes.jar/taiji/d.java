@@ -8,18 +8,18 @@ import java.util.ArrayList;
 public final class d
   extends JceStruct
 {
-  static ArrayList l = new ArrayList();
-  static ArrayList m;
+  static ArrayList<String> l = new ArrayList();
+  static ArrayList<c> m;
   public String a = "";
   public int b = 3;
-  public ArrayList c = null;
+  public ArrayList<String> c = null;
   public int d = 0;
   public String e = "";
   public String f = "";
   public String g = "";
   public String h = "";
   public String i = "";
-  public ArrayList j = null;
+  public ArrayList<c> j = null;
   public int k = 0;
   
   static

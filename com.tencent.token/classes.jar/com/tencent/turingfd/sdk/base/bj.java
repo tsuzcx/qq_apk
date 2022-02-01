@@ -1,36 +1,75 @@
 package com.tencent.turingfd.sdk.base;
 
 import android.content.Context;
-import java.util.concurrent.atomic.AtomicReference;
+import android.os.Process;
+import java.io.File;
 
 public class bj
-  implements Runnable
 {
-  public bj(bm parambm, Context paramContext, boolean paramBoolean, AtomicReference paramAtomicReference1, AtomicReference paramAtomicReference2, Object paramObject) {}
+  public static final String a = ct.a(ct.ay);
+  public static final String b = ct.a(ct.az);
+  public static boolean c = false;
   
-  public void run()
+  public static String a(Context paramContext)
   {
-    int i = 0;
-    for (;;)
+    paramContext = paramContext.getDir(a, 0);
+    if (paramContext == null) {
+      return "";
+    }
+    paramContext = new File(ci.a(new StringBuilder().append(paramContext.getAbsolutePath()), File.separator, "1"));
+    if ((!paramContext.exists()) && (!paramContext.mkdirs())) {
+      return "";
+    }
+    return paramContext.getAbsolutePath() + File.separator + b;
+  }
+  
+  public static void a(Context paramContext, aw paramaw)
+  {
+    try
     {
-      if (i < bm.a(this.f).d)
-      {
-        ??? = bm.a(this.f, this.a, this.b);
-        this.c.set(???);
-        if (((bg)???).d != 0) {
-          break label64;
-        }
+      if (c) {
+        return;
       }
-      synchronized (this.e)
+      c = true;
+      long l = paramaw.c(paramContext, "502");
+      int i = Process.myUid();
+      if ((l != 0L) && (i != l))
       {
-        label64:
-        do
-        {
-          this.e.notifyAll();
-          return;
-        } while ((((bg)???).d == -30014) || (((Boolean)this.d.get()).booleanValue()));
-        i += 1;
+        paramaw.a(paramContext, "101", "", true);
+        new File(a(paramContext)).delete();
+        return;
       }
+    }
+    catch (Throwable paramContext)
+    {
+      paramContext.printStackTrace();
+    }
+  }
+  
+  public static void b(Context paramContext, aw paramaw)
+  {
+    long l = paramaw.c(paramContext, "502");
+    int i = Process.myUid();
+    boolean bool = l < 0L;
+    if (!bool)
+    {
+      paramaw.d(paramContext, 0L);
+      return;
+    }
+    if ((bool) && (i != l))
+    {
+      paramaw.d(paramContext, -1L);
+      return;
+    }
+    paramaw.d(paramContext, 1L);
+  }
+  
+  public static void c(Context paramContext, aw paramaw)
+  {
+    long l1 = paramaw.c(paramContext, "502");
+    long l2 = Process.myUid();
+    if (l1 != l2) {
+      paramaw.a(paramContext, "502", "" + l2, false);
     }
   }
 }

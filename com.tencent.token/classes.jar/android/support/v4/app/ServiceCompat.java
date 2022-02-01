@@ -3,6 +3,10 @@ package android.support.v4.app;
 import android.app.Service;
 import android.os.Build.VERSION;
 import android.support.annotation.NonNull;
+import android.support.annotation.RestrictTo;
+import java.lang.annotation.Annotation;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
 
 public final class ServiceCompat
 {
@@ -24,6 +28,10 @@ public final class ServiceCompat
       return;
     }
   }
+  
+  @Retention(RetentionPolicy.SOURCE)
+  @RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
+  public static @interface StopForegroundFlags {}
 }
 
 

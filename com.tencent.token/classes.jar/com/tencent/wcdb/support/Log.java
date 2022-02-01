@@ -4,7 +4,7 @@ public class Log
 {
   public static final int LOGGER_DEFAULT = 1;
   public static final int LOGGER_NONE = 0;
-  private static Log.LogCallback mCallback = null;
+  private static LogCallback mCallback = null;
   
   public static void d(String paramString1, String paramString2)
   {
@@ -48,7 +48,7 @@ public class Log
   
   private static native void nativePrintLn(int paramInt, String paramString1, String paramString2);
   
-  private static native void nativeSetLogger(int paramInt, Log.LogCallback paramLogCallback);
+  private static native void nativeSetLogger(int paramInt, LogCallback paramLogCallback);
   
   public static void println(int paramInt, String paramString1, String paramString2)
   {
@@ -66,7 +66,7 @@ public class Log
     nativeSetLogger(paramInt, null);
   }
   
-  public static void setLogger(Log.LogCallback paramLogCallback)
+  public static void setLogger(LogCallback paramLogCallback)
   {
     mCallback = paramLogCallback;
     nativeSetLogger(-1, paramLogCallback);
@@ -90,6 +90,11 @@ public class Log
   public static void w(String paramString1, String paramString2, Object... paramVarArgs)
   {
     println(5, paramString1, String.format(paramString2, paramVarArgs));
+  }
+  
+  public static abstract interface LogCallback
+  {
+    public abstract void println(int paramInt, String paramString1, String paramString2);
   }
 }
 

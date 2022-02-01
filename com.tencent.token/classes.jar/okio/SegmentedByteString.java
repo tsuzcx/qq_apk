@@ -8,40 +8,40 @@ final class SegmentedByteString
   final transient int[] directory;
   final transient byte[][] segments;
   
-  SegmentedByteString(f paramf, int paramInt)
+  SegmentedByteString(c paramc, int paramInt)
   {
     super(null);
-    ab.a(paramf.b, 0L, paramInt);
-    v localv = paramf.a;
+    s.a(paramc.b, 0L, paramInt);
+    n localn = paramc.a;
     int i = 0;
     int j = 0;
     while (j < paramInt)
     {
-      if (localv.c == localv.b) {
+      if (localn.c == localn.b) {
         throw new AssertionError("s.limit == s.pos");
       }
-      j += localv.c - localv.b;
+      j += localn.c - localn.b;
       i += 1;
-      localv = localv.f;
+      localn = localn.f;
     }
     this.segments = new byte[i][];
     this.directory = new int[i * 2];
-    paramf = paramf.a;
+    paramc = paramc.a;
     j = 0;
     i = k;
     while (i < paramInt)
     {
-      this.segments[j] = paramf.a;
-      k = paramf.c - paramf.b + i;
+      this.segments[j] = paramc.a;
+      k = paramc.c - paramc.b + i;
       i = k;
       if (k > paramInt) {
         i = paramInt;
       }
       this.directory[j] = i;
-      this.directory[(this.segments.length + j)] = paramf.b;
-      paramf.d = true;
+      this.directory[(this.segments.length + j)] = paramc.b;
+      paramc.d = true;
       j += 1;
-      paramf = paramf.f;
+      paramc = paramc.f;
     }
   }
   
@@ -61,7 +61,7 @@ final class SegmentedByteString
   
   public byte a(int paramInt)
   {
-    ab.a(this.directory[(this.segments.length - 1)], paramInt, 1L);
+    s.a(this.directory[(this.segments.length - 1)], paramInt, 1L);
     int j = b(paramInt);
     if (j == 0) {}
     for (int i = 0;; i = this.directory[(j - 1)])
@@ -81,7 +81,7 @@ final class SegmentedByteString
     return i().a(paramInt1, paramInt2);
   }
   
-  void a(f paramf)
+  void a(c paramc)
   {
     int m = this.segments.length;
     int j = 0;
@@ -90,22 +90,22 @@ final class SegmentedByteString
     {
       int n = this.directory[(m + j)];
       int k = this.directory[j];
-      v localv = new v(this.segments[j], n, n + k - i, true, false);
-      if (paramf.a == null)
+      n localn = new n(this.segments[j], n, n + k - i, true, false);
+      if (paramc.a == null)
       {
-        localv.g = localv;
-        localv.f = localv;
-        paramf.a = localv;
+        localn.g = localn;
+        localn.f = localn;
+        paramc.a = localn;
       }
       for (;;)
       {
         j += 1;
         i = k;
         break;
-        paramf.a.g.a(localv);
+        paramc.a.g.a(localn);
       }
     }
-    paramf.b += i;
+    paramc.b += i;
   }
   
   public boolean a(int paramInt1, ByteString paramByteString, int paramInt2, int paramInt3)
@@ -153,7 +153,7 @@ final class SegmentedByteString
       {
         int k = Math.min(paramInt3, this.directory[paramInt1] - j + j - i);
         int m = this.directory[(this.segments.length + paramInt1)];
-        if (!ab.a(this.segments[paramInt1], i - j + m, paramArrayOfByte, paramInt2, k)) {
+        if (!s.a(this.segments[paramInt1], i - j + m, paramArrayOfByte, paramInt2, k)) {
           break;
         }
         i += k;

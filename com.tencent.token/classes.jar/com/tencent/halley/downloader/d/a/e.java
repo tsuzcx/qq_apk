@@ -1,15 +1,13 @@
 package com.tencent.halley.downloader.d.a;
 
-import java.util.concurrent.RejectedExecutionException;
-import java.util.concurrent.RejectedExecutionHandler;
-import java.util.concurrent.ThreadPoolExecutor;
-
 final class e
-  implements RejectedExecutionHandler
+  extends Thread
 {
-  public final void rejectedExecution(Runnable paramRunnable, ThreadPoolExecutor paramThreadPoolExecutor)
+  private final long a;
+  
+  public final long a()
   {
-    throw new RejectedExecutionException();
+    return this.a;
   }
 }
 

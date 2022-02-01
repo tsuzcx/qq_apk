@@ -9,7 +9,7 @@ public class WloginAllSigInfo
   implements Serializable, Cloneable
 {
   private static final long serialVersionUID = 1L;
-  public TreeMap _tk_map = new TreeMap();
+  public TreeMap<Long, WloginSigInfo> _tk_map = new TreeMap();
   public long _uin = 0L;
   public WloginSimpleInfo _useInfo = new WloginSimpleInfo();
   public int mainSigMap;
@@ -19,44 +19,44 @@ public class WloginAllSigInfo
   {
     // Byte code:
     //   0: aload_0
-    //   1: invokevirtual 44	java/lang/Object:clone	()Ljava/lang/Object;
+    //   1: invokevirtual 45	java/lang/Object:clone	()Ljava/lang/Object;
     //   4: checkcast 2	oicq/wlogin_sdk/request/WloginAllSigInfo
     //   7: astore 4
     //   9: aload 4
     //   11: astore_3
     //   12: aload_0
-    //   13: getfield 33	oicq/wlogin_sdk/request/WloginAllSigInfo:_tk_map	Ljava/util/TreeMap;
+    //   13: getfield 34	oicq/wlogin_sdk/request/WloginAllSigInfo:_tk_map	Ljava/util/TreeMap;
     //   16: ifnull +79 -> 95
     //   19: aload_0
-    //   20: getfield 33	oicq/wlogin_sdk/request/WloginAllSigInfo:_tk_map	Ljava/util/TreeMap;
-    //   23: invokevirtual 48	java/util/TreeMap:keySet	()Ljava/util/Set;
-    //   26: invokeinterface 54 1 0
+    //   20: getfield 34	oicq/wlogin_sdk/request/WloginAllSigInfo:_tk_map	Ljava/util/TreeMap;
+    //   23: invokevirtual 49	java/util/TreeMap:keySet	()Ljava/util/Set;
+    //   26: invokeinterface 55 1 0
     //   31: astore 5
     //   33: aload 4
     //   35: astore_3
     //   36: aload 5
-    //   38: invokeinterface 60 1 0
+    //   38: invokeinterface 61 1 0
     //   43: ifeq +52 -> 95
     //   46: aload 5
-    //   48: invokeinterface 63 1 0
-    //   53: checkcast 65	java/lang/Long
-    //   56: invokevirtual 69	java/lang/Long:longValue	()J
+    //   48: invokeinterface 64 1 0
+    //   53: checkcast 66	java/lang/Long
+    //   56: invokevirtual 70	java/lang/Long:longValue	()J
     //   59: lstore_1
     //   60: aload_0
-    //   61: getfield 33	oicq/wlogin_sdk/request/WloginAllSigInfo:_tk_map	Ljava/util/TreeMap;
+    //   61: getfield 34	oicq/wlogin_sdk/request/WloginAllSigInfo:_tk_map	Ljava/util/TreeMap;
     //   64: lload_1
-    //   65: invokestatic 73	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   68: invokevirtual 77	java/util/TreeMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   71: checkcast 79	oicq/wlogin_sdk/sharemem/WloginSigInfo
+    //   65: invokestatic 74	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   68: invokevirtual 78	java/util/TreeMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   71: checkcast 80	oicq/wlogin_sdk/sharemem/WloginSigInfo
     //   74: astore_3
     //   75: aload_3
     //   76: ifnull -43 -> 33
     //   79: aload_3
     //   80: aconst_null
-    //   81: putfield 83	oicq/wlogin_sdk/sharemem/WloginSigInfo:cacheTickets	Ljava/util/List;
+    //   81: putfield 84	oicq/wlogin_sdk/sharemem/WloginSigInfo:cacheTickets	Ljava/util/List;
     //   84: aload_3
     //   85: lconst_0
-    //   86: putfield 86	oicq/wlogin_sdk/sharemem/WloginSigInfo:cacheUpdateStamp	J
+    //   86: putfield 87	oicq/wlogin_sdk/sharemem/WloginSigInfo:cacheUpdateStamp	J
     //   89: goto -56 -> 33
     //   92: astore_3
     //   93: aconst_null

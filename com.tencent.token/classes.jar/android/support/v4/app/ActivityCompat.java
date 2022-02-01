@@ -1,27 +1,35 @@
 package android.support.v4.app;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.content.IntentSender;
+import android.content.pm.PackageManager;
+import android.graphics.Matrix;
+import android.graphics.RectF;
 import android.net.Uri;
 import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
+import android.os.Parcelable;
 import android.support.annotation.IdRes;
 import android.support.annotation.IntRange;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.annotation.RequiresApi;
 import android.support.annotation.RestrictTo;
 import android.support.v13.view.DragAndDropPermissionsCompat;
 import android.support.v4.content.ContextCompat;
 import android.view.DragEvent;
 import android.view.View;
+import java.util.List;
+import java.util.Map;
 
 public class ActivityCompat
   extends ContextCompat
 {
-  private static ActivityCompat.PermissionCompatDelegate sDelegate;
+  private static PermissionCompatDelegate sDelegate;
   
   public static void finishAffinity(@NonNull Activity paramActivity)
   {
@@ -44,7 +52,7 @@ public class ActivityCompat
   }
   
   @RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
-  public static ActivityCompat.PermissionCompatDelegate getPermissionCompatDelegate()
+  public static PermissionCompatDelegate getPermissionCompatDelegate()
   {
     return sDelegate;
   }
@@ -91,7 +99,7 @@ public class ActivityCompat
     return DragAndDropPermissionsCompat.request(paramActivity, paramDragEvent);
   }
   
-  public static void requestPermissions(@NonNull Activity paramActivity, @NonNull String[] paramArrayOfString, @IntRange(from=0L) int paramInt)
+  public static void requestPermissions(@NonNull final Activity paramActivity, @NonNull String[] paramArrayOfString, @IntRange(from=0L) final int paramInt)
   {
     if ((sDelegate != null) && (sDelegate.requestPermissions(paramActivity, paramArrayOfString, paramInt))) {}
     do
@@ -99,18 +107,34 @@ public class ActivityCompat
       return;
       if (Build.VERSION.SDK_INT >= 23)
       {
-        if ((paramActivity instanceof ActivityCompat.RequestPermissionsRequestCodeValidator)) {
-          ((ActivityCompat.RequestPermissionsRequestCodeValidator)paramActivity).validateRequestPermissionsRequestCode(paramInt);
+        if ((paramActivity instanceof RequestPermissionsRequestCodeValidator)) {
+          ((RequestPermissionsRequestCodeValidator)paramActivity).validateRequestPermissionsRequestCode(paramInt);
         }
         paramActivity.requestPermissions(paramArrayOfString, paramInt);
         return;
       }
-    } while (!(paramActivity instanceof ActivityCompat.OnRequestPermissionsResultCallback));
-    new Handler(Looper.getMainLooper()).post(new ActivityCompat.1(paramArrayOfString, paramActivity, paramInt));
+    } while (!(paramActivity instanceof OnRequestPermissionsResultCallback));
+    new Handler(Looper.getMainLooper()).post(new Runnable()
+    {
+      public void run()
+      {
+        int[] arrayOfInt = new int[this.val$permissions.length];
+        PackageManager localPackageManager = paramActivity.getPackageManager();
+        String str = paramActivity.getPackageName();
+        int j = this.val$permissions.length;
+        int i = 0;
+        while (i < j)
+        {
+          arrayOfInt[i] = localPackageManager.checkPermission(this.val$permissions[i], str);
+          i += 1;
+        }
+        ((ActivityCompat.OnRequestPermissionsResultCallback)paramActivity).onRequestPermissionsResult(paramInt, this.val$permissions, arrayOfInt);
+      }
+    });
   }
   
   @NonNull
-  public static View requireViewById(@NonNull Activity paramActivity, @IdRes int paramInt)
+  public static <T extends View> T requireViewById(@NonNull Activity paramActivity, @IdRes int paramInt)
   {
     paramActivity = paramActivity.findViewById(paramInt);
     if (paramActivity == null) {
@@ -126,7 +150,7 @@ public class ActivityCompat
     if (Build.VERSION.SDK_INT >= 23)
     {
       if (paramSharedElementCallback != null) {
-        localObject1 = new ActivityCompat.SharedElementCallback23Impl(paramSharedElementCallback);
+        localObject1 = new SharedElementCallback23Impl(paramSharedElementCallback);
       }
       paramActivity.setEnterSharedElementCallback((android.app.SharedElementCallback)localObject1);
     }
@@ -135,7 +159,7 @@ public class ActivityCompat
     }
     localObject1 = localObject2;
     if (paramSharedElementCallback != null) {
-      localObject1 = new ActivityCompat.SharedElementCallback21Impl(paramSharedElementCallback);
+      localObject1 = new SharedElementCallback21Impl(paramSharedElementCallback);
     }
     paramActivity.setEnterSharedElementCallback((android.app.SharedElementCallback)localObject1);
   }
@@ -147,7 +171,7 @@ public class ActivityCompat
     if (Build.VERSION.SDK_INT >= 23)
     {
       if (paramSharedElementCallback != null) {
-        localObject1 = new ActivityCompat.SharedElementCallback23Impl(paramSharedElementCallback);
+        localObject1 = new SharedElementCallback23Impl(paramSharedElementCallback);
       }
       paramActivity.setExitSharedElementCallback((android.app.SharedElementCallback)localObject1);
     }
@@ -156,12 +180,12 @@ public class ActivityCompat
     }
     localObject1 = localObject2;
     if (paramSharedElementCallback != null) {
-      localObject1 = new ActivityCompat.SharedElementCallback21Impl(paramSharedElementCallback);
+      localObject1 = new SharedElementCallback21Impl(paramSharedElementCallback);
     }
     paramActivity.setExitSharedElementCallback((android.app.SharedElementCallback)localObject1);
   }
   
-  public static void setPermissionCompatDelegate(@Nullable ActivityCompat.PermissionCompatDelegate paramPermissionCompatDelegate)
+  public static void setPermissionCompatDelegate(@Nullable PermissionCompatDelegate paramPermissionCompatDelegate)
   {
     sDelegate = paramPermissionCompatDelegate;
   }
@@ -198,6 +222,87 @@ public class ActivityCompat
   {
     if (Build.VERSION.SDK_INT >= 21) {
       paramActivity.startPostponedEnterTransition();
+    }
+  }
+  
+  public static abstract interface OnRequestPermissionsResultCallback
+  {
+    public abstract void onRequestPermissionsResult(int paramInt, @NonNull String[] paramArrayOfString, @NonNull int[] paramArrayOfInt);
+  }
+  
+  public static abstract interface PermissionCompatDelegate
+  {
+    public abstract boolean onActivityResult(@NonNull Activity paramActivity, @IntRange(from=0L) int paramInt1, int paramInt2, @Nullable Intent paramIntent);
+    
+    public abstract boolean requestPermissions(@NonNull Activity paramActivity, @NonNull String[] paramArrayOfString, @IntRange(from=0L) int paramInt);
+  }
+  
+  @RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
+  public static abstract interface RequestPermissionsRequestCodeValidator
+  {
+    public abstract void validateRequestPermissionsRequestCode(int paramInt);
+  }
+  
+  @RequiresApi(21)
+  private static class SharedElementCallback21Impl
+    extends android.app.SharedElementCallback
+  {
+    protected SharedElementCallback mCallback;
+    
+    SharedElementCallback21Impl(SharedElementCallback paramSharedElementCallback)
+    {
+      this.mCallback = paramSharedElementCallback;
+    }
+    
+    public Parcelable onCaptureSharedElementSnapshot(View paramView, Matrix paramMatrix, RectF paramRectF)
+    {
+      return this.mCallback.onCaptureSharedElementSnapshot(paramView, paramMatrix, paramRectF);
+    }
+    
+    public View onCreateSnapshotView(Context paramContext, Parcelable paramParcelable)
+    {
+      return this.mCallback.onCreateSnapshotView(paramContext, paramParcelable);
+    }
+    
+    public void onMapSharedElements(List<String> paramList, Map<String, View> paramMap)
+    {
+      this.mCallback.onMapSharedElements(paramList, paramMap);
+    }
+    
+    public void onRejectSharedElements(List<View> paramList)
+    {
+      this.mCallback.onRejectSharedElements(paramList);
+    }
+    
+    public void onSharedElementEnd(List<String> paramList, List<View> paramList1, List<View> paramList2)
+    {
+      this.mCallback.onSharedElementEnd(paramList, paramList1, paramList2);
+    }
+    
+    public void onSharedElementStart(List<String> paramList, List<View> paramList1, List<View> paramList2)
+    {
+      this.mCallback.onSharedElementStart(paramList, paramList1, paramList2);
+    }
+  }
+  
+  @RequiresApi(23)
+  private static class SharedElementCallback23Impl
+    extends ActivityCompat.SharedElementCallback21Impl
+  {
+    SharedElementCallback23Impl(SharedElementCallback paramSharedElementCallback)
+    {
+      super();
+    }
+    
+    public void onSharedElementsArrived(List<String> paramList, List<View> paramList1, final android.app.SharedElementCallback.OnSharedElementsReadyListener paramOnSharedElementsReadyListener)
+    {
+      this.mCallback.onSharedElementsArrived(paramList, paramList1, new SharedElementCallback.OnSharedElementsReadyListener()
+      {
+        public void onSharedElementsReady()
+        {
+          paramOnSharedElementsReadyListener.onSharedElementsReady();
+        }
+      });
     }
   }
 }

@@ -4,6 +4,7 @@ import android.support.annotation.RestrictTo;
 import android.support.v4.view.ViewPropertyAnimatorCompat;
 import android.support.v4.view.ViewPropertyAnimatorListener;
 import android.support.v4.view.ViewPropertyAnimatorListenerAdapter;
+import android.view.View;
 import android.view.animation.Interpolator;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -11,12 +12,47 @@ import java.util.Iterator;
 @RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
 public class ViewPropertyAnimatorCompatSet
 {
-  final ArrayList mAnimators = new ArrayList();
+  final ArrayList<ViewPropertyAnimatorCompat> mAnimators = new ArrayList();
   private long mDuration = -1L;
   private Interpolator mInterpolator;
   private boolean mIsStarted;
   ViewPropertyAnimatorListener mListener;
-  private final ViewPropertyAnimatorListenerAdapter mProxyListener = new ViewPropertyAnimatorCompatSet.1(this);
+  private final ViewPropertyAnimatorListenerAdapter mProxyListener = new ViewPropertyAnimatorListenerAdapter()
+  {
+    private int mProxyEndCount = 0;
+    private boolean mProxyStarted = false;
+    
+    public void onAnimationEnd(View paramAnonymousView)
+    {
+      int i = this.mProxyEndCount + 1;
+      this.mProxyEndCount = i;
+      if (i == ViewPropertyAnimatorCompatSet.this.mAnimators.size())
+      {
+        if (ViewPropertyAnimatorCompatSet.this.mListener != null) {
+          ViewPropertyAnimatorCompatSet.this.mListener.onAnimationEnd(null);
+        }
+        onEnd();
+      }
+    }
+    
+    public void onAnimationStart(View paramAnonymousView)
+    {
+      if (this.mProxyStarted) {}
+      do
+      {
+        return;
+        this.mProxyStarted = true;
+      } while (ViewPropertyAnimatorCompatSet.this.mListener == null);
+      ViewPropertyAnimatorCompatSet.this.mListener.onAnimationStart(null);
+    }
+    
+    void onEnd()
+    {
+      this.mProxyEndCount = 0;
+      this.mProxyStarted = false;
+      ViewPropertyAnimatorCompatSet.this.onAnimationsEnded();
+    }
+  };
   
   public void cancel()
   {

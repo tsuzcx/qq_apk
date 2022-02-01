@@ -7,11 +7,11 @@ public abstract interface PageCallback
   @Deprecated
   public abstract void onShowAnimation(int[] paramArrayOfInt, int paramInt1, int paramInt2, boolean paramBoolean, PageNextCallback paramPageNextCallback, ConfirmCallback paramConfirmCallback);
   
-  public abstract void onShowDoraemon(int[] paramArrayOfInt, int paramInt, boolean paramBoolean1, ArrayList paramArrayList1, ArrayList paramArrayList2, ArrayList paramArrayList3, boolean paramBoolean2, PageNextCallback paramPageNextCallback, ConfirmCallback paramConfirmCallback);
+  public abstract void onShowDoraemon(int[] paramArrayOfInt, int paramInt, boolean paramBoolean1, ArrayList<String> paramArrayList, ArrayList<Integer> paramArrayList1, ArrayList<ArrayList<String>> paramArrayList2, boolean paramBoolean2, PageNextCallback paramPageNextCallback, ConfirmCallback paramConfirmCallback);
   
-  public abstract void onShowImage(int[] paramArrayOfInt, int paramInt, ArrayList paramArrayList1, ArrayList paramArrayList2, boolean paramBoolean, PageNextCallback paramPageNextCallback, ConfirmCallback paramConfirmCallback);
+  public abstract void onShowImage(int[] paramArrayOfInt, int paramInt, ArrayList<String> paramArrayList1, ArrayList<String> paramArrayList2, boolean paramBoolean, PageNextCallback paramPageNextCallback, ConfirmCallback paramConfirmCallback);
   
-  public abstract void onShowImageText(int[] paramArrayOfInt, int paramInt, boolean paramBoolean1, ArrayList paramArrayList1, ArrayList paramArrayList2, boolean paramBoolean2, PageNextCallback paramPageNextCallback, ConfirmCallback paramConfirmCallback);
+  public abstract void onShowImageText(int[] paramArrayOfInt, int paramInt, boolean paramBoolean1, ArrayList<String> paramArrayList1, ArrayList<String> paramArrayList2, boolean paramBoolean2, PageNextCallback paramPageNextCallback, ConfirmCallback paramConfirmCallback);
   
   public abstract void onShowText(int[] paramArrayOfInt, int paramInt, String paramString, boolean paramBoolean, PageNextCallback paramPageNextCallback, ConfirmCallback paramConfirmCallback);
 }

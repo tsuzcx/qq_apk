@@ -1,64 +1,45 @@
 package com.tencent.token;
 
-import android.content.ContentValues;
-import com.tencent.wcdb.Cursor;
-import com.tencent.wcdb.database.SQLiteDatabase;
+import java.io.File;
+import java.io.IOException;
 
-public class fv
-  implements gd
+public abstract interface fv
 {
-  public final String a = "ksid_data";
-  public String b = "";
-  private int c = 12;
-  
-  public gd a(Cursor paramCursor)
+  public static final fv a = new fv()
   {
-    fv localfv = new fv();
-    localfv.b = paramCursor.getString(paramCursor.getColumnIndex("ksid"));
-    return localfv;
-  }
-  
-  public void a(SQLiteDatabase paramSQLiteDatabase)
-  {
-    paramSQLiteDatabase.execSQL("CREATE TABLE IF NOT EXISTS ksid_data(_ID INTEGER PRIMARY KEY autoincrement,key INTEGER,ksid TEXT);");
-  }
-  
-  public void a(String paramString)
-  {
-    ContentValues localContentValues = new ContentValues();
-    localContentValues.put("ksid", paramString);
-    ga.a(this, "ksid_data", localContentValues, "key=?", new String[] { String.valueOf(this.c) });
-  }
-  
-  public boolean a()
-  {
-    fv localfv = (fv)ga.a(this, "ksid_data", new String[] { "ksid" }, null, null);
-    if (localfv == null) {
-      return false;
+    public void a(File paramAnonymousFile)
+    {
+      if ((!paramAnonymousFile.delete()) && (paramAnonymousFile.exists())) {
+        throw new IOException("failed to delete " + paramAnonymousFile);
+      }
     }
-    this.b = localfv.b;
-    return true;
-  }
+    
+    public void a(File paramAnonymousFile1, File paramAnonymousFile2)
+    {
+      a(paramAnonymousFile2);
+      if (!paramAnonymousFile1.renameTo(paramAnonymousFile2)) {
+        throw new IOException("failed to rename " + paramAnonymousFile1 + " to " + paramAnonymousFile2);
+      }
+    }
+    
+    public boolean b(File paramAnonymousFile)
+    {
+      return paramAnonymousFile.exists();
+    }
+    
+    public long c(File paramAnonymousFile)
+    {
+      return paramAnonymousFile.length();
+    }
+  };
   
-  public long b(SQLiteDatabase paramSQLiteDatabase)
-  {
-    a(paramSQLiteDatabase);
-    new ContentValues();
-    ContentValues localContentValues = new ContentValues();
-    localContentValues.put("key", Integer.valueOf(this.c));
-    localContentValues.put("ksid", this.b);
-    return paramSQLiteDatabase.insert("ksid_data", null, localContentValues);
-  }
+  public abstract void a(File paramFile);
   
-  public String b()
-  {
-    return "ksid_data";
-  }
+  public abstract void a(File paramFile1, File paramFile2);
   
-  public ContentValues c()
-  {
-    return null;
-  }
+  public abstract boolean b(File paramFile);
+  
+  public abstract long c(File paramFile);
 }
 
 

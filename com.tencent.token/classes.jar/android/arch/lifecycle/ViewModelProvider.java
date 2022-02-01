@@ -1,27 +1,30 @@
 package android.arch.lifecycle;
 
+import android.app.Application;
 import android.support.annotation.MainThread;
 import android.support.annotation.NonNull;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
 
 public class ViewModelProvider
 {
   private static final String DEFAULT_KEY = "android.arch.lifecycle.ViewModelProvider.DefaultKey";
-  private final ViewModelProvider.Factory mFactory;
+  private final Factory mFactory;
   private final ViewModelStore mViewModelStore;
   
-  public ViewModelProvider(@NonNull ViewModelStore paramViewModelStore, @NonNull ViewModelProvider.Factory paramFactory)
+  public ViewModelProvider(@NonNull ViewModelStore paramViewModelStore, @NonNull Factory paramFactory)
   {
     this.mFactory = paramFactory;
     this.mViewModelStore = paramViewModelStore;
   }
   
-  public ViewModelProvider(@NonNull ViewModelStoreOwner paramViewModelStoreOwner, @NonNull ViewModelProvider.Factory paramFactory)
+  public ViewModelProvider(@NonNull ViewModelStoreOwner paramViewModelStoreOwner, @NonNull Factory paramFactory)
   {
     this(paramViewModelStoreOwner.getViewModelStore(), paramFactory);
   }
   
   @NonNull
-  public ViewModel get(@NonNull Class paramClass)
+  public <T extends ViewModel> T get(@NonNull Class<T> paramClass)
   {
     String str = paramClass.getCanonicalName();
     if (str == null) {
@@ -32,7 +35,7 @@ public class ViewModelProvider
   
   @MainThread
   @NonNull
-  public ViewModel get(@NonNull String paramString, @NonNull Class paramClass)
+  public <T extends ViewModel> T get(@NonNull String paramString, @NonNull Class<T> paramClass)
   {
     ViewModel localViewModel = this.mViewModelStore.get(paramString);
     if (paramClass.isInstance(localViewModel)) {
@@ -42,6 +45,83 @@ public class ViewModelProvider
     paramClass = this.mFactory.create(paramClass);
     this.mViewModelStore.put(paramString, paramClass);
     return paramClass;
+  }
+  
+  public static class AndroidViewModelFactory
+    extends ViewModelProvider.NewInstanceFactory
+  {
+    private static AndroidViewModelFactory sInstance;
+    private Application mApplication;
+    
+    public AndroidViewModelFactory(@NonNull Application paramApplication)
+    {
+      this.mApplication = paramApplication;
+    }
+    
+    public static AndroidViewModelFactory getInstance(@NonNull Application paramApplication)
+    {
+      if (sInstance == null) {
+        sInstance = new AndroidViewModelFactory(paramApplication);
+      }
+      return sInstance;
+    }
+    
+    @NonNull
+    public <T extends ViewModel> T create(@NonNull Class<T> paramClass)
+    {
+      if (AndroidViewModel.class.isAssignableFrom(paramClass)) {
+        try
+        {
+          ViewModel localViewModel = (ViewModel)paramClass.getConstructor(new Class[] { Application.class }).newInstance(new Object[] { this.mApplication });
+          return localViewModel;
+        }
+        catch (NoSuchMethodException localNoSuchMethodException)
+        {
+          throw new RuntimeException("Cannot create an instance of " + paramClass, localNoSuchMethodException);
+        }
+        catch (IllegalAccessException localIllegalAccessException)
+        {
+          throw new RuntimeException("Cannot create an instance of " + paramClass, localIllegalAccessException);
+        }
+        catch (InstantiationException localInstantiationException)
+        {
+          throw new RuntimeException("Cannot create an instance of " + paramClass, localInstantiationException);
+        }
+        catch (InvocationTargetException localInvocationTargetException)
+        {
+          throw new RuntimeException("Cannot create an instance of " + paramClass, localInvocationTargetException);
+        }
+      }
+      return super.create(paramClass);
+    }
+  }
+  
+  public static abstract interface Factory
+  {
+    @NonNull
+    public abstract <T extends ViewModel> T create(@NonNull Class<T> paramClass);
+  }
+  
+  public static class NewInstanceFactory
+    implements ViewModelProvider.Factory
+  {
+    @NonNull
+    public <T extends ViewModel> T create(@NonNull Class<T> paramClass)
+    {
+      try
+      {
+        ViewModel localViewModel = (ViewModel)paramClass.newInstance();
+        return localViewModel;
+      }
+      catch (InstantiationException localInstantiationException)
+      {
+        throw new RuntimeException("Cannot create an instance of " + paramClass, localInstantiationException);
+      }
+      catch (IllegalAccessException localIllegalAccessException)
+      {
+        throw new RuntimeException("Cannot create an instance of " + paramClass, localIllegalAccessException);
+      }
+    }
   }
 }
 

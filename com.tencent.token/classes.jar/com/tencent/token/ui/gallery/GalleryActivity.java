@@ -7,6 +7,7 @@ import android.content.IntentFilter;
 import android.content.res.Resources;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.FrameLayout;
@@ -14,12 +15,14 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
+import com.tencent.token.cw;
 import com.tencent.token.global.RqdApplication;
 import com.tencent.token.ui.BaseActivity;
 import com.tencent.token.ui.qqpim.ProgressTextView;
-import com.tencent.token.upload.o;
-import com.tencent.token.utils.x;
+import com.tencent.token.upload.i;
+import com.tencent.token.utils.m;
 import com.tmsdk.TMSDKContext;
+import java.io.File;
 
 public class GalleryActivity
   extends BaseActivity
@@ -33,8 +36,40 @@ public class GalleryActivity
   private boolean isNeedLaunch = false;
   private ImageView ivBack;
   private float lastProgress = 0.0F;
-  private BroadcastReceiver mNetworkMsgReceiver = new b(this);
-  private GalleryActivity.InstallBroadcastReceiver mReceiver;
+  private BroadcastReceiver mNetworkMsgReceiver = new BroadcastReceiver()
+  {
+    public void onReceive(Context paramAnonymousContext, Intent paramAnonymousIntent)
+    {
+      paramAnonymousContext = paramAnonymousIntent.getAction();
+      if (paramAnonymousContext != null)
+      {
+        if (!paramAnonymousContext.equals("android.net.conn.CONNECTIVITY_CHANGE")) {
+          break label100;
+        }
+        if (!i.a()) {
+          break label40;
+        }
+        if (!a.f().g()) {
+          a.f().a();
+        }
+      }
+      label40:
+      label100:
+      while (!paramAnonymousContext.equals("noConnectivity"))
+      {
+        do
+        {
+          return;
+        } while (!a.f().g());
+        a.f().c();
+        GalleryActivity.this.tvDownload.setVisibility(0);
+        GalleryActivity.this.flProgress.setVisibility(4);
+        GalleryActivity.this.tvDownload.setText(GalleryActivity.this.getResources().getText(2131231071));
+        return;
+      }
+    }
+  };
+  private InstallBroadcastReceiver mReceiver;
   private boolean needReportInstall = false;
   private ProgressBar pbProgress;
   private TextView tvDownload;
@@ -43,27 +78,103 @@ public class GalleryActivity
   private void downloadApk()
   {
     TMSDKContext.saveActionData(170016);
-    h.f().a(new c(this));
-    h.f().a();
+    a.f().a(new cw()
+    {
+      public void a()
+      {
+        GalleryActivity.access$202(GalleryActivity.this, true);
+        GalleryActivity.this.runOnUiThread(new Runnable()
+        {
+          public void run()
+          {
+            GalleryActivity.this.tvDownload.setText(GalleryActivity.this.getResources().getText(2131231060));
+            Toast.makeText(GalleryActivity.this, GalleryActivity.this.getResources().getText(2131231068), 0).show();
+            com.tencent.token.ui.qqpim.a.a(GalleryActivity.this, GalleryActivity.this.filePath);
+            GalleryActivity.access$402(GalleryActivity.this, true);
+            GalleryActivity.this.tvDownload.setVisibility(0);
+            GalleryActivity.this.flProgress.setVisibility(4);
+          }
+        });
+        GalleryActivity.access$502(GalleryActivity.this, 0.0F);
+        TMSDKContext.saveActionData(170017);
+        Log.i("GalleryActivity", "onFinished: ");
+      }
+      
+      public void a(final float paramAnonymousFloat)
+      {
+        Log.i("GalleryActivity", "onProgress: " + paramAnonymousFloat);
+        if ((paramAnonymousFloat > 0.01D) && (paramAnonymousFloat <= 1.0F) && (paramAnonymousFloat > GalleryActivity.this.lastProgress))
+        {
+          GalleryActivity.this.runOnUiThread(new Runnable()
+          {
+            public void run()
+            {
+              GalleryActivity.this.tvDownload.setVisibility(4);
+              GalleryActivity.this.flProgress.setVisibility(0);
+              GalleryActivity.this.tvProgress.setTextWhiteLength(paramAnonymousFloat);
+              GalleryActivity.this.pbProgress.setProgress((int)(paramAnonymousFloat * 100.0F));
+              GalleryActivity.this.tvProgress.setText("下载中..." + (int)(paramAnonymousFloat * 100.0F) + "%");
+            }
+          });
+          GalleryActivity.access$502(GalleryActivity.this, paramAnonymousFloat);
+        }
+      }
+      
+      public void b()
+      {
+        Log.i("GalleryActivity", "onPause: ");
+        GalleryActivity.this.runOnUiThread(new Runnable()
+        {
+          public void run()
+          {
+            GalleryActivity.this.tvDownload.setVisibility(0);
+            GalleryActivity.this.flProgress.setVisibility(4);
+            GalleryActivity.this.tvDownload.setText(GalleryActivity.this.getResources().getText(2131231067));
+          }
+        });
+      }
+      
+      public void c()
+      {
+        GalleryActivity.this.runOnUiThread(new Runnable()
+        {
+          public void run()
+          {
+            GalleryActivity.this.tvDownload.setVisibility(0);
+            GalleryActivity.this.flProgress.setVisibility(4);
+            GalleryActivity.this.tvDownload.setText(GalleryActivity.this.getResources().getText(2131231071));
+          }
+        });
+        Log.i("GalleryActivity", "onCancel: ");
+        GalleryActivity.access$502(GalleryActivity.this, 0.0F);
+      }
+    });
+    a.f().a();
   }
   
   private void initStatus()
   {
-    this.isApkDownload = h.f().d();
+    this.isApkDownload = a.f().d();
     this.isInstall = com.tencent.token.ui.qqpim.a.b(this, "com.tencent.gallerymanager");
-    this.filePath = h.f().e();
+    this.filePath = a.f().e();
   }
   
   private void initView()
   {
-    this.pbProgress = ((ProgressBar)findViewById(2131558687));
-    this.flProgress = ((FrameLayout)findViewById(2131558686));
-    this.tvProgress = ((ProgressTextView)findViewById(2131558688));
+    this.pbProgress = ((ProgressBar)findViewById(2131558688));
+    this.flProgress = ((FrameLayout)findViewById(2131558687));
+    this.tvProgress = ((ProgressTextView)findViewById(2131558689));
     this.ivBack = ((ImageView)findViewById(2131558681));
-    this.tvDownload = ((TextView)findViewById(2131558685));
+    this.tvDownload = ((TextView)findViewById(2131558686));
     this.tvDownload.setOnClickListener(this);
     this.flProgress.setOnClickListener(this);
-    this.ivBack.setOnClickListener(new a(this));
+    this.ivBack.setOnClickListener(new View.OnClickListener()
+    {
+      public void onClick(View paramAnonymousView)
+      {
+        GalleryActivity.this.finish();
+      }
+    });
   }
   
   private void launchGalleryApp(Context paramContext)
@@ -93,7 +204,7 @@ public class GalleryActivity
   
   private void registerInstallReceiver()
   {
-    this.mReceiver = new GalleryActivity.InstallBroadcastReceiver(this);
+    this.mReceiver = new InstallBroadcastReceiver();
     IntentFilter localIntentFilter = new IntentFilter();
     localIntentFilter.addAction("android.intent.action.PACKAGE_ADDED");
     localIntentFilter.addAction("android.intent.action.PACKAGE_REPLACED");
@@ -144,7 +255,7 @@ public class GalleryActivity
   public void onClick(View paramView)
   {
     int i = paramView.getId();
-    if ((i == 2131558685) || (i == 2131558686))
+    if ((i == 2131558686) || (i == 2131558687))
     {
       if (this.isInstall) {
         launchGalleryApp(this);
@@ -158,11 +269,11 @@ public class GalleryActivity
       com.tencent.token.ui.qqpim.a.a(this, this.filePath);
       return;
     }
-    if (o.a())
+    if (i.a())
     {
-      if (h.f().g())
+      if (a.f().g())
       {
-        h.f().c();
+        a.f().c();
         return;
       }
       startDownload();
@@ -175,7 +286,7 @@ public class GalleryActivity
   {
     super.onCreate(paramBundle);
     setContentView(2130968616);
-    x.a(this, this.mTitleBar, 2131493037);
+    m.a(this, this.mTitleBar, 2131493037);
     initView();
     registReceiver();
     registerInstallReceiver();
@@ -196,6 +307,36 @@ public class GalleryActivity
     updateBtnState();
     if (this.isNeedLaunch) {
       launchGalleryApp(this);
+    }
+  }
+  
+  public class InstallBroadcastReceiver
+    extends BroadcastReceiver
+  {
+    public InstallBroadcastReceiver() {}
+    
+    public void onReceive(Context paramContext, Intent paramIntent)
+    {
+      if ((paramIntent.getAction() != null) && (paramIntent.getAction().equals("android.intent.action.PACKAGE_ADDED")))
+      {
+        paramIntent = paramIntent.getData();
+        paramContext = null;
+        if (paramIntent != null) {
+          paramContext = paramIntent.getSchemeSpecificPart();
+        }
+        if ("com.tencent.gallerymanager".equals(paramContext)) {
+          break label45;
+        }
+      }
+      label45:
+      do
+      {
+        return;
+        GalleryActivity.access$802(GalleryActivity.this, true);
+        new File(GalleryActivity.this.filePath).delete();
+      } while (!GalleryActivity.this.needReportInstall);
+      TMSDKContext.saveActionData(170018);
+      GalleryActivity.access$202(GalleryActivity.this, false);
     }
   }
 }

@@ -2,51 +2,51 @@ package okhttp3.internal.connection;
 
 import java.util.LinkedHashSet;
 import java.util.Set;
-import okhttp3.ax;
+import okhttp3.ab;
 
 public final class d
 {
-  private final Set a = new LinkedHashSet();
+  private final Set<ab> a = new LinkedHashSet();
   
-  public void a(ax paramax)
+  public void a(ab paramab)
   {
     try
     {
-      this.a.add(paramax);
+      this.a.add(paramab);
       return;
     }
     finally
     {
-      paramax = finally;
-      throw paramax;
+      paramab = finally;
+      throw paramab;
     }
   }
   
-  public void b(ax paramax)
+  public void b(ab paramab)
   {
     try
     {
-      this.a.remove(paramax);
+      this.a.remove(paramab);
       return;
     }
     finally
     {
-      paramax = finally;
-      throw paramax;
+      paramab = finally;
+      throw paramab;
     }
   }
   
-  public boolean c(ax paramax)
+  public boolean c(ab paramab)
   {
     try
     {
-      boolean bool = this.a.contains(paramax);
+      boolean bool = this.a.contains(paramab);
       return bool;
     }
     finally
     {
-      paramax = finally;
-      throw paramax;
+      paramab = finally;
+      throw paramab;
     }
   }
 }

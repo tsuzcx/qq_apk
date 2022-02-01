@@ -1,12 +1,21 @@
 package com.tencent.token;
 
-import java.io.Serializable;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class eh
 {
-  public boolean a;
-  public ew b;
-  public Serializable c;
+  boolean a = false;
+  AtomicInteger b = new AtomicInteger();
+  
+  public void a(int paramInt)
+  {
+    this.b.set(paramInt);
+  }
+  
+  public boolean a()
+  {
+    return this.a;
+  }
 }
 
 

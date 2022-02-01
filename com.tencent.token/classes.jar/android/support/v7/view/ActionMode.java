@@ -3,6 +3,7 @@ package android.support.v7.view;
 import android.support.annotation.RestrictTo;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 
 public abstract class ActionMode
@@ -63,6 +64,17 @@ public abstract class ActionMode
   public void setTitleOptionalHint(boolean paramBoolean)
   {
     this.mTitleOptionalHint = paramBoolean;
+  }
+  
+  public static abstract interface Callback
+  {
+    public abstract boolean onActionItemClicked(ActionMode paramActionMode, MenuItem paramMenuItem);
+    
+    public abstract boolean onCreateActionMode(ActionMode paramActionMode, Menu paramMenu);
+    
+    public abstract void onDestroyActionMode(ActionMode paramActionMode);
+    
+    public abstract boolean onPrepareActionMode(ActionMode paramActionMode, Menu paramMenu);
   }
 }
 

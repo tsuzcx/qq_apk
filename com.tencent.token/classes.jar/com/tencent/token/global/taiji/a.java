@@ -4,7 +4,7 @@ import java.util.concurrent.ThreadFactory;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class a
-  implements p, ThreadFactory
+  implements h, ThreadFactory
 {
   private final ThreadGroup b = new ThreadGroup("TMS-COMMON");
   private final AtomicInteger c = new AtomicInteger(1);

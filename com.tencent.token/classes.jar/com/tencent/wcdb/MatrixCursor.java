@@ -30,7 +30,7 @@ public class MatrixCursor
     this.data = new Object[this.columnCount * i];
   }
   
-  private void addRow(ArrayList paramArrayList, int paramInt)
+  private void addRow(ArrayList<?> paramArrayList, int paramInt)
   {
     int j = paramArrayList.size();
     if (j != this.columnCount) {
@@ -82,7 +82,7 @@ public class MatrixCursor
     return this.data[(this.mPos * this.columnCount + paramInt)];
   }
   
-  public void addRow(Iterable paramIterable)
+  public void addRow(Iterable<?> paramIterable)
   {
     int i = this.rowCount * this.columnCount;
     int j = i + this.columnCount;
@@ -217,12 +217,12 @@ public class MatrixCursor
     return get(paramInt) == null;
   }
   
-  public MatrixCursor.RowBuilder newRow()
+  public RowBuilder newRow()
   {
     this.rowCount += 1;
     int i = this.rowCount * this.columnCount;
     ensureCapacity(i);
-    return new MatrixCursor.RowBuilder(this, i - this.columnCount, i);
+    return new RowBuilder(i - this.columnCount, i);
   }
   
   public void registerContentObserver(ContentObserver paramContentObserver) {}
@@ -232,6 +232,30 @@ public class MatrixCursor
   public void unregisterContentObserver(ContentObserver paramContentObserver) {}
   
   public void unregisterDataSetObserver(DataSetObserver paramDataSetObserver) {}
+  
+  public class RowBuilder
+  {
+    private final int endIndex;
+    private int index;
+    
+    RowBuilder(int paramInt1, int paramInt2)
+    {
+      this.index = paramInt1;
+      this.endIndex = paramInt2;
+    }
+    
+    public RowBuilder add(Object paramObject)
+    {
+      if (this.index == this.endIndex) {
+        throw new CursorIndexOutOfBoundsException("No more columns left.");
+      }
+      Object[] arrayOfObject = MatrixCursor.this.data;
+      int i = this.index;
+      this.index = (i + 1);
+      arrayOfObject[i] = paramObject;
+      return this;
+    }
+  }
 }
 
 

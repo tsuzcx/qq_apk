@@ -2,9 +2,11 @@ package com.tencent.token.ui.base;
 
 import android.content.Context;
 import android.database.DataSetObserver;
+import android.graphics.Rect;
 import android.util.AttributeSet;
 import android.view.GestureDetector;
 import android.view.GestureDetector.OnGestureListener;
+import android.view.GestureDetector.SimpleOnGestureListener;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.MeasureSpec;
@@ -18,7 +20,7 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 public class HorizontialListView
-  extends AdapterView
+  extends AdapterView<ListAdapter>
 {
   public boolean a = true;
   protected ListAdapter b;
@@ -30,12 +32,81 @@ public class HorizontialListView
   private int h = 2147483647;
   private int i = 0;
   private GestureDetector j;
-  private Queue k = new LinkedList();
+  private Queue<View> k = new LinkedList();
   private AdapterView.OnItemSelectedListener l;
   private AdapterView.OnItemClickListener m;
   private boolean n = false;
-  private DataSetObserver o = new be(this);
-  private GestureDetector.OnGestureListener p = new bg(this);
+  private DataSetObserver o = new DataSetObserver()
+  {
+    public void onChanged()
+    {
+      synchronized (HorizontialListView.this)
+      {
+        HorizontialListView.a(HorizontialListView.this, true);
+        HorizontialListView.this.invalidate();
+        HorizontialListView.this.requestLayout();
+        return;
+      }
+    }
+    
+    public void onInvalidated()
+    {
+      HorizontialListView.a(HorizontialListView.this);
+      HorizontialListView.this.invalidate();
+      HorizontialListView.this.requestLayout();
+    }
+  };
+  private GestureDetector.OnGestureListener p = new GestureDetector.SimpleOnGestureListener()
+  {
+    public boolean onDown(MotionEvent paramAnonymousMotionEvent)
+    {
+      return HorizontialListView.this.a(paramAnonymousMotionEvent);
+    }
+    
+    public boolean onFling(MotionEvent paramAnonymousMotionEvent1, MotionEvent paramAnonymousMotionEvent2, float paramAnonymousFloat1, float paramAnonymousFloat2)
+    {
+      return HorizontialListView.this.a(paramAnonymousMotionEvent1, paramAnonymousMotionEvent2, paramAnonymousFloat1, paramAnonymousFloat2);
+    }
+    
+    public boolean onScroll(MotionEvent arg1, MotionEvent paramAnonymousMotionEvent2, float paramAnonymousFloat1, float paramAnonymousFloat2)
+    {
+      synchronized (HorizontialListView.this)
+      {
+        paramAnonymousMotionEvent2 = HorizontialListView.this;
+        paramAnonymousMotionEvent2.d += (int)paramAnonymousFloat1;
+        HorizontialListView.this.requestLayout();
+        return true;
+      }
+    }
+    
+    public boolean onSingleTapConfirmed(MotionEvent paramAnonymousMotionEvent)
+    {
+      Rect localRect = new Rect();
+      int i = 0;
+      for (;;)
+      {
+        if (i < HorizontialListView.this.getChildCount())
+        {
+          View localView = HorizontialListView.this.getChildAt(i);
+          int j = localView.getLeft();
+          int k = localView.getRight();
+          localRect.set(j, localView.getTop(), k, localView.getBottom());
+          if (!localRect.contains((int)paramAnonymousMotionEvent.getX(), (int)paramAnonymousMotionEvent.getY())) {
+            break label207;
+          }
+          if (HorizontialListView.b(HorizontialListView.this) != null) {
+            HorizontialListView.b(HorizontialListView.this).onItemClick(HorizontialListView.this, localView, HorizontialListView.c(HorizontialListView.this) + 1 + i, HorizontialListView.this.b.getItemId(HorizontialListView.c(HorizontialListView.this) + 1 + i));
+          }
+          if (HorizontialListView.d(HorizontialListView.this) != null) {
+            HorizontialListView.d(HorizontialListView.this).onItemSelected(HorizontialListView.this, localView, HorizontialListView.c(HorizontialListView.this) + 1 + i, HorizontialListView.this.b.getItemId(HorizontialListView.c(HorizontialListView.this) + 1 + i));
+          }
+        }
+        return true;
+        label207:
+        i += 1;
+      }
+    }
+  };
   
   public HorizontialListView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -214,9 +285,9 @@ public class HorizontialListView
     //   5: iload_3
     //   6: iload 4
     //   8: iload 5
-    //   10: invokespecial 220	android/widget/AdapterView:onLayout	(ZIIII)V
+    //   10: invokespecial 224	android/widget/AdapterView:onLayout	(ZIIII)V
     //   13: aload_0
-    //   14: getfield 118	com/tencent/token/ui/base/HorizontialListView:b	Landroid/widget/ListAdapter;
+    //   14: getfield 122	com/tencent/token/ui/base/HorizontialListView:b	Landroid/widget/ListAdapter;
     //   17: astore 6
     //   19: aload 6
     //   21: ifnonnull +6 -> 27
@@ -224,82 +295,82 @@ public class HorizontialListView
     //   25: monitorexit
     //   26: return
     //   27: aload_0
-    //   28: getfield 54	com/tencent/token/ui/base/HorizontialListView:n	Z
+    //   28: getfield 62	com/tencent/token/ui/base/HorizontialListView:n	Z
     //   31: ifeq +26 -> 57
     //   34: aload_0
-    //   35: getfield 71	com/tencent/token/ui/base/HorizontialListView:c	I
+    //   35: getfield 75	com/tencent/token/ui/base/HorizontialListView:c	I
     //   38: istore_2
     //   39: aload_0
-    //   40: invokespecial 68	com/tencent/token/ui/base/HorizontialListView:a	()V
+    //   40: invokespecial 72	com/tencent/token/ui/base/HorizontialListView:a	()V
     //   43: aload_0
-    //   44: invokevirtual 173	com/tencent/token/ui/base/HorizontialListView:removeAllViewsInLayout	()V
+    //   44: invokevirtual 177	com/tencent/token/ui/base/HorizontialListView:removeAllViewsInLayout	()V
     //   47: aload_0
     //   48: iload_2
-    //   49: putfield 73	com/tencent/token/ui/base/HorizontialListView:d	I
+    //   49: putfield 77	com/tencent/token/ui/base/HorizontialListView:d	I
     //   52: aload_0
     //   53: iconst_0
-    //   54: putfield 54	com/tencent/token/ui/base/HorizontialListView:n	Z
+    //   54: putfield 62	com/tencent/token/ui/base/HorizontialListView:n	Z
     //   57: aload_0
-    //   58: getfield 84	com/tencent/token/ui/base/HorizontialListView:e	Landroid/widget/Scroller;
-    //   61: invokevirtual 224	android/widget/Scroller:computeScrollOffset	()Z
+    //   58: getfield 88	com/tencent/token/ui/base/HorizontialListView:e	Landroid/widget/Scroller;
+    //   61: invokevirtual 228	android/widget/Scroller:computeScrollOffset	()Z
     //   64: ifeq +14 -> 78
     //   67: aload_0
     //   68: aload_0
-    //   69: getfield 84	com/tencent/token/ui/base/HorizontialListView:e	Landroid/widget/Scroller;
-    //   72: invokevirtual 227	android/widget/Scroller:getCurrX	()I
-    //   75: putfield 73	com/tencent/token/ui/base/HorizontialListView:d	I
+    //   69: getfield 88	com/tencent/token/ui/base/HorizontialListView:e	Landroid/widget/Scroller;
+    //   72: invokevirtual 231	android/widget/Scroller:getCurrX	()I
+    //   75: putfield 77	com/tencent/token/ui/base/HorizontialListView:d	I
     //   78: aload_0
-    //   79: getfield 73	com/tencent/token/ui/base/HorizontialListView:d	I
+    //   79: getfield 77	com/tencent/token/ui/base/HorizontialListView:d	I
     //   82: ifge +16 -> 98
     //   85: aload_0
     //   86: iconst_0
-    //   87: putfield 73	com/tencent/token/ui/base/HorizontialListView:d	I
+    //   87: putfield 77	com/tencent/token/ui/base/HorizontialListView:d	I
     //   90: aload_0
-    //   91: getfield 84	com/tencent/token/ui/base/HorizontialListView:e	Landroid/widget/Scroller;
+    //   91: getfield 88	com/tencent/token/ui/base/HorizontialListView:e	Landroid/widget/Scroller;
     //   94: iconst_1
-    //   95: invokevirtual 200	android/widget/Scroller:forceFinished	(Z)V
+    //   95: invokevirtual 204	android/widget/Scroller:forceFinished	(Z)V
     //   98: aload_0
-    //   99: getfield 73	com/tencent/token/ui/base/HorizontialListView:d	I
+    //   99: getfield 77	com/tencent/token/ui/base/HorizontialListView:d	I
     //   102: aload_0
-    //   103: getfield 43	com/tencent/token/ui/base/HorizontialListView:h	I
+    //   103: getfield 51	com/tencent/token/ui/base/HorizontialListView:h	I
     //   106: if_icmple +19 -> 125
     //   109: aload_0
     //   110: aload_0
-    //   111: getfield 43	com/tencent/token/ui/base/HorizontialListView:h	I
-    //   114: putfield 73	com/tencent/token/ui/base/HorizontialListView:d	I
+    //   111: getfield 51	com/tencent/token/ui/base/HorizontialListView:h	I
+    //   114: putfield 77	com/tencent/token/ui/base/HorizontialListView:d	I
     //   117: aload_0
-    //   118: getfield 84	com/tencent/token/ui/base/HorizontialListView:e	Landroid/widget/Scroller;
+    //   118: getfield 88	com/tencent/token/ui/base/HorizontialListView:e	Landroid/widget/Scroller;
     //   121: iconst_1
-    //   122: invokevirtual 200	android/widget/Scroller:forceFinished	(Z)V
+    //   122: invokevirtual 204	android/widget/Scroller:forceFinished	(Z)V
     //   125: aload_0
-    //   126: getfield 71	com/tencent/token/ui/base/HorizontialListView:c	I
+    //   126: getfield 75	com/tencent/token/ui/base/HorizontialListView:c	I
     //   129: aload_0
-    //   130: getfield 73	com/tencent/token/ui/base/HorizontialListView:d	I
+    //   130: getfield 77	com/tencent/token/ui/base/HorizontialListView:d	I
     //   133: isub
     //   134: istore_2
     //   135: aload_0
     //   136: iload_2
-    //   137: invokespecial 229	com/tencent/token/ui/base/HorizontialListView:b	(I)V
+    //   137: invokespecial 233	com/tencent/token/ui/base/HorizontialListView:b	(I)V
     //   140: aload_0
     //   141: iload_2
-    //   142: invokespecial 231	com/tencent/token/ui/base/HorizontialListView:a	(I)V
+    //   142: invokespecial 235	com/tencent/token/ui/base/HorizontialListView:a	(I)V
     //   145: aload_0
     //   146: iload_2
-    //   147: invokespecial 233	com/tencent/token/ui/base/HorizontialListView:c	(I)V
+    //   147: invokespecial 237	com/tencent/token/ui/base/HorizontialListView:c	(I)V
     //   150: aload_0
     //   151: aload_0
-    //   152: getfield 73	com/tencent/token/ui/base/HorizontialListView:d	I
-    //   155: putfield 71	com/tencent/token/ui/base/HorizontialListView:c	I
+    //   152: getfield 77	com/tencent/token/ui/base/HorizontialListView:d	I
+    //   155: putfield 75	com/tencent/token/ui/base/HorizontialListView:c	I
     //   158: aload_0
-    //   159: getfield 84	com/tencent/token/ui/base/HorizontialListView:e	Landroid/widget/Scroller;
-    //   162: invokevirtual 236	android/widget/Scroller:isFinished	()Z
+    //   159: getfield 88	com/tencent/token/ui/base/HorizontialListView:e	Landroid/widget/Scroller;
+    //   162: invokevirtual 240	android/widget/Scroller:isFinished	()Z
     //   165: ifne -141 -> 24
     //   168: aload_0
-    //   169: new 238	com/tencent/token/ui/base/bf
+    //   169: new 9	com/tencent/token/ui/base/HorizontialListView$2
     //   172: dup
     //   173: aload_0
-    //   174: invokespecial 239	com/tencent/token/ui/base/bf:<init>	(Lcom/tencent/token/ui/base/HorizontialListView;)V
-    //   177: invokevirtual 243	com/tencent/token/ui/base/HorizontialListView:post	(Ljava/lang/Runnable;)Z
+    //   174: invokespecial 241	com/tencent/token/ui/base/HorizontialListView$2:<init>	(Lcom/tencent/token/ui/base/HorizontialListView;)V
+    //   177: invokevirtual 245	com/tencent/token/ui/base/HorizontialListView:post	(Ljava/lang/Runnable;)Z
     //   180: pop
     //   181: goto -157 -> 24
     //   184: astore 6

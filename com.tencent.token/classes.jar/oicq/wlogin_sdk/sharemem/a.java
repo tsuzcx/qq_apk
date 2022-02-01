@@ -4,7 +4,7 @@ import android.os.Parcel;
 import android.os.Parcelable.Creator;
 
 final class a
-  implements Parcelable.Creator
+  implements Parcelable.Creator<WloginLoginInfo>
 {
   public WloginLoginInfo a(Parcel paramParcel)
   {

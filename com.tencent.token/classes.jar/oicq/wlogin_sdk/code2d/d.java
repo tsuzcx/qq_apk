@@ -85,9 +85,9 @@ public class d
     return _status.b;
   }
   
-  protected d.a a(byte[] paramArrayOfByte, int paramInt)
+  protected a a(byte[] paramArrayOfByte, int paramInt)
   {
-    d.a locala = new d.a(this);
+    a locala = new a();
     int i = util.buf_to_int16(paramArrayOfByte, paramInt);
     int j = paramInt + 2;
     paramInt = 0;
@@ -117,6 +117,16 @@ public class d
     util.int8_to_buf(arrayOfByte, i, 8);
     fill_staff(arrayOfByte, paramArrayOfByte2, i + 1);
     return get_request(paramLong1, true, arrayOfByte);
+  }
+  
+  class a
+  {
+    int a;
+    long b;
+    long c;
+    int d;
+    
+    a() {}
   }
 }
 

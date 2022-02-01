@@ -1,41 +1,27 @@
 package taiji;
 
-import android.graphics.PointF;
-
 public class ad
+  extends al<Integer, Integer>
 {
-  private final PointF a = new PointF();
-  private final PointF b = new PointF();
-  private final PointF c = new PointF();
-  
-  public PointF a()
+  private ad()
   {
-    return this.a;
+    super(Integer.valueOf(100));
   }
   
-  public void a(float paramFloat1, float paramFloat2)
+  public p<Integer> a()
   {
-    this.a.set(paramFloat1, paramFloat2);
+    if (!b()) {
+      return new v(this.b);
+    }
+    return new f(this.a);
   }
   
-  public PointF b()
+  public static final class a
   {
-    return this.b;
-  }
-  
-  public void b(float paramFloat1, float paramFloat2)
-  {
-    this.b.set(paramFloat1, paramFloat2);
-  }
-  
-  public PointF c()
-  {
-    return this.c;
-  }
-  
-  public void c(float paramFloat1, float paramFloat2)
-  {
-    this.c.set(paramFloat1, paramFloat2);
+    public static ad a()
+    {
+      return new ad(null);
+    }
   }
 }
 

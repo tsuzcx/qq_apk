@@ -4,7 +4,7 @@ public class cu
 {
   private static ci iu;
   private static ci iv;
-  private static cu.b iw;
+  private static b iw;
   
   public static ci bu()
   {
@@ -12,7 +12,7 @@ public class cu
     try
     {
       if (iu == null) {
-        iu = new cu.a();
+        iu = new a();
       }
       return iu;
     }
@@ -25,24 +25,60 @@ public class cu
     try
     {
       if (iv == null) {
-        iv = new cu.a();
+        iv = new a();
       }
       return iv;
     }
     finally {}
   }
   
-  public static cu.b bw()
+  public static b bw()
   {
     if (iw == null) {}
     try
     {
       if (iw == null) {
-        iw = new cu.b();
+        iw = new b();
       }
       return iw;
     }
     finally {}
+  }
+  
+  public static class a
+    implements ci
+  {
+    private Object V = new Object();
+    private int ix = 1;
+    
+    public int bm()
+    {
+      synchronized (this.V)
+      {
+        int i = this.ix;
+        this.ix += 1;
+        return i;
+      }
+    }
+  }
+  
+  public static class b
+  {
+    private final Object V = new Object();
+    private byte iy = 0;
+    
+    public byte bx()
+    {
+      synchronized (this.V)
+      {
+        if (this.iy + 1 == 127) {
+          this.iy = 0;
+        }
+        byte b = (byte)(this.iy + 1);
+        this.iy = b;
+        return b;
+      }
+    }
   }
 }
 

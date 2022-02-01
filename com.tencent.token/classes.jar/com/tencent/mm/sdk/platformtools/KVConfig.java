@@ -23,7 +23,7 @@ public class KVConfig
 {
   private static boolean E = false;
   
-  private static void a(Map paramMap)
+  private static void a(Map<String, String> paramMap)
   {
     if ((paramMap == null) || (paramMap.size() <= 0)) {
       Log.v("MicroMsg.SDK.KVConfig", "empty values");
@@ -40,7 +40,7 @@ public class KVConfig
     }
   }
   
-  private static void a(Map paramMap, String paramString, Node paramNode, int paramInt)
+  private static void a(Map<String, String> paramMap, String paramString, Node paramNode, int paramInt)
   {
     int i = 0;
     if (paramNode.getNodeName().equals("#text")) {
@@ -87,7 +87,7 @@ public class KVConfig
     }
   }
   
-  public static Map parseIni(String paramString)
+  public static Map<String, String> parseIni(String paramString)
   {
     if ((paramString == null) || (paramString.length() <= 0)) {
       paramString = null;
@@ -123,7 +123,7 @@ public class KVConfig
     return localHashMap;
   }
   
-  public static Map parseXml(String paramString1, String paramString2, String paramString3)
+  public static Map<String, String> parseXml(String paramString1, String paramString2, String paramString3)
   {
     int i;
     if (paramString1 == null)

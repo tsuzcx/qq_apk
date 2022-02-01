@@ -1,9 +1,30 @@
 package com.tencent.turingfd.sdk.base;
 
-public class cx
+public abstract class cx<T>
 {
-  public int a = 0;
-  public int b = 0;
+  public volatile T a;
+  
+  public abstract T a();
+  
+  public final T b()
+  {
+    Object localObject1 = this.a;
+    if (localObject1 == null) {
+      try
+      {
+        Object localObject2 = this.a;
+        localObject1 = localObject2;
+        if (localObject2 == null)
+        {
+          localObject1 = a();
+          this.a = localObject1;
+        }
+        return localObject1;
+      }
+      finally {}
+    }
+    return ?;
+  }
 }
 
 

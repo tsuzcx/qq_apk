@@ -47,7 +47,7 @@ public class dd
     finally {}
   }
   
-  public WeakReference a(int paramInt1, int paramInt2, int paramInt3, long paramLong1, long paramLong2, int paramInt4, JceStruct paramJceStruct1, byte[] paramArrayOfByte, JceStruct paramJceStruct2, int paramInt5, cj paramcj, ck paramck, long paramLong3, long paramLong4)
+  public WeakReference<cw> a(int paramInt1, int paramInt2, int paramInt3, long paramLong1, long paramLong2, int paramInt4, JceStruct paramJceStruct1, byte[] paramArrayOfByte, JceStruct paramJceStruct2, int paramInt5, cj paramcj, ck paramck, long paramLong3, long paramLong4)
   {
     eh.e("SharkProcessProxy", Process.myPid() + " sendShark() from pid: " + paramInt1 + " ipcSeqNo: " + paramInt2 + " callerIdent: " + paramLong2 + " cmdId: " + paramInt4 + " flag: " + paramInt5 + " callBackTimeout: " + paramLong3);
     if (cx.ax()) {
@@ -64,12 +64,12 @@ public class dd
     return null;
   }
   
-  public WeakReference a(int paramInt1, JceStruct paramJceStruct1, JceStruct paramJceStruct2, int paramInt2, cj paramcj)
+  public WeakReference<cw> a(int paramInt1, JceStruct paramJceStruct1, JceStruct paramJceStruct2, int paramInt2, cj paramcj)
   {
     return b(paramInt1, paramJceStruct1, paramJceStruct2, paramInt2, paramcj, 0L);
   }
   
-  public WeakReference a(int paramInt1, JceStruct paramJceStruct1, JceStruct paramJceStruct2, int paramInt2, cj paramcj, long paramLong1, long paramLong2)
+  public WeakReference<cw> a(int paramInt1, JceStruct paramJceStruct1, JceStruct paramJceStruct2, int paramInt2, cj paramcj, long paramLong1, long paramLong2)
   {
     return a(Process.myPid(), 0, 0, 0L, this.t, paramInt1, paramJceStruct1, null, paramJceStruct2, paramInt2, paramcj, null, paramLong1, paramLong2);
   }
@@ -103,7 +103,7 @@ public class dd
     }
   }
   
-  public WeakReference b(int paramInt1, JceStruct paramJceStruct1, JceStruct paramJceStruct2, int paramInt2, cj paramcj, long paramLong)
+  public WeakReference<cw> b(int paramInt1, JceStruct paramJceStruct1, JceStruct paramJceStruct2, int paramInt2, cj paramcj, long paramLong)
   {
     return a(paramInt1, paramJceStruct1, paramJceStruct2, paramInt2, paramcj, paramLong, 0L);
   }

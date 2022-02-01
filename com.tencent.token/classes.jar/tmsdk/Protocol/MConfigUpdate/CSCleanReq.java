@@ -11,8 +11,8 @@ public final class CSCleanReq
   extends JceStruct
   implements Cloneable
 {
-  static ArrayList bt;
-  public ArrayList vecReq = null;
+  static ArrayList<stDirInfo> bt;
+  public ArrayList<stDirInfo> vecReq = null;
   
   static
   {
@@ -26,7 +26,7 @@ public final class CSCleanReq
   
   public CSCleanReq() {}
   
-  public CSCleanReq(ArrayList paramArrayList)
+  public CSCleanReq(ArrayList<stDirInfo> paramArrayList)
   {
     this.vecReq = paramArrayList;
   }
@@ -71,7 +71,7 @@ public final class CSCleanReq
     return "MConfigUpdate.CSCleanReq";
   }
   
-  public ArrayList getVecReq()
+  public ArrayList<stDirInfo> getVecReq()
   {
     return this.vecReq;
   }
@@ -100,7 +100,7 @@ public final class CSCleanReq
     this.vecReq = ((ArrayList)paramJceInputStream.read(bt, 0, true));
   }
   
-  public void setVecReq(ArrayList paramArrayList)
+  public void setVecReq(ArrayList<stDirInfo> paramArrayList)
   {
     this.vecReq = paramArrayList;
   }

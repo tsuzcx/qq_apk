@@ -1,238 +1,193 @@
 package com.tencent.token;
 
-import android.os.Handler;
-import com.tencent.token.core.bean.QQUser;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
+import android.os.Environment;
 import com.tencent.token.global.RqdApplication;
-import com.tencent.token.global.c;
-import com.tencent.token.global.f;
-import com.tencent.token.global.h;
-import com.tencent.token.utils.UserTask;
-import com.tencent.token.utils.w;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.token.global.c.a;
+import com.tencent.token.utils.c;
+import com.tencent.token.utils.d;
+import com.tencent.token.utils.i;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 
 public class dw
-  extends cf
+  implements SharedPreferences.OnSharedPreferenceChangeListener
 {
-  static dw a;
-  int b;
-  private final String c = "/cn/mbtoken3/mbtoken3_query_for_2nd_verify_v2";
-  private final String d = "/cn/mbtoken3/mbtoken3_perform_2nd_verify_encrypt";
-  private int e;
-  private String f;
-  private String g;
-  private String h;
-  private String i;
-  private int j;
+  public static d a;
+  private static dw c = null;
+  protected c b;
+  private volatile boolean d = c.a.a;
+  private volatile boolean e = c.a.b;
+  private volatile boolean f = c.a.d;
+  private volatile boolean g = c.a.e;
+  
+  static
+  {
+    int i = i.a("debug.file.blockcount", 24);
+    long l = i.a("debug.file.keepperiod", 604800000L);
+    a = new d(b(), i, 262144, 8192, "Sec.File.Tracer", 10000L, 10, ".sec.log", l);
+  }
+  
+  public dw()
+  {
+    i.a(this);
+    this.b = new c(a);
+  }
   
   public static dw a()
   {
-    if (a == null) {
-      a = new dw();
+    if (c == null) {}
+    try
+    {
+      if (c == null) {
+        c = new dw();
+      }
+      return c;
     }
-    return a;
+    finally {}
   }
   
-  private void f()
+  public static void a(int paramInt)
   {
-    this.e = 0;
-    this.f = "";
-    this.g = "";
-    this.h = "";
-    this.i = "";
-    this.j = 0;
+    int i;
+    if (paramInt <= 63)
+    {
+      i = paramInt;
+      if (paramInt >= 0) {}
+    }
+    else
+    {
+      i = c.a.h;
+    }
+    i.b("debug.file.tracelevel", i).commit();
   }
   
-  public f a(int paramInt)
+  public static void a(File paramFile)
   {
-    f();
-    f localf = new f();
-    Object localObject3 = do.a();
-    if (!((do)localObject3).a(localf)) {
-      return localf;
-    }
-    if (((do)localObject3).e() == null)
+    if ((paramFile == null) || (!paramFile.exists())) {}
+    for (;;)
     {
-      localf.b(103);
-      return localf;
-    }
-    Object localObject2 = ((do)localObject3).k();
-    Object localObject1 = localObject2;
-    if (localObject2 == null)
-    {
-      localObject1 = ((do)localObject3).r();
-      if (!((f)localObject1).b())
+      return;
+      if (paramFile.isFile())
       {
-        localf.a((f)localObject1);
-        return localf;
+        paramFile.delete();
+        return;
       }
-      localObject2 = ((do)localObject3).k();
-      localObject1 = localObject2;
-      if (localObject2 == null)
+      paramFile = paramFile.listFiles();
+      int j = paramFile.length;
+      int i = 0;
+      while (i < j)
       {
-        localf.b(103);
-        return localf;
+        a(paramFile[i]);
+        i += 1;
       }
     }
-    boolean bool = w.a(RqdApplication.l(), "de.robv.android.xposed.installer");
-    long l = ((QQUser)localObject1).mUin;
-    if (bool) {}
-    for (int k = 1;; k = 0)
-    {
-      localObject1 = w.a(new Object[] { "uin", Long.valueOf(l), "action_type", Integer.valueOf(paramInt), "nosafe", Integer.valueOf(k) });
-      if (localObject1 != null) {
-        break;
-      }
-      localf.a(10000, "encrypt  failed");
+  }
+  
+  public static BufferedReader b(int paramInt)
+  {
+    Object localObject = a.a(System.currentTimeMillis());
+    if ((localObject == null) || (!((File)localObject).isDirectory())) {
       return null;
     }
-    localObject2 = "?aq_base_sid=" + ((do)localObject3).g() + "&data=" + (String)localObject1;
-    localObject1 = new gk();
-    h.b("&nosafe: " + bool);
-    localObject2 = c.e() + "/cn/mbtoken3/mbtoken3_query_for_2nd_verify_v2" + (String)localObject2;
-    localObject3 = ((gk)localObject1).a((String)localObject2);
-    if (localObject3 == null)
+    localObject = a.b((File)localObject);
+    localObject = a.a((File[])localObject);
+    if ((paramInt >= 0) && (paramInt < localObject.length))
     {
-      localf.a(((gk)localObject1).a());
-      h.c("client request url: " + (String)localObject2 + " failed, reason: " + localf.a + ":" + localf.b);
-      return localf;
-    }
-    try
-    {
-      localObject1 = new JSONObject(new String((byte[])localObject3));
-      paramInt = ((JSONObject)localObject1).getInt("err");
-      if (paramInt != 0)
+      localObject = localObject[(localObject.length - paramInt - 1)];
+      try
       {
-        localObject1 = ((JSONObject)localObject1).getString("info");
-        localf.a(paramInt, (String)localObject1, (String)localObject1);
-        h.c("query2ndVerify, errcode: " + paramInt + ", info: " + (String)localObject1);
+        localObject = new BufferedReader(new FileReader((File)localObject));
+        return localObject;
       }
-      else
+      catch (FileNotFoundException localFileNotFoundException)
       {
-        localObject1 = w.c(((JSONObject)localObject1).getString("data"));
-        if (localObject1 != null)
-        {
-          localObject1 = new JSONObject(new String((byte[])localObject1));
-          this.e = ((JSONObject)localObject1).getInt("need_2nd_verify");
-          if (this.e == 1)
-          {
-            this.f = ((JSONObject)localObject1).getString("verify_tips");
-            this.g = ((JSONObject)localObject1).getString("verify_input_tips");
-            this.h = ((JSONObject)localObject1).getString("cancel_btn_text");
-            this.i = ((JSONObject)localObject1).getString("confirm_btn_text");
-            this.j = ((JSONObject)localObject1).getInt("verify_type");
-          }
-          localf.c();
-        }
+        return null;
       }
     }
-    catch (JSONException localJSONException)
-    {
-      h.c("parse json failed: " + localJSONException.toString());
-      localf.a(10020, "JSONException:" + localJSONException.toString());
-      break label710;
-      localf.b(10022);
-      return localf;
-    }
-    catch (Exception localException)
-    {
-      h.c("unknown err: " + localException.toString());
-      localf.a(10021, "JSONException:" + localException.toString());
-    }
-    label710:
-    return localf;
+    return null;
   }
   
-  public f a(String paramString, int paramInt)
+  public static File b()
   {
-    f localf = new f();
-    Object localObject1 = do.a();
-    if ((localObject1 == null) || (((do)localObject1).e() == null))
-    {
-      localf.b(110);
-      return localf;
+    String str = c.a.g;
+    if (c()) {
+      return new File(Environment.getExternalStorageDirectory(), str);
     }
-    int k = (int)(cx.c().s() / 1000L);
-    int m = cw.a + 1;
-    cw.a = m;
-    this.b = m;
-    Object localObject2 = a(do.a().c(), new String[] { "input_data", paramString, "op_time", String.valueOf(k), "seq_id", String.valueOf(this.b), "uin", String.valueOf(((do)localObject1).e().mUin), "verify_type", Integer.toString(this.j), "action_type", Integer.toString(paramInt) });
-    if (localObject2 == null)
+    return new File(RqdApplication.l().getFilesDir(), str);
+  }
+  
+  public static boolean c()
+  {
+    String str = Environment.getExternalStorageState();
+    return ("mounted".equals(str)) || ("mounted_ro".equals(str));
+  }
+  
+  public static void h()
+  {
+    Object localObject = a.a(System.currentTimeMillis());
+    localObject = a.b((File)localObject);
+    if (localObject != null)
     {
-      localf.a(10000, "encrypt imei failed");
-      return localf;
-    }
-    paramString = new gk();
-    localObject1 = "?aq_base_sid=" + ((do)localObject1).g() + "&data=" + (String)localObject2;
-    localObject1 = c.e() + "/cn/mbtoken3/mbtoken3_perform_2nd_verify_encrypt" + (String)localObject1;
-    localObject2 = paramString.a((String)localObject1);
-    if (localObject2 == null)
-    {
-      localf.a(paramString.a());
-      h.c("client request url: " + (String)localObject1 + " failed, reason: " + localf.a + ":" + localf.b);
-      return localf;
-    }
-    try
-    {
-      paramString = new JSONObject(new String((byte[])localObject2));
-      paramInt = paramString.getInt("err");
-      if (paramInt != 0)
+      int i = 0;
+      while (i < localObject.length)
       {
-        paramString = paramString.getString("info");
-        localf.a(paramInt, paramString, paramString);
-        return localf;
+        a(localObject[i]);
+        i += 1;
       }
     }
-    catch (JSONException paramString)
-    {
-      h.c("parse json failed: " + paramString.toString());
-      localf.a(10020, "JSONException:" + paramString.toString());
-      return localf;
-      paramInt = new JSONObject(new String(w.c(paramString.getString("data")))).getInt("seq_id");
-      if (this.b != paramInt)
-      {
-        localf.b(10030);
-        h.c("parseJSON error seq is wrong seq=" + paramInt + ",right = " + this.b);
-        return localf;
-      }
-    }
-    catch (Exception paramString)
-    {
-      h.c("unknown err: " + paramString.toString());
-      localf.a(10021, "JSONException:" + paramString.toString());
-      return localf;
-    }
-    do.a().m();
-    localf.c();
-    return localf;
   }
   
-  public void a(int paramInt, Handler paramHandler)
+  public void a(int paramInt, String paramString1, String paramString2, Throwable paramThrowable)
   {
-    if (paramHandler == null) {
-      return;
+    if ((d()) && (e()) && (this.b != null)) {
+      this.b.b(paramInt, Thread.currentThread(), cb.c().s(), paramString1, paramString2, paramThrowable);
     }
-    new dx(this, paramInt, paramHandler).c(new String[] { "" });
   }
   
-  public String b()
+  public final boolean d()
   {
-    return this.g;
+    return this.d;
   }
   
-  public String c()
+  public final boolean e()
+  {
+    return this.e;
+  }
+  
+  public final boolean f()
   {
     return this.f;
   }
   
-  public String d()
+  public final boolean g()
   {
-    return this.h;
+    return this.g;
   }
   
-  public String e()
+  public boolean i()
   {
-    return this.i;
+    return i.a("debug.file.uploadfiledate", -1) >= 0;
+  }
+  
+  public int j()
+  {
+    return i.a("debug.file.uploadfiledate", -1);
+  }
+  
+  public void onSharedPreferenceChanged(SharedPreferences paramSharedPreferences, String paramString)
+  {
+    if (("debug.file.tracelevel".equals(paramString)) || (paramString == null))
+    {
+      int i = i.a("debug.file.tracelevel", c.a.h);
+      a(16, "SecTracer", "File Trace Level Changed = " + i, null);
+      this.b.a(i);
+    }
   }
 }
 

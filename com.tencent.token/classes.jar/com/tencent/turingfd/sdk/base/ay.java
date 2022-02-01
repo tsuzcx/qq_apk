@@ -1,52 +1,12 @@
 package com.tencent.turingfd.sdk.base;
 
-import android.app.Activity;
-import android.view.View;
-import android.view.ViewTreeObserver;
-import android.view.Window;
-import android.view.Window.Callback;
-import java.util.Set;
+import java.util.concurrent.TimeUnit;
 
-public final class ay
-  extends bk
+public class ay
 {
-  public void a(Activity paramActivity, String paramString)
-  {
-    Window localWindow;
-    Object localObject;
-    if ((ba.g.contains(paramActivity.getClass().getName())) || (ba.f))
-    {
-      paramString = ba.i;
-      localWindow = paramActivity.getWindow();
-      localObject = localWindow.getCallback();
-      if (localObject != null) {
-        break label85;
-      }
-    }
-    for (;;)
-    {
-      paramString = ba.j;
-      localWindow = paramActivity.getWindow();
-      localObject = paramActivity.getClass().getName();
-      localWindow.getDecorView().getViewTreeObserver().addOnPreDrawListener(new bf(localWindow, (String)localObject, paramString, paramActivity));
-      return;
-      label85:
-      if (!(localObject instanceof bv)) {
-        localWindow.setCallback(new bv((Window.Callback)localObject, paramString, paramActivity.getClass().getName()));
-      }
-    }
-  }
-  
-  public void onActivityPaused(Activity paramActivity)
-  {
-    ba.e.b(paramActivity);
-  }
-  
-  public void onActivityResumed(Activity paramActivity)
-  {
-    a(paramActivity, "onActivityResumed");
-    ba.e.a(paramActivity);
-  }
+  public static final long a = TimeUnit.SECONDS.toMillis(1L);
+  public static final long b = TimeUnit.MILLISECONDS.toMillis(50L);
+  public static final int c = (int)(a / b);
 }
 
 

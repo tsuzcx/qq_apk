@@ -10,7 +10,7 @@ import java.util.List;
 
 public final class FontRequest
 {
-  private final List mCertificates;
+  private final List<List<byte[]>> mCertificates;
   private final int mCertificatesArray;
   private final String mIdentifier;
   private final String mProviderAuthority;
@@ -33,7 +33,7 @@ public final class FontRequest
     }
   }
   
-  public FontRequest(@NonNull String paramString1, @NonNull String paramString2, @NonNull String paramString3, @NonNull List paramList)
+  public FontRequest(@NonNull String paramString1, @NonNull String paramString2, @NonNull String paramString3, @NonNull List<List<byte[]>> paramList)
   {
     this.mProviderAuthority = ((String)Preconditions.checkNotNull(paramString1));
     this.mProviderPackage = ((String)Preconditions.checkNotNull(paramString2));
@@ -44,7 +44,7 @@ public final class FontRequest
   }
   
   @Nullable
-  public List getCertificates()
+  public List<List<byte[]>> getCertificates()
   {
     return this.mCertificates;
   }

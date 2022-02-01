@@ -1,86 +1,70 @@
 package com.tencent.token.global.taiji;
 
-import android.os.HandlerThread;
+import com.qq.taf.jce.JceStruct;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Set;
+import tmsdk.common.module.pgsdk.manager.ITaijiKVProfileManager;
+import tmsdk.common.module.pgsdk.manager.ITaijiKVProfileManager.IProfileUploadCallback;
+import tmsdk.common.module.pgsdk.manager.shark.ISharkCallBack;
 
 public class k
-  extends HandlerThread
+  implements ITaijiKVProfileManager
 {
-  private long a;
-  private boolean b = false;
-  
-  public k(String paramString, int paramInt, long paramLong)
+  public static k a()
   {
-    super(paramString, paramInt);
-    this.a = paramLong;
+    return a.a();
   }
   
-  public k(String paramString, int paramInt, long paramLong, boolean paramBoolean)
+  public void uploadKVProfile(HashMap<Integer, String> paramHashMap, HashMap<Integer, Integer> paramHashMap1, final ITaijiKVProfileManager.IProfileUploadCallback paramIProfileUploadCallback)
   {
-    super(paramString, paramInt);
-    this.a = paramLong;
-    this.b = paramBoolean;
-  }
-  
-  public void destroy()
-  {
-    if (this.b) {
-      return;
+    CSReportProfile localCSReportProfile = new CSReportProfile();
+    localCSReportProfile.profileID = 4;
+    localCSReportProfile.actionID = 0;
+    localCSReportProfile.param = new ArrayList();
+    Object localObject1;
+    Object localObject2;
+    if ((paramHashMap != null) && (paramHashMap.size() > 0))
+    {
+      localObject1 = paramHashMap.keySet().iterator();
+      while (((Iterator)localObject1).hasNext())
+      {
+        localObject2 = (Integer)((Iterator)localObject1).next();
+        KeyValueProfile localKeyValueProfile = new KeyValueProfile();
+        localKeyValueProfile.keyid = ((Integer)localObject2).intValue();
+        localKeyValueProfile.valueType = 3;
+        localKeyValueProfile.str = ((String)paramHashMap.get(localObject2));
+        localCSReportProfile.param.add(localKeyValueProfile.toByteArray("UTF-8"));
+      }
     }
-    super.destroy();
-  }
-  
-  public void interrupt()
-  {
-    if (this.b) {
-      return;
+    if ((paramHashMap1 != null) && (paramHashMap1.size() > 0))
+    {
+      paramHashMap = paramHashMap1.keySet().iterator();
+      while (paramHashMap.hasNext())
+      {
+        localObject1 = (Integer)paramHashMap.next();
+        localObject2 = new KeyValueProfile();
+        ((KeyValueProfile)localObject2).keyid = ((Integer)localObject1).intValue();
+        ((KeyValueProfile)localObject2).valueType = 1;
+        ((KeyValueProfile)localObject2).i = ((Integer)paramHashMap1.get(localObject1)).intValue();
+        localCSReportProfile.param.add(((KeyValueProfile)localObject2).toByteArray("UTF-8"));
+      }
     }
-    super.interrupt();
+    m.a().sendShark(1053, localCSReportProfile, new SCReportProfile(), 18, new ISharkCallBack()
+    {
+      public void onFinish(int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3, int paramAnonymousInt4, JceStruct paramAnonymousJceStruct)
+      {
+        if ((paramAnonymousInt3 == 0) && (paramAnonymousInt4 == 0)) {
+          paramIProfileUploadCallback.onUploadSuccess();
+        }
+      }
+    });
   }
   
-  public boolean quit()
+  private static final class a
   {
-    if (this.b) {
-      return false;
-    }
-    return super.quit();
-  }
-  
-  public void run()
-  {
-    super.run();
-  }
-  
-  /* Error */
-  public void start()
-  {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: invokevirtual 37	com/tencent/token/global/taiji/k:isAlive	()Z
-    //   6: istore_1
-    //   7: iload_1
-    //   8: ifeq +6 -> 14
-    //   11: aload_0
-    //   12: monitorexit
-    //   13: return
-    //   14: aload_0
-    //   15: invokespecial 39	android/os/HandlerThread:start	()V
-    //   18: goto -7 -> 11
-    //   21: astore_2
-    //   22: aload_0
-    //   23: monitorexit
-    //   24: aload_2
-    //   25: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	26	0	this	k
-    //   6	2	1	bool	boolean
-    //   21	4	2	localObject	java.lang.Object
-    // Exception table:
-    //   from	to	target	type
-    //   2	7	21	finally
-    //   14	18	21	finally
+    private static final k a = new k();
   }
 }
 

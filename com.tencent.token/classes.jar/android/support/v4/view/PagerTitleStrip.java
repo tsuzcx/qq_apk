@@ -2,8 +2,10 @@ package android.support.v4.view;
 
 import android.content.Context;
 import android.content.res.ColorStateList;
+import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
+import android.database.DataSetObserver;
 import android.graphics.drawable.Drawable;
 import android.support.annotation.ColorInt;
 import android.support.annotation.FloatRange;
@@ -11,6 +13,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.TextViewCompat;
 import android.text.TextUtils.TruncateAt;
+import android.text.method.SingleLineTransformationMethod;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.view.View;
@@ -18,6 +21,7 @@ import android.view.View.MeasureSpec;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import java.lang.ref.WeakReference;
+import java.util.Locale;
 
 @ViewPager.DecorView
 public class PagerTitleStrip
@@ -33,14 +37,14 @@ public class PagerTitleStrip
   float mLastKnownPositionOffset = -1.0F;
   TextView mNextText;
   private int mNonPrimaryAlpha;
-  private final PagerTitleStrip.PageListener mPageListener = new PagerTitleStrip.PageListener(this);
+  private final PageListener mPageListener = new PageListener();
   ViewPager mPager;
   TextView mPrevText;
   private int mScaledTextSpacing;
   int mTextColor;
   private boolean mUpdatingPositions;
   private boolean mUpdatingText;
-  private WeakReference mWatchingAdapter;
+  private WeakReference<PagerAdapter> mWatchingAdapter;
   
   public PagerTitleStrip(@NonNull Context paramContext)
   {
@@ -109,7 +113,7 @@ public class PagerTitleStrip
   
   private static void setSingleLineAllCaps(TextView paramTextView)
   {
-    paramTextView.setTransformationMethod(new PagerTitleStrip.SingleLineAllCapsTransform(paramTextView.getContext()));
+    paramTextView.setTransformationMethod(new SingleLineAllCapsTransform(paramTextView.getContext()));
   }
   
   int getMinHeight()
@@ -382,6 +386,77 @@ public class PagerTitleStrip
       j = paramInt + i7;
       i = i6 + paramInt;
       paramInt += i5;
+    }
+  }
+  
+  private class PageListener
+    extends DataSetObserver
+    implements ViewPager.OnAdapterChangeListener, ViewPager.OnPageChangeListener
+  {
+    private int mScrollState;
+    
+    PageListener() {}
+    
+    public void onAdapterChanged(ViewPager paramViewPager, PagerAdapter paramPagerAdapter1, PagerAdapter paramPagerAdapter2)
+    {
+      PagerTitleStrip.this.updateAdapter(paramPagerAdapter1, paramPagerAdapter2);
+    }
+    
+    public void onChanged()
+    {
+      float f = 0.0F;
+      PagerTitleStrip.this.updateText(PagerTitleStrip.this.mPager.getCurrentItem(), PagerTitleStrip.this.mPager.getAdapter());
+      if (PagerTitleStrip.this.mLastKnownPositionOffset >= 0.0F) {
+        f = PagerTitleStrip.this.mLastKnownPositionOffset;
+      }
+      PagerTitleStrip.this.updateTextPositions(PagerTitleStrip.this.mPager.getCurrentItem(), f, true);
+    }
+    
+    public void onPageScrollStateChanged(int paramInt)
+    {
+      this.mScrollState = paramInt;
+    }
+    
+    public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2)
+    {
+      paramInt2 = paramInt1;
+      if (paramFloat > 0.5F) {
+        paramInt2 = paramInt1 + 1;
+      }
+      PagerTitleStrip.this.updateTextPositions(paramInt2, paramFloat, false);
+    }
+    
+    public void onPageSelected(int paramInt)
+    {
+      float f = 0.0F;
+      if (this.mScrollState == 0)
+      {
+        PagerTitleStrip.this.updateText(PagerTitleStrip.this.mPager.getCurrentItem(), PagerTitleStrip.this.mPager.getAdapter());
+        if (PagerTitleStrip.this.mLastKnownPositionOffset >= 0.0F) {
+          f = PagerTitleStrip.this.mLastKnownPositionOffset;
+        }
+        PagerTitleStrip.this.updateTextPositions(PagerTitleStrip.this.mPager.getCurrentItem(), f, true);
+      }
+    }
+  }
+  
+  private static class SingleLineAllCapsTransform
+    extends SingleLineTransformationMethod
+  {
+    private Locale mLocale;
+    
+    SingleLineAllCapsTransform(Context paramContext)
+    {
+      this.mLocale = paramContext.getResources().getConfiguration().locale;
+    }
+    
+    public CharSequence getTransformation(CharSequence paramCharSequence, View paramView)
+    {
+      paramCharSequence = super.getTransformation(paramCharSequence, paramView);
+      if (paramCharSequence != null) {
+        return paramCharSequence.toString().toUpperCase(this.mLocale);
+      }
+      return null;
     }
   }
 }

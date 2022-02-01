@@ -8,13 +8,13 @@ import java.util.ArrayList;
 public final class SoftInfo
   extends JceStruct
 {
-  static ArrayList dF;
+  static ArrayList<String> dF;
   static byte[] dM;
   static SoftKey dw;
-  static ArrayList eZ;
-  static ArrayList fa;
-  static ArrayList fb;
-  static ArrayList fc;
+  static ArrayList<ProcInfo> eZ;
+  static ArrayList<Comment> fa;
+  static ArrayList<String> fb;
+  static ArrayList<String> fc;
   public String apkFileMd5 = "";
   public int asopt = 0;
   public int autostart = 0;
@@ -23,7 +23,7 @@ public final class SoftInfo
   public String channelId = "";
   public float cn_fee = 0.0F;
   public float cn_lfee = 0.0F;
-  public ArrayList comments = null;
+  public ArrayList<Comment> comments = null;
   public String description = "";
   public long diffFileSizeByte = 0L;
   public String diffFileUrl = "";
@@ -41,16 +41,16 @@ public final class SoftInfo
   public int isoftclass = 0;
   public float lfee = 0.0F;
   public String logourl = "";
-  public ArrayList logourls = null;
+  public ArrayList<String> logourls = null;
   public int netaccess = 0;
   public String nick_name = "";
   public int official = 0;
   public String pageurl = "";
   public int phonemonitor = 0;
-  public ArrayList picurls = null;
+  public ArrayList<String> picurls = null;
   public int plugintype = 0;
   public String pname = "";
-  public ArrayList procinfo = null;
+  public ArrayList<ProcInfo> procinfo = null;
   public String publishtime = "";
   public int reportFeature = 0;
   public int score = 0;
@@ -60,7 +60,7 @@ public final class SoftInfo
   public int softDescTimestamp = 0;
   public String softclass = "";
   public SoftKey softkey = null;
-  public ArrayList srcpicurls = null;
+  public ArrayList<String> srcpicurls = null;
   public String strLinkContent = "";
   public String strLinkUrl = "";
   public String strSource = "";
@@ -71,14 +71,14 @@ public final class SoftInfo
   
   public SoftInfo() {}
   
-  public SoftInfo(SoftKey paramSoftKey, String paramString1, String paramString2, String paramString3, String paramString4, ArrayList paramArrayList1, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, String paramString5, int paramInt6, String paramString6, int paramInt7, String paramString7, int paramInt8, String paramString8, String paramString9, ArrayList paramArrayList2, int paramInt9, int paramInt10, int paramInt11, int paramInt12, int paramInt13, int paramInt14, int paramInt15, int paramInt16, int paramInt17, float paramFloat1, String paramString10, String paramString11, ArrayList paramArrayList3, ArrayList paramArrayList4, String paramString12, float paramFloat2, int paramInt18, float paramFloat3, float paramFloat4, ArrayList paramArrayList5, byte[] paramArrayOfByte, String paramString13, String paramString14, String paramString15, String paramString16, String paramString17, String paramString18, String paramString19, long paramLong, String paramString20, int paramInt19, int paramInt20, String paramString21)
+  public SoftInfo(SoftKey paramSoftKey, String paramString1, String paramString2, String paramString3, String paramString4, ArrayList<ProcInfo> paramArrayList, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, String paramString5, int paramInt6, String paramString6, int paramInt7, String paramString7, int paramInt8, String paramString8, String paramString9, ArrayList<String> paramArrayList1, int paramInt9, int paramInt10, int paramInt11, int paramInt12, int paramInt13, int paramInt14, int paramInt15, int paramInt16, int paramInt17, float paramFloat1, String paramString10, String paramString11, ArrayList<Comment> paramArrayList2, ArrayList<String> paramArrayList3, String paramString12, float paramFloat2, int paramInt18, float paramFloat3, float paramFloat4, ArrayList<String> paramArrayList4, byte[] paramArrayOfByte, String paramString13, String paramString14, String paramString15, String paramString16, String paramString17, String paramString18, String paramString19, long paramLong, String paramString20, int paramInt19, int paramInt20, String paramString21)
   {
     this.softkey = paramSoftKey;
     this.short_desc = paramString1;
     this.description = paramString2;
     this.type = paramString3;
     this.softclass = paramString4;
-    this.procinfo = paramArrayList1;
+    this.procinfo = paramArrayList;
     this.smsmonitor = paramInt1;
     this.phonemonitor = paramInt2;
     this.netaccess = paramInt3;
@@ -92,7 +92,7 @@ public final class SoftInfo
     this.downloadtimes = paramInt8;
     this.function = paramString8;
     this.fileurl = paramString9;
-    this.picurls = paramArrayList2;
+    this.picurls = paramArrayList1;
     this.official = paramInt9;
     this.update = paramInt10;
     this.score = paramInt11;
@@ -105,14 +105,14 @@ public final class SoftInfo
     this.fee = paramFloat1;
     this.pname = paramString10;
     this.hprice = paramString11;
-    this.comments = paramArrayList3;
-    this.logourls = paramArrayList4;
+    this.comments = paramArrayList2;
+    this.logourls = paramArrayList3;
     this.pageurl = paramString12;
     this.lfee = paramFloat2;
     this.isoftclass = paramInt18;
     this.cn_fee = paramFloat3;
     this.cn_lfee = paramFloat4;
-    this.srcpicurls = paramArrayList5;
+    this.srcpicurls = paramArrayList4;
     this.expand = paramArrayOfByte;
     this.strSource = paramString13;
     this.strLinkContent = paramString14;

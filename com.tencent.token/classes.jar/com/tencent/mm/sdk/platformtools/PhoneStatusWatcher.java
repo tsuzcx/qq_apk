@@ -11,14 +11,14 @@ public class PhoneStatusWatcher
   private static boolean aD;
   private TelephonyManager aE;
   private PhoneStateListener aF;
-  private List aG = new LinkedList();
+  private List<PhoneCallListener> aG = new LinkedList();
   
   public static boolean isCalling()
   {
     return aD;
   }
   
-  public void addPhoneCallListener(PhoneStatusWatcher.PhoneCallListener paramPhoneCallListener)
+  public void addPhoneCallListener(PhoneCallListener paramPhoneCallListener)
   {
     this.aG.add(paramPhoneCallListener);
   }
@@ -48,9 +48,14 @@ public class PhoneStatusWatcher
     }
   }
   
-  public void removePhoneCallListener(PhoneStatusWatcher.PhoneCallListener paramPhoneCallListener)
+  public void removePhoneCallListener(PhoneCallListener paramPhoneCallListener)
   {
     this.aG.remove(paramPhoneCallListener);
+  }
+  
+  public static abstract interface PhoneCallListener
+  {
+    public abstract void onPhoneCall(int paramInt);
   }
 }
 

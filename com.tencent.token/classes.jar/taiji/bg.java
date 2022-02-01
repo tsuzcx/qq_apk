@@ -1,173 +1,259 @@
 package taiji;
 
-import android.graphics.Canvas;
-import android.graphics.ColorFilter;
-import android.graphics.Matrix;
-import android.graphics.Rect;
-import android.graphics.RectF;
-import android.graphics.Region.Op;
+import Protocol.MMGRAuth.AuthSolutionConfig;
+import Protocol.MMGRAuth.SolutionItem;
+import android.content.Context;
+import android.util.SparseArray;
+import android.util.SparseIntArray;
+import com.tencent.qqpimsecure.taiji.g;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import uilib.doraemon.a;
-import uilib.doraemon.e;
-import uilib.doraemon.m;
 
 public class bg
-  extends bd
 {
-  private final s e;
-  private final List f = new ArrayList();
-  private final RectF g = new RectF();
-  private final Rect h = new Rect();
-  private final RectF i = new RectF();
+  private static final SparseIntArray a = new SparseIntArray();
+  private static final SparseIntArray b = new SparseIntArray();
+  private static final SparseArray<int[]> c = new SparseArray();
+  private static final ArrayList<String> d = new ArrayList();
   
-  public bg(e parame, cs paramcs, List paramList, a parama)
+  static
   {
-    super(parame, paramcs);
-    paramcs = paramcs.u();
-    HashMap localHashMap;
-    int j;
-    label114:
-    cs localcs;
-    bd localbd;
-    if (paramcs != null)
+    a.put(1, 30011);
+    a.put(2, 30010);
+    a.put(3, 30004);
+    a.put(4, 30017);
+    a.put(5, 30009);
+    a.put(6, 30007);
+    a.put(7, 0);
+    a.put(8, 30002);
+    a.put(9, 30011);
+    a.put(10, 30011);
+    a.put(11, 30011);
+    a.put(12, 30011);
+    a.put(13, 30011);
+    a.put(14, 30012);
+    a.put(15, 30012);
+    a.put(16, 30012);
+    a.put(17, 30012);
+    a.put(18, 30012);
+    a.put(19, 30012);
+    a.put(20, 30012);
+    a.put(21, 30013);
+    a.put(22, 30013);
+    a.put(23, 30013);
+    a.put(24, 30014);
+    a.put(25, 30003);
+    a.put(26, 0);
+    a.put(27, 30015);
+    a.put(28, 30015);
+    a.put(29, 30016);
+    a.put(30, 30019);
+    a.put(31, 30029);
+    a.put(32, 0);
+    a.put(33, 0);
+    a.put(34, 0);
+    a.put(35, 0);
+    a.put(36, 30018);
+    a.put(38, 30020);
+    a.put(39, 30021);
+    a.put(40, 30022);
+    a.put(41, 30023);
+    a.put(42, 30024);
+    a.put(43, 30025);
+    a.put(44, 30026);
+    a.put(45, 30007);
+    a.put(46, 30028);
+    a.put(47, 30030);
+    a.put(48, 30031);
+    a.put(49, 30027);
+    b.put(1, 30111);
+    b.put(2, 30110);
+    b.put(3, 30104);
+    b.put(4, 30117);
+    b.put(5, 30109);
+    b.put(6, 30107);
+    b.put(7, 30111);
+    b.put(8, 30102);
+    b.put(9, 30111);
+    b.put(10, 30111);
+    b.put(11, 30111);
+    b.put(12, 30111);
+    b.put(13, 30111);
+    b.put(14, 30112);
+    b.put(15, 30112);
+    b.put(16, 30112);
+    b.put(17, 30112);
+    b.put(18, 30112);
+    b.put(19, 30112);
+    b.put(20, 30112);
+    b.put(21, 30113);
+    b.put(22, 30113);
+    b.put(23, 30113);
+    b.put(24, 30114);
+    b.put(25, 30103);
+    b.put(26, 30111);
+    b.put(27, 30115);
+    b.put(28, 30115);
+    b.put(29, 30116);
+    b.put(30, 30119);
+    b.put(31, 30129);
+    b.put(32, 30111);
+    b.put(33, 30111);
+    b.put(34, 30111);
+    b.put(35, 30111);
+    b.put(36, 30118);
+    b.put(38, 30120);
+    b.put(39, 30121);
+    b.put(40, 30122);
+    b.put(41, 30123);
+    b.put(42, 30124);
+    b.put(43, 30125);
+    b.put(44, 30126);
+    b.put(45, 30107);
+    b.put(46, 30128);
+    b.put(47, 30130);
+    b.put(48, 30131);
+    b.put(49, 30127);
+    c.put(30002, new int[] { 8 });
+    c.put(30003, new int[] { 25 });
+    c.put(30004, new int[] { 3 });
+    c.put(30007, new int[] { 6 });
+    c.put(30009, new int[] { 5 });
+    c.put(30010, new int[] { 2 });
+    c.put(30011, new int[] { 1, 9, 10, 11, 12, 13 });
+    c.put(30012, new int[] { 14, 15, 16, 17, 18, 19, 20 });
+    c.put(30013, new int[] { 21, 22, 23 });
+    c.put(30014, new int[] { 24 });
+    c.put(30015, new int[] { 27, 28 });
+    c.put(30016, new int[] { 29 });
+    c.put(30017, new int[] { 4 });
+    c.put(30018, new int[] { 36 });
+    c.put(30019, new int[] { 30 });
+    c.put(30020, new int[] { 38 });
+    c.put(30021, new int[] { 39 });
+    c.put(30022, new int[] { 40 });
+    c.put(30023, new int[] { 41 });
+    c.put(30024, new int[] { 42 });
+    c.put(30025, new int[] { 43 });
+    c.put(30026, new int[] { 44 });
+    c.put(30007, new int[] { 45 });
+    c.put(30028, new int[] { 46 });
+    c.put(30030, new int[] { 47 });
+    c.put(30031, new int[] { 48 });
+    c.put(30027, new int[] { 49 });
+    d.add("");
+    d.add("读取手机状态");
+    d.add("存储");
+    d.add("");
+    d.add("自启动");
+    d.add("悬浮窗");
+    d.add("");
+    d.add("读取已安装应用列表");
+    d.add("");
+    d.add("监听通话");
+    d.add("拨打电话");
+    d.add("读通话记录");
+    d.add("写通话记录");
+    d.add("删除通话记录");
+    d.add("读短信");
+    d.add("写短信");
+    d.add("发送短信");
+    d.add("通知类短信");
+    d.add("读彩信");
+    d.add("写彩信");
+    d.add("发送彩信");
+    d.add("读联系人/通讯录");
+    d.add("写联系人/通讯录");
+    d.add("删除联系人/通讯录");
+    d.add("位置/定位");
+    d.add("");
+    d.add("创建桌面快捷方式");
+    d.add("读日历");
+    d.add("写日历");
+    d.add("相机/摄像头");
+    d.add("录音");
+    d.add("修改系统设置");
+    d.add("获取帐号");
+    d.add("移动网络");
+    d.add("WIFI/WLAN");
+    d.add("蓝牙");
+    d.add("");
+    d.add("");
+    d.add("");
+    d.add("");
+    d.add("关联启动");
+    d.add("");
+    d.add("锁屏显示");
+    d.add("");
+    d.add("");
+    d.add("");
+    d.add("");
+    d.add("");
+    d.add("后台弹出界面");
+    d.add("GPS开关");
+  }
+  
+  public static int a(int paramInt)
+  {
+    return a.get(paramInt);
+  }
+  
+  public static boolean a(Context paramContext)
+  {
+    paramContext = g.a(paramContext).a(10001);
+    if ((paramContext != null) && (paramContext.soluInfo != null))
     {
-      this.e = paramcs.a();
-      a(this.e);
-      this.e.a(this);
-      localHashMap = new HashMap(parama.e().size());
-      j = paramList.size() - 1;
-      paramcs = null;
-      if (j < 0) {
-        break label257;
-      }
-      localcs = (cs)paramList.get(j);
-      localbd = a(localcs, parame, parama);
-      if (localbd != null) {
-        break label164;
+      paramContext = (AuthSolutionConfig)bj.a(paramContext.soluInfo, new AuthSolutionConfig(), false);
+      if ((paramContext != null) && (paramContext.authSolutionConfigList != null) && (!paramContext.authSolutionConfigList.isEmpty())) {
+        return !((String)paramContext.authSolutionConfigList.get(0)).equals("1");
       }
     }
-    for (;;)
+    return true;
+  }
+  
+  public static boolean a(Context paramContext, int paramInt)
+  {
+    paramContext = g.a(paramContext).a(20002);
+    if ((paramContext != null) && (paramContext.soluInfo != null))
     {
-      j -= 1;
-      break label114;
-      this.e = null;
-      break;
-      label164:
-      localHashMap.put(Long.valueOf(localbd.a().e()), localbd);
-      if (paramcs != null)
+      paramContext = (AuthSolutionConfig)bj.a(paramContext.soluInfo, new AuthSolutionConfig(), false);
+      if ((paramContext != null) && (paramContext.authSolutionConfigList != null) && (!paramContext.authSolutionConfigList.isEmpty()))
       {
-        paramcs.a(localbd);
-        paramcs = null;
-      }
-      else
-      {
-        this.f.add(0, localbd);
-        switch (bh.a[localcs.l().ordinal()])
-        {
-        default: 
-          break;
-        case 1: 
-        case 2: 
-          paramcs = localbd;
+        paramContext = paramContext.authSolutionConfigList.iterator();
+        while (paramContext.hasNext()) {
+          if (((String)paramContext.next()).equals(String.valueOf(paramInt))) {
+            return true;
+          }
         }
       }
     }
-    label257:
-    parame = localHashMap.keySet().iterator();
-    while (parame.hasNext())
-    {
-      paramcs = (bd)localHashMap.get(parame.next());
-      paramList = (bd)localHashMap.get(Long.valueOf(paramcs.a().m()));
-      if (paramList != null) {
-        paramcs.b(paramList);
-      }
-    }
+    return false;
   }
   
-  public void a(float paramFloat)
+  public static int b(int paramInt)
   {
-    super.a(paramFloat);
-    float f1 = paramFloat;
-    if (this.c.b() != 0.0F) {
-      f1 = paramFloat / this.c.b();
-    }
-    paramFloat = this.c.c();
-    int j = this.f.size() - 1;
-    while (j >= 0)
-    {
-      ((bd)this.f.get(j)).a(f1 - paramFloat);
-      j -= 1;
-    }
+    return b.get(paramInt);
   }
   
-  public void a(RectF paramRectF, Matrix paramMatrix)
+  public static String b(Context paramContext, int paramInt)
   {
-    super.a(paramRectF, paramMatrix);
-    this.g.set(0.0F, 0.0F, 0.0F, 0.0F);
-    int j = this.f.size() - 1;
-    if (j >= 0)
+    paramContext = g.a(paramContext).a(30201);
+    if ((paramContext != null) && (paramContext.soluInfo != null))
     {
-      ((bd)this.f.get(j)).a(this.g, this.a);
-      if (paramRectF.isEmpty()) {
-        paramRectF.set(this.g);
-      }
-      for (;;)
-      {
-        j -= 1;
-        break;
-        paramRectF.set(Math.min(paramRectF.left, this.g.left), Math.min(paramRectF.top, this.g.top), Math.max(paramRectF.right, this.g.right), Math.max(paramRectF.bottom, this.g.bottom));
+      paramContext = (AuthSolutionConfig)bj.a(paramContext.soluInfo, new AuthSolutionConfig(), false);
+      if ((paramContext != null) && (paramContext.authSolutionConfigList != null) && (!paramContext.authSolutionConfigList.isEmpty()) && (paramInt < paramContext.authSolutionConfigList.size())) {
+        return (String)paramContext.authSolutionConfigList.get(paramInt);
       }
     }
+    if ((paramInt >= 0) && (paramInt < d.size())) {
+      return (String)d.get(paramInt);
+    }
+    return "";
   }
   
-  public void a(String paramString1, String paramString2, ColorFilter paramColorFilter)
+  public static int[] c(int paramInt)
   {
-    int j = 0;
-    if (j < this.f.size())
-    {
-      bd localbd = (bd)this.f.get(j);
-      String str = localbd.a().f();
-      if (paramString1 == null) {
-        localbd.a(null, null, paramColorFilter);
-      }
-      for (;;)
-      {
-        j += 1;
-        break;
-        if (str.equals(paramString1)) {
-          localbd.a(paramString1, paramString2, paramColorFilter);
-        }
-      }
-    }
-  }
-  
-  void b(Canvas paramCanvas, Matrix paramMatrix, int paramInt)
-  {
-    m.a("CompositionLayer#draw");
-    paramCanvas.getClipBounds(this.h);
-    this.i.set(0.0F, 0.0F, this.c.h(), this.c.i());
-    paramMatrix.mapRect(this.i);
-    int j = this.f.size() - 1;
-    while (j >= 0)
-    {
-      boolean bool = true;
-      if (!this.i.isEmpty()) {
-        bool = paramCanvas.clipRect(this.i);
-      }
-      if (bool) {
-        ((bd)this.f.get(j)).a(paramCanvas, paramMatrix, paramInt);
-      }
-      j -= 1;
-    }
-    if (!this.h.isEmpty()) {
-      paramCanvas.clipRect(this.h, Region.Op.REPLACE);
-    }
-    m.b("CompositionLayer#draw");
+    return (int[])c.get(paramInt);
   }
 }
 

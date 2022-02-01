@@ -8,8 +8,8 @@ import java.util.ArrayList;
 public final class CSConfigReport
   extends JceStruct
 {
-  static ArrayList bv = new ArrayList();
-  public ArrayList vecConfigReport = null;
+  static ArrayList<ConfigReport> bv = new ArrayList();
+  public ArrayList<ConfigReport> vecConfigReport = null;
   
   static
   {

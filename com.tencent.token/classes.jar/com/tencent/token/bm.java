@@ -1,60 +1,254 @@
 package com.tencent.token;
 
-import android.content.Context;
-import android.content.SharedPreferences;
-import com.tencent.halley.common.c;
-import com.tencent.halley.common.h;
+import com.tencent.halley.common.b;
+import java.net.InetAddress;
+import java.net.Socket;
+import java.util.ArrayList;
+import java.util.List;
 
 public final class bm
+  implements bl
 {
-  private static bm d;
-  public bo a;
-  public bp b = new bp();
-  public bn c;
+  private int a = 1;
+  private int b = 1;
+  private int c = 20000;
+  private int d = 3;
+  private ArrayList e = null;
+  private int f = 0;
+  private boolean g = false;
+  private ArrayList h = null;
+  private int i = 0;
+  private boolean j = false;
+  private String k = "dispatcher.3g.qq.com";
+  private Socket l;
+  private int m;
+  private int n;
+  private int o;
+  private int p;
+  private ay q;
   
-  private bm()
+  public bm()
   {
-    this.b.a();
-    this.a = new bo();
-    this.a.a();
-    this.c = new bn();
-    bn localbn = this.c;
-    SharedPreferences localSharedPreferences = h.a().getSharedPreferences("Access_Preferences", 0);
-    localbn.a = localSharedPreferences.getString("detectTaskCode", "200001010101011234");
-    localbn.b = localSharedPreferences.getString("ipInfo", "DEFAULT");
+    int[] arrayOfInt = bf.a;
+    this.l = null;
+    this.m = 0;
+    this.n = 0;
+    this.o = -1;
+    this.p = -1;
   }
   
-  public static bm a()
+  private static ArrayList a(ArrayList paramArrayList, int paramInt1, int paramInt2, boolean paramBoolean)
   {
-    try
+    if ((paramArrayList == null) || (paramArrayList.size() <= 0) || (paramInt1 >= paramArrayList.size())) {}
+    do
     {
-      if (d == null) {
-        d = new bm();
+      return paramArrayList;
+      paramInt2 = Math.min(paramInt2, paramArrayList.size() - paramInt1);
+    } while (paramInt2 <= 0);
+    ArrayList localArrayList = new ArrayList(paramInt2);
+    paramArrayList = paramArrayList.subList(paramInt1, paramInt1 + paramInt2);
+    paramInt1 = 0;
+    while (paramInt1 < paramInt2)
+    {
+      ay localay = (ay)paramArrayList.get(paramInt1);
+      localArrayList.add(new ay(localay.a(), localay.b()));
+      paramInt1 += 1;
+    }
+    return localArrayList;
+  }
+  
+  public final void a()
+  {
+    boolean bool;
+    if ((this.e == null) || (this.e.size() <= 0))
+    {
+      bool = true;
+      this.g = bool;
+      if (this.h != null) {
+        break label167;
       }
-      bm localbm = d;
-      return localbm;
+      bool = true;
+      label33:
+      this.j = bool;
+      b.a("SocketConnectorImpl", "doConnect...");
     }
-    finally {}
+    for (;;)
+    {
+      if (((!this.g) || (!this.j)) && (this.n <= this.d))
+      {
+        this.n += 1;
+        if (!bp.c()) {
+          break label172;
+        }
+        this.l = bk.a(this.k, this.c);
+      }
+      label167:
+      label172:
+      long l1;
+      for (;;)
+      {
+        if ((this.l != null) && (this.l.isConnected()) && (!this.l.isClosed()))
+        {
+          this.q = new ay(this.l.getInetAddress().getHostAddress(), this.l.getPort());
+          this.m = 0;
+          return;
+          bool = false;
+          break;
+          bool = false;
+          break label33;
+          Object localObject;
+          if (!this.g)
+          {
+            l1 = System.currentTimeMillis();
+            localObject = a(this.e, this.f, this.a, true);
+            if ((localObject != null) && (((ArrayList)localObject).size() > 0))
+            {
+              this.f += ((ArrayList)localObject).size();
+              if (this.f < this.e.size()) {}
+            }
+            else
+            {
+              this.g = true;
+            }
+            this.l = bk.a((ArrayList)localObject, this.c);
+            this.o = 0;
+            this.p = ((int)(System.currentTimeMillis() - l1));
+            b.a("SocketConnectorImpl", "use IpList, dnsTime: 0 ,connectTime：" + this.p);
+          }
+          else
+          {
+            ArrayList localArrayList = new ArrayList();
+            localObject = localArrayList;
+            if (!this.j)
+            {
+              localObject = localArrayList;
+              if (this.h != null)
+              {
+                localObject = localArrayList;
+                if (this.h.size() > 0)
+                {
+                  localObject = localArrayList;
+                  if (this.i < this.h.size())
+                  {
+                    localArrayList = a(this.h, this.i, this.b, true);
+                    if ((localArrayList == null) || (localArrayList.size() <= 0)) {
+                      break label519;
+                    }
+                    this.i += localArrayList.size();
+                    localObject = localArrayList;
+                    if (this.i < this.h.size()) {
+                      break label437;
+                    }
+                    localObject = localArrayList;
+                  }
+                }
+              }
+              this.j = true;
+            }
+            for (;;)
+            {
+              label437:
+              localObject = bk.a((ArrayList)localObject, this.k, this.c);
+              if (localObject != null) {
+                this.l = ((bj)localObject).c();
+              }
+              this.o = bk.a;
+              this.p = bk.b;
+              b.a("SocketConnectorImpl", "use IpList DNS parallel , dnsTime:" + this.o + ",connectTime：" + this.p);
+              break;
+              label519:
+              this.j = true;
+              localObject = localArrayList;
+            }
+          }
+        }
+      }
+      if (bp.f())
+      {
+        this.m = -3;
+        l1 = 3000;
+      }
+      try
+      {
+        Thread.sleep(l1);
+        for (;;)
+        {
+          label552:
+          this.l = null;
+          break;
+          this.m = -4;
+          l1 = 5000;
+          try
+          {
+            Thread.sleep(l1);
+          }
+          catch (Exception localException1) {}
+        }
+      }
+      catch (Exception localException2)
+      {
+        break label552;
+      }
+    }
   }
   
-  public final void a(bp parambp)
+  public final void a(int paramInt)
   {
-    if (parambp == null) {
-      return;
-    }
-    c.b("AccessSchedulerConfiguration", "updateSdkCfInfo...SdkCfgInfo:" + parambp);
-    if ((parambp.a < 2000) || (parambp.a > 60000))
+    this.c = paramInt;
+  }
+  
+  public final void a(String paramString)
+  {
+    this.k = paramString;
+  }
+  
+  public final void a(ArrayList paramArrayList)
+  {
+    this.e = paramArrayList;
+  }
+  
+  public final void a(ArrayList paramArrayList, boolean paramBoolean)
+  {
+    this.h = paramArrayList;
+  }
+  
+  public final void a(int[] paramArrayOfInt)
+  {
+    paramArrayOfInt.clone();
+  }
+  
+  public final int b()
+  {
+    return this.m;
+  }
+  
+  public final void b(int paramInt)
+  {
+    if ((paramInt > 0) && (paramInt < 4))
     {
-      c.c("AccessSchedulerConfiguration", "updateSdkCfInfo...connectTimeout:" + parambp.a + " is checked to 20s");
-      parambp.a = 20000;
+      this.a = paramInt;
+      this.b = paramInt;
     }
-    if ((parambp.b < 2000) || (parambp.b > 60000))
-    {
-      c.c("AccessSchedulerConfiguration", "updateSdkCfInfo...readTimeout:" + parambp.b + " is checked to 20s");
-      parambp.b = 20000;
-    }
-    this.b = parambp;
-    this.b.b();
+  }
+  
+  public final Socket c()
+  {
+    return this.l;
+  }
+  
+  public final int d()
+  {
+    return this.o;
+  }
+  
+  public final int e()
+  {
+    return this.p;
+  }
+  
+  public final ay f()
+  {
+    return this.q;
   }
 }
 

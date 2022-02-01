@@ -1,37 +1,114 @@
 package com.tencent.turingfd.sdk.base;
 
-import java.io.PrintWriter;
-import java.io.StringWriter;
+import android.content.Context;
+import android.content.pm.PackageManager;
+import android.text.TextUtils;
+import java.util.ArrayList;
 
-public final class cq
+public class cq
 {
-  public static ct a = new ct();
+  public static ArrayList<Flat> a;
   
-  public static String a(Object paramObject)
+  public static ArrayList<Flat> a(Context paramContext)
   {
-    if (paramObject == null) {
-      return null;
-    }
-    if ((paramObject instanceof String)) {
-      return (String)paramObject;
-    }
-    if ((paramObject instanceof Throwable))
+    ArrayList localArrayList = new ArrayList();
+    int i = b(paramContext);
+    if (i > 0)
     {
-      Object localObject = (Throwable)paramObject;
-      StringWriter localStringWriter = new StringWriter();
-      paramObject = new PrintWriter(localStringWriter);
-      ((Throwable)localObject).printStackTrace(paramObject);
-      paramObject.flush();
-      localObject = localStringWriter.toString();
-      paramObject.close();
-      return localObject;
+      paramContext = new Flat();
+      paramContext.sc = (da.c + da.e);
+      paramContext.tc = String.valueOf(i);
+      localArrayList.add(paramContext);
     }
-    return paramObject.toString();
+    return localArrayList;
   }
   
-  public static void a(String paramString, Object paramObject)
+  public static boolean a(String paramString1, String paramString2)
   {
-    a.a(6, paramString, a(paramObject));
+    if (paramString2 == null) {}
+    for (;;)
+    {
+      return false;
+      int i = paramString2.indexOf('/');
+      if (i != -1)
+      {
+        String str = paramString2.substring(i).trim();
+        if ((str.startsWith("/data/")) && (!str.startsWith("/data/data/" + paramString1 + "/")))
+        {
+          boolean bool = str.endsWith(".so");
+          if ((!bool) && (str.endsWith(".jar"))) {}
+          for (i = 1; ((bool) || (i != 0)) && (paramString2.contains(ct.a(ct.m))); i = 0) {
+            return true;
+          }
+        }
+      }
+    }
+  }
+  
+  public static int b(Context paramContext)
+  {
+    bool2 = false;
+    Object localObject = paramContext.getPackageManager();
+    if (localObject == null) {}
+    for (;;)
+    {
+      bool1 = false;
+      int j = cm.a(0, bool1, 0);
+      do
+      {
+        do
+        {
+          for (;;)
+          {
+            try
+            {
+              localObject = new String(cm.c(ct.a(ct.n)));
+              bool1 = TextUtils.isEmpty((CharSequence)localObject);
+              if (!bool1) {
+                continue;
+              }
+              bool1 = bool2;
+            }
+            catch (Throwable paramContext)
+            {
+              String str;
+              int k;
+              int i;
+              bool1 = bool2;
+              continue;
+            }
+            return cm.a(j, bool1, 1);
+            str = ct.a(ct.l);
+            try
+            {
+              ((PackageManager)localObject).getPackageInfo(str, 128);
+              bool1 = true;
+            }
+            catch (Throwable localThrowable) {}
+          }
+          localObject = ((String)localObject).split("\\n");
+          bool1 = bool2;
+        } while (localObject == null);
+        bool1 = bool2;
+      } while (localObject.length == 0);
+      paramContext = paramContext.getPackageName();
+      k = localObject.length;
+      i = 0;
+      for (;;)
+      {
+        bool1 = bool2;
+        if (i >= k) {
+          break;
+        }
+        bool1 = a(paramContext, localObject[i]);
+        if (bool1)
+        {
+          bool1 = true;
+          break;
+        }
+        i += 1;
+      }
+    }
   }
 }
 

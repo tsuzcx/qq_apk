@@ -18,7 +18,7 @@ public class b
   
   private void a(String paramString1, String paramString2)
   {
-    paramString2 = fs.a(this.a, paramString2);
+    paramString2 = ej.a(this.a, paramString2);
     if (paramString2 == null) {
       return;
     }
@@ -31,7 +31,7 @@ public class b
     if (TextUtils.isEmpty(paramString1)) {
       return null;
     }
-    return fs.b(this.a, paramString1);
+    return ej.b(this.a, paramString1);
   }
   
   private long h(String paramString)

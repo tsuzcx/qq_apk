@@ -1,6 +1,6 @@
 package com.tencent.token.core.bean;
 
-import com.tencent.token.global.h;
+import com.tencent.token.global.g;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -48,7 +48,7 @@ public class a
     }
     catch (JSONException paramJSONObject)
     {
-      h.c("JSONException: " + paramJSONObject.getMessage());
+      g.c("JSONException: " + paramJSONObject.getMessage());
     }
     return false;
   }

@@ -125,6 +125,13 @@ public class DevlockBase
     System.arraycopy(paramArrayOfByte, paramInt, arrayOfByte, 0, i);
     return arrayOfByte;
   }
+  
+  public static final class a
+  {
+    public static int a = 5;
+    public static int b = 7;
+    public static int c = 8;
+  }
 }
 
 

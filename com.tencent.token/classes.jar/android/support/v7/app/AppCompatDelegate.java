@@ -10,6 +10,7 @@ import android.support.annotation.IdRes;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.annotation.RestrictTo;
 import android.support.v7.view.ActionMode;
 import android.support.v7.view.ActionMode.Callback;
 import android.support.v7.widget.Toolbar;
@@ -19,6 +20,9 @@ import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import android.view.Window;
+import java.lang.annotation.Annotation;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
 
 public abstract class AppCompatDelegate
 {
@@ -88,7 +92,7 @@ public abstract class AppCompatDelegate
   public abstract View createView(@Nullable View paramView, String paramString, @NonNull Context paramContext, @NonNull AttributeSet paramAttributeSet);
   
   @Nullable
-  public abstract View findViewById(@IdRes int paramInt);
+  public abstract <T extends View> T findViewById(@IdRes int paramInt);
   
   @Nullable
   public abstract ActionBarDrawerToggle.Delegate getDrawerToggleDelegate();
@@ -140,6 +144,13 @@ public abstract class AppCompatDelegate
   
   @Nullable
   public abstract ActionMode startSupportActionMode(@NonNull ActionMode.Callback paramCallback);
+  
+  @Retention(RetentionPolicy.SOURCE)
+  static @interface ApplyableNightMode {}
+  
+  @Retention(RetentionPolicy.SOURCE)
+  @RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
+  public static @interface NightMode {}
 }
 
 

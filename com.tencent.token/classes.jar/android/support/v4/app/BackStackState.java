@@ -11,7 +11,18 @@ import java.util.ArrayList;
 final class BackStackState
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new BackStackState.1();
+  public static final Parcelable.Creator<BackStackState> CREATOR = new Parcelable.Creator()
+  {
+    public BackStackState createFromParcel(Parcel paramAnonymousParcel)
+    {
+      return new BackStackState(paramAnonymousParcel);
+    }
+    
+    public BackStackState[] newArray(int paramAnonymousInt)
+    {
+      return new BackStackState[paramAnonymousInt];
+    }
+  };
   final int mBreadCrumbShortTitleRes;
   final CharSequence mBreadCrumbShortTitleText;
   final int mBreadCrumbTitleRes;
@@ -20,8 +31,8 @@ final class BackStackState
   final String mName;
   final int[] mOps;
   final boolean mReorderingAllowed;
-  final ArrayList mSharedElementSourceNames;
-  final ArrayList mSharedElementTargetNames;
+  final ArrayList<String> mSharedElementSourceNames;
+  final ArrayList<String> mSharedElementTargetNames;
   final int mTransition;
   final int mTransitionStyle;
   

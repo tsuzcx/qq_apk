@@ -1,57 +1,20 @@
 package com.tencent.token;
 
-import java.util.List;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.halley.common.a;
+import com.tencent.halley.common.b;
 
-public class au
+final class au
+  extends BroadcastReceiver
 {
-  private bh a;
-  private bp b;
-  private bo c;
-  private List d;
+  au(as paramas) {}
   
-  public bh a()
+  public final void onReceive(Context paramContext, Intent paramIntent)
   {
-    return this.a;
-  }
-  
-  public void a(bh parambh)
-  {
-    this.a = parambh;
-  }
-  
-  public void a(bo parambo)
-  {
-    this.c = parambo;
-  }
-  
-  public void a(bp parambp)
-  {
-    this.b = parambp;
-  }
-  
-  public void a(List paramList)
-  {
-    this.d = paramList;
-  }
-  
-  public bp b()
-  {
-    return this.b;
-  }
-  
-  public bo c()
-  {
-    return this.c;
-  }
-  
-  public String d()
-  {
-    return "accessInfo:" + this.a + ", sdkCfgInfo:" + this.b + ", sdkAccessInfo:" + this.c;
-  }
-  
-  public List e()
-  {
-    return this.d;
+    b.a("AccessSchedulerTrigger", "onAccessSchedulerTriggered by timer, curTime:" + System.currentTimeMillis());
+    a.a().a(new as.a(this.a, (byte)0));
   }
 }
 

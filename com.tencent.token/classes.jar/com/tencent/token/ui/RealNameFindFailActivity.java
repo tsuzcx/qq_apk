@@ -3,6 +3,7 @@ package com.tencent.token.ui;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -17,9 +18,9 @@ public class RealNameFindFailActivity
   private void initView()
   {
     this.mBackArrow.setVisibility(4);
-    TextView localTextView1 = (TextView)findViewById(2131558753);
-    TextView localTextView2 = (TextView)findViewById(2131558754);
-    Button localButton = (Button)findViewById(2131558755);
+    TextView localTextView1 = (TextView)findViewById(2131558754);
+    TextView localTextView2 = (TextView)findViewById(2131558755);
+    Button localButton = (Button)findViewById(2131558756);
     if (this.mSourceId == 1) {
       localTextView2.setText(2131231365);
     }
@@ -28,7 +29,23 @@ public class RealNameFindFailActivity
       if ((this.mErrInfoString != null) && (this.mErrInfoString.length() > 0)) {
         localTextView1.setText(this.mErrInfoString);
       }
-      localButton.setOnClickListener(new ve(this));
+      localButton.setOnClickListener(new View.OnClickListener()
+      {
+        public void onClick(View paramAnonymousView)
+        {
+          if (RealNameFindFailActivity.this.mSourceId == 1)
+          {
+            paramAnonymousView = new Intent(RealNameFindFailActivity.this, FindPasswdActivity.class);
+            paramAnonymousView.addFlags(67108864);
+            paramAnonymousView.putExtra("real_uin", RealNameFindFailActivity.this.mRealUin);
+            paramAnonymousView.putExtra("not_showLockVerify", true);
+            paramAnonymousView.putExtra("canchange_uin", RealNameFindFailActivity.this.canchange_uin);
+            RealNameFindFailActivity.this.startActivity(paramAnonymousView);
+            return;
+          }
+          RealNameFindFailActivity.this.finish();
+        }
+      });
       return;
       localTextView2.setText(2131231364);
     }

@@ -132,7 +132,7 @@ abstract class MenuPopup
   
   public void initForMenu(@NonNull Context paramContext, @Nullable MenuBuilder paramMenuBuilder) {}
   
-  public void onItemClick(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
     paramView = (ListAdapter)paramAdapterView.getAdapter();
     paramAdapterView = toMenuAdapter(paramView).mAdapterMenu;

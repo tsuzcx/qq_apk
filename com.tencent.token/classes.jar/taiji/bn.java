@@ -1,62 +1,47 @@
 package taiji;
 
-import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.ColorFilter;
-import android.graphics.Matrix;
-import android.graphics.Paint;
-import android.graphics.Paint.Style;
-import android.graphics.RectF;
-import uilib.doraemon.e;
+import android.util.Log;
 
 public class bn
-  extends bd
 {
-  private final RectF e = new RectF();
-  private final Paint f = new Paint();
-  private final cs g;
+  private static boolean a = false;
   
-  bn(e parame, cs paramcs)
+  public static void a(String paramString1, String paramString2)
   {
-    super(parame, paramcs);
-    this.g = paramcs;
-    this.f.setAlpha(0);
-    this.f.setStyle(Paint.Style.FILL);
-    this.f.setColor(paramcs.p());
+    if (a()) {
+      Log.e(paramString1, paramString2);
+    }
   }
   
-  private void a(Matrix paramMatrix)
+  public static void a(boolean paramBoolean)
   {
-    this.e.set(0.0F, 0.0F, this.g.r(), this.g.q());
-    paramMatrix.mapRect(this.e);
+    a = paramBoolean;
   }
   
-  public void a(RectF paramRectF, Matrix paramMatrix)
+  public static boolean a()
   {
-    super.a(paramRectF, paramMatrix);
-    a(this.a);
-    paramRectF.set(this.e);
+    return a;
   }
   
-  public void a(String paramString1, String paramString2, ColorFilter paramColorFilter)
+  public static void b(String paramString1, String paramString2)
   {
-    this.f.setColorFilter(paramColorFilter);
+    if (a()) {
+      Log.i(paramString1, paramString2);
+    }
   }
   
-  public void b(Canvas paramCanvas, Matrix paramMatrix, int paramInt)
+  public static void c(String paramString1, String paramString2)
   {
-    int i = Color.alpha(this.g.p());
-    if (i == 0) {}
-    do
-    {
-      return;
-      float f1 = paramInt / 255.0F;
-      float f2 = i / 255.0F;
-      paramInt = (int)(((Integer)this.d.a().b()).intValue() * f2 / 100.0F * f1 * 255.0F);
-      a(paramMatrix);
-      this.f.setAlpha(paramInt);
-    } while (paramInt <= 0);
-    paramCanvas.drawRect(this.e, this.f);
+    if (a()) {
+      Log.d(paramString1, paramString2);
+    }
+  }
+  
+  public static void d(String paramString1, String paramString2)
+  {
+    if (a()) {
+      Log.w(paramString1, paramString2);
+    }
   }
 }
 

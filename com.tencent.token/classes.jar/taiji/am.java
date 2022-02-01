@@ -1,19 +1,27 @@
 package taiji;
 
 public class am
-  extends aw
 {
-  private am()
-  {
-    super(new bs());
-  }
+  public String a;
+  public String b;
+  public int c;
+  public int d;
+  public int e;
+  double f;
+  public int g;
+  public int h;
+  public int i;
+  public boolean j;
   
-  public s a()
+  public int hashCode()
   {
-    if (!b()) {
-      return new y(this.b);
-    }
-    return new w(this.a);
+    int k = this.a.hashCode();
+    int m = this.b.hashCode();
+    int n = this.c;
+    int i1 = this.d;
+    int i2 = this.e;
+    long l = Double.doubleToLongBits(this.f);
+    return (((((k * 31 + m) * 31 + n) * 31 + i1) * 31 + i2) * 31 + (int)(l ^ l >>> 32)) * 31 + this.g;
   }
 }
 

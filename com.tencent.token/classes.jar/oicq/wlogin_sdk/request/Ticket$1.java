@@ -4,7 +4,7 @@ import android.os.Parcel;
 import android.os.Parcelable.Creator;
 
 final class Ticket$1
-  implements Parcelable.Creator
+  implements Parcelable.Creator<Ticket>
 {
   public Ticket createFromParcel(Parcel paramParcel)
   {

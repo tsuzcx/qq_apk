@@ -17,13 +17,13 @@ public class SupportActivity
   extends Activity
   implements LifecycleOwner
 {
-  private SimpleArrayMap mExtraDataMap = new SimpleArrayMap();
+  private SimpleArrayMap<Class<? extends ExtraData>, ExtraData> mExtraDataMap = new SimpleArrayMap();
   private LifecycleRegistry mLifecycleRegistry = new LifecycleRegistry(this);
   
   @RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
-  public SupportActivity.ExtraData getExtraData(Class paramClass)
+  public <T extends ExtraData> T getExtraData(Class<T> paramClass)
   {
-    return (SupportActivity.ExtraData)this.mExtraDataMap.get(paramClass);
+    return (ExtraData)this.mExtraDataMap.get(paramClass);
   }
   
   public Lifecycle getLifecycle()
@@ -45,10 +45,13 @@ public class SupportActivity
   }
   
   @RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
-  public void putExtraData(SupportActivity.ExtraData paramExtraData)
+  public void putExtraData(ExtraData paramExtraData)
   {
     this.mExtraDataMap.put(paramExtraData.getClass(), paramExtraData);
   }
+  
+  @RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
+  public static class ExtraData {}
 }
 
 

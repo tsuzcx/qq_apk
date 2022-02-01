@@ -31,19 +31,19 @@ final class BackStackRecord
   CharSequence mBreadCrumbShortTitleText;
   int mBreadCrumbTitleRes;
   CharSequence mBreadCrumbTitleText;
-  ArrayList mCommitRunnables;
+  ArrayList<Runnable> mCommitRunnables;
   boolean mCommitted;
   int mEnterAnim;
   int mExitAnim;
   int mIndex = -1;
   final FragmentManagerImpl mManager;
   String mName;
-  ArrayList mOps = new ArrayList();
+  ArrayList<Op> mOps = new ArrayList();
   int mPopEnterAnim;
   int mPopExitAnim;
   boolean mReorderingAllowed = false;
-  ArrayList mSharedElementSourceNames;
-  ArrayList mSharedElementTargetNames;
+  ArrayList<String> mSharedElementSourceNames;
+  ArrayList<String> mSharedElementTargetNames;
   int mTransition;
   int mTransitionStyle;
   
@@ -78,10 +78,10 @@ final class BackStackRecord
       paramFragment.mFragmentId = paramInt1;
       paramFragment.mContainerId = paramInt1;
     }
-    addOp(new BackStackRecord.Op(paramInt2, paramFragment));
+    addOp(new Op(paramInt2, paramFragment));
   }
   
-  private static boolean isFragmentPostponed(BackStackRecord.Op paramOp)
+  private static boolean isFragmentPostponed(Op paramOp)
   {
     paramOp = paramOp.fragment;
     return (paramOp != null) && (paramOp.mAdded) && (paramOp.mView != null) && (!paramOp.mDetached) && (!paramOp.mHidden) && (paramOp.isPostponed());
@@ -105,7 +105,7 @@ final class BackStackRecord
     return this;
   }
   
-  void addOp(BackStackRecord.Op paramOp)
+  void addOp(Op paramOp)
   {
     this.mOps.add(paramOp);
     paramOp.enterAnim = this.mEnterAnim;
@@ -153,7 +153,7 @@ final class BackStackRecord
   
   public FragmentTransaction attach(Fragment paramFragment)
   {
-    addOp(new BackStackRecord.Op(7, paramFragment));
+    addOp(new Op(7, paramFragment));
     return this;
   }
   
@@ -170,7 +170,7 @@ final class BackStackRecord
       int i = 0;
       while (i < j)
       {
-        BackStackRecord.Op localOp = (BackStackRecord.Op)this.mOps.get(i);
+        Op localOp = (Op)this.mOps.get(i);
         if (localOp.fragment != null)
         {
           Fragment localFragment = localOp.fragment;
@@ -229,7 +229,7 @@ final class BackStackRecord
   
   public FragmentTransaction detach(Fragment paramFragment)
   {
-    addOp(new BackStackRecord.Op(6, paramFragment));
+    addOp(new Op(6, paramFragment));
     return this;
   }
   
@@ -308,7 +308,7 @@ final class BackStackRecord
       int i = 0;
       if (i < j)
       {
-        BackStackRecord.Op localOp = (BackStackRecord.Op)this.mOps.get(i);
+        Op localOp = (Op)this.mOps.get(i);
         String str;
         switch (localOp.cmd)
         {
@@ -375,7 +375,7 @@ final class BackStackRecord
     int i = 0;
     if (i < j)
     {
-      BackStackRecord.Op localOp = (BackStackRecord.Op)this.mOps.get(i);
+      Op localOp = (Op)this.mOps.get(i);
       Fragment localFragment = localOp.fragment;
       if (localFragment != null) {
         localFragment.setNextTransition(this.mTransition, this.mTransitionStyle);
@@ -426,7 +426,7 @@ final class BackStackRecord
     int i = this.mOps.size() - 1;
     if (i >= 0)
     {
-      BackStackRecord.Op localOp = (BackStackRecord.Op)this.mOps.get(i);
+      Op localOp = (Op)this.mOps.get(i);
       Fragment localFragment = localOp.fragment;
       if (localFragment != null) {
         localFragment.setNextTransition(FragmentManagerImpl.reverseTransit(this.mTransition), this.mTransitionStyle);
@@ -472,11 +472,11 @@ final class BackStackRecord
     }
   }
   
-  Fragment expandOps(ArrayList paramArrayList, Fragment paramFragment)
+  Fragment expandOps(ArrayList<Fragment> paramArrayList, Fragment paramFragment)
   {
     int i = 0;
     Fragment localFragment1 = paramFragment;
-    BackStackRecord.Op localOp;
+    Op localOp;
     int j;
     Fragment localFragment2;
     int k;
@@ -484,7 +484,7 @@ final class BackStackRecord
     Fragment localFragment3;
     if (i < this.mOps.size())
     {
-      localOp = (BackStackRecord.Op)this.mOps.get(i);
+      localOp = (Op)this.mOps.get(i);
       j = i;
       paramFragment = localFragment1;
       switch (localOp.cmd)
@@ -512,7 +512,7 @@ final class BackStackRecord
           paramFragment = localFragment1;
           if (localOp.fragment == localFragment1)
           {
-            this.mOps.add(i, new BackStackRecord.Op(9, localOp.fragment));
+            this.mOps.add(i, new Op(9, localOp.fragment));
             j = i + 1;
             paramFragment = null;
           }
@@ -545,11 +545,11 @@ final class BackStackRecord
       localFragment1 = paramFragment;
       if (localFragment3 == paramFragment)
       {
-        this.mOps.add(i, new BackStackRecord.Op(9, localFragment3));
+        this.mOps.add(i, new Op(9, localFragment3));
         m = i + 1;
         localFragment1 = null;
       }
-      paramFragment = new BackStackRecord.Op(3, localFragment3);
+      paramFragment = new Op(3, localFragment3);
       paramFragment.enterAnim = localOp.enterAnim;
       paramFragment.popEnterAnim = localOp.popEnterAnim;
       paramFragment.exitAnim = localOp.exitAnim;
@@ -571,7 +571,7 @@ final class BackStackRecord
         localOp.cmd = 1;
         paramArrayList.add(localFragment2);
       }
-      this.mOps.add(i, new BackStackRecord.Op(9, localFragment1));
+      this.mOps.add(i, new Op(9, localFragment1));
       j = i + 1;
       paramFragment = localOp.fragment;
       break;
@@ -579,13 +579,13 @@ final class BackStackRecord
     }
   }
   
-  public boolean generateOps(ArrayList paramArrayList1, ArrayList paramArrayList2)
+  public boolean generateOps(ArrayList<BackStackRecord> paramArrayList, ArrayList<Boolean> paramArrayList1)
   {
     if (FragmentManagerImpl.DEBUG) {
       Log.v("FragmentManager", "Run: " + this);
     }
-    paramArrayList1.add(this);
-    paramArrayList2.add(Boolean.valueOf(false));
+    paramArrayList.add(this);
+    paramArrayList1.add(Boolean.valueOf(false));
     if (this.mAddToBackStack) {
       this.mManager.addBackStackState(this);
     }
@@ -640,7 +640,7 @@ final class BackStackRecord
   
   public FragmentTransaction hide(Fragment paramFragment)
   {
-    addOp(new BackStackRecord.Op(4, paramFragment));
+    addOp(new Op(4, paramFragment));
     return this;
   }
   
@@ -650,7 +650,7 @@ final class BackStackRecord
     int i = 0;
     while (i < k)
     {
-      BackStackRecord.Op localOp = (BackStackRecord.Op)this.mOps.get(i);
+      Op localOp = (Op)this.mOps.get(i);
       if (localOp.fragment != null) {}
       for (int j = localOp.fragment.mContainerId; (j != 0) && (j == paramInt); j = 0) {
         return true;
@@ -660,7 +660,7 @@ final class BackStackRecord
     return false;
   }
   
-  boolean interactsWith(ArrayList paramArrayList, int paramInt1, int paramInt2)
+  boolean interactsWith(ArrayList<BackStackRecord> paramArrayList, int paramInt1, int paramInt2)
   {
     if (paramInt2 == paramInt1) {
       return false;
@@ -671,10 +671,10 @@ final class BackStackRecord
     int i;
     if (k < i1)
     {
-      Object localObject = (BackStackRecord.Op)this.mOps.get(k);
-      if (((BackStackRecord.Op)localObject).fragment != null)
+      Object localObject = (Op)this.mOps.get(k);
+      if (((Op)localObject).fragment != null)
       {
-        i = ((BackStackRecord.Op)localObject).fragment.mContainerId;
+        i = ((Op)localObject).fragment.mContainerId;
         if ((i == 0) || (i == j)) {
           break label200;
         }
@@ -693,7 +693,7 @@ final class BackStackRecord
           if (m >= i2) {
             break label176;
           }
-          BackStackRecord.Op localOp = (BackStackRecord.Op)((BackStackRecord)localObject).mOps.get(m);
+          Op localOp = (Op)((BackStackRecord)localObject).mOps.get(m);
           if (localOp.fragment != null) {}
           for (int n = localOp.fragment.mContainerId;; n = 0)
           {
@@ -742,7 +742,7 @@ final class BackStackRecord
       boolean bool1 = bool2;
       if (i < this.mOps.size())
       {
-        if (isFragmentPostponed((BackStackRecord.Op)this.mOps.get(i))) {
+        if (isFragmentPostponed((Op)this.mOps.get(i))) {
           bool1 = true;
         }
       }
@@ -755,7 +755,7 @@ final class BackStackRecord
   
   public FragmentTransaction remove(Fragment paramFragment)
   {
-    addOp(new BackStackRecord.Op(3, paramFragment));
+    addOp(new Op(3, paramFragment));
     return this;
   }
   
@@ -853,7 +853,7 @@ final class BackStackRecord
     int i = 0;
     while (i < this.mOps.size())
     {
-      BackStackRecord.Op localOp = (BackStackRecord.Op)this.mOps.get(i);
+      Op localOp = (Op)this.mOps.get(i);
       if (isFragmentPostponed(localOp)) {
         localOp.fragment.setOnStartEnterTransitionListener(paramOnStartEnterTransitionListener);
       }
@@ -863,7 +863,7 @@ final class BackStackRecord
   
   public FragmentTransaction setPrimaryNavigationFragment(Fragment paramFragment)
   {
-    addOp(new BackStackRecord.Op(8, paramFragment));
+    addOp(new Op(8, paramFragment));
     return this;
   }
   
@@ -887,7 +887,7 @@ final class BackStackRecord
   
   public FragmentTransaction show(Fragment paramFragment)
   {
-    addOp(new BackStackRecord.Op(5, paramFragment));
+    addOp(new Op(5, paramFragment));
     return this;
   }
   
@@ -910,13 +910,13 @@ final class BackStackRecord
     return localStringBuilder.toString();
   }
   
-  Fragment trackAddedFragmentsInPop(ArrayList paramArrayList, Fragment paramFragment)
+  Fragment trackAddedFragmentsInPop(ArrayList<Fragment> paramArrayList, Fragment paramFragment)
   {
     int i = 0;
     Fragment localFragment = paramFragment;
     if (i < this.mOps.size())
     {
-      BackStackRecord.Op localOp = (BackStackRecord.Op)this.mOps.get(i);
+      Op localOp = (Op)this.mOps.get(i);
       paramFragment = localFragment;
       switch (localOp.cmd)
       {
@@ -940,6 +940,24 @@ final class BackStackRecord
       }
     }
     return localFragment;
+  }
+  
+  static final class Op
+  {
+    int cmd;
+    int enterAnim;
+    int exitAnim;
+    Fragment fragment;
+    int popEnterAnim;
+    int popExitAnim;
+    
+    Op() {}
+    
+    Op(int paramInt, Fragment paramFragment)
+    {
+      this.cmd = paramInt;
+      this.fragment = paramFragment;
+    }
   }
 }
 

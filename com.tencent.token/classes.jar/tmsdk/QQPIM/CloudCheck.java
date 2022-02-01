@@ -8,17 +8,17 @@ import java.util.ArrayList;
 public final class CloudCheck
   extends JceStruct
 {
-  static ArrayList dO;
-  static ArrayList dP;
+  static ArrayList<AdPlugin> dO;
+  static ArrayList<Integer> dP;
   public String advice = "";
   public int category = 0;
-  public ArrayList descIds = null;
+  public ArrayList<Integer> descIds = null;
   public String descritpion = "";
   public int handleAdvice = 0;
   public String handleUrl = "";
   public String officialCertMd5 = "";
   public String officialPackName = "";
-  public ArrayList plugins = null;
+  public ArrayList<AdPlugin> plugins = null;
   public int product = 0;
   public int safeLevel = 0;
   public int safeType = 0;
@@ -29,7 +29,7 @@ public final class CloudCheck
   
   public CloudCheck() {}
   
-  public CloudCheck(int paramInt1, String paramString1, String paramString2, int paramInt2, String paramString3, String paramString4, int paramInt3, int paramInt4, String paramString5, int paramInt5, int paramInt6, ArrayList paramArrayList1, ArrayList paramArrayList2, int paramInt7, String paramString6, String paramString7)
+  public CloudCheck(int paramInt1, String paramString1, String paramString2, int paramInt2, String paramString3, String paramString4, int paramInt3, int paramInt4, String paramString5, int paramInt5, int paramInt6, ArrayList<AdPlugin> paramArrayList, ArrayList<Integer> paramArrayList1, int paramInt7, String paramString6, String paramString7)
   {
     this.safeType = paramInt1;
     this.virusName = paramString1;
@@ -42,8 +42,8 @@ public final class CloudCheck
     this.handleUrl = paramString5;
     this.safeLevel = paramInt5;
     this.product = paramInt6;
-    this.plugins = paramArrayList1;
-    this.descIds = paramArrayList2;
+    this.plugins = paramArrayList;
+    this.descIds = paramArrayList1;
     this.category = paramInt7;
     this.officialPackName = paramString6;
     this.officialCertMd5 = paramString7;

@@ -1,68 +1,252 @@
 package com.tencent.token.global.taiji;
 
-import android.os.HandlerThread;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.os.Looper;
-import java.util.HashMap;
+import com.tencent.token.global.RqdApplication;
+import com.tmsdk.base.utils.SDKUtil;
+import java.lang.reflect.Method;
+import java.util.Map;
+import tmsdk.common.module.pgsdk.manager.ITaijiPreferenceManager;
 
 public class l
+  implements ITaijiPreferenceManager
 {
-  private static HashMap a = new HashMap();
-  private static HandlerThread b;
-  private static HandlerThread c;
+  private SharedPreferences a;
+  private SharedPreferences.Editor b;
+  private boolean c;
   
-  public static HandlerThread a(String paramString, int paramInt, long paramLong)
+  public l(String paramString)
   {
     try
     {
-      paramString = new k(paramString, paramInt, paramLong);
-      return paramString;
+      this.a = RqdApplication.l().getSharedPreferences(paramString, 0);
+      return;
     }
-    finally
+    catch (Exception paramString)
     {
-      paramString = finally;
-      throw paramString;
+      paramString.printStackTrace();
     }
   }
   
-  public static Looper a(long paramLong)
+  private SharedPreferences.Editor a()
   {
-    if (1L == paramLong)
-    {
+    if (this.b == null) {
+      this.b = this.a.edit();
+    }
+    return this.b;
+  }
+  
+  private boolean a(SharedPreferences.Editor paramEditor)
+  {
+    if ((Thread.currentThread().getId() == Looper.getMainLooper().getThread().getId()) && (SDKUtil.getSDKVersion() >= 9)) {
       try
       {
-        if (b != null) {
-          if (!b.isAlive())
-          {
-            b = new k("hostHandlerThread", 5, paramLong, true);
-            b.start();
-          }
-        }
-        for (;;)
-        {
-          Looper localLooper1 = b.getLooper();
-          return localLooper1;
-          b = new k("hostHandlerThread", 5, paramLong, true);
-          b.start();
-        }
-        if (c == null) {
-          break label133;
-        }
+        paramEditor.getClass().getMethod("apply", new Class[0]).invoke(paramEditor, new Object[0]);
+        return true;
       }
-      finally {}
+      catch (Throwable localThrowable)
+      {
+        return paramEditor.commit();
+      }
     }
-    else if (!c.isAlive())
+    return paramEditor.commit();
+  }
+  
+  public void beginTransaction()
+  {
+    this.c = true;
+  }
+  
+  public void clear()
+  {
+    if (this.a != null) {
+      a(a().clear());
+    }
+  }
+  
+  public boolean contains(String paramString)
+  {
+    if (this.a != null) {
+      return this.a.contains(paramString);
+    }
+    return false;
+  }
+  
+  public boolean endTransaction()
+  {
+    this.c = false;
+    if (this.b != null) {
+      return a(this.b);
+    }
+    return true;
+  }
+  
+  public Map<String, ?> getAll()
+  {
+    if (this.a != null) {
+      return this.a.getAll();
+    }
+    return null;
+  }
+  
+  public boolean getBoolean(String paramString)
+  {
+    boolean bool = false;
+    if (this.a != null) {
+      bool = this.a.getBoolean(paramString, false);
+    }
+    return bool;
+  }
+  
+  public boolean getBoolean(String paramString, boolean paramBoolean)
+  {
+    if (this.a != null) {
+      return this.a.getBoolean(paramString, paramBoolean);
+    }
+    return false;
+  }
+  
+  public float getFloat(String paramString)
+  {
+    float f = 0.0F;
+    if (this.a != null) {
+      f = this.a.getFloat(paramString, 0.0F);
+    }
+    return f;
+  }
+  
+  public float getFloat(String paramString, float paramFloat)
+  {
+    if (this.a != null) {
+      return this.a.getFloat(paramString, paramFloat);
+    }
+    return 0.0F;
+  }
+  
+  public int getInt(String paramString)
+  {
+    int i = 0;
+    if (this.a != null) {
+      i = this.a.getInt(paramString, 0);
+    }
+    return i;
+  }
+  
+  public int getInt(String paramString, int paramInt)
+  {
+    if (this.a != null) {
+      return this.a.getInt(paramString, paramInt);
+    }
+    return 0;
+  }
+  
+  public long getLong(String paramString)
+  {
+    long l = 0L;
+    if (this.a != null) {
+      l = this.a.getLong(paramString, 0L);
+    }
+    return l;
+  }
+  
+  public long getLong(String paramString, long paramLong)
+  {
+    if (this.a != null) {
+      return this.a.getLong(paramString, paramLong);
+    }
+    return 0L;
+  }
+  
+  public String getString(String paramString)
+  {
+    String str = null;
+    if (this.a != null) {
+      str = this.a.getString(paramString, null);
+    }
+    return str;
+  }
+  
+  public String getString(String paramString1, String paramString2)
+  {
+    if (this.a != null) {
+      return this.a.getString(paramString1, paramString2);
+    }
+    return null;
+  }
+  
+  public boolean putBoolean(String paramString, boolean paramBoolean)
+  {
+    if (this.a != null)
     {
-      c = new k("otherHandlerThread", 5, paramLong, true);
-      c.start();
+      SharedPreferences.Editor localEditor = a();
+      localEditor.putBoolean(paramString, paramBoolean);
+      if (!this.c) {
+        return a(localEditor);
+      }
     }
-    for (;;)
+    return false;
+  }
+  
+  public boolean putFloat(String paramString, float paramFloat)
+  {
+    if (this.a != null)
     {
-      Looper localLooper2 = c.getLooper();
-      break;
-      label133:
-      c = new k("otherHandlerThread", 5, paramLong, true);
-      c.start();
+      SharedPreferences.Editor localEditor = a();
+      localEditor.putFloat(paramString, paramFloat);
+      if (!this.c) {
+        return a(localEditor);
+      }
     }
+    return false;
+  }
+  
+  public boolean putInt(String paramString, int paramInt)
+  {
+    if (this.a != null)
+    {
+      SharedPreferences.Editor localEditor = a();
+      localEditor.putInt(paramString, paramInt);
+      if (!this.c) {
+        return a(localEditor);
+      }
+    }
+    return false;
+  }
+  
+  public boolean putLong(String paramString, long paramLong)
+  {
+    if (this.a != null)
+    {
+      SharedPreferences.Editor localEditor = a();
+      localEditor.putLong(paramString, paramLong);
+      if (!this.c) {
+        return a(localEditor);
+      }
+    }
+    return false;
+  }
+  
+  public boolean putString(String paramString1, String paramString2)
+  {
+    if (this.a != null)
+    {
+      SharedPreferences.Editor localEditor = a();
+      localEditor.putString(paramString1, paramString2);
+      if (!this.c) {
+        return a(localEditor);
+      }
+    }
+    return false;
+  }
+  
+  public boolean remove(String paramString)
+  {
+    if (this.a != null) {
+      return a(a().remove(paramString));
+    }
+    return false;
   }
 }
 

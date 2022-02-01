@@ -17,9 +17,9 @@ import java.lang.ref.WeakReference;
 public final class ViewStubCompat
   extends View
 {
-  private ViewStubCompat.OnInflateListener mInflateListener;
+  private OnInflateListener mInflateListener;
   private int mInflatedId;
-  private WeakReference mInflatedViewRef;
+  private WeakReference<View> mInflatedViewRef;
   private LayoutInflater mInflater;
   private int mLayoutResource = 0;
   
@@ -122,7 +122,7 @@ public final class ViewStubCompat
     this.mLayoutResource = paramInt;
   }
   
-  public void setOnInflateListener(ViewStubCompat.OnInflateListener paramOnInflateListener)
+  public void setOnInflateListener(OnInflateListener paramOnInflateListener)
   {
     this.mInflateListener = paramOnInflateListener;
   }
@@ -143,6 +143,11 @@ public final class ViewStubCompat
       super.setVisibility(paramInt);
     } while ((paramInt != 0) && (paramInt != 4));
     inflate();
+  }
+  
+  public static abstract interface OnInflateListener
+  {
+    public abstract void onInflate(ViewStubCompat paramViewStubCompat, View paramView);
   }
 }
 

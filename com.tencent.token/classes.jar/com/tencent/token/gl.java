@@ -1,40 +1,20 @@
 package com.tencent.token;
 
-import java.net.Socket;
-import javax.net.ssl.SSLSocket;
-import okhttp3.a;
-import okhttp3.ae;
-import okhttp3.au;
-import okhttp3.ax;
-import okhttp3.internal.connection.c;
-import okhttp3.internal.connection.d;
-import okhttp3.internal.connection.g;
-import okhttp3.o;
-import okhttp3.q;
-
-public abstract class gl
+public class gl
 {
-  public static gl a;
+  private float a;
+  private int b;
   
-  public abstract int a(au paramau);
-  
-  public abstract Socket a(o paramo, a parama, g paramg);
-  
-  public abstract c a(o paramo, a parama, g paramg, ax paramax);
-  
-  public abstract d a(o paramo);
-  
-  public abstract void a(ae paramae, String paramString);
-  
-  public abstract void a(ae paramae, String paramString1, String paramString2);
-  
-  public abstract void a(q paramq, SSLSocket paramSSLSocket, boolean paramBoolean);
-  
-  public abstract boolean a(a parama1, a parama2);
-  
-  public abstract boolean a(o paramo, c paramc);
-  
-  public abstract void b(o paramo, c paramc);
+  public void a(float paramFloat)
+  {
+    this.a += paramFloat;
+    this.b += 1;
+    if (this.b == 2147483647)
+    {
+      this.a /= 2.0F;
+      this.b /= 2;
+    }
+  }
 }
 
 

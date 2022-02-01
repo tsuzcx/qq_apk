@@ -24,7 +24,7 @@ public class a
     this._cmd = 20;
   }
   
-  public int a(byte[] paramArrayOfByte, long paramLong, Context paramContext, Map paramMap)
+  public int a(byte[] paramArrayOfByte, long paramLong, Context paramContext, Map<Integer, tlv_t> paramMap)
   {
     byte[] arrayOfByte1 = get_response(paramArrayOfByte, 0);
     if ((arrayOfByte1 == null) || (arrayOfByte1.length < 11)) {
@@ -139,7 +139,7 @@ public class a
     return _status.b;
   }
   
-  public byte[] a(long paramLong1, long paramLong2, long paramLong3, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, int paramInt, List paramList, byte[] paramArrayOfByte4, byte[] paramArrayOfByte5, long paramLong4, long paramLong5)
+  public byte[] a(long paramLong1, long paramLong2, long paramLong3, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, int paramInt, List<byte[]> paramList, byte[] paramArrayOfByte4, byte[] paramArrayOfByte5, long paramLong4, long paramLong5)
   {
     Object localObject = paramList;
     if (paramList == null) {

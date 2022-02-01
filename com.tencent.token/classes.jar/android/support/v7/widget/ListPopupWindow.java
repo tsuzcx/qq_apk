@@ -22,11 +22,15 @@ import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.KeyEvent.DispatcherState;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.MeasureSpec;
 import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
 import android.view.ViewParent;
+import android.widget.AbsListView;
+import android.widget.AbsListView.OnScrollListener;
+import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.LinearLayout;
@@ -69,7 +73,7 @@ public class ListPopupWindow
   private Rect mEpicenterBounds;
   private boolean mForceIgnoreOutsideTouch = false;
   final Handler mHandler;
-  private final ListPopupWindow.ListSelectorHider mHideSelector = new ListPopupWindow.ListSelectorHider(this);
+  private final ListSelectorHider mHideSelector = new ListSelectorHider();
   private boolean mIsAnimatedFromAnchor = true;
   private AdapterView.OnItemClickListener mItemClickListener;
   private AdapterView.OnItemSelectedListener mItemSelectedListener;
@@ -81,11 +85,11 @@ public class ListPopupWindow
   PopupWindow mPopup;
   private int mPromptPosition = 0;
   private View mPromptView;
-  final ListPopupWindow.ResizePopupRunnable mResizePopupRunnable = new ListPopupWindow.ResizePopupRunnable(this);
-  private final ListPopupWindow.PopupScrollListener mScrollListener = new ListPopupWindow.PopupScrollListener(this);
+  final ResizePopupRunnable mResizePopupRunnable = new ResizePopupRunnable();
+  private final PopupScrollListener mScrollListener = new PopupScrollListener();
   private Runnable mShowDropDownRunnable;
   private final Rect mTempRect = new Rect();
-  private final ListPopupWindow.PopupTouchInterceptor mTouchInterceptor = new ListPopupWindow.PopupTouchInterceptor(this);
+  private final PopupTouchInterceptor mTouchInterceptor = new PopupTouchInterceptor();
   
   static
   {
@@ -167,7 +171,16 @@ public class ListPopupWindow
     if (this.mDropDownList == null)
     {
       localObject2 = this.mContext;
-      this.mShowDropDownRunnable = new ListPopupWindow.2(this);
+      this.mShowDropDownRunnable = new Runnable()
+      {
+        public void run()
+        {
+          View localView = ListPopupWindow.this.getAnchorView();
+          if ((localView != null) && (localView.getWindowToken() != null)) {
+            ListPopupWindow.this.show();
+          }
+        }
+      };
       if (!this.mModal)
       {
         bool1 = true;
@@ -179,7 +192,21 @@ public class ListPopupWindow
         this.mDropDownList.setOnItemClickListener(this.mItemClickListener);
         this.mDropDownList.setFocusable(true);
         this.mDropDownList.setFocusableInTouchMode(true);
-        this.mDropDownList.setOnItemSelectedListener(new ListPopupWindow.3(this));
+        this.mDropDownList.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener()
+        {
+          public void onItemSelected(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
+          {
+            if (paramAnonymousInt != -1)
+            {
+              paramAnonymousAdapterView = ListPopupWindow.this.mDropDownList;
+              if (paramAnonymousAdapterView != null) {
+                paramAnonymousAdapterView.setListSelectionHidden(false);
+              }
+            }
+          }
+          
+          public void onNothingSelected(AdapterView<?> paramAnonymousAdapterView) {}
+        });
         this.mDropDownList.setOnScrollListener(this.mScrollListener);
         if (this.mItemSelectedListener != null) {
           this.mDropDownList.setOnItemSelectedListener(this.mItemSelectedListener);
@@ -352,7 +379,13 @@ public class ListPopupWindow
   
   public View.OnTouchListener createDragToOpenListener(View paramView)
   {
-    return new ListPopupWindow.1(this, paramView);
+    new ForwardingListener(paramView)
+    {
+      public ListPopupWindow getPopup()
+      {
+        return ListPopupWindow.this;
+      }
+    };
   }
   
   @NonNull
@@ -625,7 +658,7 @@ public class ListPopupWindow
   public void setAdapter(@Nullable ListAdapter paramListAdapter)
   {
     if (this.mObserver == null) {
-      this.mObserver = new ListPopupWindow.PopupDataSetObserver(this);
+      this.mObserver = new PopupDataSetObserver();
     }
     for (;;)
     {
@@ -957,6 +990,90 @@ public class ListPopupWindow
         {
           Log.e("ListPopupWindow", "Could not invoke setEpicenterBounds on PopupWindow", localException);
         }
+      }
+    }
+  }
+  
+  private class ListSelectorHider
+    implements Runnable
+  {
+    ListSelectorHider() {}
+    
+    public void run()
+    {
+      ListPopupWindow.this.clearListSelection();
+    }
+  }
+  
+  private class PopupDataSetObserver
+    extends DataSetObserver
+  {
+    PopupDataSetObserver() {}
+    
+    public void onChanged()
+    {
+      if (ListPopupWindow.this.isShowing()) {
+        ListPopupWindow.this.show();
+      }
+    }
+    
+    public void onInvalidated()
+    {
+      ListPopupWindow.this.dismiss();
+    }
+  }
+  
+  private class PopupScrollListener
+    implements AbsListView.OnScrollListener
+  {
+    PopupScrollListener() {}
+    
+    public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
+    
+    public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+    {
+      if ((paramInt == 1) && (!ListPopupWindow.this.isInputMethodNotNeeded()) && (ListPopupWindow.this.mPopup.getContentView() != null))
+      {
+        ListPopupWindow.this.mHandler.removeCallbacks(ListPopupWindow.this.mResizePopupRunnable);
+        ListPopupWindow.this.mResizePopupRunnable.run();
+      }
+    }
+  }
+  
+  private class PopupTouchInterceptor
+    implements View.OnTouchListener
+  {
+    PopupTouchInterceptor() {}
+    
+    public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+    {
+      int i = paramMotionEvent.getAction();
+      int j = (int)paramMotionEvent.getX();
+      int k = (int)paramMotionEvent.getY();
+      if ((i == 0) && (ListPopupWindow.this.mPopup != null) && (ListPopupWindow.this.mPopup.isShowing()) && (j >= 0) && (j < ListPopupWindow.this.mPopup.getWidth()) && (k >= 0) && (k < ListPopupWindow.this.mPopup.getHeight())) {
+        ListPopupWindow.this.mHandler.postDelayed(ListPopupWindow.this.mResizePopupRunnable, 250L);
+      }
+      for (;;)
+      {
+        return false;
+        if (i == 1) {
+          ListPopupWindow.this.mHandler.removeCallbacks(ListPopupWindow.this.mResizePopupRunnable);
+        }
+      }
+    }
+  }
+  
+  private class ResizePopupRunnable
+    implements Runnable
+  {
+    ResizePopupRunnable() {}
+    
+    public void run()
+    {
+      if ((ListPopupWindow.this.mDropDownList != null) && (ViewCompat.isAttachedToWindow(ListPopupWindow.this.mDropDownList)) && (ListPopupWindow.this.mDropDownList.getCount() > ListPopupWindow.this.mDropDownList.getChildCount()) && (ListPopupWindow.this.mDropDownList.getChildCount() <= ListPopupWindow.this.mListItemExpandMaximum))
+      {
+        ListPopupWindow.this.mPopup.setInputMethodMode(2);
+        ListPopupWindow.this.show();
       }
     }
   }

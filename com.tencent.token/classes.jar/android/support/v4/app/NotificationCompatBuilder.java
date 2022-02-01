@@ -19,7 +19,7 @@ import java.util.Set;
 class NotificationCompatBuilder
   implements NotificationBuilderWithBuilderAccessor
 {
-  private final List mActionExtrasList = new ArrayList();
+  private final List<Bundle> mActionExtrasList = new ArrayList();
   private RemoteViews mBigContentView;
   private final Notification.Builder mBuilder;
   private final NotificationCompat.Builder mBuilderCompat;

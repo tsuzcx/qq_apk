@@ -1,31 +1,32 @@
 package android.support.v4.app;
 
+import android.arch.lifecycle.ViewModelStore;
 import java.util.List;
 
 public class FragmentManagerNonConfig
 {
-  private final List mChildNonConfigs;
-  private final List mFragments;
-  private final List mViewModelStores;
+  private final List<FragmentManagerNonConfig> mChildNonConfigs;
+  private final List<Fragment> mFragments;
+  private final List<ViewModelStore> mViewModelStores;
   
-  FragmentManagerNonConfig(List paramList1, List paramList2, List paramList3)
+  FragmentManagerNonConfig(List<Fragment> paramList, List<FragmentManagerNonConfig> paramList1, List<ViewModelStore> paramList2)
   {
-    this.mFragments = paramList1;
-    this.mChildNonConfigs = paramList2;
-    this.mViewModelStores = paramList3;
+    this.mFragments = paramList;
+    this.mChildNonConfigs = paramList1;
+    this.mViewModelStores = paramList2;
   }
   
-  List getChildNonConfigs()
+  List<FragmentManagerNonConfig> getChildNonConfigs()
   {
     return this.mChildNonConfigs;
   }
   
-  List getFragments()
+  List<Fragment> getFragments()
   {
     return this.mFragments;
   }
   
-  List getViewModelStores()
+  List<ViewModelStore> getViewModelStores()
   {
     return this.mViewModelStores;
   }

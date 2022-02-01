@@ -8,11 +8,11 @@ import java.util.ArrayList;
 public final class stDetailPath
   extends JceStruct
 {
-  static ArrayList bL = new ArrayList();
+  static ArrayList<String> bL = new ArrayList();
   public int delDays = 0;
   public String desc = "";
   public int importance = 0;
-  public ArrayList path = null;
+  public ArrayList<String> path = null;
   
   static
   {

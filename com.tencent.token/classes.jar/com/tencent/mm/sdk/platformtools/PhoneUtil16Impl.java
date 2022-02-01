@@ -16,7 +16,7 @@ class PhoneUtil16Impl
   private TelephonyManager aL;
   private PhoneStateListener aM = new PhoneUtil16Impl.1(this);
   
-  public List getCellInfoList(Context paramContext)
+  public List<PhoneUtil.CellInfo> getCellInfoList(Context paramContext)
   {
     LinkedList localLinkedList = new LinkedList();
     TelephonyManager localTelephonyManager = (TelephonyManager)paramContext.getSystemService("phone");

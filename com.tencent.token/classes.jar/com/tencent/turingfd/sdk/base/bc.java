@@ -1,83 +1,116 @@
 package com.tencent.turingfd.sdk.base;
 
-public final class bc
+import android.content.Context;
+import java.io.File;
+import java.util.HashMap;
+import java.util.Map;
+
+public class bc
 {
-  public static bc a;
-  public static int b;
-  public static Object c = new Object();
-  public bc d;
-  public boolean e;
-  public int f;
-  public int g;
-  public int h;
-  public float i;
-  public float j;
-  public float k;
-  public float l;
-  public String m = "";
+  public static bc a = new bc();
   
-  public static bc a()
+  public Map<Integer, Integer> a(Context paramContext)
   {
-    synchronized (c)
+    Object localObject = a.g(paramContext);
+    paramContext = new HashMap();
+    if (localObject == null) {}
+    do
     {
-      if (b > 0)
-      {
-        localbc = a;
-        a = a.d;
-        localbc.d = null;
-        localbc.e = false;
-        b -= 1;
-        return localbc;
-      }
-      bc localbc = new bc();
-      return localbc;
-    }
+      return paramContext;
+      localObject = ((Hickory)localObject).gd;
+    } while (localObject == null);
+    return localObject;
   }
   
-  public void b()
+  public void a(Context paramContext, Hickory paramHickory)
   {
-    if (!this.e) {
-      synchronized (c)
-      {
-        this.f = 0;
-        this.g = 0;
-        this.h = 0;
-        this.i = 0.0F;
-        this.j = 0.0F;
-        this.k = 0.0F;
-        this.l = 0.0F;
-        this.m = "";
-        if (b < 20)
-        {
-          this.d = a;
-          this.e = true;
-          a = this;
-          b += 1;
-        }
-        return;
-      }
-    }
-    throw new IllegalStateException("Already recycled.");
+    paramHickory = paramHickory.c();
+    cm.a(e(paramContext), paramHickory);
   }
   
-  public String toString()
+  public String b(Context paramContext)
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("action : ");
-    localStringBuilder.append(this.f);
-    localStringBuilder.append(",deviceId : ");
-    localStringBuilder.append(this.g);
-    localStringBuilder.append(",toolType : ");
-    localStringBuilder.append(this.h);
-    localStringBuilder.append(",rawX : ");
-    localStringBuilder.append(this.i);
-    localStringBuilder.append(",rawY : ");
-    localStringBuilder.append(this.j);
-    localStringBuilder.append(",pressure : ");
-    localStringBuilder.append(this.k);
-    localStringBuilder.append(",size : ");
-    localStringBuilder.append(this.l);
+    paramContext = a.g(paramContext);
+    if (paramContext != null)
+    {
+      localStringBuilder.append(paramContext.dd);
+      localStringBuilder.append("_");
+      localStringBuilder.append(paramContext.version);
+    }
     return localStringBuilder.toString();
+  }
+  
+  public long c(Context paramContext)
+  {
+    paramContext = a.g(paramContext);
+    if (paramContext == null) {}
+    long l;
+    do
+    {
+      return 57600L;
+      l = paramContext.hd;
+    } while (l <= 0L);
+    return l;
+  }
+  
+  public void d(Context paramContext)
+  {
+    try
+    {
+      new File(e(paramContext)).delete();
+      return;
+    }
+    catch (Throwable paramContext) {}
+  }
+  
+  public String e(Context paramContext)
+  {
+    paramContext = paramContext.getDir("turingfd", 0);
+    if (paramContext == null) {
+      return "";
+    }
+    paramContext = new File(ci.a(new StringBuilder().append(paramContext.getAbsolutePath()), File.separator, "12"));
+    if ((!paramContext.exists()) && (!paramContext.mkdirs())) {
+      return "";
+    }
+    return paramContext.getAbsolutePath() + File.separator + cv.a + "_" + "baseFull" + "_" + "1";
+  }
+  
+  public long f(Context paramContext)
+  {
+    paramContext = a.g(paramContext);
+    if (paramContext == null) {}
+    do
+    {
+      return 0L;
+      paramContext = paramContext.jd;
+    } while ((paramContext == null) || (!paramContext.containsKey("1")));
+    try
+    {
+      l = Long.valueOf((String)paramContext.get("1")).longValue();
+      l = l * 3600L * 1000L;
+    }
+    catch (Throwable paramContext)
+    {
+      for (;;)
+      {
+        long l = 0L;
+      }
+    }
+    return l;
+  }
+  
+  public final Hickory g(Context paramContext)
+  {
+    try
+    {
+      Hickory localHickory = new Hickory();
+      localHickory.a(new cy(cm.b(e(paramContext))));
+      return localHickory;
+    }
+    catch (Throwable paramContext) {}
+    return null;
   }
 }
 

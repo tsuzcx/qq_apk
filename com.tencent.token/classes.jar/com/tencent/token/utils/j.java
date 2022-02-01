@@ -1,43 +1,38 @@
 package com.tencent.token.utils;
 
-import android.net.Uri;
-import android.os.Environment;
-import com.tencent.token.gk;
-import com.tencent.token.global.h;
-import com.tencent.token.utils.encrypt.c;
-import java.io.File;
-import java.io.FileOutputStream;
-
 public class j
 {
-  private static File a;
+  public static int a = 103;
+  public static String b = "6.9.16";
+  public static int c = 1;
+  public static boolean d = true;
+  public static boolean e = true;
+  public static boolean f = true;
+  public static boolean g = false;
+  public static int h = 63;
+  public static boolean i = true;
+  public static boolean j = true;
+  public static boolean k = false;
+  public static boolean l = true;
+  public static boolean m = true;
+  public static boolean n = true;
+  public static boolean o = true;
+  public static boolean p = true;
+  public static boolean q = true;
   
-  public static Uri a(String paramString)
+  static
   {
-    h.b("path" + paramString);
-    Object localObject = c.b(paramString) + paramString.substring(paramString.lastIndexOf("."));
-    a = new File(Environment.getExternalStorageDirectory(), "cache");
-    if (!a.exists()) {
-      a.mkdirs();
-    }
-    if (!a.exists()) {}
-    File localFile;
-    do
+    if (c != 0)
     {
-      return null;
-      localFile = new File(a, (String)localObject);
-      if (localFile.exists())
-      {
-        h.b("exists" + paramString + "name" + (String)localObject);
-        return Uri.fromFile(localFile);
-      }
-      h.b("fromnet" + paramString);
-      paramString = new gk().a(paramString);
-    } while (paramString == null);
-    localObject = new FileOutputStream(localFile);
-    ((FileOutputStream)localObject).write(paramString, 0, paramString.length);
-    ((FileOutputStream)localObject).close();
-    return Uri.fromFile(localFile);
+      d = false;
+      e = false;
+      i = false;
+      l = false;
+      m = false;
+      n = false;
+      q = false;
+      return;
+    }
   }
 }
 

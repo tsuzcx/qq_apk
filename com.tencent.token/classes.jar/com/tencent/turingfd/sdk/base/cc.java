@@ -3,17 +3,23 @@ package com.tencent.turingfd.sdk.base;
 public class cc
 {
   public String a;
-  public int b;
+  public String b;
+  public String c;
+  public String d;
   
-  public cc(String paramString, int paramInt)
+  public void a(String paramString)
   {
-    this.a = paramString;
-    this.b = paramInt;
+    this.b = paramString;
   }
   
-  public static cc a(int paramInt)
+  public void b(String paramString)
   {
-    return new cc("", paramInt);
+    this.c = paramString;
+  }
+  
+  public void c(String paramString)
+  {
+    this.d = paramString;
   }
 }
 

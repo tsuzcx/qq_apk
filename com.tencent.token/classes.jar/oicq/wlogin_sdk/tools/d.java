@@ -2,7 +2,9 @@ package oicq.wlogin_sdk.tools;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.os.Handler;
 import android.os.HandlerThread;
+import android.os.Looper;
 import android.os.Message;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -12,8 +14,8 @@ import java.util.NoSuchElementException;
 
 public class d
 {
-  static d.a a;
-  static LinkedList b = new LinkedList();
+  static a a;
+  static LinkedList<String> b = new LinkedList();
   private static boolean c = false;
   private static String d = "";
   private static BufferedWriter e;
@@ -29,7 +31,7 @@ public class d
     {
       f.start();
       if (true == f.isAlive()) {
-        a = new d.a(f.getLooper());
+        a = new a(f.getLooper());
       }
       d = util.getLogFileName(paramContext, util.getCurrentDay());
       c = true;
@@ -105,6 +107,37 @@ public class d
     catch (Exception localException2)
     {
       break label91;
+    }
+  }
+  
+  static class a
+    extends Handler
+  {
+    public a(Looper paramLooper)
+    {
+      super();
+    }
+    
+    public void handleMessage(Message paramMessage)
+    {
+      switch (paramMessage.what)
+      {
+      default: 
+        return;
+      case 2: 
+        paramMessage = paramMessage.getData();
+        if (paramMessage != null)
+        {
+          paramMessage = paramMessage.getString("msg");
+          if (paramMessage != null) {
+            d.b.add(paramMessage);
+          }
+        }
+        d.a.sendEmptyMessageDelayed(1, 5000L);
+        return;
+      }
+      d.a();
+      d.a.removeMessages(1);
     }
   }
 }

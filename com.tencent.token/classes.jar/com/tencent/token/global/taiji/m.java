@@ -1,41 +1,57 @@
 package com.tencent.token.global.taiji;
 
+import btmsdkobf.bx;
+import btmsdkobf.cj;
+import btmsdkobf.cm;
+import btmsdkobf.dj;
+import com.qq.taf.jce.JceStruct;
+import java.lang.ref.WeakReference;
+import tmsdk.common.module.pgsdk.manager.ITaijiSharkNetwork;
+import tmsdk.common.module.pgsdk.manager.shark.ISharkCallBack;
+import tmsdk.common.module.pgsdk.manager.shark.ISharkPushListener;
+import tmsdk.common.module.pgsdk.manager.shark.SharkHandler;
+import tmsdk.common.module.pgsdk.manager.shark.Triple;
+
 public class m
-  extends Thread
+  implements ITaijiSharkNetwork
 {
-  private n a;
-  private Runnable b;
-  private long c;
-  
-  public m(ThreadGroup paramThreadGroup, Runnable paramRunnable, String paramString, long paramLong)
+  public static m a()
   {
-    super(paramThreadGroup, paramRunnable, paramString);
-    this.b = paramRunnable;
-    this.c = paramLong;
+    return a.a();
   }
   
-  public void run()
+  public boolean isSupportPush()
   {
-    if (this.a != null) {
-      this.a.b(this, this.b);
-    }
-    super.run();
-    if (this.a != null) {
-      this.a.c(this, this.b);
-    }
+    return true;
   }
   
-  public void start()
+  public void registerSharkPush(int paramInt1, JceStruct paramJceStruct, int paramInt2, final ISharkPushListener paramISharkPushListener)
   {
-    try
+    bx.ar().a(paramInt1, paramJceStruct, paramInt2, new cm()
     {
-      if (this.a != null) {
-        this.a.a(this, this.b);
+      public dj<Long, Integer, JceStruct> a(int paramAnonymousInt1, long paramAnonymousLong, int paramAnonymousInt2, JceStruct paramAnonymousJceStruct)
+      {
+        paramAnonymousJceStruct = paramISharkPushListener.onRecvPush(paramAnonymousInt1, paramAnonymousLong, paramAnonymousInt2, paramAnonymousJceStruct);
+        return new dj(paramAnonymousJceStruct.first, paramAnonymousJceStruct.second, paramAnonymousJceStruct.third);
       }
-      super.start();
-      return;
-    }
-    finally {}
+    });
+  }
+  
+  public WeakReference<SharkHandler> sendShark(int paramInt1, JceStruct paramJceStruct1, JceStruct paramJceStruct2, int paramInt2, final ISharkCallBack paramISharkCallBack)
+  {
+    bx.ar().a(paramInt1, paramJceStruct1, paramJceStruct2, paramInt2, new cj()
+    {
+      public void onFinish(int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3, int paramAnonymousInt4, JceStruct paramAnonymousJceStruct)
+      {
+        paramISharkCallBack.onFinish(paramAnonymousInt1, paramAnonymousInt2, paramAnonymousInt3, paramAnonymousInt4, paramAnonymousJceStruct);
+      }
+    }, 0L);
+    return null;
+  }
+  
+  private static final class a
+  {
+    private static final m a = new m();
   }
 }
 

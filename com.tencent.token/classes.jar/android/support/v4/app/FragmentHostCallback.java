@@ -13,7 +13,7 @@ import android.view.View;
 import java.io.FileDescriptor;
 import java.io.PrintWriter;
 
-public abstract class FragmentHostCallback
+public abstract class FragmentHostCallback<E>
   extends FragmentContainer
 {
   private final Activity mActivity;
@@ -68,7 +68,7 @@ public abstract class FragmentHostCallback
   }
   
   @Nullable
-  public abstract Object onGetHost();
+  public abstract E onGetHost();
   
   @NonNull
   public LayoutInflater onGetLayoutInflater()

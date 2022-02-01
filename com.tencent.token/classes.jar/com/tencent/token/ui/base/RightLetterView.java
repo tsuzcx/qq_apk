@@ -8,12 +8,12 @@ import android.graphics.Typeface;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
-import com.tencent.token.global.e;
+import com.tencent.token.global.d;
 
 public class RightLetterView
   extends View
 {
-  cl a;
+  a a;
   Paint b = new Paint();
   private int c = -1;
   private float d;
@@ -29,7 +29,7 @@ public class RightLetterView
   {
     super(paramContext, paramAttributeSet);
     this.d = paramContext.getResources().getDimension(2131296400);
-    this.e = e.a;
+    this.e = d.a;
     this.b.setTypeface(Typeface.DEFAULT_BOLD);
     this.b.setAntiAlias(true);
     this.b.setTextSize(this.d);
@@ -94,9 +94,14 @@ public class RightLetterView
     return super.onTouchEvent(paramMotionEvent);
   }
   
-  public void setOnTouchingLetterChangedListener(cl paramcl)
+  public void setOnTouchingLetterChangedListener(a parama)
   {
-    this.a = paramcl;
+    this.a = parama;
+  }
+  
+  public static abstract interface a
+  {
+    public abstract void a(int paramInt);
   }
 }
 

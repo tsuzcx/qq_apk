@@ -6,13 +6,14 @@ import android.os.Parcelable.Creator;
 import java.io.Serializable;
 import java.util.List;
 import java.util.Locale;
+import oicq.wlogin_sdk.request.Ticket;
 import oicq.wlogin_sdk.request.t;
 import oicq.wlogin_sdk.tools.util;
 
 public class WloginSigInfo
   implements Parcelable, Serializable
 {
-  public static final Parcelable.Creator CREATOR = new WloginSigInfo.1();
+  public static final Parcelable.Creator<WloginSigInfo> CREATOR = new WloginSigInfo.1();
   public static final int SIG_RESERVE_LENGTH = 15;
   public static final int SIG_RESERVE_VALID_LENGTH = 7;
   public static byte[] _LHSig = new byte[0];
@@ -74,7 +75,7 @@ public class WloginSigInfo
   public long _vKey_expire_time = 0L;
   public byte[] _vkey = new byte[0];
   public long _vkey_create_time = 0L;
-  public transient List cacheTickets = null;
+  public transient List<Ticket> cacheTickets = null;
   public transient long cacheUpdateStamp;
   public int mainSigMap;
   public byte[] wtSessionTicket = new byte[0];
@@ -268,23 +269,23 @@ public class WloginSigInfo
     if ((paramArrayOfByte[10] != null) && (paramArrayOfByte[10].length > 0)) {
       this._pfKey = ((byte[])paramArrayOfByte[10].clone());
     }
-    label873:
+    label874:
     int i;
     if (this._DA2 == null)
     {
       util.LOGI("_DA2 is null", "");
       paramInt = 0;
       if (paramArrayOfByte[11] != null) {
-        break label1088;
+        break label1089;
       }
       util.LOGI("reserve[11] is null", "");
       i = 0;
-      label892:
+      label893:
       util.LOGI("mainSigMap 0x" + Integer.toHexString(this.mainSigMap) + " file da2 len " + paramInt + " rsp da2 len " + i, "");
       if (paramArrayOfByte[11] != null)
       {
         if (paramArrayOfByte[11].length <= 0) {
-          break label1099;
+          break label1100;
         }
         this._DA2 = ((byte[])paramArrayOfByte[11].clone());
         util.LOGI("get _DA2", "");
@@ -303,11 +304,11 @@ public class WloginSigInfo
       this.wtSessionTicketCreatTime = t.f();
       return;
       paramInt = this._DA2.length;
-      break label873;
-      label1088:
+      break label874;
+      label1089:
       i = paramArrayOfByte[11].length;
-      break label892;
-      label1099:
+      break label893;
+      label1100:
       if ((0x2000000 & this.mainSigMap) != 0)
       {
         this._DA2 = new byte[0];

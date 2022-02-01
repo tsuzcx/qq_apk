@@ -1,24 +1,19 @@
 package com.tencent.token;
 
+import java.io.Serializable;
+
 public abstract interface dc
 {
-  public abstract void a();
+  public abstract a a(de paramde);
   
-  public abstract void a(int paramInt);
+  public abstract void a(de paramde, do paramdo, Serializable paramSerializable);
   
-  public abstract void a(int paramInt, String paramString);
-  
-  public abstract void a(String paramString);
-  
-  public abstract void b();
-  
-  public abstract void b(int paramInt, String paramString);
-  
-  public abstract void b(String paramString);
-  
-  public abstract void c();
-  
-  public abstract void c(String paramString);
+  public static class a
+  {
+    public boolean a;
+    public do b;
+    public Serializable c;
+  }
 }
 
 

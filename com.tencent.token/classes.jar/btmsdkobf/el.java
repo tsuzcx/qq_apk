@@ -8,14 +8,14 @@ import java.util.concurrent.TimeUnit;
 public class el
   extends ThreadPoolExecutor
 {
-  private el.a ou = null;
+  private a ou = null;
   
-  public el(int paramInt1, int paramInt2, long paramLong, TimeUnit paramTimeUnit, BlockingQueue paramBlockingQueue, RejectedExecutionHandler paramRejectedExecutionHandler)
+  public el(int paramInt1, int paramInt2, long paramLong, TimeUnit paramTimeUnit, BlockingQueue<Runnable> paramBlockingQueue, RejectedExecutionHandler paramRejectedExecutionHandler)
   {
     super(paramInt1, paramInt2, paramLong, paramTimeUnit, paramBlockingQueue, new ek(), paramRejectedExecutionHandler);
   }
   
-  public void a(el.a parama)
+  public void a(a parama)
   {
     this.ou = parama;
   }
@@ -39,6 +39,13 @@ public class el
   public void execute(Runnable paramRunnable)
   {
     super.execute(paramRunnable);
+  }
+  
+  public static abstract interface a
+  {
+    public abstract void afterExecute(Runnable paramRunnable, Throwable paramThrowable);
+    
+    public abstract void beforeExecute(Thread paramThread, Runnable paramRunnable);
   }
 }
 

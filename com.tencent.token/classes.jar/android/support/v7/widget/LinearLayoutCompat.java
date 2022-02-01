@@ -1,6 +1,7 @@
 package android.support.v7.widget;
 
 import android.content.Context;
+import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.drawable.Drawable;
 import android.support.annotation.RestrictTo;
@@ -12,8 +13,12 @@ import android.view.View;
 import android.view.View.MeasureSpec;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
+import android.view.ViewGroup.MarginLayoutParams;
 import android.view.accessibility.AccessibilityEvent;
 import android.view.accessibility.AccessibilityNodeInfo;
+import java.lang.annotation.Annotation;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
 
 public class LinearLayoutCompat
   extends ViewGroup
@@ -89,7 +94,7 @@ public class LinearLayoutCompat
       View localView = getVirtualChildAt(i);
       if (localView.getVisibility() != 8)
       {
-        LinearLayoutCompat.LayoutParams localLayoutParams = (LinearLayoutCompat.LayoutParams)localView.getLayoutParams();
+        LayoutParams localLayoutParams = (LayoutParams)localView.getLayoutParams();
         if (localLayoutParams.height == -1)
         {
           int k = localLayoutParams.width;
@@ -111,7 +116,7 @@ public class LinearLayoutCompat
       View localView = getVirtualChildAt(i);
       if (localView.getVisibility() != 8)
       {
-        LinearLayoutCompat.LayoutParams localLayoutParams = (LinearLayoutCompat.LayoutParams)localView.getLayoutParams();
+        LayoutParams localLayoutParams = (LayoutParams)localView.getLayoutParams();
         if (localLayoutParams.width == -1)
         {
           int k = localLayoutParams.height;
@@ -131,7 +136,7 @@ public class LinearLayoutCompat
   
   protected boolean checkLayoutParams(ViewGroup.LayoutParams paramLayoutParams)
   {
-    return paramLayoutParams instanceof LinearLayoutCompat.LayoutParams;
+    return paramLayoutParams instanceof LayoutParams;
   }
   
   void drawDividersHorizontal(Canvas paramCanvas)
@@ -140,13 +145,13 @@ public class LinearLayoutCompat
     boolean bool = ViewUtils.isLayoutRtl(this);
     int i = 0;
     View localView;
-    LinearLayoutCompat.LayoutParams localLayoutParams;
+    LayoutParams localLayoutParams;
     if (i < k)
     {
       localView = getVirtualChildAt(i);
       if ((localView != null) && (localView.getVisibility() != 8) && (hasDividerBeforeChildAt(i)))
       {
-        localLayoutParams = (LinearLayoutCompat.LayoutParams)localView.getLayoutParams();
+        localLayoutParams = (LayoutParams)localView.getLayoutParams();
         if (!bool) {
           break label92;
         }
@@ -179,7 +184,7 @@ public class LinearLayoutCompat
       i = getWidth() - getPaddingRight() - this.mDividerWidth;
       continue;
       label171:
-      localLayoutParams = (LinearLayoutCompat.LayoutParams)localView.getLayoutParams();
+      localLayoutParams = (LayoutParams)localView.getLayoutParams();
       if (bool)
       {
         i = localView.getLeft() - localLayoutParams.leftMargin - this.mDividerWidth;
@@ -197,13 +202,13 @@ public class LinearLayoutCompat
     int j = getVirtualChildCount();
     int i = 0;
     View localView;
-    LinearLayoutCompat.LayoutParams localLayoutParams;
+    LayoutParams localLayoutParams;
     while (i < j)
     {
       localView = getVirtualChildAt(i);
       if ((localView != null) && (localView.getVisibility() != 8) && (hasDividerBeforeChildAt(i)))
       {
-        localLayoutParams = (LinearLayoutCompat.LayoutParams)localView.getLayoutParams();
+        localLayoutParams = (LayoutParams)localView.getLayoutParams();
         drawHorizontalDivider(paramCanvas, localView.getTop() - localLayoutParams.topMargin - this.mDividerHeight);
       }
       i += 1;
@@ -220,7 +225,7 @@ public class LinearLayoutCompat
       drawHorizontalDivider(paramCanvas, i);
       return;
       label124:
-      localLayoutParams = (LinearLayoutCompat.LayoutParams)localView.getLayoutParams();
+      localLayoutParams = (LayoutParams)localView.getLayoutParams();
       i = localView.getBottom();
     }
   }
@@ -237,25 +242,25 @@ public class LinearLayoutCompat
     this.mDivider.draw(paramCanvas);
   }
   
-  protected LinearLayoutCompat.LayoutParams generateDefaultLayoutParams()
+  protected LayoutParams generateDefaultLayoutParams()
   {
     if (this.mOrientation == 0) {
-      return new LinearLayoutCompat.LayoutParams(-2, -2);
+      return new LayoutParams(-2, -2);
     }
     if (this.mOrientation == 1) {
-      return new LinearLayoutCompat.LayoutParams(-1, -2);
+      return new LayoutParams(-1, -2);
     }
     return null;
   }
   
-  public LinearLayoutCompat.LayoutParams generateLayoutParams(AttributeSet paramAttributeSet)
+  public LayoutParams generateLayoutParams(AttributeSet paramAttributeSet)
   {
-    return new LinearLayoutCompat.LayoutParams(getContext(), paramAttributeSet);
+    return new LayoutParams(getContext(), paramAttributeSet);
   }
   
-  protected LinearLayoutCompat.LayoutParams generateLayoutParams(ViewGroup.LayoutParams paramLayoutParams)
+  protected LayoutParams generateLayoutParams(ViewGroup.LayoutParams paramLayoutParams)
   {
-    return new LinearLayoutCompat.LayoutParams(paramLayoutParams);
+    return new LayoutParams(paramLayoutParams);
   }
   
   public int getBaseline()
@@ -291,7 +296,7 @@ public class LinearLayoutCompat
     }
     for (;;)
     {
-      return ((LinearLayoutCompat.LayoutParams)localView.getLayoutParams()).topMargin + i + j;
+      return ((LayoutParams)localView.getLayoutParams()).topMargin + i + j;
       i = getBottom() - getTop() - getPaddingBottom() - this.mTotalLength;
       continue;
       i += (getBottom() - getTop() - getPaddingTop() - getPaddingBottom() - this.mTotalLength) / 2;
@@ -459,7 +464,7 @@ public class LinearLayoutCompat
         {
           int i6 = localView.getMeasuredWidth();
           int i7 = localView.getMeasuredHeight();
-          LinearLayoutCompat.LayoutParams localLayoutParams = (LinearLayoutCompat.LayoutParams)localView.getLayoutParams();
+          LayoutParams localLayoutParams = (LayoutParams)localView.getLayoutParams();
           if ((bool2) && (localLayoutParams.height != -1)) {}
           for (int j = localView.getBaseline();; j = -1)
           {
@@ -551,7 +556,7 @@ public class LinearLayoutCompat
       {
         int i2 = localView.getMeasuredWidth();
         int i3 = localView.getMeasuredHeight();
-        LinearLayoutCompat.LayoutParams localLayoutParams = (LinearLayoutCompat.LayoutParams)localView.getLayoutParams();
+        LayoutParams localLayoutParams = (LayoutParams)localView.getLayoutParams();
         paramInt4 = localLayoutParams.gravity;
         paramInt3 = paramInt4;
         if (paramInt4 < 0) {
@@ -683,7 +688,7 @@ public class LinearLayoutCompat
     if (hasDividerBeforeChildAt(i4)) {
       this.mTotalLength += this.mDividerWidth;
     }
-    LinearLayoutCompat.LayoutParams localLayoutParams = (LinearLayoutCompat.LayoutParams)localView.getLayoutParams();
+    LayoutParams localLayoutParams = (LayoutParams)localView.getLayoutParams();
     f1 += localLayoutParams.weight;
     if ((i13 == 1073741824) && (localLayoutParams.width == 0) && (localLayoutParams.weight > 0.0F)) {
       if (i7 != 0)
@@ -843,7 +848,7 @@ public class LinearLayoutCompat
               }
               else
               {
-                localLayoutParams = (LinearLayoutCompat.LayoutParams)localView.getLayoutParams();
+                localLayoutParams = (LayoutParams)localView.getLayoutParams();
                 if (i7 != 0)
                 {
                   i5 = this.mTotalLength;
@@ -910,7 +915,7 @@ public class LinearLayoutCompat
           k = i1;
           i1 = i3;
           break;
-          localLayoutParams = (LinearLayoutCompat.LayoutParams)localView.getLayoutParams();
+          localLayoutParams = (LayoutParams)localView.getLayoutParams();
           float f2 = localLayoutParams.weight;
           if (f2 > 0.0F)
           {
@@ -1032,7 +1037,7 @@ public class LinearLayoutCompat
                 {
                   k += 1;
                   break;
-                  if (((LinearLayoutCompat.LayoutParams)((View)localObject).getLayoutParams()).weight > 0.0F) {
+                  if (((LayoutParams)((View)localObject).getLayoutParams()).weight > 0.0F) {
                     ((View)localObject).measure(View.MeasureSpec.makeMeasureSpec(m, 1073741824), View.MeasureSpec.makeMeasureSpec(((View)localObject).getMeasuredHeight(), 1073741824));
                   }
                 }
@@ -1084,7 +1089,7 @@ public class LinearLayoutCompat
     int i5;
     int i6;
     label210:
-    LinearLayoutCompat.LayoutParams localLayoutParams;
+    LayoutParams localLayoutParams;
     int i7;
     if (i2 < i10)
     {
@@ -1124,7 +1129,7 @@ public class LinearLayoutCompat
       if (hasDividerBeforeChildAt(i2)) {
         this.mTotalLength += this.mDividerHeight;
       }
-      localLayoutParams = (LinearLayoutCompat.LayoutParams)localView.getLayoutParams();
+      localLayoutParams = (LayoutParams)localView.getLayoutParams();
       f1 += localLayoutParams.weight;
       if ((i12 == 1073741824) && (localLayoutParams.height == 0) && (localLayoutParams.weight > 0.0F))
       {
@@ -1248,7 +1253,7 @@ public class LinearLayoutCompat
             }
             else
             {
-              localLayoutParams = (LinearLayoutCompat.LayoutParams)localView.getLayoutParams();
+              localLayoutParams = (LayoutParams)localView.getLayoutParams();
               i5 = this.mTotalLength;
               i6 = localLayoutParams.topMargin;
               this.mTotalLength = Math.max(i5, localLayoutParams.bottomMargin + (i5 + m + i6) + getNextLocationOffset(localView));
@@ -1290,7 +1295,7 @@ public class LinearLayoutCompat
             }
             else
             {
-              localLayoutParams = (LinearLayoutCompat.LayoutParams)localView.getLayoutParams();
+              localLayoutParams = (LayoutParams)localView.getLayoutParams();
               float f2 = localLayoutParams.weight;
               if (f2 <= 0.0F) {
                 break label1660;
@@ -1386,7 +1391,7 @@ public class LinearLayoutCompat
             {
               n += 1;
               break;
-              if (((LinearLayoutCompat.LayoutParams)localView.getLayoutParams()).weight > 0.0F) {
+              if (((LayoutParams)localView.getLayoutParams()).weight > 0.0F) {
                 localView.measure(View.MeasureSpec.makeMeasureSpec(localView.getMeasuredWidth(), 1073741824), View.MeasureSpec.makeMeasureSpec(m, 1073741824));
               }
             }
@@ -1565,6 +1570,59 @@ public class LinearLayoutCompat
   {
     return false;
   }
+  
+  @Retention(RetentionPolicy.SOURCE)
+  @RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
+  public static @interface DividerMode {}
+  
+  public static class LayoutParams
+    extends ViewGroup.MarginLayoutParams
+  {
+    public int gravity = -1;
+    public float weight;
+    
+    public LayoutParams(int paramInt1, int paramInt2)
+    {
+      super(paramInt2);
+      this.weight = 0.0F;
+    }
+    
+    public LayoutParams(int paramInt1, int paramInt2, float paramFloat)
+    {
+      super(paramInt2);
+      this.weight = paramFloat;
+    }
+    
+    public LayoutParams(Context paramContext, AttributeSet paramAttributeSet)
+    {
+      super(paramAttributeSet);
+      paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.LinearLayoutCompat_Layout);
+      this.weight = paramContext.getFloat(R.styleable.LinearLayoutCompat_Layout_android_layout_weight, 0.0F);
+      this.gravity = paramContext.getInt(R.styleable.LinearLayoutCompat_Layout_android_layout_gravity, -1);
+      paramContext.recycle();
+    }
+    
+    public LayoutParams(LayoutParams paramLayoutParams)
+    {
+      super();
+      this.weight = paramLayoutParams.weight;
+      this.gravity = paramLayoutParams.gravity;
+    }
+    
+    public LayoutParams(ViewGroup.LayoutParams paramLayoutParams)
+    {
+      super();
+    }
+    
+    public LayoutParams(ViewGroup.MarginLayoutParams paramMarginLayoutParams)
+    {
+      super();
+    }
+  }
+  
+  @Retention(RetentionPolicy.SOURCE)
+  @RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
+  public static @interface OrientationMode {}
 }
 
 
