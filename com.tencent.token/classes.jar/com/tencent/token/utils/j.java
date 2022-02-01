@@ -2,8 +2,8 @@ package com.tencent.token.utils;
 
 public class j
 {
-  public static int a = 107;
-  public static String b = "6.9.20";
+  public static int a = 108;
+  public static String b = "6.9.21";
   public static int c = 1;
   public static boolean d = true;
   public static boolean e = true;

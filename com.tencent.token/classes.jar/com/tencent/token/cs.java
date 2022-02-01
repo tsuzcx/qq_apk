@@ -291,7 +291,7 @@ public class cs
   
   private void w()
   {
-    if (RqdApplication.g) {
+    if (RqdApplication.h) {
       switch (c.a())
       {
       default: 

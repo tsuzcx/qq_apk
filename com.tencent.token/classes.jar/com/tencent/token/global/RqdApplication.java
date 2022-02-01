@@ -37,17 +37,18 @@ public class RqdApplication
   public static volatile int d = 60;
   public static String e;
   public static boolean f = false;
-  public static final boolean g = com.tencent.token.utils.j.d;
-  public static boolean h = false;
-  private static Context j;
-  private static RqdApplication k;
-  private static de l;
-  private static int m = -1;
-  AtomicBoolean i = new AtomicBoolean(false);
+  public static boolean g = false;
+  public static final boolean h = com.tencent.token.utils.j.d;
+  public static boolean i = false;
+  private static Context k;
+  private static RqdApplication l;
+  private static de m;
+  private static int n = -1;
+  AtomicBoolean j = new AtomicBoolean(false);
   
   public static RqdApplication a()
   {
-    return k;
+    return l;
   }
   
   private static boolean a(Context paramContext)
@@ -105,20 +106,20 @@ public class RqdApplication
       ((StringBuilder)localObject1).append(cs.a().e().mRealUin);
       return ((StringBuilder)localObject1).toString();
     }
-    Object localObject2 = l.b(j);
-    String str = l.c(j);
-    int i1 = 1;
-    int n;
+    Object localObject2 = l.b(k);
+    String str = l.c(k);
+    int i2 = 1;
+    int i1;
     if (localObject2 == null) {
-      n = 1;
+      i1 = 1;
     } else {
-      n = 0;
-    }
-    if (str != null) {
       i1 = 0;
     }
-    if ((n == 0) || (i1 == 0)) {
-      if ((n == 0) && (i1 == 0))
+    if (str != null) {
+      i2 = 0;
+    }
+    if ((i1 == 0) || (i2 == 0)) {
+      if ((i1 == 0) && (i2 == 0))
       {
         localObject1 = new StringBuilder();
         ((StringBuilder)localObject1).append((String)localObject2);
@@ -126,7 +127,7 @@ public class RqdApplication
         ((StringBuilder)localObject1).append(str);
         localObject1 = ((StringBuilder)localObject1).toString();
       }
-      else if (n != 0)
+      else if (i1 != 0)
       {
         localObject1 = str;
       }
@@ -161,13 +162,13 @@ public class RqdApplication
   
   public static boolean h()
   {
-    int n;
+    int i1;
     if ((a & 0x1) == 1) {
-      n = 1;
+      i1 = 1;
     } else {
-      n = 0;
+      i1 = 0;
     }
-    if (n != 0) {
+    if (i1 != 0) {
       return true;
     }
     return (a & 0x2) == 2;
@@ -201,28 +202,31 @@ public class RqdApplication
   public static String l()
   {
     String str;
-    if ((m == 0) && (!c.l())) {
-      str = new Safeguard(j, "safeguard_pref").getSafeguardInfo();
+    if ((n == 0) && (!c.l())) {
+      str = new Safeguard(k, "safeguard_pref").getSafeguardInfo();
     } else {
       str = null;
     }
-    m += 1;
+    n += 1;
     return str;
   }
   
   public static de m()
   {
-    de localde = l;
+    de localde = m;
     if (localde != null) {
       return localde;
     }
-    l = new df(n());
-    return l;
+    m = new df(n());
+    return m;
   }
   
   public static Context n()
   {
-    return j;
+    if (g) {
+      return l;
+    }
+    return k;
   }
   
   private void p()
@@ -248,34 +252,37 @@ public class RqdApplication
   
   public void b()
   {
-    if (!this.i.compareAndSet(false, true))
+    if (!this.j.compareAndSet(false, true))
     {
       Log.e("RQ", "already init before");
       return;
     }
     CrashReport.setLogAble(com.tencent.token.utils.j.l, com.tencent.token.utils.j.m);
-    CrashReport.setUserId(j, "testUserId");
+    CrashReport.setUserId(k, "testUserId");
     Object localObject = o();
-    CrashReport.initCrashReport(j, null, null, true, (CrashStrategyBean)localObject);
+    CrashReport.initCrashReport(k, null, null, true, (CrashStrategyBean)localObject);
     localObject = dz.b().getAbsolutePath();
-    CrashReport.initNativeCrashReport(j, (String)localObject, com.tencent.token.utils.j.p);
+    CrashReport.initNativeCrashReport(k, (String)localObject, com.tencent.token.utils.j.p);
     if (com.tencent.token.utils.j.n) {
-      ANRReport.startANRMonitor(j);
+      ANRReport.startANRMonitor(k);
     }
-    CrashReport.setUserId(j, e());
+    CrashReport.setUserId(k, e());
     TMSDKContext.setTMSDKLogEnable(false);
-    h = TMSDKContext.init(j, null);
-    TMSDKContext.setAutoConnectionSwitch(j, true);
+    i = TMSDKContext.init(k, null);
+    TMSDKContext.setAutoConnectionSwitch(k, true);
     k.a();
     PermissionGuide.init(this, new com.tencent.token.global.taiji.j());
     PermissionGuide.pullAdapterSolution();
-    a.a().a(j);
+    a.a().a(k);
     p();
   }
   
   public Context getApplicationContext()
   {
-    return j;
+    if (g) {
+      return super.getApplicationContext();
+    }
+    return k;
   }
   
   protected CrashStrategyBean o()
@@ -295,12 +302,14 @@ public class RqdApplication
   public void onCreate()
   {
     super.onCreate();
+    l = this;
     k = this;
-    j = this;
-    j = dx.a(getApplicationContext());
+    k = dx.a(getApplicationContext());
     c.a(getApplicationContext());
     et.a(getApplicationContext());
-    if (e.a().b()) {
+    if (e.a().b())
+    {
+      g = true;
       b();
     }
     boolean bool = m.c();

@@ -493,8 +493,10 @@ public class LogoActivity
         this.a.dismiss();
         RqdApplication.c();
         ef.a("privacy_dialog_agree_time", System.currentTimeMillis());
+        RqdApplication.g = true;
         com.tencent.service.update.e.a().a(true);
         RqdApplication.a().b();
+        LogoActivity.startNetService(LogoActivity.this);
         if (Build.VERSION.SDK_INT >= 23)
         {
           LogoActivity.this.showPermissionDialog();
@@ -504,6 +506,21 @@ public class LogoActivity
         LogoActivity.this.gotonext();
       }
     });
+  }
+  
+  static void startNetService(Activity paramActivity)
+  {
+    try
+    {
+      Intent localIntent = new Intent(paramActivity, NetInfoService.class);
+      localIntent.setAction("com.tencent.token.upload.NetInfoService");
+      paramActivity.startService(localIntent);
+      return;
+    }
+    catch (Exception paramActivity)
+    {
+      paramActivity.printStackTrace();
+    }
   }
   
   boolean need2RequestPermission()
@@ -610,12 +627,11 @@ public class LogoActivity
     requestWindowFeature(1);
     RqdApplication.g();
     c.a(true);
-    Intent localIntent = getIntent();
+    paramBundle = getIntent();
     try
     {
-      Bundle localBundle = localIntent.getBundleExtra("com.tencent.input_param");
-      paramBundle = localIntent.getData();
-      Object localObject1;
+      Bundle localBundle = paramBundle.getBundleExtra("com.tencent.input_param");
+      paramBundle = paramBundle.getData();
       if (paramBundle != null)
       {
         paramBundle = paramBundle.toString();
@@ -780,24 +796,15 @@ public class LogoActivity
       }
       m.a();
       ef.b();
-      try
-      {
-        paramBundle = new Intent(this, NetInfoService.class);
-        localIntent.setAction("com.tencent.token.upload.NetInfoService");
-        startService(paramBundle);
-        return;
-      }
-      catch (Exception paramBundle)
-      {
-        paramBundle.printStackTrace();
-        return;
+      if (com.tencent.service.update.e.a().b()) {
+        startNetService(this);
       }
       return;
     }
     catch (Exception paramBundle)
     {
       paramBundle.printStackTrace();
-      localObject1 = new StringBuilder();
+      Object localObject1 = new StringBuilder();
       ((StringBuilder)localObject1).append("OpenAppCrash ");
       ((StringBuilder)localObject1).append(paramBundle.toString());
       g.d(((StringBuilder)localObject1).toString());
